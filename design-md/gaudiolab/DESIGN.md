@@ -2,6 +2,7 @@
 name: Gaudio Lab
 colors:
   primary: '#00b7ff'
+  foreground: '#ffffff'
   ink: '#111214'
   canvas: '#ffffff'
   surface: '#f0f9ff'
@@ -9,125 +10,101 @@ colors:
   ocean: '#12354e'
   muted: '#9ca3af'
   faint: '#d3d5da'
-  hairline: '#d6d6d6'
+  gray-200: '#d6d6d6'
   on-primary: '#fafafa'
 typography:
-  display-hero:
-    fontSize: 80px
-    fontWeight: 700
-    lineHeight: 1
-    use: Korean brand hero headline, system-ui / Noto Sans KR
-  section:
-    fontSize: 48px
-    fontWeight: 900
-    lineHeight: 1.46
-    use: English section titles, black weight
-  stat:
-    fontSize: 36px
-    fontWeight: 700
-    lineHeight: 1.11
-    letterSpacing: 0.15px
-    use: Milestone stat H1, Roboto
-  card-title:
-    fontSize: 18px
-    fontWeight: 500
-    lineHeight: 1.56
-    use: Blog/news card heading, Roboto
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Body text, Roboto / MUI base
+    use: Homepage base declaration and outer link metrics; Roboto is live-loaded.
   nav:
     fontSize: 14px
     fontWeight: 500
-    lineHeight: 1
-    use: Top nav menu buttons, Roboto
+    lineHeight: 1.428571
+    use: Products menu button, measured 20px line-height; native computed family recorded in section 3, no specimen assigned.
   button-lg:
     fontSize: 18px
     fontWeight: 500
-    lineHeight: 1
-    use: '''Watch the Film'' overlay button, Poppins'
+    lineHeight: 1.666667
+    use: Company-page Watch the Film button, survey rest measurement, Poppins live-loaded on that surface; 30px line-height.
 rounded:
+  none: 0px
   sm: 4px
   md: 6px
-  lg: 12px
-  xl: 16px
-  full: 9999px
 spacing:
-  xs: 4
   sm: 8
   md: 12
   base: 16
-  lg: 24
   xl: 40
-  section: 64
 components:
   cta-primary:
     type: button
-    backgroundColor: '#00b7ff'
-    textColor: '#fafafa'
+    textColor: '#ffffff'
+    border: '1px solid #ffffff'
     rounded: 6px
     padding: 8px 16px
     height: 32px
     typography: 14px / 500
-    use: Header 'Contact us' / '문의하기' CTA
+    hover: 'bg #00b7ff; border 1px solid rgba(0, 0, 0, 0)'
+    pressed: 'bg #00b7ff; border 1px solid rgba(0, 0, 0, 0)'
+    use: 'Header Contact us button inside a link to /contact-us; transparent at rest on #1e1e1f. Homepage dark-header variant.'
   cta-hero:
     type: button
     backgroundColor: '#00b7ff'
     textColor: '#ffffff'
     rounded: 4px
+    padding: 0px
     height: 44px
-    typography: 16px / 500
-    use: Hero primary 'Contact us' CTA
+    typography: 16px / 500 Roboto
+    hover: bg rgba(0, 183, 255, 0.9)
+    use: Hero Contact us link, 192px wide on the dark gradient. Pressed state unmeasured; no focus-specific visual change in the comparison scope.
   button-outline:
     type: button
     textColor: '#00b7ff'
     border: '1px solid #00b7ff'
     rounded: 4px
+    padding: 0px
     height: 44px
     typography: 16px / 500
-    use: '''All products'' secondary action'
-  button-film:
-    type: button
-    backgroundColor: '#ffffff'
-    textColor: '#111214'
-    rounded: 4px
-    padding: 16px 40px
-    height: 62px
-    typography: 18px / 500 Poppins
-    use: '''Watch the Film'' overlay button on brand hero'
+    hover: 'bg #00b7ff; fg #ffffff'
+    pressed: 'bg #00b7ff; fg #ffffff'
+    use: All products button, 192px wide; transparent on the hero gradient at rest.
   nav-item:
-    type: tab
-    textColor: '#111214'
+    type: button
+    textColor: '#ffffff'
     rounded: 6px
     padding: 8px 16px
+    height: 36px
     typography: 14px / 500
-    active: 'text #00b7ff'
-    use: Top nav menu items (light surface)
+    hover: 'fg #00b7ff'
+    pressed: 'fg #00b7ff'
+    focus: 'box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(59, 130, 246, 0.5) 0px 0px 0px 3px, rgba(0, 0, 0, 0) 0px 0px 0px 0px'
+    use: 'Products navigation menu button, 87.3px wide; transparent on #1e1e1f. Its CSS focus shadow uses the Tailwind ring default, not a separately asserted brand colour.'
+  footer-company:
+    type: button
+    textColor: '#111214'
+    rounded: 0px
+    padding: 0px
+    height: 16.5px
+    typography: 14px / 400 Roboto
+    hover: 'fg #00b7ff'
+    pressed: 'fg #00b7ff'
+    use: 'Company navigation link to /company/brand, 60.2px wide; transparent on #f0f9ff. Browser auto focus ring excluded from tokens.'
   news-card:
     type: card
-    backgroundColor: '#ffffff'
-    border: '1px solid #d6d6d6'
-    rounded: 12px
-    use: Blog & news thumbnail card, shadowless
-  product-row:
-    type: listItem
-    textColor: '#111214'
-    rounded: 9999px
-    height: 64px
-    typography: 16px / 400
-    use: Product row in app-launcher menu
-  app-launcher:
-    type: button
-    rounded: 9999px
-    height: 40px
-    use: Circular app-launcher icon button
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 0px
+    height: 331px
+    typography: 16px / 400 Roboto
+    hover: 'image transform matrix(1.05, 0, 0, 1.05, 0, 0); heading fg #00b7ff'
+    pressed: 'image transform matrix(1.05, 0, 0, 1.05, 0, 0); heading fg #00b7ff'
+    use: 'First Blog card link, Just Remove Dialogue?; 410.7px wide, transparent on #111214 with no border or rest shadow. Date #9ca3af, title #ffffff. Outer link geometry, not thumbnail geometry. Browser ring and persistent image-source update excluded from focus tokens.'
 fonts:
   roles:
     display: Poppins
     body: Roboto
-    ko: Noto Sans KR
 ---
 
 # Design System Inspiration of Gaudio Lab
@@ -136,160 +113,130 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Gaudio Lab (가우디오랩) is a Korean AI-audio technology company, and its website reads like a research lab that learned restraint from consumer product design. The canvas is almost entirely pure white (`#ffffff`), sectioned by wide bands of full-bleed video and near-black immersive blocks (`#1e1e1f`) where the sound-wave imagery lives. Against that quiet ground, a single saturated sky-blue (`#00b7ff`) does all the pointing — it is the only chromatic accent in the whole system, reserved for the "Contact us" / "문의하기" call-to-action and the outline of the "All products" button. The eye is trained: blue means act. Everything else is calibrated grayscale, so the interface feels engineered and trustworthy rather than decorated.
+Gaudio Lab (가우디오랩) develops audio technology across spatial audio, loudness management, source separation and AI content localization. Its own history dates the Korean corporation to May 2015, following a 2014 international-standard milestone for binaural rendering. The timeline moves through VR authoring tools and audio SDKs to Gaudio Studio, Gaudio Studio Pro and the Gaudio Developers API platform. This connects the company's scientific positioning with tools that people and media businesses can use. [Company history](https://www.gaudiolab.com/company/brand), [Korean company history](https://www.gaudiolab.com/ko/company/brand).
 
-The typographic personality is deliberately split across a hybrid stack, which is the tell that this is an engineering-led site rather than an agency showpiece. The English marketing layer runs in **Poppins** — geometric, rounded, and confident, climbing to a heavy weight 900 for section titles like "The Science of Sound". The functional chrome (nav, milestone stats, blog cards) is straight **Roboto** on Material UI, carrying the MUI default ink of `rgba(0,0,0,0.87)` and a 0.15px tracking on its `<h1>` stats. Korean copy resolves through the system stack into **Noto Sans KR**, where the brand hero "우리는 좋은 소리를 만들고 좋은 소리는 우리를 만듭니다" ("We make good sound, and good sound makes us") is set at a commanding 80px / weight 700. On the newer marketing sections the heading ink shifts to a crisper near-black `#111214`.
+The current corporate homepage makes that range visible through an orbital product selector on a dark blue gradient. White display copy sits to the left, with a filled sky-blue contact action and a matching outline product action beneath it. A white partner-and-awards band follows; four product tiles mix pale and dark backgrounds; a second dark area presents technology categories and patents. Blog, news and the final contact invitation share a near-black ground before the pale blue footer. These are observed arrangements in the desktop capture, rather than a stated company design philosophy.
 
-What distinguishes Gaudio Lab is its refusal of elevation. Live inspection found `box-shadow: none` across the hero, nav, CTAs, headings, and cards — nothing floats. Separation comes from flat sky-tinted panels (`#f0f9ff`), thin `#d6d6d6` hairlines around 12px-radius news cards, and hard cuts into dark sections (`#1e1e1f`, and a deeper navy `#12354e`). Geometry mixes two ideas cleanly: full pills (`9999px`) for product-list rows and the circular app-launcher, and a tight small-radius scale (4px / 6px CTAs, 12px / 16px cards) for everything structural. Text steps down through a cool neutral ladder — `#d3d5da` faint labels on dark, `#9ca3af` muted captions, `#fafafa` near-white on the blue CTA — a flat, fast, science-forward aesthetic that lets the audio content, not the chrome, do the talking.
+Sky-blue `#00b7ff` connects actions, hovered navigation and editorial titles. It also highlights words and figures, so its role extends beyond the primary CTA. Near-black `#111214`, white `#ffffff` and the pale `#f0f9ff` footer give the page strong changes of tone. Small control corners and low visual elevation keep the interface compact, while the large gradient and product imagery carry much of its visual character. The six sampled controls have no rest shadow; the Products menu adds a CSS shadow for keyboard focus.
 
-**Key Characteristics:**
-- Single saturated sky-blue (`#00b7ff`) as the only accent — reserved for the primary CTA and the outline button
-- Hybrid type stack: Poppins (EN display, up to weight 900), Roboto/MUI (body + chrome), Noto Sans KR (Korean)
-- Near-black marketing ink (`#111214`) alongside the MUI default `rgba(0,0,0,0.87)` on chrome
-- Shadowless system — no `box-shadow` anywhere; separation via tint, hairline, and dark bands
-- Dual geometry — full pills (`9999px`) for product rows/launcher, tight 4-16px radii for CTAs and cards
-- Dark immersive bands (`#1e1e1f`, `#12354e`) hosting sound-wave and film imagery
-- Cool neutral ladder (`#d3d5da` → `#9ca3af`) for text hierarchy against white and dark
-- Near-white label (`#fafafa`) on the blue CTA instead of pure white — a subtle MUI softness
+The company page adds a full-width film surface and a distinct, lighter header variant. Its published logo guidance requires the supplied logo colours and proportions to be preserved and prohibits adding shadows or gradients to the logo itself. This restriction applies to the logo, not to the whole website: the homepage contains a measured gradient background. [Brand resource guidance](https://www.gaudiolab.com/company/brand).
 
-### Primary tasks
+The company's published evolution includes the 2025 Studio app and developer-platform launches and two CES 2026 honours for Studio Pro, described in its timeline as a fourth consecutive award year. No dated rebrand announcement was established. The measured homepage is the English edition (`gaudiolab.com/`, HTML `lang="en"`); the Korean company page (`/ko/company/brand`) was inspected separately without a regional redirect.
 
-- Browse the product line from the app-launcher menu
-- Watch the brand film from the hero video band
-- Read the latest blog and news posts on the site
-- Evaluate the dialogue-separation and loudness tools for a streaming service
-- Contact the team after reading the evidence-first documentation
+#### Primary tasks
+
+- Explore the product range through the hero selector, product action and navigation.
+- Compare spatial audio, AI separation and loudness capabilities, then contact the team.
+- Watch the company film and read company history, patents, blog and news.
 
 ### Brand Narrative
 
-Gaudio Lab (가우디오랩) is a Seoul-based AI-audio technology company, spun out of academic sound research and, by its own homepage timeline, marking its **10th anniversary in 2025** (founded circa 2015). Its founding premise is stated directly on the brand page: "We provide an excellent sound experience through innovative technologies" — and, more memorably, "Where sound is, Gaudio Lab is there." The company positions sound as a rigorous science ("Sound is science, from smartphone to movie theaters") staffed by "over 40 audio experts including 9 Ph.D" dedicated to R&D.
+The company history records Korean incorporation in May 2015 and a California subsidiary in November 2016. Earlier binaural-rendering work appears in its 2014 standardization milestone; the subsequent history includes VR authoring, spatial-audio SDKs, loudness normalization and AI tools. This supports a narrative of audio research reaching multiple practical surfaces, without establishing an academic spin-out origin. [Company history](https://www.gaudiolab.com/company/brand).
 
-The product line spans spatial and generative audio: **GSA** (Spatial Audio), **Gaudio Sing** (AI Karaoke), **GTS / Gaudio Text Sync**, **LM1** (Loudness Normalizer), **Gaudio Studio Pro** (AI Content Localization), and **Gaudio Developers**, an API platform for audio AI. By its published milestones the company reports **50M worldwide daily users** of its technologies, **16.9 billion KRW (~$13M) in Series B** funding, **119 items of intellectual property**, and **35 partners and investors** including Genie Music, Melon, KT Alpha Shopping, and META48 — plus **CES Innovation Awards 2026 for a fourth consecutive year**.
+The English brand page describes an R&D team of over 40 audio experts, including nine PhDs. It currently reports 50M daily users of its technology, 119 items of intellectual property, 35 partners and investors, and KRW 16.9 billion ($13M) in cumulative investment, labelled Series B. Its separate October 2021 timeline entry describes a KRW 11.3 billion Series B round. These are different measures and must not be merged into a single round amount. The homepage separately shows 136 granted patents; that is not the same label as the brand page's 119 intellectual-property items.
 
-What Gaudio Lab refuses, visible in its design: the ornamented, shadow-heavy look of consumer entertainment brands and the buzzword-first pitch of generic "AI" startups. What it embraces: a flat, shadowless, mostly-monochrome canvas where a single sky-blue points to action, evidence-based copy, and full-bleed sound-wave imagery that keeps the focus on what the company actually makes — sound.
+The displayed product range includes GSA, Gaudio Sing, GTS, LM1 and Gaudio Studio Pro. The timeline records the Studio app launch in June 2025, Gaudio Developers in October, a tenth-anniversary event in September, and two Studio Pro CES 2026 honours in November. Named collaborations include Genie Music, Melon, KT Alpha Shopping and META48; the timeline does not label all these organizations as investors. [English company page](https://www.gaudiolab.com/company/brand), [Korean company page](https://www.gaudiolab.com/ko/company/brand).
+
+The website expresses this breadth through the product orbit, product tiles, technology categories, patent listing and company film. Its branding guidance is precise about logo handling; broader claims about rejecting competing entertainment brands or generic AI aesthetics were not established.
 
 ### Principles
 
-1. **Sound is science first.** The brand leads with rigor ("The Science of Sound", "9 Ph.D"), not spectacle. *UI implication:* present capabilities with concrete numbers and evidence; keep chrome plain so the content reads as credible.
-2. **One color, one action.** Sky-blue (`#00b7ff`) is the sole saturated hue. *UI implication:* reserve `#00b7ff` exclusively for the primary CTA and its outline sibling so the next step is never ambiguous.
-3. **Flat and fast.** The system is shadowless by choice. *UI implication:* separate with tint (`#f0f9ff`), hairlines (`#d6d6d6`), and dark bands — never elevation — to keep the interface quick and technical.
-4. **Let the sound imagery lead.** Full-bleed video and waveform visuals carry the emotion. *UI implication:* frame media generously in white and dark bands; the UI recedes so the audio content dominates.
-5. **Evidence over adjectives.** Milestones, awards, and user counts replace hype. *UI implication:* promote key numbers to large stat headlines; avoid superlatives in copy.
+These are implementation readings of the observed pages, except for the explicitly published logo guidance.
+
+1. **Make the audio capability visible.** Use product names, capability descriptions and media to connect the company story to a concrete tool.
+2. **Use blue consistently across interaction.** The contact fill, product outline, hovered navigation and hovered editorial heading share the same measured blue.
+3. **Separate through large surfaces.** Preserve the alternation of dark gradient, white proof band, product panels, dark editorial content and pale footer.
+4. **Preserve each control's feedback.** Keep colour changes and the Products focus shadow; do not infer states for rest-only controls.
+5. **Handle the logo as supplied.** The company prohibits colour changes, distortion and added logo shadows or gradients.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Gaudio Lab audiences (audio/ML engineers, media & broadcast partners, and consumer product teams), not individual people.*
-
-**정민호, 34, 서울.** A media-tech product manager at a Korean streaming service evaluating Gaudio's dialogue-separation and loudness tools. Trusts the brand because it argues from Ph.D depth and measurable results, not marketing gloss.
-
-**Sarah Nguyen, 29, Los Angeles.** An audio ML engineer integrating the Gaudio Developers API for content localization. Values the plain, evidence-first documentation tone and the single clear CTA when she needs to reach the team.
-
-**김하윤, 41, 판교.** A broadcast/OTT partnerships lead assessing Gaudio for IBC-grade spatial audio. Reassured by the shadowless, no-nonsense site — it reads like an engineering company that ships, matching the CES-award track record.
+No first-party persona profiles were verified; the prior fictional names, ages, locations and inferred trust responses are omitted.
 
 ## Colors
 
-### Primary / Brand
-- **Gaudio Sky** (`#00b7ff`): The signature bright sky-blue and the system's single action color. It is the "Contact us" / "문의하기" CTA background, the "All products" outline button's border and text, and appears as a background fill roughly nine times across the homepage (rgb(0, 183, 255)). Nothing else competes with it.
-- **On-Primary** (`#fafafa`): The near-white label color that sits on the blue CTA (rgb(250, 250, 250)) — softer than pure white, an MUI convention.
+The values below come from the homepage's computed census and control snapshots. They are observations of this corporate surface; the internal interfaces pictured in product screenshots were not measured.
 
-### Ink & Text
-- **Ink** (`#111214`): Near-black used for headings and body on the newer marketing sections (rgb(17, 18, 20), 130+ observed instances). The Material UI chrome layer additionally uses `rgba(0,0,0,0.87)` as its default body/heading ink, so both blacks coexist by layer.
-- **Muted** (`#9ca3af`): Muted cool grey for secondary and caption text.
-- **Faint** (`#d3d5da`): Faint light-grey used for low-emphasis labels on dark sections (rgb(211, 213, 218)).
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary | `#00b7ff` | Hero contact fill, outline-product text and border; hover colour for navigation and the blog heading. Nine background elements in the homepage census. |
+| Foreground | `#ffffff` | Dominant homepage paragraph ink: 29 `<p>` elements; also the hero contact label and resting blog title. |
+| Ink | `#111214` | Footer-link ink and the sampled blog card's surrounding dark ground; 35 text elements in the homepage census. On both company pages, eight paragraph elements use this colour. |
+| Canvas | `#ffffff` | 37 background elements on the homepage; the company film button is also white. This frequency does not establish that most page area is white. |
+| Surface | `#f0f9ff` | Computed ground behind the Company footer link; also the site's `--blue-100` HSL value after normalization. |
+| Night | `#1e1e1f` | Computed background behind the homepage navigation. |
+| Ocean | `#12354e` | One dark background in the homepage census. |
+| Muted | `#9ca3af` | First Blog card's date; six text elements in the census. |
+| Faint | `#d3d5da` | Eight text elements; also the normalized `--gray-300` declaration. A more specific element role was not resolved. |
+| Gray 200 | `#d6d6d6` | Normalized from `--gray-200: 0,0%,84%`. This confirms the colour value, not the prior claim that it outlines homepage news cards. |
+| On-primary | `#fafafa` | Labels on lower homepage actions and on the company-page filled header CTA. The homepage hero CTA instead uses pure white. |
 
-### Surface & Border
-- **Canvas** (`#ffffff`): The dominant page background — pure white, and the fill of the "Watch the Film" button and news cards.
-- **Surface** (`#f0f9ff`): A faint sky-tinted panel background used for light feature blocks — the palest echo of the brand blue.
-- **Hairline** (`#d6d6d6`): The thin border/divider color around the 12px-radius news cards in the shadowless card system (rgb(214, 214, 214)).
+The hero ancestor's computed background image is `linear-gradient(rgb(2, 2, 6), rgb(20, 66, 100))`, equivalent to `#020206` → `#144264`. Keep this separate from the flat Ocean colour. The hero contact hover changes its fill to `rgba(0, 183, 255, 0.9)`; that is an alpha value, not a new opaque swatch.
 
-### Dark Sections
-- **Night** (`#1e1e1f`): Near-black background for the immersive dark bands that host sound-wave and video imagery (rgb(30, 30, 31)).
-- **Ocean** (`#12354e`): A deep navy-teal used as an accent dark-section background (rgb(18, 53, 78)).
+The homepage also records `rgba(0, 0, 0, 0.87)` on inherited outer elements. It is not the visible label colour of the sampled dark-header buttons. The company page's separate resource action uses `#02b9ff` at rest, as recorded by that page's survey; this is not a replacement for the homepage action blue.
+
+The raw root `--foreground` value is `0 0% 3.9%`. The reference role named `foreground` above follows measured homepage paragraph ink, rather than equating a generic root variable with every text element. Tailwind, Swiper and unused generic theme variables are separated in the verification notes.
 
 ## Typography
 
-### Font Family
-- **Display (EN)**: `Poppins` — geometric sans for English marketing headlines and the "Watch the Film" button. Loaded at weights 400 / 500 / 700, and pushed to 900 for the largest section titles.
-- **Body / UI**: `Roboto` (Material UI base, with `Helvetica, Arial` fallback) — nav, milestone stats, blog/news cards, and body copy. Weights 300-700 loaded.
-- **Korean**: `Noto Sans KR` (resolved through the `-apple-system, system-ui` stack) — Korean headlines and copy, e.g. the 80px brand hero.
+### Evidence classes
 
-### Hierarchy
+- **Official product use:** no opened brand document explicitly designates an official product font. A font acknowledgement in the separate Studio terms does not establish the corporate website's type system.
+- **Live-loaded on the homepage:** `__Poppins_cf84ab` at 400, 500 and 700; Roboto at 300, 400, 500, 600 and 700. The published family label Poppins refers to that observed Next.js family. Both English and Korean company-page censuses load Poppins 400/500 and Roboto 100/400/500/700/900.
+- **Official served-face declarations:** Poppins is declared through first-party `/_next/static/media/*.woff2` URLs; Roboto through `/fonts/Roboto-*.ttf`. The 500 and 600 Roboto declarations point to the same Medium file. These are observed CSS source declarations; no font binaries or brand ZIP were downloaded.
+- **Official distributed assets:** no dedicated font kit was inspected. The served-face declarations above are the available first-party asset evidence; no font licence or redistribution right is asserted.
+- **Declared-only:** Poppins 600, the generated Poppins fallback face, Roboto 100/900 on the homepage, and Noto Sans KR 100/300/400/500/700/900. Noto Sans KR has WOFF2/WOFF/OTF source declarations but is absent from the loaded-face lists on all three inspected pages. It receives no family token or specimen. Swiper's declared icon face is a library asset, not a text face.
+- **Unresolved:** the actual Hangul face supplied through the company page's native system stack, and the prior claim that Poppins renders the 900-weight company section headings. The homepage menu and native-button samples compute to `Arial`; that raw browser declaration is recorded without treating it as a loaded brand font or choosing it as a substitute.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero (KO) | Noto Sans KR | 80px (5.00rem) | 700 | 1.00 | normal | Brand-page hero, white on dark |
-| Section Title | Poppins | 48px (3.00rem) | 900 | 1.46 | normal | "The Science of Sound", black weight |
-| Milestone Stat | Roboto | 36px (2.25rem) | 700 | 1.11 (40px) | 0.15px | "50 million users", "Award-winning" |
-| Card Title | Roboto | 18px (1.13rem) | 500 | 1.56 (28px) | normal | Blog & news card headings |
-| Button Large | Poppins | 18px (1.13rem) | 500 | 1.00 | normal | "Watch the Film" overlay button |
-| Body | Roboto | 16px (1.00rem) | 400 | 1.50 (24px) | normal | Standard reading text, MUI base |
-| Nav | Roboto | 14px (0.88rem) | 500 | 1.00 | normal | Top nav menu buttons |
+Substitute: none chosen.
 
-### Principles
-- **Split by layer, not by whim**: Poppins persuades (English marketing display), Roboto informs (chrome + body), Noto Sans KR speaks Korean. Each font owns one job and never trespasses.
-- **Weight carries hierarchy**: The system leans on weight jumps — Poppins 900 for section titles, Roboto 700 for stats, 500 for card titles and nav, 400 for body — more than on size alone.
-- **Two blacks by design**: Marketing sections use the crisp `#111214`; the MUI chrome keeps its native `rgba(0,0,0,0.87)`. This is a real, observable duality, not an inconsistency to paper over.
-- **Numbers as headlines**: Milestone figures ("50M", "119", "35") are set as large Roboto `<h1>` stats with 0.15px tracking — data is promoted to display type.
+### Measured hierarchy
+
+| Element | Size / weight | Line height | Family evidence |
+|---|---|---|---|
+| Homepage outer links and base declaration | 16px / 400 | 24px | Roboto is loaded; body declares Roboto first. |
+| Hero Contact us link | 16px / 500 | 24px | Computed Roboto; tracking 0.15008px. |
+| All products button | 16px / 500 | 24px | Native computed declaration; no brand specimen assigned. |
+| Products menu and header Contact us button | 14px / 500 | 20px | Native computed declaration; prior Roboto attribution is not retained. |
+| Company footer link | 14px / 400 | 20px | Computed Roboto; tracking 0.15008px. |
+| First Blog card outer link | 16px / 400 | 24px | Computed Roboto; the date is a separate 14px/400 child. These are not measurements of the title's font size. |
+| Company-page Watch the Film button | 18px / 500 | 30px | Computed Poppins, live-loaded on that surface. |
+
+### Company-page declared hierarchy
+
+The opened company-page HTML includes these inline CSS rules. They preserve useful hierarchy facts from the prior reference, but are not additional computed heading measurements:
+
+- `.sc-mission .text-box .title`: `font-size:5rem; line-height:7.5rem; font-weight:700`. At a 16px root this is 80px type with 120px leading, rather than the prior 1.00 line-height. The face for Korean text remains unresolved.
+- `.sc-title`: `font-size:3rem; line-height:4.375rem; font-weight:900; color:#111214`. At a 16px root this is 48px/70px. No Poppins 900 face is declared or loaded.
+- `.sc-desc`: `font-size:1.125rem; line-height:1.875rem; font-weight:500`; the film button's live 18px/30px metrics agree with that size and leading.
+
+Use the observed weight and scale contrasts without assigning every heading to the same face. Keep the live-loaded families, native declarations and unresolved Korean rendering distinct.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px (MUI-derived), with 4px micro-steps
-- Scale: 4px, 8px, 12px, 16px, 24px, 40px, 64px
-- Notable: CTA padding lands at 8px 16px (header) and the large film button at a generous 16px 40px
+The desktop homepage uses full-width sections with different grounds rather than one uniform white canvas. The hero couples left-aligned copy and two actions with the orbital product selector on the right. A partner-and-awards section provides a white interval before a two-by-two product layout, with the daily-user figure and award heading given prominent headline treatment. Technology links form three columns in the next dark section; Blog and News each have three card columns in the full capture.
 
-### Grid & Container
-- Full-bleed hero video/imagery bands alternate with centered content columns
-- Product entries are listed as full-pill (`9999px`) rows inside the app-launcher menu
-- Blog & news arranged as a grid of 12px-radius cards
-- Milestone/stat sections present large Roboto numbers in a horizontal row
+The measured hero actions are both 192px wide and 44px high, with a 16px horizontal gap. The header menu uses 8px 16px padding; the locale control uses 0px 12px; the company film button uses 16px 40px. These support the recorded 8, 12, 16 and 40px spacing values, without establishing an exhaustive 8px-based scale.
 
-### Whitespace Philosophy
-- **Content over chrome**: generous white (`#ffffff`) space frames the audio/video content so the imagery, not the UI, holds attention.
-- **Flat segmentation**: sections separate by background swap — white, sky-tinted `#f0f9ff`, or near-black `#1e1e1f` — rather than by borders or shadows.
-- **Immersive dark bands**: full-width `#1e1e1f` / `#12354e` blocks create rhythm and host the sound-wave visuals.
+Small control radii are 4px for hero actions and the film button and 6px for header controls. The sampled editorial card's outer link has zero radius; the prior 12px news-card shell was not reproduced. The 9999px pills belong to the orbital links and launcher and are kept as prose, separately from the numeric structural radius tokens.
 
-### Border Radius Scale
-- Small (4px): hero CTA, outline button, film button
-- Medium (6px): header CTA, nav menu items
-- Large (12px): news/blog cards
-- XL (16px): larger feature containers
-- Full (9999px): product-list rows, app-launcher icon button
+On the company page, inline CSS declares `.inner` horizontal padding as `max(calc((100% - 90.25rem) / 2),1.5rem)`. Its science section declares 12.5rem top padding. These are page-specific declared layout rules, not a measured homepage container width.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero video crops, product rows stack |
-| Tablet | 640-1024px | 2-up news cards, condensed nav |
-| Desktop | 1024-1440px | Full layout, wide hero bands, multi-column stats |
+Live browser measurements were desktop-only at 1440 × 1000. The company-page inline CSS separately documents a `max-width:1024px` layout: section titles become 1.5rem/2.25rem at weight 700; mission titles become 2.5rem/3.75rem at weight 700; the statistics list changes to a column; `.pc` content hides and `.mo` content shows. These are declared rules, without a mobile rendering check.
 
-#### Touch Targets
-- Header CTA at 32px height, hero CTA and outline button at 44px — comfortably tappable
-- Nav menu buttons at 36px with 8px 16px padding
-- App-launcher icon at 40px, full-circle target
-
-#### Collapsing Strategy
-- Hero: Korean 80px / English 48px headlines scale down; weight maintained
-- Product list: full-pill rows stack vertically in the app-launcher on narrow viewports
-- News grid: multi-column → 2-up → single column
-- Dark immersive bands keep full-width treatment; internal padding reduces
-
-#### Image Behavior
-- Hero and section video/imagery run full-bleed and crop rather than shrink
-- News cards keep 12px radius and their `#d6d6d6` hairline (no shadow) at all sizes
+Measured desktop target heights are 32px for header Contact us, 36px for Products, 40px for the launcher and 44px for the hero actions. These values are recorded without asserting touch-target compliance. Homepage mobile grid changes, video cropping and narrow-screen app-launcher behaviour remain unmeasured.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Every surface — page, nav, CTAs, cards |
-| Tint (Level 1) | `#f0f9ff` background shift | Light feature-block separation |
-| Hairline (Level 2) | `1px solid #d6d6d6` border | News card outlines, dividers |
-| Dark band (Level 3) | `#1e1e1f` / `#12354e` background | Immersive full-width sections |
+All six final homepage control snapshots report `box-shadow: none` at rest. Background changes, open space and media create most of the observed section separation. The footer's `#f0f9ff` ground, the navigation's `#1e1e1f` ground and the editorial area's `#111214` ground serve different roles.
 
-**Shadow Philosophy**: Gaudio Lab is a fully shadowless system — live inspection returned `box-shadow: none` on the hero, nav, CTAs, headings, and cards. Depth is communicated entirely through flat means: sky-tinted panels (`#f0f9ff`), thin `#d6d6d6` hairlines, and hard cuts into near-black bands (`#1e1e1f`, `#12354e`). When the design needs to draw the eye it reaches for the one saturated blue (`#00b7ff`) or a dark band, never elevation. This keeps the interface feeling fast, clean, and technical — appropriate for an audio-engineering company whose product lives in the sound, not the screen.
+This does not make the system shadowless. Keyboard focus on Products adds this computed shadow:
+
+`rgb(255, 255, 255) 0px 0px 0px 0px, rgba(59, 130, 246, 0.5) 0px 0px 0px 3px, rgba(0, 0, 0, 0) 0px 0px 0px 0px`
+
+The colour matches the census's Tailwind ring default; it is retained as the measured component state, rather than promoted to a new brand colour. The company-page HTML also declares decorative shadows on image pseudo-elements. The published prohibition on logo shadows does not forbid these effects elsewhere.
 
 ### Values kept in prose
 
@@ -299,217 +246,101 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-**Durations**:
+The following durations are the probe's transition measurements; the corresponding raw computed strings are preserved verbatim in the verification notes.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 240ms | Card/section reveal, menu open, carousel slide |
-| `motion-slow` | 400ms | Full-bleed band transitions, hero/film reveal |
+| Measured control | Duration | Computed curve | Observed effect |
+|---|---|---|---|
+| Header Contact us, All products and corrected hero Contact us | 150ms | `cubic-bezier(0.4, 0, 0.2, 1)` | Colour/background/border properties in each raw transition string. |
+| Products menu | 150ms | `cubic-bezier(0.4, 0, 0.2, 1)` | Colour and box-shadow. |
+| Footer Company | 200ms | `cubic-bezier(0.4, 0, 0.2, 1)` | Its raw colour-related transition string. |
 
-**Easings**:
+The Blog link itself computes to `all 0s ease 0s`. The probe reports a longest descendant transition of 300ms for that card, but does not preserve the descendant's full computed curve; no curve is assigned to the image enlargement. Every sampled state waited 900ms before comparison.
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, menus, carousel |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and composed — matching the flat, science-forward aesthetic. The product carousel (Swiper) slides at `motion-standard / ease-enter`; the app-launcher pill rows and CTAs respond to hover/press with a subtle opacity/scale shift; full-bleed video bands crossfade at `motion-slow`. No bounce or spring — an audio-engineering company signals precision, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and autoplaying carousels pause; the site remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10-15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on:
-- https://www.gaudiolab.com/ (EN homepage) — nav, CTAs, product rows, color/radius frequency scan
-- https://www.gaudiolab.com/company/brand (EN brand/company) — mission, section titles, milestone stats, "Watch the Film"
-- https://www.gaudiolab.com/ko/company/brand (KO brand) — Korean hero + nav chrome
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Proof block).
-
-Voice samples (§10) are verbatim from the live brand/company pages (hero subtitle, "The Science of Sound"
-paragraph, Korean brand hero).
-
-Brand narrative (§11): facts are taken from the live gaudiolab.com/company/brand page — mission line,
-"Where sound is, Gaudio Lab is there.", "over 40 audio experts including 9 Ph.D", 50M daily users,
-16.9B KRW (~$13M) Series B, 119 IP, 35 partners/investors (Genie Music, Melon, KT Alpha Shopping, META48),
-CES Innovation Awards 2026 (4th consecutive year), and the 10th-anniversary (2025) milestone implying a
-~2015 founding. Product line (GSA, Gaudio Sing, GTS, LM1, Gaudio Studio Pro, Gaudio Developers) is from the
-homepage app-launcher and milestone timeline. Company HQ (Seoul, KR) is widely documented public knowledge.
-
-Personas (§13) are fictional archetypes informed by publicly observable Gaudio Lab audiences (media-tech PMs,
-audio ML engineers, broadcast/OTT partners). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one color, one action", "flat and fast as a rejection of ornamented consumer
-audio chrome", "sound is science first") are editorial readings connecting Gaudio Lab's observed design to
-its stated positioning, not directly quoted Gaudio Lab statements.
--->
-
-## Components
-
-### Buttons
-
-**Header CTA (Primary)**
-- Background: `#00b7ff`
-- Text: `#fafafa`
-- Radius: 6px
-- Padding: 8px 16px
-- Height: 32px
-- Font: 14px / 500 / Roboto
-- Use: Header "Contact us" / "문의하기" — the persistent primary action
-
-**Hero CTA (Primary)**
-- Background: `#00b7ff`
-- Text: `#ffffff`
-- Radius: 4px
-- Height: 44px
-- Font: 16px / 500 / Roboto
-- Use: In-page hero "Contact us" call-to-action
-
-**Outline (Secondary)**
-- Text: `#00b7ff`
-- Border: 1px solid `#00b7ff`
-- Radius: 4px
-- Height: 44px
-- Font: 16px / 500 / Roboto
-- Use: "All products" — secondary action beside the hero CTA
-
-**Watch the Film (Overlay)**
-- Background: `#ffffff`
-- Text: `#111214`
-- Radius: 4px
-- Padding: 16px 40px
-- Height: 62px
-- Font: 18px / 500 / Poppins
-- Use: White film-launch button over the brand hero video
-
-**App Launcher (Icon)**
-- Radius: 9999px
-- Height: 40px
-- Use: Circular "Open app launcher" icon button in the header
-
-### Navigation
-
-**Nav Menu Item**
-- Text: `#111214`
-- Radius: 6px
-- Padding: 8px 16px
-- Height: 36px
-- Font: 14px / 500 / Roboto
-- Active: `#00b7ff` text
-- Use: Top nav items ("Products", "Technology", "Blog & News", "Careers", "About us" / "제품", "기술")
-
-### Cards & Containers
-
-**News Card**
-- Background: `#ffffff`
-- Border: 1px solid `#d6d6d6`
-- Radius: 12px
-- Shadow: none
-- Use: Blog & news thumbnail card — hairline separation, no elevation
-
-### List Items
-
-**Product Row**
-- Text: `#111214`
-- Radius: 9999px
-- Height: 64px
-- Font: 16px / 400 / Roboto
-- Use: Product rows in the app-launcher menu (GSA, Gaudio Sing, GTS, LM1, Gaudio Studio Pro)
+Carousel timing, film crossfades, springs, reveal sequences and `prefers-reduced-motion` behaviour were not measured. The prior named duration and easing scales are not carried forward.
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 3 surfaces)
-**Tier 1 sources:** https://www.gaudiolab.com/ , https://www.gaudiolab.com/company/brand , https://www.gaudiolab.com/ko/company/brand
-**Tier 2 sources:** getdesign.md/gaudiolab (0 DESIGN.md files — empty); styles.refero.design/?q=gaudio (not listed — generic trending grid only)
-**Conflicts unresolved:** none (Tier 2 supplied no competing values)
+Measured 2026-11-03 KST. First-party surfaces: [homepage](https://www.gaudiolab.com/), [company](https://www.gaudiolab.com/company/brand), [Korean company](https://www.gaudiolab.com/ko/company/brand). Supporting identity sources: [contact](https://www.gaudiolab.com/contact-us), [terms](https://www.gaudiolab.com/gaudio-studio/docs/terms), [privacy](https://www.gaudiolab.com/gaudio-studio/docs/policy). Full raw captures, claim dispositions and limitations are recorded in `report.md` and `verification.md`.
+
+## Components
+
+These six controls were measured on the English homepage. The identity measurements distinguish the intended node from its child label or an enclosing link. Transparent controls retain the actual surrounding surface.
+
+| Control | Rest identity | Hover | Pressed | Keyboard focus |
+|---|---|---|---|---|
+| Header Contact us | Button within `/contact-us` link; 100.9 × 32px, radius 6px, padding 8px 16px, 14px/500, line-height 20px; transparent on `#1e1e1f`, white label and 1px white border | Fill `#00b7ff`; border becomes transparent | Same two changes as hover | No visual change within the recorded comparison scope |
+| Hero Contact us | Link; 192 × 44px, radius 4px, padding 0, Roboto 16px/500, line-height 24px; `#00b7ff` / `#ffffff`, no border | Fill `rgba(0, 183, 255, 0.9)` | UNMEASURED: `:active` did not match | No visual change within scope |
+| All products | Button; 192 × 44px, radius 4px, padding 0, 16px/500, line-height 24px; transparent on the hero gradient, `#00b7ff` label and 1px border | Blue fill, white label; blue border stays | Same as hover | No visual change within scope |
+| Products | Navigation menu button; 87.3 × 36px, radius 6px, padding 8px 16px, 14px/500, line-height 20px; transparent on `#1e1e1f`, white label | Label `#00b7ff` | Same as hover | Adds a 3px CSS shadow using `rgba(59, 130, 246, 0.5)` |
+| Company | Footer navigation link; 60.2 × 16.5px, radius 0, padding 0, Roboto 14px/400, line-height 20px; transparent on `#f0f9ff`, `#111214` label | Label `#00b7ff` | Same as hover | Browser `auto` outline; no focus token |
+| First Blog card | Link; 410.7 × 331px, outer radius 0, padding 0, Roboto 16px/400; transparent on `#111214`, white heading and `#9ca3af` date, no border | Image transform becomes `matrix(1.05, 0, 0, 1.05, 0, 0)`; heading turns blue | Same two changes as hover | Browser `auto` outline; an image-source update persists after blur and is excluded from focus styling |
+
+For unchanged focus readings, scope includes self and pseudo-elements, every recorded descendant and its pseudo-elements, and three ancestor levels. The hero link has two SVG descendants; the card has five descendants including one image; the four other final controls have none. The probe compares colour, backgrounds, borders, drawn outlines, shadows, opacity, transforms, filters, visibility, size, decoration, images, masks and SVG attributes. It does not establish the absence of changes inside video, canvas or external content.
+
+### Confirmed rest-only observations
+
+The company film button remains white with `#111214` text, a 4px radius, 16px 40px padding and 62px height, using Poppins 18px/500 with 30px leading. It is retained here without an interactive component token because its states were not measured.
+
+The app-launcher button is 40 × 40px with a 9999px radius and zero padding. Homepage orbital product links include 64px-high pill shapes; the selected Studio Pro link is 256 × 64px. These are survey observations, not a measurement of the opened app-launcher menu. Their states are absent.
+
+The company pages retain the filled 32px header CTA variant: `#00b7ff` with `#fafafa` text, radius 6px and 8px 16px padding. It is a separate rest observation from the dark-header homepage control.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no results)** | White canvas, single Ink (`#111214`) line explaining nothing matched, with one sky-blue (`#00b7ff`) CTA to adjust. No decorative clutter. |
-| **Empty (no saved items)** | Muted (`#9ca3af`) single line stating nothing is saved yet, plus a path back. Calm and plain. |
-| **Loading (content fetch)** | Flat skeleton blocks at final dimensions on `#ffffff` / `#f0f9ff`, 12px radius, no shadow shimmer — consistent with the shadowless system. |
-| **Loading (in-place)** | Thin sky-blue (`#00b7ff`) progress indicator; previous content stays visible. |
-| **Error (request failed)** | Inline message in Ink (`#111214`) with a plain-language explanation and a retry — never a bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level note below the input describing what is valid, not just "필수". |
-| **Success (submitted)** | Brief inline confirmation in a calm tone; next-step detail linked below. No celebratory emoji. |
-| **Skeleton** | `#f0f9ff` / `#ffffff` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Faint (`#d3d5da`) / Muted (`#9ca3af`) text on reduced-opacity surface; the blue action fades rather than turning grey, to preserve the brand read. |
+The measured hover, pressed and keyboard-focus treatments are in §4. Pressed snapshots on the first-call controls retained their hover treatment, with no additional difference from hover. The corrected hero link's pressed state is UNMEASURED, not unchanged.
+
+Products has a CSS focus shadow. Footer Company has the browser's automatic outline. The Blog card also has an automatic outline; its image-source change persists after blur and is not attributed to focus. Header Contact us, All products and the corrected hero link showed no focus-only visual change within the recorded scope.
+
+No search field exists in the homepage survey. Empty, loading, request-error, validation, success, skeleton and disabled appearances were not established; no form was submitted and no such treatment is specified.
 
 ## Do's and Don'ts
 
 ### Do
-- Reserve sky-blue (`#00b7ff`) for the single primary action — CTA fill and the outline button, nothing else
-- Use Poppins for English display headlines, up to weight 900 for section titles
-- Use Roboto (MUI) for nav, stats, cards, and body — keep the chrome consistent
-- Set Korean copy in Noto Sans KR, and let the brand hero run large (80px / 700)
-- Keep the system shadowless — separate with `#f0f9ff` tint, `#d6d6d6` hairlines, and dark bands
-- Use near-black `#111214` for marketing headings; accept `rgba(0,0,0,0.87)` on MUI chrome
-- Use full pills (`9999px`) for product rows and the app-launcher, tight 4-6px radii for CTAs
-- Promote key numbers (50M, 119, 35) to large Roboto stat headlines
+
+- Reproduce the sky-blue contact fill and product outline as distinct resting actions on the dark hero.
+- Use blue for measured hover feedback as well as the observed inline highlights.
+- Keep header, hero and editorial identities separate: their heights, fonts and surrounding surfaces differ.
+- Preserve the rest-only film-button metrics without inventing its interaction states.
+- Follow the company's logo rules: preserve the supplied colours and proportions, and keep added shadows and gradients off the logo.
+- Use loaded font evidence per surface; keep unresolved Korean rendering out of specimens.
 
 ### Don't
-- Spread the blue across many elements — it dilutes the single-action signal
-- Add drop shadows for elevation — the system is deliberately flat
-- Mix a second saturated accent color alongside `#00b7ff`
-- Set English display type in Roboto — Poppins owns the marketing headline voice
-- Use pure black for the near-white CTA label — it is `#fafafa`, softer by intent
-- Apply pill radii to structural cards — cards stay at 12-16px, pills are for rows/launcher
-- Let Korean and English headings share a font — each locale keeps its own stack
+
+- Turn the entire page white or treat all blue labels as primary CTAs.
+- Give the current homepage Blog link the prior white 12px-radius bordered shell.
+- Apply an all-purpose no-shadow rule that removes the measured keyboard-focus indication.
+- Assign Poppins 900 or Noto Sans KR rendering without supporting face evidence.
+- Treat a browser `auto` outline or an image load that survives blur as an authored brand state.
 
 ## Voice & Tone
 
-Gaudio Lab's voice is **precise, wonder-tinged, and quietly authoritative** — an audio research lab that treats sound as both science and emotion, and says so plainly. The English tagline "Where sound is, Gaudio Lab is there." and the section header "The Science of Sound" set the register: declarative, curiosity-forward, never hype. The company frames itself through evidence — "Over 40 audio experts including 9 Ph.D" — rather than adjectives, and lets awards (CES Innovation Awards) and numbers (50M daily users) do the boasting. Korean copy carries a warmer, almost poetic note: "우리는 좋은 소리를 만들고 좋은 소리는 우리를 만듭니다" ("We make good sound, and good sound makes us").
+The corporate pages connect audio engineering with human experience. The company explains sound as a means of connecting people and affecting emotion, from smartphones to cinemas. Scientific section titles and numerical evidence sit beside a Korean mission that describes good sound and the people making it as mutually shaping one another. This is an editorial reading of the opened copy, not a published tone manual.
 
-| Context | Tone |
+| Context | Observed writing pattern |
 |---|---|
-| Brand hero (KO) | Poetic, reciprocal. "좋은 소리는 우리를 만듭니다." Warm, mission-framed. |
-| Section titles (EN) | Declarative, scientific. "The Science of Sound", "Wherever Sound Goes". |
-| Mission line | Plain-spoken capability. "We provide an excellent sound experience through innovative technologies." |
-| Stats / milestones | Concrete and unadorned. "50M daily users", "119 IP", "35 partners". |
-| CTAs | Minimal and direct. "Contact us", "All products", "Watch the Film". |
+| Company positioning | A sound-experience promise connected to technical development. |
+| Research | Team expertise, audio science and the places where the technology is used. |
+| Evidence | Daily-user counts, intellectual property, awards and dated commercial milestones. |
+| Actions | Short labels such as Contact us, All products and Watch the Film. |
+| Korean company mission | Reciprocal language about making good sound and being shaped by it. |
 
-**Voice samples (verbatim from live surfaces):**
-- "Where sound is, Gaudio Lab is there." — brand-page hero subtitle (mission-framed). *(verified live 2026-07-02, /company/brand)*
-- "Sound is the most fundamental means of connecting with people or touching their emotions." — "The Science of Sound" section. *(verified live 2026-07-02, /company/brand)*
-- "우리는 좋은 소리를 만들고 좋은 소리는 우리를 만듭니다" — Korean brand hero. *(verified live 2026-07-02, /ko/company/brand)*
-
-**Forbidden register**: hype superlatives, exclamation-heavy marketing, undefined buzzwords, and any framing that hides the engineering behind vague "magic". Sound is presented as science first, feeling second — never as a gimmick.
+The visible company title “The Science of Sound” supports the scientific register. The opened pages do not establish a rule forbidding superlatives, exclamation marks, humour or other registers; no such prohibition is included here.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action: Gaudio Sky (`#00b7ff`)
-- CTA label: On-Primary (`#fafafa`) / white (`#ffffff`)
-- Marketing heading: Ink (`#111214`)
-- Chrome ink: `rgba(0,0,0,0.87)` (MUI default)
-- Background: Canvas (`#ffffff`)
-- Tinted panel: Surface (`#f0f9ff`)
-- Muted text: `#9ca3af`; Faint on dark: `#d3d5da`
-- Card hairline: `#d6d6d6`
-- Dark bands: Night (`#1e1e1f`), Ocean (`#12354e`)
+### Quick colour reference
 
-### Example Component Prompts
-- "Create a header CTA: `#00b7ff` background, `#fafafa` text, 6px radius, 8px 16px padding, 32px tall, 14px/500 Roboto. Label 'Contact us'."
-- "Build a hero row: white background. English section title in Poppins 48px weight 900, `#111214`. Primary CTA (`#00b7ff` bg, white text, 4px radius, 44px tall) next to an outline button (transparent, 1px solid `#00b7ff`, `#00b7ff` text, 4px radius, 44px tall)."
-- "Design a news card: white `#ffffff` background, 1px solid `#d6d6d6` border, 12px radius, no shadow. Card title 18px Roboto weight 500, line-height 28px."
-- "Create a dark immersive band: `#1e1e1f` background, Korean headline in Noto Sans KR 80px weight 700, white text. Optional white 'Watch the Film' button (16px 40px padding, 4px radius, `#111214` text, 18px Poppins)."
+`#00b7ff` action and hover · `#ffffff` homepage paragraph/CTA foreground · `#111214` light-surface ink and dark editorial ground · `#f0f9ff` footer · `#1e1e1f` header · `#12354e` sampled dark panel · `#9ca3af` date · `#d3d5da` sampled faint text · `#fafafa` selected lower CTA labels.
 
-### Iteration Guide
-1. `#00b7ff` is the single action color — never spread it
-2. Poppins for EN display, Roboto for chrome/body, Noto Sans KR for Korean
-3. No shadows — separate with `#f0f9ff` tint, `#d6d6d6` hairlines, dark bands
-4. Two blacks: `#111214` marketing / `rgba(0,0,0,0.87)` MUI chrome
-5. Pills (`9999px`) for product rows + launcher; 4-16px radii for everything structural
-6. Promote key numbers to large Roboto stat headlines
+### Example component prompts
 
----
+- “Build the measured hero action pair on the `#020206` → `#144264` gradient: two 192 × 44px controls, 4px corners, 16px gap. Contact us is a Roboto 16px/500 link with blue fill and white text; hover changes the fill to 90% blue. All products is transparent with a blue border and label; hover fills blue and turns the label white.”
+- “Create a 32px header Contact us control with 6px corners and 8px 16px padding. On the dark header its rest fill is transparent and its border and label are white; hover or press adds blue fill and makes the border transparent.”
+- “Create the measured Blog link on `#111214`: transparent outer shell, no border, zero outer radius, white heading and grey date. Hover enlarges the image to 1.05 and changes the heading to blue.”
+- “Use the company-page film action's rest appearance: 62px high, 4px corners, 16px 40px padding, white fill, near-black label and Poppins 18px/500 with 30px leading. No interaction treatment is specified.”
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `cta-primary`.** Text `#fafafa` on `#00b7ff` measures 2.18:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
 - **Contrast, `cta-hero`.** Text `#ffffff` on `#00b7ff` measures 2.28:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
