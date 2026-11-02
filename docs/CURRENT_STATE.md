@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 18시 15분** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 18시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -17,6 +17,8 @@
 - **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
 - **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
 - **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **Skyscanner → verified_v2 (`f93c8e03`).** 포착 브라우저가 한국에서 돌아 skyscanner.net이 한국어 홈으로 리다이렉트 — Backpack은 전 세계 공용이라 채택, 본문에 측정 표면을 명시. 검색 #0062e3→#024daf, 카드 그림자 확대 본 세션 재측정 일치. 포커스 미측정이라 선언 안 함. 동의 창 "필수 쿠키만 수락"을 프로브가 몰라 열린 채였음 → 거부어에 '수락' 추가(브랜치 `f93c8e03` + main `3c0561e9`, 캡처 도구가 main의 프로브를 씀). **브랜치 현재 311 / 106 / 113.**
+- **재검증 대기열 자동화.** `scratchpad/reverify-filler.sh <id…>`: 모든 프로젝트 합계 Sol 4개 상한 안에서 자리가 나면 다음 id의 지시서를 만들고 띄움, Monitor로 SPAWNED/DONE 알림(30분마다 재무장). 1차 묶음 10곳 = paypal·hubspot·skyscanner(완료) + digital-agency-jp(18:27~) + databricks·salesforce·adobe·monzo·mailchimp·govuk(대기). 끝나면 묶어서 오너에게 main 머지 GO 요청.
 - **Sol 사용(18:13):** 본 프로젝트 2(rv-skyscanner, mcp-v2-impl) + 다른 프로젝트 2(business_plan_k 1, kosine 1) = 4. 신규 후보 센서스(Sonnet 팀원, 276곳) 계속.
 
 ## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
