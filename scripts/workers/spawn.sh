@@ -57,6 +57,10 @@ cp "$ORDER" "$RUN_DIR/order.md"
 echo "$ENGINE" > "$RUN_DIR/engine"
 
 if [ "$ENGINE" = codex ]; then
+# Run a command in its own session (os.setsid), detached from this script's process group. A caller that is killed
+# as a group (a Monitor expiring, a TaskStop, Ctrl-C) must not take running workers with it: on 2026-11-02 a queue
+# script's expiry killed two reverify workers mid-draft. macOS has no setsid(1), so python3 does the setsid + exec.
+detach() { python3 -c 'import os, sys; os.setsid(); os.execvp(sys.argv[1], sys.argv[1:])' "$@" </dev/null >/dev/null 2>&1 & }
   MCP_ARGS=()
   if [ "$MCP" = capture ]; then
     MCP_ARGS=(-c 'mcp_servers.capture.command="node"' -c "mcp_servers.capture.args=[\"$REPO/scripts/workers/capture-mcp.mjs\"]" -c 'mcp_servers.capture.default_tools_approval_mode="approve"' -c 'mcp_servers.capture.tool_timeout_sec=900')
@@ -65,7 +69,8 @@ if [ "$ENGINE" = codex ]; then
   CMD=(codex exec --ignore-user-config --json ${GIT_FLAGS[@]+"${GIT_FLAGS[@]}"} -C "$WORKDIR" -m "$MODEL" -c "model_reasoning_effort=\"$EFFORT\""
        -s workspace-write -c 'sandbox_workspace_write.network_access=true' -c 'approval_policy="never"' ${MCP_ARGS[@]+"${MCP_ARGS[@]}"}
        --output-last-message "$RUN_DIR/last-message.md" --color never -)
-  ( cd "$WORKDIR" && "${CMD[@]}" < "$RUN_DIR/order.md" > "$RUN_DIR/worker.log" 2>&1; echo $? > "$RUN_DIR/exit-code" ) </dev/null >/dev/null 2>&1 &
+  { printf 'cd %q || exit 1\n' "$WORKDIR"; printf '%q ' "${CMD[@]}"; printf '< %q > %q 2>&1\necho $? > %q\n' "$RUN_DIR/order.md" "$RUN_DIR/worker.log" "$RUN_DIR/exit-code"; } > "$RUN_DIR/run.sh"
+  detach bash "$RUN_DIR/run.sh"
 else
   CLAUDE_BIN="$(command -v claude)"
   ( cd "$WORKDIR" && "$CLAUDE_BIN" -p "$(cat "$RUN_DIR/order.md")" --model "$MODEL" --effort "$EFFORT" --output-format stream-json --verbose \

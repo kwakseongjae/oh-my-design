@@ -149,12 +149,12 @@ export default function PrivacyKoPage() {
           </ul>
         </Section>
 
-        <Section n={12} title="종료된 Claude 커넥터(MCP)">
-          <p>기존{" "}
+        <Section n={12} title="읽기 전용 커넥터(MCP)">
+          <p>v2 읽기 전용{" "}
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
-            읽기 전용 커넥터는 종료되어 HTTP 410을 반환합니다. 더 이상 검색 요청을 받거나,
-            검색 문구를 임베딩 제공자에게 전송하거나, 커넥터 사용량을 기록하지 않습니다.
-            과거 익명 집계 지표는 위 보유기간 정책에 따라 운영 백업에 남을 수 있습니다.</p>
+            커넥터는 도구별·레퍼런스별 호출 수와 MCP가 아닌 GET 요청의 일별 합계만 기록합니다.
+            이 집계에는 검색 문구, IP 주소, 계정, 원본 User-Agent 등 개인에 관한 정보가 없습니다.
+            요청 횟수 제한에는 60초 후 만료되는 키 기반 해시를 사용합니다. 검색은 자체 서버에서만 처리하며 임베딩 제공자에게 전송하지 않습니다.</p>
         </Section>
 
         <Section n={13} title="처리방침의 변경">

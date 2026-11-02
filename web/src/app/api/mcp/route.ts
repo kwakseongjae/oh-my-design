@@ -1,65 +1,60 @@
+import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { after } from "next/server";
-import { dayBucket, getRedis } from "@/lib/kv";
+import { errorEnvelope } from "@/lib/mcp/contracts";
+import { clientIp, countNonMcpGet, mcpRateLimit, originAllowed } from "@/lib/mcp/operations";
+import { MAX_RESPONSE_BYTES, toolResult } from "@/lib/mcp/response";
+import { createMcpServer } from "@/lib/mcp/server";
 
-/**
- * The catalog MCP transport is retired (v1, 2026-07-14). Reference collection and
- * reverify now run through skills plus the deterministic browser evidence pipeline.
- * v2 returns on this same path (docs/MCP_V2_SPEC_2026-10-29.md, owner decisions
- * D1–D6 approved 2026-11-02).
- *
- * Phase 0 (spec §7): every request still gets the 410, and is counted so we can see
- * whether old connector configs keep calling. One hash per UTC day, fields = the
- * method and a coarse client family read from the User-Agent. Nothing that
- * identifies a person is stored: no IP, no raw User-Agent, no request body. The
- * response is no-store so the CDN does not answer repeats and hide them.
- */
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
-export const MCP410_TTL_SECONDS = 60 * 60 * 24 * 400;
-export const mcp410DayKey = (yyyymmdd: string) => `omd:mcp410:${yyyymmdd}`;
-
-const FAMILIES: readonly (readonly [string, RegExp])[] = [
-  ["claude", /claude|anthropic/i],
-  ["cursor", /cursor/i],
-  ["openai", /openai|chatgpt|codex/i],
-  ["vscode", /vscode|copilot/i],
-  ["browser", /mozilla/i],
-  ["library", /node|undici|axios|python|httpx|aiohttp|go-http|curl|okhttp|java/i],
-];
-
-/** A coarse client family; never the User-Agent itself. */
-export function clientFamily(ua: string | null): string {
-  if (!ua) return "none";
-  for (const [family, re] of FAMILIES) if (re.test(ua)) return family;
-  return "other";
+function httpError(status: number, message: string, headers?: HeadersInit): Response {
+  return Response.json({ jsonrpc: "2.0", id: null, ...errorEnvelope("transport_error", message), error: { code: -32000, message } }, { status, headers });
 }
 
-type Counter = Pick<NonNullable<ReturnType<typeof getRedis>>, "hincrby" | "expire">;
-
-export async function countRetiredCall(method: string, ua: string | null, redis: Counter | null = getRedis()): Promise<void> {
-  if (!redis) return;
-  const key = mcp410DayKey(dayBucket());
+async function handle(request: Request): Promise<Response> {
+  const headers = new Headers({ "cache-control": "no-store", Vary: "Origin" });
+  if (!originAllowed(request)) return httpError(403, "Forbidden origin", headers);
+  const origin = request.headers.get("origin");
+  if (origin) headers.set("access-control-allow-origin", origin);
+  const rate = await mcpRateLimit(clientIp(request));
+  if (!rate.ok) {
+    headers.set("retry-after", String(rate.retryAfterSec));
+    return httpError(429, "Rate limited", headers);
+  }
+  if (request.method === "OPTIONS") {
+    headers.set("access-control-allow-methods", "GET, POST, DELETE, OPTIONS");
+    headers.set("access-control-allow-headers", "content-type, mcp-protocol-version, mcp-session-id, last-event-id");
+    return new Response(null, { status: 204, headers });
+  }
+  // Streamable HTTP permits 405 for GET when no server-initiated SSE is offered.
+  if (request.method !== "POST") {
+    if (request.method === "GET" && !request.headers.get("accept")?.includes("text/event-stream")) after(() => countNonMcpGet());
+    headers.set("allow", "POST, OPTIONS");
+    return httpError(405, "Use Streamable HTTP POST with initialize, tools/list or tools/call.", headers);
+  }
+  // Fresh instances per request: no sessions, retained messages or shared client state.
+  const transport = new WebStandardStreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true });
+  const server = createMcpServer();
   try {
-    await Promise.all([
-      redis.hincrby(key, method.toLowerCase(), 1),
-      redis.hincrby(key, `ua:${clientFamily(ua)}`, 1),
-      redis.expire(key, MCP410_TTL_SECONDS),
-    ]);
-  } catch {
-    // Counting is best-effort; the 410 never depends on it.
+    await server.connect(transport);
+    const response = await transport.handleRequest(request);
+    let body = await response.text();
+    if (body && response.headers.get("content-type")?.includes("application/json")) {
+      const message = JSON.parse(body);
+      // SDK input validation happens before callbacks. Keep those errors on the same data contract.
+      if (message.result?.isError && !message.result.structuredContent) {
+        message.result = toolResult(errorEnvelope("invalid_tool_input", "Invalid tool name or arguments. Use tools/list for the supported input schemas."), true);
+        body = JSON.stringify(message);
+      }
+    }
+    if (Buffer.byteLength(body, "utf8") > MAX_RESPONSE_BYTES) return httpError(413, "Response exceeds 256 KB. Narrow the request.", headers);
+    for (const [key, value] of response.headers) headers.set(key, value);
+    return new Response(response.status === 202 ? null : body, { status: response.status, headers });
+  } finally {
+    await server.close();
   }
 }
 
-function retired(request: Request): Response {
-  after(() => countRetiredCall(request.method, request.headers.get("user-agent")));
-  return Response.json(
-    {
-      error: "gone",
-      message: "The oh-my-design MCP connector is retired. Use skills or fetch /<id>/design.md directly.",
-      docs: "https://oh-my-design.kr/docs",
-    },
-    { status: 410, headers: { "cache-control": "no-store" } },
-  );
-}
-
-export { retired as GET, retired as POST };
+export { handle as GET, handle as POST, handle as DELETE, handle as OPTIONS };

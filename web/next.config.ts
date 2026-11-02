@@ -12,6 +12,9 @@ const DOCS_LOCALE_PATTERN = "en|ko|ja|zh-cn|zh-tw";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
+  outputFileTracingIncludes: {
+    "/api/mcp": ["./references/*/DESIGN.md", "./references/*/reference.json"],
+  },
   // Two root layouts — app/(en) renders <html lang="en">, app/(ko) renders
   // <html lang="ko"> — so an unmatched URL has no single layout to build a 404
   // from. global-not-found.tsx is the documented answer for that case.

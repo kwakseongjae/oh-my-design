@@ -117,12 +117,13 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="Retired Claude connector (MCP)">
+        <Section title="Read-only connector (MCP)">
           <p>
-            The former read-only connector at{" "}
+            The read-only v2 connector at{" "}
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
-            is retired and returns HTTP 410. It no longer accepts searches, sends phrases to an embedding provider,
-            or records connector usage. Historical aggregate metrics may remain in operational backups under the retention rules above.
+            records aggregate call counts per tool and reference, plus a daily count of non-MCP GET requests.
+            These counters contain nothing about the person: no search text, IP address, account, or raw User-Agent.
+            Rate limiting uses a keyed digest that expires after 60 seconds. Searches stay on our server and are not sent to an embedding provider.
           </p>
         </Section>
 

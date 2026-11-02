@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 17시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 20시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -10,7 +10,27 @@
 - **운영 확인(배포 `1kj0hvwub`).** `/ko/hangul`·`/hangul` 200(h1 "같은 화면, 다른 한국어" / "Same screen, different Korean", 문서 문장 있음), `/ko/design-systems` 530장, `/design-systems/toss` 관련 카드 6, `/llms.txt` 32-skill, `/docs/en/skills`에 hangul.
 - **출시 완료.** `v2.0.6` 태그 = `6dea355d`(origin/main) → Release to npm 워크플로 `41408278596` 성공(node18-smoke·publish) → **npm latest 2.0.6, provenance 있음**(레지스트리 반영 약 2분 지연). strict 게이트 waiver는 CHANGELOG 2.0.6에 기록.
 - **정리.** 워크트리 `r15-hangul` 제거(자체 node_modules, 미커밋 없음). 원격 브랜치 `feat/hangul-launch-r2` 남김. 남은 hangul 옛 워크트리 `hangul-launch`(`feat/hangul-launch-page`)·`hangul-uxw`는 손대지 않음.
-- **계속 진행 중.** 재검증 파일럿 `rv-paypal`(Sol max), 신규 후보 센서스(Sonnet 팀원, 276곳). MCP v2 Phase 1은 Sol 슬롯이 나면.
+- **재검증 파일럿 PayPal → verified_v2 (`6ed4f1e3`, 브랜치 `feat/reverify-w1`, 푸시, main 미머지).** Sol max 42분. 지금 사이트는 PayPal60 테마: 48px 검정 알약이 hover에 52px(패딩 12/20→14/22, #000→#333, pressed #4d4d4d) — 본 세션 독립 재측정 일치. Pentagram·Lineto 서사 원문 대조 일치. 클레임 91, 컴포넌트 6(전부 상태 실측), 권고 0. 로고 simpleicons → 자사 파비콘.
+  - **원칙(파일럿에서 정함):** 지금 사이트에서 확인 안 되는 이전 값(6월 색 5개·spacing 단위·그림자 2개·입력창·동의 버튼·흰 영상 버튼, '900이 브랜드 서명' 같은 해석)은 본문에서 뺀다. 레퍼런스는 현재 사이트를 설명한다. 뺀 목록은 워커 폴더 `report.md` "Unconfirmed prior content"에 남는다(로컬).
+  - 테스트: 모션 래칫 193→192(개선), 부하 시간 초과는 단독 재실행 통과. 재검증 결과 반영 순서: 산출물 복사 → `query:references:data` → `sync-catalog` 두 번(개수 문구) → `evidence:ledger` → `build-reference-ast` → 커밋.
+  - **main 머지:** 카탈로그만 바뀌어도 운영 배포라 §1 대상 → 10건마다 묶어 오너 GO 받기(진행 보고 때 요청).
+- **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
+- **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
+- **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **재검증 1차 묶음 진행(20시): 6/10 완료, 브랜치 `feat/reverify-w1` 314 / 103 / 113.** paypal `6ed4f1e3` · hubspot `fd691667` · skyscanner `f93c8e03` · digital-agency-jp `b702516d` · databricks `117ee9aa` · salesforce `371763ad`. 각 건 헤드라인 본 세션 재측정 일치(DADS는 포커스 포함, Databricks는 pressed가 hover보다 밝은 특이값 확인). 진행: adobe·monzo, 대기: mailchimp·govuk.
+  - **18:58 사고와 수정:** Monitor 만료(프로세스 그룹 종료)가 대기열 스크립트가 띄운 워커 둘(databricks·salesforce)을 초안 도중에 죽임 → spawn.sh가 워커를 python `os.setsid`로 독립 세션에 띄우게 수정 `a46309d2`(macOS엔 setsid 명령 없음). 두 곳은 남은 초안·증거로 이어 하기(`order-resume.md`, 새 측정 없이 완료), 막 시작한 adobe·monzo는 멈추고 다시 띄움(옛 실행 폴더는 `.killed`). 이후 만료 때 워커 생존 확인.
+  - **지역 리다이렉트:** 한국에서 도는 포착 브라우저를 skyscanner·salesforce가 한국어판으로 보냄 → 같은 디자인 시스템이라 채택, salesforce §1에 측정 판 명시(본 세션 추가), 지시서 양식에 규칙 추가 `f66a5e57`. 프로브 거부어 '필수 쿠키만 수락' `3c0561e9`.
+  - 반영 절차(건당): 산출물 3개 복사 → build-registry/quality로 상태 확인 → `query:references:data` → `sync-catalog`(모션 래칫 1 내림 + 사유 한 줄) → 다시 `sync-catalog` → `evidence:ledger` → `build-reference-ast` → `gen-llms-full` → `check-counts` → 커밋·푸시.
+  - **머지 전 할 일:** main(MCP v2 포함)을 브랜치에 병합 → `npm --prefix web run build-reference-ast`로 MCP 메타 재생성 → 커밋. 10건 끝나면 오너에게 main 머지 GO 요청(카탈로그 변경 = 운영 배포).
+- **MCP v2 Phase 1 — main `55d3a51a`, 운영 확인.** Sol max 워커 구현(약 1시간 10분) + 본 세션 검토·수정: `@modelcontextprotocol/sdk` 1.32.2 고정, 도구 6개, 요청마다 새 서버(무상태), 빌드 데이터만(파일 추적 30MB), `absent`·`trust: unverified`+사유(요약과 값 둘 다)·verified 우선·정본 바이트·`unknown_reference`, Origin 허용(Origin 없음·oh-my-design.kr·claude.ai·claude.com), 60회/60초(Upstash, KV 토큰을 키로 한 HMAC, Redis 장애 시 열림), 256KB, 집계는 `omd:mcp:v2:*`(도구·레퍼런스별)만. 개인정보 커넥터 문단(영·한) 갱신.
+  - **본 세션 수정:** `catalog.generated.json`의 `generated`가 벽시계 시각이라 커밋 훅이 돌 때마다 바뀜 → 카탈로그의 최신 verified 날짜로(같은 카탈로그 = 같은 답), reference-pipeline의 `git diff --exit-code`에 추가(낡은 사본 커밋 차단). 테스트 1건 맞춤.
+  - 검증: MCP 계약 테스트 35, web 1265 통과, tsc·eslint 0. 프리뷰(`vercel curl` POST)에서 파일 추적 확인. 운영: initialize 200, "토스"→toss·toss-securities·tossbank, GET 405, 다른 Origin 403.
+  - **주의:** 레퍼런스가 바뀌는 브랜치(`feat/reverify-w1`)는 머지 전에 main을 병합하고 `npm --prefix web run build-reference-ast`(MCP 메타 재생성)까지 커밋해야 파이프라인 검사 통과.
+  - 남은 것: Phase 1b `/docs/connector`(영·한, UI라 오너 프리뷰 GO), Phase 2(의미 검색 bge-m3·CSS 변수 내보내기), D5 Connectors Directory 제출은 2주 안정 뒤 오너 계정. "calm blue fintech"는 키워드만이라 coolblue가 1위(toss 2위) — Phase 2에서 개선.
+  - main에서 `npm ci`가 인자 오류로 아무것도 안 바꾸고 멈춤 → `npm install`로 SDK만 추가(잠금 파일 변화는 npm 메타 플래그 뒤섞임이라 되돌림). 워크트리 `mcp-v2` 제거.
+- **Skyscanner → verified_v2 (`f93c8e03`).** 포착 브라우저가 한국에서 돌아 skyscanner.net이 한국어 홈으로 리다이렉트 — Backpack은 전 세계 공용이라 채택, 본문에 측정 표면을 명시. 검색 #0062e3→#024daf, 카드 그림자 확대 본 세션 재측정 일치. 포커스 미측정이라 선언 안 함. 동의 창 "필수 쿠키만 수락"을 프로브가 몰라 열린 채였음 → 거부어에 '수락' 추가(브랜치 `f93c8e03` + main `3c0561e9`, 캡처 도구가 main의 프로브를 씀). **브랜치 현재 311 / 106 / 113.**
+- **재검증 대기열 자동화.** `scratchpad/reverify-filler.sh <id…>`: 모든 프로젝트 합계 Sol 4개 상한 안에서 자리가 나면 다음 id의 지시서를 만들고 띄움, Monitor로 SPAWNED/DONE 알림(30분마다 재무장). 1차 묶음 10곳 = paypal·hubspot·skyscanner(완료) + digital-agency-jp(18:27~) + databricks·salesforce·adobe·monzo·mailchimp·govuk(대기). 끝나면 묶어서 오너에게 main 머지 GO 요청.
+- **Sol 사용(18:13):** 본 프로젝트 2(rv-skyscanner, mcp-v2-impl) + 다른 프로젝트 2(business_plan_k 1, kosine 1) = 4. 신규 후보 센서스(Sonnet 팀원, 276곳) 계속.
 
 ## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
 
