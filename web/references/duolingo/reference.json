@@ -401,6 +401,12 @@
         "method": "live-inspect",
         "captured": "2026-11-02"
       },
+      "components.button-certify.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
       "components.button-certify.rounded": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -444,6 +450,12 @@
         "captured": "2026-11-02"
       },
       "components.button-outline.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.pressed": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -497,6 +509,12 @@
         "method": "live-inspect",
         "captured": "2026-11-02"
       },
+      "components.button-primary.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
       "components.button-primary.rounded": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -540,6 +558,12 @@
         "captured": "2026-11-02"
       },
       "components.button-super-trial.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.pressed": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -695,12 +719,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 38,
+      "warnings": 42,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
-      "extension-component-property": 12,
+      "extension-component-property": 16,
       "orphaned-tokens": 22
     },
     "findings": [
@@ -743,6 +767,12 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
+        "path": "components.button-primary.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
         "path": "components.button-primary.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
@@ -757,6 +787,12 @@
         "rule": "broken-ref",
         "path": "components.button-outline.hover",
         "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-outline.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
@@ -779,6 +815,12 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
+        "path": "components.button-super-trial.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
         "path": "components.button-super-trial.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
@@ -793,6 +835,12 @@
         "rule": "broken-ref",
         "path": "components.button-certify.hover",
         "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-certify.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
@@ -936,7 +984,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "4622c78589efd934fc64901386ba8dfdd199573110b13f87f0378907fd5351b7",
+    "sourceSha256": "d071c9b0a0a1c3f0e6f126af3ba286092e3e4e040b0a91aaf713776ce6f3f81a",
     "overlay": null,
     "prose": [
       {

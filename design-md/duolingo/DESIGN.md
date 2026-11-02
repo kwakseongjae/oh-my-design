@@ -58,6 +58,7 @@ components:
     height: 50px
     typography: 15px / 700
     hover: 'filter brightness(1.1); computed ::before fill remains #58cc02 and lip #58a700'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 4); ::before box-shadow: none; hover filter brightness(1.1) retained'
     use: 'Get started is a link to /register in the hero, 330px wide. The anchor is transparent over the white homepage; ::before paints #58cc02 with a 4px #58a700 lip.'
   button-outline:
     type: button
@@ -67,6 +68,7 @@ components:
     height: 50px
     typography: 15px / 700
     hover: 'filter brightness(0.9); computed ::before fill remains #ffffff and label #1cb0f6'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 2); ::before box-shadow: none; hover filter brightness(0.9) retained'
     use: 'I ALREADY HAVE AN ACCOUNT is a 330px-wide button. Its transparent element sits on white; ::before paints white with a 2px #e5e5e5 border and 2px lip.'
   button-super-trial:
     type: button
@@ -76,6 +78,7 @@ components:
     height: 50px
     typography: 15px / 700
     hover: 'filter brightness(1.1); computed ::before fill remains #ffffff and label #000437'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 4); ::before box-shadow: none; hover filter brightness(1.1) retained'
     use: 'Try 1 week free is a 154px-wide button on the #100f3e Super section. Its transparent element has a white ::before face and a 4px rgba(255, 255, 255, 0.5) lip.'
   button-certify:
     type: button
@@ -85,6 +88,7 @@ components:
     height: 50px
     typography: 15px / 700
     hover: 'filter brightness(0.9); computed ::before fill remains #ffffff and label #1cb0f6'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 2); ::before box-shadow: none; hover filter brightness(0.9) retained'
     use: 'Certify your English is a 330px-wide link to the Duolingo English Test. Its transparent element sits on white; ::before paints white with a 2px #e5e5e5 border and 2px lip.'
 fonts:
   roles:
@@ -230,7 +234,7 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-All six controls report the raw computed self transition `all 0s ease 0s`. That is the only transition string promoted here. The capture does not establish a named duration scale, animation curves, press travel, celebration timing or reduced-motion behaviour.
+All six controls report the raw computed self transition `all 0s ease 0s`. The second four-action follow-up repeats that string and records `matrix(1, 0, 0, 1, 0, 0)` at rest, hover and keyboard focus. On press, Get started and Super change to `matrix(1, 0, 0, 1, 0, 4)`, while the account and certification actions change to `matrix(1, 0, 0, 1, 0, 2)`. Each `::before` box-shadow changes to `none`, removing the resting lip as the control moves through its depth. The hovered press retains `brightness(1.1)` on Get started and Super, and `brightness(0.9)` on the outlined actions. These are measured 3D press states; the captures do not establish a named duration scale, additional animation curves, release spring, celebration timing or reduced-motion behaviour.
 
 ---
 
@@ -242,14 +246,16 @@ Measured 2026-11-02. Live tokens and controls: [homepage](https://www.duolingo.c
 
 The four measured CTAs are 50px high with 12px corner radii, `0px 16px` element padding and 15px/700 labels with 0.8px tracking. Their own backgrounds are `rgba(0, 0, 0, 0)` and their own box shadows are `none`. The visible faces and lips are on `::before`. Keep that distinction when implementing the layered construction; the component entries omit the transparent element's `bg`.
 
-| Control | Width | Label | Visible `::before` face and depth | Hover change |
-|---|---|---|---|---|
-| Get started, hero link to `/register` | 330px | `#ffffff` | `#58cc02`, 330×46px; `#58a700` shadow `0px 4px 0px 0px` | Element filter `none` → `brightness(1.1)` |
-| I ALREADY HAVE AN ACCOUNT, button | 330px | `#1cb0f6` | `#ffffff`, 330×48px; 2px solid `#e5e5e5` border and `0px 2px 0px 0px` shadow | `none` → `brightness(0.9)` |
-| Try 1 week free, Super button | 154px | `#000437` | `#ffffff`, 153.984×46px; `rgba(255, 255, 255, 0.5)` shadow `0px 4px 0px 0px` over `#100f3e` | `none` → `brightness(1.1)` |
-| Certify your English, English Test link | 330px | `#1cb0f6` | `#ffffff`, 330×48px; same 2px `#e5e5e5` border and 2px lip as the account action | `none` → `brightness(0.9)` |
+| Control | Width | Label | Visible `::before` face and depth | Hover change | Measured pressed change |
+|---|---|---|---|---|---|
+| Get started, hero link to `/register` | 330px | `#ffffff` | `#58cc02`, 330×46px; `#58a700` shadow `0px 4px 0px 0px` | Element filter `none` → `brightness(1.1)` | Transform `matrix(1, 0, 0, 1, 0, 4)`; `::before` box-shadow `none` |
+| I ALREADY HAVE AN ACCOUNT, button | 330px | `#1cb0f6` | `#ffffff`, 330×48px; 2px solid `#e5e5e5` border and `0px 2px 0px 0px` shadow | `none` → `brightness(0.9)` | Transform `matrix(1, 0, 0, 1, 0, 2)`; `::before` box-shadow `none` |
+| Try 1 week free, Super button | 154px | `#000437` | `#ffffff`, 153.984×46px; `rgba(255, 255, 255, 0.5)` shadow `0px 4px 0px 0px` over `#100f3e` | `none` → `brightness(1.1)` | Transform `matrix(1, 0, 0, 1, 0, 4)`; `::before` box-shadow `none` |
+| Certify your English, English Test link | 330px | `#1cb0f6` | `#ffffff`, 330×48px; same 2px `#e5e5e5` border and 2px lip as the account action | `none` → `brightness(0.9)` | Transform `matrix(1, 0, 0, 1, 0, 2)`; `::before` box-shadow `none` |
 
 The computed face and text colour values remain unchanged during hover; the filter acts on their rendered composite. These are filter states, not separately measured hover hex colours.
+
+For the measured 3D press, move the complete control down by its resting lip depth and remove the `::before` shadow: 4px for Get started and Super, 2px for the account and certification actions. All four start at `matrix(1, 0, 0, 1, 0, 0)`. Their pressed snapshots match both `:active` and `:hover`, retaining the respective hover brightness filter; face fill, label colour, border and dimensions do not change in the compared styles.
 
 ### Text links
 
@@ -261,14 +267,14 @@ No search input, interactive card, lesson answer tile, badge, progress bar, feed
 
 | Control | Rest | Hover | Pressed | Keyboard focus |
 |---|---|---|---|---|
-| `get-started` | Green pseudo face, white label, 4px green lip | Filter `brightness(1.1)` | UNMEASURED | Tab #4; no style change in scope |
-| `existing-account` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | UNMEASURED | Tab #5; no style change in scope |
+| `get-started` | Green pseudo face, white label, 4px green lip | Filter `brightness(1.1)` | `matrix(1, 0, 0, 1, 0, 4)`; pseudo shadow `none`; hover filter retained | Tab #4; no style change in scope |
+| `existing-account` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | `matrix(1, 0, 0, 1, 0, 2)`; pseudo shadow `none`; hover filter retained | Tab #5; no style change in scope |
 | `course-english` | Transparent over white, grey visible label | No style change in scope | UNMEASURED | Tab #6; no style change in scope |
 | `research-link` | Transparent over white, blue text | No style change in scope | UNMEASURED | Tab #48; no style change in scope |
-| `super-trial` | White pseudo face, dark-blue label, translucent 4px lip | Filter `brightness(1.1)` | UNMEASURED | Tab #51; no style change in scope |
-| `certify-english` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | UNMEASURED | Tab #52; no style change in scope |
+| `super-trial` | White pseudo face, dark-blue label, translucent 4px lip | Filter `brightness(1.1)` | `matrix(1, 0, 0, 1, 0, 4)`; pseudo shadow `none`; hover filter retained | Tab #51; no style change in scope |
+| `certify-english` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | `matrix(1, 0, 0, 1, 0, 2)`; pseudo shadow `none`; hover filter retained | Tab #52; no style change in scope |
 
-Every hover snapshot matched `:hover`; a second capture reproduced the two hero controls' geometry, rest layers and hover filters. Every pressed attempt failed the `:active` check while the mouse was down, so no press treatment is inferred. Hover then stopped matching during each crop; the computed snapshots establish the hover readings, while the resulting crops do not establish their visual appearance.
+Every hover snapshot matched `:hover`; a second capture reproduced the two hero controls' geometry, rest layers and hover filters. The second four-action follow-up reproduced all four identities, rest layers, hover filters and focus results, and measured the pressed changes above with `:active=true`. The earlier failed press attempts are superseded for these four actions; the two text links remain UNMEASURED. Hover and active then stopped matching during their respective crops, so the computed snapshots establish these states while the resulting crops do not establish their visual appearance.
 
 “No style change” is limited to the probe's computed-style and DOM-attribute comparison: the element and its pseudos, descendants and their pseudos, and three ancestor levels and their pseudos. The action controls have one descendant each; English has two including an image; research has none. The comparison includes colour, backgrounds, borders, drawn outlines, shadows, filters, transforms, opacity, size, decoration, image/source attributes, masks and SVG internals. It does not prove absence of changes in siblings, external sprite internals, canvas, video or other out-of-scope rendering. No focus indicator or browser `auto` ring was observed in this scope. Disabled, loading, lesson success, lesson error and empty states were not measured.
 
