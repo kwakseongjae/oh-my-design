@@ -4,7 +4,7 @@
  * Generates a random first-party visitor id (localStorage, no PII) and pings
  * /api/active once per session. The server folds it into a per-day HyperLogLog
  * (see src/lib/kv.ts), so active-user counts are measured server-side —
- * independent of GA/Mixpanel consent AND ad-blockers, which under-count and
+ * independent of GA consent AND ad-blockers, which under-count and
  * swing whenever dashboards/config change. This is the stable floor for the
  * DAU=1000 north-star.
  *

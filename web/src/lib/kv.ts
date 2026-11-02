@@ -39,7 +39,7 @@ export const counterKey = (event: TrackEvent) => `omd:counter:${event}`;
 // derived as the PFCOUNT *union* of the trailing 7 / 30 day keys, so we never
 // write per-window keys. Keys auto-expire after 35 days.
 //
-// Why server-side: GA4/Mixpanel DAU is consent-gated (EU fail-closed) and
+// Why server-side: GA4 DAU is consent-gated (EU fail-closed) and
 // ad-blocker-lossy, so it under-counts and swings when dashboards/config change.
 // This HLL is a stable floor for the DAU=1000 north-star, decoupled from GA4.
 export const ACTIVE_TTL_SECONDS = 60 * 60 * 24 * 35; // 35 days

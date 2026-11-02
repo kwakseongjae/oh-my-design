@@ -1,8 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("./mixpanel", () => ({ mpTrack: vi.fn() }));
-
-import { mpTrack } from "./mixpanel";
 import {
   ANALYTICS_TAXONOMY_VERSION,
   classifyErrorOrigin,
@@ -10,10 +7,7 @@ import {
   normalizeEventParams,
 } from "./gtag";
 
-const mockedMpTrack = vi.mocked(mpTrack);
-
 beforeEach(() => {
-  mockedMpTrack.mockClear();
   vi.unstubAllGlobals();
 });
 
@@ -37,7 +31,7 @@ describe("analytics acquisition guard", () => {
     expect(normalized).not.toHaveProperty("campaign");
   });
 
-  it("sends the same normalized payload to GA4 and Mixpanel", () => {
+  it("sends the normalized payload to GA4", () => {
     const gtag = vi.fn();
     vi.stubGlobal("window", { gtag });
     event("ds_detail_open", { reference: "toss", source: "directory" });
@@ -47,7 +41,6 @@ describe("analytics acquisition guard", () => {
       event_source: "directory",
     };
     expect(gtag).toHaveBeenCalledWith("event", "ds_detail_open", expected);
-    expect(mockedMpTrack).toHaveBeenCalledWith("ds_detail_open", expected);
   });
 });
 

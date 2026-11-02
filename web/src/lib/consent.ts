@@ -1,5 +1,5 @@
 // Consent state + GA Consent Mode v2 helper. This is the single gate that
-// controls BOTH GA and Mixpanel: non-EU visitors are auto-granted (no banner),
+// controls GA: non-EU visitors are auto-granted (no banner),
 // EEA/UK/CH visitors stay denied until they Accept. The stored choice persists
 // the decision across visits.
 export type Consent = "granted" | "denied";

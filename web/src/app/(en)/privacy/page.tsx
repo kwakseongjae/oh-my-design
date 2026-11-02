@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 
-const UPDATED = "October 14, 2026";
+const UPDATED = "November 2, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy — oh-my-design",
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
           </p>
           <p>
             We do <strong className="font-medium text-foreground">not</strong>{" "}
-            collect your IP address in Mixpanel, and we never store it in our own
+            collect your IP address, and we never store it in our own
             counters.
           </p>
         </Section>
@@ -87,8 +87,7 @@ export default function PrivacyPage() {
         <Section title="Cookies & identifiers">
           <p>
             Google Analytics sets a cookie (<code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">_ga</code>) to count
-            visits. Mixpanel stores a random ID in your browser&apos;s local
-            storage. Neither identifies you personally. Our own popularity
+            visits. It does not identify you personally. Our own popularity
             counters store only an event name and a reference ID — nothing about
             you.
           </p>
@@ -103,8 +102,7 @@ export default function PrivacyPage() {
 
         <Section title="Who processes the data">
           <p>
-            We use <strong className="font-medium text-foreground">Google Analytics</strong> and{" "}
-            <strong className="font-medium text-foreground">Mixpanel</strong> for analytics, plus{" "}
+            We use <strong className="font-medium text-foreground">Google Analytics</strong> for analytics, plus{" "}
             <strong className="font-medium text-foreground">Vercel</strong> (hosting and cookieless page-view analytics) and{" "}
             <strong className="font-medium text-foreground">Upstash</strong> (counters), and{" "}
             <strong className="font-medium text-foreground">OpenRouter</strong> to compute embeddings for the connector&apos;s
@@ -116,8 +114,7 @@ export default function PrivacyPage() {
             These providers operate in the <strong className="font-medium text-foreground">United States</strong>, so some
             anonymous analytics data is processed on servers outside Korea and
             the EEA. Google LLC self-certifies under the EU–US Data Privacy
-            Framework; transfers to Mixpanel rely on EU Standard Contractual
-            Clauses.
+            Framework.
           </p>
         </Section>
 
@@ -133,7 +130,7 @@ export default function PrivacyPage() {
         <Section title="Your choices">
           <p>
             In the EU, UK, and Switzerland we ask before turning on cookie-based
-            analytics (Google Analytics and Mixpanel) — you&apos;ll see a banner.
+            analytics (Google Analytics) — you&apos;ll see a banner.
             Choose <strong className="font-medium text-foreground">Decline</strong> and no
             analytics cookies or identifiers are set, and the cookieless page-view
             count (Vercel Web Analytics) stops as well.
@@ -152,8 +149,7 @@ export default function PrivacyPage() {
 
         <Section title="How long we keep it">
           <p>
-            Google Analytics keeps event data for up to 14 months. Mixpanel
-            retains analytics data according to its plan&apos;s retention policy.
+            Google Analytics keeps event data for up to 14 months.
             Our own counters keep only running totals, with no personal data.
           </p>
         </Section>
