@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 22시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 23시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -17,6 +17,8 @@
 - **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
 - **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
 - **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **재검증 1차 묶음 main 머지 `7ce00f93`(오너 GO 23시경) · 운영 확인.** `5424e0a5`까지만 머지(2차 커밋 제외). 충돌은 프로브 거부어 줄 하나 — main 쪽이 상위 집합(Reject additional cookies·Poursuivre·Nur technisch notwendige·섀도 루트)이라 main 쪽 채택. 병합 트리에서 reference-pipeline·query data·llms 확인·web 1267 통과. 운영: llms.txt 530 / 318 / 99 / 113, paypal·/ko hubspot·govuk·digital-agency-jp·databricks 200, raw design.md 새 내용, MCP get_reference paypal = verified_v2(reference_ast 81f855b05ce7).
+- **2차 묶음(브랜치 `feat/reverify-w1`, 5424e0a5 뒤):** justeat(신규 UK) `93142d03` · datadog `ef2bffa4` · ovhcloud(신규 FR) `bfae543a` · mercury(legacy→verified, MCP 테스트 legacy 예시도 데이터 기반으로) `7d7996d9` · pipedrive(신규 US, 에스토니아판 측정 명시) `0bb9c06b` → 브랜치 533 / 323 / 98 / 112. 진행: gitlab·duolingo·nintendo·headspace. 대기: mercedes-benz 이어 하기(`~/.omd-workers/new1/mercedes-benz/order-resume.md`, 섀도 루트 overlay 숨김 수정 `df7099ef` 뒤 states 한 번).
 - **재검증 1차 묶음 10/10 완료 → 오너 main 머지 GO 대기.** 마지막 govuk `5424e0a5`(로고 링크 hover 37→40px+흰 3px 밑줄, 포커스 그림자 `0 -2px #ffdd00, 0 4px #0b0c0c`, 재측정 일치; 프로브 거부어 'Reject additional cookies' main `b34127dc`). **경계 커밋 `5424e0a5`: 318 verified / 99 partial / 113 legacy**(main은 308 / 109 / 113). 브랜치 프리뷰 빌드 Ready, paypal·/ko hubspot·govuk 상세·raw·아카이브 확인. web 1265 통과, check-counts 일치. 2차 묶음은 그 뒤 커밋으로 같은 브랜치에 쌓임 → GO 받으면 `5424e0a5`까지 머지.
 - **재검증 1차 묶음 9/10 (21시 반), 브랜치 317 / 100 / 113.** + monzo `aaae30d5` · adobe `e51e44ba`(통합 테스트의 '근거 없는 모션' 예시를 adobe→17live로, 주석이 이미 그렇게 말함) · mailchimp `9a41d1e3`(hover 5.625px 떠오름+같은 길이 그림자, 소수점까지 재측정 일치). govuk 진행 중. 브랜치에 main 병합 `142868ab`(MCP v2 포함) + MCP 메타 재생성 + MCP 테스트를 데이터 기반 partial 예시로 `a8c68b3d`(skyscanner가 verified가 돼서 깨졌던 것). web 1265 통과.
   - 반영 순서 보강: `build-reference-ast`(MCP 메타 재생성)를 `sync-catalog` **앞에도** 실행.
