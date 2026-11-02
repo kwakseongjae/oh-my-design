@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 315,
-  "sources": 2197,
+  "references_with_verification_v2": 316,
+  "sources": 2219,
   "sources_by_kind": {
-    "brand-asset": 91,
+    "brand-asset": 92,
     "license": 138,
-    "official-doc": 869,
-    "product-surface": 1099
+    "official-doc": 884,
+    "product-surface": 1105
   },
   "references": {
     "104": {
@@ -398,6 +398,144 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "adobe": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-blog-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "brand-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "brand-writing-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "adobe.design"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "adobe.design"
+        },
+        {
+          "id": "ds-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-motion",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-type-system",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "use.typekit.net"
+        },
+        {
+          "id": "founding",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "hq",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.adobe.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.adobe.com"
+        },
+        {
+          "id": "s2-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "s2-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "s2-sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "s2.spectrum.adobe.com"
+        },
+        {
+          "id": "spectrum-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "spectrum.adobe.com"
         }
       ]
     },

@@ -363,28 +363,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "adobe",
-    "status": "partial",
-    "verifiedAt": "2026-06-11",
-    "tokensExtractedAt": "2026-06-11",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "reconciled",
-    "claimCount": 103,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 81,
+    "evidenceClaimCount": 81,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 5,
-    "componentCount": 6,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 22,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12985,8 +12981,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 315,
-  "partial": 102,
+  "verified_v2": 316,
+  "partial": 101,
   "legacy_snapshot": 113,
   "total": 530
 } as const;
