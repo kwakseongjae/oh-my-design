@@ -6,57 +6,726 @@
     "country": "US",
     "category": "education",
     "homepage": "https://www.duolingo.com",
-    "primary_color": "#58CC02",
+    "primary_color": "#58cc02",
     "logo": {
-      "type": "simpleicons",
-      "slug": "duolingo"
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=duolingo.com&sz=128"
     },
-    "verified": "2026-06-06",
+    "verified": "2026-11-02",
     "added": "2026-06-06"
   },
   "tokens": {
-    "source": "reconciled",
-    "extracted": "2026-06-08",
-    "components_harvested": true,
-    "note": "deterministic pick (#1a73e8) was a Google sign-in embed false-positive; canonical = Feather Green"
+    "source": "live-extract",
+    "extracted": "2026-11-02",
+    "components_harvested": true
   },
   "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-11-02",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-surface",
+        "url": "https://www.duolingo.com",
+        "inspected": "2026-11-02"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.duolingo.com",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "control-404",
+        "kind": "product-surface",
+        "url": "https://www.duolingo.com/zz-this-does-not-exist",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "company",
+        "kind": "official-doc",
+        "url": "https://about.duolingo.com/?imprint#contact",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "imprint",
+        "kind": "official-doc",
+        "url": "https://www.duolingo.com/imprint",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "history",
+        "kind": "official-doc",
+        "url": "https://blog.duolingo.com/duolingos-values-a-letter-from-the-ceo/",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "design-refresh",
+        "kind": "official-doc",
+        "url": "https://blog.duolingo.com/core-tabs-redesign/",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "widget-design",
+        "kind": "official-doc",
+        "url": "https://blog.duolingo.com/widget-feature/",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "type-creator",
+        "kind": "official-doc",
+        "url": "https://www.monotype.com/studio/portfolio/duolingo",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "brand-page",
+        "kind": "official-doc",
+        "url": "https://design.duolingo.com/",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "brand-colour-path",
+        "kind": "official-doc",
+        "url": "https://design.duolingo.com/identity/color",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "brand-type-path",
+        "kind": "official-doc",
+        "url": "https://design.duolingo.com/identity/typography",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "design-hub",
+        "kind": "official-doc",
+        "url": "https://blog.duolingo.com/hub/design/",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "control-brand",
+        "kind": "product-surface",
+        "url": "https://design.duolingo.com/zz-this-does-not-exist",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "control-blog",
+        "kind": "product-surface",
+        "url": "https://blog.duolingo.com/zz-this-does-not-exist",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "control-about",
+        "kind": "product-surface",
+        "url": "https://about.duolingo.com/zz-this-does-not-exist",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "terms-shell",
+        "kind": "product-surface",
+        "url": "https://www.duolingo.com/terms",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "privacy-shell",
+        "kind": "product-surface",
+        "url": "https://www.duolingo.com/privacy",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-1",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/4779-c36ad395.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-2",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/app-f58b2376.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-3",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/1118-c0ec1e49.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-4",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/2231-98e46965.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-5",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/8186-c0ec1e49.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-6",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/4800-10f90769.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-7",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/9071-3f391c60.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-css-8",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/css/7459-c8907fa6.css",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-1",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/manifest-9f2aff54.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-2",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/features-91ec4487.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-3",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/8553-a0eeda7a.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-4",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/polyfills-4de5bd64.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-5",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/9819-6a2f9efa.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-6",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/4779-0fb1dea3.js",
+        "captured": "2026-11-02"
+      },
+      {
+        "id": "font-runtime-search-app",
+        "kind": "brand-asset",
+        "url": "https://d35aaqx5ub95lt.cloudfront.net/js/app-c4519c5a.js",
+        "captured": "2026-11-02"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.accent": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.bee": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.beetle": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.black-text": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.cardinal": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.deep-martin": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.eclipse": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.eel": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.fire-ant": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.fox": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.hare": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.iguana": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.mask": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.on-primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.polar": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.primary-lip": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.sea-sponge": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.swan": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.turtle": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.walking-fish": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "colors.whale": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-certify.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-outline.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-primary.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "components.button-super-trial.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-02"
+      },
+      "rounded.button": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "rounded.web-ui-root-default": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "prose:shadow.button-3d": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "prose:shadow.button-outline-lip": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "spacing.button-inline": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "spacing.hero-cta-gap": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.button.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.button.letterSpacing": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.button.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.course-label.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.course-label.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.course-label.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.language-link.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.language-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.language-link.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.research-link.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.research-link.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      },
+      "typography.research-link.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-02"
+      }
+    }
+  },
   "lint": {
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 27,
+      "warnings": 38,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 4,
       "extension-component-property": 12,
-      "contrast-ratio": 2,
-      "orphaned-tokens": 9
+      "orphaned-tokens": 22
     },
     "findings": [
       {
         "severity": "warning",
         "rule": null,
-        "path": "typography.display-hero.use",
-        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
-      },
-      {
-        "severity": "warning",
-        "rule": null,
-        "path": "typography.title.use",
-        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
-      },
-      {
-        "severity": "warning",
-        "rule": null,
-        "path": "typography.body.use",
-        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
-      },
-      {
-        "severity": "warning",
-        "rule": null,
         "path": "typography.button.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.research-link.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.course-label.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.language-link.use",
         "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
       },
       {
@@ -68,20 +737,8 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.button-primary.shadow",
-        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
-      },
-      {
-        "severity": "warning",
-        "rule": "broken-ref",
-        "path": "components.button-primary.active",
-        "message": "'active' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
-      },
-      {
-        "severity": "warning",
-        "rule": "broken-ref",
-        "path": "components.button-primary.disabled",
-        "message": "'disabled' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+        "path": "components.button-primary.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
@@ -92,56 +749,56 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.button-accent.type",
+        "path": "components.button-outline.type",
         "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.button-accent.shadow",
-        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+        "path": "components.button-outline.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.button-accent.use",
+        "path": "components.button-outline.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.card.type",
+        "path": "components.button-super-trial.type",
         "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.card.border",
-        "message": "'border' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+        "path": "components.button-super-trial.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
         "rule": "broken-ref",
-        "path": "components.card.shadow",
-        "message": "'shadow' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
-      },
-      {
-        "severity": "warning",
-        "rule": "broken-ref",
-        "path": "components.card.use",
+        "path": "components.button-super-trial.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
-        "rule": "contrast-ratio",
-        "path": "components.button-primary",
-        "message": "textColor (#ffffff) on backgroundColor (#58cc02) has contrast ratio 2.09:1, below WCAG AA minimum of 4.5:1."
+        "rule": "broken-ref",
+        "path": "components.button-certify.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
-        "rule": "contrast-ratio",
-        "path": "components.button-accent",
-        "message": "textColor (#ffffff) on backgroundColor (#1cb0f6) has contrast ratio 2.44:1, below WCAG AA minimum of 4.5:1."
+        "rule": "broken-ref",
+        "path": "components.button-certify.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-certify.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
@@ -164,8 +821,8 @@
       {
         "severity": "warning",
         "rule": "orphaned-tokens",
-        "path": "colors.accent-lip",
-        "message": "'accent-lip' is defined but never referenced by any component."
+        "path": "colors.whale",
+        "message": "'whale' is defined but never referenced by any component."
       },
       {
         "severity": "warning",
@@ -182,8 +839,20 @@
       {
         "severity": "warning",
         "rule": "orphaned-tokens",
-        "path": "colors.warning",
-        "message": "'warning' is defined but never referenced by any component."
+        "path": "colors.eel",
+        "message": "'eel' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.cardinal",
+        "message": "'cardinal' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.bee",
+        "message": "'bee' is defined but never referenced by any component."
       },
       {
         "severity": "warning",
@@ -196,12 +865,78 @@
         "rule": "orphaned-tokens",
         "path": "colors.beetle",
         "message": "'beetle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.fire-ant",
+        "message": "'fire-ant' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.polar",
+        "message": "'polar' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.swan",
+        "message": "'swan' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.hare",
+        "message": "'hare' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.iguana",
+        "message": "'iguana' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.sea-sponge",
+        "message": "'sea-sponge' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.turtle",
+        "message": "'turtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.walking-fish",
+        "message": "'walking-fish' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.deep-martin",
+        "message": "'deep-martin' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.eclipse",
+        "message": "'eclipse' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.black-text",
+        "message": "'black-text' is defined but never referenced by any component."
       }
     ]
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "7923afd0bfb9fbd32c65bb8c01f3c58d305a1de7568f201dd33f5f8a4cdaf82c",
+    "sourceSha256": "4622c78589efd934fc64901386ba8dfdd199573110b13f87f0378907fd5351b7",
     "overlay": null,
     "prose": [
       {
@@ -209,27 +944,42 @@
         "value": "0 4px 0 0 #58a700"
       },
       {
-        "path": "shadow.card",
-        "value": "0 2px 0 0 rgba(0,0,0,0.1)"
+        "path": "shadow.button-outline-lip",
+        "value": "0 2px 0 0 #e5e5e5"
       }
     ],
     "numeric": [
-      "typography.display-hero.fontSize",
-      "typography.display-hero.letterSpacing",
-      "typography.title.fontSize",
-      "typography.body.fontSize",
       "typography.button.fontSize",
-      "rounded.sm",
-      "rounded.md",
-      "rounded.lg",
-      "rounded.full"
+      "typography.button.letterSpacing",
+      "typography.research-link.fontSize",
+      "typography.course-label.fontSize",
+      "typography.language-link.fontSize",
+      "rounded.button",
+      "rounded.web-ui-root-default",
+      "components.button-primary.rounded",
+      "components.button-outline.rounded",
+      "components.button-super-trial.rounded",
+      "components.button-certify.rounded"
     ],
     "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "added",
+        "omd",
+        "tokens",
+        "verification_v2"
+      ],
       "tokens": [
         "source",
         "extracted",
         "components_harvested",
-        "note",
         "colors",
         "typography",
         "spacing",
@@ -239,10 +989,10 @@
       ],
       "tokens.typography": [
         "family",
-        "display-hero",
-        "title",
-        "body",
-        "button"
+        "button",
+        "research-link",
+        "course-label",
+        "language-link"
       ]
     }
   }

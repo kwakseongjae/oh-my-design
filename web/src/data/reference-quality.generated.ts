@@ -2813,29 +2813,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "duolingo",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "reconciled",
-    "claimCount": 70,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 77,
+    "evidenceClaimCount": 77,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 32,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 3,
-    "interactiveComponentCount": 2,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "freshness_conflict",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 32,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13021,9 +13016,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 325,
+  "verified_v2": 326,
   "partial": 96,
-  "legacy_snapshot": 112,
+  "legacy_snapshot": 111,
   "total": 533
 } as const;
 
