@@ -159,23 +159,11 @@
 .sq-pv-card{display:block;width:100%;max-width:260px;height:96px}
 
 /* related */
-.sq-rel{padding:72px 0 16px}
+.sq-rel{padding:72px 0 24px}
 .sq-rel h2{margin-bottom:28px}
-.sq-rel ul{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px 24px}
-.sq-rel li{min-width:0}
-.sq-rel a{display:flex;gap:12px;align-items:center;padding:10px 0}
-.sq-rel a:hover b{text-decoration:underline;text-underline-offset:4px}
-.sq-rel-logo{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;padding:6px;border-radius:var(--sq-r-inner);background:var(--sq-paper);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 12%,transparent)}
-.sq-rel-logo img{display:block;max-width:100%;max-height:100%;object-fit:contain}
-.sq-rel-logo-dark{background:var(--sq-ink)}
-.sq-rel-sw{width:28px;height:28px;flex-shrink:0;border-radius:var(--sq-r-inner);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 14%,transparent)}
-.sq-rel-t{display:flex;flex-direction:column;min-width:0;line-height:1.35}
-.sq-rel-t b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sq-rel-t span{font-size:15px;color:var(--sq-ink-2);text-transform:capitalize;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* related: the archive's cards (archive.css .sq-card-*), three across (owner, 2026-11-02) */
+.sq-rel-cards{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 
-@media (max-width:1100px){
-  .sq-rel ul{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
 @media (max-width:1023px){
   .sq-item-body{grid-template-columns:minmax(0,1fr)}
   .sq-item-pv{margin-top:64px}
@@ -211,7 +199,10 @@
   .sq-pv-space li{grid-template-columns:minmax(0,1fr) 4em minmax(0,1.1fr);padding:0 12px}
   .sq-pv-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
   .sq-pv-shadows{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sq-rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sq-rel-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  .sq-rel-cards{grid-template-columns:minmax(0,1fr);gap:12px}
 }
 /* Korean item page (/ko/design-systems/<id>): Hangul headings need more leading than
    the Latin 1.04 / 1.25 when they wrap (hangul HG-5). Same sizes as the English page. */

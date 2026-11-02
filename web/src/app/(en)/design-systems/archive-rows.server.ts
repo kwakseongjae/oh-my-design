@@ -118,7 +118,7 @@ const HAN = /[㐀-鿿]/g;
 const LATIN = /[A-Za-z]/g;
 
 /** `lang` for a CJK name, from the brand's country; Latin names are English. */
-function nameLang(name: string, country: string): string {
+export function nameLang(name: string, country: string): string {
   return CJK_RE.test(name) ? (CC_LANG[country] ?? "en") : "en";
 }
 

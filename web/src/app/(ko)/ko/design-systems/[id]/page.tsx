@@ -14,7 +14,6 @@
  */
 
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import type { Metadata } from "next";
 // Chrome before the item view, so the item's CSS wins ties (see ../layout.tsx).
 import { SiteFooterA } from "@/components/brand-a/site-footer";
@@ -30,7 +29,7 @@ import { KO_DETAIL_IDS, hasKoDetailId, koName } from "@/lib/i18n/ko-detail.serve
 import { KO_CATALOG_PATH, enDetailPath, koDetailPath } from "@/lib/i18n/ko-detail";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { koDescription, koDetailTitle, koSummary } from "./ko-summary";
-import { RelatedMark } from "@/app/(en)/design-systems/related-mark";
+import { RelatedReferences } from "@/app/(en)/design-systems/related-references";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -154,26 +153,11 @@ export default async function KoreanDesignSystemPage({
           official={getDesignSystem(detail.id)?.url ?? null}
           logo={logoFor(detail.id)}
         />
-        {related.length > 0 ? (
-          <section className="sq-root sq-rel" aria-labelledby="related-heading">
-            <div className="sq-wrap">
-              <h2 id="related-heading">{ITEM_KO.related}</h2>
-              <ul>
-                {related.map((r) => (
-                  <li key={r.id}>
-                    <Link href={koDetailPath(r.id)}>
-                      <RelatedMark id={r.id} color={r.primaryColor} />
-                      <span className="sq-rel-t">
-                        <b>{koName(r.id)}</b>
-                        <span lang="en">{r.category.replace(/-/g, " ")}</span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        ) : null}
+        <RelatedReferences
+          locale="ko"
+          heading={ITEM_KO.related}
+          items={related.map((r) => ({ id: r.id, name: koName(r.id), href: koDetailPath(r.id) }))}
+        />
       </div>
       <SiteFooterA locale="ko" current="ko" />
     </>

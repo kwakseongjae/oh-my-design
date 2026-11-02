@@ -11,7 +11,6 @@
  */
 
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
 import { buildPreviewModel } from "./preview-tokens.server";
@@ -24,7 +23,7 @@ import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { koDetailPath } from "@/lib/i18n/ko-detail";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { ITEM_EN } from "@/components/brand-a/copy/item";
-import { RelatedMark } from "../related-mark";
+import { RelatedReferences } from "../related-references";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -217,42 +216,11 @@ export default async function DesignSystemDetailPage({
         official={getDesignSystem(detail.id)?.url ?? null}
         logo={logoFor(detail.id)}
       />
-      <RelatedReferences related={related} />
+      <RelatedReferences
+        locale="en"
+        heading={ITEM_EN.related}
+        items={related.map((r) => ({ id: r.id, name: r.name, href: `/design-systems/${r.id}` }))}
+      />
     </>
-  );
-}
-
-/**
- * Server-rendered "Related design systems" block — real <Link>s so crawlers
- * follow detail→detail and readers hop deeper into the wedge. Colored-initial
- * tiles (no external logo fetch) keep it robust in the static HTML.
- */
-function RelatedReferences({
-  related,
-}: {
-  related: ReturnType<typeof getRelatedReferences>;
-}) {
-  if (related.length === 0) return null;
-  // Concept A (rebrand round 2): manuscript cells; the swatch is the
-  // reference's documented primary, nothing else is coloured.
-  return (
-    <section className="sq-root sq-rel" aria-labelledby="related-heading">
-      <div className="sq-wrap">
-        <h2 id="related-heading">Related design systems</h2>
-        <ul>
-          {related.map((r) => (
-            <li key={r.id}>
-              <Link href={`/design-systems/${r.id}`}>
-                <RelatedMark id={r.id} color={r.primaryColor} />
-                <span className="sq-rel-t">
-                  <b>{r.name}</b>
-                  <span>{r.category.replace(/-/g, " ")}</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
   );
 }
