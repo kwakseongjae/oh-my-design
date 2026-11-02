@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 20시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 21시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -17,6 +17,10 @@
 - **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
 - **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
 - **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **재검증 1차 묶음 9/10 (21시 반), 브랜치 317 / 100 / 113.** + monzo `aaae30d5` · adobe `e51e44ba`(통합 테스트의 '근거 없는 모션' 예시를 adobe→17live로, 주석이 이미 그렇게 말함) · mailchimp `9a41d1e3`(hover 5.625px 떠오름+같은 길이 그림자, 소수점까지 재측정 일치). govuk 진행 중. 브랜치에 main 병합 `142868ab`(MCP v2 포함) + MCP 메타 재생성 + MCP 테스트를 데이터 기반 partial 예시로 `a8c68b3d`(skyscanner가 verified가 돼서 깨졌던 것). web 1265 통과.
+  - 반영 순서 보강: `build-reference-ast`(MCP 메타 재생성)를 `sync-catalog` **앞에도** 실행.
+- **신규 후보 센서스 완료(276곳).** 팀원이 재측정분 병합 전에 멈춰 본 세션이 `summarize.py` 재실행: promising 58 · weak 79 · blocked 36 · reject 103. 사본 `~/.omd-workers/census-1102-summary.json`(로컬). promising 상위: mercedes-benz·justeat·quintoandar·colruyt·ovhcloud·pipedrive·canalplus·qantas·outsystems·gusto·zoopla·substack·marksandspencer·skroutz·caixabank·brex·checkout·atlassian·maersk… 이전 웨이브에서 탈락한 backmarket·bunq·galaxus는 제외. 새 시장 AU·BR·PT·GR·HU·IE·SG·CA·IL은 첫 레퍼런스와 함께 `VALID_COUNTRIES`에 추가(CZ·RO·BE·CH 선례), 지시서 양식 반영 `aafe3f80`.
+- **2차 묶음 시작(21시 반):** new:mercedes-benz · datadog · new:justeat · mercury(legacy) · new:ovhcloud · gitlab · new:pipedrive · duolingo(legacy) · nintendo · headspace. 같은 브랜치에 쌓고, 1차는 govuk 커밋까지를 경계로 머지 GO 요청. 대기열 스크립트가 `new:<id>`도 처리(센서스 요약에서 이름·URL·로케일).
 - **재검증 1차 묶음 진행(20시): 6/10 완료, 브랜치 `feat/reverify-w1` 314 / 103 / 113.** paypal `6ed4f1e3` · hubspot `fd691667` · skyscanner `f93c8e03` · digital-agency-jp `b702516d` · databricks `117ee9aa` · salesforce `371763ad`. 각 건 헤드라인 본 세션 재측정 일치(DADS는 포커스 포함, Databricks는 pressed가 hover보다 밝은 특이값 확인). 진행: adobe·monzo, 대기: mailchimp·govuk.
   - **18:58 사고와 수정:** Monitor 만료(프로세스 그룹 종료)가 대기열 스크립트가 띄운 워커 둘(databricks·salesforce)을 초안 도중에 죽임 → spawn.sh가 워커를 python `os.setsid`로 독립 세션에 띄우게 수정 `a46309d2`(macOS엔 setsid 명령 없음). 두 곳은 남은 초안·증거로 이어 하기(`order-resume.md`, 새 측정 없이 완료), 막 시작한 adobe·monzo는 멈추고 다시 띄움(옛 실행 폴더는 `.killed`). 이후 만료 때 워커 생존 확인.
   - **지역 리다이렉트:** 한국에서 도는 포착 브라우저를 skyscanner·salesforce가 한국어판으로 보냄 → 같은 디자인 시스템이라 채택, salesforce §1에 측정 판 명시(본 세션 추가), 지시서 양식에 규칙 추가 `f66a5e57`. 프로브 거부어 '필수 쿠키만 수락' `3c0561e9`.
