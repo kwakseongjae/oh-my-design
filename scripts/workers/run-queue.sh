@@ -7,6 +7,7 @@
 # Queue file, one item per line (# comments and blank lines ignored), in order:
 #   reverify <id>                                   re-verify an existing partial/legacy reference
 #   new <id> <locale> <url> <name…>                 author a new reference (name may contain spaces)
+#   spawn <id> <workdir> <order>                     run a prepared order as-is (a follow-up, e.g. id duolingo-p2)
 #
 # The cap counts every live Codex worker on this machine, other projects included (owner 2026-10-29: Sol
 # 4 at a time). Workers start through spawn.sh in their own session, so ending this script (a Monitor
@@ -70,6 +71,11 @@ while :; do
           "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/new1/$id" --order "$HOME_W/new1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
           echo "SPAWNED new:$id"; sleep 20
         else echo "SKIPPED new:$id (no order)"; fi ;;
+      spawn)
+        if [ -f "$4" ]; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$3" --order "$4" --name "rv-$id" --mcp capture >/dev/null 2>&1
+          echo "SPAWNED $id"; sleep 20
+        else echo "SKIPPED $id (no order at $4)"; fi ;;
       *) echo "SKIPPED $id (unknown kind $kind)" ;;
     esac
   done

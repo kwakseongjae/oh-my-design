@@ -1,7 +1,15 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 0시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 1시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 1시 반 · **재개 진행 중** (오너 "재개해줘")
+
+- **2차 묶음 10/10 완료 → 오너 머지 GO 요청.** headspace `a2dfeeaf` · mercedes-benz(신규 DE) `dcf01c92` 반영, 브랜치에 main 병합 `2a9deed7`. 그 뒤 3차 첫 건 nio(신규 CN) `e8422128` → 브랜치 `feat/reverify-w1` **535 / 329 / 95 / 111**(main 530 / 318 / 99 / 113). GO 범위는 nio 포함 여부를 명시해 묻는다.
+- **3차 묶음 진행(Monitor `run-queue.sh ~/.omd-workers/queue-batch3.txt`).** 끝남: hanatour·sbisec·kbs(신규), tellingme·lezhin(재검증). 진행: corca·xiaohongshu·tokyo-metropolitan·gaudiolab. **lezhin은 워커 스스로 partial**(hover·focus 변화 없는 컨트롤뿐, pressed 미측정) → 반영 보류, 상태가 바뀌는 컨트롤을 재는 보강 지시서 필요. 헤드라인 재측정 설정 `scratchpad/rm3/*.json`.
+- **MCP 2a 의미 검색: OpenRouter 키 만료(HTTP 401 "API key expired", 로컬·Vercel 같은 키) → 오너가 키 교체해야 함.** 그때까지 프리뷰는 keyword 모드. 빌드 로그에 실패 사유(HTTP 상태만)가 찍히게 `1118fe50`(`feat/mcp-semantic`, 푸시). 키 교체 후: Vercel Preview·Production `OPENROUTER_API_KEY` 갱신 → 프리뷰 재배포 → `search_mode: hybrid` 확인 → 머지.
+- **MCP 1b 연결 안내:** `feat/mcp-connector-docs` `be5eda15` 푸시, 프리뷰 `https://oh-my-design-git-feat-mcp-connector-docs-kwakseongjaes-projects.vercel.app/ko/docs/connector` → 오너 프리뷰 GO 대기.
+- **덕울링고 pressed 보강:** Sol 자리 날 때 `rv-duolingo-p2`(명령은 아래 재개 순서 2).
 
 ## ▶ 2026-11-03 0시 · **재개 신호 대기** — 오너: "1·2·3까지(덕울링고 커밋·CJK 센서스·3차 묶음 구성)만 하고, Sol 확충·검증 실행과 MCP는 재개 신호와 함께"
 
