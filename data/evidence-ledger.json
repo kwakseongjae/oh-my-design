@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 330,
-  "sources": 2479,
+  "references_with_verification_v2": 331,
+  "sources": 2493,
   "sources_by_kind": {
-    "brand-asset": 121,
+    "brand-asset": 124,
     "license": 138,
-    "official-doc": 1047,
-    "product-surface": 1173
+    "official-doc": 1054,
+    "product-surface": 1177
   },
   "references": {
     "104": {
@@ -13124,6 +13124,96 @@
           "kind": "official-doc",
           "captured": "2026-10-29",
           "host": "digital.sbb.ch"
+        }
+      ]
+    },
+    "sbisec": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "asset-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "commercial-notice",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "design-system-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "home-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "layout-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "legal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "search.sbisec.co.jp"
+        },
+        {
+          "id": "policy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "go.sbisec.co.jp"
+        },
+        {
+          "id": "renewal-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "go.sbisec.co.jp"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
         }
       ]
     },

@@ -9739,6 +9739,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "sbisec",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 81,
+    "evidenceClaimCount": 81,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
+    "conflictCount": 0,
+    "tier1SourceCount": 14,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "scatterlab",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -13078,10 +13100,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 330,
+  "verified_v2": 331,
   "partial": 95,
   "legacy_snapshot": 111,
-  "total": 536
+  "total": 537
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
