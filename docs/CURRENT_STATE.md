@@ -1,7 +1,23 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 15시 50분** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 17시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
+
+- **오너(16:0x).** "미검증을 처리하면서 700개로 늘리는 작업해줘. 1, 2, 4는 승인할게. 3번은 프리뷰 확인하고 Main에 올리는 작업을 하는거야?" → 승인: MCP v2 D1~D6(명세 권장안), 2.0.6 출시+strict waiver, Mixpanel 제거.
+- **④ Mixpanel 제거 — main `612150b8`, 운영 확인.** 팀원(Sonnet, 워크트리) 구현 `88dbfbcf` + 본 세션 수정 `19f2acba`(영문 개인정보 페이지가 "IP를 수집하지 않는다"로 과장 → "자체 카운터에 IP를 저장하지 않는다", 한국어와 일치). SDK·`mixpanel-browser` 의존성·동의 배너 5개 언어·`/privacy`·`/privacy/ko`(시행일 11/2). GA4 동작 그대로. 운영 `/privacy`·`/privacy/ko` Mixpanel 0. Vercel 환경 변수는 남김(읽지 않음).
+- **① MCP v2 — D1~D6 승인 기록, Phase 0 main `b4d0df7f`.** `/api/mcp`는 그대로 410, 응답 뒤(`after`) KV `omd:mcp410:<YYYYMMDD>` 해시에 메서드·클라이언트 계열(claude·cursor·openai·vscode·browser·library·other·none)만 셈, IP·UA 원문·본문 저장 안 함, 400일 보관, 응답 `no-store`(CDN이 반복 요청을 가리지 않게). 명세 §10에 승인 기록. **다음: Phase 1(Sol max 워커, 워크트리, 2~3일)** — Sol 슬롯이 나면 시작. Phase 1b `/docs/connector`는 UI라 오너 프리뷰 GO 필요.
+- **② 2.0.6 — 출시 준비 끝, 구성 결정 대기.** 2.0.6 CHANGELOG는 /hangul 브랜치(`feat/hangul-launch-r2`)에만 있고 머리기사가 hangul이다. 그래서 (a) /hangul 프리뷰 GO → 브랜치 main 머지 → v2.0.6 태그(hangul + 2.0.5 이후 전부), 또는 (b) main만으로 2.0.6을 따로 쓰고 hangul은 2.0.7 — 오너 선택. 추천 (a).
+  - 브랜치 준비: main 두 번 병합(`4b40fee3` 생성 파일 충돌만 — llms 5개는 브랜치 스킬 수 32/11/31 + main 레퍼런스 수 530/308, catalog-meta·llms-full 재생성; `0cd4ce16` 무충돌), CHANGELOG 2.0.6 보강 `2d5ca646`(카탈로그 530/308·아카이브 개편·관련 카드·Mixpanel 제거·/api/mcp 카운트, 날짜 11/2, waiver 문구 정정: 게이트가 묶는 에이전트는 art-director·designer-review뿐, 나머지 3개 에이전트 변경은 범위 밖). strict 게이트 11/2 재실행: BLOCKED hardFail 3·softFail 3(2.0.5와 같음). `npm run prepublishOnly` 통과(캡처 번들 변화 없음, hangul Codex 미러는 gitignore된 로컬 사본이라 sync만). web 테스트 1232 통과.
+  - 프리뷰(로그인 필요): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (영문 `/hangul`). 아카이브 530·관련 카드도 들어가 있음.
+  - GO 뒤 순서: 브랜치 main no-ff 머지 → 푸시 → 운영 확인(/hangul·/ko/hangul·아카이브) → `git tag v2.0.6 origin/main && git push origin v2.0.6`(trusted publishing 워크플로) → npm latest 확인.
+- **③ 미검증 처리 + 700 확충 — 착수.** 미검증 222 = partial 109(전부 `verification_v2_missing`만: 토큰은 실측, v2 재검증 기록만 없음) + legacy 113(토큰이 산문 유래 108, proof 미비 31, 충돌 26…). 신규 필요 ≈170(530→700).
+  - 재검증 지시서 생성기 `scripts/workers/make-reverify-order.py`(미커밋): 신규 지시서 양식을 그대로 쓰고, git의 마지막 레거시 형태 DESIGN.md를 출발점으로, 이전 값·문장은 확인/정정(근거)/미확인(보고서로, 본문에서 빼고 오케스트레이터가 판단) 셋 중 하나로 — 게이트 통과를 위해 본문을 줄이지 않는다.
+  - 파일럿: Sol max 워커 `rv-paypal`(`~/.omd-workers/runs/rv-paypal-20261102T162824`, 폴더 `~/.omd-workers/reverify1/paypal`) 실행 중.
+  - 센서스: 팀원(Sonnet)이 후보 276곳 스카우팅 중(EU 중심, `scratchpad/census-1102/`), 중간에 네트워크 끊김으로 83곳 재측정.
+  - **Sol 용량:** 다른 프로젝트(business_plan_k)가 같은 계정으로 Sol max 3개를 돌리는 중 → 본 프로젝트는 1개로 시작, 그쪽이 끝나면 4개까지. spawn.sh 상한은 자기 실행만 센다.
+  - 루프: 파일럿 결과로 지시서를 고친 뒤 웨이브(재검증·신규 교대), 10건마다 답 요구 없는 진행 보고.
 
 ## ▶ 2026-11-02 15시 50분 · 아카이브 개편 **main 머지 `f23f6f79` · 운영 확인 완료** · 재개 대기
 
