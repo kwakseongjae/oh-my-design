@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { CLI_DOCTOR_COMMAND, CLI_DOCS, CLI_INSTALL_COMMAND, type CliDocsDictionary } from "@/data/cli-docs";
 import { SHADCN_EARLIER_RUNS, SHADCN_RUN_EVIDENCE, SHADCN_RUN_EXCERPT, SHADCN_SKILL_SOURCE } from "@/data/docs-shadcn-recipe";
+import { connectorPrivacyHref } from "@/data/docs-connector";
 import { DOCS_SITE_LOCALE, docsHref, type DocsLocale, type DocsPage } from "@/lib/docs/locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { CopyCode } from "./copy-code";
@@ -49,6 +50,15 @@ export function getDocsToc(dictionary: CliDocsDictionary, page: DocsPage): TocIt
         { id: "limits", label: dictionary.shadcn.limitsTitle },
         { id: "evidence", label: dictionary.shadcn.evidenceTitle },
       ];
+    case "connector":
+      return [
+        { id: "what", label: dictionary.connector.whatTitle },
+        { id: "endpoint", label: dictionary.connector.endpointTitle },
+        { id: "add", label: dictionary.connector.addTitle },
+        { id: "tools", label: dictionary.connector.toolsTitle },
+        { id: "trust", label: dictionary.connector.trustTitle },
+        { id: "privacy", label: dictionary.connector.privacyTitle },
+      ];
     case "skills":
       return [
         ...dictionary.skills.groups.map((group, index) => ({ id: `skill-group-${index + 1}`, label: group.title })),
@@ -79,6 +89,7 @@ export function CliDocsRoute({ locale, page }: { locale: DocsLocale; page: DocsP
       {page === "workflows" && <WorkflowsPage dictionary={dictionary} />}
       {page === "demo" && <DemoPage dictionary={dictionary} />}
       {page === "shadcn" && <ShadcnPage dictionary={dictionary} />}
+      {page === "connector" && <ConnectorPage locale={locale} dictionary={dictionary} />}
       {page === "skills" && <SkillsPage dictionary={dictionary} />}
       {page === "anti-slop" && <AntiSlopPage dictionary={dictionary} />}
     </DocsShell>
@@ -378,6 +389,59 @@ function ShadcnPage({ dictionary }: { dictionary: CliDocsDictionary }) {
             </li>
           ))}
         </ul>
+      </DocsSection>
+    </article>
+  );
+}
+
+/** The MCP connector guide (docs/MCP_V2_SPEC_2026-10-29.md, Phase 1b). */
+function ConnectorPage({ locale, dictionary }: { locale: DocsLocale; dictionary: CliDocsDictionary }) {
+  const content = dictionary.connector;
+  return (
+    <article>
+      <DocsHead title={content.title} lead={content.lead} />
+
+      <DocsSection id="what" title={content.whatTitle}>
+        <p className="dx-p"><InlineText text={content.whatBody} /></p>
+      </DocsSection>
+
+      <DocsSection id="endpoint" title={content.endpointTitle}>
+        <p className="dx-p"><InlineText text={content.endpointBody} /></p>
+      </DocsSection>
+
+      <DocsSection id="add" title={content.addTitle} lead={content.addLead}>
+        <ul className="dx-steps">
+          {content.adds.map((add) => (
+            <li key={add.name}>
+              <h3 className="dx-h3">{add.name}</h3>
+              <p className="dx-p dx-muted"><InlineText text={add.body} /></p>
+              {add.command ? <Code dictionary={dictionary} code={add.command} kind="agent" /> : null}
+            </li>
+          ))}
+        </ul>
+      </DocsSection>
+
+      <DocsSection id="tools" title={content.toolsTitle} lead={content.toolsLead}>
+        <ul className="dx-steps">
+          {content.tools.map((tool) => (
+            <li key={tool.name}>
+              <h3 className="dx-h3"><code translate="no">{tool.name}</code></h3>
+              <p className="dx-p dx-muted"><InlineText text={tool.body} /></p>
+              <Code dictionary={dictionary} code={tool.prompt} kind="recipe" />
+            </li>
+          ))}
+        </ul>
+      </DocsSection>
+
+      <DocsSection id="trust" title={content.trustTitle}>
+        <p className="dx-p"><InlineText text={content.trustBody} /></p>
+      </DocsSection>
+
+      <DocsSection id="privacy" title={content.privacyTitle}>
+        <p className="dx-p">
+          {content.privacyBody}{" "}
+          <Link className="dx-link" href={connectorPrivacyHref(locale)} prefetch={false}>{content.privacyLink}</Link>
+        </p>
       </DocsSection>
     </article>
   );

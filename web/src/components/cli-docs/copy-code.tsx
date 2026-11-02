@@ -26,7 +26,7 @@ export function copyStatusMessage(
  * prompt said to the coding agent.
  */
 export function isShellCommand(code: string): boolean {
-  return /^(?:npx|npm|pnpm|yarn|bun|bunx|curl)\s/.test(code);
+  return /^(?:npx|npm|pnpm|yarn|bun|bunx|curl|claude)\s/.test(code);
 }
 
 /**

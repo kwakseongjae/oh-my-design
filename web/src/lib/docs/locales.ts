@@ -8,7 +8,7 @@ export type DocsLocale = (typeof DOC_LOCALES)[number];
  * "troubleshooting" and "ai"; their old URLs 308 in next.config.ts
  * (DELETED_DOCS_PAGES below is the list the redirect test checks).
  * "shadcn" (feat/referral-1, 2026-10-14) is a guide: a DESIGN.md from the archive
- * handed to shadcn's own skill.
+ * handed to shadcn's own skill. "connector" is the MCP connector guide.
  */
 export const DOC_PAGES = [
   "overview",
@@ -16,6 +16,7 @@ export const DOC_PAGES = [
   "workflows",
   "demo",
   "shadcn",
+  "connector",
   "skills",
   "anti-slop",
 ] as const;
@@ -25,7 +26,7 @@ export type DocsPage = (typeof DOC_PAGES)[number];
 /** Left-nav sections, Next.js-docs style: each page sits in exactly one group. */
 export const DOC_NAV_GROUPS = [
   { id: "start", pages: ["overview", "getting-started"] },
-  { id: "guides", pages: ["workflows", "demo", "shadcn"] },
+  { id: "guides", pages: ["workflows", "demo", "shadcn", "connector"] },
   { id: "reference", pages: ["skills", "anti-slop"] },
 ] as const satisfies ReadonlyArray<{ id: string; pages: readonly DocsPage[] }>;
 

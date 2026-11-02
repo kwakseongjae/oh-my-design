@@ -1,5 +1,6 @@
 import { CLI_DOCS, CLI_DOCTOR_COMMAND, CLI_INSTALL_COMMAND } from "@/data/cli-docs";
 import { SHADCN_EARLIER_RUNS, SHADCN_RUN_EVIDENCE, SHADCN_RUN_EXCERPT, SHADCN_SKILL_SOURCE } from "@/data/docs-shadcn-recipe";
+import { connectorPrivacyHref } from "@/data/docs-connector";
 import { docsHref, docsLlmsHref, type DocsLocale, type DocsPage } from "./locales";
 
 const SITE_URL = "https://oh-my-design.kr";
@@ -100,6 +101,19 @@ export function docsPageMarkdown(locale: DocsLocale, page: DocsPage): string {
       add(...section(content.limitsTitle), ...bullets(content.limits));
       add(...section(content.evidenceTitle, content.evidenceBody), SHADCN_RUN_EXCERPT.split("\n").map((line) => `> ${line}`).join("\n"));
       add(`- [${content.evidenceLink}](${SHADCN_RUN_EVIDENCE})`, `- [${content.evidenceLinkEarlier}](${SHADCN_EARLIER_RUNS})`, `- [shadcn-ui/ui#12252](${SHADCN_SKILL_SOURCE})`);
+      break;
+    }
+    case "connector": {
+      const content = dictionary.connector;
+      begin(content.title, content.lead);
+      add(...section(content.whatTitle, content.whatBody));
+      add(...section(content.endpointTitle, content.endpointBody));
+      add(...section(content.addTitle, content.addLead));
+      for (const item of content.adds) add(`### ${item.name}`, item.body, ...(item.command ? code(item.command) : []));
+      add(...section(content.toolsTitle, content.toolsLead));
+      for (const tool of content.tools) add(`### \`${tool.name}\``, tool.body, ...code(tool.prompt));
+      add(...section(content.trustTitle, content.trustBody));
+      add(...section(content.privacyTitle, `${content.privacyBody} [${content.privacyLink}](${SITE_URL}${connectorPrivacyHref(locale)})`));
       break;
     }
     case "skills": {

@@ -34,6 +34,7 @@ function pageDescription(locale: DocsLocale, page: DocsPage): string {
     case "demo": return dictionary.demo.lead;
     case "skills": return dictionary.skills.lead;
     case "shadcn": return dictionary.shadcn.lead;
+    case "connector": return dictionary.connector.lead;
     case "anti-slop": return dictionary.antiSlop.lead;
   }
 }

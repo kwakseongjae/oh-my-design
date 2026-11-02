@@ -1,6 +1,7 @@
 import type { DocsLocale, DocsNavGroup, DocsPage } from "@/lib/docs/locales";
 import { PUBLIC_SKILL_COUNT, REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
+import { CONNECTOR_COPY, type ConnectorCopy } from "./docs-connector";
 import { SHADCN_RECIPE, type ShadcnRecipeCopy } from "./docs-shadcn-recipe";
 
 export const CLI_INSTALL_COMMAND = "npx oh-my-design-cli@latest";
@@ -296,11 +297,13 @@ export interface CliDocsDictionary {
   };
   /** /docs/<locale>/shadcn — the copy lives in ./docs-shadcn-recipe.ts. */
   shadcn: ShadcnRecipeCopy;
+  /** /docs/<locale>/connector — the copy lives in ./docs-connector.ts. */
+  connector: ConnectorCopy;
 }
 
 /** A locale as written below, before its shadcn recipe copy and nav label are merged in. */
-type BaseDictionary = Omit<CliDocsDictionary, "nav" | "shadcn"> & {
-  nav: Record<Exclude<DocsPage, "shadcn">, string>;
+type BaseDictionary = Omit<CliDocsDictionary, "nav" | "shadcn" | "connector"> & {
+  nav: Record<Exclude<DocsPage, "shadcn" | "connector">, string>;
 };
 
 /**
@@ -1969,7 +1972,8 @@ const zhTw: BaseDictionary = {
 };
 function withRecipe(base: BaseDictionary, locale: DocsLocale): CliDocsDictionary {
   const recipe = SHADCN_RECIPE[locale];
-  return { ...base, nav: { ...base.nav, shadcn: recipe.navLabel }, shadcn: recipe };
+  const connector = CONNECTOR_COPY[locale];
+  return { ...base, nav: { ...base.nav, shadcn: recipe.navLabel, connector: connector.navLabel }, shadcn: recipe, connector };
 }
 
 export const CLI_DOCS: Record<DocsLocale, CliDocsDictionary> = {
