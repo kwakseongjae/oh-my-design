@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 326,
-  "sources": 2431,
+  "references_with_verification_v2": 327,
+  "sources": 2444,
   "sources_by_kind": {
     "brand-asset": 117,
     "license": 138,
-    "official-doc": 1020,
-    "product-surface": 1156
+    "official-doc": 1028,
+    "product-surface": 1161
   },
   "references": {
     "104": {
@@ -5798,6 +5798,90 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "hatena.co.jp"
+        }
+      ]
+    },
+    "headspace": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "italic-studio.com"
+        },
+        {
+          "id": "brand-refresh",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "control-brand",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "italic-studio.com"
+        },
+        {
+          "id": "control-organizations",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "press-room",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "subscriptions",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "uk-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
         }
       ]
     },
