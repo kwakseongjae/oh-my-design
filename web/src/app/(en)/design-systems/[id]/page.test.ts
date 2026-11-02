@@ -104,6 +104,18 @@ describe("English item page body", () => {
   it("shows 11st's official identity and no logo for a Simple Icons reference", async () => {
     expect(renderToStaticMarkup(await Page(params("11st")))).toContain('src="/brand-svg/11st/symbol.svg"');
     const stripe = renderToStaticMarkup(await Page(params("stripe")));
-    expect(stripe).not.toMatch(/simpleicons|class="sq-logo/);
+    expect(stripe).not.toMatch(/simpleicons/);
+    // The hero has no logo; the related cards below carry their own brands' logos.
+    expect(stripe.split('id="related-heading"')[0]).not.toMatch(/class="sq-logo/);
+  });
+
+  it("draws related references as the archive's cards with English domains and real links", async () => {
+    const html = renderToStaticMarkup(await Page(params("toss")));
+    const related = (html.split('id="related-heading"')[1] ?? "").split("</section>")[0];
+    const hrefs = [...related.matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+    expect(hrefs).toHaveLength(6);
+    for (const h of hrefs) expect(h).toMatch(/^\/design-systems\/[a-z0-9.-]+$/);
+    expect(related).toContain('class="sq-card-tag">Fintech<');
+    expect(related).toContain('class="sq-card-sum"');
   });
 });

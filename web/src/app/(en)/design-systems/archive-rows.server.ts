@@ -16,7 +16,6 @@
  */
 
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
-import { REFERENCE_QUALITY_BY_ID, type ReferenceQualityStatus } from "@/data/reference-quality.generated";
 import logoCollection from "@/data/brand-logos.json";
 import { CJK_RE } from "@/lib/landing-a/resolve";
 import { loadDetail } from "@/lib/references/detail-loader.server";
@@ -119,7 +118,7 @@ const HAN = /[㐀-鿿]/g;
 const LATIN = /[A-Za-z]/g;
 
 /** `lang` for a CJK name, from the brand's country; Latin names are English. */
-function nameLang(name: string, country: string): string {
+export function nameLang(name: string, country: string): string {
   return CJK_RE.test(name) ? (CC_LANG[country] ?? "en") : "en";
 }
 
@@ -180,6 +179,49 @@ export function summaryOf(id: string): string {
   return SUMMARIES.get(id) ?? "";
 }
 
+/* ─────────── palette ─────────── */
+
+const HEX6 = /^#[0-9a-f]{6}$/i;
+
+function hsl(hex: string): { h: number; s: number; l: number; c: number } {
+  const n = parseInt(hex.slice(1), 16);
+  const r = ((n >> 16) & 255) / 255, g = ((n >> 8) & 255) / 255, b = (n & 255) / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), c = max - min, l = (max + min) / 2;
+  let h = 0;
+  if (c) h = max === r ? ((g - b) / c) % 6 : max === g ? (b - r) / c + 2 : (r - g) / c + 4;
+  return { h: (h * 60 + 360) % 360, s: c ? c / (1 - Math.abs(2 * l - 1)) : 0, l, c };
+}
+
+/**
+ * The card swatches (owner, 2026-11-02: cards too plain): only the reference's
+ * own colour tokens, never a derived or invented value. The primary colour first,
+ * then the most chromatic tokens whose hue differs from those already picked,
+ * then the darkest and lightest neutrals if room is left. At most five.
+ */
+export function paletteOf(r: Pick<RefEntry, "primaryColor" | "tokens">): string[] {
+  const all = [r.primaryColor, ...Object.values(r.tokens?.colors ?? {})]
+    .filter((v): v is string => typeof v === "string" && HEX6.test(v))
+    .map((v) => v.toLowerCase())
+    .filter((v, i, list) => list.indexOf(v) === i);
+  const picked: string[] = [];
+  const near = (a: string, b: string) => {
+    const x = hsl(a), y = hsl(b);
+    const dh = Math.min(Math.abs(x.h - y.h), 360 - Math.abs(x.h - y.h));
+    return dh < 20 && Math.abs(x.l - y.l) < 0.15;
+  };
+  if (r.primaryColor && HEX6.test(r.primaryColor)) picked.push(r.primaryColor.toLowerCase());
+  for (const v of [...all].sort((a, b) => hsl(b).c - hsl(a).c)) {
+    if (picked.length >= 5) break;
+    if (hsl(v).c < 0.12 || picked.includes(v) || picked.some((p) => hsl(p).c >= 0.12 && near(p, v))) continue;
+    picked.push(v);
+  }
+  const neutrals = all.filter((v) => hsl(v).c < 0.12 && !picked.includes(v)).sort((a, b) => hsl(a).l - hsl(b).l);
+  for (const v of [neutrals[0], neutrals[neutrals.length - 1]]) {
+    if (picked.length < 5 && v && !picked.includes(v)) picked.push(v);
+  }
+  return picked;
+}
+
 /* ─────────── rows ─────────── */
 
 export type ArchiveLocale = "en" | "ko";
@@ -196,23 +238,18 @@ export interface ArchiveRow {
   summaryLang: string;
   /** Registry category slug; the label comes from copy/r11-archive.ts. */
   domain: string;
+  /** Registry country; drives the region filter, not shown on the card. */
   country: string;
-  countryLabel: string;
   region: ArchiveRegion;
-  tier: ReferenceQualityStatus;
-  verifiedAt: string | null;
+  /** When the reference was last checked against the live site (registry `verified`), for the update sort. */
+  updated: string;
   logo: ArchiveLogo | null;
-  /** copy + download + install counters; 0 = unknown or none, hidden. */
+  /** copy + download + install counters; 0 = unknown or none, hidden. The default sort. */
   installs: number;
-}
-
-/** Country name in the page language. The registry writes UK where ISO writes GB. */
-function countryLabel(code: string, locale: ArchiveLocale): string {
-  try {
-    return new Intl.DisplayNames([locale], { type: "region" }).of(code === "UK" ? "GB" : code) ?? code;
-  } catch {
-    return code;
-  }
+  /** GA4 page views of the item pages, last 30 days; 0 = unknown or none. Sort only, never shown. */
+  views: number;
+  /** Up to five of the reference's own colour tokens for the card swatches (see `paletteOf`). */
+  palette: string[];
 }
 
 /** The English page's brand name — the same function as the item page's title and h1. */
@@ -220,8 +257,12 @@ export function enName(r: RefEntry): string {
   return r.name || r.displayName || r.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
 }
 
-export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<string, number>): ArchiveRow {
-  const q = REFERENCE_QUALITY_BY_ID[r.id];
+export function archiveRow(
+  r: RefEntry,
+  locale: ArchiveLocale,
+  installs: Record<string, number>,
+  views: Record<string, number> = {},
+): ArchiveRow {
   const name = locale === "ko" ? koName(r.id) : enName(r);
   const summary = summaryOf(r.id);
   return {
@@ -234,11 +275,24 @@ export function archiveRow(r: RefEntry, locale: ArchiveLocale, installs: Record<
     summaryLang: textLang(summary, r.country),
     domain: r.category,
     country: r.country,
-    countryLabel: countryLabel(r.country, locale),
     region: archiveRegion(r.country),
-    tier: q?.status ?? "legacy_snapshot",
-    verifiedAt: q?.verifiedAt ?? null,
+    updated: r.verified ?? "",
     logo: logoFor(r.id),
     installs: installs[r.id] ?? 0,
+    views: views[r.id] ?? 0,
+    palette: paletteOf(r),
   };
+}
+
+/**
+ * The archive's default order (owner, 2026-11-02: "설치 수 기준으로 정렬"): installs
+ * first, the number each card shows; then 30-day page views; then the order the
+ * rows came in. Computed once on the server so the client, the SSR markup and the
+ * JSON-LD list agree. Without KV or GA4 data it is the incoming order.
+ */
+export function defaultOrder(rows: ArchiveRow[]): ArchiveRow[] {
+  return rows
+    .map((row, i) => ({ row, i }))
+    .sort((a, b) => b.row.installs - a.row.installs || b.row.views - a.row.views || a.i - b.i)
+    .map((x) => x.row);
 }

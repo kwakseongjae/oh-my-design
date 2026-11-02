@@ -26,6 +26,21 @@
  *            compared per control, breadth-first) · --up N (ancestor levels compared; default 3; a cfg control may carry "up")
  *            --out file.json [--quiet: JSON only to the file] · --summary (a readable verdict per state on stderr, also with --quiet)
  *            --hide-overlays · --no-focus · --no-mouse
+ *            --close "<css>[,<css>…]" (after the consent step, clicks the first visible match of each selector once: the close
+ *            button of a region, newsletter or promo dialog that traps focus. Never an Accept, Confirm or country choice.
+ *            Recorded in boot.closed; the scroll video page does not repeat it.)
+ *            --browser headless|worker (default headless; worker opens headed Chrome with its own UA and a fresh temporary
+ *            profile, never the owner's profile; locale, viewport, Accept-Language and launch args stay the same)
+ *            --shots dir (opt-in PNG crops: <key>-rest/hover/pressed/focus.png, 12px padding clamped to the viewport;
+ *            no scrolling for a crop; each read state gets shot or shotError, unmeasured states have no crop)
+ *            --visual dir (opt-in viewport.png + full.png, height capped at 12000px, then scroll.webm in a separate context;
+ *            120px every 60ms, up to 12000px; failures/budget skips in visual.errors never fail the probe)
+ *            Evidence paths are relative to --out's directory (otherwise cwd); unsafe key filename characters are percent-encoded.
+ *            Any of these three flags records boot.browser; without them the existing output is unchanged.
+ *            --census (with --survey: also records PROBE_BRIEF items 1–3 in result.census — every custom property on
+ *            :root (computed) and every one declared in a stylesheet, open shadow roots and adopted sheets included, with
+ *            its first selector; the top-15 rendered bg / text / border colours and the text colour inside <p>; the font
+ *            family on body / h1 / button, the loaded faces and the @font-face sources; cross-origin sheets it could not read)
  *            --retries 3 --retry-wait 60000 (block/403 policy) · --budget 420000 · --close-timeout 5000 · --help
  *   exit     0 ok · 1 error · 2 usage · 3 budget/signal, partial JSON · 4 blocked or unreachable after the retries (boot.block)
  *
@@ -111,7 +126,7 @@ import { chromium } from "playwright-core";
 // ───────────────────────────── arguments ─────────────────────────────
 const argv = process.argv.slice(2);
 const url = argv.find((a) => /^https?:\/\//.test(a));
-const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids"]);
+const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close"]);
 const PER_CONTROL = new Set(["nth", "tag", "landmark", "min-height", "exact", "key", "label", "href"]);
 const g = {};
 const cli = [];
@@ -134,6 +149,16 @@ for (let i = 0; i < argv.length; i++) {
   g[name] = val;
 }
 if (g.help) { const src = fs.readFileSync(new URL(import.meta.url), "utf8"); console.log(src.slice(src.indexOf("/**"), src.indexOf("*/") + 2)); process.exit(0); }
+for (const name of ["browser", "shots", "visual"]) {
+  if (Object.hasOwn(g, name) && (typeof g[name] !== "string" || !g[name].trim() || g[name].startsWith("--"))) {
+    console.error(`--${name} requires a value — see --help`); process.exit(2);
+  }
+}
+const BROWSER = g.browser ?? "headless";
+if (BROWSER !== "headless" && BROWSER !== "worker") { console.error('--browser must be "headless" or "worker"'); process.exit(2); }
+const SHOTS = g.shots ?? null;
+const VISUAL = g.visual ?? null;
+const EVIDENCE = g.browser !== undefined || SHOTS !== null || VISUAL !== null;
 let cfgControls = [];
 const cfgPath = g.cfg ?? g.config;
 if (cfgPath) {
@@ -165,9 +190,61 @@ const BUDGET = Number(g.budget ?? 420000);
 const OUT = g.out ?? null;
 const QUIET = !!g.quiet;
 const SUMMARY = !!g.summary;
-// Same context as probe-component-states.mjs: a plain desktop UA (headless Chrome announces itself otherwise), locale + Accept-Language.
+// Headless keeps the existing plain desktop UA. Worker uses the headed Chrome's actual UA.
 const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
-const CONTEXT = { viewport: { width: 1440, height: 1000 }, userAgent: REAL_UA, locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
+const CONTEXT = { viewport: { width: 1440, height: 1000 }, ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
+
+// --census (2026-10-29): PROBE_BRIEF items 1–3 in one evaluation, so a sandboxed worker gets them through the capture
+// MCP tool instead of writing its own browser script. Open shadow roots are walked (SBB's Lyne renders in them).
+function censusFn() {
+  const out = { computedVars: {}, declaredVars: {}, unreadableSheets: [], fontFaces: [], census: {}, fonts: {} };
+  const root = getComputedStyle(document.documentElement);
+  for (let i = 0; i < root.length; i++) { const n = root[i]; if (n.startsWith("--")) out.computedVars[n] = root.getPropertyValue(n).trim(); }
+  const seenFace = new Set();
+  const walk = (rules, ctx) => {
+    for (const r of rules) {
+      try {
+        if (r.constructor?.name === "CSSFontFaceRule" || r.type === 5) {
+          const fam = r.style.getPropertyValue("font-family").replace(/["']/g, "").trim(), src = r.style.getPropertyValue("src").slice(0, 300);
+          const k = fam + "|" + r.style.getPropertyValue("font-weight") + "|" + r.style.getPropertyValue("font-style");
+          if (!seenFace.has(k)) { seenFace.add(k); out.fontFaces.push({ family: fam, weight: r.style.getPropertyValue("font-weight"), style: r.style.getPropertyValue("font-style"), src }); }
+        } else if (r.style) {
+          for (let i = 0; i < r.style.length; i++) {
+            const n = r.style[i];
+            if (n.startsWith("--") && !(n in out.declaredVars)) out.declaredVars[n] = { value: r.style.getPropertyValue(n).trim(), selector: String(r.selectorText ?? ctx ?? "").slice(0, 100) };
+          }
+        }
+        if (r.cssRules?.length) walk(r.cssRules, r.conditionText ?? r.name ?? r.selectorText ?? ctx);
+      } catch {}
+    }
+  };
+  const sheetsOf = (scope) => [...(scope.styleSheets ?? []), ...(scope.adoptedStyleSheets ?? [])];
+  const scopes = [document];
+  const elements = [];
+  const visit = (node) => { for (const el of node.querySelectorAll("*")) { elements.push(el); if (el.shadowRoot) { scopes.push(el.shadowRoot); visit(el.shadowRoot); } } };
+  visit(document);
+  for (const scope of scopes) for (const sh of sheetsOf(scope)) {
+    let rules = null;
+    try { rules = sh.cssRules; } catch { out.unreadableSheets.push(sh.href ?? "(inline)"); continue; }
+    if (rules) walk(rules, "");
+  }
+  const bg = new Map(), fg = new Map(), bd = new Map(), ink = new Map();
+  const add = (m, k) => m.set(k, (m.get(k) ?? 0) + 1);
+  for (const el of elements) {
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    const cs = getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") continue;
+    if (cs.backgroundColor && cs.backgroundColor !== "rgba(0, 0, 0, 0)" && cs.backgroundColor !== "transparent") add(bg, cs.backgroundColor);
+    if ([...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) { add(fg, cs.color); if (el.closest("p") || el.tagName === "P") add(ink, cs.color); }
+    if (cs.borderTopStyle !== "none" && parseFloat(cs.borderTopWidth) > 0) add(bd, cs.borderTopColor);
+  }
+  const top = (m, n = 15) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([color, count]) => ({ color, count }));
+  out.census = { elements: elements.length, shadowRoots: scopes.length - 1, bg: top(bg), text: top(fg), border: top(bd), paragraphInk: top(ink, 3) };
+  const fam = (sel) => { const el = document.querySelector(sel); return el ? getComputedStyle(el).fontFamily : null; };
+  out.fonts = { body: fam("body"), h1: fam("h1"), button: fam("button"), loaded: [...new Set([...document.fonts].filter((f) => f.status === "loaded").map((f) => `${f.family.replace(/["']/g, "")} ${f.weight} ${f.style}`))] };
+  return out;
+}
 
 // ───────────────────────────── shared state + shutdown ─────────────────────────────
 const T0 = Date.now();
@@ -178,6 +255,7 @@ const result = {
   boot: { url, locale: LOCALE, viewport: "1440x1000", loads: 0, startedAt: new Date(T0).toISOString(), settleMinMs: SETTLE_MIN, settleCapMs: SETTLE_CAP, maxTabs: MAX_TABS, tabSettleMs: TAB_SETTLE, cycleAfter: CYCLE_AFTER, maxKids: MAX_KIDS, upDefault: g.up ? Number(g.up) : UP_DEFAULT },
   controls: {}, walk: [], notes: [],
 };
+if (EVIDENCE) result.boot.browser = BROWSER;
 let browser = null;
 let TABLE = null;
 let emitted = false;
@@ -609,7 +687,7 @@ function consentFn() {
   const walk = (r) => { for (const h of r.querySelectorAll("*")) if (h.shadowRoot) { roots.push(h.shadowRoot); walk(h.shadowRoot); } };
   walk(document);
   for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
-  const WORDS = /^(reject all|reject|decline all|decline|only necessary|necessary only|use necessary only|essential only|only essential|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|refuse|deny all|deny|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부|필수(만| 항목만| 쿠키만) (허용|동의)(하기)?)$/i;
+  const WORDS = /^(reject all|reject|decline all|decline|only necessary|necessary only|use necessary only|essential only|only essential|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rechazar|declinar|solo (las )?cookies necesarias\.?|s[oó]lo necesarias|hylkää kaikki|hylkää|vain välttämättömät( evästeet)?|(käytä )?vain välttämättömiä( evästeitä)?|rifiuta tutto|refuză toate|refuz toate|refuză|respinge tot|odmítnout vše|odmítnout|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|refuse|deny all|deny|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부|필수(만| 항목만| 쿠키만) (허용|동의)(하기)?)$/i;
   for (const root of roots) for (const b of root.querySelectorAll("button, [role=button], a")) {
     if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
   }
@@ -702,6 +780,149 @@ const stateDiff = (rest, s) => {
 // ───────────────────────────── main ─────────────────────────────
 let page = null;
 const C = [];   // resolved controls
+
+// Evidence is optional and must finish before the measurement watchdog. Leave time to emit the result.
+const evidenceRemaining = () => BUDGET - (Date.now() - T0) - 1000;
+const evidenceError = (e) => String(e?.message ?? e).split("\n")[0].slice(0, 240);
+const evidencePath = (file) => path.relative(OUT ? path.dirname(path.resolve(OUT)) : process.cwd(), file).split(path.sep).join("/");
+async function evidenceStep(label, run, cap = 5000, reserve = 0) {
+  const available = evidenceRemaining() - reserve;
+  const timeout = Math.floor(Math.min(cap, available));
+  if (timeout <= 0) throw new Error(`${label} skipped: insufficient --budget ${BUDGET}ms (${Math.max(0, Math.floor(evidenceRemaining()))}ms left for evidence; ${reserve}ms reserved)`);
+  let timer;
+  try {
+    return await Promise.race([
+      Promise.resolve().then(() => run(timeout)),
+      new Promise((_, reject) => { timer = setTimeout(() => reject(new Error(`${label} timed out after ${timeout}ms${available <= cap ? " (remaining --budget)" : ""}`)), timeout); }),
+    ]);
+  } finally { clearTimeout(timer); }
+}
+
+// CSS viewport coordinates, rounded outwards so fractional edges retain all the padded pixels.
+function paddedViewportClip(rect, viewport, padding = 12) {
+  if (!rect || !viewport || ![rect.x, rect.y, rect.width, rect.height, viewport.width, viewport.height, padding].every(Number.isFinite)) throw new Error("invalid control/viewport bounds");
+  if (rect.width <= 0 || rect.height <= 0 || viewport.width <= 0 || viewport.height <= 0 || padding < 0) throw new Error("empty control/viewport bounds");
+  if (rect.x + rect.width <= 0 || rect.y + rect.height <= 0 || rect.x >= viewport.width || rect.y >= viewport.height) throw new Error("control is outside the viewport; crop skipped without scrolling");
+  const x = Math.max(0, Math.floor(rect.x - padding)), y = Math.max(0, Math.floor(rect.y - padding));
+  const right = Math.min(viewport.width, Math.ceil(rect.x + rect.width + padding));
+  const bottom = Math.min(viewport.height, Math.ceil(rect.y + rect.height + padding));
+  return { x, y, width: right - x, height: bottom - y };
+}
+
+let shotsReady = false;
+async function stateShot(c, name, state) {
+  try {
+    const dir = path.resolve(SHOTS);
+    if (!shotsReady) { await evidenceStep("--shots directory", () => fs.promises.mkdir(dir, { recursive: true })); shotsReady = true; }
+    const selector = { hover: ":hover", pressed: ":active", focus: ":focus-visible" }[name] ?? null;
+    const bounds = await evidenceStep(`${name} crop bounds`, () => page.evaluate(([i, sel]) => {
+      const el = window.__omdKb.get(i);
+      if (!el) throw new Error("control vanished before its crop");
+      if (sel && !el.matches(sel)) throw new Error(`${sel} no longer matches; crop skipped`);
+      const r = el.getBoundingClientRect();
+      return { rect: { x: r.x, y: r.y, width: r.width, height: r.height }, viewport: { width: innerWidth, height: innerHeight } };
+    }, [c.i, selector]));
+    const clip = paddedViewportClip(bounds.rect, bounds.viewport);
+    const file = path.join(dir, `${encodeURIComponent(c.key)}-${name}.png`);
+    // Page clips never scroll a control into view or release the pointer/focus. Keep the real caret, too.
+    await evidenceStep(`${name} crop`, (timeout) => page.screenshot({ path: file, type: "png", clip, caret: "initial", timeout }));
+    if (selector) {
+      const matches = await evidenceStep(`${name} crop state check`, () => page.evaluate(([i, sel]) => window.__omdKb.get(i)?.matches(sel) ?? false, [c.i, selector]));
+      if (!matches) throw new Error(`${selector} stopped matching during the crop`);
+    }
+    state.shot = evidencePath(file);
+  } catch (e) { state.shotError = evidenceError(e); }
+}
+
+// Match Playwright's full-page dimensions; these are separate from all measured snapshots.
+function visualPageSize() {
+  const nodes = [document.body, document.documentElement].filter(Boolean);
+  return {
+    width: Math.max(innerWidth, ...nodes.flatMap((n) => [n.scrollWidth, n.offsetWidth, n.clientWidth])),
+    height: Math.max(innerHeight, ...nodes.flatMap((n) => [n.scrollHeight, n.offsetHeight, n.clientHeight])),
+  };
+}
+
+async function scrollVideo(dir, visual) {
+  const finishReserve = CLOSE_TIMEOUT + 1000;
+  const scrollReserve = Math.ceil(12000 / 120) * 60 + 500 + finishReserve;
+  const consentReserve = 1500 + Math.max(0, Math.min(WAIT, 4000)) + scrollReserve;
+  const loadReserve = Math.max(0, WAIT) + consentReserve;
+  if (evidenceRemaining() < loadReserve + 1000) {
+    visual.errors.push(`scroll video skipped: insufficient --budget ${BUDGET}ms (${Math.max(0, Math.floor(evidenceRemaining()))}ms left; at least ${loadReserve + 1000}ms needed for load wait, consent, scroll and close)`);
+    return;
+  }
+  let context = null, video = null, scroll = null;
+  try {
+    context = await evidenceStep("scroll context", () => browser.newContext({ ...CONTEXT, recordVideo: { dir, size: { width: 1440, height: 900 } } }), 5000, loadReserve);
+    const pg = await evidenceStep("scroll page", () => context.newPage(), 5000, loadReserve);
+    context.on("page", (p) => { if (p !== pg) p.close().catch(() => {}); });
+    video = pg.video();
+    if (!video) throw new Error("scroll video recorder unavailable");
+    await evidenceStep("scroll load", (timeout) => pg.goto(url, { waitUntil: "load", timeout }), 45000, loadReserve);
+    await evidenceStep("scroll load wait", () => sleep(WAIT), Math.max(0, WAIT) + 1000, consentReserve);
+    const consent = await evidenceStep("scroll consent", () => pg.evaluate(consentFn), 5000, consentReserve);
+    if (consent) {
+      await evidenceStep("scroll consent settle", () => sleep(1500), 2500, Math.max(0, Math.min(WAIT, 4000)) + scrollReserve);
+      await evidenceStep("scroll consent load", (timeout) => pg.waitForLoadState("load", { timeout }), 30000, Math.max(0, Math.min(WAIT, 4000)) + scrollReserve);
+      await evidenceStep("scroll consent wait", () => sleep(Math.min(WAIT, 4000)), Math.max(0, Math.min(WAIT, 4000)) + 1000, scrollReserve);
+    }
+    scroll = await evidenceStep("scroll recording", () => pg.evaluate(async () => {
+      const height = () => Math.max(innerHeight, ...[document.body, document.documentElement].filter(Boolean).flatMap((n) => [n.scrollHeight, n.offsetHeight, n.clientHeight]));
+      scrollTo({ left: 0, top: 0, behavior: "instant" });
+      let y = 0;
+      while (true) {
+        const bottom = Math.max(0, Math.min(height(), 12000) - innerHeight);
+        if (y >= bottom) break;
+        y = Math.min(y + 120, bottom);
+        scrollTo({ left: 0, top: y, behavior: "instant" });
+        await new Promise((resolve) => setTimeout(resolve, 60));
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      return { scrollY, pageHeight: height(), capped: height() > 12000 };
+    }), Math.ceil(12000 / 120) * 60 + 1500, finishReserve);
+  } catch (e) { visual.errors.push(evidenceError(e)); }
+  finally {
+    if (context) {
+      try {
+        // Closing finalizes the recording. A failed/unfinished recording is still useful, but explicitly marked.
+        await evidenceStep("scroll close", () => context.close(), CLOSE_TIMEOUT, 1000);
+        if (video) {
+          const source = await evidenceStep("scroll video path", () => video.path());
+          const file = path.join(dir, "scroll.webm");
+          await evidenceStep("scroll video rename", () => fs.promises.rename(source, file));
+          visual.scroll = { path: evidencePath(file), width: 1440, height: 900, completed: !!scroll, ...(scroll ?? {}) };
+        }
+      } catch (e) { visual.errors.push(evidenceError(e)); }
+    }
+  }
+}
+
+async function captureVisual() {
+  const visual = (result.visual = { errors: [] });
+  try {
+    const dir = path.resolve(VISUAL);
+    await evidenceStep("--visual directory", () => fs.promises.mkdir(dir, { recursive: true }));
+    try {
+      const size = await evidenceStep("viewport setup", () => page.evaluate(() => {
+        scrollTo({ left: 0, top: 0, behavior: "instant" });
+        return { width: innerWidth, height: innerHeight };
+      }));
+      const file = path.join(dir, "viewport.png");
+      await evidenceStep("viewport screenshot", (timeout) => page.screenshot({ path: file, type: "png", caret: "initial", timeout }));
+      visual.viewport = { path: evidencePath(file), ...size };
+    } catch (e) { visual.errors.push(evidenceError(e)); }
+    try {
+      const size = await evidenceStep("full-page dimensions", () => page.evaluate(visualPageSize));
+      const clip = { x: 0, y: 0, width: size.width, height: Math.min(size.height, 12000) };
+      const file = path.join(dir, "full.png");
+      // Always constrain the clip: lazy content can grow between the size read and the screenshot.
+      await evidenceStep("full-page screenshot", (timeout) => page.screenshot({ path: file, type: "png", fullPage: true, clip, caret: "initial", timeout }));
+      visual.full = { path: evidencePath(file), width: clip.width, height: clip.height, pageHeight: size.height, capped: size.height > 12000 };
+    } catch (e) { visual.errors.push(evidenceError(e)); }
+    await scrollVideo(dir, visual);
+  } catch (e) { visual.errors.push(evidenceError(e)); }
+}
 
 async function snapOf(c) {
   const read = () => page.evaluate(([i, u]) => window.__omdKb.snap(i, u), [c.i, c.up]).catch(() => null);
@@ -846,7 +1067,11 @@ async function keyboardPhase() {
         const live = { disabledAtLanding: dk, ...(dk0.length ? { disabledAtPageTop: dk0 } : {}), ...(dk0.join() !== dk.join() ? { liveRecheck: `page top: ${dk0.join(", ") || "not disabled"}; at this Tab landing (live re-check): ${dk.join(", ") || "not disabled"}` } : {}) };
         if (!snap) rec(hitC).focus = { measured: false, unmeasured: `reached at Tab #${presses} but the element vanished before it could be read`, ...live };
         else if (!snap.is.focusVisible) rec(hitC).focus = { measured: false, unmeasured: `reached at Tab #${presses} but :focus-visible did not match`, is: snap.is, ...live };
-        else { rec(hitC).focus = { measured: true, tabPress: presses, is: snap.is, snap, settle: st, ...live, ...(dk.length ? { disabled: dk, note: `the control is ${dk.join(", ")} (live, at the landing) but keyboard focus still reaches it, so focus is measured` } : {}) }; prevC = hitC; }
+        else {
+          rec(hitC).focus = { measured: true, tabPress: presses, is: snap.is, snap, settle: st, ...live, ...(dk.length ? { disabled: dk, note: `the control is ${dk.join(", ")} (live, at the landing) but keyboard focus still reaches it, so focus is measured` } : {}) };
+          prevC = hitC;
+          if (SHOTS) await stateShot(hitC, "focus", rec(hitC).focus);
+        }
       }
     }
     repeatRun = info.repeat && !info.isFrame ? repeatRun + 1 : 0;   // the same frame again is only Tab moving inside it
@@ -925,12 +1150,16 @@ async function mousePhase() {
       const hov = await readStable(c);
       if (!hov || !hov.is.hover) { fail(`:hover did not match after moving the pointer onto it (elementFromPoint = ${hit.hitEl})`); continue; }
       R.hover = { measured: true, hitEl: hit.hitEl, snap: hov, settle: stH, ...stateDiff(rest, hov), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
+      if (SHOTS) await stateShot(c, "hover", R.hover);
       await page.mouse.down();
       isDown = true;
       const stP = await settleFor([c]);
       const prs = await readStable(c);
       if (!prs || !prs.is.active) R.pressed = { measured: false, unmeasured: ":active did not match while the mouse button was down", is: prs?.is };
-      else R.pressed = { measured: true, hitEl: hit.hitEl, snap: prs, settle: stP, ...stateDiff(rest, prs), changedVsHover: diffSnap(hov, prs).filter((x) => !(prs.unstable ?? []).includes(x.prop)), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
+      else {
+        R.pressed = { measured: true, hitEl: hit.hitEl, snap: prs, settle: stP, ...stateDiff(rest, prs), changedVsHover: diffSnap(hov, prs).filter((x) => !(prs.unstable ?? []).includes(x.prop)), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
+        if (SHOTS) await stateShot(c, "pressed", R.pressed);
+      }
     } catch (e) {
       fail(`error: ${String(e.message || e).split("\n")[0].slice(0, 120)}`);
     } finally {
@@ -977,6 +1206,7 @@ function summaryText() {
   const b = result.boot;
   const L = [`# ${result.tool} ${url} -> ${b.finalUrl ?? "?"} status=${b.status ?? "?"} tabs=${result.tabsPressed ?? "-"} walkStop=${result.walkStop ?? "-"} reReads=${result.tabReReads ?? "-"} elapsed=${b.elapsedMs}ms${b.watchdog ? ` WATCHDOG=${b.watchdog}` : ""}${b.block ? " BLOCKED" : ""}`];
   if (b.consent?.rejectedVia) L.push(`# consent rejected via ${b.consent.rejectedVia}`);
+  for (const c of b.closed ?? []) L.push(`# closed ${c.selector}: ${c.clicked ?? "no visible match"}`);
   for (const [k, R] of Object.entries(result.controls)) {
     if (!R.found) { L.push(`${k}: NOT FOUND — ${R.hover?.unmeasured ?? ""}`); continue; }
     const id = R.identity ?? {};
@@ -994,13 +1224,28 @@ function summaryText() {
 }
 
 async function main() {
-  browser = await chromium.launch({ headless: true, ...(process.env.OMD_CHROME_PATH ? { executablePath: process.env.OMD_CHROME_PATH } : { channel: "chrome" }), args: ["--disable-blink-features=AutomationControlled"] });
+  // chromium.launch owns a fresh temporary profile in both modes; never supply a userDataDir.
+  browser = await chromium.launch({ headless: BROWSER === "headless", ...(process.env.OMD_CHROME_PATH ? { executablePath: process.env.OMD_CHROME_PATH } : { channel: "chrome" }), args: ["--disable-blink-features=AutomationControlled"] });
   page = await loadWithRetries();
   const consent = await page.evaluate(consentFn).catch(() => null);
   if (consent) { await sleep(1500); await page.waitForLoadState("load").catch(() => {}); await sleep(Math.min(WAIT, 4000)); }
+  if (g.close) {
+    result.boot.closed = [];
+    for (const sel of String(g.close).split(",").map((x) => x.trim()).filter(Boolean)) {
+      const hit = await page.evaluate((q) => {
+        const b = [...document.querySelectorAll(q)].find((e) => e.getClientRects().length);
+        if (!b) return null;
+        b.click();
+        return (b.getAttribute("aria-label") || b.textContent || "").trim().slice(0, 60) || b.tagName.toLowerCase();
+      }, sel).catch((e) => `error: ${String(e?.message ?? e).split("\n")[0].slice(0, 100)}`);
+      result.boot.closed.push({ selector: sel, clicked: hit });
+      if (hit && !hit.startsWith("error:")) await sleep(1200);
+    }
+  }
   result.boot.consent = { rejectedVia: consent, fixedElementsAfter: await page.evaluate(() => window.__omdKb?.fixedInventory?.() ?? []).catch(() => []) };
 
   if (g.survey) {
+    if (g.census) result.census = await page.evaluate(censusFn).catch((e) => ({ error: String(e?.message ?? e).split("\n")[0].slice(0, 200) }));
     const s = await page.evaluate(([lim, mh]) => window.__omdKb.survey(lim, mh), [Number(g["survey-limit"] ?? 400), 8]);
     result.rows = s.rows;
     result.fixed = s.fixed;
@@ -1009,6 +1254,7 @@ async function main() {
     const like = s.rows.filter((r) => r.buttonLike).slice(0, 110);
     const plain = s.rows.filter((r) => !r.buttonLike && r.y < 3200).slice(0, 60);
     TABLE = [`# survey ${url} -> ${result.boot.finalUrl} status=${result.boot.status} lang=${result.boot.htmlLang} title=${JSON.stringify(result.boot.title)} redirects=${JSON.stringify(result.boot.redirectChain)} rows=${s.rows.length}`, `# fixed/sticky: ${JSON.stringify(s.fixed)}`, `# button-like (${like.length}):`, ...like.map((r) => line(r, idx.get(r))), `# plain links/other, first ${plain.length} above y=3200:`, ...plain.map((r) => line(r, idx.get(r)))].join("\n") + "\n";
+    if (VISUAL) await captureVisual();
     await emitAndExit(0);
     return;
   }
@@ -1030,9 +1276,14 @@ async function main() {
     R.identity = c.identity;
     C.push(c);
   }
-  for (const c of C) result.controls[c.key].rest = await readStable(c);
+  for (const c of C) {
+    const R = result.controls[c.key];
+    R.rest = await readStable(c);
+    if (SHOTS && R.rest) await stateShot(c, "rest", R.rest);
+  }
   if (!g["no-focus"]) await keyboardPhase();
   if (!g["no-mouse"]) await mousePhase();
+  if (VISUAL) await captureVisual();
   await emitAndExit(0);
 }
 main().catch(async (e) => { result.error = String(e?.stack ?? e).split("\n").slice(0, 4).join(" | "); await emitAndExit(1); });

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-01T00:00:00Z",
+ "generated_at": "2026-10-29T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 521,
+ "count": 530,
  "items": [
   {
    "id": "104",
@@ -920,6 +920,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "bbva",
+   "primary_color_hex": "#001391",
+   "category": "fintech",
+   "visual_theme": "BBVA's Spanish retail bank homepage after the 2025 '¿Avanzamos?' rebrand: deep blue #070e46 text on white, #001391 links and a #0c6dff 'Hazte cliente' action, 56px filled actions with 8px corners, Benton Sans BBVA for the interface and a Tiempos Headline serif for promotional lines. Filled actions slide an oversized two-tone background image on hover (the darker #2165ca half sweeps in); links and icons darken to #070e46; every focus is a double ring, 2px #85c8ff inside 4px #070e46.",
+   "voice_fingerprint": {
+    "register": "warm retail banking, simple language with substance",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-banking"
+   },
+   "tone_keywords": [
+    "trustworthy",
+    "deep-blue",
+    "optimistic",
+    "clear",
+    "accessible"
+   ],
+   "antipatterns": [
+    "a flat background-colour hover on filled actions; the two-tone image slides instead",
+    "a single focus outline; focus is a 2px light-blue ring inside a 4px navy ring",
+    "pill buttons; actions have 8px corners",
+    "treating Tiempos BBVA as a verified CSS family; the loaded serif is Tiempos Headline",
+    "pure black text; ink is #070e46"
+   ],
+   "has_personas": false,
+   "category_raw": "retail bank"
   },
   {
    "id": "beusable",
@@ -3000,6 +3028,34 @@
    "category_raw": "education"
   },
   {
+   "id": "emag",
+   "primary_color_hex": "#0082e6",
+   "category": "ecommerce",
+   "visual_theme": "Romania's eMAG storefront: a red-magenta-purple-blue gradient navigation strip over white product cards on #f4f4f4, #222222 ink in Open Sans, and eMAG blue #0082e6 on the search button and the blue-gradient cart buttons. A purple #7040a4 'Vinde pe eMAG' pill clears to a white outline on hover; pressed buttons share a soft inset shadow; nav links gain a 1px white border on hover.",
+   "voice_fingerprint": {
+    "register": "mass-market Romanian e-commerce, short task labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ro-retail"
+   },
+   "tone_keywords": [
+    "retail",
+    "gradient",
+    "blue",
+    "dense",
+    "practical"
+   ],
+   "antipatterns": [
+    "a single flat brand colour; the strip runs red to blue",
+    "rounded search inputs; the inner input is square inside a rounded wrapper",
+    "colour-fill hovers on the nav strip; hover adds a white border",
+    "drop shadows on pressed buttons; press is an inset",
+    "inventing a focus ring; focus is the browser's own"
+   ],
+   "has_personas": false,
+   "category_raw": "marketplace"
+  },
+  {
    "id": "epidemicsound",
    "primary_color_hex": "#ff82c2",
    "category": "consumer-tech",
@@ -3280,6 +3336,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "finnair",
+   "primary_color_hex": "#0c0243",
+   "category": "consumer-tech",
+   "visual_theme": "Finnair's Finnish booking homepage: deep-blue #0c0243 ink on white and warm off-white #f6f5f3, FinnairText for the interface and FinnairHeadlinePro for headlines, 40px outlined pill actions with a 2px deep-blue border, 72px route selectors with asymmetric 8px corners, and offer cards in 8px sections with a faint three-layer shadow. Hover fills pills and the navigation item with pale blue #f0f4fd, thickens the route selector's grey outline to 2px and deepens the card shadow; keyboard focus is a 2px solid #0c0243 outline offset 3px.",
+   "voice_fingerprint": {
+    "register": "Finnish flag carrier, direct travel-task labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fi-travel"
+   },
+   "tone_keywords": [
+    "Nordic",
+    "calm",
+    "deep-blue",
+    "rounded",
+    "practical"
+   ],
+   "antipatterns": [
+    "filled primary pills; actions are white with a 2px deep-blue border",
+    "a darker fill on press; pills keep the #f0f4fd hover fill",
+    "black text; ink is the deep blue #0c0243",
+    "symmetric corners on the route selector; it uses 0 8px 8px 0",
+    "a substitute face for the declared-only FinnairSans"
+   ],
+   "has_personas": false,
+   "category_raw": "airline"
   },
   {
    "id": "firstory",
@@ -5429,6 +5513,34 @@
    "category_raw": "productivity"
   },
   {
+   "id": "kiwi",
+   "primary_color_hex": "#008f7b",
+   "category": "consumer-tech",
+   "visual_theme": "Kiwi.com's flight search on the Orbit system: white and #f5f7f9 grounds, #252a31 ink in Circular, a white search panel, and teal product green #008f7b on 8px-radius 44px actions (hover #007565, pressed #006153 with a soft inset shadow). A darker #007061 runs the Club CTA; destination cards reveal a white information panel on hover. Keyboard focus is the browser ring.",
+   "voice_fingerprint": {
+    "register": "budget flight travel, confident and playful",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-flight-travel"
+   },
+   "tone_keywords": [
+    "teal",
+    "practical",
+    "playful",
+    "guaranteed",
+    "travel"
+   ],
+   "antipatterns": [
+    "pure black ink; text is #252a31",
+    "square buttons; actions round at 8px (12px on the large Club CTA)",
+    "a drop shadow on pressed buttons; press adds a soft inset",
+    "inventing a brand focus ring; focus is the browser's own",
+    "Orbit status colours used as brand accents; the brand is product green"
+   ],
+   "has_personas": false,
+   "category_raw": "flight-travel"
+  },
+  {
    "id": "kkbox",
    "primary_color_hex": "#00B6E1",
    "category": "Entertainment",
@@ -6279,6 +6391,34 @@
    ],
    "has_personas": false,
    "category_raw": "freelance-marketplace"
+  },
+  {
+   "id": "mango",
+   "primary_color_hex": "#131313",
+   "category": "ecommerce",
+   "visual_theme": "Mango's Spanish fashion shop: a full-width fashion photograph under a 56px sticky header with a centred wordmark and compact uppercase 12px/600 collection links in #131313 on white, a large serif campaign line, and square, boxless controls. The photograph carries the colour; the interface stays in semantic neutrals (#434343 hover, #2a2a2a active). Keyboard focus shifts text to #434343 inside a 2px solid #121212 outline; over the photo the hero link adds a white border and halo, and on hover it turns #f4f4f4 with an underline.",
+   "voice_fingerprint": {
+    "register": "fashion retail, terse uppercase commerce labels with an expressive campaign line",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-fashion"
+   },
+   "tone_keywords": [
+    "fashion",
+    "minimal",
+    "monochrome",
+    "photographic",
+    "Mediterranean"
+   ],
+   "antipatterns": [
+    "a brand accent colour in the interface; the photograph carries colour",
+    "rounded or filled buttons; controls are square and boxless",
+    "a browser focus ring; focus is a 2px solid #121212 outline with the text shifted to #434343",
+    "importing store-interior or garment colours into UI tokens",
+    "a substitute face for the unresolved HeadingsFontES alias"
+   ],
+   "has_personas": false,
+   "category_raw": "fashion retail"
   },
   {
    "id": "mastercard",
@@ -7715,6 +7855,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "odoo",
+   "primary_color_hex": "#714b67",
+   "category": "saas",
+   "visual_theme": "Odoo's business-app suite on its marketing homepage: white and #f3f4f6 grey fields, #111827 ink in Inter, big Caveat handwriting with drawn highlights, and Odoo purple #714b67 on compact 6.4px-radius buttons under a faint 145° white gradient (hover #604058, pressed #5a3c52, focus a 4px purple-tinted ring). A six-column grid of colourful app icons lifts each tile 4px on hover.",
+   "voice_fingerprint": {
+    "register": "direct business software, simple and affordable",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-business-software"
+   },
+   "tone_keywords": [
+    "integrated",
+    "informal",
+    "purple",
+    "simple",
+    "affordable"
+   ],
+   "antipatterns": [
+    "teal #017e84 as the button colour; the CTAs are purple #714b67",
+    "handwriting on controls; Caveat is display-only, controls are Inter",
+    "heavy drop shadows on buttons; they use a faint white gradient",
+    "pure black ink; text is #111827",
+    "recreating or recolouring the logo; Odoo forbids it"
+   ],
+   "has_personas": false,
+   "category_raw": "business-software"
   },
   {
    "id": "ohouse",
@@ -9663,6 +9831,34 @@
    "category_raw": "mobile-payments"
   },
   {
+   "id": "sbb",
+   "primary_color_hex": "#eb0000",
+   "category": "consumer-tech",
+   "visual_theme": "Swiss Federal Railways' booking portal in a reduced palette: white ground, #212121 titles and #686868 body ink in the SBB face, pale #f6f6f6 offer cards with an 8px radius, and the SBB red #eb0000 kept for the primary pill (hover #c60018, pressed #a20013). Actions are 48px pills whose painted ::before layer grows on hover; every control focuses with a 1px black outline offset 3px. Built on Lyne, SBB's public web-component design system.",
+   "voice_fingerprint": {
+    "register": "Swiss national railway, concise and action-oriented",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-ch-rail-travel"
+   },
+   "tone_keywords": [
+    "reduced",
+    "red",
+    "public-service",
+    "clear",
+    "swiss"
+   ],
+   "antipatterns": [
+    "red on secondary controls; red marks important navigation and the primary action",
+    "pure black body text; paragraphs are #686868 and titles #212121",
+    "square buttons; actions are pills",
+    "browser-default focus rings; focus is a 1px black outline offset 3px",
+    "long button labels; SBB asks for 1–4 words in sentence case"
+   ],
+   "has_personas": false,
+   "category_raw": "rail-travel"
+  },
+  {
    "id": "scatterlab",
    "primary_color_hex": "#212529",
    "category": "ai",
@@ -9950,6 +10146,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "sixt",
+   "primary_color_hex": "#ff5000",
+   "category": "automotive",
+   "visual_theme": "SIXT's German rental homepage: a close-up vehicle photo behind a white horizontal booking panel, an orange #ff5000 'Autos anzeigen' CTA, then a full-width orange headline band of condensed uppercase HelveticaNow black in near-black #1a1a1a, photographic offer cards and a dark footer. The CTA keeps its orange and darkens through a 4% then 8% ::after layer; nav links slide an underline in; keyboard focus is a 3px orange box-shadow ring.",
+   "voice_fingerprint": {
+    "register": "premium car rental, direct booking labels with playful campaign headlines",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-retail"
+   },
+   "tone_keywords": [
+    "premium",
+    "orange",
+    "bold",
+    "condensed",
+    "photographic"
+   ],
+   "antipatterns": [
+    "changing the CTA's background on hover; it lays a 4% dark layer over the orange",
+    "the browser's outline for focus; focus is a 3px orange box-shadow",
+    "framing the inner location input; the wrapper carries the border and the inset focus ring",
+    "a substitute grotesque for HelveticaNow; none is chosen",
+    "one light palette; the tokens have prime, option (dark) and accent (orange) contexts"
+   ],
+   "has_personas": false,
+   "category_raw": "car rental"
   },
   {
    "id": "sktelecom",
@@ -12388,6 +12612,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "withings",
+   "primary_color_hex": "#6784fe",
+   "category": "healthcare",
+   "visual_theme": "Withings' French health-device storefront: Aeonik in regular and medium weights, #0f0f0f ink on white and sand #f2eeea surfaces, square navigation and a violet-blue #6784fe primary action with 16px corners and a same-colour 1px inset edge that deepens to #5570e0 on hover. Text links carry a 1px violet underline that disappears on hover while the caret slides 4px; keyboard focus is a 1px solid outline offset 2–3px.",
+   "voice_fingerprint": {
+    "register": "calm consumer-health retail, concrete next-step labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-retail"
+   },
+   "tone_keywords": [
+    "calm",
+    "health",
+    "violet-blue",
+    "rounded",
+    "quiet"
+   ],
+   "antipatterns": [
+    "a browser focus ring; focus is a 1px solid outline with an offset",
+    "rounding the navigation; only the primary action and the email field have 16px corners",
+    "a drop shadow on the primary action; its edge is a 1px inset of its own colour",
+    "a substitute grotesque for Aeonik; none is chosen",
+    "underlining text links on hover; the underline is at rest and disappears on hover"
+   ],
+   "has_personas": false,
+   "category_raw": "connected health devices"
   },
   {
    "id": "wolt",

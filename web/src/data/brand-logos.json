@@ -2,9 +2,9 @@
   "schema_version": 3,
   "generated_at": "2026-10-16",
   "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
-  "count": 87,
+  "count": 89,
   "counts": {
-    "available": 87,
+    "available": 89,
     "source_only": 0
   },
   "records": [
@@ -2058,11 +2058,47 @@
         }
       },
       "default_variant": "symbol"
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/samsung/wordmark.svg",
+          "source": "Official site (samsung.com)",
+          "source_url": "https://www.samsung.com/sec/",
+          "license": "brand-asset-official",
+          "license_url": "https://www.samsung.com/sec/",
+          "usage_note": "공식 사이트 GNB 헤더 inline SVG 추출(fill currentColor → #000000) · 식별용 · 상표 삼성전자"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "country": "US",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/apple/symbol.svg",
+          "source": "Official site (apple.com)",
+          "source_url": "https://www.apple.com/",
+          "license": "brand-asset-official",
+          "license_url": "https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html",
+          "usage_note": "공식 사이트 globalnav 헤더 inline SVG 추출(여백 잘라 viewBox 조정, 원래 fill 기본값 검정) · 식별용 · 애플 상표 가이드라인은 서면 허가 없는 제3자 로고 사용을 금지 — 오너 결정(2026-11-02)으로 표시"
+        }
+      },
+      "default_variant": "symbol"
     }
   ],
   "source_breakdown": {
     "unit": "variants",
-    "official": 90,
+    "official": 92,
     "Wikimedia Commons": 17
   }
 }

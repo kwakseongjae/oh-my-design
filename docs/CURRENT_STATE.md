@@ -1,7 +1,218 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-10-23 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 15시 50분** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-02 15시 50분 · 아카이브 개편 **main 머지 `f23f6f79` · 운영 확인 완료** · 재개 대기
+
+- **오너(15:03).** 상세 페이지 "비슷한 디자인 시스템" 카드 UI만 더 개선, 나머지는 괜찮으니 작업 후 바로 머지, 다음 작업 재개 준비, 남은 작업과 추천 순서 브리핑.
+- **관련 카드 `16e276de`.** 아카이브 카드(`archive.css .sq-card-*`)를 그대로 씀: 공식 로고(없으면 없음)·분야 태그(페이지 언어, /ko는 한국어 — 전엔 "Consumer Tech" 영어)·DESIGN.md 첫 문장·자체 색 토큰 견본(`paletteOf`). 데스크톱 3열, ≤767px 2열, ≤600px 1열. 공용 서버 컴포넌트 `web/src/app/(en)/design-systems/related-references.tsx`(구 `related-mark.tsx` 삭제), /ko는 계속 한국어 페이지끼리 연결. web 테스트 1202 통과(+2), 프리뷰 `1lqhcv6rq` en·ko toss 카드 6·태그·요약·견본 확인. 상세 라우트는 순수 SSG라 `summaryOf`가 빌드 때 읽힘.
+- **머지·배포.** main에서 `git merge --no-ff feat/archive-r12` → `f23f6f79` 푸시 → 운영 `8gek413pz` Ready. oh-my-design.kr 확인: `/design-systems`·`/ko/design-systems` 200, 카드 530, 첫 줄 toss·apple·karrot·krds, 검색창 있음, 더보기 버튼 0, 애플·삼성 로고; `/design-systems/toss` 관련 카드 6(Fintech), `/ko/design-systems/toss` 6(핀테크), 요약 6·견본. 남은 "verified/partial" 글자는 사이트 공통 JSON-LD 설명뿐(화면 아님, 범위 밖).
+- **정리.** 워크트리 `.claude/worktrees/archive-r12` 제거(심볼릭 링크 4개 먼저 해제, main의 `web/node_modules`·비밀값 그대로). 원격 브랜치 `feat/archive-r12`는 남김. main 작업 트리 `.gitignore`의 `.vercel` 한 줄(Vercel CLI가 추가)은 미커밋 그대로. 요청 원장: 11/1~11/2 메시지 7건 → 요청 20건 분류, 전부 닫음.
+- **알려진 작은 것.** 아카이브 HTML 1.12MB(견본 인라인 스타일), 동의 배너가 열려 있으면 맨 위로 버튼을 가림.
+- **재개 큐(추천 순서).**
+  1. **오너 결정 — MCP v2 D1~D6**(`docs/MCP_V2_SPEC_2026-10-29.md` §10 권장안). 승인되면 Phase 0(410 카운터) → Phase 1(Sol 구현, 워크트리). 결정 하나로 워커 작업이 가장 많이 풀림.
+  2. **오너 GO — 2.0.6 출시 + strict waiver**(10/25부터 대기, 가장 오래됨). 출시 때 capture 번들 재빌드(스페인어·핀란드어 거부어)·런타임 미러 재동기화.
+  3. **오너 GO — /hangul 프리뷰**(외래어 4쌍·KOGL 어휘·소개 문구, 10/25부터).
+  4. **오너 OK 필요 — Mixpanel 제거**(작은 변경: SDK·`/privacy`·동의 배너 문구). 조회 API가 유료라 소비처가 없음. 배너 문구가 바뀌어 오너 확인 필요.
+  5. **자율 — 다음 Sol 웨이브 센서스 → 저작**(목표 700, 현재 530 / 308 verified, EU 5 소진). 워커 백그라운드.
+  6. **자율 — 후속 과제**(Sol 워커): 조립기 레거시 `§N` 참조, 변환기 숨은 라벨 아이콘 버튼 Known Gaps, spacing 생략 문구, 소비처 없는 `build-embeddings`.
+  7. **자율 — 루트 전체 테스트 저부하 재실행**·`.omd/preferences.md` pending 3건(아카이브 선호) omd:learn 반영.
+
+## ▶ 2026-11-02 2시 · 아카이브 개편 4차(→ 15시 머지됨) — **`ddf1f1ec` 프리뷰 확인 완료 → 오너 GO 대기** (워크트리 `.claude/worktrees/archive-r12`, 브랜치 `feat/archive-r12` `6d375613`)
+
+- **오너 요청(22:27).** ① 목록 페이지의 무한 스크롤·페이지 나눔이 대충(누를 때마다 24개) ② 추천순 = 조회수순을 기본 정렬로 ③ 검증/미검증 표시는 사용자에게 필요 없으니 빼고 아카이브 페이지 구성 ④ 재개 큐와 합쳐 계획 구체화, 멘트 받고 진행.
+- **현황 조사.**
+  - 대상: `/design-systems`·`/ko/design-systems`(공용 `app/(en)/design-systems/catalog-view.tsx`).
+  - 페이지 나눔: `PAGE = 24`, "더 보기" 버튼, 나머지 카드는 `hidden`으로 HTML에 있음(크롤러용). 상세에서 뒤로 오면 24개로 돌아가 위치를 잃음.
+  - 정렬: UI 없음. 서버 순서 = 공식 시스템 → 브랜드 가이드 → 나머지 이름순.
+  - **조회수 데이터 없음.** KV에는 `select`·`generate`·`copy`·`download`·`install` 카운터만 있고(`/api/track`), 페이지 조회는 세지 않음. GA4·Mixpanel API는 9/17부터 죽음.
+  - 검증 표시: 등급 메뉴(Verified/Partial/Legacy), 카드의 체크 배지, 검증 등급 선택 시 수식어, `/ko` 소개문 "검증된 해외 기업". 상세 페이지 등급 배지는 10/20에 이미 제거됨.
+- **오너 결정(22:4x).** 무한 스크롤, 한 번에 40개. 조회수 순은 GA4로 해결(Mixpanel은 필요 없으면 GA4라도). 검증 등급은 내부용(화면에서 제거). 진행.
+- **GA4는 이미 살아 있음.** 10/16에 복구 1~4단계(`omd-analytics-2026` 프로젝트, `omd-analytics-reader` 서비스 계정, 새 키)와 속성 권한이 끝나 있었고, 메모리만 옛 상태였다. `pull-ga4.mjs --days 7` 성공(`benchmark_activation` 보고서 하나만 없는 맞춤 측정기준으로 400). Mixpanel은 무료 플랜이 조회 API를 막음 — 유일한 소비처였던 빌더 퍼널이 10/13에 사라져서 SDK 제거를 별도 작은 변경으로 제안(`/privacy` 수정 포함).
+- **확정 설계(계획 1을 대체).** GA4 최근 30일 `screenPageViews`(`/design-systems/<id>`, `/ko/design-systems/<id>` 합산) → `scripts/analytics/sync-views.mjs`가 KV `omd:views:30d`(+`omd:views:meta` asOf)에 씀 → 아카이브 서버가 KV를 읽어 조회수 → 가져간 수 → 기존 순서로 정렬(서버에서 한 번, 클라이언트는 그 순서를 추천순으로 씀). Vercel에 GA4 키를 넣지 않음. 자동화는 GitHub 비밀값 3개(`GOOGLE_SA_KEY_JSON`, `OMD_KV_REST_API_URL`, `OMD_KV_REST_API_TOKEN`)가 생기면 워크플로로, 그전엔 본 세션이 머지 때·세션마다 실행. 무한 스크롤 40개, 필터·정렬·검색은 URL(`replaceState`), 불러온 개수·스크롤은 세션 저장소로 복원, 맨 위로. 정렬: 추천순(기본)·업데이트순·이름순. 머지는 프리뷰 GO 뒤.
+- **오너(01:3x) 밋밋함·검색 미리보기·메뉴 바깥 클릭 → `ddf1f1ec`.** 검색창 흰 바탕 + 바이올렛 아이콘·포커스 링, 입력 중 상위 6곳 미리보기(로고·이름·분야·설치, ↑↓·Enter·Esc, 바깥 클릭 닫힘, "‘q’ 결과 N개 모두 보기"), 빈 칸 포커스 시 추천 검색어(설치 상위 3 + 큰 분야 2). 메뉴는 흰 바탕·테두리·바이올렛 아이콘·선택 체크, 패널은 버튼 아래, 바깥 클릭·Esc로 닫힘. 카드는 흰 바탕·호버 시 살짝 떠오름(감소 모션이면 정지)·브랜드 자체 색 토큰 견본 최대 5개(`paletteOf`, 대표색 우선·색상 다른 것 우선·명암 중립 보충, 530곳 전수 테스트). web 테스트 1200 통과. 프리뷰 HTML 957KB → 1.12MB(견본 인라인 스타일).
+- **오너(01:0x) "애플도 로고가 없네", "필터를 조금 잘 해봐. 나열하지 말고 그냥." → `79eb52f4`, `8bfb7265`.** 지역·분야를 칩 나열 대신 검색 옆 메뉴 두 개로(정렬과 같은 모양, 고르면 그 메뉴가 포인트 컬러, 고르기 전엔 "지역"/"분야"). 애플: 상표 가이드라인이 서면 허가 없는 로고 사용을 금지한다고 알린 뒤 오너가 "공식 로고 넣기" 선택 → apple.com globalnav 심벌(여백 자른 viewBox) 추가, 레코드에 가이드라인·오너 결정 기록. 프리뷰(`vercel curl`): en·ko 530장, 첫 줄 toss·apple·karrot·krds·kakao·baemin, 애플·삼성 로고, 메뉴, 칩·나라 표기 0.
+- **오너 리뷰(00:2x, 스크린샷 3장) → `6b247bdc`.** ① `/ko`가 한국어 페이지 있는 373곳만 보여 줌 → 530곳 전부(한국어 페이지 없는 157곳은 영문 상세로 링크), "왜 차별해" ② 소개문 방향 변경(나라·등급 구분 없이 쓰임새 중심) ③ 필터가 흑백·난잡 → 지역은 포인트 컬러 세그먼트, 분야는 한 줄 가로 스크롤 + 연한 포인트 컬러, 칩별 개수 제거 ④ "DESIGN.md 373개" 줄 제거, 필터 걸렸을 때만 개수를 포인트 컬러로 ⑤ 정렬이 설치 수 순이 아님 → 기본 설치순(그다음 GA4 조회수), 메뉴: 설치순·조회순·업데이트순·이름순 ⑥ 카드: 분야(위)·설치 수(아래, 포인트 컬러 아이콘), 나라 제거 ⑦ 삼성전자 로고 없음 → samsung.com GNB 헤더 공식 SVG 워드마크 추가(레지스트리가 Simple Icons라 비어 있었음). 애플도 같은 이유로 비어 있지만 애플 상표 가이드라인이 제3자 로고 사용을 금지해 텍스트 유지.
+  - 검증: web 테스트 1198 통과, 로컬 빌드(GA4 키는 빌드에만) 1440·390 en/ko — 첫 줄 toss 6,815 → apple 3,060 → karrot 2,048 → krds → kakao → baemin → samsung → naver, 필터 시 "23개" 포인트 컬러, `/ko` 영문 링크 157.
+  - 선호도 기록 3건(`.omd/preferences.md`, pending): 필터 포인트 컬러·개수는 필터 시에만 / 카드는 분야·설치 수, 나라 없음 / 모든 언어 아카이브는 전체 카탈로그.
+- **오너 질문(23:5x) "KV를 굳이 써야해? GA4 활용해서는 못해?" → GA4 직접 조회로 전환 `6d375613`.** `web/src/lib/view-counts.server.ts`가 GA4 Data API(pagePath × screenPageViews, 30일)를 한 시간에 한 번 `unstable_cache` 안에서 직접 호출(서비스 계정 JWT를 node:crypto로 서명, 실패는 캐시하지 않음). `sync-views.mjs`·`views-sync.yml` 삭제, 본 세션이 만든 KV 키 `omd:views:30d`·`omd:views:meta` 삭제(DEL 2). 키를 빌드에만 넘긴 로컬 빌드에서 en·ko 첫 카드 toss·karrot·apple·kakao·naver·krds·samsung·alan 확인. 테스트 8개, web 전체는 부하(load 283) 시간 초과 5건 — 단독 재실행 29/29 통과.
+  - **0시 반:** 오너가 CLI로 `GOOGLE_SA_KEY_JSON` 등록(Production, Preview 전체 브랜치 — CLI 54.2.0은 비대화형에서 브랜치 생략 시 무조건 막혀서 세 번째 인자 `""`로 우회). `web/`를 Vercel 프로젝트에 link(`.vercel`은 gitignore). 프리뷰 재배포 `oh-my-design-8lop6y1j0`(고정 주소 `oh-my-design-git-feat-archive-r12-…` 가 가리킴) → `vercel curl`로 en·ko 첫 카드 toss·karrot·apple·kakao·naver·krds, 등급 UI·더보기 버튼 0 확인.
+  - **필요한 것:** Vercel 프로젝트 환경 변수 `GOOGLE_SA_KEY_JSON` = `scripts/analytics/.secrets/sa.json` 내용(Production + Preview). 없으면 추천순이 가져간 수·기존 순서로 대체. 변수 추가 뒤 새 배포부터 적용.
+- **진행(23시).**
+  - KV 동기화 실행: GA4 30일 732경로 → 518곳, `omd:views:30d` 기록·재조회 확인(asOf 2026-10-31). 1위 toss, 2 karrot, 3 apple, 4 kakao, 5 naver.
+  - 구현 `a7b1bc47`: `scripts/analytics/sync-views.mjs`(`--quiet`은 공개 CI 로그용, 수치 미출력), `.github/workflows/views-sync.yml`(매일 00:17 UTC, 비밀값 3개 없으면 건너뜀), `web/src/lib/view-counts.server.ts`, `recommendedOrder`, catalog-view 개편(40개 자동, URL 상태, 카드 기준 복원, 맨 위로, 등급 UI 제거), 4개 언어 문구, `/ko` 소개문에서 "검증된" 삭제.
+  - 검증: web 테스트 1196 통과(+7 신규), tsc 0, 로컬 빌드 1440·390 en/ko — 40→80→120→160→200 자동, 등급 흔적 0, 정렬·필터·검색 URL 유지·새로고침 유지, 뒤로 가기 카드 위치 ko 일치·en 59px. 린트 1건(`<a href="/design-systems">`)은 기존 코드.
+  - 남은 것: 프리뷰 주소 오너 전달 → GO → main 머지·운영 확인. 자동 동기화용 비밀값 3개는 오너가 `gh secret set`으로 등록(키 입력은 오너만). 동의 배너가 열려 있으면 맨 위로 버튼이 배너 뒤에 가림(배너 선택 후 정상).
+- **계획 1 · 아카이브 개편**(브랜치 `feat/archive-r12`, 프리뷰 → 오너 GO → 머지).
+  1. 조회 카운터: 상세 페이지 진입 시 브라우저에서 한 번 `view` 기록(같은 방문자·레퍼런스는 하루 1회, 없는 id 거부, 질의·IP 원문 저장 안 함). 일별 집합(35일 보관) + 누적.
+  2. 정렬 메뉴: **추천순(기본) = 최근 30일 조회수**, 같으면 가져간 수(복사·다운로드·설치), 그다음 기존 순서. 그 밖에 최근 확인순(`verified` 날짜), 이름순. 서버가 추천순으로 그려 JSON-LD 목록 순서도 같게. 조회수가 쌓이기 전(첫 몇 주)은 사실상 가져간 수 순서. KV가 없으면(로컬·CI) 기존 순서, 숫자는 지어내지 않음.
+  3. 무한 스크롤: 바닥 근처에서 자동으로 이어 붙임(버튼 없음), 한 번에 화면 행에 맞춘 개수, 필터·정렬·검색·불러온 개수를 URL에 유지해 상세에서 뒤로 오면 같은 자리, "맨 위로" 버튼. 모든 링크는 지금처럼 HTML에 남김.
+  4. 검증 표시 제거: 등급 메뉴·체크 배지·수식어·관련 통계, 4개 언어 문구 정리, `/ko` 소개문에서 "검증된" 삭제. 내부 품질 데이터·게이트·`/ko` 라우트 판정은 그대로. 홈·FAQ의 "값마다 출처" 문구는 이번 범위 밖.
+  5. 검증: 단위 테스트(정렬·카운터·dedupe), 1440·390 en/ko 렌더 확인, 상세 → 뒤로 위치 복원, Vercel 프리뷰.
+- **계획 2 이후(재개 큐).** MCP v2 결정 D1~D6 → Phase 0·1 / 2.0.6 출시 GO·waiver(캡처 번들 재빌드) / /hangul 프리뷰 GO / 조립기 `§N` 참조·변환기 Known Gaps·임베딩 고아 빌드 정리(Sol 워커) / 다음 Sol 웨이브 센서스 / 루트 테스트 저부하 재실행.
+
+## ▶ 2026-10-29 22시 반 · EU 웨이브 9곳 main 머지·배포 확인 + MCP v2 명세 + ego lite 검토 · **오너 지시로 중단, 재개 대기**
+
+- **오너 요청(21:31).** ① ego lite로 지역·동의 창 문제를 풀 수 있나 ② main 머지 전 마지막 검수 ③ effort 기본값 확인 ④ MCP v2 명세 미루지 말 것 ⑤ 남은 작업 브리핑. 22시 반경 "현재 진행 중인 작업만 하고 중단 후 재개 준비".
+- **② 완료.**
+  - Sol max 검수 워커 3개가 9곳을 다시 대조: BLOCK 6, WARN 17. 원본으로 확인 후 수정 `63c807e2`. 그중 mango 포커스 순서·finnair 누름 상태 설명은 본 세션이 검토 때 잘못 쓴 것, withings 흰 바탕은 워커 초안을 본 세션이 놓친 것.
+  - llms 파일 누락 수정 `bdeb3e88`. main 병합 `4b2dc3a9`(no-ff) → 푸시 → **운영 배포 확인**(약 2분): 9곳 영·한 상세·raw 200, h1, `#use`, llms.txt 530.
+  - 상세: WORKER_PLAN "마지막 검수" 절. 검수 지시서 `docs/workers/FINAL_REVIEW_ORDER_TEMPLATE.md`, spawn.sh 빈 배열 버그 수정 `42916932`.
+- **③ 확정.** 조사·저작·검수 Sol max, 좁은 구현 Sonnet medium(WORKER_PLAN §8 #3).
+- **④ 초안 완료.** `docs/MCP_V2_SPEC_2026-10-29.md`: `/api/mcp` 재사용, 도구 6개, 값마다 근거, 모르는 값은 `absent`. 오너 결정 D1~D6 대기. Phase 0(410 카운터)은 승인 뒤.
+- **① 답.** ego lite로는 안 풀림(같은 IP라 같은 지역 창, 워커는 이미 브라우저를 직접 켜지 않음, 오너 프로필·API 이식 비용). 현 구조 유지, 개선 후보 `--close auto`. WORKER_PLAN "ego lite 검토" 절.
+- **⑤ 재개 큐(순서대로).**
+  1. 오너 결정: MCP v2 D1~D6 → 승인 시 Phase 0(410 카운터) → Phase 1(Sol 구현, 워크트리).
+  2. 2.0.6 출시 GO·strict waiver(10/25부터 대기). 출시 때 capture 번들 재빌드(스페인어·핀란드어 거부어 포함, `npm run build`가 바꾸는 `skills/omd-reference-capture/scripts/capture-reference-evidence.mjs`)와 런타임 미러 재동기화.
+  3. /hangul 프리뷰 GO, 외래어 4쌍·KOGL 어휘·페이지 소개 문구(10/25 열린 것).
+  4. 후속 과제: 조립기가 레거시 `§N` 참조를 v3 제목으로 안 바꿈(카탈로그 304개 파일에 `§숫자`, 일부는 끊긴 참조) / 변환기가 숨은 라벨 아이콘 버튼에도 텍스트 대비 Known Gaps를 생성 / 변환기의 spacing 생략 문구 / `build-embeddings`가 소비처 없이 빌드마다 실행.
+  5. 다음 Sol 웨이브: 새 후보 센서스부터(EU 웨이브 5 소진). `--close auto` 구현 후보.
+  6. 루트 전체 테스트를 부하 낮을 때 다시 돌려 기록(이번엔 load 43~66, main도 66건 시간 초과).
+- **정리 상태.** 워크트리 `.claude/worktrees/eu-wave5`(브랜치 머지됨, `node_modules` 심볼릭 링크만 미추적) 남겨 둠. 제거 전 심볼릭 링크부터 지울 것. 워커 폴더 `~/.omd-workers/{wave5,wave5b,final-review}/`(원본 `*.worker.*`, 검수 전 `*.prefinal.*`).
+
+## ▶ 2026-10-29 17시 반 · Codex 워커(gpt-6.1-sol) 시험 완료 + 워커 운영·MCP 방향 계획 · 20시 DESIGN.md 웨이브 4/4 · 21시 반 웨이브 5b 5/5 verified(Sol 저작 채택, 530 / 308)
+
+- **오너 요청(10/29 17:04).** Codex Plus 크레딧이 넉넉하니 gpt-6.1-sol 최대 effort를 워커로 써서 hangul·DESIGN.md 확충 작업을 시험. 기획은 Opus, 워커는 필요에 따라 Sonnet 5.5 medium 또는 6.1-sol 최대 effort. 나중에 DESIGN.md·사이트 분석을 MCP처럼 제공하는 방향까지 기획. 먼저 가능성 시험 후 계획.
+- **시험(17:00~).**
+  - codex-cli 0.165.0, ChatGPT 로그인. gpt-6.1-sol 목록에 있음(effort low~max, ultra=자동 위임). max·ultra 비대화형 호출 성공(10/25엔 'ChatGPT 계정 미지원'이었음).
+  - 샌드박스(workspace-write+network): 네트워크·웹 검색 됨, **Chrome 실행은 막힘(SIGABRT)**. 샌드박스 밖 stdio MCP 서버로 Chrome을 띄우는 도구는 `mcp_servers.<n>.default_tools_approval_mode="approve"`로 동작 확인 → 브라우저 측정은 화이트리스트 MCP 도구로 제공 가능.
+  - 워커는 `--ignore-user-config`(개인 MCP·브라우저·computer-use 미로드), 비 git 폴더는 `--skip-git-repo-check` 필요.
+  - 파일럿 2개(6.1-sol max): H = hangul 검사기 `--format=github`(워크트리 `.claude/worktrees/cx-hangul-ghfmt`, 브랜치 `codex/hangul-ghfmt`), D = SBB(CH) 1차 사실·정적 토큰 조사(브라우저 없음). 실행기·지시서: 세션 scratchpad `codex-w/`.
+- **오너 질문(17:2x): 워커가 개인 브라우저·로그인을 쓰면 안 되나, 브라우저 없이 어떻게 조사하나, 스크롤 영상·스크린샷 근거는?** 시험: 헤드리스 Chrome은 SBB 빈 화면·Odoo 403, **화면 있는(headed) 일반 Chrome + 로그인 없는 새 프로필**은 SBB 정상(뷰포트 81KB, 전체 1.1MB, 스크롤 영상 4MB, `docs/research/2026-10-29-visual-evidence/`). 제안: 워커 전용 Chrome 프로필(개인 계정 로그인 금지) + 측정·캡처 도구를 샌드박스 밖 MCP로, 컨트롤 상태별 크롭 이미지를 검증 근거로. 사이트 게재는 정책 정한 뒤 오너 결정.
+- **파일럿 결과(17:35).**
+  - H 구현: Codex max 9분 44초 vs Sonnet medium 2분 10초($0.58), 둘 다 통과(테스트 147/143, 기본 출력 동일). Codex 코드·테스트 + Sonnet 문서 설명을 합쳐 `7c0af0e7`로 hangul 브랜치에 넣고 푸시.
+  - D 조사: Codex max 18분 20초. 사실 10건 URL 근거, 대조군 판정 정확, `--sbb-*` 1,389개. 본 세션 3건 대조 일치.
+  - 범위 이탈: Codex가 레포 규칙대로 CURRENT_STATE·JOURNAL 수정(되돌림), Sonnet이 빌드로 무관한 번들 변경 → 지시서 양식에 금지 추가.
+  - 계획: `docs/WORKER_PLAN_2026-10-29.md`. 오너 결정 5건(§8) 대기.
+- **오너 결정(18:42).** ① 워커 브라우저 = 전용 Chrome 프로필 ② MCP v2 = 수집 데이터 제공(캡처 도구는 내부 전용, '로컬 사이트 분석'은 내림) ③ Sol 워커 동시 4개. 계획 §6·§8 반영.
+- **진행(18:45~).** 워커 키트(미커밋, main 작업 트리): `scripts/workers/spawn.sh`(codex/claude, Sol 4개 상한, `--mcp capture`), `scripts/workers/capture-mcp.mjs`(고정 도구 `probe_page` 하나, 결과는 `artifacts/reference-evidence/visual/<id>/<시각>/`), `docs/workers/WORK_ORDER_TEMPLATE.md`. 연결 시험 통과(샌드박스 워커 → MCP → 샌드박스 밖 프로브). 캡처 기능(`--browser worker`·`--shots`·`--visual`)은 Sol max 워커가 `probe-keyboard-states.mjs`에 구현 중(워크트리 `.claude/worktrees/cx-capture`, 브랜치 `codex/capture-visual`).
+- **진행(19:00~20:00) · DESIGN.md 웨이브 — Sol 워커 4개 저작, 4/4 verified.**
+  - main: `0a1305d9`(캡처 기능) · `b62d10af`(워커 키트) · `387315d5`(`--census`) · `bd5de8f3`(spawn.sh 출력 분리) · `f2bfe1c0`(프로브 루마니아어·체코어 거부어). 미커밋: 이 갱신, WORKER_PLAN §2b, AUTONOMY_LOOP, `docs/workers/REFERENCE_ORDER_TEMPLATE.md`, `scripts/workers/make-reference-order.py` → 곧 커밋.
+  - **브랜치 `feat/eu-wave5`(워크트리 `.claude/worktrees/eu-wave5`, 푸시됨, main 미머지 = 오너 GO 필요)**: sbb `9a37295b` · odoo `d86d515b` · kiwi `3bb4ebe9` · emag `5d23d4c6` · 프로브 거부어 `5d5e196a`. **525 / 303 verified**.
+  - 결과(WORKER_PLAN §2b): 워커당 17~27분, 입력 390만~670만(95~97% 캐시)·출력 4.6만~5.4만. ②′ 재측정 4/4 일치, 서사 문장 중 출처에 없는 것 0. 본 세션 수정은 전부 지시서 공백 탓(국가 규칙·렌더 타입·모션 근거·상태 없는 컴포넌트) → 양식에 반영. **Sol max 저작 채택**(4회차 Sonnet 저작 탈락과 대비).
+  - 국가 판정 2건(규칙대로, 오너 문의 불필요): kiwi CZ(워커 제안 US=사모펀드 General Atlantic 본사), emag RO(워커 제안 NL=Prosus). 근거: 실제 본사 운영지 규칙(wolt·moreh 선례).
+  - 마무리 점검: kiwi 투명 배경이 `#00000000`으로 바뀌어 거짓 대비 경고(1.45:1)가 생기던 것 수정(`15e578ac`, 양식에 금지 추가). emag 서체는 로드 목록에서 확인(Open Sans 400/600/700). 로컬 증거 매니페스트 갱신·iCloud 백업 동기화(`e7feb9d4`).
+- **웨이브 5b(20:09~21:25) · 5/5 verified.** sixt `836baa20` · withings `87666094` · bbva `174f0cf7` · mango `405a5ed8` · finnair `6094ec05`(브랜치 `feat/eu-wave5`, 푸시됨). **530 / 308 verified.** EU 웨이브 5 후보 16곳 소진 — 다음 웨이브는 새 후보 센서스부터.
+  - 워커 17~24분, 입력 391만~484만(95~96% 캐시)·출력 3.3만~4.8만. 국가·분류 5/5 워커 제안 그대로. 1차 출처에 없는 서사 문장 0, 언론 출처 1건 제외(리디렉트).
+  - 공통 장애: 캡처 브라우저가 한국이라 지역·국가 창·프로모션 팝업이 페이지를 덮고 포커스를 가둠(withings 상태 0개, mango 링크 inert) + 스페인어·핀란드어 거부어 누락. 고침(main 푸시): 프로브 `--close` `18e2d85c`, MCP `close`·`hideOverlays` `4073a8c1`, 거부어 `80bc72fa`·`34db1a42`, 지시서 규칙(간격 숫자·동의 버튼은 컴포넌트 아님) `9844c84f`.
+  - 검토 증거는 `artifacts/reference-evidence/visual/<id>/review-20261029/`, 로컬 매니페스트 1190개·435.1MB 검증 OK, iCloud 동기화 완료.
+  - 워커 폴더 `~/.omd-workers/wave5b/<id>/`(원본은 `*.worker.*`), 기록 `~/.omd-workers/runs/w5b-*`. 결과표 WORKER_PLAN §2b.
+  - 오너 대기: ① `feat/eu-wave5`(9곳) main 머지(=배포) GO ② WORKER_PLAN §8 #3 effort 기본값 — 제안: 조사·저작 Sol max, 범위 좁은 코드 Sonnet medium ③ MCP v2 명세는 이후.
+- **참고.** MCP 커넥터 v1은 2026-07-14 Core v2 전환 때 퇴역(/api/mcp 410, npm 패키지 보관). 성장 계획(10/13)은 AI 인용 채널로 MCP 커넥터를 다시 적어 둠. 10/25 /hangul 로컬 보고서(`docs/research/2026-10-25-hangul-report/index.html`)는 마감 직전(통계 카드 줄바꿈·섹션 캡처의 고정 헤더 겹침 수정 남음).
+
+## ▶ 2026-10-25 3시 반 · /hangul — 열린 작업 마무리 + 로컬 화면·테스트 결과 문서 + UX 라이팅 추가 테스트 + 리서치·오픈소스 조사 (진행 중)
+
+- **오너 요청(03:34).** 열린 작업까지 다 하고, 프리뷰 말고 로컬에서 화면과 테스트 결과를 문서로 보여 줄 것. 테스트를 더 해서 UX 라이팅을 확실하게 보강. 현재 리서치와 오픈소스 스킬도 파악.
+- **계획.**
+  1. 리서치 팀원 2명(백그라운드, `docs/research/2026-10-25-oss-survey/`): 오픈소스 스킬·도구, 2025~26 연구. 항목마다 URL·날짜·라이선스·/hangul에 없는 것.
+  2. 로컬 `next dev -p 3335`(워크트리 web) → /ko/hangul·/hangul 1440·390 캡처(분할 화면 두 상태), render-check.
+  3. 평가 채널은 오너에게 확인(메모리: 벤치마다 확인).
+  4. 새 테스트: 보지 않은 UI 프롬프트 ~10 + 문서 3~4(dev/holdout 분리), AUDIT 칸(기존 나쁜 문구 고치기, 사실 보존), 가능하면 자동 트리거 칸. dev로만 고치고 holdout으로 확인.
+  5. 열린 작업: 덱 '같은 수치 여러 장' 검사, 닫기/취소를 KRDS·SEED로 재확인, 메일 카드 수정 검증. '한 파일 두 상황'은 결정 1과 충돌이라 만들지 않음.
+  6. 로컬 HTML 보고서(gitignore 폴더, 한국어, copy-check 통과) → `open`.
+- **진척(04:20).** 평가 채널 오너 결정: 작성 Claude Sonnet, 채점 Claude Opus + Codex(gpt-6-astra, 사용자 설정·규칙 무시, 읽기 전용). 로컬 화면 32장 캡처(`docs/research/2026-10-25-hangul-report/shots/`, 분석 동의 거부 상태), render-check: 끊긴 낱말 26건 전부 '스킬 없이' 쪽(의도된 시연), '/hangul' 쪽 0. 2차 테스트 76건 생성(A $1.80, B $7.20; dev 9과제·holdout 10과제 × 2회, UI 10·문서 5·고치기 4). Codex 채점 76/76, Claude 채점 41/76(나머지는 계정 세션 한도, 06:30 해제). Codex 기준 holdout A 23.45 → B 24.35, 문서당 지적 2.40 → 0.70.
+  - dev에서 찾은 결함: ① B가 결과물에 `hangul-context` 프래그마를 남김 17/38(JSON에선 키가 됨) ② 사실 세부가 모를 때 덱 본문에 `○○○`를 남김 ③ '이 날'(이날) ④ 요청문 표현을 그대로 옮긴 어색한 결합(양쪽) ⑤ 덱 수치 반복(B 한 건 3장 이상 5개).
+  - 리서치 팀원 2명도 세션 한도로 중단(R9-research.md 일부만) → 직접 조사.
+- **진척(05:40).** 브랜치에 고침 커밋 6개(`5bdce9e9`…`c6a9e1e4`, 푸시는 `8bd8f2c6`까지): 결과물에 프래그마·`_meta` 금지, 사실 세부 모를 때 ○○○ 대신 답변에서 질문, 요청문 표현 그대로 옮기지 않기, HW-R6(덱 같은 수치 3장 이상), '이 날'→'이날', 쉼표 밀도 report·press 제외(im-not-ai #121), 지어낸 기능·날짜·연락처 금지(사실 감사: 글당 A 6.5 vs B 5.3), 글쓰기 선택을 문서에 적지 않기, 닫기/취소 출처 충돌 명시, SEED 날짜 규칙 인용. **버그:** 덱 감지가 본문에 'reveal.js'만 있어도 덱으로 판정 → front matter·태그·import만 보도록 고침.
+  - 리서치·오픈소스: `docs/research/2026-10-25-oss-survey/R9-research.md`(팀원 초안 + 요약·시사점), `R9-oss-skills.md`(직접 조사).
+  - 테스트: 자체 시험 3종 통과, skills 138, web 47, root 1,516 통과·4 실패(ENOTCACHED 3, 부하 시간 초과 1 — 단독 통과).
+  - 추가 커밋 `c6a9e1e4`(작성 방침 문장 FYI), `bba3936c`(연어 다시 읽기). 스킬 사본: 수정 전 `ac71dc26`, 수정 후 `bba3936c`(세션 임시 폴더 skill-old/new).
+  - 06:30 이후(자동 실행 `kw-test/after-reset.sh`): Claude 채점 미완 35건 재채점 → 처음 보는 과제 holdout2(10개) × A·수정 전·수정 후·설치만 각 2회 → 두 채점 + 사실 감사 → 보고서 `docs/research/2026-10-25-hangul-report/index.html` 완성 → open.
+
+## ▶ 2026-10-25 2시 반 · /hangul 문구 계층 — 상황 중심 재편 완료, 브랜치 푸시(`ac71dc26`), 오너 프리뷰·출시 GO 대기
+
+- **오너 요청(10/25 1시대).** 문구 스킬을 도메인·상황(보고서, 피치덱, 사이트 등)별 한국어 특화 문체·작성 방식에 완전히 집중하고, 한국어 특유의 이슈 해결에 초점. 리서치·테스트·케이스 정리.
+- **오너 결정(같은 시각).**
+  1. 프로필 축을 상황(문서 유형) 중심으로 재편. 의료·금융·공공은 톤 조정으로 흡수.
+  2. 의료광고 패턴 검사 9개와 법령 주의 사항 제거, 과장·약속·최상급은 모든 상황의 문체 검사로 일반화(10/25 0시 결정 '의료 WARN 유지·HW-M9 유지'를 대체).
+  3. hangul이 길이 무관하게 상황별 문체와 한국어 교정을 맡는다. omd-kr-writer는 블로그용 내부 프리셋으로 남아 hangul을 참조.
+  4. 이번 테스트 채널은 Claude CLI만(repo 밖 임시 폴더, sonnet, 사용자 설정·플러그인·MCP·스킬 도구 끔).
+- **결과(브랜치 `feat/hangul-launch-r2`, `26b47e1a` → `1a458754` → `2079aa68` → `ac71dc26`, 푸시·Vercel 프리뷰 성공).** `ac71dc26`은 서브에이전트 정의(kr-writer·humanizer)도 hangul을 따르게 하고 humanize 트리거를 비한국어·다국어로 좁힌 것.
+  - 상황 10개(app 기본·site·product·report·deck·notice·email·press·docs·hiring). 원칙은 '종결은 독자 관계를 따른다'. 도메인은 톤 조정, 의료·공공 법령 검사 제거.
+  - copy-check: 산문 모드(.md/.txt), HW-D1~D4, HW-R5(보고서·덱 불릿이 전부 문장), 의존 명사 띄어쓰기(중·이상·지·안 되다 WARN), 외래어 35쌍 BLOCK + 8쌍 FYI(사전 확인 못 한 컨퍼런스·네비게이션·매니져·카달로그 포함), 사물 존대 확장, 함에 있어·필요로 하다 WARN, 쉼표·말줄임표·빗금 날짜·자릿수, 점 날짜 문장 분리 수정. -드리다는 규범상 맞는 접미사라 '한 문서 3회 이상' 밀도 FYI로 바꿈.
+  - 레퍼런스: situations.md·korean-issues.md·cases.md 신설, ux-writing-contexts.md 삭제. SKILL.md 재작성(§3c 상황, §3d, §3e 한국어 이슈). kr-writer·humanize는 한국어를 hangul에 맡김. CHANGELOG 2.0.6 갱신(상황·검사·평가).
+  - 테스트(Claude CLI, sonnet 작성 · opus 블라인드 채점, 25점 만점): 스킬 없음 A 21.05점·문서당 지적 7.55 → 스킬 B′ 22.55·4.32 → 수정 반영 B″ 22.82·3.82. 11개 상황 중 8개 상승. 하락 3개: 앱 화면(닫기 vs 취소, 규칙 유지), 이메일 23→22(B′ 20에서 회복), 보도자료 22→21.5. 비용 A $0.92, B′ $4.29, B″ $1.24. 결과·한계는 cases.md.
+  - 검증: 자체 시험(원본·.claude·.agents) 통과, skills 138, web hangul 47, root 1,516 통과. 실패 4개는 부하(단독 통과)와 npm 오프라인 캐시에 playwright-core 없음(ENOTCACHED) — 변경과 무관. 프리뷰는 Vercel 로그인 보호(302)라 내용은 오너 확인 필요.
+- **막힘/대기(오너).** ① 프리뷰 GO(페이지는 이번에 바뀌지 않음, r16 페이지 GO 대기 유지) ② 2.0.6 출시 GO와 strict 게이트 면제 ③ 확인 못 한 외래어 4쌍을 FYI로 둔 판단(용례 확인 시 BLOCK 승격 가능) ④ /hangul 페이지가 '화면' 중심 소개라 문서까지 다룬다는 문구를 넣을지(페이지 문구 변경 = 프리뷰 재확인). ⑤ 리서치 R8의 Q4: 공공누리 3·4유형 가이드는 2차 저작을 금지 — 목록은 복제하지 않았고, 널리 알려진 4쌍(익일·금번·구좌·잔고)만 HW-7에 넣었음. 빼라면 뺀다. (R8 Q2 외래어 심각도는 기존 12쌍과 같은 BLOCK, Q7은 모든 상황에서 빈도 기반으로 정함.)
+- **열린 것.** 마지막 메일 카드 수정(요청형·'세 일정')은 재실행 안 함. 피치덱이 여전히 최저(20점, 수치 반복·헤드라인 중복).
+
+## ▶ 2026-10-25 1시 · /hangul r16 — 페이지 + 장르 프로필(문체 중심 재구성) 브랜치 반영, 오너 프리뷰 GO 대기
+
+- **오너 결정(19:20, 19:33).**
+  - 히어로 B(어두운 바탕, moa 화면 두 대). 모바일도 B(폰 한 대 + 전환 버튼).
+  - "시연용" 표기는 화면에서 뺀다(몰입). 설치 상자 아래 한 줄만 둔다: "이 페이지의 moa 화면은 규칙을 보여 주려고 만든 예시예요."
+  - "같은 화면, 다른 문구" 구성 유지.
+  - **키캡은 만들지 않는다.** '3D 에셋'은 moa 데모 화면 안에 들어갈 아이콘·일러스트를 뜻한다(19:33). moa 품질 작업도 같이.
+  - 문구 스킬은 토스 톤이 기본값이되, PPT 보고서·병원 홈페이지 같은 상황별 케이스를 im-not-ai 같은 기존 레퍼런스를 참고해 넓힌다.
+- **브랜치 `feat/hangul-launch-r2` 푸시 `0c40dcc7`.** 프리뷰(로그인 필요, 10/25 00:42 배포 Ready): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (영문 /hangul).
+- **Stream A — 최종 페이지.**
+  - `91f67671` 새 페이지: 히어로 B → 조판 챕터(문구 고정, 조판만 다름) → 문구 챕터(조판 고정, 문구만 다름) → 규칙 28 → 설치(잉크 바탕). 옛 한지·해례본 콘셉트, 줄바꿈 데모, 스펙시멘 토글, 송명 글꼴, 한지 아트를 지웠다.
+    - moa 화면 부품(`moa-copy.ts`·`moa-screen.tsx`·`moa.css`): 상태바·앱바·잔액·최근 보낸 사람·토스트·혜택 배너·지표 카드·확인 시트·오류·탭바. 히어로 폰은 바가 고정되고 내용이 스스로 스크롤된다.
+    - `split-view.tsx`: 넓으면 좌우, 880px 아래는 한 자리 + 전환 버튼(3.2초 자동 전환, 누르면 멈춤, 동작 줄이기 설정이면 없음). 챕터 전환 버튼은 헤더 아래에 붙는다.
+    - 고친 버그: 사이트 `:lang(ko)` 규칙이 moa 화면의 글꼴·줄바꿈을 덮어써 '스킬 없이' 쪽이 Arial이 아니었다. 이제 그쪽에서만 음절 사이 줄바꿈이 보인다(render-check: 페이지 본문 0).
+  - `f9e42ff3` 3D 아이콘 4개(선물·송금 완료 체크·지표 막대·와이파이 × 배지): three.js 기본 도형으로 직접 모델링·렌더링(`web/scripts/moa-art/`), 26KB, 외부 에셋 없음.
+  - `7662ba3c` 공유 카드(ko/en)를 히어로 B로. `be59571e` 평가 문서의 페이지 절. `873942ab` 히어로 설명에서 좌우 표현 제거(모바일).
+- **Stream B — 문구 상황별 프로필(팀원 `uxw-contexts` 초안, 검토·통합 `5bdaae32`, CHANGELOG `38dde1c8`, llms-full `5bf90e4e`).**
+  - `skills/hangul/references/ux-writing-contexts.md`: 프로필 8종. app(기본값, 토스식 HW-1…14 그대로)·report·medical·public·commerce·dev·finance·notify. 장르 규칙 46개(SPEC 28·DS 15·OP 3), 출처는 2026-10-24에 원문 확인.
+  - copy-check `--context=<genre>`와 파일 프래그마: report(HW-R1…R4, HW-11 합쇼/해요 혼용·HW-8 시스템 문구 끔), medical(HW-M1…M9, WARN까지만), public(HW-P1…P5). 나머지 28개는 레퍼런스만. 기본 출력은 HEAD와 바이트 단위로 같음(직접 확인, bad/good/fp/tp × 플래그 유무).
+  - SKILL.md §3c·APPLY 2단계·AUDIT `--context`·장르 심각도·법률 검토 대체 아님 Don't; omd-humanize 라우팅(장르 문단은 프로필이 지정한 im-not-ai 계열로, 개조식에는 C-1/2/3/9/10 미적용). 미러 동기화.
+  - 리서치 원문: `docs/research/2026-10-24-ux-writing/R6-contexts.md`, 제안서 `R6-proposal.md`(gitignore).
+- **검증.** web vitest 1,210 통과, `next build` 통과, 스킬 단위 138 통과, copy-check·check 자체 시험 PASS. 루트 vitest 1,516 통과·4 실패: 패키지 설치 스모크 3건이 `npm install --offline`에서 `picocolors` ENOTCACHED(npm 캐시 문제, 내용 무관), readiness 생성기 1건이 부하 중 15초 시간 초과. HEAD~에서 다시 돌려 보지는 않았다.
+- **장르 자동 감지 — 오너 결정(10/25 0시 "자동으로 감지는 포함") 반영 `aafc5b94`.** copy-check `--context` 기본값이 `auto`. 우선순위: 파일 프래그마 > `--context` > 감지 > app, `--context=app`이면 감지 끔. 감지는 규칙을 더하기만 한다: medical은 진료 단서 2개 이상(진료시간·의료진·휴진·내원…), public은 공공 단서 2개 이상(민원·정부24·.go.kr 링크·KRDS…), report(HW-8·HW-11을 끄므로 오판하면 결함을 숨김)는 reveal.js·Marp·Slidev 표식만, 폴더 이름·문구로는 판단하지 않는다. 감지된 파일은 근거 신호와 함께 출력에 표시. 감지 안 된 파일은 장르 이전 검사기와 출력이 같다(bad/good/fp/tp 바이트 동일 확인). 미끼 픽스처(동물병원 진료 예약 1개, .go.kr 링크 1개, reports/ 폴더, 캐러셀 slides/ 폴더)는 app으로 남는다. 후속 후보(미구현): 같은 실행 안의 컴포넌트가 페이지의 장르를 물려받기, 한 파일에 두 장르.
+- **장르 결정(오너 10/25 0:3x) 반영 `0c40dcc7`.** 의료 WARN 상한 유지 · 광고 동의를 '혜택 알림 받기'로 쓴 짧은 라벨은 모든 프로필에서 HW-12 FYI(개인정보 제3자 제공 동의·마케팅 정보 수신 동의는 조용) · '장애우'(HW-P5)는 모든 프로필 WARN · HW-M9 유지. 예금자보호 5천만 원 검사는 오너 질문("굳이?")에 답해 넣지 않았다: 시행일이 박힌 고정 수치라 오너가 걱정한 '시점 고정'의 전형이다. 레퍼런스 HW-F5는 "법정 수치는 쓰는 시점의 공식 출처에서" 원칙으로 바꿨다.
+- **문체 중심 재구성(오너 10/25: "특정 분야 치우침 점검, 시점 고정·제약 줄이고 작성 방식·말투·흐름에 집중") `0c40dcc7`.**
+  - 점검: 장르 규칙 46개 중 27개가 법령 금지·고지(의료 12·커머스 5·금융 6·알림 4), 문체 규칙은 19개(보고서 7·공공 7·개발 5). 의료 절이 가장 길었고, 규칙 본문에 날짜·수치(1억 원/2025-09-01, 50%/2017, 의협 목록 2025-09-18, KISA 2026-03-04, '최근 20일'), 검사기 메시지 8곳에 항·호 번호가 있었다.
+  - 바꾼 것: `ux-writing-contexts.md` 각 장르를 말투·작성 방식·흐름·어휘 카드로 시작, §0에 각 항목의 뜻과 app 기본값. 법령 주의 사항은 '변하지 않는 원칙'으로, 조항·수치·날짜는 §9 '날짜가 붙은 근거'(현행 확인 전제)로 옮김. 규칙별 근거는 조 단위로 유지. SKILL.md §3c 열을 말투·작성 방식·흐름으로, 새 §3d "Voice and flow"(번호 없음, HW-1~14 개수 유지, HW-11의 브랜드 우선 원칙 그대로). 설명문도 법령 대신 문체로. 검사기 메시지에서 항·호·날짜 제거, HW-M6은 할인율 상관없이 FYI.
+  - 기본 출력: bad/good/fp/tp는 장르 이전 검사기와 여전히 바이트 동일.
+- **다음.** 오너 프리뷰 GO → main 병합 → 2.0.6 출시(출시 GO·strict 면제는 오너). 후속 후보: 같은 실행 안 컴포넌트의 장르 상속, 한 파일 두 장르.
+
+## ▶ 2026-10-24 18시 · /hangul 페이지 r16 — 오너 피드백 반영 중, 시안 선택 대기
+
+- **오너 피드백(17:40).**
+  - 조판 평가 수치(17/18)와 67곳 실측 카드를 빼고, 스킬 로고(인장)도 뺀다.
+  - 히어로 컨셉과 배경색이 별로라서, 모션 레퍼런스 기반 시안 여러 개를 받아 고른다.
+  - 페이지는 조판·UX 라이팅 두 컨셉으로 구성한다. 같은 화면을 좌우로 놓고 하나만 다르게 비교하고, 모바일 처리도 고민한다.
+  - 문구 before는 AI 특유 문체를 더 강하게 하고, moa 사례도 그 문체로 다시 만든다.
+- **반영(브랜치 `feat/hangul-launch-r2`).**
+  - `434d497e`: 수치 섹션·실측 카드·인장 제거. 문구 쪽 11/18 수치도 같은 장치라 같이 뺐고, 평가 문서에 적었다.
+  - `8a440fc4`: 검사기가 '되어집니다' 같은 활용형 이중 피동을 놓치던 것을 고쳤다. 평가 36개 결과는 그대로다.
+- **시안(오너 선택 대기).** 캔버스 https://claude.ai/artifact/EKF59MpK9A82or7kFUebxZ (비공개; 23시 기준 이 계정에서 찾을 수 없음 — 삭제된 것으로 보임). 원본은 `docs/research/2026-10-21-hangul/r16/canvas/`(gitignore).
+  - 히어로 3안, 각각 데스크톱과 모바일 390.
+    - A: 흰 바탕. 조판 타일(폭이 숨 쉬며 단어가 끊기는 곳에 표시)과 문구 타일(자모 타이핑 → 취소선 → 고친 문구)을 나란히 둔다.
+    - B: 어두운 바탕. moa 화면 두 대가 같이 스크롤되고, 가운데 규칙 태그가 차례로 켜진다. 모바일은 폰 한 대에 전환 버튼.
+    - C: 회색 바탕 교정지. AI 문체 제목에 교정 부호가 붙고, 제자리에서 고쳐진다.
+  - 두 챕터: 조판(같은 문구, 조판만 다름)과 문구(같은 조판, 문구만 다름). moa 앱 화면을 부품 하나로 같이 쓴다. 모바일은 한 화면에 '스킬 없이 / /hangul' 전환 버튼을 두고, 3초마다 저절로 바뀌다가 누르면 멈춘다.
+  - 문구 before는 시연용으로 쓴 AI 문체다(평가 결과물 아님, 시안에 표기). copy-check 기준으로 before는 WARN 1·FYI 9, after는 0이다.
+- **다음.** 오너가 히어로·배경을 고르면 페이지를 다시 구성한다(히어로 → 조판 챕터 → 문구 챕터 → 규칙 → 설치). 그 뒤 OG 이미지 문구('한국어 조판 스킬')를 갱신하고, 프리뷰를 확인받은 다음 병합하고 2.0.6을 출시한다.
+
+## ▶ 2026-10-24 · /hangul UX 라이팅 계층 + 문구 평가 완료 — `feat/hangul-launch-r2` `ffa9e979`, 오너 프리뷰 대기
+
+- **오너 요청·결정(10/24).** UX 라이팅을 실제 연구 근거로 고도화해 `hangul`에 넣는다(토스 앱인토스 하네스, 당근, 대기업 사례). 2.0.6은 문구 비교 평가가 끝난 뒤 출시. 평가 채널은 Claude 서브에이전트(Sonnet)와 Codex CLI.
+- **만든 것(브랜치 `feat/hangul-launch-r2`, 원격 푸시 완료).**
+  - 스킬: 문구 규칙 HW-1~14(SKILL.md §3b·§4b), `references/ux-writing.md`(규칙별 출처·등급), `scripts/copy-check.mjs`(픽스처 bad/good/fp/tp), `NOTICE.md`(SEED Apache-2.0, apps-in-toss-harness BSD-3). 토스 하네스 G6/G8은 하네스 자체 기준이라 OP 등급으로만 인용했다. 토스 보증처럼 읽히는 표현은 쓰지 않았다.
+  - 평가 문서: `skills/hangul/references/eval-2026-10-writing.md`(SKILL.md §9에서 링크).
+  - 페이지: `/ko/hangul`·`/hangul`에 `#writing` 섹션(교정 카드 4장, 평가 수치, 주의 문구). 규칙 목록 28개. 히어로에서 '번역한 것처럼 써요'를 뺐다(평가가 뒷받침하지 않음). 두 언어 모두 keep-all(영어 페이지 속 한국어 낱말이 390px에서 끊겼다).
+  - 문서: CHANGELOG 2.0.6(문구 규칙·문구 평가), llms.txt, cli-docs 5개 언어, llms-full. main 병합(`c43806a7`, 슬림 README 채택), `docs/guide/skills.md`에 hangul 한 줄.
+  - 라우팅: omd-humanize 설명 → 코드 속 한국어 UI 문구는 hangul. omd-microcopy는 HW 규칙을 따르고 copy-check를 돌린다.
+- **평가 결과(36회, 사전 등록 `docs/research/2026-10-24-ux-writing/EVAL-PLAN.md`).**
+  - 사전 기준(프롬프트·채널별 BLOCK+WARN 중앙값이 B에서 더 낮음)은 **미충족**이다. 스킬 없이도 중앙값이 0이었다. BLOCK은 양쪽 모두 0이다.
+  - 지적이 하나라도 나온 결과물은 11/18 → 2/18(Codex 8→2, Claude 3→0), 지적 수는 25 → 2. 25개 중 15개가 제목·버튼 끝 마침표(HW-3, FYI)다. 조판은 18/24 → 0/0.
+  - 검사기 오류 10건을 고쳤다(최종 copy-check `80384ea2…`, 커밋 `72463442`). 수정 #7~#10은 A 칸만 바꿨다(+1/−4). 사전 등록판 수치도 함께 싣는다.
+  - **프로토콜 실패:** Claude A 9개 중 5개(p1-A-r3, p2-A-r2, p3-A-r1·r2·r3)가 메인 체크아웃 CURRENT_STATE의 규칙 메모를 쓰기 전에 읽었다. Codex는 레포 밖에서 돌아 깨끗하다. 다시 돌리거나 칸을 바꾸지 않았다(advisor 검토). Claude 18개 중 14개가 advisor 도구를 썼다(아암당 7개). 재발 방지는 메모리 `project_eval_subagent_isolation.md`에 적었다.
+  - 원자료(실행 폴더 36개, 결과 JSON, 감사 스크립트, 검사기 스냅샷, Claude 기록 18개): `docs/research/2026-10-24-ux-writing/raw/`(gitignore, 75MB). 평가 중 옮긴 상태 노트 원문은 `STATE-2026-10-24.md`.
+- **검증.**
+  - web: 1,222 통과, `next build` OK, 타입 OK.
+  - 루트 vitest 1,515 통과, 실패 5개를 확인했다.
+    - cutover 테스트는 고쳤다(omd-microcopy의 '§3b' 표기).
+    - readiness 생성기는 단독 실행에서 통과한다.
+    - packaged smoke 3개는 main에서도 `npm install --offline` 단계에서 실패한다. 로컬 npm 캐시 문제다.
+  - QA: `next start`로 ko/en 1440·390을 확인했다. 넘침 0, 끊긴 한국어 낱말 0(360 포함, 페이지 전체), 표제 서체 로드. 캡처는 `docs/research/2026-10-21-hangul/r15/qa/writing-*.png`.
+  - 페이지 소스에 copy-check를 돌리면 인용한 '나쁜 예시'만 걸리고, check.mjs는 의도된 '전' 견본(specimens.css)만 건다.
+- **오너 대기.**
+  - 프리뷰 확인(시각 GO): https://oh-my-design-git-feat-hangul-launch-r2-kwakseongjaes-projects.vercel.app/ko/hangul (브랜치 별칭, 최신 배포 https://oh-my-design-lsueqsjfg-kwakseongjaes-projects.vercel.app — 둘 다 Vercel 로그인 필요)
+  - 그 뒤 main 병합 → 2.0.6 출시 GO와 strict 게이트 waiver.
+- **다음.** GO 시 main 병합 → 라이브 확인 → `v2.0.6` 태그 → npm 확인 → 상태 문서 갱신. 선택: `docs/research/2026-10-21-hangul/posts.md`에 문구 규칙 게시물 초안(평가 수치를 인용하면 주의 사항을 함께, 토스·당근 보증 표현 금지).
 
 ## ▶ 2026-10-23 · README 슬림화 — main 병합 완료 `968f76c4`
 
