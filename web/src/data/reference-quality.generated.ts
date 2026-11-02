@@ -6443,6 +6443,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "mercedes-benz",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 64,
+    "evidenceClaimCount": 64,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "mercury",
     "status": "verified_v2",
     "verifiedAt": "2026-11-02",
@@ -13012,10 +13034,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 327,
+  "verified_v2": 328,
   "partial": 95,
   "legacy_snapshot": 111,
-  "total": 533
+  "total": 534
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 533,
+ "count": 534,
  "items": [
   {
    "id": "104",
@@ -6616,6 +6616,30 @@
    "signature_motion": "0.25s sheet/snackbar slides via cubic-bezier(0.65,0,0.35,1) and (0.33,1,0.68,1).",
    "has_personas": false,
    "category_raw": "consumer marketplace"
+  },
+  {
+   "id": "mercedes-benz",
+   "primary_color_hex": "#0078d6",
+   "category": "automotive",
+   "visual_theme": "Mercedes-Benz offers premium and luxury passenger cars and vans. Its German sales site connects model discovery, configuration, vehicle offers and service. The company's design page describes clear forms and sensual surfaces that stage technology while evoking",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "mercury",
