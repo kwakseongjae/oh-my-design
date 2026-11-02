@@ -12717,31 +12717,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "xiaohongshu",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 85,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 8,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tokenSource": "live-extract",
+    "claimCount": 76,
+    "evidenceClaimCount": 76,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 6,
+    "conflictCount": 0,
+    "tier1SourceCount": 6,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": 0.333
   },
   {
@@ -13135,9 +13128,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 335,
+  "verified_v2": 336,
   "partial": 93,
-  "legacy_snapshot": 111,
+  "legacy_snapshot": 110,
   "total": 539
 } as const;
 

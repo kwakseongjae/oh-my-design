@@ -171,7 +171,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 178 -> 177 (2026-11-03): headspace.
     // 177 -> 176 (2026-11-03): tellingme.
     // 176 -> 175 (2026-11-03): corca.
-    expect(flagged.length).toBe(175);
+    // 175 -> 174 (2026-11-03): xiaohongshu.
+    expect(flagged.length).toBe(174);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
