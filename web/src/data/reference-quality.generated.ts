@@ -2657,6 +2657,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "docomo-smtb-netbank",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 73,
+    "evidenceClaimCount": 73,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
+    "conflictCount": 0,
+    "tier1SourceCount": 6,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "doctolib",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -13118,10 +13140,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 338,
+  "verified_v2": 339,
   "partial": 92,
   "legacy_snapshot": 109,
-  "total": 539
+  "total": 540
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 539,
+ "count": 540,
  "items": [
   {
    "id": "104",
@@ -2722,6 +2722,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "docomo-smtb-netbank",
+   "primary_color_hex": "#cc0033",
+   "category": "fintech",
+   "visual_theme": "SBI Sumishin Net Bank now operates as **DOCOMO SMTB Net Bank**. Its individual banking service became **ドコモの銀行** on 3 August 2026; the bank's own announcement describes a more familiar service that makes its connection to the Docomo group easier to understand.",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "doctolib",
