@@ -1,122 +1,129 @@
 ---
 name: Corca
 colors:
-  primary: '#1a2352'
-  ink-pure: '#000000'
-  ink-soft: '#181818'
-  accent-blue: '#046cb8'
-  bright-blue: '#419eff'
-  steel-blue: '#36597d'
-  moonlight-cream: '#fff3b7'
-  moonlight-deep: '#402060'
-  lavender: '#faeeff'
-  amber: '#fdd484'
-  sky: '#d9e5f5'
-  card-violet: '#777cdc'
-  card-plum: '#605070'
-  body-slate: '#324158'
-  muted: '#bbbbbb'
+  primary: '#056eb9'
+  brand-light: '#419eff'
+  brand-deep: '#163272'
+  heading: '#1a2352'
+  action: '#163272'
+  action-hover: '#102654'
+  action-soft: '#eef6ff'
+  focus: '#163272'
+  foreground: '#1a1a1a'
+  secondary: '#526071'
+  muted: '#626975'
   canvas: '#ffffff'
-  surface: '#f1f5f9'
+  surface-subtle: '#f5f7fb'
+  surface-hover: '#eef2f7'
+  intro: '#e1eaf7'
+  border: '#e5e7eb'
+  border-strong: '#cad7ea'
+  on-dark: '#ffffff'
+  on-dark-secondary: '#b7d7ff'
+  on-dark-muted: '#7fa8d6'
+  accent: '#419eff'
+  ink: '#1a2352'
 typography:
-  display-hero:
-    fontSize: 60px
-    fontWeight: 400
-    use: Hero headline (H1), custom display webfont, white on dark
-  section:
-    fontSize: 32px
-    fontWeight: 400
-    use: 'Section headings (H2), navy #1a2352'
-  subsection:
-    fontSize: 28px
-    fontWeight: 400
-    use: Feature sub-heads (H2)
-  stat:
-    fontSize: 46px
-    fontWeight: 400
-    use: Big metric numbers (100,000+, 1.7M+)
-  eyebrow:
-    fontSize: 30px
-    fontWeight: 400
-    use: 'Achievement eyebrow label, blue #046cb8'
-  nav:
-    fontSize: 17px
-    fontWeight: 400
-    use: Primary nav item, Madefor/Pretendard
-  subnav:
+  action:
     fontSize: 15px
+    fontWeight: 650
+    use: Measured hero action links; 15px line height
+  nav:
+    fontSize: 16.56px
     fontWeight: 400
-    use: Dropdown sub-nav item, Pretendard
-  body:
+    use: Measured header blog link; 23.184px line height
+  card-wrapper:
     fontSize: 16px
     fontWeight: 400
-    use: Body / UI text, Madefor
+    use: Measured card anchor default; individual descendants have their own styles
+  service-name:
+    fontSize: 18px
+    fontWeight: 600
+    use: Measured Moonlight and Corca AX name spans
+  story-topic:
+    fontSize: 13px
+    fontWeight: 400
+    use: Measured product topic span in the story card
 rounded:
-  sm: 10px
-  md: 16px
-  lg: 24px
-  pill: 50px
-  full: 9999px
+  square: 0px
+  pill: 999px
 spacing:
-  xs: 8
-  sm: 15
-  md: 16
-  base: 24
-  lg: 48
-  xl: 64
+  nav-y: 8
+  nav-x: 11
+  action-y: 12
+  action-x: 22
+  story-card: 28
 components:
-  button-cta:
+  cta-primary:
     type: button
-    backgroundColor: '#ffffff'
-    textColor: '#1a2352'
-    rounded: 50px
-    padding: 8px 15px
-    height: 60px
-    typography: 16px / 400
-    use: Primary pill CTA (Try it now) — white fill, dark navy label on the dark hero
-  button-learn-more:
-    type: button
-    backgroundColor: '#777cdc'
+    backgroundColor: '#163272'
     textColor: '#ffffff'
-    rounded: 50px
-    padding: 8px 15px
-    height: 51px
-    typography: 16px / 400
-    use: '''자세히 보기'' section-themed filled pill; fill shifts per product card (also #605070)'
-  button-outline:
-    type: button
-    textColor: '#1a2352'
-    border: '1px solid #000000'
+    border: '1px solid #163272'
     rounded: 999px
-    padding: 8px 15px
-    height: 38px
-    use: '''기사 보기'' outline pill — transparent fill, thin dark ring'
-  card-feature:
+    height: 41px
+    padding: 12px 22px
+    typography: 15px / 650
+    hover: 'bg and border #102654; transform translateY(-2px)'
+    focus: 'outline 3px solid #163272; outline-offset 4px'
+    use: AX 도입 알아보기 — a link to /ax on the pale hero; measured width 151.5px. Press is unmeasured.
+  cta-secondary:
+    type: button
+    textColor: '#163272'
+    border: '1px solid #163272'
+    rounded: 999px
+    height: 41px
+    padding: 12px 22px
+    typography: 15px / 650
+    hover: 'bg #eef6ff; fg and border #102654; transform translateY(-2px)'
+    focus: 'outline 3px solid #163272; outline-offset 4px'
+    use: '제품 살펴보기 — an in-page link to #home-products; transparent at rest over #f5f7fb. Measured width 127.3px. Press is unmeasured.'
+  nav-blog:
+    type: button
+    textColor: '#1a1a1a'
+    rounded: 999px
+    height: 40px
+    padding: 8px 11px
+    typography: 16.56px / 400
+    hover: bg rgba(183, 191, 217, 0.16)
+    use: 블로그 — a header link to /blog; transparent at rest over white. Width 64.9px. Hover measured in the second pass; focus is browser auto and press is unmeasured.
+  card-moonlight:
     type: card
     backgroundColor: '#ffffff'
-    rounded: 16px
-    use: White product / feature card
-  card-surface:
+    textColor: '#1a2352'
+    rounded: 0px
+    height: 626px
+    padding: 0px
+    typography: 18px / 600
+    hover: 'child .service-body bg #eef6ff'
+    pressed: 'child .service-body bg #eef6ff'
+    focus: 'outline 3px solid #163272; outline-offset -3px'
+    use: 'Moonlight — a 531px-wide link to /products/moonlight. Font describes its name span; anchor default is 16px / 400. Right and bottom borders are 1px #e5e7eb. The child fill remaining after blur is excluded from the focus token.'
+  card-ax:
     type: card
-    backgroundColor: '#f1f5f9'
-    rounded: 10px
-    use: Light-grey surface card / panel
-  nav-link:
-    type: tab
-    textColor: '#181818'
-    typography: 17px / 400
-    use: Top navigation item
-    active: 'moonlight cream #fff3b7 text on active product surface'
-  badge-eyebrow:
-    type: badge
-    textColor: '#046cb8'
-    rounded: 8px
-    use: Achievement eyebrow label (아기유니콘 선정, 세계 7위)
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 626px
+    padding: 0px
+    typography: 18px / 600
+    hover: descendant video opacity 0 to 1
+    pressed: descendant video opacity 0 to 1
+    focus: 'outline 3px solid #163272; outline-offset -3px; descendant video opacity 0 to 1'
+    use: 'Corca AX — a 531px-wide link to /ax. The visible name is white over image/video and a black alpha gradient; the covered anchor itself computes white bg and navy fg. Font describes the name span. Right and bottom borders are 1px #e5e7eb. A persistent source attribute mutation is excluded from the focus token.'
+  card-story:
+    type: card
+    backgroundColor: '#ffffff'
+    textColor: '#1a2352'
+    rounded: 0px
+    height: 276.9px
+    padding: 28px
+    typography: 16px / 400
+    hover: 'bg #eef6ff'
+    pressed: 'bg #eef6ff'
+    focus: 'bg #eef6ff; outline 3px solid #163272; outline-offset -3px'
+    use: '우리가 만들고 싶은 AI Colleague — a 373px-wide link to /blog/we-make-ai-colleague. Font is the anchor default; topic is 13px / 400 in brand blue, heading navy and paragraph #1a1a1a. Right and bottom borders are 1px #e5e7eb.'
 fonts:
   roles:
-    display: brand-webfont
-    body: Pretendard
-    ui: Madefor
+    sans: Pretendard Variable
 ---
 
 # Design System Inspiration of Corca
@@ -125,372 +132,210 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Corca (코르카) is a Korean AI company whose corporate site frames the whole business around a single confident sentence — "코르카는 AI 기술로 세상을 바꾸고 있습니다" ("Corca is changing the world with AI technology"). The site is built on Wix, and its atmosphere is that of a young, benchmark-winning research lab that wants to read as both credible and playful. The homepage opens on a dark hero with a very large white headline (`#ffffff`, ~60px), then drops into a bright white canvas where every section heading is set in a deep, trustworthy navy ink (`#1a2352`). That navy is the spine of the identity: it appears on essentially every H2 and carries the calm, engineering-grade seriousness of an AI company that has real numbers to show.
+Corca (코르카) is a Seoul-based AI company that develops products for research and everyday life and offers enterprise AI transformation services. Its [contact page](https://www.corca.ai/about/vision-mission) and [product legal footer](https://www.themoonlight.io/en/policy) publish the same Seoul address. Its current homepage connects these activities: experience gained by making products and changing its own work becomes the basis for helping other organizations adopt AI. Moonlight helps researchers read, understand and summarize papers; Trace handles schedules; Corca AX and Ceal address organizational AI use and the environment supporting it. This is the positioning presented on the [homepage](https://www.corca.ai/), [Moonlight page](https://www.corca.ai/products/moonlight) and [Corca AX page](https://www.corca.ai/ax).
 
-Where Corca departs from a purely corporate palette is its per-product theming. Each product gets its own colored "world." The corporate achievements are announced in an accent blue (`#046cb8`) — the eyebrow color above lines like "2024 아기유니콘 선정!" and "세계 7위, 국내 기업 중 1위 쾌거!". The flagship product **Moonlight** ("AI Colleague for Research Papers" / "논문을 더 빠르고 쉽게 이해하기") runs a literal night theme: a deep plum-purple stage (`#402060`) lit by a soft moonlight cream (`#fff3b7`) that also becomes the active-nav color on that surface. Other feature bands pull in a bright electric blue (`#419eff`), a pale lavender wash (`#faeeff`), a warm amber (`#fdd484`), a pale sky tint (`#d9e5f5`) and a steel blue (`#36597d`) — a deliberately optimistic, multi-hued spectrum that keeps a dense corporate page from feeling grey.
+The visual expression combines a pale blue-grey hero, large navy Korean type and a brighter blue emphasis with a wavy underline. A tabbed achievement panel occupies the right side of the desktop hero. Rounded action links sit beneath the explanation; below them, product and service cards have square corners and thin shared grid borders. Navy `#1a2352` still carries main headings, but the site's explicit brand property is blue `#056eb9`. The main action colour is the deeper blue `#163272`. White and `#f5f7fb` alternate across the page. These are measured homepage properties and screenshot observations.
 
-Geometrically, Corca is a pill-and-soft-corner system. Calls to action are fully rounded pills — a white 50px-radius "Try it now" fill on product pages, and a transparent 999px-radius outline pill ("기사 보기") ringed with a thin dark line (`#000000`). Content cards use gentle 10px and 16px corners. The system is essentially flat: live inspection returned `box-shadow: none` across the hero, nav and cards, so separation is done with color blocks and generous whitespace rather than elevation. Typography splits jobs cleanly: headlines use a custom uploaded display webfont with heavy, poster-like presence, while body and UI text resolve down to Pretendard and Wix's Madefor for quiet Korean legibility.
+Corca's own design writing adds context to the current expression. A [January 2025 designer interview](https://www.corca.ai/blog/product-designer-work) describes a role spanning UX, interfaces, BX, logos and graphics, with iteration informed by user feedback and product data. A [September 2026 AX design-study article](https://www.corca.ai/blog/ax-design-study) describes applying ideas to actual work, comparing the results and considering the reader's time. It documents learning and experimentation, not a published brand rulebook or a formal visual rebrand.
 
-**Key Characteristics:**
-- Deep navy ink (`#1a2352`) as the brand spine — set on every section heading, never pure black for headings
-- Dark hero with an oversized white (`#ffffff`) ~60px headline stating the AI mission
-- Per-product theming — Moonlight's night world of deep purple (`#402060`) + moonlight cream (`#fff3b7`)
-- Achievement blue (`#046cb8`) reserved for eyebrow labels above credibility claims
-- Optimistic multi-hue accent spectrum: bright blue (`#419eff`), lavender (`#faeeff`), amber (`#fdd484`), sky (`#d9e5f5`), steel blue (`#36597d`)
-- Pill-everything CTAs — 50px filled pills, 999px outline pills
-- Flat depth — `box-shadow: none`; color blocks and whitespace do the separating
-- Custom display webfont for headlines over Pretendard / Madefor for body and UI
+The measured homepage is the Korean edition (`corca.ai/`, HTML `lang="ko"`), captured at 1440×1000 without a regional redirect. This reference describes the corporate marketing surface. Moonlight's application interface is a separate surface; the product-page CSS facts below do not establish application tokens.
 
-### Primary tasks
+#### Primary tasks
 
-- Find out which products the company actually ships
-- Read how Moonlight helps people understand academic papers faster
-- Try Moonlight from the call to action on its product page
-- Check the benchmark ranking and award before trusting an AI vendor
-- Open a press article behind one of the company's claims
+- Explore the products and the distinct AX offering.
+- Follow the Moonlight and Trace product links.
+- Try Moonlight through the marketing page's “Try it now” action in English.
+- Read company achievements and linked reporting.
+- Read practical product and organizational stories.
 
 ### Brand Narrative
 
-Corca (코르카) is a Korean AI company built around a single, literal mission: to change the world with AI technology. That sentence is not marketing garnish — it is the site's H1 and the frame for everything else. Rather than positioning itself as a horizontal "AI platform," Corca presents as a lab that ships concrete products and lets outcomes speak: **Moonlight**, an "AI colleague for research papers" that helps people read and understand academic papers faster, and **Trace**, a sibling product in its lineup.
+Corca's current story links a company that builds named AI products with one that helps organizations change how they work. Moonlight and Trace demonstrate the product side; Corca AX and Ceal make the organizational side explicit. The [vision page](https://www.corca.ai/about/vision-mission) describes making the benefits of technological progress available broadly, with people, research-based decisions and ethical AI among its stated themes. The [working-culture page](https://www.corca.ai/about/how-we-work) describes chapters and squads using feedback, retrospectives and scrum to grow their teams and products.
 
-The brand leans hard on external validation as trust-building. The homepage foregrounds its selection as a **2024 아기유니콘 (Baby Unicorn)** — a Korean government-backed high-potential-startup designation — and a benchmark result billed as "세계 7위, 국내 기업 중 1위" (7th in the world, 1st among domestic companies). Moonlight's own surface stacks adoption numbers (100,000+, 1.7M+, 150+, 1,000+) as social proof. The narrative Corca tells is therefore evidence-first: *here is the technology, here is who recognized it, here is how many people use it.*
-
-What Corca's design refuses, visibly: the heavy, shadow-stacked chrome of legacy enterprise software, and hype that isn't backed by a number. What it embraces: a trustworthy navy spine, per-product color worlds that make each launch feel like its own small brand, flat and fast web-native surfaces, and big proof-numbers given room to breathe. *(Company facts above are drawn from Corca's own live homepage and Moonlight surface; specific founding details beyond what the site states are not independently verified here.)*
+That narrative has a practical design counterpart on the homepage: a shared navy-and-blue framework, recognizable product imagery, prominent adoption figures, and direct links to the team's own accounts of making and learning. Moonlight retains a purple marketing-page background declaration, while its homepage card participates in the corporate white grid. This reading connects the observed design to the published positioning; it is not a claim that Corca has issued these observations as brand principles.
 
 ### Principles
 
-1. **Proof over adjectives.** Corca states rankings and adoption numbers, not superlatives. *UI implication:* give metrics a large, dedicated stat tier (46px) and let numbers carry credibility.
-2. **A world per product.** Moonlight gets its purple-and-cream night theme; the corporate frame stays navy. *UI implication:* theme each product surface distinctly, but keep the navy `#1a2352` spine as the shared connective tissue.
-3. **Flat and fast.** Modern web-native clarity beats decorative depth. *UI implication:* no shadows; separate with full-width color blocks and whitespace.
-4. **Present tense, plain claim.** "We are changing the world," not "we aspire to." *UI implication:* declarative headlines, direct CTAs ("자세히 보기", "Try it now"), no hedging.
-5. **Heavy where it declares, quiet where it explains.** *UI implication:* the display webfont for poster headlines; Pretendard / Madefor for calm, legible body and UI.
+- **Retain the user's judgment.** The AI Colleague article describes assisting deeper research and revising language that suggested handing understanding away.
+- **Apply, compare, revise.** The design-study article describes trying concepts in actual work and discussing whether an idea made a difference.
+- **Respect readers' time.** The design-study article connects clear explanations and less repetition to the reader's experience.
+- **Show concrete products and outcomes.** As a visual reading of the homepage, preserve named products, explicit jobs and published metrics.
+- **Use flat controls with visible focus.** As a measured interface pattern, combine shadowless control roots with authored solid outlines on actions and cards.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Corca product surfaces (a research-paper AI assistant, a Korean AI startup with enterprise and academic reach), not individual people.*
-
-**정민서, 27, 서울.** A graduate researcher drowning in papers. Uses Moonlight to get through literature reviews faster and trusts it partly because the adoption numbers (100,000+ users) signal she is not an early guinea pig. Wants the product to feel fast and uncluttered, not like heavyweight enterprise software.
-
-**James Park, 34, remote.** A startup engineer evaluating AI vendors. Reads Corca's "세계 7위" benchmark claim and the 아기유니콘 selection as credibility shortcuts. Would bounce immediately from a site that made big AI claims with zero verifiable numbers behind them.
-
-**이하늘, 41, 판교.** A corporate innovation lead scouting Korean AI partners. Values that Corca ships named products (Moonlight, Trace) rather than a vague platform, and that each has its own clear identity and metrics. Trusts the calm navy corporate frame over flashy gradients.
+No first-party persona profiles were verified in the sources reviewed.
 
 ## Colors
 
-### Primary & Ink
-- **Corca Navy** (`#1a2352`): The primary brand color and the ink for essentially every section heading (H2). A deep blue-navy that reads trustworthy and engineering-grade — used instead of pure black for headings.
-- **Pure Black** (`#000000`): Maximum-contrast nav labels and the thin ring on outline pills.
-- **Soft Ink** (`#181818`): Near-black used for top-nav item text — a hair warmer than pure black.
-- **Body Slate** (`#324158`): Secondary body copy and descriptive paragraphs.
-- **Muted Grey** (`#bbbbbb`): Low-emphasis captions, meta, and disabled labels.
+The survey resolves **22 `--site-color-*` custom properties** on `:root`. The table preserves their names and resolved values; aliases are retained because the site separates the roles even when their colours coincide.
 
-### Accent Blues
-- **Achievement Blue** (`#046cb8`): The eyebrow color above credibility claims ("2024 아기유니콘 선정!", "세계 7위, 국내 기업 중 1위 쾌거!"). Corca's "we won something" color.
-- **Bright Blue** (`#419eff`): An electric blue used as a full-bleed section background on product surfaces.
-- **Steel Blue** (`#36597d`): A muted mid-blue for secondary illustration blocks and quieter bands.
+| First-party property | Resolved value | Role evidenced by the property or measured control |
+|---|---|---|
+| `--site-color-brand` | `#056eb9` | Brand blue; hero emphasis and story topic |
+| `--site-color-brand-light` | `#419eff` | Light brand colour |
+| `--site-color-brand-deep` | `#163272` | Deep brand colour |
+| `--site-color-heading` | `#1a2352` | Main heading and card ink |
+| `--site-color-action` | `#163272` | Primary fill and secondary action ink |
+| `--site-color-action-hover` | `#102654` | Hero action hover colour |
+| `--site-color-action-soft` | `#eef6ff` | Secondary action and card hover fill |
+| `--site-color-focus` | `#163272` | Authored action and card focus outlines |
+| `--site-color-text` | `#1a1a1a` | **Foreground**: main explanatory paragraphs |
+| `--site-color-text-secondary` | `#526071` | Named secondary text property |
+| `--site-color-text-muted` | `#626975` | Named muted text property |
+| `--site-color-surface` | `#ffffff` | White canvas, header and cards |
+| `--site-color-surface-subtle` | `#f5f7fb` | Hero and story-section ground |
+| `--site-color-surface-hover` | `#eef2f7` | Named alternate surface-hover property |
+| `--site-color-intro` | `#e1eaf7` | Named introduction property |
+| `--site-color-border` | `#e5e7eb` | Shared card-grid borders |
+| `--site-color-border-strong` | `#cad7ea` | Named stronger border property |
+| `--site-color-on-dark` | `#ffffff` | Text on dark surfaces |
+| `--site-color-on-dark-secondary` | `#b7d7ff` | Footer text and links |
+| `--site-color-on-dark-muted` | `#7fa8d6` | Named muted on-dark text property |
+| `--site-color-accent` | `#419eff` | Alias of the light brand colour |
+| `--site-color-ink` | `#1a2352` | Alias of heading ink |
 
-### Product / Moonlight Theme
-- **Moonlight Cream** (`#fff3b7`): The signature Moonlight accent — a soft pale-yellow "moonlight" that also becomes the active-nav text color on the Moonlight surface.
-- **Moonlight Deep** (`#402060`): The deep plum-purple night stage behind the Moonlight hero.
-- **Lavender** (`#faeeff`): A pale lavender wash used as a soft full-width section background.
-- **Amber** (`#fdd484`): A warm golden accent block used for highlight sections.
-- **Sky** (`#d9e5f5`): A pale blue tint for soft section backgrounds and cards.
-- **Card Violet** (`#777cdc`): A themed violet fill on the "자세히 보기" product-card button.
-- **Card Plum** (`#605070`): An alternate themed plum fill on a sibling product-card button.
+The paragraph census needs interpretation by location: `#b7d7ff` appears on ten footer paragraphs, `#1a1a1a` on five paragraphs, and white on two. The body-text role is `foreground` (`#1a1a1a`), corroborated by the paragraph inside the measured story card; footer repetition does not make pale blue the body ink.
 
-### Neutrals & Surface
-- **Pure White** (`#ffffff`): Page canvas, white cards, hero headline text, and the filled CTA background.
-- **Surface Grey** (`#f1f5f9`): A cool light-grey surface for panels and grouped content cards.
+The navigation hover uses **`rgba(183, 191, 217, 0.16)`** over the white header. This alpha colour is a measured state, not an opaque palette swatch. The selected OpenAI tab has an 8% brand-blue background reported as `color(srgb 0.0196078 0.431373 0.72549 / 0.08)`; it was surveyed at rest, not state-probed.
+
+The [current official stylesheet](https://www.corca.ai/_astro/_..DjzxgHAC.css) also retains Moonlight-specific declarations: `.moonlight-hero` has background `#402060` and white text; `.metric-label` uses `#bbbbbb`. Those rules belong to the [Moonlight marketing page](https://www.corca.ai/products/moonlight), whose markup uses these classes. They are declared page-specific facts, not values from the homepage's resolved token set or measurements of the Moonlight app.
 
 ## Typography
 
-### Font Family
-- **Display**: a custom uploaded webfont (served by Wix as `wfont_…` faces) used for all headlines and stat numbers. The typeface carries its weight inside the font file, so computed `font-weight` reports `400` even though the letterforms read as bold/heavy poster type.
-- **Body**: `Pretendard` — the de-facto Korean product font, which the dropdown/sub-nav faces resolve to (`orig_pretendard_medium`).
-- **UI**: `Madefor` (Wix Madefor) — the system UI face used for menu chrome and small labels.
+**Official product use:** the first-party design articles reviewed do not name an official product typeface or document a separate display family.
 
-### Hierarchy
+**Live-loaded:** `document.fonts` reports **Pretendard Variable**, normal style, weight range **45–920**. Body, H1 and button declarations all begin with that same family. This is the only family placed in `tokens.typography.family`.
 
-| Role | Font | Size | Weight | Notes |
-|------|------|------|--------|-------|
-| Display Hero | display webfont | 60px | 400 (heavy cut) | Hero H1, white on dark hero |
-| Stat Number | display webfont | 46px | 400 | Big metrics (100,000+, 1.7M+, 150+, 1,000+) |
-| Section Heading | display webfont | 32px | 400 | Section H2, navy `#1a2352` |
-| Sub-section | display webfont | 28px | 400 | Feature sub-heads |
-| Eyebrow | display webfont | 30px | 400 | Achievement label, blue `#046cb8` |
-| Nav Item | Madefor / Pretendard | 17px | 400 | Primary top-nav item |
-| Sub-nav | Pretendard | 15px | 400 | Dropdown menu item |
-| Body | Madefor | 16px | 400 | Body / UI reading text |
+**Official distributed assets:** the live site's `@font-face` points to the same-origin `/fonts/PretendardVariable.woff2`, with `format("woff2-variations")`. This verifies the webfont delivery path; no separate brand font kit or font licence was opened.
 
-### Principles
-- **Heavy display, quiet body**: The custom display webfont carries poster-scale headlines; Pretendard and Madefor carry the calm reading and UI text. Weight contrast comes from the typeface cut, not from a numeric weight ramp (everything computes as 400).
-- **Navy owns headings**: Section headings are `#1a2352`, not black — the warmth of the navy keeps a benchmark-heavy page feeling human.
-- **Numbers are hero-sized**: Corca leans on big metrics (46px stat numbers) as proof, giving quantitative credibility its own display tier.
-- **Hangul-first body**: Body sits around 15–17px for comfortable dense hangul, with Pretendard as the resolved Korean face.
+**Declared-only:** `Pretendard` also appears after the variable family in the CSS fallback stack, but no separately loaded face with that name appears in the census. It receives no token or specimen.
+
+**Unresolved:** no additional display face was established. **Substitute: none chosen.**
+
+### Measured interface metrics
+
+| Element | Size / weight | Line height | Evidence |
+|---|---|---|---|
+| Hero action links | 15px / 650 | 15px | Both states runs |
+| Header blog link | 16.56px / 400 | 23.184px | Both states runs |
+| Card anchor default | 16px / 400 | 22.4px | First states run |
+| Moonlight / Corca AX name spans | 18px / 600 | Not separately captured | Visible label snapshots |
+| Story topic span | 13px / 400 | Not separately captured | Visible label snapshot |
+| Footer contact links | 12px / 400 | 18.6px | Survey rows |
+
+### CSS-declared headline hierarchy
+
+The homepage stylesheet specifies the hero H1 as `clamp(44px,4.4vw,64px)`, weight 650, line height 1.16 and letter spacing `-.045em`. The services H2 uses `clamp(30px,3.3vw,44px)` at weight 650; group H3 uses `clamp(23px,2.3vw,28px)` at weight 600. Hero explanatory copy is declared at 18px with line height 1.8; story paragraphs at 15px with line height 1.75. These are source declarations, not additional computed-style samples.
+
+The [English Moonlight marketing page](https://www.corca.ai/en/products/moonlight) currently uses the H1 “AI PDF Paper Reader for Researchers”. The same official stylesheet declares a 60px H1 at `width>=1280px`, with weight 400. Its metric values are declared at 47px/600 at that width. These retain the product page's large headline and number tiers as CSS facts; they were not rendered in a second product-page probe.
+
+Use the loaded variable family to reproduce the measured interface. The weight contrast is numeric in the current CSS and controls: 400 for the navigation, 600 for product names, 650 for the hero actions and headline declarations. Do not replace this with an unidentified heavy display cut.
 
 ## Layout
 
-### Spacing System
-- Base rhythm: 8px, with a notable 8px 15px button padding measured on the pill CTAs
-- Scale: 8px, 15px, 16px, 24px, 48px, 64px
-- Sections are tall, full-bleed colored bands stacked vertically; internal content is centered with generous vertical breathing room
+The desktop hero is a two-column composition: mission and explanation on the left, a tabbed recognition panel on the right. The main product area then separates **organizational AI use** from **research and everyday products** into two parallel columns. Each group begins with a 3px deep-blue top rule. Product names, explanations and large adoption figures give these columns an information hierarchy rather than a uniform tile grid.
 
-### Grid & Container
-- Centered single-column hero anchored by the oversized display headline
-- Product showcases alternate as full-width colored bands (white, lavender `#faeeff`, amber `#fdd484`, deep purple `#402060`), each themed to its product
-- Feature/metric cards arrange in horizontal rows beneath section headings
-- Achievement/press blocks pair an eyebrow (`#046cb8`) + navy heading + outline "기사 보기" pill
+The measured product/service cards are 531px wide; story cards are 373px wide. The story section's CSS defines three equal grid tracks, while the current homepage fills two with stories. Its white cards meet at thin `#e5e7eb` edges. Keep the square outer silhouette and the distinction between image area, product copy and inline arrow action.
 
-### Whitespace Philosophy
-- **Color blocks over borders**: sections separate by switching full-width background color, not by rules or shadows
-- **Breathing room**: despite dense corporate content (metrics, press, awards), each band is airy with large vertical gaps
-- **Proof gets space**: the big stat numbers (100,000+, 1.7M+) are given their own generous band as social proof
-
-### Border Radius Scale
-- Small (10px): surface cards, small panels
-- Medium (16px): feature cards — the workhorse card radius
-- Large (24px): larger containers
-- Pill (50px): filled CTAs
-- Full (999px / 9999px): outline pills, circular icon buttons
+Measured spacing includes 12px/22px vertical/horizontal action padding, 8px/11px navigation padding and 28px story-card padding. The stylesheet declares a 12px gap between hero actions, a 32px gap above them and a 56px desktop hero-column gap. It defines `--home-section-extra-space: 16px` on the homepage. These local declarations do not establish a universal 8px spacing system.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, colored bands stack |
-| Tablet | 640-1024px | Moderate padding, 2-up feature/metric cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Only desktop was rendered. The following behavior is **verified in the official stylesheet**, rather than in a mobile viewport.
 
-#### Touch Targets
-- Pill CTAs at 51–60px height with 8px 15px padding — comfortably tappable
-- Outline "기사 보기" pill at 38px height
-- Nav items spaced within the 78px header
+At `width<=809px`, the hero becomes one column, the service groups stack, and the story grid becomes one column. The hero H1 switches to `clamp(38px,9.5vw,54px)`; hero explanatory text becomes 16px. Homepage extra section spacing changes from 16px to 8px. Between 810px and 1100px, the hero gap is declared as 28px. The header's desktop state was measured at 66px tall; its mobile interaction was not measured.
 
-#### Collapsing Strategy
-- Hero: oversized display headline scales down on mobile
-- Colored product bands maintain full-width treatment, reduce internal padding
-- Feature/metric rows: multi-column → stacked single column
-- Big stat numbers wrap to a 2×2 grid on narrow viewports
-
-#### Image Behavior
-- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain their 10px / 16px radius across breakpoints
+The Moonlight marketing page has its own CSS breakpoints. Its metrics grid uses two columns by default and four at `width>=768px`. These are page-specific declarations and do not establish a global corporate breakpoint scale.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, headings, most surfaces |
-| Color block (Level 1) | Full-width background color shift | Section separation without elevation |
-| Ring (Level 2) | `1px solid #000000` outline pill | Low-emphasis article links |
+All six measured control roots have `box-shadow: none`, including hover and focus samples. The three ancestor levels compared around them also show no box shadow in their resting snapshots. This supports a flat treatment for these controls, not a claim that every route and every asset is shadowless.
 
-**Shadow Philosophy**: Corca is a near-shadowless, flat system. Live inspection returned `box-shadow: none` across the hero, navigation, headings and cards. Depth is communicated by stacking full-width color bands (white, lavender `#faeeff`, amber `#fdd484`, deep purple `#402060`) rather than by elevation. When a card needs to feel distinct, the system reaches for a tinted surface (`#f1f5f9`) or a colored fill, never a drop shadow. This keeps the page feeling fast, modern and web-native — appropriate for a company selling AI products.
+The homepage separates sections with white and `#f5f7fb`, cards with shared borders, and focus with drawn outlines. The Corca AX image uses a black alpha gradient to keep its white text readable. That image overlay is a distinct depth treatment from a drop shadow.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.none`: `none`
+- `shadow.measured-controls`: `none`
 
 ## Motion & Easing
 
-**Durations**:
+Both hero actions report this raw computed transition string:
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 220ms | Card / section reveal, dropdown, sheet |
-| `motion-slow` | 340ms | Page-level transitions, hero reveal |
+`color, background-color, border-color, transform 0.16s, 0.16s, 0.16s, 0.16s ease, ease, ease, ease 0s, 0s, 0s, 0s`
 
-**Easings**:
+The probe reports a longest transition of **160ms** and samples after 900ms. The measured hover transform is `matrix(1, 0, 0, 1, 0, -2)`, a 2px upward movement. The card and navigation roots report `all 0s ease 0s`; this is a root-level observation and does not establish timing for descendants or media.
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and calm — consistent with the flat, proof-forward aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; colored product bands and metrics fade-in from below at `motion-standard / ease-enter` as the reader scrolls. No bounce or spring — an AI company signals steady competence, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and scroll reveals become immediate; the site stays fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle:
-- https://www.corca.ai/ (homepage) — hero H1 "코르카는 AI 기술로 세상을 바꾸고 있습니다" white 60px on dark;
-  section H2 navy rgb(26,35,82) #1a2352; achievement eyebrows rgb(4,108,184) #046cb8; body slate rgb(50,65,88) #324158;
-  pill CTAs radius 50px / 999px, padding 8px 15px; box-shadow none.
-- https://www.corca.ai/en/moonlight (Moonlight product surface) — EN hero H1 "AI Colleague for Research Papers!";
-  stat numbers 46px (100,000+, 1.7M+, 150+, 1,000+); "Try it now" white pill #ffffff radius 50px;
-  active nav cream rgb(255,243,183) #fff3b7; hero band deep purple rgb(64,32,96) #402060; section blue rgb(65,158,255) #419eff.
-
-Token-level claims (§1-9) are sourced from this live inspection (see web/references/corca/.verification.md Proof block).
-
-Voice samples (§10) are verbatim from the live homepage and Moonlight surface.
-
-Brand narrative (§11): Corca (코르카) is a Korean AI company; products Moonlight (research-paper AI assistant)
-and Trace; 2024 아기유니콘 (Baby Unicorn) selection and a "세계 7위 / 국내 1위" benchmark claim are stated on
-the homepage. These are drawn from Corca's own live surfaces; founding specifics beyond the site are not
-independently verified in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Corca product surfaces. Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "proof over adjectives", "a world per product", "flat and fast as a rejection of
-legacy enterprise chrome") are editorial readings connecting Corca's observed design to its positioning, not
-directly sourced Corca statements.
--->
+The official CSS separately declares `animation:36s linear infinite partner-scroll` on `.partner-track`, pauses it under pointer hover, and disables that animation under `prefers-reduced-motion:reduce`. It also hides the connection-line spark under that media query. The homepage script prevents the service preview from starting when reduced motion is requested. These rules do not establish that every page transition becomes instant.
 
 ## Components
 
-### Buttons
+All six controls were identified by tag, landmark, selector and destination. They are links; the action and navigation links use component type `button`, and the content links use `card`.
 
-**Primary CTA (Try it now)**
-- Background: `#ffffff`
-- Text: `#1a2352`
-- Radius: 50px
-- Padding: 8px 15px
-- Height: 60px
-- Font: 16px / 400
-- Use: Product-page primary pill CTA — a white fill with a dark navy label sitting on the dark hero
+### Hero actions
 
-**Learn-More (자세히 보기)**
-- Background: `#777cdc`
-- Text: `#ffffff`
-- Radius: 50px
-- Padding: 8px 15px
-- Height: 51px
-- Font: 16px / 400
-- Use: Section "자세히 보기" filled pill; the fill is themed per product card (a sibling card uses `#605070`)
+**AX 도입 알아보기** links to `/ax`. Its measured box is **151.5×41px**, radius **999px**, padding **12px 22px**, font **15px/650**, and line height **15px**. Rest fill and 1px border are `#163272`; the label is white. Hover changes fill and border to `#102654` and moves the link up 2px. Keyboard focus adds a **3px solid `#163272` outline with 4px offset**, which disappears after blur. Press is **UNMEASURED** in both runs because `:active` did not match.
 
-**Outline Pill (기사 보기)**
-- Background: transparent
-- Text: `#1a2352`
-- Border: 1px solid `#000000`
-- Radius: 999px
-- Padding: 8px 15px
-- Height: 38px
-- Use: "기사 보기" article link — a low-emphasis outline pill with a thin dark ring
+**제품 살펴보기** links to `#home-products`. Its box is **127.3×41px**, with the same radius, padding and font. It is transparent at rest over `#f5f7fb`, with `#163272` text and a 1px border in that colour. Hover fills it with `#eef6ff`, darkens label and border to `#102654`, and moves it up 2px. Focus uses the same 3px outline and 4px offset. Press is **UNMEASURED**.
 
-### Cards & Containers
+### Header link
 
-**White Feature Card**
-- Background: `#ffffff`
-- Radius: 16px
-- Use: White product / feature card on the main canvas (flat, no shadow)
+**블로그** links to `/blog`. It measures **64.9×40px**, radius **999px**, padding **8px 11px**, and **16.56px/400** type. Rest is transparent over white with `#1a1a1a` text and no border or shadow. The second run measured the hover background as `rgba(183, 191, 217, 0.16)`. Press is **UNMEASURED**. Keyboard focus draws a browser `auto` outline; that ring is not a brand token.
 
-**Surface Card**
-- Background: `#f1f5f9`
-- Radius: 10px
-- Use: Light-grey surface panel grouping related content
+### Product and service cards
 
-### Badges
+**Moonlight** links to `/products/moonlight`. The outer card is **531×626px**, white, **0px radius**, **0px padding**, with a 16px/400 anchor default and navy ink. Its visible name span is **18px/600** in `#1a2352`. The card draws 1px `#e5e7eb` borders on the right and bottom; its grid parent supplies the other edges. Hover and press change the **child `.service-body`**, from transparent over white to `#eef6ff`; the outer card remains white. Keyboard focus adds a **3px `#163272` outline at −3px offset**. The child fill also appeared during focus, but remained after blur while `:hover` remained true, so it is excluded from the focus token.
 
-**Achievement Eyebrow**
-- Text: `#046cb8`
-- Radius: 8px
-- Use: Blue eyebrow label above credibility headings ("아기유니콘 선정", "세계 7위")
+**Corca AX** links to `/ax`, with the same **531×626px**, square, zero-padding outer geometry and right/bottom border treatment. The covered anchor computes white background and navy ink; the **visible name and explanatory text are white over image/video**, with `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8))`. The name is 18px/600. Hover and press change descendant video opacity from **0 to 1**. Focus adds the inset 3px blue outline and also changes video opacity to 1. A source-attribute mutation that persisted after blur is excluded. Video-frame pixels were outside the comparison scope.
 
-### Navigation
-- Background: `#ffffff`
-- Text: `#181818`
-- Font: 17px / 400 Madefor
-- Height: 78px header
-- Active: moonlight cream `#fff3b7` text on the active product surface (Moonlight)
-- Use: Top horizontal nav ("제품 소개", "회사 소개", "채용", "블로그")
+### Story card
 
----
-
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://www.corca.ai/ , https://www.corca.ai/en/moonlight , https://corca.co.kr/ , https://github.com/corca-ai
-**Tier 2 sources:** getdesign.md/corca (0 DESIGN.md files — no data); styles.refero.design/?q=corca (no corca-specific match — returns generic catalog)
-**Conflicts unresolved:** none
+**우리가 만들고 싶은 AI Colleague** links to `/blog/we-make-ai-colleague`. It measures **373×276.9px**, radius **0px**, padding **28px**, with white fill, navy heading ink and the same right/bottom grid borders. Its topic is brand blue at 13px/400; its paragraph is `#1a1a1a`. Hover and press change the card's own background to `#eef6ff`. Keyboard focus changes the same background and adds the **3px `#163272` inset outline**. Both changes clear after blur in the capture.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no results)** | White canvas with a single navy (`#1a2352`) line explaining there is nothing yet, plus one white pill CTA to take the next step. No clutter. |
-| **Empty (saved / history none)** | Muted grey (`#bbbbbb`) single line noting nothing saved yet, with a calm path back. |
-| **Loading (content fetch)** | Flat skeleton blocks on the `#f1f5f9` surface at final card dimensions (10–16px radius). No shadow shimmer — a flat pulse consistent with the shadowless system. |
-| **Loading (product compute)** | Inline progress within the surface; previous values stay visible. |
-| **Error (request failed)** | Inline message in navy `#1a2352` with a plain-language explanation and a retry — states what to do next, not just "오류". |
-| **Error (form validation)** | Field-level message below the input describing what is valid, not a bare "필수". |
-| **Success (action complete)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f1f5f9` blocks at final dimensions with 10–16px radius, flat pulse. |
-| **Disabled** | Muted grey (`#bbbbbb`) text on a reduced-opacity surface; pill CTAs fade rather than turn to a foreign grey, preserving the brand read. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| AX action link | Fill/border `#102654`; up 2px | UNMEASURED | 3px solid `#163272`, offset 4px |
+| Product anchor | Fill `#eef6ff`; ink/border `#102654`; up 2px | UNMEASURED | 3px solid `#163272`, offset 4px |
+| Blog navigation link | Background `rgba(183, 191, 217, 0.16)` | UNMEASURED | Browser `auto`; no brand token |
+| Moonlight card link | Child body fill `#eef6ff` | Same child fill | 3px solid `#163272`, offset −3px; persistent child fill excluded |
+| AX card link | Video opacity 0 → 1 | Same opacity change | Inset 3px outline and video opacity 1; persistent source change excluded |
+| AI Colleague story link | Own fill `#eef6ff` | Same fill | Same fill and inset 3px outline; both clear after blur |
+
+Every measured hover sample matched `:hover`; all measured card presses matched `:active`. Both hero links and the blog link failed the pressed-state match and remain unmeasured. Empty, loading, error, success, skeleton and disabled treatments were not observed through the authorized interactions.
+
+The comparison covers the control, descendants including empty layers, their pseudo-elements and three ancestor levels. It checks computed styling and selected DOM/SVG/image attributes. It does not compare video frames, canvas pixels, closed shadow roots or cross-origin iframe internals.
 
 ## Do's and Don'ts
 
-### Do
-- Use navy ink (`#1a2352`) for every section heading — it is the brand spine
-- Reserve achievement blue (`#046cb8`) for eyebrow labels above credibility claims
-- Give each product its own color world (Moonlight = deep purple `#402060` + cream `#fff3b7`)
-- Use fully rounded pills for CTAs — 50px filled, 999px outline
-- Keep the system flat — separate sections with color blocks, not shadows
-- Set headlines in the heavy display webfont and body in Pretendard / Madefor
-- Give big proof numbers their own large stat tier (46px)
-- Use white (`#ffffff`) fills for primary CTAs sitting on dark or colored hero bands
+These are reproduction guidelines drawn from the measured surface, not a claimed Corca brand policy.
 
-### Don't
-- Use pure black for headings — reserve navy `#1a2352`; keep `#000000` for thin outlines and nav only
-- Spread the achievement blue (`#046cb8`) across body text — it is an eyebrow accent
-- Add drop shadows for elevation — Corca is a flat, shadow-free system
-- Use sharp/square corners on CTAs — CTAs are always pills
-- Mix product themes on one surface — keep Moonlight's purple/cream separate from the corporate navy
-- Set body copy in the display webfont — Pretendard and Madefor own reading and UI text
-- Bury the metrics — the big numbers are social proof and deserve room
+- Use `#1a2352` for the main navy heading role and `#056eb9` for blue emphasis; preserve the distinction from `#163272` actions.
+- Pair the filled and outlined 41px hero links, with 999px corners and the measured 2px hover lift.
+- Keep product and story cards square, with thin shared edges and ample text padding.
+- Preserve the strong product names and adoption figures as part of the product hierarchy.
+- Use the loaded Pretendard Variable family and distinguish 400, 600 and 650 weights.
+- Do not give the transparent secondary or navigation link an invented opaque rest fill.
+- Do not apply the browser's navigation focus colour as a brand focus token.
+- Do not transfer Moonlight's page-specific purple into the corporate homepage token set.
 
 ## Voice & Tone
 
-Corca's voice is **confident, mission-framed, and proof-forward** — a young AI lab that has receipts and is not shy about them. The corporate headline "코르카는 AI 기술로 세상을 바꾸고 있습니다" ("Corca is changing the world with AI technology") sets a declarative, present-tense register: not "we will" but "we are." Product copy is plain and benefit-first ("논문을 더 빠르고 쉽게 이해하기" / "AI Colleague for Research Papers"), and credibility is stated as numbers and rankings rather than adjectives.
+The current corporate headline is **“AI로 삶과 일의 패러다임을 바꿉니다.”** It is declarative and addresses both life and work. Product descriptions identify a concrete job: reading research PDFs or managing schedules. The homepage still presents its 2024 Baby Unicorn selection and a RecSys result described as seventh worldwide and first among domestic companies; it now also foregrounds the 2026 OpenAI services-partner story. Adoption figures are presented directly, including **400,000+ users** and **4.2M+ papers read** for Moonlight. Its marketing page also reports **156+ countries** and **8,370+ institutions**. These are Corca's published figures, not independently audited usage.
 
-| Context | Tone |
-|---|---|
-| Corporate hero | Declarative, present tense, mission-framed. "AI 기술로 세상을 바꾸고 있습니다." |
-| Product headlines | Plain, benefit-first. "논문을 더 빠르고 쉽게 이해하기", "AI Colleague for Research Papers!" |
-| Achievement eyebrows | Proud but factual. "2024 아기유니콘 선정!", "세계 7위, 국내 기업 중 1위 쾌거!" |
-| CTAs | Direct, low-friction. "자세히 보기", "기사 보기", "Try it now". |
-| Metrics | Bare numbers as proof. "100,000+", "1.7M+", "150+", "1,000+". |
+The [July 2026 AI Colleague article](https://www.corca.ai/blog/we-make-ai-colleague) gives a more specific guide to tone than a generic prohibition on hype: it describes changing a generated recommendation after a researcher objected that the wording undervalued the effort of understanding. Corca explains that Moonlight should help researchers ask better questions, evaluate arguments and choose their next direction. Preserve that respect for the researcher's judgment when writing product explanations.
 
-**Voice samples (verbatim from live surfaces):**
-- "코르카는 AI 기술로 세상을 바꾸고 있습니다." — homepage hero H1 (mission, present tense). *(verified live 2026-07-02)*
-- "AI Colleague for Research Papers!" — Moonlight EN hero H1 (product promise). *(verified live 2026-07-02)*
-- "세계 7위, 국내 기업 중 1위 쾌거!" — homepage achievement eyebrow. *(verified live 2026-07-02)*
-
-**Forbidden register**: vague hype without numbers, fear-based urgency, buzzword stacking ("revolutionary, next-gen, cutting-edge"), and copy that hides the product behind jargon. Corca prefers a plain claim plus a verifiable number.
+The [AX design-study article](https://www.corca.ai/blog/ax-design-study) likewise connects the attitude toward readers with concrete editing questions: provide enough explanation, remove repetition and avoid company-internal language. These are reported reflections from that team, not evidence of a formal company-wide voice manual.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary heading / brand: Corca Navy (`#1a2352`)
-- Achievement eyebrow: Blue (`#046cb8`)
-- Bright section blue: (`#419eff`)
-- Moonlight accent: Cream (`#fff3b7`) on Deep Purple (`#402060`)
-- Soft section washes: Lavender (`#faeeff`), Amber (`#fdd484`), Sky (`#d9e5f5`), Steel (`#36597d`)
-- Body text: Slate (`#324158`); Nav: Soft Ink (`#181818`); Outline: Black (`#000000`)
-- Canvas: White (`#ffffff`); Surface: Grey (`#f1f5f9`); Muted: (`#bbbbbb`)
-- Themed card fills: Violet (`#777cdc`), Plum (`#605070`)
+“Build a Corca corporate hero on `#f5f7fb`: navy `#1a2352` headline with a blue `#056eb9` emphasized phrase and a wavy underline, explanatory Korean text in `#1a1a1a`, and a recognition panel beside it. Use the live-loaded Pretendard Variable family. Put a filled `/ax` action next to an outlined product anchor.”
 
-### Example Component Prompts
-- "Create a dark hero: oversized ~60px display headline in white (#ffffff), one white pill CTA (#ffffff fill, #1a2352 navy label, 50px radius, 8px 15px padding). Mission-line copy, no shadow."
-- "Design a feature card: white (#ffffff) background, 16px radius, no shadow. Heading 32px display webfont in navy #1a2352; body 16px Pretendard in slate #324158."
-- "Build an achievement block: blue eyebrow label (#046cb8) over a navy #1a2352 heading, with an outline 'read article' pill (transparent fill, 1px solid #000000, 999px radius)."
-- "Make a Moonlight product band: deep purple (#402060) background, moonlight cream (#fff3b7) accents and active nav, white headline. Everything flat, pill CTAs."
+“For the primary action, use a 41px-high, 999px-radius link with 12px 22px padding, 15px/650 white text, `#163272` fill and border. Hover uses `#102654` and a 2px upward translation. Keyboard focus adds a 3px `#163272` outline at 4px offset.”
 
-### Iteration Guide
-1. Navy `#1a2352` is the heading spine; never pure black for headings
-2. Pills everywhere for CTAs — 50px filled, 999px outline
-3. No shadows — separate sections with full-width color blocks
-4. Achievement blue `#046cb8` is an eyebrow accent only
-5. Give each product its own color world; don't mix Moonlight purple with corporate navy
-6. Big stat numbers (46px) are proof — give them room
-7. Display webfont for headlines, Pretendard / Madefor for body and UI
+“For a story link, use a square white card, 28px padding, navy heading, blue topic and dark paragraph. On hover and press, change its own background to `#eef6ff`; on keyboard focus, use that fill plus a 3px navy-blue outline inset 3px.”
 
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-learn-more`.** Text `#ffffff` on `#777cdc` measures 3.68:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+These prompts reproduce measured states; they do not supply loading, disabled or error behavior.

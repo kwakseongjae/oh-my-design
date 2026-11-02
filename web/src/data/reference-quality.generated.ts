@@ -2031,28 +2031,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "corca",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 96,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 107,
+    "evidenceClaimCount": 107,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 7,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 22,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13117,8 +13113,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 333,
-  "partial": 94,
+  "verified_v2": 334,
+  "partial": 93,
   "legacy_snapshot": 111,
   "total": 538
 } as const;
