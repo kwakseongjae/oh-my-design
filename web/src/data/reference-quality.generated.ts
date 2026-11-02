@@ -8118,29 +8118,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "paypal",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 127,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 91,
+    "evidenceClaimCount": 91,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 19,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 9,
+    "tier1SourceCount": 19,
+    "componentCount": 6,
     "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13015,8 +13010,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 308,
-  "partial": 109,
+  "verified_v2": 309,
+  "partial": 108,
   "legacy_snapshot": 113,
   "total": 530
 } as const;
