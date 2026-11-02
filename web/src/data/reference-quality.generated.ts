@@ -2293,28 +2293,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "databricks",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "reconciled",
-    "claimCount": 135,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 105,
+    "evidenceClaimCount": 105,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 21,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 8,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 21,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12998,8 +12994,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 312,
-  "partial": 105,
+  "verified_v2": 313,
+  "partial": 104,
   "legacy_snapshot": 113,
   "total": 530
 } as const;

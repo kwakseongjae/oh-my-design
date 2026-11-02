@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 312,
-  "sources": 2145,
+  "references_with_verification_v2": 313,
+  "sources": 2166,
   "sources_by_kind": {
-    "brand-asset": 87,
+    "brand-asset": 89,
     "license": 138,
-    "official-doc": 835,
-    "product-surface": 1085
+    "official-doc": 847,
+    "product-surface": 1092
   },
   "references": {
     "104": {
@@ -2618,6 +2618,138 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "prod.danawa.com"
+        }
+      ]
+    },
+    "databricks": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-assets",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-assets-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-assets-redirect",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "brandfolder.com"
+        },
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "brand-host-ownership",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "brand-welcome",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.databricks.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "company-update",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "founders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "leaders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "mlflow-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "docs.databricks.com"
+        },
+        {
+          "id": "platform",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "platform-redirect",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "press-kit",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "pricing",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.databricks.com"
         }
       ]
     },
