@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 534,
+ "count": 535,
  "items": [
   {
    "id": "104",
@@ -7665,6 +7665,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "nio",
+   "primary_color_hex": "#00bebe",
+   "category": "automotive",
+   "visual_theme": "NIO designs, develops, manufactures and sells smart electric vehicles. Founded in November 2014, the company now describes a portfolio spanning premium NIO vehicles, family-oriented ONVO vehicles and small high-end FIREFLY cars. Its identity connects the promi",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "premium"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "nota",
