@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 18시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 19시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -17,6 +17,12 @@
 - **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
 - **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
 - **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **MCP v2 Phase 1 — main `55d3a51a`, 운영 확인.** Sol max 워커 구현(약 1시간 10분) + 본 세션 검토·수정: `@modelcontextprotocol/sdk` 1.32.2 고정, 도구 6개, 요청마다 새 서버(무상태), 빌드 데이터만(파일 추적 30MB), `absent`·`trust: unverified`+사유(요약과 값 둘 다)·verified 우선·정본 바이트·`unknown_reference`, Origin 허용(Origin 없음·oh-my-design.kr·claude.ai·claude.com), 60회/60초(Upstash, KV 토큰을 키로 한 HMAC, Redis 장애 시 열림), 256KB, 집계는 `omd:mcp:v2:*`(도구·레퍼런스별)만. 개인정보 커넥터 문단(영·한) 갱신.
+  - **본 세션 수정:** `catalog.generated.json`의 `generated`가 벽시계 시각이라 커밋 훅이 돌 때마다 바뀜 → 카탈로그의 최신 verified 날짜로(같은 카탈로그 = 같은 답), reference-pipeline의 `git diff --exit-code`에 추가(낡은 사본 커밋 차단). 테스트 1건 맞춤.
+  - 검증: MCP 계약 테스트 35, web 1265 통과, tsc·eslint 0. 프리뷰(`vercel curl` POST)에서 파일 추적 확인. 운영: initialize 200, "토스"→toss·toss-securities·tossbank, GET 405, 다른 Origin 403.
+  - **주의:** 레퍼런스가 바뀌는 브랜치(`feat/reverify-w1`)는 머지 전에 main을 병합하고 `npm --prefix web run build-reference-ast`(MCP 메타 재생성)까지 커밋해야 파이프라인 검사 통과.
+  - 남은 것: Phase 1b `/docs/connector`(영·한, UI라 오너 프리뷰 GO), Phase 2(의미 검색 bge-m3·CSS 변수 내보내기), D5 Connectors Directory 제출은 2주 안정 뒤 오너 계정. "calm blue fintech"는 키워드만이라 coolblue가 1위(toss 2위) — Phase 2에서 개선.
+  - main에서 `npm ci`가 인자 오류로 아무것도 안 바꾸고 멈춤 → `npm install`로 SDK만 추가(잠금 파일 변화는 npm 메타 플래그 뒤섞임이라 되돌림). 워크트리 `mcp-v2` 제거.
 - **Skyscanner → verified_v2 (`f93c8e03`).** 포착 브라우저가 한국에서 돌아 skyscanner.net이 한국어 홈으로 리다이렉트 — Backpack은 전 세계 공용이라 채택, 본문에 측정 표면을 명시. 검색 #0062e3→#024daf, 카드 그림자 확대 본 세션 재측정 일치. 포커스 미측정이라 선언 안 함. 동의 창 "필수 쿠키만 수락"을 프로브가 몰라 열린 채였음 → 거부어에 '수락' 추가(브랜치 `f93c8e03` + main `3c0561e9`, 캡처 도구가 main의 프로브를 씀). **브랜치 현재 311 / 106 / 113.**
 - **재검증 대기열 자동화.** `scratchpad/reverify-filler.sh <id…>`: 모든 프로젝트 합계 Sol 4개 상한 안에서 자리가 나면 다음 id의 지시서를 만들고 띄움, Monitor로 SPAWNED/DONE 알림(30분마다 재무장). 1차 묶음 10곳 = paypal·hubspot·skyscanner(완료) + digital-agency-jp(18:27~) + databricks·salesforce·adobe·monzo·mailchimp·govuk(대기). 끝나면 묶어서 오너에게 main 머지 GO 요청.
 - **Sol 사용(18:13):** 본 프로젝트 2(rv-skyscanner, mcp-v2-impl) + 다른 프로젝트 2(business_plan_k 1, kosine 1) = 4. 신규 후보 센서스(Sonnet 팀원, 276곳) 계속.
