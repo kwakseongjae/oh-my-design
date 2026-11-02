@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 337,
-  "sources": 2567,
+  "references_with_verification_v2": 338,
+  "sources": 2578,
   "sources_by_kind": {
     "brand-asset": 133,
     "license": 138,
-    "official-doc": 1095,
-    "product-surface": 1201
+    "official-doc": 1098,
+    "product-surface": 1209
   },
   "references": {
     "104": {
@@ -8450,6 +8450,78 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "lemonbase.com"
+        }
+      ]
+    },
+    "lezhin": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "about.lezhin.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "about.lezhin.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-1",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-2",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-3",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-4",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-5",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "imprint-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "renewal-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
         }
       ]
     },

@@ -4,7 +4,7 @@ colors:
   primary: '#eb0014'
   primary-hover: '#ff5254'
   primary-dark: '#c40017'
-  ink: '#111115'
+  foreground: '#111115'
   deep-dark: '#09090b'
   charcoal: '#222225'
   text-soft: '#36363a'
@@ -14,48 +14,55 @@ colors:
   surface-muted: '#f4f4f5'
   canvas: '#ffffff'
   on-primary: '#ffffff'
+  ai-teal: '#4cecbe'
+  ai-cyan: '#00bfe2'
+  ai-blue: '#007ee0'
+  event-purple: '#dd72fa'
 typography:
   section-header:
     fontSize: 24px
     fontWeight: 700
-    lineHeight: 1.35
-    letterSpacing: '-0.36px'
-    use: Section headers
+    lineHeight: 1.3
+    use: CSS Head4xl with Bold utility; not the measured homepage section title
   title:
     fontSize: 18px
     fontWeight: 700
-    lineHeight: 1.4
-    use: Smaller section headers
+    lineHeight: 1.3
+    use: CSS Head2xl with Bold utility
   body:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Homepage body declaration; inherited control text
+  body-large:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Body default
+    use: CSS BodyLg with Regular utility
   label:
     fontSize: 14px
     fontWeight: 600
-    lineHeight: 1.4
-    use: Label / UI text, button labels
+    lineHeight: 1
+    use: Measured disabled search button label
   label-medium:
-    fontSize: 14px
+    fontSize: 16px
     fontWeight: 500
-    lineHeight: 1.4
-    use: Medium UI text
+    use: Measured navigation label; inherited link font is 14px/400
   caption:
     fontSize: 13px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Caption / metadata
+    lineHeight: 1.5
+    use: CSS BodyXs with Regular utility
   caption-small:
     fontSize: 12px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Smallest metadata
+    lineHeight: 1.5
+    use: CSS Body2xs with Regular utility; Compact is a separate override
 rounded:
+  input: 2px
   sm: 4px
   md: 8px
   lg: 12px
-  full: 9999px
 spacing:
   xs: 4
   sm: 8
@@ -64,402 +71,250 @@ spacing:
   lg: 20
   xl: 24
   xxl: 32
-  section: 56
 components:
-  button-primary:
+  support-link:
     type: button
-    backgroundColor: '#eb0014'
-    textColor: '#ffffff'
-    rounded: 4px
-    padding: 0 12px
-    typography: 14px/600
-    use: Primary CTA, 48px height
-  button-primary-large:
-    type: button
-    backgroundColor: '#eb0014'
-    textColor: '#ffffff'
-    rounded: 4px
-    padding: 0 16px
-    typography: 16px/600
-    use: Large primary CTA, 56px height
-  button-secondary:
-    type: button
-    backgroundColor: '#222225'
-    textColor: '#ffffff'
-    rounded: 4px
-    padding: 0 12px
-    typography: 14px/600
-    use: Secondary, 48px height
-  button-tertiary:
-    type: button
-    backgroundColor: '#f4f4f5'
-    textColor: '#36363a'
-    rounded: 4px
-    padding: 0 12px
-    typography: 14px/600
-    use: Tertiary, 48px height
-  button-outlined:
-    type: button
-    backgroundColor: transparent
-    textColor: '#36363a'
-    rounded: 4px
-    padding: 0 20px
-    typography: 14px/600
-    use: 'Outlined, 1px #a1a1a9 border, 40px height'
-  card-thumbnail:
-    type: card
-    backgroundColor: '#f4f4f5'
-    rounded: 4px
-    use: Comic thumbnail card, 2/3 portrait aspect
-  card-circle:
-    type: card
-    rounded: 9999px
-    use: Circle thumb card, tracked ring
-  badge-chip:
-    type: badge
-    backgroundColor: transparent
-    textColor: '#6f6f77'
-    rounded: 9999px
-    padding: 0 12px
-    use: 'Default genre/tag chip, 1px #e9e9ec border, 32px height'
-  badge-chip-selected:
-    type: badge
-    textColor: '#c40017'
-    rounded: 9999px
-    use: Selected chip
-  tab-default:
-    type: tab
-    textColor: '#111115'
-    rounded: 4px
-    padding: 0 12px
-    use: Default tab, 36px height
-  tab-selected:
-    type: tab
-    textColor: '#ffffff'
-    rounded: 4px
-    use: Selected tab
-  dialog-dropdown:
-    type: dialog
-    backgroundColor: '#ffffff'
-    rounded: 4px
-    padding: 12px 0
-    use: 'Dropdown/select container, 1px #f4f4f5 border'
+    textColor: rgb(54, 54, 58)
+    rounded: 0px
+    height: 14.5px
+    padding: 0px
+    typography: 12px/400
+    hover: underline solid rgb(54, 54, 58)
+    pressed: underline solid rgb(54, 54, 58)
+    use: 고객지원/공지사항 — transparent footer link over rgb(244, 244, 245). Hover and pressed values are text-decoration; pressed retains the hovered underline with no additional change.
 fonts:
   roles:
     sans: Pretendard Variable
-    mono: Pretendard Variable
 ---
 
-# Lezhin Comics
-
-Korea's first premium webtoon platform — bold, content-first, and unapologetically direct.
+# Design System Inspiration of Lezhin Comics
 
 ## Overview
 
 ### Visual Theme & Atmosphere
 
-Lezhin Comics presents a dark, immersive canvas that keeps the spotlight firmly on cover art and episode thumbnails. The interface uses a deep near-black base (`#111115`) punctuated by a single vivid crimson (`#eb0014`) that signals every interactive action — from primary buttons to the switch-selected state and the badge on adult content. Grey neutrals (`#e9e9ec` border-muted through `#09090b` ink-black) form a tight tonal ladder, producing clean hierarchy without decorative flourish. Content grids are tight and image-led; typography is set in Pretendard for sharp legibility in Korean and Latin. The overall atmosphere is premium but unadorned — a platform confident that its 8,000+ titles speak louder than chrome.
+Lezhin Comics is Lezhin Entertainment's premium webtoon service. The company describes approximately 8,000 works across genres and localised international content, and calls it Korea's first paid webtoon site. Its current CEO message extends the webtoon IP business into merchandise, short drama, games and interactive content. [Company](https://about.lezhin.com/ko)
 
-### Primary tasks
+Cover art carries the homepage: a large illustrated promotion carousel gives way to a dense strip of portrait covers. Red `#eb0014` appears in the square cat mark and cover badges; white `#ffffff` content sections, near-black `#111115` headings and grey metadata provide the surrounding structure. Dark gradients sit behind white cover captions. This is an image-led catalogue with a light page surface. These are observations of the captured homepage; the reader screen was not inspected.
 
-- Check an episode price and your coin balance before buying
-- Filter by genre chip and bookmark titles for later
-- Read three episodes of a series back to back
-- Follow an artist and get notified of every update
-- See what kind of content a title is before opening it
+The linked renewal guide explains product changes through a reincarnation comic, a white cat character and three chapter headings. Its story format makes the redesign itself part of the entertainment. [Renewal guide](https://www.lezhin.com/ko/page/lezhin_renewal251118)
+
+The measured homepage is the Korean edition (`www.lezhin.com/ko`, HTML `lang="ko"`), reached by the site's own redirect.
+
+#### Primary tasks
+
+- Browse original comics, the comics catalogue, genres, free titles, rankings and events through the observed navigation links.
+- Open a title from its illustrated card; the ranking cards display free-episode counts.
+- Enter a sentence in the homepage's AI discovery field; the adjacent search button was disabled while the field was empty.
 
 ### Brand Narrative
 
-Lezhin Entertainment was founded in April 2012 by Han Hee-sung (the blogger known as "lezhin") and developer Kwon Jung-hyuk, launching its Android app on June 7, 2013. The company was acquired by Seoul-listed KidariStudio in December 2020. The platform was built on a simple conviction: great comics deserve frictionless commerce. By introducing a coin-based micro-payment system at a time when most Korean webtoon platforms relied on ad revenue, Lezhin created South Korea's first premium webtoon marketplace — positioning itself as the platform for creators who wanted to earn and readers who wanted more.
+The official history dates the service launch to June 2013, Japan to July 2015, the US to December 2015, the brand-name change to Lezhin to July 2020, and entry into the KidariStudio group to February 2021. The current CEO message describes an ambition to become a global IP commerce leader. The business section also names Lezhin Studio work across film, drama and games, plus publishing and merchandise; its current shop link is labelled 재이미샵. [Company history and message](https://about.lezhin.com/ko)
 
-The company's governing mission is that "stories can make the world a better place." Lezhin Entertainment operates as a global content company, running the Lezhin Comics platform across Korea, the United States, and Japan. Its catalogue spans over 8,000 titles, and beyond reading, Lezhin Studio adapts webtoon IPs into films, dramas, and games while the Lezhin Shop brings physical merchandise to fans who want to hold their favourite stories in their hands.
-
-The brand's tagline — "솔직한 재미 대폭발" (honest fun explosion) — encapsulates the operating philosophy: candid about content, direct about pricing, and unapologetically focused on reader satisfaction. Lezhin's four stated values — duty and self-reliance, mutual respect, customer satisfaction, and innovation — underpin both its creator relationships and its product decisions, from daily episode release schedules to the coin economy.
+The product still uses the Lezhin Comics name in its Korean title and terms. The terms define purchasable coins exchangeable for paid services or content. The renewal guide's illustrated cat-led story is current linked product communication; its graphics are not a source for the catalogue's CSS tokens. [Terms](https://www.lezhin.com/ko/policy/terms), [renewal guide](https://www.lezhin.com/ko/page/lezhin_renewal251118)
 
 ### Principles
 
-1. **Reader first, always.** Every service decision begins with the question of how readers discover and enjoy content. *UI implication:* Thumbnail art is the dominant visual element; interface chrome is minimal so it never competes with the cover image.
-
-2. **Honest commerce.** Lezhin pioneered transparent paid webtoons. The pricing model is explicit — coins, costs, and episode counts are surfaced without dark patterns. *UI implication:* Coin balances and episode prices are always visible in context before purchase; no hidden upsells.
-
-3. **Candid about content.** The platform serves adult audiences without euphemism. *UI implication:* Genre and content-type badges (including adult tags) are shown directly on thumbnail cards rather than hidden behind additional taps.
-
-4. **Data and intuition in balance.** The founding team values "2% crazy" creative instinct alongside clear analytical thinking. *UI implication:* The platform ships experimental features (AI search, Snack short-drama) as clearly-labelled distinct experiences rather than silently folding them into the main flow.
-
-5. **Global through localisation.** Lezhin operates dedicated services for KR, US, and JP markets with locale-specific content curation rather than a one-size-fits-all approach. *UI implication:* Typography stacks, locale date formats, and content catalogues adapt per region rather than defaulting to a single language baseline.
+The corporate culture section names autonomy and responsibility, mutual respect, customer focus and innovation. These are company values; no opened source establishes the prior draft's five product-design principles or its claimed purchasing guarantees. [Corporate culture](https://about.lezhin.com/ko)
 
 ### Personas
 
-*Illustrative — for design scenario use only:*
-
-**The Weekend Binge Reader** — A Korean professional in their late 20s who subscribes to Lezhin Premium. They open the app on Friday night, scan the "New Updates" carousel, and burn through three episodes of their favourite romance series back-to-back. They top up coins proactively rather than per-episode. For them, friction = bad; they want zero loading states and instant next-episode transitions.
-
-*Illustrative — for design scenario use only:*
-
-**The Genre Explorer** — A 32-year-old who discovered Lezhin through a recommendation for a specific genre (BL, thriller, or isekai). They use the tag-filter chip system heavily and bookmark titles for later. They read on both mobile and desktop and expect the reading experience to be consistent across devices.
-
-*Illustrative — for design scenario use only:*
-
-**The Loyal Creator Fan** — A college student who follows a specific artist and gets notified for every update. They comment frequently using the page-stamp system and engage with the creator's social feeds. Price sensitivity is moderate; they will spend coins on a title they love but are cautious about new unfamiliar series.
-
-*Illustrative — for design scenario use only:*
-
-**The International Reader** — An English-speaking reader in the US or Japan accessing Lezhin via lezhinus.com or the JP equivalent. They tend toward licensed titles with professional translation. They are brand-new to the coin system and need clear onboarding. The UI's Korean-first defaults (label copy, currency display) can create friction if not properly localised.
+No first-party user-research personas were verified.
 
 ## Colors
 
-- **Brand Red:** `#eb0014` — primary CTA buttons, state-switch-selected, state-form-bg-selected, badge
-- **Red Hover:** `#ff5254` — primary button hover state
-- **Red Focus/Dark:** `#c40017` — badge background, button focus/active state
-- **Ink Black:** `#111115` — inverted background, text-default, icon-default
-- **Deep Dark:** `#09090b` — dark-strong surface
-- **Dark Charcoal:** `#222225` — secondary button background, border-default
-- **Soft Black:** `#36363a` — text-soft, icon-soft
-- **Mid Grey:** `#6f6f77` — text-subtle, icon-subtle
-- **Muted Grey:** `#a1a1a9` — text-muted, icon-muted, placeholder
-- **Border Muted:** `#e9e9ec` — card borders, dividers
-- **Surface Muted:** `#f4f4f5` — background muted, disabled button, skeleton base
-- **White:** `#ffffff` — default background (light), text-inverted
+The home census contains 656 computed root custom properties, including 51 Tailwind `--tw-*` implementation variables. The remaining 605 root properties include Lezhin's palette, semantic roles and state definitions. The following colours are measured root values; a state-named variable is a CSS definition, not proof that a particular homepage control entered that state.
+
+| Reference role | Value | Live evidence and scope |
+|---|---|---|
+| Primary | `#eb0014` | `--basic-red-accent`, `--button-primary-default`, `--state-switch-selected`; also a red SVG path in the first ranking card |
+| Primary hover definition | `#ff5254` | `--button-primary-hover`, `--state-button-primary-hover` |
+| Strong red / selected chip text | `#c40017` | `--red-700`, `--basic-red-strong`, `--bg-badge-red`; not the primary focus value |
+| Primary focus definition | `#9e0018` | `--button-primary-focus`, `--state-button-primary-focus`; not observed on a focused primary button |
+| Foreground | `#111115` | `--text-default`, `--icon-default`; body rule and AI input ink |
+| Deep dark | `#09090b` | `--bg-dark-strong`, `--text-dark` |
+| Charcoal | `#222225` | `--border-default`, `--button-secondary-default` |
+| Soft ink | `#36363a` | `--text-soft` |
+| Subtle ink | `#6f6f77` | `--text-subtle`; actual calendar label |
+| Muted ink | `#a1a1a9` | `--text-muted` |
+| Muted border | `#e9e9ec` | `--border-muted`; calendar and carousel button borders; disabled search background |
+| Muted surface | `#f4f4f5` | `--bg-muted`; thumbnail backing layer |
+| Canvas / on-primary | `#ffffff` | `--bg-default`, `--text-white`, `--text-inverted` in this light capture |
+| AI gradient stops | `#4cecbe`, `#00bfe2`, `#007ee0` | `--component-ai-teal`, `--component-ai-cyan`, `--component-ai-blue`; gradient also observed on the AI field's ancestor |
+| Event badge purple | `#dd72fa` | `--purple-400`; actual first ranking card's EVENT border and label |
+
+Alpha values stay explicit: the card caption gradient runs from `rgba(17, 17, 21, 0)` to `rgba(17, 17, 21, 0.55)`; the EVENT badge sits on `rgba(17, 17, 21, 0.95)`; the carousel Next button uses `rgba(255, 255, 255, 0.95)`. These surfaces must be composed over their actual artwork or page background.
+
+The paragraph-ink census is white ×230, `#111115` ×29 and `#6f6f77` ×10. White dominates because many paragraphs are captions over covers. The body declaration still uses `--text-default: #111115`; the two observations describe different contexts.
 
 ## Typography
 
-- **Primary typeface:** Pretendard Variable → Pretendard → -apple-system → Noto Sans KR → Malgun Gothic → sans-serif
-- **Scale:** 10 / 12 / 13 / 14 / 15 / 16 / 17 / 18 / 20 / 24 / 28 / 32 / 36 / 40 / 56 / 80px (mapped via `--size-3xs` through `--size-10xl`)
-- **Body default:** 16px / weight 400 (regular)
-- **Caption / metadata:** 12–13px / weight 400
-- **Label / UI text:** 14px / weight 500 (medium) or 600 (semibold)
-- **Button labels:** 14px (small/medium) or 16px (large) / weight 600
-- **Section headers:** 18–24px / weight 700
-- **Font weights available:** 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
-- **Line height:** 1.5 for body; 1.35–1.4 for compact UI labels; `line-height: 100%` for buttons
-- **Letter spacing:** −0.28px to −0.36px for tighter display text in Korean
+### Evidence classes
+
+- **Official product-use statement:** no opened company or brand document specifies the product typeface.
+- **Live-loaded:** `document.fonts` reports `Pretendard Variable 45 920 normal`. This is the only loaded family promoted to the font-family tokens.
+- **Delivery observed:** the home links the Pretendard v1.3.9 dynamic-subset stylesheet on jsDelivr. A separate text fetch of that stylesheet exposes 92 WOFF2 variation subset declarations, normal style, weight range `45 920`, `font-display: swap`. The browser census could not walk that cross-origin sheet; its empty `fontFaces` array does not negate the loaded-face result. The author inspected the stylesheet without separately downloading font binaries.
+- **Official distributed Lezhin font assets:** none verified. The font delivery above is a third-party-hosted font package, not evidence of a proprietary Lezhin typeface or a Lezhin font licence.
+- **Declared-only:** the body, H1 and button stacks additionally name Pretendard, platform families, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic and emoji families. None of those additional faces was reported loaded. They receive no specimen or font token.
+- **Unresolved:** exact subset files used for each script and a monospace product role were not established. Substitute: none chosen.
+
+### Scale and actual labels
+
+The root size scale remains **10 / 12 / 13 / 14 / 15 / 16 / 17 / 18 / 20 / 24 / 28 / 32 / 36 / 40 / 56 / 80px**, from `--size-3xs` through `--size-10xl`. The 80px variable exists, but the captured stylesheet maps both `.lzTypography-Head10xl` and `-Head9xl` to the 56px variable; do not assume the class name renders 80px.
+
+The body rule is **14px / 400 / 1.5**. CSS body utilities include BodyLg at 16px, BodySm at 14px, BodyXs at 13px and Body2xs at 12px. Head4xl is 24px and Head2xl is 18px, each with 130% line height; weight 700 comes from the separate Bold utility. The weight properties include 400, 500, 600 and 700. Ordinary `.lzTypography` text uses 150%; Compact uses 120%, rounded to whole pixels. Button sizing rules use 100% line height.
+
+Actual measured labels illustrate the distinction between a control and its text:
+
+| Element | Inherited control font | Visible label |
+|---|---|---|
+| Original navigation link | 14px / 400; 21px line height | 16px / 500, white |
+| New-title calendar button | 14px / 400; 21px line height | 12px / 600, `#6f6f77` |
+| Disabled search button | 14px / 600; 14px line height | Same |
+| AI sentence input | 18px / 400; 22px line height | Input text uses `#111115` |
+
+The ranking card's title classes specify 16px / 600 with Compact leading; its free-count classes specify 12px / 400 with Compact leading. The measured rank numeral is 56px / 400. Negative tracking is verified for the **declared empty-state text**, not as a global heading rule: title −0.36px on desktop, −0.32px on mobile, subtitle −0.28px.
 
 ## Layout
 
-Lezhin uses a fluid column-grid whose gutter and column count adapt per viewport: 7 columns on desktop (≥ 961px), 4 columns on tablet (640–960px), 3–4 columns on mobile (≤ 639px). Card widths are computed via `calc((100% - (col-1) × gap) / col)` with 4px or 8px gutters on dense grids and 12–16px gutters on sparser layouts. The horizontal page max-widths are 1036px at 961–1280px breakpoint and 1212px at 1281px+. Horizontal scroll snap is used for compact-carousel sections (snap-scroll list) on mobile. All interactive regions maintain at minimum 36px touch targets.
+At the measured 1440×1000 viewport, the ranking strip shows seven complete cards. The first starts at x=123px and is 165.1px wide; the next starts at x=292px. The rounded survey coordinates imply an approximately 4px inter-card gap. The ranking grid's actual inline properties specify `--lz-cols-desktop:7` and `--lz-gap-desktop:4px`. Separate list utilities retain `calc((100% - (var(--list-col) - 1) * 4px) / var(--list-col))`; they are not the evidence for this ranking grid's column count.
+
+The current `.lzSection` declaration is full width, centred, maximum 1212px, with 16px horizontal padding. The visible ranking strip spans approximately x=123px to x=1303px. Hero links instead measure 600×400px and use 20px padding; adjacent slides extend beyond the viewport. Keep that broad illustrated hero separate from the compact portrait catalogue.
+
+The inherited spacing values 4 / 8 / 12 / 16 / 20 / 24 / 32px are present as pixel-valued gap utilities. The capture also grounds 4px card gaps, 8px calendar side padding, 12px caption side padding, 16px section padding and 20px hero padding. The spacing keys in the frontmatter are reference aliases, not exported CSS variable names.
 
 ### Responsive Behavior
 
-Lezhin uses three primary breakpoints:
+The capture verifies desktop at 1440×1000 only. The current base stylesheet defines `desktop:` and desktop navigation utilities at **min-width:1025px**, and `mobile:` / compact navigation utilities at **max-width:1024px**. Older CSS modules also use the **640px**, **961px** and **1281px** boundaries. These coexist; a single universal 960px breakpoint does not describe all current components.
 
-- **Mobile** `max-width: 960px` — single-column flow, horizontal-scroll carousels, paddings collapse to 8–16px, card grids shift to 3–4 columns
-- **Tablet** `min-width: 640px and max-width: 960px` — 4–6 column grids, moderate gutters (12–16px), nav bar adjusts to compact mode
-- **Desktop** `min-width: 961px` — 7-column grids, 24–32px gutters, full GNB nav, fixed sidebar elements appear
+The current shared section max-width is 1212px. A separate `.lzCntnr` still declares 1036px maximum width at 961–1280px and 1212px from 1281px, with 16px side padding reduced to 8px at max-width:320px. Mobile column counts and touch-target minima were not re-measured. The observed 22px input box and 28px calendar button also do not support a blanket 36px minimum for every interactive element.
 
-Additional breakpoints handle edge cases: `max-width: 639px` (small mobile, 3-col grids), `max-width: 320px` (reduced padding to 8px), `min-width: 1281px` (max-width: 1212px container). Components observe `prefers-color-scheme: dark` via 53 scoped media queries, switching semantic tokens to their dark-palette counterparts without changing the component markup.
+Across the five first-party home CSS bundles, 56 `prefers-color-scheme:dark` blocks remain present. They demonstrate declared theme support, not that every component or image variant was visually tested in dark mode.
 
 ## Elevation & Depth
 
-Elevation is expressed through the shadow token ladder:
+The measured carousel Next button's full computed shadow is `rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(17, 17, 21, 0.06) 0px 2px 8px 0px`. The non-transparent part is `0px 2px 8px 0px rgba(17, 17, 21, 0.06)`. Other measured controls have `box-shadow: none`.
 
-- **Level 1 – Subtle:** `rgba(17,17,21,0.06)` — hero banner ambient, near-flat cards
-- **Level 2 – Soft:** `rgba(17,17,21,0.08)` — dropdown menus (lzSelectPaper: `0 2px 12px 0 rgba(17,17,21,.08)`)
-- **Level 3 – Medium:** `rgba(17,17,21,0.25)` — drawers, floating elements
-- **Level 4 – Strong:** `rgba(17,17,21,0.30)` — modals
-- **Level 5 – Bold:** `rgba(17,17,21,0.50)` — overlay scrim base
-- **Thumbnail shadow:** `rgba(17,17,21,0.20)` inset on cover art
-- **Dark overlay (full scrim):** `rgba(17,17,21,0.85)` — background-overlay-bold
+The declared dropdown shadow remains `0 2px 12px 0 rgba(17,17,21,.08)`. Root shadow colour properties retain dark alpha levels .06, .08, .25, .3 and .5, plus `--shadow-thumbnail: rgba(17,17,21,.2)` and `--shadow-text: rgba(17,17,21,.85)`. These are colours, not complete elevation geometries. The opaque-looking cover caption is a gradient, not evidence of a drop shadow.
 
-Dark mode uses the same numeric scale but on the dark surface (`#111115`), so card depth reads via subtle border differences (`--border-muted: #222225`) rather than box-shadow contrast.
+Dark-mode declarations change `--bg-default` to `#111115`, `--text-default` to `#ffffff` and `--border-muted` to `#222225`. This is source evidence for theme roles; a dark-mode viewport was not captured.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.subtle`: `0 0 0 rgba(17,17,21,0.06)`
-- `shadow.soft`: `0 2px 12px 0 rgba(17,17,21,0.08)`
-- `shadow.medium`: `0 0 0 rgba(17,17,21,0.25)`
-- `shadow.strong`: `0 0 0 rgba(17,17,21,0.30)`
+- `shadow.subtle`: `0px 2px 8px 0px rgba(17, 17, 21, 0.06)`
+- `shadow.soft`: `0 2px 12px 0 rgba(17,17,21,.08)`
 
 ## Motion & Easing
 
-**Duration scale:**
-- **Fast (micro-interactions):** 125ms — sort-arrow expand/collapse
-- **Standard:** 200ms — button background/border transitions, tab color, opacity fades (snackbar)
-- **Deliberate:** 250ms — slide-in/slide-out transforms (drawer, sheet transitions), switch track background, skeleton reveal height
+The initial five active measured controls compute **`all 0s ease 0s`**. The disabled search button computes **`border, background-color 0s, 0.2s ease, ease-in-out 0s, 0s`**. These raw strings are preserved in the verification proof. No observed hover transition or pressed animation is inferred from them.
 
-**Easing:**
-- `ease-in-out` — background-color and border transitions on buttons and tabs
-- `linear` — switch thumb position and track color
-- `ease-in-out` — skeleton shimmer sweep (1.8s)
+All six follow-up controls also compute **`all 0s ease 0s`** on the control itself. The support link's measured underline changes without a declared transition on that link; its pressed snapshot retains the same decoration. No separate pressed animation or branded focus timing was measured.
 
-**Rules:**
-- Button hover/focus: 200ms ease-in-out on `background-color` and `border`
-- Drawer / bottom-sheet: `transform 250ms ease-in-out, opacity 250ms ease-in-out` — enters from below or from the left
-- Snackbar: `opacity 200ms` fade-in / fade-out; no transform movement
-- Skeleton: `translateX(-100% → 100%)` over 1.8s ease-in-out infinite; never use shorter durations as it feels cheap against dense content grids
-- Switch: `250ms linear` for track background, `250ms linear` for circle position — simultaneous, never staggered
-- AI gradient divider (search bar): `translateX` at 3s ease-in-out infinite — slower to feel ambient, not urgent
+The live source retains several component-specific declarations from the prior reference: `.lzSortArrow` uses `transform .125s linear`; `.lzButton` declares `border,background-color .2s ease-in-out`; tabs declare `background-color .2s ease-in-out` and selected-label `color .2s ease-in-out`; switch track/circle definitions use `.25s linear`; the circle-card progress ring uses `stroke-dashoffset .2s ease`. The skeleton pseudo-element runs `skeleton 1.8s ease-in-out infinite`, from `translateX(-100%)` to `translateX(100%)`. These are declared behaviours, not replayed animation measurements. The CSS-module snackbar container also retains `opacity .2s`, and the AI search divider pseudo-element declares `moveRight__MtEke 3s ease-in-out infinite`, moving from `translateX(-50%)` to `translateX(0)`. Its wrapper defines `transform .25s ease-in-out,opacity .25s ease-in-out`. Source utilities additionally declare `height .25s ease-in-out` and `transform .25s ease-in-out,opacity .25s ease-in-out`; assigning them to a drawer or a skeleton reveal was not verified. These declaration facts do not establish that those animations ran during the captured interactions.
 
 ## Components
 
-### Buttons
+### Controls observed on the homepage
 
-**Primary (lzButtonPrimary / lzBtn--filled_red)**
-- Background: `#eb0014`
-- Text: `#ffffff`
-- Border: none
-- Radius: 4px
-- Height: 48px
-- Padding: 0 12px
-- Font: 14px / 600
+These are the initial pass's identity measurements. Hover and focus results are in §14. None of these six produced an authored state change, so they remain prose references and are absent from the machine component map. The separate follow-up below verified one footer link's authored underline.
 
-**Primary Large**
-- Background: `#eb0014`
-- Text: `#ffffff`
-- Border: none
-- Radius: 4px
-- Height: 56px
-- Padding: 0 16px
-- Font: 16px / 600
+| Key / element | Geometry and rest appearance |
+|---|---|
+| `new-calendar` — 신작 캘린더 button | 88.7×28px; 4px radius; `0px 8px` padding; transparent over white; 1px `#e9e9ec` border; inherited `#111115`, visible label `#6f6f77`; no shadow |
+| `nav-original` — `/ko/scheduled` link | 55.3×48px; 0px radius and padding; transparent; white link and label in the hero navigation context; no border or shadow |
+| `ai-search` — sentence input | 953×22px; 2px radius; 0px padding; `#ffffff` / `#111115`; no own border or shadow; the surrounding layer carries the AI gradient |
+| `comic-card` — first `/ko/comic/highschoolboy` link | 165.1×293.6px; outer link 0px radius and padding, transparent with inherited `#111115`; white visible title and rank; inner `.lzCard.lzCard9x16` supplies the 4px corner and alpha border |
+| `rank-next` — first `button[aria-label='Next']` | 44×44px; 9999px circular radius; 2px padding; `rgba(255, 255, 255, 0.95)` / `#111115`; 1px `#e9e9ec` border; a 2px-y, 8px-blur shadow at dark 6% |
+| `search-submit` — 검색 button | 80×42px; 4px radius; `0px 12px` padding; `#e9e9ec` / `#ffffff`; no border or shadow; both native `disabled` and `aria-disabled` were present |
 
-**Secondary (lzButtonSecondary / lzBtn--filled_bw)**
-- Background: `#222225`
-- Text: `#ffffff`
-- Border: none
-- Radius: 4px
-- Height: 48px
-- Padding: 0 12px
-- Font: 14px / 600
+### Follow-up: footer link and five other controls
 
-**Tertiary (lzButtonTertiary / lzBtn--filled_grey)**
-- Background: `#f4f4f5`
-- Text: `#36363a`
-- Border: none
-- Radius: 4px
-- Height: 48px
-- Padding: 0 12px
-- Font: 14px / 600
+The **고객지원/공지사항** link (`a[href="/ko/help"]`) uses `#36363a` ink on the `#f4f4f5` footer. Its own background is transparent. It measures 87×14.5px, with 0px radius and padding, Pretendard Variable at 12px/400 and 18px line height, no border and no shadow. Hover changes its computed text decoration from `none` to **`underline solid rgb(54, 54, 58)`**. The same value was measured while both `:hover` and `:active` matched; pressing adds no further change. This is the only registered component; its `hover` and `pressed` fields describe text decoration, and its `use` identifies it as a link.
 
-**Outlined (lzBtn--outlined)**
-- Background: transparent
-- Text: `#36363a`
-- Border: 1px solid `#a1a1a9`
-- Radius: 4px
-- Height: 40px
-- Padding: 0 20px
-- Font: 14px / 600
+| New key / element | Geometry and rest appearance |
+|---|---|
+| `ai-prompt` — 반려동물 나오며 힐링되는 일상물 button, `role="tab"` | 203.9×33px; 0px radius and padding; transparent over `#ffffff`; `#111115`; 14px/400 with 21px line height; no border or shadow |
+| `hero-next` — second `button.w-40.h-40` | 40×40px; 999px radius; 0px padding; `rgba(17, 17, 21, 0.25)` background; inherited `#111115` but a white SVG arrow; 14px/400 with 21px line height; no border or shadow |
+| `ranking-more` — ranking 더보기 link | 52.3×17px; 0px radius and padding; transparent over `#ffffff`; inherited `#111115`, 14px/400 with 21px line height; visible label `rgba(17, 17, 21, 0.55)`, 14px/500; no border or shadow |
+| `new-comic-card` — first `/ko/comic/curse_of_immortality` link | 165.1×293.6px; outer link 0px radius and padding; transparent over `#ffffff`; inherited `#111115`, 14px/400 with 21px line height; white visible title, 16px/600; no own border or shadow |
+| `support-link` — 고객지원/공지사항 link | 87×14.5px; 0px radius and padding; transparent over `#f4f4f5`; `#36363a`; 12px/400 with 18px line height; no border or shadow |
+| `back-top` — 맨 위로 button | 56×56px; 100% radius; 0px padding; `#ffffff` / `#111115`; 1px `rgba(17, 17, 21, 0.1)` border; no shadow; hidden accessibility label inherits 1px/400 with 1.5px line height; visible arrow is an SVG |
 
-### Cards
+All six use the loaded Pretendard Variable face. Only `support-link` produced an eligible authored state. The other five remain identity references with their measurement limits in §14.
 
-**Comic Thumbnail Card (lzCard)**
-- Background: `#f4f4f5`
-- Border: 1px solid `rgba(17,17,21,0.1)`
-- Radius: 4px
-- Aspect ratio: 2/3 (portrait)
+### Button definitions retained from the live stylesheet
 
-**Circle Thumb Card (lzCardCircleThumb)**
-- Radius: 9999px
-- Border: tracked ring at 3px stroke
+These are source declarations, not state-tested specimens. The current `.lzButton` base uses a 4px radius fallback and weight 600. Its sizing variants are Xs: minimum 28px, 12px text, 8px horizontal padding; Sm: minimum 40px, 14px text, 12px padding; Md: minimum 48px, 14px text, 12px padding; Lg: minimum 56px, 16px text, 16px padding.
 
-### Chips (lzChip)
+Primary pairs `#eb0014` with `#ffffff`; Secondary pairs `#222225` with `#ffffff`; Tertiary pairs `#f4f4f5` with `#36363a`. The modern Outline variant is transparent, with `#6f6f77` ink and a 1px `#e9e9ec` border. Its hover border definition uses `#a1a1a9`; focus uses `#222225`.
 
-**Default Chip**
-- Background: transparent
-- Text: `#6f6f77`
-- Border: 1px solid `#e9e9ec`
-- Radius: 999px
-- Padding: 0 12px
-- Height: 32px
+A separate CSS-module button family still exists. `.lzBtn--small__ARkAC` and `--medium__VwSBj` have 2px corners, 20px horizontal padding and 40px / 48px heights. `.lzBtn--large__v_uNA` has 4px corners, 56px height, 16px text and 24px default padding, overridden to 16px under its mobile rule. Its outlined variant uses `#36363a` ink and `#a1a1a9` border. Keep these two button families distinct when reproducing a particular surface.
 
-**Selected Chip**
-- Background: `rgba(255,82,84,0.15)`
-- Text: `#c40017`
-- Border: 1px solid transparent
-- Radius: 999px
+The stylesheet also defines radius utilities `.border-round-md: 8px` and `.border-round-lg: 12px`; these are declared utilities, not measured corners of the selected controls.
 
-### Tabs (lzTab)
+### Cards, chips, tabs and select papers
 
-**Default Tab**
-- Background: `rgba(17,17,21,0.04)`
-- Text: `#111115`
-- Border: 1px solid `rgba(17,17,21,0.04)`
-- Radius: 4px
-- Padding: 0 12px
-- Height: 36px
+The measured ranking card uses **9:16**, confirmed by both its 165.1×293.6px bounds and `.lzCard9x16`. A **2:3** variant also remains declared; it is not the universal thumbnail ratio. The shared card definition has 4px corners and a 1px `rgba(17,17,21,.1)` border. The thumbnail layer uses `#f4f4f5`, while images fill it with `object-fit: cover`. Caption content is bottom-aligned with `40px 12px 12px` padding and a 4px gap.
 
-**Selected Tab**
-- Background: `rgba(17,17,21,0.95)`
-- Text: `#ffffff`
-- Radius: 4px
+Declared circle thumbnails use a 9999px radius and 8px image inset. Their track and progress SVG strokes are 3px. Declared `.lzChip` filters use minimum 32px height, `0 12px` padding, a 999px radius fallback and 1px `#e9e9ec` border. The text child is `#6f6f77`; selected chips define `rgba(255,82,84,.15)` background, `#c40017` text and a transparent border.
 
-### Dropdown / Select (lzSelectPaper)
-
-**Dropdown Container**
-- Background: `#ffffff`
-- Border: 1px solid `#f4f4f5`
-- Radius: 4px
-- Padding: 12px 0
-
----
-**Verified:** 2026-06-03
-**Tier 1 sources:** https://www.lezhin.com (homepage HTML + 5 CSS bundles: 035ea059869bfd89.css, 9161416b11db8c9e.css, 06e1ad77298be69d.css, 0427f27bd4442fbd.css, 895581ecc829564e.css), https://about.lezhin.com/en (corporate brand/about page)
-**Tier 2 sources:** getdesign.md/lezhin — NOT LISTED (no data). refero — not checked (KR brand, typically no result).
-**Conflicts unresolved:** none
+Declared tabs have minimum 36px height, 4px corners, `0 12px` padding and default `rgba(17,17,21,.04)` background/border. Selection defines `rgba(17,17,21,.95)` background and `#ffffff` label. A declared select paper uses `#ffffff`, 1px `#f4f4f5` border, 4px corners and `12px 0` padding. These definitions were not opened or state-tested as live widgets.
 
 ### States
 
-- **Empty (no content):** Shows the `lzEmpty` component with an illustrated book image (96×140px from `ccdn.lezhin.com/files/assets/img/empty-book-lt.png`); title in `#36363a` at 18px / weight 500; subtitle in `#6f6f77` at default size / weight 400
-- **Loading (skeleton):** `lzSkeleton` — background `#f4f4f5`; shimmer overlay `hsla(0,0%,100%,0.6)` animated via `linear-gradient(120deg, transparent 35%, shimmer 50%, transparent 65%)` at 1.8s ease-in-out infinite; dark-mode variant uses `#3a3b3d` base and `hsla(0,0%,100%,0.08)` shimmer
-- **Error (network/500):** `lzError` component centered at max-width 640px; title `#111115` at 34px / weight 500 (desktop) or 24px (mobile); error illustration displayed at `width: auto; height: 180px`; home button uses primary red CTA
-- **Error (expired/access denied):** Same `lzError` structure; uses specific expired-state illustration (132px wide); body text in `#6f6f77` at 14px; action CTA in red primary button
-- **Success:** State-form-bg-selected `#eb0014` applied to radio/checkbox fill; switch tracks when selected use `#eb0014`; snackbar uses dark `#2f353e` background with `#ffffff` text and blue-tinted link `#2992d6`
-- **Skeleton (card-specific):** Comic card background holds `#f4f4f5` while image lazy-loads; once loaded, image covers the background fully with `object-fit: cover`
-- **Disabled:** Primary button background `rgba(255,82,84,0.2)` with `#ffffff` text; tertiary button background `#fafafa` with `#dadadd` text; pointer-events none applied via attribute `[disabled]`
+The promotion was closed through its **닫기** button before the states pass. Five active controls matched `:hover`; all five showed no settled style/attribute change within the probe's comparison scope. That scope includes each control, its descendants and their pseudo-elements, SVG/image properties, plus three ancestor levels. It excludes siblings, closed shadow roots, cross-origin frame internals and pixel-only animation.
+
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Calendar button | No change; 3 descendants | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 0px |
+| Original nav link | No change; 1 descendant | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 1px |
+| AI sentence input | No change; no descendants | UNMEASURED: `:active` did not match | Focus and focus-visible matched; no style change |
+| First ranking card link | No change; 21 descendants, including one image | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 1px |
+| Ranking Next button | No change; 2 descendants | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 0px |
+| Search action | UNMEASURED: disabled | UNMEASURED: disabled | UNMEASURED: disabled; skipped by Tab |
+
+The automatic outline is `rgb(0, 95, 204) auto 1px`; it is a browser affordance, not a Lezhin focus token. No changes persisted after blur on the five active controls. These initial unchanged/browser-only/unmeasured results do not populate the component map.
+
+#### Follow-up states
+
+The promotion was again closed through **닫기**. A new survey and one additional states call covered six different controls. The support link's underline is an authored `hover:underline` utility applied on the product page; its keyboard ring is still browser-only.
+
+| New control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| `ai-prompt` | No change at the settled `:hover=true` snapshot; hover stopped matching during its crop | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 0px |
+| `hero-next` | No change at the settled `:hover=true` snapshot; hover stopped matching during its crop | UNMEASURED: `:active` did not match | Browser `auto` outline, 1px, offset 0px |
+| `ranking-more` | UNMEASURED: `:hover` did not match | UNMEASURED: pointer hover did not match | Browser `auto` outline, 1px, offset 1px |
+| `new-comic-card` | No change; 14 descendants including one image | `:active=true`; no change | Browser `auto` outline, 1px, offset 1px |
+| `support-link` | `deco: none` → `underline solid rgb(54, 54, 58)` | `:active=true`; same underline as hover; no additional change | Browser `auto` outline, 1px, offset 1px; decoration remains `none` |
+| `back-top` | No change; 3 descendants | `:active=true`; no change | Browser `auto` outline, 1px, offset 0px; ancestor transform change persists after blur and is excluded |
+
+Every new keyboard landing matched both focus and focus-visible. The back-to-top wrapper changed from `matrix(1, 0, 0, 1, 0, 100)` to `matrix(1, 0, 0, 1, 0, 0)` and retained the latter after blur; it is not a focus token. The support link's `restParked` and `focus.restAfterBlur` snapshots both have `deco: none`, and its `persistsAfterBlur` array is empty. Its hover and pressed underline crops were opened. Comparison scope covers self/pseudo-elements, 0–14 descendants and their SVG/image properties, and three ancestor levels except `back-top`, which has one available ancestor. The same pixel/sibling/frame limitations described above apply.
+
+#### Other state definitions still present in source
+
+- **Empty:** the declared CSS-module empty state uses a 96×140px book image, an 18px/500 title in `#36363a` on desktop, a 16px mobile title, and `#6f6f77` subtitle at weight 400. It was not triggered in the capture.
+- **Loading:** `.lzSkeleton` defines a `#f4f4f5` base, white 60% shimmer and a 120-degree gradient with 35% / 50% / 65% stops. The CSS-module dark variant declares `#3a3b3d` and white 8% shimmer. Thumbnail backing and `object-fit: cover` are verified separately; no loading lifecycle was observed.
+- **Error:** the live `.lzError` definitions use maximum width 640px and 16px side padding. Titles are 34px/500 at min-width:640px and 24px below it. The error-home link is specifically **`#eb0026` / white, 52px high, 8px radius, `0 32px` padding, 16px/500**; it is not the ordinary `#eb0014` primary button. The 180px illustration height applies only at max-width:960px; expired illustrations declare 132px there and 220px above it. These are CSS definitions; the curl control returned error text, not a state-tested error widget.
+- **Selection:** radio/checkbox selected fill and selected switch track retain `#eb0014` declarations. No successful purchase or form submission was performed. Two snackbar definitions coexist: shared `.lzSnackbarItem` uses `--bg-inverted-alpha` (`rgba(17,17,21,.85)` here), while CSS-module `.snackbar__content__plkps` retains `#2f353e` background and white message text. Its link uses `--basic-blue-contrast`, currently `#223889`. Neither was observed as a success notification.
+- **Disabled:** primary defines `rgba(255,82,84,.2)` / white. Tertiary defines `#fafafa` background, but its `.lzButtonTertiary:disabled` text resolves to `--text-muted` (`#a1a1a9`), not the prior `#dadadd`. The actual disabled secondary search control is the `#e9e9ec` / white pair in §4; its computed pointer-events remain `auto`. The CSS-module `.lzBtn__tyLuS` disabled selector separately declares `pointer-events:none`; that rule is not universal.
 
 ## Do's and Don'ts
 
-### Do
-- Use `#eb0014` exclusively for the single highest-priority CTA per screen
-- Apply Pretendard (or Noto Sans KR fallback) — never substitute decorative display fonts
-- Follow the exact button-height ladder: 28px (xs) / 40px (sm) / 48px (md) / 56px (lg)
-- Use the pill chip (`border-radius: 999px`) for filterable genre or tag selectors
-- Maintain 4px radius on cards and rectanglular buttons for the characteristic sharp-yet-soft look
-- Use the skeleton shimmer (`lzSkeleton` — 1.8s ease-in-out infinite) during async content loads
-- Reserve the AI gradient (`#4CECBE → #00BFE2 → #007EE0`) only for AI-feature UI accents
+The following are reproduction guidance derived from the observed UI, not published company design principles.
 
-### Don't
-- Don't use red for destructive warnings — Lezhin's red is a brand/action signal, not a danger signal
-- Don't mix primary and secondary CTAs at equal visual weight on the same card or row
-- Don't apply `border-radius` larger than 12px on rectangular interactive components (chips and avatars are exempt)
-- Don't place light-mode text (`#111115`) directly on the dark surface (`#111115`) — toggle to inverted tokens
-- Don't hard-code pixel color values — always reference the semantic CSS variable so dark-mode tokens apply correctly
-- Don't add decorative illustration or icon embellishments inside buttons
+- Preserve the red cat mark, cover art and compact neutral controls; use the AI gradient and event-purple badge where those feature contexts call for them.
+- Use the loaded Pretendard Variable family and keep visible child-label metrics separate from inherited control metrics.
+- Match the particular card variant: 9:16 for the measured ranking card, with 4px corners and bottom caption gradient.
+- Keep transparent controls on their measured parent surface. Do not turn transparency into a black fill or calculate contrast against an invented backdrop.
+- Preserve the two source button families and their different corner and padding rules.
+- Do not promote the browser's automatic focus ring or the root's state definitions into a measured brand interaction.
 
 ## Voice & Tone
 
-**Brand voice:** Direct, confident, candid
-
-The Lezhin voice is **솔직한** (honest/frank) — it does not hedge or oversell. Copy leans toward short declarative punches rather than elaborate prose. It speaks to adult readers who know what they want and appreciate the platform getting out of the way.
-
-| Do | Don't |
-|----|-------|
-| Use short, punchy sentences | Use vague or corporate euphemisms |
-| Be direct about content types | Sanitize mature topics with excessive euphemism |
-| Address readers as adults who make their own choices | Be paternalistic or add unsolicited warnings |
-| Use Korean naturally (informal register is fine) | Over-translate Korean idioms into stiff English equivalents |
-| Let the content title and art do the heavy lifting | Over-describe what readers can see for themselves |
-
-**Voice samples (illustrative):**
-- *Illustrative:* "솔직한 재미 대폭발 — 당신이 찾던 진짜 웹툰." (Honest fun explosion — the real webtoon you've been looking for.)
-- *Illustrative:* "매일 업데이트. 오늘 뭐 읽을까?" (Updated every day. What are you reading today?)
-- *Illustrative:* "재미있는 만화를, 쉽게 결제해서, 편하게 보게 하자." (Let's make great comics easy to buy and comfortable to read.)
+The home title uses the tagline **“솔직한 재미 대폭발”**. Navigation names content categories directly; cards give short free-episode counts. The renewal page uses a comic story to introduce changes. These support a compact, entertainment-led tone. No opened first-party voice guide establishes the earlier draft's broader rules about adult address, informal Korean, euphemisms or pricing language.
 
 ## Agent Prompt Guide
 
-When building Lezhin-styled UI:
-
-- **Color:** Treat `#eb0014` as the single brand accent; use it on the primary button and selected-state only. All other UI operates on the grey ladder (#111115 → #e9e9ec → #ffffff).
-- **Typography:** Set the font stack to `Pretendard Variable, Pretendard, -apple-system, Noto Sans KR, sans-serif`. Use 14px/600 for buttons, 16px/400 for body copy, 12px/400 for metadata.
-- **Radius:** Default to 4px on buttons and cards. Use 999px for pills (chips, avatars). Avoid values above 12px on rectangular elements.
-- **Spacing:** Prefer 4/8/12/16/20/24px spacing increments. Card gutters are 4px (dense) or 8–12px (standard).
-- **Dark mode:** Swap `--bg-default` to `#111115`, `--text-default` to `#ffffff`, border tokens adjust automatically when referencing CSS variables.
-- **Animation:** Transitions are `0.2s ease-in-out` for background-color and borders; `0.25s linear` for transforms. Skeleton is `1.8s ease-in-out infinite`.
-- **States:** Disabled buttons carry `rgba(255,82,84,0.2)` background. Focus states use `#9e0018` for primary.
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-outlined`.** Text `#36363a` on `#00000000` measures 1.75:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-chip`.** Text `#6f6f77` on `#00000000` measures 4.22:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+Build the Korean homepage catalogue around a light `#ffffff` surface, `#111115` ordinary ink and illustrated cover cards with white captions. Use `#eb0014` for the observed identity/action roles and retain contextual AI and event accents. Use Pretendard Variable, the measured 14px body base, 16px navigation label and 12px calendar label. Give ranking cards 9:16 bounds and 4px corners. For the AI field, match the actual 18px/400 text box inside its gradient wrapper; its disabled search action is 42px high. Use the actual parent background for transparent links and controls. Take interaction behaviour from §14; the stylesheet definitions in §4 do not establish measured hover or pressed states for a new instance.

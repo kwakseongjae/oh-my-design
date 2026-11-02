@@ -5927,30 +5927,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "lezhin",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-03",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 126,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 71,
+    "evidenceClaimCount": 71,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 12,
-    "interactiveComponentCount": 7,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "tier1SourceCount": 11,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": 0.846
   },
   {
@@ -13124,9 +13118,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 337,
+  "verified_v2": 338,
   "partial": 92,
-  "legacy_snapshot": 110,
+  "legacy_snapshot": 109,
   "total": 539
 } as const;
 

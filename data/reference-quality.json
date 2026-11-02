@@ -4,9 +4,9 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 539,
   "counts": {
-    "verified_v2": 337,
+    "verified_v2": 338,
     "partial": 92,
-    "legacy_snapshot": 110,
+    "legacy_snapshot": 109,
     "total": 539
   },
   "items": [
@@ -2932,17 +2932,14 @@
     },
     {
       "id": "lezhin",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "lguplus",
