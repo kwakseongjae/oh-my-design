@@ -1,7 +1,20 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 23시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 0시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 0시 · **재개 신호 대기** — 오너: "1·2·3까지(덕울링고 커밋·CJK 센서스·3차 묶음 구성)만 하고, Sol 확충·검증 실행과 MCP는 재개 신호와 함께"
+
+- **오너 방향(11/2 23시대):** 신규 레퍼런스는 **CJK 중심**(KR·JP·TW·HK·CN). 1차 센서스가 EU 위주였던 건 옛 "다음은 EU" 큐를 따른 것 — 메모리 `feedback_new_refs_cjk_centric.md`. 비CJK 신규는 이유가 있을 때만.
+- **완료:** duolingo(legacy→verified) `c6151767` → 브랜치 `feat/reverify-w1` **533 / 326 / 96 / 111**(main은 530 / 318 / 99 / 113). 2차 묶음 반영 8건: justeat·datadog·ovhcloud·mercury·pipedrive·gitlab·nintendo·duolingo.
+- **돌고 있던 것(그대로 끝나게 둠, 반영은 재개 때):** `rv-headspace`(재검증), `rv-mercedes-benz-r2`(states만 다시 재는 이어 하기, 11/2 22:08 시작 — 오너 메시지 전). 결과 폴더 `~/.omd-workers/reverify1/headspace`, `~/.omd-workers/new1/mercedes-benz`.
+- **CJK 센서스:** Sonnet 팀원 실행 중 → `~/.omd-workers/census-cjk/summary.json`(KR ~70·JP ~75·TW ~35·HK ~20·CN ~20, 카탈로그·11/2 센서스 제외). 끝나면 3차 묶음 큐 파일 작성.
+- **재개 도구(main 커밋 `0f4313cd`):** `scripts/workers/run-queue.sh <큐 파일>`(Sol 4개 상한·다른 프로젝트 포함, 재시작 가능, Monitor용 이벤트 줄), `scripts/workers/land-reference.sh <워커 폴더> <id> <워크트리>`(복사→상태 확인→sync·원장·AST·llms·counts, 커밋 전까지; verified_v2 아니면 중단).
+- **재개 순서(신호 받으면):**
+  1. headspace·mercedes-benz 결과 검토(헤드라인 재측정) → `land-reference.sh` → 모션 래칫 조정 → 커밋. 2차 묶음 10건 완료 → 오너 머지 GO 요청(브랜치를 main과 병합 후).
+  2. duolingo pressed 보강: `scripts/workers/spawn.sh --workdir ~/.omd-workers/reverify1/duolingo --order ~/.omd-workers/reverify1/duolingo/order-pressed.md --name rv-duolingo-p2 --mcp capture` (hero "Get started" pressed = translateY 4px + ::before, 본 세션 측정).
+  3. 3차 묶음: Monitor로 `bash scripts/workers/run-queue.sh ~/.omd-workers/queue-batch3.txt` (CJK 신규 + 재검증 교대). 30분마다 재무장(워커는 독립 세션이라 안전).
+  4. MCP(Sol 자리 1개씩): 워크트리 만들고 지시서로 띄움 — 1b 연결 안내 `/docs/<locale>/connector`(5개 언어, UI라 프리뷰 GO) `~/.omd-workers/mcp-1b/order.md`(spec상 Sonnet medium: `--engine claude`), 2a 의미 검색 `~/.omd-workers/mcp-2/order.md`(Sol max; Vercel에 `OPENROUTER_API_KEY` 있음 확인, 개인정보 커넥터 문단 변경 포함 → 프리뷰에서 hybrid 확인 후 머지).
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
 
