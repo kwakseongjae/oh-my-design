@@ -2567,28 +2567,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "digital-agency-jp",
-    "status": "partial",
-    "verifiedAt": "2026-06-17",
-    "tokensExtractedAt": "2026-06-17",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 109,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 127,
+    "evidenceClaimCount": 127,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 24,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 8,
+    "tier1SourceCount": 24,
+    "componentCount": 6,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13002,8 +12998,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 311,
-  "partial": 106,
+  "verified_v2": 312,
+  "partial": 105,
   "legacy_snapshot": 113,
   "total": 530
 } as const;

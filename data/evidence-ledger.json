@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 311,
-  "sources": 2121,
+  "references_with_verification_v2": 312,
+  "sources": 2145,
   "sources_by_kind": {
-    "brand-asset": 86,
-    "license": 137,
-    "official-doc": 816,
-    "product-surface": 1082
+    "brand-asset": 87,
+    "license": 138,
+    "official-doc": 835,
+    "product-surface": 1085
   },
   "references": {
     "104": {
@@ -2828,6 +2828,156 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "www.bahn.de"
+        }
+      ]
+    },
+    "digital-agency-jp": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "button",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "color",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "color-palette",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "company-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "corner-shapes",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "ds-introduction",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "ds-license",
+          "kind": "license",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "elevation",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.digital.go.jp"
+        },
+        {
+          "id": "layout",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "local-design",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "resources",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "stylesheet",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
+        },
+        {
+          "id": "updates",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.digital.go.jp"
         }
       ]
     },

@@ -156,7 +156,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 193 -> 192 (2026-11-02): paypal re-verified from a live capture; §15 writes only computed transitions.
     // 192 -> 191 (2026-11-02): hubspot, the same way.
     // 191 -> 190 (2026-11-02): skyscanner.
-    expect(flagged.length).toBe(190);
+    // 190 -> 189 (2026-11-02): digital-agency-jp.
+    expect(flagged.length).toBe(189);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
