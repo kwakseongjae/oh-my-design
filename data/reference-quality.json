@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-02",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 535,
+  "count": 536,
   "counts": {
-    "verified_v2": 329,
+    "verified_v2": 330,
     "partial": 95,
     "legacy_snapshot": 111,
-    "total": 535
+    "total": 536
   },
   "items": [
     {
@@ -2059,6 +2059,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hanatour",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },

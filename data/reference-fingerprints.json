@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 535,
+ "count": 536,
  "items": [
   {
    "id": "104",
@@ -4285,6 +4285,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "hanatour",
+   "primary_color_hex": "#5e2bb8",
+   "category": "ecommerce",
+   "visual_theme": "Hanatour (하나투어) is a Korean travel company whose [company overview](https://www.hanatourcompany.com/kr/company/overview/about) dates its beginnings to 1993. Its website brings package holidays, flights, hotels and local tours into one booking surface. The [onl",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "playful",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "hashicorp",
