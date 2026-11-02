@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 17시 반 넘어** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 18시 15분** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -15,7 +15,9 @@
   - 테스트: 모션 래칫 193→192(개선), 부하 시간 초과는 단독 재실행 통과. 재검증 결과 반영 순서: 산출물 복사 → `query:references:data` → `sync-catalog` 두 번(개수 문구) → `evidence:ledger` → `build-reference-ast` → 커밋.
   - **main 머지:** 카탈로그만 바뀌어도 운영 배포라 §1 대상 → 10건마다 묶어 오너 GO 받기(진행 보고 때 요청).
 - **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
-- **계속 진행 중.** `rv-skyscanner`(Sol max, 17:26~). 신규 후보 센서스(Sonnet 팀원, 276곳). 다른 프로젝트 Sol 3개가 끝나면(감시 중) 4개까지 늘림. MCP v2 Phase 1은 그 뒤 Sol 1자리.
+- **HubSpot → verified_v2 (`fd691667`, 같은 브랜치).** 헤드라인(hero "Get a demo" #ff4800 → hover #c93700 → pressed #9f2800) 본 세션 재측정 일치, 2025 제품 디자인 글(WCAG 2.2 AA "working toward", 다크 모드는 요청 사항) 원문 일치. 검색 컨트롤은 blur 뒤에도 변화가 남아 컴포넌트에서 제외(산문만). 모션 래칫 192→191. **현재 브랜치 `feat/reverify-w1`: 310 verified / 107 partial / 113 legacy.**
+- **MCP v2 Phase 1 착수(18:13).** Sol max 워커 `mcp-v2-impl`, 워크트리 `.claude/worktrees/mcp-v2`(브랜치 `feat/mcp-v2`, web 의존성 자체 설치), 지시서 `~/.omd-workers/mcp-v2/order.md`(명세 §4~§6·§8, 도구 6개, 개인정보 커넥터 문단, 계약 테스트, 로컬 dev 스모크). UI·`/docs/connector`는 범위 밖(Phase 1b, 오너 프리뷰). 결과는 본 세션이 검토 → 테스트 → main 머지(오너 승인 범위 안: D1~D6).
+- **Sol 사용(18:13):** 본 프로젝트 2(rv-skyscanner, mcp-v2-impl) + 다른 프로젝트 2(business_plan_k 1, kosine 1) = 4. 신규 후보 센서스(Sonnet 팀원, 276곳) 계속.
 
 ## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
 
