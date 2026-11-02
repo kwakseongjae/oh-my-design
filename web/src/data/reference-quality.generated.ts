@@ -6458,29 +6458,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "mercury",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 145,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 98,
+    "evidenceClaimCount": 98,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 20,
     "conflictCount": 0,
-    "tier1SourceCount": 1,
-    "componentCount": 12,
-    "interactiveComponentCount": 7,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 20,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": 0.625
   },
   {
@@ -13013,9 +13008,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 321,
+  "verified_v2": 322,
   "partial": 98,
-  "legacy_snapshot": 113,
+  "legacy_snapshot": 112,
   "total": 532
 } as const;
 
