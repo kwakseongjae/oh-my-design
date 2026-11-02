@@ -1,14 +1,15 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 0시** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 0시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-03 0시 · **재개 신호 대기** — 오너: "1·2·3까지(덕울링고 커밋·CJK 센서스·3차 묶음 구성)만 하고, Sol 확충·검증 실행과 MCP는 재개 신호와 함께"
 
 - **오너 방향(11/2 23시대):** 신규 레퍼런스는 **CJK 중심**(KR·JP·TW·HK·CN). 1차 센서스가 EU 위주였던 건 옛 "다음은 EU" 큐를 따른 것 — 메모리 `feedback_new_refs_cjk_centric.md`. 비CJK 신규는 이유가 있을 때만.
 - **완료:** duolingo(legacy→verified) `c6151767` → 브랜치 `feat/reverify-w1` **533 / 326 / 96 / 111**(main은 530 / 318 / 99 / 113). 2차 묶음 반영 8건: justeat·datadog·ovhcloud·mercury·pipedrive·gitlab·nintendo·duolingo.
-- **돌고 있던 것(그대로 끝나게 둠, 반영은 재개 때):** `rv-headspace`(재검증), `rv-mercedes-benz-r2`(states만 다시 재는 이어 하기, 11/2 22:08 시작 — 오너 메시지 전). 결과 폴더 `~/.omd-workers/reverify1/headspace`, `~/.omd-workers/new1/mercedes-benz`.
-- **CJK 센서스:** Sonnet 팀원 실행 중 → `~/.omd-workers/census-cjk/summary.json`(KR ~70·JP ~75·TW ~35·HK ~20·CN ~20, 카탈로그·11/2 센서스 제외). 끝나면 3차 묶음 큐 파일 작성.
+- **끝났고 반영 대기(재개 때 검토):** `rv-headspace`(재검증, exit 0), `rv-mercedes-benz-r2`(이어 하기, exit 0 — 컴포넌트 4개 hover/pressed 실측, 히어로·포커스는 미측정). 결과 폴더 `~/.omd-workers/reverify1/headspace`, `~/.omd-workers/new1/mercedes-benz`.
+- **CJK 센서스 완료(247곳):** promising 16 · weak 32 · blocked 36 · reject 163 (KR 72·JP 78·TW 38·HK 25·CN 34). 수율 ~6% — 커스텀 속성 개수 기준이라 색을 하드코딩한 CJK 사이트를 과소평가함(검증 게이트는 커스텀 속성을 요구하지 않고 실측 computed 값과 상태를 요구). 그래서 다음 CJK 확충은 ① weak 중 ctrl>0 후보도 저작 대상으로 ② 추가 CJK 센서스(대기업·금융·커머스·미디어 2차 목록). 차단 36곳(국내 증권·보험사 다수)은 워커 전용 헤디드 브라우저로 재시도 가치 있음. 요약 `~/.omd-workers/census-cjk/summary.json`.
+- **3차 묶음 큐 = `~/.omd-workers/queue-batch3.txt`(21건, CJK 신규·재검증 교대):** 신규 nio(CN)·hanatour·sbisec·kbs·tokyo-metropolitan·sbinetbank·gov24·munpia·1111-jobbank(TW)·zabank(HK, 새 시장 → VALID_COUNTRIES에 HK 추가)·xpeng(CN) / 재검증 tellingme·lezhin·corca·xiaohongshu·gaudiolab·gmarket·frip·ubie·fubon·moin. 제외: koexpressway·nhis(KRDS 채택 기관, krds 이미 있음), syosetu(팔레트만), tver(일반·프레임워크), aeon(ctrl 2), samsungfire(ctrl 1), kakuyomu(ctrl 3, 다음에). 재검증 지시서 생성 사전 점검 통과.
 - **재개 도구(main 커밋 `0f4313cd`):** `scripts/workers/run-queue.sh <큐 파일>`(Sol 4개 상한·다른 프로젝트 포함, 재시작 가능, Monitor용 이벤트 줄), `scripts/workers/land-reference.sh <워커 폴더> <id> <워크트리>`(복사→상태 확인→sync·원장·AST·llms·counts, 커밋 전까지; verified_v2 아니면 중단).
 - **재개 순서(신호 받으면):**
   1. headspace·mercedes-benz 결과 검토(헤드라인 재측정) → `land-reference.sh` → 모션 래칫 조정 → 커밋. 2차 묶음 10건 완료 → 오너 머지 GO 요청(브랜치를 main과 병합 후).
