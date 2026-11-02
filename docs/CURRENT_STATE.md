@@ -1,9 +1,25 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-01 22시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 15시 50분** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-11-02 2시 · 아카이브 개편 4차 — **`ddf1f1ec` 프리뷰 확인 완료 → 오너 GO 대기** (워크트리 `.claude/worktrees/archive-r12`, 브랜치 `feat/archive-r12` `6d375613`)
+## ▶ 2026-11-02 15시 50분 · 아카이브 개편 **main 머지 `f23f6f79` · 운영 확인 완료** · 재개 대기
+
+- **오너(15:03).** 상세 페이지 "비슷한 디자인 시스템" 카드 UI만 더 개선, 나머지는 괜찮으니 작업 후 바로 머지, 다음 작업 재개 준비, 남은 작업과 추천 순서 브리핑.
+- **관련 카드 `16e276de`.** 아카이브 카드(`archive.css .sq-card-*`)를 그대로 씀: 공식 로고(없으면 없음)·분야 태그(페이지 언어, /ko는 한국어 — 전엔 "Consumer Tech" 영어)·DESIGN.md 첫 문장·자체 색 토큰 견본(`paletteOf`). 데스크톱 3열, ≤767px 2열, ≤600px 1열. 공용 서버 컴포넌트 `web/src/app/(en)/design-systems/related-references.tsx`(구 `related-mark.tsx` 삭제), /ko는 계속 한국어 페이지끼리 연결. web 테스트 1202 통과(+2), 프리뷰 `1lqhcv6rq` en·ko toss 카드 6·태그·요약·견본 확인. 상세 라우트는 순수 SSG라 `summaryOf`가 빌드 때 읽힘.
+- **머지·배포.** main에서 `git merge --no-ff feat/archive-r12` → `f23f6f79` 푸시 → 운영 `8gek413pz` Ready. oh-my-design.kr 확인: `/design-systems`·`/ko/design-systems` 200, 카드 530, 첫 줄 toss·apple·karrot·krds, 검색창 있음, 더보기 버튼 0, 애플·삼성 로고; `/design-systems/toss` 관련 카드 6(Fintech), `/ko/design-systems/toss` 6(핀테크), 요약 6·견본. 남은 "verified/partial" 글자는 사이트 공통 JSON-LD 설명뿐(화면 아님, 범위 밖).
+- **정리.** 워크트리 `.claude/worktrees/archive-r12` 제거(심볼릭 링크 4개 먼저 해제, main의 `web/node_modules`·비밀값 그대로). 원격 브랜치 `feat/archive-r12`는 남김. main 작업 트리 `.gitignore`의 `.vercel` 한 줄(Vercel CLI가 추가)은 미커밋 그대로. 요청 원장: 11/1~11/2 메시지 7건 → 요청 20건 분류, 전부 닫음.
+- **알려진 작은 것.** 아카이브 HTML 1.12MB(견본 인라인 스타일), 동의 배너가 열려 있으면 맨 위로 버튼을 가림.
+- **재개 큐(추천 순서).**
+  1. **오너 결정 — MCP v2 D1~D6**(`docs/MCP_V2_SPEC_2026-10-29.md` §10 권장안). 승인되면 Phase 0(410 카운터) → Phase 1(Sol 구현, 워크트리). 결정 하나로 워커 작업이 가장 많이 풀림.
+  2. **오너 GO — 2.0.6 출시 + strict waiver**(10/25부터 대기, 가장 오래됨). 출시 때 capture 번들 재빌드(스페인어·핀란드어 거부어)·런타임 미러 재동기화.
+  3. **오너 GO — /hangul 프리뷰**(외래어 4쌍·KOGL 어휘·소개 문구, 10/25부터).
+  4. **오너 OK 필요 — Mixpanel 제거**(작은 변경: SDK·`/privacy`·동의 배너 문구). 조회 API가 유료라 소비처가 없음. 배너 문구가 바뀌어 오너 확인 필요.
+  5. **자율 — 다음 Sol 웨이브 센서스 → 저작**(목표 700, 현재 530 / 308 verified, EU 5 소진). 워커 백그라운드.
+  6. **자율 — 후속 과제**(Sol 워커): 조립기 레거시 `§N` 참조, 변환기 숨은 라벨 아이콘 버튼 Known Gaps, spacing 생략 문구, 소비처 없는 `build-embeddings`.
+  7. **자율 — 루트 전체 테스트 저부하 재실행**·`.omd/preferences.md` pending 3건(아카이브 선호) omd:learn 반영.
+
+## ▶ 2026-11-02 2시 · 아카이브 개편 4차(→ 15시 머지됨) — **`ddf1f1ec` 프리뷰 확인 완료 → 오너 GO 대기** (워크트리 `.claude/worktrees/archive-r12`, 브랜치 `feat/archive-r12` `6d375613`)
 
 - **오너 요청(22:27).** ① 목록 페이지의 무한 스크롤·페이지 나눔이 대충(누를 때마다 24개) ② 추천순 = 조회수순을 기본 정렬로 ③ 검증/미검증 표시는 사용자에게 필요 없으니 빼고 아카이브 페이지 구성 ④ 재개 큐와 합쳐 계획 구체화, 멘트 받고 진행.
 - **현황 조사.**
