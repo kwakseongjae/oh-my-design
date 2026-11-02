@@ -6,7 +6,7 @@ export const runtime = "edge";
 // Resolve the visitor's country from Vercel's edge geo header so the client can
 // decide whether a consent banner is required (EEA/UK/CH → eu:true) or analytics
 // can start immediately (everyone else). The header is absent on localhost, so
-// dev resolves to eu:false (auto-grant) — which is what lets us verify Mixpanel
+// dev resolves to eu:false (auto-grant) — which is what lets us verify analytics
 // locally. Never cached: the answer is per-request and visitor-specific.
 export async function GET(req: Request) {
   // null (not "") when the header is absent, so the client can distinguish

@@ -19,7 +19,7 @@ export const runtime = "edge";
  * Fire-and-forget from the client once per session (see src/lib/active.ts).
  * Privacy-preserving: the id feeds only a per-day HyperLogLog sketch — Redis
  * retains an aggregate cardinality estimate, never the individual ids. This is
- * the consent-independent DAU floor (GA/Mixpanel stay consent-gated).
+ * the consent-independent DAU floor (GA stays consent-gated).
  */
 export async function POST(req: Request) {
   let body: unknown;

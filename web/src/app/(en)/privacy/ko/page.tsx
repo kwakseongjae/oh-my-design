@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 
-const UPDATED = "2026년 10월 14일";
+const UPDATED = "2026년 11월 2일";
 
 export const metadata: Metadata = {
   title: "개인정보 처리방침 — oh-my-design",
@@ -67,7 +67,7 @@ export default function PrivacyKoPage() {
           <p>이용 행태 이벤트(페이지·레퍼런스 조회, select/generate/download/copy),
             쿠키 및 브라우저 로컬스토리지 식별자. 동의 배너 노출 판단을 위한
             대략적 국가(EEA 여부 판별용)는 서버에서 일시적으로만 확인하며 저장하지
-            않습니다. IP 주소는 Mixpanel 및 자체 카운터에 저장하지 않습니다.
+            않습니다. IP 주소는 자체 카운터에 저장하지 않습니다.
             Vercel Web Analytics는 페이지 조회 시 페이지 경로, 유입 경로(리퍼러),
             국가, 기기 유형만 집계하며 쿠키나 브라우저 저장소를 쓰지 않습니다.</p>
         </Section>
@@ -83,7 +83,6 @@ export default function PrivacyKoPage() {
             있습니다.</p>
           <ul className="ml-4 list-disc space-y-1">
             <li>Google LLC (Google Analytics, Search Console) — 이용 통계 및 검색 성과 분석</li>
-            <li>Mixpanel, Inc. — 제품 이용 행태 분석</li>
             <li>Vercel, Inc. — 웹사이트 호스팅 및 쿠키 없는 페이지 조회 통계(Web Analytics)</li>
             <li>Upstash, Inc. — 인기 레퍼런스 집계(개인정보 미포함)</li>
             <li>OpenRouter, Inc. — 커넥터 vibe 검색용 임베딩 계산(검색어 미저장)</li>
@@ -94,12 +93,12 @@ export default function PrivacyKoPage() {
           <p>위 수탁자는 국외에서 서비스를 운영하므로, 익명 이용 분석 데이터가
             국외로 이전됩니다.</p>
           <ul className="ml-4 list-disc space-y-1">
-            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Mixpanel Inc., Vercel Inc., OpenRouter Inc.</li>
+            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Vercel Inc., OpenRouter Inc.</li>
             <li><strong className="font-medium text-foreground">이전 항목:</strong> 익명 이용 분석 이벤트, 쿠키·로컬스토리지 식별자 (IP·국가정보 미전송)</li>
             <li><strong className="font-medium text-foreground">이전 국가:</strong> 미국(United States)</li>
             <li><strong className="font-medium text-foreground">이전 일시 및 방법:</strong> 서비스 이용 시점에 네트워크를 통해 전송</li>
             <li><strong className="font-medium text-foreground">이용 목적 및 보유 기간:</strong> 이용 통계 분석 / 각 사업자의 보존 정책에 따름(GA 최대 14개월)</li>
-            <li><strong className="font-medium text-foreground">안전장치:</strong> Google LLC는 EU–US Data Privacy Framework 자가인증, Mixpanel로의 이전은 EU 표준계약조항(SCC)에 따름.</li>
+            <li><strong className="font-medium text-foreground">안전장치:</strong> Google LLC는 EU–US Data Privacy Framework 자가인증.</li>
             <li><strong className="font-medium text-foreground">거부 방법 및 효과:</strong> EU·영국·스위스 외 지역은 배너의 &lsquo;Decline&rsquo; 또는 브라우저 설정·옵트아웃으로 거부 가능하며, 거부 시 분석 데이터가 수집되지 않습니다.</li>
           </ul>
           <p className="mt-2">Upstash, Inc.(인기 집계 호스팅)는 이벤트명과 레퍼런스

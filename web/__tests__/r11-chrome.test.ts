@@ -212,8 +212,10 @@ describe("consent card (W9): presentation only", () => {
     expect(src.match(/className=\{CHOICE\}/g)).toHaveLength(2);
     expect(src).not.toMatch(/--sq-primary/);
   });
-  it("every locale still names both vendors and keeps the details link", () => {
-    expect(src.match(/body: "[^"]*Google Analytics[^"]*Mixpanel/g)).toHaveLength(5);
+  it("every locale names only Google Analytics and keeps the details link", () => {
+    expect(src.match(/body: "[^"]*Google Analytics/g)).toHaveLength(5);
+    expect(src).not.toMatch(/mixpanel/i);
+    expect(fs.existsSync(path.join(process.cwd(), "src/lib/mixpanel.ts"))).toBe(false);
     expect(src).toMatch(/href=\{privacyHref\}/);
   });
   it("the consent gate itself is untouched", () => {

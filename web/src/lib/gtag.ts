@@ -1,5 +1,3 @@
-import { mpTrack } from "./mixpanel";
-
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 export const ANALYTICS_TAXONOMY_VERSION = "v2-2026-07-10";
 
@@ -31,21 +29,11 @@ export function normalizeEventParams(params: AnalyticsParams = {}): AnalyticsPar
   return normalized;
 }
 
-// Diagnostic / engagement signals stay in GA only. Mirroring them to Mixpanel
-// inflates event volume (scroll_depth fires up to 4×/session — the largest
-// free-tier consumer) and bloats property cardinality (js_error carries
-// unbounded message/source strings). The product funnel doesn't need them.
-const MP_SKIP = new Set(["scroll_depth", "js_error"]);
-
 export function event(name: string, params?: AnalyticsParams) {
   const normalized = normalizeEventParams(params);
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", name, normalized);
   }
-  // Dual-fire the same named event to Mixpanel (no-ops/buffers until opt-in).
-  // Single source of truth: every call site already routes through here, so the
-  // whole product taxonomy is mirrored with zero per-call-site changes.
-  if (!MP_SKIP.has(name)) mpTrack(name, normalized);
 }
 
 export type RefTrackEvent = "select" | "generate" | "download" | "copy" | "install";
