@@ -163,7 +163,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 186 -> 185 (2026-11-02): adobe.
     // 185 -> 184 (2026-11-02): mailchimp.
     // 184 -> 183 (2026-11-02): govuk.
-    expect(flagged.length).toBe(183);
+    // 183 -> 182 (2026-11-02): datadog.
+    expect(flagged.length).toBe(182);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

@@ -595,13 +595,21 @@ function inPage(opts) {
     }
     return { x: null, y: null, cover: cover || "no point of the control lies inside the viewport", rect: { x: Math.round(r.left), y: Math.round(r.top), w: round1(r.width), h: round1(r.height) } };
   };
+  // Every element in the document and in open shadow roots. A consent banner drawn inside a web component
+  // (Mercedes-Benz's cmm-cookie-banner, 2026-11-02) is invisible to document.querySelectorAll.
+  const allDeep = () => {
+    const out = [];
+    const walk = (root) => { for (const el of root.querySelectorAll("*")) { out.push(el); if (el.shadowRoot) walk(el.shadowRoot); } };
+    walk(document.body);
+    return out;
+  };
   KB.hideOverlays = (i) => {
     const target = KB.get(i);
     const anc = new Set();
     for (let n = target; n; n = parentOf(n)) anc.add(n);
     const hidden = [];
     KB.hidden = KB.hidden || [];
-    for (const el of document.querySelectorAll("body *")) {
+    for (const el of allDeep()) {
       if (anc.has(el) || el.contains(target)) continue;
       const s = getComputedStyle(el);
       if (s.position !== "fixed" && s.position !== "sticky") continue;
@@ -617,7 +625,7 @@ function inPage(opts) {
   KB.restoreOverlays = () => { for (const el of KB.hidden || []) { const [v, pr] = el.__omdPrev || ["", ""]; if (v) el.style.setProperty("display", v, pr); else el.style.removeProperty("display"); } KB.hidden = []; };
   KB.fixedInventory = () => {
     const out = [];
-    for (const el of document.querySelectorAll("body *")) {
+    for (const el of allDeep()) {
       const s = getComputedStyle(el);
       if (s.position !== "fixed" && s.position !== "sticky") continue;
       const r = el.getBoundingClientRect();
@@ -687,7 +695,7 @@ function consentFn() {
   const walk = (r) => { for (const h of r.querySelectorAll("*")) if (h.shadowRoot) { roots.push(h.shadowRoot); walk(h.shadowRoot); } };
   walk(document);
   for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
-  const WORDS = /^(reject all|reject|decline all|decline|only necessary|necessary only|use necessary only|essential only|only essential|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rechazar|declinar|solo (las )?cookies necesarias\.?|s[oó]lo necesarias|hylkää kaikki|hylkää|vain välttämättömät( evästeet)?|(käytä )?vain välttämättömiä( evästeitä)?|rifiuta tutto|refuză toate|refuz toate|refuză|respinge tot|odmítnout vše|odmítnout|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|reject additional cookies|refuse|deny all|deny|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부|필수(만| 항목만| 쿠키만) (허용|동의|수락)(하기)?)$/i;
+  const WORDS = /^(reject all|reject|decline all|decline|only necessary|necessary only|use necessary only|essential only|only essential|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|nur technisch notwendige( cookies)?( akzeptieren)?|tout refuser|refuser|continuer sans accepter|rechazar todo|rechazar|declinar|solo (las )?cookies necesarias\.?|s[oó]lo necesarias|hylkää kaikki|hylkää|vain välttämättömät( evästeet)?|(käytä )?vain välttämättömiä( evästeitä)?|rifiuta tutto|refuză toate|refuz toate|refuză|respinge tot|odmítnout vše|odmítnout|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|reject additional cookies|refuse|deny all|deny|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부|필수(만| 항목만| 쿠키만) (허용|동의|수락)(하기)?)$/i;
   for (const root of roots) for (const b of root.querySelectorAll("button, [role=button], a")) {
     if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
   }

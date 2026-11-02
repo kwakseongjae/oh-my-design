@@ -2311,28 +2311,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "datadog",
-    "status": "partial",
-    "verifiedAt": "2026-06-17",
-    "tokensExtractedAt": "2026-06-17",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-02",
+    "tokensExtractedAt": "2026-11-02",
+    "nextReverifyAt": "2027-05-01",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 116,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 97,
+    "evidenceClaimCount": 97,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 8,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 15,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12995,8 +12991,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 319,
-  "partial": 99,
+  "verified_v2": 320,
+  "partial": 98,
   "legacy_snapshot": 113,
   "total": 531
 } as const;
