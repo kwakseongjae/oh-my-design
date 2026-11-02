@@ -39,6 +39,7 @@ while :; do
   for d in "$RUNS"/rv-*; do
     [ -d "$d" ] || continue
     b=$(basename "$d")
+    case "$b" in *.killed) continue ;; esac   # parked runs (capacity retries, killed spawns) are not completions
     if [ -f "$d/exit-code" ] && [ ! -e "$SEEN/$b" ]; then
       touch "$SEEN/$b"; id=${b#rv-}; id=${id%-20*}
       ec=$(cat "$d/exit-code")
