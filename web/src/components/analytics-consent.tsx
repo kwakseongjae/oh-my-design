@@ -9,11 +9,10 @@ import {
   grantGAConsent,
   revokeGAConsent,
 } from "@/lib/consent";
-import { loadMixpanel, mpOptIn, mpOptOut, mpPageview } from "@/lib/mixpanel";
 
 type ConsentLocale = "en" | "ko" | "ja" | "zh-cn" | "zh-tw";
 
-/* Round 11 (W9): two short lines for the corner card. Each still names both vendors and says no
+/* Round 11 (W9): two short lines for the corner card. Each still names the vendor and says no
    ads and no data sales — that is the disclosure, the privacy page ("details") has the rest. */
 const CONSENT_COPY: Record<ConsentLocale, {
   /** Accessible name of the card. */
@@ -25,35 +24,35 @@ const CONSENT_COPY: Record<ConsentLocale, {
 }> = {
   en: {
     label: "Analytics cookies",
-    body: "Google Analytics and Mixpanel show us how the site is used. No ads, no data sales.",
+    body: "Google Analytics shows us how the site is used. No ads, no data sales.",
     details: "Learn more",
     decline: "Decline",
     accept: "Accept",
   },
   ko: {
     label: "분석 쿠키 동의",
-    body: "Google Analytics와 Mixpanel로 사이트 이용 현황을 살펴봐요. 광고를 싣거나 데이터를 팔지 않아요.",
+    body: "Google Analytics로 사이트 이용 현황을 살펴봐요. 광고를 싣거나 데이터를 팔지 않아요.",
     details: "자세히 보기",
     decline: "거부",
     accept: "동의",
   },
   ja: {
     label: "アクセス解析 Cookie の同意",
-    body: "Google Analytics と Mixpanel で利用状況を把握しています。広告やデータの販売はしません。",
+    body: "Google Analytics で利用状況を把握しています。広告やデータの販売はしません。",
     details: "詳しく見る",
     decline: "拒否",
     accept: "同意",
   },
   "zh-cn": {
     label: "分析 Cookie 同意",
-    body: "我们用 Google Analytics 和 Mixpanel 了解网站的使用情况。不投放广告，也不出售数据。",
+    body: "我们用 Google Analytics 了解网站的使用情况。不投放广告，也不出售数据。",
     details: "了解详情",
     decline: "拒绝",
     accept: "同意",
   },
   "zh-tw": {
     label: "分析 Cookie 同意",
-    body: "我們用 Google Analytics 與 Mixpanel 瞭解網站的使用情況。不投放廣告，也不販售資料。",
+    body: "我們用 Google Analytics 瞭解網站的使用情況。不投放廣告，也不販售資料。",
     details: "瞭解詳情",
     decline: "拒絕",
     accept: "同意",
@@ -70,34 +69,28 @@ function consentLocale(pathname: string): ConsentLocale {
 }
 
 /**
- * The single consent gate for GA + Mixpanel.
+ * The single consent gate for GA.
  *
  * On mount it resolves the visitor's region via /api/geo:
- *  - confirmed non-EU          → auto-grant: GA consent → granted, Mixpanel
- *    opt-in, no banner.
+ *  - confirmed non-EU          → auto-grant: GA consent → granted, no banner.
  *  - EEA/UK/CH OR geo unknown  → FAIL CLOSED: honor the stored choice; if
- *    undecided, show the banner. GA stays Consent-Mode-denied (cookieless) and
- *    Mixpanel stays opted-out until Accept. (Geo can fail because an ad-blocker
+ *    undecided, show the banner. GA stays Consent-Mode-denied (cookieless)
+ *    until Accept. (Geo can fail because an ad-blocker
  *    blocks /api/geo — exactly the EU population we must not auto-track.)
  *
  * Users can withdraw later via ManageConsentButton (fires `omd:manage-consent`),
- * which re-opens the banner; Decline then revokes GA consent + Mixpanel opt-out.
+ * which re-opens the banner; Decline then revokes GA consent.
  *
- * Mixpanel autocapture is off, so the first pageview is fired after opt-in
- * resolves (in applyGrant) and subsequent SPA navs are tracked in the effect
- * below. GA's own page_view comes from gtag config + enhanced measurement.
+ * GA's own page_view comes from gtag config + enhanced measurement.
  */
 export function AnalyticsConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const pathname = usePathname();
-  const firstNav = useRef(true);
   const copy = CONSENT_COPY[consentLocale(pathname)];
   const privacyHref = consentLocale(pathname) === "ko" ? "/privacy/ko" : "/privacy";
 
   const applyGrant = useCallback(() => {
     grantGAConsent();
-    // Opt in BEFORE the first pageview so it isn't dropped by the opt-out race.
-    void loadMixpanel().then(() => mpOptIn().then(() => mpPageview()));
   }, []);
 
   useEffect(() => {
@@ -121,10 +114,9 @@ export function AnalyticsConsent() {
       if (stored === "granted") applyGrant();
       else if (stored === "denied") {
         // layout.tsx's unregioned Consent Mode default re-grants
-        // analytics_storage on every load, so re-apply the stored opt-out for
-        // both GA and Mixpanel to honor a returning visitor's prior Decline.
+        // analytics_storage on every load, so re-apply the stored opt-out
+        // to honor a returning visitor's prior Decline.
         revokeGAConsent();
-        void mpOptOut(); // ensure opted-out across reloads
       }
       else if (known && !eu) applyGrant(); // confirmed non-EU → auto-grant
       else setShowBanner(true); // EU or unknown → ask
@@ -160,16 +152,6 @@ export function AnalyticsConsent() {
     card.current?.focus();
   }, [showBanner]);
 
-  // Mixpanel pageview on subsequent SPA navs (the first one is fired by
-  // applyGrant after opt-in). mpPageview no-ops until opted in.
-  useEffect(() => {
-    if (firstNav.current) {
-      firstNav.current = false;
-      return;
-    }
-    mpPageview();
-  }, [pathname]);
-
   const accept = () => {
     setStoredConsent("granted");
     setShowBanner(false);
@@ -179,7 +161,6 @@ export function AnalyticsConsent() {
     setStoredConsent("denied");
     setShowBanner(false);
     revokeGAConsent();
-    void mpOptOut();
   };
 
   if (!showBanner) return null;
