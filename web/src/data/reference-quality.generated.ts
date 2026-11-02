@@ -11201,29 +11201,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "tellingme",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 71,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 62,
+    "evidenceClaimCount": 62,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 5,
+    "tier1SourceCount": 13,
+    "componentCount": 3,
     "interactiveComponentCount": 3,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13100,8 +13095,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 331,
-  "partial": 95,
+  "verified_v2": 332,
+  "partial": 94,
   "legacy_snapshot": 111,
   "total": 537
 } as const;

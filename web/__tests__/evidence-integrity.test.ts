@@ -169,7 +169,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 180 -> 179 (2026-11-02): nintendo.
     // 179 -> 178 (2026-11-02): duolingo (legacy, rewritten from a live capture).
     // 178 -> 177 (2026-11-03): headspace.
-    expect(flagged.length).toBe(177);
+    // 177 -> 176 (2026-11-03): tellingme.
+    expect(flagged.length).toBe(176);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
