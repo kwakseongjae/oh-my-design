@@ -1,6 +1,6 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-02 17시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-02 17시 반 넘어** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
 ## ▶ 2026-11-02 17시 반 · /hangul main 머지·운영 확인, v2.0.6 npm 출시 완료 · 미검증 처리·700 확충 계속
@@ -10,7 +10,12 @@
 - **운영 확인(배포 `1kj0hvwub`).** `/ko/hangul`·`/hangul` 200(h1 "같은 화면, 다른 한국어" / "Same screen, different Korean", 문서 문장 있음), `/ko/design-systems` 530장, `/design-systems/toss` 관련 카드 6, `/llms.txt` 32-skill, `/docs/en/skills`에 hangul.
 - **출시 완료.** `v2.0.6` 태그 = `6dea355d`(origin/main) → Release to npm 워크플로 `41408278596` 성공(node18-smoke·publish) → **npm latest 2.0.6, provenance 있음**(레지스트리 반영 약 2분 지연). strict 게이트 waiver는 CHANGELOG 2.0.6에 기록.
 - **정리.** 워크트리 `r15-hangul` 제거(자체 node_modules, 미커밋 없음). 원격 브랜치 `feat/hangul-launch-r2` 남김. 남은 hangul 옛 워크트리 `hangul-launch`(`feat/hangul-launch-page`)·`hangul-uxw`는 손대지 않음.
-- **계속 진행 중.** 재검증 파일럿 `rv-paypal`(Sol max), 신규 후보 센서스(Sonnet 팀원, 276곳). MCP v2 Phase 1은 Sol 슬롯이 나면.
+- **재검증 파일럿 PayPal → verified_v2 (`6ed4f1e3`, 브랜치 `feat/reverify-w1`, 푸시, main 미머지).** Sol max 42분. 지금 사이트는 PayPal60 테마: 48px 검정 알약이 hover에 52px(패딩 12/20→14/22, #000→#333, pressed #4d4d4d) — 본 세션 독립 재측정 일치. Pentagram·Lineto 서사 원문 대조 일치. 클레임 91, 컴포넌트 6(전부 상태 실측), 권고 0. 로고 simpleicons → 자사 파비콘.
+  - **원칙(파일럿에서 정함):** 지금 사이트에서 확인 안 되는 이전 값(6월 색 5개·spacing 단위·그림자 2개·입력창·동의 버튼·흰 영상 버튼, '900이 브랜드 서명' 같은 해석)은 본문에서 뺀다. 레퍼런스는 현재 사이트를 설명한다. 뺀 목록은 워커 폴더 `report.md` "Unconfirmed prior content"에 남는다(로컬).
+  - 테스트: 모션 래칫 193→192(개선), 부하 시간 초과는 단독 재실행 통과. 재검증 결과 반영 순서: 산출물 복사 → `query:references:data` → `sync-catalog` 두 번(개수 문구) → `evidence:ledger` → `build-reference-ast` → 커밋.
+  - **main 머지:** 카탈로그만 바뀌어도 운영 배포라 §1 대상 → 10건마다 묶어 오너 GO 받기(진행 보고 때 요청).
+- **재검증 순서 = GA4 30일 조회수 순**(로컬 계산, 수치는 커밋 안 함). partial 상위: skyscanner·hubspot·digital-agency-jp·databricks·salesforce·adobe·monzo·mailchimp·govuk·datadog…, legacy 상위: mercury·duolingo·revolut·netflix·openai·lezhin·xiaohongshu·gmarket…. 생성기는 이제 URL·로케일을 이전 레퍼런스에서 뽑는다(`make-reverify-order.py <wave> <id>`).
+- **계속 진행 중.** `rv-skyscanner`(Sol max, 17:26~). 신규 후보 센서스(Sonnet 팀원, 276곳). 다른 프로젝트 Sol 3개가 끝나면(감시 중) 4개까지 늘림. MCP v2 Phase 1은 그 뒤 Sol 1자리.
 
 ## ▶ 2026-11-02 17시 · 오너 승인 1·2·4 처리 + 미검증 처리·700 확충 착수 · /hangul GO와 2.0.6 구성 결정 대기
 

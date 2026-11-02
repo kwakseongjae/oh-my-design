@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Build one re-verification worker's folder (owner 2026-11-02: "미검증을 처리하면서 700개로").
 
-  scripts/workers/make-reverify-order.py <wave> <id> <url> <locale> <origin>
+  scripts/workers/make-reverify-order.py <wave> <id> [url] [locale] [origin]
+
+url, locale and origin default to the prior reference's homepage, its country's main locale and the homepage's origin.
 
 A partial or legacy reference already exists in web/references/<id>/. The worker re-measures it with the
 same order as a new reference (docs/workers/REFERENCE_ORDER_TEMPLATE.md, via make-reference-order.py), but
@@ -16,9 +18,13 @@ Prints the order path; spawn with scripts/workers/spawn.sh --workdir <folder> --
 import os, pathlib, re, subprocess, sys
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
-if len(sys.argv) < 6:
+if len(sys.argv) < 3:
     sys.exit(__doc__)
-wave, cid, url, locale, origin = sys.argv[1:6]
+wave, cid = sys.argv[1:3]
+url, locale, origin = (sys.argv[3:6] + [None, None, None])[:3]
+LOCALES = {"KR": "ko-KR", "JP": "ja-JP", "TW": "zh-TW", "CN": "zh-CN", "US": "en-US", "UK": "en-GB", "DE": "de-DE",
+           "FR": "fr-FR", "IT": "it-IT", "FI": "fi-FI", "NL": "nl-NL", "SE": "sv-SE", "ES": "es-ES", "LT": "lt-LT",
+           "NO": "nb-NO", "DK": "da-DK", "AT": "de-AT", "EE": "et-EE", "CZ": "cs-CZ", "RO": "ro-RO", "BE": "nl-BE", "CH": "de-CH"}
 ref = REPO / "web/references" / cid
 if not (ref / "DESIGN.md").exists():
     sys.exit(f"no reference {cid}")
@@ -45,7 +51,15 @@ for sha in git("log", "--format=%H", "--", f"web/references/{cid}/DESIGN.md").sp
 if prior is None:
     sys.exit(f"{cid}: no legacy-shape DESIGN.md in git history")
 
-name = re.search(r"^name:\s*['\"]?(.+?)['\"]?\s*$", prior[1], re.M).group(1)
+def front(key: str) -> str:
+    m = re.search(r"^%s:\s*['\"]?(.+?)['\"]?\s*$" % key, prior[1], re.M)
+    return m.group(1) if m else ""
+
+
+name = front("name")
+url = url or front("homepage")
+locale = locale or LOCALES.get(front("country"), "en-US")
+origin = origin or re.match(r"https?://[^/]+", url).group(0)
 note = f"""
 **This is a re-verification, not a new reference.** `{cid}` is already in the catalog without a v2 verification
 (its status is partial or legacy). Your folder also holds:
