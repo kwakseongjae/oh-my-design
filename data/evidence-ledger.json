@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 317,
-  "sources": 2234,
+  "references_with_verification_v2": 318,
+  "sources": 2296,
   "sources_by_kind": {
-    "brand-asset": 92,
+    "brand-asset": 96,
     "license": 138,
-    "official-doc": 894,
-    "product-surface": 1110
+    "official-doc": 937,
+    "product-surface": 1125
   },
   "references": {
     "104": {
@@ -4634,6 +4634,384 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.gousto.co.uk"
+        }
+      ]
+    },
+    "govuk": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "accessibility-requirements",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "banner-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-blue",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-intro",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "brand-publication",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "brand-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "button",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "button-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "clear-language",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "colour",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "components",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "confirmation",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "control-brand",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "brand.design-system.service.gov.uk"
+        },
+        {
+          "id": "control-ds",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "control-gds-blog",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "control-guidance",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "design-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "ds-css-0",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-example-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "ds-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "effective-links",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "error-message",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "error-summary",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "gds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "gds-blog-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "gds.blog.gov.uk"
+        },
+        {
+          "id": "gds-contact",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "guidance-home",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "headings",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "home-css-0",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "home-css-1",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "input-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "inset-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "inset-text",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "layout",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "notification-banner",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "paragraphs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "patterns",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "progressive-enhancement",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.gov.uk"
+        },
+        {
+          "id": "secondary-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "select",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "select-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "style-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "tag",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tag-colours",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tag-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "task-list",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "text-input",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "tone-current",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "guidance.publishing.service.gov.uk"
+        },
+        {
+          "id": "type-scale",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "typeface",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "unavailable",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
+        },
+        {
+          "id": "warning-example",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design-system.service.gov.uk"
         }
       ]
     },
