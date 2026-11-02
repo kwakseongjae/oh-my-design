@@ -7,9 +7,9 @@ import { toolResult } from "./response";
 
 export function createMcpServer(): McpServer {
   const server = new McpServer({ name: "oh-my-design", version: "2.0.0" }, { capabilities: { tools: {} } });
-  function call(tool: ToolName, run: () => Record<string, unknown>, ids: readonly string[] = []) {
+  async function call(tool: ToolName, run: () => Record<string, unknown> | Promise<Record<string, unknown>>, ids: readonly string[] = []) {
     after(() => countToolCall(tool, ids));
-    try { return toolResult(run()); }
+    try { return toolResult(await run()); }
     catch (error) {
       return toolResult(error instanceof CatalogError
         ? errorEnvelope(error.code, error.message)
@@ -17,7 +17,7 @@ export function createMcpServer(): McpServer {
     }
   }
   server.registerTool("search_references", {
-    description: "Search the public catalog by id, name, Hangul display name, country, category or Overview keywords. Verified references rank first. No semantic search.",
+    description: "Search the public catalog by id, name, Hangul display name, country, category or Overview. Mixes keyword and semantic scores when embeddings are available; otherwise uses keywords. Verified references rank first. search_mode reports keyword or hybrid.",
     inputSchema: inputs.search_references, outputSchema: outputs.search_references, annotations,
   }, (args) => call("search_references", () => searchReferences(args)));
   server.registerTool("get_reference", {

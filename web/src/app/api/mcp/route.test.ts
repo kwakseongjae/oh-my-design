@@ -14,7 +14,9 @@ const mocks = vi.hoisted(() => ({
   counters: [] as unknown[][],
   windows: new Map<string, number>(),
   failRedis: false,
+  embeddings: {} as Record<string, unknown>,
 }));
+vi.mock("@/data/embeddings.generated.json", () => ({ default: mocks.embeddings }));
 vi.mock("next/server", () => ({ after: (fn: () => unknown) => mocks.scheduled.push(fn) }));
 vi.mock("@/lib/kv", async (importOriginal) => ({
   ...await importOriginal<typeof import("@/lib/kv")>(),
@@ -37,6 +39,8 @@ beforeEach(() => {
   mocks.counters.length = 0;
   mocks.windows.clear();
   mocks.failRedis = false;
+  for (const key of Object.keys(mocks.embeddings)) delete mocks.embeddings[key];
+  vi.stubEnv("OPENROUTER_API_KEY", undefined);
   vi.stubEnv("OMD_KV_REST_API_TOKEN", "contract-test-secret");
   vi.stubGlobal("fetch", vi.fn(() => { throw new Error("MCP tools must not make external requests"); }));
 });
@@ -122,6 +126,7 @@ describe.each([
 it.each(["토스", "toss", "calm blue fintech"])("finds toss through keyword search: %s", async (query) => {
   const result = await tool("search_references", { query });
   const data = outputs.search_references.parse(result.structuredContent);
+  expect(data.search_mode).toBe("keyword");
   expect(data.results.map((item) => item.id)).toContain("toss");
   const toss = data.results.find((item) => item.id === "toss")!;
   expect(toss.display_name_ko).toBe("토스");
@@ -138,6 +143,30 @@ it("ranks verified references ahead of all unverified matches and filters with c
   const filtered = outputs.search_references.parse((await tool("search_references", { query: "toss", country: ["kr"], category: ["fintech"], status: "verified" })).structuredContent);
   expect(filtered.results.map((item) => item.id)).toContain("toss");
   for (const reference of filtered.results) expect(reference).toMatchObject({ country: "KR", category: "fintech", status: "verified_v2" });
+});
+
+it("serves hybrid results through MCP and keeps query text out of KV counters", async () => {
+  Object.assign(mocks.embeddings, {
+    model: "baai/bge-m3", dim: 2, reference_ast: CATALOG.reference_ast,
+    vectors: Object.fromEntries(REGISTRY.map(({ id }) => [id, id === "toss" ? [1, 0] : [0, 1]])),
+  });
+  vi.stubEnv("OPENROUTER_API_KEY", "test-only");
+  vi.stubGlobal("fetch", vi.fn(async () => Response.json({ data: [{ index: 0, embedding: [1, 0] }] })));
+  const query = "private-person@example.test calm blue fintech";
+  const result = outputs.search_references.parse((await tool("search_references", { query })).structuredContent);
+  expect(result.search_mode).toBe("hybrid");
+  expect(result.results[0].id).toBe("toss");
+  expect(fetch).toHaveBeenCalledTimes(1);
+  const [, init] = vi.mocked(fetch).mock.calls[0];
+  expect(JSON.parse(init!.body as string).input).toBe(query);
+  await flushCounters();
+  const telemetry = JSON.stringify(mocks.counters);
+  expect(telemetry).not.toContain(query);
+  expect(telemetry).not.toContain("private-person");
+  expect(telemetry).not.toContain("example.test");
+  expect(telemetry).not.toContain("calm");
+  const increments = mocks.counters.filter(([method]) => method === "hincrby");
+  expect(increments).toEqual([["hincrby", expect.stringMatching(/^omd:mcp:v2:tools:/), "search_references", 1]]);
 });
 
 it("reports absent groups and states without substituting or promoting prose states", async () => {

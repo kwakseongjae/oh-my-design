@@ -123,7 +123,7 @@ export default function PrivacyPage() {
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
             records aggregate call counts per tool and reference, plus a daily count of non-MCP GET requests.
             These counters contain nothing about the person: no search text, IP address, account, or raw User-Agent.
-            Rate limiting uses a keyed digest that expires after 60 seconds. Searches stay on our server and are not sent to an embedding provider.
+            Rate limiting uses a keyed digest that expires after 60 seconds. When hybrid search is enabled, we send the query text to OpenRouter to compute an embedding. We do not store the query text.
           </p>
         </Section>
 
