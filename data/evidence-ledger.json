@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 360,
-  "sources": 2904,
+  "references_with_verification_v2": 361,
+  "sources": 2918,
   "sources_by_kind": {
-    "brand-asset": 173,
+    "brand-asset": 177,
     "license": 139,
-    "official-doc": 1284,
-    "product-surface": 1308
+    "official-doc": 1292,
+    "product-surface": 1310
   },
   "references": {
     "104": {
@@ -3806,6 +3806,96 @@
           "kind": "product-surface",
           "captured": "2026-09-22",
           "host": "open.douyin.com"
+        }
+      ]
+    },
+    "douzone": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "font-declarations",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "home-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "location",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "navigation-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "ui-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.douzone.com"
         }
       ]
     },

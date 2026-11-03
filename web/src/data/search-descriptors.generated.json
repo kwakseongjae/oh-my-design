@@ -7186,6 +7186,67 @@
     ]
    }
   },
+  "douzone": {
+   "hash": "5b79a584b749fcd2",
+   "terms": {
+    "en": [
+     "business software",
+     "erp",
+     "groupware",
+     "enterprise saas",
+     "corporate website",
+     "blue accent",
+     "white surfaces",
+     "dark photo areas",
+     "media card grid",
+     "rounded header utilities",
+     "ai cloud services",
+     "korean b2b"
+    ],
+    "ko": [
+     "업무용 소프트웨어",
+     "erp",
+     "그룹웨어",
+     "기업용 saas",
+     "기업 홈페이지",
+     "파란색 포인트",
+     "흰색 배경",
+     "미디어 카드 그리드",
+     "둥근 유틸리티 버튼",
+     "ai 클라우드 서비스",
+     "b2b 솔루션",
+     "신뢰감 있는"
+    ],
+    "ja": [
+     "業務ソフトウェア",
+     "erp",
+     "グループウェア",
+     "法人向けsaas",
+     "企業サイト",
+     "青のアクセント",
+     "白い背景",
+     "メディアカード",
+     "丸みのあるヘッダー",
+     "aiクラウド",
+     "韓国のb2b",
+     "信頼感"
+    ],
+    "zh": [
+     "企業軟體",
+     "erp",
+     "協同辦公",
+     "企業級saas",
+     "企業官網",
+     "藍色重點色",
+     "白色背景",
+     "媒體卡片網格",
+     "圓角頁首工具",
+     "ai雲端服務",
+     "韓國b2b",
+     "穩重可信"
+    ]
+   }
+  },
   "drdiary": {
    "hash": "e591c8c7fd13fba7",
    "terms": {
