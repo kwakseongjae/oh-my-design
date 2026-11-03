@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 560,
+ "count": 561,
  "items": [
   {
    "id": "104",
@@ -8089,6 +8089,30 @@
     "bold",
     "dark",
     "premium"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
+   "id": "nissan",
+   "primary_color_hex": "#c3002f",
+   "category": "automotive",
+   "visual_theme": "Nissan makes and sells automobiles and related products. Its company profile dates its establishment to 26 December 1933 and lists its headquarters in Yokohama. The company's history page connects that history to a willingness to attempt what others have not. ",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "modern",
+    "human"
    ],
    "antipatterns": [
     "off-brand"

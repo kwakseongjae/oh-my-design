@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 560,
+  "count": 561,
   "counts": {
-    "verified_v2": 376,
+    "verified_v2": 377,
     "partial": 89,
     "legacy_snapshot": 95,
-    "total": 560
+    "total": 561
   },
   "items": [
     {
@@ -3831,6 +3831,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nissan",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 19,
       "conflict_count": 0,
       "reason_codes": []
     },

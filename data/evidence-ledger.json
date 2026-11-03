@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 376,
-  "sources": 3075,
+  "references_with_verification_v2": 377,
+  "sources": 3094,
   "sources_by_kind": {
-    "brand-asset": 191,
+    "brand-asset": 198,
     "license": 141,
-    "official-doc": 1384,
-    "product-surface": 1359
+    "official-doc": 1392,
+    "product-surface": 1363
   },
   "references": {
     "104": {
@@ -13208,6 +13208,126 @@
           "kind": "official-doc",
           "captured": "2026-11-02",
           "host": "www.nio.cn"
+        }
+      ]
+    },
+    "nissan": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www2.nissan.co.jp"
+        },
+        {
+          "id": "brand-font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www2.nissan.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "design-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "global-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "logo-story",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
+        },
+        {
+          "id": "nav-script",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "omni-bundle-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "omni-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.nissan.co.jp"
+        },
+        {
+          "id": "shingo-bold-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www2.nissan.co.jp"
+        },
+        {
+          "id": "shingo-light-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www2.nissan.co.jp"
+        },
+        {
+          "id": "shingo-regular-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www2.nissan.co.jp"
+        },
+        {
+          "id": "site-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.nissan.co.jp"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.nissan-global.com"
         }
       ]
     },

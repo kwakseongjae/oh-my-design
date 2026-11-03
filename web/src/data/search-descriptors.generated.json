@@ -20333,6 +20333,67 @@
     ]
    }
   },
+  "nissan": {
+   "hash": "37aa58d0c847b319",
+   "terms": {
+    "en": [
+     "automotive website",
+     "car maker",
+     "vehicle catalogue",
+     "car buying shortcuts",
+     "test drive booking",
+     "dealer finder",
+     "red and white",
+     "large vehicle photography",
+     "sharp rectangular buttons",
+     "light grey panels",
+     "thin light logo",
+     "japanese car brand"
+    ],
+    "ko": [
+     "자동차 브랜드",
+     "자동차 제조사",
+     "차량 카탈로그",
+     "시승 예약",
+     "딜러 찾기",
+     "빨강과 흰색",
+     "대형 차량 사진",
+     "각진 직사각형 버튼",
+     "연회색 패널",
+     "견적 바로가기",
+     "일본 자동차",
+     "구매 안내"
+    ],
+    "ja": [
+     "自動車メーカー",
+     "自動車サイト",
+     "車両カタログ",
+     "試乗予約",
+     "販売店検索",
+     "赤と白",
+     "大きな車の写真",
+     "角ばったボタン",
+     "薄いグレーのパネル",
+     "購入ショートカット",
+     "自分で見積もり",
+     "細く軽いロゴ"
+    ],
+    "zh": [
+     "汽車品牌",
+     "汽車製造商",
+     "車款目錄",
+     "預約試駕",
+     "經銷商查詢",
+     "紅白配色",
+     "大幅車輛照片",
+     "直角矩形按鈕",
+     "淺灰面板",
+     "購車捷徑",
+     "自助估價",
+     "日本車廠"
+    ]
+   }
+  },
   "nota": {
    "hash": "cd3fff228248c28e",
    "terms": {
