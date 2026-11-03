@@ -2,68 +2,76 @@
 name: Hahow
 colors:
   primary: '#00ccb4'
-  primary-100: '#a3ffe8'
-  primary-400: '#23d9bd'
-  primary-800: '#006166'
-  primary-900: '#00444d'
-  secondary: '#ffb940'
-  canvas: '#f5f7f9'
-  text: '#262626'
+  canvas: '#ffffff'
+  soft-surface: '#f5f7f9'
+  foreground: '#595959'
+  emphasis: '#262626'
+  muted: '#8c8c8c'
+  primary-tint: '#dcf9f3'
+  badge-ink: '#05ada2'
+  chip: '#eff2f6'
   promo-orange: '#fa8c16'
   coral: '#f65f55'
+  link-hover: '#078886'
 typography:
-  heading:
-    fontSize: 24px
+  action:
+    fontSize: 16px
     fontWeight: 600
-    lineHeight: 1.3
-    use: Section headings
-  body:
+    use: 42px CTA and tooltip action; measured line height 26px; font family remains declared-only
+  card-base:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Primary body text
+    use: Inherited course-card anchor metrics; not a paragraph measurement
   chip:
     fontSize: 14px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Tag / chip labels
+    use: Category link; measured line height 22px
+  link:
+    fontSize: 14px
+    fontWeight: 400
+    use: Section navigation link and search input; measured line height 22px
 rounded:
+  none: 0px
   sm: 8px
   md: 8px
   lg: 20px
-  full: 9999px
-spacing:
-  xs: 4
-  sm: 8
-  base: 16
-  lg: 24
-  xl: 32
-  section: 48
+  promo: 16px
 components:
-  button-primary:
+  more-link:
     type: button
-    backgroundColor: transparent
-    textColor: '#00ccb4'
-    rounded: 8px
-    typography: 16px / 600
-    use: 'Teal outline primary CTA, 2px #dcf9f3 border, 42px height'
-  button-card:
-    type: button
-    backgroundColor: '#ffffff'
     textColor: '#595959'
-    rounded: 8px
-    use: Neutral white card-level action
-  chip-tag:
-    type: badge
-    backgroundColor: rgba(0,0,0,0.04)
-    textColor: rgba(0,0,0,0.65)
-    rounded: 20px
+    rounded: 0px
+    height: 22px
+    padding: 0px
     typography: 14px / 400
-    use: Metadata, category, filter tags, 33px height
-fonts:
-  roles:
-    sans: PingFang TC
-    mono: PingFang TC
+    hover: 'fg #078886'
+    pressed: 'fg #00ccb4'
+    focus: fg rgba(0, 0, 0, 0.65)
+    use: 'Section navigation link 更多 to the latest crowdfunding list; transparent on white #ffffff. The label and arrow share these changes. Pointer states measured with fixed overlays hidden.'
+  course-card:
+    type: card
+    textColor: rgba(0, 0, 0, 0.65)
+    rounded: 0px
+    height: 383.2px
+    padding: 0px
+    typography: 16px / 400
+    hover: descendant gradient opacity 0.25; bookmark transform none, from matrix(1, 0, 0, 1, 0, 32)
+    pressed: descendant gradient opacity 0.25; bookmark transform none, from matrix(1, 0, 0, 1, 0, 32)
+    use: 'Link to /courses/6a56ec0752c6b9bac40cd9b1 on white #ffffff. Root stays transparent; title is #262626, sale badge is #fa8c16 with #ffffff ink. Pointer states measured with fixed overlays hidden; media was a lazy-load placeholder.'
+  category-chip:
+    type: button
+    backgroundColor: '#eff2f6'
+    textColor: '#595959'
+    rounded: 20px
+    height: 32px
+    padding: 4px 15px
+    typography: 14px / 400
+    focus: fg rgba(0, 0, 0, 0.65)
+    use: 'Category link #投資理財; its separate hash stays #00ccb4. Keyboard focus and restoration after blur measured in computed styles; control remained outside the captured viewport. Hover and pressed remain unmeasured.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 ---
 
 # Design System Inspiration of Hahow
@@ -72,170 +80,175 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Hahow (好學校) is Taiwan's leading EdTech course marketplace, and its interface carries the warmth of a place that wants you to keep learning rather than the polish of a place that wants to close a sale. The atmosphere is friendly, approachable, and unmistakably human: a soft gray-blue page canvas of #F5F7F9 lets bright content breathe, while a vivid brand teal of #00CCB4 — drawn directly from Hahow's own open-source design tokens — signals interactivity and energy without ever shouting. Cards and buttons settle on a gentle 8px radius that rounds every hard edge into something inviting, and text sits in calm near-black #262626 for comfortable, sustained reading. Warm promotional accents in orange #FA8C16 and coral #F65F55 punctuate the surface where excitement is earned — a sale, a featured course, a moment worth noticing. Set throughout in PingFang TC, the typography feels native and legible to a Traditional-Chinese audience. The overall effect is encouraging and personable, the opposite of corporate sterility — a learning surface that feels like a good teacher: clear, warm, and on your side.
+Hahow 好學校 is a Taiwanese online-course marketplace founded in 2015. Its own company profile describes knowledge and skill sharing through crowdfunded courses, allowing people with a skill to earn through teaching. The name comes from the Taiwanese pronunciation of “school”. The current About page connects exploration and shared learning with creating more choices and becoming the person one wants to be. [Company profile](https://hahow.in/@officialhahowcourse), [About Hahow](https://hahow.in/about/hahow).
 
-### Primary tasks
+The 2023 rebrand with IF OFFICE replaced the graduation-cap symbol with a door. Turquoise, blue, arches and directional forms broadened the learning identity beyond formal schooling. [Hahow brand team](https://medium.com/hahow/hahow-全新視覺亮相-if-office-團隊操刀設計-設計概念回應品牌多元價值-d570ccaf591).
 
-- Browse the marketplace for a new skill
-- Create and publish a course of your own
-- Come back to pick up a course already started
-- Spot which courses are on sale or featured
+On the measured homepage, white surfaces, turquoise #00ccb4, gray #595959 reading text and rounded actions support a course-led layout. The orange #fa8c16 sale labels and large, colourful campaign artwork give promotions considerably more visual weight than the smaller navigation controls. The captured edition is the Traditional-Chinese homepage (`hahow.in/`, HTML `lang="zh-TW"`), without a regional redirect.
+
+#### Primary tasks
+
+- Browse or search courses and follow a course card to its detail page.
+- Compare crowdfunding status, creator, price and sale labels within course rows.
+- Begin offering a course through “我要開課”.
+- Return to already purchased learning: the official profile explicitly says a withdrawn course remains viewable by its original purchasers after login. No member session was measured.
 
 ### Brand Narrative
 
-Hahow built Taiwan's leading EdTech course marketplace on a simple, human premise: everyone has something to learn and something to teach. As 好學校 — "the good school" — it positions itself as an open, encouraging place where knowledge moves between people rather than being handed down from an institution. The visual identity reinforces that story: a bright, friendly teal pulled from its own open-source design system, a soft and unintimidating canvas, rounded approachable shapes, and native Traditional-Chinese typography. Every choice tells the same narrative — learning here is warm, accessible, and on your side.
+The 2023 design story links the door symbol with learning beyond established academic imagery. Its illustration update uses lines and colour blocks, human characters and a frog mascot acting as a companion or teaching assistant. [Brand-team writing](https://medium.com/hahow/hahow-全新視覺亮相-if-office-團隊操刀設計-設計概念回應品牌多元價值-d570ccaf591).
+
+The current About page continues to emphasise multiple possibilities, respect for individuality and learning as a route toward a self-defined ideal life. In the product, that range is expressed through course imagery and topic variety; the measured interface supplies a neutral base and small turquoise signals around them. [About Hahow](https://hahow.in/about/hahow).
 
 ### Principles
 
-- **Warmth over polish** — feel like a good teacher, not a sales funnel.
-- **Calm canvas, bright signals** — let the soft #F5F7F9 base carry quiet content while teal and warm accents earn attention.
-- **Rounded and approachable** — consistent 8px / 20px radii keep every surface inviting.
-- **Native and legible** — PingFang TC and near-black #262626 text serve a Traditional-Chinese audience comfortably.
-- **Restraint with the brand color** — teal #00CCB4 marks interaction; it is never wallpaper.
+- **Exploration and shared learning:** the company's About page presents them as ways to create more choices.
+- **Respect for individuality:** the same page explicitly connects diverse learning with self-defined value.
+- **Observed hierarchy:** use white and gray for course comparison, turquoise for specific actions and progress, and orange for sale labels.
+- **Element-specific geometry:** retain the measured 8px actions, 20px category links and square anchor roots.
+
+The first two are company statements; the latter two are implementation guidance derived from the measured homepage.
 
 ### Personas
 
-- **The Curious Learner** — browsing the marketplace for a new skill; needs a calm, scannable surface where featured courses (orange/coral accents) stand out and primary actions (teal outline button) are obvious and inviting.
-- **The Knowledge-Sharing Instructor** — creating and publishing courses; needs the platform to feel encouraging and credible, with friendly rounded components and warm tone that lower the barrier to teaching.
-- **The Returning Member** — coming back to continue learning; relies on consistent color roles and tap-friendly components across devices to pick up quickly.
+The documented brand persona is “有點特別的普通人”, expressing accessible learning and individuality. The homepage addresses learners and prospective instructors. No separate UX persona profiles were verified. [Brand-team writing](https://medium.com/hahow/hahow-全新視覺亮相-if-office-團隊操刀設計-設計概念回應品牌多元價值-d570ccaf591).
 
 ## Colors
 
-Hahow's color system is anchored by a teal Primary scale published in its open-source `hahow-design` theme, layered over a quiet neutral canvas and lifted by warm promotional accents.
+The live palette below combines computed control styles, the rendered-colour census and component-local CSS declarations. The homepage does not expose a first-party global colour-variable scale at `:root`.
 
-- **Brand / Primary 500** — #00CCB4. The signature teal; interactive emphasis, brand identity, primary action text.
-- **Primary 100** — #A3FFE8. Lightest teal tint for subtle fills and soft backgrounds.
-- **Primary 400** — #23D9BD. A slightly deeper teal step for hover and gradient transitions.
-- **Primary 800** — #006166. Deep teal for high-contrast text or pressed states on teal surfaces.
-- **Primary 900** — #00444D. Darkest teal anchor for the scale.
-- **Secondary 500** — #FFB940. Warm amber accent; complementary highlight to the teal.
-- **Page background** — #F5F7F9. Soft gray-blue canvas behind all content.
-- **Body text** — #262626 (near-black), with secondary text at rgba(0,0,0,0.65).
-- **Promotional orange** — #FA8C16. Energetic accent for sales and featured callouts.
-- **Coral** — #F65F55. Warm secondary promotional accent.
-- **Chip fill** — rgba(0,0,0,0.04). Faint neutral wash for tags and metadata chips.
+| Role | Measured value | Concrete evidence |
+|---|---|---|
+| Primary turquoise | #00ccb4 | Filled “我要開課” action, crowdfunding text/progress and the category chip's hash |
+| Canvas | #ffffff | White homepage surface; measured backing of the card and “更多” link |
+| Soft surface | #f5f7f9 | Background of the creator CTA's enclosing panel; 15 census backgrounds |
+| Foreground | #595959 | Most frequent paragraph ink, 26 paragraphs; “更多” and category-link labels |
+| Emphasis | #262626 | Course title and search-input ink; local `--emphasize-color` |
+| Muted ink | #8c8c8c | Course creator and original-price text; 193 census text occurrences |
+| Pale turquoise | #dcf9f3 | Course-type badge fill and outline-action border |
+| Course-type badge ink | #05ada2 | “課程” badge inside the measured card |
+| Category fill | #eff2f6 | “#投資理財” link at rest |
+| Promotional orange | #fa8c16 | “限時優惠” badge with #ffffff text |
+| Coral accent | #f65f55 | Ten text-colour occurrences in the census; no specific semantic role assigned |
+| Link hover | #078886 | Settled hover colour of the latest-crowdfunding “更多” link |
+
+Alpha values remain literal: the card anchor inherits `rgba(0, 0, 0, 0.65)`; the media placeholder and progress track use `rgba(0, 0, 0, 0.06)`. A local border declaration is `#00000026`, and local countdown surfaces declare `#ffffff14`; these are alpha colours, not opaque neutral tokens. The local countdown highlight is declared as #f59300.
+
+### Confirmed historical theme, with a separate product scope
+
+The original reference's Primary 100 #a3ffe8, Primary 400 #23d9bd, Primary 500 #00ccb4, Primary 800 #006166, Primary 900 #00444d and Secondary 500 #ffb940 all remain in the published `src/theme.js`. The repository now labels itself deprecated and describes its scope as **Hahow for Business**. Preserve these as historical distributed theme values; they do not establish current consumer-site hover, pressed or fill roles. [Theme source](https://raw.githubusercontent.com/hahow/hahow-design/master/src/theme.js), [repository](https://github.com/hahow/hahow-design).
 
 ## Typography
 
-- **Typeface:** PingFang TC across the interface — native, legible Traditional-Chinese rendering.
-- **Body:** 16px, primary text color #262626.
-- **Heading:** 24px at weight 600.
-- **Secondary text:** rgba(0,0,0,0.65) for de-emphasized labels and metadata.
-- **Hierarchy principle:** lean on size and the near-black body color for contrast; reserve teal #00CCB4 for interactive text rather than headings, keeping reading surfaces calm.
+The evidence classes are distinct:
+
+- **Official product use:** no opened company source names a product text typeface.
+- **Live-loaded:** the census reports only `FontAwesome normal normal`. This is an icon face, linked through the Font Awesome CDN stylesheet, and supplies no text-font specimen.
+- **Official distributed text-font assets:** none verified.
+- **Declared-only:** body, h1 and button declarations are `"PingFang TC", 微軟正黑體, sans-serif`. Individual measured controls compute to `PingFang TC`. Neither named text face appears in the census's loaded-face list; no specimen or typography-family token is published.
+- **Unresolved:** the actual rendered text face, the former monospace assignment and a global heading/paragraph scale.
+
+Substitute: none chosen.
+
+Keep the verified metrics even though the text face remains unresolved. The filled CTA and outline tooltip action are 16px/600 with 26px line height. The course-card anchor inherits 16px/400 with 24px line height. The category link, “更多” link and search input are 14px/400 with 22px line height. These identify the measured elements; the anchor's inherited metrics do not prove the size or weight of every child title or price.
+
+The card's title ink is #262626; creator and original-price text use #8c8c8c; current price uses #595959. The sale badge uses white and the course-type badge uses #05ada2 on #dcf9f3.
 
 ## Layout
 
-- Content sits on a soft gray-blue #F5F7F9 canvas, letting white cards and bright accents read as the foreground.
-- Rounded geometry is consistent: 8px on cards and buttons, 20px (fully rounded) on tag chips.
-- Generous, calm spacing keeps the marketplace browsable rather than dense — the surface invites scanning across many courses.
-- Teal is used sparingly as an interactive signal, never as a flood, preserving the quiet neutral base.
+At 1440×1000, the homepage has a fixed 60px navigation header below a 45px promotional bar. The bar was closed before state measurement. A large campaign carousel precedes the course rows. The latest-crowdfunding row starts with three 360px-wide cards visible across the main area; the surveyed x positions are 143, 533 and 923px. Other surveyed course rows use 267px-wide anchors. These are desktop observations, not responsive breakpoints.
+
+Component-local declarations include `--max-content-width: 1140px`, `--width: 280px`, `--gap: 9px`, `--padding-top: 12px` and `--shadow-space: 36px`. They belong to different selectors and do not form a global spacing scale. Keep padding with its component: `1px 4px` on the two course actions and `4px 15px` on category links. The navigation “探索” button separately uses `8px 4px 8px 12px` padding.
+
+Use the measured rounding by element: 8px action buttons, 20px category links, 16px large promotional tiles and square card-link/input roots. Rounded card media is visible in the screenshot, but its exact inner radius was not extracted.
 
 ### Responsive Behavior
 
-The live hahow.in marketplace is a course-browsing surface built to scale from desktop grids to mobile stacks. Cards keep their 8px radius and white #FFFFFF fill across breakpoints, and tag chips stay fully rounded at 20px so metadata remains legible when reflowed. Touch targets hold comfortable heights — the teal outline button at 42px and tag chips at 33px — that translate naturally to mobile tapping. (Specific breakpoint widths were not captured in the blob and are not specified here; the verified pattern is consistent rounding, consistent color roles, and generous tap-friendly sizing across viewports.)
+Not measured: one 1440×1000 desktop viewport; no mobile layout or breakpoint claims are verified.
 
 ## Elevation & Depth
 
-Hahow's elevation language is restrained and soft rather than dramatic. White cards (#FFFFFF) lift off the gray-blue #F5F7F9 canvas largely through tonal contrast and rounded 8px corners rather than heavy shadow. The teal outline button uses a 2px solid #DCF9F3 border — a pale teal ring — to define its edge instead of a drop shadow, reinforcing a flat, friendly aesthetic. Depth here is implied by layering light surfaces over the muted background, keeping the interface airy and approachable. (Exact shadow values were not captured in the blob and are intentionally not specified.)
+The measured card anchor, navigation link, chip and two action buttons all have `box-shadow: none`. The hidden course tooltip's white ancestor computes to `filter: drop-shadow(rgba(0, 0, 0, 0.04) 0px 0px 8px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 6px 20px)`. This is tooltip elevation, not the visible course card's rest shadow.
+
+The card hover creates depth through a lower-edge gradient at opacity 0.25 and a revealed bookmark. Preserve that layered treatment when reproducing this measured interaction.
 
 ## Motion & Easing
 
-Hahow's motion language was not captured with specific values in the blob, so no durations or easing curves are specified here. In keeping with the brand's warm, approachable, flat aesthetic, transitions should read as gentle and encouraging rather than abrupt — soft enough to match the rounded geometry and calm canvas, with the teal token scale (Primary 400 #23D9BD into Primary 500 #00CCB4) available for smooth interactive color transitions.
+The measured action transition is `all 0.3s ease-in 0s`. The “更多” link and card anchor declare `color 0.3s ease 0s`; the search input declares `all 0s ease 0s`. The category link's raw transition string is `color, background-color, border-color 0.3s, 0.3s, 0.3s ease-in, ease-in, ease-in 0s, 0s, 0s`.
+
+These are computed declarations, not a global motion scale. Card hover's measured result is the gradient opacity and bookmark translation described above; no independent descendant easing curve was extracted.
 
 ---
-**Verified:** 2026-06-01
-**Tier 1 sources:** https://hahow.in (live homepage live-DOM inspect), https://business.hahow.in (brand-owned regional business surface), https://github.com/hahow (brand-owned org hosting the open-source design tokens)
-**Tier 2 sources:** getdesign.md/hahow — NOT LISTED. refero — not listed.
-**Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof block)
+
+**Verified:** 2026-11-03. Live evidence: homepage survey and two state captures; supporting company, legal and historical theme sources are linked above. Exact controls, raw transitions, source quotes and changes since the prior reference are in `verification.md`.
 
 ## Components
 
-### Button
+### Filled creator action — “我要開課”
 
-**Teal Outline (primary action)**
-- Background: transparent
-- Text: #00CCB4
-- Border: 2px solid #DCF9F3
-- Radius: 8px
-- Padding: not separately verified
-- Height: 42px
-- Font: 16px / 600
-- Use: primary call-to-action on the live hahow.in surface
+A 232×42px button nested inside a link, with #00ccb4 background, #ffffff text, 8px radius, `1px 4px` padding, 16px/600 type and 26px line height. Its border is `2px solid rgba(0, 0, 0, 0)`, and its shadow is `none`. Its enclosing creator panel is #f5f7f9. This is a measured rest style; hover and pressed were not reached. Keyboard focus adds only the browser's `auto` outline, so this action has no machine component entry.
 
-**White Card Button**
-- Background: #FFFFFF
-- Text: #595959
-- Border: not separately verified
-- Radius: 8px
-- Padding: not separately verified
-- Height: not separately verified
-- Font: not separately verified
-- Use: neutral card-level action sitting on the gray-blue canvas
+### Outline tooltip action — “瞭解課程內容”
 
-### Tag Chip
+The prior outline geometry is confirmed: 232×42px, transparent over white, #00ccb4 ink, `2px solid #dcf9f3` border, 8px radius, `1px 4px` padding and 16px/600 type. The measured instance belongs to a course tooltip whose ancestor opacity is `0`; the action has `pointer-events:none`. Its metrics describe that hidden instance, not a visible primary action. No interactive component entry is published from its browser-only focus ring.
 
-**Default**
-- Background: rgba(0,0,0,0.04)
-- Text: rgba(0,0,0,0.65)
-- Border: none
-- Radius: 20px
-- Padding: not separately verified
-- Height: 33px
-- Font: 14px / 400
-- Use: metadata, category, and filter tags
+### Section navigation link — “更多”
 
-### Published component roster (4 published, none measured here)
+The link to `/group?category=COURSE&filter=INCUBATING&sort=PUBLISHED_AT` is 42×22px, radius 0, padding 0, 14px/400 with 22px line height. It is transparent over #ffffff, with #595959 text and arrow, no border and no shadow. Hover changes the label and arrow to #078886; press changes them to #00ccb4. Keyboard focus changes them to `rgba(0, 0, 0, 0.65)` and restores the original colour after blur. Pointer measurements used hidden fixed overlays.
 
-`hahow-design` publishes **4 components**, enumerated from the directories under
-`src/components/` in the repository this reference cites
-(`https://github.com/hahow/hahow-design`, read 2026-09-19): Button, Rate, RatingModal, Spinner.
+### Course-card link
 
-This is the smallest published roster in the catalogue, and worth stating plainly rather than
-treating as a gap: a four-component library is what Hahow publishes, not evidence that something
-is missing.
+The first crowdfunding card, `/courses/6a56ec0752c6b9bac40cd9b1`, has a 360×383.2px transparent anchor, radius 0, padding 0 and no root border or shadow. Its root ink is `rgba(0, 0, 0, 0.65)` on white; the visible title is #262626. A #fa8c16 sale badge carries white text, while a #dcf9f3 course-type badge carries #05ada2 ink.
 
-### What this reference's three entries are
+Hover leaves the anchor's own fill and shadow unchanged. Instead, an empty gradient layer moves from opacity `0` to `0.25`, and the bookmark layer moves from `matrix(1, 0, 0, 1, 0, 32)` to `none`. The gradient is `linear-gradient(rgba(0, 0, 0, 0) calc(100% - 56px), rgb(0, 0, 0) 100%)`. Press retains these two changes. Keyboard focus produced no style change within the compared scope. The captured media remained a lazy-load placeholder; pointer measurements used hidden fixed overlays.
 
-The three stylings in §4 carry `use:` strings that describe appearance and purpose — "Teal
-outline primary CTA, 2px #dcf9f3 border, 42px height" — with no selector, no capture id, and no
-class from the package. This reference has no `verification_v2` block and so no surface record.
+### Category-link chip — “#投資理財”
 
-One of the three shares a name with a published component (Button). It is not claimed as a
-rendered instance of it, and none of the four above carries a measured value here.
+The chip is a link, 100.4×32px, with #eff2f6 fill, #595959 text, 20px radius, `4px 15px` padding, a `1px solid rgba(0, 0, 0, 0)` border, no shadow and 14px/400 type with 22px line height. Its separate hash is #00ccb4. Keyboard focus changes the label to `rgba(0, 0, 0, 0.65)` while preserving the hash colour, and blur restores the label. This was a computed focus measurement outside the captured viewport; hover and pressed remain unmeasured.
+
+### Search input
+
+The actual input is 575×22px with radius 0, padding 0, transparent fill, #262626 text, no border or shadow and 14px/400 type. Its white enclosing wrapper has a `1px solid rgba(0, 0, 0, 0.06)` border. Hover, press and keyboard focus changed none of the compared styles. Search focus did reveal a suggestion panel and fixed backdrop outside the input comparison; this is a behavioural observation, not “search does nothing on focus”. It has no component token entry.
+
+### Published component roster
+
+The deprecated Business library still contains exactly four directories under `src/components/`: **Button, Rate, RatingModal, Spinner**. These are distributed library components, not an inventory of consumer-site instances. The measured live entries above are identified independently by label, href and DOM path. [Directory listing](https://api.github.com/repos/hahow/hahow-design/contents/src/components).
 
 ### States
 
-- **Default action:** teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height.
-- **Neutral / card action:** white card button — #FFFFFF background, #595959 text, 8px radius.
-- **Metadata / tag:** chip — rgba(0,0,0,0.04) fill, rgba(0,0,0,0.65) text, 20px radius, 33px height, 14px/400.
-- **Promotional emphasis:** warm orange #FA8C16 and coral #F65F55 accents for sales and featured callouts.
-- (Hover, pressed, focus, and disabled state values were not captured in the blob and are intentionally not specified; the teal token scale — Primary 400 #23D9BD, Primary 800 #006166 — provides the natural darker steps for any hover/pressed treatment.)
+| Control | Rest | Hover | Pressed | Keyboard focus |
+|---|---|---|---|---|
+| Filled creator action | #00ccb4 / #ffffff | UNMEASURED: outside viewport | UNMEASURED: outside viewport | Browser `auto` outline only |
+| Outline tooltip action | Transparent / #00ccb4; #dcf9f3 border | UNMEASURED: `pointer-events:none` | UNMEASURED: `pointer-events:none` | Browser `auto` outline only; hidden ancestor |
+| 更多 link | Transparent / #595959 on white | Text and arrow #078886 | Text and arrow #00ccb4 | Text and arrow `rgba(0, 0, 0, 0.65)`; restored after blur |
+| Course-card link | Transparent; inherited `rgba(0, 0, 0, 0.65)`; title #262626 | Gradient opacity 0→0.25; bookmark transform to `none` | Same two descendant changes | No change within the compared scope |
+| #投資理財 link | #eff2f6 / #595959; hash #00ccb4 | UNMEASURED: outside viewport | UNMEASURED: outside viewport | Label `rgba(0, 0, 0, 0.65)`; hash unchanged; restored after blur |
+| Search input | Transparent / #262626 | No change within scope | No change within scope | No change within scope; suggestion layer opens outside it |
+
+The comparison includes each control and its pseudo-elements, descendants and their pseudo-elements, plus three ancestor levels. The card includes 29 descendants, three empty layers, one SVG and two paths. The link includes three descendants, one SVG and one path; search has no descendants. Sibling layers and pixel-only effects are outside this scope. The recovered link/card pointer states required hiding fixed overlays; lower-page pointer states remain unmeasured after the second call.
 
 ## Do's and Don'ts
 
 ### Do
-- Anchor interactive emphasis in the brand teal #00CCB4 from the official tokens.
-- Keep body text in near-black #262626 and secondary text in rgba(0,0,0,0.65) for calm, readable hierarchy.
-- Use the soft #F5F7F9 canvas to let white cards and bright accents stand out.
-- Reserve warm orange #FA8C16 and coral #F65F55 for genuinely promotional moments.
+
+- Use turquoise #00ccb4 for the observed filled action, progress indicator and category hash.
+- Separate white canvas, pale creator panels and #eff2f6 category fills.
+- Keep the card's text hierarchy: #262626 title, #595959 current price and #8c8c8c creator/original price.
+- Use the measured orange-and-white sale badge.
+- Give card hover its gradient layer and bookmark movement.
 
 ### Don't
-- Flood surfaces with teal — it is a signal, not a background.
-- Sharpen the corners; the 8px (and 20px chip) radii are core to the friendly feel.
-- Introduce a heavy, corporate shadow language that contradicts the flat, warm aesthetic.
-- Substitute a non-native typeface for PingFang TC in Traditional-Chinese contexts.
+
+- Treat the historical Business theme scale as measured consumer-site state colours.
+- Apply 8px rounding to every wrapper; the measured card-link root is square.
+- Turn the browser's `auto` outline into a Hahow focus-ring token.
+- Render a declared-only text face or an invented substitute as a verified brand specimen.
 
 ## Voice & Tone
 
-Hahow's voice is encouraging and human — the tone of a supportive teacher and a welcoming community of learners (好學校 literally means "good school"). It is warm and approachable rather than corporate or transactional, celebrating curiosity and the act of learning itself. Microcopy should feel like gentle encouragement: inviting people to start, to keep going, to share what they know. Even promotional moments, signaled by the warm orange and coral accents, carry friendliness over hard-sell urgency.
+Hahow's brand team specifies communication that is firm and clear, humorous and humble, optimistic and encouraging. [Brand-team writing](https://medium.com/hahow/hahow-全新視覺亮相-if-office-團隊操刀設計-設計概念回應品牌多元價值-d570ccaf591).
+
+The measured controls use direct verbs: “我要開課” and “瞭解課程內容”. The captured promotion uses discount figures, a deadline and emoji. Match the plain action labels in navigation and reserve the observed promotional energy for campaigns; the live surface does not support a blanket claim that all selling is gentle.
 
 ## Agent Prompt Guide
 
-When generating UI in Hahow's style, instruct the agent: "Use a soft gray-blue page background (#F5F7F9) with white (#FFFFFF) content cards at 8px radius. Make the primary action a teal outline button — transparent background, #00CCB4 text, 2px solid #DCF9F3 border, 8px radius, 42px height, 16px/600 PingFang TC. Render tags as fully-rounded chips (20px radius, 33px height) with a rgba(0,0,0,0.04) fill and rgba(0,0,0,0.65) text at 14px/400. Keep body text near-black (#262626) at 16px and headings at 24px/600. Use teal #00CCB4 only for interactive emphasis. Reserve orange #FA8C16 and coral #F65F55 strictly for promotional callouts. Aim for a warm, encouraging, human EdTech tone — friendly, never corporate."
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `chip-tag`.** Text `#000000a6` on `#0000000a` measures 1.00:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+“Build a Traditional-Chinese course-browsing surface with a white canvas, #f5f7f9 creator panel, #00ccb4 filled creator action and #595959 reading text. Give the 42px action an 8px radius and 16px/600 metrics. Use 32px category links with a 20px radius, #eff2f6 fill, #595959 labels and a turquoise hash. Keep the course-card anchor transparent and square; distinguish #262626 titles from #8c8c8c creator labels. Add #fa8c16 sale badges with white text. On card hover, raise the gradient-layer opacity to 0.25 and clear the bookmark's 32px vertical translation. On the measured 更多 link, use #078886 on hover, #00ccb4 on press and rgba(0, 0, 0, 0.65) on keyboard focus. Use the measured type metrics; the text face is unresolved. Substitute: none chosen.”

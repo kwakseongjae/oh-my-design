@@ -4202,30 +4202,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "hahow",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-01",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 51,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 58,
+    "evidenceClaimCount": 58,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
+    "tier1SourceCount": 13,
     "componentCount": 3,
     "interactiveComponentCount": 2,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.3
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "hana",
@@ -13329,9 +13324,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 355,
+  "verified_v2": 356,
   "partial": 89,
-  "legacy_snapshot": 106,
+  "legacy_snapshot": 105,
   "total": 550
 } as const;
 
