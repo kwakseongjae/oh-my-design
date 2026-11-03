@@ -2689,34 +2689,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "dji",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 89,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 7,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_contradicted",
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.182
+    "tokenSource": "live-extract",
+    "claimCount": 66,
+    "evidenceClaimCount": 66,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
+    "conflictCount": 0,
+    "tier1SourceCount": 9,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "dmm",
@@ -13492,9 +13483,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 375,
+  "verified_v2": 376,
   "partial": 89,
-  "legacy_snapshot": 96,
+  "legacy_snapshot": 95,
   "total": 560
 } as const;
 
