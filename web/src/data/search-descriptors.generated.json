@@ -11314,6 +11314,67 @@
     ]
    }
   },
+  "hangseng": {
+   "hash": "9727cd310f2a6b74",
+   "terms": {
+    "en": [
+     "hong kong bank",
+     "retail banking app",
+     "wealth management",
+     "investment services",
+     "white clean interface",
+     "green action buttons",
+     "compact service tiles",
+     "photographic offer cards",
+     "traditional chinese site",
+     "account opening",
+     "heritage trustworthy tone",
+     "friendly approachable"
+    ],
+    "ko": [
+     "홍콩 은행",
+     "리테일 뱅킹",
+     "자산관리",
+     "투자 서비스",
+     "흰색 깔끔한 화면",
+     "초록색 버튼",
+     "컴팩트 서비스 타일",
+     "사진 혜택 카드",
+     "번체 중국어 사이트",
+     "계좌 개설",
+     "전통 있는 신뢰감",
+     "친근한 분위기"
+    ],
+    "ja": [
+     "香港の銀行",
+     "リテールバンキング",
+     "資産運用",
+     "投資サービス",
+     "白基調の画面",
+     "緑のボタン",
+     "コンパクトなサービスタイル",
+     "写真付きオファーカード",
+     "繁体字中国語サイト",
+     "口座開設",
+     "伝統と信頼感",
+     "親しみやすい"
+    ],
+    "zh": [
+     "香港銀行",
+     "零售銀行",
+     "財富管理",
+     "投資服務",
+     "白色簡潔介面",
+     "綠色按鈕",
+     "精簡服務磚",
+     "圖片優惠卡片",
+     "繁體中文網站",
+     "開立帳戶",
+     "傳承與信賴感",
+     "親切友善"
+    ]
+   }
+  },
   "hashicorp": {
    "hash": "15f420da0838cd33",
    "terms": {

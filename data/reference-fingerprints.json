@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 556,
+ "count": 557,
  "items": [
   {
    "id": "104",
@@ -4510,6 +4510,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "hangseng",
+   "primary_color_hex": "#008945",
+   "category": "fintech",
+   "visual_theme": "Hang Seng is a Hong Kong bank founded in 1933, serving individuals and businesses with banking, investment and wealth management. Its [bank profile](https://www.hangseng.com/about-us/corporate-information/bank-profile/) connects its mobile app and physical ser",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "editorial",
+    "friendly",
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "hashicorp",

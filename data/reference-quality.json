@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 556,
+  "count": 557,
   "counts": {
-    "verified_v2": 368,
+    "verified_v2": 369,
     "partial": 89,
     "legacy_snapshot": 99,
-    "total": 556
+    "total": 557
   },
   "items": [
     {
@@ -2153,6 +2153,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hangseng",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
