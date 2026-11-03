@@ -7053,6 +7053,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.308
   },
   {
+    "id": "munpia",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 80,
+    "evidenceClaimCount": 80,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 18,
+    "conflictCount": 0,
+    "tier1SourceCount": 18,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "musinsa",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -13155,10 +13177,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 341,
+  "verified_v2": 342,
   "partial": 92,
   "legacy_snapshot": 108,
-  "total": 541
+  "total": 542
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

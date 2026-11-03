@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 541,
+  "count": 542,
   "counts": {
-    "verified_v2": 341,
+    "verified_v2": 342,
     "partial": 92,
     "legacy_snapshot": 108,
-    "total": 541
+    "total": 542
   },
   "items": [
     {
@@ -3484,6 +3484,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "munpia",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 18,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "musinsa",

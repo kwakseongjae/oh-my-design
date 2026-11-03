@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 541,
+ "count": 542,
  "items": [
   {
    "id": "104",
@@ -7250,6 +7250,28 @@
    "signature_motion": "*Durations**:",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "munpia",
+   "primary_color_hex": "#2882f5",
+   "category": "consumer-tech",
+   "visual_theme": "Munpia is a Korean web-fiction platform for discovering, reading and publishing serialized stories. Its own history dates the genre-fiction community to 2002 and paid service to 2013. The company describes a place where writers and readers exchange their thoug",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "musinsa",
