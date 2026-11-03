@@ -7131,30 +7131,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "muji",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 196,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 79,
+    "evidenceClaimCount": 79,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 18,
-    "interactiveComponentCount": 11,
-    "statedComponentCount": 5,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.308
+    "tier1SourceCount": 13,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "munpia",
@@ -8809,9 +8804,7 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13341,9 +13334,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 358,
+  "verified_v2": 359,
   "partial": 89,
-  "legacy_snapshot": 104,
+  "legacy_snapshot": 103,
   "total": 551
 } as const;
 
