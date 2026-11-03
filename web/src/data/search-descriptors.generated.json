@@ -4063,6 +4063,74 @@
     ]
    }
   },
+  "chinatimes": {
+   "hash": "97f67ec1aa295587",
+   "terms": {
+    "en": [
+     "news website",
+     "taiwan news portal",
+     "traditional chinese news",
+     "dense headline layout",
+     "photographic lead story",
+     "red accent",
+     "square controls",
+     "category navigation bar",
+     "live news column",
+     "subscription promotion",
+     "member articles",
+     "ad-free subscription",
+     "black text on white",
+     "grey navigation"
+    ],
+    "ko": [
+     "뉴스 웹사이트",
+     "대만 뉴스 포털",
+     "번체 중국어 뉴스",
+     "빽빽한 헤드라인",
+     "사진 대표 기사",
+     "붉은색 강조",
+     "각진 버튼",
+     "카테고리 내비게이션",
+     "실시간 뉴스 칼럼",
+     "구독 프로모션",
+     "회원 전용 기사",
+     "광고 없는 구독",
+     "흰 배경 검정 글자"
+    ],
+    "ja": [
+     "ニュースサイト",
+     "台湾のニュースポータル",
+     "繁体字中国語ニュース",
+     "高密度な見出し",
+     "写真付きトップ記事",
+     "赤のアクセント",
+     "角型コントロール",
+     "カテゴリナビバー",
+     "速報ニュース欄",
+     "購読プロモーション",
+     "会員限定記事",
+     "広告なし購読",
+     "白地に黒文字",
+     "グレーのナビゲーション"
+    ],
+    "zh": [
+     "新聞網站",
+     "台灣新聞入口",
+     "繁體中文新聞",
+     "高密度標題版面",
+     "攝影頭條新聞",
+     "紅色強調",
+     "方形控制項",
+     "分類導覽列",
+     "即時新聞欄",
+     "訂閱促銷",
+     "會員精選文章",
+     "無廣告體驗",
+     "白底黑字",
+     "灰色導覽"
+    ]
+   }
+  },
   "chunghwa": {
    "hash": "7bdb80c3d837ff70",
    "terms": {
@@ -13640,6 +13708,67 @@
     ]
    }
   },
+  "kaonavi": {
+   "hash": "670c31c985004978",
+   "terms": {
+    "en": [
+     "talent management",
+     "hr software",
+     "cloud saas",
+     "personnel data",
+     "japanese business app",
+     "yellow and blue",
+     "friendly rounded ui",
+     "bright and warm",
+     "ai assisted decisions",
+     "rounded cards",
+     "illustrated homepage",
+     "yellow hover feedback"
+    ],
+    "ko": [
+     "인재 관리",
+     "인사 소프트웨어",
+     "클라우드 saas",
+     "인사 데이터",
+     "일본 비즈니스 앱",
+     "노랑과 파랑",
+     "둥근 버튼",
+     "밝고 따뜻한",
+     "ai 의사결정 지원",
+     "둥근 카드",
+     "일러스트 홈페이지",
+     "노란 호버 효과"
+    ],
+    "ja": [
+     "タレントマネジメント",
+     "人事システム",
+     "クラウドサービス",
+     "人材データ",
+     "法人向けサービス",
+     "黄色と青",
+     "丸みのあるUI",
+     "明るく親しみやすい",
+     "AI活用",
+     "角丸カード",
+     "イラスト多用",
+     "黄色のホバー"
+    ],
+    "zh": [
+     "人才管理",
+     "人資軟體",
+     "雲端 saas",
+     "人事資料",
+     "日本企業服務",
+     "黃色與藍色",
+     "圓角介面",
+     "明亮溫暖",
+     "ai 輔助決策",
+     "圓角卡片",
+     "插畫首頁",
+     "黃色懸停效果"
+    ]
+   }
+  },
   "karrot": {
    "hash": "a8aba14580da9d76",
    "terms": {
@@ -16706,72 +16835,126 @@
     ]
    }
   },
-  "meituan": {
-   "hash": "fac35cb88802c000",
+  "megastudy": {
+   "hash": "0f06c00b8e23a79d",
    "terms": {
     "en": [
-     "local services super-app",
-     "food delivery app",
-     "group buying deals",
-     "restaurant reviews",
-     "hotel and movie booking",
-     "bright yellow accent",
-     "warm gold and red-orange",
-     "white cards near-black text",
-     "dense icon grid",
-     "prominent prices and deal badges",
-     "rounded friendly shapes",
-     "mobile-first thumb-driven",
-     "mascot-led friendly brand",
-     "system font simplified chinese"
+     "online education portal",
+     "high school study site",
+     "korean test prep",
+     "course and teacher listings",
+     "admissions information",
+     "dense white interface",
+     "blue accent",
+     "grey text",
+     "fine borders",
+     "compact navigation",
+     "small rounded controls",
+     "bright campaign banners",
+     "student learning platform"
     ],
     "ko": [
-     "생활 서비스 슈퍼앱",
-     "음식 배달 앱",
-     "공동구매 할인",
-     "맛집 리뷰",
-     "호텔 영화 예매",
-     "밝은 노란색 포인트",
-     "따뜻한 골드와 주황빛 빨강",
-     "흰 카드 검은 텍스트",
-     "촘촘한 아이콘 그리드",
-     "가격 강조 할인 배지",
-     "둥근 친근한 모양",
-     "모바일 우선",
-     "마스코트 친근한 브랜드",
-     "중국어 간체 시스템 폰트"
+     "온라인 교육 포털",
+     "고등학생 인강",
+     "입시 정보",
+     "강사 강좌 목록",
+     "수능 준비",
+     "촘촘한 흰색 화면",
+     "파란 포인트",
+     "회색 텍스트",
+     "얇은 테두리",
+     "간결한 내비게이션",
+     "둥근 작은 버튼",
+     "학습 서비스"
     ],
     "ja": [
-     "ローカル生活スーパーアプリ",
-     "フードデリバリー",
-     "共同購入クーポン",
-     "飲食店レビュー",
-     "ホテル映画予約",
-     "明るい黄色のアクセント",
-     "温かいゴールドと赤橙",
-     "白いカード 黒に近い文字",
-     "高密度アイコングリッド",
-     "価格強調 割引バッジ",
-     "丸みのある親しみやすい形",
-     "モバイルファースト",
-     "マスコットのある親しみブランド",
-     "簡体字システムフォント"
+     "オンライン教育ポータル",
+     "高校生向け学習",
+     "韓国の受験対策",
+     "講師と講座一覧",
+     "入試情報",
+     "白基調で高密度",
+     "青いアクセント",
+     "グレーの文字",
+     "細い枠線",
+     "コンパクトなナビ",
+     "小さな角丸ボタン",
+     "学習サービス"
     ],
     "zh": [
-     "本地生活超級應用",
-     "外賣點餐app",
-     "團購優惠",
-     "餐廳評價",
-     "酒店電影票預訂",
-     "明亮黃色強調",
-     "暖金與紅橙色",
-     "白色卡片 近黑文字",
-     "高密度圖示宮格",
-     "價格醒目 優惠標籤",
-     "圓角親切造型",
-     "行動優先",
-     "吉祥物親切品牌",
-     "簡體中文系統字體"
+     "線上教育入口",
+     "高中生學習網站",
+     "韓國升學考試",
+     "講師與課程列表",
+     "入學資訊",
+     "高密度白色介面",
+     "藍色強調",
+     "灰色文字",
+     "細邊框",
+     "精簡導覽",
+     "小圓角按鈕",
+     "學習服務平台"
+    ]
+   }
+  },
+  "meituan": {
+   "hash": "ada745ab86b651a7",
+   "terms": {
+    "en": [
+     "corporate homepage",
+     "technology retail",
+     "local services",
+     "food delivery",
+     "yellow and dark ink",
+     "editorial news grid",
+     "light cool grey ground",
+     "large headline",
+     "fixed header",
+     "outlined news button",
+     "white card panels",
+     "investor and recruitment info"
+    ],
+    "ko": [
+     "기업 홈페이지",
+     "테크 리테일",
+     "지역 생활 서비스",
+     "음식 배달",
+     "노란색",
+     "뉴스 그리드",
+     "밝은 회색 배경",
+     "큰 헤드라인",
+     "고정 헤더",
+     "아웃라인 버튼",
+     "흰색 카드",
+     "투자자 채용 정보"
+    ],
+    "ja": [
+     "企業ホームページ",
+     "テクノロジー小売",
+     "地域生活サービス",
+     "フードデリバリー",
+     "黄色と濃紺",
+     "ニュースグリッド",
+     "明るいグレー背景",
+     "大見出し",
+     "固定ヘッダー",
+     "アウトラインボタン",
+     "白いカードパネル",
+     "採用情報"
+    ],
+    "zh": [
+     "企業官網",
+     "科技零售",
+     "本地生活服務",
+     "外賣平台",
+     "黃色與深墨色",
+     "新聞卡片網格",
+     "淺灰背景",
+     "大標題",
+     "固定式頁首",
+     "描邊按鈕",
+     "白色卡片",
+     "投資人與招聘資訊"
     ]
    }
   },
