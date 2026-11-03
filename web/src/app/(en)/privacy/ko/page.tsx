@@ -85,7 +85,6 @@ export default function PrivacyKoPage() {
             <li>Google LLC (Google Analytics, Search Console) — 이용 통계 및 검색 성과 분석</li>
             <li>Vercel, Inc. — 웹사이트 호스팅 및 쿠키 없는 페이지 조회 통계(Web Analytics)</li>
             <li>Upstash, Inc. — 인기 레퍼런스 집계(개인정보 미포함)</li>
-            <li>OpenRouter, Inc. — 커넥터 vibe 검색용 임베딩 계산(검색어 미저장)</li>
           </ul>
         </Section>
 
@@ -93,7 +92,7 @@ export default function PrivacyKoPage() {
           <p>위 수탁자는 국외에서 서비스를 운영하므로, 익명 이용 분석 데이터가
             국외로 이전됩니다.</p>
           <ul className="ml-4 list-disc space-y-1">
-            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Vercel Inc., OpenRouter Inc.</li>
+            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Vercel Inc.</li>
             <li><strong className="font-medium text-foreground">이전 항목:</strong> 익명 이용 분석 이벤트, 쿠키·로컬스토리지 식별자 (IP·국가정보 미전송)</li>
             <li><strong className="font-medium text-foreground">이전 국가:</strong> 미국(United States)</li>
             <li><strong className="font-medium text-foreground">이전 일시 및 방법:</strong> 서비스 이용 시점에 네트워크를 통해 전송</li>
@@ -154,7 +153,7 @@ export default function PrivacyKoPage() {
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
             커넥터는 도구별·레퍼런스별 호출 수와 MCP가 아닌 GET 요청의 일별 합계만 기록합니다.
             이 집계에는 검색 문구, IP 주소, 계정, 원본 User-Agent 등 개인에 관한 정보가 없습니다.
-            요청 횟수 제한에는 60초 후 만료되는 키 기반 해시를 사용합니다. 검색은 자체 서버에서만 처리하며 임베딩 제공자에게 전송하지 않습니다.</p>
+            요청 횟수 제한에는 60초 후 만료되는 키 기반 해시를 사용합니다. 검색은 전부 자체 서버에서 처리하며, 검색 문구를 다른 서비스로 보내거나 저장하지 않습니다.</p>
         </Section>
 
         <Section n={13} title="처리방침의 변경">

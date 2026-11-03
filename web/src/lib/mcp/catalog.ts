@@ -4,6 +4,8 @@ import { REGISTRY, type RefEntry } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { hasKoDetail } from "@/lib/i18n/ko-detail";
 import { parseV3 } from "../../../scripts/lib/design-md-v3.mjs";
+import { descriptorIndex, hasHangul, searchFields, sectionsOf } from "./search-data.mjs";
+import descriptorData from "@/data/search-descriptors.generated.json";
 import {
   ASPECTS, STATES, TOKEN_GROUPS, CatalogError, envelope,
   type Component, type Evidence, type Fonts, type Json, type SourcedValue,
@@ -27,7 +29,7 @@ export const knownReference = (id: string) => entries.has(id);
 const isMap = (value: unknown): value is Data => !!value && typeof value === "object" && !Array.isArray(value);
 const map = (value: unknown): Data => isMap(value) ? value : {};
 const unique = (values: readonly string[]) => [...new Set(values)];
-const hasHangul = (text: string) => /\p{Script=Hangul}/u.test(text);
+export { sectionsOf } from "./search-data.mjs";
 
 /** Omit only the unresolved leaf; retain its known siblings. */
 function clean(value: unknown, path: string, absent: string[]): Json | undefined {
@@ -82,26 +84,6 @@ export function summaryFor(id: string): Summary {
     summary.reason_codes = [...quality.reasonCodes];
   }
   return summary;
-}
-
-/** Slice source offsets, ignoring frontmatter and fenced code; never reserialize. */
-export function sectionsOf(markdown: string): Section[] {
-  const bodyStart = markdown.startsWith("---\n") ? markdown.indexOf("\n---\n", 4) + 5 : 0;
-  const starts: { title: string; offset: number }[] = [];
-  let offset = Math.max(0, bodyStart);
-  let fence: { char: string; length: number } | undefined;
-  for (const line of markdown.slice(offset).split(/(?<=\n)/)) {
-    const marker = line.match(/^ {0,3}(`{3,}|~{3,})/);
-    if (marker) {
-      if (!fence) fence = { char: marker[1][0], length: marker[1].length };
-      else if (marker[1][0] === fence.char && marker[1].length >= fence.length) fence = undefined;
-    } else if (!fence) {
-      const heading = line.match(/^## ([^\r\n]+?)[ \t]*\r?\n?$/);
-      if (heading) starts.push({ title: heading[1], offset });
-    }
-    offset += line.length;
-  }
-  return starts.map((section, i) => ({ title: section.title, markdown: markdown.slice(section.offset, starts[i + 1]?.offset ?? markdown.length) }));
 }
 
 function load(id: string): Reference {
@@ -252,18 +234,19 @@ function componentsOf(reference: Reference, selected?: string): Component[] {
   });
 }
 
-/** Unicode keyword matching; no embedding calls, inferred traits or hand-authored brand aliases. */
+/** Built once: id -> Claude-written search terms (all locales). Empty when the index is missing. */
+const descriptors = descriptorIndex(descriptorData, REGISTRY.map(({ id }) => id));
+
+/** Unicode keywords over the catalog fields plus the build-time descriptor terms; verified first. */
 export function searchReferences(args: ToolInput<"search_references">) {
   const terms = unique((args.query ?? "").normalize("NFKC").toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []);
   const countries = args.country?.map((country) => country.toLowerCase());
   const categories = args.category?.map((category) => category.toLowerCase());
   const candidates = REGISTRY.filter((entry) => (!countries?.length || countries.includes(entry.country.toLowerCase())) && (!categories?.length || categories.includes(entry.category.toLowerCase())) && (args.status !== "verified" || REFERENCE_QUALITY_BY_ID[entry.id]?.status === "verified_v2"));
   const results = candidates.map((entry) => {
-    const fields: Record<string, string> = { id: entry.id, name: entry.name, display_name_ko: hasHangul(entry.displayName) ? entry.displayName : "", country: entry.country, category: entry.category };
-    if (terms.length) {
-      const overview = load(entry.id).sections.find((section) => section.title === "Overview")?.markdown ?? "";
-      fields.overview = overview.replace(/^## Overview\s*/, "").replace(/^### [^\n]+\n\s*/, "").split(/\r?\n\s*\r?\n/)[0];
-    }
+    const overview = terms.length ? load(entry.id).sections.find((section) => section.title === "Overview")?.markdown ?? "" : undefined;
+    const fields = searchFields(entry, overview);
+    if (terms.length && descriptors.has(entry.id)) fields.descriptors = descriptors.get(entry.id)!;
     const match: string[] = [];
     let score = 0;
     let matchedTerms = 0;
@@ -271,7 +254,7 @@ export function searchReferences(args: ToolInput<"search_references">) {
       let found = false;
       for (const [field, text] of Object.entries(fields)) if (text.normalize("NFKC").toLowerCase().includes(term)) {
         match.push(field); found = true;
-        score += ["id", "name", "display_name_ko"].includes(field) ? 10 : field === "overview" ? 1 : 3;
+        score += ["id", "name", "display_name_ko"].includes(field) ? 10 : field === "overview" ? 1 : field === "descriptors" ? 4 : 3;
       }
       if (found) matchedTerms++;
     }
@@ -279,7 +262,7 @@ export function searchReferences(args: ToolInput<"search_references">) {
     return { ...summaryFor(entry.id), match: unique(match), score: score + matchedTerms * 5 };
   }).filter((result) => !terms.length || result.score > 0);
   results.sort((a, b) => Number(b.status === "verified_v2") - Number(a.status === "verified_v2") || b.score - a.score || a.id.localeCompare(b.id));
-  return envelope({ results: results.slice(0, args.limit ?? 8) });
+  return envelope({ results: results.slice(0, args.limit ?? 8), search_mode: descriptors.size ? "hybrid" as const : "keyword" as const });
 }
 
 export function getReference({ id }: ToolInput<"get_reference">) {
