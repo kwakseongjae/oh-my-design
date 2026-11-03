@@ -132,7 +132,8 @@ const DATA = {
   name: opt.name,
   control: `“${String(id.text || id.aria || R.label || opt.control).trim().slice(0, 40)}” · ${id.tag ?? "control"}${id.landmark ? ` in the ${id.landmark}` : ""}`,
   source: `oh-my-design.kr/design-systems/${opt.id}`,
-  measured: `measured ${String(probe.boot?.startedAt ?? "").slice(0, 10)}`,
+  // The run's date in Korea time: worker batches run overnight KST, when the UTC date is still the day before.
+  measured: probe.boot?.startedAt ? `measured ${new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date(probe.boot.startedAt))}` : "",
   transition: transition ? `transition: ${transition}` : "",
   cropCaption: `Live crop · ${dpr}× device pixels`,
   crop: { w: cropW, h: cropH },
