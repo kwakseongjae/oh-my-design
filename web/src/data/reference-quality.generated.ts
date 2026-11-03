@@ -3871,7 +3871,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 1,
     "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.556
+    "paletteGrounding": null
   },
   {
     "id": "gogolook",
@@ -6004,7 +6004,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 1,
     "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.846
+    "paletteGrounding": null
   },
   {
     "id": "lguplus",
@@ -6573,7 +6573,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 6,
     "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.625
+    "paletteGrounding": null
   },
   {
     "id": "meta",
@@ -8627,7 +8627,7 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
-    "paletteGrounding": 0.333
+    "paletteGrounding": null
   },
   {
     "id": "pixnet",
@@ -9919,7 +9919,7 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
-    "paletteGrounding": 0.5
+    "paletteGrounding": null
   },
   {
     "id": "sentry",
@@ -10274,7 +10274,7 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
-    "paletteGrounding": 0.4
+    "paletteGrounding": null
   },
   {
     "id": "smartnews",
@@ -11918,31 +11918,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "ubie",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 151,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 119,
+    "evidenceClaimCount": 119,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 28,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 10,
-    "interactiveComponentCount": 7,
-    "statedComponentCount": 6,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_grounding_low",
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.158
+    "tier1SourceCount": 28,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "udn",
@@ -12806,7 +12800,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 2,
     "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.333
+    "paletteGrounding": null
   },
   {
     "id": "xrex",
@@ -13221,9 +13215,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 344,
+  "verified_v2": 345,
   "partial": 92,
-  "legacy_snapshot": 108,
+  "legacy_snapshot": 107,
   "total": 544
 } as const;
 

@@ -175,7 +175,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 174 -> 173 (2026-11-03): gaudiolab.
     // 173 -> 172 (2026-11-03): lezhin.
     // 172 -> 171 (2026-11-03): gmarket.
-    expect(flagged.length).toBe(171);
+    // 171 -> 170 (2026-11-03): ubie.
+    expect(flagged.length).toBe(170);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
@@ -244,7 +245,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     expect(contradicted.sort()).toEqual(
       ["dji", "kakaot", "meituan", "money-forward", "ridi", "tada", "wavve"],
     );
-    expect(low.length).toBe(22);
+    // 22 -> 21 (2026-11-03): ubie was re-extracted live; the snapshot row describes its old prose palette and
+    // no longer applies (reference-quality.mjs uses the snapshot for prose-derived palettes only).
+    expect(low.length).toBe(21);
 
     // A reference can never carry both — they are graded, not stacked.
     expect(contradicted.filter((id) => low.includes(id))).toEqual([]);

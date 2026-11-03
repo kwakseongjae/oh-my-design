@@ -422,6 +422,9 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   const verifiedBlockers = [];
   const tokens = frontmatter?.tokens;
   const tokenSource = tokens?.source ?? null;
+  // The snapshot measured palettes that were prose-derived on its date (its own `scope`). Once a reference is
+  // re-extracted live, the row describes a palette the reference no longer declares, so it no longer applies.
+  const grounding = tokenSource === "prose-derived" || !tokenSource ? colourGrounding : undefined;
   const verifiedAt = String(frontmatter?.verified ?? "");
   const extractedAt = typeof tokens?.extracted === "string" ? tokens.extracted : null;
   const tier1Urls = extractTier1Urls(markdown, frontmatter?.verification_v2);
@@ -594,10 +597,10 @@ function bySeverity(a, b) {
    * 사이트가 바뀐 게 아니라 값이 틀린 것이다(두 달 간격 독립 관측). 그건 "불확실"이
    * 아니라 "모순"이고, 같은 말로 부르면 둘 다 의미를 잃는다.
    */
-  if (colourGrounding && colourGrounding.declared > 0 && typeof colourGrounding.found === "number") {
-    const live = colourGrounding.found / colourGrounding.declared;
-    const bundle = typeof colourGrounding.foundInJulyBundle === "number"
-      ? colourGrounding.foundInJulyBundle / colourGrounding.declared : null;
+  if (grounding && grounding.declared > 0 && typeof grounding.found === "number") {
+    const live = grounding.found / grounding.declared;
+    const bundle = typeof grounding.foundInJulyBundle === "number"
+      ? grounding.foundInJulyBundle / grounding.declared : null;
     if (live < 0.3 && bundle !== null && bundle < 0.3) advisories.push("palette_contradicted");
     else if (live < 0.25) advisories.push("palette_grounding_low");
   }
@@ -649,8 +652,8 @@ function bySeverity(a, b) {
     reasonCodes: reasons.sort(),
     advisoryCodes: advisories.sort(bySeverity),
     /** 선언된 색 중 라이브 표면에서 확인된 비율. 스냅샷이 없으면 null. */
-    paletteGrounding: colourGrounding && colourGrounding.declared > 0 && typeof colourGrounding.found === "number"
-      ? Math.round(1000 * colourGrounding.found / colourGrounding.declared) / 1000
+    paletteGrounding: grounding && grounding.declared > 0 && typeof grounding.found === "number"
+      ? Math.round(1000 * grounding.found / grounding.declared) / 1000
       : null,
   };
 }

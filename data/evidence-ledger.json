@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 344,
-  "sources": 2677,
+  "references_with_verification_v2": 345,
+  "sources": 2705,
   "sources_by_kind": {
-    "brand-asset": 148,
+    "brand-asset": 150,
     "license": 138,
-    "official-doc": 1152,
-    "product-surface": 1239
+    "official-doc": 1171,
+    "product-surface": 1246
   },
   "references": {
     "104": {
@@ -16748,6 +16748,180 @@
           "kind": "official-doc",
           "captured": "2026-09-19",
           "host": "baseweb.design"
+        }
+      ]
+    },
+    "ubie": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-deck",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "speakerdeck.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "consumer-home",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.app"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "control-github",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "github.com"
+        },
+        {
+          "id": "control-speakerdeck",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "speakerdeck.com"
+        },
+        {
+          "id": "control-vitals",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-accessibility",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-button",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-card",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-components",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-developers",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-input",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-primitive",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-radius",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-semantic",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-start",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "english-home",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubiehealth.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "presskit",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "token-repository",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "github.com"
         }
       ]
     },
