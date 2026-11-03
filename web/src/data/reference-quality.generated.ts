@@ -12580,32 +12580,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "wavve",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-27",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 115,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
     "conflictCount": 0,
-    "tier1SourceCount": 1,
-    "componentCount": 11,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_contradicted",
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.083
+    "tier1SourceCount": 15,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "wconcept",
@@ -13426,9 +13419,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 367,
+  "verified_v2": 368,
   "partial": 89,
-  "legacy_snapshot": 100,
+  "legacy_snapshot": 99,
   "total": 556
 } as const;
 
