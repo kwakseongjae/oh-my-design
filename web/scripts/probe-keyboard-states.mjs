@@ -32,7 +32,11 @@
  *            --browser headless|worker (default headless; worker opens headed Chrome with its own UA and a fresh temporary
  *            profile, never the owner's profile; locale, viewport, Accept-Language and launch args stay the same)
  *            --shots dir (opt-in PNG crops: <key>-rest/hover/pressed/focus.png, 12px padding clamped to the viewport;
- *            no scrolling for a crop; each read state gets shot or shotError, unmeasured states have no crop)
+ *            no scrolling for a crop; each read state gets shot or shotError, unmeasured states have no crop. For hover/
+ *            pressed the pointer is put back on its point before the crop, and a crop whose state stopped matching is
+ *            retried once (`shotRetried`); a crop is kept only if the state still matches after it)
+ *            --dpr 1-4 (opt-in device scale factor for the page, so crops come out N× sharper — the state reel renders them
+ *            large; layout, CSS-pixel readings and pointer coordinates are unchanged; recorded in boot.deviceScaleFactor)
  *            --visual dir (opt-in viewport.png + full.png, height capped at 12000px, then scroll.webm in a separate context;
  *            120px every 60ms, up to 12000px; failures/budget skips in visual.errors never fail the probe)
  *            Evidence paths are relative to --out's directory (otherwise cwd); unsafe key filename characters are percent-encoded.
@@ -126,7 +130,7 @@ import { chromium } from "playwright-core";
 // ───────────────────────────── arguments ─────────────────────────────
 const argv = process.argv.slice(2);
 const url = argv.find((a) => /^https?:\/\//.test(a));
-const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close"]);
+const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close", "dpr"]);
 const PER_CONTROL = new Set(["nth", "tag", "landmark", "min-height", "exact", "key", "label", "href"]);
 const g = {};
 const cli = [];
@@ -192,7 +196,9 @@ const QUIET = !!g.quiet;
 const SUMMARY = !!g.summary;
 // Headless keeps the existing plain desktop UA. Worker uses the headed Chrome's actual UA.
 const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
-const CONTEXT = { viewport: { width: 1440, height: 1000 }, ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
+const DPR = g.dpr === undefined ? null : Number(g.dpr);
+if (DPR !== null && !(DPR >= 1 && DPR <= 4)) { console.error("--dpr must be a number from 1 to 4"); process.exit(2); }
+const CONTEXT = { viewport: { width: 1440, height: 1000 }, ...(DPR ? { deviceScaleFactor: DPR } : {}), ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
 
 // --census (2026-10-29): PROBE_BRIEF items 1–3 in one evaluation, so a sandboxed worker gets them through the capture
 // MCP tool instead of writing its own browser script. Open shadow roots are walked (SBB's Lyne renders in them).
@@ -256,6 +262,7 @@ const result = {
   controls: {}, walk: [], notes: [],
 };
 if (EVIDENCE) result.boot.browser = BROWSER;
+if (DPR) result.boot.deviceScaleFactor = DPR;
 let browser = null;
 let TABLE = null;
 let emitted = false;
@@ -818,25 +825,38 @@ function paddedViewportClip(rect, viewport, padding = 12) {
 }
 
 let shotsReady = false;
-async function stateShot(c, name, state) {
+// `point` (hover/pressed only) is where the pointer was put on the control. Archived worker runs (moin 2026-11-03: 0/6
+// hover, 0/6 pressed) lost :hover/:active across the crop in headed Chrome; it did not reproduce on 2026-11-03 under six
+// conditions (plain, occluded, real cursor inside the window, parallel runs, CPU throttle, minimised), so this hardens
+// rather than fixes a known cause: the pointer is put back on the control right before the bounds check, and a crop whose
+// state stopped matching is retried ONCE. A crop is kept only if the state still matches after it, as before.
+// The crop stays page.screenshot: a Page.captureScreenshot sent from a second CDP session resets Playwright's
+// device-metrics emulation (checked 2026-11-03: devicePixelRatio 4 -> 1 for the rest of the page's life, crop at 1x).
+async function stateShot(c, name, state, point = null) {
   try {
     const dir = path.resolve(SHOTS);
     if (!shotsReady) { await evidenceStep("--shots directory", () => fs.promises.mkdir(dir, { recursive: true })); shotsReady = true; }
     const selector = { hover: ":hover", pressed: ":active", focus: ":focus-visible" }[name] ?? null;
-    const bounds = await evidenceStep(`${name} crop bounds`, () => page.evaluate(([i, sel]) => {
-      const el = window.__omdKb.get(i);
-      if (!el) throw new Error("control vanished before its crop");
-      if (sel && !el.matches(sel)) throw new Error(`${sel} no longer matches; crop skipped`);
-      const r = el.getBoundingClientRect();
-      return { rect: { x: r.x, y: r.y, width: r.width, height: r.height }, viewport: { width: innerWidth, height: innerHeight } };
-    }, [c.i, selector]));
-    const clip = paddedViewportClip(bounds.rect, bounds.viewport);
     const file = path.join(dir, `${encodeURIComponent(c.key)}-${name}.png`);
-    // Page clips never scroll a control into view or release the pointer/focus. Keep the real caret, too.
-    await evidenceStep(`${name} crop`, (timeout) => page.screenshot({ path: file, type: "png", clip, caret: "initial", timeout }));
-    if (selector) {
-      const matches = await evidenceStep(`${name} crop state check`, () => page.evaluate(([i, sel]) => window.__omdKb.get(i)?.matches(sel) ?? false, [c.i, selector]));
-      if (!matches) throw new Error(`${selector} stopped matching during the crop`);
+    const still = () => evidenceStep(`${name} crop state check`, () => page.evaluate(([i, sel]) => window.__omdKb.get(i)?.matches(sel) ?? false, [c.i, selector]));
+    for (let attempt = 0; ; attempt++) {
+      if (point) {   // a zero-distance move with the button state unchanged: re-asserts the pointer, never clicks
+        await page.mouse.move(point.x, point.y);
+        if (attempt > 0 || !(await still())) await settleFor([c]);
+      }
+      const bounds = await evidenceStep(`${name} crop bounds`, () => page.evaluate(([i, sel]) => {
+        const el = window.__omdKb.get(i);
+        if (!el) throw new Error("control vanished before its crop");
+        if (sel && !el.matches(sel)) throw new Error(`${sel} no longer matches; crop skipped`);
+        const r = el.getBoundingClientRect();
+        return { rect: { x: r.x, y: r.y, width: r.width, height: r.height }, viewport: { width: innerWidth, height: innerHeight } };
+      }, [c.i, selector]));
+      const clip = paddedViewportClip(bounds.rect, bounds.viewport);
+      // Page clips never scroll a control into view or release the pointer/focus. Keep the real caret, too.
+      await evidenceStep(`${name} crop`, (timeout) => page.screenshot({ path: file, type: "png", clip, caret: "initial", timeout }));
+      if (!selector || (await still())) break;
+      if (attempt > 0 || !point) throw new Error(`${selector} stopped matching during the crop${attempt ? " (also on the retry)" : ""}`);
+      state.shotRetried = `${selector} stopped matching during the first crop; pointer re-asserted, settled and re-cropped`;
     }
     state.shot = evidencePath(file);
   } catch (e) { state.shotError = evidenceError(e); }
@@ -1159,7 +1179,7 @@ async function mousePhase() {
       if (!hov || !hov.is.hover) { fail(`:hover did not match after moving the pointer onto it (elementFromPoint = ${hit.hitEl})`); continue; }
       R.hover = { measured: true, hitEl: hit.hitEl, snap: hov, settle: stH, ...stateDiff(rest, hov), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
       if (SHOTS) {
-        await stateShot(c, "hover", R.hover);
+        await stateShot(c, "hover", R.hover, hit);
         // A headed-Chrome screenshot drops :hover, and a press without it never matches :active (2026-11-03: every
         // --shots run lost pressed). Put the pointer back on the control before pressing; the hover read above stands.
         await page.mouse.move(hit.x + 1, hit.y, { steps: 2 });
@@ -1173,7 +1193,7 @@ async function mousePhase() {
       if (!prs || !prs.is.active) R.pressed = { measured: false, unmeasured: ":active did not match while the mouse button was down", is: prs?.is };
       else {
         R.pressed = { measured: true, hitEl: hit.hitEl, snap: prs, settle: stP, ...stateDiff(rest, prs), changedVsHover: diffSnap(hov, prs).filter((x) => !(prs.unstable ?? []).includes(x.prop)), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
-        if (SHOTS) await stateShot(c, "pressed", R.pressed);
+        if (SHOTS) await stateShot(c, "pressed", R.pressed, hit);
       }
     } catch (e) {
       fail(`error: ${String(e.message || e).split("\n")[0].slice(0, 120)}`);
