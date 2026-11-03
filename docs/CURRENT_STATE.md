@@ -1,7 +1,14 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 저녁** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 밤** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 밤 · OpenRouter → Claude 검색 운영 반영 · 트래킹 GO 대기 · 4차 진행
+
+- **MCP 검색 교체 main `e85a8135` → 운영 확인.** Claude(Sonnet 5.5, Batch)가 레퍼런스별 다국어(en·ko·ja·zh-Hant) 검색어를 빌드 전에 작성해 커밋(`web/src/data/search-descriptors.generated.json`), 런타임은 외부 호출 없는 키워드 매칭(가중치 4) → 운영 MCP "落ち着いた 銀行" = 104·taishinbank·kbank, `search_mode: hybrid`. OpenRouter는 코드·빌드·개인정보 문단에서 제거(오너가 Vercel `OPENROUTER_API_KEY`는 지워도 됨). 키는 오너가 `web/.env.local`에 `ANTHROPIC_API_KEY`로 넣음(클립보드 명령). 이후 반영분은 `land-reference.sh`가 바뀐 레퍼런스만 직접 호출로 채움 `765fd699`.
+- **트래킹 `feat/go-links` (`79bba1d4`, 푸시):** `/go/<code>` → UTM 부착 302 + 링크·일·국가별 클릭 카운터(쿠키·IP·UA 없음) + `scripts/analytics/pull-posts.mjs` + `docs/CONTENT_TRACKING.md` + 개인정보 문장(en·ko). **오너 main GO 대기.**
+- **4차 브랜치 반영:** chinatimes·kaonavi·meituan·megastudy·subaru·htc(카드만 → `component_noninteractive_only`, 게이트가 button·input·tab·toggle만 상호작용으로 셈)·hahow·laftel → 브랜치 **550 / 357 / 89 / 104**, 래칫 165. 진행: firstbank·muji 끝남(검토 대기), watcha·douzone·kakaot·korbit 진행. uniqlo 차단 제외.
+- **상태 릴 프로토타입:** 서브에이전트 진행 중(`feat/state-reel`).
 
 ## ▶ 2026-11-03 저녁 · 오너 답: G1·G3 확정, 트래킹·OpenRouter 대체·콘텐츠 엔진 착수
 
