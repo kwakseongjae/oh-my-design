@@ -3589,28 +3589,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "fubon",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 119,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 52,
+    "evidenceClaimCount": 52,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 10,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 14,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13215,8 +13211,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 345,
-  "partial": 92,
+  "verified_v2": 346,
+  "partial": 91,
   "legacy_snapshot": 107,
   "total": 544
 } as const;

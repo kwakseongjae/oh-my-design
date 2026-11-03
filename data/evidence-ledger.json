@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 345,
-  "sources": 2705,
+  "references_with_verification_v2": 346,
+  "sources": 2719,
   "sources_by_kind": {
-    "brand-asset": 150,
+    "brand-asset": 152,
     "license": 138,
-    "official-doc": 1171,
-    "product-surface": 1246
+    "official-doc": 1181,
+    "product-surface": 1248
   },
   "references": {
     "104": {
@@ -4886,6 +4886,96 @@
           "kind": "official-doc",
           "captured": "2026-09-23",
           "host": "web.archive.org"
+        }
+      ]
+    },
+    "fubon": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "bank-company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "bank-history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-identity",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "css-layout",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "css-personal",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "data-notice",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "mobile-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "service-strategy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
         }
       ]
     },
