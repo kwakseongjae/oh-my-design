@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 553,
+ "count": 554,
  "items": [
   {
    "id": "104",
@@ -2603,6 +2603,27 @@
    "signature_motion": "*Durations** (named, not raw milliseconds):",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "demaecan",
+   "primary_color_hex": "#da3734",
+   "category": "ecommerce",
+   "visual_theme": "Demae-can (出前館) is a Japanese delivery platform for ordering food and everyday goods through its website and app. Its company history records a September 1999 founding, the service's October 2000 launch, and the November 2019 change of company name to 株式会社出前館.",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "deutschebahn",
