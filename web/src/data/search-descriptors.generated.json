@@ -8536,6 +8536,71 @@
     ]
    }
   },
+  "fetnet": {
+   "hash": "63b82c824cef64d2",
+   "terms": {
+    "en": [
+     "telecom provider",
+     "mobile plans",
+     "consumer homepage",
+     "photographic hero",
+     "red action buttons",
+     "outlined secondary buttons",
+     "dark text on light",
+     "hover enlarge cards",
+     "topic chips",
+     "red and white",
+     "device browsing",
+     "digital services",
+     "bill and account services"
+    ],
+    "ko": [
+     "통신사",
+     "모바일 요금제",
+     "소비자 홈페이지",
+     "사진 히어로",
+     "빨간 액션 버튼",
+     "아웃라인 보조 버튼",
+     "밝은 배경 어두운 글씨",
+     "호버 확대 카드",
+     "토픽 칩",
+     "빨강 흰색",
+     "단말기 둘러보기",
+     "디지털 서비스",
+     "요금 계정 서비스"
+    ],
+    "ja": [
+     "通信事業者",
+     "モバイルプラン",
+     "消費者向けトップページ",
+     "写真ヒーロー",
+     "赤いアクションボタン",
+     "枠線の副ボタン",
+     "明るい背景に濃い文字",
+     "ホバーで拡大するカード",
+     "トピックチップ",
+     "赤と白",
+     "端末閲覧",
+     "デジタルサービス",
+     "料金とアカウント"
+    ],
+    "zh": [
+     "電信業者",
+     "行動方案",
+     "消費者首頁",
+     "攝影主視覺",
+     "紅色行動按鈕",
+     "外框次要按鈕",
+     "淺底深色文字",
+     "懸停放大卡片",
+     "主題標籤",
+     "紅白配色",
+     "手機選購",
+     "數位服務",
+     "帳單與帳戶服務"
+    ]
+   }
+  },
   "fever": {
    "hash": "c6636b05c4253a44",
    "terms": {

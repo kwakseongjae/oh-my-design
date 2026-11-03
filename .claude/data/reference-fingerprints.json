@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 564,
+ "count": 565,
  "items": [
   {
    "id": "104",
@@ -3409,6 +3409,27 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "automotive"
+  },
+  {
+   "id": "fetnet",
+   "primary_color_hex": "#d3060f",
+   "category": "consumer-tech",
+   "visual_theme": "Far EasTone is a Taiwanese telecommunications and digital-services company. Its official introduction connects mobile connectivity with entertainment, shopping, subscriber benefits and enterprise services. Far Eastern Group's company profile dates its establis",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "fever",
