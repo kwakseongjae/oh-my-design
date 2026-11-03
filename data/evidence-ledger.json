@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 361,
-  "sources": 2918,
+  "references_with_verification_v2": 362,
+  "sources": 2932,
   "sources_by_kind": {
-    "brand-asset": 177,
-    "license": 139,
-    "official-doc": 1292,
-    "product-surface": 1310
+    "brand-asset": 178,
+    "license": 140,
+    "official-doc": 1300,
+    "product-surface": 1314
   },
   "references": {
     "104": {
@@ -18632,6 +18632,96 @@
           "kind": "product-surface",
           "captured": "2026-09-29",
           "host": "www.wanted.co.kr"
+        }
+      ]
+    },
+    "watcha": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-assets",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "watcha.com"
+        },
+        {
+          "id": "control-company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "font-css",
+          "kind": "license",
+          "captured": "2026-11-03",
+          "host": "an2-ast.amz.wtchn.net"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "history-conflict",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "watcha.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "an2-ast.amz.wtchn.net"
+        },
+        {
+          "id": "product-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "rebrand-2020",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "watcha.team"
+        },
+        {
+          "id": "type-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "an2-ast.amz.wtchn.net"
         }
       ]
     },
