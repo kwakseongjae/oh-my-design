@@ -1,7 +1,14 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 밤** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 밤 늦게** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 밤 늦게 · **4차 묶음 21/22 완료(브랜치)** → 오너 머지 GO 요청 · 5차(26건, JP·TW 중심) 진행
+
+- **4차 반영(브랜치 `feat/reverify-w1`, 푸시):** 신규 chinatimes·kaonavi·megastudy·subaru·htc·firstbank·digitalx(큐의 korbit — korbit.co.kr이 미래에셋 Digital X로 바뀜, 워커 원고의 이름·제목만 바꿔 워커 조립 명령 재실행)·douzone·demaecan(배달 → consumer-tech)·kakuyomu·goodoc·hangseng(HK) / 재검증 meituan·hahow·laftel·muji·watcha·kakaot·krafton·wavve·yogiyo(전부 legacy→verified). uniqlo는 차단으로 제외. → 브랜치 **557 / 370 / 89 / 98**(main 545 / 349 / 89 / 107), 래칫 160. 헤드라인 전부 본 세션 워커 브라우저 재측정(krafton은 카드 hover가 스크립트로 유지되는 상태를 확인).
+- **게이트 보정 2건:** ① 파생값 의심 검사가 Proof의 `rgb()` 표기도 증거로 인정(muji 오탐, 다른 레퍼런스 권고 변화 없음) ② palette_contradicted 고정 목록에서 live-extract로 재검증된 meituan·kakaot·wavve 제외(스냅샷 범위 수정의 결과).
+- **5차 = `~/.omd-workers/queue-batch5.txt`(26건):** 신규 JP rakutensec·rakutenbank·nissan·doda·japanpostbank·daiwa·mizuho·ahamo / TW hncb·tsmc·yuanta·fetnet·metrotaipei·ecpay / KR kiwoom·jejuair / CN byd / HK aiahk — 1차 센서스의 reject 중 컨트롤 5개 이상(커스텀 속성이 적다는 이유만으로 빠졌던 곳) / 재검증 drnow·studio·dji·zigbang·bithumb·classting·melon·ridi(legacy CJK 조회수 순). Monitor로 진행.
+- **도구:** `scratchpad/land.sh <워커폴더> <id>` = land-reference + 래칫 자동 1 감소(정확히 1일 때만) + 재실행. 부하 중 시간 초과 테스트는 단독 재실행으로 확인.
 
 ## ▶ 2026-11-03 밤 · OpenRouter → Claude 검색 운영 반영 · 트래킹 GO 대기 · 4차 진행
 
