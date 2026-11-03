@@ -5305,6 +5305,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.176
   },
   {
+    "id": "kaonavi",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 94,
+    "evidenceClaimCount": 94,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 18,
+    "conflictCount": 0,
+    "tier1SourceCount": 18,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "karrot",
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
@@ -13248,10 +13270,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 350,
+  "verified_v2": 351,
   "partial": 89,
   "legacy_snapshot": 107,
-  "total": 546
+  "total": 547
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

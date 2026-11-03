@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 546,
+ "count": 547,
  "items": [
   {
    "id": "104",
@@ -5458,6 +5458,30 @@
    "signature_motion": "Bottom sheet grows (never navigates) between trip steps; yellow radar pulses outward during driver matching.",
    "has_personas": true,
    "category_raw": "Mobility"
+  },
+  {
+   "id": "kaonavi",
+   "primary_color_hex": "#447fe0",
+   "category": "saas",
+   "visual_theme": "Kaonavi is a Japanese cloud talent-management service for bringing personnel information together and supporting decisions about people. Its company was established on 27 May 2008; the service business began on 16 April 2012. The current product introduction c",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "playful",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "karrot",
