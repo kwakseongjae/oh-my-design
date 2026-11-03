@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 558,
+ "count": 559,
  "items": [
   {
    "id": "104",
@@ -9640,6 +9640,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "rakutensec",
+   "primary_color_hex": "#bf0000",
+   "category": "fintech",
+   "visual_theme": "Rakuten Securities is a Japanese online securities service offering domestic stocks, investment trusts, FX and overseas investment products. Its company disclosure dates its establishment to March 24, 1999. The desktop homepage combines product navigation, mar",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "ramp",

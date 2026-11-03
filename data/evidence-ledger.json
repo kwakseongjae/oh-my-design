@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 371,
-  "sources": 3024,
+  "references_with_verification_v2": 372,
+  "sources": 3035,
   "sources_by_kind": {
     "brand-asset": 185,
     "license": 141,
-    "official-doc": 1355,
-    "product-surface": 1343
+    "official-doc": 1362,
+    "product-surface": 1347
   },
   "references": {
     "104": {
@@ -14738,6 +14738,78 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "quotabook.com"
+        }
+      ]
+    },
+    "rakutensec": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "design-renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "group-design",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten.design"
+        },
+        {
+          "id": "group-design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.rakuten.design"
+        },
+        {
+          "id": "group-font",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "corp.rakuten.co.jp"
+        },
+        {
+          "id": "group-font-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "corp.rakuten.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
+        },
+        {
+          "id": "trading-renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.rakuten-sec.co.jp"
         }
       ]
     },

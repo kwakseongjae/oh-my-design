@@ -24185,6 +24185,67 @@
     ]
    }
   },
+  "rakutensec": {
+   "hash": "8e30df705cab465f",
+   "terms": {
+    "en": [
+     "online securities",
+     "stock trading platform",
+     "investment app",
+     "retail investors",
+     "dense information layout",
+     "white background",
+     "red call to action",
+     "dark grey text",
+     "blue info links",
+     "japanese brokerage",
+     "fx and funds",
+     "account opening button"
+    ],
+    "ko": [
+     "온라인 증권",
+     "주식 거래 플랫폼",
+     "투자 앱",
+     "개인 투자자",
+     "정보 밀도 높음",
+     "흰색 배경",
+     "빨간색 강조 버튼",
+     "진회색 텍스트",
+     "파란색 정보 링크",
+     "일본 증권사",
+     "계좌 개설 버튼",
+     "펀드 및 FX"
+    ],
+    "ja": [
+     "ネット証券",
+     "株取引サービス",
+     "投資アプリ",
+     "個人投資家",
+     "情報量の多い画面",
+     "白基調",
+     "赤い口座開設ボタン",
+     "ダークグレーの文字",
+     "青い情報リンク",
+     "投資信託とFX",
+     "金融サイト",
+     "マーケット情報"
+    ],
+    "zh": [
+     "網路證券",
+     "股票交易平台",
+     "投資應用",
+     "個人投資人",
+     "資訊密集版面",
+     "白色背景",
+     "紅色開戶按鈕",
+     "深灰文字",
+     "藍色資訊連結",
+     "日本券商",
+     "基金與外匯",
+     "金融網站"
+    ]
+   }
+  },
   "ramp": {
    "hash": "8b1e508e14ef16a7",
    "terms": {
