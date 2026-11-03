@@ -2886,31 +2886,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "drnow",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-03",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 125,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 6,
-    "componentCount": 8,
-    "interactiveComponentCount": 4,
+    "tokenSource": "live-extract",
+    "claimCount": 89,
+    "evidenceClaimCount": 89,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.762
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "dropbox",
@@ -13476,9 +13470,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 373,
+  "verified_v2": 374,
   "partial": 89,
-  "legacy_snapshot": 97,
+  "legacy_snapshot": 96,
   "total": 559
 } as const;
 

@@ -4,9 +4,9 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 559,
   "counts": {
-    "verified_v2": 373,
+    "verified_v2": 374,
     "partial": 89,
-    "legacy_snapshot": 97,
+    "legacy_snapshot": 96,
     "total": 559
   },
   "items": [
@@ -1415,18 +1415,14 @@
     },
     {
       "id": "drnow",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "dropbox",
