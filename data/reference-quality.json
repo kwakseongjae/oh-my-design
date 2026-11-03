@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 554,
+  "count": 555,
   "counts": {
-    "verified_v2": 364,
+    "verified_v2": 365,
     "partial": 89,
     "legacy_snapshot": 101,
-    "total": 554
+    "total": 555
   },
   "items": [
     {
@@ -2663,6 +2663,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 17,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakuyomu",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },

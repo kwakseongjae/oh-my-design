@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 554,
+ "count": 555,
  "items": [
   {
    "id": "104",
@@ -5573,6 +5573,29 @@
    "signature_motion": "Bottom sheet grows (never navigates) between trip steps; yellow radar pulses outward during driver matching.",
    "has_personas": true,
    "category_raw": "Mobility"
+  },
+  {
+   "id": "kakuyomu",
+   "primary_color_hex": "#4baae0",
+   "category": "consumer-tech",
+   "visual_theme": "Kakuyomu (カクヨム) is a web-fiction service built around writing, reading and sharing stories. It opened on 29 February 2016: Hatena's launch announcement identifies KADOKAWA as operator and Hatena as the service-planning and system-development partner. The curre",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "kaonavi",

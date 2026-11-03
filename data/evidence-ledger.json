@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 364,
-  "sources": 2962,
+  "references_with_verification_v2": 365,
+  "sources": 2973,
   "sources_by_kind": {
     "brand-asset": 181,
     "license": 140,
-    "official-doc": 1319,
-    "product-surface": 1322
+    "official-doc": 1327,
+    "product-surface": 1325
   },
   "references": {
     "104": {
@@ -8612,6 +8612,78 @@
           "kind": "official-doc",
           "captured": "2026-11-03",
           "host": "policy.kakaomobility.com"
+        }
+      ]
+    },
+    "kakuyomu": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "group.kadokawa.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "control-design",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "design.hatenastaff.com"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.hatenastaff.com"
+        },
+        {
+          "id": "evolution-2026",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "guide",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "launch",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "hatena.co.jp"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
+        },
+        {
+          "id": "ui-update",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "kakuyomu.jp"
         }
       ]
     },

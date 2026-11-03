@@ -14022,6 +14022,67 @@
     ]
    }
   },
+  "kakuyomu": {
+   "hash": "77437b054312b7c4",
+   "terms": {
+    "en": [
+     "web fiction platform",
+     "novel writing and reading",
+     "story sharing community",
+     "light blue hero",
+     "white reading surface",
+     "text-led discovery lists",
+     "weekly ranking list",
+     "editorial picks",
+     "genre browsing cards",
+     "illustrated announcement strip",
+     "pale blue and grey palette",
+     "japanese desktop homepage"
+    ],
+    "ko": [
+     "웹소설 플랫폼",
+     "소설 쓰기와 읽기",
+     "작품 공유 커뮤니티",
+     "밝은 파란 히어로",
+     "흰색 독서 화면",
+     "텍스트 중심 목록",
+     "주간 랭킹",
+     "추천 작품 선정",
+     "장르별 카드",
+     "일러스트 공지 배너",
+     "연한 파랑과 회색 팔레트",
+     "일본어 데스크톱 홈"
+    ],
+    "ja": [
+     "ウェブ小説サイト",
+     "小説の執筆と閲覧",
+     "作品共有コミュニティ",
+     "淡い青のヒーロー",
+     "白い読書面",
+     "テキスト中心の一覧",
+     "週間ランキング",
+     "編集部おすすめ",
+     "ジャンル別カード",
+     "イラスト付きお知らせ帯",
+     "水色とグレーの配色",
+     "小説投稿サービス"
+    ],
+    "zh": [
+     "網路小說平台",
+     "小說創作與閱讀",
+     "作品分享社群",
+     "淺藍主視覺區",
+     "白底閱讀版面",
+     "文字為主的列表",
+     "每週排行榜",
+     "編輯精選推薦",
+     "類型分類卡片",
+     "插圖公告橫幅",
+     "淺藍與灰色配色",
+     "日本網站首頁"
+    ]
+   }
+  },
   "kaonavi": {
    "hash": "670c31c985004978",
    "terms": {
