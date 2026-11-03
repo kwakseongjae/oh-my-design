@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 351,
-  "sources": 2783,
+  "references_with_verification_v2": 352,
+  "sources": 2803,
   "sources_by_kind": {
-    "brand-asset": 162,
+    "brand-asset": 166,
     "license": 139,
-    "official-doc": 1220,
-    "product-surface": 1262
+    "official-doc": 1228,
+    "product-surface": 1270
   },
   "references": {
     "104": {
@@ -10082,6 +10082,132 @@
           "kind": "product-surface",
           "captured": "2026-10-16",
           "host": "www.megabox.co.kr"
+        }
+      ]
+    },
+    "meituan": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.meituan.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.meituan.com"
+        },
+        {
+          "id": "consent-handler",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "s3plus.meituan.net"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.meituan.com"
+        },
+        {
+          "id": "current-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.meituan.com"
+        },
+        {
+          "id": "design-platform-candidate",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ingee.meituan.com"
+        },
+        {
+          "id": "design-platform-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ingee.meituan.com"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "tech.meituan.com"
+        },
+        {
+          "id": "founder-history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "tech.meituan.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "tech.meituan.com"
+        },
+        {
+          "id": "home-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "s3plus.meituan.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.meituan.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "portal-portm.meituan.com"
+        },
+        {
+          "id": "legal-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "portal-portm.meituan.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "rules-center.meituan.com"
+        },
+        {
+          "id": "rules-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "rules-center.meituan.com"
+        },
+        {
+          "id": "rules-shell-comparator",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "rules-center.meituan.com"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "s3plus.meituan.net"
+        },
+        {
+          "id": "tech-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "tech.meituan.com"
+        },
+        {
+          "id": "tech-home-control-comparator",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "tech.meituan.com"
         }
       ]
     },

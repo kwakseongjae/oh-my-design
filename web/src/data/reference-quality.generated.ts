@@ -6491,34 +6491,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "meituan",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 91,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 6,
+    "tokenSource": "live-extract",
+    "claimCount": 73,
+    "evidenceClaimCount": 73,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 20,
+    "conflictCount": 0,
+    "tier1SourceCount": 20,
+    "componentCount": 5,
     "interactiveComponentCount": 3,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_contradicted",
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.111
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "melon",
@@ -13270,9 +13261,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 351,
+  "verified_v2": 352,
   "partial": 89,
-  "legacy_snapshot": 107,
+  "legacy_snapshot": 106,
   "total": 547
 } as const;
 
