@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 32-skill + 20-sub-agent bundle; Cursor receives 31 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 562 DESIGN.md references: 379 verified_v2, 89 partial, and 94 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 32-skill + 20-sub-agent bundle; Cursor receives 31 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 562 DESIGN.md references: 380 verified_v2, 89 partial, and 93 legacy. Use verified_v2 references for public demos.
 
 ## What
 

@@ -1043,30 +1043,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "bithumb",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-01",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 78,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 90,
+    "evidenceClaimCount": 90,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 5,
-    "interactiveComponentCount": 3,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 1
+    "tier1SourceCount": 11,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "bito",
@@ -13519,9 +13514,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 379,
+  "verified_v2": 380,
   "partial": 89,
-  "legacy_snapshot": 94,
+  "legacy_snapshot": 93,
   "total": 562
 } as const;
 
