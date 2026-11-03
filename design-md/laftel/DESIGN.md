@@ -10,241 +10,234 @@ colors:
   surface: '#242537'
   hairline: '#eeeeee'
   accent-wash: '#f0edff'
-  error: '#f16361'
+  red-300: '#f16361'
   on-primary: '#ffffff'
 typography:
   title-xxl:
     fontSize: 40px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Largest display title
+    use: Declared web title-xxl size
   title-xl:
     fontSize: 32px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Section title
+    use: Declared web title-xl size
   title-l:
     fontSize: 28px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Sub-section title
+    use: Declared web title-l size
   title-m:
     fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Card / block title
+    use: Declared web title-m size
   title-s:
     fontSize: 20px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Small title
+    use: Declared web title-s size
   text-l:
     fontSize: 18px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Large body / button label
+    use: Declared web text-l size; shared md button recipe uses 18px/700
   text-m:
     fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Default body
+    use: Declared web text-m size
   text-s:
     fontSize: 14px
     fontWeight: 700
-    lineHeight: 1.5
-    use: Nav link, toast, small label
+    use: Declared web text-s size; measured desktop navigation
   text-xs:
     fontSize: 13px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Metadata
+    use: Declared web text-xs size
   text-xxs:
     fontSize: 12px
-    fontWeight: 400
+    use: Declared web text-xxs size
+  base:
+    fontSize: 16px
     lineHeight: 1.5
-    use: Fine print
+    use: HTML/body font-size and global reset line-height declarations
+  header-action:
+    fontSize: 14px
+    fontWeight: 800
+    lineHeight: 1.5
+    use: Measured login/signup link
 rounded:
   sm: 4px
   md: 4px
   lg: 8px
-  full: 9999px
-spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 32
-  xxl: 48
+  login: 18px
 components:
-  button-primary:
+  nav-membership:
     type: button
-    backgroundColor: '#816bff'
-    textColor: '#ffffff'
-    rounded: 4px
-    height: 56px
-    padding: 0 18px
-    typography: 18px / 700
-    states: 'hover #6e58ff'
-    use: Primary CTA (md)
-  button-primary-sm:
-    type: button
-    backgroundColor: '#816bff'
-    textColor: '#ffffff'
-    rounded: 4px
-    height: 48px
-    padding: 0 20px
-    typography: 16px / 700
-    use: Primary CTA (sm)
-  button-slight:
-    type: button
-    backgroundColor: '#f0edff'
-    textColor: '#816bff'
-    rounded: 4px
-    height: 56px
-    typography: 18px / 700
-    states: 'hover #d9d3ff'
-    use: Secondary action
-  button-disabled:
-    type: button
-    backgroundColor: '#eeeeee'
-    textColor: '#8a8a8a'
-    rounded: 4px
-    height: 56px
-    use: Disabled action
-  nav-bar:
-    type: tab
-    backgroundColor: '#ffffff'
     textColor: '#121212'
-    height: 64px
-    padding: 0 50px
-    border: '1px solid #eeeeee'
+    rounded: 0px
+    height: 21px
+    padding: 0px
     typography: 14px / 700
-    active: 'link color #816bff'
-    use: Desktop nav — active/hover link purple
-  badge-notification:
-    type: badge
-    backgroundColor: '#816bff'
-    textColor: '#ffffff'
-    rounded: 9999px
-    height: 17px
-    typography: 10px / 700
-    use: Notification count badge
-  toast:
-    type: toast
-    backgroundColor: '#242537'
-    textColor: '#ffffff'
-    rounded: 4px
-    padding: 16px 12px
-    height: 48px
-    typography: 14px / 400
-    use: 'Default toast (#000000 light / #242537 dark)'
+    hover: 'fg #816bff'
+    pressed: 'fg #816bff; no additional change from hover'
+    use: 멤버십 is a link to /membership. Transparent on the white scrolled header; initial hero-header ink is white. No changed keyboard-focus style was measured.
+  login-link:
+    type: button
+    textColor: '#121212'
+    rounded: 18px
+    height: 36px
+    padding: 0px 14px
+    typography: 14px / 800
+    hover: 'fg #816bff; background rgba(0, 0, 0, 0.02); opacity 0.8 to 1'
+    pressed: 'fg #816bff; background rgba(0, 0, 0, 0.02); opacity 1; same as hover'
+    use: 로그인/가입 is a link. Transparent at rest on the white scrolled header, with element opacity 0.8; initial hero-header ink is white. No changed keyboard-focus style was measured.
+  anime-card:
+    type: card
+    textColor: '#121212'
+    rounded: 0px
+    height: 167.6px
+    padding: 0px
+    typography: 11.901px / 400
+    hover: 'Preview mounts: compared descendants increase from 15 to 48; link paint and geometry remain unchanged'
+    pressed: Same preview as hover; no additional change
+    use: Link to /?modal=47332, 전생 고블린인데 질문 있어?, first daily-rail instance. Transparent on the white page; 221.7px wide. Radius and font describe the anchor, not the thumbnail or preview. No changed keyboard-focus style was measured.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
     sans: Pretendard
-    mono: Pretendard
 ---
 
-# Laftel
-
-Korea's largest anime streaming platform — a dual-mode (light/dark) product built around a vivid purple identity, fan-curated discovery, and legal access to Japan's animation catalog.
+# Design System Inspiration of Laftel
 
 ## Overview
 
 ### Visual Theme & Atmosphere
 
-Laftel's interface reads as a dark-first entertainment shell with a saturated violet accent, much like a premium streaming dashboard tuned for anime fans. The default experience leans toward deep charcoal backgrounds (#121212 / #000000) layered with a luminous purple (#816BFF) that signals interactivity, brand moments, and delight. In light mode the same purple pops against near-white surfaces (#FFFFFF / #F7F7F7), giving the product a punchy, youthful energy without the visual fatigue of a fully dark app. Thumbnail-heavy grids dominate layouts, so colour takes a supporting role — framing content rather than competing with it. The result is a streaming UI that feels simultaneously otaku-authentic and modern enough for a mainstream Korean OTT audience.
+Laftel is an anime streaming and discovery service built around its audience's enthusiasm for animation. Its company page describes a place to enjoy works, communicate and express that enthusiasm; it also describes recommendations, original productions and merchandise. Its developer-authored app description calls it Korea's largest specialist anime service and says its catalogue is supplied through legal contracts with official anime importers. The company describes data-based recommendations; its wit article also documents collections assembled by the operations team. [Collection-design account](https://blog.laftel.net/post/46). [Company](https://laftel.oopy.io/), [publisher's app description](https://apps.apple.com/kr/app/%EB%9D%BC%ED%94%84%ED%85%94/id1169440095).
 
-### Primary tasks
+The live homepage combines large illustrated hero artwork with white discovery rails, dark text and vivid purple accents. White navigation overlays the hero; the captured scrolled header uses dark text on white. Thumbnail rows, weekday circles and small status badges carry most of the discovery interface. The measured homepage is the Korean-language surface at `laftel.net/` (`lang="ko"`), with no regional redirect.
 
-- Take the preference quiz to get anime matched to your taste
-- Resume a series and roll straight into the next episode
-- Check back every Monday for the newest simulcast episode
-- Rent a single episode instead of paying for a subscription
-- Browse the store tab for merch drops and exclusive goods
+The brand's design evolution is unusually well documented. Its dark-mode account describes separating stable Basic colours from paired Theme colours and replacing inconsistent bitmap icons with reusable vectors. Later writing develops restrained, accessible humour around its mascot Pooming while preserving essential information. This gives the interface a recognisable fan voice without making functional instructions depend on knowing a particular anime. [Dark-mode account](https://blog.laftel.net/post/11), [wit guide](https://blog.laftel.net/post/46).
+
+#### Primary tasks
+
+- Discover titles through tag search, weekday releases and themed collections.
+- Explore membership, events, the merchandise store and the LOOP menu visible in navigation.
+- Watch across supported devices; the app description documents opening/ending skips, next-episode autoplay and offline downloads. These features were documented, not activated during capture.
 
 ### Brand Narrative
 
-Laftel was founded in October 2014 by Kim Beom-jun, a Yonsei University student who saw that Korea's vast appetite for Japanese animation was being served almost entirely by illegal download sites. The name "라프텔(Laftel)" is a play on "마지막 화까지 봤다" — "I watched all the way to the last episode" — enshrining the complete, satisfying anime experience in the brand itself. The service launched streaming in May 2017, building on a personalization-first model: new users rate a set of anime to calibrate their taste, and the platform surfaces recommendations through both AI-driven signals and hand-curated selections by in-house "덕후" (hardcore fans).
+Laftel's company history records the start of comics/anime recommendations in **2014**, the start of anime OTT in **2017**, and a **2024** launch across six Southeast Asian countries. Its current company page connects viewing with original animation, merchandise, crowdfunding and collaboration events. These milestones explain a product that combines discovery and playback with a wider fan ecosystem. [Company history](https://laftel.oopy.io/).
 
-In 2019 Ridi, Korea's leading digital content platform, acquired Laftel, bringing engineering scale and content licensing resources. In November 2022 an Aniplus-led consortium (Aniplus — Korea’s largest anime broadcaster — with Keistone Partners) acquired a controlling 87.75 % stake, giving Laftel deeper ties to broadcast rights and a clearer path to simulcast programming. Through each ownership transition the product's core mission remained stable: make legal anime viewing so convenient and affordable that piracy becomes the inferior choice.
-
-Today Laftel offers SVOD (unlimited streaming), TVOD (pay-per-episode rental/purchase), and AVOD (ad-supported free tier), available across web, iOS, Android, smart TV, and Chromecast. The Laftel Store extends the brand into anime merchandise, while original productions — including webtoon adaptations like "Super Secret" — signal ambitions beyond licensing.
+Its dark-mode project is a concrete account of design-system development: the team inventoried existing colours, removed unused entries, standardised icons and separated fixed Basic colours from switchable Theme colours. The article describes the app rollout and says web dark mode was still being prepared at the time of writing; current product CSS now contains explicit web light/dark declarations. [Project account](https://blog.laftel.net/post/11).
 
 ### Principles
 
-1. **Legal first, fan always.** Every content deal is a legitimate contract; the product's legitimacy is a brand promise, not just a legal formality. *UI implication:* never use dark-pattern flows to upsell; membership upgrade prompts must be clear and skippable.
+Laftel publishes four product-design principles. The following English descriptions paraphrase those named principles rather than inventing a replacement set. [Design principles](https://blog.laftel.net/post/17).
 
-2. **Personalization over browsing.** The preference-test onboarding and tag-based discovery are not features — they are the product. *UI implication:* recommendation surfaces should occupy prime real estate and update dynamically; generic "Popular" lists are a fallback, not the default.
-
-3. **Complete the series.** The name encodes the ideal outcome: watch every episode. *UI implication:* auto-play next episode is on by default; progress tracking, episode skips (OP/ED), and continue-watching rails are first-class features.
-
-4. **Fan credibility at every touch-point.** Editorial selections are attributed to "덕후" curators, not anonymous algorithms. *UI implication:* show curator handles or "staff pick" labels on themed collections; avoid anonymous "Recommended for you" copy.
-
-5. **Dual-mode comfort.** Fans watch at night; the dark theme must be as polished as the light theme. *UI implication:* all design tokens must resolve correctly in both modes; never hard-code colours in theme-sensitive components.
+1. **Make anime fans happy:** understand the audience's interests and context and provide an environment for enjoying them.
+2. **Be logical and clear:** design with a hypothesis, a purpose and attention to users' circumstances as well as business and content-provider constraints.
+3. **Add witty details:** use humour and the Pooming character to build affinity through small interactions.
+4. **Be familiar, innovate where needed:** keep typography, icons and components consistent while allowing a useful exception when rigid consistency would harm usability.
 
 ### Personas
 
-*Illustrative — Classic Fan (클래식 덕후):* Tomoyuki, 32, IT engineer in Seoul. Has watched anime since high school; wants a reliable legal home for classics (2000s titles) that free-tier competitors don't carry. Values breadth of catalog and tag-based search. Pays for the annual plan without hesitation.
-
-*Illustrative — Seasonal Watcher (분기 팔로워):* Ji-yeon, 24, university student. Follows 3–5 simulcast series each season. She checks Laftel every Monday for the latest episode. Skips OP/ED religiously. Sensitive to price; on the base plan, occasionally upgrades for a single season.
-
-*Illustrative — New Discoverer (입문자):* Soo-min, 19, high school senior whose friends are into anime. Took the preference quiz and got hooked on a romance series. Mostly watches on mobile; uses the free AVOD tier but nudgeable toward membership via free-trial CTA.
-
-*Illustrative — Goods Fan (굿즈 덕후):* Mi-rae, 28, designer. Subscribes mainly to access Laftel Store drops and exclusive merch. Browses the store tab weekly. For her, the streaming subscription is a loyalty perk on top of merchandise access.
+The UX-writing workshop identifies its target audience as anime-loving fans in their teens and twenties. This is a documented writing target, not a validated set of demographic or purchasing personas; individual ages, occupations and purchasing behaviours were not established. [Workshop](https://blog.laftel.net/post/10).
 
 ## Colors
 
-- **Purple 500 (Brand Primary):** `#816BFF` — primary CTA buttons, active nav links, badges, icons, brand foreground
-- **Purple 50 (Highlight):** `#F0EDFF` — slight button background (light), hover highlight wash
-- **Purple 100 (Slight 2):** `#D9D3FF` — hover state for slight buttons
-- **Purple Gray 800 (Dark Surface):** `#242537` — dark toast background, dark button-purple-gray surface
-- **Purple Gray 900 (Deep Nav):** `#191B2A` — light-mode button-purple-gray accent, deep overlay
-- **Background 1 (Light):** `#FFFFFF` — primary surface in light mode
-- **Background 1 (Dark):** `#121212` — primary surface in dark mode
-- **Background 2 (Dark base):** `#000000` — deepest dark background
-- **Background 3:** `#EEEEEE` / `#323232` — skeleton, subtle dividers (light/dark)
-- **Foreground 1 (Light):** `#121212` — primary text on light
-- **Foreground 1 (Dark):** `#F7F7F7` — primary text on dark
-- **Foreground 2:** `#505050` / `#E2E2E2` — secondary text (light/dark)
-- **Foreground 3:** `#8A8A8A` / `#ABABAB` — tertiary / metadata text
-- **Border 1:** `#EEEEEE` / `#323232` — default hairline separator
-- **Red 300:** `#F16361` — error / destructive state
-- **Red 500:** `#FF1010` — critical alert
+The survey found 47 computed root custom properties: 46 colour/theme properties and RGB companions, plus the viewport utility `--safe-vh`. The stylesheet walk found those 46 theme declarations and two local ranking properties. These are Laftel's own semantic namespaces, not a framework colour scale.
+
+### Basic palette
+
+The current first-party production bundle declares this purple ramp:
+
+| Name | Value |
+|---|---|
+| PURPLE50 | `#f0edff` |
+| PURPLE100 | `#d9d3ff` |
+| PURPLE200 | `#c0b5ff` |
+| PURPLE300 | `#a797ff` |
+| PURPLE400 | `#9481ff` |
+| PURPLE500 | `#816bff` |
+| PURPLE600 | `#7963ff` |
+| PURPLE700 | `#6e58ff` |
+| PURPLE800 | `#644eff` |
+| PURPLE900 | `#513cff` |
+
+`#816bff` is the primary/brand accent. `#6e58ff` is the **declared shared primary-button hover**; the homepage hero button is a separate white treatment. RED300 is `#f16361` and RED500 is `#ff1010` in the Basic palette. The captured card's UP badge uses RED500.
+
+### Theme pairs
+
+The light column was computed in the survey. Both columns are declared in the current homepage's CSS; the dark column was not rendered in a separate capture.
+
+| Semantic property | Light | Dark |
+|---|---|---|
+| `--background-1` | `#ffffff` | `#121212` |
+| `--background-2` | `#f7f7f7` | `#000000` |
+| `--background-3` | `#eeeeee` | `#323232` |
+| `--background-4` | `#e2e2e2` | `#505050` |
+| `--background-toast` | `#000000` | `#242537` |
+| `--border-1` | `#eeeeee` | `#323232` |
+| `--border-2` | `#e2e2e2` | `#505050` |
+| `--foreground-1` | `#121212` | `#f7f7f7` |
+| `--foreground-2` | `#505050` | `#e2e2e2` |
+| `--foreground-3` | `#8a8a8a` | `#ababab` |
+| `--foreground-4`, `--foreground-disable` | `#d0d0d0` | `#636363` |
+| `--foreground-slight` | `#816bff` | `#ffffff` |
+| `--button-slight-1` | `#f0edff` | `#323232` |
+| `--button-slight-2` | `#d9d3ff` | `#505050` |
+| `--button-disable` | `#eeeeee` | `#323232` |
+| `--button-purple-gray` | `#191b2a` | `#242537` |
+
+The highlight is `#f0edff` in light mode and `rgba(129, 107, 255, 0.1)` in dark mode. Dim 1 is `rgba(0, 0, 0, 0.5)` / `rgba(0, 0, 0, 0.7)`; Dim 2 is `rgba(0, 0, 0, 0.3)` / `rgba(0, 0, 0, 0.7)`. The `surface` token here refers specifically to the dark toast/purple-grey value `#242537`; the captured page canvas is white. Primary labels use `#ffffff`.
+
+Body-text foreground is supported by the paragraph census: `rgb(18, 18, 18)` occurred on all 76 counted paragraphs. Purple led the nontransparent background counts (37), while dark text led text counts (115). This separates the accent's frequency from the body-ink role.
 
 ## Typography
 
-- **Font family:** Pretendard (loaded via cdn.jsdelivr.net/gh/orioncactus/pretendard), falling back to -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Noto Sans KR"
-- **Base size:** 16px on `html, body`
-- **Scale (web):** title-xxl 40px · title-xl 32px · title-l 28px · title-m 24px · title-s 20px · text-l 18px · text-m 16px · text-s 14px · text-xs 13px · text-xxs 12px
-- **Weight:** 700 is the only declared weight in component CSS (nav links, badges, buttons, labels); body inherits from Pretendard's default
-- **Line height:** 1.5 globally via `:root`; badge label `line-height: 150%`
-- **Letter spacing:** `normal` reset on all elements
-- **Smoothing:** `-webkit-font-smoothing: antialiased`
+### Evidence classes
+
+- **Official product-use statement:** no company-authored prose naming a product font was located. The family below is established by the live product capture.
+- **Live-loaded:** `document.fonts` recorded **Pretendard 400, 500, 600, 700 and 800**, normal style. The body and first button declare Pretendard first; no H1 was present in the census. The login/signup link actually computes to 14px/800.
+- **Official distributed assets:** no Laftel-authored font package was found. Its current product stylesheet imports Pretendard v1.3.6 from jsDelivr's `orioncactus/pretendard` distribution. That CSS defines local faces plus WOFF2/WOFF URLs and identifies the SIL Open Font License 1.1. The capture does not distinguish a local face from a downloaded font file.
+- **Declared-only:** that distribution also defines weights 100, 200, 300 and 900, none listed as loaded in this capture. The product CSS lists platform and language fallbacks after Pretendard; their names are declarations, not evidence of use. The separate `slick` face is a carousel-library asset and is not a Laftel UI family. These unobserved faces receive no specimen.
+- **Unresolved:** a separate monospaced product face and any custom Laftel typeface were not established. **Substitute: none chosen.**
+
+### Scale and typesetting
+
+The current shared source retains the named web size scale from the prior reference:
+
+| Token | Declared size |
+|---|---:|
+| title-xxl | 40px |
+| title-xl | 32px |
+| title-l | 28px |
+| title-m | 24px |
+| title-s | 20px |
+| text-l | 18px |
+| text-m | 16px |
+| text-s | 14px |
+| text-xs | 13px |
+| text-xxs | 12px |
+
+This size map does not assign a weight or line height to every role. Its neighbouring named weight map contains regular 400, medium 500 and bold 700; the live interface also uses 800. Keep role-specific weights instead of imposing a 700 ceiling.
+
+The global CSS declares 16px on `html, body`, line-height 1.5 and normal letter spacing in its reset, with `-webkit-font-smoothing: antialiased` on body. The captured desktop nav is 14px/700 with a 21px line height; login/signup is 14px/800 with the same line height. Homepage content scales through an em-based container, so its actual control sizes can be fractional: the weekday's visible label is 17.8515px/700, despite the button element inheriting 11.901px/400.
 
 ## Layout
 
-- **Grid:** Thumbnail-first horizontal carousels and vertical grid layouts; desktop max-width ~1920px reference in font-size calc
-- **Breakpoints:** desktop ≤1280px · tablet ≤1024px · tabletVertical ≤768px · mobile ≤480px · mobileLandscape (orientation: landscape, max-height 576px)
-- **Nav hidden below:** 1024px (`.ksUJkh` display:none at tablet)
-- **Content padding:** 3.125rem (50px) horizontal on desktop nav; responsive fluid via vw-based font-size calc
-- **Spacing rhythm:** base unit 0.5rem (8px); typical component margin 1rem (16px), 1.5rem (24px), 2.5rem (40px)
+Use the illustrated hero and horizontal title rails as the main composition. The survey viewport shows a weekday selector above landscape thumbnails; later rows contain themed collections, rankings, events and originals. The card is a link containing artwork, status badges and a title, with richer information revealed by its hover preview.
+
+The desktop header is declared 4rem/64px high with 3.125rem/50px horizontal padding; the logo's measured left edge is 50px. Navigation links have a declared 24px gap and a 40px leading separation from the logo area. The header fixes to the top and changes its treatment between hero and scrolled content.
+
+Homepage content uses its own fluid em scale: the first rail's card starts at x=37px and measures 221.7px wide in the capture. Its scaling expression uses a 1920px reference width; that is not evidence of a 1920px maximum page width. Verified spacing examples include 12px/16px toast padding and the header's 24px/40px/50px dimensions. A named universal spacing scale was not established.
 
 ### Responsive Behavior
 
-- Desktop (>1280px): Full horizontal nav with 50px side padding; wide carousels; large hero at 51.375em height; font-size calculated from 1920px reference width
-- Tablet (768px–1024px): Nav collapses to mobile; layout adapts fluid grids; hero resizes
-- Mobile (≤480px): Font-size recalculated from 360px reference width via `calc(16vw / 360 * 100)`; mobile-specific image proportions; thumbnail grids shift to 2-column
-- Touch devices: `-webkit-tap-highlight-color: transparent`; `touch-action: pan-y` on sliders; `maximum-scale=1` in viewport to prevent iOS zoom
+The current source defines max-width queries at 1280px, 1024px, 768px and 480px, plus landscape max-height **575.98px**. The desktop header is hidden at max-width 1024px, where the mobile header's CSS uses flex layout. These are declaration checks; only desktop was rendered for this re-verification.
+
+The carousel declares a 51.375em height, switching to 30em at max-width 480px. Its font-size expression is `calc(16vw / (1920 + var(--scroll-bar-width)) * 100)`, switching to `calc(16vw / (360 + var(--scroll-bar-width)) * 100)` for mobile. The source also switches from landscape to portrait hero artwork at the mobile breakpoint. The hero button is hidden at that mobile breakpoint.
+
+The viewport meta declares `maximum-scale=1`; that is a source observation. The served Slick stylesheet supplies `touch-action: pan-y` and transparent tap highlights to its slider. Those are library rules, not Laftel colour or spacing tokens. No touch-device interaction was measured.
 
 ## Elevation & Depth
 
-- **Hairline separator:** `box-shadow: 0 1px 0 0 var(--border-1)` on sticky nav
-- **Basic shadow:** `rgba(0,0,0,0.25)` light / `rgba(0,0,0,0.5)` dark
-- **Dropdown shadow:** `rgba(0,0,0,0.16)` light / `rgba(0,0,0,0.6)` dark
-- **Scroll thumb:** 4px transparent border, `background-clip: content-box`, `border-radius: 8px`
-- **Dim overlays:** `rgba(0,0,0,0.5)` (dim-1 light) · `rgba(0,0,0,0.7)` (dim-1/2 dark)
-- **Skeleton:** gradient shimmer `linear-gradient(to right, --background-3 0%, --background-1 25%, --background-3 50%)`, animated at 1.5s infinite linear
+The scrolled-header ancestor computes to `rgb(238, 238, 238) 0px 1px 0px 0px`, matching the declared `0 1px 0 0 var(--border-1)` hairline shadow. The measured control elements themselves have `box-shadow: none` at rest.
+
+Theme declarations retain Basic shadow `rgba(0, 0, 0, 0.25)` light / `rgba(0, 0, 0, 0.5)` dark and dropdown shadow `rgba(0, 0, 0, 0.16)` / `rgba(0, 0, 0, 0.6)`. These are colour parameters, not complete shadow geometries. Dim values are listed in §2.
+
+Laftel's own body-scrollbar CSS specifies an 8px thumb radius, 4px transparent border and `background-clip: content-box`. Ranking-selector survey controls use 9999px pill radii; the weekday circles use 50%. The skeleton's declared gradient runs through Background 3 → Background 1 → Background 3, retaining Background 3 at the final stop; its background size is 200% 100%.
 
 ### Values kept in prose
 
@@ -254,159 +247,76 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-**Duration scale:**
-- Micro (state toggle, colour): 200ms
-- Short (slide-in, fade): 400ms  
-- Medium (skeleton shimmer): 1400ms–1500ms (loop)
+Every measured control's own computed transition string is `all 0s ease 0s`. No independent press-only effect was observed on the three changing controls. The capture's settling scan detected a longer transition around the nav, whose surrounding header CSS declares `transition:color 0.4s` and `transition:background-color 0.4s,box-shadow 0.4s`; this is not a measured 0.4s transition on the nav link itself.
 
-**Easing:**
-- Default transitions: `ease` (cubic-bezier(0.25, 0.1, 0.25, 1))
-- Spinner stroke animation: `ease-in-out` at 1.4s infinite
-- Skeleton shimmer: `linear` at 1.5s infinite
-- Toast slide: `ease` on both `opacity` and `transform`
+Other verified source declarations are `transition:opacity 0.2s ease,transform 0.2s ease` for the toast, `animation:feNQrH 1.4s linear infinite` for spinner rotation, `animation:afdXk 1.4s ease-in-out infinite` for its circle, and `animation:kRqsxJ 1.5s infinite linear` for skeletons. The skeleton uses `background-size:200% 100%`. These source declarations do not establish visible toast timing or a universal duration scale.
 
-**Rules:**
-- Colour and background-colour transitions run at 0.4s (`transition:color 0.4s`, `transition:background-color 0.4s,box-shadow 0.4s`) for interactive elements
-- Opacity and positional transforms run at 0.2s ease for overlays and toasts
-- Never animate layout-affecting properties (width, height) on the main content grid — use opacity/transform only
-- Skeleton shimmer uses `background-size: 200% 100%` sweep; clip-path masks define thumbnail shapes
+---
+
+**Evidence:** measured homepage survey and state capture, 2026-11-03; [live homepage](https://laftel.net/); [company/history](https://laftel.oopy.io/); [design principles](https://blog.laftel.net/post/17); [dark-mode account](https://blog.laftel.net/post/11); [UX writing](https://blog.laftel.net/post/10); [wit and state examples](https://blog.laftel.net/post/46). Exact raw paths, production-source URLs and prior-content dispositions are in `verification.md` and `report.md`.
 
 ## Components
 
-### Buttons
+### Measured product controls
 
-**Primary (md)**
-- Background: `#816BFF`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 4px
-- Height: 56px
-- Padding: 0 18px
-- Font: 18px / 700
-- Hover background: `#6E58FF`
+Measurements are from the 1440×1000 desktop capture. Transparent control backgrounds are described here and omitted from machine `bg` fields.
 
-**Primary (sm)**
-- Background: `#816BFF`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 4px
-- Height: 48px
-- Padding: 0 20px
-- Font: 16px / 700
+| Control | Rest identity | Hover and held press | Keyboard focus |
+|---|---|---|---|
+| **멤버십** nav link | 36.3×21px, radius 0, padding 0, 14px/700; white over the hero, `#121212` on the white scrolled header | On the scrolled header, ink becomes `#816bff`; press adds no further change | Tab #4: no computed change |
+| **로그인/가입** link | 93.9×36px, radius 18px, padding 0 14px, 14px/800; transparent, opacity 0.8; white over hero, `#121212` on white scrolled header | `#816bff` ink, `rgba(0, 0, 0, 0.02)` background, opacity 1; press is identical | Tab #9: no computed change |
+| **전생 고블린인데 질문 있어?** card link | 221.7×167.6px, anchor radius 0, padding 0, inherited 11.901px/400, transparent on white, title ink `#121212` | An expanded preview mounts: compared descendants 15 → 48, including additional images and SVG controls; anchor paint and size stay unchanged; press is identical | Tab #34: no computed change |
+| **업로드 공지** | 80×29.8px, radius 2.97526px, padding 0 11.901px, white background, 1px `#e2e2e2` border; visible label `#505050`, 11.901px/700 | No computed change | Tab #26: no computed change |
+| **월** weekday selector | 44.6×44.6px, radius 50%, padding 0, `#d0d0d0`; visible label white, 17.8515px/700 | No computed change; this is not the selected-day state | Tab #27: no computed change |
+| **보러가기** hero CTA | 113.8×44.6px, radius 2.97521px, padding 8.92562px 13.3884px 8.92562px 17.8512px; white with `#121212` label at 17.8512px/700 | **UNMEASURED**: its carousel slide became `pointer-events:none` | Tab #10 reached it; no computed change |
 
-**Slight (secondary)**
-- Background: `#F0EDFF`
-- Text: `#816BFF`
-- Border: none
-- Radius: 4px
-- Height: 56px
-- Hover background: `#D9D3FF`
+The first three controls have measured state changes and are registered as components. The unchanged upload/day controls and pointer-unmeasured hero remain reference prose. No search input appeared in the homepage survey; a search icon was visible. No authored or browser-auto focus ring was reported for these six controls.
 
-**Disabled**
-- Background: `#EEEEEE`
-- Text: `#D0D0D0`
-- Radius: 4px
-- Height: 56px
+### Declared shared button recipes
 
-### Navigation Bar
+The current shared production source still declares these recipes. They are useful construction references, but no instance of these shared variants was state-measured here.
 
-**Desktop Nav**
-- Background: `#FFFFFF` / `#121212` (themed via CSS var)
-- Height: 4rem (64px)
-- Padding: 0 3.125rem (50px)
-- Active link color: `#816BFF`
-- Default link color: `var(--foreground-1)`
-- Hover link color: `#816BFF`
-- Font: 0.875rem (14px) / 700
-- Bottom border: 1px solid `var(--border-1)`
+- **Primary md:** `#816bff` background, `#ffffff` text, no border, 4px radius, 56px height, 0 18px padding, 18px/700. Its CSS hover is `#6e58ff`.
+- **Primary sm:** same colours, border and radius; 48px height, 0 20px padding, 16px/700.
+- **Slight md:** same md geometry; light background `#f0edff`, ink `#816bff`, declared hover `#d9d3ff`. Theme properties supply the dark counterpart.
+- **Disabled primary/slight:** declared light background `#eeeeee`, ink `#d0d0d0`, cursor default; the dark pair is `#323232` / `#636363`. No disabled state was captured.
+- **Hero recipe:** separate from shared primary buttons, with a declared white-to-70%-white hover. Its em-based dimensions resolve to the fractional values above. The declaration is not a measured pointer state.
 
-### Badge / Pill
+### Badge and toast declarations
 
-**Notification Badge**
-- Background: `#816BFF`
-- Text: `#FFFFFF`
-- Radius: 50%
-- Height: 1.0625rem (17px)
-- Font: 0.625rem (10px) / 700
+The header's **N/new marker**, visible beside LOOP, is purple with white 10px/700 type, 17px height/minimum width, 150% line height and 50% radius.
 
-### Toast
-
-**Default Toast**
-- Background: `#000000` (light) / `#242537` (dark)
-- Text: `#FFFFFF`
-- Radius: 0.25rem (4px)
-- Padding: 1rem 0.75rem
-- Min-height: 3rem (48px)
-- Font: 0.875rem (14px)
-- Transition: opacity 0.2s ease, transform 0.2s ease
-
----
-**Verified:** 2026-06-03
-**Tier 1 sources:** https://laftel.net (homepage HTML — full CSS custom properties block in inline `<style>`); https://laftel.net/_next/static/chunks/b3ccd441-eef37a2225571c0d.js (styled-components button/badge/nav definitions, full PURPLE scale, font scale); https://laftel.net/_next/static/css/4e57b743a29280e8.css (Pretendard font import); https://apps.apple.com/kr/app/라프텔/id1169440095 (App Store listing, brand copy)
-**Tier 2 sources:** getdesign.md/laftel — NOT LISTED ("No designs found for 'laftel'"). refero ?q=Laftel — no result (page returned empty listing, 4201 bytes).
-**Conflicts unresolved:** none
+The dormant toast CSS declares 4px radius, 16px 12px padding, minimum height 48px, 14px text and white ink on `--background-toast` (`#000000` light / `#242537` dark). The survey's fixed list includes an empty toast; no visible toast or dismissal timing was exercised.
 
 ### States
 
-- **Empty (no history):** Show the preference quiz CTA prominently — "어떤 애니를 좋아하세요? 취향 테스트로 시작해요" with a primary purple button; no blank grid.
-- **Loading / Streaming buffer:** Purple spinner (32×32px, `#816BFF`, stroke-dasharray animated at 1.4s ease-in-out infinite) centered in the player.
-- **Skeleton:** Shimmer gradient tiles (`linear-gradient(to right, --background-3 0%, --background-1 25%, --background-3 50%)`) at 1.5s linear infinite in place of thumbnails and text rows.
-- **Error — Network:** Inline message "잠시 후 다시 시도해 주세요" with a secondary retry button (slight variant); red 300 (`#F16361`) icon accent.
-- **Error — Unlicensed Content:** Overlay with dim-1 backdrop (`rgba(0,0,0,0.5)`) and a locked-icon illustration; "이 작품은 현재 지역 서비스 불가" copy; no CTA escalation.
-- **Success — Subscription:** Toast notification slides up from bottom center: dark background (`#000000` light / `#242537` dark), white text, 4px radius, 0.2s ease slide + fade; auto-dismisses after ~3s.
-- **Disabled:** Buttons use `#EEEEEE` background, `#D0D0D0` text; cursor: default; no hover effect.
-- **Offline / Download available:** Download badge in purple; offline indicator swaps to muted foreground-3 (`#8A8A8A`).
+For measured interactions, use the exact outcomes in §4: purple navigation ink; the login link's ink/background/opacity change; the card preview mounted on hover and retained during held press. All six keyboard landings produced no compared style change; no focus token is inferred.
+
+For published product-state guidance, the wit article describes Pooming in empty-state illustrations, with grey Pooming for empty components and coloured Pooming for general guidance. It explains an isekai-themed full-screen error and a 404 that routes users back into mystery-tag discovery. These are documented examples, not states triggered during this capture. [State-design examples](https://blog.laftel.net/post/46).
+
+The current CSS also declares a 32×32px purple spinner, skeleton shimmer, themed disabled button colours and a hidden toast. These are source declarations; no loading, disabled or toast-success flow was exercised.
 
 ## Do's and Don'ts
 
-### Do
-- Use `#816BFF` (PURPLE500) for all primary CTAs and interactive accent moments
-- Apply the purple-50 wash (`#F0EDFF`) for non-primary ("slight") button backgrounds
-- Use Pretendard at 700 weight for all button labels and nav text
-- Respect the dual-mode token system — always reference CSS custom properties (`--foreground-1`, `--background-1`) rather than hardcoded colours in themed contexts
-- Use 4px border-radius on buttons and toast components for brand consistency
-- Ensure scrollbars use the 8px border-radius thumb treatment
+These are application guidance derived from the captured interface and Laftel's published design writing.
 
-### Don't
-- Mix hardcoded hex literals in themed components — breaks dark mode
-- Use border-radius values other than 4px (buttons), 8px (scrollbar/card accent), or 50% (circular badges) without design intent
-- Replace Pretendard with a generic sans-serif — the Korean glyph quality matters for this audience
-- Use purple accent on disabled states — disabled buttons must use `#EEEEEE` / `#D0D0D0`
-- Increase font-weight above 700 — the scale tops out here in the design system
+- Use purple for the shared primary action and selected accents; preserve the separate white hero CTA treatment.
+- Distinguish immutable Basic colours from paired Theme colours. The team's dark-mode account specifically avoids simple inversion of artwork and already-dark areas.
+- Use Pretendard with the weight appropriate to the role: 700 nav labels and 800 login/signup are both present.
+- Match the actual component radius. Shared buttons/toast use 4px, while the header action uses 18px and weekday controls are circular.
+- Keep the information legible before adding a joke; do not make essential instructions depend on a niche reference.
+- Do not treat carousel-library fonts, generic fallback declarations or an arbitrary 700 weight limit as brand rules.
 
 ## Voice & Tone
 
-**Three adjectives:** Fan-fluent, warm-direct, quietly authoritative
+Laftel's UX-writing guide defines a friendly, witty companion who understands anime fans. Its stated goals are clarity, brevity, usefulness and consistency. Use accessible language, avoid packing multiple actions into one sentence, and give the user a clear next step. Financial interactions can use a more trust-oriented tone. [UX-writing guide](https://blog.laftel.net/post/10).
 
-| Dimension | Do | Don't |
-|---|---|---|
-| Register | Speak as a knowledgeable fellow fan ("덕후") | Sound like a corporate broadcast | 
-| Sentence length | Short, punchy; one idea per sentence | Long nested clauses |
-| Vocabulary | K-anime vernacular where natural; plain Korean elsewhere | Jargon-heavy or overly formal keigo-style |
-| Punctuation | Light use of `:D` emoticons in taglines only | Exclamation marks on every line |
+The later wit guide makes the boundary more explicit: lead with information, keep jokes short and understandable to casual fans, and avoid ridicule. Payment terms, legal notices and credential errors prioritise factual instructions. [Wit guide](https://blog.laftel.net/post/46).
 
-**Voice samples (illustrative):**
-- *Illustrative:* "세상 모든 애니를 라프텔에서 :D" — the brand's own App Store tagline; warm, inclusive, fan-to-fan energy.
-- *Illustrative:* "추억의 애니부터 분기별 신작까지, 무제한 스트리밍 가능한 곳은 오직 라프텔." — confident authority without boasting; the "only Laftel" claim lands as fact, not hype.
-- *Illustrative:* "뭘 볼지 모를 땐, 덕후가 직접 엄선한 애니 명작들을 시청!" — peer credibility; the recommendation comes from fans, not algorithms.
+The publisher's current App Store subtitle retains **“세상 모든 애니를 라프텔에서 :D”**. Treat that as a documented tagline, not a rule that all interface text should include emoticons.
 
 ## Agent Prompt Guide
 
-When generating Laftel-style UI:
-- **Palette:** primary = `#816BFF`; slight surface = `#F0EDFF`; deep dark = `#121212`; toast dark = `#242537`
-- **Buttons:** 4px radius, 48px (sm) or 56px (md) height, font-weight 700, Pretendard
-- **Mode:** always implement both light and dark variants via CSS custom properties
-- **Typography:** Pretendard, 16px base, scale: 12/13/14/16/18/20/24/28/32/40px
-- **Transitions:** colour changes at 0.4s, opacity/transform at 0.2s ease
-- **Skeleton:** shimmer gradient from `--background-3` to `--background-1` at 1.5s linear infinite
-- **Layout:** breakpoints at 480/768/1024/1280px; horizontal padding 50px desktop, fluid below
+Build a Laftel-style anime discovery page with an illustrated hero, thumbnail rails, weekday circles and purple status accents. Use the light canvas `#ffffff`, foreground `#121212`, purple `#816bff` and the paired Theme colours for mode-sensitive surfaces. Set the desktop header to 64px with 50px side padding and 14px/700 navigation.
 
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-primary`.** Text `#ffffff` on `#816bff` measures 3.83:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-primary-sm`.** Text `#ffffff` on `#816bff` measures 3.83:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-slight`.** Text `#816bff` on `#f0edff` measures 3.33:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-disabled`.** Text `#8a8a8a` on `#eeeeee` measures 2.98:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-notification`.** Text `#ffffff` on `#816bff` measures 3.83:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+For the captured header action, use a transparent 36px-high link with 18px radius, 0 14px padding and 14px/800 Pretendard. On its white scrolled-header context, change `#121212` ink to `#816bff`, opacity 0.8 to 1 and background to `rgba(0, 0, 0, 0.02)` for hover and held press. A thumbnail-card hover should reveal richer preview content. Keep essential messages clear; add brief, broadly understandable fan humour where the information still stands on its own.

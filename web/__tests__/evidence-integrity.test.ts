@@ -180,7 +180,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 169 -> 168 (2026-11-03): frip.
     // 168 -> 167 (2026-11-03): moin.
     // 167 -> 166 (2026-11-03): meituan.
-    expect(flagged.length).toBe(166);
+    // 166 -> 165 (2026-11-03): laftel.
+    expect(flagged.length).toBe(165);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
