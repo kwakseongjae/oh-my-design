@@ -163,7 +163,23 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 186 -> 185 (2026-11-02): adobe.
     // 185 -> 184 (2026-11-02): mailchimp.
     // 184 -> 183 (2026-11-02): govuk.
-    expect(flagged.length).toBe(183);
+    // 183 -> 182 (2026-11-02): datadog.
+    // 182 -> 181 (2026-11-02): mercury (legacy, rewritten from a live capture).
+    // 181 -> 180 (2026-11-02): gitlab.
+    // 180 -> 179 (2026-11-02): nintendo.
+    // 179 -> 178 (2026-11-02): duolingo (legacy, rewritten from a live capture).
+    // 178 -> 177 (2026-11-03): headspace.
+    // 177 -> 176 (2026-11-03): tellingme.
+    // 176 -> 175 (2026-11-03): corca.
+    // 175 -> 174 (2026-11-03): xiaohongshu.
+    // 174 -> 173 (2026-11-03): gaudiolab.
+    // 173 -> 172 (2026-11-03): lezhin.
+    // 172 -> 171 (2026-11-03): gmarket.
+    // 171 -> 170 (2026-11-03): ubie.
+    // 170 -> 169 (2026-11-03): fubon.
+    // 169 -> 168 (2026-11-03): frip.
+    // 168 -> 167 (2026-11-03): moin.
+    expect(flagged.length).toBe(167);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
@@ -232,7 +248,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     expect(contradicted.sort()).toEqual(
       ["dji", "kakaot", "meituan", "money-forward", "ridi", "tada", "wavve"],
     );
-    expect(low.length).toBe(22);
+    // 22 -> 21 (2026-11-03): ubie was re-extracted live; the snapshot row describes its old prose palette and
+    // no longer applies (reference-quality.mjs uses the snapshot for prose-derived palettes only).
+    expect(low.length).toBe(21);
 
     // A reference can never carry both — they are graded, not stacked.
     expect(contradicted.filter((id) => low.includes(id))).toEqual([]);

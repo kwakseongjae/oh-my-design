@@ -2,146 +2,72 @@
 name: Fubon
 colors:
   primary: '#0093c1'
-  primary-group: '#008fc7'
-  primary-hover: '#005c7a'
-  teal-accent: '#00a59b'
-  sky-light: '#3cbeE7'
   canvas: '#ffffff'
+  foreground: '#0c0e1f'
+  secondary: '#494a57'
   surface: '#f5f5f5'
   surface-subtle: '#f3fbfe'
-  ink: '#0c0e1f'
-  body: '#494a57'
-  muted: '#7d7f87'
-  hairline: '#d7d6db'
+  rate-surface: '#eef0ef'
+  label-surface: '#7d7f87'
+  card-border: '#d7d7da'
   on-primary: '#ffffff'
-  error: '#d32f2f'
-  success: '#00a59b'
 typography:
-  h1:
-    fontSize: 25px
+  nav:
+    fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Page-level heading (personal / section)
-  h2-title:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.33
-    use: Section title (.title-primary)
-  h2-small:
-    fontSize: 20px
-    fontWeight: 700
-    lineHeight: 1.4
-    use: Compact section title
+    lineHeight: 1.389
+    use: Credit-card product navigation; computed line height 25.002px
+  cta-link:
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1.5
+    use: Learn-more and more-announcements links
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Standard body text
-  nav:
-    fontSize: 18px
+    use: Announcement links; not a universal paragraph size
+  service-label:
+    fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Top nav links
-  cta-link:
-    fontSize: 18px
-    fontWeight: 500
-    lineHeight: 1.4
-    use: More-link CTAs (了解更多 / 更多最新公告)
+    use: Visible child label of the online-application service tile
   label:
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
-    use: Sub-nav, footer links, captions
-  button:
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.25
-    use: Popup confirm / cancel button
+    use: Article category label and footer legal links
 rounded:
-  sm: 4px
+  none: 0px
   md: 12px
-  lg: 16px
-  full: 9999px
-spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 32
-  xxl: 48
 components:
-  button-primary:
+  apply-link:
     type: button
-    backgroundColor: '#0093c1'
-    textColor: '#ffffff'
-    rounded: 12px
-    typography: 16px / 700 Roboto
-    border: '1px solid #0093c1'
-    use: Primary confirm / CTA (確認, 同意)
-  button-secondary:
-    type: button
-    backgroundColor: '#eef0f0'
+    backgroundColor: '#ffffff'
     textColor: '#0c0e1f'
     rounded: 12px
-    typography: 16px / 700 Roboto
-    border: '1px solid #eef0f0'
-    use: Cancel / secondary action (取消)
-  button-cta-lg:
-    type: button
-    backgroundColor: '#008fc7'
-    textColor: '#ffffff'
-    rounded: 0px
+    height: 140px
+    padding: 40px 12px
     typography: 16px / 400 Roboto
-    use: Group-level large CTA (了解更多, 60px height)
+    hover: 'child label fg #0093c1'
+    pressed: 'child label fg #0093c1'
+    use: 線上申辦 — an action link in the hot-services grid. The visible label is 16px/400; the anchor inherits 25px/400. White background stays unchanged. Pointer snapshots were measured with overlays hidden.
   nav-link:
-    type: tab
+    type: button
     textColor: '#0c0e1f'
+    rounded: 0px
+    height: 25px
+    padding: 0px
     typography: 18px / 400 Roboto
-    use: Personal banking top nav link
-    active: 'text #0093c1 underline on hover'
-  card-white:
-    type: card
-    backgroundColor: '#ffffff'
-    textColor: '#0c0e1f'
-    rounded: 0px
-    shadow: rgba(0,0,0,0.11) 5px 5px 30px
-    use: White content card with drop shadow
-  card-surface:
-    type: card
-    backgroundColor: '#f5f5f5'
-    textColor: '#0c0e1f'
-    use: Light grey tinted surface card
-  card-sky:
-    type: card
-    backgroundColor: '#f3fbfe'
-    textColor: '#0c0e1f'
-    use: Sky-blue tinted info card
-  badge-blue:
-    type: badge
-    backgroundColor: '#0093c1'
-    textColor: '#ffffff'
-    rounded: 4px
-    use: Category / service badge
-  input-default:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#0c0e1f'
-    border: '1px solid #d7d6db'
-    rounded: 0px
-    typography: 14px / 400 Roboto
-    use: Standard form input field
-  badge-teal:
-    type: badge
-    backgroundColor: '#00a59b'
-    textColor: '#ffffff'
-    rounded: 4px
-    use: Success / eco / sustainable action badge
+    hover: 'fg #0093c1; parent menu bg #f5f5f5'
+    pressed: 'fg #0093c1; parent menu bg #f5f5f5'
+    use: 信用卡 — a transparent product-navigation link on the white header. The grey hover background belongs to the parent menu, not the anchor. Pointer snapshots were measured with overlays hidden; focus colour persisted after blur and is not a focus token.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
     sans: Roboto
     tc: Noto Sans TC
-    fallback: Microsoft JhengHei
 ---
 
 # Design System Inspiration of Fubon
@@ -150,389 +76,184 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Fubon Financial Holding (富邦金控) and its flagship retail arm Taipei Fubon Bank (台北富邦銀行) share a design language built on trust, approachability, and Taiwanese banking heritage. The canvas is clean white (`#ffffff`) underpinned by a confident, mid-range blue — `#0093c1` on the bank product surface, the marginally deeper `#008fc7` on the group holding site — that reads as clear, accessible, and dependably institutional without the heaviness of legacy banking navy. The page motto "正向力量 成就可能" (Positive Power — All Possible) signals this: optimism embedded in the brand DNA, not just compliance.
+Taipei Fubon Bank (台北富邦銀行) provides personal banking, corporate banking, wealth management, credit cards, treasury, trust and public-treasury services. Its company introduction identifies it as a wholly owned subsidiary of Fubon Financial Holding. The bank combines the January 2005 merger of Taipei Bank and Fubon Bank with a continuing investment in digital services. [Company introduction](https://www.fubon.com/banking/about/intro_FBB/index.htm)
 
-Typography runs in **Roboto** as the Latin primary, with **Noto Sans TC** carrying Traditional Chinese glyphs — the standard pairing for modern TW financial digital products, chosen for legibility across dense financial tables, multilingual UI, and accessibility mandates. Section headings at 24px / weight 700 project confidence; body text at 16px / 400 breathes comfortably. There is no ultra-heavy display font à la Korean fintechs — Fubon uses weight 700 selectively on section titles and button labels, keeping the rest at regular weight for a calm, readable financial interface.
+The brand combines a white canvas (`#ffffff`), blue actions (`#0093c1`) and deep navy text (`#0c0e1f`). On the personal-banking homepage, a photographic banner sits beside eight white service tiles, followed by exchange rates, protection services, financial education, announcements and contact options. The visible balance is practical: compact financial information alongside larger photographs and rounded shortcuts. This description comes from the captured homepage, rather than an asserted company design principle.
 
-The interactive system is built around the Fubon blue as the sole saturated action color. "了解更多" (Learn More) links appear in `#0093c1` text; the primary button fills `#0093c1` with white text; the cookie/popup confirm fills the same. Shadows appear on floating elements — a 30px spread card shadow (`rgba(0,0,0,0.11) 5px 5px 30px`) and the digital service FAB — giving gentle elevation without drama. Section separation relies on flat tinted surfaces (`#f5f5f5` grey and `#f3fbfe` sky-blue) rather than heavy borders.
+Fubon's official identity explanation connects the mark's curved lines to friendly service and its square lines to stable, honest operation. It describes blue and green together. The group's 2021 brand announcement introduced “正向力量 成就可能,” with the English wording “Be positive All possible.” These sources support a reading of dependable service with an optimistic expression. [Corporate identity](https://www.fubon.com/financialholdings/story/identity.html), [brand announcement](https://www.fubon.com/financialholdings/news/news_1210419_819256.htm)
 
-**Key Characteristics:**
-- Fubon Blue (`#0093c1`) as the single action and brand anchor color
-- Roboto + Noto Sans TC — accessible, multilingual-ready pairing
-- Section titles at 24px weight 700; body at 16px / 400 — no display ultra-bold
-- White canvas with `#f5f5f5` and `#f3fbfe` tinted surface sections
-- Ink text in deep near-black navy (`#0c0e1f`) instead of pure black
-- Secondary text at warm dark-grey (`#494a57`) for readability with comfort
-- Gentle card shadow (`rgba(0,0,0,0.11) 5px 5px 30px`) — soft elevation not harsh depth
-- Rounded corners at 12px for buttons; service icons on circular 50% containers
+The digital evolution has a concrete product expression: the official November 2024 Fubon+ announcement describes a fresh visual design, simple and intuitive operation, and integrated financial services. The bank's current service page describes a customer-centred CPC model spanning customer, product and channel. These are product and service directions; this reference measures the public banking website. [Fubon+ announcement](https://www.fubon.com/financialholdings/news/news_1241101_460675.htm), [service strategy](https://www.fubon.com/banking/ESG/FinancialService.html)
 
-### Primary tasks
+The measured homepage is the Taiwan Traditional Chinese personal-banking edition (`www.fubon.com/banking/personal/`, HTML `lang="zh-Hant-TW"`), reached from `/banking/`.
 
-- Compare foreign currency rates before every trip abroad
-- Open a bank account digitally without visiting a branch
-- Find the nearest branch with the 查詢據點 lookup
-- Run corporate payroll and FX services as a small-business owner
-- Switch to the English-language corporate banking section as a foreign resident
+#### Primary tasks
+
+- Compare the displayed foreign-exchange buying and selling rates and open the full rates page.
+- Use the online-application, banking-login and consultation shortcuts.
+- Find branches, ATMs and accessible facilities through 查詢據點.
+- Read announcements, financial education and protection information.
 
 ### Brand Narrative
 
-Fubon Financial Holding (富邦金控) traces its roots to **Taipei City Insurance (台北市產物保險)**, established in **1961** by the Tsai (蔡) family. Over six decades the group expanded into banking, life insurance, securities, and investment trusts, becoming one of Taiwan's two largest financial holding companies alongside Cathay. The Tsai family remains at the helm — Chairman **Tsai Ming-Chung (蔡明忠)** and his brother Tsai Ming-Hsing built a conglomerate that spans Taiwan, Hong Kong, mainland China, Vietnam, and beyond.
+The group dates its origins to Taiwan's first private property-insurance company in **1961**. Taipei Fubon Bank's own history identifies the **January 1, 2005** merger of Taipei Bank and Fubon Bank, followed by the **April 1, 2023** merger with Jih Sun Bank. Its company page currently lists **171 domestic branches**, seven overseas branches and two representative offices. [Brand principles](https://www.fubon.com/financialholdings/story/future.html), [bank history](https://www.fubon.com/banking/about/EN/intro_FBB/index.htm)
 
-Taipei Fubon Bank (台北富邦銀行) emerged from the 2005 merger of Fubon Bank and Taipei Bank — pairing the group's financial scale with Taipei Municipal Bank's deep roots in public service. This heritage shapes the brand's dual register: commercially ambitious yet civic in spirit, serving individual depositors and SMEs with the same presence it brings to institutional investors.
-
-What distinguishes the Fubon design approach from peers is this civic-professional balance. Where some TW fintech brands chase a startup aesthetic, Fubon anchors in legibility, multilingual accessibility, and a color identity that signals trust (the blue) without intimidation. The 2024–2026 digital banking push — Fubon+ mobile app, digital account opening, and new branch formats — drives a modernisation push, but the core palette and typographic register remain steady.
+The **April 19, 2021** brand announcement introduced the current positive-possibility wording and Run for Green initiative. The **November 1, 2024** Fubon+ announcement supplies a later digital milestone. Together with the live homepage's financial shortcuts, education and protection sections, these sources support a reference that balances an established banking institution with ongoing digital-service development. They do not establish that the app and public website share identical tokens.
 
 ### Principles
 
-1. **Positive progress over risk avoidance.** The tagline 正向力量 is not marketing language — it reflects a brand posture that leads with possibility. *UI implication:* primary actions are always inviting; warning states explain and redirect, not just block.
-2. **Accessibility for all generations.** Fubon serves Taiwan's full demographic range, from young digital-first customers to older branch visitors. *UI implication:* 16px body minimum, WCAG-compliant colour ratios on blue/white, bilingual layouts with equal TC/Latin legibility.
-3. **Clarity over decoration.** The financial interface should make rates, terms, and actions immediately readable. *UI implication:* section titles are bold and direct; marketing language is kept off product data cards.
-4. **Trust through consistency.** The brand blue appears identically across all touchpoints — bank, insurance, securities, corporate. *UI implication:* `#0093c1` (bank) and `#008fc7` (group) are intentionally close; do not introduce a third blue variant.
-5. **Digital-forward, branch-aware.** Fubon invests in digital UX while maintaining 150+ branch locations. *UI implication:* service shortcuts (線上申辦, 預約諮詢, 查詢據點) always co-exist; digital and physical are not siloed.
+- **Honesty, friendliness, professionalism and innovation:** the group's explicitly stated values.
+- **Customer-centred service:** the bank describes its CPC approach across customer, product and channel.
+- **A positive future:** the group's stated mission and 2021 brand wording.
+- **Clear task access:** as an observed homepage pattern, a repeated eight-tile service grid puts common banking tasks beside the hero.
+
+The first three are company statements; the fourth is a design reading of the measured page. No unmeasured accessibility-compliance or contrast guarantee is implied.
 
 ### Personas
 
-*Personas below are illustrative archetypes informed by Fubon's publicly observable product range and Taiwanese banking demographics — not real individuals.*
-
-**陳小美, 28, 台北.** A young professional who opened a digital account and uses the Fubon+ app for daily payments and currency exchange. Values speed and transparent rates; compares foreign currency before every trip. Chose Fubon because the digital account opening was friction-free and the mobile interface is clean.
-
-**林建國, 45, 新竹.** An SME owner using Taipei Fubon Bank for corporate payroll and FX services. Trusts the Fubon brand because of its Taipei Bank heritage and the personal relationship with his business banker. Accesses the website mainly for rate lookups and branch location.
-
-**吳麗華, 62, 台中.** A retiree managing savings and insurance products across the Fubon group. Prioritises clear, unhurried information; appreciates that the site is readable and multilingual-accessible. Uses the 查詢據點 function to find her nearest branch.
-
-**Kevin, 32, 台北 (expat).** A foreign national working in Taiwan who needs English-language banking. Uses the English-language corporate banking section. Values that Fubon Financial has an international footprint (HK, Vietnam, mainland China).
+No researched persona evidence was obtained; the prior named fictional customers are not retained as company facts.
 
 ## Colors
 
-### Primary
-- **Fubon Blue** (`#0093c1`): The primary brand CTA color. Button backgrounds (確認, 同意), "了解更多" link text, icon accents, and category chips. Consistent across bank and holding surfaces.
-- **Fubon Blue Deep** (`#008fc7`): Group financial holding site variant — a slightly deeper blue used for the large group-level CTA buttons (60px height) and member sub-buttons.
-- **Primary Hover** (`#005c7a`): Darker blue for hover and active states on primary interactive elements.
+The live census covers 1,809 elements. There are no first-party custom properties in the census: its variables belong to Swiper and Air Datepicker. The following roles come from rendered colours and the measured controls.
 
-### Accent
-- **Teal Accent** (`#00a59b`): Used for eco/sustainability-themed labels, success states, and the 富邦人壽 (life insurance) subsidiary badge. A calm, trustworthy green-teal that complements the blue anchor.
-- **Error Red** (`#d32f2f`): Semantic error color for validation messages and critical alerts. Deep red that reads clearly on white canvas without visual aggression.
-- **Sky Light** (`#3cbee7`): Light sky-blue for secondary subsidiary buttons (富邦銀行, 富邦證券) and certain promotional callouts.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary action | `#0093c1` | Blue more-links; hover/pressed label on 線上申辦; hover/pressed credit-card navigation |
+| Canvas / service tile | `#ffffff` | White page and measured service tile/card backgrounds; white article-category lettering |
+| Foreground | `#0c0e1f` | Most frequent paragraph ink: 45 paragraphs; resting service label and product nav |
+| Secondary | `#494a57` | 16 paragraphs; article description and footer legal links |
+| Navigation surface | `#f5f5f5` | Credit-card menu wrapper on hover and press |
+| Contact surface | `#f3fbfe` | One census background; `.contact-wrap` in the homepage stylesheet |
+| Rate surface | `#eef0ef` | Five census backgrounds; the rate-card gradient starts at this colour |
+| Article-category surface | `#7d7f87` | Measured grey category label with white text |
+| Card border | `#d7d7da` | Measured 1px solid article-card border |
 
-### Neutral & Surface
-- **Canvas White** (`#ffffff`): Page background, cards, and button text on blue.
-- **Surface Grey** (`#f5f5f5`): Subtle cool-grey tinted section backgrounds.
-- **Surface Sky** (`#f3fbfe`): Very light blue-tinted surface for info cards and service sections.
-- **Hairline** (`#d7d6db`): Thin dividers, input borders, and soft separators.
-- **Muted Grey** (`#aeafb4`): Disabled states and lower-emphasis metadata.
+The rate-card CSS declares `linear-gradient(to bottom, #eef0ef, rgba(223, 229, 229, 0.28))`. It is a gradient treatment, so a flat neutral swatch does not fully describe it.
 
-### Text
-- **Ink Navy** (`#0c0e1f`): Primary text, headings, nav items — a very dark blue-black with financial gravitas.
-- **Body Grey** (`#494a57`): Secondary body text, sub-nav links, caption text.
-- **Muted** (`#7d7f87`): Tertiary text, placeholder text.
+The shared first-party CSS also declares `#006e91` for `.btn.main-btn:hover`, `.art-more-btn:hover` and `.ann-more-btn:hover`; `#00a59b` for `.wrapper .green` and the progress bar; and `#d7d6db` for header dividers and several shared borders. These are stylesheet declarations, separate from measured interactive states. The lower more-links' hover and pressed states were unmeasured in this capture.
 
 ## Typography
 
-### Font Family
-- **Latin**: `Roboto` — clean, neutral, highly legible for dense financial UI
-- **Traditional Chinese**: `"Noto Sans TC"` — complete TC Unicode coverage, pairs seamlessly with Roboto
-- **Fallback**: `Arial, Helvetica, 微軟正黑體, Microsoft JhengHei, Apple LiGothic, 蘋果儷中黑` — broad compatibility across TW Windows/macOS environments
+### Font evidence classes
 
-### Hierarchy
+- **Official product-use statement:** no opened company page specifies the product typeface by name.
+- **Live-loaded:** `document.fonts` reports **Roboto** normal weights 300, 400, 500 and 700, and **Noto Sans TC** normal variable weight range 100–900. The body's declared stack starts with `Roboto, "Noto Sans TC", sans-serif`. These loaded faces are the two typography-family entries in the tokens.
+- **Serving evidence:** both first-party stylesheets import Google Fonts for these families. The imported CSS was opened and returns font-face sources at `fonts.gstatic.com`. No binary font file was downloaded.
+- **Official distributed assets:** no separate Fubon font package or font licence was found in the opened sources.
+- **Declared-only:** Arial, Helvetica, 微軟正黑體, Microsoft JhengHei, Apple LiGothic and 蘋果儷中黑 appear later in the body stack but are absent from the loaded-face census. Century Gothic, CenturyGothic and AppleGothic also occur in shared CSS. None receives a specimen or a family token. `swiper-icons` is a declared library icon font, not a product text face.
+- **Unresolved:** a per-glyph Latin/Han font attribution was not performed. The census proves loaded faces, not equal optical weight or complete Unicode coverage. **Substitute: none chosen.**
 
-| Role | Size | Weight | Line Height | Use |
-|------|------|--------|-------------|-----|
-| Page H1 | 25px | 400 | 1.4 | Page-level heading (個人金融, 信用卡) |
-| Section Title | 24px | 700 | 1.33 | `.title-primary` — major section breaks |
-| Compact Section | 20px | 700 | 1.4 | Sidebar / widget headers (熱門服務) |
-| Nav Link | 18px | 400 | 1.4 | Top nav items |
-| CTA Link | 18px | 500 | 1.4 | Learn-more links (了解更多, 更多最新公告) |
-| Body | 16px | 400 | 1.5 | Standard reading, card content |
-| Button | 16px | 700 | 1.25 | Popup confirm / primary buttons |
-| Caption / Label | 14px | 400 | 1.5 | Footer links, sub-nav, member list |
+### Measured hierarchy
 
-### Principles
-- **Bilingual first**: Roboto + Noto Sans TC maintain equal visual weight across Latin and TC glyphs — no awkward size compensation needed.
-- **Section headings stay at 700**: weight 700 is the maximum used; there is no 800/900 display weight in this system.
-- **Functional sizing**: body at 16px, caption at 14px — comfortable for mixed-age Taiwanese banking users and accessibility compliance.
-- **No negative letter-spacing**: Unlike KR fintech counterparts, Fubon uses default tracking throughout — the system trusts the typefaces' own spacing.
+| Element | Size / weight | Line height | Use |
+|---|---|---|---|
+| Credit-card product nav | 18px / 400 | 25.002px | Resting product-navigation link |
+| More-links | 18px / 500 | 27px | 了解更多 and 更多最新公告 |
+| Service-tile child label | 16px / 400 | Not individually captured | 線上申辦; its anchor inherits 25px / 400 |
+| Announcement links | 16px / 400 | 24px | Survey announcement rows |
+| Article-category label | 14px / 400 | 21px in CSS | 理財文章; measured label box is 90×27px including padding |
+| Footer legal links | 14px / 400 | 21px | Footer survey rows |
+
+The shared `.title-primary` declaration is `1.2rem`, bold (700), line-height `1.3334`; the hot-services heading overrides the size to `1rem` and retains bold weight and the inherited line height. At the desktop rem scale evidenced by the 18px/0.9rem links, those sizes correspond to 24px and 20px. These heading metrics are CSS evidence, not separate computed heading probes. The page H1 is hidden by the shared `h1 { opacity: 0; position: absolute; top: 0; left: 0; }` rule.
+
+All six measured control identities report normal letter-spacing. This is a local observation, not a rule forbidding tracking elsewhere.
 
 ## Layout
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px
-- Section padding: 48px vertical between major content bands
+At 1440px viewport width, the content visible in the survey is centred between x=130 and x=1310: a 1,180px content span. The hero is a contained photographic panel beside **two rows of four** quick-service tiles. The background band extends across the viewport; the photographic panel itself does not.
 
-### Grid & Container
-- Desktop: centered container with side padding; hero banners extend full-width
-- Hot-service icon row: 2×4 grid of quick-access service icons with equal spacing
-- Footer: multi-column link grid, Roboto 14px / `#494a57`
+The application tile's measured padding is 40px vertically and 12px horizontally. Rate-card survey padding is 14px 16px 20px. More-links reserve 18px at the right for the arrow. The first academy card's text block declares 0.8rem padding in the homepage CSS. These are element-specific spacings; no universal 4px base or complete spacing scale was verified.
 
-### Whitespace Philosophy
-- **Generous between sections**: alternating white/grey/sky-blue bands create separation without heavy borders
-- **Compact within sections**: financial data (exchange rates, announcements) presented densely for efficiency
-- **Icon-driven shortcuts**: the 8-icon quick-access grid replaces prose with visual affordance
+The main content places “全方位守護” and the academy cards side by side, followed by dated announcement rows. Contact and branch options occupy a pale blue band above the footer. The collapsed footer exposes legal/service links at 14px; the expanded sitemap's interactive behavior was not measured.
 
-### Border Radius Scale
-- Small (4px): badges, chip labels, form inputs
-- Medium (12px): primary/secondary popup buttons — the workhorse interactive radius
-- Full (50%): circular floating service button (digital banking FAB)
-- Sharp (0px): large full-width group CTA buttons — authoritative, institutional feel
+Measured radius values are **0px** on nav and more-links and **12px** on service tiles and academy cards. Shared CSS also declares 4px on `.list-label-box .label`, 0.8rem (16px at the desktop rem scale) on `.arch-wrap .arch-accordion .group`, and 50% on the floating digital-service button; these are separate declared treatments.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column; quick-icon grid becomes 2-wide; nav collapses to hamburger |
-| Tablet | 768–1024px | 2-column layout; reduced hero banner height |
-| Desktop | 1024px+ | Full multi-column layout; 2×4 quick-access icon grid |
-
-#### Touch Targets
-- Large group CTA buttons at 60px height — comfortable thumb target
-- Quick-service icons: padded icon containers for easy tapping
-- Floating digital-service button: circular, clearly distinct from content
-
-#### Collapsing Strategy
-- Section headings maintain 24px / 700 across breakpoints
-- Tinted surface bands remain full-width at all sizes
-- Exchange rate table: horizontal scrollable on mobile
+Only desktop 1440×1000 was captured; mobile layout, breakpoint transitions and touch behavior remain unverified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | No shadow, no border | Page background, nav items, most inline elements |
-| Tint (1) | `#f5f5f5` or `#f3fbfe` background | Section separation — Fubon's primary grouping device |
-| Soft Card (2) | `rgba(0,0,0,0.11) 5px 5px 30px` | Floating white cards, digital service FAB |
-| Overlay (3) | `rgba(0,0,0,0.25)` scrim | Modal/popup overlay background |
+The measured service tile and academy card have `box-shadow: none`. The academy card uses a fine border, while the navigation menu uses a flat grey wrapper on hover. The contact band uses `#f3fbfe`.
 
-**Shadow Philosophy**: Fubon uses elevation sparingly — the dominant pattern is flat tinted bands, not card stacks. The 30px-spread card shadow is soft and diffused; it suggests depth without competing with the brand blue as the visual focal point.
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `rgba(0, 0, 0, 0.11) 5px 5px 30px 0px`
-- `shadow.soft`: `rgba(0, 0, 0, 0.25)`
+The shared `.digital-btn` CSS retains the declaration `5px 5px 30px 0 rgba(0, 0, 0, 0.11)` and 50% radius. Here 30px is the **blur radius**, with zero spread. It is evidence for that floating control's declared styling, not a generic content-card shadow. The shared popup CSS declares `rgba(12, 14, 31, 0.56)` behind a `backdrop-filter: blur(8.9px)`; the prior black 25% scrim does not match this declaration.
 
 ## Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+The measured service link, product-nav link and academy-card anchor report `transition: all 0s ease 0s`. The two more-links and search trigger report `transition: all 0.4s ease 0s`. The academy focus probe reports a longest descendant transition of 400ms; the homepage CSS assigns a 0.4s transition and scale(1.2) to the card image on hover, but that pointer state was unmeasured.
 
-**Motion rules**: Motion is functional and conservative — matching the institution's temperament. Navigation dropdowns ease in smoothly; page banner transitions use a clean fade rather than parallax or spring. Mobile touch targets respond immediately on press (sub-100ms feedback). Under `prefers-reduced-motion: reduce`, all animated transitions collapse to instant cut; the site remains fully usable.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on:
-- https://www.fubon.com/banking/ (Taipei Fubon Bank personal banking homepage)
-- https://www.fubon.com/ (Fubon Financial Holding Group homepage)
-
-Key computed style observations:
-- body: font-family Roboto, "Noto Sans TC"; color rgb(12,14,31) #0c0e1f; font-size 25px
-- H1 "個人金融": rgb(12,14,31) / 25px / weight 400 / Roboto/Noto Sans TC
-- H2 .title-primary "熱門服務": rgb(12,14,31) / 20px / weight 700
-- H2 .title-primary "外幣匯率": rgb(12,14,31) / 24px / weight 700
-- Primary button (.blue-btn "確認"): bg rgb(0,147,193) #0093c1 / color white / radius 0px 0px 12px / 16px/700
-- Cancel button (.gray-btn "取消"): bg rgb(238,240,240) #eef0f0 / color rgb(12,14,31) / radius 0px 0px 0px 12px / 16px/700
-- Cookie CTA (.main-btn "同意"): bg rgb(0,147,193) #0093c1 / color white / radius 12px / 16px/500
-- More link (.art-more-btn "了解更多"): color rgb(0,147,193) / 18px / weight 500
-- More link (.ann-more-btn): color rgb(0,147,193) / 18px / weight 500
-- Nav link (.nav-link-p "信用卡"): color rgb(12,14,31) / 18px / weight 400
-- header bg rgb(255,255,255) / height 112px
-- digital FAB: bg rgb(255,255,255) / radius 50% / shadow rgba(0,0,0,0.11) 5px 5px 30px 0px
-- Group site primary: bg rgb(0,143,199) #008fc7 (了解更多 large CTA, member header)
-- Group: secondary subsidiary btns: rgb(60,190,231) #3cbee7 (sky), rgb(83,187,159) #53bb9f (teal)
-- bgFreq (bank): rgb(255,255,255)×28, rgb(245,245,245)×24, rgb(0,147,193)×11, rgb(238,240,240)×7
-- fgFreq (bank): rgb(12,14,31)×912, rgb(73,74,87)×481, rgb(0,0,0)×113, rgb(0,147,193)×111
-
-TW regional requirement (≥2 brand-owned Tier 1 sources):
-1. https://www.fubon.com/banking/ — Taipei Fubon Bank official personal banking homepage
-2. https://www.fubon.com/ — Fubon Financial Holding Group official site
-
-Voice samples verified verbatim from live pages 2026-06-22.
-Brand narrative: Fubon 1961 founding, Tsai family, 2005 merger (Taipei Bank + Fubon Bank) are widely documented public facts.
-Personas are illustrative archetypes; names do not refer to real people.
--->
+The comparison waits were 900ms, beyond the reported 400ms transitions. No computed cubic-bezier curve, reduced-motion response, spring, or mobile touch feedback was verified.
 
 ## Components
 
-### Buttons
+### Online-application service link
 
-**Primary (確認 / 同意)**
-- Background: `#0093c1`
-- Text: `#ffffff`
-- Radius: 12px
-- Font: 16px Roboto weight 700
-- Border: 1px solid `#0093c1`
-- Use: Popup confirm, cookie consent, primary action
+“線上申辦” links to `/banking/onlineapply.htm`. Its white `#ffffff` tile measures **88×140px**, with **12px radius**, **40px 12px padding**, no border and no shadow. The visible paragraph label is **16px / 400 Roboto** in `#0c0e1f`; the parent anchor's inherited font is 25px / 400.
 
-**Secondary / Cancel (取消)**
-- Background: `#eef0f0`
-- Text: `#0c0e1f`
-- Radius: 12px
-- Font: 16px Roboto weight 700
-- Border: 1px solid `#eef0f0`
-- Use: Cancel / dismiss in popup dialogs
+On hover and while pressed, only the paragraph label changes to `#0093c1` in the compared snapshot. The tile stays white. There is no additional pressed change relative to hover. Keyboard focus adds the browser's automatic outline, with no authored focus token. The pointer observations used overlay hiding.
 
-**Large Group CTA (了解更多)**
-- Background: `#008fc7`
-- Text: `#ffffff`
-- Height: 60px
-- Radius: 0px
-- Font: 16px Roboto weight 400
-- Use: Group-level primary CTA, full-width section buttons
+### Product-navigation link
 
-### Cards & Containers
+“信用卡” (`a#lv2_a_1347.nav-link-p`, href `/banking/personal/credit_card/index.htm`) measures **54×25px**, **0px radius**, **0px padding**, **18px / 400 Roboto**, and 25.002px line height. Its background is transparent over the white header, its resting foreground is `#0c0e1f`, and it has no border or shadow.
 
-**White Content Card**
-- Background: `#ffffff`
-- Text: `#0c0e1f`
-- Shadow: `rgba(0, 0, 0, 0.11) 5px 5px 30px 0px`
-- Use: Product / feature cards with gentle floating elevation
+Hover and press change the link to `#0093c1` and its immediate menu wrapper to `#f5f5f5`. No underline change was recorded. The focus pass also saw blue text and the grey wrapper, but both persisted after blur into the menu's descendants; they are not promoted as focus-specific tokens. The focus-only outline is browser `auto`.
 
-**Grey Surface Card**
-- Background: `#f5f5f5`
-- Text: `#0c0e1f`
-- Use: Alternating section background tint — separates content zones without borders
+### More-links and article card
 
-**Sky-Blue Info Card**
-- Background: `#f3fbfe`
-- Text: `#0c0e1f`
-- Use: Light-blue tinted info sections, product highlights
+The two more-links retain useful measured geometry even though their pointer states were unmeasured. Both are transparent on white, `#0093c1`, **18px / 500**, **27px high**, **0px radius**, and **0px 18px 0px 0px padding**, with no border or shadow. The academy link spans 578px and the announcement link spans 1,180px; their text aligns at the right of those boxes.
 
-### Navigation
+The first academy card is an actual link to the bank's learning site. It measures **280×282px**, **12px radius**, **0px outer padding**, white background, **1px solid `#d7d7da`**, and **no shadow**. Its anchor inherits `#000000` and 25px / 400, but the visible title is `#0c0e1f`, description `#494a57`, category label white on `#7d7f87`, and “前往了解” is `#0093c1`. The shared card CSS declares title 0.9rem / 500 and description 0.7rem. Pointer states are unmeasured; keyboard focus showed only the browser's automatic ring. Keep this as a measured rest treatment rather than a stateful component token.
 
-**Primary Nav Link**
-- Text: `#0c0e1f`
-- Font: 18px Roboto weight 400
-- Active: text color `#0093c1`, underline indicator
-- Background: transparent on default; hover state shows Fubon Blue text
+### Search and shared dialog declarations
 
-### Badges
+The search trigger (`button.search-open`, title “網站搜尋”) is **32×32px**, square, with no padding, border or shadow, transparent on white. Its inherited foreground is `#000000` and inherited font 25px / 400; the visible search image is 18×18px. Hover and pressed snapshots showed no changes within the tool's comparison scope. Keyboard focus is browser `auto`. A visible search-input field was not present in the survey.
 
-**Primary Blue Badge**
-- Background: `#0093c1`
-- Text: `#ffffff`
-- Radius: 4px
-- Use: Category tags, service indicators, subsidiary label chips
+Shared CSS declares the popup confirmation fill `#0093c1` with white text and cancellation fill/border `#eef0f0` with `#0c0e1f` text. The paired buttons use one rounded lower outer corner each: first `0 0 0 0.6rem`, last `0 0 0.6rem 0`; their font is 0.8rem bold with line-height 1.5, equivalent to 16px / 700 at the evidenced desktop rem scale. These are declarations for popup buttons, not measured product components. The visible cookie “同意” button is separately measured by the survey as 200×48px, 12px radius, 16px / 500; it is not a catalog component.
 
-**Teal Success Badge**
-- Background: `#00a59b`
-- Text: `#ffffff`
-- Radius: 4px
-- Use: Success, sustainability, eco-friendly service tags
-
-### Inputs
-
-**Default Input**
-- Background: `#ffffff`
-- Border: 1px solid `#d7d6db`
-- Text: `#0c0e1f`
-- Radius: 0px
-- Font: 14px Roboto weight 400
-- Placeholder: `#7d7f87`
-- Use: Search fields, form inputs
-
----
-
-**Verified:** 2026-06-22
-**Tier 1 sources:** https://www.fubon.com/banking/ (Taipei Fubon Bank personal banking), https://www.fubon.com/ (Fubon Financial Holding Group)
-**Tier 2 sources:** getdesign.md/fubon — not found; styles.refero.design/?q=fubon — not found
-**Conflicts unresolved:** none (group site blue #008fc7 vs bank site #0093c1 — both are brand blues; bank CTA value used as primary)
+The stylesheet's `.btn.disabled-btn` declares background/border `#d7d8da`, foreground `#aeafb4` and `pointer-events: none`. No disabled product control was sampled.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no announcements)** | White canvas with `#494a57` supporting text — a calm explanation of no current notices, with a service shortcut link. |
-| **Empty (search — no results)** | Plain body-grey `#494a57` message with a suggestion to adjust the search term. No illustration clutter. |
-| **Loading (page / data fetch)** | Skeleton blocks on `#f5f5f5` tinted surface at card dimensions; grey pulse. Consistent with the flat system. |
-| **Loading (rate query)** | Inline spinner within the exchange-rate module; previous values remain visible. |
-| **Error (form validation)** | Field-level error message below input in a warm error tone; states what to correct, not just "必填". |
-| **Error (system / service unavailable)** | Inline plain-language explanation with a retry or contact-link — "台北富邦銀行系統暫停服務" pattern matches observed site announcements. |
-| **Success (online application submitted)** | Brief inline confirmation with next-step detail ("線上申辦成功"). Calm, no celebration emoji. |
-| **Skeleton** | `#f5f5f5` blocks at final card dimensions, flat grey pulse consistent with the tinted-surface system. |
-| **Disabled** | Muted grey (`#aeafb4`) text on reduced-opacity surface; primary blue actions de-saturate rather than turn red. |
-| **Security Warning** | Distinct "詐騙手法" alert block — calm but prominent with a clear action to take, not a generic red warning banner. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| 線上申辦 service link | Child label `#0c0e1f` → `#0093c1` | Same as hover | Browser automatic ring only |
+| 信用卡 nav link | Text `#0093c1`; parent menu `#f5f5f5` | Same as hover | Browser ring; colour/menu change persists after blur and is not focus-specific |
+| 了解更多 | Unmeasured: outside pointer viewport | Unmeasured | Browser automatic ring only |
+| 更多最新公告 | Unmeasured: outside pointer viewport | Unmeasured | Browser automatic ring only |
+| Search trigger | No change within compared scope | No change within compared scope | Browser automatic ring only |
+| First academy card | Unmeasured: outside pointer viewport | Unmeasured | Browser automatic ring only |
+
+The comparison includes the element, its pseudo-elements, descendants and their pseudo-elements, and three ancestor levels. The search trigger has one image descendant; the probe compares its source string but not the internals of the external SVG. Pointer snapshots explicitly matched `:hover` or `:active`, although the later crops failed their state checks. Cookie/rating/floating overlays were hidden for those pointer reads. No empty-result, submission-success, validation-error or skeleton state was measured.
 
 ## Do's and Don'ts
 
 ### Do
-- Use Fubon Blue (`#0093c1`) for primary CTAs, active link states, and icon accents
-- Pair Roboto with Noto Sans TC for all bilingual UI — never separate the two
-- Use 24px / weight 700 for section titles; keep body at 16px / 400
-- Separate content zones with flat tinted backgrounds (`#f5f5f5`, `#f3fbfe`)
-- Set ink text to deep navy (`#0c0e1f`) rather than pure black for warmth
-- Apply 12px radius to popup/confirm buttons; keep large CTA banners at 0px for authority
-- Use the teal accent (`#00a59b`) for success and sustainability-themed elements
-- Keep the shadow soft and diffused — `rgba(0,0,0,0.11) 5px 5px 30px` not harsh drop shadows
+
+- Use blue `#0093c1` for the measured navigation and service-label interaction.
+- Keep the service tiles white and 12px rounded, with a 16px regular label.
+- Use `#0c0e1f` for the visible primary labels and `#494a57` for article descriptions.
+- Give academy cards a 12px radius and fine `#d7d7da` border.
+- Preserve the distinction between the anchor's inherited font/colour and its visible child labels.
 
 ### Don't
-- Use more than one saturated hue on the same surface — Fubon Blue is the single action color
-- Apply ultra-bold display weights (800+) — 700 is the maximum
-- Use pure black (`#000000`) for body text — the system uses `#0c0e1f` near-black
-- Mix the group's deeper blue (`#008fc7`) and bank blue (`#0093c1`) on the same page without intent
-- Apply heavy box shadows — Fubon elevation is gentle, not dramatic
-- Use sharp 0px radius on popup buttons — they are 12px rounded for approachability
-- Set negative letter-spacing on headlines — Fubon uses default tracking
-- Use pure grey backgrounds — the tint (`#f5f5f5`) has subtle cool warmth
+
+- Apply the floating control's shadow to the measured academy card, which has none.
+- Turn the transparent navigation link into a permanently grey button; the measured grey belongs to its menu wrapper on hover and press.
+- Present browser `auto` focus outlines as an authored Fubon ring.
+- Treat an unmeasured lower-page hover as unchanged, or infer success/error colours from the company's green logo.
 
 ## Voice & Tone
 
-Fubon's voice is **reassuring, empowering, and community-grounded** — the brand of Taiwan's largest financial group presenting itself as a trusted partner for life, not a faceless institution. The brand tagline "正向力量 成就可能" (Positive Power — All Possible) crystallizes this: financial products framed as enablers of aspiration rather than gatekeepers of access.
+The homepage combines short functional labels—“線上申辦,” “預約諮詢,” “了解更多”—with protective language such as “全方位守護.” Its accessible-service entry reads “361度全方位服務 溫暖多1度.” These observable examples pair direct task naming with a warmer service message. The dated announcement list presents notices as concise titles rather than conversational copy.
 
-| Context | Tone |
-|---|---|
-| Brand headline | Aspirational, warm, declarative. "正向力量 成就可能." Not sales-first. |
-| Product names | Functional, clear. "個人金融", "信用卡", "外幣匯率" — utility-forward. |
-| Service CTAs | Low-pressure, inviting. "了解更多" ("Learn more"), "線上申辦" ("Apply online"). |
-| Alert / security copy | Calm, concrete. "詐騙手法：請提高警覺" — states risk + action, no panic. |
-| Announcement copy | Plain, informative. Dates and facts first; no promotional hype in disclosures. |
-
-**Voice samples (verbatim from live site, verified 2026-06-22):**
-- "正向力量 成就可能" — group brand tagline, homepage hero. *(verified live 2026-06-22)*
-- "全方位守護" — personal banking section heading (all-round protection). *(verified live 2026-06-22)*
-- "北富銀理財學院" — wealth management education section. *(verified live 2026-06-22)*
-
-**Forbidden register**: alarming or fear-based financial urgency, excessive promotional superlatives, jargon-first explanations without plain-language accompaniment.
+The official group brand statement names honesty, friendliness, professionalism and innovation as its values. Its mission describes reliable financial services supporting a positive future and a better life. These are documented brand values; no separate editorial rules or forbidden-word list was found. [Brand principles](https://www.fubon.com/financialholdings/story/future.html)
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary Action: Fubon Blue (`#0093c1`)
-- Group CTA Deep: `#008fc7`
-- Teal Success: `#00a59b`
-- Sky Accent: `#3cbee7`
-- Background: Canvas White (`#ffffff`)
-- Section Tint: Surface Grey (`#f5f5f5`)
-- Info Tint: Sky Blue (`#f3fbfe`)
-- Primary Text: Ink Navy (`#0c0e1f`)
-- Secondary Text: Body Grey (`#494a57`)
-- Muted / Placeholder: `#7d7f87`
-- Hairline / Border: `#d7d6db`
+“Build a Fubon personal-banking service tile: white `#ffffff`, 88×140px, 12px radius, 40px 12px padding, no shadow, an icon above a 16px / 400 Roboto label in `#0c0e1f`. Hover and press change the child label to `#0093c1`.”
 
-### Example Component Prompts
-- "Design a Fubon primary button: `#0093c1` bg, white text, 12px radius, 16px Roboto 700, 1px solid `#0093c1` border. Cancel button: `#eef0f0` bg, `#0c0e1f` text, same radius."
-- "Build a Fubon section: white `#ffffff` background. Section title 24px Roboto 700, `#0c0e1f`. Body copy 16px / 400, `#494a57`. CTA link '了解更多' at 18px / 500, `#0093c1`."
-- "Create a feature card: white bg, `rgba(0,0,0,0.11) 5px 5px 30px` shadow, no border radius. Section title inside 24px / 700, `#0c0e1f`."
-- "Build a nav: white 112px header. Roboto nav links 18px / 400, `#0c0e1f` default, `#0093c1` on active. Group member dropdown bg `#008fc7`."
+“Build a credit-card navigation link on white: 18px / 400 Roboto, 25.002px line height, square corners, no padding, `#0c0e1f` at rest. Hover and press turn the link blue `#0093c1` and the containing menu grey `#f5f5f5`.”
 
-### Iteration Guide
-1. Fubon Blue (`#0093c1`) is the single action color — every primary button and active link
-2. Roboto + Noto Sans TC — always paired, never separated
-3. Weight 700 only for section titles and buttons; 400 everywhere else
-4. Flat tinted bands (`#f5f5f5`, `#f3fbfe`) do the layout work, not shadows or dividers
-5. Ink navy (`#0c0e1f`) for all primary text — never pure `#000000`
-6. 12px radius on interactive buttons; 0px on large authoritative CTA banners
+“Build the academy card's measured rest treatment: white, 280×282px, 12px radius, 1px `#d7d7da` border, no shadow. Use `#0c0e1f` for the title, `#494a57` for its description, and a white-on-`#7d7f87` corner category label.”
 
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-primary`.** Text `#ffffff` on `#0093c1` measures 3.53:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-cta-lg`.** Text `#ffffff` on `#008fc7` measures 3.65:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-blue`.** Text `#ffffff` on `#0093c1` measures 3.53:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-teal`.** Text `#ffffff` on `#00a59b` measures 3.06:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+These prompts reproduce measured desktop treatments. Use the loaded font families described in §3; no substitute has been chosen.

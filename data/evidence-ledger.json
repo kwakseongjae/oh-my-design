@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 318,
-  "sources": 2296,
+  "references_with_verification_v2": 349,
+  "sources": 2755,
   "sources_by_kind": {
-    "brand-asset": 96,
-    "license": 138,
-    "official-doc": 937,
-    "product-surface": 1125
+    "brand-asset": 162,
+    "license": 139,
+    "official-doc": 1198,
+    "product-surface": 1256
   },
   "references": {
     "104": {
@@ -56,6 +56,54 @@
           "kind": "official-doc",
           "captured": "2026-07-14",
           "host": "corp.104.com.tw"
+        }
+      ]
+    },
+    "1111-jobbank": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "control-error-target",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "privacy-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "product-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
         }
       ]
     },
@@ -2441,6 +2489,144 @@
         }
       ]
     },
+    "corca": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ai-colleague",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "ax-offering",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "design-study",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "designer-interview",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.themoonlight.io"
+        },
+        {
+          "id": "moonlight-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.themoonlight.io"
+        },
+        {
+          "id": "moonlight-english",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "moonlight-old-route",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "moonlight-product",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "news-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "privacy-route-missing",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "robots",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "sitemap-index-missing",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.themoonlight.io"
+        },
+        {
+          "id": "terms-route-missing",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "vision-mission",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        },
+        {
+          "id": "working-culture",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.corca.ai"
+        }
+      ]
+    },
     "coupang": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -2891,6 +3077,102 @@
         }
       ]
     },
+    "datadog": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "company-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "druids.datadoghq.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "ds-shell",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "druids.datadoghq.com"
+        },
+        {
+          "id": "headquarters",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "home-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "investor-blocked",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "investors.datadoghq.com"
+        },
+        {
+          "id": "shared-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        },
+        {
+          "id": "website-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.datadoghq.com"
+        }
+      ]
+    },
     "datarize": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -3251,6 +3533,96 @@
         }
       ]
     },
+    "docomo-smtb-netbank": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "dngnli-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "parent",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "philosophy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "renewal-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "slogan",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "style-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        },
+        {
+          "id": "top-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.netbk.co.jp"
+        }
+      ]
+    },
     "doctolib": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -3374,6 +3746,204 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "drdiary.co.kr"
+        }
+      ]
+    },
+    "duolingo": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-colour-path",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.duolingo.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.duolingo.com"
+        },
+        {
+          "id": "brand-type-path",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.duolingo.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.duolingo.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.duolingo.com"
+        },
+        {
+          "id": "control-about",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "about.duolingo.com"
+        },
+        {
+          "id": "control-blog",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "blog.duolingo.com"
+        },
+        {
+          "id": "control-brand",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.duolingo.com"
+        },
+        {
+          "id": "design-hub",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.duolingo.com"
+        },
+        {
+          "id": "design-refresh",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.duolingo.com"
+        },
+        {
+          "id": "font-css-1",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-2",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-3",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-4",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-5",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-6",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-7",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-css-8",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-1",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-2",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-3",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-4",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-5",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-6",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "font-runtime-search-app",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "d35aaqx5ub95lt.cloudfront.net"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.duolingo.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.duolingo.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.duolingo.com"
+        },
+        {
+          "id": "privacy-shell",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.duolingo.com"
+        },
+        {
+          "id": "terms-shell",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.duolingo.com"
+        },
+        {
+          "id": "type-creator",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.monotype.com"
+        },
+        {
+          "id": "widget-design",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "blog.duolingo.com"
         }
       ]
     },
@@ -4289,6 +4859,66 @@
         }
       ]
     },
+    "frip": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "team.frientrip.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "team.frientrip.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.frip.co.kr"
+        },
+        {
+          "id": "culture",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.frip.co.kr"
+        },
+        {
+          "id": "product-detail",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.frip.co.kr"
+        },
+        {
+          "id": "publication",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.frip.co.kr"
+        }
+      ]
+    },
     "ft": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -4316,6 +4946,96 @@
           "kind": "official-doc",
           "captured": "2026-09-23",
           "host": "web.archive.org"
+        }
+      ]
+    },
+    "fubon": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "bank-company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "bank-history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-identity",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "brand-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "css-layout",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "css-personal",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "data-notice",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "mobile-launch",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
+        },
+        {
+          "id": "service-strategy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.fubon.com"
         }
       ]
     },
@@ -4409,6 +5129,60 @@
         }
       ]
     },
+    "gaudiolab": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "company-ko",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "contact-ko",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gaudiolab.com"
+        }
+      ]
+    },
     "genie": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -4484,6 +5258,324 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.getyourguide.de"
+        }
+      ]
+    },
+    "gitlab": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "animation-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "badge-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "border-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "brand-assets",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "brand-colors",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "brand-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "brand-type",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "button-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "color-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "elevation-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "empty-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "handbook.gitlab.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "input-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "loading-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "principles-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "product-type",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "remote-model",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "about.gitlab.com"
+        },
+        {
+          "id": "spacing-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        },
+        {
+          "id": "voice-doc",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "design.gitlab.com"
+        }
+      ]
+    },
+    "gmarket": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-colors",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-guidelines",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-typeface",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "common-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "contrast-standard",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.w3.org"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "corp-control",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "desktop-layout-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "ds-buttons",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-colors",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-iconography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "font-distribution",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "gds-control",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "location-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "starro-home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "swiper-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "policy.gmarket.co.kr"
         }
       ]
     },
@@ -4634,6 +5726,138 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.gousto.co.uk"
+        }
+      ]
+    },
+    "gov24": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "copyright",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-ai",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-ai-custom",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-common",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-import",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-main",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-plus25",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-variable",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.mois.go.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "krds-case",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-home",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "notices",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
         }
       ]
     },
@@ -5255,6 +6479,84 @@
         }
       ]
     },
+    "hanatour": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "company-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.hanatour.com"
+        },
+        {
+          "id": "corporate-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "hds-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.hanatour.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.hanatour.com"
+        },
+        {
+          "id": "next-font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.hanatour.com"
+        },
+        {
+          "id": "online-service",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        },
+        {
+          "id": "product-font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.hanatour.com"
+        },
+        {
+          "id": "shareholders",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.hanatourcompany.com"
+        }
+      ]
+    },
     "hashicorp": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -5342,6 +6644,90 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "hatena.co.jp"
+        }
+      ]
+    },
+    "headspace": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "italic-studio.com"
+        },
+        {
+          "id": "brand-refresh",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "control-brand",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "italic-studio.com"
+        },
+        {
+          "id": "control-organizations",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "organizations.headspace.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "press-room",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "subscriptions",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
+        },
+        {
+          "id": "uk-history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.headspace.com"
         }
       ]
     },
@@ -6305,6 +7691,96 @@
         }
       ]
     },
+    "justeat": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "newsroom.justeattakeaway.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "newsroom.justeattakeaway.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.justeattakeaway.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "ds-about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-colour",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-tokens",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "pie.design"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "legal-index",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.just-eat.co.uk"
+        }
+      ]
+    },
     "kakao": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -6722,6 +8198,96 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "card.kbcard.com"
+        }
+      ]
+    },
+    "kbs": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kbs.co.kr"
+        },
+        {
+          "id": "header-script",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kbs.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
+        },
+        {
+          "id": "location",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "about.kbs.co.kr"
+        },
+        {
+          "id": "main-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "static.kbs.co.kr"
+        },
+        {
+          "id": "strategy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "open.kbs.co.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sso.kbs.co.kr"
         }
       ]
     },
@@ -7460,6 +9026,78 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "lemonbase.com"
+        }
+      ]
+    },
+    "lezhin": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "about.lezhin.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "about.lezhin.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-1",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-2",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-3",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-4",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "css-5",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "imprint-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
+        },
+        {
+          "id": "renewal-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.lezhin.com"
         }
       ]
     },
@@ -8327,6 +9965,198 @@
         }
       ]
     },
+    "mercedes-benz": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.de"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "group.mercedes-benz.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.de"
+        },
+        {
+          "id": "control-brandhub",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.com"
+        },
+        {
+          "id": "control-group",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "group.mercedes-benz.com"
+        },
+        {
+          "id": "control-jobs",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "jobs.mercedes-benz.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.de"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.mercedes-benz.de"
+        },
+        {
+          "id": "workbench-official",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "jobs.mercedes-benz.com"
+        }
+      ]
+    },
+    "mercury": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "arcadia-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "brand-candidate-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "consumer-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "data-processing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "design-emotions",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "design-open",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "display-mono-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "founders",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "launch",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "legal-index",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "series-c",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "theme-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        },
+        {
+          "id": "tiempos-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "mercury.com"
+        }
+      ]
+    },
     "microsoft": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -8795,6 +10625,84 @@
         }
       ]
     },
+    "moin": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "company-about",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "themoin.github.io"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "engineering-blog",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "themoin.github.io"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "img.themoin.com"
+        },
+        {
+          "id": "font-license",
+          "kind": "license",
+          "captured": "2026-11-03",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "font-publisher",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "spoqa.github.io"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "agreements.themoin.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "agreements.themoin.com"
+        },
+        {
+          "id": "product-code",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        }
+      ]
+    },
     "mongodb": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -8966,6 +10874,120 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "moreh.io"
+        }
+      ]
+    },
+    "munpia": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "community-renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "nhelp.munpia.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.munpiacorp.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.munpiacorp.com"
+        },
+        {
+          "id": "company-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.munpiacorp.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.munpia.com"
+        },
+        {
+          "id": "global-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.munpia.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.munpia.com"
+        },
+        {
+          "id": "pc-renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "nhelp.munpia.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.munpia.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "product-entry",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "product-header",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "product-parts",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "product-routes",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "recruit-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "recruit.munpiacorp.com"
+        },
+        {
+          "id": "routes-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn1.munpia.com"
+        },
+        {
+          "id": "service-design",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "recruit.munpiacorp.com"
         }
       ]
     },
@@ -9500,6 +11522,150 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.nhs.uk"
+        }
+      ]
+    },
+    "nintendo": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.co.jp"
+        },
+        {
+          "id": "home-jp",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        },
+        {
+          "id": "switch2-release",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.co.jp"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nintendo.com"
+        }
+      ]
+    },
+    "nio": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "account-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "phone.nio.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nio.com"
+        },
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "ir.nio.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nio.cn"
+        },
+        {
+          "id": "design-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "us.nio.com"
+        },
+        {
+          "id": "design-writing-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "us.nio.com"
+        },
+        {
+          "id": "font-stylesheet",
+          "kind": "brand-asset",
+          "captured": "2026-11-02",
+          "host": "cdn-public.nio.com"
+        },
+        {
+          "id": "global-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nio.com"
+        },
+        {
+          "id": "global-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nio.com"
+        },
+        {
+          "id": "headquarters",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "ir.nio.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.nio.cn"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nio.cn"
+        },
+        {
+          "id": "imprint-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.nio.cn"
         }
       ]
     },
@@ -10052,6 +12218,84 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "ouraring.com"
+        }
+      ]
+    },
+    "ovhcloud": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.ovhcloud.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.ovhcloud.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.ovhcloud.com"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "corporate.ovhcloud.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "ovh.github.io"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "ovh.github.io"
+        },
+        {
+          "id": "ds-repo",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "github.com"
+        },
+        {
+          "id": "github-control",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "github.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "corporate.ovhcloud.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.ovhcloud.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.ovhcloud.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "corporate.ovhcloud.com"
         }
       ]
     },
@@ -10616,6 +12860,54 @@
           "kind": "official-doc",
           "captured": "2026-09-19",
           "host": "gestalt.pinterest.systems"
+        }
+      ]
+    },
+    "pipedrive": {
+      "checked": "2026-11-02",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "legal-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
+        },
+        {
+          "id": "product-direction",
+          "kind": "official-doc",
+          "captured": "2026-11-02",
+          "host": "www.pipedrive.com"
         }
       ]
     },
@@ -11954,6 +14246,96 @@
           "kind": "official-doc",
           "captured": "2026-10-29",
           "host": "digital.sbb.ch"
+        }
+      ]
+    },
+    "sbisec": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "asset-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "commercial-notice",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "design-system-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "home-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "layout-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "sbisec.akamaized.net"
+        },
+        {
+          "id": "legal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "search.sbisec.co.jp"
+        },
+        {
+          "id": "policy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "go.sbisec.co.jp"
+        },
+        {
+          "id": "renewal-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "go.sbisec.co.jp"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.sbisec.co.jp"
         }
       ]
     },
@@ -13769,6 +16151,90 @@
         }
       ]
     },
+    "tellingme": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "company-history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "company-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "doana.notion.site"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "tellingme.co.kr"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "tellingme.co.kr"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "tellingme.co.kr"
+        },
+        {
+          "id": "medium-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "medium.com"
+        },
+        {
+          "id": "notion-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "doana.notion.site"
+        },
+        {
+          "id": "privacy-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "doana.notion.site"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "doana.notion.site"
+        },
+        {
+          "id": "theme-bundle",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "tellingme.co.kr"
+        }
+      ]
+    },
     "tesla": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -14012,6 +16478,78 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.together.ai"
+        }
+      ]
+    },
+    "tokyo-metropolitan": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "help",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "site-module",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "theme-clay",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "theme-main",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.metro.tokyo.lg.jp"
         }
       ]
     },
@@ -14438,6 +16976,180 @@
           "kind": "official-doc",
           "captured": "2026-09-19",
           "host": "baseweb.design"
+        }
+      ]
+    },
+    "ubie": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-deck",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "speakerdeck.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "consumer-home",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.app"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "control-github",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "github.com"
+        },
+        {
+          "id": "control-speakerdeck",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "speakerdeck.com"
+        },
+        {
+          "id": "control-vitals",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-accessibility",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-button",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-card",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-components",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-developers",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-input",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-primitive",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-principles",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-radius",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-semantic",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-start",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "ds-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "vitals.ubie.life"
+        },
+        {
+          "id": "english-home",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubiehealth.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "presskit",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "ubie.life"
+        },
+        {
+          "id": "token-repository",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "github.com"
         }
       ]
     },
@@ -15221,6 +17933,144 @@
         }
       ]
     },
+    "xiaohongshu": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaohongshu.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaohongshu.com"
+        },
+        {
+          "id": "home-explore",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaohongshu.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaohongshu.com"
+        },
+        {
+          "id": "login-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "fe-static.xhscdn.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "agree.xiaohongshu.com"
+        }
+      ]
+    },
+    "xpeng": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "business-license",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "component-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "dialog-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "form-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "physical-ai",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "shared-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "theme-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "website-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        }
+      ]
+    },
     "yanolja": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -15344,6 +18194,96 @@
           "kind": "product-surface",
           "captured": "2026-09-29",
           "host": "www.yeogi.com"
+        }
+      ]
+    },
+    "zabank": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "account-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "brand-page",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "component-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "blog.za.group"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "privacy-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "shared-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "site-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "website-terms-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
         }
       ]
     },

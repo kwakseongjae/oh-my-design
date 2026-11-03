@@ -5,83 +5,95 @@ colors:
   primary-lip: '#58a700'
   mask: '#89e219'
   accent: '#1cb0f6'
-  accent-lip: '#1899d6'
+  whale: '#1899d6'
   canvas: '#ffffff'
-  foreground: '#4b4b4b'
+  foreground: '#777777'
+  eel: '#4b4b4b'
   on-primary: '#ffffff'
-  error: '#ff4b4b'
-  warning: '#ffc800'
+  cardinal: '#ff4b4b'
+  bee: '#ffc800'
   fox: '#ff9600'
   beetle: '#ce82ff'
+  fire-ant: '#ea2b2b'
+  polar: '#f7f7f7'
+  swan: '#e5e5e5'
+  hare: '#afafaf'
+  iguana: '#ddf4ff'
+  sea-sponge: '#d7ffb8'
+  turtle: '#a5ed6e'
+  walking-fish: '#ffdfe0'
+  deep-martin: '#100f3e'
+  eclipse: '#000437'
+  black-text: '#3c3c3c'
 typography:
-  display-hero:
-    fontSize: 40px
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: '-0.5px'
-    use: Landing hero, big celebrations
-  title:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.25
-    use: Section titles, modal headers
-  body:
-    fontSize: 17px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Standard reading text
   button:
     fontSize: 15px
     fontWeight: 700
-    lineHeight: 1.2
-    use: CTA button labels (uppercase)
+    letterSpacing: 0.8px
+    use: Four measured homepage CTAs; uppercase labels; computed line-height normal
+  research-link:
+    fontSize: 17px
+    fontWeight: 700
+    use: Inline research link; measured line-height 24px
+  course-label:
+    fontSize: 15px
+    fontWeight: 700
+    use: Visible English label inside a 17px/400 anchor
+  language-link:
+    fontSize: 13px
+    fontWeight: 700
+    use: Footer site-language links; measured line-height 16px
 rounded:
-  sm: 8px
-  md: 12px
-  lg: 16px
-  full: 9999px
+  button: 12px
+  web-ui-root-default: 16px
 spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 32
-  xxl: 48
+  button-inline: 16
+  hero-cta-gap: 12
 components:
   button-primary:
     type: button
-    backgroundColor: '#58cc02'
     textColor: '#ffffff'
     rounded: 12px
-    padding: 14px 20px
+    padding: 0px 16px
     height: 50px
     typography: 15px / 700
-    shadow: '0 4px 0 #58a700'
-    active: translateY(4px), lip collapses
-    disabled: 'bg #e5e5e5, fg #afafaf, no lip'
-    use: Single primary action — CONTINUE, START, CHECK ANSWER (uppercase)
-  button-accent:
+    hover: 'filter brightness(1.1); computed ::before fill remains #58cc02 and lip #58a700'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 4); ::before box-shadow: none; hover filter brightness(1.1) retained'
+    use: 'Get started is a link to /register in the hero, 330px wide. The anchor is transparent over the white homepage; ::before paints #58cc02 with a 4px #58a700 lip.'
+  button-outline:
     type: button
-    backgroundColor: '#1cb0f6'
-    textColor: '#ffffff'
+    textColor: '#1cb0f6'
     rounded: 12px
-    padding: 14px 20px
+    padding: 0px 16px
+    height: 50px
     typography: 15px / 700
-    shadow: '0 4px 0 #1899d6'
-    use: Alternative positive action, Super upsell, info CTA (uppercase)
-  card:
-    type: card
-    backgroundColor: '#ffffff'
-    border: '2px solid #e5e5e5'
-    rounded: 16px
-    padding: 16px
-    shadow: none
-    use: Course units, skill tiles, list rows
+    hover: 'filter brightness(0.9); computed ::before fill remains #ffffff and label #1cb0f6'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 2); ::before box-shadow: none; hover filter brightness(0.9) retained'
+    use: 'I ALREADY HAVE AN ACCOUNT is a 330px-wide button. Its transparent element sits on white; ::before paints white with a 2px #e5e5e5 border and 2px lip.'
+  button-super-trial:
+    type: button
+    textColor: '#000437'
+    rounded: 12px
+    padding: 0px 16px
+    height: 50px
+    typography: 15px / 700
+    hover: 'filter brightness(1.1); computed ::before fill remains #ffffff and label #000437'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 4); ::before box-shadow: none; hover filter brightness(1.1) retained'
+    use: 'Try 1 week free is a 154px-wide button on the #100f3e Super section. Its transparent element has a white ::before face and a 4px rgba(255, 255, 255, 0.5) lip.'
+  button-certify:
+    type: button
+    textColor: '#1cb0f6'
+    rounded: 12px
+    padding: 0px 16px
+    height: 50px
+    typography: 15px / 700
+    hover: 'filter brightness(0.9); computed ::before fill remains #ffffff and label #1cb0f6'
+    pressed: 'transform: matrix(1, 0, 0, 1, 0, 2); ::before box-shadow: none; hover filter brightness(0.9) retained'
+    use: 'Certify your English is a 330px-wide link to the Duolingo English Test. Its transparent element sits on white; ::before paints white with a 2px #e5e5e5 border and 2px lip.'
 fonts:
   roles:
-    sans: din-round
-    display: Feather Bold
+    sans: duolingo-sans
+    display: feather
 ---
 
 # Design System Inspiration of Duolingo
@@ -90,536 +102,209 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Duolingo is the world's most-downloaded education app, and its interface is engineered to feel less like studying and more like a game you can't put down. The brand's whole thesis is that learning should be *fun first* — and the visual language enforces that on every pixel. The signature **Feather Green** (`#58CC02`) is an almost impossibly bright, optimistic lime that reads as energy, growth, and "go." It is the color of the owl, the color of the streak, the color of every primary action. Nothing about it is muted or institutional; it is deliberately the opposite of the dusty greens of a classroom chalkboard.
+Duolingo makes education accessible through a learning experience built around practice and play. In his [2020 account of the company's origins](https://blog.duolingo.com/duolingos-values-a-letter-from-the-ceo/), Luis von Ahn connects the idea he developed with Severin Hacker in 2011 to removing the cost barrier to language education. He identifies making learning fun as a way to help learners keep going. The [current company page](https://about.duolingo.com/?imprint#contact) calls Duolingo the world's most popular language-learning app and presents it alongside English testing, Math, Music and Chess.
 
-What defines Duolingo visually is **chunky, tactile playfulness**. Buttons are not flat rectangles — they have a solid 3D "lip," a hard offset shadow of the button's own darker shade, so pressing them feels like pressing a physical key. Cards carry **bold 2px outlines** rather than soft elevation. Corners are generously rounded (12–16px). Everything is oversized and high-contrast: big rounded type, big touch targets, big celebratory states. The aesthetic borrows from children's books and arcade games but executes with the rigor of a mature product system — "a children's book that grew up."
+The homepage expresses this through bright green, rounded lettering, character artwork and substantial buttons with solid bottom lips. The measured primary action has a `#58cc02` face over a `#58a700` lip; white space gives the illustration and the two hero actions room. The secondary action has a white face, blue lettering and a grey outline. A dark `#100f3e` Super section provides a second setting for the same button construction. These are observations of the public website, whose measured edition is English at `www.duolingo.com/` (`lang="en"`).
 
-The type system pairs two custom voices. **Feather Bold** — a bespoke display typeface whose curves echo the shape of Duo the owl — carries headings, buttons, and any moment that needs personality. **DIN Next Rounded** handles longer-form and UI body text where Feather would be too loud. Together they keep the brand friendly without ever feeling childish.
+There is an evolution behind the playful surface. Duolingo's [February 2026 account of its core-tab refresh](https://blog.duolingo.com/core-tabs-redesign/) describes inconsistent headers, typography and spacing, followed by a framework with tiered headers, fewer type styles and more intentional whitespace. It explicitly balances consistency with purpose and simplicity with clarity. That article concerns the app; the numerical measurements below concern the signed-out homepage.
 
-**Key Characteristics:**
-- Feather Green (`#58CC02`) as the universal primary — CTAs, owl, streaks, correctness
-- Chunky 3D buttons with a hard offset bottom-shadow "lip" that depresses on press
-- Bold 2px card/button outlines instead of soft drop shadows
-- Generous corner radii (12px buttons, 16px cards) and oversized touch targets
-- Feather Bold (display/buttons) + DIN Next Rounded (UI/body) type pairing
-- A vivid gamification palette — Macaw blue, Cardinal red, Bee yellow, Fox orange
-- White-dominant surfaces with bold color reserved for interaction and feedback
-- Generous whitespace, single-focus screens, one clear action at a time
+#### Primary tasks
 
-### Primary tasks
-
-- Learn a language in short lessons on a commute
-- Keep a long daily streak from breaking
-- See the correct solution after getting an answer wrong
-- Compete with friends in leagues and XP races
-- Pay for Super Duolingo to remove hearts and ads
+- Start learning or return to an existing account through the two hero actions.
+- Choose a language course, Chess or Math in the course strip.
+- Follow the research link, explore Super, or visit the English Test through the corresponding homepage actions.
+- Maintain a practice habit: the [official widget article](https://blog.duolingo.com/widget-feature/) explains how the widget shows daily lesson status and streak length to encourage another lesson.
 
 ### Brand Narrative
 
-Duolingo was founded in 2011 by **Luis von Ahn** and **Severin Hacker** out of Carnegie Mellon University, on a simple, radical premise: free language education for everyone. Von Ahn — who had earlier invented reCAPTCHA — built Duolingo to remove cost as a barrier to learning. The company went public on Nasdaq in 2021 and has grown into the world's most popular way to learn languages, with hundreds of millions of learners.
+In the founder's 2020 retrospective, the idea for Duolingo emerges in 2011 while Luis von Ahn is a computer-science professor at Carnegie Mellon; he names Severin Hacker as his cofounder. The account describes an initially free website combining language learning with a game and says the app launched in 2012. Free access and motivation are connected in that account, rather than treated as separate brand themes.
 
-The design language is inseparable from the business model. Because the product is free and habit-driven, **engagement is the whole game** — and so the interface is engineered like a game: streaks, XP, leagues, hearts, crowns, and the relentlessly cheerful owl, **Duo**. Feather Green and the chunky tactile buttons exist to make a single lesson feel rewarding enough to come back tomorrow. The 3D button lip, the confetti, the celebratory full-screen states — these are not decoration; they are the retention mechanics rendered in pixels.
+The custom display typography has a similarly concrete origin. Monotype's creator account describes refining Johnson Banks' logotype concept and extending forms inspired by Duo into the Feather Bold display face. It places that work within a wider refresh with Duolingo's design and marketing team. This is documented brand history, distinct from the current CSS-family measurements.
 
-What Duolingo refuses is the aesthetic of *school*. No chalkboard greens, no textbook density, no intimidating grammar tables front-and-center. It also refuses the cold minimalism of typical SaaS — flat gray dashboards would never produce the dopamine the streak demands. Duolingo occupies a deliberate middle: rigorous, accessible product design wearing the costume of a friendly mobile game. The owl can be earnest or unhinged in marketing, but the core learning surface stays warm, clear, and relentlessly motivating.
+The 2026 core-tabs article adds a present-day design direction: reconcile a growing set of tabs through clearer hierarchy, purposeful spacing and a consistent framework while allowing each tab to retain its purpose. Its stated rollout was live on iOS and forthcoming on Android at publication; no later rollout status is inferred here.
 
 ### Principles
 
-1. **Fun is functional.** Every playful detail — the lip, the confetti, the owl — serves retention. Delight is not ornament; it is the product working.
-2. **One action per screen.** A lesson screen has exactly one obvious next move. Choice paralysis kills momentum; the bright green CTA removes it.
-3. **Celebrate everything.** Correct answers, streaks, level-ups, and milestones all get visible, joyful feedback. Progress made visible is progress repeated.
-4. **Green means go.** Feather Green is reserved for the primary action and for correctness. It never decorates idly — it always means "do this" or "you got it."
-5. **Tactile over flat.** Controls should feel physically pressable. The solid 3D lip and key-travel on press make the interface feel like a toy you want to touch.
-6. **Kind to mistakes.** Errors are normal steps, shown plainly and without blame. The tone never shames; failure is just data on the way to fluency.
-7. **Bold and legible.** Big rounded type, high contrast, large touch targets. The interface is readable at a glance and usable one-handed on the subway.
-8. **Consistency builds habit.** The same green button, the same progress bar, the same celebration — repetition of the visual language is what makes the habit stick.
+- **Learners first.** The founder's letter names this operating principle and describes testing assumptions with data.
+- **Make practice inviting.** The same letter connects fun and gamification with persistence; the widget article gives an example focused on daily practice and streak status.
+- **Consistency with purpose.** The core-tabs article explains why artwork or a repeated layout should still communicate something useful.
+- **Simplicity with clarity.** That article treats removal of elements as a decision about what learners need to understand.
+- **Visible construction.** In the measured homepage actions, a solid face, distinct bottom lip and whole-control hover filter provide the reference's concrete button treatment. This is an observed implementation pattern.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly described language-learner segments, not individual people.*
-
-**Maya, 24, Chicago.** Marketing coordinator learning Spanish before a trip. Opens Duolingo on her evening commute, 1–2 lessons a night. Lives and dies by her streak — a 200-day streak is a point of pride she will not break. Motivated by the green progress bar filling and the confetti at the end. If a lesson feels like homework rather than a game, she drifts. Taps fast through the word bank; wants the CHECK button big and obvious.
-
-**Daniel, 41, Austin.** Software engineer brushing up on Japanese he studied in college. Pays for Super Duolingo to remove hearts and ads. Values the structured path and the sense of measurable progress (XP, crowns). Appreciates the playful tone but mostly cares that the product respects his time — fast, frictionless, one clear next step. Annoyed by anything that slows the loop between lessons.
-
-**Sofia, 16, Madrid.** High-school student using Duolingo for English alongside class. Competes hard in the weekly Diamond League leaderboard — the gamification *is* the motivation. Shares streak milestones with friends. Reacts to the owl's personality and the meme culture around it. For her, the social-game layer (leagues, friends, XP races) matters as much as the learning itself.
+No first-party persona study was verified; the prior fictional profiles are not treated as research.
 
 ## Colors
 
-Duolingo names its colors after animals and birds — a playful taxonomy that mirrors the owl mascot world. The values below are the widely-documented brand tokens.
+The homepage exposes 362 computed root custom properties, including 301 `--color-*` entries. The following values come from those properties; actual uses are specified only where the capture identifies them. The names are the live CSS names, rather than a reconstructed official palette.
 
-### Primary
-- **Feather Green** (`#58CC02`): The brand workhorse. Primary CTAs, correct answers, the owl, streak flames, progress. The single most important color.
-- **Feather Green Dark / Tree** (`#58A700`): The darker shade used for the 3D button "lip" shadow and pressed states of green buttons.
-- **Mask Green** (`#89E219`): Lighter green accent, success highlights, lesson-complete glows.
+| Role or live name | Value | Evidence and use |
+|---|---|---|
+| Primary / owl | `#58cc02` | `--color-owl`; Get started `::before` face |
+| Primary lip / tree-frog | `#58a700` | `--color-tree-frog`; primary face's solid bottom shadow |
+| Mask green | `#89e219` | `--color-mask-green`; root palette value |
+| Accent / macaw | `#1cb0f6` | `--color-macaw`; outlined action labels and research link |
+| Whale | `#1899d6` | `--color-whale`; root palette value |
+| Canvas / snow | `#ffffff` | `--color-snow`; homepage surface and white button faces |
+| Foreground / wolf | `#777777` | `--color-wolf`; dominant paragraph ink, five `<p>` observations |
+| Eel | `#4b4b4b` | `--color-eel`; also present in the text census |
+| On-primary | `#ffffff` | Primary action's visible label |
+| Cardinal | `#ff4b4b` | `--color-cardinal`; root palette value |
+| Bee | `#ffc800` | `--color-bee`; root palette value |
+| Fox | `#ff9600` | `--color-fox`; root palette value |
+| Beetle | `#ce82ff` | `--color-beetle`; root palette value |
+| Fire-ant | `#ea2b2b` | `--color-fire-ant`; root palette value |
+| Polar | `#f7f7f7` | `--color-polar`; root palette value |
+| Swan | `#e5e5e5` | `--color-swan`; outlined action faces' border and lip |
+| Hare | `#afafaf` | `--color-hare`; site-language button text in the survey |
+| Iguana | `#ddf4ff` | `--color-iguana`; root palette value |
+| Sea-sponge | `#d7ffb8` | `--color-sea-sponge`; root palette value |
+| Turtle | `#a5ed6e` | `--color-turtle`; footer link ink |
+| Walking-fish | `#ffdfe0` | `--color-walking-fish`; root palette value |
+| Deep-martin | `#100f3e` | `--color-deep-martin`; background behind the Super action |
+| Eclipse | `#000437` | `--color-eclipse`; Super action label |
+| Black-text | `#3c3c3c` | `--color-black-text`; survey's site-language wrapper ink |
 
-### Accent (Gamification)
-- **Macaw** (`#1CB0F6`): Bright blue. Secondary actions, links, info states, "Super/Plus" accents, streak-freeze.
-- **Whale** (`#1899D6`): Darker blue, the 3D lip for Macaw buttons and pressed blue states.
-- **Cardinal** (`#FF4B4B`): Red. Incorrect answers, errors, destructive actions, hearts/lives.
-- **Bee** (`#FFC800`): Yellow/gold. XP, achievements, crowns, streak rewards, premium glints.
-- **Fox** (`#FF9600`): Orange. Highlights, secondary rewards, warnings, leaderboard accents.
-- **Beetle** (`#CE82FF`): Purple. Special events, Super Duolingo branding, decorative accents.
-- **Cardinal Dark** (`#EA2B2B`): The 3D lip for red buttons and pressed destructive states.
+The paragraph census separates reading text from navigation: paragraphs are `#777777` ×5 and link blue `#1cb0f6` ×1. The most frequent text colour overall is footer green `#a5ed6e` ×67. It should not become the body foreground just because it leads that count.
 
-### Neutral Scale
-- **Snow / White** (`#FFFFFF`): Primary surface. Page and card backgrounds.
-- **Polar** (`#F7F7F7`): Lightest gray. Secondary surface, disabled/empty fills, alt rows.
-- **Swan** (`#E5E5E5`): Default border, dividers, disabled button fill, progress-bar track.
-- **Hare** (`#AFAFAF`): Placeholder text, disabled text, inactive icons.
-- **Wolf** (`#777777`): Secondary/body text, captions, metadata.
-- **Eel** (`#4B4B4B`): Primary text color — strong near-black-gray for headings and body. Duolingo's default ink, *not* pure black.
+The logo anchor's own raw colour is `#0000ee` in the survey. Its visible content is a graphic; that default link colour is not used as the brand's visible link token.
 
-### Semantic
-- **Correct / Success**: Feather Green (`#58CC02`) fill, Mask Green glow.
-- **Incorrect / Error**: Cardinal (`#FF4B4B`).
-- **Reward / XP**: Bee (`#FFC800`) and Fox (`#FF9600`).
-- **Info / Neutral action**: Macaw (`#1CB0F6`).
-
-### Surface & Text Summary
-- **Page background**: `#FFFFFF`
-- **Subtle surface**: `#F7F7F7` (Polar)
-- **Border default**: `#E5E5E5` (Swan)
-- **Heading/body ink**: `#4B4B4B` (Eel)
-- **Secondary text**: `#777777` (Wolf)
-- **Placeholder/disabled**: `#AFAFAF` (Hare)
+Cardinal, Bee, Fox, Beetle and the lighter palette values above are confirmed CSS values. Their precise assignment to lesson errors, XP, hearts, streaks or selected answers was not measured here.
 
 ## Typography
 
-### Font Family
-- **Display / Buttons / Headings**: `"Feather Bold", "din-round", "DIN Next Rounded", "Nunito", -apple-system, BlinkMacSystemFont, sans-serif` — bespoke Duolingo typeface, rounded and friendly, used everywhere personality matters.
-- **UI / Body**: `"din-round", "DIN Next Rounded", "Nunito", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif` — cleaner, lighter, for longer text and dense UI.
-- **Fallback web pairing**: `Nunito` (700/800) is the closest open-source stand-in for Feather Bold when the custom font is unavailable.
+### Evidence classes
 
-### Hierarchy
+| Evidence class | Finding |
+|---|---|
+| Official product use | The former Duolingo typography-guidelines URL redirects to the design blog. Its old product-use instructions were not recovered as a live document. |
+| Live-loaded | `document.fonts` lists `duolingo-sans 100 900 normal`, `duolingo-sans 100 900 italic` and `feather 700 normal` on the homepage. These exact CSS family names populate the family tokens. |
+| Creator-documented brand history | [Monotype's project account](https://www.monotype.com/studio/portfolio/duolingo) names Feather Bold as a custom display face developed with Johnson Banks from Duo's forms and used in the brand refresh. This documents its origin and communications role; it does not identify the font of every current product control. |
+| Official distributed assets | No downloadable font package or font licence was opened. No font file was downloaded. |
+| Declared-only | The census reports `sans-serif` on the body and `duolingo-sans, sans-serif` on the first h1 and button. The generic declaration is not a brand family token. |
+| Unresolved | The census's `fontFaces` list is empty and eight first-party CDN stylesheets were unreadable to its stylesheet walk. Text inspection of those stylesheets found no `@font-face` rule. The actual font-file URLs and the commercial identity behind `duolingo-sans` remain unresolved. Substitute: none chosen. |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | Feather Bold | 40px | 700 | 48px (1.2) | -0.5px | Landing hero, big celebrations |
-| Display | Feather Bold | 32px | 700 | 40px (1.25) | -0.25px | Section headers, lesson-complete |
-| Heading Large | Feather Bold | 24px | 700 | 32px (1.33) | normal | Screen titles, modal headers |
-| Heading | Feather Bold | 20px | 700 | 28px (1.4) | normal | Card titles, sub-sections |
-| Subtitle | Feather Bold | 17px | 700 | 24px (1.4) | normal | List headers, prompts |
-| Button Label | Feather Bold | 15px | 700 | 20px | 0.8px (uppercase) | CTAs — often UPPERCASE |
-| Body Large | DIN Next Rounded | 17px | 400 | 26px (1.5) | normal | Lesson sentences, explanations |
-| Body | DIN Next Rounded | 15px | 400 | 23px (1.5) | normal | Standard reading text |
-| Caption | DIN Next Rounded | 13px | 400 | 18px (1.4) | normal | Metadata, hints, fine print |
-| Stat / Number | Feather Bold | 24px+ | 700 | tight | normal | XP, streak count, % — bold and big |
+Only the live-loaded families are eligible for a live specimen. The documented Feather Bold history remains useful independently of identifying the census alias `feather`; the alias alone is not proof of a particular font file or licence.
 
-### Principles
-- **Feather Bold for personality, DIN for reading**: Headings, buttons, and stats use the chunky display face; multi-sentence content uses the lighter rounded sans for comfort.
-- **Buttons shout**: Primary button labels are frequently UPPERCASE Feather Bold with slight letter-spacing (`CONTINUE`, `START`, `CHECK`).
-- **Bold over light**: There is no thin-weight body text. The system lives at 400 (body) and 700 (everything with emphasis). Restraint comes from size, not weight variety.
-- **Numbers are celebrated**: XP, streaks, and percentages render in large Feather Bold — gamification stats are display typography, not fine print.
-- **Eel, not black**: Default text is `#4B4B4B`, never `#000000` — pure black feels harsh against the playful palette.
+### Measured interface metrics
+
+| Element | Family | Size / weight | Line height | Tracking |
+|---|---|---|---|---|
+| Four measured CTA labels | `duolingo-sans` | 15px / 700 | `normal` | 0.8px |
+| English course anchor | `duolingo-sans` | 17px / 400 | 20px | `normal` |
+| Visible English label inside that anchor | `duolingo-sans` | 15px / 700 | Not separately captured | Not separately captured |
+| Inline research link | `duolingo-sans` | 17px / 700 | 24px | `normal` |
+| Footer site-language links | `duolingo-sans` | 13px / 700 | 16px | Not captured by survey |
+
+The CTA labels appear uppercase in the viewport and control crops. Their measured family is `duolingo-sans`.
+
+The root also exposes a type vocabulary: page-title large `2.5rem / 2.75rem`, page-title small `2rem / 2.25rem`; heading large `1.75rem / 2rem`, medium `1.5rem / 2rem`, small `1.25rem / 1.5rem`, xsmall `1rem / 1.25rem`. Those title and heading weights are 700. Body size is `1.25rem`, line height `1.75rem`, with spacious line height `2rem` and weights 400/700. Caption is `1rem / 1.5rem`, weights 400/700. Label medium is `1rem / 1rem`, large `1.5rem / 1.5rem`, both 700, uppercase, with `0.04em` tracking. These are computed custom-property values, not measurements of the hero or a complete app type scale; no root rem-to-pixel conversion is assumed.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px
-- Screen horizontal padding: 16px (mobile), generous 24px+ on web
-- Lesson screens are deliberately uncluttered — one prompt, the answer area, one CTA
+At 1440×1000, the hero places the character illustration on the left and its headline and actions on the right. The primary action begins at x=802, y=503; the secondary at x=802, y=565. Their 330px widths align, and the gap between their 50px boxes is 12px. The logo link begins at x=219, y=12. A horizontal course strip sits at the bottom of the first viewport.
 
-### Grid & Container
-- Mobile-first; primary design baseline ~375–414px
-- Single-column, full-width content with one focal action per screen
-- Web learning view centers a constrained column (~600px) with side rails for streak/league widgets
-- Marketing/landing uses a wider centered container (max ~1080px) with big illustration blocks
+The full-page capture alternates illustration-and-copy sections, then opens into a device illustration, a dark Super panel, an English Test section and a green closing/footer area. White space separates the major content groups. These observations do not establish shared web and app spacing tokens.
 
-### Whitespace Philosophy
-- **One thing at a time**: Each lesson screen presents a single exercise. No competing actions, no scrolling clutter — the next CTA is always the obvious move.
-- **Room to breathe, room to celebrate**: Generous padding around the prompt and answer keeps focus; celebration moments (lesson complete, streak) get full-screen treatment.
-- **Bold over busy**: Few elements, each large and high-contrast, rather than many small ones.
-
-### Border Radius Scale
-- Small (8px): Inline chips, small tags
-- Standard (12px): Buttons, inputs, answer tiles
-- Comfortable (16px): Cards, modals, larger surfaces
-- Pill (9999px): Progress bars, streak pills, toggles, badges
+Use the measured 16px horizontal action padding and 12px hero action gap for this layout. The actual measured action radius is 12px, while the root property `--web-ui_button-border-radius` reads `16px`. The root default is recorded separately from the control geometry. No global spacing unit or card-radius scale was established.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <768px | Full-screen single-column lessons, full-width CTAs, bottom nav |
-| Tablet | 768–1024px | Centered learning column, side widgets appear |
-| Desktop | >1024px | Constrained center column (~600px) + left nav rail + right streak/league rail |
-
-#### Touch Targets
-- Buttons: ≥50px tall, often full-width on mobile
-- Answer tiles: ≥44px tall with comfortable spacing for rapid tapping
-- Bottom nav items: ≥48px tap area
-
-#### Collapsing Strategy
-- Desktop side rails (streak, leaderboard, "Super" promo) collapse off-screen on mobile, surfacing in the top bar and dedicated tabs instead
-- Sticky top progress bar and sticky bottom feedback/CTA bar persist across all sizes
-- Marketing hero stacks illustration above copy on mobile, side-by-side on desktop
-
-#### Image Behavior
-- Duo the owl and character illustrations are vector/Lottie — scale crisply at any size
-- Flag/course icons render at consistent sizes (24–40px) within lists
-- Celebration animations (confetti, owl reactions) play full-bleed on completion screens
+Only the 1440×1000 desktop homepage was measured; mobile breakpoints, stacking, side-rail collapse and touch-target rules remain unverified.
 
 ## Elevation & Depth
 
-Duolingo's depth model is **physical, not atmospheric**. Instead of soft blurred shadows, the system uses hard, solid offsets — a darker shade of the element's own color sitting directly beneath it. This is what makes buttons feel like real, pressable keys.
+The solid lip survives re-measurement as a specific layered treatment:
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No border, no shadow | Inline text, page background |
-| Outlined (Level 1) | 2px solid `#E5E5E5` border | Cards, tiles, list rows |
-| Lip (Level 2) | `0 4px 0 <darker-shade>` solid offset | Buttons, answer tiles — the signature 3D effect |
-| Raised (Level 3) | 2px outline + subtle `0 4px 0 rgba(0,0,0,0.05)` | Floating cards, selected plans |
-| Modal (Level 4) | `0 8px 0 rgba(0,0,0,0.05)` + scrim `rgba(0,0,0,0.4)` | Dialogs, celebration sheets |
+| Measured face | Shadow on `::before` | Surface behind it |
+|---|---|---|
+| Green hero primary | `rgb(88, 167, 0) 0px 4px 0px 0px` | White homepage |
+| White outlined account and certification actions | `rgb(229, 229, 229) 0px 2px 0px 0px` | White homepage |
+| White Super action | `rgba(255, 255, 255, 0.5) 0px 4px 0px 0px` | Deep-martin `#100f3e` |
 
-**Shadow Philosophy**: The 3D "lip" is the heart of the brand's tactility. It is *always* a solid color (no blur, no spread) and *always* a darker tint of the component it sits under — green buttons get `#58A700`, blue get `#1899D6`, red get `#EA2B2B`. On press the element shifts down by the lip height and the lip disappears, mimicking a physical key travel. Atmospheric blurred shadows are rare and kept very subtle when used.
-
-### Blur Effects
-- Modal scrims dim the background with `rgba(0,0,0,0.4)` — flat dim, minimal/no blur
-- Sticky headers/footers (progress bar, feedback bar) sit on solid surfaces, no glass
+All three treatments have zero blur and spread. The Super lip is translucent white, so a rule that every lip must be a darker shade of its face would misdescribe this measured variant. No card elevation ladder, modal scrim or backdrop blur was established.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 - `shadow.button-3d`: `0 4px 0 0 #58a700`
-- `shadow.card`: `0 2px 0 0 rgba(0,0,0,0.1)`
+- `shadow.button-outline-lip`: `0 2px 0 0 #e5e5e5`
 
 ## Motion & Easing
 
-**Durations** (named):
+All six controls report the raw computed self transition `all 0s ease 0s`. The second four-action follow-up repeats that string and records `matrix(1, 0, 0, 1, 0, 0)` at rest, hover and keyboard focus. On press, Get started and Super change to `matrix(1, 0, 0, 1, 0, 4)`, while the account and certification actions change to `matrix(1, 0, 0, 1, 0, 2)`. Each `::before` box-shadow changes to `none`, removing the resting lip as the control moves through its depth. The hovered press retains `brightness(1.1)` on Get started and Super, and `brightness(0.9)` on the outlined actions. These are measured 3D press states; the captures do not establish a named duration scale, additional animation curves, release spring, celebration timing or reduced-motion behaviour.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Disabled-state flips, reduced-motion fallback |
-| `motion-fast` | 150ms | Button press / lip collapse, hover, small reveals |
-| `motion-standard` | 250ms | Screen transitions, feedback bar slide-up, tile select |
-| `motion-celebrate` | 400–600ms | XP count-up, progress fill, success reveals |
-| `motion-confetti` | 800ms+ | Lesson-complete confetti and Duo reactions |
+---
 
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Feedback bars, modals, screen pushes appearing |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, bar slide-down |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions, tab/content switches |
-| `ease-bounce` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Celebrations — XP pop, streak flame, owl bounce, badge reveal. The playful overshoot is on-brand here. |
-
-**Signature motions.**
-
-1. **Button key-press.** On tap, the button translates down by the lip height (`4px`) over `motion-fast` and the solid lip collapses to zero — exactly like pressing a physical key. On release it springs back. This is the single most recognizable Duolingo interaction.
-2. **Progress fill.** The top progress bar animates its green fill width over `motion-standard` with `ease-standard` after each correct answer — visible, satisfying forward motion.
-3. **Celebration pop.** On lesson complete, XP counts up, the streak flame and badges scale in with `ease-bounce`, and confetti bursts. Overshoot/bounce easing is *licensed* here (and only in celebratory contexts) — it would feel unserious elsewhere, but here joy is the point.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, confetti and bounce overshoots are removed and durations collapse toward `motion-instant`; transitions become simple fades. The product stays fully usable and still celebratory in copy, just less kinetic.
-
-<!--
-OmD v0.1 Sources — Duolingo
-
-Tier 1 (official):
-- design.duolingo.com/identity/color — Duolingo's official brand identity & color portal
-- www.duolingo.com — live product surface
-
-Tier 2 (corroborating brand references, accessed 2026-06-06):
-- Feather Green #58CC02 confirmed across multiple brand-color references and Duolingo design docs
-- Animal-named palette (Macaw #1CB0F6, Cardinal #FF4B4B, Bee #FFC800, Fox #FF9600,
-  Beetle #CE82FF, Eel #4B4B4B, Wolf #777777, Hare #AFAFAF, Swan #E5E5E5, Polar #F7F7F7)
-  are widely-documented Duolingo system tokens.
-- Typography: Feather Bold (bespoke display, owl-curve inspired) + DIN Next Rounded (UI/body);
-  Nunito 700/800 as the common open-source web stand-in for Feather Bold.
-
-Signature traits (3D button "lip", 2px card outlines, gamified celebration states) are
-well-documented, brand-defining characteristics of the Duolingo product UI.
-
-Personas (§13) are fictional archetypes informed by publicly described language-learner
-segments. Interpretive claims (e.g. "refuses the aesthetic of school") are editorial
-readings of the design, not documented Duolingo statements. Exact token values may vary
-slightly by platform and release.
--->
+Measured 2026-11-02. Live tokens and controls: [homepage](https://www.duolingo.com/). Narrative: [founder letter](https://blog.duolingo.com/duolingos-values-a-letter-from-the-ceo/), [app-design refresh](https://blog.duolingo.com/core-tabs-redesign/), [widget design](https://blog.duolingo.com/widget-feature/), [company and imprint](https://about.duolingo.com/?imprint#contact). Typeface creation: [Monotype's account](https://www.monotype.com/studio/portfolio/duolingo).
 
 ## Components
 
-### Buttons
+### Shared action construction
 
-The Duolingo button is the brand's signature component: a chunky, tactile control with a hard **offset bottom border** (the "lip") in a darker shade of its own color, so it looks and feels like a physical key. On press, the button translates down and the lip collapses.
+The four measured CTAs are 50px high with 12px corner radii, `0px 16px` element padding and 15px/700 labels with 0.8px tracking. Their own backgrounds are `rgba(0, 0, 0, 0)` and their own box shadows are `none`. The visible faces and lips are on `::before`. Keep that distinction when implementing the layered construction; the component entries omit the transparent element's `bg`.
 
-**Primary (Green)**
-- Background: `#58CC02`
-- Text: `#FFFFFF`
-- Border: none
-- Lip / bottom shadow: `0 4px 0 #58A700` (solid, no blur)
-- Radius: 12px
-- Padding: 14px 20px (min-height 50px)
-- Font: 15px / 700 / Feather Bold, UPPERCASE, 0.8px tracking
-- Pressed: `translateY(4px)`, lip collapses to `0 0`
-- Disabled: bg `#E5E5E5`, text `#AFAFAF`, no lip
-- Use: The single primary action — `CONTINUE`, `START`, `CHECK ANSWER`
+| Control | Width | Label | Visible `::before` face and depth | Hover change | Measured pressed change |
+|---|---|---|---|---|---|
+| Get started, hero link to `/register` | 330px | `#ffffff` | `#58cc02`, 330×46px; `#58a700` shadow `0px 4px 0px 0px` | Element filter `none` → `brightness(1.1)` | Transform `matrix(1, 0, 0, 1, 0, 4)`; `::before` box-shadow `none` |
+| I ALREADY HAVE AN ACCOUNT, button | 330px | `#1cb0f6` | `#ffffff`, 330×48px; 2px solid `#e5e5e5` border and `0px 2px 0px 0px` shadow | `none` → `brightness(0.9)` | Transform `matrix(1, 0, 0, 1, 0, 2)`; `::before` box-shadow `none` |
+| Try 1 week free, Super button | 154px | `#000437` | `#ffffff`, 153.984×46px; `rgba(255, 255, 255, 0.5)` shadow `0px 4px 0px 0px` over `#100f3e` | `none` → `brightness(1.1)` | Transform `matrix(1, 0, 0, 1, 0, 4)`; `::before` box-shadow `none` |
+| Certify your English, English Test link | 330px | `#1cb0f6` | `#ffffff`, 330×48px; same 2px `#e5e5e5` border and 2px lip as the account action | `none` → `brightness(0.9)` | Transform `matrix(1, 0, 0, 1, 0, 2)`; `::before` box-shadow `none` |
 
-**Secondary (Blue / Macaw)**
-- Background: `#1CB0F6`
-- Text: `#FFFFFF`
-- Lip: `0 4px 0 #1899D6`
-- Radius: 12px
-- Padding: 14px 20px
-- Font: 15px / 700 / Feather Bold, UPPERCASE
-- Use: Alternative positive action, "Super" upsell, info CTA
+The computed face and text colour values remain unchanged during hover; the filter acts on their rendered composite. These are filter states, not separately measured hover hex colours.
 
-**Destructive (Red / Cardinal)**
-- Background: `#FF4B4B`
-- Text: `#FFFFFF`
-- Lip: `0 4px 0 #EA2B2B`
-- Radius: 12px
-- Padding: 14px 20px
-- Font: 15px / 700 / Feather Bold, UPPERCASE
-- Use: "Incorrect" continue bar, give-up / end-session, delete
+For the measured 3D press, move the complete control down by its resting lip depth and remove the `::before` shadow: 4px for Get started and Super, 2px for the account and certification actions. All four start at `matrix(1, 0, 0, 1, 0, 0)`. Their pressed snapshots match both `:active` and `:hover`, retaining the respective hover brightness filter; face fill, label colour, border and dimensions do not change in the compared styles.
 
-**Outline / Ghost (Neutral)**
-- Background: `#FFFFFF`
-- Text: `#1CB0F6` (or `#4B4B4B` for neutral)
-- Border: 2px solid `#E5E5E5`
-- Lip: `0 2px 0 #E5E5E5`
-- Radius: 12px
-- Padding: 14px 20px
-- Font: 15px / 700 / Feather Bold, UPPERCASE
-- Use: Secondary choice paired with a filled primary (`SKIP`, `MAYBE LATER`)
+### Text links
 
-**Disabled**
-- Background: `#E5E5E5`
-- Text: `#AFAFAF`
-- Border: none, no lip
-- Radius: 12px
-- Use: Inactive `CHECK` before an answer is selected
+The English course anchor is 106.8×27.8px, square, unpadded, transparent over white, with `#777777` visible label ink. The inline research link is 210.1×20px, square, unpadded, transparent over white, with `#1cb0f6` ink and no border or shadow. Neither acquired a style change on hover or keyboard focus within the measured scope. They remain prose examples rather than interactive component tokens.
 
-Display modes — buttons are typically full-width (`block`) on mobile lesson screens, auto-width inline on dense settings rows. The lip is the brand-defining detail: it is *always* a solid darker shade of the button's own color, never a blurred drop shadow.
-
-### Inputs
-
-Duolingo uses inputs sparingly (it is a tap-first product), but text fields follow the same rounded, bold-border language.
-
-**Default**
-- Background: `#FFFFFF`
-- Text: `#4B4B4B`
-- Border: 2px solid `#E5E5E5`
-- Radius: 12px
-- Padding: 12px 16px
-- Font: 15px / 400 / DIN Next Rounded
-- Placeholder: `#AFAFAF`
-- Focus: border `#1CB0F6` (2px)
-- Use: Email/username/password on sign-up
-
-**Error**
-- Background: `#FFF0F0`
-- Text: `#4B4B4B`
-- Border: 2px solid `#FF4B4B`
-- Radius: 12px
-- Padding: 12px 16px
-- Helper text below: `#FF4B4B` 13px
-- Use: Invalid email, wrong password
-
-**Answer Tile (Word Bank)**
-- Background: `#FFFFFF`
-- Text: `#4B4B4B`
-- Border: 2px solid `#E5E5E5`
-- Lip: `0 2px 0 #E5E5E5`
-- Radius: 12px
-- Padding: 10px 16px
-- Font: 17px / 400 / DIN Next Rounded
-- Selected: border `#1CB0F6`, bg `#DDF4FF`
-- Use: Tappable word chips in translation exercises
-
-### Cards
-
-**Lesson / Path Card**
-- Background: `#FFFFFF`
-- Border: 2px solid `#E5E5E5`
-- Radius: 16px
-- Padding: 16px
-- Shadow: none (the 2px outline is the elevation)
-- Use: Course units, skill tiles, list rows
-
-**Highlight Card**
-- Background: `#DDF4FF` (light Macaw tint) or `#F7F7F7`
-- Border: 2px solid `#1CB0F6` (when active/selected)
-- Radius: 16px
-- Padding: 16px
-- Use: Selected plan, active streak card, tip callouts
-
-**Stat Card**
-- Background: `#FFFFFF`
-- Border: 2px solid `#E5E5E5`
-- Radius: 16px
-- Padding: 20px
-- Icon: large colored emoji/illustration (streak flame, XP bolt)
-- Number: Feather Bold 24px `#4B4B4B`; label Wolf `#777777` 13px
-- Use: Profile stats — streak, total XP, league
-
-### Badges & Pills
-
-**Streak / XP Pill**
-- Background: `#FFFFFF` with 2px `#E5E5E5` border, or solid color
-- Text: `#FF9600` (streak) / `#FFC800` (XP) with matching icon
-- Radius: 9999px (pill)
-- Padding: 4px 10px
-- Font: 13px / 700 / Feather Bold
-- Use: Top-bar counters
-
-**New / Status Badge**
-- Background: `#FF4B4B` (notification) / `#58CC02` (complete)
-- Text: `#FFFFFF`
-- Radius: 9999px
-- Padding: 2px 8px
-- Font: 12px / 700 / Feather Bold, UPPERCASE
-- Use: "NEW", unread dots, completion ticks
-
-### Progress Bar
-
-- Track: `#E5E5E5` (Swan), radius 9999px, height 16px
-- Fill: `#58CC02` (Feather Green), radius 9999px
-- Inner highlight: thin lighter-green top stripe for a glossy, gamey sheen
-- Use: Lesson progress at the top of every exercise screen
-
-### Tabs / Bottom Nav
-
-**Bottom Tab (Active)**
-- Background: `#FFFFFF`, top border 2px `#E5E5E5`
-- Active icon/label: `#58CC02`
-- Inactive icon/label: `#AFAFAF`
-- Font: 11px / 700 / Feather Bold
-- Use: Learn / Leagues / Quests / Shop / Profile nav
-
-### Toasts / Feedback Bars
-
-**Correct**
-- Background: `#D7FFB8` (light green) / footer area
-- Text: `#58A700`
-- Border-top: 2px `#A5ED6E`
-- CTA button: green primary `CONTINUE`
-- Use: Bottom feedback bar after a right answer
-
-**Incorrect**
-- Background: `#FFDFE0` (light red)
-- Text: `#EA2B2B`
-- Border-top: 2px `#FFB3B3`
-- CTA button: red `CONTINUE`
-- Use: Bottom feedback bar after a wrong answer
-
-### Dialogs / Modals
-
-**Centered Modal**
-- Background: `#FFFFFF`
-- Border: none (or 2px `#E5E5E5`)
-- Radius: 16px
-- Padding: 24px
-- Shadow: `0 8px 0 rgba(0,0,0,0.05)` soft, plus occasional confetti/owl illustration
-- Title: Feather Bold 20px `#4B4B4B`
-- Use: Streak celebration, plan upsell, exit confirmation
-
-### Toggles
-
-**Default**
-- Track: `#58CC02` (on) / `#E5E5E5` (off)
-- Thumb: `#FFFFFF` circle, soft inner shadow
-- Radius: 9999px
-- Use: Settings (sound effects, notifications)
-
----
-
-**Verified:** 2026-06-06
-**Tier 1 sources:** https://design.duolingo.com (official brand identity/color portal), https://www.duolingo.com (live product) · https://www.duolingo.com (live production site)
-**Tier 2 sources:** widely-documented Duolingo brand tokens (Feather Green `#58CC02`, Macaw `#1CB0F6`, Cardinal `#FF4B4B`, Bee `#FFC800`, Fox `#FF9600`, Eel `#4B4B4B`, Wolf `#777777`, Swan `#E5E5E5`, Polar `#F7F7F7`) corroborated across multiple brand-color references.
-**Note:** The animal color names and the 3D "lip" button mechanic are signature, well-documented Duolingo system traits. Exact internal token values may vary slightly by platform/release.
+No search input, interactive card, lesson answer tile, badge, progress bar, feedback bar, dialog or toggle was measured on this surface.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no lessons yet)** | Friendly Feather Bold headline + encouraging line in Wolf `#777777`, plus a green `#58CC02` CTA (`START LEARNING`). Often paired with a Duo illustration. Never cold. |
-| **Loading (first paint)** | Light skeleton blocks in `#F7F7F7` (Polar) at final dimensions, or a centered animated Duo. Path tiles fade in. |
-| **Loading (checking answer)** | CHECK button shows an inline spinner / brief disabled state; never blocks the whole screen. |
-| **Correct answer** | Bottom feedback bar bg `#D7FFB8`, text `#58A700`, top border `#A5ED6E`, cheerful copy (`Nice!`), green CONTINUE button. Optional ding + small confetti. |
-| **Incorrect answer** | Bottom feedback bar bg `#FFDFE0`, text `#EA2B2B`, shows `Correct solution:` plainly, red CONTINUE button. No shaming language. Heart/life decrements if applicable. |
-| **Error (form field)** | 2px `#FF4B4B` border, bg `#FFF0F0`, helper text below in `#FF4B4B` 13px, one actionable sentence. |
-| **Disabled (CHECK before answer)** | bg `#E5E5E5`, text `#AFAFAF`, no lip, not pressable. Re-enables the moment a choice is made. |
-| **Success (lesson complete)** | Full-screen celebration: confetti, Duo reaction, XP count animating up in Bee `#FFC800`/Feather Bold, streak increment, single green CONTINUE. The peak emotional moment. |
-| **Streak milestone** | Modal with flame illustration, big Feather Bold count, Fox `#FF9600` accents, share + continue actions. |
-| **Out of hearts** | Modal explaining hearts depleted, options to wait, practice to refill, or upsell to Super. Tone stays light, not punitive. |
-| **Skeleton** | `#F7F7F7` blocks at exact final dimensions, gentle shimmer, rounded at component radius. |
+| Control | Rest | Hover | Pressed | Keyboard focus |
+|---|---|---|---|---|
+| `get-started` | Green pseudo face, white label, 4px green lip | Filter `brightness(1.1)` | `matrix(1, 0, 0, 1, 0, 4)`; pseudo shadow `none`; hover filter retained | Tab #4; no style change in scope |
+| `existing-account` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | `matrix(1, 0, 0, 1, 0, 2)`; pseudo shadow `none`; hover filter retained | Tab #5; no style change in scope |
+| `course-english` | Transparent over white, grey visible label | No style change in scope | UNMEASURED | Tab #6; no style change in scope |
+| `research-link` | Transparent over white, blue text | No style change in scope | UNMEASURED | Tab #48; no style change in scope |
+| `super-trial` | White pseudo face, dark-blue label, translucent 4px lip | Filter `brightness(1.1)` | `matrix(1, 0, 0, 1, 0, 4)`; pseudo shadow `none`; hover filter retained | Tab #51; no style change in scope |
+| `certify-english` | White pseudo face, blue label, grey 2px border/lip | Filter `brightness(0.9)` | `matrix(1, 0, 0, 1, 0, 2)`; pseudo shadow `none`; hover filter retained | Tab #52; no style change in scope |
+
+Every hover snapshot matched `:hover`; a second capture reproduced the two hero controls' geometry, rest layers and hover filters. The second four-action follow-up reproduced all four identities, rest layers, hover filters and focus results, and measured the pressed changes above with `:active=true`. The earlier failed press attempts are superseded for these four actions; the two text links remain UNMEASURED. Hover and active then stopped matching during their respective crops, so the computed snapshots establish these states while the resulting crops do not establish their visual appearance.
+
+“No style change” is limited to the probe's computed-style and DOM-attribute comparison: the element and its pseudos, descendants and their pseudos, and three ancestor levels and their pseudos. The action controls have one descendant each; English has two including an image; research has none. The comparison includes colour, backgrounds, borders, drawn outlines, shadows, filters, transforms, opacity, size, decoration, image/source attributes, masks and SVG internals. It does not prove absence of changes in siblings, external sprite internals, canvas, video or other out-of-scope rendering. No focus indicator or browser `auto` ring was observed in this scope. Disabled, loading, lesson success, lesson error and empty states were not measured.
 
 ## Do's and Don'ts
 
-### Do
-- Use Feather Green (`#58CC02`) for the single primary action on every screen
-- Give buttons the solid 3D lip (`0 4px 0` in a darker shade of the same color)
-- Use 2px outlines on cards instead of soft drop shadows
-- Set body/heading text in Eel (`#4B4B4B`), never pure black
-- Make CTAs Feather Bold, often UPPERCASE with slight letter-spacing
-- Reserve the gamification palette (Bee, Fox, Bee yellow, Macaw) for rewards/feedback
-- Use generous radii — 12px buttons, 16px cards, pill progress bars
-- Keep one clear action per screen; let it breathe
+The following implementation guidance is derived from the measured homepage:
 
-### Don't
-- Don't use blurred/soft drop shadows where the 3D lip belongs — kills the tactile feel
-- Don't use pure black (`#000000`) for text — Eel `#4B4B4B` is the brand ink
-- Don't crowd a lesson screen with multiple primary actions
-- Don't use thin font weights — the system lives at 400 and 700 only
-- Don't make the lip a blurred or neutral shadow — it must be a darker shade of the button's own hue
-- Don't use muted/desaturated greens — Feather Green is intentionally vivid
-- Don't shrink touch targets; buttons are tall (≥50px) and finger-friendly
-- Don't mix radii randomly — follow the 8/12/16/pill scale
+- Keep the primary's green face and solid 4px lip together; keep the outlined action's 2px border and 2px lip together.
+- Set these action labels in the loaded `duolingo-sans`, 15px/700, with 0.8px tracking and uppercase presentation.
+- Apply hover brightness to the complete layered control so face, lip and label participate together.
+- Use `#777777` for the measured paragraph foreground and `#1cb0f6` for the measured research link.
+- Retain the measured 50px action height and the aligned 330px hero pair.
+- Preserve the white Super action on its dark panel when reproducing that section.
+
+Do not infer lesson-state colours from the existence of similarly named root tokens. Do not replace the measured fonts with an unlabelled substitute, assign a new hover hex by multiplying RGB channels, or add an unmeasured press animation.
 
 ## Voice & Tone
 
-Duolingo speaks like an enthusiastic, slightly mischievous friend who genuinely wants you to win. The voice is warm, encouraging, playful, and occasionally cheeky — never stern, never academic. English is the primary voice, written at a friendly, casual register. Praise is generous and specific; failure is reframed as a normal step, never a scolding. The brand famously leans into humor (and the "passive-aggressive owl" meme) in notifications, but inside the learning flow the tone stays kind and motivating.
+The homepage combines short action labels with benefit-led, friendly section language. Starting, returning to an account, trying Super and certifying English each get a direct instruction. The character artwork carries much of the playful expression.
 
-| Context | Tone |
-|---|---|
-| CTAs | Short, imperative, energetic — `CONTINUE`, `START`, `GET STARTED`, `CHECK` |
-| Correct feedback | Celebratory, brief — `Nice!`, `You're on fire!`, `Correct!` |
-| Incorrect feedback | Gentle, no blame — `Correct solution:` shown plainly; never `Wrong!` |
-| Streak / reward | Excited, exclamatory — `7 day streak!`, `+10 XP` |
-| Onboarding | Friendly second-person, one question per screen, low pressure |
-| Empty states | Encouraging nudge with one clear action — never cold or empty-feeling |
-| Notifications | Playful, personality-driven (the owl's signature charm) |
-
-**Forbidden tones.** No academic jargon, no shaming for mistakes (`Wrong!`, `You failed`), no corporate stiffness, no guilt-tripping inside the learning flow. Keep sentences short. Exclamation points are welcome where genuine excitement is warranted; em-dashes and clever asides are on-brand in marketing copy.
+The official widget article supplies a concrete example of personality serving a task: Duo's illustrated mood changes with the time of day and whether the learner has practised, becoming increasingly desperate as midnight approaches. That supports expressive reminders. It does not establish a universal rule for error messages or a prohibition on particular words inside lessons.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Feather Green (`#58CC02`), lip `#58A700`
-- Secondary CTA: Macaw blue (`#1CB0F6`), lip `#1899D6`
-- Destructive: Cardinal red (`#FF4B4B`), lip `#EA2B2B`
-- Reward/XP: Bee yellow (`#FFC800`), Fox orange (`#FF9600`)
-- Special/premium: Beetle purple (`#CE82FF`)
-- Background: White (`#FFFFFF`), subtle surface Polar (`#F7F7F7`)
-- Heading/body text: Eel (`#4B4B4B`)
-- Secondary text: Wolf (`#777777`)
-- Placeholder/disabled text: Hare (`#AFAFAF`)
-- Border: Swan (`#E5E5E5`)
+### Quick reference
 
-### Example Component Prompts
-- "Create a Duolingo primary button: `#58CC02` bg, white UPPERCASE Feather Bold 15px text with 0.8px tracking, 12px radius, 14px/20px padding, min-height 50px, solid 3D lip `0 4px 0 #58A700`. On press translateY(4px) and collapse the lip."
-- "Build a lesson progress bar: 16px tall, 9999px radius, track `#E5E5E5`, fill `#58CC02` with a thin lighter-green top sheen, animating width."
-- "Design an answer tile: white bg, 2px `#E5E5E5` border, 12px radius, `0 2px 0 #E5E5E5` lip, 17px DIN Next Rounded text `#4B4B4B`. Selected: border `#1CB0F6`, bg `#DDF4FF`."
-- "Create a correct-answer feedback bar: bottom-fixed, bg `#D7FFB8`, text `#58A700`, top border 2px `#A5ED6E`, with a green CONTINUE button on the right."
-- "Build a streak stat card: white bg, 2px `#E5E5E5` border, 16px radius, 20px padding. Flame emoji, Feather Bold 24px `#4B4B4B` count, Wolf `#777777` 13px label."
-- "Design a Duolingo bottom nav: white bg, top border 2px `#E5E5E5`, 5 tabs. Active `#58CC02`, inactive `#AFAFAF`, 11px Feather Bold labels."
+Hero primary: `#58cc02` face, `#58a700` lip, `#ffffff` label. Outline: white face, `#e5e5e5` border/lip, `#1cb0f6` label. Reading ink: `#777777`. Super: `#100f3e` panel, white face, `#000437` label, translucent white lip.
 
-### Iteration Guide
-1. Every primary action is Feather Green (`#58CC02`) with the 3D lip — this is non-negotiable brand DNA
-2. Buttons and headings use Feather Bold (fallback Nunito 700/800); body uses DIN Next Rounded
-3. Text is Eel `#4B4B4B`, never pure black; secondary text is Wolf `#777777`
-4. Cards use 2px `#E5E5E5` outlines, not blurred shadows
-5. Radii: 12px buttons/inputs, 16px cards/modals, pill for bars/badges
-6. The lip shadow is always a solid darker shade of the element's own color
-7. One clear primary action per screen; keep it spacious and celebratory
+### Component prompts
 
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-primary`.** Text `#ffffff` on `#58cc02` measures 2.09:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-accent`.** Text `#ffffff` on `#1cb0f6` measures 2.44:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- “Build the measured hero Get started link: a transparent 330×50px anchor on white, 12px radius, `0px 16px` padding, and a `::before` face in `#58cc02` with a solid `#58a700` 4px bottom shadow. Use loaded `duolingo-sans` 15px/700 uppercase text, 0.8px tracking. Hover changes the element filter to `brightness(1.1)`.”
+- “Pair it with the measured account button: the same outer geometry, a white `::before` face with 2px `#e5e5e5` border and a 2px lip, and `#1cb0f6` label. Hover applies `brightness(0.9)` to the complete control.”
+- “For the Super section, use the measured 154×50px white-faced action over `#100f3e`, label `#000437`, and a 4px bottom lip in `rgba(255, 255, 255, 0.5)`.”

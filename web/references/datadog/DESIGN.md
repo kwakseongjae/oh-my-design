@@ -4,64 +4,56 @@ colors:
   primary: '#632ca6'
   brand-violet: '#8000ff'
   brand-violet-live: '#7700ff'
-  ink: '#212529'
+  foreground: '#212529'
   ink-pure: '#000000'
-  body: '#333333'
   muted: '#555555'
-  faint: '#c7c7c7'
   canvas: '#ffffff'
-  surface: '#f5f5f5'
+  surface: '#f6f6f6'
   surface-alt: '#eeeeee'
-  dark-chip: '#323232'
   footer-bg: '#110617'
-  hairline: '#e1e5e9'
-  error: '#bf0000'
   on-primary: '#ffffff'
 typography:
   display-hero:
     fontSize: 68px
     fontWeight: 600
     lineHeight: 1
-    use: Hero headline, NationalWeb SemiBold
+    use: CSS-declared homepage H1; live-loaded NationalWeb Semibold
   section:
     fontSize: 36px
     fontWeight: 600
-    lineHeight: 1.11
-    use: Section titles
+    lineHeight: 1.111111
+    use: CSS-declared global h2 default, 40px line-height
+  section-home:
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1
+    use: CSS-declared Products heading override on the desktop homepage
   intro:
-    fontSize: 22px
+    fontSize: 32px
     fontWeight: 300
-    lineHeight: 1.43
-    use: Hero sub / intro lede, NationalWeb Light
+    lineHeight: 1.1875
+    use: CSS-declared desktop hero subtitle, 38px line-height; NationalWeb Book
   nav:
     fontSize: 18px
     fontWeight: 600
-    lineHeight: 1
-    use: Top nav links
+    lineHeight: 1.428572
+    use: Measured Pricing navigation link, 25.7143px line-height
   button:
     fontSize: 18px
     fontWeight: 700
     lineHeight: 1
-    use: Primary/secondary CTA label
+    use: Measured hero CTA pair, 18px line-height
   body:
-    fontSize: 18px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Standard reading text
+    fontSize: 22px
+    fontWeight: 300
+    use: CSS-declared body base; individual text styles may override it
 rounded:
   sm: 4px
-  md: 6px
-  lg: 8px
-  full: 9999px
 spacing:
-  xs: 4
-  sm: 8
   md: 12
   base: 16
   lg: 24
   xl: 28
-  xxl: 48
-  section: 64
 components:
   button-primary:
     type: button
@@ -71,17 +63,10 @@ components:
     padding: 16px 24px
     height: 54px
     typography: 18px / 700 NationalWeb
-    states: transition 0.15s ease-in-out
-    use: Primary CTA — Free trial / Get started
-  button-primary-compact:
-    type: button
-    backgroundColor: '#632ca6'
-    textColor: '#ffffff'
-    rounded: 6px
-    padding: 8px 14px
-    height: 38px
-    typography: 18px / 600 NationalWeb
-    use: Compact primary CTA on pricing cards — Start Free Trial
+    hover: 'background-color: #7700ff; color: #ffffff'
+    pressed: 'background-color: rgba(0, 0, 0, 0); color: #212529; border: 1px solid #212529'
+    focus: 'background-color: rgba(0, 0, 0, 0); color: #212529; border-color: rgba(0, 0, 0, 0); outline: none; box-shadow: none'
+    use: Hero Free trial link, role=button, on the white homepage; measured width 235px. Focus changes clear after blur.
   button-outline:
     type: button
     textColor: '#632ca6'
@@ -90,52 +75,46 @@ components:
     padding: 14px 24px 16px
     height: 54px
     typography: 18px / 700 NationalWeb
-    use: Secondary CTA on light — SEE THE PLATFORM
-  button-ghost-dark:
+    hover: 'background-color: #7700ff; color: #ffffff; border: 1px solid #7700ff'
+    pressed: 'background-color: rgba(0, 0, 0, 0); color: #212529; border: 1px solid #212529'
+    focus: 'background-color: rgba(0, 0, 0, 0); color: #212529; border-color: rgba(0, 0, 0, 0); outline: none; box-shadow: none'
+    use: SEE THE PLATFORM link, role=button, transparent on white; measured width 235px. The play glyph follows the label colour.
+  nav-link:
+    type: button
+    textColor: '#555555'
+    rounded: 0px
+    padding: 8.5px 12px 9.5px
+    height: 43.7px
+    typography: 18px / 600 NationalWeb
+    hover: 'color: #7700ff'
+    pressed: 'color: #7700ff'
+    use: Pricing link in the white top navigation, transparent background; measured width 87.3px.
+  card-postgres-link:
+    type: card
+    textColor: '#632ca6'
+    rounded: 0px
+    padding: 0px
+    height: 18px
+    typography: 18px / 700 NationalWeb
+    hover: 'color: #7700ff; icon colour: #7700ff'
+    pressed: 'color: #7700ff; icon colour: #7700ff'
+    use: LEARN MORE link inside the State of Postgres resource tile, transparent over its cyan-to-green gradient. Width 501px and height describe the inline action.
+  button-banner-outline:
     type: button
     textColor: '#ffffff'
     border: '1px solid #ffffff'
-    rounded: 6px
-    height: 50px
-    typography: 18px / 600 NationalWeb
-    use: Secondary CTA on dark sections — Free Trial
-  nav-link:
-    type: tab
-    textColor: '#555555'
-    typography: 18px / 600 NationalWeb
-    padding: 8.5px 12px 9.5px
-    active: 'purple #632ca6 text on active'
-    use: Top nav item
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#212529'
-    border: '1px solid #e1e5e9'
     rounded: 4px
-    padding: 0px 10px 0px 35px
-    typography: 18px NationalWeb
-    use: Header search field, left icon inset
-  card-pricing:
-    type: card
-    backgroundColor: '#ffffff'
-    textColor: '#212529'
-    rounded: 8px
-    padding: 0px 0px 16px
-    use: Pricing plan card, 8px bottom corners, no shadow
-  region-select:
-    type: badge
-    backgroundColor: '#ffffff'
-    textColor: '#000000'
-    rounded: 4px
-    padding: 7px 10px 9px 12px
-    height: 34px
-    typography: 18px NationalWeb
-    use: Region/datacenter select control on pricing
+    padding: 11px 24px 12px
+    height: 50.7px
+    typography: 18px / 600 NationalWeb
+    hover: 'background-color: #ffffff; color: #7700ff'
+    pressed: 'background-color: #ffffff; color: #7700ff'
+    focus: 'background-color: #ffffff; color: #7700ff'
+    use: Learn More link in the rotating Gartner DEM campaign banner, aria-label Gartner Magic Quadrant™ DEM; transparent on the campaign artwork at rest; measured width 148.8px.
 fonts:
   roles:
     display: NationalWeb
     body: NationalWeb
-    fallback: Helvetica, Arial, sans-serif
 ---
 
 # Design System Inspiration of Datadog
@@ -144,163 +123,138 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Datadog is the rare observability platform that refuses to dress in blue. In a category — backend monitoring, APM, cloud security — where nearly every competitor reaches for the same trustworthy enterprise blue, Datadog stakes its identity on **purple**: a confident, saturated `#632ca6` that runs every call-to-action, every link, every outline, and a more vivid brand violet `#8000ff` reserved for full-bleed brand moments. The homepage opens on a clean white canvas (`#ffffff`) with near-black ink (`#212529`) for headings, then punctuates the scroll with dramatic dark sections — pure black (`#000000`) bands and a deep purple-black footer (`#110617`) — so the purple reads as light against shadow. The result is dense-yet-legible: a product that has to show a lot of dashboard surface area but never lets the marketing feel cluttered.
+Datadog brings infrastructure, applications, logs and security into a shared observability platform. Its founding goal in 2010 was unified visibility for development, operations and business teams; its current company page extends that story to applications, infrastructure, data, models and security in the AI era. The homepage expresses that evolution with the headline “AI-Powered Observability and Security,” a large angled dashboard visual and a product section that includes Bits AI alongside Infrastructure, Log Management, APM and Security. [Company](https://www.datadoghq.com/about/leadership/), [history](https://www.datadoghq.com/blog/datadog-acquires-logmatic-io/).
 
-The typographic voice is **NationalWeb**, a humanist sans that Datadog uses across both display and body. The hero headline ("AI-Powered Observability and Security") lands at a large 68px / weight 600 with a tight 1.0 line-height, projecting declarative authority without shouting. Section heads drop to 36px / 600, and a distinctive light-weight lede (22px / weight 300) carries intro copy — the weight-300 intro is the brand's quiet counterpoint to the heavy headline. Functional chrome (nav, buttons) sits at 18px, with nav at weight 600 and CTAs pushed to weight 700 for emphasis. The split is deliberate: heavy where it persuades, light where it sets context, regular where it informs.
+Purple gives the measured marketing surface its most repeatable visual signature. The hero's filled action uses `#632ca6`, its outlined partner uses the same purple, and both turn `#7700ff` on hover. The official press kit distinguishes logo purple `#632ca6` from background-and-accent purple `#8000ff`. These are separate documented values; the measured interaction colour is a third value. The dog in the logo is named Bits. [Press kit](https://www.datadoghq.com/about/resources/).
 
-What distinguishes Datadog from its devops peers is its **restraint with depth combined with boldness of color**. There are essentially no drop shadows — `box-shadow: none` across the hero, nav, pricing cards, and chips. Separation comes from flat tinted surfaces (`#f5f5f5`, `#eeeeee`), thin hairlines (`#e1e5e9`), and the high-contrast dark sections. Geometry is conservative and engineered: a tight 4px–8px radius scale, never pill-shaped, never harsh. Buttons are 4px (marketing) or 6px (product). The personality is that of a serious infrastructure tool that has hired excellent designers — precise, dense where it needs to be, and unmistakably purple. The brand even names the dog in its logo ("Bits") and publishes an exhibition-quality press kit that prints the brand colors as text: `#632CA6` and `#8000FF`.
+The homepage starts with a white canvas and near-black ink, moves through illustrated campaign bands and a black Products section, then closes with a deep purple-black footer. NationalWeb carries both the headline and the functional labels. The filled/outlined CTA pair, centered hero, high-contrast section bands and product imagery are useful building blocks for this style. The resource tiles also use cyan, green and blue imagery or gradients, so purple does not describe the entire page palette.
 
-**Key Characteristics:**
-- Purple-as-identity (`#632ca6`) in a blue-dominated devops category — the deliberate differentiator
-- Vivid brand violet (`#8000ff`, live-rendered as the `#7700ff` swatch band) for full-bleed brand moments
-- NationalWeb humanist sans across display and body — 68px/600 hero, 22px/300 light lede
-- Near-black ink (`#212529`) for headings instead of pure black — warm, premium
-- Dramatic dark sections: pure black (`#000000`) bands + deep purple-black footer (`#110617`)
-- Flat depth: no shadows; tinted `#f5f5f5` / `#eeeeee` surfaces + `#e1e5e9` hairlines do the separating
-- Conservative 4px–8px radius scale — engineered, never pill-shaped
-- Cool neutral ladder (`#333333` → `#555555` → `#c7c7c7`) for text hierarchy; error red `#bf0000`
+Datadog's product design system is DRUIDS: Datadog Reusable User Interface Design System. The official engineering article dates its beginning to 2018 and describes repeatable UX patterns across an expanding platform. That supplies product-design context; the values below describe the public marketing homepage measured on 2026-11-02. The measured homepage is the English edition (`datadoghq.com/`, HTML `lang="en"`). [DRUIDS article](https://www.datadoghq.com/blog/engineering/druids-the-design-system-that-powers-datadog/).
 
-### Primary tasks
+#### Primary tasks
 
-- Correlate a metric spike with the trace that caused it.
-- Monitor metrics, traces, and logs in one correlated place.
-- Connect a first data source to an empty dashboard.
-- Compare pricing plans and choose a datacenter region.
-- Start a free trial from a pricing card.
+- Explore infrastructure monitoring, APM, logs, AI and security from the Products section.
+- Compare the platform's capabilities and pricing through the top navigation.
+- Start a free-trial flow or open the platform tour from the hero.
+- Follow research and campaign links, including the State of Postgres resource tile.
+
+These tasks describe links and labels on the public page. Trial and tour destinations were not activated during capture.
 
 ### Brand Narrative
 
-Datadog was founded in **2010** by **Olivier Pomel (CEO)** and **Alexis Lê-Quôc (CTO)**, two engineers who had worked together at Wireless Generation and kept hitting the same wall: developers and operations teams lived in separate tools and blamed each other when systems broke. Datadog's founding premise was to put **dev and ops on the same page** — a single platform where metrics, traces, and logs from across the whole stack are correlated in one place. (The company name and the "Bits" dog mascot lean into that friendly, approachable framing for an otherwise deeply technical product.)
+Datadog's 2017 Logmatic announcement dates the company to 2010 and describes a progression from infrastructure metrics to APM and log analytics. Its leadership page identifies Olivier Pomel as CEO/co-founder and Alexis Lê-Quôc as CTO/co-founder, and records their earlier technology and operations roles at Wireless Generation. These sources establish the founders and the platform's unifying goal without requiring an invented origin anecdote.
 
-The product grew into one of the defining observability and cloud-security platforms of the cloud era, expanding from infrastructure monitoring into APM, log management, security, and AI-powered analysis — the "AI-Powered Observability and Security" positioning stated on today's homepage. Datadog went public on Nasdaq in **2019** and became one of the most prominent infrastructure-software companies of its generation.
+The present company page broadens the platform story to include data and models alongside infrastructure, applications and security. On the homepage, Bits AI appears in the Products section, while the dog symbol remains the named Bits identity in the press kit. This joins an established visual identity to current AI-era positioning; no dated visual rebrand announcement was verified.
 
-What Datadog refuses, visible in its design: the interchangeable enterprise-blue palette of its category (it wears purple instead), and heavy decorative chrome (it stays flat and shadowless). What it embraces: a single confident purple as the action color, a humanist NationalWeb voice, dramatic dark/light contrast in place of elevation, and an exhibition-quality brand surface that takes its own identity — down to naming the dog — seriously.
+DRUIDS adds a documented design history. Datadog says it began the system in 2018 to make interactions familiar across products and efficient to produce. The article treats the underlying React, TypeScript and CSS implementation as the source of truth for component behavior, and describes contextual links between documentation, design files and source code. [History](https://www.datadoghq.com/blog/datadog-acquires-logmatic-io/), [leadership](https://www.datadoghq.com/about/leadership/), [DRUIDS](https://www.datadoghq.com/blog/engineering/druids-the-design-system-that-powers-datadog/).
 
 ### Principles
 
-1. **Purple, not blue.** Datadog's identity is a deliberate refusal of the category-default enterprise blue. *UI implication:* use `#632ca6` as the single action color everywhere; never substitute a blue accent.
-2. **One platform, one signal.** The product correlates metrics, traces, and logs in one place; the design keeps one action color so the next step is never ambiguous. *UI implication:* reserve purple exclusively for primary actions and links.
-3. **Flat and dense.** Infrastructure tooling shows a lot of surface area; depth comes from contrast, not shadow. *UI implication:* separate with tint, hairlines, and dark bands — no drop shadows.
-4. **Engineer to engineer.** Copy and UI address technical peers plainly. *UI implication:* precise labels over decorative benefit-speak; examples over adjectives.
-5. **Take the brand seriously.** A named mascot, a corrective press kit, printed brand hexes. *UI implication:* respect the logo rules (white on purple/dark, purple on light; never invert, gradient, box, or recolor).
+The first three principles below come from the DRUIDS engineering article; the last two come from the press kit and the measured homepage. They have different scopes.
+
+1. **Repeat familiar interactions.** The DRUIDS article describes users expecting filters, time ranges and graph inspection to work consistently across the platform.
+2. **Keep context nearby.** The article describes minimizing dead ends through contextual links to additional information.
+3. **Use implementation as a behavioral reference.** The article identifies code as the source of truth for component appearance and function.
+4. **Preserve identity.** Follow the press kit's naming, configuration and logo-treatment rules.
+5. **Reproduce the observed action hierarchy.** The marketing hero pairs a purple filled link with a purple outlined link, and the CTA labels are heavier than the navigation labels.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Datadog user segments (SREs, platform engineers, DevOps leads, security engineers), not individual people.*
-
-**Marcus Hale, 34, Austin.** A site-reliability engineer at a mid-market SaaS company. Lives in dashboards during incidents and judges a tool by how fast it correlates a metric spike to the offending trace. Chose Datadog because everything — infra, APM, logs — is in one place instead of three vendors.
-
-**Priya Nair, 29, Bangalore.** A platform engineer standing up observability for a fast-growing fintech. Values the plain technical copy and the density of the product; distrusts monitoring tools whose marketing leans on hype rather than capability.
-
-**Daniel Brooks, 41, London.** A security engineer adopting Datadog's cloud security alongside the team's existing observability. Appreciates that one platform now covers both observability and security, and that the brand treats its own identity with the same rigor he expects of the product.
+No first-party persona profiles were verified. The homepage itself names developers, IT operations teams and business users in its careers copy, and engineers, developers and security experts in its event copy; these are audience descriptions, without invented names, ages, locations or preferences.
 
 ## Colors
 
-### Primary
-- **Datadog Purple** (`#632ca6`): Primary brand color and CTA background. The saturated purple on every primary button, link, and outline — the system's single "action" color, and the documented logo color on light backgrounds. Live-confirmed (`rgb(99,44,166)`) and printed verbatim in the official press kit.
-- **Brand Violet** (`#8000ff`): The vivid brand violet printed in the press kit for full-bleed brand moments and the most saturated brand expressions. A louder companion to the workhorse `#632ca6`.
-- **Brand Violet (live band)** (`#7700ff`): The press-kit hero swatch band as actually rendered in the live DOM (`rgb(119,0,255)`) — the brand violet at runtime.
+| Colour | Value | Verified role and evidence |
+|---|---|---|
+| Datadog Purple | `#632ca6` | Official logo purple; measured Free trial background and platform-outline text/border at rest. |
+| Backgrounds & Accents Purple | `#8000ff` | Printed in the official press kit for backgrounds and accents; also present in the homepage text census. |
+| Live interaction violet | `#7700ff` | Measured hover on both hero CTAs, Pricing and the Postgres link; text colour on the filled banner CTA states. Root `--bs-neue` resolves from `#70f`. |
+| Foreground | `#212529` | Paragraph ink: three census entries; also the hero CTAs' measured pressed/focus text. Root `--bs-body-color` agrees. |
+| Pure black | `#000000` | Products section background in the homepage HTML and screenshot; one opaque background in the census. |
+| Muted | `#555555` | Resting Pricing label and the other visible top-level navigation labels. |
+| Canvas / on-primary | `#ffffff` | White page background and the filled hero CTA's resting label. |
+| Light surface | `#f6f6f6` | Careers band uses `bg-gray-lightest`; the census has one matching background and the theme property agrees. |
+| Alternate surface | `#eeeeee` | One opaque homepage background in the census; no broader component role assigned. |
+| Footer | `#110617` | One opaque background in the census, matching the footer's dark-purple treatment in the first-party HTML/CSS. |
 
-### Ink & Neutral
-- **Ink Navy-Black** (`#212529`): Primary text and heading color. A near-black with a faint cool cast, used instead of pure black for warmth and premium weight.
-- **Pure Black** (`#000000`): Maximum-contrast dark section backgrounds and some heading text.
-- **Body Grey** (`#333333`): Standard body copy and secondary reading text.
-- **Muted Grey** (`#555555`): Nav links, tertiary labels, secondary UI text.
-- **Faint Grey** (`#c7c7c7`): Disabled text, placeholder, lowest-emphasis labels.
+The census's most frequent text colour is `rgb(226, 226, 226)` (107 entries); it is not the paragraph-ink role. White text has 66 entries, while paragraph ink is led by `rgb(33, 37, 41)`. Alpha colours stay as alpha values: the footer also includes `rgba(255, 255, 255, 0.5)` text.
 
-### Surface & Hairline
-- **Pure White** (`#ffffff`): Page background, card surfaces, button text on purple/dark, logo-on-purple.
-- **Surface Grey** (`#f5f5f5`): Light tinted surface for alternating content sections.
-- **Surface Alt** (`#eeeeee`): A slightly deeper grey for secondary blocks and dividers.
-- **Dark Chip** (`#323232`): Near-black surface for dark UI chips and inset controls.
-- **Footer Black** (`#110617`): The deep purple-black footer background — black with a whisper of the brand violet underneath.
-- **Hairline** (`#e1e5e9`): Thin input/divider borders — the primary separation device given the shadow-free system.
-
-### Semantic
-- **Error Red** (`#bf0000`): Validation errors, destructive states, required-field messaging.
+The stylesheet theme still declares `--bs-gray-darker: #333333` and `--bs-gray-light: #c7c7c7`. Their earlier assignments to standard body copy and disabled text were not established by this capture. There is no verified semantic error palette in this reference.
 
 ## Typography
 
-### Font Family
-- **Display & Body**: `NationalWeb` (with fallback `Helvetica, Arial, sans-serif`) — a humanist sans used across headlines, nav, buttons, and body. The same family carries both display and reading text; hierarchy comes from size and weight, not a second typeface.
+### Evidence classes
+
+- **Official product use:** no product typeface was identified in the opened first-party narrative documents. The DRUIDS article confirms the design system's purpose without naming a font.
+- **Live-loaded on the marketing homepage:** `nationalweb` 300 normal, 300 italic, 400 italic, 600 normal and 700 normal; `robotomono-regular` 400 normal; and `iconfont`. The declared family on body, H1 and buttons begins with `NationalWeb`. The measured CTA and navigation identities also name NationalWeb.
+- **Official distributed assets:** the homepage's own CSS declares NationalWeb Book, Semibold and Bold as relative WOFF2/WOFF URLs under `../fonts/web-fonts/`. The loaded 300 normal face maps to `NationalWeb-Book`, 600 to `NationalWeb-Semibold`, and 700 to `NationalWeb-Bold`. `robotomono-regular` has WOFF/TTF sources; `iconfont` has WOFF2/WOFF sources. These are CSS source declarations; no font file was downloaded and no redistribution licence was established.
+- **Declared-only faces:** NationalWeb 100 normal, 200 normal/italic, 400 normal and 500 normal; Calibre 400/600; Simplon Mono 400; the `robotomono` aliases and medium/bold variants; Noto Sans JP, Noto Sans TC and Noto Sans Variable. They did not appear in this survey's loaded-face list, so they receive no specimen here. Helvetica and Arial occur in the fallback declaration and were not established as rendered faces.
+- **Unresolved:** a signed-in product font, regional-script rendering and font licensing. Substitute: none chosen.
+
+The Book/Light distinction matters: the CSS assigns `NationalWeb-Book` to weight 300, while the asset named `NationalWeb-Light` is assigned weight 200. A weight-300 label therefore should not be called “NationalWeb Light.” Source declarations are in the [homepage stylesheet](https://www.datadoghq.com/styles/datadog-home.min.bfa64ab1d98490361a636745a2ab4a2a6902824ea1bfe443dc3ec2d179fdb87e.css) and [shared stylesheet](https://www.datadoghq.com/css/styles.min.7a0d23e2814b7fe6a6faca76f4cc77312cd823874d70d0b22e9e44044d3e0a6f.css).
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | NationalWeb | 68px (4.25rem) | 600 | 1.0 (68px) | Hero headline, SemiBold, tight |
-| Section Heading | NationalWeb | 36px (2.25rem) | 600 | 1.11 (40px) | Section titles |
-| Intro / Lede | NationalWeb | 22px (1.38rem) | 300 | 1.43 (31px) | Hero sub / intro copy, Light |
-| Nav Link | NationalWeb | 18px (1.13rem) | 600 | 1.0 | Top navigation items |
-| Button | NationalWeb | 18px (1.13rem) | 700 | 1.0 | Primary/secondary CTA labels |
-| Body | NationalWeb | 18px (1.13rem) | 400 | 1.5 | Standard reading text |
+| Role | Size / weight | Line height | Evidence |
+|---|---|---|---|
+| Hero H1 | 68px / 600 | 68px | Homepage H1 classes and linked CSS at desktop widths; CSS-declared, not a separate computed H1 probe. |
+| Products heading | 48px / 700 | 48px | Homepage's explicit heading classes and their tablet-up CSS rules. |
+| Global H2 default | 36px / 600 | 40px | First-party CSS default; individual headings can override it. |
+| Hero subtitle | 32px / 300 | 38px | Desktop utility classes on “See inside any stack…”; CSS-declared. |
+| Hero CTA pair | 18px / 700 | 18px | Computed control identities; letter-spacing 0.08px. |
+| Pricing navigation | 18px / 600 | 25.7143px | Computed control identity. |
+| Campaign outline CTA | 18px / 600 | 25.7143px | Computed Learn More control identity. |
+| Postgres tile action | 18px / 700 | 18px | Computed LEARN MORE link identity. |
+| Body base | 22px / 300 | Not assigned here | Explicit body size and weight in the page's CSS; local text styles may override them. |
 
-### Principles
-- **One family, three weights**: NationalWeb carries everything; the system signals hierarchy with weight (300 lede / 400 body / 600 heads & nav / 700 CTAs) rather than mixing typefaces.
-- **Heavy headline, light lede**: 68px/600 hero against a 22px/300 intro — the weight contrast is the primary hierarchy device.
-- **Tight display line-height**: Hero runs at 1.0 line-height (68px on 68px) for a dense, engineered headline block.
-- **CTA weight bump**: Buttons go to weight 700 — one step heavier than nav (600) — so the action reads as the heaviest text on the row.
+Use the observed weight contrast between the hero and its subtitle, and between navigation and the hero actions. The homepage's 600 headline and 700 CTAs coexist with lighter 300 text; the product UI's typography requires its own evidence.
 
 ## Layout
 
-### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 28px, 48px, 64px
-- Notable: CTA padding lands at 16px 24px (primary) and nav at 8.5px 12px — tight, engineered hit areas
+The desktop hero centers the headline and subtitle above a pair of equal-width actions. At 1440 × 1000, Free trial begins at x=472 and the platform link at x=719; both are 235px wide, leaving a 12px gap. The headline, actions and angled product visual form the opening composition. Customer logos follow beneath it.
 
-### Grid & Container
-- Centered hero with the 68px NationalWeb headline as the anchor, light 22px lede beneath
-- Primary + secondary CTA pair side-by-side (filled purple + purple outline)
-- Feature/section bands alternate between white (`#ffffff`), light tint (`#f5f5f5`), and dramatic dark (`#000000`) full-width zones
-- Pricing uses a multi-column card grid; cards group plan tiers with 8px bottom radius
-- Deep purple-black footer (`#110617`) closes the page as a heavy anchor
+The page then uses full-width bands: a split campaign image/text row, a rotating campaign, the black Products section, alternating resource/image rows, an events promotion and the dark footer. These are observations from the full-page capture. The Products section uses accordion summaries beside linked product imagery on desktop.
 
-### Whitespace Philosophy
-- **Dense data, breathing chrome**: the product shows dashboard-heavy density, but the marketing surface keeps generous vertical rhythm between sections.
-- **Flat segmentation**: sections separate by background — white vs `#f5f5f5` tint vs `#000000` dark — and by hairlines, not by shadow.
-- **Light/dark cadence**: alternating white and black bands create dramatic rhythm and let the purple read as light against shadow.
+The verified spacing values have local uses, rather than proving a universal scale:
 
-### Border Radius Scale
-- Small (4px): marketing buttons, inputs, region controls — the workhorse
-- Medium (6px): product/compact buttons and ghost CTAs
-- Large (8px): cards, content containers
-- Full (9999px): rare circular elements only
+| Value | Use |
+|---|---|
+| 12px | Measured horizontal gap between the hero CTA pair. |
+| 16px | Primary hero CTA's vertical padding. |
+| 24px | Hero and campaign CTA horizontal padding. |
+| 28px | Header Get Started Free link's horizontal padding in the survey. |
+
+Measured CTA radii are 4px. The Pricing navigation link, Postgres action and search input have 0px radii. The footer visibly includes a pill-shaped action, so a blanket “never pill-shaped” rule would misdescribe this homepage.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero compresses, CTA pair stacks |
-| Tablet | 640-1024px | Moderate padding, 2-up feature/pricing cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column pricing grid |
+Browser measurements cover the 1440 × 1000 desktop viewport. The following responsive rules were read from the linked CSS and homepage classes; mobile rendering was not probed.
 
-#### Touch Targets
-- Primary CTA at 54px height with 16px 24px padding — comfortably tappable
-- Compact product CTA at 38px height for in-card actions
-- Nav links spaced at 8.5px 12px padding within the header row
+| Element | CSS-declared behavior |
+|---|---|
+| Hero H1 | 38px/42px at the base size; 68px/68px from 1200px. The homepage's `tw-font-semibold` keeps weight 600. |
+| Hero subtitle | Base class 20px/24px; tablet utility 24px/28px; desktop utility 32px/38px. |
+| CTA wrapper | Base `tw-flex-col`; `tablet:tw-flex-row` plus a 12-column tablet grid. |
+| Products heading | Base 38px/42px; tablet utility 48px/48px. |
+| Resource rows | Base stacked flex columns; desktop 12-column grid classes. |
 
-#### Collapsing Strategy
-- Hero: 68px NationalWeb headline scales down on mobile, weight 600 maintained
-- CTA pair: side-by-side filled + outline → stacked on narrow viewports
-- Pricing cards: multi-column → 2-up → stacked single column
-- White/tint/dark alternating bands maintain full-width treatment
+The linked utility stylesheet places tablet rules at 768px and desktop rules at 1200px. The page also includes Bootstrap breakpoint properties at other widths; those do not replace the utilities actually attached to these elements.
 
-#### Image Behavior
-- Dashboard screenshots and product imagery carry no shadow at any size, consistent with the flat system
-- Cards maintain 8px radius across breakpoints
-- Dark sections keep `#000000` / `#110617` treatment at all widths
+The primary action's measured height is 54px, while the navigation link is 43.7px high. Pricing-card collapse behavior and mobile touch behavior were not verified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f5f5f5` / `#eeeeee` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e1e5e9` border | Input outlines, dividers |
-| Contrast (Level 3) | `#000000` / `#110617` dark band | Dramatic section/footer separation via color, not shadow |
+The sampled hero actions, Pricing link, Postgres action and campaign action all have `box-shadow: none`. The sampled action ancestors also use flat backgrounds without shadows. Section colour, imagery and borders provide much of the visible grouping.
 
-**Shadow Philosophy**: Datadog is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, pricing cards, and chips. Depth and grouping are communicated through flat tinted surfaces (`#f5f5f5`, `#eeeeee`), thin `#e1e5e9` hairlines, and — most distinctively — high-contrast dark bands (`#000000`) and the deep purple-black footer (`#110617`). This keeps the infrastructure UI feeling clean, fast, and dense without the heavy "card stack" look. When emphasis is needed, the system reaches for color (purple `#632ca6`) or contrast (dark sections), never elevation.
+The header is an exception: the homepage stylesheet declares `.main-nav` with `box-shadow: 0 0 8px 8px rgba(0,0,0,7%)`, and the viewport shows a soft shadow beneath it. The angled dashboard visual also contains visible shadowing. The reference therefore supports flat control surfaces together with a shadowed header and dimensional product imagery.
+
+| Treatment | Verified application |
+|---|---|
+| Flat | Measured controls have no box shadow. |
+| Outline | Purple hero-secondary border and white campaign-secondary border. |
+| Light surface | Careers band uses `#f6f6f6`; census also records `#eeeeee`. |
+| Dark contrast | Black Products band and `#110617` footer. |
+| Header separation | CSS-declared soft shadow on `.main-nav`. |
 
 ### Values kept in prose
 
@@ -310,230 +264,116 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-**Durations**:
+The measured hero CTA pair and campaign outline CTA have a longest computed transition duration of **150ms**, with `ease-in-out`. Their raw transition lists include colour, background colour, border colour and box shadow. The pointer/focus samples were read after 900ms to allow them to settle. Pricing and the Postgres link report `all 0s ease 0s`.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover, button background, focus (live: `0.15s ease-in-out` on the primary CTA) |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+The homepage HTML includes an autoplaying, muted, looping inline hero video. The screenshot's angled dashboard image is part of that presentation; this capture does not supply a page-reveal timing scale.
 
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-in-out` | `cubic-bezier(0.42, 0, 0.58, 1)` | Hover/background transitions (live default on CTAs) |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Motion rules**: Motion is functional and restrained — consistent with the flat, dense aesthetic. Live inspection found the primary CTA carrying `transition: background-color 0.15s ease-in-out`, so hover color shifts are quick and quiet. No bounce or spring — an infrastructure-monitoring product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle on 3 surfaces:
-- https://www.datadoghq.com/ — hero H1, nav, primary/secondary CTA, search input, dark sections, footer
-- https://www.datadoghq.com/about/resources/ — official "Logos & Press Kit": brand colors printed as text (#632CA6, #8000FF), logo naming ("Bits"), name-capitalization rule, logo usage do/don'ts
-- https://www.datadoghq.com/pricing/ — pricing cards, region-select control, compact CTA geometry
-All token-level claims (§1-9) are sourced from this live inspection. Full raw samples in web/references/datadog/.verification.md.
-
-Voice samples (§10): hero H1 and page-title meta are verbatim from the live homepage; the
-name-capitalization line is verbatim from the live press kit (/about/resources/).
-
-Brand narrative (§11): Datadog founded 2010 by Olivier Pomel (CEO) and Alexis Lê-Quôc (CTO);
-"dev and ops on the same page" founding framing; Nasdaq IPO 2019. These are widely documented
-public facts about the company; founding/IPO details beyond the live surfaces are general public
-knowledge, not directly quoted from a verified Datadog statement in this turn. The "Bits" mascot
-name and the current "AI-Powered Observability and Security" positioning ARE verified from the live
-press kit and homepage respectively.
-
-Personas (§13) are fictional archetypes informed by publicly observable Datadog user segments
-(SREs, platform engineers, DevOps/security engineers). Names are illustrative; they do not refer
-to real people.
-
-Interpretive claims (e.g., "purple not blue as a deliberate category refusal", "flat and dense
-as a rejection of decorative chrome") are editorial readings connecting Datadog's observed design
-to its positioning, not directly sourced Datadog statements.
-
-Tier 2: getdesign.md/datadog returned NO DATA; styles.refero.design/?q=datadog returned only fuzzy
-unrelated results (no genuine Datadog page). US ref — Tier 1 live inspect is the source of truth.
--->
+The first-party homepage stylesheet contains a scoped reduced-motion rule, `@media(prefers-reduced-motion:reduce){.btn{-webkit-transition:none;transition:none}}`. It was read as CSS; reduced-motion rendering was not separately measured. No broader motion scale or authored cubic-bezier curve is assigned.
 
 ## Components
 
-### Buttons
+### Primary CTA — Free trial
 
-**Primary CTA**
-- Background: `#632ca6`
-- Text: `#ffffff`
-- Radius: 4px
-- Padding: 16px 24px
-- Height: 54px
-- Font: 18px NationalWeb weight 700
-- Hover: background-color transition 0.15s ease-in-out
-- Use: Primary marketing CTA — "Free trial", "Get started"
+This is a link with `role="button"` in the hero, 235 × 54px at the measured desktop viewport. It has a 4px radius, 16px 24px padding, NationalWeb 18px/700 and an 18px line height. Its resting background is `#632ca6`, foreground `#ffffff`, and border `1px solid rgba(0, 0, 0, 0)`. Its box shadow is `none`.
 
-**Primary CTA (Compact)**
-- Background: `#632ca6`
-- Text: `#ffffff`
-- Radius: 6px
-- Padding: 8px 14px
-- Height: 38px
-- Font: 18px NationalWeb weight 600
-- Use: Compact primary action on pricing cards — "Start Free Trial"
+- Hover: background becomes `#7700ff`; the white label stays white.
+- Pressed: background becomes `rgba(0, 0, 0, 0)`, revealing the white page; text and the 1px border become `#212529`.
+- Keyboard focus: transparent background, `#212529` text, transparent 1px border, no drawn outline or shadow. The original fill and label return after blur.
 
-**Outline (Secondary, light)**
-- Background: transparent
-- Text: `#632ca6`
-- Border: 1px solid `#632ca6`
-- Radius: 4px
-- Padding: 14px 24px 16px
-- Height: 54px
-- Font: 18px NationalWeb weight 700
-- Use: Secondary CTA on light backgrounds — "SEE THE PLATFORM"
+### Secondary CTA — SEE THE PLATFORM
 
-**Ghost (on dark)**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 1px solid `#ffffff`
-- Radius: 6px
-- Height: 50px
-- Font: 18px NationalWeb weight 600
-- Use: Secondary CTA inside dark sections — "Free Trial"
+This hero link also has `role="button"`, measures 235 × 54px and uses a 4px radius. Padding is 14px 24px 16px, with the same 18px/700 label. It rests transparent on white, with `#632ca6` text and a `1px solid #632ca6` border. The play glyph uses the icon font.
 
-### Inputs & Forms
+- Hover: `#7700ff` fill and border, with white label and play glyph.
+- Pressed: transparent fill, `#212529` label/glyph and `1px solid #212529` border.
+- Keyboard focus: transparent fill and border, `#212529` label/glyph, no drawn outline or shadow; all changes clear after blur.
 
-**Search Field**
-- Background: `#ffffff`
-- Text: `#212529`
-- Border: 1px solid `#e1e5e9`
-- Radius: 4px
-- Padding: 0px 10px 0px 35px
-- Font: 18px NationalWeb
-- Placeholder: "Search"
-- Use: Header search field, left-icon inset (35px left padding)
+### Navigation link — Pricing
 
-### Cards & Containers
+The Pricing link is 87.3 × 43.7px, with a 0px radius, 8.5px 12px 9.5px padding, NationalWeb 18px/600 and a 25.7143px line height. Its own background is transparent over the white header. It rests at `#555555`, has no border or shadow, and changes its label and child span to `#7700ff` on hover and press. Keyboard focus produced no change within the compared scope described in §14; no focus token is assigned.
 
-**Pricing Card**
-- Background: `#ffffff`
-- Text: `#212529`
-- Radius: 8px (bottom corners — `0px 0px 8px 8px`)
-- Padding: 0px 0px 16px
-- Shadow: none
-- Use: Pricing plan card; flat, hairline/tint-separated, no elevation
+### Resource-tile link — State of Postgres
 
-### Badges & Controls
+The measured element is the tile's LEARN MORE link, labelled `Link to post`, targeting `/state-of-postgres/`. Its 501 × 18px geometry describes the action row. It has a 0px radius, 0px padding, NationalWeb 18px/700 and no border or shadow. The transparent link sits over the tile's cyan-to-green gradient. Resting `#632ca6` text and its arrow glyph become `#7700ff` on hover and press. Keyboard focus produced no change within the compared scope.
 
-**Region Select**
-- Background: `#ffffff`
-- Text: `#000000`
-- Radius: 4px
-- Padding: 7px 10px 9px 12px
-- Height: 34px
-- Font: 18px NationalWeb
-- Use: Region/datacenter select control on pricing ("US (US1, US3, US5)")
+### Campaign outline link — Learn More
 
-### Navigation
-- Background: `#ffffff`
-- Text: `#555555`
-- Font: 18px NationalWeb weight 600
-- Padding: 8.5px 12px 9.5px
-- Active: purple `#632ca6` text on active item
-- Use: Top horizontal nav ("Product", "Customers", "Pricing", "Solutions", "Docs")
+The rotating campaign selected on the second states load was labelled `Gartner Magic Quadrant™ DEM`, with visible text “Learn More.” The link measures 148.8 × 50.7px, uses a 4px radius, 11px 24px 12px padding and NationalWeb 18px/600 with 25.7143px line height. It rests transparent on the campaign artwork, with white text and a `1px solid #ffffff` border. Hover, press and keyboard focus all produce a white fill with `#7700ff` text; the border remains white. The focus change clears after blur.
 
----
+### Search field — observed geometry only
 
-**Verified:** 2026-06-17 (omd:add-reference CREATE — Tier 1 live inspect, 3 surfaces)
-**Tier 1 sources:** https://www.datadoghq.com, https://www.datadoghq.com/about/resources/, https://www.datadoghq.com/pricing/
-**Tier 2 sources:** getdesign.md/datadog — NO DATA (not listed); styles.refero.design/?q=datadog — not listed (fuzzy results only)
-**Conflicts unresolved:** none
+The header's `input.ais-SearchBox-input`, placeholder “Search,” reports 1322 × 49px, 0px radius, 0px 10px padding and NationalWeb 32px/300 with 49px line height. Its own background is transparent, foreground `#212529`, border `none` and shadow `none`. It belongs to the collapsed search layer. Tab reached it and produced no style change; hover and press remained UNMEASURED because another element covered the pointer target, including after hiding the fixed overlay. It is documented here without an interactive component token.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no data in dashboard)** | White canvas. Single Ink (`#212529`) line explaining no data is flowing yet, with one purple (`#632ca6`) CTA to connect a source. No illustration clutter. |
-| **Empty (saved view, none yet)** | Muted Grey (`#555555`) single line: nothing saved yet, plus a path back to create one. Calm and plain. |
-| **Loading (query/results fetch)** | Skeleton rows on `#f5f5f5` tinted surface at final card dimensions, 8px radius. No shadow shimmer — flat pulse consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Subtle purple (`#632ca6`) progress indicator; previous values stay visible during refresh. |
-| **Error (query failed)** | Inline message in Error Red (`#bf0000`) with a plain-language explanation and a retry. States what to do next, never a bare "Something went wrong". |
-| **Error (form validation)** | Field-level message below the input in `#bf0000`; describes what's valid, not just "Required". |
-| **Success (source connected)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f5f5f5` / `#eeeeee` blocks at final dimensions, 4px–8px radius, flat pulse. |
-| **Disabled** | Faint Grey (`#c7c7c7`) text on reduced-opacity surface; purple actions fade rather than turn grey to preserve brand read. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Hero Free trial | Background `#632ca6` → `#7700ff`. | Transparent fill; `#212529` text and border. | Transparent fill and border; `#212529` text; no drawn outline/shadow; resets on blur. |
+| Hero SEE THE PLATFORM | Violet fill/border and white label/glyph. | Transparent fill; `#212529` text/glyph and border. | Transparent fill/border; `#212529` text/glyph; resets on blur. |
+| Pricing navigation | Label/child span `#555555` → `#7700ff`. | Same violet label as hover. | No measured style change. |
+| Postgres tile action | Label and arrow `#632ca6` → `#7700ff`. | Same violet label/arrow as hover. | No measured style change. |
+| Gartner DEM Learn More | White fill; violet text. | Same fill/text as hover. | Same fill/text as hover; resets on blur. |
+| Collapsed search input | UNMEASURED: pointer covered. | UNMEASURED: pointer covered. | Tab reached it; no measured style change. |
+
+For “no measured style change,” the probe compared the element, its `::before`/`::after`, every inspected descendant and descendant pseudo-element, and three ancestor levels with pseudo-elements. Pricing had one descendant, Postgres one empty icon descendant, and search none. The comparison included colours, borders, drawn outlines, shadows, opacity, transform, filter, visibility, size, decoration, background/mask properties and supported image/SVG attributes. This is a DOM/style comparison; it does not establish the absence of canvas, video, sibling or inaccessible-frame changes.
+
+All found controls were enabled at measurement. No disabled state or application empty, loading, skeleton, validation, error or success state was verified. The homepage controls' observed focus changes are colour changes, not a brand focus-ring token.
 
 ## Do's and Don'ts
 
 ### Do
-- Use Datadog purple (`#632ca6`) for every primary action, link, and outline — it's the single "action" color
-- Reserve the vivid brand violet (`#8000ff`) for full-bleed brand moments only
-- Use NationalWeb across display and body — signal hierarchy with weight (300/400/600/700)
-- Use near-black ink (`#212529`) for headings instead of pure black
-- Separate sections with flat tints (`#f5f5f5`, `#eeeeee`), hairlines (`#e1e5e9`), and dark bands — not shadows
-- Use dramatic dark sections (`#000000`) and the deep purple-black footer (`#110617`) to make purple read as light
-- Keep radius in the 4px–8px range — 4px marketing buttons, 6px product, 8px cards
-- Bump CTA weight to 700 — heavier than nav (600) — so the action is the heaviest text on the row
+
+- Pair the observed filled and outlined purple hero actions; carry their measured states through implementation.
+- Use NationalWeb with the verified weight and size hierarchy for this marketing style.
+- Use near-black foreground on the white hero, and white content on the black Products band.
+- Keep the measured hero and campaign button radii at 4px.
+- Preserve the name “Datadog” as one word, with only its first letter capitalized.
+- Prefer the vertical logo configuration; the press kit allows the horizontal configuration when necessary.
 
 ### Don't
-- Default to enterprise blue — purple is Datadog's deliberate category differentiator
-- Spread the vivid violet (`#8000ff`) across routine UI — it dilutes the brand-moment signal
-- Use drop shadows for elevation — Datadog is a flat, shadow-free system
-- Use pure black (`#000000`) for body text — reserve near-black ink `#212529` for headings, `#333333` for body
-- Use pill or sharp-square corners on buttons — stay in the conservative 4px–8px scale
-- Mix in a second accent hue for actions — purple is the only action color
-- Set the hero in a light weight — display is 600; only the intro lede goes to 300
-- Invert, recolor, box, or gradient the "Bits" logo — keep it white on purple/dark, purple on light
+
+- Merge documented `#8000ff` background/accent purple with measured `#7700ff` interaction violet.
+- Call the whole site shadow-free or assign the sampled controls' radius to every surface.
+- Treat unloaded CSS font names as live specimens.
+- Invert, recolour, distort, outline, box or apply a gradient to the logo. These restrictions come from the press kit and concern the logo artwork.
 
 ## Voice & Tone
 
-Datadog's voice is **technical, confident, and plainspoken** — an infrastructure company that addresses engineers as peers and never reaches for hype. The hero line "AI-Powered Observability and Security" sets the register: capability-first, declarative, zero exclamation points. Copy names things precisely (metrics, traces, logs) and trusts the reader to know what they mean. The brand even extends this plainness to its own identity guidance — the press kit flatly corrects "Data Dog" and "DataDog" to the single correct "Datadog" and names the logo dog "Bits."
+The homepage leads with a capability label: “AI-Powered Observability and Security.” Its subtitle promises visibility across stacks and applications. Action labels are short: “Free trial,” “SEE THE PLATFORM,” and “Learn More.” The product navigation names concrete areas such as Infrastructure, APM and Log Management.
 
-| Context | Tone |
+The brand page is more prescriptive: it specifies capitalization and logo configurations, then lists prohibited logo alterations. Treat the homepage examples as evidence for concise capability-led copy, and the press kit as explicit identity guidance. No general prohibition on superlatives or enthusiastic copy was established.
+
+| Context | Source-backed guidance |
 |---|---|
-| Hero headlines | Declarative, capability-first. "AI-Powered Observability and Security." Never superlative. |
-| Product descriptions | Concrete technical capability — "metrics, traces, and logs in one place." Decode, don't decorate. |
-| CTAs | Direct imperatives. "Get started free", "Free trial", "See the platform". |
-| Docs / technical | Dense, precise, engineer-to-engineer; examples precede prose. |
-| Brand guidance | Plain and corrective — "one word with only the first letter capitalized". |
-
-**Voice samples (verbatim from live surfaces):**
-- "AI-Powered Observability and Security" — hero H1 (capability-first). *(verified live 2026-06-17)*
-- "Cloud Monitoring as a Service" — page title meta (positioning). *(verified live 2026-06-17)*
-- "Our company name is \"Datadog\": one word with only the first letter capitalized." — press kit (plain, corrective). *(verified live 2026-06-17, /about/resources/)*
-
-**Forbidden register**: hype superlatives ("revolutionary", "game-changer"), exclamation-heavy marketing, vague benefit-speak that hides the actual capability, and any logo treatment the press kit forbids (inverting, recoloring, gradients, boxing).
+| Hero | Lead with the platform capability, as the current H1 does. |
+| Product navigation | Use the product's actual technical names. |
+| Actions | Use a short verb or action phrase. |
+| Brand name | One word, first letter capitalized. |
+| Technical design writing | The DRUIDS article explains repeatable interaction patterns and contextual links. |
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / link: Datadog Purple (`#632ca6`)
-- Brand-moment violet: Brand Violet (`#8000ff`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f5f5f5`), Surface Alt (`#eeeeee`)
-- Heading text: Ink (`#212529`)
-- Body text: Body Grey (`#333333`)
-- Muted / nav text: Muted Grey (`#555555`)
-- Faint / disabled: Faint Grey (`#c7c7c7`)
-- Dark section: Pure Black (`#000000`)
-- Footer: Footer Black (`#110617`)
-- Hairline: `#e1e5e9`
-- Error: `#bf0000`
+Use the measured marketing composition as a starting point: a white centered hero, near-black copy, NationalWeb, two equal-width purple actions, an angled dashboard visual, then strong campaign and product bands.
 
-### Example Component Prompts
-- "Create a hero on white background. Headline at 68px NationalWeb weight 600, line-height 1.0, color #212529. Light lede below at 22px weight 300, color #333333. A purple CTA pair: filled (#632ca6 background, white text, 4px radius, 16px 24px padding, weight 700 — 'Free trial') and outline (transparent, 1px solid #632ca6, #632ca6 text, 4px radius — 'See the platform')."
-- "Design a pricing card: white #ffffff background, 8px bottom radius, no shadow, 16px bottom padding. Title 36px NationalWeb weight 600, #212529. Compact purple CTA: #632ca6 background, white text, 6px radius, 8px 14px padding, weight 600."
-- "Build a dark section: #000000 background, white text. Section title 36px NationalWeb weight 600. Ghost CTA: transparent, 1px solid #ffffff, white text, 6px radius."
-- "Create a header search input: white background, 1px solid #e1e5e9 border, 4px radius, left-icon inset (35px left padding), #212529 text at 18px NationalWeb, placeholder 'Search'."
-- "Create top nav: white header. NationalWeb 18px weight 600 links, #555555 text, purple #632ca6 on active. Purple 'Get started' CTA right-aligned, 4px radius."
+### Quick colour reference
 
-### Iteration Guide
-1. Purple (`#632ca6`) is the single action color — every CTA, link, and outline; never default to blue
-2. NationalWeb everywhere; signal hierarchy with weight (300 lede / 400 body / 600 head & nav / 700 CTA)
-3. No shadows — separate with `#f5f5f5`/`#eeeeee` tint, `#e1e5e9` hairlines, and `#000000`/`#110617` dark bands
-4. Radius stays 4px–8px — 4px marketing buttons, 6px product, 8px cards
-5. Heading color is `#212529` ink, body is `#333333`, never pure black for body
-6. Use dark sections to make the purple read as light against shadow
-7. Reserve the vivid violet (`#8000ff`) for full-bleed brand moments only
+- Resting primary action: `#632ca6` with `#ffffff` label.
+- Interaction violet: `#7700ff`.
+- Documented background/accent violet: `#8000ff`.
+- Foreground: `#212529`; resting navigation: `#555555`.
+- Canvas: `#ffffff`; light surfaces: `#f6f6f6` and observed `#eeeeee`.
+- Products band: `#000000`; footer: `#110617`.
 
----
+### Example component prompts
+
+- “Build the desktop Datadog homepage hero with the CSS-declared NationalWeb 68px/600 headline and 32px/300 subtitle. Place 235 × 54px filled and outlined actions 12px apart. Use the measured colour, border and focus changes from §4.”
+- “Create the white desktop navigation with NationalWeb 18px/600 Pricing text at `#555555`, padding 8.5px 12px 9.5px, changing to `#7700ff` on hover and press. Give the header the soft shadow declared in §6.”
+- “Create a campaign action with white text and border over dark artwork, 4px radius and 11px 24px 12px padding. Its hover, pressed and keyboard-focus fill is white with `#7700ff` text.”
+- “Build a research tile with an illustrated image, explanatory copy and a compact LEARN MORE link. Match the observed Postgres action's 18px/700 type and purple-to-violet label and arrow change.”
+
+### Iteration guide
+
+1. Match the exact action variant before copying its values: hero actions are 700 weight; navigation and the measured campaign action are 600.
+2. Preserve the distinct purple rest and hover values.
+3. Use section contrast and imagery, with flat controls and the observed header shadow.
+4. Keep the marketing homepage's values separate from unmeasured signed-in product surfaces.
