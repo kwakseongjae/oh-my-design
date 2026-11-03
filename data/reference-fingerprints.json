@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 555,
+ "count": 556,
  "items": [
   {
    "id": "104",
@@ -4136,6 +4136,29 @@
    "signature_motion": "Charge pulse - a soft electric-blue->cyan luminance glow on battery/swap graphics; cinematic hero reveal, no UI bounce.",
    "has_personas": true,
    "category_raw": "automotive"
+  },
+  {
+   "id": "goodoc",
+   "primary_color_hex": "#0073fa",
+   "category": "healthcare",
+   "visual_theme": "Goodoc (굿닥) connects people with hospital and pharmacy information, advance reception, remote consultations, prescription pickup and everyday health management. Its current [homepage positioning](https://www.goodoc.co.kr/) presents these as parts of one health",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "goodpatch",

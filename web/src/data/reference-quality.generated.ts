@@ -4032,6 +4032,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.75
   },
   {
+    "id": "goodoc",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 32,
+    "evidenceClaimCount": 32,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 5,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "goodpatch",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -5830,28 +5852,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "krafton",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-03",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 81,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 77,
+    "evidenceClaimCount": 77,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 5,
     "conflictCount": 0,
-    "tier1SourceCount": 8,
+    "tier1SourceCount": 5,
     "componentCount": 4,
-    "interactiveComponentCount": 3,
-    "statedComponentCount": 2,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.643
+    "paletteGrounding": null
   },
   {
     "id": "kraken",
@@ -13407,10 +13426,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 365,
+  "verified_v2": 367,
   "partial": 89,
-  "legacy_snapshot": 101,
-  "total": 555
+  "legacy_snapshot": 100,
+  "total": 556
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -5,330 +5,275 @@ colors:
   brand: '#000000'
   canvas: '#000000'
   foreground: '#ffffff'
-  muted: '#777777'
   on-primary: '#ffffff'
-  surface: '#0a0a0a'
-  hairline: '#393939'
-  body: '#555555'
-  content: '#222222'
-  placeholder: '#adadad'
-  disabled: '#dddddd'
-  error: '#ed2929'
-  link: '#3d7fd9'
+  muted: '#777777'
+  language: '#a2a2a2'
+  news-date: '#999999'
+  panel: '#ffffff'
+  pubg-hover: '#f2a900'
 typography:
-  hero-logotype:
-    fontSize: 140px
-    fontWeight: 400
-    use: Hero logotype, KRAFTON custom font, display only
-  page-header:
-    fontSize: 70px
-    fontWeight: 700
-    use: PageHeader title on light pages
-  article-body:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.9
-    use: Article/single body copy
   nav:
     fontSize: 18px
-    fontWeight: 600
-    use: Navigation, Poppins
+    fontWeight: 500
+    lineHeight: 1.3
+    use: Header About link; live Zalando Sans Expanded, 23.4px line-height
   body:
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.7
-    use: Base body text
+    use: Noto Sans card-anchor wrapper, 23.8px line-height; visible labels have their own sizes
   selector:
     fontSize: 13px
     fontWeight: 400
-    use: Language selector links
-  footer:
-    fontSize: 12px
+    lineHeight: 1.5
+    use: EN language link; live Poppins, 19.5px line-height
+  games-heading:
+    fontSize: 60px
+    fontWeight: 700
+    lineHeight: 1.2
+    use: KRAFTON GAMES link; live Zalando Sans Expanded, 72px line-height
+  recruit-label:
+    fontSize: 24px
+    fontWeight: 600
+    use: Visible KRAFTON RECRUIT label; label family was not separately captured
+  news-label:
+    fontSize: 20px
+    fontWeight: 500
+    use: Visible first news-card label; label family was not separately captured
+  footer-link:
+    fontSize: 13px
     fontWeight: 400
-    use: Footer copyright, Poppins
+    lineHeight: 1.2
+    use: Noto Sans footer contact/location links; not the copyright
 rounded:
-  sm: 0px
-  md: 0px
-  lg: 0px
-  full: 9999px
-spacing:
-  xs: 15
-  sm: 20
-  md: 40
-  base: 60
-  lg: 80
-  xl: 100
-  xxl: 140
+  none: 0px
 components:
-  button-primary:
+  language-en:
     type: button
-    backgroundColor: '#ffffff'
-    textColor: '#000000'
-    border: '2px solid #000000'
-    padding: 8px 43px 8px 15px
-    typography: 14px / 700
+    textColor: '#a2a2a2'
     rounded: 0px
-    hover: 'bg #000000 fg #ffffff (inverted)'
-    use: Download button on white surface
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    border: '2px solid #000000'
-    height: 46px
-    padding: 12px 20px
-    typography: 15px / 500
+    height: 19.5px
+    padding: 0px
+    typography: 13px / 400
+    hover: 'fg #ffffff; white 2px ::after underline scaleX 0 to 1'
+    pressed: same as hover; no further measured change
+    use: 'EN language link on #000000; transparent background omitted. Poppins. Keyboard focus showed no change within the probe scope.'
+  recruit-card:
+    type: card
+    textColor: '#ffffff'
     rounded: 0px
-    use: 'Search input, placeholder #adadad'
-  tab-third:
-    type: tab
-    backgroundColor: '#f7f7f7'
+    height: 342.3px
+    padding: 0px
+    typography: 24px / 600
+    hover: thumbnail wrapper scale 1 to 1.1; arrow translateX 5px; label background underline 0% to 100% by 2px
+    pressed: same visible label and hover effects; wrapper browser-link colour change excluded
+    use: 'KRAFTON RECRUIT link on #000000; 580px wide, transparent background omitted. Font is the visible label; anchor wrapper is 14px/400.'
+  news-card:
+    type: card
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 364.1px
+    padding: 0px
+    typography: 20px / 500
+    hover: thumbnail wrapper scale 1 to 1.1; label background underline 0% to 100% by 2px
+    pressed: same visible label and hover effects; wrapper browser-link colour change excluded
+    use: 'First DefaultPost news link on #000000; 381.3px wide, transparent background omitted. Font is the visible label; anchor wrapper is 14px/400.'
+  studio-card:
+    type: card
     textColor: '#000000'
-    typography: 19px / 500
-    height: 2.4em
-    active: 'bg #000000 fg #ffffff 19px/700'
-    use: ThirdDepthTab navigation
-  listItem-link:
-    type: listItem
-    textColor: '#222222'
-    typography: 15px / 500
-    hover: underline expands 0 to 100% 2px over 0.3s
-    use: Download link, text + animated underline
+    rounded: 0px
+    height: 355px
+    padding: 49px 30px 34px
+    typography: 24px / 600
+    hover: 'bg #f2a900; visible title/copy #ffffff; inner top rule black to white; arrow appears and translates from -20px to 0; logo layers swap opacity'
+    pressed: same visible hover treatment; wrapper browser-link colour change excluded
+    use: 'PUBG STUDIOS link, 300px wide. Parked pointer baseline is transparent over #ffffff; initial capture had a white self background. Background omitted. Font is the visible title; wrapper is 14px/400.'
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
-    sans: Poppins
-    mono: SF Mono
+    sans: Noto Sans
+    display: Zalando Sans Expanded
+    latin: Poppins
+    cjk-loaded: Noto Sans SC
 ---
 
-# KRAFTON
-
-KRAFTON is a South Korean game publisher and developer whose digital identity is built entirely in monochrome — deep black surfaces carry white type and logotypes while a proprietary KRAFTON typeface, Zalando Sans Expanded, and Poppins work in concert to communicate ambition at cinematic scale.
+# Design System Inspiration of KRAFTON
 
 ## Overview
 
 ### Visual Theme & Atmosphere
 
-KRAFTON's corporate site operates as a dark-mode-first canvas where the page body is assigned the class `Bg-black`, the footer background is `#000000`, and the cookie-consent overlay uses `#0a0a0a`. This near-total blackness is not merely decorative; it positions each game property and studio card as a self-contained illuminated world against the void, echoing the brand's "Pioneer the Undiscovered" manifesto. The rare white surface — appearing only on inner article pages — feels like daylight breaking through. Motion is purposeful and cinematic: content tiles ascend 100px with an opacity fade over 0.8 s (ease-out), hero backgrounds reveal themselves in a 0.4 s parallax bloom with a 0.2 s delay, and a 5px diagonal-skewed progress bar crowns the header on scroll. Typography scales dramatically between breakpoints — a 140px custom-font logotype on desktop collapses gracefully through responsive vw units, maintaining the feeling of largeness even on mobile. Hover interactions on text links extend a thin 2px underline from left to right over 0.3 s, lending restraint to a design that could otherwise feel aggressive.
+KRAFTON discovers and publishes games through a global network of creative studios. Its own company page dates its establishment to 2007 and identifies Korea as its headquarters. PUBG: BATTLEGROUNDS, inZOI, Subnautica and TERA are among the properties it lists. [Company source](https://press.krafton.com/About-KRAFTON).
 
-### Primary tasks
+The corporate homepage gives that portfolio a large, dark stage: black ground, white navigation, wide display lettering and a red hero carrying the Pioneer the Undiscovered slogan. The red is visible in the captured hero artwork; no numeric red token was extracted from that artwork. Imagery and studio identity supply further colour. In particular, the PUBG STUDIOS card changes to gold on hover. This is a dark interface with coloured brand and game expression, rather than an entirely monochrome identity. [Measured surface](https://www.krafton.com/).
 
-- Filter the careers page for gameplay engineer roles
-- Read a studio subpage to understand a game's technical depth
-- Browse the games listing in English using the language selector
-- Track quarterly earnings and disclosures on the IR page
-- Read the company history page for signals about culture
+KRAFTON's August 2026 publishing statement describes a push across original worlds, distinct creative studios and established franchises. It connects that direction to challenging genre conventions and developing existing franchises in new ways. The homepage's separate news, recruitment, games and studio areas give this broad portfolio distinct entry points. The statement supports the current business direction; the layout description comes from the live capture. [Current evolution](https://press.krafton.com/en-GB/KRAFTON-SHARES-ITS-VISION-FOR-BUILDING-GLOBAL-FRANCHISES-AT-GAMESCOM-2).
+
+The measured homepage is the Korean edition at `krafton.com/` (path `/`, HTML `lang="ko-KR"`); it did not redirect to another regional path.
+
+#### Primary tasks visible on the homepage
+
+- Follow a news card or the News heading.
+- Open the recruitment and People & Life cards.
+- Browse game and studio links.
+- Enter IR or change language through the header links.
+
+These are observed destinations. Filtering jobs, reading a studio subpage and using the IR content were not exercised.
 
 ### Brand Narrative
 
-KRAFTON was founded in 2007 as Bluehole Studio, a small Korean game development company whose first major title, TERA, established a reputation for ambitious massively multiplayer experiences. Over the following decade the studio portfolio grew into a holding structure; in 2018 the parent company renamed itself KRAFTON — a compound that emphasises the act of crafting — to reflect its role as a creator of original intellectual property rather than a portfolio of acquired products.
+The company dates its establishment to 2007. Its current company information names PUBG STUDIOS, Bluehole Studio, Striking Distance Studios, Unknown Worlds and Neon Giant within a broader global studio network. [Company information](https://press.krafton.com/About-KRAFTON).
 
-The global moment arrived in 2017 with PUBG: Battlegrounds, which reached over 75 million copies sold and became a defining cultural touchstone for the battle-royale genre. KRAFTON went public on the Korea Stock Exchange in 2021, deploying that capital into studios across North America, Europe, and India. The studio network now spans PUBG Studios, Bluehole Studio, Striking Distance Studios, Unknown Worlds, Neon Giant, and more than a dozen additional teams creating games ranging from survival-horror to life-simulation.
-
-The brand's governing philosophy is stated simply: "Pioneer the Undiscovered." This is not merely a tagline — it operationalises as five internal values: Aim for Bold Objectives, Depth Builds the Edge, Imagination + Technology, Fan-First Thinking, and Embrace Global Perspectives. Every product launch and communication is measured against whether it advances territory that has not been claimed before.
+The August 2026 statement presents five forthcoming titles across different genres as examples of its publishing direction. For a design reference, the useful connection is the coexistence of a consistent corporate frame with distinct studio and game expression. That connection is an interpretation of the statement and measured homepage, rather than a quoted corporate design principle. [Publishing statement](https://press.krafton.com/en-GB/KRAFTON-SHARES-ITS-VISION-FOR-BUILDING-GLOBAL-FRANCHISES-AT-GAMESCOM-2).
 
 ### Principles
 
-1. **Pioneer the Undiscovered** — seek problems no competitor has solved and genres no studio has fully defined. *UI implication:* Do not follow platform conventions blindly; introduce distinctive interaction patterns where the genre expects them least.
+The following principles are inferred for reconstruction, rather than claimed as KRAFTON's published internal values.
 
-2. **Depth Builds the Edge** — deep research and meticulous groundwork underpin every creative decision. *UI implication:* Design systems must account for every state, edge case, and locale before shipping; shallow prototypes are not shippable artefacts.
-
-3. **Imagination + Technology** — fuse creative vision with engineering capability. *UI implication:* Motion and micro-interaction must be intentional and technically precise, never decorative noise; every animated element should have a measurable purpose.
-
-4. **Fan-First Thinking** — fans drive every decision from discovery to long-term retention. *UI implication:* Reduce friction on discovery surfaces (game listings, studio pages) so players can reach content within one or two interactions; information hierarchy privileges experience over brand-speak.
-
-5. **Embrace Global Perspectives** — the brand operates across KR, EN, ZH, and JA locales simultaneously. *UI implication:* All typographic and layout decisions must degrade gracefully across character sets; reserve pixel-perfect vw scaling for Latin text and test all display scenarios in Korean first.
+1. **A consistent frame for distinct properties:** retain the common navigation, type hierarchy and card geometry while preserving the measured PUBG-specific accent.
+2. **Interaction inside the card:** scale the thumbnail wrapper, extend the label underline and move the arrow without changing the outer card dimensions in the measured states.
+3. **Surface-aware contrast:** the initial black frame and later white context require different visible text colours.
+4. **Language as a compact utility:** KO/EN/CN/JP links are visible; preserve the measured Poppins treatment without assuming the other editions' typography.
 
 ### Personas
 
-*Illustrative Competitive Gamer — "Seungjae":* A 24-year-old Korean PC-bang regular who monitors PUBG patch notes daily and filters the KRAFTON careers page for gameplay engineer roles. He reads the studio subpages to understand the technical depth behind favourite titles.
-
-*Illustrative Global IP Fan — "Mia":* A 29-year-old based in São Paulo who discovered KRAFTON through PUBG Mobile and has since explored the Callisto Protocol and inZOI. She browses the games listing in English, using language selector prominently, and follows KRAFTON's Instagram for behind-the-scenes glimpses.
-
-*Illustrative Investor Analyst — "David":* A 40-year-old institutional equity analyst in Hong Kong who tracks KRAFTON's IR page for quarterly earnings, share buyback announcements, and ESG disclosures. He needs dense information accessed in two clicks.
-
-*Illustrative Indie Developer — "Yuki":* A 27-year-old Japanese developer studying the KRAFTON studios ecosystem to understand what kinds of team they might acquire. She reads the "Our Challenges" history page looking for signals about cultural fit and creative autonomy.
+No user research was opened; the four prior illustrative personas and their behavioral claims remain unconfirmed.
 
 ## Colors
 
-- **Brand Black:** `#000000` — primary background (homepage, footer, header bar, mega-menu backdrop)
-- **Site Black:** `#0a0a0a` — cookie-consent bar background; near-black alternate
-- **Dark Surface:** `#393939` — footer divider lines, dark-mode border, footer header background
-- **Body Background:** `#ffffff` — inner page (article/single) background
-- **Body Text:** `#555555` — default body copy color
-- **Content Text:** `#222222` — rich-text body, table data
-- **Mid Gray:** `#777777` — secondary labels, nav hover (Bg-black context)
-- **Muted Gray:** `#ADADAD` — input placeholder text
-- **Disabled Gray:** `#DDDDDD` — scrollbar track, disabled borders
-- **Alert Red:** `#ED2929` — required-field markers and error states (`#E84847` alternate)
-- **Link Blue:** `#3D7FD9` — inline hyperlink color in article content
-- **White Text:** `#ffffff` — all text on black/dark surfaces including nav, footer copy
+The initial homepage and its card areas use **`#000000`** with a dominant paragraph **foreground of `#ffffff`**: five sampled paragraphs were white and one black. Across capture phases, the games heading's pointer-pass baseline was black on a white surrounding surface, whereas the initial survey recorded white on black. Keep the surface and its text colour together.
+
+| Colour | Verified use or boundary |
+|---|---|
+| `#000000` | Initial page ground; backdrop behind header, news and recruitment links; visible studio title at rest. |
+| `#ffffff` | Initial navigation and paragraph foreground; visible news/recruitment labels; white studio-panel backdrop in the pointer pass. |
+| `#a2a2a2` | Inactive EN/CN/JP language links; EN changes to white on hover and press. |
+| `#777777` | Footer email and business-information links. |
+| `#999999` | First news card's date. |
+| `#393939` | One border sample in the colour census; its exact element was not identified, so it is not a universal divider specification. |
+| `#f2a900` | PUBG STUDIOS card's measured hover/pressed background; a studio-specific accent, not a site-wide primary colour. |
+
+The census also reports `rgb(102, 102, 102)`, `rgb(85, 85, 85)`, white at 10% opacity and white at 40% opacity. Those samples do not establish additional semantic roles. In particular, `#555555` occurs in the survey's carousel-arrow rows; it is not the dominant paragraph ink on this homepage.
+
+The census includes one `#0a0a0a` background. The prior associated it with the consent banner, but this census does not identify that sample's selector, so the numeric presence is retained without reasserting the banner role. The banner's controls are excluded from the component set.
+
+There are 54 computed and 54 declared custom properties. Of these, 53 are WordPress `--wp--preset--*` properties, excluded from the brand palette, typography, radius and shadow scales. The only remaining property is `--vh`: computed `10px`, declared `100%`. It is a viewport helper, not a reusable spacing scale. The colour roles above come from actual rendered styles, not from the WordPress preset names.
 
 ## Typography
 
-KRAFTON uses a four-family hierarchy. "KRAFTON" is a proprietary display face used exclusively for the 140 px hero logotype (single weight, normal style). "Zalando Sans Expanded" (weights 200–900, hosted via Google Fonts and self-hosted woff2) serves editorial and marketing headings — the vision tagline "PIONEER THE UNDISCOVERED" and core values use this face in a large, expanded treatment. "Poppins" (weights 400/500/700) covers all navigation, download buttons, footer links, and language selectors. "Noto Sans" / "Noto Sans KR" / "Noto Sans SC" (weights 300/400/500/700) covers Korean, Chinese, and Japanese body copy globally.
+### Evidence classes
 
-Base body: 14 px / 1.7 line-height, `#555555`, weight 400, word-break: keep-all.  
-PageHeader title: 70 px bold, color `#000` (light pages).  
-Hero large logotype: 140 px, font-family "KRAFTON".  
-Article/Single body: 16 px / 1.9, H1 1.30em, H2 1.24em, H3 1.18em.  
-Navigation: Poppins, default 18 px on hamburger button, weight 600.  
-Language selector links: Poppins 13 px, color `#A2A2A2`.  
-Footer copyright: Poppins 12 px, `rgba(255,255,255,0.4)`.
+**Official product use:** no opened KRAFTON design or typography document established a product-wide font policy. The following families describe the corporate homepage, without asserting that its games or applications use them.
+
+**Live-loaded:** the census's `document.fonts` inventory reports these faces as loaded.
+
+| Family | Loaded weights/styles | Serving evidence |
+|---|---|---|
+| Noto Sans | 300, 400, 500, 700; normal | Captured `@font-face` source lists point to `../fonts/NotoSansKR-{Light,Regular,Medium,Bold}` in WOFF2, WOFF and OTF. The CSS family name is **Noto Sans**, despite the KR filenames. |
+| Noto Sans SC | 400; normal | Declared `NotoSansSC-Regular.woff2` with an OTF alternative in the captured declaration. Loading alone does not establish which script or control used it. |
+| Poppins | 400, 500, 700; normal | Declared Regular, Medium and SemiBold paths, with WOFF2/WOFF/OTF alternatives. The SemiBold filename is assigned CSS weight 700; retain the captured CSS weight. |
+| Zalando Sans Expanded | variable 200–900; normal | A Google Fonts CSS2 URL is present for normal/italic weights 200–900; the loaded inventory reports normal only. The cross-origin stylesheet was unreadable to the census. |
+
+These are declared source lists: the capture does not expose resolved font request URLs or identify which format was fetched. Relative paths are retained as recorded.
+
+The body and h1 declare a stack beginning with Noto Sans, followed by Noto Sans SC and Noto Sans KR. The generic button declaration begins with Noto Sans. These stacks are declarations; they do not prove that every named face loaded.
+
+**Official distributed assets:** no public font-distribution or font-license page was opened successfully. The site stylesheet does declare `KRAFTON`, weight 400, normal, at `../fonts/KRAFTON_FONT.woff`. This establishes a declared resource path; it does not confirm that the file was fetched, that a distribution license exists or that an exclusive logotype rule applies.
+
+**Declared-only:** KRAFTON is absent from the loaded inventory and has no specimen here. Noto Sans SC 300/500/700, Noto Sans JP 400/500/700 and Lato 300 also have declarations without loaded entries. Noto Sans KR is named in stacks, but is not a separately loaded family in this capture. The census lists local Zalando-named WOFF2 assets with empty family fields; those declarations cannot establish that the loaded Zalando face was self-hosted. Italic Zalando use was not loaded.
+
+**Unresolved:** the prior 140px KRAFTON hero assignment, exclusive display use, proprietary status, 70px page-header title, inner-article type scale and SF Mono claim have no new confirming evidence. Substitute: none chosen.
+
+### Measured scale
+
+| Element | Family/assignment evidence | Size / weight | Line-height |
+|---|---|---|---|
+| Header About link | Zalando Sans Expanded, directly computed | 18px / 500 | 23.4px |
+| KRAFTON GAMES link | Zalando Sans Expanded, directly computed | 60px / 700 | 72px |
+| EN language link | Poppins, directly computed | 13px / 400 | 19.5px |
+| Current KO language link | Poppins, survey | 13px / 700 | 19.5px |
+| News-card anchor wrapper | Noto Sans, directly computed | 14px / 400 | 23.8px |
+| Visible first news label | Child label computed; family not separately captured | 20px / 500 | Not separately captured |
+| Visible recruitment and studio titles | Child labels computed; family not separately captured | 24px / 600 | Not separately captured |
+| Footer location/contact links | Noto Sans, survey | 13px / 400 | 15.6px |
+
+The wrapper's 14px size is not the visible news or recruitment label size. No family is inferred for a child from a wrapper that may be overridden.
 
 ## Layout
 
-The site uses a max-width 1280px centered container with 40px horizontal padding on desktop (`.site-container`). The header container uses proportional `4.11458vw` gutters to stay edge-aligned. At breakpoints 1300–1025 px the container shifts to `98.461vw` max-width, at 1024–768 px it becomes full-width with `2.607vw` padding, and below 767 px padding expands to `4.25vw–6.25vw`. The homepage body (`Bg-black`) has `overflow:hidden` to contain parallax video backgrounds. Inner pages receive `padding-top: 220px` to clear the sticky header. Mega-menu columns use a `table`/`table-cell` layout pattern consistent with a pre-flex-era codebase. Bottom-margin utility classes step in increments of 5–10 px from 15 px to 140 px, providing the spacing rhythm.
+At a 1440×1000 viewport with a 1425px document area, the survey places the content at x≈113. The games heading spans 1200px. Recruitment cards are 580px wide at x=113 and x=733, leaving a 40px gap between them. The studio row comprises 300px-wide links at x=113, 413, 713 and 1013. These are measured desktop placements, not a recovered responsive container specification.
+
+The fixed header is approximately 83px high. Its logo begins at x=59, outside the content's narrower alignment. Header navigation has 15px horizontal padding and 31px/29px top/bottom padding. Studio links use 30px horizontal padding, 49px top and 34px bottom padding. These local values are sufficient to reproduce the measured examples; no global spacing ramp was recovered.
 
 ### Responsive Behavior
 
-Four explicit breakpoint ranges are defined in CSS:
-
-| Range | Container max-width | H. padding | Heading size |
-|---|---|---|---|
-| ≥ 1301 px | 1280 px | 40 px | 70 px |
-| 1025–1300 px | 98.46 vw | 3.48 vw | 5.38 vw |
-| 768–1024 px | 100% | 2.61 vw | 5.08 vw |
-| ≤ 767 px | 100% | 4.25–6.25 vw | 10.38 vw |
-
-The hamburger menu (`SiteHeaderMapButton`) is hidden at ≥1025 px with `opacity:0; visibility:hidden`. The mega-menu transforms from horizontal columns to full-screen mobile panels. Typography vw scaling means the 140 px hero becomes ~16.77 vw on mobile (≈108 px on 375 px screen). Video hero panels (`KeyVisualVideoBox`) use an `opacity:0.6` black overlay (`#000`) that persists across all breakpoints. ThirdDepthTab collapses into an accordion on mobile.
+Only desktop 1440×1000 was measured; no mobile breakpoint, accordion transformation, responsive type rule or mobile overlay value was re-verified.
 
 ## Elevation & Depth
 
-KRAFTON does not use drop shadows for component elevation. Depth is expressed instead through two mechanisms: (1) dark background bleed — game and studio cards appear as self-lit images floating on the black void, creating apparent foreground/background separation without shadows; (2) the `SiteHeaderBar`, a 5px diagonal-skewed element at the top of the header viewport that changes from `#000` to `#fff` (on Bg-black pages) when the user scrolls (`is-View` state), creating a subtle kinetic highlight. The cookie-consent overlay uses `background-color: rgba(0,0,0,0.64)` to produce a scrim; popups use `rgba(0,0,0,0.5)`. No box-shadow declarations appear in the brand's own CSS files.
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.none`: `No box-shadow in brand CSS; depth via dark background bleed and self-lit imagery`
+All six measured link boxes have `box-shadow: none`, border-radius 0 and opacity 1 at rest. The news and recruitment cards obtain a visible interaction through image scaling and underline expansion. The studio card uses a solid colour change, logo layers and an entering arrow. Flat controls and image-led depth are appropriate reconstruction choices for these examples. A claim that no brand stylesheet contains shadows was not re-established.
 
 ## Motion & Easing
 
-| Token | Value |
-|---|---|
-| Fade-in duration | 1.6 s |
-| Slide-up duration | 0.8 s |
-| Hover (button BG) | 0.1 s |
-| Hover (underline / download link) | 0.2–0.3 s |
-| Parallax appear | 0.4 s (delay 0.2 s) |
-| Default easing | `ease-out` |
-| Parallax easing | `ease` |
+The following are raw computed transitions on the link itself, copied verbatim into the verification proof:
 
-Rules:
-- All on-scroll entrance animations use `ease-out` to communicate confident arrival
-- Hover micro-interactions target 0.1–0.3 s to feel immediate without being abrupt
-- No entrance animation should use `ease-in` (elements never struggle to appear)
-- The progress bar in the header uses a skew transform with `transition-property:background-color; transition-duration:0.2s` — keep this as the only element using colour transition on header scroll
-- Parallax video backgrounds use `animation-fill-mode:forwards` to hold the final opacity:1 state without a reversal
+| Element | Computed transition | What the capture establishes |
+|---|---|---|
+| EN language link | `color 0.2s ease 0s` | Colour transition accompanying the grey-to-white change. |
+| PUBG STUDIOS link | `background-color 0.2s ease 0s` | Background transition accompanying the gold hover/press treatment. |
+| KRAFTON GAMES link | `color 0.3s ease 0s` | Declared colour transition; hover and press produced no change in that phase's comparison. |
+| About, recruitment and news anchors | `all 0s ease 0s` | No duration on the anchor itself; descendant effects do not inherit this zero-duration conclusion. |
+
+The card zoom, underline and arrow endpoint changes are measured. Their individual computed transition strings were not captured, so no child-motion duration or easing token is assigned. No reduced-motion behavior was measured.
 
 ## Components
 
-### Download Button
+Six links were measured with real hover, held pointer press and keyboard Tab focus. No search input or product primary/secondary button appeared in the homepage survey; the visible filled buttons belonged to consent and are excluded. The banner remained open. `hideOverlays: true` was supplied for the pointer pass, so the following are raw observations under that collector condition.
 
-**Primary (White Background)**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: 2px solid `#000000`
-- Padding: 8px 43px 8px 15px
-- Font: 14px / 700
-- Transition: background-color 0.1s
+| Key / identity | Geometry and typography | Rest appearance |
+|---|---|---|
+| `nav-about`: header About | 93.5×83.4px; radius 0; padding 31px 15px 29px; Zalando Sans Expanded 18px/500 | Transparent over black; white label; no border or shadow. |
+| `language-en`: header EN | 15.6×19.5px; radius 0; padding 0; Poppins 13px/400 | Transparent over black; `#a2a2a2`; no border or shadow. |
+| `recruit-card`: KRAFTON RECRUIT | 580×342.3px; radius 0; padding 0; wrapper Noto Sans 14px/400, visible label 24px/600 | Transparent over black; visible label white; no outer border or shadow. |
+| `studio-card`: PUBG STUDIOS | 300×355px; radius 0; padding 49px 30px 34px; wrapper Noto Sans 14px/400, visible title 24px/600 | Parked pointer baseline transparent over white, black title/copy; initial self background was white. Inner content has a 1px black top rule. |
+| `games-link`: KRAFTON GAMES | 1200×72px; radius 0; padding 0; Zalando Sans Expanded 60px/700 | Initial white on black; pointer baseline black on white, transparent self background; no border or shadow. |
+| `news-card`: first DefaultPost | 381.3×364.1px; radius 0; padding 0; wrapper Noto Sans 14px/400, visible label 20px/500 | Transparent over black; visible label white; no outer border or shadow. |
 
-**Hover (Inverted)**
-- Background: `#000000`
-- Text: `#ffffff`
-- Border: 2px solid `#000000`
-- Transition: background-color 0.1s
+- **Language:** hover and press make the label white. The white 2px `::after` underline changes from a zero horizontal scale to full scale. Press adds nothing beyond hover.
+- **Recruitment:** hover scales the thumbnail wrapper from 1 to 1.1, moves its arrow 5px right and extends the label's 2px background underline from 0% to 100%. Press retains those visible effects.
+- **News:** hover scales the thumbnail wrapper from 1 to 1.1 and extends the label's 2px background underline from 0% to 100%. Press retains them. The captured underline is a black gradient, although the visible label is white.
+- **PUBG studio:** hover and press set the background to `#f2a900`, title/copy and the inner top rule to white, swap the logo layers' opacity, and reveal an arrow whose horizontal translation changes from −20px to 0.
+- **About and games heading:** no hover or press change within the compared scope. They remain prose examples and are omitted from machine components.
 
-### Search Input
-
-**Default**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: 2px solid `#000000`
-- Height: 46px
-- Padding: 12px 20px
-- Font: 15px / 500
-
-**Placeholder**
-- Text: `#ADADAD`
-- Font: 15px / 500
-
-### Tab Navigation (ThirdDepthTab)
-
-**Default Tab**
-- Background: `#f7f7f7`
-- Text: `#000000`
-- Font: 19px / 500
-- Height: 2.4em
-
-**Active Tab**
-- Background: `#000000`
-- Text: `#ffffff`
-- Font: 19px / 700
-
-### Download Link (Text + Underline)
-
-**Default**
-- Text: `#222222`
-- Font: 15px / 500
-- Underline: linear-gradient(`#000000`,`#000000`) 0 2px, width 0
-- Transition: background-size 0.2s ease-out
-
-**Hover**
-- Underline: expands to 100% 2px
-
----
-**Verified:** 2026-06-03
-**Tier 1 sources:** https://www.krafton.com (homepage HTML + inline CSS), https://www.krafton.com/wp-content/themes/krafton/style.css, https://www.krafton.com/wp-content/themes/krafton/assets/css/component.css, https://www.krafton.com/wp-content/themes/krafton/assets/css/header.css, https://www.krafton.com/wp-content/themes/krafton/assets/css/footer.css, https://www.krafton.com/wp-content/themes/krafton/assets/css/page.css, https://www.krafton.com/about/brandcenter/, https://www.krafton.com/en/about/vision/
-**Tier 2 sources:** getdesign.md/krafton — NOT LISTED (0 DESIGN.md files). refero — no result for KRAFTON KR.
-**Conflicts unresolved:** none
+The recruitment, news and studio anchors have their own browser-default blue colour at rest and red while pressed. Their visible labels override it. These wrapper readings are not brand foreground or pressed-colour tokens.
 
 ### States
 
-- **Empty:** Cards render as black-background placeholders with no content message; absence of game image signals "coming soon" implicitly through a darkened aspect-ratio box
-- **Loading (image):** `img[data-src]` elements carry `opacity:0` until the browser resolves `src`, at which point `opacity:1` transitions via CSS
-- **Error (form):** Required fields highlighted with `color:#ED2929` on label; no border-color change observed in source CSS
-- **Error (link/status):** Alert-red `#E84847` / `#ED2929` applied as `.text-red` utility to error messaging in body copy contexts
-- **Success:** Positive states use `color:#3D7FD9` (`.text-blue`) as affirmation colour in forms and news status labels
-- **Skeleton / Appear:** `.a-Opacity` applies `opacity:0; transition:opacity 1.6s ease-out` until `.is-Opacity` is added; `.a-OpacityTop` applies `opacity:0; transform:translateY(100px); transition:transform, opacity 0.8s ease-out` with JS adding `.is-OpacityTop` to reveal on scroll
-- **Disabled:** `.is-Disable` applies `opacity:0.3` with `cursor:default` on anchor children and removes TextHoverLine underline animations
-- **Active Tab:** `background-color:#000000; color:#ffffff; font-weight:bold` on `.ThirdDepthTab-item.is-Current .ThirdDepthTab-link`
+Hover and held press were measured on all six controls with `:hover` true; press also had `:active` true. Language, recruitment, news and PUBG studio links have the changes described in §4. About and the games heading had no change within the probe's self, pseudo-element and three-ancestor scope; their zero descendants were also recorded.
+
+Keyboard focus was reached by Tab for every control. About, EN and the games heading showed no compared change. The recruitment/news image translations and the studio background/arrow changes persisted after blur; they are scroll, lazy-load or otherwise persistent effects, not focus-only styling. All six controls had `focusOnlyCount: 0`, no authored outline and no browser-default ring in the capture. No focus token is published.
+
+Disabled, form error, success, active tab and empty-content states were not measured. Blank areas in the initial full-page screenshot are not treated as empty states: later control captures contain the relevant content.
 
 ## Do's and Don'ts
 
-### Do
-- Use the KRAFTON custom font for hero-scale logotype moments at 140 px or above
-- Set all major page backgrounds to `#000000`; reserve `#ffffff` for body-copy pages only
-- Apply Poppins for all Latin navigation, buttons, and footer links
-- Use Noto Sans KR/SC/JP for any East Asian body copy to honour the multi-locale character set
-- Animate content entrance with a combined translateY(100px) → translateY(0) + opacity 0 → 1 over 0.8 s ease-out
-- Use a 2px solid `#000000` border as the default frame for interactive white-surface components (search, download buttons)
-- Scale typography proportionally using vw units between breakpoints to preserve the cinematic headline feeling
+These are reconstruction guidelines derived from the measurements.
 
-### Don't
-- Do not introduce drop-shadow on cards or containers — the brand achieves depth without shadows
-- Do not use coloured CTAs; brand buttons are strictly black-on-white or white-on-black
-- Do not mix the KRAFTON display font with body-weight copy — it is reserved for large-scale display only
-- Do not break the max-width 1280px container with full-bleed section content without a dedicated full-bleed block pattern
-- Do not use font-weight below 300 in navigation or body contexts
-- Do not add border-radius to buttons or interactive controls — the brand uses sharp 0 px corners throughout
+- Keep the initial dark surface and white text together; use black text when reproducing the white studio-panel context.
+- Use Zalando Sans Expanded for the measured 18px header and 60px games heading, Poppins for the language links, and the site-loaded Noto Sans family for measured wrappers.
+- Preserve square corners and the card geometry. Use the visible child label's colour and size.
+- Give the PUBG studio link its measured gold hover treatment; do not generalize that colour to every action.
+- Preserve the image zoom, underline expansion and recruitment-arrow movement on their respective card patterns.
+- Keep declared-only KRAFTON metadata separate from live font specimens. Do not assign browser-default anchor blue/red to the brand palette.
 
 ## Voice & Tone
 
-**Adjectives:** pioneering, cinematic, direct
-
-| Do | Don't |
-|---|---|
-| Speak in ambitious imperatives: "Pioneer the Undiscovered." | Soften with hedges: "We try to push boundaries." |
-| Lead with the vision, then back with craft detail. | Over-explain the technology before the emotional promise. |
-| Use present tense for values: "Fans are at the center." | Use passive constructions: "Fans are being considered." |
-| Short sentences that land hard. | Long compound sentences that dilute impact. |
-
-Voice samples (illustrative):
-- *Illustrative:* "We pioneer the path to players' dreams. With bold imagination and breakthrough technology, we create unforgettable worlds for fans across the globe."
-- *Illustrative:* "PIONEER THE UNDISCOVERED — our vision is not a destination. It is the act of moving into uncharted territory and making it a world worth living in."
-- *Illustrative:* "Deep thinking and meticulous groundwork fuel our success. We don't rush into the undiscovered; we prepare to own it."
+The homepage's slogan is a short imperative. Its supporting hero copy speaks in the first-person plural about players' dreams, imagination, technology, fans and worlds. This supports a direct, ambitious tone for a reconstruction. The prior first illustrative sample closely matches that visible copy; the other invented samples have no confirming source. No company-wide editorial rule is inferred from sentence length or tense. [Homepage](https://www.krafton.com/).
 
 ## Agent Prompt Guide
 
-When building KRAFTON-style UI: set `background:#000; color:#fff` on all primary surfaces. Use `font-family:"Zalando Sans Expanded", sans-serif` at 600–800 weight for display headings; use `font-family:"Poppins", sans-serif` at 500 for nav links and buttons; use `font-family:"Noto Sans","Noto Sans KR", sans-serif` at 400 for body Korean copy. Buttons are rectangular with `border:2px solid #000; background:#fff; color:#000` and invert to `background:#000; color:#fff` on hover with `transition:background-color 0.1s`. Entrance animations use `transform:translateY(100px); opacity:0` transitioning to `transform:translateY(0); opacity:1` over `0.8s ease-out`. Text-link hover uses a pseudo-element underline that scales from 0 to 100% width over `0.3s ease-out`. All border-radius values are 0. No box-shadows. If generating game cards, place imagery on `#000` with no visible frame — let the image be the only light source.
+Build a corporate game-portfolio page with a black initial ground and white foreground. Use the loaded Zalando Sans Expanded face at 18px/500 for the main header links and 60px/700 with 72px line-height for the games heading. Set language links in loaded Poppins at 13px/400, grey `#a2a2a2`, turning white with a 2px underline on hover and held press. Preserve the separate red hero artwork without inventing its numeric colour or replacing it with a fabricated token.
+
+For a recruitment link, use a square 580×342.3px card on black, a white 24px/600 visible label, a thumbnail wrapper that scales to 1.1, a 2px expanding label underline and an arrow that moves 5px right. For the PUBG studio link, use a 300×355px box with 49px 30px 34px padding over a white panel; hover changes the box to `#f2a900` and its title, copy and inner rule to white. Font families of those child labels require separate measurement before assigning one. Add no focus, disabled, error or success token from this capture.

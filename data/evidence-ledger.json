@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 365,
-  "sources": 2973,
+  "references_with_verification_v2": 367,
+  "sources": 2983,
   "sources_by_kind": {
-    "brand-asset": 181,
+    "brand-asset": 183,
     "license": 140,
-    "official-doc": 1327,
-    "product-surface": 1325
+    "official-doc": 1330,
+    "product-surface": 1330
   },
   "references": {
     "104": {
@@ -5945,6 +5945,42 @@
         }
       ]
     },
+    "goodoc": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.goodoc.co.kr"
+        },
+        {
+          "id": "health-talk",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.goodoc.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.goodoc.co.kr"
+        },
+        {
+          "id": "search-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.goodoc.co.kr"
+        },
+        {
+          "id": "theme-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.goodoc.co.kr"
+        }
+      ]
+    },
     "google": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -9410,6 +9446,42 @@
           "kind": "official-doc",
           "captured": "2026-09-27",
           "host": "www.komoot.com"
+        }
+      ]
+    },
+    "krafton": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "press.krafton.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.krafton.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.krafton.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "dinkum.krafton.com"
+        },
+        {
+          "id": "publishing-2026",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "press.krafton.com"
         }
       ]
     },

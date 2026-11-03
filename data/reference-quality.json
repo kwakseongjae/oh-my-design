@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 555,
+  "count": 556,
   "counts": {
-    "verified_v2": 365,
+    "verified_v2": 367,
     "partial": 89,
-    "legacy_snapshot": 101,
-    "total": 555
+    "legacy_snapshot": 100,
+    "total": 556
   },
   "items": [
     {
@@ -1985,6 +1985,17 @@
       ]
     },
     {
+      "id": "goodoc",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "goodpatch",
       "status": "partial",
       "verified_at": "2026-06-17",
@@ -2879,17 +2890,14 @@
     },
     {
       "id": "krafton",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "kraken",
