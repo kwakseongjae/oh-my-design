@@ -11748,6 +11748,67 @@
     ]
    }
   },
+  "hncb": {
+   "hash": "56bb75b1c8023bd8",
+   "terms": {
+    "en": [
+     "retail banking",
+     "bank homepage",
+     "service search",
+     "deep red accent",
+     "pale blue-grey hero",
+     "pink search field",
+     "rounded shapes",
+     "digital branch",
+     "loan and investment shortcuts",
+     "traditional chinese",
+     "heritage bank",
+     "friendly greeting"
+    ],
+    "ko": [
+     "은행 홈페이지",
+     "소매 금융",
+     "서비스 검색",
+     "진한 빨강 포인트",
+     "연한 청회색 히어로",
+     "분홍 검색창",
+     "둥근 모서리",
+     "디지털 지점",
+     "대출 투자 바로가기",
+     "번체 중국어",
+     "전통 은행",
+     "친근한 인사말"
+    ],
+    "ja": [
+     "銀行ホームページ",
+     "リテールバンキング",
+     "サービス検索",
+     "深い赤のアクセント",
+     "淡い青灰色のヒーロー",
+     "ピンクの検索欄",
+     "丸みのある形",
+     "デジタル支店",
+     "ローン投資ショートカット",
+     "繁体字中国語",
+     "老舗銀行",
+     "親しみやすい挨拶"
+    ],
+    "zh": [
+     "銀行首頁",
+     "個人金融",
+     "服務搜尋",
+     "深紅色重點",
+     "淡藍灰主視覺",
+     "粉紅搜尋欄",
+     "圓角造型",
+     "數位分行",
+     "貸款投資捷徑",
+     "繁體中文",
+     "老字號銀行",
+     "親切問候"
+    ]
+   }
+  },
   "hogangnono": {
    "hash": "ac89eff6ffeadf7e",
    "terms": {
