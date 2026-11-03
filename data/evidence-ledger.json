@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 339,
-  "sources": 2592,
+  "references_with_verification_v2": 340,
+  "sources": 2617,
   "sources_by_kind": {
-    "brand-asset": 133,
+    "brand-asset": 134,
     "license": 138,
-    "official-doc": 1106,
-    "product-surface": 1215
+    "official-doc": 1123,
+    "product-surface": 1222
   },
   "references": {
     "104": {
@@ -5222,6 +5222,162 @@
           "kind": "official-doc",
           "captured": "2026-11-02",
           "host": "design.gitlab.com"
+        }
+      ]
+    },
+    "gmarket": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-colors",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-guidelines",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "brand-typeface",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "common-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "contrast-standard",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.w3.org"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "corp-control",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "desktop-layout-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "ds-buttons",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-colors",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-iconography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "font-distribution",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "corp.gmarket.com"
+        },
+        {
+          "id": "gds-control",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "gds.gmarket.co.kr"
+        },
+        {
+          "id": "home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "location-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.gmarket.co.kr"
+        },
+        {
+          "id": "starro-home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "swiper-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "script.gmarket.co.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "policy.gmarket.co.kr"
         }
       ]
     },

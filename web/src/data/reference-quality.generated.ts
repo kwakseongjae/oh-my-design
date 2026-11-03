@@ -3831,31 +3831,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "gmarket",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-15",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 142,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 12,
-    "interactiveComponentCount": 6,
+    "tokenSource": "live-extract",
+    "claimCount": 70,
+    "evidenceClaimCount": 70,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 25,
+    "conflictCount": 0,
+    "tier1SourceCount": 25,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": 0.556
   },
   {
@@ -13140,9 +13133,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 339,
+  "verified_v2": 340,
   "partial": 92,
-  "legacy_snapshot": 109,
+  "legacy_snapshot": 108,
   "total": 540
 } as const;
 

@@ -174,7 +174,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 175 -> 174 (2026-11-03): xiaohongshu.
     // 174 -> 173 (2026-11-03): gaudiolab.
     // 173 -> 172 (2026-11-03): lezhin.
-    expect(flagged.length).toBe(172);
+    // 172 -> 171 (2026-11-03): gmarket.
+    expect(flagged.length).toBe(171);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
