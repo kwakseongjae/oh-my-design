@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 547,
+ "count": 548,
  "items": [
   {
    "id": "104",
@@ -6692,6 +6692,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "megastudy",
+   "primary_color_hex": "#057eff",
+   "category": "education",
+   "visual_theme": "Megastudy is the high-school online education brand operated by **메가스터디교육(주)**. Its homepage puts teachers, subject courses, textbooks, admissions information and Megapass promotions in one Korean-language study portal. The company's history dates the opening ",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "organic"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
   },
   {
    "id": "meituan",
