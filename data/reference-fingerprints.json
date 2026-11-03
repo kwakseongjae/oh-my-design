@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 559,
+ "count": 560,
  "items": [
   {
    "id": "104",
@@ -12368,6 +12368,29 @@
    ],
    "has_personas": false,
    "category_raw": "hotel-search"
+  },
+  {
+   "id": "tsmc",
+   "primary_color_hex": "#b32a2a",
+   "category": "consumer-tech",
+   "visual_theme": "TSMC manufactures chips designed by its customers. Founded by Morris Chang in 1987, it pioneered the pure-play foundry model, according to its [company profile](https://www.tsmc.com/english/aboutTSMC/company_profile). Its published [values](https://www.tsmc.co",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "tumblbug",

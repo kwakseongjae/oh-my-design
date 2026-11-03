@@ -11993,6 +11993,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "tsmc",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 39,
+    "evidenceClaimCount": 39,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
+    "conflictCount": 0,
+    "tier1SourceCount": 9,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "tumblbug",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-05-27",
@@ -13470,10 +13492,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 374,
+  "verified_v2": 375,
   "partial": 89,
   "legacy_snapshot": 96,
-  "total": 559
+  "total": 560
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -31181,6 +31181,71 @@
     ]
    }
   },
+  "tsmc": {
+   "hash": "2de79322f2468880",
+   "terms": {
+    "en": [
+     "semiconductor manufacturer",
+     "chip foundry corporate site",
+     "corporate website",
+     "technology company",
+     "muted red accent",
+     "white header",
+     "dark news band",
+     "flat image cards",
+     "square corners",
+     "outlined pill button",
+     "gray and white palette",
+     "technical hero imagery",
+     "careers and sustainability sections"
+    ],
+    "ko": [
+     "반도체 제조 기업",
+     "파운드리 기업 사이트",
+     "기업 웹사이트",
+     "기술 기업",
+     "차분한 레드 포인트",
+     "흰색 헤더",
+     "어두운 뉴스 영역",
+     "플랫 이미지 카드",
+     "각진 모서리",
+     "윤곽선 필 버튼",
+     "회색과 흰색 팔레트",
+     "기술적인 히어로 이미지",
+     "채용 및 지속가능성 섹션"
+    ],
+    "ja": [
+     "半導体メーカー",
+     "ファウンドリ企業サイト",
+     "企業ウェブサイト",
+     "テクノロジー企業",
+     "落ち着いた赤のアクセント",
+     "白いヘッダー",
+     "ダークなニュース帯",
+     "フラットな画像カード",
+     "角張ったコーナー",
+     "アウトラインのピルボタン",
+     "グレーと白の配色",
+     "技術的なヒーロー画像",
+     "採用とサステナビリティ"
+    ],
+    "zh": [
+     "半導體製造商",
+     "晶圓代工企業網站",
+     "企業官方網站",
+     "科技公司",
+     "沉穩紅色重點色",
+     "白色頁首",
+     "深色新聞區塊",
+     "扁平圖片卡片",
+     "直角邊框",
+     "外框膠囊按鈕",
+     "灰白配色",
+     "科技感主視覺",
+     "徵才與永續區塊"
+    ]
+   }
+  },
   "tumblbug": {
    "hash": "ae72d1a55e0f25c1",
    "terms": {
