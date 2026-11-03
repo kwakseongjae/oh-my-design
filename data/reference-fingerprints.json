@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 545,
+ "count": 546,
  "items": [
   {
    "id": "104",
@@ -1631,6 +1631,27 @@
     "dark",
     "calm",
     "utilitarian"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "chinatimes",
+   "primary_color_hex": "#bc0614",
+   "category": "consumer-tech",
+   "visual_theme": "China Times (中時新聞網) is a news website that dates its founding to 1995. Its [About page](https://static.chinatimes.com/pages/customer-about.htm?20240116) describes a service covering domestic and international current affairs, with reports drawn from 中國時報, 工商時報",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
    ],
    "antipatterns": [
     "off-brand"
