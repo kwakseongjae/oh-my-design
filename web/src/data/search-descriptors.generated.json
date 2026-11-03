@@ -6696,6 +6696,67 @@
     ]
    }
   },
+  "digitalx": {
+   "hash": "1e5949eb171ac5bd",
+   "terms": {
+    "en": [
+     "crypto exchange",
+     "digital asset trading",
+     "investment platform",
+     "market price table",
+     "dense data rows",
+     "orange accent",
+     "blue grey neutrals",
+     "exchange red and blue",
+     "rounded buttons",
+     "compact notice list",
+     "korean fintech",
+     "individual and business investors"
+    ],
+    "ko": [
+     "가상자산 거래소",
+     "디지털 자산 투자",
+     "투자 플랫폼",
+     "시세 표",
+     "촘촘한 데이터 행",
+     "주황색 포인트",
+     "블루그레이 중립색",
+     "상승 하락 빨강 파랑",
+     "둥근 버튼",
+     "간결한 공지 목록",
+     "핀테크",
+     "개인 및 법인 투자자"
+    ],
+    "ja": [
+     "暗号資産取引所",
+     "デジタル資産投資",
+     "投資プラットフォーム",
+     "相場テーブル",
+     "高密度なデータ行",
+     "オレンジのアクセント",
+     "ブルーグレー基調",
+     "赤と青の売買色",
+     "丸いボタン",
+     "コンパクトなお知らせ",
+     "韓国フィンテック",
+     "個人と法人の投資家"
+    ],
+    "zh": [
+     "加密資產交易所",
+     "數位資產投資",
+     "投資平台",
+     "行情價格表",
+     "高密度資料列",
+     "橘色重點色",
+     "藍灰中性色",
+     "紅藍漲跌配色",
+     "圓角按鈕",
+     "精簡公告列表",
+     "韓國金融科技",
+     "個人與企業投資人"
+    ]
+   }
+  },
   "discord": {
    "hash": "218b68ef4359c436",
    "terms": {

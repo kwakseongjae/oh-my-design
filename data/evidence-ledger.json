@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 359,
-  "sources": 2895,
+  "references_with_verification_v2": 360,
+  "sources": 2904,
   "sources_by_kind": {
-    "brand-asset": 170,
+    "brand-asset": 173,
     "license": 139,
-    "official-doc": 1281,
-    "product-surface": 1305
+    "official-doc": 1284,
+    "product-surface": 1308
   },
   "references": {
     "104": {
@@ -3596,6 +3596,66 @@
           "kind": "official-doc",
           "captured": "2026-11-02",
           "host": "design.digital.go.jp"
+        }
+      ]
+    },
+    "digitalx": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.korbit.co.kr"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
+        },
+        {
+          "id": "home-components-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.korbit.co.kr"
+        },
+        {
+          "id": "imprint-page-shell",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
+        },
+        {
+          "id": "legacy-company-route",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.korbit.co.kr"
+        },
+        {
+          "id": "redirect-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
+        },
+        {
+          "id": "root-tokens-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "digitalx.miraeasset.com"
         }
       ]
     },

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 551,
+ "count": 552,
  "items": [
   {
    "id": "104",
@@ -2684,6 +2684,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "government"
+  },
+  {
+   "id": "digitalx",
+   "primary_color_hex": "#ff5400",
+   "category": "fintech",
+   "visual_theme": "Digital X is Mirae Asset's digital-asset investment platform, formerly Korbit; korbit.co.kr now presents it. Its homepage's organization metadata gives 2013 as the founding year. The official company timeline records joining Mirae Asset in July 2026, changing ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "discord",
