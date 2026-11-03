@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 550,
+ "count": 551,
  "items": [
   {
    "id": "104",
@@ -3427,6 +3427,29 @@
    ],
    "has_personas": false,
    "category_raw": "airline"
+  },
+  {
+   "id": "firstbank",
+   "primary_color_hex": "#297d6b",
+   "category": "fintech",
+   "visual_theme": "First Bank is a Taiwanese bank whose history begins in 1899 as Taiwan Savings Bank. Its [company introduction](https://www.firstbank.com.tw/sites/fcb/AboutUS) describes the later changes of name, its entry into the First Financial Holding group in 2003, and it",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "modern"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "firstory",

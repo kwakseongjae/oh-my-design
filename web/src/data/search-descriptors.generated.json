@@ -8546,6 +8546,65 @@
     ]
    }
   },
+  "firstbank": {
+   "hash": "568b272e2b8f910a",
+   "terms": {
+    "en": [
+     "taiwan bank website",
+     "personal banking",
+     "retail banking customers",
+     "green and white palette",
+     "dark green accent",
+     "pale green sections",
+     "white rounded cards",
+     "line illustrations",
+     "everyday life photography",
+     "dense service navigation",
+     "orange login entry",
+     "traditional chinese banking"
+    ],
+    "ko": [
+     "대만 은행 웹사이트",
+     "개인 뱅킹",
+     "일반 금융 고객",
+     "녹색 흰색 팔레트",
+     "짙은 녹색 포인트",
+     "연녹색 섹션",
+     "둥근 흰색 카드",
+     "선 일러스트",
+     "일상 사진",
+     "촘촘한 서비스 메뉴",
+     "번체 중국어 은행"
+    ],
+    "ja": [
+     "台湾の銀行サイト",
+     "個人向け銀行",
+     "リテール金融",
+     "緑と白の配色",
+     "深緑のアクセント",
+     "淡い緑の背景",
+     "角丸の白いカード",
+     "線画イラスト",
+     "日常の写真",
+     "サービスメニューが密",
+     "繁体字中国語の銀行"
+    ],
+    "zh": [
+     "台灣銀行網站",
+     "個人網路銀行",
+     "一般金融客戶",
+     "綠白配色",
+     "深綠色主色",
+     "淡綠區塊背景",
+     "白色圓角卡片",
+     "線條插畫",
+     "生活照片",
+     "服務導覽密集",
+     "橘色網銀入口",
+     "繁體中文銀行"
+    ]
+   }
+  },
   "firstory": {
    "hash": "425c1c8a2d6f6c86",
    "terms": {
