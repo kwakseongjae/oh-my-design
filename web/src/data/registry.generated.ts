@@ -10,7 +10,7 @@ export interface RefEntry {
   readonly id: string;
   readonly name: string;
   readonly displayName: string;
-  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'CN' | 'UK' | 'DE' | 'FR' | 'IT' | 'FI' | 'NL' | 'SE' | 'ES' | 'LT' | 'NO' | 'DK' | 'AT' | 'EE' | 'CZ' | 'RO' | 'BE' | 'CH';
+  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'CN' | 'UK' | 'DE' | 'FR' | 'IT' | 'FI' | 'NL' | 'SE' | 'ES' | 'LT' | 'NO' | 'DK' | 'AT' | 'EE' | 'CZ' | 'RO' | 'BE' | 'CH' | 'HK';
   readonly category: string;
   readonly homepage: string;
   readonly primaryColor: string;
