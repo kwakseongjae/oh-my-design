@@ -88,7 +88,9 @@ export default function PrivacyPage() {
             Google Analytics sets a cookie (<code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">_ga</code>) to count
             visits. It does not identify you personally. Our own popularity
             counters store only an event name and a reference ID — nothing about
-            you.
+            you. Our short links (<code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/go/…</code>) count
+            clicks per link, day and country as totals, with no cookie and without
+            storing your IP address or User-Agent.
           </p>
           <p>
             <strong className="font-medium text-foreground">Vercel Web Analytics</strong> counts page views
