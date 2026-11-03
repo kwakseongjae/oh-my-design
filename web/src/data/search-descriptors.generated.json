@@ -34422,6 +34422,67 @@
     ]
    }
   },
+  "yuanta": {
+   "hash": "654a8a07593c3d95",
+   "terms": {
+    "en": [
+     "securities brokerage",
+     "online stock trading",
+     "retail investors",
+     "financial services website",
+     "blue navigation band",
+     "gold outline icons",
+     "dark slate market section",
+     "trading panel",
+     "shortcut icon grid",
+     "account opening shortcuts",
+     "beginner investor guidance",
+     "simple and professional modes"
+    ],
+    "ko": [
+     "증권사",
+     "온라인 주식 거래",
+     "개인 투자자",
+     "금융 서비스 사이트",
+     "파란색 내비게이션",
+     "금색 라인 아이콘",
+     "어두운 시장 정보 영역",
+     "빠른 주문 패널",
+     "바로가기 아이콘 그리드",
+     "계좌 개설",
+     "투자 초보자 안내",
+     "간편 모드 전환"
+    ],
+    "ja": [
+     "証券会社",
+     "オンライン株取引",
+     "個人投資家",
+     "金融サービスサイト",
+     "青のナビゲーション",
+     "金色の線アイコン",
+     "ダークな市場情報欄",
+     "取引パネル",
+     "ショートカットグリッド",
+     "口座開設導線",
+     "初心者向けガイド",
+     "簡易モード切替"
+    ],
+    "zh": [
+     "證券商",
+     "線上股票交易",
+     "個人投資人",
+     "金融服務網站",
+     "藍色導覽列",
+     "金色線條圖示",
+     "深色行情區塊",
+     "快速下單面板",
+     "捷徑圖示格",
+     "開戶捷徑",
+     "新手投資指引",
+     "簡易與專業模式"
+    ]
+   }
+  },
   "zabank": {
    "hash": "6216ed03e1f8f657",
    "terms": {
