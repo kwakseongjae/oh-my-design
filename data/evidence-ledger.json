@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 342,
-  "sources": 2656,
+  "references_with_verification_v2": 343,
+  "sources": 2670,
   "sources_by_kind": {
-    "brand-asset": 145,
+    "brand-asset": 148,
     "license": 138,
-    "official-doc": 1140,
-    "product-surface": 1233
+    "official-doc": 1148,
+    "product-surface": 1236
   },
   "references": {
     "104": {
@@ -17648,6 +17648,96 @@
           "kind": "product-surface",
           "captured": "2026-09-29",
           "host": "www.yeogi.com"
+        }
+      ]
+    },
+    "zabank": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "account-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "brand-page",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "component-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "blog.za.group"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "privacy-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
+        },
+        {
+          "id": "shared-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "site-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.zaticdn.com"
+        },
+        {
+          "id": "website-terms-entry",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "bank.za.group"
         }
       ]
     },

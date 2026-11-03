@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 542,
+ "count": 543,
  "items": [
   {
    "id": "104",
@@ -13229,6 +13229,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "zabank",
+   "primary_color_hex": "#39e5b1",
+   "category": "fintech",
+   "visual_theme": "ZA Bank is a Hong Kong digital bank offering banking, investment, insurance and business services. Its own profile records a Hong Kong Monetary Authority licence in 2019 and describes a “用戶共創” approach: users participate in product development and design. The ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "zalando",
