@@ -1,7 +1,13 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 정오** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 오후 · **2·3차 main 머지·운영 확인** · 확산 계획 작성 · 4차 진행
+
+- **오너 GO "2차·3차 묶음 머지 진행해" → main `77403deb`**(`136e3710`까지, 4차 chinatimes부터는 브랜치에 남김). 병합 트리 검증: reference-pipeline 무변경, web 1282 통과, tsc 무오류, llms·query data 무변경, check-counts 545/349/89/107. 운영: llms.txt 349/89/107, zabank·/ko gov24·docomo-smtb-netbank·/ko hanatour·mercedes-benz·duolingo 200, MCP get_reference zabank = verified_v2·HK.
+- **확산 계획 `docs/GROWTH_PLAN_2026-11-03.md`** (오너 질문: SNS냐 블로그냐, CJK에서 어떻게 터트리나, 영상·모션 포함). 요지: 실측 데이터가 유일한 무기 → 원본은 데이터 페이지(격주), 유통은 Threads(주 3회, 이미 검증된 채널), 영상은 레퍼런스 실측에서 자동 생성하는 "상태 릴". KR 밖은 TW→JP, 전제는 ja·zh-tw 상세 페이지. **오너 결정 G1 JP·TW 게시 계정 / G2 히어로 필름 제작 방식 / G3 순서(추천: 콘텐츠 엔진 먼저).** 수치는 채팅에만(공개 레포 원칙).
+- **4차:** chinatimes(신규 TW) `f3699b0c` 반영(브랜치). uniqlo는 사이트가 워커 브라우저에 "Access Denied" → 측정 0, 반영 안 함(재시도 방법 미정). 진행: meituan·megastudy·hahow·htc.
 
 ## ▶ 2026-11-03 1시 반 · **재개 진행 중** (오너 "재개해줘")
 
