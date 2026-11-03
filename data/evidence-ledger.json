@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 343,
-  "sources": 2670,
+  "references_with_verification_v2": 344,
+  "sources": 2677,
   "sources_by_kind": {
     "brand-asset": 148,
     "license": 138,
-    "official-doc": 1148,
-    "product-surface": 1236
+    "official-doc": 1152,
+    "product-surface": 1239
   },
   "references": {
     "104": {
@@ -56,6 +56,54 @@
           "kind": "official-doc",
           "captured": "2026-07-14",
           "host": "corp.104.com.tw"
+        }
+      ]
+    },
+    "1111-jobbank": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "control-error-target",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "privacy-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "product-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.1111.com.tw"
         }
       ]
     },

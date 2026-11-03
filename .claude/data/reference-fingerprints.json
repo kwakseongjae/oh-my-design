@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 543,
+ "count": 544,
  "items": [
   {
    "id": "104",
@@ -27,6 +27,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "1111-jobbank",
+   "primary_color_hex": "#2066ec",
+   "category": "consumer-tech",
+   "visual_theme": "1111 Job Bank is a Taiwanese employment platform for job seekers and employers. Its terms describe free job search, applications, automatic résumé matching and career services. The company page dates 全球華人股份有限公司 to “88年11月11日” (11 November 1999) and uses “1定要…”",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "11st",

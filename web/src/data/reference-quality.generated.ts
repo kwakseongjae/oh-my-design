@@ -72,6 +72,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "1111-jobbank",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 75,
+    "evidenceClaimCount": 75,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 7,
+    "conflictCount": 0,
+    "tier1SourceCount": 7,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "11st",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -13199,10 +13221,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 343,
+  "verified_v2": 344,
   "partial": 92,
   "legacy_snapshot": 108,
-  "total": 543
+  "total": 544
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
