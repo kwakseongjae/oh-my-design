@@ -1158,7 +1158,14 @@ async function mousePhase() {
       const hov = await readStable(c);
       if (!hov || !hov.is.hover) { fail(`:hover did not match after moving the pointer onto it (elementFromPoint = ${hit.hitEl})`); continue; }
       R.hover = { measured: true, hitEl: hit.hitEl, snap: hov, settle: stH, ...stateDiff(rest, hov), ...(hidden.length ? { overlaysHiddenForThisControl: hidden } : {}) };
-      if (SHOTS) await stateShot(c, "hover", R.hover);
+      if (SHOTS) {
+        await stateShot(c, "hover", R.hover);
+        // A headed-Chrome screenshot drops :hover, and a press without it never matches :active (2026-11-03: every
+        // --shots run lost pressed). Put the pointer back on the control before pressing; the hover read above stands.
+        await page.mouse.move(hit.x + 1, hit.y, { steps: 2 });
+        await page.mouse.move(hit.x, hit.y, { steps: 2 });
+        await settleFor([c]);
+      }
       await page.mouse.down();
       isDown = true;
       const stP = await settleFor([c]);

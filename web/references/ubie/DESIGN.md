@@ -2,180 +2,139 @@
 name: Ubie
 colors:
   primary: '#3959cc'
-  primary-hover: '#283f91'
-  accent: '#27cc91'
+  accent: '#e34b83'
   canvas: '#ffffff'
-  text-main: '#32353a'
-  text-sub: '#686a6d'
-  placeholder: '#96989a'
-  disabled: '#dcdddd'
-  border: '#c5c6c7'
-  border-light: '#dcdddd'
+  foreground: '#3d4454'
+  hero-foreground: '#20242c'
+  muted-foreground: '#6d727e'
+  secondary-button-foreground: '#333333'
+  surface: '#f5f5f5'
   surface-subtle: '#fafafa'
-  error: '#e32e55'
-  error-text: '#a1213c'
-  error-bg: '#fceff2'
-  success-text: '#1c9167'
-  success-bg: '#e9faf4'
-  info-bg: '#f0f2fc'
-  info-border: '#8296df'
+  vitals-foreground: '#32353a'
+  vitals-muted-foreground: '#686a6d'
+  placeholder: '#96989a'
+  disabled-foreground: '#dcdddd'
+  border: '#c5c6c7'
+  secondary-button-border: '#cccccc'
+  blue-inverse-darken: '#283f91'
+  green-inverse: '#27cc91'
+  red-inverse: '#e32e55'
+  red-foreground: '#a1213c'
+  red-background: '#fceff2'
+  green-foreground: '#1c9167'
+  green-background: '#e9faf4'
+  blue-background: '#f0f2fc'
+  blue-border: '#8296df'
   on-primary: '#ffffff'
 typography:
-  heading-xl:
-    fontSize: 32px
-    fontWeight: 700
-    lineHeight: 1.4
-    use: Page hero, landing titles
-  heading-lg:
-    fontSize: 28px
-    fontWeight: 700
-    lineHeight: 1.4
-    use: Major section titles
-  heading-md:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.4
-    use: Section headers
-  heading-sm:
-    fontSize: 20px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Card titles, modal headers
-  heading-xs:
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: List headers, sub-sections
-  body-lg:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.7
-    use: Primary reading text
-  body-md:
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.7
-    use: Standard body, descriptions
-  note:
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Captions, helper text
   button:
-    fontSize: 16px
+    fontSize: 14px
     fontWeight: 700
-    lineHeight: 1
-    use: Action labels
-  tag:
+    lineHeight: 1.4
+    use: Measured 44px action links, computed Open Sans family
+  navigation:
+    fontSize: 14px
+    fontWeight: 900
+    lineHeight: 1.2
+    use: Header Ubieについて link
+  header-label:
     fontSize: 12px
     fontWeight: 700
-    lineHeight: 1
-    use: Category chips, status keywords
+    use: Visible child labels in the 80px header action links
 rounded:
+  none: 0px
+  xs: 2px
   sm: 4px
   md: 8px
   lg: 12px
+  xl: 16px
+  xxl: 24px
   full: 9999px
 spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
+  xxs: 4
+  xs: 8
+  sm: 12
+  md: 16
   lg: 24
-  xl: 32
-  xxl: 48
-  section: 64
+  xl: 40
+  xxl: 64
 components:
-  button-primary:
+  primary-news:
     type: button
     backgroundColor: '#3959cc'
     textColor: '#ffffff'
-    rounded: 8px
-    padding: 12px 24px
-    typography: 16px/700
-    hover: '#283f91'
-    disabled: '#f6f6f6'
-    focus: '#e1568a'
-    use: Single most important action
-  button-accent:
-    type: button
-    backgroundColor: '#27cc91'
-    textColor: '#ffffff'
-    rounded: 8px
-    padding: 12px 24px
-    use: Health-forward emphasis. Documented in the design docs; no accent variant was found in the shipped component CSS read 2026-09-16, so its states are unresolved.
-  button-secondary:
-    type: button
-    backgroundColor: '#ffffff'
-    textColor: '#3959cc'
-    rounded: 8px
-    padding: 12px 24px
-    hover: '#f6f6f6'
-    disabled: '#f6f6f6'
-    focus: '#5d77d5'
-    use: 'Subordinate action; 1px #3959cc border'
-  button-alert:
-    type: button
-    backgroundColor: '#e32e55'
-    textColor: '#ffffff'
-    rounded: 8px
-    padding: 12px 24px
-    hover: '#a1213c'
-    disabled: '#f6f6f6'
-    focus: '#5d77d5'
-    use: Irreversible/risky actions
-  button-text:
-    type: button
-    backgroundColor: transparent
-    textColor: '#3959cc'
-    rounded: 8px
-    padding: 8px 12px
-    typography: 14px/700
-    hover: '#f0f2fc'
-    focus: '#5d77d5'
-    use: Low-emphasis inline action
-  textfield:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#32353a'
-    rounded: 8px
-    padding: 12px 16px
-    typography: 16px
-    focus: '#5d77d5'
-    disabled: '#f6f6f6'
-    use: 'Standard input; 1px #c5c6c7 border, focus #3959cc'
-  textfield-error:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#32353a'
-    rounded: 8px
-    padding: 12px 16px
-    error: '#e85474'
-    use: 'Validation failure; 1px #e32e55 border, help #a1213c'
-  card:
-    type: card
-    backgroundColor: '#ffffff'
     rounded: 12px
-    padding: 24px
-    use: 'Symptom result / content panel; 1px #dcdddd border'
-  card-interactive:
-    type: card
+    height: 44px
+    padding: 0px 24px
+    typography: 14px / 700
+    hover: opacity 0.9
+    pressed: opacity 0.9
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: もっと見る — a link to /news on the white News section; computed family Open Sans, line-height 19.6px; border and shadow none. Hover and press keep the computed fill and ink, fading the whole link.
+  secondary-care:
+    type: button
     backgroundColor: '#ffffff'
+    textColor: '#333333'
+    border: '1px solid #cccccc'
     rounded: 12px
-    padding: 16px
-    hover: '#f0f2fc'
-    disabled: '#f6f6f6'
-    use: 'Tappable card; 1px #dcdddd border, hover #8296df'
-  card-tinted:
+    height: 44px
+    padding: 0px 20px
+    typography: 14px / 700
+    hover: 'fg #3959cc; border 1px solid #3959cc'
+    pressed: 'fg #3959cc; border 1px solid #3959cc'
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: 医療機関の方はこちら — a hero link to https://intro.dr-ubie.com/; computed family Open Sans, line-height 19.6px, shadow none. The label and arrow turn blue; the white background remains.
+  header-contact:
+    type: button
+    backgroundColor: '#3959cc'
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 80px
+    padding: 0px
+    typography: 12px / 700
+    hover: opacity 0.9
+    pressed: opacity 0.9
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: お問合せ — an 88px-wide header link to /inquiry with a 20px icon and a white child label at 12px/700. The anchor itself is 16px/400 with 24px line-height; border and shadow none.
+  header-recruit:
+    type: button
+    backgroundColor: '#e34b83'
+    textColor: '#ffffff'
+    rounded: 0px
+    height: 80px
+    padding: 0px
+    typography: 12px / 700
+    hover: opacity 0.9
+    pressed: opacity 0.9
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: 採用情報 — a 90px-wide header link to https://recruit.ubie.life/ with a 20px icon and white child label at 12px/700. The anchor itself is 16px/400 with 24px line-height; border and shadow none.
+  nav-about:
+    type: button
+    textColor: '#3d4454'
+    rounded: 0px
+    height: 20px
+    padding: 0px
+    typography: 14px / 900
+    hover: 'fg #3959cc'
+    pressed: 'fg #3959cc'
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: Ubieについて — a transparent header navigation link on white, 93.9px wide, Noto Sans JP, line-height 16.8px and tracking 0.7px; border and shadow none.
+  news-card:
     type: card
-    backgroundColor: '#f0f2fc'
-    rounded: 8px
-    padding: 16px
-    use: Inline informational callout
+    textColor: '#3d4454'
+    rounded: 0px
+    height: 375px
+    padding: 0px
+    typography: 16px / 400
+    hover: 'title paragraph fg #3959cc'
+    pressed: 'title paragraph fg #3959cc'
+    focus: 'outline 2px solid #3959cc; outline-offset 2px'
+    use: 'First News card, /news/notice-20261019 — a transparent link on the white section, 437.3px wide. fg describes the visible title paragraph; the anchor own color is #1a1a1a and its date is #6d727e. Wrapper border and shadow none; thumbnail surface #f5f5f5.'
 fonts:
   roles:
-    sans: A P-OTF UD Shin Go Pr6N
-    mono: Open Sans
+    sans: Noto Sans JP
+    display: Open Sans
+    supporting: Lato
 ---
 
 # Design System Inspiration of Ubie (ユビー)
@@ -184,572 +143,202 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Ubie is a Japanese healthcare-AI company whose products — a consumer symptom-checker (ユビー) and clinical software for hospitals — must do something most health software fails at: feel reassuring to an anxious person and credible to a busy doctor, on the same screen. The interface answers this with a warm, optimistic clinical aesthetic. The canvas is pure white (`#ffffff`), text is a soft near-black (`#32353a`) that reads warmer than true black, and the system is anchored by two colors working in concert: a calm, trustworthy **Ubie Blue** (`#3959cc`) for interaction and a fresh, healing **Ubie Green** (`#27cc91`) that signals health, vitality, and positive progress.
+Ubie is a Japanese healthcare company founded in May 2017 by physician **阿部 吉倫** and engineer **久保 恒太**. Its symptom search service helps consumers find related conditions, ways of responding and nearby medical institutions; its hospital and pharmaceutical services connect the other sides of that care journey. The current corporate homepage extends this story to generative AI for hospital work and DPC coding support. Its headline is **「テクノロジーで、医療の願いを解き放つ」**, while the company describes a future in which health is as natural as air. [Company](https://ubie.life/about_ubie), [services](https://ubie.life/service).
 
-The brand was rebuilt around the phrase **"あたたかさと賢さで寄り添う"** — "accompanying people with warmth and wisdom." The heart motif in the logo carries this duality: the front face expresses warmth (the human), the back expresses the supporting technology (the AI). The logo hides a detail — the human body temperature **36 degrees** is encoded in its form — a quiet promise that the product is on the patient's side. Nothing in the visual language shouts; everything is engineered to lower the cortisol of someone Googling their symptoms at 2am.
+The brand's documented concept is **「あたたかさと賢さで寄り添う」**: accompanying people with warmth and wisdom. The heart's front expresses human warmth; its back represents the supporting technology. The company says its logotype is based on an easily read UD font. On the current homepage, a pale blue-to-pink hero gradient, a dark wordmark and headline, white sections, blue contact action and pink recruitment action give this concept a concrete expression. The gradient is `linear-gradient(90deg, #ebeefa, #fde3ed)`; the two action fills are `#3959cc` and `#e34b83`. [Brand guideline, version 1.1 / August 2024](https://speakerdeck.com/ubie/ubie-brand-guideline-2dc9ba71-bd2f-489f-b08f-02487e35c3e7), [logo explanation](https://ubie.life/about_ubie).
 
-The type system uses **A P-OTF UD Shin Go Pr6N**, a Japanese Universal Design typeface chosen for legibility under stress and across vision abilities, paired with a clean Latin sans (Open Sans as the documented fallback). Accessibility is not a bolt-on: Ubie Vitals is built "so that Ubie's products reach all users," and the entire token system is published open-source.
+The measured surface is the Japanese corporate homepage (`ubie.life/`, HTML `lang="ja"`). **Ubie Vitals** is the company's public product design system. It publishes tokens, components, icons, accessibility guidance and UX writing; its principles explicitly exclude corporate and recruitment design from their scope. The shared token names visible on this homepage therefore sit alongside a distinct corporate implementation. Its measured paragraph ink is `#3d4454`, and its loaded fonts include Noto Sans JP, Open Sans and Lato. [Vitals introduction](https://vitals.ubie.life/getting-started/), [scope](https://vitals.ubie.life/principles/).
 
-**Key Characteristics:**
-- Ubie Blue (`#3959cc`) for interaction; Ubie Green (`#27cc91`) for health/positive signals — a two-anchor system
-- A P-OTF UD Shin Go (Universal Design font) for Japanese; Latin sans fallback for English
-- Warm near-black text (`#32353a`) instead of pure black — softer, less clinical
-- 10-step primitive scales (100→1000) across blue, green, pink, orange, purple, red, black
-- Generous default line-height (170%) for calm, readable body text
-- Conservative radius scale (2/4/8/12px) sized to the component, plus pill (9999px)
-- 4px-based spacing grid; accessibility and UX writing are first-class token categories
-- Open-source design system (Ubie Vitals) — tokens managed in JSON via Style Dictionary
+#### Primary tasks
 
-### Primary tasks
-
-- Answer one symptom question per screen until the check finishes.
-- Work out what a symptom might mean in a few minutes.
-- Learn which specialist to see about an unexplained symptom.
-- Decide whether to go to hospital now or wait until morning.
-- Review a patient's symptom answers before the consultation starts.
+- Corporate homepage: find services for consumers, medical institutions or pharmaceutical companies; read news; contact Ubie; find recruitment information.
+- Consumer product: explore symptoms, diseases and specialties, or find nearby medical institutions. The Japanese product explains how answers can be sent to participating institutions before a visit. [Japanese service](https://ubie.app/).
+- English product: complete a questionnaire advertised as taking three minutes and receive possible causes and information about when to see a doctor. Its welcome image is explicitly labelled “Shiba (Welcome)”. [English service](https://ubiehealth.com/).
 
 ### Brand Narrative
 
-Ubie (Ubie株式会社 / Ubie, inc.) was founded in **2017** by **Dr. Kota Abe (阿部吉倫)**, a practicing physician, and **Yoshinori Kuno (久野遼平)**, an engineer — the doctor-plus-engineer pairing that the entire brand encodes. The founding problem was the gap between a worried person with symptoms and the right medical care: patients don't know which department to visit, and doctors drown in repetitive intake. Ubie builds AI to bridge that gap from both sides — a consumer **symptom-checker** ("ユビー", at ubie.life / ubiehealth.com) that helps people understand symptoms and find appropriate care in about three minutes, and **clinical software** that reduces documentation load for medical staff.
+The company joins a physician's clinical experience with an engineer's symptom–disease modelling work. Its current company page dates the founding to May 2017 and names **阿部 吉倫** and **久保 恒太**. It describes patients wanting treatment, clinicians wanting more time with individuals, researchers wanting new treatments and others wanting care to reach those who need it. Technology is presented as a way to remove constraints on these wishes. [Company](https://ubie.life/about_ubie).
 
-The company rebranded around the mission **"愛あるテクノロジーで医療と人をつなぐ"** — "connecting medicine and people with loving technology" — and the design phrase **"あたたかさと賢さで寄り添う"** (accompanying people with warmth and wisdom). Those two words, warmth (あたたかさ) and wisdom (賢さ), are the literal axes of the visual system: green and blue, human and machine, the front and back of the heart logo. The logo encodes **36°C** — human body temperature — as a quiet signal that the product is on the patient's side, not above them.
+This ambition now includes consumers, hospitals and pharmaceutical companies. The services page describes a physician-supervised interview engine built from 50,000 medical papers; the current homepage also describes generative AI for work efficiency and DPC coding optimisation. The 2024 brand guideline's heart concept supplies continuity across those activities, while the homepage's blue and pink presentation is the currently measured expression. [Services](https://ubie.life/service), [brand guideline](https://speakerdeck.com/ubie/ubie-brand-guideline-2dc9ba71-bd2f-489f-b08f-02487e35c3e7).
 
-What Ubie refuses: the cold institutional blue-gray of legacy hospital IT, the alarmism of symptom-Googling, and the false confidence of an app that pretends to diagnose. It is not a doctor-replacement; it is a guide that lowers anxiety and routes people to real care. The design must therefore be simultaneously *credible* (doctors built it, 50,000+ clinical sources, dozens of medical experts) and *gentle* (a Shiba mascot, soft warm near-black text, 170% line-height, never red unless something is truly wrong).
-
-Ubie open-sourced its design system, **Ubie Vitals**, publishing tokens, components, accessibility guidance, and UX writing — an unusually transparent move for a healthcare company, consistent with the brand's belief that good, accessible medical UX is a public good.
+Vitals makes the product design resources available as open source. Its design-token repository explicitly describes JSON tokens converted with Style Dictionary and identifies an Apache-2.0 licence. Vitals also documents a VS Code extension for inserting token CSS custom properties. [Developer tooling](https://vitals.ubie.life/tokens/for-developers/). This confirms the publishing mechanism without treating every corporate component as a Vitals component. [Getting started](https://vitals.ubie.life/getting-started/), [token repository](https://github.com/ubie-oss/design-tokens).
 
 ### Principles
 
-1. **Warmth and wisdom, together.** Every surface balances the green (human, care) and blue (trust, intelligence) axes. Neither alone is the brand; the pairing is.
-2. **Calm is a feature.** For an anxious user, density and urgency are harm. Space, 170% line-height, soft shadows, and one-decision-per-screen are clinical-grade calm, not decoration.
-3. **Honest, never alarmist.** The product states possibilities and next steps; it never diagnoses, never frightens, never shames a question. Red is reserved for genuine errors.
-4. **Accessibility is the baseline.** UD Shin Go, published WCAG-minded tokens, and a discouraged `disabled` state are commitments to "reach all users," not nice-to-haves.
-5. **Blue is interaction, green is health.** `#3959cc` appears where you can tap; `#27cc91` appears where something is well, succeeded, or progressing. Roles never swap.
-6. **One decision per screen.** The symptom flow never stacks choices. Progressive disclosure keeps load minimal and the path clear.
-7. **Borders before shadows.** Separation comes from a 1px `#dcdddd` line and white space first; soft shadow is reserved for floating or interactive surfaces.
-8. **Words do the caring.** Labels describe actions, errors are blameless and recoverable, disclaimers empower rather than scare. UX writing is a first-class token category.
+Vitals publishes four product principles: **気軽** (approachable), **かんたん** (simple), **誠実** (sincere) and **スッキリ** (clear and satisfying). It asks for familiarity without excessive optimism, comprehensibility across generations, accurate expectations and an experience that leaves users with useful understanding. The document presents these as a common product foundation, with corporate and recruitment design outside its scope. [Product principles](https://vitals.ubie.life/principles/).
+
+Accessibility is an ongoing development commitment: Vitals describes work toward JIS X 8341-3:2016 AA and selected WCAG 2.2 criteria. This is a stated target, not a compliance finding made by this capture. [Accessibility](https://vitals.ubie.life/accessibility/).
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly described Ubie user segments (worried consumers seeking care, and clinicians using Ubie's hospital software), not individual people.*
-
-**さくら (Sakura), 34, Yokohama.** Office worker and mother of a toddler. Opens Ubie at night when her child has a fever and she can't tell whether the ER is warranted. Wants two things: to not feel stupid for asking, and to know whether to go now or wait until morning. The Shiba mascot and the unhurried, plain-Japanese questions are what keep her from panic-Googling. If the app ever sounded alarmist or used scary red text, she would close it and lie awake instead. Reads Japanese; the 170% line-height and large UD Shin Go text matter at 2am on a small screen.
-
-**田中先生 (Dr. Tanaka), 48, regional hospital, Nagano.** Internal medicine physician seeing 40+ patients a day. Uses Ubie's clinical intake software because it pre-collects structured symptom data before the patient sits down, cutting his documentation time. He has zero patience for cute — for him the design must be fast, legible, and dense enough to scan, but he appreciates that it never overclaims AI certainty. Trusts the product partly because he knows a physician co-founded it. Would abandon any tool that produced a confident wrong "diagnosis."
-
-**Marcus Bell, 29, London.** Uses ubiehealth.com (English) after weeks of an unexplained symptom and an over-full GP schedule. Skeptical of "AI doctor" apps. Convinced by "Developed by doctors," the cited clinical sources, and the calm refusal to diagnose — it tells him *possibilities* and *which specialist to see*, which is exactly the help he needed. Bounces instantly off any health app that feels like an ad or a hype pitch.
-
-**みなみ (Minami), 23, Osaka.** University student, high accessibility needs (low vision). Ubie is one of the few health tools she can actually read without zooming — UD Shin Go, the contrast of `#32353a` on white, and generous spacing were built with her in mind. She is the user the open-source Vitals accessibility work exists to serve, and the reason the `disabled`-button discouragement matters: she relies on clear, perceivable affordances.
+Verified audiences are consumers, medical institutions and pharmaceutical companies. No research-backed individual personas were established. [Services](https://ubie.life/service).
 
 ## Colors
 
-### Primary
-- **Ubie Blue** (`#3959cc`): `blue600`. The primary interactive color — links, primary buttons, focus, selected states, `bg.blue.inverse`. Calm institutional blue that reads trustworthy, not cold.
-- **Ubie Green** (`#27cc91`): `green600`. The signature health accent — success, positive progress, `bg.green.inverse`, brand-moment highlights. Fresh, vital, reassuring.
-- **Pure White** (`#ffffff`): `bg.white`. Page background and card surface.
-- **Text Main** (`#32353a`): `black900`. Primary text and headings. Warm near-black with a soft undertone.
+### Current corporate surface
 
-### Brand
-- **Heart Blue/Green pairing**: The logo and brand expressions pair `#3959cc` (warmth-and-trust) with `#27cc91` (health-and-care). These two are the brand's identity colors; everything else is supporting.
+These values come from the homepage census and control measurements.
 
-### Text Scale
-- **Text Main** (`#32353a`): Primary reading text, headings.
-- **Text Sub** (`#686a6d`): `black600`. Secondary text, descriptions, metadata, de-emphasized links.
-- **Text Placeholder** (`#96989a`): `black500`. Input placeholders.
-- **Text Disabled** (`#dcdddd`): `black300`. Inactive labels.
-- **Text Link** (`#3959cc`): Hyperlinks (= Ubie Blue 600).
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary | `#3959cc` | `--color-ubie-blue`; contact and News action fills, navigation hover, measured focus outlines |
+| Accent | `#e34b83` | `--color-ubie-pink`; recruitment action fill |
+| Canvas | `#ffffff` | `--color-ubie-white`; white sections and secondary hero links |
+| Foreground | `#3d4454` | `--color-ubie-dark`; 11 of 12 paragraph ink samples |
+| Hero paragraph | `#20242c` | `--color-ubie-gray-950`; the remaining paragraph ink sample |
+| Muted foreground | `#6d727e` | `--color-ubie-gray-600`; date on the measured News card |
+| Secondary action ink | `#333333` | `--color-ubie-gray-900`; medical-institution hero link |
+| Secondary action border | `#cccccc` | `--color-ubie-gray-300`; 1px at rest |
+| Surface | `#f5f5f5` | `--color-ubie-gray-100`; card thumbnail container and category badge |
 
-### Semantic
-- **Success / Green** — text `#1c9167` (green800), bg `#e9faf4` (green100), inverse `#27cc91` (green600), border `#77dfba` (green400).
-- **Error / Red** — text `#a1213c` (red800), bg `#fceff2` (red100), inverse `#e32e55` (red600), border `#ed7b94` (red400).
-- **Warning / Orange** — text `#b57212` (orange800), bg `#fff9f0` (orange100), inverse `#ffa11a` (orange600), border `#ffc46f` (orange400).
-- **Info / Blue** — text `#283f91` (blue800), bg `#f0f2fc` (blue100), inverse `#3959cc` (blue600), border `#8296df` (blue400).
-- **Accent / Purple** — text `#7322a2` (purple800), bg `#f8effc` (purple100), inverse `#a230e4` (purple600), border `#c47dee` (purple400).
-- **Accent / Pink** — text `#9b2350` (pink800), bg `#fcf0f5` (pink100), inverse `#da3170` (pink600), border `#e87da5` (pink400).
+The hero gradient token is `--gradient-ubie: linear-gradient(90deg, #ebeefa, #fde3ed)`. Filled action hover changes the element's opacity, so retain its computed fill rather than manufacturing a darker colour.
 
-### Neutral Scale (Ubie Black)
-- **Black 100** (`#fafafa`): Lightest gray, `bg.black` surface fill.
-- **Black 200** (`#f6f6f6`): Secondary background, subtle fills.
-- **Black 300** (`#dcdddd`): Disabled text, hairline dividers.
-- **Black 400** (`#c5c6c7`): `border.black` — default border color.
-- **Black 500** (`#96989a`): Placeholder text, muted icons.
-- **Black 600** (`#686a6d`): Sub text, secondary labels, `bg.black.inverse`.
-- **Black 700** (`#55575b`): Emphasized secondary text.
-- **Black 800** (`#393c41`): `text.black` strong labels.
-- **Black 900** (`#32353a`): Primary text — Text Main.
-- **Black 1000** (`#16191f`): Maximum-contrast text, rare emphasis.
+### Vitals semantic palette, also present as homepage variables
 
-### Surface & Borders
-- **Border Default** (`#c5c6c7`): black400. Card borders, input borders, dividers.
-- **Border Light** (`#dcdddd`): black300. Subtle hairline separators.
-- **Background Subtle** (`#fafafa` / `#f6f6f6`): Section fills, grouped surfaces.
-- **Modal Scrim** (`rgba(0,0,0,0.5)`): `bg.modal`. Overlay behind dialogs and sheets.
+The following are defined tokens; their presence does not establish that every role is rendered on this page. Vitals calls the groups Blue, Green, Red, Orange, Purple and Pink, rather than declaring each hue to be a particular application state. [Semantic colours](https://vitals.ubie.life/tokens/color/semantic/).
+
+| Group | Text | Background | Inverse background | Border |
+|---|---|---|---|---|
+| Blue | `#283f91` | `#f0f2fc` | `#3959cc` | `#8296df` |
+| Green | `#1c9167` | `#e9faf4` | `#27cc91` | `#77dfba` |
+| Red | `#a1213c` | `#fceff2` | `#e32e55` | `#ed7b94` |
+| Orange | `#b57212` | `#fff9f0` | `#ffa11a` | `#ffc46f` |
+| Purple | `#7322a2` | `#f8effc` | `#a230e4` | `#c47dee` |
+| Pink | `#9b2350` | `#fcf0f5` | `#da3170` | `#e87da5` |
+
+Vitals' **Text Main** is `#32353a`, **Text Sub** `#686a6d`, **Text Placeholder** `#96989a`, **Text Disabled** `#dcdddd`, and **Text Link** `#3959cc`. The homepage retains those semantic variables, while its sampled paragraphs use the corporate foreground above. **Border Black** is `#c5c6c7`. **Background Modal** is black at 50%, expressed on the homepage as `#00000080` and equivalently `rgba(0, 0, 0, 0.5)`; no dialog was measured.
+
+### Primitive neutral ramp
+
+The documented Ubie Black ramp remains: 100 `#fafafa`, 200 `#f6f6f6`, 300 `#dcdddd`, 400 `#c5c6c7`, 500 `#96989a`, 600 `#686a6d`, 700 `#55575b`, 800 `#393c41`, 900 `#32353a`, 1000 `#16191f`. Blue, Green, Pink, Orange, Purple and Red also have ten documented steps from 100 to 1000. These primitive facts remain useful independently of where a live component uses them. [Primitive colours](https://vitals.ubie.life/tokens/color/primitive/).
 
 ## Typography
 
-### Font Family
-- **Japanese**: `"A P-OTF UD Shin Go Pr6N"` (Universal Design Shin Go), Regular = `/M`, Bold = `/DB`. Fallback: `"Noto Sans CJK JP", "Noto Sans JP"`.
-- **Latin / English**: brand Latin sans; documented fallback `"Open Sans"`.
-- **Full stack**: `"A P-OTF UD Shin Go Pr6N", "Open Sans", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif`
+### Font evidence classes
 
-UD Shin Go is a Universal Design face: glyphs are tuned for legibility at small sizes, for low-vision readers, and for distinguishing easily-confused characters — the correct choice for medical content read under stress.
+| Class | Verified finding |
+|---|---|
+| Official product use | Vitals names **A P-OTF UD Shin Go Pr6N / M** for normal text and **/ DB** for bold. This is documented product typography; neither face was loaded in the corporate capture. No live specimen is supplied for it. |
+| Live-loaded | `document.fonts` lists **Noto Sans JP 100–900**, **Open Sans 300–800**, and **Lato 400, 700, 900**, all normal style. Their `@font-face` sources are same-origin WOFF2 files. |
+| Live CSS use | Body and h1 stacks begin with **Noto Sans JP**. The 44px action links declare **Open Sans**; header navigation declares Noto Sans JP. A declared family and loaded face do not identify the face used for every Japanese glyph. |
+| Official distributed assets | No font binary or font licence was opened. The press kit links brand assets, but no assets were downloaded. |
+| Declared-only | **Lato 300** has an `@font-face` declaration but was not loaded. Noto Sans, Hiragino Kaku Gothic ProN, Hiragino Sans and Meiryo are named in the body fallback stack without loaded-face evidence here. They receive no specimens. |
+| Automatic fallback aliases | Noto Sans JP Fallback and Open Sans Fallback appear loaded; their declarations use `local("Arial")`. Lato Fallback is declared but not loaded. These are site-generated aliases, not additional brand faces. |
+| Unresolved | The specific primary Latin face was not established from the brand-deck transcript. The former full UD Shin Go/Open Sans stack was not found on this homepage. |
 
-### Hierarchy
+**Substitute: none chosen.** The brand guideline itself documents Noto Sans CJK for Japanese fallback and Open Sans for English fallback; that instruction does not turn either into a substitute chosen by this reference. [Product typography](https://vitals.ubie.life/tokens/typography/), [brand guideline, slides 10–11](https://speakerdeck.com/ubie/ubie-brand-guideline-2dc9ba71-bd2f-489f-b08f-02487e35c3e7).
 
-Ubie Vitals defines type semantically (Body / Heading / Note / Button / Tag) crossed with three line-height modes: default `170%`, `-narrow` `150%`, `-tight` `140%`. The px scale below is the standard Ubie web rendering.
+### Measured control typography
 
-| Role | Token | Size | Weight | Line Height | Notes |
-|------|-------|------|--------|-------------|-------|
-| Heading XL | heading-xl | 32px | DB (Bold) | 140% (tight) | Page hero, landing titles |
-| Heading L | heading-lg | 28px | DB (Bold) | 140% (tight) | Major section titles |
-| Heading M | heading-md | 24px | DB (Bold) | 140% (tight) | Section headers |
-| Heading S | heading-sm | 20px | DB (Bold) | 150% (narrow) | Card titles, modal headers |
-| Heading XS | heading-xs | 16px | DB (Bold) | 150% (narrow) | List headers, sub-sections |
-| Body L | body-lg | 16px | M (Regular) | 170% | Primary reading text |
-| Body M | body-md | 14px | M (Regular) | 170% | Standard body, descriptions |
-| Body S | body-sm | 13px | M (Regular) | 170% | Dense body, secondary info |
-| Note | note | 12px | M (Regular) | 150% (narrow) | Captions, helper text, timestamps |
-| Button | button | 14–16px | DB (Bold) | 100% | Action labels — never wraps awkwardly |
-| Tag | tag | 12px | DB (Bold) | 100% | Category chips, status keywords |
+| Element | Size / weight | Line height | Other detail |
+|---|---|---|---|
+| Main action links | 14px / 700 | 19.6px | computed family Open Sans |
+| Header navigation | 14px / 900 | 16.8px | Noto Sans JP; 0.7px letter spacing |
+| Header action anchor | 16px / 400 | 24px | Noto Sans JP; its visible child label is 12px / 700 |
+| News card anchor | 16px / 400 | 24px | Noto Sans JP; date child is 15px / 400 |
 
-### Principles
-- **Two weights, used deliberately**: Regular (M) for reading, DemiBold (DB) for headings and buttons. No light, no black-weight display drama — medical content is not a fashion magazine.
-- **Generous line-height by default**: Body text runs at 170%. Calm, airy paragraphs reduce cognitive load for an anxious reader. Tighten only for headings (`140%`) and chips/buttons (`100%`).
-- **Universal Design legibility**: UD Shin Go is mandated for Japanese — its disambiguated glyphs are an accessibility commitment, not an aesthetic preference.
-- **Buttons in DB, ~15 chars**: Action labels are bold and short. Vitals guidance: describe the action ("この内容で更新する") in roughly 15 characters or fewer; avoid bare "OK".
+The hero h1 contains a supplied headline image with descriptive alt text. Its visual lettering does not establish an available font family.
+
+### Semantic type definitions
+
+Vitals documents Body, Heading, Note, Button and Tag roles, with 170% as the basic line height and 150% or 140% alternatives. The homepage's actual semantic variables give the following scale:
+
+| Homepage token group | Sizes | Line-height values |
+|---|---|---|
+| Heading xl / lg / md / sm / xs / xxs | 1.75 / 1.5 / 1.25 / 1.125 / 1 / .875rem | 1.5; `-wide` 1.7 |
+| Body lg / md / sm / xs | 1.125 / 1 / .875 / .75rem | 1.7; `-wide` 2; `-narrow` 1.4 for lg/md/sm, 1.5 for xs |
+| Button lg / md / sm | 1 / .875 / .75rem | 1.5 |
+| Tag lg / md / xs | .875 / .75 / .625rem | 1.5 |
+
+These are available definitions, not a claim that the corporate page applies each one. Preserve the distinction between Vitals' documented M/DB product weights and the homepage's measured 400/700/900 weights.
 
 ## Layout
 
-### Spacing System
-- Base unit: 4px. Tokens: `xxs` 4px, `xs` 8px, `sm` 12px, `md` 16px, `lg` 24px, `xl` 40px, `xxl` 64px.
-- Scale logic: multiples of 4 up to `lg`, then 8px+ steps for clear hierarchy.
-- Default content padding: 16px (md) mobile, 24px (lg) larger.
-- Group related items with `xs`/`sm` (8–12px); separate functional groups with `lg`/`xl` (24–40px).
+The desktop capture is 1440×1000px. Its sticky white header is 80px high. The hero's three secondary links begin at x=40, 292 and 544px, each 236px wide, leaving 16px gaps. News uses three columns: card starts x=40, 501 and 963px, widths approximately 437.3px. Keep these as measurements of this viewport rather than universal container tokens.
 
-### Grid & Container
-- Mobile-first; consumer symptom-checker is primarily a phone flow.
-- Single-column question flow: one decision per screen, full-width stacked cards.
-- Max content width ~720px for reading surfaces; ~1080px for marketing/landing.
-- Generous vertical rhythm — questions and results breathe to reduce anxiety.
+Vitals' spacing scale is confirmed both by its documentation and homepage `--size-spacing-*` variables: **xxs 4px, xs 8px, sm 12px, md 16px, lg 24px, xl 40px, xxl 64px**. The documentation treats spacing as a way to express relationships between elements, with 16px as its naming reference. [Spacing](https://vitals.ubie.life/tokens/spacing/).
 
-### Whitespace Philosophy
-- **Calm by spacing**: For an anxious user, density reads as alarm. Ubie spaces content out and uses 170% line-height so nothing feels urgent or cramped.
-- **One question per screen**: The symptom flow never stacks multiple decisions. Progressive disclosure keeps cognitive load minimal.
-- **Reassurance has room**: Positive/safe results get green tinting and breathing space; the design never crowds good news.
-
-### Border Radius Scale
-Radius is chosen by component short-side length, not by taste:
-- **xs (2px)**: short side ≤ 24px — tiny chips, checkboxes.
-- **sm (4px)**: short side 24–40px — small buttons, tags.
-- **md (8px)**: short side > 40px — inputs, standard buttons, notices.
-- **lg (12px)**: decorative / landing surfaces — cards, modals.
-- **full (9999px)**: pills, toggles, avatars.
+The documented product radius rule follows short-side length: **xs 2px** up to 24px, **sm 4px** above 24px through 40px, **md 8px** above 40px; **lg 12px** is for decorative landing-page use, and **full 9999px** produces a semicircular end. The homepage additionally defines **xl 16px** and **xxl 24px**. Its measured 44px action links actually use **12px**, so use their identity when recreating the corporate surface. [Radius](https://vitals.ubie.life/tokens/radius/).
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <640px | Single-column flow, full-width cards, 16px padding |
-| Tablet | 640–1024px | Centered reading column ~720px, 24px padding |
-| Desktop | >1024px | Centered content, marketing grids up to ~1080px |
-
-#### Touch Targets
-- Buttons: large ~48px, medium ~40px, small ~32px height.
-- Answer-choice cards: minimum 48px tappable height with comfortable padding.
-- Toggles/checkboxes: ≥44px effective hit area even when visually smaller.
-
-#### Collapsing Strategy
-- Desktop mirrors the mobile flow in a centered column — parity over reflow.
-- Marketing feature grids: 3-col → 2-col → single column stacked.
-- Sticky bottom CTA on mobile flows with safe-area insets.
-- Multi-column forms collapse to single column under 640px.
-
-#### Image Behavior
-- Shiba mascot illustrations scale inline; used at welcoming/reassurance moments, never on error screens.
-- Medical illustrations maintain aspect ratio, full-width on mobile.
-- Icons from the Vitals icon set render at 16/20/24px consistent with text scale.
+Only the 1440×1000 desktop layout was measured. Mobile breakpoints, safe-area behavior, collapsed navigation and touch hit areas were not verified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, optional 1px `#dcdddd` border | Page background, inline elements |
-| Subtle (Level 1) | `0px 1px 4px rgba(22,25,31,0.08)` | Standard cards, list separation |
-| Standard (Level 2) | `0px 2px 8px rgba(22,25,31,0.10)` | Interactive cards, hover lift |
-| Elevated (Level 3) | `0px 4px 12px rgba(22,25,31,0.12)` | Dropdowns, popovers, sticky CTA |
-| Modal (Level 4) | `0px 8px 24px rgba(22,25,31,0.16)` | Dialogs, bottom sheets |
-
-**Shadow Philosophy**: Ubie's shadows are soft, low-opacity, and tinted with the warm near-black `#16191f` (black1000) rather than pure black — consistent with the warm text palette. Depth is gentle; in a healthcare context, dramatic elevation reads as alarm. Most separation is achieved with a 1px `#dcdddd` border and white space, with shadow reserved for genuinely floating or interactive surfaces. Borders before shadows; shadows before drama.
-
-### Surfaces
-- Cards prefer a hairline border (`#dcdddd`) on white; shadow is added only when the card lifts on hover or floats above content.
-- Tinted surfaces (blue100, green100) provide grouping without any shadow at all.
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `0px 1px 4px rgba(22,25,31,0.08)`
-- `shadow.interactive`: `0px 2px 8px rgba(22,25,31,0.10)`
+All six measured link wrappers have `box-shadow: none` at rest; the state comparisons found no shadow change. The hero's secondary links use a 1px border, and the News card separates image, date, badge and title through layout. No elevation scale for cards, popovers or dialogs was verified.
 
 ## Motion & Easing
 
-**Durations:**
+The three filled action links compute **`opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s`**: a **150ms** opacity transition. The medical-institution hero link and header navigation compute **`color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s`**. The News card wrapper computes **`all 0s ease 0s`**; that wrapper value does not describe the separate title paragraph's transition.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox state, focus rings |
-| `motion-fast` | 150ms | Hover, focus, small reveals, button press |
-| `motion-standard` | 250ms | Default — card expand, sheet open, tab switch |
-| `motion-slow` | 350ms | Step advance in the symptom flow, result reveal |
-| `motion-page` | 300ms | Top-level route transitions |
+No question-advance animation, result reveal, mascot animation or reduced-motion transformation was verified.
 
-**Easings:**
+---
 
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — sheets, results, toasts |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — collapsibles, tabs |
-| `ease-gentle` | `cubic-bezier(0.33, 0.0, 0.2, 1)` | Reassurance moments — soft, slightly slower settle |
-
-**Signature motions.**
-
-1. **Question advance.** Moving between symptom-flow steps uses a gentle horizontal slide + fade (`motion-slow / ease-gentle`). The motion is unhurried on purpose — speed would feel like pressure on an anxious user.
-2. **Result reveal.** A positive/safe result fades and rises 8px into a green-tinted card (`motion-slow / ease-enter`). Reassurance arrives calmly, never with a celebratory bounce — overshoot would feel flippant about health.
-3. **Reassurance / Shiba.** Mascot moments use soft, small-amplitude motion (a slight breathing scale, ≤2%) — warmth without distraction. Never on error screens.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; slides become instant cross-states. The flow stays fully usable — accessibility outranks delight, always.
-
-<!--
-OmD v0.1 Sources
-
-Direct verification (WebFetch, 2026-06-06):
-- vitals.ubie.life/tokens/color/primitive — full 10-step primitive scales
-  (blue/green/pink/orange/purple/red/black + white). Hex values transcribed.
-- vitals.ubie.life/tokens/color/semantic — text/background/border semantic tokens
-  (Text Main #32353a, Text Link #3959cc, bg.green.inverse #27cc91, etc.).
-- vitals.ubie.life/tokens/typography — UD Shin Go Pr6N (M/DB), semantic groups
-  (Body/Heading/Note/Button/Tag), line-heights 170/150/140%.
-- vitals.ubie.life/tokens/radius — xs2/sm4/md8/lg12/full, size-based selection rule.
-- vitals.ubie.life/tokens/spacing — xxs4/xs8/sm12/md16/lg24/xl40/xxl64.
-- vitals.ubie.life/components/button — variants (primary/accent/secondary/alert/
-  text/textAlert/Auth*), sizes, loading-over-disabled guidance, ~15-char labels.
-- github.com/ubie-oss/design-tokens (raw JSON) — primitive hex cross-confirmed
-  identical to the Vitals docs.
-- ubiehealth.com — English brand surface; tagline "Just 3 minutes. Developed by
-  doctors"; Shiba mascot.
-
-Tier 2 (brand/philosophy):
-- speakerdeck.com/ubie/ubie-brand-guideline — concept "あたたかさと賢さで寄り添う",
-  heart motif (front=warmth, back=technology), JP font + Open Sans fallback.
-- note.com/ubie rebranding article — mission "愛あるテクノロジーで医療と人をつなぐ".
-- X/@rhatake_jp — logo encodes 36°C body temperature.
-
-Primary color decision: primary_color = #3959cc (Ubie Blue 600), the documented
-interactive/link color (Text Link, bg.blue.inverse, primary button). Ubie Green
-#27cc91 (green600) is the co-anchor health/accent color, documented as
-bg.green.inverse and the accent-button fill.
-
-Derived (not in docs, reconstructed from tokens + size rules, flagged in §4):
-exact button/input/card padding, heights, and shadow rgba values. Built from the
-radius (md8/lg12), spacing (sm12/md16/lg24), and typography tokens plus the
-component-size radius rule; shadows use warm black1000 (#16191f) per the warm-text
-palette. No hex was invented — all colors trace to verified Vitals/JSON tokens.
-
-Personas (§13) are fictional archetypes informed by publicly described Ubie user
-segments (worried consumers; clinicians using Ubie hospital software). Names are
-illustrative.
--->
+Measured on 2026-11-03 using the capture service's survey and two states calls. Official documentation and the linked first-party brand guideline support the product and brand context. The accompanying verification notes preserve raw transitions, control identities, colour census, font loading evidence and the prior-content dispositions.
 
 ## Components
 
-### Buttons
+### Measured corporate links
 
-Ubie `<Button>` is a **variant × size** component. Variants: `primary`, `accent`, `secondary`, `alert`, `text`, `textAlert`, plus `Auth*` social buttons. Sizes: `large` (default), `medium`, `small`. `block` makes it full-width. Vitals discourages the `disabled` state in favor of a `loading` prop (disabled buttons have poor contrast and unclear affordance). Verified against `vitals.ubie.life/components/button`.
+All six controls are native links. Values below describe the actual anchors unless a child label is identified; keyboard focus was reached by a real Tab walk.
 
-**Primary**
-- Background: `#3959cc` (Ubie Blue 600)
-- Text: `#ffffff`
-- Border: none
-- Radius: 8px (md)
-- Padding: 12px 24px (large)
-- Font: 16px / DB (Bold) / UD Shin Go
-- Hover: `#283f91` — measured in the shipped component CSS, not a palette step
-- Use: The single most important action on a screen — one per view ("症状を確認する", "次へ")
+| Control | Rest identity | Hover and pressed | Keyboard focus |
+|---|---|---|---|
+| **もっと見る** (`primary-news`) | 138×44px; radius 12px; padding 0px 24px; 14px/700; `#3959cc` / `#ffffff`; no border or shadow | whole-link opacity 1→0.9; computed fill and ink remain | 2px solid `#3959cc` outline; offset 2px |
+| **医療機関の方はこちら** (`secondary-care`) | 236×44px; radius 12px; padding 0px 20px; 14px/700; `#ffffff` / `#333333`; 1px `#cccccc` border; no shadow | label and arrow colour/fill become `#3959cc`; border becomes `#3959cc`; background remains white | same authored outline |
+| **お問合せ** (`header-contact`) | 88×80px; radius 0px; padding 0px; anchor 16px/400, label 12px/700; `#3959cc` / `#ffffff`; no border or shadow | whole-link opacity 1→0.9 | same authored outline |
+| **採用情報** (`header-recruit`) | 90×80px; radius 0px; padding 0px; anchor 16px/400, label 12px/700; `#e34b83` / `#ffffff`; no border or shadow | whole-link opacity 1→0.9 | same authored outline |
+| **Ubieについて** (`nav-about`) | 93.9×20px; radius 0px; padding 0px; 14px/900; transparent on white; `#3d4454` ink; no border or shadow | ink becomes `#3959cc` | same authored outline |
+| **First News card** (`news-card`, `/news/notice-20261019`) | 437.3×375px; wrapper radius/padding 0px; anchor 16px/400; transparent on white; own ink `#1a1a1a`, visible title `#3d4454`, date `#6d727e`; no border or shadow | title paragraph alone turns `#3959cc` | same authored outline on wrapper |
 
-**Accent**
-- Background: `#27cc91` (Ubie Green 600)
-- Text: `#ffffff`
-- Border: none
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px / DB / UD Shin Go
-- Hover: the shipped component CSS read 2026-09-16 contains no accent variant, so this reference claims no accent hover value. The earlier `#21ad7b` was produced by a palette-step rule, not an observation.
-- Use: Positive, health-forward emphasis between primary and secondary — "start", "begin a check"
+The News thumbnail container is 437×246px in the snapshot and has a `#f5f5f5` background; the visible category badge also uses that background. Its rounded image area is distinct from the square link wrapper. Main-action arrows measure 16×16px; header-action icons measure 20×20px.
 
-**Secondary**
-- Background: `#ffffff`
-- Text: `#3959cc`
-- Border: 1px solid `#3959cc`
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px / DB / UD Shin Go
-- Hover: bg `#f6f6f6` — measured; the earlier `#f0f2fc` was a palette-step guess
-- Use: Subordinate action paired with a primary button
+### Documented Vitals product components
 
-**Alert**
-- Background: `#e32e55` (red600)
-- Text: `#ffffff`
-- Border: none
-- Radius: 8px
-- Padding: 12px 24px
-- Font: 16px / DB / UD Shin Go
-- Hover: `#a1213c` — measured in the shipped component CSS, not a palette step
-- Use: Irreversible / risky actions (delete, cancel account)
+Vitals describes Button variants `primary`, `secondary`, `accent`, `alert`, `text`, `textAlert` and social authentication variants; sizes are large, medium and small, with large the default. `block` occupies the available width. Primary expresses the most important action; secondary is subordinate; accent sits between them; alert is for risky or irreversible actions. Text and textAlert reduce emphasis. Vitals describes secondary and textAlert backgrounds as transparent and recommends one primary per screen where possible. These are documented API and use rules, not measured appearances of those product variants. [Button documentation](https://vitals.ubie.life/components/button/), [installation example](https://vitals.ubie.life/getting-started/).
 
-**Text**
-- Background: transparent
-- Text: `#3959cc`
-- Border: none
-- Radius: 8px
-- Padding: 8px 12px
-- Font: 14px / DB / UD Shin Go
-- Hover: bg `#f0f2fc` (blue100)
-- Use: Low-emphasis inline action
+Vitals' Input is based on a native input and supports an invalid state. It recommends an associated label and discourages placeholders as the only explanation. LinkCard presents a destination preview, with the whole card acting as a link; it supports Tab and Enter, while Space does not activate it. No input or search field appeared in the homepage survey. [Input](https://vitals.ubie.life/components/input/), [LinkCard](https://vitals.ubie.life/components/link-card/).
 
-**textAlert**
-- Background: transparent
-- Text: `#a1213c` (red800)
-- Border: none
-- Radius: 8px
-- Padding: 8px 12px
-- Font: 14px / DB / UD Shin Go
-- Use: Low-emphasis destructive action
-
-Size scale (height · font · padding): `large` ~48px · 16px · 12px 24px; `medium` ~40px · 14px · 10px 20px; `small` ~32px · 13px · 8px 16px. Radius follows the component-size rule (§5): 8px (md) at large, down to 4px (sm) at small. `loading` shows a spinner and blocks double-submit while preserving width.
-
-### Inputs
-
-**TextField (default)**
-- Background: `#ffffff`
-- Text: `#32353a`
-- Border: 1px solid `#c5c6c7` (black400)
-- Radius: 8px
-- Padding: 12px 16px
-- Font: 16px / M / UD Shin Go
-- Placeholder: `#96989a` (black500)
-- Focus: border `#3959cc`, 2px focus ring `rgba(57,89,204,0.3)`
-- Use: Standard form input
-
-**TextField (error)**
-- Background: `#ffffff`
-- Text: `#32353a`
-- Border: 1px solid `#e32e55` (red600)
-- Radius: 8px
-- Padding: 12px 16px
-- Help text below in `#a1213c` (red800), 12px
-- Use: Validation failure — paired with one specific corrective message
-
-**TextField (disabled)**
-- Background: `#f6f6f6` (black200)
-- Text: `#96989a` (black500)
-- Border: 1px solid `#dcdddd` (black300)
-- Radius: 8px
-- Use: Inactive input — geometry preserved if re-enabled
-
-### Cards
-
-**Standard**
-- Background: `#ffffff`
-- Border: 1px solid `#dcdddd` (black300)
-- Radius: 12px (lg)
-- Padding: 24px (lg)
-- Shadow: `0px 1px 4px rgba(22,25,31,0.08)`
-- Use: Symptom result, content panel — the workhorse surface
-
-**Interactive (tappable)**
-- Background: `#ffffff`
-- Border: 1px solid `#dcdddd`
-- Radius: 12px
-- Padding: 16px–24px
-- Shadow: `0px 2px 8px rgba(22,25,31,0.10)`
-- Hover: border `#8296df` (blue400), shadow lifts
-- Use: A card that navigates — answer choices, related-condition cards
-
-**Tinted Info**
-- Background: `#f0f2fc` (blue100) / `#e9faf4` (green100)
-- Border: none
-- Radius: 8px (md)
-- Padding: 16px
-- Use: Inline informational / reassurance callout
-
-### Tags / Chips
-
-Ubie `<Tag>` — short keyword for attributes or classification. Bold (DB), 12px, 100% line-height.
-
-**Default**
-- Background: `#f6f6f6` (black200)
-- Text: `#55575b` (black700)
-- Radius: 4px (sm) or full (9999px) for pill chips
-- Padding: 2px 8px
-- Font: 12px / DB / UD Shin Go
-
-**Green (positive)**
-- Background: `#e9faf4` (green100)
-- Text: `#1c9167` (green800)
-- Radius: 4px / full
-- Padding: 2px 8px
-
-**Red (caution)**
-- Background: `#fceff2` (red100)
-- Text: `#a1213c` (red800)
-- Radius: 4px / full
-- Padding: 2px 8px
-
-### Notices / Banners
-
-**Info**
-- Background: `#f0f2fc` (blue100)
-- Text: `#32353a`, icon `#3959cc`
-- Border-left: 4px solid `#3959cc`
-- Radius: 8px
-- Padding: 16px
-
-**Success**
-- Background: `#e9faf4` (green100)
-- Border-left: 4px solid `#27cc91`
-- Radius: 8px, Padding: 16px
-
-**Error**
-- Background: `#fceff2` (red100)
-- Border-left: 4px solid `#e32e55`
-- Radius: 8px, Padding: 16px
-
-### Modal / Dialog
-
-- Background: `#ffffff`
-- Text: `#32353a`
-- Border: none
-- Radius: 12px (lg)
-- Padding: 24px
-- Shadow: `0px 8px 24px rgba(22,25,31,0.16)`
-- Scrim: `rgba(0,0,0,0.5)` (`bg.modal`)
-- Use: Confirmation, secondary flow
-
-### Toggle / Switch
-
-- Track: `#27cc91` (on) / `#c5c6c7` (off, black400)
-- Radius: 9999px (full)
-- Thumb: `#ffffff` circle with `0px 1px 2px rgba(22,25,31,0.2)`
-- Use: Boolean settings, consent toggles
-
----
-
-**Verified:** 2026-06-06 (full-depth)
-**Tier 1 sources:** https://vitals.ubie.life (Ubie Vitals — public design-system docs: primitive + semantic color tokens, typography tokens, radius, spacing, Button component); https://github.com/ubie-oss/design-tokens (token JSON, Style Dictionary — hex values cross-confirmed). https://ubiehealth.com (live brand surface — Shiba mascot, tagline "Just 3 minutes. Developed by doctors"). · https://ubie.life (live production site)
-**Tier 2 sources:** speakerdeck.com/ubie/ubie-brand-guideline (brand concept "あたたかさと賢さで寄り添う", heart motif, UD Shin Go + Open Sans fallback); note.com/ubie rebranding article; X/@rhatake_jp (logo encodes 36°C body temperature).
-**Notes:** Primitive hex values are authoritative (cross-checked Vitals docs ↔ token JSON, identical). Component padding/height/shadow values are reconstructed from the documented radius/spacing/typography tokens + size-rule (§5) where Vitals docs describe behavior but omit exact px; flagged as derived, not invented.
-
-### Published component roster (28 published, none measured here)
-
-Ubie Vitals publishes **28 components**, read from its own index at `https://vitals.ubie.life/components` on
-2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
-rendered page in a browser. No value, state or geometry below is asserted by this reference.
-
-Accordion, ActionHalfModal, ActionModal, Bold, Box, Button, ButtonCard, Center, Checkbox, CheckboxCard, Color, Divider, Flex, Heading, Icon, Input, LinkButton, LinkCard, MessageHalfModal, MessageModal, Pre, RadioButton, RadioCard, Select, Stack, Text, TextArea, Toggle
+The published component roster is still **28**: Accordion, ActionHalfModal, ActionModal, Bold, Box, Button, ButtonCard, Center, Checkbox, CheckboxCard, Color, Divider, Flex, Heading, Icon, Input, LinkButton, LinkCard, MessageHalfModal, MessageModal, Pre, RadioButton, RadioCard, Select, Stack, Text, TextArea and Toggle. This confirms availability, without supplying unmeasured variant geometry. [Component index](https://vitals.ubie.life/components/).
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no history)** | Single calm line in Text Sub (`#686a6d`) 14px explaining the screen, plus one accent/primary CTA to begin. Often the Shiba mascot. Never "データがありません" alone. |
-| **Loading (first paint)** | Skeleton blocks at `#f6f6f6` (black200) matching final layout, gentle 1.2s shimmer. Reassuring micro-copy for AI processing ("結果をまとめています…"). |
-| **Loading (in button)** | `loading` prop shows a spinner replacing the label; width preserved; blocks double-submit. Preferred over `disabled`. |
-| **Error (inline field)** | 1px `#e32e55` (red600) border on the input, one specific corrective sentence below in `#a1213c` (red800) 12px. Blameless and actionable. |
-| **Error (banner)** | `#fceff2` (red100) bg, 4px left border `#e32e55`, `#32353a` text, one sentence + recovery action. No scare language. |
-| **Success (positive result)** | Green tint: `#e9faf4` (green100) surface, `#1c9167` (green800) text/icon, `#27cc91` accent. Reassurance gets room and warmth — never crowded. |
-| **Success (action saved)** | Brief toast or inline confirmation, `#27cc91` check, past-tense sentence. No exclamation, no emoji on medical surfaces. |
-| **Warning (attention needed)** | `#fff9f0` (orange100) bg, 4px `#ffa11a` left border, `#b57212` (orange800) text. Calm "consider seeing a doctor" framing — not alarm. |
-| **Skeleton** | `#f6f6f6` blocks at final dimensions, radius per component (4/8/12px), 8% white shimmer over ~1.2s. |
-| **Disabled (discouraged)** | Avoided. When unavoidable: surface `#f6f6f6`, text `#96989a`, border `#dcdddd`. Prefer `loading` or hiding the action entirely. |
-| **Focus** | 2px ring `rgba(57,89,204,0.3)` + border `#3959cc`. Always visible for keyboard users — accessibility is non-negotiable. |
+For **primary-news**, **header-contact** and **header-recruit**, hover and pressed both lower opacity from 1 to 0.9. For **secondary-care**, both states turn the label, arrow and border blue while keeping the white fill. For **nav-about**, both turn the text blue. For **news-card**, both turn the title paragraph blue. Pressed added no further compared style changes beyond hover in these six controls.
+
+All six Tab-focus observations show **`outline: 2px solid #3959cc; outline-offset: 2px`**. The outline style is `solid`, and each disappears after blur; these are authored focus indicators rather than browser `auto` rings. Empty, loading, error, success, disabled and checked appearances were not measured.
 
 ## Do's and Don'ts
 
-### Do
-- Use Ubie Blue (`#3959cc`) for interaction — links, primary buttons, focus, selection.
-- Use Ubie Green (`#27cc91`) for health, success, and positive progress.
-- Use warm near-black (`#32353a`) for text, never pure `#000000`.
-- Keep body text at 170% line-height for a calm, readable rhythm.
-- Use DB (Bold) weight for headings and button labels; M (Regular) for reading.
-- Choose radius by component size: 8px standard, 4px small, 12px cards/modals, pill for toggles.
-- Keep one primary action per screen; pair with a secondary, never two primaries.
-- Use UD Shin Go (or Universal Design fallback) for Japanese — it is an accessibility requirement.
-
-### Don't
-- Don't use pure black for text or shadows — warm near-black keeps the brand soft.
-- Don't crowd content — density reads as urgency/alarm to an anxious patient.
-- Don't use red (`#e32e55`) decoratively — it is reserved for errors and irreversible actions.
-- Don't rely on the `disabled` button state — prefer `loading` (Vitals guidance: disabled has poor contrast/affordance).
-- Don't stack multiple decisions on one symptom-flow screen — one question per screen.
-- Don't use heavy, high-opacity shadows — elevation is gentle.
-- Don't write 1-word vague labels ("OK") — describe the action in ~15 chars.
+- Reproduce the corporate palette and component identities in §§2–4. Keep the blue-to-pink gradient and distinguish the square header actions from the rounded main actions.
+- Preserve whole-link opacity feedback on filled actions and colour feedback on navigation and card titles.
+- Keep the measured blue keyboard outline visible, including its 2px offset.
+- For Vitals product work, use action-describing labels; its Button guidance suggests about 15 Japanese characters and discourages bare “OK”. Prefer the documented loading mechanism for preventing repeated submission; explain disabled actions when they are necessary. [Button guidance](https://vitals.ubie.life/components/button/).
+- Preserve native link and button semantics. Use associated labels for fields and explain destinations in link cards. [Input](https://vitals.ubie.life/components/input/), [LinkCard](https://vitals.ubie.life/components/link-card/).
 
 ## Voice & Tone
 
-Ubie speaks like a calm, well-informed clinic receptionist who genuinely likes you: warm, plain, never alarmist, and never condescending. It is bilingual by design — Japanese is the native voice (polite ですます form, softened sentence endings like 〜ですよ on the consumer app), and English carries the same reassuring register. The job of every sentence is to lower anxiety while staying honest about medical uncertainty.
+Vitals' consumer writing guidance names three goals: understandable, reassuring and trustworthy. It recommends everyday words, reasons that explain recommendations, short sentences and consideration for someone who feels unwell. It discourages excessive familiarity, hype and exclamation marks; button labels generally avoid honorific phrasing. This guidance explicitly targets the consumer product, particularly the symptom search engine. [UX writing](https://vitals.ubie.life/ux-writing/).
 
-| Context | Tone |
-|---|---|
-| Symptom questions | Plain, one idea per screen, no jargon. "どんな症状がありますか？" Neutral, never leading. |
-| Results / guidance | Honest + reassuring. States possibilities without diagnosing; always offers a clear next step. Never alarmist. |
-| CTAs | Action-describing, ~15 chars, Bold. "症状を確認する", "病院をさがす". Never bare "OK". |
-| Reassurance moments | Warm, brief, sometimes the Shiba mascot. "ここまでありがとうございます。" |
-| Error messages | Specific + blameless + recoverable. Never "エラーが発生しました" alone. |
-| Medical disclaimers | Clear, calm, non-frightening — "this is not a diagnosis," framed as empowerment not liability. |
-| English (ubiehealth.com) | "Just 3 minutes. Developed by doctors." — accessible, credentialed, unhurried. |
-
-**Forbidden register.** Alarmist phrasing about symptoms ("危険です", scare language), absolute diagnostic claims ("あなたは〜です"), shaming the user for their question, hype ("revolutionary", "AIが完全に診断"), and bare vague labels. Medical credibility comes from calm precision, never from urgency.
+The English homepage says **“Just 3 minutes. Developed by doctors.”** Its surrounding copy talks about possible causes and when to see a doctor. The Japanese product explains that the information service does not replace physicians or provide a diagnosis. These are source-backed examples of credentialed, bounded language. [English service](https://ubiehealth.com/), [Japanese service](https://ubie.app/).
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / link: Ubie Blue (`#3959cc`)
-- CTA Hover: `#283f91` (measured in the shipped component CSS)
-- Health / Success / Accent CTA: Ubie Green (`#27cc91`)
-- Background: White (`#ffffff`)
-- Background Subtle: Black 100 (`#fafafa`)
-- Heading / body text: Text Main (`#32353a`)
-- Sub text: Text Sub (`#686a6d`)
-- Placeholder: Black 500 (`#96989a`)
-- Border: Black 400 (`#c5c6c7`) / Light `#dcdddd`
-- Success: Green 800 text (`#1c9167`) on Green 100 (`#e9faf4`)
-- Error: Red 600 (`#e32e55`)
-- Warning: Orange 600 (`#ffa11a`)
+### Quick colour reference
 
-### Example Component Prompts
-- "Create a symptom-result card: white bg, 1px solid #dcdddd border, 12px radius, 24px padding, shadow 0px 1px 4px rgba(22,25,31,0.08). Title 20px UD Shin Go Bold #32353a, 150% line-height. Body 14px Regular #686a6d, 170% line-height. Positive result uses a green tag: #e9faf4 bg, #1c9167 text, 4px radius."
-- "Build a primary button: #3959cc bg, white text, 16px UD Shin Go Bold, 48px height, 12px 24px padding, 8px radius. Hover #283f91. Use loading spinner instead of disabled."
-- "Build an accent button for 'start a symptom check': #27cc91 bg, white text, 16px Bold, 8px radius, 12px 24px padding. Do not invent a hover colour — the accent variant's states are unresolved."
-- "Design a single-question screen: white bg, centered ~720px column, one heading (24px Bold #32353a) and a vertical stack of tappable answer cards (white, 1px #dcdddd border, 12px radius, 16px padding, hover border #8296df). 16px gap between cards."
-- "Create an info notice: #f0f2fc bg, 4px left border #3959cc, 8px radius, 16px padding, 14px text #32353a with a #3959cc info icon."
+Corporate blue `#3959cc`; pink `#e34b83`; foreground `#3d4454`; white `#ffffff`; secondary action ink `#333333`; its border `#cccccc`; muted date ink `#6d727e`; thumbnail/badge surface `#f5f5f5`.
 
-### Iteration Guide
-1. Two anchors: `#3959cc` blue is interaction, `#27cc91` green is health/positive. Don't swap their roles.
-2. Text is warm near-black `#32353a`; sub text `#686a6d`. Never pure black.
-3. Body line-height 170% — calm and airy is the brand.
-4. Weights: M (Regular) for reading, DB (Bold) for headings/buttons. No other weights.
-5. Radius by size: 2px tiny, 4px small, 8px standard, 12px cards/modals, pill for toggles.
-6. Shadows are soft and warm-toned (rgba 22,25,31); prefer borders + white space first.
-7. One question / one primary action per screen. Use `loading`, not `disabled`.
+### Example component prompts
 
----
+- “Build a native News link labelled もっと見る, 44px high with 12px radius and 0px 24px padding. Use `#3959cc` with white 14px/700 text; its declared family is Open Sans. Hover and press lower whole-link opacity to 0.9. Keyboard focus draws a 2px solid blue outline with 2px offset.”
+- “Build the medical-institution hero link: 236×44px, 12px radius, 0px 20px padding, white fill, `#333333` label, 1px `#cccccc` border. On hover and press, label, arrow and border become `#3959cc`.”
+- “Build a transparent News card link on white. Use the 437.3×375px desktop identity, a thumbnail above date and badge, then a `#3d4454` title. Only the title changes to blue on hover and press; focus outlines the link.”
+
+Use the documented Vitals palette, type roles and component API when building a Vitals product. Use the corporate measurements above when reproducing this homepage.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `button-accent`.** Text `#ffffff` on `#27cc91` measures 2.07:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-alert`.** Text `#ffffff` on `#e32e55` measures 4.39:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-text`.** Text `#3959cc` on `#00000000` measures 3.47:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `header-recruit`.** Text `#ffffff` on `#e34b83` measures 3.75:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

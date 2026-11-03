@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Keep the Sol slots filled from a queue file and print one line per event (for a Monitor):
-#   SPAWNED <id> · DONE <id> exit=<n> · SKIPPED <id> (<why>) · IDLE (queue empty, none of ours running)
+#   SPAWNED <id> · DONE <id> exit=<n> · RETRY <id> (capacity) · SKIPPED <id> (<why>) · IDLE (queue empty, none of ours running)
 #
 #   scripts/workers/run-queue.sh <queue-file> [--cap N]
 #
 # Queue file, one item per line (# comments and blank lines ignored), in order:
 #   reverify <id>                                   re-verify an existing partial/legacy reference
 #   new <id> <locale> <url> <name…>                 author a new reference (name may contain spaces)
+#   spawn <id> <workdir> <order>                     run a prepared order as-is (a follow-up, e.g. id duolingo-p2)
 #
 # The cap counts every live Codex worker on this machine, other projects included (owner 2026-10-29: Sol
 # 4 at a time). Workers start through spawn.sh in their own session, so ending this script (a Monitor
@@ -39,9 +40,18 @@ while :; do
   for d in "$RUNS"/rv-*; do
     [ -d "$d" ] || continue
     b=$(basename "$d")
+    case "$b" in *.killed) continue ;; esac   # parked runs (capacity retries, killed spawns) are not completions
     if [ -f "$d/exit-code" ] && [ ! -e "$SEEN/$b" ]; then
       touch "$SEEN/$b"; id=${b#rv-}; id=${id%-20*}
-      echo "DONE $id exit=$(cat "$d/exit-code")"
+      ec=$(cat "$d/exit-code")
+      # Codex capacity errors end a run in seconds or minutes with no work done: park the run and queue the
+      # item again at the end (once per run directory), instead of losing it.
+      if [ "$ec" != 0 ] && grep -q "at capacity" "$d/worker.log" 2>/dev/null; then
+        for l in "${LINES[@]}"; do set -- $l; if [ "$2" = "$id" ]; then LINES+=("$l"); break; fi; done
+        mv "$d" "$d.killed"; echo "RETRY $id (model at capacity)"
+      else
+        echo "DONE $id exit=$ec"
+      fi
     fi
   done
   while [ "$i" -lt "${#LINES[@]}" ] && [ "$(live_sol)" -lt "$CAP" ]; do
@@ -61,6 +71,11 @@ while :; do
           "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/new1/$id" --order "$HOME_W/new1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
           echo "SPAWNED new:$id"; sleep 20
         else echo "SKIPPED new:$id (no order)"; fi ;;
+      spawn)
+        if [ -f "$4" ]; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$3" --order "$4" --name "rv-$id" --mcp capture >/dev/null 2>&1
+          echo "SPAWNED $id"; sleep 20
+        else echo "SKIPPED $id (no order at $4)"; fi ;;
       *) echo "SKIPPED $id (unknown kind $kind)" ;;
     esac
   done

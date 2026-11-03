@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { REGISTRY } from "@/data/registry.generated";
-import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
+import { REFERENCE_QUALITY, REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { readReferenceSource } from "../../../scripts/lib/reference-source.mjs";
 import { compareReferences, getComponentStates, getDesignMd, getTokens, sectionsOf, summaryFor } from "./catalog";
 import { CATALOG, TOKEN_GROUPS } from "./contracts";
@@ -56,11 +56,19 @@ it("matches Korean detail routing and omits invented Hangul names for every refe
   }
 });
 
+// Re-verification moves legacy references to verified (mercury did on 2026-11-02), so the legacy example is
+// picked from the data: one that still carries preserved prose shadow values and a primary colour.
+const LEGACY = REFERENCE_QUALITY.filter((entry) => entry.status === "legacy_snapshot").map((entry) => entry.id).find((id) => {
+  const json = JSON.parse(readFileSync(join(process.cwd(), "references", id, "reference.json"), "utf8"));
+  const prose: { path: string }[] = json.migration?.prose ?? [];
+  return prose.some(({ path }) => path.startsWith("shadow.")) && getTokens({ id, groups: ["colors"] }).groups.colors?.some((v) => v.path === "colors.primary");
+})!;
+
 it("compares original values in aligned cells, without scores or fabricated missing values", () => {
-  const result = compareReferences({ ids: ["toss", "sixt", "mercury"], aspects: ["colors", "radius", "motion"] });
+  const result = compareReferences({ ids: ["toss", "sixt", LEGACY], aspects: ["colors", "radius", "motion"] });
   const row = result.rows.find((row) => row.path === "colors.primary")!;
   expect(row.values.toss.value).toBe("#3182f6");
-  expect(row.values.mercury.trust).toBe("unverified");
+  expect(row.values[LEGACY].trust).toBe("unverified");
   expect(row.values).not.toHaveProperty("sixt");
   expect(row.absent).toContain("sixt");
   expect(result.absent).toContain("sixt.colors.primary");
@@ -68,8 +76,9 @@ it("compares original values in aligned cells, without scores or fabricated miss
 });
 
 it("reports untrusted preserved shadow values without inferring them from prose", () => {
-  const data = getTokens({ id: "mercury", groups: ["shadow"] });
-  const original = JSON.parse(readFileSync(join(process.cwd(), "references/mercury/reference.json"), "utf8"));
+  expect(LEGACY).toBeDefined();
+  const data = getTokens({ id: LEGACY, groups: ["shadow"] });
+  const original = JSON.parse(readFileSync(join(process.cwd(), "references", LEGACY, "reference.json"), "utf8"));
   expect(data.groups.shadow.map(({ path, value }) => ({ path, value }))).toEqual(original.migration.prose.filter(({ path }: { path: string }) => path.startsWith("shadow.")));
   expect(data.groups.shadow.every((value) => value.trust === "unverified" && value.evidence.status === "unsourced")).toBe(true);
 });

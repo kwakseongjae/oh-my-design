@@ -1,14 +1,13 @@
 ---
 name: Gmarket
 colors:
-  primary: '#da120d'
-  brand: '#da120d'
+  primary: '#00c400'
+  brand: '#00c400'
   error: '#ef2b2a'
   canvas: '#ffffff'
   surface: '#ffffff'
   foreground: '#222222'
   muted: '#757575'
-  on-primary: '#ffffff'
   hairline: '#e0e0e0'
   success: '#00c400'
   accent-smile: '#ffd200'
@@ -16,159 +15,76 @@ colors:
   accent-connect: '#00c3a0'
   club-navy: '#002041'
   club-blue: '#497cff'
-  event-bf: '#f1266d'
-  event-bs: '#fd4e28'
+  event-bf: '#3067ff'
+  event-bs: '#0051ff'
   event-bsd: '#7b00e7'
+  price: '#da120d'
+  category-rail: '#0abb26'
+  category-trigger: '#10af29'
 typography:
-  section-hero:
-    fontSize: 28px
-    fontWeight: 700
-    lineHeight: 1.2
-    use: Hero module section H2
   section-compact:
     fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.2
-    use: Compact module H2
-  card-title:
-    fontSize: 18.72px
-    fontWeight: 700
-    lineHeight: 1.3
-    use: Card H3 heading
+    fontWeight: 400
+    use: Homepage section-title link; computed Gmarket Sans, line-height normal
   body:
     fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.5
-    use: Body, card title, primary nav
-  body-strong:
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.4
-    use: Price emphasis, strong body
+    use: Product-card anchor and primary navigation; Noto Sans KR is live-loaded, while each selected outer control reports an Apple-first stack
   secondary:
     fontSize: 14px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Secondary nav, filter/utility
+    use: Seller-services button; line-height 14px
   utility:
     fontSize: 13.3333px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Utility text, tooltip, swiper label
+    use: Outer search-icon and carousel button styles; normal line-height, not visible-label typography
   meta:
     fontSize: 12px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Meta text, footer notices, micro-badge
-  price-modifier:
-    fontSize: 11px
-    fontWeight: 500
-    lineHeight: 1.4
-    use: Price-modifier label 쿠폰적용가
+    use: Footer notice button; line-height 20px
+  category-trigger:
+    fontSize: 18px
+    fontWeight: 700
+    use: All-categories button; line-height 21px
+  category-link:
+    fontSize: 15px
+    fontWeight: 400
+    use: Category-rail link; line-height 42px
+  search:
+    fontSize: 15px
+    fontWeight: 400
+    use: Search input; computed Gmarket Sans, line-height 29px
 rounded:
+  none: 0px
   sm: 3px
-  md: 4px
+  banner: 6px
   lg: 20px
-  full: 9999px
+  search: 24px
+  pill: 27px
 spacing:
-  micro: 4
-  sm: 8
-  md: 16
-  lg: 24
-  module: 64
+  carousel-button-padding: 4
+  search-button-padding: 5
+  thumbnail-gap: 16
+  rank-card-gutter: 20
+  product-card-gutter: 28
+  service-module-gap: 52
+  product-row-gap: 20
 components:
-  button-primary:
+  category-fashion:
     type: button
-    backgroundColor: '#da120d'
+    backgroundColor: '#0abb26'
     textColor: '#ffffff'
-    rounded: 4px
-    padding: 14px 24px
-    typography: 16px / 700
-    use: Highest-intent purchase CTA, one per surface
-  button-secondary:
-    type: button
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    border: '1px solid #e0e0e0'
-    rounded: 3px
-    typography: 14px / 400
-    use: Chrome-utility actions, footer button
-  button-pill:
-    type: button
-    backgroundColor: '#ffffff'
-    textColor: '#666666'
-    border: '1px solid #e0e0e0'
-    rounded: 20px
-    typography: 16px / 400
-    states: 'active fg #222222'
-    use: Home module entry pills, GNB sub-category chips
-  input-search:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    border: '2px solid #222222'
     rounded: 0px
     height: 44px
-    typography: 16px / 400
-    use: Header search field, signature dark-stroked
-  input-filter:
-    type: input
-    backgroundColor: '#ffffff'
-    border: '1px solid #e0e0e0'
-    rounded: 3px
-    typography: 14px / 400
-    use: Filter / sort refinement strip
-  card-product:
-    type: card
-    backgroundColor: '#ffffff'
-    rounded: 6px
-    shadow: none
-    padding: 8px 0
-    use: 'Home / bestsellers product card; title #222222, price #da120d 700, separation via gutter not shadow'
-  badge-discount:
-    type: badge
-    backgroundColor: '#fff5f5'
-    textColor: '#da120d'
-    rounded: 3px
-    typography: 12px / 700
-    use: Discount-rate badge, percentage-off
-  badge-club:
-    type: badge
-    backgroundColor: '#002041'
-    textColor: '#ffd200'
-    rounded: 4px
-    typography: 11px / 700
-    use: Smile Club loyalty badge
-  chip-delivery:
-    type: badge
-    backgroundColor: '#ffd200'
-    textColor: '#222222'
-    rounded: 3px
-    padding: 2px 6px
-    typography: 11px / 500
-    use: '스마일배송 yellow chip; 무료배송 gray #f5f5f5, StarDelivery purple #7130f3 w/ white text'
-  nav-anchor:
-    type: tab
-    textColor: '#222222'
-    padding: 17px 0px 20px
-    typography: 16px / 400
-    active: 'current fg #da120d, 2px bottom border #222222 on hover'
-    use: GNB top primary anchor
-  layer-recent:
-    type: dialog
-    backgroundColor: '#ffffff'
-    border: '1px solid #e0e0e0'
-    shadow: none
-    use: 'Recent-products layer; title 16px/700 #222222'
-  banner-event:
-    type: card
-    backgroundColor: '#f1266d'
-    textColor: '#ffffff'
-    use: 'BF/BS/BSD full-bleed event-week module; BS #fd4e28, BSD #7b00e7'
+    padding: 0px
+    typography: 15px / 400
+    hover: 'bg #ffffff; fg #0abb26; parent ::before paints a 224px by 1px #e5e5e5 separator'
+    pressed: 'bg #ffffff; fg #0abb26; same separator as hover; no additional change versus hover'
+    use: 'The 브랜드패션 link (href #) in the left category rail, 224px wide. Focus colours are unresolved because the crop conflicts with the computed snapshot; no focus token is emitted.'
 fonts:
   roles:
-    sans: Gmarket Sans
-    mono: system-ui
+    sans: Noto Sans KR
+    display: Gmarket Sans
 ---
 
 # Design System Inspiration of Gmarket (지마켓)
@@ -177,195 +93,142 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Gmarket is what a quarter-century-old Korean open-market looks like after Shinsegae's 2021 acquisition: a department-store conglomerate has bought a Y2K-era trading floor and is mid-renovation, but the floor is still open and the deals are still moving. The home page is unapologetically dense — a 1200px fixed canvas (`--minWidth: 1200px`), white surface, ink-near-black text (`#222222`), and a single, surgical brand asset: **Gmarket Red** `#da120d`, deployed almost exclusively on price (`쿠폰적용가`, `52%`, the final-card-discount line). There is no gradient, no hero video, no marketing flourish. The atmosphere is **"전단지가 잘 정돈된 백화점 1층"** — a leaflet, organized — where every pixel of vertical real estate is a chance to surface another deal, and the visual job of design is to keep that density legible.
+Gmarket is a South Korean online open marketplace established in 2000. Its current corporate presentation connects the marketplace with Auction, membership rewards, delivery and payment services. The company history records entry into Shinsegae Group in 2021 and a Shinsegae–Alibaba joint venture in 2025; the service presentation now features **꼭 멤버십**, StarDelivery, SmilePay and Smile Money. This is a marketplace whose current expression brings offer discovery, reward amounts and delivery promises into the same shopping surface. [Company and history](https://corp.gmarket.com/), [product terms](https://policy.gmarket.co.kr/terms-policy/buyer-use).
 
-The page reads as a vertical stack of category modules, each anchored by an H2 in 28px/700 (or 24px/700 in the compact module variant), beneath which 2-up or 4-up product cards repeat indefinitely. The product card itself is a Korean-marketplace classic: thumbnail (mostly 1:1 square, occasionally 16:9 banner), title in body weight, price in 16–18px Gmarket Red and bold, then a delivery chip (스마일배송 / 무료배송), a few badges (쿠폰적용가 / 카드혜택가), and a heart. Cards never carry box-shadow — depth, in Gmarket's chrome, is borders and color tints, not elevation. Pills, however, are everywhere: navigation chips, filter strips, "Smile Club" loyalty rails, all radius 20–27px.
+The measured homepage is the Korean edition at `www.gmarket.co.kr/` (`lang="ko"`), with no regional redirect. At 1440×1000 it combines a centered 1200px content area, a green category rail, white shopping modules, near-black paragraph ink and red offer prices. The captured Big Smile Day campaign adds purple promotional imagery and a campaign wordmark to the header and hero, combining product photographs with round smiling illustrated characters. Treat that campaign treatment as the observed edition of the page. [Live homepage](https://www.gmarket.co.kr/).
 
-The token system, captured live from `:root`, is **enormous** — 247 CSS custom properties — and unusually formal for a legacy marketplace. Ten hues (gray, red, orange, yellow, green, teal, blue, indigo, purple, pink), each in a clean 10-stop ladder (50→900), plus three sub-systems that map directly to revenue programs: **Club Smile** (Shinsegae Universe loyalty — navy/blue/gray, each in 5 stops), **Event** (BF / BS / BSD sub-brand event accents), and three single-token service accents (Smile-Yellow `#ffd200`, StarDelivery-Purple `#7130f3`, Green-Connect-Blue `#00c3a0`). The display face is the brand's own **Gmarket Sans** — distributed at `corp.gmarket.com/fonts/` under the SIL Open Font License in three weights (Light 300 / Medium 500 / Bold 700) — used for section H2s, banner copy, and the (image-replacement) wordmark. The body, in contrast, rides the Apple-SD-Gothic-Neo / Noto Sans CJK KR system stack, which is the conventional choice when you cannot guarantee the user has downloaded the brand font.
+The distinctive reusable combination is **green navigation, red price information and Gmarket Sans in selected brand-bearing text**. GDS describes the brand through connection, while its typography guidance limits the brand webfont to prices and selected headings or buttons alongside OS-oriented typography. The geometric, square-filling forms of the distributed Gmarket Sans are part of that identity. [Brand values](https://gds.gmarket.co.kr/brand/values), [product typography](https://gds.gmarket.co.kr/foundation/typography), [official font](https://corp.gmarket.com/fonts/).
 
-**Key Characteristics:**
-- **Gmarket Red** `#da120d` as the *price-discount asset* — almost exclusively used on numerical price/discount strings, not as a generic primary CTA fill
-- **Gmarket Sans** as the official display typeface (SIL OFL, 3 weights) — one of the rare Korean DSes with a first-party distributed brand font
-- **Ten-hue × 10-stop formal color ladder** + three named sub-systems (Club Smile / Event / Service-accent) — atypical token-system maturity for a legacy 2000-era marketplace
-- **1200px fixed desktop canvas** — Gmarket has not committed to fluid responsive on its web flagship; mobile lives at `m.gmarket.co.kr`
-- **No box-shadow** in sampled production — depth is borders + tints, identical to Bunjang
-- **Sprite-driven icons** (`sprite__common--before` / `sprite__common--after`) — legacy CSS sprites, deliberately not migrated to SVG
-- **BEM-flavored naming** — `button__category-all`, `text__title`, `box__layer-title`, `list-item--recent` — the production code is more disciplined than the rendered density suggests
-- **Density over hierarchy** — page is 10+ stacked category modules deep; users scan visual rhythm (red price + thumbnail), not headings
+#### Primary tasks
 
-### Primary tasks
-
-- Find a deal you did not know you wanted
-- Open several product cards and finish one purchase
-- Sort the bestsellers page by price or popularity
-- Check the delivery chip and coupon badges on a product card
-- Pay with SmilePay and shop members-only Club pricing
-
-### Iconography & Imagery
-
-- **CSS Sprites** — Gmarket has not migrated to SVG / icon-font for chrome icons. Production class system: `sprite`, `sprite__common`, `sprite__common--before`, `sprite__common--after`. Icons are positioned slivers of a master PNG, sized via `--spriteSize: 100% 100%`. This is a legacy choice — performance-fine, but inaccessible to recoloring at runtime.
-- **Product thumbnails** — 1:1 square dominant; 16:9 banner cards for category-feature modules
-- **Banner imagery** — promotional photography, large-typography overlays in Gmarket Sans, typically text + product + offer; brand stays out of the way
-- **No illustration system** observed in chrome — Gmarket is a photo-first marketplace; illustrations appear only in onboarding / empty-states (not captured this pass)
+- Search for products or browse the category rail and bestsellers navigation.
+- Compare product names, coupon-adjusted prices, reward amounts and delivery information.
+- Open a product listing or explore the Emart Mall, StarDelivery and membership destinations shown on the homepage.
 
 ### Brand Narrative
 
-Gmarket (지마켓) was founded as **2000** as an open-market predecessor of Korean e-commerce — among the first generations of platforms that let any individual seller post a product to a national catalog. eBay acquired the platform in 2009 and ran it as eBay Korea, alongside Auction (founded 1998, the older sibling). In **2021, Shinsegae Group (신세계그룹)** — the conglomerate behind E-Mart, the Shinsegae Department Store, and Starbucks Korea — acquired the eBay Korea business unit, bringing Gmarket and Auction under the Shinsegae Universe umbrella, alongside SSG.com and E-Mart Mall. The 2024–2026 chrome reflects this transition: the home page now surfaces "신세계 유니버스 클럽 전용" modules, the **Club Smile** color sub-system maps to Shinsegae's loyalty programme, and an "이마트몰" (E-Mart Mall) section ships fresh groceries inside the Gmarket interface.
+The corporate history places Auction's establishment in 1998, Gmarket's in 2000 and their merger in 2010. It records SmilePay and Smile Delivery in 2014, Smile Club in 2017, Shinsegae Group entry in 2021 and the Shinsegae–Alibaba JV in 2025. The current service presentation features 꼭 membership, StarDelivery, Emart Mall, SmilePay and Smile Money. [History and current services](https://corp.gmarket.com/).
 
-Gmarket's positioning slogan, observed on the corporate site as factual context: **"지금부터의 마켓"** ("the market from-now-onward"). The narrative argues that 25 years of marketplace experience is being relaunched as a Shinsegae-integrated commerce floor — Auction for the auction-hunters, Gmarket for the open-market regulars, SSG.com for the premium-vertical, all stitched together with SmilePay (single wallet), StarDelivery (premium delivery), and Smile Club (loyalty + members-only pricing).
+The corporate presentation uses **지금부터의 마켓** and **We Connect**. The company's connection theme also appears in GDS's brand values. The live homepage expresses that theme through adjoining shopping services and repeated offer information. The description of the live interface is an interpretation of the capture, not a quotation of a corporate design rule. [Brand values](https://gds.gmarket.co.kr/brand/values), [homepage](https://www.gmarket.co.kr/).
 
-Service portfolio (per `corp.gmarket.com`, captured 2026-05-15): **Gmarket** (open market, since 2000), **Auction** (since 1998), **SmilePay** (wallet), **StarDelivery** (premium delivery), **Smile Club** (Shinsegae Universe loyalty), **G마켓Pay** (payment integration). HQ city, current CEO, headcount, and total funding not captured this pass (corporate site does not surface them on the analyzed page) — flagged for UPDATE.
+### Principles
 
-*(Founder name and 1999/2000 founding-team specifics from earlier eBay-Korea era have evolved through three ownership transitions — eBay Korea → Shinsegae acquisition 2021 — and any "founder quote" attribution must verify against multiple ownership-era sources. Not included here without that verification.)*
+GDS Introduction names three principles: **consistency**, connecting identity and usability; **extensibility**, maintaining shared guidelines, components and resources; and **efficiency**, reusing assets to give practitioners more time for user experience. Its brand-values page names connection, center, forward and variety. [Introduction](https://gds.gmarket.co.kr/overview/introduction), [values](https://gds.gmarket.co.kr/brand/values).
 
-### Design Principles (analyst-derived from observed patterns)
+The opened GDS pages show version and update labels from 2021, and individual code-completion statuses vary. Those labels date the guidance; they do not date a current storefront redesign.
 
-1. **Density is the service.** Gmarket users come to scan, not to read. The chrome optimizes scroll efficiency — vertical stacks of category modules, repeating thumbnail-price-chip rhythm — because finding the deal you didn't know you wanted is the value proposition.
-   *UI implication*: do not introduce hierarchy that breaks scan rhythm; do not pad sections to "breathe" at the expense of card count per fold.
+### Personas
 
-2. **Red is for price, not personality.** Gmarket Red `#da120d` is reserved almost exclusively for numerical price-discount tokens. The brand does not flood it as a generic primary fill in observed chrome.
-   *UI implication*: when porting Gmarket's palette to a new surface, treat red as a *semantic-price asset* (like Bunjang's), not a brand-button color.
-
-3. **Service-name accuracy over copy-craft.** "스마일배송" / "안전결제" / "도착보장" / "쿠폰적용가" are first-class typographic citizens. The brand does not abbreviate or rebrand them for casual surfaces.
-   *UI implication*: in any localized port, render Korean service-names exactly; do not translate "스마일배송" to "Smile Delivery" in Korean chrome.
-
-4. **Sub-brand color systems beat a flat palette.** Club Smile (5×3 navy/blue/gray), Event (BF/BS/BSD), and three single-token service accents map color directly to revenue programs.
-   *UI implication*: when extending Gmarket's palette, add named sub-systems for each commercial program, not generic "tertiary" tokens.
-
-5. **Legacy is not debt — it's discipline.** CSS sprites, fixed-1200px canvas, BEM naming — these are deliberate (cost / stability / muscle-memory for the seller community), not unmaintained.
-   *UI implication*: do not propose "modernization" without surfacing the operational cost of breaking 25-year-old seller workflows. The mobile flagship at `m.gmarket.co.kr` is where modern responsive lives.
-
-### Personas (analyst inference — illustrative, verify before adoption)
-
-> *Disclaimer: Gmarket does not publish official user personas. The four archetypes below are inferred from observed surface design and Korean-marketplace context. Treat as illustrative analyst fiction for porting decisions, not as ground-truth.*
-
-1. **The 40-something household manager** — primary buyer for the family. Comes for staples (생필품 / 식품 / 세제), comes back for the Smile Club coupon. Scans the home grid by category, opens 4–6 product cards per visit, completes one purchase per session. Values: price accuracy, delivery reliability (스마일배송), coupon-stack legibility.
-
-2. **The deal-hunting 30-something** — knows the platform inside out. Bookmarks the bestsellers page, sorts by 가격 / 인기 / 신상품, uses keyboard shortcuts. Comes daily during 슈퍼딜 / 빅스마일데이 events. Values: countdown timers, "마감임박" badges, transparent card-discount math.
-
-3. **The 50+ open-market regular** — Gmarket-since-Y2K. Trusts the brand because it predates current Korean e-commerce. Less mobile-fluent — uses `www.gmarket.co.kr` on desktop, prefers the fixed-1200px canvas because it's predictable. Values: large enough text (won't tolerate < 14px), Korean service-names (won't tolerate Latin abbreviations), call-center hotline visibility.
-
-4. **The Shinsegae Universe loyalty member** — newer cohort, post-2021 acquisition. Discovered Gmarket through SSG.com cross-sell or E-Mart. Engages with the Club Smile modules, uses SmilePay as the default wallet. Values: members-only pricing, cross-app continuity (Green-Connect-Blue program), unified loyalty across Shinsegae brands.
+No first-party persona research was verified.
 
 ## Colors
 
-All values captured 2026-05-15 from production `:root` CSS custom properties via `getComputedStyle(document.documentElement)` on `https://www.gmarket.co.kr/` and `https://corners.gmarket.co.kr/Bestsellers`. Token names preserve Gmarket's own casing (PascalCase-Hyphen, e.g. `--Red-600`, `--Club-Navy-Main`).
+The live homepage exposes **277 computed root custom properties**, including one Swiper default; 276 remain after that exclusion. The browser declaration walk could not read five cross-origin stylesheets. Separately opening the product's `starro/desktop/css/home/home.css` recovered two `:root` blocks: one Swiper variable and a 276-property product block. All 277 names and raw values match the computed census. [Root declarations](https://script.gmarket.co.kr/starro/desktop/css/home/home.css). The paragraph census identifies **foreground `#222222`** (21 paragraph elements), even though red is the most frequent text colour across the complete census.
 
-### Primary Brand
-- **Gmarket Red** (`#da120d`) — `--Red-600`. The brand-level red. Observed exclusively on price-discount text, percentage-off chips, and the occasional CTA edge — not used as a flooded button fill in sampled chrome.
-- **Pure White** (`#ffffff`) — `--White`. Page background, card surface.
-- **Near-Black Ink** (`#222222`) — `--Gray-900`. Primary text, headings, prices co-anchor with `--Red-600`.
+### Product colour and brand identity
 
-### Service-line Accents
-- **Smile Yellow** (`#ffd200`) — `--Smile-Yellow`. Loyalty / SmilePay / SmileClub program color.
-- **StarDelivery Purple** (`#7130f3`) — `--StarDelivery-Purple`. Same-day premium delivery service color.
-- **Green-Connect-Blue** (`#00c3a0`) — `--Green-Connect-Blue`. Cross-app continuity / Shinsegae connect program teal.
+- **Product main green `#00c400`** — live `--Green-500`; GDS Foundation names this Main Green and also uses it for positive or benefit information. The reference primary colour follows that product role.
+- **Price red `#da120d`** — live `--Red-600`; the measured water card uses it for the discount percentage, final amount and currency unit. It is not evidence of a red purchase button.
+- **Error / warning red `#ef2b2a`** — live `--Red-500`, documented for caution and errors.
+- **White canvas / surface `#ffffff`** — `--White`; **foreground `#222222`** — `--Gray-900`; **muted ramp value `#757575`** — `--Gray-600`; **hairline ramp value `#e0e0e0`** — `--Gray-300`.
+- **Category trigger `#10af29`** with `#ffffff` text, and **category rail `#0abb26`** with `#ffffff` text, are measured control colours. The rail reverses those colours during interaction.
 
-### Event Sub-brands (promotional surfaces only)
-- **BF main** (`#f1266d`) — `--Event-bf-main`. Black Friday / large promo pink-red.
-- **BS main** (`#fd4e28`) — `--Event-bs-main`. Big-sale orange-red.
-- **BSD main** (`#7b00e7`) — `--Event-bsd-main`. Specialty promotion violet.
+The brand-identity page separately names **Gmarket Green `#00c01e`**, **Gmarket Blue `#0028ac`** and white. It documents a connection gradient using `#00c400`, `#00c3a0` and `#067dfd`. GDS Foundation also names `#0028ac` for purchase-path CTA colour. These documented roles are distinct from the measured category controls. [Brand colours](https://gds.gmarket.co.kr/brand/colors), [foundation colours](https://gds.gmarket.co.kr/foundation/color).
 
-### Club Smile (Shinsegae Universe loyalty)
-A separate sub-system, with its own Navy / Blue / Gray ladders — used on members-only Club rails and the Smile Universe surface.
-- **Navy** — `--Club-Navy-Main #002041` / `-80 #334d67` / `-60 #66798d` / `-40 #99a6b3` / `-20 #ccd2d9`
-- **Blue** — `--Club-Blue-Main #497cff` / `-80 #6d96ff` / `-60 #92b0ff` / `-40 #b6cbff` / `-20 #dbe5ff`
-- **Gray** — `--Club-Gray-Main #c8c8c8` / `-80 #d3d3d3` / `-60 #dedede` / `-40 #e9e9e9` / `-20 #f4f4f4`
+### Measured colour ladders
 
-### Neutral Scale (`--Gray-*`)
-A 10-stop ladder, semantically aligned with Material's named stops but with Gmarket's own observed text-color discipline.
-- `--Gray-900` `#222222` — primary text, prices (when not red), headings
-- `--Gray-800` `#424242` — strong secondary text
-- `--Gray-700` `#616161` — secondary text
-- `--Gray-600` `#757575` — tertiary text, footer
-- `--Gray-500` `#9e9e9e` — disabled text, placeholder
-- `--Gray-400` `#bdbdbd` — disabled-icon, divider-strong
-- `--Gray-300` `#e0e0e0` — divider, input border
-- `--Gray-200` `#eeeeee` — light divider, card edge
-- `--Gray-100` `#f5f5f5` — section tint, row hover
-- `--Gray-50`  `#fafafa` — barely-tinted alternate row
+Every entry below is the corresponding `--Hue-stop` computed root value, expanded to six-digit hex. These are available palette values; a ladder's presence alone does not establish how every stop is used.
 
-### Semantic / Utility Hues (each as a 10-stop ladder; `-600` is the most-deployed default)
-- **Red** — 50→900 (`#fff5f5` → `#7d0800`); brand & price use `-600 #da120d`, destructive/error typically `-500 #ef2b2a`
-- **Orange** — 50→900 (`#fff6f2` → `#5e2700`); time-pressure / countdown / "마감임박" badges use `-500 #f9560e` and `-600 #da4000`
-- **Yellow** — 50→900 (`#fffce5` → `#592500`); warning + the Smile-program family
-- **Green** — 50→900 (`#e5fce3` → `#013600`); availability / success — `-500 #00c400` observed for delivery-confirmed and stock-ok states
-- **Teal** — 50→900 (`#eaf9fa` → `#0a3545`); informational secondary, connect-program accent
-- **Blue** — 50→900 (`#eef7ff` → `#072182`); information, link, secondary CTA; `--swiper-theme-color: #007aff` is Swiper.js default, separately
-- **Indigo** — 50→900 (`#f5f5ff` → `#2d2587`); intentionally-cool informational, used on tab strips
-- **Purple** — 50→900 (`#fbf5ff` → `#37188c`); brand-extension, premium feature surfaces
-- **Pink** — 50→900 (`#fff2fc` → `#64009a`); promotional surfaces, often paired with `--Event-bf-main`
+| Root namespace | Stops 50 → 900 |
+|---|---|
+| Gray | 50: `#fafafa` · 100: `#f5f5f5` · 200: `#eeeeee` · 300: `#e0e0e0` · 400: `#bdbdbd` · 500: `#9e9e9e` · 600: `#757575` · 700: `#616161` · 800: `#424242` · 900: `#222222` |
+| Red | 50: `#fff5f5` · 100: `#ffdadb` · 200: `#ffbfbf` · 300: `#ff8585` · 400: `#ff5454` · 500: `#ef2b2a` · 600: `#da120d` · 700: `#bf0a03` · 800: `#9f0a01` · 900: `#7d0800` |
+| Orange | 50: `#fff6f2` · 100: `#ffe1d3` · 200: `#ffccb2` · 300: `#ff9e70` · 400: `#ff7638` · 500: `#f9560e` · 600: `#da4000` · 700: `#b43200` · 800: `#882400` · 900: `#5e2700` |
+| Yellow | 50: `#fffce5` · 100: `#fdf8cb` · 200: `#fff6a3` · 300: `#ffe65c` · 400: `#ffcc1f` · 500: `#eaad06` · 600: `#cf8b00` · 700: `#ac6600` · 800: `#864300` · 900: `#592500` |
+| Green | 50: `#e5fce3` · 100: `#a5f4a0` · 200: `#6cef64` · 300: `#39e532` · 400: `#11d70d` · 500: `#00c400` · 600: `#01a900` · 700: `#018600` · 800: `#015f00` · 900: `#013600` |
+| Teal | 50: `#eaf9fa` · 100: `#d1f5f8` · 200: `#b8f0f6` · 300: `#89e5ee` · 400: `#62d4e2` · 500: `#43bed0` · 600: `#2da2b8` · 700: `#1d7f97` · 800: `#125a6f` · 900: `#0a3545` |
+| Blue | 50: `#eef7ff` · 100: `#cbe8ff` · 200: `#a7d9ff` · 300: `#68bbff` · 400: `#329cff` · 500: `#067dfd` · 600: `#0062e5` · 700: `#0048c8` · 800: `#0231a6` · 900: `#072182` |
+| Indigo | 50: `#f5f5ff` · 100: `#e4e4ff` · 200: `#d2d2ff` · 300: `#ababff` · 400: `#8a8aff` · 500: `#706ff7` · 600: `#5855e2` · 700: `#4741c7` · 800: `#3931a8` · 900: `#2d2587` |
+| Purple | 50: `#fbf5ff` · 100: `#f0dcfe` · 200: `#e5c4fc` · 300: `#ce95f8` · 400: `#b66ef0` · 500: `#9d50e5` · 600: `#823ad5` · 700: `#662ac0` · 800: `#4c1fa7` · 900: `#37188c` |
+| Pink | 50: `#fff2fc` · 100: `#fecff2` · 200: `#fcade9` · 300: `#f76dd9` · 400: `#ef39cc` · 500: `#e413c3` · 600: `#d300be` · 700: `#bd00b8` · 800: `#9c00a3` · 900: `#64009a` |
 
-### Default Page Surfaces
-- Page background: `#ffffff`
-- Card / surface: `#ffffff`
-- Footer / footer-area tint: `--Gray-100 #f5f5f5`
-- Section-divider tint: `--Gray-50 #fafafa`
+`--Black` is `#000000`; `--White` is `#ffffff`. RGB companion properties expose the same channels separately.
+
+### Service, Club, event and Selecti namespaces
+
+- `--Smile-Yellow` **`#ffd200`**; GDS Foundation associates that value with the Smile brand. This is not the product's main green.
+- `--StarDelivery-Purple` **`#7130f3`**; `--Green-Connect-Blue` **`#00c3a0`**. Their names and values are confirmed; no delivery-speed or cross-app programme interpretation is inferred from the names.
+- **Club Navy** — `--Club-Navy-Main` `#002041` · `--Club-Navy-80` `#334d67` · `--Club-Navy-60` `#66798d` · `--Club-Navy-40` `#99a6b3` · `--Club-Navy-20` `#ccd2d9`.
+- **Club Blue** — `--Club-Blue-Main` `#497cff` · `--Club-Blue-80` `#6d96ff` · `--Club-Blue-60` `#92b0ff` · `--Club-Blue-40` `#b6cbff` · `--Club-Blue-20` `#dbe5ff`.
+- **Club Gray** — `--Club-Gray-Main` `#c8c8c8` · `--Club-Gray-80` `#d3d3d3` · `--Club-Gray-60` `#dedede` · `--Club-Gray-40` `#e9e9e9` · `--Club-Gray-20` `#f4f4f4`.
+
+The following current event variables are confirmed as values. Their presence does not establish that a matching event is active or that every promotional module uses them:
+
+- `--Event-bf-main` `#3067ff`.
+- `--Event-brand-main` `#222222`.
+- `--Event-bs-main` `#0051ff`.
+- `--Event-bsd-main` `#7b00e7`.
+- `--Event-campaign-main` `#00c400`.
+- `--Event-hangawi-main` `#0051ff`.
+- `--Event-monthly-main` `#3067ff`.
+- `--Event-seollal-main` `#fd4e28`.
+- `--Event-shinsegae-main` `#f1266d`.
+
+`--Selecti-Green` is `#d9ff3f`; its ten-stop Green ladder is 50: `#f7ffc7` · 100: `#eeff95` · 200: `#d9ff3f` · 300: `#caf625` · 400: `#abdd05` · 500: `#85b100` · 600: `#648605` · 700: `#50690b` · 800: `#43590e` · 900: `#223201`. `--Selecti-Yellow` is `#fde486`. No product role for this namespace was established.
+
+`--swiper-theme-color: #007aff` belongs to the Swiper stylesheet and is excluded from the brand palette.
 
 ## Typography
 
-Gmarket runs a two-tier typography model: a **first-party display face** for set-piece moments and a **conventional Korean system stack** for body density.
+### Evidence classes
 
-### Type Stack
-- **Display** — `--gmarketFont: "Gmarket Sans", sans-serif`. Used on section H2s (28px / 700 in hero modules, 24px / 700 in compact modules), the H1 wordmark (image-replacement, `font-size: 0`), and promotional banner copy.
-- **Body / system** — `-apple-system, system-ui, "Apple SD Gothic Neo", Roboto, "Noto Sans CJK KR", Tahoma, "Noto Sans Korean", "Noto Sans KR", "Gmarket Sans", sans-serif`. Used on 146 / 272 sampled elements — the conventional Korean Apple-first → Noto-fallback chain, with Gmarket Sans as the final fallback before generic sans.
+- **Official product use:** GDS Typography documents Gmarket Sans for prices and selected components, including headings and buttons; it describes OS-oriented system typography for the rest. Its brand-typeface page names Gmarket Sans as the designated headline face. [Product typography](https://gds.gmarket.co.kr/foundation/typography), [brand typeface](https://gds.gmarket.co.kr/brand/typeface).
+- **Live-loaded:** the census records **Gmarket Sans 300, 500, 700** and **Noto Sans KR 400, 700**, all normal style. This confirms loaded faces, without assigning a particular file to each glyph. The search input computes to Gmarket Sans; the section-title link also computes to that family.
+- **Official distributed assets:** the corporate font page offers Gmarket Sans in Light, Medium and Bold, in TTF and OTF, under the SIL Open Font License. Its stated coverage is 11,172 Hangul syllables, 95 Latin characters and 986 special characters. It describes straight, geometric forms within square bounds, adjusted for mixed Korean, Latin and number setting, and intended to remain clear in print, web and mobile use. [Distribution and licence statement](https://corp.gmarket.com/fonts/). No font files were downloaded or vendored.
+- **Declared-only:** the live body, h1 and first-button stacks name `-apple-system`, `system-ui`, Apple SD Gothic Neo, Roboto, Noto Sans CJK KR and Tahoma in addition to the two loaded families. Those named alternatives are not individually confirmed as loaded by this census. The product CSS also declares Noto Sans KR 300 and 500, which are not in the loaded list. They receive no specimens.
+- **Unresolved:** the exact local-versus-network face selected for each run, and per-glyph fallback, were not captured. **Substitute: none chosen.**
 
-### Gmarket Sans (first-party)
-Distributed at `corp.gmarket.com/fonts/` under the **SIL Open Font License** (free commercial + non-commercial), released in TTF and OTF, in three weights:
-- **Light** (300)
-- **Medium** (500)
-- **Bold** (700)
+The opened product CSS configures local font names first, then WOFF2 and WOFF URLs under `script.gmarket.com/fonts/`: `GmarketSansLight`, `GmarketSansMedium`, `GmarketSansBold`, and `noto-sans-kr-v11-korean-*`. The census could not read those cross-origin `@font-face` rules; the serving configuration comes from the separately opened stylesheet. [Product font CSS](https://script.gmarket.co.kr/pc/css/common/kr/ui/common.css).
 
-Character set: 11,172 Korean syllables · 95 Latin · 986 special. Design intent (per the distribution page): geometric forms within square boundaries, aligned for accessibility across print/web/mobile. The font is the strongest single Tier-1 design-system artifact Gmarket publishes — no token JSON, no Storybook, no Figma library is publicly available, but the brand font is fully open and free to vendor.
+### Computed sizes on the sampled surface
 
-### Observed Size Scale (px)
-- `28px / 700` — Section H2 (hero modules: "지금 제일 잘 나가는 상품")
-- `28px / 400` — Subpage H2 (베스트 page: "G마켓 베스트" — note the lighter weight, used when the page itself is the title)
-- `24px / 700` — Compact module H2 ("전체카테고리", "프로모션 배너")
-- `18.72px / 700` — Card H3 ("하나더 상품", "베스트 상품")
-- `16px / 400-700` — Body, primary card title, primary nav anchor, price emphasis
-- `14px / 400` — Secondary nav, GNB language switcher ("Global"), filter/utility text
-- `13.3333px / 400` — Utility text, tooltip, swiper-button label, layer-close
-- `12px / 400-500` — Meta text, footer notices, micro-badges
-- `11px / 500` — Price-modifier labels ("쿠폰적용가"), the smallest legible price-context tag
+| Element | Size / weight | Line-height | Additional evidence |
+|---|---|---|---|
+| Section-title link, 지금 제일 잘 나가는 상품 | 24px / 400 | normal | Gmarket Sans; 24px-high link |
+| All-categories button | 18px / 700 | 21px | letter-spacing -1px |
+| Primary nav link, 베스트 | 16px / 400 | 32px | letter-spacing -1px |
+| Product-card outer anchor | 16px / 400 | normal | child labels carry their own colours |
+| Category-rail link | 15px / 400 | 42px | letter-spacing -1px |
+| Search input | 15px / 400 | 29px | Gmarket Sans; letter-spacing -0.5px |
+| Seller-services button | 14px / 400 | 14px | letter-spacing -1px |
+| Outer search-icon / carousel button styles | 13.3333px / 400 | normal | hidden/icon labels; not a visible copy-size recommendation |
+| Footer notice button | 12px / 400 | 20px | survey measurement |
 
-### Weight Discipline
-Two production weights dominate: **400** (body / nav / meta) and **700** (headings / prices / strong emphasis). Gmarket Sans's available **500 (Medium)** is *less frequently observed in sampled production CSS* — primarily reserved for the rendered logotype and certain banner overlays. The marketing surfaces lean on the 400/700 binary because the body system stack (Apple SD Gothic Neo, Noto Sans KR) is most stable at those two weights.
+The section link and search input report computed weight 400 while the loaded Gmarket Sans faces are 300/500/700. A separate 400 font file was not observed. No unmeasured line-height ratios are added to these metrics.
 
-### Line-height
-Largely default-browser (1.2–1.5 depending on element). Gmarket does not enforce a strict line-height token system on the home/bestsellers surfaces.
+GDS's documented typography scale is a separate specification: 24, 22, 20, 18, 16, 12 and 11px appear in its size table; its small-size row literally says `14ox`, while its usage paragraph names body size 14. The documentation says that 11 is exceptional. These dated guidance values do not replace the desktop measurements. [Typography specification](https://gds.gmarket.co.kr/foundation/typography).
 
 ## Layout
 
-### Layout & Spacing
+`--minWidth` is **1200px**. At the measured 1440px viewport, the core content runs from x=120 to x=1320. The category trigger and rail are 224px wide; the adjacent hero link is 976×400px. The navigation strip contains the category trigger, service links and utility links above the hero. Its captured text destinations include 베스트, 슈퍼딜, 이마트몰, 스타배송 and 꼭 멤버십.
 
-Gmarket's flagship runs a **fixed-1200px desktop canvas** (`--minWidth: 1200px`). This is a deliberate legacy decision — the 2000-founded marketplace has not committed to fluid responsive on `www.`; the mobile flagship lives at `m.gmarket.co.kr` as a separate surface. Below 1200px, the desktop site horizontal-scrolls rather than reflowing.
+The bestsellers carousel shows five 224px cards across the 1200px content area, with 20px between adjacent card origins after subtracting card width. The Emart Mall and StarDelivery areas use two 574px modules separated by 52px. Inside each module, two 273px product links sit 28px apart; 100px-high rows repeat at 120px intervals, leaving a 20px vertical gap. The selected card's 116px left padding reserves a 100px image and a 16px content gap. These are specific desktop layouts, not a universal gutter scale.
 
-#### Grid
-- **Outer max-width**: 1200px, centered, no bleed
-- **Module spacing**: ~48–64px vertical between category modules (H2 → first card row → repeat)
-- **Card grid**: 2-up on narrow modules, 4-up on standard modules, 5-up on bestsellers-page rank grid
-- **Card gutter**: 8–16px horizontal, 16–24px vertical
-- **Inner card padding**: 8px around content, thumbnail flush
-- **GNB strip height**: ~50–60px sticky, white background
+The page continues through service links, home-shopping content, Superdeal offers, notices and the legal footer. Its captured full-page height is 7189px.
 
-#### Spacing Scale (inferred from observed padding/margin frequencies)
-Gmarket does not expose `--space-*` tokens. Observed paddings cluster at:
-- `4px` — micro (chip vertical)
-- `8px` — small (card inner)
-- `12–16px` — medium (button horizontal, list-item padding)
-- `20–24px` — large (section internal gap)
-- `48–64px` — module vertical break
+GDS separately documents an 8-point grid and spacing units **2, 4, 8, 12, 16, 20, 24, 32 and 40px**. It identifies 64px specifically between the logo and bottom navigation in a full-footer pattern. This does not establish a 64px gap between the measured desktop modules. No `--space-*` property appears in the computed root list. [Documented spacing](https://gds.gmarket.co.kr/foundation/spacing).
 
-#### Page Anatomy (home, top-to-bottom)
-1. Top utility bar — mypage / cart / global / lang (12–13px utility text)
-2. Main header — wordmark + search + cart icon
-3. GNB — 전체카테고리 / 베스트 / 신상마켓 / 슈퍼딜 / 알뜰쇼핑 / 브랜드데이 / G마켓Pay / 골프 / 라이브
-4. Hero swiper banner (Swiper.js, `--swiper-theme-color: #007aff`)
-5. Vertical category modules ×10 (each = H2 + grid)
-6. Footer — seller-services + legal + corp links + 신세계그룹 family-site row
+### Responsive Behavior
+
+Only the 1440×1000 desktop surface was measured; narrow-width reflow, mobile layout, breakpoints and reduced-motion behavior remain unmeasured.
 
 ## Elevation & Depth
+
+All six sampled outer controls report **`box-shadow: none`** at rest. The product thumbnail's alpha border and the seller button's `#ececec` edge show how those specific elements separate from their surroundings. This sample does not establish a site-wide ban on shadows. Calculated sRGB contrast against white is **5.1554:1** for `#da120d` and **1.4512:1** for `#ffd200`; the former exceeds the normal-text 4.5:1 threshold, while the latter does not. [Contrast method and threshold](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+
+The category trigger's `::before` and seller button's `::after` use a common image sprite; the survey exposes `sprite__common--before`, `sprite__common--after` and `--spriteSize: 100% 100%`. The opened desktop CSS references `sprite__common.png`, while the homepage CSS references `sprite__homemain.svg`. Product thumbnails and campaign images supply much of the visible detail. The selected category sprite computes a 400px auto background size; the existence of `--spriteSize` does not establish that it sizes this particular sprite. No migration motive is inferred from this mixed sprite implementation. [Desktop CSS](https://script.gmarket.co.kr/pc/css/common/kr/ui/desktop_layout.css), [homepage CSS](https://script.gmarket.co.kr/pc/css/application/kr/homemain/app.css).
+
+The separate GDS iconography guidance specifies a 48×48 design grid, 4px internal margins, a 3px line weight at that size, rounded ends and joins, and line/fill variants. These are documented construction rules, not measured icon dimensions on this desktop. The survey gives the 46×70px hero-arrow buttons 4px padding and the accessible labels 이전 목록 보기 and 다음 목록 보기; no general claim about all icon labels is made. [Iconography](https://gds.gmarket.co.kr/foundation/iconography).
 
 ### Values kept in prose
 
@@ -375,289 +238,88 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-### Motion & Interaction
-
-Motion tokens **not directly captured** in single-pass CDP. Observed motion patterns:
-- **Swiper.js carousel** on hero banner — paged horizontal swipe (default Swiper timing, ~300ms)
-- **Sticky GNB** — fixed on scroll, no transform animation
-- **Hover affordances** — primarily underline + color shift on text-link; observed `cursor: pointer` on most clickable elements without elaborate transition
-- **No view-transition / scroll-driven animation** observed in chrome
-
-Flagged for UPDATE: capture explicit `transition` and `animation` shorthand frequencies, capture hover/focus states.
-
-Motion tokens **partially captured** — the chrome relies on Swiper.js defaults and CSS-transition shorthand rather than a public token system.
-
-### Observed
-- **Swiper carousel** — `--swiper-theme-color: #007aff` (Swiper.js library color, not a Gmarket brand token), default ~300ms slide duration
-- **Sticky GNB** — `position: sticky` with no transform animation
-- **Sprite-icon hover** — typically `transition: background-position 0.1s` (inferred from sprite pattern)
-
-### Not Captured (UPDATE targets)
-- Modal / layer open-close timing
-- Toast / snackbar duration
-- Scroll-driven animation
-- Reduced-motion handling
-
-### Motion Rules (analyst recommendation for ports, not lifted)
-- Carousels should default ~300ms
-- Hover responses should be ≤150ms
-- Layer / modal transitions should be 200–250ms with ease-out
-- Respect `prefers-reduced-motion: reduce` — disable swiper auto-advance, eliminate non-essential transitions
+Each of the six outer controls reports the raw computed transition **`all 0s ease 0s`**. The sampled category reversal therefore has no nonzero outer-control transition. The product focus probe detects a longer transition somewhere in its compared subtree, without recording that descendant's full transition shorthand. No duration is promoted from that partial observation. Carousel, layer and toast timing, scroll animation and reduced-motion handling were not measured.
 
 ## Components
 
-All values from live CDP inspect on 2026-05-15. Where a state was not directly observed (hover / pressed / focus / disabled), the value is marked `(Inferred)`. Schema: one field per bullet.
+### Category-rail link — measured interactive component
 
-### Buttons
+**Identity:** `a.link__1depth-item`, text **브랜드패션**, `href="#"`; 224×44px, 0px radius, 0px padding, 15px/400, 42px line-height, -1px letter-spacing. Rest: background **`#0abb26`**, foreground **`#ffffff`**, no border or shadow.
 
-**Primary CTA (price-anchor / "쇼핑하러 가기")**
-- Background: `#da120d` *(Inferred — observed as text color, also matches `--Red-600`; some commerce-detail CTAs ship as red flood fills)*
-- Text: `#ffffff`
-- Border: none
-- Radius: `4px` *(matches observed --radius level)*
-- Padding: `14px 24px` *(Inferred from observed nav padding scale)*
-- Font: 16px / 700 / system stack
-- Use: highest-intent purchase action; restricted to one per surface
+Hover and held mouse press both reverse the colours to **`#ffffff` background / `#0abb26` text**. A parent `::before` separator appears, 224×1px in **`#e5e5e5`**. Press adds no further change relative to hover. The keyboard-focus JSON records the same colour reversal and separator plus a browser `auto` outline, with `persistsAfterBlur: []`. However, the focus crop shows the original green background and white label with the browser ring. The computed and visual focus records disagree; focus colour is unresolved and no focus token is emitted. The browser outline is not a brand token.
 
-**Secondary / Outlined**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: `1px solid #e0e0e0`  (`--Gray-300`)
-- Radius: `3px`
-- Padding: `0px` *(observed on `button__sellermenu` — chrome-utility variant; commerce-page secondary buttons inflate to `10px 16px`)*
-- Font: 14px / 400 / system stack
-- Use: chrome-utility actions, "판매자서비스" footer button
+### Measured controls retained as reference geometry
 
-**Pill / Filter (nav anchor + category chips)**
-- Background: `transparent` or `#ffffff`
-- Text: `#222222` (active) / `#666666` (default)
-- Border: `1px solid #e0e0e0`  *(default, Inferred from card edge token)*
-- Radius: `20px`
-- Padding: variable `(8–12)px (16–20)px`
-- Font: 16px / 400 / system stack
-- Use: home-page module entry pills, GNB sub-category chips
+These controls have unchanged or browser-only state results, or incomplete pointer measurement, so they are described here without interactive entries in `tokens.components`.
 
-**Pill / Promo banner ("하나더")**
-- Background: `transparent`
-- Text: `#666666`
-- Radius: `20px`
-- Font: 16px / 400 / system stack
-- Use: in-card promo link with rounded pill affordance, observed live
+| Control | Identity and rest styling |
+|---|---|
+| **전체 카테고리** | `button.button__category-all`; 224×60px; radius 0; padding 17px 0px 20px; 18px/700; background `#10af29`, text `#ffffff`; border and shadow none |
+| 판매자서비스 | `button.button__sellermenu`; 117×34px; radius 3px; padding 0; 14px/400; `#ffffff` background, `#5e636d` text, 1px solid `#ececec` border; shadow none |
+| 베스트 | `a.link__service`, link to `/n/best`; 38.5×32px; radius 0; padding 0; 16px/400; transparent on white, `#000000` text; no border or shadow |
+| 무엇을 찾아드릴까요? | `input#form__search-keyword`; 533×29px; radius 24px; padding 0; Gmarket Sans 15px/400; transparent on white, `#424242` ink; border and shadow none. The visible outer search enclosure is a separate element. The desktop CSS declares placeholder colour `#999999`; the probe did not capture its computed pseudo-element colour. |
+| 5K프라이스 내츄럴미네랄워터 2Lx6입 (무라벨) | `a.link__item.product-clk-spm-d`; 273×100px; radius 0; padding 0px 0px 0px 116px; 16px/400; transparent anchor, own inherited colour `#0000ee`, border and shadow none. The visible product name is a child in `#444444`; the price and percentage are `#da120d`; rewards are `#01a900`; delivery copy is `#616161`. |
 
-**Sprite / Icon Button**
-- Background: `transparent`
-- Text: `transparent` (icon-only — text hidden via sprite)
-- Border: none
-- Radius: `0px`
-- Padding: `0–5px`
-- Use: layer-close (×), swiper-next/prev, tooltip-info, search-clear; legacy CSS-sprite-driven (`sprite__common`)
+The sampled product's thumbnail is 100×100px, with a 1px `rgba(0, 0, 0, 0.1)` edge on an image-wrapper pseudo-element. Its visible green tag is a 50×18px child in `#00c400` with white text. The outer anchor's blue inherited colour is not the visible title colour.
 
-### Inputs
+The survey finds **하나더** as a module-tab link (`role="button"`, `href="#하나더"`): 134×40px, 20px radius, 0 padding, 16px/400, 40px line-height, transparent with `#666666` text. The rendered active **전단상품** tab has `#00c400` background, white text and 16px/700. These are two rendered variants, not an observed transition on one control. More-links are 54px high with 27px radius, `#fafafa` backgrounds, `#444444` text and a 1px `rgba(0, 0, 0, 0.1)` border. The promotional banner link has 6px radius.
 
-**Search Field (header)**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: `2px solid #222222` *(Inferred — Gmarket's signature dark-stroked search input)*
-- Radius: `0px`
-- Height: `42–48px`
-- Font: 16px / 400 / system stack
-- Inner button: `button__search` sprite icon-only
-- Placeholder: `#9e9e9e` (`--Gray-500`)
+The Global button and nearby login utility link measure 14px/400, 32px high, padding 0, with `#777777` ink. The 32×32px search-icon button has 5px padding, radius 0, transparent background, black outer foreground and no border; its 13.3333px/400 outer style is not a visible label specimen.
 
-**Filter / Sort Input (refinement strip)**
-- Background: `#ffffff`
-- Border: `1px solid #e0e0e0`
-- Radius: `3px` *(observed)*
-- Padding: `0`
-- Font: 14px / 400
-
-### Cards
-
-**Product Card (home / bestsellers)**
-- Background: `#ffffff`
-- Border: none (separation via 8–16px gutter)
-- Radius: `0–6px` on thumbnail container; card itself: `0px`
-- Shadow: none
-- Padding: thumbnail flush, content padding `8px 0`
-- Thumbnail aspect: 1:1 (square) — dominant; 16:9 for banner-card variants
-- Title: 14–16px / 400 / `#222222`
-- Price (current): 16–18px / 700 / `#da120d`
-- Price (original / strike): 12–13px / 400 / `#9e9e9e` with `text-decoration: line-through`
-- Discount %: 12–18px / 700 / `#da120d`
-- Delivery chip: 11–12px / 500 / chip-background tied to service (스마일배송 yellow / 무료배송 gray)
-
-**Ranking Card (bestsellers)**
-- Adds: numeric rank badge (1, 2, 3 ...) top-left, 18–24px / 700, no fill
-- Top-3 ranks: `#da120d` text
-- Ranks 4+: `#222222` text
-
-### Badges / Chips
-
-**Discount-rate Badge**
-- Background: transparent (text-only) or `--Red-50 #fff5f5`
-- Text: `#da120d`
-- Radius: `0px` or `3px`
-- Font: 12–14px / 700
-
-**Smile Club / Loyalty Badge**
-- Background: `--Club-Navy-Main #002041`
-- Text: `#ffd200` (Smile-Yellow)
-- Radius: `3–4px`
-- Font: 11–12px / 700
-
-**Delivery Chip (스마일배송 / 무료배송 / 도착보장)**
-- Background: `--Smile-Yellow #ffd200` (스마일배송) / `--Gray-100 #f5f5f5` (무료배송) / `--StarDelivery-Purple #7130f3` (StarDelivery)
-- Text: `#222222` on yellow / `#616161` on gray / `#ffffff` on purple
-- Radius: `2–3px`
-- Padding: `2px 6px`
-- Font: 11px / 500
-
-### Navigation
-
-**GNB Anchor (top primary)**
-- Background: `transparent` (default) → `#222222` underline 2px (hover)
-- Text: `#222222` (default) / `#da120d` (current)
-- Padding: `17px 0px 20px`  *(observed live on `button__category-all`)*
-- Font: 16px / 400 / system stack
-
-**Utility Nav (top-bar mypage / cart / global)**
-- Text: `#777777` (`--Gray-medium`)
-- Font: 14px / 400 / system stack
-- Padding: minimal — text-only with sprite icon
-
-### Layers / Modals
-
-**Recent-products Layer (`box__layer-title`)**
-- Background: `#ffffff`
-- Border: `1px solid #e0e0e0` *(Inferred)*
-- Shadow: none observed
-- Title: 16px / 700 / `#222222` ("최근 본 상품")
-- Tab inactive: `#666666` (`--Gray-medium`)
-
-### Service Banners (event-system surfaces)
-
-**BF / BS / BSD promotional fills**
-- Background: `--Event-bf-main #f1266d` (BF) / `--Event-bs-main #fd4e28` (BS) / `--Event-bsd-main #7b00e7` (BSD)
-- Text: `#ffffff`
-- Use: full-bleed event-week landing modules — these are *not* part of the everyday chrome; they swap in for event-period campaigns and revert
-
----
-
-**Verified:** 2026-05-15
-**Tier 1 sources:**
-- Live CDP `:9222` inspect — `https://www.gmarket.co.kr/` (182 samples, 247 :root CSS vars)
-- Live CDP `:9222` inspect — `https://corners.gmarket.co.kr/Bestsellers` (90 samples, 246 :root CSS vars)
-- `corp.gmarket.com/fonts/` — Gmarket Sans SIL OFL distribution page (typeface = Tier-1-positive)
-**Tier 2 sources:**
-- `getdesign.md/gmarket` — "No designs found for 'gmarket'" (verified 2026-05-15)
-- `styles.refero.design/?q=gmarket` — no result cards in SSR DOM (verified 2026-05-15)
-**Conflicts unresolved:**
-- Primary CTA flooded-red variant inferred (not observed in 272 sampled chrome elements; commerce-detail-page surfaces not captured this pass — flagged for UPDATE)
-- Hover / pressed / focus / disabled states not directly captured — single-pass CDP only
+The homepage CSS assigns the rank badge a 47×47px circle, `#00c01e` background and white 16px bold Gmarket Sans text. The screenshot shows green filled rank badges with white numbers. These declared badge dimensions and typography are not a new computed-control measurement. [Homepage CSS](https://script.gmarket.co.kr/pc/css/application/kr/homemain/app.css).
 
 ### States
 
-| State | Surface | Token / pattern |
-|---|---|---|
-| **Default** | All chrome | Page bg `#ffffff`, text `--Gray-900 #222222`, accents per palette |
-| **Hover (link)** | Underline + color shift to `--Red-600 #da120d` *(Inferred — common Korean marketplace pattern, not directly captured)* |
-| **Hover (card)** | Subtle border highlight, no shadow added *(Inferred)* |
-| **Pressed** | `0.96` scale or no visual feedback *(Inferred, low-confidence)* |
-| **Focus** | Browser-default outline on `<a>` and `<input>`; custom focus ring not consistently observed |
-| **Disabled** | Text `--Gray-400 #bdbdbd`, background `--Gray-100 #f5f5f5` *(Inferred)* |
-| **Empty (recent-products layer)** | "최근 본 상품이 없습니다." — observed verbatim in layer; analyst note only, not adopted |
-| **Loading** | Skeleton not observed in chrome (page is server-rendered) |
-| **Error (search no-result)** | Not captured this pass — flagged for UPDATE |
-| **Success (purchase / cart-add)** | Toast / layer — not captured this pass |
-| **Promotional / Event-week** | Surface swaps to `--Event-bf-main` / `--Event-bs-main` / `--Event-bsd-main` fills with `#ffffff` text |
-| **Loyalty (Smile Club)** | Module backgrounds shift to `--Club-Navy-Main #002041`, accent `#ffd200` text |
+| Control | Hover | Held press | Real keyboard focus |
+|---|---|---|---|
+| Category rail, 브랜드패션 | White background, green text; parent separator appears | Same; no additional delta versus hover | JSON: inversion/separator, restoring after blur. Crop: green/white rest colours plus auto ring. Focus colour unresolved; no token |
+| All-categories button | No compared style change | No compared style change | Browser `auto` outline only |
+| Seller-services button | No compared style change | No compared style change | Browser `auto` outline only |
+| Best nav link | No compared style change in the second pass | No compared style change in the second pass | Browser `auto` outline only |
+| Search input | No compared style change | No compared style change | No compared style change; `:focus-visible` was true |
+| Selected water-product link | UNMEASURED: covered in first pass, absent in second | UNMEASURED: covered in first pass, absent in second | Browser `auto` outline only in first pass |
+
+The second pointer pass enabled `hideOverlays: true` after a fixed header covered the best-nav and product-card targets. The selected product was no longer found in that second load. No third state call was made.
+
+“No compared style change” covers the control, its pseudo-elements, captured descendants and three ancestor levels with pseudo-elements. The five simple controls have no captured descendants; the product has 19 descendants including two images. Canvas/video pixels, closed shadow roots, cross-origin iframe interiors, external sprite internals and siblings are outside this comparison. Disabled, error, empty, loading and success behavior were not measured.
 
 ## Do's and Don'ts
 
 ### Do
-- Reserve Gmarket Red #da120d (--Red-600) for numeric price-discount strings, percentage-off, and strike-through context — treat it as a semantic-price asset, not a generic CTA fill
-- Set section H2s in Gmarket Sans at 28px/700 for hero modules and 24px/700 for compact modules, keeping the body on the Apple SD Gothic Neo / Noto Sans CJK KR system stack
-- Stack 10+ category modules vertically with ~48-64px breaks and repeating thumbnail-price-chip card rhythm so users scan the grid, not headings
-- Convey depth through borders and Gray-ladder tints (--Gray-200 #eeeeee card edge, --Gray-100 #f5f5f5 row/section tint) instead of box-shadow, which is absent in production chrome
-- Map color to revenue programs via named sub-systems — Smile-Yellow #ffd200 for loyalty/SmilePay, StarDelivery-Purple #7130f3 for premium delivery, Club-Navy-Main #002041 for Smile Club rails
-- Render Korean service-names exactly as-is (스마일배송 / 안전결제 / 도착보장 / 쿠폰적용가) and lead card copy with the price, letting the number do the work
+
+- Keep the product's green navigation and red price information distinct. Match the measured rail reversal for hover and held press; the focus-colour record has an unresolved visual discrepancy.
+- Use the verified Gmarket Sans metadata for brand-bearing text, and preserve the measured type sizes independently of whether a face is available in a later environment.
+- Keep the measured product information grouped: name, coupon-adjusted price, reward amount and delivery copy.
+- Use the measured 1200px desktop geometry and component-specific radii when reproducing this surface.
+- Keep GDS's published specification and current production measurements labelled separately.
 
 ### Don't
-- Flood Gmarket Red #da120d as a primary button fill across large surfaces — in 272 sampled chrome elements it appears on price text, not as a button background
-- Place Smile-Yellow #ffd200 as a foreground on white (1.6:1 contrast, fails WCAG AA) — use it only as a background fill behind #222222 dark text
-- Add box-shadow or elevation to product cards; separation comes from the 8-16px gutter and color tints, never drop shadows
-- Pad sections to 'breathe' or introduce hierarchy that breaks the dense scan rhythm at the expense of card count per fold
-- Translate or rebrand Korean service-names (e.g. 스마일배송 to 'Smile Delivery') in Korean chrome, and avoid emotional adjectives or hero-tagline gestures inside card chrome
-- Collapse the type scale onto Medium 500 — production leans on the 400/700 binary, with 500 reserved mainly for the rendered logotype and banner overlays
 
----
-
-**Verified:** 2026-05-15
-**Tier 1 sources:**
-- Live CDP `:9222` inspect: `https://www.gmarket.co.kr/` (182 samples, 247 `:root` CSS vars)
-- Live CDP `:9222` inspect: `https://corners.gmarket.co.kr/Bestsellers` (90 samples, 246 `:root` CSS vars)
-- `https://corp.gmarket.com/` — corporate-narrative source (founding year, parent company, service portfolio)
-- `https://corp.gmarket.com/fonts/` — **Tier-1-positive** Gmarket Sans SIL OFL distribution
-**Tier 2 sources:**
-- `https://getdesign.md/gmarket` — "No designs found for 'gmarket'" (negative, verified 2026-05-15)
-- `https://styles.refero.design/?q=gmarket` — no result cards in SSR DOM (negative, verified 2026-05-15)
-**Tier 1 official DS:**
-- **Partial positive** — Gmarket Sans typeface (SIL OFL) is a first-party distributed brand-font artifact. No public Storybook / Figma library / token JSON / `design.gmarket.*` surface exists; `design.gmarket.co.kr`, `tech.gmarket.co.kr`, `brand.gmarket.co.kr`, `ui.gmarket.co.kr`, `gmarket.design` all DNS-no-resolve as of 2026-05-15. Production `:root` token system (247 CSS vars) is the de-facto public artifact, captured directly.
-**Conflicts unresolved:**
-- Primary CTA flooded-red variant inferred only — not directly observed in 272 sampled chrome elements; commerce-detail-page surface not captured this pass
-- Hover / pressed / focus / disabled / error / loading states largely not captured in single-pass CDP
-- Founder / CEO / HQ / headcount not captured from `corp.gmarket.com` analyzed page
-- Smile Club / SSG cross-app surfaces not directly inspected — Club Smile colors confirmed from `:root` but on-surface usage not sampled
-**IP guardrails:**
-- Gmarket logo / wordmark: reference-only, not redistributed
-- Gmarket Sans font files: NOT vendored in this repo (SIL OFL permits redistribution, but we link to first-party distribution at `corp.gmarket.com/fonts/`)
-- No verbatim Gmarket marketing copy reproduced; "지금부터의 마켓" quoted once as factual brand-narrative context in §11
-- Service-feature names (스마일배송 / 안전결제 / 도착보장 / Club Smile / SmilePay / StarDelivery) used descriptively
-- §10 voice samples are OmD-original illustrative reconstructions; explicitly marked "fresh derivations for ports — not Gmarket marketing copy"
-- §13 personas explicitly marked analyst inference, with disclaimer
-- Token CSS values reproduced under analytical fair-use as factual public-CSS observations
+- Derive a red purchase button from red price text. GDS documents a blue purchase-path CTA role; no purchase CTA was measured here.
+- Replace the brand face with an unmeasured fallback or present an unloaded face as a specimen.
+- Turn the sample's flat cards into a claim that shadows are prohibited everywhere.
+- Use a library's `--swiper-theme-color` as Gmarket's brand accent.
+- Transfer an event variable's name into an unsupported claim about a currently active campaign.
 
 ## Voice & Tone
 
-### Content Voice (analyst paraphrase — no verbatim Gmarket copy)
+The captured UI names tasks and price context directly: search, category, bestsellers, coupon-adjusted price, reward amount and delivery. The search placeholder asks what the customer wants to find. Its reward line associates a specific amount with membership. These observations support task-specific, numerically explicit interface copy; they do not establish a researched brand persona or a rule forbidding emotional language. [Homepage](https://www.gmarket.co.kr/).
 
-Gmarket's chrome voice is **transactional and time-pressured**. It speaks in numeric specificity (price, discount %, time-remaining) and in service-naming (스마일배송 / 안전결제 / 도착보장 / 카드혜택가). It does not advertise brand personality from the chrome — the chrome is the deal. Brand voice lives in event-week landing banners and in the corporate site (`corp.gmarket.com`), where positioning copy reads aspirational ("Korea's e-commerce benchmark", "We Connect", "지금부터의 마켓").
+GDS Buttons prescribes labels appropriate to the journey, distinguishes purchase from payment, and permits conversational language where friendly guidance is needed. [Button writing guidance](https://gds.gmarket.co.kr/components/buttons).
 
-**Voice traits (analyst paraphrase, not lifted)**:
-- Specific over evocative — "쿠폰적용가 7,840원" beats "Great deal"
-- Compound service nouns — "스마일배송", "최종카드혜택가", "감정완료" — Korean marketplace argot, dense
-- Numeric urgency — countdown, stock-low, "마감임박" are first-class typographic citizens
-- Brand restraint — "G마켓" rarely speaks in first-person; the user does the verb
+## Agent Prompt Guide
 
-**Do**: lead with price, name the service plainly, let the number do the work
-**Don't**: invent a brand voice from chrome — Gmarket's chrome is a venue, not a personality
+### Quick colour reference
 
-### Voice & Tone (illustrative — OmD fresh derivations, not Gmarket copy)
+Product green `#00c400` · category rail `#0abb26` · category trigger `#10af29` · price `#da120d` · foreground `#222222` · surface `#ffffff` · Smile `#ffd200` · StarDelivery `#7130f3`.
 
-Three voice samples illustrating the analyst paraphrase above. **These are fresh derivations for ports — not Gmarket marketing copy. Verify before adoption.**
+### Example component prompts grounded in the capture
 
-- *"오늘 가격, 오늘 도착."* — six syllables, two facts, no adjective
-- *"쿠폰 적용 시 22% 더."* — price-context as headline; the verb is invisible
-- *"이 가격, 이번 주만."* — temporal scarcity without exclamation
-
-**Do**: specificity, service-name accuracy, price-first
-**Don't**: emotional adjectives ("amazing", "최고의"), abstract brand-claims, hero-tagline gestures in card chrome
+- “A 224×44px category link labelled 브랜드패션, square corners, 15px/400 and 42px line-height; `#0abb26` background and white text. Hover and held press reverse those colours and reveal a 1px `#e5e5e5` separator. Focus rendering is unresolved; preserve the platform focus outline independently.”
+- “A centered 1200px desktop shopping area with two 574px service modules separated by 52px; each contains two 273×100px horizontal product links with a 28px gutter and 100px square thumbnails.”
 
 ## Governance
 
-### Accessibility & States
-
-Gmarket's flagship has **observable a11y debt** — surfaced here factually, not editorialized.
-
-- **H1 image-replacement** — the wordmark `<h1>` carries `font-size: 0px`; logo is a sprite background-image. Screen readers receive the text "G마켓" via inner span, but visually-rendered alt-text is absent. Acceptable pattern, but text-color falls back to `--Gray-500 #9e9e9e` in some sampled cases (image hides this).
-- **Color contrast on price-red on white** — `#da120d` on `#ffffff` = 5.5:1 — passes WCAG AA for normal text (4.5:1) and AAA for large text (7:1+). Strong.
-- **`--Smile-Yellow #ffd200` on `#ffffff`** — 1.6:1 — fails WCAG AA. Used as background fill with dark text, not on white as foreground. Risk only if reused inverted.
-- **Fixed-1200px canvas** — fails WCAG 1.4.10 Reflow (320px reflow requirement). Mitigated only by the separate `m.gmarket.co.kr` mobile surface.
-- **Sprite-driven icons** — no `aria-label` consistently observed on `button__layer-close`, `button__tooltip`, swiper next/prev. Mixed: `<button>` carries text "닫기" in some cases, sprite-only in others.
-- **State coverage** — visible focus rings inconsistent; default-browser focus outline observed on `<a>`, custom focus rarely surfaced. Disabled state not directly captured.
-
-Captured floor: focus rings + disabled states are an UPDATE-pass target.
-
 ### Known Gaps
 
-- **Contrast, `banner-event`.** Text `#ffffff` on `#f1266d` measures 4.01:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `category-fashion`.** Text `#ffffff` on `#0abb26` measures 2.58:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

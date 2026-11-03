@@ -1,3 +1,8 @@
+## 2026-11-03 오후 — 재검증 2·3차 main 머지(545/349), 확산 계획, 4차 CJK 진행
+- 한 일: 재개 후 2차 나머지·3차 21건(CJK 신규 11·재검증 10) 반영 → 오너 "2차·3차 묶음 머지 진행해"로 main `77403deb`, 운영 확인(349/89/107, MCP zabank HK). 프로브 pressed 계통 누락 수정 `f3688a88`, 색 대조 스냅샷 범위 수정 `1715414b`, HK 국가 추가, 확산 계획 `docs/GROWTH_PLAN_2026-11-03.md`(오너 질문: SNS·블로그·CJK·영상).
+- 열린 것: 오너 결정 G1~G3(확산), MCP 1b 프리뷰 GO, OpenRouter 키 교체(MCP 2a). uniqlo는 Access Denied로 제외. 4차(CJK 22) 진행 중, chinatimes 반영.
+- 다음: 4차 반영 → 2차 CJK 센서스(JP·TW↑) → G3 답에 따라 상태 릴 렌더러 또는 ja·zh-tw 상세.
+
 ## 2026-11-03 0시 반 — 재검증 1차 main 반영, 2차 8건 브랜치, CJK 전환, 재개 대기
 - 한 일: Mixpanel 제거·MCP v2(Phase 0·1)·/hangul·v2.0.6 출시(오너 승인분), 재검증 1차 10건 main `7ce00f93`(318 verified), 2차 8건(신규 justeat·ovhcloud·pipedrive 포함) 브랜치 `feat/reverify-w1`(533 / 326). spawn.sh 독립 세션 수정, 프로브 섀도 루트·거부어 보강, run-queue/land-reference 도구.
 - 열린 것: headspace·mercedes-benz 반영 → 2차 머지 GO, duolingo pressed 보강, 3차 묶음(CJK, `~/.omd-workers/queue-batch3.txt`), MCP 1b·2a 지시서(`~/.omd-workers/mcp-1b`, `mcp-2`).

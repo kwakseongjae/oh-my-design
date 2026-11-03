@@ -4,132 +4,71 @@ colors:
   primary: '#7a29fa'
   accent: '#f4373d'
   sale: '#ff3f33'
-  point: '#e21d47'
+  magenta: '#e21d47'
   pink-tint: '#fff4f7'
   ink: '#000000'
   charcoal: '#333333'
+  foreground: '#333333'
   near-black: '#111111'
-  body: '#777777'
+  secondary: '#777777'
   muted: '#999999'
   faint: '#aaaaaa'
   canvas: '#ffffff'
   surface: '#fafafa'
   surface-alt: '#f4f4f4'
-  disabled: '#eeeeee'
-  hairline: '#e6e6e6'
+  divider: '#eeeeee'
+  separator-fill: '#e6e6e6'
   border: '#dddddd'
+  event-outline: '#e5e5e5'
 typography:
-  detail-heading:
-    fontSize: 18px
-    fontWeight: 700
-    lineHeight: 1.33
-    use: Section / product-detail headings (프립 정보), SUIT Bold
-  product-title:
-    fontSize: 20px
-    fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: '-0.6px'
-    use: Product-detail H1 title, SUIT
-  discount:
-    fontSize: 24px
-    fontWeight: 700
-    use: Hero discount percentage in sale red
   body:
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
-    use: Standard reading + UI text, SUIT
+    use: Computed UI anchor metrics on the product-card and category-link wrappers; family starts with SUIT, but SUIT 400 is not in the loaded-face census
   cta:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Primary booking button label (참여하기), SUIT
+    use: Computed booking button and label on /products/121737; loaded-face limitations in section 3
   app-cta:
     fontSize: 12px
     fontWeight: 700
-    use: App-download bar label (앱 다운로드), SUIT Bold
-  badge:
+    lineHeight: 1.5
+    letterSpacing: '-0.3px'
+    use: Footer app-download link and visible label; SUIT 700 is live-loaded
+  navigation-label:
     fontSize: 10px
-    fontWeight: 500
-    use: Corner tags (프립단독 / 슈퍼호스트), SUIT Medium
+    fontWeight: 400
+    use: Visible category-label span, distinct from its 14px anchor wrapper
+  numbered-pill:
+    fontSize: 14px
+    fontWeight: 400
+    use: Numbered button 2 in the product survey; 22px computed line height; function not established as quantity selection
 rounded:
+  none: 0px
   xs: 3px
   sm: 5px
   md: 10px
-  lg: 12px
+  carousel: 16px
   pill: 20px
-  full: 9999px
+  event: 14px
 spacing:
-  xs: 4
   sm: 6
   md: 10
   base: 16
   lg: 20
-  xl: 32
 components:
-  cta-primary:
-    type: button
-    backgroundColor: '#7a29fa'
-    textColor: '#ffffff'
-    rounded: 10px
-    height: 56px
-    padding: 16px
-    typography: 16px / 400 SUIT
-    use: Primary booking CTA (참여하기) on product pages
-  cta-disabled:
-    type: button
-    backgroundColor: '#eeeeee'
-    textColor: '#ffffff'
-    rounded: 10px
-    height: 56px
-    padding: 16px
-    typography: 16px / 400 SUIT
-    use: Sold-out / disabled booking button (신청마감)
-  app-download:
-    type: button
-    backgroundColor: '#333333'
-    textColor: '#ffffff'
-    rounded: 0px
-    typography: 12px / 700 SUIT
-    use: App-download bar CTA (앱 다운로드)
-  count-pill:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#333333'
-    border: '1px solid #dddddd'
-    rounded: 20px
-    padding: 7px 15px
-    height: 36px
-    typography: 14px / 400 SUIT
-    use: Quantity / option selector pill on booking panel
-  product-card:
-    type: card
-    backgroundColor: '#ffffff'
-    rounded: 5px
-    border: '1px solid #e6e6e6'
-    use: Experience/product card — thumbnail + title, hairline outline, no shadow
   badge-exclusive:
     type: badge
     backgroundColor: '#f4373d'
     textColor: '#ffffff'
-    rounded: 5px
-    padding: 4px 6px
-    typography: 10px / 500 SUIT
-    use: 프립단독 (Frip-exclusive) corner tag
+    use: Static 프립단독 badge below the price in the measured homepage product-card; rest colors only, geometry not remeasured
   badge-superhost:
     type: badge
     backgroundColor: '#7a29fa'
     textColor: '#ffffff'
-    rounded: 5px
-    padding: 4px 6px
-    typography: 10px / 500 SUIT
-    use: 슈퍼호스트 (Superhost) corner tag
-  nav-tab:
-    type: tab
-    textColor: '#000000'
-    typography: 14px / 400 SUIT
-    active: 'text #7a29fa on active nav/category item'
-    use: Top navigation / category tab
+    use: Static 슈퍼호스트 badge beside the exclusive badge below the measured product-card price; rest colors only
 fonts:
   roles:
     display: SUIT
@@ -143,399 +82,208 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Frip (프립) is Korea's self-described "대한민국 1등 취미여가 탐색 플랫폼" (No.1 hobby-and-leisure discovery platform) — a marketplace where people book experiences, classes, and social outings. Its web surface reads like a bright, content-dense commerce feed rather than a minimalist brand site: a pure white (`#ffffff`) canvas packed with square-cornered thumbnail cards, corner tags, and price callouts, organized into scannable horizontal shelves ("주간 인기 BEST", "신규 프립", "기획전"). The mood is energetic and consumer-friendly, closer to a lifestyle shopping app than a calm fintech dashboard — the page wants you to browse dozens of experiences at a glance.
+Frip (프립) is a Korean marketplace for hobbies, activities, classes and social outings, operated by Frientrip. Its own title calls it “대한민국 1등 취미여가 탐색 플랫폼”; that is the company's positioning, not an independently verified ranking. Frientrip's timeline records incorporation in November 2013, the Frip website launch in November 2014 and the app launch in March 2016. Its present team page describes experiences that connect people and become part of everyday life. [Company history and services](https://team.frientrip.com/)
 
-The color system is built on a single saturated action color: an electric violet (`#7a29fa`) that carries the primary booking button ("참여하기") on every product page and marks trust signals like the "슈퍼호스트" (Superhost) tag. This purple is the one thing the eye is trained to treat as "the next step." Running alongside it is a hot promo-red family — `#f4373d` for the "프립단독" (Frip-exclusive) corner tag, `#ff3f33` for the big discount percentages, and `#e21d47` for point/reward labels — reserved strictly for urgency and savings, never for navigation. Text is set in near-pure black (`#000000`) for headings and a warm charcoal (`#333333`) for product titles and secondary copy, over a cool grey ladder (`#777777` → `#999999` → `#aaaaaa`) for metadata.
+The product expresses that idea through a bright, image-led commerce feed: a white `#ffffff` canvas, a photographic carousel, illustrated category shortcuts, shelves of experiences, ratings, prices and short badges. “주간 인기 BEST 🏆”, “신규 프립” and “기획전” make the feed easy to scan. Violet `#7a29fa` fills the booking button and the Superhost badge; red `#f4373d` distinguishes the exclusive badge. The ordinary product link has a square, borderless wrapper around a visibly rounded thumbnail. The tags in the measured card sit below its price.
 
-Typographically the system is unmistakably Korean-modern: everything runs in **SUIT** (with `UI Frip` / `Noto Sans KR` fallbacks), a clean geometric hangul sans. Section and detail headings sit at a restrained 18px / weight 700; product titles at 20px / 400 with tight `-0.6px` tracking; body and UI text at a dense 14px / 400. Depth is almost entirely absent — live inspection found `box-shadow: none` across the nav, hero carousel, and section headers. Separation comes from thin `#e6e6e6` hairlines, tinted `#fafafa` / `#f4f4f4` surfaces, and a soft pink `#fff4f7` promo band, not elevation. Geometry is gently rounded: a 5px radius is the workhorse (cards, badges — 78 occurrences), the primary CTA sits at 10px, and selector pills reach a 20px near-round.
+The current homepage also gives SQNC an event shelf. Frientrip now describes SQNC as a separate global community wellness platform; on Frip's page its larger image card has a 14px radius and an inset outline. This is a visible extension of the homepage's content vocabulary, not evidence that Frip has been renamed or has adopted SQNC's entire design system. [Current service portfolio](https://team.frientrip.com/)
 
-**Key Characteristics:**
-- Single saturated violet (`#7a29fa`) reserved for the primary booking action and Superhost trust tag
-- Hot promo-red family — `#f4373d` exclusive tag, `#ff3f33` discount %, `#e21d47` points — used only for savings/urgency
-- SUIT typeface throughout — 18px/700 headings, 20px/400 product titles, 14px/400 body
-- Near-black `#000000` headings + warm `#333333` charcoal titles instead of flat black-on-white monotony
-- Near-flat depth: `box-shadow: none`; `#e6e6e6` hairlines + `#fafafa`/`#f4f4f4` tints do the separating
-- 5px radius as the workhorse; 10px CTA; 20px selector pills; occasional full circles for avatars/dots
-- Content-dense commerce feed: thumbnail cards, corner tags, price callouts on a white canvas
-- Dark charcoal (`#333333`) app-download bar as the recurring cross-sell chrome
+The measured homepage is the Korean surface at `www.frip.co.kr/`, with HTML `lang="ko"`; no regional redirect occurred. The product detail measured was `/products/121737`.
 
-### Primary tasks
-
-- Browse shelves of experiences, classes, and social outings to book
-- Book a spot on an experience and get the reservation detail
-- Check a host's Superhost badge and profile before committing
-- Review how your own listing's thumbnail, tags, and price read in the card grid
-- Sort out a booking that failed and what to do next
+Primary tasks visible in these surfaces are browsing categories and curated shelves, searching for a hobby, opening an experience and its host profile, and reaching the “참여하기” booking action. Reservation completion and payment were not exercised.
 
 ### Brand Narrative
 
-Frip (프립) began as **프렌트립 (Frientrip)** — a contraction of "friends" and "trip" — a Korean startup built to solve a distinctly modern loneliness problem: it was hard to find good hobbies, classes, and outings, and harder still to do them with like-minded people. Frip reframed leisure as a discoverable, bookable marketplace of "experiences" (프립) hosted by individuals and small businesses, with the company positioning itself as "대한민국 1등 취미여가 탐색 플랫폼."
+The first-party chronology distinguishes the Frientrip company from the Frip product: company formation precedes the website and app launches. The current portfolio places Frip's everyday hobbies, activities and gatherings alongside SQNC's global wellness communities. The live homepage's SQNC event shelf makes that broader portfolio visible within Frip's browsing experience. The evidence supports continuity around shared experiences; it does not establish a Frip rename or a dated visual rebrand. [Frientrip](https://team.frientrip.com/)
 
-The brand's mission, stated plainly on its own publication, is to **"inspire people to experience the world."** That ethos shapes the product: members are "크루" (crew), trusted sellers earn a "슈퍼호스트" badge, and the feed is curated into warm, human shelves ("크루님을 위한 고감도 경험", "이런 모임은 어때요?") rather than a cold catalog. The design follows suit — bright imagery, playful emoji in headings, and a single confident violet for the moment of commitment.
-
-What Frip refuses, visible in its design: the intimidating chrome of legacy booking sites (no heavy shadow stacks, no institutional blue) and predatory sale-pressure aesthetics. What it embraces: a flat, fast, image-forward commerce feed; a single trustworthy violet action color; promo reds kept in their lane; and copy that treats browsing as the start of an adventure.
+Frip also publishes writing about how its designers work. In “디자이너가 잘 실패하는 방법” (25 April 2022), product designer 유재웅 argues for realistic prototypes, feedback from others and testing assumptions before implementation consumes a sprint. This is useful process context for reproducing a connected browsing journey; it is not a specification for colors or motion. [Design article](https://medium.com/frientrip/디자이너가-잘-실패하는-방법-fbf9b6e2e8a0)
 
 ### Principles
 
-1. **Experiences, not transactions.** Frip sells the feeling of trying something new with others. *UI implication:* lead with imagery and warm curation ("고감도 경험"), keep the transactional CTA to a single clear violet button.
-2. **One action, one color.** Violet (`#7a29fa`) means "join this." *UI implication:* reserve the saturated violet for the booking CTA and Superhost trust tag so the next step is never ambiguous.
-3. **Savings stays in its lane.** The red family signals discount/exclusive/points, never navigation. *UI implication:* `#f4373d`/`#ff3f33`/`#e21d47` only appear on tags, percentages, and reward labels.
-4. **Flat and fast.** A browse-many marketplace must feel quick. *UI implication:* no shadows; separate with `#e6e6e6` hairlines and tints; pack cards densely into scannable shelves.
-5. **Belonging over customer-hood.** Members are "크루", hosts are "슈퍼호스트". *UI implication:* trust and community signals (Superhost badge, crew language) get first-class visual treatment.
+The following applications distinguish first-party design writing from deductions about the captured surface.
+
+1. **Connect experiences across the journey.** Frip's design article says users carry feelings and experiences between pages, and argues for prototypes close to the real service. Apply that by reviewing the category-to-card-to-detail flow together. [Design article](https://medium.com/frientrip/디자이너가-잘-실패하는-방법-fbf9b6e2e8a0)
+2. **Make the next action legible.** The measured product detail gives one large violet booking button a fixed strip. Preserve that hierarchy in a reproduction; it is an observed layout choice, not proof of a brand-wide one-color rule.
+3. **Let content establish the browse rhythm.** The homepage repeats image, title, rating and price in four-card shelves. Preserve this ordering and compact geometry when building a comparable desktop shelf.
+4. **Use evidence at the element level.** The ordinary card wrapper is square and borderless, while the SQNC card has rounder corners and an inset outline. A single corner or elevation treatment would erase a real distinction.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Frip user segments (Koreans seeking hobbies/classes, solo travelers, experience hosts), not individual people.*
-
-**김하늘, 27, 서울.** A young professional looking for weekend hobbies to meet new people. Browses the "주간 인기 BEST" shelf on her phone during her commute, drawn to cards with a "프립단독" tag and a bold discount. Books a pottery class because the "참여하기" button made the next step obvious.
-
-**박민준, 34, 경기.** A solo traveler who uses Frip for guided small-group trips ("혼자여행"). Trusts the "슈퍼호스트" badge as a quality signal and reads host profiles before committing. Values that the flat, image-forward layout lets him judge an experience by its photos fast.
-
-**이서연, 41, 부산.** An experience host teaching a craft class. Cares that her listing's thumbnail, tags, and price read clearly in the card grid, and that the Superhost badge she earned is prominently shown. Sees Frip as a community platform ("크루") more than a booking pipe.
+No first-party persona study was verified; no fictional names, ages, locations or behavioral profiles are included.
 
 ## Colors
 
-### Primary & Accent
-- **Frip Violet** (`#7a29fa`): Primary action color. Fills the "참여하기" booking CTA on every product page and the "슈퍼호스트" Superhost badge — the system's single "do this / trust this" color.
-- **Exclusive Red** (`#f4373d`): The "프립단독" (Frip-exclusive) corner-tag background — a hot red that flags first-party / can't-get-elsewhere inventory.
-- **Sale Red** (`#ff3f33`): Discount-percentage text (e.g. "48%", "89%") at 24px/700 on the hero and 14px/700 on cards. Savings emphasis only.
-- **Point Red** (`#e21d47`): Reward/point labels such as "신규프립 에너지x2" at 10px/500 — a slightly deeper magenta-red for loyalty callouts.
+These are computed colors from the live product, not an official published palette. No custom properties were computed on the document root. The 28 properties declared under `.socialting-v2-root` are a separate scoped set and are not used as global homepage tokens here.
 
-### Ink & Text Hierarchy
-- **Ink Black** (`#000000`): Primary heading and dominant body text — the most frequent foreground color on the page.
-- **Charcoal** (`#333333`): Product-detail titles, secondary copy, and the app-download bar background. A warm near-black that softens dense text.
-- **Near-Black** (`#111111`): Occasional maximum-contrast dark surface / overlay panel.
-- **Body Grey** (`#777777`): Secondary descriptions and supporting copy.
-- **Muted Grey** (`#999999`): Tertiary text, metadata, timestamps.
-- **Faint Grey** (`#aaaaaa`): Lowest-emphasis labels, placeholders, disabled captions.
+| Role | Value | Observed evidence |
+|---|---|---|
+| Booking violet / primary | `#7a29fa` | Product booking button; static Superhost badge in the homepage card |
+| Exclusive red / accent | `#f4373d` | Static 프립단독 badge, with white text |
+| Sale red | `#ff3f33` | Homepage text census, 15 occurrences; discount percentages visible in the survey screenshot |
+| Magenta | `#e21d47` | Homepage text census, 4 occurrences; a precise reward-label mapping was not re-established |
+| Foreground / charcoal | `#333333` | Homepage paragraph ink, 20 paragraphs; app-download background and search text |
+| Ink | `#000000` | Ordinary product-card title; product-page paragraph census is predominantly black |
+| Secondary | `#777777` | Region label in the measured product card |
+| Muted | `#999999` | Homepage paragraph ink, 3 paragraphs; other low-emphasis text |
+| Faint | `#aaaaaa` | Visible category-navigation label |
+| Near-black | `#111111` | Homepage background census, 4 occurrences; no universal overlay role inferred |
+| Canvas | `#ffffff` | Page ground, event-card background and light text on the booking button/badges |
+| Light surface | `#fafafa` | Homepage background census, 20 occurrences |
+| Alternate surface | `#f4f4f4` | Search form's initial background |
+| Pink tint | `#fff4f7` | Homepage background census, 4 occurrences; no universal promo-band rule inferred |
+| Divider | `#eeeeee` | The product card's internal 1px rule; homepage border census, 45 occurrences |
+| Separator fill | `#e6e6e6` | Homepage background census, 40 occurrences; this does not establish an outer card border |
+| Border | `#dddddd` | 1px border of the product page's numbered pills |
+| Event outline | `#e5e5e5` | SQNC card's inset 1px box shadow |
 
-### Surfaces & Borders
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on violet/red/dark.
-- **Surface Grey** (`#fafafa`): Tinted section/card background for gentle segmentation.
-- **Surface Alt** (`#f4f4f4`): A second neutral grey for alternating blocks and inset panels.
-- **Pink Tint** (`#fff4f7`): Soft pink promo band behind sale/curation shelves.
-- **Disabled Grey** (`#eeeeee`): Background of sold-out / disabled buttons ("신청마감").
-- **Hairline** (`#e6e6e6`): Thin card outlines and dividers — the primary separation device in this near-flat system.
-- **Border Grey** (`#dddddd`): 1px outline on selector/quantity pills and input chrome.
+The homepage's most frequent sampled paragraph ink is charcoal, not black. The product page's paragraph census differs: black appears in 206 paragraphs, including the long listing content. Keep those surfaces distinct. Neither census proves an exclusive brand rule about where a color may appear.
 
 ## Typography
 
-### Font Family
-- **Primary**: `SUIT` (with `UI Frip`, `Noto Sans KR`, Helvetica, Arial, sans-serif fallbacks) — used for headings, body, UI, and button labels alike.
-- SUIT is a geometric hangul-first sans; Frip runs it across the whole surface rather than splitting display vs. body across two families.
+**Official product-use statement:** no opened Frip brand or design document names a product typeface. The following evidence is from the live site.
 
-### Hierarchy
+**Live-loaded:** the homepage loaded **SUIT 500, 600 and 700**, **UI Frip normal and bold**, and **Noto Sans KR 400 and 700**. The product detail loaded the same families, with SUIT 500 and 700 in its census. The homepage also loaded `slick normal normal`, a carousel utility face; it is excluded from the product typography family tokens.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Detail / Section Heading | SUIT | 18px (1.13rem) | 700 | 1.33 (24px) | normal | "프립 정보", "주간 인기 BEST" |
-| Product Title | SUIT | 20px (1.25rem) | 400 | 1.40 (28px) | -0.6px | Product-detail H1 |
-| Discount % | SUIT | 24px (1.50rem) | 700 | — | normal | Hero sale percentage, sale red |
-| Booking CTA | SUIT | 16px (1.00rem) | 400 | 1.50 | normal | "참여하기" primary button label |
-| Body / UI | SUIT | 14px (0.88rem) | 400 | 1.50 (21px) | normal | Standard reading + nav text |
-| App-download CTA | SUIT | 12px (0.75rem) | 700 | — | normal | "앱 다운로드" bar label |
-| Corner Badge | SUIT | 10px (0.63rem) | 500 | — | normal | "프립단독" / "슈퍼호스트" tags |
+The declared body/button stack starts with `SUIT`, followed by `UI Frip` and `Noto Sans KR`. The product H1 declares the same stack; no H1 was present in the homepage census. SUIT's three readable face rules point to same-origin OTF assets: `/d268ef2e6022a28433d0f44a46c95ae1.otf` (500), `/705cc83c374237b4e191ae92f3bbaef5.otf` (600) and `/9ac209e78c1c9b484163de8dbf40565d.otf` (700). UI Frip normal and bold likewise have same-origin OTF sources. Noto Sans KR is requested through the Google Fonts stylesheet linked in the homepage HTML; the stylesheet was unreadable to the CSS rule walk, although those faces were loaded.
 
-### Principles
-- **One typeface, weight-driven hierarchy**: SUIT carries everything; contrast comes from weight (700 headings vs 400 body) and size, not from a second family.
-- **Restrained heading scale**: headings top out at 18–20px on the feed — the design leans on card density and imagery, not oversized type, to structure the page.
-- **Tight tracking only on titles**: product titles compress to `-0.6px`; body and UI text stay at normal tracking for hangul legibility at 14px.
-- **Bold for money and structure**: weight 700 is reserved for headings and numeric emphasis (discount %), signaling "read this first."
+**Official distributed assets:** no public Frip font-download package or font-license statement was verified. Runtime OTF declarations establish source paths, not permission to redistribute them.
+
+**Declared-only:** Pretendard 100–900, UI Frip 500, Cafe24 Ohsquare 700 and Cafe24 Ohsquareair are present in readable face declarations but absent from the loaded-face census. Other system-family names in the CSS stack have no loaded-face proof here. They receive no specimen and are not added as substitutes.
+
+**Unresolved:** the controls request weight 400 with a stack starting in SUIT, but no SUIT 400 face appears in either loaded census or the readable face declarations. This capture does not resolve the exact face chosen for every glyph at that request. It does not justify naming a SUIT Regular asset. No specimen is supplied for an unloaded face. **Substitute: none chosen.**
+
+| Measured element | Size / requested weight | Line height | Tracking |
+|---|---|---|---|
+| Ordinary card and category anchor wrappers | 14px / 400 | 21px | normal |
+| Visible category label | 10px / 400 | Not separately captured | Not separately captured |
+| Search input | 14px / 400 | 22px | normal |
+| Booking button and its label | 16px / 400 | 24px | normal |
+| App-download link and label | 12px / 700 | 18px | -0.3px |
+| Numbered pill button “2” | 14px / 400 | 22px | Not captured |
+| SQNC card's “추천” label | 12px / 600 | Not separately captured | Not separately captured |
+
+These are element metrics. No new measurement establishes the prior section-heading, product-title, discount or badge type scales, so those metrics are absent.
 
 ## Layout
 
-### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 6px, 10px, 16px, 20px, 32px
-- Notable: badge padding lands at 4px 6px; selector pills at 7px 15px; the primary CTA uses a symmetric 16px pad — dense, tap-friendly commerce spacing
+At the measured 1440×1000 viewport, the homepage's carousel and main content span 768px from x=336 to x=1104. Ordinary shelf cards are 180.8px wide with left positions 336, 532, 728 and 923px: a four-card row with approximately 15px gaps after coordinate rounding. Thumbnails precede region, title, rating, price and badge information. A separate SQNC shelf uses a 374px-wide event card, and magazine links are 249.3px wide in the survey.
 
-### Grid & Container
-- Content-dense feed: horizontal shelves of thumbnail cards ("주간 인기 BEST", "신규 프립", "기획전") stacked vertically
-- Product cards use a 5px radius and a fixed thumbnail-over-title-over-price layout
-- Product-detail pages pin a full-width 56px booking CTA at the bottom of the panel
-- Sections separate by tinted band (`#fafafa` / `#f4f4f4` / pink `#fff4f7`) rather than rules
+The product page pairs its lead image and title/host information across the main column. Its fixed white booking strip is 92px high and spans the viewport; the centered content includes the 716×56px violet action plus a favorite control.
 
-### Whitespace Philosophy
-- **Density over emptiness**: this is a browse-many-options marketplace; cards pack tightly into shelves and the eye scans laterally.
-- **Flat segmentation**: sections separate by background tint and `#e6e6e6` hairlines, not shadow or heavy borders.
-- **Tag rhythm**: repeated 5px corner tags ("프립단독", "슈퍼호스트") create a consistent visual cadence across the card grid.
+Measured padding values include 16px on the booking button, 6px 10px on the carousel counter, 7px 15px on numbered pills, and 20px 20px 12px on the product inquiry link. The retained spacing numbers 6, 10, 16 and 20 are samples from these elements, not proof of a global base-unit scale.
 
-### Border Radius Scale
-- Micro (3px): fine inner elements
-- Small (5px): cards, badges, corner tags — the workhorse (×78 in scan)
-- Medium (10px): primary booking CTA
-- Large (12px): larger containers / feature cards
-- Pill (20px): quantity/option selector pills
-- Full (9999px / 50%): avatars, dots, circular controls
+Measured radii include 0px on wrappers and the app-download link, 3px on footer contact links, 5px on favorite-button wrappers, 10px on the booking action, 14px on the SQNC event card, 16px on the carousel counter and 20px on numbered pills. No frequency claim or global full-circle token is inferred.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single-column shelves, cards scroll horizontally, bottom-anchored CTA |
-| Tablet | 640-1024px | 2–3 up card grids, moderate padding |
-| Desktop | 1024-1440px | Full multi-column shelves, centered content, persistent nav |
-
-#### Touch Targets
-- Primary booking CTA at 56px height, full-width — an unmistakable tap target
-- Selector pills at 36px height with 7px 15px padding — comfortably tappable
-- Nav items within a ~56px header, spaced for touch
-- Corner tags are non-interactive labels at 10px, kept out of the tap flow
-
-#### Collapsing Strategy
-- Card shelves: horizontal scroll on narrow viewports, multi-column grid on desktop
-- Product detail: booking panel collapses to a bottom-fixed CTA bar on mobile
-- Tinted / white alternating sections maintain full-width treatment
-- Headings hold their 18–20px size; density adjusts via column count, not type scale
-
-#### Image Behavior
-- Card thumbnails carry no shadow at any size, consistent with the flat system
-- Corner tags overlay the top of thumbnails at a fixed 5px radius
-- Cards maintain the 5px radius across breakpoints
+Only the 1440×1000 desktop viewport was measured; breakpoints, mobile rearrangement and touch behavior remain unverified.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, nav, hero carousel, section headings, most surfaces |
-| Hairline (Level 1) | `1px solid #e6e6e6` border | Card outlines, dividers |
-| Tint (Level 2) | `#fafafa` / `#f4f4f4` / `#fff4f7` background shift | Section / shelf separation without elevation |
-| Overlay (Level 3) | `rgba(0,0,0,0.4)` scrim | Carousel index chips, image overlays |
+The ordinary product-card wrapper, category link, search input, app-download link and booking button report `box-shadow: none`. White space, imagery and small separators carry much of the composition. There are nevertheless measured exceptions:
 
-**Shadow Philosophy**: Frip is a near-shadowless system. Live inspection found `box-shadow: none` across the nav, hero carousel, and section headers. Depth and grouping are communicated through thin `#e6e6e6` hairlines, tinted surfaces (`#fafafa`, `#f4f4f4`, pink `#fff4f7`), and the imagery inside cards — not elevation. When Frip needs to lift something above content it reaches for a translucent black scrim (`rgba(0,0,0,0.4)`) on the carousel index chip, and for emphasis it reaches for color (violet `#7a29fa` or promo red `#f4373d`), never a drop shadow. This keeps the commerce feed feeling fast, flat, and mobile-native.
+| Element | Raw computed treatment |
+|---|---|
+| Booking strip, second ancestor of the button | `rgba(0, 0, 0, 0.08) 0px -10px 30px -10px` |
+| SQNC event card | `rgb(229, 229, 229) 0px 0px 0px 1px inset` — `#e5e5e5` |
+| Ordinary card's favorite image | `filter: drop-shadow(rgba(0, 0, 0, 0.4) 1px 1px 3px)` |
+| Homepage carousel counter | `background-color: rgba(0, 0, 0, 0.4)`; 16px radius, 6px 10px padding |
+
+The result is restrained elevation, with a shadow separating the fixed booking strip and an inset line outlining the larger event card. A universal ban on shadows would misrepresent the product.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 - `shadow.none`: `none`
+- `shadow.booking-bar`: `rgba(0, 0, 0, 0.08) 0px -10px 30px -10px`
+- `shadow.event-card`: `rgb(229, 229, 229) 0px 0px 0px 1px inset`
 
 ## Motion & Easing
 
-**Durations**:
+The original six controls and all six follow-up controls have the raw computed control-level transition `all 0s ease 0s`. The follow-up category shortcut's focus-settle record reports a longest transition of 200ms somewhere in the inspected scope; its property and full computed transition string were not captured, so it supplies no motion token. No authored cubic-bezier curve, carousel timing or reduced-motion behavior was established.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Card hover, tag press, focus |
-| `motion-standard` | 200ms | Shelf scroll snap, sheet, dropdown, card reveal |
-| `motion-slow` | 320ms | Hero carousel crossfade, page-level transitions |
+---
 
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is bright but functional — consistent with a fast commerce feed. The hero carousel crossfades at `motion-slow`; card shelves snap-scroll at `motion-standard / ease-enter`; the booking CTA and tags respond to press with a subtle scale/opacity shift at `motion-fast`. No heavy bounce or spring — the feed favors quick, legible transitions over playful physics. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the carousel stops auto-advancing; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://www.frip.co.kr/
-and product-detail surfaces (/165667, /121737, /191730, /188510):
-- Primary booking CTA "참여하기" — bg rgb(122,41,250) #7a29fa / white / radius 10px / padding 16px / 56px / 16px SUIT (identical across product pages)
-- Disabled CTA "신청마감" — bg rgb(238,238,238) #eeeeee / white / 10px / 56px
-- App-download bar "앱 다운로드" — bg rgb(51,51,51) #333333 / white / 12px / 700
-- Badges "프립단독" bg #f4373d, "슈퍼호스트" bg #7a29fa — 10px / 500 / radius 5px / 4px 6px
-- Discount % text #ff3f33 24px/700; points "신규프립 에너지x2" #e21d47 10px/500
-- Section headings SUIT 18px/700; product H1 20px/400/-0.6px; body 14px/400
-- box-shadow none across nav/hero/headings; #e6e6e6 hairlines + #fafafa/#f4f4f4 tints
-- document.title "프립(FRIP) : 대한민국 1등 취미여가 탐색 플랫폼"
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Proof block).
-
-Voice samples (§10) are verbatim: homepage title tag + section heading (live homepage),
-and the "WE INSPIRE PEOPLE TO EXPERIENCE THE WORLD" tagline from Frip's official Medium
-publication (medium.com/frientrip, verified live 2026-07-02).
-
-Brand narrative (§11): Frip (프립) originated as 프렌트립 (Frientrip = friends + trip), a
-Korean hobby/leisure experience marketplace positioning itself as "대한민국 1등 취미여가
-탐색 플랫폼." The mission phrasing "inspire people to experience the world" is quoted from
-Frip's own Medium publication. Broader founding specifics beyond these first-party surfaces
-are general public knowledge, not directly quoted from a verified Frip statement this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Frip user segments
-(hobby seekers, solo travelers, experience hosts). Names are illustrative; they do not refer
-to real people.
-
-Interpretive claims (e.g., "one action, one color", "savings stays in its lane", "flat and
-fast as a rejection of legacy booking chrome") are editorial readings connecting Frip's
-observed design to its positioning, not directly sourced Frip statements.
--->
+**Sources:** [Live homepage](https://www.frip.co.kr/), [measured product detail](https://www.frip.co.kr/products/121737), [company history, services and legal footer](https://team.frientrip.com/), [terms naming the operator](https://www.frip.co.kr/static-info/agreement), [Frip publication](https://medium.com/frientrip), [onboarding and culture](https://medium.com/frientrip/프립-탐험가들이-온보딩하는-방법-b2ff1d067adb), [design process](https://medium.com/frientrip/디자이너가-잘-실패하는-방법-fbf9b6e2e8a0). Captured 2026-11-03 KST; detailed raw evidence and the prior-content dispositions are in the accompanying verification and report.
 
 ## Components
 
-### Buttons
+**Booking action — “참여하기”.** On `/products/121737`, the fixed booking button is 716×56px, with a 10px radius, 16px padding, `#7a29fa` background, white `#ffffff` text, no border and no shadow on the button itself. Its label requests 16px/400. Keyboard focus produced no computed style change. Hover and pressed were unmeasured because an open search layer intercepted the pointer. Its rest geometry is useful reference material; an authored interactive state token is absent.
 
-**Booking CTA (Primary)**
-- Background: `#7a29fa`
-- Text: `#ffffff`
-- Radius: 10px
-- Padding: 16px
-- Height: 56px
-- Font: 16px SUIT weight 400
-- Use: Primary product-page action ("참여하기") — the system's single primary action
+**App-download action — a link.** The footer's “앱 다운로드” link is 768×45px, square, with zero padding, `#333333` background and white text. Its 12px/700 label has 18px line height and -0.3px tracking. It has no border or box shadow. Hover, pressed and keyboard focus showed no computed change within the probe's comparison scope.
 
-**Booking CTA (Disabled / Sold Out)**
-- Background: `#eeeeee`
-- Text: `#ffffff`
-- Radius: 10px
-- Padding: 16px
-- Height: 56px
-- Font: 16px SUIT weight 400
-- Use: Sold-out / closed state ("신청마감") — greyed, full-width, same geometry as active
+**Search.** The actual input is 322×24px at initial rest, with zero radius, 1px 2px padding, transparent background, no border, and `#333333` text. It sits inside a rounded light-gray search form. The form, rather than the input, provides the visible chrome. Its parent background starts at `#f4f4f4`. The persistent expanded-search observation is described in §14.
 
-**App-Download Bar**
-- Background: `#333333`
-- Text: `#ffffff`
-- Radius: 0px
-- Height: 45px
-- Font: 12px SUIT weight 700
-- Use: Recurring dark app-download cross-sell chrome ("앱 다운로드")
+**Navigation — links, not tabs.** The category anchor is 48×51px, square, transparent over white, unpadded and borderless. Its own computed color is black and font is 14px/400; the visible label span is **10px/400 in `#aaaaaa`**. The header also exposes 피드, 메시지, 찜 and 마이 links. No selected-category state was exercised.
 
-### Inputs & Forms
+**Homepage category shortcut and shelf link.** The separate illustrated “클래스” category link is 60×83px, with zero radius and padding, a transparent wrapper over white, and no border or shadow. Its wrapper requests 14px/400 with 21px line height; the visible label is 12px/500 in `#aaaaaa`. The weekly shelf's “전체보기” link is 48.9×17.5px, also square, unpadded, transparent over white and borderless, with black 14px/400 text and 18px line height. Keyboard focus showed no computed change on either. Their hover and pressed states remain unmeasured because the search scrim covered them, including with the probe's overlay-hiding option enabled.
 
-**Quantity / Option Pill**
-- Background: `#ffffff`
-- Text: `#333333`
-- Border: 1px solid `#dddddd`
-- Radius: 20px
-- Padding: 7px 15px
-- Height: 36px
-- Font: 14px SUIT weight 400
-- Use: Selectable quantity / option pill on the booking panel
+**Ordinary experience card — a link.** The measured `/products/121737` homepage anchor is 180.8×348.8px, zero radius and padding, transparent over white, with no outer border or box shadow. Its title is black; its region label is `#777777` at 10px/400 and its price is `#333333`. A 1px `#eeeeee` rule separates the price area. The thumbnail above the title is visibly rounded, but its exact radius was not captured. The link disappeared before hover/pressed reads and was not reached by the Tab walk.
 
-### Cards & Containers
+**Static badges.** In that card, 프립단독 is `#f4373d` with white text and 슈퍼호스트 is `#7a29fa` with white text. They sit beside each other below the price. Their rest colors are retained in the component registry; their prior font, padding and radius were not remeasured.
 
-**Experience Card**
-- Background: `#ffffff`
-- Border: 1px solid `#e6e6e6`
-- Radius: 5px
-- Font: 14px SUIT
-- Use: Product/experience card — thumbnail + title + price, hairline outline, no shadow
+**SQNC event card — a link on the Frip homepage.** The running-event anchor is 374×467.5px with a 14px radius, zero padding, a white base and no CSS border. Its computed black wrapper color is not the visible title color: the title descendant is white over the image/gradient. The card has an inset outline described in §6. Hover, pressed and keyboard focus showed no computed change.
 
-### Badges
+**Numbered pills.** Product survey buttons labelled “2”, “3” and other numbers have white backgrounds, `#333333` text, a 1px `#dddddd` border, 20px radius, 7px 15px padding and 36px height. Button “2” is 60.3px wide. These are buttons; this observation does not identify them as booking-quantity inputs. Their interaction states were not measured.
 
-**Exclusive Tag**
-- Background: `#f4373d`
-- Text: `#ffffff`
-- Radius: 5px
-- Padding: 4px 6px
-- Font: 10px SUIT weight 500
-- Use: "프립단독" (Frip-exclusive) corner tag
+The homepage carousel counter “1 / 8” is a 28px-high button with a 16px radius, 6px 10px padding, `rgba(0, 0, 0, 0.4)` background and `#cccccc` text at 12px/700 with 16px line height.
 
-**Superhost Tag**
-- Background: `#7a29fa`
-- Text: `#ffffff`
-- Radius: 5px
-- Padding: 4px 6px
-- Font: 10px SUIT weight 500
-- Use: "슈퍼호스트" (Superhost) host-trust corner tag
-
-### Navigation
-- Background: `#ffffff`
-- Text: `#000000`
-- Font: 14px SUIT weight 400
-- Height: ~56px header
-- Active: violet `#7a29fa` text on the active nav / category item
-- Use: Top horizontal nav ("카테고리", "피드", "메시지", "찜", "마이")
-
----
-
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.frip.co.kr/ (homepage, live computed style); https://medium.com/frientrip (Frip official Medium publication, brand-owned)
-**Tier 2 sources:** getdesign.md/frip (no entry — "0 DESIGN.md files"); styles.refero.design/?q=frip (no entry — fuzzy "F…" matches only)
-**Conflicts unresolved:** none
+**Collections carousel pagination.** The separate dot button labelled “2” is 13×13px, with zero wrapper radius, 5px padding, transparent background and text, no border or shadow, and a computed 0px/400 font with 0px line height. Its visible `::before` dot is 5×5px. The samples show `rgb(51, 151, 255)` when its parent is `li.slick-active` and `rgb(238, 238, 238)` when the parent is `li`. The color change during the pressed sample coincided with that class change and also occurred in the earlier keyboard after-blur sample; it is not established as an authored press style.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no results / saved list)** | White canvas, single Ink Black (`#000000`) line explaining nothing matches yet, with a violet CTA back to browsing. No clutter. |
-| **Loading (feed / shelf)** | Skeleton cards at final 5px-radius dimensions on `#fafafa` tint. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (booking submit)** | Inline progress on the 56px violet CTA; label swaps while the panel stays visible. |
-| **Error (booking failed)** | Inline message in Ink Black with a plain-language explanation and a retry — states the next step, not just "오류". |
-| **Error (form validation)** | Field-level message below the input (1px `#dddddd` pill), describing what's valid. |
-| **Success (booking confirmed)** | Brief inline confirmation in warm tone; reservation detail linked immediately below. No aggressive celebration. |
-| **Skeleton** | `#fafafa` blocks at final card dimensions, 5px radius, flat pulse. |
-| **Disabled (sold out)** | Full-width CTA turns `#eeeeee` with white "신청마감" label — same 56px geometry, greyed rather than removed. |
-| **Disabled (low-emphasis)** | Faint Grey (`#aaaaaa`) text on reduced-opacity surface. |
+“No change” below means no settled computed-style or DOM-attribute change in the probe's scope: the control, its descendants and pseudo-elements, plus three ancestor levels. It is not a pixel-level proof of every possible response.
+
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| App-download link | No change | No change | No change, Tab 117 |
+| Category link | No change | No change | No change, Tab 6 |
+| Search input | No change against the pointer pass baseline | No change against the pointer pass baseline | Input width 322→320px; parent gray→white and gains a blue border, all persisting after blur |
+| Ordinary product link | Unmeasured: vanished | Unmeasured: vanished | Unmeasured: not reached |
+| SQNC event link | No change | No change | No change, Tab 58 |
+| Booking button | Unmeasured: search layer covered target | Unmeasured: search layer covered target | No change, Tab 98 |
+
+The search parent changed from `#f4f4f4` to `#ffffff`, with border `none` → `1px solid rgb(0, 117, 239)`. The same values remained after focus moved elsewhere, and the screenshot shows an expanded popular-search panel and page scrim. Record this as a persistent expanded-search observation, not a brand focus token. The later booking pointer pass was intercepted by `div.sc-pItiW.jWobOj`; its rest and keyboard reads remain separate evidence.
+
+No authored focus ring was established. No empty-result, loading, skeleton, validation-error, booking-error, booking-success or disabled-booking treatment was verified. The two static badge colors are retained; interactive component state tokens are absent.
+
+The homepage follow-up used one new states capture. Valid `:hover` and `:active` snapshots confirmed no computed changes on app download and search against their pointer baselines. The “클래스” and weekly “전체보기” links had unchanged keyboard focus; their pointer passes stayed covered. The separately targeted `/products/193078` card measured 180.8×336.8px at rest, with zero radius and padding, a transparent wrapper over white and black 14px/400 wrapper text, then vanished from the probe's tracked DOM and was not reached in 125 Tab presses. The carousel-dot pressed delta is retained as a raw observation with changing selection, not a press token. Search again retained all three changes after blur. This follow-up established no additional authored interaction state for the component registry.
 
 ## Do's and Don'ts
 
-### Do
-- Reserve violet (`#7a29fa`) for the primary booking action and the Superhost trust tag — keep it the single "action" color
-- Use the promo-red family only for savings/urgency: `#f4373d` exclusive tag, `#ff3f33` discount %, `#e21d47` points
-- Set everything in SUIT — weight 700 for headings/numbers, 400 for body and CTA labels
-- Use near-black `#000000` for headings and warm charcoal `#333333` for product titles
-- Separate sections with `#e6e6e6` hairlines and `#fafafa`/`#f4f4f4` tints, not shadows
-- Keep cards and badges at a 5px radius; the primary CTA at 10px
-- Pack cards densely into horizontal shelves — this is a browse-many marketplace
-- Keep the full-width 56px booking CTA anchored on product pages
+These are implementation recommendations derived from the measured examples, not published Frip brand rules.
 
-### Don't
-- Spread violet across decorative elements — it dilutes the single booking-action signal
-- Use the promo reds for navigation, links, or non-sale UI — they mean savings/urgency
-- Introduce drop shadows for elevation — Frip is a flat, hairline-and-tint system
-- Set a light weight on numeric/discount emphasis — money is always weight 700
-- Use large pill radii on cards — cards stay at the 5px workhorse corner
-- Mix in a second display typeface — SUIT owns the whole surface
-- Grey the active nav item — the active state is violet `#7a29fa` text
-- Use pure `#000000` for every text tier — step down through `#333333` → `#777777` → `#999999`
+- Reproduce the booking action's violet, white label, 56px height and 10px corners.
+- Keep the ordinary shelf card's wrapper borderless; put its small badges below the price as captured.
+- Separate the nav wrapper's inherited black color from its visible gray 10px label.
+- Use the observed gray levels for text hierarchy: charcoal paragraph ink, lighter metadata and faint navigation captions.
+- Keep the ordinary shelf geometry distinct from the larger 14px-radius SQNC event card.
+- Preserve the measured booking-strip shadow and the event card's inset outline when reproducing those surfaces.
+- Do not create a hover, pressed or focus style from an unmeasured state or from a change that persists after blur.
+- Do not supply a new font or claim that a SUIT 400 file loaded.
 
 ## Voice & Tone
 
-Frip's voice is **energetic, invitational, and experience-first** — it sells the feeling of doing something new with other people, not a transaction. The positioning line "대한민국 1등 취미여가 탐색 플랫폼" (Korea's No.1 hobby-and-leisure discovery platform) and the English brand ethos "WE INSPIRE PEOPLE TO EXPERIENCE THE WORLD" set the register: aspirational, warm, community-minded. Copy addresses members as "크루" (crew) and hosts as "슈퍼호스트", framing the marketplace as a shared adventure rather than a vendor list.
+The observed copy is invitational and organized around experiences. The title claims a leading hobby/leisure discovery position; “참여하기” invites participation. The homepage pairs a trophy emoji with popular experiences, speaks of crew reviews and offers curated experiences. New-listing links include “신규프립 에너지x2”. This is an editorial reading of the actual copy, not an official tone guide. [Live product](https://www.frip.co.kr/)
 
-| Context | Tone |
-|---|---|
-| Section headings | Bright, curatorial. "주간 인기 BEST 🏆", "크루님을 위한 고감도 경험" — emoji-friendly, warm. |
-| CTAs | Direct, inviting. "참여하기" (join in), "앱 다운로드". Low-pressure, action-forward. |
-| Tags | Terse trust/urgency signals. "프립단독" (exclusive), "슈퍼호스트" (trusted host). |
-| Promo / points | Playful savings language. "신규프립 에너지x2", discount percentages in bold red. |
-| Community copy | Members addressed as "크루" — belonging over customer-hood. |
+The English mission on Frip's publication is “WE INSPIRE PEOPLE TO EXPERIENCE THE WORLD”. Its 2022 onboarding article extends the exploration metaphor into staff culture through quests and guides. That corporate metaphor supports an experience-centered reading of the voice, but it does not prescribe checkout or error copy. [Publication](https://medium.com/frientrip), [Onboarding article](https://medium.com/frientrip/프립-탐험가들이-온보딩하는-방법-b2ff1d067adb)
 
-**Voice samples (verbatim from live surfaces):**
-- "대한민국 1등 취미여가 탐색 플랫폼" — homepage title tag (category-leader positioning). *(verified live 2026-07-02)*
-- "주간 인기 BEST 🏆" — homepage section heading (curatorial, emoji-warm). *(verified live 2026-07-02)*
-- "WE INSPIRE PEOPLE TO EXPERIENCE THE WORLD" — Frip Medium publication tagline (brand ethos). *(verified live 2026-07-02, medium.com/frientrip)*
-
-**Forbidden register**: cold transactional phrasing, fear-based urgency, corporate stiffness, or treating experiences as inventory rather than adventures. Savings language stays playful, never predatory.
+No verified source establishes a forbidden register or a promise never to use urgency. Seller-authored listing titles are not treated as the company's complete editorial policy.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action / booking CTA: Frip Violet (`#7a29fa`)
-- Exclusive tag: `#f4373d` · Discount %: `#ff3f33` · Points: `#e21d47`
-- Heading text: Ink Black (`#000000`)
-- Product title / dark bar: Charcoal (`#333333`)
-- Secondary text: `#777777` · Muted: `#999999` · Faint: `#aaaaaa`
-- Background: Pure White (`#ffffff`) · Tint: `#fafafa` / `#f4f4f4` · Pink promo: `#fff4f7`
-- Disabled button: `#eeeeee` · Hairline: `#e6e6e6` · Input border: `#dddddd`
+Use `#7a29fa` for the measured booking action, `#f4373d` for the exclusive badge, `#ff3f33` for observed discount text, `#333333` for homepage paragraph ink and the dark app-download bar, and `#ffffff` for the page ground. Use the role-specific observations in §2 rather than imposing a universal color policy.
 
-### Example Component Prompts
-- "Create a product card: white `#ffffff` background, 1px solid `#e6e6e6` border, 5px radius, no shadow. A `#f4373d` corner tag '프립단독' (white 10px SUIT 500, 5px radius, 4px 6px padding) over the thumbnail. Title 14px SUIT `#333333`; discount '48%' in `#ff3f33` 14px weight 700."
-- "Build a booking panel: full-width primary CTA '참여하기' — `#7a29fa` background, white text, 10px radius, 16px padding, 56px height, 16px SUIT. Quantity pills: white background, 1px solid `#dddddd`, 20px radius, 7px 15px padding, `#333333` text."
-- "Design a section shelf: heading 18px SUIT weight 700 `#000000` ('주간 인기 BEST'), horizontal row of 5px-radius white cards, separated from the next section by a `#fafafa` tint band — no shadows."
-- "Create top nav: white ~56px header, 14px SUIT weight 400 items in `#000000`, active item in violet `#7a29fa`. Dark `#333333` app-download bar with white 12px weight 700 label '앱 다운로드'."
+- “Build the captured booking action: 56px height, 10px radius, 16px padding, violet background and white 16px/400 requested label. Put it in a fixed white strip with the measured upward shadow. Leave unmeasured pointer states unspecified.”
+- “Create a four-card desktop experience shelf in a 768px content column. Use 180.8px borderless link wrappers, a thumbnail above the title, rating and price, a 1px light divider, and the red exclusive/purple Superhost badges below the price.”
+- “Create the footer app-download link: square 45px-high charcoal bar, white 12px/700 label with -0.3px tracking; no measured style change on hover, press or keyboard focus.”
+- “Build the category-navigation link as a 48×51px unpadded anchor whose visible caption is 10px/400 in faint gray. Keep wrapper metrics distinct from label metrics.”
 
-### Iteration Guide
-1. Violet (`#7a29fa`) is the single action color — booking CTA + Superhost tag only
-2. Promo reds (`#f4373d` / `#ff3f33` / `#e21d47`) mean savings/urgency — never navigation
-3. SUIT everywhere; weight 700 for headings and money, 400 for body/CTA
-4. No shadows — separate with `#e6e6e6` hairlines and `#fafafa`/`#f4f4f4` tints
-5. 5px radius on cards/badges, 10px on the CTA, 20px on selector pills
-6. Text steps down `#000000` → `#333333` → `#777777` → `#999999` → `#aaaaaa`
-7. Booking CTA stays full-width at 56px height on product pages
-
----
+Typography must follow the loaded-face boundaries in §3. No unverified responsive scale, animation curve or submission state is implied by these prompts.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `cta-disabled`.** Text `#ffffff` on `#eeeeee` measures 1.16:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
 - **Contrast, `badge-exclusive`.** Text `#ffffff` on `#f4373d` measures 3.85:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

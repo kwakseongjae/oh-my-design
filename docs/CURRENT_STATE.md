@@ -1,7 +1,31 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 0시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-03 저녁** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-03 저녁 · 오너 답: G1·G3 확정, 트래킹·OpenRouter 대체·콘텐츠 엔진 착수
+
+- **오너 결정(11/3 오후):** G1 = JP는 X(좋다), TW는 **오너 개인 Threads**도 활용. G3 = **콘텐츠 엔진 먼저**. 영상은 AI 영상·Tesseract·모션그래픽 다 열려 있음("전방위적으로"). Claude Console API 크레딧으로 OpenRouter 대체 진행.
+- **싱가포르 유입 = 봇 확정**(GA4 28일): 직접 유입 1,776·Chrome/Windows 99%·사용자당 1세션·참여 9, 상세 페이지에 고르게 착지, 10/18부터. 사람 지표는 engagedSessions로 본다.
+- **진행 중:** ① 게시물 단위 트래킹 `/go/<code>`(UTM 자동 부착 + 국가별 클릭 서버 카운터, 리포트 스크립트) — 서브에이전트, 브랜치 `feat/go-links`. ② 상태 릴(실측 상태 크롭 → 9:16 영상·캐러셀) + 크롭이 상태를 잃는 문제 — 서브에이전트, 브랜치 `feat/state-reel`. ③ OpenRouter 대체: Claude API엔 임베딩이 없으므로 **빌드 때 Claude가 레퍼런스별 다국어 검색 서술어를 만들어 커밋 → 런타임은 외부 호출 없는 키워드 검색**(개인정보 문단에서 OpenRouter 제거 가능). 오너가 `web/.env.local`에 `ANTHROPIC_API_KEY`를 넣으면 생성.
+- 4차: kaonavi `a99f3b7c`·meituan `a707f2e8` 반영(브랜치). megastudy 재측정 일치, 반영 대기.
+
+## ▶ 2026-11-03 오후 · **2·3차 main 머지·운영 확인** · 확산 계획 작성 · 4차 진행
+
+- **오너 GO "2차·3차 묶음 머지 진행해" → main `77403deb`**(`136e3710`까지, 4차 chinatimes부터는 브랜치에 남김). 병합 트리 검증: reference-pipeline 무변경, web 1282 통과, tsc 무오류, llms·query data 무변경, check-counts 545/349/89/107. 운영: llms.txt 349/89/107, zabank·/ko gov24·docomo-smtb-netbank·/ko hanatour·mercedes-benz·duolingo 200, MCP get_reference zabank = verified_v2·HK.
+- **확산 계획 `docs/GROWTH_PLAN_2026-11-03.md`** (오너 질문: SNS냐 블로그냐, CJK에서 어떻게 터트리나, 영상·모션 포함). 요지: 실측 데이터가 유일한 무기 → 원본은 데이터 페이지(격주), 유통은 Threads(주 3회, 이미 검증된 채널), 영상은 레퍼런스 실측에서 자동 생성하는 "상태 릴". KR 밖은 TW→JP, 전제는 ja·zh-tw 상세 페이지. **오너 결정 G1 JP·TW 게시 계정 / G2 히어로 필름 제작 방식 / G3 순서(추천: 콘텐츠 엔진 먼저).** 수치는 채팅에만(공개 레포 원칙).
+- **4차:** chinatimes(신규 TW) `f3699b0c` 반영(브랜치). uniqlo는 사이트가 워커 브라우저에 "Access Denied" → 측정 0, 반영 안 함(재시도 방법 미정). 진행: meituan·megastudy·hahow·htc.
+
+## ▶ 2026-11-03 1시 반 · **재개 진행 중** (오너 "재개해줘")
+
+- **2차 묶음 10/10 완료 → 오너 머지 GO 요청.** headspace `a2dfeeaf` · mercedes-benz(신규 DE) `dcf01c92` 반영, 브랜치에 main 병합 `2a9deed7`. 그 뒤 3차 첫 건 nio(신규 CN) `e8422128` → 브랜치 `feat/reverify-w1` **535 / 329 / 95 / 111**(main 530 / 318 / 99 / 113). GO 범위는 nio 포함 여부를 명시해 묻는다.
+- **3차 묶음 반영 21건(브랜치 `feat/reverify-w1`, 푸시, 11/3 정오):** 신규 nio·hanatour·sbisec·kbs·tokyo-metropolitan·docomo-smtb-netbank(큐의 sbinetbank, 2026-08 사명 변경)·gov24(KRDS 채택 제품 — krds 자체와 별개라 포함)·munpia·zabank(첫 HK, `VALID_COUNTRIES`에 HK `4d4249a0`)·1111-jobbank·xpeng / 재검증 tellingme(+pressed)·corca·xiaohongshu·gaudiolab·lezhin(보강으로 상태 컨트롤 확보)·gmarket·ubie·fubon·frip(보강해도 상태 있는 컨트롤 없음 → verified_v2 + `component_noninteractive_only`, 기존 18건과 같은 기준) + duolingo pressed 추가. + moin `136e3710` → **3차 21/21 완료**, 브랜치 **545 / 349 / 89 / 107**(main 530 / 318 / 99 / 113), 모션 래칫 167. 헤드라인은 전부 본 세션 워커 브라우저 재측정 일치(설정 `scratchpad/rm3/`).
+- **4차 묶음 시작(11/3 정오) = `~/.omd-workers/queue-batch4.txt`(22건, CJK만):** 신규 kaonavi·subaru·demaecan·kakuyomu(JP)·chinatimes·htc·firstbank(TW)·megastudy·douzone·korbit·goodoc(KR)·hangseng(HK) — CJK 센서스 weak 중 컨트롤 있는 것(커스텀 속성 수가 적어도 실측 상태는 잴 수 있음) / 재검증 legacy CJK 조회수 순 meituan·uniqlo·hahow·laftel·muji·watcha·kakaot·krafton·wavve·yogiyo. Monitor로 `run-queue.sh` 실행 중(30분마다 재무장).
+- **품질 평가 수정 `1715414b`:** `data/colour-grounding.json`(9/17, 문장 유래 팔레트 스냅샷)이 live-extract로 재검증된 레퍼런스에도 적용돼 ubie가 옛 팔레트 기준 `palette_grounding_low`를 받았다 → 스냅샷은 prose-derived(또는 미표기) 토큰에만 적용. 다른 영향은 live-extract 6건의 paletteGrounding이 null이 된 것뿐(권고 변화 없음), 고정 개수 22→21.
+- **프로브 버그 수정(main):** 워커의 `probe_page`는 states에 `--shots`를 붙이는데, hover 크롭 스크린샷이 headed Chrome에서 `:hover`를 떨어뜨려 이어지는 mouse-down이 `:active`에 안 걸렸다 → **워커 측정에서 pressed가 계통적으로 UNMEASURED**(duolingo·tellingme·hanatour 등; 본 세션 `--shots` 없는 재측정에선 잡힘). 크롭 뒤 포인터를 컨트롤 위로 되돌리고 settle 후 누르도록 고침 → tellingme 전후 비교로 확인(전: 2/2 미측정, 후: 2/2 측정). 이미 반영된 레퍼런스의 pressed 공백은 "모르면 없음"으로 유효하나, 나중에 pressed 보강 일괄 패스 후보. duolingo-p2 보강은 이 버그로 pressed를 못 잡아 반영 안 함(문장 2개만 바뀜) → 고친 도구로 재보강 가능.
+- **MCP 2a 의미 검색: OpenRouter 키 만료(HTTP 401 "API key expired", 로컬·Vercel 같은 키) → 오너가 키 교체해야 함.** 그때까지 프리뷰는 keyword 모드. 빌드 로그에 실패 사유(HTTP 상태만)가 찍히게 `1118fe50`(`feat/mcp-semantic`, 푸시). 키 교체 후: Vercel Preview·Production `OPENROUTER_API_KEY` 갱신 → 프리뷰 재배포 → `search_mode: hybrid` 확인 → 머지.
+- **MCP 1b 연결 안내:** `feat/mcp-connector-docs` `be5eda15` 푸시, 프리뷰 `https://oh-my-design-git-feat-mcp-connector-docs-kwakseongjaes-projects.vercel.app/ko/docs/connector` → 오너 프리뷰 GO 대기.
+- **덕울링고 pressed 보강:** Sol 자리 날 때 `rv-duolingo-p2`(명령은 아래 재개 순서 2).
 
 ## ▶ 2026-11-03 0시 · **재개 신호 대기** — 오너: "1·2·3까지(덕울링고 커밋·CJK 센서스·3차 묶음 구성)만 하고, Sol 확충·검증 실행과 MCP는 재개 신호와 함께"
 

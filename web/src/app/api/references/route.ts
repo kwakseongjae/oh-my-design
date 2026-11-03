@@ -54,6 +54,7 @@ const COUNTRY_LABELS: Record<string, string> = {
   RO: 'Romania',
   BE: 'Belgium',
   CH: 'Switzerland',
+  HK: 'Hong Kong',
   UK: 'UK',
   US: 'United States',
 };

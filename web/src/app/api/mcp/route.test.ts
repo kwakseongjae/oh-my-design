@@ -92,9 +92,10 @@ it("initializes statelessly and lists exactly six read-only tools with input and
 // Re-verification moves references from partial to verified (skyscanner did on 2026-11-02), so the
 // partial example comes from the quality data instead of a fixed name.
 const PARTIAL = REFERENCE_QUALITY.find((entry) => entry.status === "partial")!.id;
+const LEGACY = REFERENCE_QUALITY.find((entry) => entry.status === "legacy_snapshot")!.id;
 
 describe.each([
-  ["toss", "verified_v2"], ["sixt", "verified_v2"], [PARTIAL, "partial"], ["mercury", "legacy"],
+  ["toss", "verified_v2"], ["sixt", "verified_v2"], [PARTIAL, "partial"], [LEGACY, "legacy"],
 ] as const)("real %s (%s)", (id, status) => {
   it("satisfies every tool's output contract and preserves trust", async () => {
     const calls: [ToolName, object][] = [
@@ -214,12 +215,12 @@ it("serves the default toss token request within the full HTTP budget", async ()
 });
 
 it("returns an actionable tool error instead of truncating a real oversized comparison", async () => {
-  const result = await tool("compare_references", { ids: ["toss", "sixt", PARTIAL, "mercury"] });
+  const result = await tool("compare_references", { ids: ["toss", "sixt", PARTIAL, LEGACY] });
   expect(result.isError).toBe(true);
   expect(result.structuredContent).toMatchObject({ error: { code: "response_too_large", message: expect.stringContaining("fewer") } });
 });
 
-it.each(["toss", "sixt", PARTIAL, "mercury"])("returns canonical UTF-8 bytes for %s, without the raw route footer", async (id) => {
+it.each(["toss", "sixt", PARTIAL, LEGACY])("returns canonical UTF-8 bytes for %s, without the raw route footer", async (id) => {
   const data = outputs.get_design_md.parse((await tool("get_design_md", { id })).structuredContent);
   const canonical = readFileSync(join(process.cwd(), "references", id, "DESIGN.md"));
   expect(Buffer.from(data.markdown, "utf8").equals(canonical)).toBe(true);
@@ -249,7 +250,7 @@ it("never writes catalog files, invokes a provider, or records input text/person
   await tool("search_references", { query });
   await tool("get_reference", { id: "toss" });
   await tool("get_tokens", { id: PARTIAL });
-  await tool("get_design_md", { id: "mercury" });
+  await tool("get_design_md", { id: LEGACY });
   await tool("get_component_states", { id: "sixt" });
   await tool("compare_references", { ids: ["toss", "sixt"], aspects: ["radius"] });
   await flushCounters();
@@ -261,7 +262,7 @@ it("never writes catalog files, invokes a provider, or records input text/person
   for (const [method, key, field] of mocks.counters) {
     expect(["hincrby", "expire", "eval"]).toContain(method);
     expect(key).toMatch(/^omd:mcp:v2:/);
-    if (method === "hincrby") expect([...Object.keys(inputs), "toss", "sixt", PARTIAL, "mercury"]).toContain(field);
+    if (method === "hincrby") expect([...Object.keys(inputs), "toss", "sixt", PARTIAL, LEGACY]).toContain(field);
   }
   expect(mocks.counters.filter(([method, key]) => method === "hincrby" && String(key).includes(":tools:"))).toHaveLength(6);
 });

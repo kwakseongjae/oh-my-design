@@ -2,102 +2,68 @@
 name: Headspace
 colors:
   primary: '#0061ef'
-  ink: '#2d2c2b'
+  foreground: '#2d2c2b'
   ink-pure: '#000000'
-  body: '#4b4c4d'
+  inherited-ink: '#4b4c4d'
   slate: '#44423f'
-  canvas: '#f9f4f2'
-  surface: '#ffffff'
-  orange: '#ff7300'
-  amber: '#ffa500'
+  canvas: '#ffffff'
+  cream: '#f9f4f2'
   gold: '#ffce00'
   pink: '#ffa1cc'
   purple: '#3b197f'
-  teal-navy: '#27455c'
   border-tan: '#e2ded9'
   border-input: '#d2d5de'
   on-primary: '#ffffff'
+  action-focus: '#0040ea'
+  primary-pressed: '#0000db'
+  dark-hover: '#141313'
+  soft-hover: '#e5e7ec'
 typography:
-  display-hero:
-    fontSize: 64px
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: '-1.92px'
-    use: Hero / section headlines, Headspace Apercu Bold
-  display-lg:
-    fontSize: 52px
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: '-1.56px'
-    use: Large feature headlines
-  display-md:
-    fontSize: 48px
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: '-1.44px'
-    use: Secondary section heads
-  feature:
-    fontSize: 40px
-    fontWeight: 700
-    lineHeight: 1.15
-    letterSpacing: '-1.2px'
-    use: Feature-card / band titles
-  subsection:
-    fontSize: 32px
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: '-0.96px'
-    use: Sub-section heads
-  card-title:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.33
-    letterSpacing: '-0.6px'
-    use: Footer / card headings
-  body-lg:
-    fontSize: 18px
-    fontWeight: 500
-    lineHeight: 1.44
-    use: Intro / lead paragraphs
-  body:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.15
-    use: Standard reading text
   button:
     fontSize: 16px
     fontWeight: 700
-    lineHeight: 1
-    use: Primary button label
+    lineHeight: 1.1
+    use: Measured hero Try for $0 link
   button-sm:
     fontSize: 14px
     fontWeight: 700
-    lineHeight: 1
-    use: Compact nav CTA label
+    lineHeight: 1.1
+    use: Measured header Try for free link
+  button-soft:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: '-0.54px'
+    use: Measured Chat with Ebb link
+  navigation:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.15
+    use: Measured For You link at rest
+  input:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Measured newsletter email input; no form submission
 rounded:
+  none: 0px
   sm: 8px
-  md: 12px
-  lg: 24px
+  card: 16px
+  tab: 24px
   pill: 32px
-  full: 9999px
-spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 40
-  xxl: 64
 components:
   button-primary:
     type: button
     backgroundColor: '#0061ef'
     textColor: '#ffffff'
     rounded: 32px
-    padding: 14px 24px
+    padding: 14.3px 24px
     height: 48px
     typography: 14px / 700 Headspace Apercu
-    use: Header / hero primary CTA — Headspace Blue pill
+    hover: 'bg #0040ea'
+    pressed: 'bg #0000db; translateY(2px); shadow becomes transparent; outline 2px solid #0040ea, offset 0px'
+    focus: 'bg #0040ea; outline 2px solid #0040ea, offset 1px'
+    use: Header Try for free link; white label; rest shadow rgba(65, 61, 69, 0.2) 0px 2px 0px 0px. Persistent ancestor-header shadow change is excluded.
   button-dark:
     type: button
     backgroundColor: '#2d2c2b'
@@ -106,71 +72,35 @@ components:
     padding: 14px 20px
     height: 48px
     typography: 16px / 700 Headspace Apercu
-    use: Charcoal solid CTA — 'Try for $0', 'Check your coverage'
+    hover: 'bg #141313'
+    pressed: 'bg #2d2c2b; translateY(2px); transparent shadow; outline 2px solid #0040ea, offset 0px'
+    focus: 'bg #141313; outline 2px solid #0040ea, offset 1px'
+    use: Hero Try for $0 link on the cream panel; white label and no visible rest shadow.
   button-soft:
     type: button
     backgroundColor: '#f9f4f2'
     textColor: '#44423f'
     rounded: 32px
-    padding: 12px 24px
+    padding: 12.1px 24px
     height: 48px
     typography: 18px / 700 Headspace Apercu
-    use: Cream pill secondary action — 'Get started', 'Learn more'
-  pill-tab:
-    type: tab
-    backgroundColor: '#2d2c2b'
-    textColor: '#ffffff'
-    rounded: 24px
-    padding: 0 24px
-    height: 48px
-    typography: 18px / 700 Headspace Apercu
-    active: 'charcoal #2d2c2b fill, white label'
-    use: 'Segmented pill selector — inactive is cream #f9f4f2 with #2d2c2b label'
-  category-chip:
-    type: badge
-    backgroundColor: '#ff7300'
-    textColor: '#ffffff'
-    rounded: 8px
-    padding: 8px 12px
-    typography: 14px / 500 Headspace Apercu
-    use: Content-mode chips (Sleep/Meditate/Move) in the smiley orange family
-  feature-card:
-    type: card
-    backgroundColor: '#f9f4f2'
-    rounded: 24px
-    use: Warm-cream feature card, shadowless
-  color-card:
-    type: card
-    backgroundColor: '#0061ef'
-    textColor: '#ffffff'
-    rounded: 24px 24px 0 0
-    use: 'Saturated color-block feature card (blue / gold #ffce00 variants)'
-  plan-card:
-    type: card
-    backgroundColor: '#ffce00'
-    textColor: '#000000'
-    rounded: 12px
-    padding: 24px
-    border: '1px solid #ffce00'
-    use: 'Selected subscription plan card — gold fill; unselected is #ffffff with 1px #44423f border'
-  email-input:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#000000'
-    border: '1px solid #d2d5de'
-    rounded: 8px
-    padding: 24px 16px 8px
-    height: 58px
-    typography: 16px Headspace Apercu
-    use: Email capture / float-label field
-  play-button:
+    hover: 'bg #e5e7ec'
+    pressed: 'bg #d2d5de; outline 2px solid #0040ea, offset 0px'
+    focus: 'bg #e5e7ec; outline 2px solid #0040ea, offset 1px'
+    use: Chat with Ebb link; slate label, no rest shadow and no measured press translation.
+  nav-for-you:
     type: button
-    backgroundColor: '#2d2c2b'
-    textColor: '#ffffff'
-    rounded: 50%
-    padding: 10px
-    height: 48px
-    use: 'Circular audio play/pause — also appears in orange #ff7300'
+    textColor: '#2d2c2b'
+    rounded: 0px
+    padding: 0px
+    height: 18.4px
+    typography: 16px / 400 Headspace Apercu
+    hover: font-weight 700; width 53px to 55px
+    pressed: font-weight 700; width 55px, same as hover
+    use: For You navigation link, transparent on the white header. Keyboard focus uses the browser auto outline; no focus token is declared.
+omitted:
+  - section: spacing
+    reason: No verified values in current evidence.
 fonts:
   roles:
     sans: Headspace Apercu
@@ -182,460 +112,173 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Headspace is the warmest mental-health product on the internet, and its 2024 Italic Studio rebrand made that warmth structural rather than decorative. The page does not open on the clinical white of healthcare software — it opens on a soft, warm cream (`#f9f4f2`), the single most frequent background on the site, which gives every surface a calm, paper-like glow. Text sits in a near-black warm charcoal (`#2d2c2b`) for headlines and a softer grey (`#4b4c4d`) for body — never pure black for reading copy — so the page feels approachable instead of stark. The one saturated action color is Headspace Blue (`#0061ef`), reserved for the primary "Try for free" CTA, so the eye learns that blue means "do this."
+Headspace brings meditation, mindfulness, sleep resources, AI guidance, coaching and therapy into an everyday mental-health companion. Its own history traces the company to Andy Puddicombe and Richard Pierson in 2010 and its merger with Ginger in 2021. The company connected its broader care offering to a unified Headspace brand in its October 2023 announcement; its current About page says it is now part of Sword. [Company](https://www.headspace.com/about-us) · [History](https://organizations.headspace.com/ginger-is-now-part-of-headspace) · [Brand expansion](https://organizations.headspace.com/blog/headspace-unveils-refreshed-brand-and-expands-offerings-for-lifelong-mental-health-support)
 
-What makes Headspace unmistakable is the orange. The brand has carried an orange smiley since its conception — originally inspired by the saffron robes of the Buddhist meditation tradition — and the rebrand expanded that single mascot into a full emotion-driven illustration and animation system that flexes "from stress, sadness, contentment, and every mood in between." On product surfaces this shows up as a family of warm hues: a hot smiley orange (`#ff7300`), a softer amber (`#ffa500`), and a bright gold (`#ffce00`) used on content-mode chips and color-block cards. Supporting emotional accents — a candy pink (`#ffa1cc`), a deep meditative purple (`#3b197f`), and a grounding teal-navy (`#27455c`) — round out a palette deliberately built to "destigmatise seeking care," contrasting healthcare's typical "dreary sea of blues and greys."
+The visual expression combines an orange brand mark, illustrated faces, photographs of people and bold custom typography. Design partner ITAL/C describes a collaboration with Headspace's internal team that broadened the identity through photography, texture, depth, simplified illustration and a custom typeface developed by Colophon Foundry. This is a useful basis for building in the style: human imagery and illustration share the page, while the actions remain compact and legible. [Design partner's case study](https://italic-studio.com/projects/headspace-rebrand/)
 
-The typographic identity is the custom **Headspace Apercu**, a "Headspace-ified" cut of Colophon Foundry's Aperçu commissioned for the rebrand — its letterforms carry curves that echo the smile and are engineered to "flex from playful to clinical." Every headline runs at **weight 700** with tight negative tracking (-1.92px at 64px, -1.44px at 48px), giving the page a confident, rounded-bold voice. Geometry is friendly and pill-forward: 32px-radius pill buttons, 24px-radius feature cards, and circular play controls. There are essentially no drop shadows — depth comes from warm tints and color blocks, never elevation.
+The measured English homepage (`headspace.com/`, HTML `lang="en"`) opens on white, with two warm-cream hero panels and charcoal actions. A blue header CTA, a yellow announcement strip, rounded controls and the orange mark give it a varied color rhythm. Cream remains the most frequent explicit background in the census, but frequency does not describe the entire page canvas. The opening hero offers separate app and insurance-coverage routes; farther down, the interface presents needs, product modes and a content library.
 
-**Key Characteristics:**
-- Warm cream canvas (`#f9f4f2`) instead of clinical white — the calm, paper-like base
-- Headspace Blue (`#0061ef`) reserved for the single primary "do this" action
-- Signature warm-orange family (`#ff7300` / `#ffa500` / gold `#ffce00`) carrying the smiley emotion system
-- Custom **Headspace Apercu** (Colophon) at weight 700 for every headline — rounded, friendly, bold
-- Near-black warm charcoal (`#2d2c2b`) for headings, soft grey (`#4b4c4d`) for body — never pure black
-- Tight negative tracking on headlines (-1.92px at 64px, scaling with size)
-- Pill-forward geometry — 32px pill buttons, 24px cards, circular play controls
-- Shadowless depth — warm tints and saturated color blocks instead of elevation
+#### Primary tasks
 
-### Primary tasks
-
-- Play a ten-minute meditation before going to sleep.
-- Choose a session by mode: sleep, meditate, move, or focus.
-- Compare subscription plans and pick the one to start.
-- Start clinician-led online therapy instead of only meditating.
-- Check in on your mood with the AI companion.
+- Start an app trial or follow the online-therapy coverage link.
+- Explore meditation, sleep and other mental-health content.
+- Follow the Ebb companion route or compare plans.
+- Find the business offering through the navigation.
 
 ### Brand Narrative
 
-Headspace was founded in **2010** by **Andy Puddicombe** — a former Buddhist monk — and **Rich Pierson**, who met when Pierson sought out Puddicombe's meditation classes in London. Their shared premise was that meditation should be demystified and made accessible to ordinary people, stripped of esoteric framing: a few minutes a day, guided in plain language. That accessibility mission is the root of everything in the brand, including the orange smiley, which the company has run since its conception — a mascot reportedly inspired by the saffron robes worn in the Buddhist meditation tradition.
+Headspace began in 2010 with former Buddhist monk Andy Puddicombe and advertising executive Richard Pierson. Its UK collection page locates the beginnings in London; that origin is distinct from the US operating address in today's terms. Its 2021 merger with Ginger brought meditation together with virtual mental-health care. The opened company history page describes Headspace serving 4,000+ organizations. [History](https://organizations.headspace.com/ginger-is-now-part-of-headspace) · [UK collection](https://www.headspace.com/collections/uk-collection) · [Current terms](https://www.headspace.com/terms-and-conditions)
 
-By the 2020s Headspace had grown from a meditation app into a comprehensive mental-health platform spanning sleep, mindfulness, mental-health coaching, an AI companion (Ebb), and clinician-led online therapy — serving members "from better sleep, to everyday stress, to supporting members with care for more complex issues like anxiety and depression," and partnering with over 4,000 organizations. The 2024 rebrand, led by **Italic Studio (ITAL/C)** with a custom typeface from **Colophon Foundry**, was built to carry that expansion: "We built on the foundation of the brand to evolve it, not re-invent it."
-
-What Headspace refuses, visible in its design: the clinical aesthetic of legacy healthcare — the "dreary sea of blues and greys" the design team explicitly named as the thing to avoid — and the stigma that surrounds talking about mental health. What it embraces: a warm cream canvas, an emotion-driven illustration system that depicts "stress, sadness, contentment, and every mood in between," a single trustworthy blue for action, and a typeface whose curves echo a smile and "flex from playful to clinical" so one brand can hold both a bedtime story and a depression-care pathway.
+The October 2023 announcement explicitly connected the Headspace brand expansion to the Ginger app becoming Headspace Care and a broader care offering. ITAL/C's case study describes evolving the existing identity with Headspace's internal designers. Two opened trade articles document the visual refresh in April and May 2024; they are secondary chronology. [Company announcement](https://organizations.headspace.com/blog/headspace-unveils-refreshed-brand-and-expands-offerings-for-lifelong-mental-health-support) · [Design partner](https://italic-studio.com/projects/headspace-rebrand/) · [It's Nice That](https://www.itsnicethat.com/articles/italic-studio-headspace-graphic-design-project-250424) · [PRINT](https://www.printmag.com/branding-identity-design/headspaces-refreshed-identity-offerings-signal-new-era-of-empowered-well-being/)
 
 ### Principles
 
-1. **Approachable, not clinical.** The brand exists to destigmatise seeking care. *UI implication:* open on warm cream not clinical white; name hard topics plainly; keep every CTA low-pressure.
-2. **Emotion is the system.** The smiley illustration set spans the full range of human feeling. *UI implication:* use the warm-orange family and emotion accents to carry mood; treat illustration/animation as core, not garnish.
-3. **One action, one color.** Headspace Blue (`#0061ef`) means "do this." *UI implication:* reserve the saturated blue exclusively for the primary CTA so the next step is never ambiguous.
-4. **Playful and clinical in one voice.** The typeface flexes both ways. *UI implication:* the same Headspace Apercu weight 700 serves a bedtime headline and a therapy-care page — let tone shift through copy and color, not type swaps.
-5. **Calm through softness.** Pills, rounded cards, warm tints, no shadows. *UI implication:* keep geometry soft and depth flat; let color blocks (not elevation) do the separating.
+These are implementation readings from the documented offering and observed public interface:
+
+1. **Make routes clear.** The opening page gives the app trial and therapy coverage separate panels and actions.
+2. **Let illustration and people coexist.** The design partner's identity work and the current hero both combine them.
+3. **Keep geometry specific.** Reuse the measured pill, card, tile and field shapes in their respective roles.
+4. **Make action states visible.** Preserve the measured fill changes, authored action rings and press movement where each exists.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Headspace user segments (stressed professionals, people with sleep difficulty, members seeking therapy, organizations offering mental-health benefits), not individual people.*
-
-**Maya Robinson, 28, Chicago.** A marketing manager who opens Headspace for a 10-minute meditation before bed and the Sleepcasts when she can't switch off. Chose it because the warm, friendly tone made meditation feel doable rather than intimidating. Distrusts wellness brands that feel preachy.
-
-**David Okafor, 41, Atlanta.** A father of two using Headspace through his employer's benefits to manage everyday stress and, recently, the online therapy pathway. Values that the app names anxiety directly without making it feel like a diagnosis. Appreciates the calm, uncluttered interface after a long day.
-
-**Priya Nair, 34, Seattle.** A software engineer who uses the focus and Move-mode content during work and the Ebb AI companion to check in on her mood. Likes that the brand feels human and illustrated rather than clinical and data-heavy.
-
-**Janet Mills, 47, HR Director, Denver.** Evaluates mental-health benefits for a 3,000-person company. Chose Headspace partly because its approachable brand reduces the stigma employees feel about using a mental-health benefit at all.
+The opened company pages establish individual members, employers and health plans as audiences; named demographic personas and their motivations were not verified.
 
 ## Colors
 
-### Primary
-- **Headspace Blue** (`#0061ef`): The single saturated action color. Hero and header "Try for free" CTA backgrounds, "Start your free trial", and saturated color-block feature cards. The system's "do this" signal.
-- **Charcoal Ink** (`#2d2c2b`): Primary heading color and the solid dark-button fill ("Try for $0", "Check your coverage"). A warm near-black that carries approachability instead of clinical contrast.
+These are normalized reference roles derived from the live public site. Both computed and stylesheet-declared custom-property inventories were empty.
 
-### Neutral & Surface
-- **Warm Cream** (`#f9f4f2`): The dominant page background and the soft-pill secondary button fill. The calm, paper-like base of the whole system.
-- **White** (`#ffffff`): Card surfaces, input backgrounds, and text on saturated colors.
-- **Body Grey** (`#4b4c4d`): The default body / reading text color set on `<body>`.
-- **Slate** (`#44423f`): Secondary nav and link text; soft-button labels.
-- **Pure Black** (`#000000`): Maximum-contrast text on gold/yellow surfaces (plan cards, some hero H3s).
+| Role | Value | Evidence and application |
+|---|---|---|
+| Primary | `#0061ef` | Header “Try for free” fill; also the visible “Trending” label on the Ebb card. Blue has uses beyond a single CTA. |
+| Foreground | `#2d2c2b` | Most frequent paragraph ink: 44 sampled paragraphs. Also the hero action fill and navigation text. |
+| Canvas / white surface | `#ffffff` | Opening page and header; email field; white action and card labels. |
+| Cream | `#f9f4f2` | Most frequent explicit background, 26 occurrences; hero panels and the “Chat with Ebb” link. |
+| Inherited ink | `#4b4c4d` | Need-selector control’s own computed color and the site's global CSS declaration; it is not the dominant sampled paragraph ink. |
+| Slate | `#44423f` | Cream action label and many footer links. |
+| Pure ink | `#000000` | Newsletter input's computed text color. |
+| Gold | `#ffce00` | Four explicit homepage backgrounds in the census. |
+| Pink / purple | `#ffa1cc` / `#3b197f` | One explicit homepage background each; no content-specific semantic role was established. |
+| Tan border | `#e2ded9` | The six need-selector tiles, 2px solid. |
+| Input border / soft press | `#d2d5de` | Email border at rest, 1px solid; cream action's pressed fill. |
+| Authored action focus / blue hover | `#0040ea` | Solid 2px outline on the three measured action links; primary CTA hover fill. |
+| Primary pressed | `#0000db` | Header CTA pressed fill. |
+| Dark hover | `#141313` | Hero CTA hover and keyboard-focus fill. |
+| Soft hover | `#e5e7ec` | Cream CTA hover and keyboard-focus fill. |
 
-### Brand Emotion Accents
-- **Smiley Orange** (`#ff7300`): The hot signature orange — content-mode chips ("Sleep"), circular play buttons. The robe-orange that anchors the brand.
-- **Amber** (`#ffa500`): Softer orange for "Meditate" / "Move" / "Focus" content chips.
-- **Gold** (`#ffce00`): Bright yellow for the selected subscription plan card and color-block feature cards.
-- **Candy Pink** (`#ffa1cc`): Emotional accent for illustration blocks and decorative bands.
-- **Meditation Purple** (`#3b197f`): Deep purple accent for sleep/calm-themed surfaces.
-- **Teal-Navy** (`#27455c`): Grounding deep teal-navy for darker illustration backgrounds.
-
-### Borders
-- **Tan Hairline** (`#e2ded9`): The warm card / chip outline (`2px solid`) used on the hero theme selectors.
-- **Input Border** (`#d2d5de`): Cool grey `1px` border on email / form inputs.
+The subscription page's returned stylesheet additionally declares **orange `#ff7300`** for the active content-mode chip and **amber `#ffa500`** for its base fill. Its final chip selector declares **`#141313`** text for rest, focus, hover and active styling. These are CSS declarations from `/subscriptions`, without computed subscription-page measurements; the orange fill follows selection. [Subscription surface](https://www.headspace.com/subscriptions)
 
 ## Typography
 
-### Font Family
-- **Primary**: `Headspace Apercu` (custom Colophon cut), with `sans-serif` fallback — used for every element on the site: headlines, nav, body, and buttons. There is no separate body font.
+### Evidence classes
 
-### Hierarchy
+- **Official product use (company statement):** an explicit font specification for the native app was not established. The design partner documents a custom Colophon typeface for the identity; that is evidence of a brand commission. The measurements here describe the public marketing site.
+- **Live-loaded:** `document.fonts` reports **Headspace Apercu 400 normal, 600 normal and 700 normal**. The body and sampled button declarations name that family; the census found no H1. Only this loaded family is included in the machine typography tokens.
+- **Official distributed assets:** the site's `@font-face` rules point to `static.headspace.com/fonts/apercu-v1.002/`, with `HeadspaceApercu-Regular`, `HeadspaceApercu-Medium` and `HeadspaceApercu-Bold` WOFF2 sources for those loaded weights. The rules offer other file formats as well. Font files were not separately downloaded and no redistribution license was verified.
+- **Declared-only:** Headspace Apercu 200 normal and italic faces at 200/400/600/700, plus Apercu Pro Mono normal at 200/400/600/700, appear in `@font-face` rules but not in the loaded-face list. No specimen is supplied for these faces.
+- **Unresolved:** native-app typography, usage permissions and additional scripts. **Substitute: none chosen.**
 
-| Role | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|--------|-------------|----------------|-------|
-| Display Hero | 64px (4.00rem) | 700 | 1.00 (64px) | -1.92px | Hero / big section headlines |
-| Display Large | 52px (3.25rem) | 700 | 1.10 (57.2px) | -1.56px | Large feature headlines |
-| Display Medium | 48px (3.00rem) | 700 | 1.00 (48px) | -1.44px | Secondary section heads |
-| Feature | 40px (2.50rem) | 700 | 1.15 (46px) | -1.2px | Feature-card / band titles |
-| Sub-section | 32px (2.00rem) | 700 | 1.20 (38.4px) | -0.96px | Smaller section heads |
-| Card Title | 24px (1.50rem) | 700 | 1.33 (32px) | -0.6px | Footer / card headings |
-| Body Large | 18px (1.13rem) | 500 | 1.44 (26px) | normal | Intro / lead paragraphs |
-| Body | 16px (1.00rem) | 400 | 1.15 (18.4px) | normal | Standard reading text |
-| Button | 16px (1.00rem) | 700 | 1.00 | normal | Primary button labels |
-| Button Small | 14px (0.88rem) | 700 | 1.00 | normal | Compact header CTA |
+### Measured control typography
 
-### Principles
-- **Bold everywhere it matters**: Every headline is weight 700. Headspace does not whisper — its rounded-bold display voice is the brand's confidence.
-- **Tracking tightens with size**: -1.92px at 64px, -1.44px at 48px, -1.2px at 40px, -0.96px at 32px. Headlines compress into dense, friendly blocks; body text stays at normal tracking.
-- **One typeface, every job**: Headspace Apercu runs from 64px hero to 14px nav CTA. The curves that echo the smile are the brand's typographic DNA at every size.
-- **Buttons are bold**: Even at 14-16px, CTA labels are weight 700 — the action always reads as confident.
+| Control | Size / weight | Line height | Tracking |
+|---|---|---|---|
+| Header CTA | 14px / 700 | 15.4px | normal |
+| Hero CTA | 16px / 700 | 17.6px | normal |
+| Cream CTA | 18px / 700 | 21.6px | -0.54px |
+| Header navigation | 16px / 400 | 18.4px | normal |
+| Email field | 16px / 400 | 24px | normal |
+
+### Heading declarations retained from the live HTML
+
+The returned homepage stylesheet sets the root size to 16px. At its `min-width: 90rem` rules, the opening title uses 3.25rem (52px), 110% leading and -0.03em tracking (-1.56px); the large members statement uses 4rem (64px), line-height 1 and -0.03em (-1.92px). The needs heading uses 2rem (32px), 1.2em leading and -0.03em (-0.96px). Footer H4s use 1.5rem (24px), 2rem (32px) leading and -0.025em (-0.6px). These rules are bold. The values are declarations tied to named elements, not a second computed heading survey.
+
+FAQ paragraph CSS retains the prior large-body metrics: 1.125rem (18px), weight 500, 1.625rem (26px) leading and -0.01em tracking. These are declarations, with no added specimen for a separately loaded 500 face.
+
+The subscription CSS also sets “Check out our student and family plans, too.” at weight 600 and its “Meet Move Mode” H2 at weight 500. A universal weight-700 headline rule would lose this distinction. For a build, use the loaded family for the observed public-site roles, bold action labels and the documented tight display tracking. Some survey rows request weight 500, while the loaded-face inventory contains 400, 600 and 700.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 40px, 64px
-- Notable: Buttons sit at a consistent 48px height with 24px horizontal padding; hero CTAs grow to 62px height with 40px padding for emphasis
+At 1440×1000, the opening page has a full-width announcement strip, a horizontal header, centered introductory copy and two unequal-width cream panels for the app and therapy routes. The survey places the left content edge at 48px. The need selectors form two rows of three. Product-mode buttons precede a horizontal feature track; farther down are library filters and a row of linked content cards. These are observed desktop arrangements.
 
-### Grid & Container
-- Centered single-column hero anchored by a 64px Headspace Apercu headline
-- Feature bands alternate warm cream (`#f9f4f2`) with saturated color-block cards (blue / gold) at 24px radius
-- Theme selectors arranged as a row of outlined 8px-radius tiles beneath the hero
-- Content chips ("Sleep", "Meditate") in a horizontal scrolling row in the smiley orange family
+The site's rich-text CSS exposes margin utilities of 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3 and 3.5rem: 4, 8, 12, 16, 24, 32, 40, 48 and 56px at its declared 16px root. Other section declarations include 4rem (64px) margins. These are available CSS values; a universal 8px base rule was not established.
 
-### Whitespace Philosophy
-- **Calm over density**: generous vertical rhythm between bands; the cream base keeps the page breathing.
-- **Color as structure**: sections separate by saturated color blocks and warm tints, not by borders or shadows.
-- **Pill rhythm**: the repeated 32px-radius pill and 24px-radius card create a soft, consistent cadence.
-
-### Border Radius Scale
-- Small (8px): theme-selector tiles, content chips, plan-card inner elements
-- Medium (12px): subscription plan cards
-- Large (24px): feature cards, pill tabs
-- Pill (32px): all primary / secondary buttons
-- Circle (50%): audio play/pause controls
+Use the measured geometry by component: 32px action radii, 24px product-mode radii, 16px featured-card radii, 8px need-tile and field radii, and percentage circles for the audio controls. The hero-panel stylesheet declares a 1.5rem radius and adjusts padding at 48rem, 64rem and 90rem.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, chips scroll horizontally |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column color-block bands |
-
-#### Touch Targets
-- Buttons sit at a comfortable 48px height (hero CTAs 62px) with full pill geometry for unmistakable targets
-- Content chips at 34px height with 12px horizontal padding
-- Circular play controls at 48px diameter
-
-#### Collapsing Strategy
-- Hero: 64px Headspace Apercu headline scales down on mobile, weight 700 maintained
-- Content chip row: horizontal scroll on narrow viewports
-- Color-block feature bands: multi-column → stacked single column
-- Cream / color-block sections maintain full-width treatment
-
-#### Image Behavior
-- Illustration and animation assets (the smiley emotion system) carry no shadow at any size
-- Cards maintain 24px radius across breakpoints
-- Color-block card tops keep the asymmetric `24px 24px 0 0` radius
+Only the 1440×1000 desktop surface was rendered. The current homepage CSS uses `min-width: 48rem`, `64rem` and `90rem` rules for the inspected headings and panels. The featured-card link declares 12×16.875rem by default, increasing to 19.875×27.125rem at 64rem, with a 1rem radius in both rules. Mobile layouts, touch behavior and motion preferences were not rendered or tested.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f9f4f2` cream shift | Card / band separation without elevation |
-| Color block (Level 2) | Saturated fill (`#0061ef`, `#ffce00`) | Feature emphasis through color, not shadow |
-| Hairline (Level 3) | `2px solid #e2ded9` / `1px solid #d2d5de` | Selector tiles, input outlines |
+Cream panels, saturated backgrounds, illustration and photographs provide grouping. The measured dark action, cream action and featured card are shadowless at rest. The blue header CTA uses a shallow lower shadow: `rgba(65, 61, 69, 0.2) 0px 2px 0px 0px`. Press translates that action down 2px and makes the shadow transparent.
 
-**Shadow Philosophy**: Headspace is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, cards, and buttons. Depth and grouping are communicated through warm tinted surfaces (`#f9f4f2`), saturated color blocks (`#0061ef`, gold `#ffce00`), and thin warm hairlines (`#e2ded9`) — never elevation. This keeps the experience feeling soft, calm, and illustration-led rather than the heavy card-stack chrome of clinical health software. When emphasis is needed, the system reaches for color from the smiley palette, not a drop shadow.
+A header ancestor also carried `rgba(0, 0, 0, 0.07) 0px 5px 10px 0px` in the state data. Its change persisted after blur, so it is recorded as a header observation rather than focus styling. The system should not be described as universally shadowless.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 - `shadow.none`: `none`
+- `shadow.button-primary`: `rgba(65, 61, 69, 0.2) 0px 2px 0px 0px`
 
 ## Motion & Easing
 
-**Durations**:
+The three measured action links declare color, background-color, border-color, box-shadow and transform transitions of **0.15s (150ms)** with **`cubic-bezier(0.32, 0.94, 0.6, 1)`** and zero delay. The probe waited 900ms before each sampled state and recorded a 150ms longest transition. The blue and dark actions translate down 2px while pressed; the cream action did not translate in this pass.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 140ms | Hover, button press, focus |
-| `motion-standard` | 240ms | Card / band reveal, sheet, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero illustration reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, illustrations |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-gentle` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Soft two-way transitions, breathing animations |
-
-**Motion rules**: Motion is the brand's living layer — the smiley illustration and animation system is retained specifically to "simplify complex concepts" and convey emotion. Animations are warm and gentle, never snappy or jarring: a breathing-guide bubble expands and contracts on a slow, calm cycle; content cards fade-in from below at `motion-standard / ease-enter`. The orange smiley's expression transitions are soft eases, never bounces with overshoot — the feeling is reassurance, not delight-for-its-own-sake. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and ambient animation freezes; the product stays fully functional and calm.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-17) via playwright getComputedStyle:
-- https://www.headspace.com — homepage: body font "Headspace Apercu" / color rgb(75,76,77);
-  hero H2 64px/700/-1.92px rgb(45,44,43); "Try for free" CTA bg rgb(0,97,239) #0061ef /
-  white / radius 32px / 14px/700; charcoal CTA bg rgb(45,44,43) #2d2c2b; cream canvas
-  rgb(249,244,242) #f9f4f2 (most frequent bg, 40x); theme-selector tiles white / 2px solid
-  rgb(226,222,217) #e2ded9 / 8px radius; email input 1px solid rgb(210,213,222) #d2d5de /
-  8px radius; box-shadow none across hero/nav/cards/buttons.
-- https://www.headspace.com/subscriptions — "Be kind to your mind" 64px/700/-1.92px;
-  selected plan card bg rgb(255,206,0) #ffce00 / 12px radius; unselected 1px solid
-  rgb(68,66,63) #44423f; content chips bg rgb(255,115,0) #ff7300 / rgb(255,165,0) #ffa500 /
-  8px radius; "Start your free trial" bg #0061ef / 62px height; orange play buttons #ff7300.
-- https://italic-studio.com/projects/headspace-rebrand/ — 2024 rebrand case study.
-
-Meta description (§10 voice sample) verbatim from live homepage <meta name=description>.
-"Be kind to your mind" verbatim from live subscriptions hero.
-
-Brand narrative (§11): Headspace founded 2010 by Andy Puddicombe (former Buddhist monk)
-and Rich Pierson — widely documented public facts. 2024 rebrand by Italic Studio (ITAL/C)
-with custom typeface from Colophon Foundry confirmed via:
-- https://italic-studio.com/projects/headspace-rebrand/
-- https://www.itsnicethat.com/articles/italic-studio-headspace-graphic-design-project-250424
-  (verbatim: typeface "flex from playful to clinical"; "stress, sadness, contentment, and
-  every mood in between"; "destigmatise seeking care by making talking about mental health
-  feel approachable and normalised"; healthcare's "dreary sea of blues and greys"; "from
-  better sleep, to everyday stress, to supporting members with care for more complex issues
-  like anxiety and depression").
-- https://www.printmag.com/branding-identity-design/headspaces-refreshed-identity-offerings-signal-new-era-of-empowered-well-being/
-
-Orange smiley "inspired by the saffron robes worn in the Buddhist tradition of meditation"
-and "run with the orange since the brand's conception" — from the rebrand press coverage above.
-
-Personas (§13) are fictional archetypes informed by publicly observable Headspace user
-segments. Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "emotion is the system", "calm through softness", "approachable
-not clinical as a rejection of legacy healthcare chrome") are editorial readings connecting
-Headspace's observed design and stated rebrand intent to its positioning, not directly
-sourced Headspace statements.
--->
+The navigation link, featured card and email input report `all 0s ease 0s` on the measured element. This does not establish animation timing for their siblings or the wider page. Page reveals, breathing animations and reduced-motion behavior were not verified.
 
 ## Components
 
-### Buttons
+### Action links with measured states
 
-**Primary (Headspace Blue)**
-- Background: `#0061ef`
-- Text: `#ffffff`
-- Radius: 32px
-- Padding: 14px 24px
-- Height: 48px
-- Font: 14px Headspace Apercu weight 700
-- Use: Header / hero primary CTA ("Try for free", "Start your free trial")
+All three are links, with a 2px transparent border at rest and white or slate labels as shown. Their background, outline and press behavior were measured independently.
 
-**Charcoal Solid**
-- Background: `#2d2c2b`
-- Text: `#ffffff`
-- Radius: 32px
-- Padding: 14px 20px
-- Height: 48px
-- Font: 16px Headspace Apercu weight 700
-- Use: High-emphasis dark CTA ("Try for $0", "Check your coverage")
+| Control | Rest identity | Hover | Pressed | Keyboard focus |
+|---|---|---|---|---|
+| Header “Try for free” | 122.4×48px; radius 32px; padding 14.3px 24px; 14px/700; `#0061ef` / `#ffffff` | Fill `#0040ea` | Fill `#0000db`; moves down 2px; lower shadow becomes transparent; 2px solid `#0040ea` outline, offset 0px | Fill `#0040ea`; 2px solid `#0040ea` outline, offset 1px |
+| Hero “Try for $0” | 113.6×48px; radius 32px; padding 14px 20px; 16px/700; `#2d2c2b` / `#ffffff` | Fill `#141313` | Fill returns to `#2d2c2b`; moves down 2px; transparent lower-shadow value; same solid outline at offset 0px | Fill `#141313`; same solid outline at offset 1px |
+| “Chat with Ebb” | 159.9×48px; radius 32px; padding 12.1px 24px; 18px/700; `#f9f4f2` / `#44423f` | Fill `#e5e7ec` | Fill `#d2d5de`; solid outline at offset 0px; no measured translation | Fill `#e5e7ec`; solid outline at offset 1px |
 
-**Soft Cream Pill**
-- Background: `#f9f4f2`
-- Text: `#44423f`
-- Radius: 32px
-- Padding: 12px 24px
-- Height: 48px
-- Font: 18px Headspace Apercu weight 700
-- Use: Secondary action ("Get started", "Learn more", "Chat with Ebb")
+Other surveyed cream links include “Learn more” and “Get started,” also 48px high with 12.1px 24px padding; only “Chat with Ebb” received a state pass. The page also has a 750.1×188px blue “Get your headspace” link: radius 112px, padding 56px 64px and 72px/700 type with 72px leading. That larger action is a rest observation.
 
-**Circular Play / Pause**
-- Background: `#2d2c2b`
-- Text: `#ffffff`
-- Radius: 50%
-- Padding: 10px
-- Height: 48px
-- Use: Audio play/pause control — also appears in smiley orange (`#ff7300`)
-
-### Pill Tabs (Segmented Selector)
-
-**Active**
-- Background: `#2d2c2b`
-- Text: `#ffffff`
-- Radius: 24px
-- Padding: 0 24px
-- Height: 48px
-- Font: 18px Headspace Apercu weight 700
-- Use: Selected mode in the "What kind of headspace" segmented selector
-
-**Inactive**
-- Background: `#f9f4f2`
-- Text: `#2d2c2b`
-- Radius: 24px
-- Padding: 0 24px
-- Height: 48px
-- Use: Unselected segmented options ("Guided meditations", "Sleep resources")
-
-### Cards & Containers
-
-**Feature Card (Cream)**
-- Background: `#f9f4f2`
-- Radius: 24px
-- Use: Warm-cream feature card, shadowless
-
-**Color-Block Card**
-- Background: `#0061ef`
-- Text: `#ffffff`
-- Radius: 24px 24px 0 0
-- Use: Saturated color-block feature card top — blue and gold (`#ffce00`) variants
-
-**Theme Selector Card**
-- Background: `#ffffff`
-- Text: `#4b4c4d`
-- Border: 2px solid `#e2ded9`
-- Radius: 8px
-- Padding: 8px 16px 8px 24px
-- Use: Hero "Stress less / Sleep soundly / Manage anxiety" outlined selector tiles
-
-**Subscription Plan Card (Selected)**
-- Background: `#ffce00`
-- Text: `#000000`
-- Border: 1px solid `#ffce00`
-- Radius: 12px
-- Padding: 24px
-- Use: Selected plan on the subscriptions page (unselected is `#ffffff` with 1px solid `#44423f`)
-
-### Badges / Content Chips
-
-**Smiley Orange Chip**
-- Background: `#ff7300`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 8px 12px
-- Font: 14px Headspace Apercu weight 500
-- Use: Content-mode chip ("Sleep")
-
-**Amber Chip**
-- Background: `#ffa500`
-- Text: `#000000`
-- Radius: 8px
-- Padding: 8px 12px
-- Font: 14px Headspace Apercu weight 500
-- Use: Content-mode chips ("Meditate", "Move", "Focus")
-
-### Inputs & Forms
-
-**Email / Float-Label Field**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: 1px solid `#d2d5de`
-- Radius: 8px
-- Padding: 24px 16px 8px
-- Height: 58px
-- Font: 16px Headspace Apercu
-- Use: Email capture with floating label
+The blue header action has the rest shadow `rgba(65, 61, 69, 0.2) 0px 2px 0px 0px`. The dark and cream links have `box-shadow: none` at rest.
 
 ### Navigation
-- Background: `#ffffff`
-- Links: `#44423f`, 16px Headspace Apercu weight 400
-- Logo: orange Headspace smiley left-aligned
-- CTA: Headspace Blue "Try for free" pill right-aligned (32px radius)
-- Use: Top horizontal nav ("Meditation", "Sleep", "Mindfulness", "Online therapy")
 
----
+The white header places the orange mark and wordmark at the left, navigation across the middle and the blue trial link at the right. The measured “For You” link is transparent, 53×18.4px, radius 0, padding 0 and `#2d2c2b` at 16px/400. Hover and press change weight to 700 and width to 55px; keyboard focus retains the regular weight and adds the browser's `auto` outline. That browser ring is not a brand focus token. The state capture also shows the expanded navigation panel.
 
-**Verified:** 2026-06-17 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://www.headspace.com (homepage, live computed style); https://www.headspace.com/subscriptions (subscriptions surface — plan cards, content chips); https://italic-studio.com/projects/headspace-rebrand/ (2024 rebrand case study — typeface + illustration system)
-**Tier 2 sources:** getdesign.md/headspace — 404 (not catalogued); styles.refero.design/?q=headspace — no dedicated Headspace style page surfaced (generic browse grid only)
-**Conflicts unresolved:** none
+### Cards, selectors and fields
+
+- **Need-selector tile:** “Stress less” is a `div` with button role, 429.7×78px, white fill, own computed color `#4b4c4d`, 2px `#e2ded9` border, radius 8px and padding 8px 16px 8px 24px. This is a rest observation; its states were not probed.
+- **Product-mode selector:** the survey's active “AI guidance” button has `#2d2c2b` / `#ffffff`, 48px height, radius 24px, padding 0 24px and 18px/700 type. Inactive “Guided meditations” uses `#f9f4f2` / `#2d2c2b`. These are surveyed rest variants, without an interaction-state measurement.
+- **Featured Ebb card link:** 318×434px, radius 16px and padding 0, with white visible heading and paragraph text and a blue “Trending” label. Its anchor's own default blue does not describe the visible title. No hover change was measured within the probe's scope. Press changed inherited browser link color on wrappers while the visible labels stayed the same; focus added a browser ring and image-source changes that remained after blur. This card stays out of the component tokens.
+- **Newsletter email field:** 283.3×58px, radius 8px, padding 24px 16px 8px, 16px/400, white fill, black text and 1px `#d2d5de` border at rest. Keyboard focus uses a browser ring. After empty-field blur, the evidence shows a red `#e01919` border and “Required”; this is persistent validation. No form was submitted. The field stays out of the component tokens.
+- **Circular audio control:** surveyed at 48×48px, radius 50%, padding 10px and `#2d2c2b` / `#ffffff`. Playback and its states were not tested.
+
+The fetched subscription HTML uses buttons for its Sleep and Meditate content chips. Their CSS declares 14px/500 type with 18px leading, radius 8px and padding 8px 12px at 48rem and above; their interactive states were not measured.
+
+The subscription HTML declares a 0.75rem (12px) radius and `#ffce00` fill for a loading panel in the plans container. It does not establish the final selected-plan card. Its trial-link CSS sets height to auto, a blue fill, white text, a 2rem radius, default padding of 1.125rem, and padding of 1.25rem 2.5rem at 48rem and above. No trial-link height was measured on that page. These remain stylesheet facts, without an interactive component token.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no saved content)** | Warm cream (`#f9f4f2`) canvas. Single charcoal (`#2d2c2b`) line in friendly tone, with one Headspace Blue CTA to explore the library. Illustration, not clutter. |
-| **Empty (no results)** | Soft grey (`#4b4c4d`) single line explaining nothing matched, plus a path back. Calm, never an error-sounding "No data". |
-| **Loading (content fetch)** | Skeleton cards on cream surface at final 24px-radius dimensions. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (audio buffer)** | Inline spinner inside the circular play control; the charcoal/orange play button stays in place. |
-| **Error (playback / network failed)** | Inline message in charcoal with a plain-language explanation and a gentle retry. Names what to do next, never a bare "Something went wrong". |
-| **Error (form validation)** | Field-level message below the input in a warm tone; describes what's valid, not just "Required". |
-| **Success (subscription started)** | Brief calm confirmation; next-step content surfaced immediately below. No celebratory emoji barrage — warmth, not hype. |
-| **Skeleton** | Cream (`#f9f4f2`) blocks at final dimensions, 24px radius, flat pulse. |
-| **Disabled** | Reduced opacity on surface and label together; Headspace Blue actions fade rather than turn grey to preserve brand read. |
+The measured action and navigation states are specified in §4. The Ebb card's unchanged hover is limited to its own styles and pseudo-elements, 11 descendants with their pseudo-elements, and three ancestor levels; it does not prove that every possible visual effect is absent. The email hover reading used the post-blur validation baseline; “Required” and its red border are not hover feedback. Default browser outlines are kept out of brand tokens.
+
+Empty libraries, no-results screens, audio buffering, playback failures, subscription success and disabled treatments were not observed.
 
 ## Do's and Don'ts
 
-### Do
-- Use the custom Headspace Apercu at weight 700 for every headline — the rounded-bold voice is the brand
-- Open on warm cream (`#f9f4f2`), not clinical white — it sets the calm tone
-- Reserve Headspace Blue (`#0061ef`) for the single primary "do this" action
-- Use the warm-orange family (`#ff7300` / `#ffa500` / gold `#ffce00`) for the emotion-driven content and illustration system
-- Use warm charcoal (`#2d2c2b`) for headings and soft grey (`#4b4c4d`) for body — not pure black
-- Apply tight negative tracking on headlines (-1.92px at 64px)
-- Use pill geometry — 32px buttons, 24px cards, circular play controls
-- Separate sections with color blocks and warm tints, not shadows
-
-### Don't
-- Use clinical white or a "dreary sea of blues and greys" — the rebrand exists to reject that
-- Set headlines in a light weight — display is always weight 700
-- Spread Headspace Blue across many elements — keep it the single action color
-- Use drop shadows for depth — Headspace is shadowless; reach for color and tint
-- Use pure black (`#000000`) for body text — reserve warm charcoal `#2d2c2b` / grey `#4b4c4d`
-- Use a substitute geometric sans — Headspace Apercu's smile-echoing curves are essential
-- Use sharp / square corners on buttons — everything interactive is a pill
-- Treat the orange as decorative only — it is the emotional core of the system
+- Build the public-site pattern with white ground, cream panels, charcoal text and the measured blue, charcoal and cream action variants.
+- Match the component's actual radius: pills, 16px featured cards and 8px fields coexist.
+- Preserve bold CTA labels and the measured authored action outlines.
+- Treat the card's visible child text as the color reference; inherited browser link colors are not its palette.
+- Keep native-app behavior, unseen responsive layouts and untested audio behavior outside this reference's instructions.
 
 ## Voice & Tone
 
-Headspace's voice is **warm, plain-spoken, and quietly encouraging** — a friend who happens to be a clinician, never a wellness brand shouting affirmations. The signature line "Be kind to your mind" sets the register: gentle, human, second-person, zero hype. The 2024 rebrand explicitly aimed to "destigmatise seeking care by making talking about mental health feel approachable and normalised," and the copy reflects that — it names hard things (stress, anxiety, sleep, depression) plainly and offers a low-pressure next step.
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Warm, declarative, human. "Be kind to your mind." Never clinical, never hype. |
-| Feature descriptions | Benefit-first, calm. "Live a healthier, happier, more well-rested life in just a few minutes a day." |
-| CTAs | Low-pressure invitations. "Try for free", "Get started", "Learn more". |
-| Content labels | Plain and friendly. "Sleep", "Meditate", "Move", "Focus", "Wake Up". |
-| Care / clinical copy | Approachable but credible. Names anxiety and depression directly to normalise them. |
-
-**Voice samples (verbatim from live surfaces):**
-- "Be kind to your mind" — subscriptions hero headline (the brand's core line). *(verified live 2026-06-17)*
-- "Live a healthier, happier, more well-rested life in just a few minutes a day. Get the science-backed mental health app for every moment." — homepage meta description. *(verified live 2026-06-17)*
-- "The mental health app for every moment" — homepage section headline (category-expansion framing). *(verified live 2026-06-17)*
-
-**Forbidden register**: clinical coldness, fear-based health urgency, toxic-positivity affirmations, undefined jargon, exclamation-heavy hype. The voice stays calm even when the topic is heavy.
+The public interface uses short, task-led labels: “Try for free,” “Check your coverage,” “Stress less,” and “Chat with Ebb.” The subscription response retains “Be kind to your mind.” The fetched homepage meta description still reads: “Live a healthier, happier, more well-rested life in just a few minutes a day. Get the science-backed mental health app for every moment. Try for free.” Headspace's own About page describes support across everyday life and different levels of care. A practical reading of this copy is to name the need or next action directly; this is an editorial writing guide. [About](https://www.headspace.com/about-us) · [Subscriptions](https://www.headspace.com/subscriptions)
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Headspace Blue (`#0061ef`)
-- Dark CTA: Charcoal Ink (`#2d2c2b`)
-- Background: Warm Cream (`#f9f4f2`)
-- Card surface: White (`#ffffff`)
-- Heading text: Charcoal Ink (`#2d2c2b`)
-- Body text: Body Grey (`#4b4c4d`)
-- Secondary text: Slate (`#44423f`)
-- Brand orange: Smiley Orange (`#ff7300`), Amber (`#ffa500`), Gold (`#ffce00`)
-- Emotion accents: Pink (`#ffa1cc`), Purple (`#3b197f`), Teal-Navy (`#27455c`)
-- Border: Tan (`#e2ded9`), Input (`#d2d5de`)
+“Build a Headspace-style public marketing page with white ground and cream `#f9f4f2` panels. Use loaded Headspace Apercu, charcoal `#2d2c2b` paragraph text and the measured component geometry. The header trial link is 48px high with a 32px radius, `#0061ef` fill, white 14px/700 text and a 2px lower shadow. Hover fills `#0040ea`; press fills `#0000db`, moves down 2px and makes the shadow transparent. Keyboard focus draws a solid 2px `#0040ea` outline at 1px offset.”
 
-### Example Component Prompts
-- "Create a hero on warm cream (#f9f4f2) background. Headline at 64px Headspace Apercu weight 700, line-height 1.0, letter-spacing -1.92px, color #2d2c2b. Primary CTA: #0061ef background, white text, 32px radius pill, 14px/700 — 'Try for free'. Secondary cream pill: #f9f4f2 background, #44423f text, 32px radius."
-- "Design a feature card: warm cream #f9f4f2 background, 24px radius, no shadow. Title 40px Headspace Apercu weight 700, letter-spacing -1.2px, #2d2c2b. Below it a color-block card top in #0061ef with 24px 24px 0 0 radius and white text."
-- "Build content-mode chips: smiley orange #ff7300 background, white text, 8px radius, 8px 12px padding, 14px/500 — 'Sleep'. Amber #ffa500 variants for 'Meditate', 'Move', 'Focus'."
-- "Create a segmented pill selector: active pill #2d2c2b fill with white 18px/700 label, 24px radius; inactive pills #f9f4f2 fill with #2d2c2b label."
-- "Design a subscription plan card: selected = gold #ffce00 fill, black text, 12px radius, 24px padding; unselected = white with 1px solid #44423f border."
-
-### Iteration Guide
-1. Headspace Apercu weight 700 for every headline; the curves echo the smile
-2. Warm cream (`#f9f4f2`) is the base, not white — this is the calm signal
-3. Headspace Blue (`#0061ef`) is the single action color — don't spread it
-4. Orange family (`#ff7300`/`#ffa500`/`#ffce00`) carries the emotion / illustration system
-5. No shadows — separate with color blocks and warm tints
-6. Pill geometry throughout — 32px buttons, 24px cards, circular play controls
-7. Text is warm charcoal `#2d2c2b` / grey `#4b4c4d`, never pure black for body
-8. Tight negative tracking on headlines, normal on body
-
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `category-chip`.** Text `#ffffff` on `#ff7300` measures 2.73:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+For a secondary action, use the measured cream link with `#44423f` text, 18px/700 type and radius 32px. Its hover fill is `#e5e7ec` and pressed fill is `#d2d5de`. **Substitute: none chosen.**
