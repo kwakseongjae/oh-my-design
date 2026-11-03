@@ -205,6 +205,12 @@
         "method": "live-inspect",
         "captured": "2026-11-03"
       },
+      "components.button-download.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-03"
+      },
       "components.button-download.rounded": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -308,6 +314,12 @@
         "captured": "2026-11-03"
       },
       "components.button-subscribe.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-03"
+      },
+      "components.button-subscribe.pressed": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -493,12 +505,12 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 24,
+      "warnings": 26,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 5,
-      "extension-component-property": 9,
+      "extension-component-property": 11,
       "contrast-ratio": 3,
       "orphaned-tokens": 7
     },
@@ -566,6 +578,12 @@
       {
         "severity": "warning",
         "rule": "broken-ref",
+        "path": "components.button-download.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
         "path": "components.button-download.use",
         "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
@@ -580,6 +598,12 @@
         "rule": "broken-ref",
         "path": "components.button-subscribe.hover",
         "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.button-subscribe.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
       },
       {
         "severity": "warning",
@@ -651,7 +675,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "824fe655172a29646a1f935437d8fe81bdf9c904830f146879e13d02186a454c",
+    "sourceSha256": "114c96285280b9911717244d9f9de32393a2ed52e99a3529756c020e9949f8d3",
     "overlay": null,
     "prose": [
       {

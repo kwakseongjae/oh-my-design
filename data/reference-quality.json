@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-02",
+  "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 540,
   "counts": {

@@ -61,7 +61,8 @@ components:
     height: 53px
     typography: 17px / 400 NanumSquareRound
     hover: 'box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px'
-    use: 앱 다운로드 — closing button; visible child label is teal. Rest shadow none. Hover adds the measured shadow; pressed unmeasured. Persistent ancestor reveal changes are excluded from focus tokens.
+    pressed: 'background: #a3f4c1; box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px'
+    use: '앱 다운로드 — closing button; visible child label is teal. Rest shadow none. Hover adds the measured shadow; pressed changes the fill to #a3f4c1 and retains that shadow. Persistent ancestor reveal changes are excluded from focus tokens.'
   button-subscribe:
     type: button
     backgroundColor: '#f9f7f2'
@@ -71,7 +72,8 @@ components:
     height: 53px
     typography: 17px / 400 NanumSquareRound
     hover: 'box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px'
-    use: 텔링미 소식 구독 — filled closing button leading to the newsletter route; distinct from the 12px-high footer button. Rest shadow none. Pressed unmeasured; no authored focus token.
+    pressed: 'background: #e6e4e2; box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px'
+    use: '텔링미 소식 구독 — filled closing button leading to the newsletter route; distinct from the 12px-high footer button. Rest shadow none. Pressed changes the fill to #e6e4e2 and retains the hover shadow; no authored focus token.'
 fonts:
   roles:
     display: NanumSquareRound
@@ -197,7 +199,7 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-All six measured controls report the raw computed transition `all 0s ease 0s`. This does not establish a site-wide duration or easing scale. During keyboard traversal the closing-section ancestors changed from opacity 0 to 1 and from a 10px vertical translation to none, and stayed there after blur; those observations belong to a reveal, not a focus animation. Press animation and reduced-motion behaviour were not measured.
+All six measured controls report the raw computed transition `all 0s ease 0s`; the three action controls report the same string in the pressed follow-up. This does not establish a site-wide duration or easing scale. During keyboard traversal the closing-section ancestors changed from opacity 0 to 1 and from a 10px vertical translation to none, and stayed there after blur; those observations belong to a reveal, not a focus animation. App Download and Subscribe pressed snapshots change the fill and retain the hover shadow, with computed transform `none` and opacity `1`; no scale or opacity change appears in the compared snapshots. Start's pressed state and reduced-motion behaviour remain unmeasured.
 
 ## Components
 
@@ -211,7 +213,7 @@ All three are actual `<button>` elements, with a border of `none`, a 20px radius
 | App Download — 앱 다운로드 | Closing section; `button.gRCfcu` | Mint | 18px 32px | 145.6 × 53px |
 | Subscribe — 텔링미 소식 구독 | Closing section; `button.dtXtOB`, not the footer instance | Cream | 18px 32px | 180.8 × 53px |
 
-Hover adds `box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px` to each button. No other compared property changed on hover. Pressed was **UNMEASURED** because `:active` did not match during mouse-down. Keyboard focus draws the browser's `auto` outline, which is not a brand focus token.
+Hover adds `box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px` to each button. No other compared property changed on hover. The follow-up measured App Download pressed from `rgb(242, 253, 246)` (`#f2fdf6`) to `rgb(163, 244, 193)` (`#a3f4c1`), and Subscribe from `rgb(249, 247, 242)` (`#f9f7f2`) to `rgb(230, 228, 226)` (`#e6e4e2`). Both retain the hover shadow; visible label colour, geometry, transform and opacity remain unchanged within the compared scope. Start pressed remains **UNMEASURED** because `:active` did not match during mouse-down. Keyboard focus draws the browser's `auto` outline, which is not a brand focus token.
 
 ### Footer navigation
 
@@ -228,8 +230,8 @@ The current homepage source declares cream clock tiles at 79 × 92px with a 20px
 | Key | Rest | Hover | Pressed | Keyboard focus |
 |---|---|---|---|---|
 | `start` | Mint, teal label, shadow none | Shadow becomes S | UNMEASURED; `:active` false | Browser `auto` outline only on the control |
-| `download` | Mint, teal label, shadow none | Shadow becomes S | UNMEASURED; `:active` false | Browser outline; ancestor reveal persists after blur and is excluded |
-| `subscribe` | Cream, teal label, shadow none | Shadow becomes S | UNMEASURED; `:active` false | Browser outline; ancestor reveal persists after blur and is excluded |
+| `download` | Mint, teal label, shadow none | Shadow becomes S | Fill `#f2fdf6` → `#a3f4c1`; shadow S; `:active` true | Browser outline; ancestor reveal persists after blur and is excluded |
+| `subscribe` | Cream, teal label, shadow none | Shadow becomes S | Fill `#f9f7f2` → `#e6e4e2`; shadow S; `:active` true | Browser outline; ancestor reveal persists after blur and is excluded |
 | `nav-service` | Transparent over cream, muted label | No change in compared scope | UNMEASURED; `:active` false | Browser outline only |
 | `nav-newsletter` | Transparent over cream, muted label | No change in compared scope | UNMEASURED; `:active` false | Browser outline only |
 | `nav-terms` | Transparent over cream, muted label | No change in compared scope | UNMEASURED; `:active` false | Browser outline only |
