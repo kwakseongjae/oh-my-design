@@ -71,7 +71,7 @@ const common = {
   notice: z.literal(NOTICE), absent: z.array(z.string()),
 };
 export const outputs = {
-  search_references: z.object({ ...common, results: z.array(summarySchema.extend({ match: z.array(z.string()), score: z.number() })) }),
+  search_references: z.object({ ...common, results: z.array(summarySchema.extend({ match: z.array(z.string()), score: z.number() })), search_mode: z.enum(["keyword", "hybrid"]) }),
   get_reference: z.object({
     ...common, reference: summarySchema,
     sections: z.array(z.object({ title: z.string(), characters: z.number().int() })),
