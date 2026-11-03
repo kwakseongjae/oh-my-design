@@ -6716,30 +6716,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "melon",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-01",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 50,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 75,
+    "evidenceClaimCount": 75,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 3,
-    "interactiveComponentCount": 2,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.75
+    "tier1SourceCount": 13,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "mercari",
@@ -13558,9 +13553,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 382,
+  "verified_v2": 383,
   "partial": 89,
-  "legacy_snapshot": 93,
+  "legacy_snapshot": 92,
   "total": 564
 } as const;
 
