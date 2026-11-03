@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 354,
-  "sources": 2828,
+  "references_with_verification_v2": 355,
+  "sources": 2839,
   "sources_by_kind": {
     "brand-asset": 169,
     "license": 139,
-    "official-doc": 1244,
-    "product-surface": 1276
+    "official-doc": 1251,
+    "product-surface": 1280
   },
   "references": {
     "104": {
@@ -6878,6 +6878,78 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www2.hm.com"
+        }
+      ]
+    },
+    "htc": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "investors.htc.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "legal-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "newsroom",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "newsroom-final",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
+        },
+        {
+          "id": "stylesheet",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.htc.com"
         }
       ]
     },

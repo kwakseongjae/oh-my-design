@@ -11511,6 +11511,68 @@
     ]
    }
   },
+  "htc": {
+   "hash": "9b1d01d13530f37d",
+   "terms": {
+    "en": [
+     "consumer electronics",
+     "vr headset",
+     "ai glasses",
+     "immersive technology",
+     "mobile devices",
+     "product showcase",
+     "large product imagery",
+     "mint green accent",
+     "white space layout",
+     "restrained grey captions",
+     "square product panels",
+     "black and white with mint",
+     "compact buttons"
+    ],
+    "ko": [
+     "소비자 가전",
+     "VR 헤드셋",
+     "AI 안경",
+     "몰입형 기술",
+     "모바일 기기",
+     "제품 쇼케이스",
+     "큰 제품 이미지",
+     "민트 그린 포인트",
+     "여백 많은 레이아웃",
+     "절제된 회색 캡션",
+     "사각형 제품 패널",
+     "작은 버튼"
+    ],
+    "ja": [
+     "家電",
+     "VRヘッドセット",
+     "AIグラス",
+     "没入型テクノロジー",
+     "モバイル端末",
+     "製品紹介",
+     "大きな製品画像",
+     "ミントグリーンのアクセント",
+     "余白の多いレイアウト",
+     "控えめなグレーの文字",
+     "四角い製品パネル",
+     "小さなボタン"
+    ],
+    "zh": [
+     "消費性電子",
+     "VR 頭戴裝置",
+     "AI 眼鏡",
+     "沉浸式科技",
+     "行動裝置",
+     "產品展示",
+     "大型產品圖像",
+     "薄荷綠強調色",
+     "留白版面",
+     "低調灰色說明文字",
+     "方形產品面板",
+     "精簡按鈕"
+    ]
+   }
+  },
   "huawei": {
    "hash": "268d7b4373e9ff85",
    "terms": {

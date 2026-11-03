@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 549,
+ "count": 550,
  "items": [
   {
    "id": "104",
@@ -4598,6 +4598,30 @@
     "Use Forma DJR with weights 400 / 600 / 700 only"
    ],
    "signature_motion": "*Durations:**",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "htc",
+   "primary_color_hex": "#4bd6b8",
+   "category": "consumer-tech",
+   "visual_theme": "HTC makes mobile and immersive technology products and platforms. Established on 15 May 1997, it describes an evolution from handheld computing and smartphones toward connected devices, virtual reality and VIVERSE. Its company philosophy, “Dare to Dream,” conn",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "vivid",
+    "immersive",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
