@@ -177,7 +177,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 172 -> 171 (2026-11-03): gmarket.
     // 171 -> 170 (2026-11-03): ubie.
     // 170 -> 169 (2026-11-03): fubon.
-    expect(flagged.length).toBe(169);
+    // 169 -> 168 (2026-11-03): frip.
+    expect(flagged.length).toBe(168);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

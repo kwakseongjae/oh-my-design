@@ -3541,27 +3541,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "frip",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 114,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 63,
+    "evidenceClaimCount": 63,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 8,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 9,
+    "componentCount": 2,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_noninteractive_only"
     ],
     "paletteGrounding": null
   },
@@ -13233,8 +13231,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 347,
-  "partial": 91,
+  "verified_v2": 348,
+  "partial": 90,
   "legacy_snapshot": 107,
   "total": 545
 } as const;
