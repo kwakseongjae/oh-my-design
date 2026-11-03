@@ -2,11 +2,14 @@
 name: Moin
 colors:
   primary: '#0082ff'
+  primary-hover: '#0068d0'
   primary-alt: '#007bff'
+  nav-hover: '#0056b3'
+  control-hover: '#e6f2ff'
   ink: '#1a1b22'
-  body: '#333333'
+  foreground: '#6b6c74'
+  charcoal: '#333333'
   dark: '#242424'
-  muted: '#6b6c74'
   muted-slate: '#818daa'
   grey: '#555555'
   faint: '#a9abb4'
@@ -17,68 +20,81 @@ colors:
   border: '#e0e0e0'
   border-cool: '#e9ecef'
   on-primary: '#ffffff'
+  navy-100: '#003264'
+  mint-100: '#00dba7'
+  purple-100: '#8566ff'
+  red-100: '#ff066f'
+  warm-grey-1: '#cacaca'
+  warm-grey-2: '#dfdfdf'
+  warm-grey-4: '#fbfbfb'
+  grey-scale-2: '#6684a2'
+  grey-scale-3: '#b2c1d0'
+  grey-scale-4: '#f2f5f7'
+  cool-grey-2: '#c0d2de'
+  cool-grey-3: '#d5e1e9'
+  cool-grey-4: '#eaf0f4'
+  black: '#000000'
 typography:
-  display-hero:
-    fontSize: 40px
-    fontWeight: 700
-    lineHeight: 1.2
-    use: Hero H1 headline, Spoqa Han Sans Bold
-  section-lg:
+  amount:
     fontSize: 32px
     fontWeight: 700
-    use: Large section titles + currency amount value
-  section:
-    fontSize: 24px
-    fontWeight: 700
-    use: Feature section headings
-  eyebrow:
-    fontSize: 16px
-    fontWeight: 700
-    use: Blue accent eyebrow labels (Speed, Lower fees)
-  body:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Standard body + UI text
+    lineHeight: 1.13
+    use: Measured sending amount; 36.16px line height, dark at rest and focus
   button:
     fontSize: 16px
     fontWeight: 700
-    use: Primary / dark button label
+    use: Measured header and dark review actions; 16px line height
+  exchange-action:
+    fontSize: 16px
+    fontWeight: 400
+    use: Measured exchange CTA; 16px line height
+  nav:
+    fontSize: 16px
+    fontWeight: 400
+    use: Measured student-discount link; 16px line height
+  amount-label:
+    fontSize: 14px
+    fontWeight: 400
+    use: Survey sending/receiving labels; 18px line height
 rounded:
+  none: 0px
   sm: 6px
   md: 8px
-  lg: 16px
-  xl: 20px
-  full: 9999px
 spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 48
-  section: 64
+  xxs: 5
+  xs: 10
+  s: 15
+  m: 20
+  l: 25
+  xl: 30
+  xxl: 50
+  xxl-2: 100
+  xxl-3: 200
 components:
   button-primary:
     type: button
     backgroundColor: '#0082ff'
     textColor: '#ffffff'
+    border: 1px solid rgba(0, 50, 100, 0.1)
     rounded: 6px
     height: 50px
-    padding: 8px 16px
-    border: 1px solid rgba(0,50,100,0.1)
+    padding: 0px
     typography: 16px / 400 Spoqa Han Sans
-    use: Currency-exchange 'Send money' CTA — the core product action
+    hover: 'bg #0068d0; border 1px solid rgba(0, 50, 100, 0.3); shadow rgba(0, 130, 255, 0.1) 0px 2px 4px 0px'
+    pressed: 'bg #0068d0; border 1px solid rgba(0, 50, 100, 0.3); shadow rgba(0, 130, 255, 0.1) 0px 2px 4px 0px'
+    use: Exchange widget button 송금 시작하기; 360px wide at 1440px viewport. Raw pointer observations with overlays hidden.
   button-nav:
     type: button
     backgroundColor: '#007bff'
     textColor: '#ffffff'
+    border: '1px solid #007bff'
     rounded: 6px
     height: 40px
     padding: 8px 16px
-    border: '1px solid #007bff'
     typography: 16px / 700 Spoqa Han Sans
-    use: Top-nav 'Send money' button
+    hover: 'bg #0056b3; border #0056b3'
+    pressed: 'bg #0056b3; border #0056b3'
+    use: Header button 송금 시작하기; 126px wide. Raw pointer observations with overlays hidden.
   button-dark:
     type: button
     backgroundColor: '#333333'
@@ -87,7 +103,9 @@ components:
     height: 52px
     padding: 14px 48px
     typography: 16px / 700 Spoqa Han Sans
-    use: Secondary 'More reviews' action
+    hover: opacity 0.9
+    pressed: opacity 0.9
+    use: Button 더 많은 후기 보러가기; opens the review destination in the product source. Raw pointer observations with overlays hidden.
   button-carousel:
     type: button
     backgroundColor: '#ffffff'
@@ -95,34 +113,21 @@ components:
     border: '1px solid #e0e0e0'
     rounded: 8px
     height: 48px
-    use: Review carousel prev / next arrow
-  input-amount:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#242424'
-    rounded: 6px
-    typography: 32px / 700 Spoqa Han Sans
-    states: 'active value turns #0082ff'
-    use: Currency amount field on the exchange widget
-  card-surface:
-    type: card
-    backgroundColor: '#f7f7f8'
-    textColor: '#1a1b22'
-    rounded: 16px
-    shadow: rgba(0,0,0,0.05) 0px 4px 15px
-    use: Tinted content / review card
-  card-cool:
-    type: card
-    backgroundColor: '#f3f5f8'
-    textColor: '#1a1b22'
-    border: '1px solid #efefef'
-    rounded: 16px
-    use: Cool-tinted feature block
-  eyebrow-label:
-    type: badge
-    textColor: '#0082ff'
-    typography: 16px / 700 Spoqa Han Sans
-    use: Blue accent eyebrow above feature headings (Speed, Easy to start, Lower fees)
+    padding: 0px
+    typography: 19.2px / 400 Spoqa Han Sans
+    hover: 'bg #e6f2ff; fg #007bff; border #e6f2ff'
+    pressed: 'bg #e6f2ff; fg #007bff; border #e6f2ff'
+    use: Next-review button, aria-label 다음 후기; 48px square. The arrow is a PNG; computed text color changes do not prove recoloring its pixels.
+  nav-student:
+    type: button
+    textColor: '#818daa'
+    rounded: 0px
+    height: 16px
+    padding: 0px
+    typography: 16px / 400 Spoqa Han Sans
+    hover: 'opacity 0.5; underline solid #818daa'
+    pressed: opacity 0.5; underline removed relative to hover
+    use: Header link 유학생 할인 to /event/univ, transparent over white. Its browser auto outline is not a brand token.
 fonts:
   roles:
     sans: Spoqa Han Sans
@@ -135,401 +140,186 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Moin (모인) is a Korean cross-border money-transfer fintech, and its site carries itself like a trustworthy utility rather than a flashy consumer app — clean, functional, and quietly confident. The canvas is pure white (`#ffffff`) broken up by soft near-white surfaces (`#f7f7f8` and the cooler `#f3f5f8`) that segment the page into calm, breathable bands. Text sits in a deep near-black navy (`#1a1b22`) for headings and a soft charcoal (`#333333`) for body copy — never a harsh pure black for the running text. The system's single signal color is a bright, optimistic azure (`#0082ff`), which the eye is trained to read as "the money moves here": it lights the currency-exchange CTA, the section eyebrow labels, and the active amount you type.
+Moin (모인) is a Korean cross-border remittance fintech. Its engineering About page dates the company to March 2016 and describes fast, convenient transfers at reasonable prices, with the safety of customers' money as its first priority. The current company page addresses both individuals and businesses, presents Moin BizPlus, and describes expansion through Japanese and European offices and partnerships with Wise and CurrencyCloud. The company introduction documents this wider offer; the captured homepage concentrates on previewing and starting a personal transfer. [Company About](https://themoin.github.io/about/), [current company page](https://www.themoin.com/company).
 
-The typographic personality is unmistakably Korean-product: everything is set in **Spoqa Han Sans** (with `Spoqa Han Sans JP` as the CJK fallback), the open-source hangul workhorse, running Bold (weight 700) for hero and section headings and a comfortable weight 400 for body. The scale is deliberately compact and pragmatic — a 40px hero H1 (`#1a1b22`), 32px large section titles, 24px feature headings, and a 16px body — reflecting a product that has real numbers, fees, and exchange rates to show rather than oversized marketing poetry. The one place the type gets loud is the currency input: the amount you send renders at a big 32px / 700, and flips from a dark `#242424` to the brand azure `#0082ff` the moment it becomes the active value.
+The public homepage combines a white canvas (#ffffff), near-black headings (#1a1b22), grey paragraph ink (#6b6c74), and bright azure actions (#0082ff). The header uses a distinct blue (#007bff). Large currency amounts, floating coin illustrations and pale surfaces give the page a financial identity without dense banking chrome. The hero has a pale vertical gradient; the exchange panel is translucent white with a small backdrop blur. These are observations and readings of the captured homepage, not company-authored design principles.
 
-What distinguishes Moin from heavier fintech peers is its restraint with depth. The system is almost entirely flat: separation comes from tinted surfaces and thin `#efefef` hairlines rather than elevation, and the only recurring drop shadow is a single, very soft `rgba(0, 0, 0, 0.05) 0px 4px 15px` on cards. Geometry stays gentle and consistent — a **6px** corner radius is the workhorse across buttons and inputs (by far the most common radius on the page), with 8px on carousel controls and 16px on content cards. The result is a fast, mobile-native, engineered-feeling interface: a remittance tool that looks precise and safe with your money, not decorative.
+The measured homepage is the Korean edition requested at **themoin.com/ko**, which resolved in the probe to **themoin.com/** with HTML **lang="ko"**. Its hero reads “어렵고 복잡한 해외송금, 이제 모인하세요!” Two amount rows, an exchange-rate summary and the send action occupy the right side of the desktop hero. Spoqa Han Sans supplies a weight-led hierarchy, with 32px/700 amounts and 16px interface labels.
 
-**Key Characteristics:**
-- Single azure signal color (`#0082ff`) reserved for the money action — CTA, eyebrows, active amount
-- A slightly deeper blue (`#007bff`) on the top-nav send button — a second, near-identical blue
-- Spoqa Han Sans throughout — Bold (700) for headings, 400 for body; open-source hangul-first
-- Compact, pragmatic type scale: 40px hero, 32px / 24px sections, 16px body
-- Near-black navy (`#1a1b22`) headings + charcoal (`#333333`) body instead of pure black
-- Near-flat depth: one soft `rgba(0, 0, 0, 0.05)` card shadow; tint + `#efefef` hairlines do the separating
-- 6px workhorse radius (buttons/inputs), 8px controls, 16px cards
-- Cool neutral ladder (`#6b6c74` → `#818daa` → `#a9abb4`) for text hierarchy
+The visual restraint is specific rather than universal: buttons rest without shadows, but the primary CTA gains a blue shadow on hover. Review cards have a soft shadow in the homepage source, and the promotional popup is a separate, more graphic layer. A builder should preserve these distinctions instead of treating every element as flat.
 
-### Primary tasks
+#### Primary tasks
 
-- Send money across a border in about five minutes
-- See the exchange rate up front, before committing to a transfer
-- Compare the amount that lands against what a bank would deliver
-- Read other senders' reviews before trusting the service with money
+- Preview the sending and receiving amounts and exchange rate.
+- Start a transfer and inspect its progress, as described by the homepage copy.
+- Explore student discounts and customer reviews.
+- Read the company introduction, which also describes business remittance.
 
 ### Brand Narrative
 
-Moin (모인) is a Korean fintech built around a single, concrete frustration: sending money across borders from Korea was slow, opaque, and expensive, buried in bank fees and hidden exchange-rate margins. Moin, operated by **Moin Inc.**, positioned itself as a licensed small-sum overseas-remittance provider under Korea's amended Foreign Exchange Transactions Act — one of the early independent players allowed to move money internationally outside the incumbent banks. Its founding premise, echoed by the homepage line *"Complex international remittances, now made simple"*, was to strip a historically bank-controlled process down to something a person could finish in about five minutes on their phone.
+The engineering About page frames Moin as customer-centred and puts safely sending customer money first. It dates incorporation to March 2016 and says the company aims to solve inefficiency and create value for people. That supports a product story about making cross-border transfers more convenient and legible. [Company About](https://themoin.github.io/about/).
 
-The product matured into a direct, lower-fee remittance service that competes on the two things that actually matter to someone wiring money home — how fast it arrives and how much it costs — surfacing both plainly rather than hiding them behind an application funnel. The brand positions itself as the sender's advocate inside a system historically tilted toward banks and their margins.
-
-What Moin refuses, visible in its design: the heavy, intimidating chrome of legacy banking (no shadow-stacked cards, no institutional navy-and-gold ornamentation) and the dark-pattern urgency of aggressive financial marketing. What it embraces: a flat, fast, mobile-native interface; a single trustworthy azure; a compact, honest type scale; and a currency widget that puts the real number — the amount and the fee — front and center.
+The current company page extends the story to individual and corporate users, Moin BizPlus, overseas offices and global payment partnerships. Its introduction and timeline disagree on the BizPlus launch year, so a year is not assigned here. The visual continuity is the amount-led, blue-action interface; expansion of the offer does not establish a documented visual rebrand. No opened first-party source supplied a rebrand history or an official named design system.
 
 ### Principles
 
-1. **The number is the product.** A remittance user is deciding based on amount received and fee paid. *UI implication:* give the currency amount the largest, boldest type on the page and light it azure when active — never bury the figure.
-2. **Simple beats feature-rich.** Sending money should feel like five minutes, not a bank application. *UI implication:* keep the primary flow to one obvious azure CTA; resist adding competing calls to action.
-3. **One action, one color.** Azure (`#0082ff`) means "move the money." *UI implication:* reserve the saturated azure exclusively for the send action and its accents so the next step is never ambiguous.
-4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* separate with tint and `#efefef` hairlines; keep to the single soft card shadow.
-5. **Trust through concreteness.** Fees, speed, and rates are stated plainly, not spun. *UI implication:* show real numbers and quantified savings; avoid vague superlatives in copy and UI labels.
+The official About page supports **customer-centred service**, **safe handling of customer money**, and **fast, convenient transfers at reasonable prices**. The following design implications are editorial recommendations grounded in the homepage:
+
+1. Give the sending and receiving amounts clear space and a stronger size than their labels.
+2. Distinguish the main transfer action through its measured azure fill and darkened pointer state.
+3. State the benefit and action plainly, while keeping application time distinct from transfer-arrival time.
+4. Use surface, border, translucency and the specific observed shadows to separate content.
+5. Preserve visible state differences control by control; blue receiving text is not evidence of a blue focus state.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Moin user segments (migrant workers, international students, and Koreans sending money abroad), not individual people.*
-
-**응웬 반 (Nguyen Van), 32, 안산.** A worker sending part of his monthly pay home to Vietnam. Cares about two numbers only — the fee and how fast it lands. Chose Moin after comparing the received amount against his bank and seeing it was both cheaper and faster.
-
-**김서연, 24, 서울.** A student wiring tuition and living costs to a sibling studying overseas. Values that the whole transfer finishes in a few minutes in the app and that the exchange rate is shown up front, not after she commits.
-
-**David Park, 41, 판교.** A Korean professional making occasional overseas payments to family. Distrusts remittance services that feel like a hard sell; trusts Moin's calm, plain interface and the fact that it states its fees as concrete figures rather than "great rates".
+First-party sources identify individual and business members and a student-discount audience; no researched personas, demographic profiles or user motivations were verified.
 
 ## Colors
 
-### Primary
-- **Moin Azure** (`#0082ff`): The primary brand and action color. Backs the currency-exchange "Send money" CTA, colors the eyebrow labels (Speed / Easy to start / Lower fees), and becomes the active amount value in the input. The system's single saturated hue.
-- **Send Blue** (`#007bff`): A slightly deeper companion blue used on the top-navigation "Send money" button and its border — near-identical to the azure but rendered as a distinct token in the header chrome.
+The survey found **55 computed root custom properties**. The following roles combine those raw properties with the rendered colour census and the six measured controls. Token names below are reference roles; raw first-party names are identified separately.
 
-### Ink & Text
-- **Ink Navy** (`#1a1b22`): Primary heading color for the hero H1 and feature section H2s — a very dark blue-black that reads as warm and trustworthy rather than stark.
-- **Body Charcoal** (`#333333`): The document default text color and the fill of the dark "More reviews" button.
-- **Dark** (`#242424`): The resting color of the large currency amount value before it becomes active.
-- **Muted** (`#6b6c74`): Secondary text, supporting copy.
-- **Muted Slate** (`#818daa`): A cool blue-grey for tertiary labels and metadata.
-- **Grey** (`#555555`): Icon color for the review carousel prev/next arrows.
-- **Faint** (`#a9abb4`): Lowest-emphasis text, placeholders, disabled labels.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary | #0082ff | --primary-100 and --typography-6; exchange CTA and feature accents |
+| Primary hover | #0068d0 | Exchange CTA hover and pressed fill |
+| Header action | #007bff | Header CTA rest fill and border |
+| Header hover | #0056b3 | Header CTA hover and pressed fill and border |
+| Control hover surface | #e6f2ff | Next-review button hover/pressed fill and border |
+| Heading ink | #1a1b22 | Rendered text census; homepage headline/feature source styles |
+| Foreground | #6b6c74 | Most frequent paragraph ink, 11 paragraphs in the census |
+| Charcoal | #333333 | Dark review action; also the review section's source textPrimary value |
+| Amount dark | #242424 | --typography-1 and sending amount at rest, hover, press and focus |
+| Muted slate | #818daa | Student-discount link and other navigation/legal links |
+| Grey | #555555 | Carousel button's computed color and seven paragraphs |
+| Faint | #a9abb4 | Five paragraphs; review-support copy in the homepage source |
+| Canvas / on-primary | #ffffff | Page surfaces and white text on filled actions |
+| Tinted surface | #f7f7f8 | Background census; footer source background |
+| Cool surface | #f3f5f8 | Background census; exchange-summary source |
+| Hairline | #efefef | 34 border-colour census entries; --warm-grey-3 |
+| Control border | #e0e0e0 | Carousel border; review-card source border |
+| Cool neutral | #e9ecef | Background census and footer source palette border value |
 
-### Surface & Neutral
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on azure/dark.
-- **Surface** (`#f7f7f8`): Warm near-white tinted surface for content and review cards.
-- **Surface Cool** (`#f3f5f8`): A cooler near-white for alternating feature blocks.
-- **Hairline** (`#efefef`): The dominant border color — thin dividers and card outlines in the near-shadowless system.
-- **Border** (`#e0e0e0`): Slightly stronger border for interactive controls (carousel arrows).
-- **Border Cool** (`#e9ecef`): A cool-toned hairline used on cool surfaces.
-- **On Primary** (`#ffffff`): Text/icon color on azure and dark fills.
+The root palette is wider than the blue seen on the main actions. Its opaque source values also include **navy #003264**, **mint #00dba7**, **purple #8566ff** and **red #ff066f**. These are measured custom properties; no success/error or other semantic meaning is assigned to them here.
+
+The neutral root values are warm grey **#cacaca**, **#dfdfdf**, **#efefef**, **#fbfbfb**; grey scale **#003264**, **#6684a2**, **#b2c1d0**, **#f2f5f7**; cool grey **#c0d2de**, **#d5e1e9**, **#eaf0f4**; white **#ffffff** and black **#000000**. The amount-row divider uses #eaf0f4 in both its captured ancestor style and homepage source. The presence of a black root property does not make black the homepage's paragraph colour.
+
+Each of primary, navy, red, mint and purple has raw 100/60/30/10/05 variants; the non-opaque values retain their alpha in the evidence report. For example, --primary-10 is #0082ff1a and --primary-05 is #0082ff0d. The machine-readable colour map contains only opaque six-digit values.
 
 ## Typography
 
-### Font Family
-- **Sans**: `Spoqa Han Sans` — used for every text element: hero, headings, body, buttons, nav.
-- **Fallback**: `Spoqa Han Sans JP`, then `Helvetica`, `Arial`, `sans-serif`.
+### Evidence classes
 
-### Hierarchy
+| Class | Finding |
+|---|---|
+| Official product-use statement | No opened Moin design or brand document names a product typeface. The font evidence comes from the live surface and its distributed stylesheet. |
+| Live-loaded | document.fonts reports Spoqa Han Sans 400 normal, Spoqa Han Sans 700 normal, and Spoqa Han Sans JP 400 normal. Body, h1 and button declarations begin with the two Spoqa families. |
+| Official distributed assets | Moin's linked SpoqaHanSans.css declares both families at 100, 300, 400 and 700. Each rule starts with a local() name and then Moin-hosted WOFF2, WOFF and TTF URLs. These formats were read as CSS declarations; no font binaries were downloaded. |
+| Declared-only | The 100 and 300 cuts of both families and JP 700 did not appear in the loaded set. Helvetica and Arial are named later in the fallback stack, without loaded-face evidence. Spoqa Han Sans Neo is named in separate account-verification/app-route styles in the bundled source; it was not loaded in this homepage census. None receives a specimen or a family token as a measured homepage face. |
+| Unresolved | The capture does not identify whether local() or a URL supplied each loaded face, nor the precise glyph runs rendered by JP 400. |
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Spoqa Han Sans | 40px (2.50rem) | 700 | ~1.2 | Hero H1, `#1a1b22` |
-| Section Large | Spoqa Han Sans | 32px (2.00rem) | 700 | -- | "Why so many users choose MOIN" + currency amount value |
-| Feature Heading | Spoqa Han Sans | 24px (1.50rem) | 700 | -- | "Fast, direct remittances you can trust", `#1a1b22` |
-| Eyebrow | Spoqa Han Sans | 16px (1.00rem) | 700 | -- | Azure accent labels (Speed / Easy to start / Lower fees), `#0082ff` |
-| Body | Spoqa Han Sans | 16px (1.00rem) | 400 | 1.5 | Standard reading and UI text, `#333333` |
-| Button | Spoqa Han Sans | 16px (1.00rem) | 400-700 | -- | CTA labels (700 on dark/nav, 400 on exchange CTA) |
+**Substitute: none chosen.**
 
-### Principles
-- **One family, weight-driven hierarchy**: Spoqa Han Sans does every job; contrast comes from weight (700 vs 400) and size, not from swapping typefaces.
-- **Compact, pragmatic scale**: the hero tops out at 40px, sections at 32/24px — restrained sizing for a product that shows real fees, rates, and numbers.
-- **Bold headings, plain body**: 700 carries every headline; 400 carries every paragraph.
-- **The number is the loudest element**: the currency amount runs at 32px / 700 and switches to azure `#0082ff` when active — the typographic climax of the exchange widget.
+The original Spoqa Han Sans and its JP family are open source under the font publisher's **SIL Open Font License 1.1**. The publisher describes the original family as a 2015 release prepared for Korean and Japanese web/app use, including customised numeral forms. This is font history, not evidence that Moin uses the newer Neo face. [Font publisher](https://spoqa.github.io/spoqa-han-sans/), [font license](https://raw.githubusercontent.com/spoqa/spoqa-han-sans/master/LICENSE).
+
+### Measured interface hierarchy
+
+| Role | Size / weight | Line height | Treatment |
+|---|---|---|---|
+| Sending amount | 32px / 700 | 36.16px | #242424, right-aligned in source; unchanged through measured states |
+| Amount labels | 14px / 400 | 18px | #242424 |
+| Exchange CTA | 16px / 400 | 16px | White on primary; letter spacing -0.13px |
+| Header send / review action | 16px / 700 | 16px | White on blue or charcoal |
+| Student nav link | 16px / 400 | 16px | #818daa; letter spacing -0.1px |
+| Carousel control | 19.2px / 400 | 19.2px | Computed button font; the visible arrow is an image |
+
+The homepage's **source CSS**, not a separate computed heading sample, retains a 40px/700 hero h1, 32px/700 review-section h2 with line-height 1.4, 24px/700 feature h2, and 16px/700 feature eyebrows. Feature description containers declare 18px, line-height 1.6 and #6b6c74 at desktop width. The hero's blue supporting paragraph is 20px/700 at line-height 1.5. This is a compact, weight-led hierarchy, with the amounts larger than ordinary interface text. A universal 16px paragraph scale and an approximate hero line height are not established by this capture.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 48px, 64px
-- Notable: buttons pad at 8px 16px (exchange CTA) up to 14px 48px (dark "More reviews" pill), giving secondary actions a generous, tappable footprint
+The desktop page places a text-led hero to the left of the exchange panel, then reviews, alternating image/text features, a student offer, a closing transfer CTA, partner logos and a footer. The surveyed header is 70px high; its send action is a smaller target than the main 50px-high action. The exchange control's 360px width makes it a prominent, easily located target.
 
-### Grid & Container
-- Centered single-column marketing flow anchored by the 40px hero H1
-- The currency-exchange widget (amount input + azure CTA) sits high on the page as the primary interactive object
-- Feature sections alternate white (`#ffffff`) and tinted (`#f7f7f8` / `#f3f5f8`) full-width bands
-- Review content lives in a horizontal carousel with `#e0e0e0`-bordered arrow controls
+The actual root spacing properties are **5, 10, 15, 20, 25, 30, 50, 100 and 200px**, named --spacing-xxs through --spacing-xxl-3. These are the declared token scale, not proof that every layout dimension follows it. Measured local padding includes 8px 16px on the header button, 14px 48px on the dark action, and zero on the exchange CTA.
 
-### Whitespace Philosophy
-- **Calm, functional breathing room**: generous vertical rhythm between sections keeps a numbers-heavy product feeling unhurried
-- **Flat segmentation**: bands separate by background tint and `#efefef` hairlines rather than heavy borders or shadow
-- **Numbers get room**: the exchange widget is given space and scale so the amount is the clear focal point
+The homepage source sets a 1200px maximum container, reduced to 1040px at max-width 1599px, and introduces 48px then 24px side padding on narrower layouts. Feature image/text pairs use a two-column grid with a 56px gap in source. These dimensions describe the homepage's declared layout, not an independently measured mobile grid.
 
-### Border Radius Scale
-- Small (6px): buttons, inputs — the workhorse radius
-- Medium (8px): carousel controls, small containers
-- Large (16px): content and feature cards
-- Extra (20px): larger rounded containers
-- Full (9999px / 50%): circular avatars and icon chips
+Use **6px** for the measured filled buttons, **8px** for carousel controls and **0px** for the bare amount input. The **16px** review-card and **20px** exchange-shell corners are source declarations. No numeric 9999px pill token was verified.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero compresses, exchange widget full-width |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full centered layout, multi-column feature bands, carousel |
-
-#### Touch Targets
-- Exchange CTA at 50px height, full-width on mobile — an unmistakable primary target
-- Dark secondary buttons at 52px with 14px 48px padding — comfortably tappable
-- Carousel arrow controls at 48px square with `#e0e0e0` border
-
-#### Collapsing Strategy
-- Hero: 40px headline scales down on mobile, weight 700 maintained
-- Exchange widget: amount input + azure CTA stack vertically on narrow viewports
-- Feature bands: multi-column → stacked single column
-- Tinted/white alternating sections keep full-width treatment
-- Review carousel: reduces visible cards, arrows remain
-
-#### Image Behavior
-- App screenshots and illustrations sit on flat tinted surfaces, carrying at most the soft `rgba(0, 0, 0, 0.05)` card shadow
-- Cards maintain 16px radius across breakpoints
+Only **1440×1000 desktop** was rendered for this measurement. The homepage source declares breakpoints at **1599px, 1135px and 799px**: the hero switches to a column at 1135px; its h1 declares 40 → 32 → 24px, and feature image/text pairs stack at 799px. Source review cards narrow to 280px at 799px. These are source declarations; touch behavior, narrower rendered layouts and cross-device stability were not tested.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, most surfaces, inline text |
-| Tint (Level 1) | `#f7f7f8` / `#f3f5f8` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | 1px solid `#efefef` (or cool `#e9ecef`) border | Card outlines, dividers |
-| Card (Level 3) | `rgba(0, 0, 0, 0.05) 0px 4px 15px 0px` | Soft lift on content/review cards |
-| Elevated (Level 4) | `rgba(36, 36, 36, 0.3) 0px 10px 20px 0px` | Rare emphasis on floating/hover elements |
+Measured resting controls have **box-shadow: none**. On the exchange CTA, hover and press introduce **rgba(0, 130, 255, 0.1) 0px 2px 4px 0px**. The exchange shell's captured ancestor uses 80% white and blur(4px), allowing the hero imagery to show through.
 
-**Shadow Philosophy**: Moin is a near-flat system. Live inspection found `box-shadow: none` across the hero, nav, and most sections, with a single soft `rgba(0, 0, 0, 0.05) 0px 4px 15px` recurring on cards and one deeper `rgba(36, 36, 36, 0.3)` reserved for emphasis. Depth is communicated primarily through flat tinted surfaces (`#f7f7f8`, `#f3f5f8`) and thin `#efefef` hairlines. This restraint keeps the remittance UI feeling fast, clean, and mobile-native rather than heavy — when the system needs to draw attention, it reaches for the azure `#0082ff`, not elevation.
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `rgba(0, 0, 0, 0.05) 0px 4px 15px 0px`
-- `shadow.elevated`: `rgba(36, 36, 36, 0.3) 0px 10px 20px 0px`
+The homepage source assigns review cards a soft **0 4px 15px rgba(0, 0, 0, 0.05)** shadow. A reusable modal declaration elsewhere in the same bundle contains **0 10px 20px 0 rgba(36, 36, 36, 0.3)**; that is source-only modal metadata, not a measured floating or hover state of a product card. Tint, thin borders and these specific shadows form a more accurate recipe than a universal “one shadow only” rule.
 
 ## Motion & Easing
 
-**Durations**:
+The exchange CTA's raw computed transition is **all 0.185s ease-in-out 0s**: **185ms**, ease-in-out. The header action reports **background-color, color, border-color, opacity 0.2s, 0.2s, 0.2s, 0.2s ease, ease, ease, ease 0s, 0s, 0s, 0s**: **200ms** for each listed property. The carousel button reports **background-color, color, border-color 0.2s, 0.2s, 0.2s ease, ease, ease 0s, 0s, 0s**, also **200ms**.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus, input value color flip |
-| `motion-standard` | 200ms | Card/section reveal, carousel slide, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel items |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet, consistent with the flat, fast aesthetic. The currency amount transitions its color to azure `#0082ff` on becoming active at `motion-fast`; review cards slide within the carousel at `motion-standard / ease-enter`; buttons respond with a subtle opacity/scale shift on press. No bounce or spring — a money-transfer product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://www.themoin.com/ko:
-- Hero H1 "Complex international remittances, now made simple with MOIN!" — Spoqa Han Sans 40px / weight 700 / color rgb(26,27,34) #1a1b22
-- Section H2 "Why so many users choose MOIN" — 32px / 700 / rgb(51,51,51)
-- Feature H2 "Fast, direct remittances you can trust" / "Done in five minutes, right in the app" — 24px / 700 / rgb(26,27,34) #1a1b22
-- Feature eyebrow H3 "Speed" / "Easy to start" / "Lower fees" — 16px / 700 / rgb(0,130,255) #0082ff
-- Exchange CTA "Send money" — bg rgb(0,130,255) #0082ff / radius 6px / 50px tall / border rgba(0,50,100,0.1)
-- Nav "Send money" — bg rgb(0,123,255) #007bff / radius 6px / 40px / 700
-- Dark "More reviews" — bg rgb(51,51,51) #333333 / white text / radius 6px / padding 14px 48px / 52px
-- Carousel arrows — bg #ffffff / color rgb(85,85,85) #555555 / border rgb(224,224,224) #e0e0e0 / radius 8px / 48px
-- body default color rgb(51,51,51) #333333, font "Spoqa Han Sans","Spoqa Han Sans JP"
-- top card shadow rgba(0,0,0,0.05) 0px 4px 15px (×10); box-shadow none across hero/nav/headings
-
-Second surface — https://themoin.github.io/ (MOIN 모인 기술 블로그, official engineering blog,
-"© 2026 ALL RIGHTS RESERVED MOIN Inc."): brand-owned, confirms company identity; runs a
-generic Montserrat blog theme, so product tokens (§1-9) are sourced from themoin.com, not the blog.
-
-Voice samples (§10) are verbatim from the live homepage (hero H1, feature H2 headings).
-
-Brand narrative (§11): Moin (모인) is a Korean cross-border remittance fintech operated by Moin Inc.,
-a licensed small-sum overseas remittance provider under Korea's Foreign Exchange Transactions Act.
-These are widely documented public facts about the company; specific corporate details beyond the
-homepage were not directly quoted from a verified Moin statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Moin user segments
-(migrant workers, international students, Koreans sending money abroad). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "the number is the product", "flat and fast as a rejection of legacy
-banking chrome") are editorial readings connecting Moin's observed design to its positioning,
-not directly sourced Moin statements.
--->
+The dark review action, student link and sending input each report **all 0s ease 0s**. These strings were copied from control identities in states.json. No carousel-slide duration, hero-reveal duration, custom cubic-bezier curve, spring behavior or reduced-motion result was measured.
 
 ## Components
 
-### Buttons
+Pointer observations below were collected with **hideOverlays: true** because a promotional popup covered the homepage. All hover snapshots matched :hover, and all pressed snapshots matched :active. Numerical samples precede the crop phase; the tool reports that those pseudo-classes stopped matching during several crops. Keyboard focus was reached by real Tab presses. Focus changes are browser auto outlines, so no brand focus token is published.
 
-**Exchange CTA (Primary)**
-- Background: `#0082ff`
-- Text: `#ffffff`
-- Radius: 6px
-- Padding: 8px 16px
-- Height: 50px
-- Border: 1px solid `rgba(0,50,100,0.1)`
-- Font: 16px Spoqa Han Sans weight 400
-- Use: The currency-exchange "Send money" CTA — the core product action
+| Control | Identity at rest | Authored pointer treatment |
+|---|---|---|
+| Exchange CTA, “송금 시작하기” | Button; 360×50px; 6px radius; padding 0; 16px/400; #0082ff / #ffffff; 1px solid rgba(0, 50, 100, 0.1); no shadow | Hover and press: #0068d0; border alpha becomes 0.3; shadow rgba(0, 130, 255, 0.1) 0px 2px 4px 0px |
+| Header send, “송금 시작하기” | Button; 126×40px; 6px; padding 8px 16px; 16px/700; #007bff / #ffffff; matching 1px blue border; no shadow | Hover and press: fill and border #0056b3 |
+| More reviews, “더 많은 후기 보러가기” | Button; 239.4×52px; 6px; padding 14px 48px; 16px/700; #333333 / #ffffff; no border or shadow | Hover and press: opacity 1 → 0.9 |
+| Student discount, “유학생 할인” | Link to /event/univ; 76.6×16px; 0px; padding 0; 16px/400; transparent over white; #818daa; no border/shadow | Hover: opacity 0.5 and underline. Press: opacity 0.5, underline removed, browser auto outline appears |
+| Next review, aria-label “다음 후기” | Button; 48×48px; 8px; padding 0; 19.2px/400; #ffffff / #555555; 1px solid #e0e0e0; no shadow | Hover and press: fill/border #e6f2ff, computed color #007bff |
 
-**Nav Send (Header)**
-- Background: `#007bff`
-- Text: `#ffffff`
-- Radius: 6px
-- Padding: 8px 16px
-- Height: 40px
-- Border: 1px solid `#007bff`
-- Font: 16px Spoqa Han Sans weight 700
-- Use: Top-navigation "Send money" button
+The next-review arrow is a 32×32px PNG. Its computed inherited color changes, but the captured source URL stays the same; this does not establish a change in the raster arrow's pixel colour.
 
-**Dark Secondary**
-- Background: `#333333`
-- Text: `#ffffff`
-- Radius: 6px
-- Padding: 14px 48px
-- Height: 52px
-- Font: 16px Spoqa Han Sans weight 700
-- Use: Lower-emphasis actions such as "More reviews"
+**Amount field:** the sending input is 251.1×47px, radius **0px**, padding 0, 32px/700, white background, #242424 text, and no border, shadow or drawn outline. Hover, press and keyboard focus produced no compared visual changes. It remains useful geometry for reproduction, but is omitted from interactive component tokens. The receiving amount was already #0082ff at rest in the survey; blue therefore cannot be described as a focus-induced change.
 
-**Carousel Control**
-- Background: `#ffffff`
-- Text: `#555555`
-- Border: 1px solid `#e0e0e0`
-- Radius: 8px
-- Height: 48px
-- Use: Review carousel previous / next arrows
-
-### Inputs & Forms
-
-**Currency Amount**
-- Background: `#ffffff`
-- Text: `#242424`
-- Radius: 6px
-- Font: 32px Spoqa Han Sans weight 700
-- Active: value color shifts to `#0082ff`
-- Use: The send/receive amount field on the exchange widget
-
-### Cards & Containers
-
-**Tinted Surface Card**
-- Background: `#f7f7f8`
-- Text: `#1a1b22`
-- Radius: 16px
-- Shadow: `rgba(0, 0, 0, 0.05) 0px 4px 15px 0px`
-- Use: Content and review cards
-
-**Cool Feature Block**
-- Background: `#f3f5f8`
-- Text: `#1a1b22`
-- Border: 1px solid `#efefef`
-- Radius: 16px
-- Use: Cool-tinted feature section block
-
-### Badges
-
-**Azure Eyebrow**
-- Text: `#0082ff`
-- Font: 16px Spoqa Han Sans weight 700
-- Use: Accent eyebrow label above feature headings ("Speed", "Easy to start", "Lower fees")
-
-### Navigation
-- Background: `#ffffff`
-- Text: `#333333`
-- Font: 16px Spoqa Han Sans
-- Right-aligned azure/`#007bff` "Send money" CTA at 6px radius
-- Use: Top horizontal navigation
-
----
-
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.themoin.com/ko , https://themoin.github.io/
-**Tier 2 sources:** getdesign.md/moin (no result — "No designs found for 'moin'") ; styles.refero.design/?q=moin (not listed — 96 fuzzy substring hits, none the Moin fintech)
-**Conflicts unresolved:** none
+**Containers and labels, source CSS:** review cards are white, 16px rounded, bordered #e0e0e0 and declare 0 4px 15px rgba(0, 0, 0, 0.05), with 30px padding and 442px height. The 20px-rounded exchange shell declares rgba(255, 255, 255, 0.8) with backdrop blur(4px); its translucent background and blur also appear in the CTA's captured ancestor style. The identified #f3f5f8 exchange-summary block declares 12px radius. A generic cool feature card was not verified. Blue feature eyebrows declare 16px/700. No interactive state was measured for these static containers or labels.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no transfer history)** | White canvas. Single Ink Navy (`#1a1b22`) line explaining no transfers yet, with one azure `#0082ff` CTA to start a transfer. No illustration clutter. |
-| **Empty (saved recipients, none yet)** | Muted (`#6b6c74`) single line: nothing saved yet, plus a path to add a recipient. Calm and honest. |
-| **Loading (rate fetch)** | Inline azure activity within the exchange widget; the previous amount stays visible. Flat pulse consistent with the near-shadowless system. |
-| **Loading (transfer submitting)** | Skeleton rows on `#f7f7f8` tinted surface at final dimensions, 16px radius — no heavy shimmer. |
-| **Error (rate/transfer failed)** | Inline message in Ink Navy with a plain-language explanation and a retry. Never a bare generic error — states what to do next. |
-| **Error (form validation)** | Field-level message below the input describing what is valid, not just "required"; input border tightens rather than shouting. |
-| **Success (transfer submitted)** | Brief inline confirmation in calm tone with the received amount and arrival estimate linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f7f7f8` blocks at final dimensions, 16px radius, flat pulse. |
-| **Disabled** | Faint (`#a9abb4`) text on reduced-opacity surface; azure actions fade rather than turn grey, preserving the brand read. |
+| Control | Hover | Pressed | Keyboard focus |
+|---|---|---|---|
+| Exchange CTA | #0068d0 fill; border alpha 0.3; blue shadow | Same as hover; no extra delta | Browser auto outline only |
+| Header send | Fill/border #0056b3 | Same as hover; no extra delta | Browser auto outline only |
+| More reviews | Opacity 0.9 | Same as hover; no extra delta | Browser auto outline only |
+| Student link | Opacity 0.5; underline | Opacity 0.5; underline removed; browser auto outline | Browser auto outline only |
+| Sending input | No compared change | No compared change | No compared change |
+| Next review | Fill/border #e6f2ff; computed color #007bff | Same as hover; no extra delta | Browser auto outline only |
+
+“No compared change” covers the element, its pseudo-elements, descendants and three ancestor levels with their pseudo-elements, using the probe's style/attribute property list. The sending input has no descendants. It does not prove absence of changes in siblings, external raster pixels or other uninspected rendering. No empty, loading, error, success, skeleton or disabled product state was measured.
 
 ## Do's and Don'ts
 
-### Do
-- Set every text element in Spoqa Han Sans — Bold (700) for headings, 400 for body
-- Reserve azure (`#0082ff`) for the money action — CTA, eyebrows, active amount
-- Use near-black navy (`#1a1b22`) for headings and charcoal (`#333333`) for body text
-- Keep the type scale compact — 40px hero, 32/24px sections, 16px body
-- Separate sections with flat tint (`#f7f7f8` / `#f3f5f8`) and `#efefef` hairlines, not heavy shadow
-- Use a 6px radius on buttons and inputs, 16px on cards
-- Let the currency amount be the loudest element (32px / 700) and flip it to azure when active
-- Keep depth to the single soft `rgba(0, 0, 0, 0.05)` card shadow
+These are implementation recommendations drawn from the measured surface, not an official Moin design manifesto.
 
-### Don't
-- Introduce a second saturated accent color — azure is the only signal hue
-- Use pure black (`#000000`) for body text — reserve navy `#1a1b22` and charcoal `#333333`
-- Stack heavy drop shadows for elevation — Moin is near-flat
-- Oversize marketing headlines beyond the 40px hero — the scale is deliberately pragmatic
-- Spread azure across decorative elements — it dilutes the "this is the action" signal
-- Swap in a display typeface for headings — Spoqa Han Sans owns every role
-- Use sharp 0px corners on interactive controls — 6px is the baseline
-- Use faint grey (`#a9abb4`) for primary content — it is for disabled/placeholder only
+- Use the live-loaded Spoqa families and the observed 400/700 contrast; keep the 32px amount distinct from 16px interface text.
+- Preserve the two blue action fills and their different hover blues.
+- Use #1a1b22 headings and the measured #6b6c74 paragraph foreground; keep #333333 for contexts actually using it.
+- Preserve the primary CTA's zero padding and the header action's 8px 16px padding.
+- Keep the bare amount input square and dark when focused; use the already-blue receiving amount as a separate role.
+- Use the measured opacity response for the dark action and navigation link.
+- Keep review cards white with a light border and soft shadow; use tinted backgrounds in the sections that have them.
+- Do not infer error, loading, disabled, mobile or brand focus treatments from these six controls.
 
 ## Voice & Tone
 
-Moin's voice is **plain, reassuring, and efficient** — a cross-border money service that treats sending money abroad as something that should be fast, cheap, and unintimidating. The English hero line *"Complex international remittances, now made simple with MOIN!"* sets the register: it names a real pain (remittance is complicated and expensive) and answers it directly, without jargon or hype. Copy speaks to migrant workers, students, and anyone sending money home as a competent adult who wants speed, low fees, and certainty — not a target for financial upsell.
+The homepage opens by naming remittance complexity and answering it with the brand name. Feature copy uses short benefit labels, including “빠른 속도”, “간편 송금 신청” and “저렴한 수수료”. A heading says “5분이면 끝! 앱으로 간편하게 송금 신청”. These exact Korean strings occur in the opened homepage bundle; the hero is also visible in the survey screenshot. [Homepage source](https://www.themoin.com/build/moin.700a455520ec93ed2fd7.js).
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Problem → simple answer. "Complex international remittances, now made simple with MOIN!" Direct, benefit-first. |
-| Feature eyebrows | One-word plain claims. "Speed", "Easy to start", "Lower fees". |
-| Feature headings | Concrete promise. "Fast, direct remittances you can trust", "Done in five minutes, right in the app". |
-| CTAs | Action-first, low-pressure. "Send money", "More reviews". |
-| Trust / savings copy | Concrete and quantified. Fee-savings framed as real numbers, not vague "best rates". |
-
-**Voice samples (verbatim from live homepage):**
-- "Complex international remittances, now made simple with MOIN!" — hero headline (problem → simple answer). *(verified live 2026-07-02)*
-- "Fast, direct remittances you can trust" — feature heading (speed + trust). *(verified live 2026-07-02)*
-- "Done in five minutes, right in the app" — feature heading (concrete time promise). *(verified live 2026-07-02)*
-
-**Forbidden register**: fear-based or urgency-driven sales pressure, undefined financial/FX jargon left unexplained, hype superlatives on routine actions, exclamation-stacked marketing beyond the single friendly hero line.
+As an editorial reading, the voice is plain and benefit-led: time, cost and the next action are named directly. The “five minutes” phrase describes applying for a transfer, not guaranteed arrival of money. Numerical speed or saving comparisons are Moin's marketing claims, not independent findings in this design reference. No official prohibited-writing register was found.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action / azure: Moin Azure (`#0082ff`)
-- Nav send button: Send Blue (`#007bff`)
-- Heading text: Ink Navy (`#1a1b22`)
-- Body text: Charcoal (`#333333`)
-- Amount (resting): Dark (`#242424`)
-- Secondary text: Muted (`#6b6c74`)
-- Tertiary label: Muted Slate (`#818daa`)
-- Carousel icon: Grey (`#555555`)
-- Faint / disabled: Faint (`#a9abb4`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface (`#f7f7f8`), Surface Cool (`#f3f5f8`)
-- Hairline: `#efefef` (cool: `#e9ecef`), stronger border `#e0e0e0`
+“Build a Korean remittance homepage on #ffffff. Use the loaded Spoqa Han Sans 400/700 families. Place two large 32px/700 amount rows beside the hero copy. Keep the sending input #242424 with 0px corners and no state-induced colour change. Use a 360×50px exchange action with #0082ff fill, white 16px/400 text, 6px corners and zero padding. Hover and press use #0068d0, a 30% navy border and the measured blue shadow.”
 
-### Example Component Prompts
-- "Create a remittance hero on white. Headline at 40px Spoqa Han Sans weight 700, color #1a1b22. Below it a currency-exchange widget: amount input at 32px weight 700 (#242424, turning #0082ff when active) and an azure CTA — #0082ff background, white text, 6px radius, 8px 16px padding, 50px tall."
-- "Design a feature block: #f3f5f8 background, 1px solid #efefef border, 16px radius, no heavy shadow. Azure eyebrow label at 16px Spoqa Han Sans weight 700 (#0082ff), then a 24px weight-700 heading in #1a1b22, body 16px weight 400 #333333."
-- "Build a review card: #f7f7f8 background, 16px radius, soft shadow rgba(0,0,0,0.05) 0px 4px 15px. Carousel arrows as 48px white squares with 1px solid #e0e0e0 border, #555555 icon, 8px radius."
-- "Create a top nav: white header, #333333 links in Spoqa Han Sans, right-aligned #007bff 'Send money' button at 6px radius."
+“Build the header action separately: 126×40px, #007bff fill/border, white 16px/700 text, 6px corners and 8px 16px padding; hover and press use #0056b3. The student-discount link sits transparently over white in #818daa, dims to opacity 0.5 and gains an underline on hover.”
 
-### Iteration Guide
-1. Spoqa Han Sans everywhere; 700 for headings, 400 for body
-2. Azure (`#0082ff`) is the single action color — don't spread it
-3. Near-flat: use `#f7f7f8` / `#f3f5f8` tint and `#efefef` hairlines; one soft card shadow only
-4. 6px radius on buttons/inputs, 16px on cards
-5. Headings `#1a1b22`, body `#333333` — never pure black
-6. Compact type scale: 40 / 32 / 24 / 16
-7. Make the currency amount the focal point and flip it to azure when active
+“Use a charcoal review action at #333333, 52px high, 6px corners, 14px 48px padding and white 16px/700 text. Hover and press use opacity 0.9. Pair it with 48px white carousel squares: #e0e0e0 border, 8px radius, #e6f2ff hover/press fill and border. Preserve the supplied raster arrow.”
 
----
+The source-backed supporting hierarchy is 40px hero, 32px review heading, 24px feature heading and 16px eyebrow; refer to §3 for its declaration-only measurement boundary.
 
 ## Governance
 

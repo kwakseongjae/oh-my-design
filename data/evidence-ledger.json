@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 348,
-  "sources": 2743,
+  "references_with_verification_v2": 349,
+  "sources": 2755,
   "sources_by_kind": {
-    "brand-asset": 159,
-    "license": 138,
-    "official-doc": 1192,
-    "product-surface": 1254
+    "brand-asset": 162,
+    "license": 139,
+    "official-doc": 1198,
+    "product-surface": 1256
   },
   "references": {
     "104": {
@@ -10622,6 +10622,84 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "modusign.co.kr"
+        }
+      ]
+    },
+    "moin": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "company-about",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "themoin.github.io"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "engineering-blog",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "themoin.github.io"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "img.themoin.com"
+        },
+        {
+          "id": "font-license",
+          "kind": "license",
+          "captured": "2026-11-03",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "font-publisher",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "spoqa.github.io"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "agreements.themoin.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "agreements.themoin.com"
+        },
+        {
+          "id": "product-code",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www.themoin.com"
         }
       ]
     },

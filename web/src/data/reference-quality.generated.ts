@@ -6864,29 +6864,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "moin",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 108,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 115,
+    "evidenceClaimCount": 115,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 8,
+    "tier1SourceCount": 12,
+    "componentCount": 5,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -13231,8 +13226,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 348,
-  "partial": 90,
+  "verified_v2": 349,
+  "partial": 89,
   "legacy_snapshot": 107,
   "total": 545
 } as const;
