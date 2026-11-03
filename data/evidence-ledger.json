@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 378,
-  "sources": 3106,
+  "references_with_verification_v2": 379,
+  "sources": 3127,
   "sources_by_kind": {
-    "brand-asset": 198,
+    "brand-asset": 200,
     "license": 141,
-    "official-doc": 1402,
-    "product-surface": 1365
+    "official-doc": 1413,
+    "product-surface": 1373
   },
   "references": {
     "104": {
@@ -20864,6 +20864,138 @@
           "kind": "product-surface",
           "captured": "2026-10-16",
           "host": "www.zhihu.com"
+        }
+      ]
+    },
+    "zigbang": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "business-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "sp.zigbang.com"
+        },
+        {
+          "id": "business-notice",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "sp.zigbang.com"
+        },
+        {
+          "id": "career-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "career.zigbang.com"
+        },
+        {
+          "id": "careers",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "career.zigbang.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.zigbang.com"
+        },
+        {
+          "id": "font-pretendard",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "zuix2.zigbang.io"
+        },
+        {
+          "id": "font-spoqa",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "s.zigbang.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.zigbang.com"
+        },
+        {
+          "id": "legal-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "s.zigbang.com"
+        },
+        {
+          "id": "map",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.zigbang.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "static.zigbang.com"
+        },
+        {
+          "id": "privacy-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "s.zigbang.com"
+        },
+        {
+          "id": "rebrand-en",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "rebrand-ko",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.zigbang.com"
+        },
+        {
+          "id": "static-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "static.zigbang.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "static.zigbang.com"
+        },
+        {
+          "id": "terms-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "s.zigbang.com"
         }
       ]
     },
