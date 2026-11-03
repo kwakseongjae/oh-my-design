@@ -12799,6 +12799,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "xpeng",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 92,
+    "evidenceClaimCount": 92,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
+    "conflictCount": 0,
+    "tier1SourceCount": 15,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "xrex",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -13211,10 +13233,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 346,
+  "verified_v2": 347,
   "partial": 91,
   "legacy_snapshot": 107,
-  "total": 544
+  "total": 545
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

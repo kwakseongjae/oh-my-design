@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 346,
-  "sources": 2719,
+  "references_with_verification_v2": 347,
+  "sources": 2734,
   "sources_by_kind": {
-    "brand-asset": 152,
+    "brand-asset": 159,
     "license": 138,
-    "official-doc": 1181,
-    "product-surface": 1248
+    "official-doc": 1187,
+    "product-surface": 1250
   },
   "references": {
     "104": {
@@ -17834,6 +17834,102 @@
           "kind": "official-doc",
           "captured": "2026-11-03",
           "host": "agree.xiaohongshu.com"
+        }
+      ]
+    },
+    "xpeng": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "business-license",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "component-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "dialog-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "form-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "physical-ai",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
+        },
+        {
+          "id": "shared-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "theme-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "xps01.xiaopeng.com"
+        },
+        {
+          "id": "website-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.xiaopeng.com"
         }
       ]
     },
