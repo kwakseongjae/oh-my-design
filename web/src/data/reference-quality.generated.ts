@@ -5361,33 +5361,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "kakaot",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-27",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 166,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 13,
-    "interactiveComponentCount": 7,
+    "tokenSource": "live-extract",
+    "claimCount": 45,
+    "evidenceClaimCount": 45,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 17,
+    "conflictCount": 0,
+    "tier1SourceCount": 17,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
     "statedComponentCount": 3,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_contradicted",
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.176
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kaonavi",
@@ -13371,9 +13363,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 362,
+  "verified_v2": 363,
   "partial": 89,
-  "legacy_snapshot": 102,
+  "legacy_snapshot": 101,
   "total": 553
 } as const;
 
