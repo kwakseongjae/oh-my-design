@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 372,
-  "sources": 3035,
+  "references_with_verification_v2": 373,
+  "sources": 3046,
   "sources_by_kind": {
     "brand-asset": 185,
     "license": 141,
-    "official-doc": 1362,
-    "product-surface": 1347
+    "official-doc": 1370,
+    "product-surface": 1350
   },
   "references": {
     "104": {
@@ -17204,6 +17204,78 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "studio": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.design"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.inc"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "studio.inc"
+        },
+        {
+          "id": "company-home",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.inc"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "studio.design"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "studio.design"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.design"
+        },
+        {
+          "id": "mission",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.inc"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.design"
+        },
+        {
+          "id": "rebrand-release",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.inc"
+        },
+        {
+          "id": "terms-global",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "studio.design"
         }
       ]
     },

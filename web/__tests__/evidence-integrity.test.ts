@@ -186,7 +186,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 163 -> 162 (2026-11-03): kakaot.
     // 162 -> 161 (2026-11-03): wavve.
     // 161 -> 160 (2026-11-03): yogiyo.
-    expect(flagged.length).toBe(160);
+    // 160 -> 159 (2026-11-03): studio.
+    expect(flagged.length).toBe(159);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
