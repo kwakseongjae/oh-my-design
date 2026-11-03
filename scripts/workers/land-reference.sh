@@ -8,7 +8,7 @@
 # worker's report and re-measured its headline claim (AUTONOMY_LOOP §4 ②′); this script does the
 # mechanical part of the 2026-11-02 landing sequence and stops for review:
 #   copy -> build-registry + quality (prints the reference's status) -> build-reference-ast (MCP metadata)
-#   -> query:references:data -> sync-catalog (tests) -> evidence:ledger -> build-reference-ast -> gen-llms-full
+#   -> search terms (Claude, changed references only) -> query:references:data -> sync-catalog (tests) -> evidence:ledger -> build-reference-ast -> gen-llms-full
 #   -> check-counts.
 # It exits non-zero if the reference is not verified_v2 or a test fails. The motion-value ratchet in
 # web/__tests__/evidence-integrity.test.ts usually drops by one per re-verified reference: lower it with a
@@ -16,6 +16,7 @@
 # is rerun alone before it is believed.
 set -eo pipefail
 SRC=$1; ID=$2; WT=$3
+REPO=$(cd "$(dirname "$0")/../.." && pwd)
 [ -f "$SRC/out/DESIGN.md" ] && [ -f "$SRC/out/reference.json" ] && [ -f "$SRC/verification.md" ] || { echo "missing outputs in $SRC" >&2; exit 2; }
 [ -d "$WT/web/references" ] || { echo "not a catalog worktree: $WT" >&2; exit 2; }
 NEW=0; [ -d "$WT/web/references/$ID" ] || NEW=1
@@ -30,6 +31,9 @@ STATUS=$(npx tsx -e "import { REFERENCE_QUALITY } from './src/data/reference-qua
 echo "[$ID]$([ $NEW = 1 ] && echo ' (new)') $STATUS"
 case "$STATUS" in verified_v2*) ;; *) echo "not verified_v2; stopping before the sync" >&2; exit 3 ;; esac
 npm run -s build-reference-ast | tail -1
+# Search terms for MCP search_references (Claude; only references whose text changed). Needs ANTHROPIC_API_KEY in the
+# main checkout's web/.env.local; without it the reference is still found by keywords and the next run fills it in.
+[ -f scripts/build-search-descriptors.mjs ] && node --env-file-if-exists="$REPO/web/.env.local" --no-warnings scripts/build-search-descriptors.mjs 2>&1 | grep -E "to \(re\)write|wrote|failed|have terms" || true
 (cd .. && npm run -s query:references:data | tail -1)
 node scripts/sync-catalog.mjs 2>&1 | grep -E "fingerprints\]|count\] targets|FAIL|AssertionError|Tests " || true
 npm run -s evidence:ledger | tail -1

@@ -98,17 +98,34 @@ async function main() {
       return;
     }
     const client = new Anthropic();
+    const params = (item) => ({
+      model: MODEL,
+      max_tokens: 2000,
+      system: SYSTEM,
+      output_config: { effort: "low", format: { type: "json_schema", schema: SCHEMA } },
+      messages: [{ role: "user", content: item.text }],
+    });
+    const record = (item, message) => {
+      const text = message?.content?.find((block) => block.type === "text")?.text ?? "";
+      let terms = null;
+      try { terms = cleanTerms(JSON.parse(text)); } catch { terms = null; }
+      if (terms) entries[item.id] = { hash: item.hash, terms };
+      return !!terms;
+    };
+    // A landing adds one or two references: call directly instead of waiting on a batch.
+    if (todo.length <= 5) {
+      let failed = 0;
+      for (const item of todo) {
+        try { if (!record(item, await client.messages.create(params(item)))) failed++; } catch { failed++; }
+      }
+      console.log(`[search-descriptors] wrote ${todo.length - failed}, failed ${failed} (direct)`);
+      return write(items, entries);
+    }
     const batch = await client.messages.batches.create({
       // custom_id allows only [a-zA-Z0-9_-]{1,64}; some reference ids have dots, so send the position.
       requests: todo.map((item, i) => ({
         custom_id: `r${i}`,
-        params: {
-          model: MODEL,
-          max_tokens: 2000,
-          system: SYSTEM,
-          output_config: { effort: "low", format: { type: "json_schema", schema: SCHEMA } },
-          messages: [{ role: "user", content: item.text }],
-        },
+        params: params(item),
       })),
     });
     console.log(`[search-descriptors] batch ${batch.id} submitted`);
@@ -123,16 +140,15 @@ async function main() {
     for await (const result of await client.messages.batches.results(batch.id)) {
       const item = byId.get(result.custom_id);
       if (!item) continue;
-      if (result.result.type !== "succeeded") { failed++; continue; }
-      const text = result.result.message.content.find((block) => block.type === "text")?.text ?? "";
-      let terms = null;
-      try { terms = cleanTerms(JSON.parse(text)); } catch { terms = null; }
-      if (!terms) { failed++; continue; }
-      entries[item.id] = { hash: item.hash, terms };
+      if (result.result.type !== "succeeded" || !record(item, result.result.message)) failed++;
     }
     console.log(`[search-descriptors] wrote ${todo.length - failed}, failed ${failed} (failed ones keep no terms and are retried next run)`);
   }
 
+  write(items, entries);
+}
+
+function write(items, entries) {
   const sorted = Object.fromEntries(Object.keys(entries).sort().map((id) => [id, entries[id]]));
   writeFileSync(OUT, `${JSON.stringify({ model: MODEL, prompt_version: PROMPT_VERSION, entries: sorted }, null, 1)}\n`);
   console.log(`[search-descriptors] ${Object.keys(sorted).length}/${items.length} references have terms → ${path.relative(process.cwd(), OUT)}`);
