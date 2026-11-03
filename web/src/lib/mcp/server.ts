@@ -17,7 +17,7 @@ export function createMcpServer(): McpServer {
     }
   }
   server.registerTool("search_references", {
-    description: "Search the public catalog by id, name, Hangul display name, country, category or Overview. Mixes keyword and semantic scores when embeddings are available; otherwise uses keywords. Verified references rank first. search_mode reports keyword or hybrid.",
+    description: "Search the public catalog by id, name, Hangul display name, country, category, Overview, and search terms written ahead of time for each reference in English, Korean, Japanese and Chinese (mood, product type, colour families), so vague requests like \"calm blue fintech\" work. No query leaves the server. Verified references rank first. search_mode is hybrid when the term index is present, otherwise keyword.",
     inputSchema: inputs.search_references, outputSchema: outputs.search_references, annotations,
   }, (args) => call("search_references", () => searchReferences(args)));
   server.registerTool("get_reference", {

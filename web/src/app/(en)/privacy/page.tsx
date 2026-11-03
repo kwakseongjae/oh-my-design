@@ -103,9 +103,7 @@ export default function PrivacyPage() {
           <p>
             We use <strong className="font-medium text-foreground">Google Analytics</strong> for analytics, plus{" "}
             <strong className="font-medium text-foreground">Vercel</strong> (hosting and cookieless page-view analytics) and{" "}
-            <strong className="font-medium text-foreground">Upstash</strong> (counters), and{" "}
-            <strong className="font-medium text-foreground">OpenRouter</strong> to compute embeddings for the connector&apos;s
-            vibe search. We also use{" "}
+            <strong className="font-medium text-foreground">Upstash</strong> (counters). We also use{" "}
             <strong className="font-medium text-foreground">Google Search Console</strong> to see aggregated, anonymized search
             performance (no personal data).
           </p>
@@ -123,7 +121,7 @@ export default function PrivacyPage() {
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
             records aggregate call counts per tool and reference, plus a daily count of non-MCP GET requests.
             These counters contain nothing about the person: no search text, IP address, account, or raw User-Agent.
-            Rate limiting uses a keyed digest that expires after 60 seconds. When hybrid search is enabled, we send the query text to OpenRouter to compute an embedding. We do not store the query text.
+            Rate limiting uses a keyed digest that expires after 60 seconds. Search runs entirely on our server: the query text is not sent to any other service and is not stored.
           </p>
         </Section>
 

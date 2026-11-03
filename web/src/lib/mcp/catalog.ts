@@ -4,8 +4,8 @@ import { REGISTRY, type RefEntry } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { hasKoDetail } from "@/lib/i18n/ko-detail";
 import { parseV3 } from "../../../scripts/lib/design-md-v3.mjs";
-import { hasHangul, searchFields, sectionsOf } from "./search-data.mjs";
-import { semanticScores } from "./semantic";
+import { descriptorIndex, hasHangul, searchFields, sectionsOf } from "./search-data.mjs";
+import descriptorData from "@/data/search-descriptors.generated.json";
 import {
   ASPECTS, STATES, TOKEN_GROUPS, CatalogError, envelope,
   type Component, type Evidence, type Fonts, type Json, type SourcedValue,
@@ -234,16 +234,19 @@ function componentsOf(reference: Reference, selected?: string): Component[] {
   });
 }
 
-/** Unicode keywords plus optional corpus-matched semantic scores; verified first. */
-export async function searchReferences(args: ToolInput<"search_references">) {
+/** Built once: id -> Claude-written search terms (all locales). Empty when the index is missing. */
+const descriptors = descriptorIndex(descriptorData, REGISTRY.map(({ id }) => id));
+
+/** Unicode keywords over the catalog fields plus the build-time descriptor terms; verified first. */
+export function searchReferences(args: ToolInput<"search_references">) {
   const terms = unique((args.query ?? "").normalize("NFKC").toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []);
   const countries = args.country?.map((country) => country.toLowerCase());
   const categories = args.category?.map((category) => category.toLowerCase());
   const candidates = REGISTRY.filter((entry) => (!countries?.length || countries.includes(entry.country.toLowerCase())) && (!categories?.length || categories.includes(entry.category.toLowerCase())) && (args.status !== "verified" || REFERENCE_QUALITY_BY_ID[entry.id]?.status === "verified_v2"));
-  const similarities = terms.length && candidates.length ? await semanticScores(args.query!) : undefined;
   const results = candidates.map((entry) => {
     const overview = terms.length ? load(entry.id).sections.find((section) => section.title === "Overview")?.markdown ?? "" : undefined;
     const fields = searchFields(entry, overview);
+    if (terms.length && descriptors.has(entry.id)) fields.descriptors = descriptors.get(entry.id)!;
     const match: string[] = [];
     let score = 0;
     let matchedTerms = 0;
@@ -251,18 +254,15 @@ export async function searchReferences(args: ToolInput<"search_references">) {
       let found = false;
       for (const [field, text] of Object.entries(fields)) if (text.normalize("NFKC").toLowerCase().includes(term)) {
         match.push(field); found = true;
-        score += ["id", "name", "display_name_ko"].includes(field) ? 10 : field === "overview" ? 1 : 3;
+        score += ["id", "name", "display_name_ko"].includes(field) ? 10 : field === "overview" ? 1 : field === "descriptors" ? 4 : 3;
       }
       if (found) matchedTerms++;
     }
     // OR retrieval with a coverage bonus keeps descriptive multiword searches useful.
-    // Up to 50 points lets semantics outweigh incidental substring matches,
-    // while preserving the original keyword score and lexical match fields.
-    const semantic = similarities ? 50 * Math.max(0, similarities.get(entry.id) ?? 0) : 0;
-    return { ...summaryFor(entry.id), match: unique(match), score: score + matchedTerms * 5 + semantic };
+    return { ...summaryFor(entry.id), match: unique(match), score: score + matchedTerms * 5 };
   }).filter((result) => !terms.length || result.score > 0);
   results.sort((a, b) => Number(b.status === "verified_v2") - Number(a.status === "verified_v2") || b.score - a.score || a.id.localeCompare(b.id));
-  return envelope({ results: results.slice(0, args.limit ?? 8), search_mode: similarities ? "hybrid" as const : "keyword" as const });
+  return envelope({ results: results.slice(0, args.limit ?? 8), search_mode: descriptors.size ? "hybrid" as const : "keyword" as const });
 }
 
 export function getReference({ id }: ToolInput<"get_reference">) {

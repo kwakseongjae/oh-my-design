@@ -43,17 +43,24 @@ export function searchFields(entry, overview) {
   return fields;
 }
 
-/** @param {unknown} vector @param {number} dimension @returns {vector is number[]} */
-export function isEmbeddingVector(vector, dimension) {
-  return Array.isArray(vector) && vector.length === dimension
-    && vector.every((value) => typeof value === "number" && Number.isFinite(value))
-    && vector.some((value) => value !== 0) && Number.isFinite(Math.hypot(...vector));
-}
+const DESCRIPTOR_LOCALES = ["en", "ko", "ja", "zh"];
 
-/** Validated, nonzero vectors of the same dimension. @param {number[]} a @param {number[]} b */
-export function cosineSimilarity(a, b) {
-  const aNorm = Math.hypot(...a);
-  const bNorm = Math.hypot(...b);
-  const cosine = a.reduce((sum, value, i) => sum + (value / aNorm) * (b[i] / bNorm), 0);
-  return Math.max(-1, Math.min(1, cosine));
+/**
+ * id -> the Claude-written search terms of every locale, joined, for references that are still in the catalog.
+ * Malformed entries are skipped, so a bad or stale file degrades to keyword-only search instead of failing.
+ * @param {unknown} data the parsed search-descriptors.generated.json
+ * @param {readonly string[]} ids the current registry ids
+ * @returns {Map<string, string>}
+ */
+export function descriptorIndex(data, ids) {
+  const entries = data && typeof data === "object" && !Array.isArray(data) ? /** @type {any} */ (data).entries : undefined;
+  const index = new Map();
+  if (!entries || typeof entries !== "object") return index;
+  for (const id of ids) {
+    const terms = entries[id]?.terms;
+    if (!terms || typeof terms !== "object") continue;
+    const words = DESCRIPTOR_LOCALES.flatMap((locale) => Array.isArray(terms[locale]) ? terms[locale].filter((t) => typeof t === "string") : []);
+    if (words.length) index.set(id, words.join(" · "));
+  }
+  return index;
 }

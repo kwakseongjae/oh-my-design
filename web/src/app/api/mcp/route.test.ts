@@ -14,9 +14,10 @@ const mocks = vi.hoisted(() => ({
   counters: [] as unknown[][],
   windows: new Map<string, number>(),
   failRedis: false,
-  embeddings: {} as Record<string, unknown>,
+  // The catalog builds its term index at import, so the fixture is set here, before any import runs.
+  descriptors: { model: "test", prompt_version: 1, entries: { toss: { hash: "t", terms: { en: ["calm", "blue", "fintech app"], ko: ["차분한"], ja: ["落ち着いた"], zh: ["沉穩"] } } } },
 }));
-vi.mock("@/data/embeddings.generated.json", () => ({ default: mocks.embeddings }));
+vi.mock("@/data/search-descriptors.generated.json", () => ({ default: mocks.descriptors }));
 vi.mock("next/server", () => ({ after: (fn: () => unknown) => mocks.scheduled.push(fn) }));
 vi.mock("@/lib/kv", async (importOriginal) => ({
   ...await importOriginal<typeof import("@/lib/kv")>(),
@@ -39,8 +40,6 @@ beforeEach(() => {
   mocks.counters.length = 0;
   mocks.windows.clear();
   mocks.failRedis = false;
-  for (const key of Object.keys(mocks.embeddings)) delete mocks.embeddings[key];
-  vi.stubEnv("OPENROUTER_API_KEY", undefined);
   vi.stubEnv("OMD_KV_REST_API_TOKEN", "contract-test-secret");
   vi.stubGlobal("fetch", vi.fn(() => { throw new Error("MCP tools must not make external requests"); }));
 });
@@ -124,10 +123,10 @@ describe.each([
   });
 });
 
-it.each(["토스", "toss", "calm blue fintech"])("finds toss through keyword search: %s", async (query) => {
+it.each(["토스", "toss", "calm blue fintech"])("finds toss through search: %s", async (query) => {
   const result = await tool("search_references", { query });
   const data = outputs.search_references.parse(result.structuredContent);
-  expect(data.search_mode).toBe("keyword");
+  expect(data.search_mode).toBe("hybrid");
   expect(data.results.map((item) => item.id)).toContain("toss");
   const toss = data.results.find((item) => item.id === "toss")!;
   expect(toss.display_name_ko).toBe("토스");
@@ -146,20 +145,14 @@ it("ranks verified references ahead of all unverified matches and filters with c
   for (const reference of filtered.results) expect(reference).toMatchObject({ country: "KR", category: "fintech", status: "verified_v2" });
 });
 
-it("serves hybrid results through MCP and keeps query text out of KV counters", async () => {
-  Object.assign(mocks.embeddings, {
-    model: "baai/bge-m3", dim: 2, reference_ast: CATALOG.reference_ast,
-    vectors: Object.fromEntries(REGISTRY.map(({ id }) => [id, id === "toss" ? [1, 0] : [0, 1]])),
-  });
-  vi.stubEnv("OPENROUTER_API_KEY", "test-only");
-  vi.stubGlobal("fetch", vi.fn(async () => Response.json({ data: [{ index: 0, embedding: [1, 0] }] })));
+it("serves hybrid results through MCP, calls no outside service and keeps query text out of KV counters", async () => {
+  vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("search must not call out"); }));
   const query = "private-person@example.test calm blue fintech";
   const result = outputs.search_references.parse((await tool("search_references", { query })).structuredContent);
   expect(result.search_mode).toBe("hybrid");
   expect(result.results[0].id).toBe("toss");
-  expect(fetch).toHaveBeenCalledTimes(1);
-  const [, init] = vi.mocked(fetch).mock.calls[0];
-  expect(JSON.parse(init!.body as string).input).toBe(query);
+  expect(result.results[0].match).toContain("descriptors");
+  expect(fetch).not.toHaveBeenCalled();
   await flushCounters();
   const telemetry = JSON.stringify(mocks.counters);
   expect(telemetry).not.toContain(query);
