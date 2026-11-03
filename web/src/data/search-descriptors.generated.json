@@ -28491,6 +28491,66 @@
     ]
    }
   },
+  "subaru": {
+   "hash": "8ff861fd43a71cfa",
+   "terms": {
+    "en": [
+     "automotive brand website",
+     "car maker homepage",
+     "vehicle lineup browsing",
+     "test drive and dealer links",
+     "clean white interface",
+     "photographic hero carousel",
+     "deep blue accent",
+     "outlined pill buttons",
+     "square vehicle cards",
+     "black text on white",
+     "safety information",
+     "japanese consumer site"
+    ],
+    "ko": [
+     "자동차 브랜드 사이트",
+     "자동차 제조사 홈페이지",
+     "차량 라인업",
+     "시승 신청",
+     "깨끗한 흰색 화면",
+     "사진 중심 캐러셀",
+     "짙은 파랑 강조",
+     "알약형 외곽선 버튼",
+     "각진 차량 카드",
+     "안전 정보",
+     "일본 자동차 사이트"
+    ],
+    "ja": [
+     "自動車ブランドサイト",
+     "車メーカー公式サイト",
+     "車種ラインナップ",
+     "試乗予約",
+     "見積もり依頼",
+     "白基調の画面",
+     "写真主体のカルーセル",
+     "ネイビーブルーのアクセント",
+     "アウトライン型ピルボタン",
+     "角型の車両カード",
+     "安全情報",
+     "安心と愉しさ"
+    ],
+    "zh": [
+     "汽車品牌網站",
+     "車廠官方首頁",
+     "車款陣容瀏覽",
+     "預約試駕",
+     "經銷商連結",
+     "白色乾淨介面",
+     "攝影主視覺輪播",
+     "深藍色強調",
+     "外框膠囊按鈕",
+     "方形車款卡片",
+     "安全資訊",
+     "日本消費者網站"
+    ]
+   }
+  },
   "sumup": {
    "hash": "088d9e3f8ab2187b",
    "terms": {

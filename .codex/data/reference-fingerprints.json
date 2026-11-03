@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 548,
+ "count": 549,
  "items": [
   {
    "id": "104",
@@ -11333,6 +11333,30 @@
    ],
    "has_personas": false,
    "category_raw": "online-learning"
+  },
+  {
+   "id": "subaru",
+   "primary_color_hex": "#014e98",
+   "category": "automotive",
+   "visual_theme": "Subaru makes automobiles and aerospace products. Its company profile records establishment on 15 July 1953, with origins in 1917. Fuji Heavy Industries adopted the company name **SUBARU** on 1 April 2017; the announcement describes a commitment to providing va",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "sumup",
