@@ -24247,6 +24247,68 @@
     ]
    }
   },
+  "rakutenbank": {
+   "hash": "2ed03759db8c51f8",
+   "terms": {
+    "en": [
+     "online bank",
+     "internet banking",
+     "japanese bank",
+     "account opening",
+     "retail banking",
+     "white surface red accent",
+     "red and white",
+     "blue text links",
+     "campaign carousel",
+     "dense navigation",
+     "card benefits row",
+     "pill button",
+     "service directory"
+    ],
+    "ko": [
+     "인터넷 은행",
+     "온라인 은행",
+     "일본 은행",
+     "계좌 개설",
+     "개인 금융",
+     "흰 배경 빨간 포인트",
+     "빨강과 흰색",
+     "파란 텍스트 링크",
+     "캠페인 캐러셀",
+     "복잡한 내비게이션",
+     "혜택 카드 행",
+     "알약형 버튼"
+    ],
+    "ja": [
+     "ネット銀行",
+     "インターネットバンキング",
+     "口座開設",
+     "個人向け銀行",
+     "白地に赤",
+     "赤と白",
+     "青いテキストリンク",
+     "キャンペーンカルーセル",
+     "多層ナビゲーション",
+     "特典カード",
+     "丸型ボタン",
+     "サービス一覧"
+    ],
+    "zh": [
+     "網路銀行",
+     "線上銀行",
+     "日本銀行",
+     "開戶",
+     "個人金融",
+     "白底紅色重點",
+     "紅白配色",
+     "藍色文字連結",
+     "活動輪播",
+     "多層導覽",
+     "優惠卡片列",
+     "膠囊按鈕"
+    ]
+   }
+  },
   "rakutensec": {
    "hash": "8e30df705cab465f",
    "terms": {
