@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 540,
+ "count": 541,
  "items": [
   {
    "id": "104",
@@ -4103,6 +4103,30 @@
    ],
    "has_personas": false,
    "category_raw": "recipe-box e-commerce"
+  },
+  {
+   "id": "gov24",
+   "primary_color_hex": "#256ef4",
+   "category": "government",
+   "visual_theme": "Government24 (정부24) is the Republic of Korea's government service portal. Its [official overview](https://plus.gov.kr/portal/custcntr/gov24intrcn/gov24otln/) brings civil services, benefit guidance and policy information together, with participating agencies' ",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "editorial",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
   },
   {
    "id": "govuk",

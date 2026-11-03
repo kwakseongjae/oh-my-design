@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-03",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 540,
+  "count": 541,
   "counts": {
-    "verified_v2": 340,
+    "verified_v2": 341,
     "partial": 92,
     "legacy_snapshot": 108,
-    "total": 540
+    "total": 541
   },
   "items": [
     {
@@ -1965,6 +1965,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "gov24",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 21,
       "conflict_count": 0,
       "reason_codes": []
     },

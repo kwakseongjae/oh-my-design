@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 340,
-  "sources": 2617,
+  "references_with_verification_v2": 341,
+  "sources": 2638,
   "sources_by_kind": {
-    "brand-asset": 134,
+    "brand-asset": 142,
     "license": 138,
-    "official-doc": 1123,
-    "product-surface": 1222
+    "official-doc": 1133,
+    "product-surface": 1225
   },
   "references": {
     "104": {
@@ -5528,6 +5528,138 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.gousto.co.uk"
+        }
+      ]
+    },
+    "gov24": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "copyright",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-ai",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-ai-custom",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-common",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-fonts",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-import",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-main",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-plus25",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "css-variable",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.mois.go.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "krds-case",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-home",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "krds-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.krds.go.kr"
+        },
+        {
+          "id": "notices",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "plus.gov.kr"
         }
       ]
     },
