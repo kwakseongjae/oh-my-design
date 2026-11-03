@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-03T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 563,
+ "count": 564,
  "items": [
   {
    "id": "104",
@@ -2858,6 +2858,28 @@
    ],
    "has_personas": false,
    "category_raw": "healthcare-booking"
+  },
+  {
+   "id": "doda",
+   "primary_color_hex": "#007fc3",
+   "category": "consumer-tech",
+   "visual_theme": "doda is a Japanese career-change service combining job listings, recruitment advisers and scouting. Its terms identify the operator as **パーソルキャリア株式会社**. The brand began as the **DODA** job-information magazine in 1989; PERSOL's history records the 2018 change ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "doordash",

@@ -7122,6 +7122,64 @@
     ]
    }
   },
+  "doda": {
+   "hash": "a9653e37c6e26ee3",
+   "terms": {
+    "en": [
+     "job change service",
+     "career change site",
+     "job listings",
+     "recruitment advisers",
+     "scouting service",
+     "blue and orange",
+     "white panels",
+     "compact job info",
+     "orange signup button",
+     "blue navigation",
+     "job seekers",
+     "consistent components"
+    ],
+    "ko": [
+     "이직 서비스",
+     "구인 정보",
+     "채용 공고",
+     "커리어 어드바이저",
+     "스카우트",
+     "파란색 주황색",
+     "흰색 패널",
+     "촘촘한 정보 밀도",
+     "주황 가입 버튼",
+     "파란 내비게이션",
+     "구직자"
+    ],
+    "ja": [
+     "転職サービス",
+     "求人情報",
+     "転職エージェント",
+     "スカウト",
+     "青とオレンジ",
+     "白いパネル",
+     "コンパクトな求人表示",
+     "オレンジの登録ボタン",
+     "青いナビゲーション",
+     "転職希望者",
+     "コンポーネント統一"
+    ],
+    "zh": [
+     "轉職服務",
+     "求職網站",
+     "職缺資訊",
+     "求職顧問",
+     "人才獵頭",
+     "藍色與橘色",
+     "白色面板",
+     "緊湊資訊排版",
+     "橘色註冊按鈕",
+     "藍色導覽列",
+     "轉職求職者"
+    ]
+   }
+  },
   "doordash": {
    "hash": "0a553405551ca65c",
    "terms": {
