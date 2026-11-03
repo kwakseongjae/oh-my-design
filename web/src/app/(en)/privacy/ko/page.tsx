@@ -75,7 +75,8 @@ export default function PrivacyKoPage() {
         <Section n={3} title="개인정보의 처리 및 보유 기간">
           <p>Google Analytics 이벤트 데이터는 GA4 설정값(최대 14개월)에 따라 보유
             후 파기합니다. 자체 인기 카운터는 누적 합계만 보관하며 개인정보를
-            포함하지 않습니다.</p>
+            포함하지 않습니다. 자체 단축 링크(oh-my-design.kr/go/…)는 링크·날짜·국가별
+            클릭 합계만 집계하며, 쿠키를 쓰지 않고 IP 주소와 User-Agent를 저장하지 않습니다.</p>
         </Section>
 
         <Section n={4} title="개인정보 처리의 위탁">
