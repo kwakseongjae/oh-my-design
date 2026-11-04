@@ -18879,6 +18879,71 @@
     ]
    }
   },
+  "mizuho": {
+   "hash": "87ea24c819525941",
+   "terms": {
+    "en": [
+     "retail banking",
+     "japanese bank website",
+     "deposits and loans",
+     "foreign exchange services",
+     "white canvas",
+     "deep blue headings",
+     "pale blue panels",
+     "rounded white cards",
+     "soft shadows",
+     "photographic hero banner",
+     "two-row header",
+     "red notice alerts",
+     "account opening"
+    ],
+    "ko": [
+     "소매 은행",
+     "일본 은행 사이트",
+     "예금 대출",
+     "외환 서비스",
+     "흰 배경",
+     "진한 파란 제목",
+     "연한 파란 패널",
+     "둥근 흰색 카드",
+     "부드러운 그림자",
+     "사진 히어로 배너",
+     "2단 헤더",
+     "빨간 공지",
+     "계좌 개설"
+    ],
+    "ja": [
+     "個人向け銀行",
+     "銀行サイト",
+     "預金と融資",
+     "為替サービス",
+     "白基調",
+     "濃い青の見出し",
+     "淡い青のパネル",
+     "角丸の白いカード",
+     "柔らかい影",
+     "写真入りヒーロー",
+     "二段ヘッダー",
+     "赤い重要のお知らせ",
+     "口座開設"
+    ],
+    "zh": [
+     "零售銀行",
+     "日本銀行網站",
+     "存款與貸款",
+     "外匯服務",
+     "白色背景",
+     "深藍標題",
+     "淺藍面板",
+     "圓角白色卡片",
+     "柔和陰影",
+     "照片主視覺橫幅",
+     "雙列頁首",
+     "紅色重要公告",
+     "開戶服務"
+    ]
+   }
+  },
   "modusign": {
    "hash": "3e45c23527090f4b",
    "terms": {
