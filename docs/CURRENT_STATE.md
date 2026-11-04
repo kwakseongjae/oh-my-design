@@ -3,6 +3,11 @@
 갱신: **2026-11-04 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-11-04 밤(2) · kintone 로고 숨김(오너 "숨기자") · 기본 로고 플레이스홀더는 판단 대기
+
+- **main `2a18fbff`:** kintone은 사이보즈 제품이고, 사이보즈 로고 페이지(cybozu.co.jp/logotypes/)가 kintone 로고도 같은 신청·심사 대상으로 둔다(kintone 로고 자가 점검 안내 있음). `logoFor`에 `UNDER_HIGH_RISK = { kintone: "cybozu" }`를 추가해 수집 아이콘과 레지스트리 파비콘(구글 프록시) 모두 막음. 하베스터 MANUAL_REJECT에 kintone → 아이콘 352건, `kintone.png` 삭제. 테스트 1337 통과. 로고 분포: SVG 76 · 자체 아이콘 352 · 파비콘 111 · 없음 37.
+- **판단 대기:** 오너 제안 "기본 로고 이미지를 플레이스홀더처럼"은 라운드 11 오너 규칙 #16(진짜 로고 아니면 텍스트만, 머리글자·키캡 대체 금지)과 AGENTS.md "Unknown means absent"를 뒤집는 일이라 착수 전 확인 중. 권고는 텍스트만 유지. 하게 되면 브랜드와 무관한 중립 그림 하나(예: DESIGN.md 문서 모양)를 카드에만, 프리뷰 확인 후 머지.
+
 ## ▶ 2026-11-04 밤 · 오너 GO("나머진 ㅇㅋ") → main 머지·운영 확인(576/397) · #99·#77·#76 닫음
 
 - **main `f118e405`(재검증 브랜치 4건: 마플샵·BYD·AIA 홍콩·classting) + `d5cd33bb`(자체 아이콘) + `4d15af02`(마플샵·AIA 홍콩 아이콘, BYD는 64px 미만만 선언해 레지스트리 파비콘 유지, 353건)**. 병합 트리 tsc 무오류, web 1336 통과, check-counts 576/397/89/90. 운영: marpple-shop·/ko marpple-shop·byd·aiahk 200, hncb 상세에 hncb·mastercard·docomo-smtb-netbank 아이콘, llms.txt 397 verified.
