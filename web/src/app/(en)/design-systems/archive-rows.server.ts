@@ -20,6 +20,8 @@
  * an initial. A record whose guideline forbids gallery or decorated use
  * (`risk_tier: "high"`: LINE, Cybozu, Loglass) shows no logo at all, as landing-a/caps.ts
  * already refuses it; its favicon and icon are the same protected mark, so neither is shown.
+ * A product whose mark falls under such a company's guideline (UNDER_HIGH_RISK: kintone) is
+ * treated the same.
  */
 
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
@@ -89,6 +91,14 @@ const FAVICON_UNUSABLE = new Set([
   "trenbe", "wconcept", "wired", "yogiyo",
 ]);
 
+/**
+ * Products with no record of their own whose logo is governed by a `risk_tier: "high"` company
+ * record (product id → company id). kintone (owner, 2026-11-04): Cybozu's logo page
+ * (cybozu.co.jp/logotypes/) puts kintone's logo under the same application-and-review rule
+ * and offers a kintone-logo self-check before applying.
+ */
+const UNDER_HIGH_RISK: Record<string, string> = { kintone: "cybozu" };
+
 function svgLogo(rec: LogoRecord): ArchiveLogo | null {
   // A symbol reads at card size and does not repeat the name printed beside it.
   const order = ["symbol", rec.default_variant, ...Object.keys(rec.variants)]
@@ -104,6 +114,7 @@ function svgLogo(rec: LogoRecord): ArchiveLogo | null {
 export function logoFor(id: string): ArchiveLogo | null {
   const rec = LOGO_BY_ID.get(id);
   if (rec?.risk_tier === "high") return null;
+  if (LOGO_BY_ID.get(UNDER_HIGH_RISK[id])?.risk_tier === "high") return null;
   if (rec) {
     const svg = svgLogo(rec);
     if (svg) return svg;

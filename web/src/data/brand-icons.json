@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-11-04",
   "note": "Each brand's own icon, as its homepage declares it (link rel=icon / apple-touch-icon, the web app manifest, or /apple-touch-icon.png and /favicon.ico on the same origin), harvested by scripts/harvest-brand-icons.mjs. Stored at web/public/<file>. source_url is the file the page pointed at; host is where it was served from. Rasters over 256px were scaled to 256 (source_width/source_height keep the original). Never Simple Icons, a favicon service, a platform default or a redrawing; a reference without a record shows no logo.",
-  "count": 353,
+  "count": 352,
   "records": [
     {
       "id": "29cm",
@@ -1786,18 +1786,6 @@
       "width": 40,
       "height": 40,
       "format": "svg",
-      "captured": "2026-11-04"
-    },
-    {
-      "id": "kintone",
-      "file": "logos/icons/kintone.png",
-      "source_url": "https://kintone.cybozu.co.jp/favicon.ico",
-      "page_url": "https://kintone.cybozu.co.jp/",
-      "host": "kintone.cybozu.co.jp",
-      "declared": "icon",
-      "width": 64,
-      "height": 64,
-      "format": "ico(32-bit bmp frame)",
       "captured": "2026-11-04"
     },
     {

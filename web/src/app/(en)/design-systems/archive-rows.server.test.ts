@@ -118,6 +118,13 @@ describe("harvested first-party icons (data/brand-icons.json)", () => {
     for (const id of HIGH) expect(logoFor(id)).toBeNull();
   });
 
+  it("treats a product under a high-risk company guideline the same (kintone under Cybozu, 2026-11-04)", () => {
+    expect(ICON_RECORDS.some((r) => r.id === "kintone")).toBe(false);
+    // Its registry logo is still a favicon: logoFor must refuse it, not fall through to it.
+    expect(REGISTRY_BY_ID.kintone.logo.type).toBe("favicon");
+    expect(logoFor("kintone")).toBeNull();
+  });
+
   it("stores every file under public/ at its recorded size: an SVG, or a raster of at least 64px", async () => {
     for (const r of ICON_RECORDS) {
       const file = join(process.cwd(), "public", r.file);

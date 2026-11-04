@@ -67,6 +67,9 @@ const MANUAL_REJECT = {
     "supertone.ai now redirects to antinodeaudio.com; the icon there is Antinode's Webflow webclip, and nothing in the reference ties Antinode to Supertone.",
   triple:
     "triple.guide now redirects to nol.yanolja.com; the icon there is NOL (Yanolja), a different service's mark, not Triple's.",
+  // 2026-11-04, owner: hide.
+  kintone:
+    "kintone is a Cybozu product, and Cybozu's logo page (cybozu.co.jp/logotypes/) puts the kintone logo under the same application-and-review rule as Cybozu's own (risk_tier high). archive-rows.server.ts UNDER_HIGH_RISK hides its registry favicon too.",
 };
 
 /**
