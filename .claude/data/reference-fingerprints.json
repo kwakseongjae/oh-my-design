@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 569,
+ "count": 570,
  "items": [
   {
    "id": "104",
@@ -3131,6 +3131,28 @@
    ],
    "has_personas": false,
    "category_raw": "climate-search-engine"
+  },
+  {
+   "id": "ecpay",
+   "primary_color_hex": "#00783c",
+   "category": "fintech",
+   "visual_theme": "ECPay is the payment platform of Taiwan's 綠界科技股份有限公司. The company's history dates its service to 1996 and the launch of the ECPay integrated payment platform to January 2016. Its public offering brings payment collection, logistics and electronic invoices toge",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "elastic",

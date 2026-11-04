@@ -3034,6 +3034,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "ecpay",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 39,
+    "evidenceClaimCount": 39,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
+    "conflictCount": 0,
+    "tier1SourceCount": 15,
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "elastic",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -13655,10 +13677,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 389,
+  "verified_v2": 390,
   "partial": 89,
   "legacy_snapshot": 91,
-  "total": 569
+  "total": 570
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -7791,6 +7791,67 @@
     ]
    }
   },
+  "ecpay": {
+   "hash": "565a00ef6fa2bd7b",
+   "terms": {
+    "en": [
+     "payment platform",
+     "merchant payment tools",
+     "e-commerce sellers",
+     "small business payments",
+     "green and white",
+     "green action buttons",
+     "white bordered panels",
+     "pill-shaped buttons",
+     "service illustrations",
+     "news area on homepage",
+     "integrated services",
+     "logistics and invoicing"
+    ],
+    "ko": [
+     "결제 플랫폼",
+     "가맹점 결제 도구",
+     "온라인 판매자",
+     "소상공인 결제",
+     "초록색과 흰색",
+     "초록 버튼",
+     "테두리 있는 흰색 패널",
+     "알약형 버튼",
+     "서비스 일러스트",
+     "뉴스 영역",
+     "통합 서비스",
+     "물류 및 전자세금계산서"
+    ],
+    "ja": [
+     "決済プラットフォーム",
+     "加盟店向け決済ツール",
+     "ネットショップ運営者",
+     "小規模事業者向け",
+     "緑と白",
+     "緑のボタン",
+     "枠線付きの白いパネル",
+     "pill型ボタン",
+     "サービスイラスト",
+     "ニュース欄",
+     "統合サービス",
+     "物流と電子インボイス"
+    ],
+    "zh": [
+     "金流平台",
+     "商家收款工具",
+     "電商賣家",
+     "中小企業金流",
+     "綠色與白色",
+     "綠色按鈕",
+     "白色邊框面板",
+     "膠囊按鈕",
+     "服務插圖",
+     "首頁新聞區",
+     "一站整合",
+     "物流與電子發票"
+    ]
+   }
+  },
   "elastic": {
    "hash": "cc608a474b80d6f8",
    "terms": {
