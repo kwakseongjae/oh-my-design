@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 571,
+ "count": 572,
  "items": [
   {
    "id": "104",
@@ -406,6 +406,27 @@
    ],
    "has_personas": false,
    "category_raw": "payments-platform"
+  },
+  {
+   "id": "ahamo",
+   "primary_color_hex": "#01b5d0",
+   "category": "consumer-tech",
+   "visual_theme": "ahamo is NTT DOCOMO's online mobile plan. Announced in December 2020 and launched on 26 March 2021, it was introduced for a generation accustomed to digital services, with simpler conditions and online procedures. The name combines the aha moment, the English ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "airbnb",

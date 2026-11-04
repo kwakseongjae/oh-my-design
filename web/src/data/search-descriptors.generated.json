@@ -1009,6 +1009,67 @@
     ]
    }
   },
+  "ahamo": {
+   "hash": "18b4b18cef191b94",
+   "terms": {
+    "en": [
+     "online mobile plan",
+     "mobile carrier",
+     "telecom service",
+     "smartphone plans",
+     "digital native users",
+     "bright white canvas",
+     "cyan buttons",
+     "rounded buttons",
+     "campaign photography",
+     "wave hover effect",
+     "friendly playful tone",
+     "simple signup flow"
+    ],
+    "ko": [
+     "온라인 모바일 요금제",
+     "통신사",
+     "이동통신 서비스",
+     "스마트폰 요금제",
+     "디지털 세대",
+     "밝은 흰색 배경",
+     "청록색 버튼",
+     "둥근 버튼",
+     "캠페인 사진",
+     "물결 효과",
+     "친근한 분위기",
+     "간단한 가입 절차"
+    ],
+    "ja": [
+     "オンライン携帯プラン",
+     "携帯キャリア",
+     "通信サービス",
+     "スマホ料金プラン",
+     "デジタルネイティブ",
+     "明るい白背景",
+     "シアンのボタン",
+     "丸みのあるボタン",
+     "キャンペーン写真",
+     "波のアニメーション",
+     "親しみやすい",
+     "かんたん申し込み"
+    ],
+    "zh": [
+     "線上手機方案",
+     "電信業者",
+     "行動通訊服務",
+     "智慧型手機資費",
+     "數位原生世代",
+     "明亮白色背景",
+     "青色按鈕",
+     "圓角按鈕",
+     "活動宣傳照片",
+     "波浪互動效果",
+     "親切活潑",
+     "簡單申辦流程"
+    ]
+   }
+  },
   "airbnb": {
    "hash": "c89a3ae69312ed16",
    "terms": {
