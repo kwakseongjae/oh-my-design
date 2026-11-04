@@ -1,7 +1,13 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-04 새벽** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-04 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-04 오후 · 4·5차 main 머지(573/393) · 로고 공백 해소 착수
+
+- **오너 GO("1번은 승인") → main `a34f197c`** (`feat/reverify-w1`의 4차 21 + 5차 23 = 44건). 병합 트리: check-counts 573/393/89/91, reference-pipeline 무변경, llms·query data 무변경, web 1326 통과(부하로 --testTimeout 90초), tsc 무오류. 운영: llms.txt 393 verified, rakutensec·tsmc·/ko zigbang·kaonavi·digitalx 200, MCP "台湾 銀行" → taishinbank·104·firstbank·docomo-smtb-netbank, hybrid.
+- **오너 지적: Related design systems 카드에 로고 없는 곳이 많음.** 원인: 서버에서 로고 없음 118(Simple Icons 85·GitHub 아바타 19·FAVICON_UNUSABLE 14 — 진짜 로고만 원칙으로 일부러 숨김) + 구글 파비콘 프록시 337 중 일부가 16px·지구본이라 클라이언트가 숨김(hncb·docomo-smtb-netbank). **해결: 브랜드가 자기 사이트에 선언한 아이콘(apple-touch-icon·manifest 192/512·큰 icon)을 받아 `web/public/logos/icons/`에 두고 출처 기록(`web/src/data/brand-icons.json`)** → logoFor 순서 SVG → 자체 아이콘 → 레지스트리 파비콘. 서브에이전트 진행, 브랜치 `feat/first-party-icons`, **UI 변경이라 프리뷰 GO 후 머지**.
+- 5차 남은 것: byd·aiahk·classting-s2(Monitor 진행).
 
 ## ▶ 2026-11-04 새벽 · 5차 묶음 23/26 반영(브랜치) · 기계 부하 대응 · 오너 머지 GO 대기
 
