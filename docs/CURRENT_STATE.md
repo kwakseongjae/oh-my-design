@@ -3,6 +3,14 @@
 갱신: **2026-11-04 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-11-04 저녁 · 이슈·PR 정리 · 마플샵(#99) 반영 · 5차 완료 · 로고 프리뷰 대기
+
+- **PR #98(proxy-addr CVE) 처리:** 실재 확인(NVD CVE-2026-90711·GHSA-jqcg-44mw-7w3h, critical, <2.0.8 / npm 2.0.8은 Express 메인테이너 게시, 무결성 해시 일치 / 작성자는 자동 보안 PR 계정, 스팸·사기 아님). PR diff는 다른 npm 버전이 `libc` 필드를 지워 소음이 커서 우리 npm으로 같은 패치만 적용 → main `ce5b317d`(packages/mcp tsc·스모크 8/8). PR에 검증 내용·감사 코멘트 후 superseded로 닫음. **Vercel 빨간 체크 = 포크 PR 배포 승인 대기("Authorization required to deploy")**, 빌드 실패 아님.
+- **이슈 #99 마플샵:** Sol 워커 → 독립 재측정(굿즈 #141414→#1c75ff hover·press, 헤더는 Tab 303회 순환에 안 걸려 focus 미측정) → `feat/reverify-w1` `a3883b3f` verified_v2, 운영사 (주)마플코퍼레이션. 이슈에 착수 코멘트. **main 머지 후 링크 남기고 닫기.**
+- **5차 잔여 완료:** byd(CN, 查看更多 ::before #1a1d25) `9c6a675f` · aiahk(HK, #d31145→#b40e3a, 카드 focus 2px 3px) `ee048a49` · classting 재검증(hover·press 무변화·브라우저 링만을 측정값으로 기록, legacy→verified) `9ea37898`, 모션 래칫 155→154. 브랜치 **576 / 397 / 89 / 90**(main 573/393/89/91). **main 머지 = 오너 GO 대기.**
+- **로고(`feat/first-party-icons`, 푸시):** 자체 선언 아이콘 351곳(로고 없음 118→36, 구글 파비콘 경유 379→110). 컨택트시트 검토로 queenit·supertone·triple 제외(다른 회사 마크), NCSOFT는 nc PLAY 대신 www.nc.com의 NC 마크(`6712f3c8`, PAGE_OVERRIDE). 프리뷰(보호됨, 오너 로그인으로 열림) `https://oh-my-design-git-feat-first-party-icons-kwakseongjaes-projects.vercel.app/design-systems/hncb` — CLI 우회로 hncb·mastercard·docomo-smtb-netbank 아이콘 렌더 확인. **UI라 오너 프리뷰 GO 후 머지.** 판단 대기: 256px 축소(원본 크기는 기록에 남김), kintone(Cybozu 제품 아이콘 유지).
+- 오너 백로그 이슈(#22~#97) 완료 여부 대조 중(읽기 전용 서브에이전트).
+
 ## ▶ 2026-11-04 오후 · 4·5차 main 머지(573/393) · 로고 공백 해소 착수
 
 - **오너 GO("1번은 승인") → main `a34f197c`** (`feat/reverify-w1`의 4차 21 + 5차 23 = 44건). 병합 트리: check-counts 573/393/89/91, reference-pipeline 무변경, llms·query data 무변경, web 1326 통과(부하로 --testTimeout 90초), tsc 무오류. 운영: llms.txt 393 verified, rakutensec·tsmc·/ko zigbang·kaonavi·digitalx 200, MCP "台湾 銀行" → taishinbank·104·firstbank·docomo-smtb-netbank, hybrid.
