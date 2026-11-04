@@ -69,6 +69,18 @@ const MANUAL_REJECT = {
     "triple.guide now redirects to nol.yanolja.com; the icon there is NOL (Yanolja), a different service's mark, not Triple's.",
 };
 
+/**
+ * Pages to read instead of the registry homepage, when that homepage is one of the brand's
+ * sub-brands and the reference itself names the main site. url → the page; why → the record.
+ */
+const PAGE_OVERRIDE = {
+  // 2026-11-04 contact-sheet review.
+  ncsoft: {
+    url: "https://www.nc.com/",
+    why: "the registry homepage (about.ncsoft.com) declares the NC PLAY media icon; the reference names www.nc.com, where ncsoft.com now lands, as NC's main site, and that page declares the NC mark.",
+  },
+};
+
 /** Byte-identical files seen on unrelated sites: platform defaults, not a brand's mark. sha256 → label. */
 const KNOWN_GENERIC = {};
 
@@ -408,8 +420,10 @@ const ASSET_MAX = 2_000_000;
 
 async function harvest(r) {
   const lang = LANG[r.country];
-  const rec = { id: r.id, homepage: r.homepage, captured: TODAY, candidates: [] };
-  let page = await get(r.homepage, { accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8", lang, timeout: 15_000, max: PAGE_MAX });
+  const homepage = PAGE_OVERRIDE[r.id]?.url ?? r.homepage;
+  const rec = { id: r.id, homepage, captured: TODAY, candidates: [] };
+  if (PAGE_OVERRIDE[r.id]) rec.page_override = PAGE_OVERRIDE[r.id].why;
+  let page = await get(homepage, { accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8", lang, timeout: 15_000, max: PAGE_MAX });
   if (!page || page.error) return { ...rec, status: "error", reason: `homepage: ${page?.error ?? "no response"}` };
   if (NO_RETRY.has(page.status)) return { ...rec, status: "blocked", reason: `homepage answered HTTP ${page.status}`, page_url: page.url };
   if (page.status >= 400) return { ...rec, status: "error", reason: `homepage answered HTTP ${page.status}`, page_url: page.url };
@@ -429,7 +443,7 @@ async function harvest(r) {
   }
   rec.page_url = page.url;
   const pageHost = new URL(page.url).host;
-  const homeHost = new URL(r.homepage).host;
+  const homeHost = new URL(homepage).host;
   if (registrable(pageHost) !== registrable(homeHost)) rec.domain_changed = `${homeHost} -> ${pageHost}`;
 
   const cands = [...parsed.icons];

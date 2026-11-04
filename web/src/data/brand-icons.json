@@ -2437,15 +2437,13 @@
     {
       "id": "ncsoft",
       "file": "logos/icons/ncsoft.png",
-      "source_url": "https://about.ncsoft.com/img/icon-512.png",
-      "page_url": "https://about.ncsoft.com/",
-      "host": "about.ncsoft.com",
+      "source_url": "https://assets.playnccdn.com/purple/resources/favicon/nc-192x192.png",
+      "page_url": "https://www.nc.com/",
+      "host": "assets.playnccdn.com",
       "declared": "icon",
-      "width": 256,
-      "height": 256,
+      "width": 192,
+      "height": 192,
       "format": "png",
-      "source_width": 512,
-      "source_height": 512,
       "captured": "2026-11-04"
     },
     {
