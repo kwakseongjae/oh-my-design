@@ -1,7 +1,14 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-03 17시 반** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-04 새벽** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-04 새벽 · 5차 묶음 23/26 반영(브랜치) · 기계 부하 대응 · 오너 머지 GO 대기
+
+- **5차 반영(브랜치 `feat/reverify-w1`, 푸시):** 신규 hncb·rakutensec·tsmc·nissan·rakutenbank·yuanta·doda·fetnet·japanpostbank·metrotaipei·kiwoom·daiwa·ecpay·mizuho·ahamo·jejuair / 재검증(전부 legacy→verified) studio·drnow·dji·zigbang·bithumb·melon·ridi → 브랜치 **573 / 393 / 89 / 91**(main 545 / 349 / 89 / 107). 헤드라인은 전부 본 세션 워커 브라우저 재측정(재측정에서 안 보인 컨트롤은 커밋에 "작업자 측정"으로 명시). 남은 큐: byd·aiahk·classting-s2(상태 컨트롤 보강 — 첫 측정은 브라우저 기본 링뿐이라 반영 보류).
+- **부하 대응:** 다른 프로젝트(Xcode·iOS 시뮬레이터·VM·vitest)로 load 150~640 → 전 카탈로그 테스트가 5초 기본 제한에 걸림(60초면 644/644 통과). `web/vitest.config.ts` testTimeout 30초(커밋 `0f67cfac`, 카탈로그가 커질수록 느려지는 테스트라 근본 조치). 다른 프로젝트 프로세스는 건드리지 않음.
+- **팔레트 고정 목록:** live-extract 재검증으로 dji·ridi도 빠짐 → 남은 palette_contradicted = money-forward·tada. 래칫 155.
+- **오너 결정 대기:** ① `feat/reverify-w1` main 머지 GO(4차 21 + 5차 23) ② MCP 연결 안내 프리뷰 GO(`/docs/ko/connector`).
 
 ## ▶ 2026-11-03 17시 반 · 세션 재개(중단 후) · 5차 진행 · 오너 머지 GO 대기(4·5차)
 
