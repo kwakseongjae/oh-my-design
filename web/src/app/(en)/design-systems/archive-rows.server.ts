@@ -5,18 +5,26 @@
  *
  * Logos are genuine or absent (owner rule, round 11 #16):
  *   1. the official SVG in data/brand-logos.json (every variant cites its source);
- *   2. else the registry logo, only when it is the brand's own favicon
+ *   2. else the brand's own icon in data/brand-icons.json (2026-11-04): the file its
+ *      homepage itself declares (link rel=icon / apple-touch-icon, its web app manifest,
+ *      or /apple-touch-icon.png and /favicon.ico on that origin), stored under
+ *      public/logos/icons/ by scripts/harvest-brand-icons.mjs. Each record cites
+ *      page_url, source_url and host; an SVG or a raster of at least 64px, near-square,
+ *      visible on the white tile, checked by eye on a contact sheet;
+ *   3. else the registry logo, only when it is the brand's own favicon
  *      (`type: "favicon"`, an absolute URL) and the 2026-10-20 probe found a real image;
- *   3. else nothing — the card is text only.
+ *   4. else nothing — the card is text only.
  * Never Simple Icons (`type: "simpleicons"` is community-redrawn), never a GitHub org
  * avatar (`type: "github"`: nothing records that the org is the brand's own), never a
- * keycap glyph or an initial. A record whose guideline forbids gallery or decorated use
+ * favicon service or a platform's default icon as a stored file, never a keycap glyph or
+ * an initial. A record whose guideline forbids gallery or decorated use
  * (`risk_tier: "high"`: LINE, Cybozu, Loglass) shows no logo at all, as landing-a/caps.ts
- * already refuses it; its favicon is the same protected mark, so that is not shown either.
+ * already refuses it; its favicon and icon are the same protected mark, so neither is shown.
  */
 
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
 import logoCollection from "@/data/brand-logos.json";
+import iconCollection from "@/data/brand-icons.json";
 import { CJK_RE } from "@/lib/landing-a/resolve";
 import { loadDetail } from "@/lib/references/detail-loader.server";
 import { SEARCH_ALIASES } from "@/lib/search-aliases";
@@ -26,9 +34,10 @@ import { detailHrefFor } from "@/lib/i18n/ko-detail";
 /* ─────────── logos ─────────── */
 
 export interface ArchiveLogo {
-  /** Same-origin `/brand-svg/…` path or the registry's favicon URL. */
+  /** Same-origin `/brand-svg/…` or `/logos/icons/…` path, or the registry's favicon URL. */
   src: string;
-  kind: "svg" | "favicon";
+  /** `icon`: the brand's own declared icon (rule 2); drawn like a favicon, on the square tile. */
+  kind: "svg" | "icon" | "favicon";
   /** White artwork published for dark grounds (`dark_bg`): shown on an ink tile, as delivered. */
   dark?: boolean;
 }
@@ -48,6 +57,25 @@ interface LogoRecord {
 
 const LOGO_RECORDS = (logoCollection as unknown as { records: LogoRecord[] }).records;
 const LOGO_BY_ID = new Map(LOGO_RECORDS.map((r) => [r.id, r]));
+
+/** One harvested icon (data/brand-icons.json); `file` is relative to public/. */
+export interface IconRecord {
+  id: string;
+  file: string;
+  source_url: string;
+  page_url: string;
+  host: string;
+  declared: string;
+  width: number;
+  height: number;
+  format: string;
+  captured: string;
+  source_width?: number;
+  source_height?: number;
+}
+
+export const ICON_RECORDS = (iconCollection as unknown as { records: IconRecord[] }).records;
+const ICON_BY_ID = new Map(ICON_RECORDS.map((r) => [r.id, r]));
 
 /**
  * Registry favicons that are not a usable brand image, from a probe of all 396
@@ -80,6 +108,8 @@ export function logoFor(id: string): ArchiveLogo | null {
     const svg = svgLogo(rec);
     if (svg) return svg;
   }
+  const icon = ICON_BY_ID.get(id);
+  if (icon) return { src: "/" + icon.file, kind: "icon" };
   const entry = REGISTRY_BY_ID[id];
   if (!entry || entry.logo.type !== "favicon") return null;
   if (!/^https:\/\//.test(entry.logo.slug) || FAVICON_UNUSABLE.has(id)) return null;
@@ -87,8 +117,8 @@ export function logoFor(id: string): ArchiveLogo | null {
 }
 
 /** Which bucket a reference's logo falls in — the coverage line in reports and tests. */
-export function logoCoverage(): { svg: number; favicon: number; none: number } {
-  const out = { svg: 0, favicon: 0, none: 0 };
+export function logoCoverage(): { svg: number; icon: number; favicon: number; none: number } {
+  const out = { svg: 0, icon: 0, favicon: 0, none: 0 };
   for (const r of REGISTRY) {
     const l = logoFor(r.id);
     if (!l) out.none++;

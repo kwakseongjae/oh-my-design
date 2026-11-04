@@ -101,12 +101,14 @@ describe("English item page body", () => {
     expect(html).toContain('id="md-heading"');
   });
 
-  it("shows 11st's official identity and no logo for a Simple Icons reference", async () => {
+  it("shows 11st's official identity, and for a Simple Icons reference only the icon its own site declares", async () => {
     expect(renderToStaticMarkup(await Page(params("11st")))).toContain('src="/brand-svg/11st/symbol.svg"');
     const stripe = renderToStaticMarkup(await Page(params("stripe")));
     expect(stripe).not.toMatch(/simpleicons/);
-    // The hero has no logo; the related cards below carry their own brands' logos.
-    expect(stripe.split('id="related-heading"')[0]).not.toMatch(/class="sq-logo/);
+    // The hero carries stripe.com's declared icon (data/brand-icons.json), drawn on the square tile.
+    const hero = stripe.split('id="related-heading"')[0];
+    expect(hero).toContain('src="/logos/icons/stripe.svg"');
+    expect(hero).toMatch(/class="sq-logo sq-logo-fav/);
   });
 
   it("draws related references as the archive's cards with English domains and real links", async () => {
