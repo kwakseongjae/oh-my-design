@@ -4,9 +4,9 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 567,
   "counts": {
-    "verified_v2": 386,
+    "verified_v2": 387,
     "partial": 89,
-    "legacy_snapshot": 92,
+    "legacy_snapshot": 91,
     "total": 567
   },
   "items": [
@@ -4853,19 +4853,14 @@
     },
     {
       "id": "ridi",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-15",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 20,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "riiid",

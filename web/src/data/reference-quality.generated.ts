@@ -9814,33 +9814,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "ridi",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-15",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 116,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 1,
-    "componentCount": 9,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "palette_contradicted",
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.125
+    "tokenSource": "live-extract",
+    "claimCount": 61,
+    "evidenceClaimCount": 61,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 20,
+    "conflictCount": 0,
+    "tier1SourceCount": 20,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "riiid",
@@ -13619,9 +13611,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 386,
+  "verified_v2": 387,
   "partial": 89,
-  "legacy_snapshot": 92,
+  "legacy_snapshot": 91,
   "total": 567
 } as const;
 
