@@ -13,7 +13,8 @@
  *      visible on the white tile, checked by eye on a contact sheet;
  *   3. else the registry logo, only when it is the brand's own favicon
  *      (`type: "favicon"`, an absolute URL) and the 2026-10-20 probe found a real image;
- *   4. else nothing — the card is text only.
+ *   4. else nothing: logoFor returns null. A card then shows the oh-my-design mark as a
+ *      muted stand-in (BrandLogo `fallback`, owner 2026-11-04); the item hero stays text only.
  * Never Simple Icons (`type: "simpleicons"` is community-redrawn), never a GitHub org
  * avatar (`type: "github"`: nothing records that the org is the brand's own), never a
  * favicon service or a platform's default icon as a stored file, never a keycap glyph or

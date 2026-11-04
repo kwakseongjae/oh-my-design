@@ -3,6 +3,12 @@
 갱신: **2026-11-04 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-11-04 밤(3) · 기본 로고 = 우리 로고(오너 "ㄱㄱ") · 프리뷰 확인 대기
+
+- **`feat/default-logo` `ed8bf721`:** 로고가 없거나 이미지가 깨진 카드(디렉터리·관련 카드, 지금 37건)는 우리 키캡 마크를 회색·불투명도 40%로 표시해 브랜드 로고처럼 보이지 않게 함. `BrandLogo`에 `fallback` 추가, 그림은 `<Logo wordmark={false} />`(마크를 그리는 단일 컴포넌트). 상세 히어로는 텍스트만, 검색 미리보기는 색 점 유지. 웹 1337 통과. 로컬에서 JP 디렉터리(LINE 카드)·smarthr·freee 관련 카드에 표시 확인.
+- **머지 = 오너 프리뷰 확인 후.** 확인할 곳: `/design-systems?region=JP`(LINE·Loglass·kintone·Cybozu 카드), `/design-systems/freee` 관련 카드. 컬러 그대로가 낫다면 archive.css 한 줄.
+- 개발 서버 오버레이 "1 Issue"는 `DesignSystemsPage`가 `CatalogView`에 넘기는 목록의 key 경고로, 이번 변경과 무관한 기존 경고(page.tsx 미수정).
+
 ## ▶ 2026-11-04 밤(2) · kintone 로고 숨김(오너 "숨기자") · 기본 로고 플레이스홀더는 판단 대기
 
 - **main `2a18fbff`:** kintone은 사이보즈 제품이고, 사이보즈 로고 페이지(cybozu.co.jp/logotypes/)가 kintone 로고도 같은 신청·심사 대상으로 둔다(kintone 로고 자가 점검 안내 있음). `logoFor`에 `UNDER_HIGH_RISK = { kintone: "cybozu" }`를 추가해 수집 아이콘과 레지스트리 파비콘(구글 프록시) 모두 막음. 하베스터 MANUAL_REJECT에 kintone → 아이콘 352건, `kintone.png` 삭제. 테스트 1337 통과. 로고 분포: SVG 76 · 자체 아이콘 352 · 파비콘 111 · 없음 37.

@@ -117,6 +117,8 @@
 .sq-logo-fav{padding:8px}
 .sq-logo-fav img{width:28px}
 .sq-logo-dark{background:var(--sq-ink)}
+/* stand-in on a card with no brand logo (brand-logo.tsx fallback): our mark, muted so it never reads as the brand's */
+.sq-logo-omd img{filter:grayscale(1);opacity:.4}
 
 @media (prefers-reduced-motion:reduce){
   .sq-card-a,.sq-card-a:hover{transition:none;transform:none}

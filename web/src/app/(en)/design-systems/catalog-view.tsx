@@ -746,7 +746,6 @@ function ArchiveCard({
   hidden: boolean;
   onOpen: (id: string, top: number) => void;
 }) {
-  const [logo, setLogo] = useState(!!r.logo);
   return (
     <li className="sq-card" hidden={hidden} data-ref={r.id}>
       <Link
@@ -759,7 +758,7 @@ function ArchiveCard({
       >
         {/* Domain and installs carry the card (owner, 2026-11-02); the country is a filter, not card text. */}
         <span className="sq-card-top">
-          {logo ? <BrandLogo logo={r.logo} className="sq-card-logo" onMissing={() => setLogo(false)} /> : null}
+          <BrandLogo logo={r.logo} className="sq-card-logo" fallback />
           <span className="sq-card-tag">{domainLabel(copy, r.domain)}</span>
         </span>
         <span className="sq-card-name">
