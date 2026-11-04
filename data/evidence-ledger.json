@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 385,
-  "sources": 3196,
+  "references_with_verification_v2": 386,
+  "sources": 3212,
   "sources_by_kind": {
     "brand-asset": 207,
     "license": 141,
-    "official-doc": 1459,
-    "product-surface": 1389
+    "official-doc": 1466,
+    "product-surface": 1398
   },
   "references": {
     "104": {
@@ -11990,6 +11990,108 @@
           "kind": "brand-asset",
           "captured": "2026-11-02",
           "host": "mercury.com"
+        }
+      ]
+    },
+    "metrotaipei": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "web.metro.taipei"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "datepicker-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "fancybox-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "gallery-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "web.metro.taipei"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "index-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "live-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "mission",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "powertip-css",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
+        },
+        {
+          "id": "redesign-news",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.metro.taipei"
         }
       ]
     },

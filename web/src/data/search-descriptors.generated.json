@@ -18023,6 +18023,65 @@
     ]
    }
   },
+  "metrotaipei": {
+   "hash": "56f20e6c4eae2964",
+   "terms": {
+    "en": [
+     "urban rail transit",
+     "metro service portal",
+     "route and fare lookup",
+     "station information",
+     "commuter website",
+     "light white panels",
+     "blue and green palette",
+     "rounded buttons",
+     "illustrated service links",
+     "visible focus outline",
+     "amber accents",
+     "public transport app"
+    ],
+    "ko": [
+     "도시철도",
+     "지하철 안내 포털",
+     "노선 요금 조회",
+     "역 정보",
+     "통근자용 웹사이트",
+     "화이트 패널",
+     "파랑 초록 배색",
+     "둥근 버튼",
+     "일러스트 서비스 링크",
+     "뚜렷한 포커스 표시",
+     "대중교통"
+    ],
+    "ja": [
+     "都市鉄道",
+     "地下鉄案内ポータル",
+     "経路運賃検索",
+     "駅情報",
+     "通勤者向けサイト",
+     "白いパネル",
+     "青と緑の配色",
+     "丸みのあるボタン",
+     "イラスト付きリンク",
+     "目立つフォーカス枠",
+     "公共交通"
+    ],
+    "zh": [
+     "都會捷運",
+     "捷運服務入口網站",
+     "路線票價查詢",
+     "車站資訊",
+     "通勤族網站",
+     "白色面板",
+     "藍綠配色",
+     "圓角按鈕",
+     "插圖服務連結",
+     "明顯焦點外框",
+     "琥珀色點綴",
+     "大眾運輸"
+    ]
+   }
+  },
   "microsoft": {
    "hash": "35e7f3f6cb390763",
    "terms": {

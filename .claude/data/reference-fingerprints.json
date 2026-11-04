@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 566,
+ "count": 567,
  "items": [
   {
    "id": "104",
@@ -7141,6 +7141,29 @@
     "Lift white cards off the `#F0F2F5` canvas with subtle ink-tinted shadows"
    ],
    "signature_motion": "*Durations** (named):",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "metrotaipei",
+   "primary_color_hex": "#0069a2",
+   "category": "consumer-tech",
+   "visual_theme": "Taipei Metro is the urban rail service operated by 臺北大眾捷運股份有限公司. Its [company history](https://www.metro.taipei/cp.aspx?n=B27E7BC8CBBCDA61) records the company's establishment on 27 July 1994 and the Muzha line's opening on 28 March 1996. The same history reco",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "friendly",
+    "systematic"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
