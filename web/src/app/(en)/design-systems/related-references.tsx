@@ -42,7 +42,7 @@ export function RelatedReferences({
               <li key={id} className="sq-card">
                 <Link href={href} className="sq-card-a">
                   <span className="sq-card-top">
-                    <BrandLogo logo={logoFor(id)} className="sq-card-logo" />
+                    <BrandLogo logo={logoFor(id)} className="sq-card-logo" fallback />
                     <span className="sq-card-tag">{domainLabel(copy, r.category)}</span>
                   </span>
                   <span className="sq-card-name">

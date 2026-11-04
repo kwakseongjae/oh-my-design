@@ -1,6 +1,7 @@
 /**
  * The oh-my-design logo — the ONE component to change when the mark changes.
- * Header and footer render <Logo />; nothing else draws the mark.
+ * Header and footer render <Logo />, and so does BrandLogo's stand-in tile on a card with no
+ * brand logo (2026-11-04); nothing else draws the mark.
  *
  * Final mark (owner pick, 2026-10-14; docs/research/2026-10-14-logo/final/): an app
  * icon — a jelly key top with a brush "o" — beside live text "oh-my-design" in
