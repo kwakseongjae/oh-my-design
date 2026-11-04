@@ -4,7 +4,8 @@
  * A brand's genuine logo, or nothing (round 11, owner rule #16).
  *
  * The server resolves which file to show (app/(en)/design-systems/archive-rows.server.ts:
- * the official SVG collection, else the brand's own favicon). This component only
+ * the official SVG collection, else the icon the brand's homepage declares, else the
+ * brand's own favicon). This component only
  * draws it, flat and as delivered: no recolouring, no effects, white artwork on an
  * ink tile because that is the ground it was published for. When the image fails —
  * or comes back as a raster under 32px, which is how Google's favicon proxy answers
@@ -17,16 +18,19 @@ import { useEffect, useRef, useState } from "react";
 
 export interface BrandLogoData {
   src: string;
-  kind: "svg" | "favicon";
+  /** `icon` (a harvested first-party icon) is drawn and checked exactly like `favicon`. */
+  kind: "svg" | "icon" | "favicon";
   dark?: boolean;
 }
+
+const squareTile = (kind: BrandLogoData["kind"]) => kind !== "svg";
 
 const MIN_RASTER = 32;
 
 function unusable(img: HTMLImageElement, kind: BrandLogoData["kind"]): boolean {
   if (!img.complete) return false;
   if (img.naturalWidth === 0) return true;
-  return kind === "favicon" && !/\.svg(\?|$)/i.test(img.currentSrc || img.src) && img.naturalWidth < MIN_RASTER;
+  return squareTile(kind) && !/\.svg(\?|$)/i.test(img.currentSrc || img.src) && img.naturalWidth < MIN_RASTER;
 }
 
 export function BrandLogo({
@@ -56,7 +60,7 @@ export function BrandLogo({
 
   if (!logo || gone) return null;
   return (
-    <span className={`sq-logo${logo.dark ? " sq-logo-dark" : ""}${logo.kind === "favicon" ? " sq-logo-fav" : ""} ${className}`}>
+    <span className={`sq-logo${logo.dark ? " sq-logo-dark" : ""}${squareTile(logo.kind) ? " sq-logo-fav" : ""} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         ref={ref}
