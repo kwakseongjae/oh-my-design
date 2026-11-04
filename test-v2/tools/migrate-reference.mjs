@@ -419,7 +419,6 @@ if (!brand) { console.error("usage: migrate-reference.mjs --brand <id> [--gate-o
 if (!existsSync(join(LEGACY_ROOT, brand, "DESIGN.md"))) { console.error(`no legacy DESIGN.md for ${brand}`); process.exit(1); }
 
 const outDir = join(OUT_ROOT, brand);
-mkdirSync(outDir, { recursive: true });
 
 // The worker/auditor prose below is the canonical prompt text; the execution
 // path under it is not. Roles now run as host subagents (grok and codex are
@@ -431,6 +430,10 @@ if (flag("print-prompt")) {
   console.log(which === "worker" ? workerPrompt(brand, outDir) : auditorPrompt(brand, outDir));
   process.exit(0);
 }
+
+// Only the run paths below create the output folder: --print-prompt stays read-only (#75), since an
+// empty migrated/<brand>/ once read as a finished migration.
+mkdirSync(outDir, { recursive: true });
 
 if (!flag("gate-only")) {
   const startedAt = Date.now();
