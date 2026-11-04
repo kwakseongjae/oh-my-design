@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 572,
+ "count": 573,
  "items": [
   {
    "id": "104",
@@ -5497,6 +5497,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "jejuair",
+   "primary_color_hex": "#ff5000",
+   "category": "consumer-tech",
+   "visual_theme": "Jeju Air is a Korean low-cost airline founded in 2005. Its tenth-anniversary BI brightened Jeju-tangerine orange, added blue for safety and trust, and used an “i” flag to welcome travellers. The current font material records a 2025 v0.2 update to numeric and L",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "jkopay",

@@ -13864,6 +13864,67 @@
     ]
    }
   },
+  "jejuair": {
+   "hash": "458abbc87d2391e7",
+   "terms": {
+    "en": [
+     "low-cost airline",
+     "flight booking",
+     "travel booking app",
+     "orange and white",
+     "bright orange accent",
+     "blue brand accent",
+     "destination photography",
+     "illustrated service shortcuts",
+     "square form controls",
+     "white booking panel",
+     "reservation lookup",
+     "seat and baggage services"
+    ],
+    "ko": [
+     "저비용 항공사",
+     "항공권 예매",
+     "여행 예약",
+     "오렌지 포인트",
+     "흰색 예약 패널",
+     "여행지 사진",
+     "일러스트 서비스 아이콘",
+     "각진 입력 폼",
+     "예약 조회",
+     "좌석 수하물 서비스",
+     "밝은 주황색",
+     "파란색 브랜드 색"
+    ],
+    "ja": [
+     "格安航空会社",
+     "航空券予約",
+     "旅行予約",
+     "オレンジ色",
+     "白い予約パネル",
+     "旅行先の写真",
+     "イラスト付きショートカット",
+     "角ばった入力フォーム",
+     "予約照会",
+     "座席と手荷物サービス",
+     "明るいオレンジのアクセント",
+     "ブルーのブランドカラー"
+    ],
+    "zh": [
+     "廉價航空",
+     "機票訂購",
+     "旅遊訂位",
+     "橘色重點色",
+     "白色訂位面板",
+     "目的地攝影",
+     "插畫服務捷徑",
+     "方正表單控制項",
+     "訂位查詢",
+     "座位與行李服務",
+     "明亮橘色",
+     "藍色品牌色"
+    ]
+   }
+  },
   "jkopay": {
    "hash": "a206276f9876f37b",
    "terms": {
