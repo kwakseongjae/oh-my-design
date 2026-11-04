@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 567,
+ "count": 568,
  "items": [
   {
    "id": "104",
@@ -5988,6 +5988,28 @@
    ],
    "has_personas": false,
    "category_raw": "flight-travel"
+  },
+  {
+   "id": "kiwoom",
+   "primary_color_hex": "#e6367e",
+   "category": "fintech",
+   "visual_theme": "Kiwoom Securities (키움증권) is a Korean securities company established on 31 January 2000. Its official history records the start of securities investment services on 4 May 2000, a new CI announcement on 31 January 2006, and the change to the name 키움증권(주) on 25 M",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "kkbox",

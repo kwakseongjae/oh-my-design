@@ -15127,6 +15127,67 @@
     ]
    }
   },
+  "kiwoom": {
+   "hash": "0beb7a24566a77d0",
+   "terms": {
+    "en": [
+     "securities brokerage",
+     "stock trading portal",
+     "retail investors",
+     "magenta and navy on white",
+     "pink service ribbon",
+     "dense service navigation",
+     "small pictogram icons",
+     "hover icon artwork swap",
+     "account opening shortcut",
+     "contest promo panels",
+     "korean finance website",
+     "investment research links"
+    ],
+    "ko": [
+     "증권사 포털",
+     "주식 거래",
+     "개인 투자자",
+     "마젠타 네이비 흰색",
+     "핑크 서비스 띠",
+     "빽빽한 서비스 메뉴",
+     "작은 픽토그램 아이콘",
+     "호버 시 아이콘 변화",
+     "계좌개설 바로가기",
+     "이벤트 콘테스트 패널",
+     "금융 상품 바로가기",
+     "투자 리서치"
+    ],
+    "ja": [
+     "証券会社ポータル",
+     "株式取引",
+     "個人投資家",
+     "マゼンタとネイビー",
+     "ピンクのサービス帯",
+     "高密度なナビゲーション",
+     "小さなピクトグラム",
+     "ホバーでアイコン変化",
+     "口座開設ショートカット",
+     "コンテスト告知パネル",
+     "金融商品への導線",
+     "投資リサーチ"
+    ],
+    "zh": [
+     "證券券商入口",
+     "股票交易",
+     "散戶投資人",
+     "洋紅與深藍配白底",
+     "粉紅服務橫幅",
+     "高密度服務導覽",
+     "小型圖示",
+     "懸停圖示換圖",
+     "開戶捷徑",
+     "競賽活動面板",
+     "金融商品入口",
+     "投資研究"
+    ]
+   }
+  },
   "kkbox": {
    "hash": "7da64836c179c06e",
    "terms": {

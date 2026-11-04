@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 387,
-  "sources": 3232,
+  "references_with_verification_v2": 388,
+  "sources": 3253,
   "sources_by_kind": {
-    "brand-asset": 209,
+    "brand-asset": 212,
     "license": 141,
-    "official-doc": 1479,
-    "product-surface": 1403
+    "official-doc": 1489,
+    "product-surface": 1411
   },
   "references": {
     "104": {
@@ -9848,6 +9848,138 @@
           "kind": "official-doc",
           "captured": "2026-10-29",
           "host": "media.kiwi.com"
+        }
+      ]
+    },
+    "kiwoom": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "common-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www1.kiwoom.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "company-mobile-discovery",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "control-www1",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www1.kiwoom.com"
+        },
+        {
+          "id": "control-www3",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www1.kiwoom.com"
+        },
+        {
+          "id": "helper-extends-discovery",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "helper-share-discovery",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "history-ci",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "history-current-discovery",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "history-recent",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "legal-loader",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www3.kiwoom.com"
+        },
+        {
+          "id": "product-mts",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "retail",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.kiwoom.com"
+        },
+        {
+          "id": "share-css-discovery",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www1.kiwoom.com"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "www1.kiwoom.com"
         }
       ]
     },
