@@ -1791,31 +1791,27 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "classting",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-03",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 85,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 63,
+    "evidenceClaimCount": 63,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 6,
-    "interactiveComponentCount": 3,
+    "tier1SourceCount": 14,
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
     "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
+      "component_absent"
     ],
-    "paletteGrounding": 0.625
+    "paletteGrounding": null
   },
   {
     "id": "classum",
@@ -13787,9 +13783,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 395,
+  "verified_v2": 396,
   "partial": 89,
-  "legacy_snapshot": 91,
+  "legacy_snapshot": 90,
   "total": 575
 } as const;
 
