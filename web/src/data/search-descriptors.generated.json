@@ -5865,6 +5865,67 @@
     ]
    }
   },
+  "daiwa": {
+   "hash": "487352a7b7816251",
+   "terms": {
+    "en": [
+     "securities brokerage",
+     "online trading",
+     "investment accounts",
+     "nisa investing",
+     "asset management",
+     "inheritance support",
+     "burgundy and gold",
+     "white background",
+     "dense navigation",
+     "help and search",
+     "promotional carousel",
+     "card layout"
+    ],
+    "ko": [
+     "증권 회사",
+     "온라인 거래",
+     "계좌 개설",
+     "니사 투자",
+     "자산 관리",
+     "상속 지원",
+     "버건디와 골드",
+     "흰색 배경",
+     "촘촘한 내비게이션",
+     "도움말 검색",
+     "프로모션 캐러셀",
+     "카드 레이아웃"
+    ],
+    "ja": [
+     "証券会社",
+     "オンライン取引",
+     "口座開設",
+     "NISA",
+     "資産運用",
+     "相続サポート",
+     "えんじ色と金",
+     "白背景",
+     "情報量の多いナビ",
+     "ヘルプと検索",
+     "プロモカルーセル",
+     "カード型レイアウト"
+    ],
+    "zh": [
+     "證券公司",
+     "線上交易",
+     "開戶",
+     "NISA投資",
+     "資產管理",
+     "繼承支援",
+     "酒紅與金色",
+     "白色背景",
+     "高密度導覽",
+     "說明與搜尋",
+     "宣傳輪播",
+     "卡片式版面"
+    ]
+   }
+  },
   "danawa": {
    "hash": "6ff07464a22b10e5",
    "terms": {

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 568,
+ "count": 569,
  "items": [
   {
    "id": "104",
@@ -2356,6 +2356,27 @@
    ],
    "has_personas": false,
    "category_raw": "video-platform"
+  },
+  {
+   "id": "daiwa",
+   "primary_color_hex": "#680717",
+   "category": "fintech",
+   "visual_theme": "Daiwa Securities is a Tokyo-based securities company whose stated business includes securities trading, brokerage and underwriting. Its company profile gives the present company's opening date as 26 April 1999. The group's history reaches back to Fujimoto Bill",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "danawa",

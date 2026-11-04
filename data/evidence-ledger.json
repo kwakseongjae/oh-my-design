@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 388,
-  "sources": 3253,
+  "references_with_verification_v2": 389,
+  "sources": 3265,
   "sources_by_kind": {
     "brand-asset": 212,
     "license": 141,
-    "official-doc": 1489,
-    "product-surface": 1411
+    "official-doc": 1497,
+    "product-surface": 1415
   },
   "references": {
     "104": {
@@ -3020,6 +3020,84 @@
           "kind": "official-doc",
           "captured": "2026-09-27",
           "host": "www.dailymotion.com"
+        }
+      ]
+    },
+    "daiwa": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "group-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.daiwa-grp.jp"
+        },
+        {
+          "id": "group-control-home",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.daiwa-grp.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa-grp.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "homepage-renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "philosophy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "sitepolicy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
+        },
+        {
+          "id": "wealth",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.daiwa.jp"
         }
       ]
     },
