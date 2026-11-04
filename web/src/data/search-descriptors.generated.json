@@ -3325,6 +3325,71 @@
     ]
    }
   },
+  "byd": {
+   "hash": "478cb0efea3477c2",
+   "terms": {
+    "en": [
+     "automotive",
+     "new energy vehicles",
+     "electric car brand",
+     "car manufacturer website",
+     "large vehicle photography",
+     "minimal white layout",
+     "spacious light sections",
+     "neutral palette",
+     "dark navy buttons",
+     "test drive booking",
+     "compact overlay navigation",
+     "hybrid and battery electric",
+     "technology focused"
+    ],
+    "ko": [
+     "자동차",
+     "신에너지 자동차",
+     "전기차 브랜드",
+     "자동차 제조사 사이트",
+     "대형 차량 사진",
+     "미니멀 화이트",
+     "여백 넉넉한 레이아웃",
+     "중립 색상",
+     "어두운 네이비 버튼",
+     "시승 신청",
+     "이미지 위 간결한 내비게이션",
+     "하이브리드 전기차",
+     "기술 중심"
+    ],
+    "ja": [
+     "自動車",
+     "新エネルギー車",
+     "電気自動車ブランド",
+     "自動車メーカーサイト",
+     "大きな車両写真",
+     "白基調ミニマル",
+     "余白の広いセクション",
+     "ニュートラル配色",
+     "濃紺ボタン",
+     "試乗予約",
+     "画像上のコンパクトナビ",
+     "ハイブリッドと電気",
+     "技術重視"
+    ],
+    "zh": [
+     "汽車",
+     "新能源車",
+     "電動車品牌",
+     "車廠官網",
+     "大幅車輛攝影",
+     "白色極簡",
+     "留白寬敞版面",
+     "中性色調",
+     "深藍黑按鈕",
+     "預約試駕",
+     "圖片上緊湊導覽",
+     "插電混合與純電",
+     "科技感"
+    ]
+   }
+  },
   "cabify": {
    "hash": "fb4b86ff1acf3415",
    "terms": {

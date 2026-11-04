@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 573,
+ "count": 574,
  "items": [
   {
    "id": "104",
@@ -1345,6 +1345,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "byd",
+   "primary_color_hex": "#1a1d25",
+   "category": "automotive",
+   "visual_theme": "BYD makes new-energy vehicles, with the Chinese passenger-car offering organised into the Dynasty (王朝) and Ocean (海洋) series and both hybrid and battery-electric technology routes. Its current corporate history dates its beginnings as a rechargeable-battery pr",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "cabify",
