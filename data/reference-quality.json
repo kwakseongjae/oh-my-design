@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-03",
+  "generated_at": "2026-11-04",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 545,
+  "count": 573,
   "counts": {
-    "verified_v2": 349,
+    "verified_v2": 393,
     "partial": 89,
-    "legacy_snapshot": 107,
-    "total": 545
+    "legacy_snapshot": 91,
+    "total": 573
   },
   "items": [
     {
@@ -196,6 +196,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ahamo",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 14,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -501,17 +512,14 @@
     },
     {
       "id": "bithumb",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-01",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "bito",
@@ -780,6 +788,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "chinatimes",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1115,6 +1134,17 @@
       "reason_codes": []
     },
     {
+      "id": "daiwa",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "danawa",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -1234,6 +1264,17 @@
       ]
     },
     {
+      "id": "demaecan",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "deutschebahn",
       "status": "verified_v2",
       "verified_at": "2026-09-26",
@@ -1270,6 +1311,17 @@
       "reason_codes": []
     },
     {
+      "id": "digitalx",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "discord",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-06",
@@ -1285,19 +1337,14 @@
     },
     {
       "id": "dji",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "dmm",
@@ -1335,6 +1382,17 @@
       "reason_codes": []
     },
     {
+      "id": "doda",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "doordash",
       "status": "partial",
       "verified_at": "2026-06-22",
@@ -1359,6 +1417,17 @@
       "reason_codes": []
     },
     {
+      "id": "douzone",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 14,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "drdiary",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -1371,18 +1440,14 @@
     },
     {
       "id": "drnow",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "dropbox",
@@ -1429,6 +1494,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ecpay",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 15,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1584,6 +1660,17 @@
       "reason_codes": []
     },
     {
+      "id": "fetnet",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "fever",
       "status": "verified_v2",
       "verified_at": "2026-09-26",
@@ -1624,6 +1711,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "firstbank",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1930,6 +2028,17 @@
       ]
     },
     {
+      "id": "goodoc",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "goodpatch",
       "status": "partial",
       "verified_at": "2026-06-17",
@@ -2059,17 +2168,14 @@
     },
     {
       "id": "hahow",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-01",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "hana",
@@ -2090,6 +2196,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hangseng",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2162,6 +2279,17 @@
       "reason_codes": []
     },
     {
+      "id": "hncb",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "hogangnono",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-03",
@@ -2189,6 +2317,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "htc",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "huawei",
@@ -2470,6 +2609,28 @@
       "reason_codes": []
     },
     {
+      "id": "japanpostbank",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "jejuair",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "jkopay",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-03",
@@ -2594,19 +2755,36 @@
     },
     {
       "id": "kakaot",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-27",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 17,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakuyomu",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kaonavi",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 18,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "karrot",
@@ -2725,6 +2903,17 @@
       "reason_codes": []
     },
     {
+      "id": "kiwoom",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 21,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "kkbox",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-01",
@@ -2799,17 +2988,14 @@
     },
     {
       "id": "krafton",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "kraken",
@@ -2884,17 +3070,14 @@
     },
     {
       "id": "laftel",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-03",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 20,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "lamborghini",
@@ -3187,34 +3370,37 @@
       "reason_codes": []
     },
     {
+      "id": "megastudy",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "meituan",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 20,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "melon",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-01",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "mercari",
@@ -3262,6 +3448,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "metrotaipei",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 16,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "microsoft",
@@ -3379,6 +3576,17 @@
       "reason_codes": []
     },
     {
+      "id": "mizuho",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "modusign",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -3478,17 +3686,14 @@
     },
     {
       "id": "muji",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-06",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "munpia",
@@ -3730,6 +3935,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nissan",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 19,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4488,6 +4704,28 @@
       ]
     },
     {
+      "id": "rakutenbank",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "rakutensec",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "ramp",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-06",
@@ -4681,19 +4919,14 @@
     },
     {
       "id": "ridi",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-15",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 20,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "riiid",
@@ -5404,17 +5637,14 @@
     },
     {
       "id": "studio",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-06",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "studysapuri",
@@ -5424,6 +5654,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "subaru",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5810,6 +6051,17 @@
       "reason_codes": []
     },
     {
+      "id": "tsmc",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "tumblbug",
       "status": "legacy_snapshot",
       "verified_at": "2026-05-27",
@@ -6121,34 +6373,25 @@
     },
     {
       "id": "watcha",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 14,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "wavve",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-27",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 15,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "wconcept",
@@ -6391,18 +6634,14 @@
     },
     {
       "id": "yogiyo",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-27",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "yourator",
@@ -6416,6 +6655,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "yuanta",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "zabank",
@@ -6507,19 +6757,14 @@
     },
     {
       "id": "zigbang",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-15",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 21,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "zigzag",

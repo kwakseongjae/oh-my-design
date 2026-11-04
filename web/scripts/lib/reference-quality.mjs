@@ -217,6 +217,9 @@ function nonStateePaletteHexes(tokens) {
   return out;
 }
 
+// Proof tables often record the computed value as the browser reports it, `rgb(29, 29, 31)`, not as hex.
+const rgbOf = (hex) => `rgb(${[1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)).join(", ")})`;
+
 function derivedValueSignals(markdown, tokens, verificationMarkdown = "") {
   const body = markdown.slice(markdown.indexOf("\n---\n", 4) + 5);
   const tokenBlob = JSON.stringify(tokens ?? {}).toLowerCase();
@@ -250,7 +253,7 @@ function derivedValueSignals(markdown, tokens, verificationMarkdown = "") {
       if (!tokenBlob.includes(hex.toLowerCase())) continue;
       // 상태 이름이 아닌 팔레트 항목이면 상태 주장이 아니다.
       if (paletteNamed.has(hex.toLowerCase())) continue;
-      if (proofText.includes(hex.toLowerCase())) continue;
+      if (proofText.includes(hex.toLowerCase()) || proofText.includes(rgbOf(hex))) continue;
       if (selfDeclared) declared.add(hex.toLowerCase());
       else suspected.add(hex.toLowerCase());
     }

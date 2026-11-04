@@ -179,7 +179,19 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 170 -> 169 (2026-11-03): fubon.
     // 169 -> 168 (2026-11-03): frip.
     // 168 -> 167 (2026-11-03): moin.
-    expect(flagged.length).toBe(167);
+    // 167 -> 166 (2026-11-03): meituan.
+    // 166 -> 165 (2026-11-03): laftel.
+    // 165 -> 164 (2026-11-03): muji.
+    // 164 -> 163 (2026-11-03): watcha.
+    // 163 -> 162 (2026-11-03): kakaot.
+    // 162 -> 161 (2026-11-03): wavve.
+    // 161 -> 160 (2026-11-03): yogiyo.
+    // 160 -> 159 (2026-11-03): studio.
+    // 159 -> 158 (2026-11-03): drnow.
+    // 158 -> 157 (2026-11-03): dji.
+    // 157 -> 156 (2026-11-03): zigbang.
+    // 156 -> 155 (2026-11-03): ridi.
+    expect(flagged.length).toBe(155);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
@@ -245,8 +257,10 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     }
 
     // Pinned so the numbers move only when someone re-measures and says why.
+    // meituan, kakaot, wavve, dji and ridi left (2026-11-03): re-extracted live, so the prose-palette snapshot no longer
+    // applies to them.
     expect(contradicted.sort()).toEqual(
-      ["dji", "kakaot", "meituan", "money-forward", "ridi", "tada", "wavve"],
+      ["money-forward", "tada"],
     );
     // 22 -> 21 (2026-11-03): ubie was re-extracted live; the snapshot row describes its old prose palette and
     // no longer applies (reference-quality.mjs uses the snapshot for prose-derived palettes only).

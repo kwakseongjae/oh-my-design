@@ -1,80 +1,93 @@
 ---
 name: Dr.Now (닥터나우)
 colors:
-  primary: '#FF8D00'
-  primary-600: '#FD7E14'
-  primary-700: '#F76707'
-  primary-800: '#E8590C'
-  primary-900: '#D9480F'
-  primary-100: '#FFF4E6'
-  primary-300: '#FFD8A8'
-  surface-10: '#FBFCFD'
-  surface-20: '#F7F9FA'
-  surface-40: '#F1F3F6'
-  border: '#DFE1E2'
-  placeholder: '#A9AEB1'
-  meta: '#8D9297'
-  body: '#71767A'
-  body-root: '#565C65'
-  strong: '#3D4551'
-  heading: '#1C1D1F'
-  canvas: '#FFFFFF'
-  info: '#228BE6'
-  yellow: '#FCC419'
-  error: '#FA5252'
+  primary: '#ff8d00'
+  primary-600: '#fd7e14'
+  primary-700: '#f76707'
+  primary-800: '#e8590c'
+  primary-900: '#d9480f'
+  primary-100: '#fff4e6'
+  primary-300: '#ffd8a8'
+  surface-10: '#fbfcfd'
+  surface-20: '#f7f9fa'
+  surface-40: '#f1f3f6'
+  border: '#dce0e6'
+  foreground: '#b0b6c0'
+  copy: '#707882'
+  meta: '#9aa0aa'
+  strong: '#383c43'
+  heading: '#1a1b1c'
+  canvas: '#ffffff'
+  blue-600: '#228be6'
+  yellow-500: '#fcc419'
+  red-600: '#fa5252'
 typography:
   h-32:
     fontSize: 32px
     fontWeight: 700
-    lineHeight: 1.31
-    use: Large display heading
+    lineHeight: 42px
+    use: Product CSS typography-ui-32b; comparison-section heading in homepage HTML
   h-28:
     fontSize: 28px
     fontWeight: 700
-    lineHeight: 1.36
-    use: Heading
+    lineHeight: 38px
+    use: Product CSS typography-ui-28b; step and feature-card headings in homepage HTML
   h-24:
     fontSize: 24px
     fontWeight: 700
-    lineHeight: 1.33
-    use: Section heading
+    lineHeight: 32px
+    use: Declared product typography utility; no measured heading specimen
   h-22:
     fontSize: 22px
     fontWeight: 700
-    lineHeight: 1.36
-    use: Section heading
+    lineHeight: 30px
+    use: Declared product typography utility; no measured heading specimen
   h-20:
     fontSize: 20px
     fontWeight: 600
-    lineHeight: 1.4
-    use: Subheading
+    lineHeight: 28px
+    use: Declared product typography-ui-20sb
   body-17:
     fontSize: 17px
     fontWeight: 400
-    lineHeight: 1.41
-    use: Body / button label at 600
+    lineHeight: 24px
+    use: Measured header submenu link
   body-16:
     fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.5
-    use: Body default
+    lineHeight: 24px
+    use: Measured symptom-link outer element; visible label is 17px/500
   body-15:
     fontSize: 15px
     fontWeight: 400
-    lineHeight: 1.47
-    use: Body small
+    lineHeight: 22px
+    use: Declared product typography-ui-15r
   caption:
     fontSize: 12px
     fontWeight: 600
-    lineHeight: 1.5
-    use: Meta / timestamps
+    lineHeight: 18px
+    use: Business-information link in survey
+  action:
+    fontSize: 17px
+    fontWeight: 600
+    lineHeight: 24px
+    use: Both measured app-download buttons
+  faq:
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 26px
+    use: Measured FAQ trigger
+  footer-link:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 20px
+    use: Measured company link
 rounded:
+  none: 0px
   sm: 8px
   md: 12px
-  lg: 32px
-  full: 9999px
+  lg: 20px
 spacing:
-  xs: 4
   sm: 8
   md: 12
   base: 16
@@ -83,413 +96,272 @@ spacing:
   xxl: 48
   section: 96
 components:
-  button-primary:
+  company-nav:
     type: button
-    backgroundColor: '#FD7E14'
-    textColor: '#FFFFFF'
-    rounded: 12px
-    typography: 17px/600
-    use: Primary solid CTA
-  button-outline:
-    type: button
-    backgroundColor: '#FFFFFF'
-    textColor: '#FD7E14'
-    rounded: 12px
-    padding: 16px 24px
-    typography: 16px/600
-    use: 'Primary outline (1px #FD7E14 border)'
-  button-disabled:
-    type: button
-    backgroundColor: '#DFE1E2'
-    textColor: '#A9AEB1'
-    rounded: 12px
-    padding: 16px 24px
-    typography: 16px/500
-    use: Ghost / disabled
-  tag-primary:
-    type: badge
-    backgroundColor: '#FFF4E6'
-    textColor: '#F76707'
-    rounded: 9999px
-    padding: 4px 10px
-    typography: 12px/600
-    use: Primary tag chip
-  tag-gray:
-    type: badge
-    backgroundColor: '#F1F3F6'
-    textColor: '#71767A'
-    rounded: 9999px
-    padding: 4px 10px
-    typography: 12px/500
-    use: Gray tag chip
-  card:
-    type: card
-    backgroundColor: '#FFFFFF'
-    rounded: 32px
-    padding: 24px
-    use: 'Content card, 1px #DFE1E2 border'
-  section-card:
-    type: card
-    backgroundColor: '#F1F3F6'
-    rounded: 32px
-    use: Section background card
-  nav-item:
-    type: tab
-    backgroundColor: transparent
-    textColor: '#DFE1E2'
-    rounded: 8px
-    padding: 0px 12px
-    typography: 16px/400
-    active: 'text #FD7E14, weight 700'
-    use: Navigation item
+    textColor: '#9aa0aa'
+    rounded: 0px
+    height: 16px
+    padding: 0px
+    typography: 14px / 400
+    hover: 'text-decoration: underline solid #9aa0aa'
+    pressed: 'text-decoration: underline solid #9aa0aa'
+    use: '회사 소개 — a footer navigation link on #f7f9fa. Transparent background omitted. Hover and held pointer press add an underline; keyboard focus had no compared style change.'
 fonts:
   roles:
-    sans: Pretendard Variable
-    mono: Pretendard Variable
+    sans: Pretendard
 ---
 
-# Dr.Now (닥터나우)
-
-Korea's #1 telemedicine platform — making medical care instantly accessible, any hour of the day.
+# Design System Inspiration of Dr.Now (닥터나우)
 
 ## Overview
 
 ### Visual Theme & Atmosphere
 
-Dr.Now (닥터나우) is built around a single emotional promise: "아플 땐 닥터나우" — when you're sick, Dr.Now is there. The interface translates this into a warm, energetic orange language set against a clean off-white and neutral gray canvas. Where most Korean healthcare apps reach for clinical blues or sterile whites to signal trust, Dr.Now deliberately chose vibrant orange — a color that radiates urgency, warmth, and approachability without the coldness of institutional medicine. The result feels closer to a sympathetic neighbor than a hospital waiting room.
+Dr.Now connects people in South Korea with remote medical consultations and pharmacy pickup. Its company page frames the service around reducing the inconvenience of getting care, choosing a hospital by symptom, and seeing average consultation and medicine prices beforehand. The current homepage explains the journey in three steps: reserve a consultation, speak by phone, and pick up medicine. [Company](https://company.doctornow.co.kr/company), [homepage](https://doctornow.co.kr/).
 
-The typography is Pretendard Variable, the gold-standard Korean system font — its clean geometric letterforms balance medical authority with consumer-app readability. The neutral gray scale runs from the near-white surface `#FBFCFD` (G10) through rich charcoal `#1C1D1F` (G900), creating quiet, clean backdrops that let the orange CTAs and primary actions demand attention without visual noise. Card surfaces use `#FFFFFF` with `1px solid #DFE1E2` borders and 32px radii for a friendly, rounded feel.
+The distinctive expression is orange action against a mostly white page: an orange wordmark, selected orange words in large Korean headlines, colorful symptom illustrations on pale gray tiles, and a solid orange download button. A dark narrative band interrupts the white sections; pale gray sections hold testimonials and service links. The measured header button is `#fd7e14` with white text and a 12px radius. These are visible design choices; the opened company pages do not explain why orange was chosen.
 
-Motion is purposefully gentle — slide-up sheets and fade-in transitions at 300ms reinforce that Dr.Now is reliable and steady, not frantic. The interface hierarchy is clear: orange acts, gray informs, white breathes.
+The company's history records establishment in September 2019 and the official launch of its remote-consultation and prescription-delivery platform in November 2020. The current homepage teaches **pharmacy pickup**. The company page's October 2026 figures are 9 million+ cumulative downloads, 5.2 million+ consultations, 1.2 million+ consultation reviews, and 7,500+ partner medical institutions. Its present expression combines consultation access with hospital discovery, health information and price comparison. [Company history and figures](https://company.doctornow.co.kr/company).
 
-### Primary tasks
+The measured homepage is the Korean-language root edition (`doctornow.co.kr/`, HTML `lang="ko"`); the capture had no regional redirect.
 
-- Consult a doctor by phone without leaving work
-- Find a pediatrician late at night and have medicine delivered
-- Compare prescription costs across pharmacies before confirming
-- Choose a hospital by symptom instead of medical specialty
-- Refill a monthly prescription for a long-term condition
+#### Primary tasks
+
+- Start a remote consultation through symptom or specialty choices, including pediatrics and cold/flu.
+- Choose a doctor using average consultation prices and reviews, as described on the homepage.
+- Send a prescription to a pharmacy and pick up the medicine.
+- Find hospitals or pharmacies, compare listed non-covered treatment/medicine prices, and read health information.
 
 ### Brand Narrative
 
-Dr.Now (닥터나우) was founded in 2019 in Seoul with a single observation: Koreans were enduring pain, delaying care, or going without medical help not because they didn't want it, but because accessing it was inconvenient — hospitals closed at night, wait times were long, and the psychological barrier to seeking care was higher than it needed to be. The founding team set out to dissolve that barrier, beginning with a medication delivery service and evolving rapidly into Korea's first scaled telemedicine platform.
+The company history begins with establishment in **2019.09**, lists the **콜로나 맵** app in **2020.03**, and dates the official Dr.Now service launch to **2020.11**. It later lists the launch of professional real-time free medical counseling in **2022.07**. These milestones describe the company's own published sequence; they do not establish the founders' private motivation. [Company history](https://company.doctornow.co.kr/company).
 
-By 2026 the platform counts more than 4 million consultations, 5,500+ partner medical institutions, and has passed an 8 million+ download milestone. The brand mission crystallized into a three-pillar commitment: solve the healthcare inconveniences people have accepted as normal, shift the medical market from provider-driven to patient-driven by making symptom-based hospital selection and transparent pricing standard, and be available "늦은 밤에도, 주말에도" — late nights and weekends, whenever patients need care most. The tagline "의료를 더욱 가깝게, 닥터나우" (Healthcare closer with Dr.Now) captures this positioning in four words.
+The company connects symptom-based hospital choice and advance price visibility to a shift toward the consumer. Its culture page states a mission of making medical care easy and convenient for everyone and asks the team to prioritize customer impact. The current homepage turns those themes into symptom entry points, doctor-selection explanations, a phone-consultation step, pharmacy pickup, and links to supporting health services. [Company](https://company.doctornow.co.kr/company), [culture](https://company.doctornow.co.kr/culture).
 
-The brand's choice of orange as its primary color is not accidental. Orange refuses the clinical associations of hospital blue and the cold sterility of medical white — it is warm, accessible, and slightly urgent in the best sense, the color of someone who picks up when you call at midnight. Combined with the approachable Pretendard typeface and a conversational voice, Dr.Now has built a brand that feels like a trusted friend who happens to connect you to doctors — not an institution that processes you.
+The disclosed operator is **주식회사 닥터나우** in its service terms. The homepage's business disclosure names **(주) 닥터나우** and gives **주소 : 서울 강남구 테헤란로 625, 16층**. This supports **KR**. No parent company was stated in the opened legal disclosures. [Service terms](https://company.doctornow.co.kr/board/?action=readpost&post_id=1028&bbspaged=2), [business disclosure](https://doctornow.co.kr/).
 
 ### Principles
 
-1. **Accessibility at Every Hour**
-   Healthcare shouldn't depend on whether it's a weekday at 3pm. The product must work flawlessly for a parent at 2am with a sick child. *UI implication:* Emergency-feel hierarchy — the primary CTA must be immediately findable without scrolling; orange ensures it commands attention without noise.
+The first three points paraphrase the company's stated priorities. The visual applications are observations of this homepage.
 
-2. **Patient-Centered, Not Provider-Centered**
-   Patients search by symptom, not by medical specialty. Navigation should mirror how people think about illness, not how hospitals organize themselves. *UI implication:* Symptom-based entry points and specialty discovery that hides complexity; surface the most accessible path first.
-
-3. **Transparency as Trust**
-   Showing consultation prices before booking is a core brand differentiator. Surfacing this information early — without making it feel transactional — builds the trust that drives repeat use. *UI implication:* Price information surfaces at the consultation card level, not buried in a separate screen; use neutral G700 not warning orange for pricing labels.
-
-4. **Warm Urgency Without Alarm**
-   Orange signals "act now" without inducing anxiety. The brand's energy must feel helpful-urgent, not panic-inducing. *UI implication:* Reserve the deep gradient (`#D9480F → #F3463B`) for hero marketing contexts only; use flat `#FD7E14` for in-app CTAs to keep urgency calibrated.
-
-5. **Own the Moment of Illness**
-   The product meets users at a vulnerable moment — sick, worried, often alone. Every touchpoint should feel like a calm, competent presence. *UI implication:* Loading states use gentle skeleton shimmer (1.5s ease-in-out), not spinning indicators; empty states use empathetic copy, never sterile error codes.
+1. **Reduce the inconvenience of care.** The company describes people delaying care because they are busy or a child becomes ill late at night. The homepage explains the process in three named steps.
+2. **Make choices understandable.** The company explicitly names average prices, medicine costs and symptom-based hospital selection. The homepage presents symptoms and specialties near the top and explains doctor choice through prices and reviews.
+3. **Consider customer impact.** The culture page explicitly prioritizes it. The service links and price-comparison rows offer distinct entry points for different tasks.
+4. **Keep action visually recognizable.** In this capture, the download action repeats solid orange or its white-on-orange inverse, while informational surfaces use neutral gray. This is a surface observation, not a sourced claim about orange's psychological effect.
 
 ### Personas
 
-*Illustrative — not derived from published Dr.Now research; modeled on the brand's stated use cases.*
-
-**지민 (Ji-min), 32 — The Midnight Parent**
-A working parent in Seoul whose toddler spikes a fever at 11pm on Sunday. Her neighborhood clinic is closed; the ER seems excessive for a fever. She opens Dr.Now, finds a pediatrician available in minutes, gets a prescription, and schedules home delivery. *Design implication:* The fastest possible path from symptom to consultation must require ≤3 taps; the specialty "소아과" (pediatrics) card must be prominently featured.
-
-**준혁 (Jun-hyuk), 27 — The Busy Professional**
-A startup employee who gets a cough mid-project sprint and can't spend 90 minutes at a clinic. He uses Dr.Now's phone consultation during a coffee break, gets prescribed and picked up at the nearest partner pharmacy on his way home. *Design implication:* Session brevity matters; consultation duration, wait time estimates, and pharmacy proximity are key information hierarchy elements.
-
-**은지 (Eun-ji), 45 — The Price-Conscious Patient**
-A freelancer without employer health insurance who worries about non-covered drug costs. She uses Dr.Now's "최저가 약국 찾기" (lowest-price pharmacy finder) to compare prescription costs before confirming. *Design implication:* Price transparency surfaces early in the flow; comparison UI must be scannable (not a data table).
-
-**민준 (Min-jun), 58 — The Condition Manager**
-A patient with a chronic dermatology issue who needs monthly prescription refills. He's moved Dr.Now into his monthly routine, using the dermatology prescription repeat feature. *Design implication:* Repeat-prescription flows must surface in the home dashboard for logged-in users; history-aware CTAs ("마지막 처방 반복하기") reduce friction.
+No published persona study was found. The company page nevertheless provides two explicit use contexts: a suddenly ill child late at night and a busy person unable to visit a hospital. Its displayed app reviews include a parent, an office worker and a person living alone. The homepage also depicts medicine running out and a long pediatric wait. These support task scenarios, not invented names, ages, occupations, insurance status, tap limits or successful treatment outcomes. [Company](https://company.doctornow.co.kr/company), [homepage](https://doctornow.co.kr/).
 
 ## Colors
 
-### Primary (Orange Scale — official CSS vars --P100 to --P900)
-- **Primary 500:** `#FF8D00` — brand anchor orange; used in timeline markers, accent text, key stats
-- **Primary 600:** `#FD7E14` — CTA button fills, active nav link text, featured badge backgrounds
-- **Primary 700:** `#F76707` — hover on orange elements, pressed states, high-emphasis text
-- **Primary 800:** `#E8590C` — deep hover, secondary destructive-adjacent accents
-- **Primary 900:** `#D9480F` — CTA gradient start, deepest brand orange
-- **Primary 100:** `#FFF4E6` — tinted surfaces, pill tag backgrounds, info banners
-- **Primary 300:** `#FFD8A8` — divider gradient, warm illustration fill
+The active product stylesheet contains customized `primary-*` and `gray-*` utility colors. These are distinct from its generic HSL root theme. The survey counted 90 root custom properties; none was a `--P*` or `--G*` property. The separate company stylesheet still distributes those uppercase corporate variables. Palette declarations establish available values; they do not establish a hover or error state. [Product CSS](https://userweb-static.doctornow.co.kr/20261103-1434-e82ea1d763/_next/static/css/665b84cd20090264.css), [company CSS](https://file.doctornow.co.kr/official/css/style.css).
 
-### Neutral (Gray Scale — official CSS vars --G10 to --G900)
-- **Surface 10:** `#FBFCFD` — page background variant (G10)
-- **Surface 20:** `#F7F9FA` — secondary page background, tag fills (G20)
-- **Surface 40:** `#F1F3F6` — review section background, card dividers (G40)
-- **Gray 100:** `#DFE1E2` — default border, card outline, separator lines (G100)
-- **Gray 300:** `#A9AEB1` — placeholder text, disabled borders (G300)
-- **Gray 400:** `#8D9297` — secondary labels, metadata text (G400)
-- **Gray 500:** `#71767A` — body text default (G500)
-- **Gray 600:** `#565C65` — body color root default (G600)
-- **Gray 700:** `#3D4551` — secondary headings, strong body (G700)
-- **Gray 900:** `#1C1D1F` — primary headings, dark emphasis (G900)
+### Product orange
 
-### Accent & System
-- **White:** `#FFFFFF` — card surface, modal background, CTA text
-- **Blue 600:** `#228BE6` — information chips, system links, secondary action text
-- **Yellow 500:** `#FCC419` — star rating, highlight badge
-- **Error Red:** `#FA5252` — destructive action, form error state
+| Value | Evidence and use |
+|---|---|
+| `#ff8d00` | Product `primary-500` declarations; also corporate `--P500`. This is the named palette anchor, rather than the measured download-button fill. |
+| `#fd7e14` | Product `primary-600`; measured header download fill and lower download text. |
+| `#f76707` | Product `primary-700`; six text-color occurrences in the survey. No measured download-button darkening to this value. |
+| `#e8590c` | Product `primary-800`; measured orange `Q.` in the FAQ trigger. |
+| `#d9480f` | Product `text-primary-900` declaration and corporate `--P900`; no measured pressed-state assignment. |
+| `#fff4e6` | Product `primary-100`; seven background occurrences in the survey. |
+| `#ffd8a8` | Product `primary-300`; one paragraph-ink occurrence in the survey. |
+
+### Product neutrals
+
+| Role | Value | Evidence |
+|---|---|---|
+| Canvas | `#ffffff` | 32 background occurrences; lower download-button fill. |
+| Surface 10 | `#fbfcfd` | Product `bg-gray-10` declaration. |
+| Surface 20 | `#f7f9fa` | 23 background occurrences; surface behind the footer company link and symptom icon tile. |
+| Surface 40 | `#f1f3f6` | Six background occurrences; measured FAQ trigger fill. |
+| Border | `#dce0e6` | One rendered border occurrence; product gray-100 declaration. |
+| Foreground — literal paragraph ink | `#b0b6c0` | Most frequent `<p>` ink, three occurrences. These are legal/footer paragraphs; this is not a universal main-copy default. |
+| Explanatory copy | `#707882` | 65 text occurrences and the measured FAQ label. |
+| Metadata / footer links | `#9aa0aa` | 70 text occurrences; measured company link. |
+| Strong / symptom label | `#383c43` | 43 text occurrences; the visible pediatrics label. |
+| Heading | `#1a1b1c` | 20 text occurrences; product gray-900 and homepage heading classes. |
+
+The header submenu uses `#50565e`. The dark narrative section uses the product gray-800 `#23262c`. The symptom link's own inherited color is `#09090b`, but its visible label is `#383c43`; use the child's measured color when reproducing that label.
+
+### Declared supporting colors
+
+The product bundle declares blue-600 `#228be6`, yellow-500 `#fcc419`, and red-600 `#fa5252`. The earlier values survive as palette definitions. Their earlier assignments to information chips, rating stars, destructive actions and form errors were not verified as component states in this capture.
+
+### Separate corporate palette
+
+The company stylesheet's full color-variable list remains useful for the corporate site. It must not replace the current product gray scale:
+
+| Corporate variables | Values in order |
+|---|---|
+| `--G10`, `--G20`, `--G30`, `--G40`, `--G50` | `#fbfcfd`, `#f7f9fa`, `#f5f6f7`, `#f1f3f6`, `#edeff0` |
+| `--G100`, `--G200`, `--G300`, `--G400`, `--G500` | `#dfe1e2`, `#c6cace`, `#a9aeb1`, `#8d9297`, `#71767a` |
+| `--G600`, `--G700`, `--G800`, `--G900` | `#565c65`, `#3d4551`, `#2d2e2f`, `#1c1d1f` |
+| `--P100`, `--P200`, `--P300`, `--P400`, `--P500` | `#fff4e6`, `#ffe8cc`, `#ffd8a8`, `#ffc078`, `#ff8d00` |
+| `--P600`, `--P700`, `--P800`, `--P900` | `#fd7e14`, `#f76707`, `#e8590c`, `#d9480f` |
+| `--White`, `--Black` | `#ffffff`, `#000000` |
+
+For example, corporate `body { color: var(--G600) }` is a source fact about that stylesheet. It does not set the product homepage's body color.
 
 ## Typography
 
-Dr.Now uses **Pretendard Variable** exclusively — defined in both the main CSS bundle (`userweb-static.doctornow.co.kr`) and the official brand CSS (`file.doctornow.co.kr/official/css/default.css`). The font is also specified as `Pretendard Variable, Pretendard` with a full Korean system font fallback chain.
+### Font evidence classes
 
-**Type Scale (from CSS typography utility classes):**
+- **Official product-use documentation:** no prose font guideline was found in the opened company, culture or terms pages. The implementation evidence below supports the font identification.
+- **Live-loaded:** `document.fonts` listed **Pretendard 400, 500, 600 and 700 normal**. It also listed **Material Symbols Rounded 400 normal**, an icon face, which is excluded from the text-family token.
+- **Official distributed assets:** the live page declares static Pretendard Bold, SemiBold, Medium and Regular WOFF2 subset files under `file.doctornow.co.kr/fonts/`, with `local(...)` alternatives. These are declared delivery paths, not proof of which alternative supplied each glyph. The separate corporate reset imports Pretendard's static dynamic-subset CSS from jsDelivr at v1.3.6 and names `Pretendard` for body, inputs and buttons. Font binaries and licensing documents were not downloaded or inspected. [Corporate reset](https://file.doctornow.co.kr/official/css/default.css).
+- **Declared-only:** the computed body, h1 and button stacks start with **Pretendard Variable**, followed by Pretendard and system fallbacks. Pretendard Variable was absent from the loaded-face list and had no face definition in the inspected product bundle. It gets no specimen or family token.
+- **Unresolved:** a variable-font asset, official typography rationale, and a license for redistribution. Substitute: none chosen.
 
-| Class suffix | Size | Line-height | Weights available |
-|---|---|---|---|
-| `-32b/sb` | 32px | 42px | 700 / 600 |
-| `-28b` | 28px | 38px | 700 |
-| `-24b/sb` | 24px | 32px | 700 / 600 |
-| `-22b/sb` | 22px | 30px | 700 / 600 |
-| `-20b/sb` | 20px | 28px | 700 / 600 |
-| `-18b/sb/m` | 18px | 26px | 700 / 600 / 500 |
-| `-17b/sb/m/r` | 17px | 24px | 700 / 600 / 500 / 400 |
-| `-16b/sb/m/r` | 16px | 24px | 700 / 600 / 500 / 400 |
-| `-15b/sb/m/r` | 15px | 22px | 700 / 600 / 500 / 400 |
-| `-14b/sb/m/r` | 14px | 20px | 700 / 600 / 500 / 400 |
-| `-12sb` | 12px | 18px | 600 |
+Use the loaded **Pretendard** family for this captured product reference. No monospace face was verified.
 
-**Rules:**
-- CTA button labels: 17px / 600 (SemiBold)
-- Body default: 15px–16px / 400–500
-- Section headings: 22px–32px / 700
-- Meta / timestamps: 12px–14px / 400
-- All text: `-webkit-font-smoothing: antialiased` applied globally
-- No italic in UI text; `font-style: normal` enforced in typography utility classes
+### Product type scale
+
+The fetched product CSS confirms the legacy utility metrics below. These are declared utilities, not a claim that every size was rendered in the survey. The utility classes set `font-style: normal`, `text-transform: none` and `-webkit-font-smoothing: antialiased`.
+
+| Utility suffix | Size / line height | Weights confirmed in CSS |
+|---|---|---|
+| `32b/sb` | 32px / 42px | 700 / 600 |
+| `28b` | 28px / 38px | 700 |
+| `24b/sb` | 24px / 32px | 700 / 600 |
+| `22b/sb` | 22px / 30px | 700 / 600 |
+| `20b/sb` | 20px / 28px | 700 / 600 |
+| `18b/sb/m` | 18px / 26px | 700 / 600 / 500 |
+| `17b/sb/m/r` | 17px / 24px | 700 / 600 / 500 / 400 |
+| `16b/sb/m/r` | 16px / 24px | 700 / 600 / 500 / 400 |
+| `15b/sb/m/r` | 15px / 22px | 700 / 600 / 500 / 400 |
+| `14b/sb/m/r` | 14px / 20px | 700 / 600 / 500 / 400 |
+| `12sb` | 12px / 18px | 600 |
+
+Homepage HTML also binds major section headings to 48px / 60px / 700 and feature headings to 40px / 52px / 700. Measured action labels are 17px / 24px / 600; the FAQ is 18px / 26px / 600; the footer link is 14px / 20px / 400. The symptom link's outer box is 16px / 24px / 400, while its visible label is 17px / 500. Keep those two identities separate.
 
 ## Layout
 
-Dr.Now uses a **max-width 1050px centered content container** (`width: 92%; max-width: 1050px`) for all landing and company pages, with generous vertical section padding of 96px–128px. The mobile breakpoint is at 768px, where multi-column grids collapse to single-column vertical stacks.
+The desktop homepage places its wordmark and navigation over a centered header section, followed by a two-column hero, a row of symptom choices, a dark statement band, a three-step explanation, testimonials, service links, price-comparison rows, FAQs and an orange download panel. This sequence is visible in the captured page and present in its HTML.
 
-- **Web app (doctornow.co.kr):** Tailwind-based, responsive grid, max-width 1064px for some breakpoints
-- **Company pages:** Fixed-width centered layout, 92% container, generous whitespace
-- **Spacing system:** 8px base unit; common values are 4, 8, 12, 16, 24, 32, 40, 48, 64, 96px
-- **Card grid:** Items arranged in 2–3 columns on desktop, stacking to 1 on mobile
-- **Navigation:** Fixed 64px top bar; content offset by `padding-top: 64px`
+The current product HTML uses **1080px** content caps for the header and several main sections; the comparison block uses **600px**. The rendered fixed header is **80px** tall. Symptom choices appear in ten columns at this desktop width; the source provides five columns before its `sm` override. The legacy 1064px value exists as a media-query threshold, not the main content cap.
+
+Observed spacing includes 8px symptom-link padding, 12px lower-button padding and testimonial gaps, 16px header-button padding, 24px symptom-grid gaps, 32px card padding, 48px footer vertical padding, and 96px FAQ heading-to-list gap in HTML. Homepage review metadata uses a 4px gap in source; no universal 8px base-grid rule was documented.
+
+The separate corporate CSS retains `width: 92%; max-width: 1050px` wrappers, a fixed 64px header and 64px main offset. Its header section uses `128px 0 80px` padding and its review section 96px vertically. Keep that corporate layout context separate from the homepage's 1080px / 80px measurements.
 
 ### Responsive Behavior
 
-- **Breakpoint:** 768px (mobile) and 1064px (large desktop cap for web app)
-- **Navigation:** Desktop horizontal nav collapses to a hamburger button at ≤768px
-- **Section padding:** Reduces from 96–128px to 48–64px on mobile
-- **Typography:** Large display sizes (32–56px) reduce by 1–2 steps on mobile
-- **Grid:** 2–3 column layouts collapse to single column at 768px
-- **Cards:** Full-width card pattern on mobile, with reduced padding (8px gap instead of 12px)
-- **Max widths:** Content capped at 1050px for company pages; web app has flexible grid to 1064px
+Mobile rendering was not measured. The following are source declarations from the currently served homepage, rather than device observations:
+
+- Rules at `max-width: 768px` reduce its major 48px headings to 32px, and feature 40px headings to 28px.
+- Step cards change from 32% width to full width and the step row becomes a column with a 20px gap.
+- Testimonial cards change from 480px width / 32px padding to 350px / 24px. They remain a testimonial strip rather than becoming an assumed full-width stack.
+- Hero and other blocks contain explicit mobile column rules. The symptom grid's five-to-ten-column switch is a separate `sm` rule; it is not evidence for a universal one-column grid.
+- Homepage mobile navigation markup contains `search` and `menu`; its source declares a 60px bar and a 768px visibility split. Opening the mobile menu was not tested.
+
+Corporate CSS also has a 768px media query, reduces review padding from 96px to 64px, and changes the review interview layout to a column. The two surfaces share a threshold without sharing every measurement.
 
 ## Elevation & Depth
 
-Dr.Now employs a restrained shadow system — surfaces are differentiated primarily through background color rather than heavy drop shadows.
+The measured buttons, links and FAQ trigger are flat: their computed box shadow is `none`. The homepage's content cards add depth through specific shadows declared on actual HTML elements and resolved by the fetched CSS:
 
-- **Level 0 — Page surface:** `#FBFCFD` or `#F7F9FA` — no shadow
-- **Level 1 — Default card:** `#FFFFFF` with `1px solid #DFE1E2` — flat border elevation
-- **Level 2 — Floating card:** `box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08)` — light lift
-- **Level 3 — Modal / Bottom sheet:** `box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08)` — medium elevation
-- **Level 4 — Tooltip / Dropdown:** `box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.16)` — prominent float
-- **Level 5 — Overlay scrim:** `background-color: rgba(0, 0, 0, 0.06)` to `rgba(0, 0, 0, 0.12)` — modal backdrop
-- **Inset surface accent:** `inset 0px 0px 32px rgba(0, 0, 0, 0.04)` — used on section review blocks
+| Homepage surface | Bound shadow | Geometry |
+|---|---|---|
+| Step card | `0 2px 40px 0 rgba(0,0,0,.06)` | white, 20px radius, 32px padding |
+| Testimonial card | `0 4px 20px 0 rgba(0,0,0,.12)` | white, 20px radius, 32px padding |
+| Service link card | `0 4px 12px 0 rgba(0,0,0,.04)` | white, 12px radius, 32px padding |
 
-### Values kept in prose
+The survey's open petition dialog introduced a `rgba(0, 0, 0, 0.4)` scrim. It was closed for the states run. This does not confirm a general modal elevation scale.
 
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.floating`: `0px 2px 8px rgba(0,0,0,0.08)`
-- `shadow.modal`: `0px 4px 8px rgba(0,0,0,0.08)`
-- `shadow.dropdown`: `0px 8px 16px rgba(0,0,0,0.16)`
+The current product bundle still distributes utility shadow definitions equivalent to `0px 2px 8px rgba(0,0,0,.08)`, `0 4px 8px rgba(0,0,0,.08)`, and `0px 8px 16px 0px rgba(0,0,0,.16)`. The earlier assignments to floating cards, bottom sheets and dropdowns were not confirmed. No inset-review shadow was verified on the current homepage.
 
 ## Motion & Easing
 
-Dr.Now uses a focused animation vocabulary: enter/exit, slide, and shimmer. Motion reinforces the product's calm-urgency balance — fast enough to feel responsive, smooth enough to feel reassuring.
+All six measured control identities report exactly **`transition: all 0s ease 0s`**. The footer underline has no measured timed transition. No brand focus-ring animation was observed.
 
-**Duration Scale:**
-- `100ms` — micro-interactions (focus ring, checkbox check)
-- `200ms` — button hover/press state transitions
-- `300ms` — panel enter/exit, toast appear, slide-up sheets (primary UI motion)
-- `500ms` — page-level fade transitions
-- `1500ms` — skeleton shimmer loop
-- `15000ms` — marquee / scroll animations (brand testimonial carousels)
+Current homepage HTML binds scroll reveals to **`opacity 500ms ease-out, transform 500ms ease-out`**, initially `opacity:0; transform:translateY(20px)`. The three step cards have source-bound transition durations of **500ms**, **1500ms**, and **2000ms** respectively. The FAQ ancestor changed from opacity 0 and translateY 20px to opacity 1 and translateY 0 during the keyboard walk; the change remained after blur. These are reveal settings, not button-state timings.
 
-**Easing:**
-- `ease-out` (`cubic-bezier(0, 0, 0.2, 1)`) — default for all enter transitions; elements decelerate into rest
-- `ease-in` — exit transitions; elements accelerate out cleanly
-- `cubic-bezier(0.4, 0, 0.2, 1)` — Material-style standard for screen-level transitions (`screen-slide-in`)
-- `linear` — spinner rotation, marquee scrolls
-- `ease-in-out` — skeleton shimmer, shake animations (periodic/looping)
+The fetched application CSS separately distributes these animation definitions; their activation in a loading, sheet or navigation flow was not measured:
 
-**Motion Rules:**
-- Bottom sheet: slide up `0.3s ease-out` from `translateY(100%)` to `translateY(0)`
-- Page enter: fade+slide — `opacity 500ms ease-out, transform 500ms ease-out` from `translateY(20px)`
-- Screen navigation: `screen-slide-in 0.32s cubic-bezier(0.4,0,0.2,1)` from opacity 0
-- Skeleton: `skeleton-shimmer 1.5s ease-in-out infinite` — translateX -100% to +100%
-- Accordion: `0.2s ease-out` open/close — height from 0 to content height
-- Never animate layout-affecting properties; prefer `transform` and `opacity` for 60fps compositing
+- `.animate-slide-up`: `slide-up .3s ease-out`; its keyframes translate vertically from 100% to 0.
+- `.animate-slide-down`: `slide-down .3s ease-in forwards`; its keyframes translate vertically from 0 to 100%. No sheet exit was activated.
+- `.animate-screen-slide-in`: `.32s` with the CSS-declared curve `cubic-bezier(0.4, 0, 0.2, 1)` (the raw minified rule is in the verification proof). Its keyframes combine opacity 0→1 with translateX 20px→0. This is a distributed definition, not a computed transition from an activated navigation flow.
+- `.animate-skeleton-shimmer`: `skeleton-shimmer 1.6s ease-in-out infinite`; its keyframes move `background-position-x` from 180% to -20%. This corrects the earlier 1.5s / translateX description.
+- `.animate-accordion-down` and `-up`: `.2s ease-out` definitions with height keyframes between 0 and `var(--radix-accordion-content-height)`. The current FAQ answer containers instead carry `transition-[margin-top] duration-300 ease-linear`; no open/close timing was measured.
+- `.animate-shake-left-to-right` and `-right-to-left`: `2s ease-in-out 1` definitions. Their one iteration does not establish a looping UI state; activation was not measured.
+
+No universal duration scale, marquee period or prohibition on layout-property animation was verified.
 
 ## Components
 
-### Primary CTA Button
+Six product controls were inspected after closing the petition dialog. None was submitted or followed. Every listed control had no border and no box shadow at rest. The only clean, control-specific changed state was the footer link underline. Controls with unchanged, unmeasured or incidental states remain described here and are omitted from machine components.
 
-**Brand Gradient CTA (`.btn-now`)**
-- Background: `linear-gradient(90deg, #D9480F 0%, #F3463B 100%)`
-- Text: `#FFFFFF`
-- Radius: 12px
-- Padding: 16px 54px
-- Font: 17px / 600
+| Control | Height / radius | Padding | Rest fill / visible ink | Font |
+|---|---|---|---|---|
+| Header **앱 다운로드** | 48px / 12px | 0px 16px | `#fd7e14` / `#ffffff` | 17px / 600, 24px line height |
+| Lower **앱 다운로드** | 56px / 12px | 0px 12px | `#ffffff` / `#fd7e14` | 17px / 600, 24px line height |
+| Footer **회사 소개** link | 16px bounding box / 0px | 0px | transparent on `#f7f9fa` / `#9aa0aa` | 14px / 400, 20px line height |
+| **소아과** symptom link | 112px / 8px | 8px | transparent on white / child `#383c43` | outer 16px / 400; label 17px / 500 |
+| First FAQ trigger | 58px / 0px | 16px 19px 16px 20px | `#f1f3f6` / `#707882`; `Q.` is `#e8590c` | 18px / 600, 26px line height |
+| Header **소아청소년과** submenu link | 36px / 4px | 6px 8px | transparent on white / `#50565e` | 17px / 400, 24px line height |
 
-**Primary Solid (`.bg-primary-600`)**
-- Background: `#FD7E14`
-- Text: `#FFFFFF`
-- Radius: 12px
-- Font: 17px / 600
+**Footer navigation link:** hover and held pointer press change `text-decoration` from `none` to `underline solid rgb(154, 160, 170)` (`#9aa0aa`). Its color stays fixed. Keyboard focus produced no compared style change and no drawn outline. The machine component is typed as a button because the catalog uses that type for navigation links; its `use` explicitly identifies it as a link.
 
-**Primary Outline**
-- Background: `#FFFFFF`
-- Text: `#FD7E14`
-- Border: 1px solid `#FD7E14`
-- Radius: 12px
-- Padding: 16px 24px
-- Font: 16px / 600
+**Symptom link:** the outer hit area contains a 64×64px pale `#f7f9fa` icon tile and a 36×36px pediatrics image. Its own inherited `#09090b` is not the visible label color. No style/attribute change was detected on hover, press or keyboard focus within the recorded comparison scope.
 
-**Ghost / Disabled**
-- Background: `#DFE1E2`
-- Text: `#A9AEB1`
-- Radius: 12px
-- Padding: 16px 24px
-- Font: 16px / 500
+**Source-bound homepage cards:** current HTML binds testimonial cards to white, 20px corners, 32px desktop padding and 12px gaps. Feature/service links use white, 12px corners and 32px padding. Those service links were not state-probed. This is source-bound geometry, rather than an invented universal card component.
 
-### Tag / Badge Chip
+### Corporate definitions retained separately
 
-**Primary Tag**
-- Background: `#FFF4E6`
-- Text: `#F76707`
-- Radius: 99px
-- Padding: 4px 10px
-- Font: 12px / 600
+The company CSS declares `.btn-now` with `linear-gradient(90deg, #d9480f 0%, #f3463b 100%)`, white text, 12px fallback radius, 16px 54px padding, and 17px / 600 type. Its hover rule sets a background color but does not remove the gradient; no rendered state was captured for this class.
 
-**Gray Tag**
-- Background: `#F1F3F6`
-- Text: `#71767A`
-- Radius: 99px
-- Padding: 4px 10px
-- Font: 12px / 500
+Corporate `.btn-primary` declares `#fd7e14`, white 18px / 500 type, 16px 26px padding, 12px radius and a small shadow. Its CSS rules assign `#f76707` on hover and `#e8590c` plus weight 600 on active. These are corporate declarations, not the measured homepage download-button states.
 
-### Card / Review Slide
+Corporate `section.review .slide` still declares white with a 1px `#dfe1e2` border and 32px corners. Its interview area uses 40px desktop padding, not the earlier claimed 24px. No verified product outline-button, disabled-button or pill-chip component is available from this capture.
 
-**Content Card**
-- Background: `#FFFFFF`
-- Border: 1px solid `#DFE1E2`
-- Radius: 32px
-- Padding: 24px
-
-**Section Background Card**
-- Background: `#F1F3F6`
-- Radius: 32px
-
-### Navigation Item
-
-**Active Nav Link**
-- Background: transparent
-- Text: `#FD7E14`
-- Radius: 8px
-- Height: 40px
-- Padding: 0px 12px
-- Font: 16px / 700
-
-**Default Nav Link**
-- Background: transparent
-- Text: `#DFE1E2`
-- Radius: 8px
-- Height: 40px
-- Padding: 0px 12px
-- Font: 16px / 400
-
----
-**Verified:** 2026-06-03
-**Tier 1 sources:** https://doctornow.co.kr (HTML + styled-components), https://userweb-static.doctornow.co.kr/20260602-2002-38d1546d91/_next/static/css/72c28a0cfb28f079.css (Tailwind + SC bundle), https://file.doctornow.co.kr/official/css/style.css (official brand CSS with --P/--G token :root), https://file.doctornow.co.kr/official/css/default.css (Pretendard font import + reset), https://company.doctornow.co.kr/company (brand CSS served from https://file.doctornow.co.kr)
-**Tier 2 sources:** getdesign.md/drnow — NOT LISTED (no data). refero ?q=닥터나우 — no result found for this brand.
-**Conflicts unresolved:** The hero banner gradient uses `#FF7501` (slightly warmer than token --P500 `#FF8D00`); the official :root token system treats `#FF8D00` as P500 canonical. Both are genuine observed values. The `.btn-now` CTA uses a deep `#D9480F → #F3463B` gradient while the web app uses `#FD7E14` solid for most buttons — two surface contexts maintained separately.
+Corporate navigation has its own declaration: default G100 (`#dfe1e2`) links, 40px height/line height, 8px radius and 0 12px padding. The desktop `.on` rule sets white and weight 700. The 768px mobile rule instead assigns P600 (`#fd7e14`) to `.on` and declares 56px links with 20px type. These corporate rules do not describe the product homepage's 36px submenu link.
 
 ### States
 
-- **Empty — No results:** Search returns nothing: show a sympathetic icon and "검색 결과가 없어요" with a suggestion to try a broader keyword or browse by specialty — never a blank white screen
-- **Loading — Initial fetch:** Full-page skeleton using `.animate-skeleton-shimmer` (1.5s ease-in-out infinite) — gray placeholder rectangles match expected content geometry
-- **Loading — In-consultation:** Pulsing "의사를 연결 중이에요" copy with a circular spinner at 0.8s linear infinite — conveys activity without panic
-- **Error — Network fail:** Toast notification with `#FA5252` border-left accent, human copy "연결이 끊겼어요. 다시 시도해 주세요", retry CTA in `#FD7E14`
-- **Error — Prescription unavailable:** Inline card state with `#FFF4E6` background and `#F76707` icon — explains limitation and surfaces an alternative action (find an open pharmacy)
-- **Success — Consultation complete:** Bottom sheet slides up (300ms ease-out) with green checkmark and "진료가 완료되었어요" — prescription delivery CTA follows immediately
-- **Skeleton — Doctor card:** Rectangular placeholder with shimmer animation matching the doctor card's height (approximately 96px) and radius (16px)
-- **Disabled — Unavailable specialty:** Chip or button with `#DFE1E2` background, `#A9AEB1` text — still shows the specialty label so users know it exists but is unavailable
+| Key | Hover | Held pointer press | Keyboard focus |
+|---|---|---|---|
+| `app-download` | Own style unchanged; header ancestor adds a gradient/background-position | Same ancestor observation; own style unchanged | No compared change |
+| `app-download-alt` | No compared change | No compared change | No compared change |
+| `company-nav` | Solid `#9aa0aa` underline appears | Same underline | No compared change; no drawn outline |
+| `symptom-card` | No compared change | No compared change | No compared change |
+| `faq-toggle` | No compared change | No compared change | Ancestor opacity 0→1 and translateY 20px→0 persist after blur: scroll reveal, not a focus token |
+| `header-nav` | **UNMEASURED:** `:hover` failed to match | **UNMEASURED:** same failure | No compared change |
+
+“No compared change” covers self, its pseudo-elements, descendants and their pseudo-elements, and three ancestor levels. The symptom link included three descendants and one image; the FAQ included four descendants, including one SVG and path. It is not a pixel-level proof of no effect. Canvas/video, closed shadow roots, cross-origin frames, external-sprite internals and siblings remain outside that comparison.
+
+Disabled, checked, loading, empty, error and completed-consultation states were not induced. There is no disabled token or success-toast recipe from this capture. The declared skeleton and sheet animations below do not establish those product flows.
 
 ## Do's and Don'ts
 
+These are reproduction rules derived from the observed surface, rather than a published brand manual.
+
 ### Do
-- Use `#FF8D00` (P500) or `#FD7E14` (P600) as the primary brand orange for all key CTAs and active states
-- Apply 12px radius to primary buttons and 32px radius to cards and content panels
-- Use Pretendard Variable with the full Korean fallback chain for all UI text
-- Keep neutral grays for secondary content — body copy defaults to `#71767A` (G500) against `#FBFCFD` backgrounds
-- Apply `ease-out` transitions at 200–300ms for all enter/exit micro-interactions
-- Use the full gray scale (G10–G900) for nuanced text and surface hierarchy
-- Maintain 64px of top breathing room for the fixed navigation bar
+
+- Use the measured solid `#fd7e14` and white 17px / 600 label for the header download action, with 48px height and 12px corners.
+- Use the current product gray scale for the homepage. Reserve the older uppercase `--G*` values for their separately sourced corporate context.
+- Use loaded Pretendard. Preserve the 17px / 500 visible symptom label even though its link box inherits a different font and color.
+- Reproduce the specific 20px testimonial corners and soft shadow, and the 12px service-card corners.
+- Underline the footer company link on hover and press without changing its `#9aa0aa` text.
 
 ### Don't
-- Use blue as a primary brand color — Dr.Now's identity is orange; blue is reserved for informational chips only
-- Apply the deep gradient (`#D9480F → #F3463B`) outside the hero/brand marketing context — it reads as urgent; web app CTAs use flat `#FD7E14`
-- Use font weights below 400 or above 700 — the type scale uses Regular (400), Medium (500), SemiBold (600), Bold (700) only
-- Mix heavy drop shadows with the card system — Dr.Now elevation is purposefully flat with border-based differentiation
-- Place orange text on orange-tinted backgrounds (P700 on P100 may fail contrast at small sizes)
-- Use border-radius values that aren't in the established scale (4 / 6 / 8 / 12 / 16 / 32 / 99px)
+
+- Turn corporate `.btn-primary:hover` into a homepage download-button hover token.
+- Promote declared-only Pretendard Variable or a system fallback to a loaded brand face.
+- Give every card a 32px radius or a `#dfe1e2` border; those belong to a separate corporate review definition.
+- Convert the FAQ's persistent scroll-reveal change into keyboard-focus styling.
+- Fill missing empty, error, disabled or successful-consultation states from plausible healthcare-app patterns.
 
 ## Voice & Tone
 
-**Three-word fingerprint:** Warm, Accessible, Trustworthy
+The opened copy addresses everyday obstacles to receiving care: illness at night, a busy day, and long pediatric waits. The company page promises to reduce that inconvenience; the homepage uses short step labels and the conversational Korean `-요` ending. Its first FAQ pairs an affirmative answer with a qualification based on the doctor's judgment. These are concrete copy patterns, rather than evidence for a universal ban on medical vocabulary. [Homepage](https://doctornow.co.kr/), [company](https://company.doctornow.co.kr/company).
 
-Dr.Now's voice is empathetic without being overly clinical — it speaks to patients at vulnerable moments with directness and warmth. The brand avoids medical jargon in favor of plain Korean that anyone can understand at any hour of the night when they're sick and anxious.
-
-| Dimension | Do | Don't |
-|---|---|---|
-| Sentence length | Short, declarative — "아플 땐 닥터나우" | Long subordinate clauses |
-| Vocabulary | Plain Korean, patient-centric ("당신이 아픈 순간") | Medical jargon, formal hospital language |
-| Tone | Warm, reassuring, slightly energetic | Clinical cold, alarmist |
-| Perspective | "We're here for you" — 1st person plural | Institutional 3rd person |
-| Urgency | Gentle accessibility ("언제든지") | Pushy scarcity tactics |
-
-**Voice samples (illustrative — modeled on brand copy):**
-
-- *"늦은 밤에도, 주말에도 — 당신 곁에 있습니다."* (Late at night, on weekends — we're by your side.) — Illustrative, modeled on brand positioning.
-- *"약 처방부터 배송까지, 집에서 끝내세요."* (From prescription to delivery, finish it all at home.) — Illustrative, modeled on feature communication style.
-- *"병원까지의 거리가 걱정되지 않게."* (So the distance to the hospital is no longer a worry.) — Illustrative, reflecting brand manifesto language.
+Verified samples are **“아플 땐 닥터나우”**, **“병원에서 전화가 와요”**, **“진료 예약하기”**, **“전화로 진료받기”**, and **“약 픽업하기”**. The corporate promise also includes **“늦은 밤에도, 주말에도”**. Use the actual pickup wording when describing the current homepage's service flow. The earlier invented delivery slogan and illustrative quotations are not brand copy.
 
 ## Agent Prompt Guide
 
-To generate UI consistent with Dr.Now's design language:
+Build a Korean remote-consultation homepage using loaded Pretendard and the measured 1080px desktop content cap. Use white and `#f7f9fa` surfaces, `#1a1b1c` headings, `#383c43` symptom labels and `#707882` explanatory copy. Put a solid `#fd7e14` download button in the 80px fixed header: 48px high, 12px corners, 0px 16px padding, white 17px / 600 text. Its own fill remains the same in the measured hover and press snapshots.
 
-```
-Use Pretendard Variable (Korean system font fallback: Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic).
-Primary brand color: #FF8D00 (orange). CTA button background: #FD7E14 with white text, 12px radius.
-Surface hierarchy: page background #F7F9FA → card #FFFFFF with 1px solid #DFE1E2 border → elevated card with box-shadow 0 2px 8px rgba(0,0,0,0.08).
-Neutral text: headings #1C1D1F (G900), body #71767A (G500), meta #8D9297 (G400).
-Transitions: 200–300ms ease-out for all state changes.
-Card radius: 32px for large content panels, 12px for interactive components, 99px for badge/chip.
-Typography scale: 15–16px body (400–500), 17px button (600), 22–32px headings (700).
-Avoid clinical blue as primary; blue is used only for informational contexts (#228BE6).
-```
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-primary`.** Text `#ffffff` on `#fd7e14` measures 2.57:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-outline`.** Text `#fd7e14` on `#ffffff` measures 2.57:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-disabled`.** Text `#a9aeb1` on `#dfe1e2` measures 1.71:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `tag-primary`.** Text `#f76707` on `#fff4e6` measures 2.80:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `tag-gray`.** Text `#71767a` on `#f1f3f6` measures 4.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+Use pale icon tiles for symptom and specialty choices. Give testimonial cards 20px corners and the observed `0 4px 20px 0 rgba(0,0,0,.12)` shadow. Keep service-link cards at 12px corners. Make footer links `#9aa0aa` on `#f7f9fa`, with a solid underline on hover and press. Describe the consultation-to-pharmacy-pickup journey using the source's actual steps. Substitute: none chosen.

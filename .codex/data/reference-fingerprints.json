@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T00:00:00Z",
+ "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 545,
+ "count": 573,
  "items": [
   {
    "id": "104",
@@ -406,6 +406,27 @@
    ],
    "has_personas": false,
    "category_raw": "payments-platform"
+  },
+  {
+   "id": "ahamo",
+   "primary_color_hex": "#01b5d0",
+   "category": "consumer-tech",
+   "visual_theme": "ahamo is NTT DOCOMO's online mobile plan. Announced in December 2020 and launched on 26 March 2021, it was introduced for a generation accustomed to digital services, with simpler conditions and online procedures. The name combines the aha moment, the English ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "airbnb",
@@ -1640,6 +1661,27 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "chinatimes",
+   "primary_color_hex": "#bc0614",
+   "category": "consumer-tech",
+   "visual_theme": "China Times (中時新聞網) is a news website that dates its founding to 1995. Its [About page](https://static.chinatimes.com/pages/customer-about.htm?20240116) describes a service covering domestic and international current affairs, with reports drawn from 中國時報, 工商時報",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "chunghwa",
    "primary_color_hex": "#209cff",
    "category": "consumer-tech",
@@ -2337,6 +2379,27 @@
    "category_raw": "video-platform"
   },
   {
+   "id": "daiwa",
+   "primary_color_hex": "#680717",
+   "category": "fintech",
+   "visual_theme": "Daiwa Securities is a Tokyo-based securities company whose stated business includes securities trading, brokerage and underwriting. Its company profile gives the present company's opening date as 26 April 1999. The group's history reaches back to Fujimoto Bill",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "danawa",
    "primary_color_hex": "#06b87f",
    "category": "ecommerce",
@@ -2584,6 +2647,27 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "demaecan",
+   "primary_color_hex": "#da3734",
+   "category": "ecommerce",
+   "visual_theme": "Demae-can (出前館) is a Japanese delivery platform for ordering food and everyday goods through its website and app. Its company history records a September 1999 founding, the service's October 2000 launch, and the November 2019 change of company name to 株式会社出前館.",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "deutschebahn",
    "primary_color_hex": "#ec0016",
    "category": "consumer-tech",
@@ -2663,6 +2747,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "government"
+  },
+  {
+   "id": "digitalx",
+   "primary_color_hex": "#ff5400",
+   "category": "fintech",
+   "visual_theme": "Digital X is Mirae Asset's digital-asset investment platform, formerly Korbit; korbit.co.kr now presents it. Its homepage's organization metadata gives 2013 as the founding year. The official company timeline records joining Mirae Asset in July 2026, changing ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "discord",
@@ -2794,6 +2902,28 @@
    "category_raw": "healthcare-booking"
   },
   {
+   "id": "doda",
+   "primary_color_hex": "#007fc3",
+   "category": "consumer-tech",
+   "visual_theme": "doda is a Japanese career-change service combining job listings, recruitment advisers and scouting. Its terms identify the operator as **パーソルキャリア株式会社**. The brand began as the **DODA** job-information magazine in 1989; PERSOL's history records the 2018 change ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "doordash",
    "primary_color_hex": "#eb1700",
    "category": "consumer-tech",
@@ -2843,6 +2973,29 @@
    ],
    "has_personas": false,
    "category_raw": "short-video"
+  },
+  {
+   "id": "douzone",
+   "primary_color_hex": "#00aaf0",
+   "category": "saas",
+   "visual_theme": "Douzone Bizon provides business software including ERP, business platforms and groupware. Its company page places these within the Douzone ICT Group's “Work&Life” offering across business, finance, commerce, healthcare and the public sector. The company descri",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "drdiary",
@@ -2999,6 +3152,28 @@
    ],
    "has_personas": false,
    "category_raw": "climate-search-engine"
+  },
+  {
+   "id": "ecpay",
+   "primary_color_hex": "#00783c",
+   "category": "fintech",
+   "visual_theme": "ECPay is the payment platform of Taiwan's 綠界科技股份有限公司. The company's history dates its service to 1996 and the launch of the ECPay integrated payment platform to January 2016. Its public offering brings payment collection, logistics and electronic invoices toge",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "elastic",
@@ -3300,6 +3475,27 @@
    "category_raw": "automotive"
   },
   {
+   "id": "fetnet",
+   "primary_color_hex": "#d3060f",
+   "category": "consumer-tech",
+   "visual_theme": "Far EasTone is a Taiwanese telecommunications and digital-services company. Its official introduction connects mobile connectivity with entertainment, shopping, subscriber benefits and enterprise services. Far Eastern Group's company profile dates its establis",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "fever",
    "primary_color_hex": "#0079ca",
    "category": "consumer-tech",
@@ -3406,6 +3602,29 @@
    ],
    "has_personas": false,
    "category_raw": "airline"
+  },
+  {
+   "id": "firstbank",
+   "primary_color_hex": "#297d6b",
+   "category": "fintech",
+   "visual_theme": "First Bank is a Taiwanese bank whose history begins in 1899 as Taiwan Savings Bank. Its [company introduction](https://www.firstbank.com.tw/sites/fcb/AboutUS) describes the later changes of name, its entry into the First Financial Holding group in 2003, and it",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "modern"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "firstory",
@@ -4026,6 +4245,29 @@
    "category_raw": "automotive"
   },
   {
+   "id": "goodoc",
+   "primary_color_hex": "#0073fa",
+   "category": "healthcare",
+   "visual_theme": "Goodoc (굿닥) connects people with hospital and pharmacy information, advance reception, remote consultations, prescription pickup and everyday health management. Its current [homepage positioning](https://www.goodoc.co.kr/) presents these as parts of one health",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
+  },
+  {
    "id": "goodpatch",
    "primary_color_hex": "#096fc8",
    "category": "design-tools",
@@ -4377,6 +4619,29 @@
    "category_raw": "ecommerce"
   },
   {
+   "id": "hangseng",
+   "primary_color_hex": "#008945",
+   "category": "fintech",
+   "visual_theme": "Hang Seng is a Hong Kong bank founded in 1933, serving individuals and businesses with banking, investment and wealth management. Its [bank profile](https://www.hangseng.com/about-us/corporate-information/bank-profile/) connects its mobile app and physical ser",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "editorial",
+    "friendly",
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "hashicorp",
    "primary_color_hex": "#000000",
    "category": "Developer Tools",
@@ -4526,6 +4791,28 @@
    "category_raw": "fashion-retail"
   },
   {
+   "id": "hncb",
+   "primary_color_hex": "#b3000e",
+   "category": "fintech",
+   "visual_theme": "Hua Nan Bank combines a long banking history with a homepage organised around finding a service. Its own history dates its founding to 1919 and records its becoming a subsidiary of Hua Nan Financial Holdings in 2001. [Bank history](https://www.hncb.com.tw/wps/",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "confident",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "hogangnono",
    "primary_color_hex": "#584de4",
    "category": "Consumer Tech",
@@ -4577,6 +4864,30 @@
     "Use Forma DJR with weights 400 / 600 / 700 only"
    ],
    "signature_motion": "*Durations:**",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "htc",
+   "primary_color_hex": "#4bd6b8",
+   "category": "consumer-tech",
+   "visual_theme": "HTC makes mobile and immersive technology products and platforms. Established on 15 May 1997, it describes an evolution from handheld computing and smartphones toward connected devices, virtual reality and VIVERSE. Its company philosophy, “Dare to Dream,” conn",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "vivid",
+    "immersive",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
@@ -5166,6 +5477,50 @@
    "category_raw": "productivity"
   },
   {
+   "id": "japanpostbank",
+   "primary_color_hex": "#009900",
+   "category": "fintech",
+   "visual_theme": "Japan Post Bank (ゆうちょ銀行) describes its business as comprehensive financial services for individual customers through Japan's nationwide post-office network. Its corporate profile dates establishment to 1 September 2006; its history records the bank's opening u",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "jejuair",
+   "primary_color_hex": "#ff5000",
+   "category": "consumer-tech",
+   "visual_theme": "Jeju Air is a Korean low-cost airline founded in 2005. Its tenth-anniversary BI brightened Jeju-tangerine orange, added blue for safety and trust, and used an “i” flag to welcome travellers. The current font material records a 2025 v0.2 update to numeric and L",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "jkopay",
    "primary_color_hex": "#C9191D",
    "category": "Fintech",
@@ -5439,6 +5794,53 @@
    "category_raw": "Mobility"
   },
   {
+   "id": "kakuyomu",
+   "primary_color_hex": "#4baae0",
+   "category": "consumer-tech",
+   "visual_theme": "Kakuyomu (カクヨム) is a web-fiction service built around writing, reading and sharing stories. It opened on 29 February 2016: Hatena's launch announcement identifies KADOKAWA as operator and Hatena as the service-planning and system-development partner. The curre",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "kaonavi",
+   "primary_color_hex": "#447fe0",
+   "category": "saas",
+   "visual_theme": "Kaonavi is a Japanese cloud talent-management service for bringing personnel information together and supporting decisions about people. Its company was established on 27 May 2008; the service business began on 16 April 2012. The current product introduction c",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "playful",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
    "id": "karrot",
    "primary_color_hex": "#ff6600",
    "category": "Consumer",
@@ -5672,6 +6074,28 @@
    ],
    "has_personas": false,
    "category_raw": "flight-travel"
+  },
+  {
+   "id": "kiwoom",
+   "primary_color_hex": "#e6367e",
+   "category": "fintech",
+   "visual_theme": "Kiwoom Securities (키움증권) is a Korean securities company established on 31 January 2000. Its official history records the start of securities investment services on 4 May 2000, a new CI announcement on 31 January 2006, and the change to the name 키움증권(주) on 25 M",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "kkbox",
@@ -6649,6 +7073,29 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "megastudy",
+   "primary_color_hex": "#057eff",
+   "category": "education",
+   "visual_theme": "Megastudy is the high-school online education brand operated by **메가스터디교육(주)**. Its homepage puts teachers, subject courses, textbooks, admissions information and Megapass promotions in one Korean-language study portal. The company's history dates the opening ",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "organic"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
+  },
+  {
    "id": "meituan",
    "primary_color_hex": "#FFC300",
    "category": "Consumer",
@@ -6802,6 +7249,29 @@
     "Lift white cards off the `#F0F2F5` canvas with subtle ink-tinted shadows"
    ],
    "signature_motion": "*Durations** (named):",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "metrotaipei",
+   "primary_color_hex": "#0069a2",
+   "category": "consumer-tech",
+   "visual_theme": "Taipei Metro is the urban rail service operated by 臺北大眾捷運股份有限公司. Its [company history](https://www.metro.taipei/cp.aspx?n=B27E7BC8CBBCDA61) records the company's establishment on 27 July 1994 and the Muzha line's opening on 28 March 1996. The same history reco",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "friendly",
+    "systematic"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
@@ -7043,6 +7513,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "mizuho",
+   "primary_color_hex": "#285ae1",
+   "category": "fintech",
+   "visual_theme": "Mizuho Bank provides deposit, lending and domestic and foreign exchange services. The present bank launched on 1 July 2013 through the merger of the former Mizuho Bank and Mizuho Corporate Bank. Its registered head office is in Otemachi, Tokyo. [Company profil",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "modusign",
@@ -7815,6 +8306,30 @@
     "bold",
     "dark",
     "premium"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
+   "id": "nissan",
+   "primary_color_hex": "#c3002f",
+   "category": "automotive",
+   "visual_theme": "Nissan makes and sells automobiles and related products. Its company profile dates its establishment to 26 December 1933 and lists its headquarters in Yokohama. The company's history page connects that history to a willingness to attempt what others have not. ",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "modern",
+    "human"
    ],
    "antipatterns": [
     "off-brand"
@@ -9366,6 +9881,52 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "rakutenbank",
+   "primary_color_hex": "#bf0000",
+   "category": "fintech",
+   "visual_theme": "Rakuten Bank is a Japanese bank whose company profile describes its activity as banking through electronic media. It was established on 14 January 2000 and began banking operations in July 2001. Its 2010 renaming notice announced changes to service names, the ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "rakutensec",
+   "primary_color_hex": "#bf0000",
+   "category": "fintech",
+   "visual_theme": "Rakuten Securities is a Japanese online securities service offering domestic stocks, investment trusts, FX and overseas investment products. Its company disclosure dates its establishment to March 24, 1999. The desktop homepage combines product navigation, mar",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "ramp",
@@ -11267,6 +11828,30 @@
    "category_raw": "online-learning"
   },
   {
+   "id": "subaru",
+   "primary_color_hex": "#014e98",
+   "category": "automotive",
+   "visual_theme": "Subaru makes automobiles and aerospace products. Its company profile records establishment on 15 July 1953, with origins in 1917. Fuji Heavy Industries adopted the company name **SUBARU** on 1 April 2017; the announcement describes a commitment to providing va",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
    "id": "sumup",
    "primary_color_hex": "#FF61F2",
    "category": "fintech",
@@ -12047,6 +12632,29 @@
    ],
    "has_personas": false,
    "category_raw": "hotel-search"
+  },
+  {
+   "id": "tsmc",
+   "primary_color_hex": "#b32a2a",
+   "category": "consumer-tech",
+   "visual_theme": "TSMC manufactures chips designed by its customers. Founded by Morris Chang in 1987, it pioneered the pure-play foundry model, according to its [company profile](https://www.tsmc.com/english/aboutTSMC/company_profile). Its published [values](https://www.tsmc.co",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "tumblbug",
@@ -13271,6 +13879,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "yuanta",
+   "primary_color_hex": "#0067b3",
+   "category": "fintech",
+   "visual_theme": "Yuanta Securities (元大證券) provides securities, futures-related and trust services. Its company introduction describes a Taiwan-based business expanding internationally and identifies it as a subsidiary of Yuanta Financial Holding. Its history records the adopti",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "zabank",
