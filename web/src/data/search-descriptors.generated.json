@@ -13623,6 +13623,64 @@
     ]
    }
   },
+  "japanpostbank": {
+   "hash": "91e414eaa86a1f58",
+   "terms": {
+    "en": [
+     "retail bank",
+     "postal savings",
+     "personal banking",
+     "nationwide branch network",
+     "green banking site",
+     "orange login button",
+     "red notice banners",
+     "white icon cards",
+     "service grid",
+     "account opening",
+     "atm finder",
+     "trustworthy familiar tone"
+    ],
+    "ko": [
+     "개인 은행",
+     "우체국 예금",
+     "전국 지점망",
+     "녹색 은행 사이트",
+     "주황색 로그인 버튼",
+     "빨간 공지 배너",
+     "흰색 아이콘 카드",
+     "서비스 그리드",
+     "계좌 개설",
+     "atm 찾기",
+     "친근하고 신뢰감 있는"
+    ],
+    "ja": [
+     "個人向け銀行",
+     "郵便貯金",
+     "全国の店舗網",
+     "緑基調の銀行サイト",
+     "オレンジのログインボタン",
+     "赤いお知らせ",
+     "白いアイコンカード",
+     "サービス一覧グリッド",
+     "口座開設",
+     "店舗atm検索",
+     "親しみと信頼"
+    ],
+    "zh": [
+     "個人銀行",
+     "郵政儲蓄",
+     "全國分行網絡",
+     "綠色銀行網站",
+     "橘色登入按鈕",
+     "紅色公告橫幅",
+     "白色圖示卡片",
+     "服務網格",
+     "開立帳戶",
+     "atm 查詢",
+     "親切可信賴"
+    ]
+   }
+  },
   "jkopay": {
    "hash": "a206276f9876f37b",
    "terms": {

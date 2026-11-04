@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-03",
+  "generated_at": "2026-11-04",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 565,
+  "count": 566,
   "counts": {
-    "verified_v2": 384,
+    "verified_v2": 385,
     "partial": 89,
     "legacy_snapshot": 92,
-    "total": 565
+    "total": 566
   },
   "items": [
     {
@@ -2571,6 +2571,17 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 6,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "japanpostbank",
+      "status": "verified_v2",
+      "verified_at": "2026-11-03",
+      "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
       "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []

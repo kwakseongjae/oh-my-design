@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T00:00:00Z",
+ "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 565,
+ "count": 566,
  "items": [
   {
    "id": "104",
@@ -5411,6 +5411,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "japanpostbank",
+   "primary_color_hex": "#009900",
+   "category": "fintech",
+   "visual_theme": "Japan Post Bank (ゆうちょ銀行) describes its business as comprehensive financial services for individual customers through Japan's nationwide post-office network. Its corporate profile dates establishment to 1 September 2006; its history records the bank's opening u",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "jkopay",
