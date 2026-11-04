@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 573,
+ "count": 576,
  "items": [
   {
    "id": "104",
@@ -427,6 +427,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "aiahk",
+   "primary_color_hex": "#d31145",
+   "category": "fintech",
+   "visual_theme": "AIA Hong Kong brings insurance, financial protection and healthier living into one customer-facing site. Its company history traces the group's beginnings to an insurance agency in Shanghai in 1919 and the establishment of a Hong Kong branch in 1931. Today, it",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "airbnb",
@@ -1345,6 +1367,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "byd",
+   "primary_color_hex": "#1a1d25",
+   "category": "automotive",
+   "visual_theme": "BYD makes new-energy vehicles, with the Chinese passenger-car offering organised into the Dynasty (王朝) and Ocean (海洋) series and both hybrid and battery-electric technology routes. Its current corporate history dates its beginnings as a rechargeable-battery pr",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "cabify",
@@ -6976,6 +7019,28 @@
    ],
    "has_personas": false,
    "category_raw": "fashion retail"
+  },
+  {
+   "id": "marpple-shop",
+   "primary_color_hex": "#1c75ff",
+   "category": "ecommerce",
+   "visual_theme": "Marpple Shop connects a creator's goods with the work of selling them: its product introduction describes an integrated service for production, orders, payments, delivery and settlement, including goods made after an order arrives. The current offering include",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "mastercard",

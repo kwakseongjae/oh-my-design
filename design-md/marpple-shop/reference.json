@@ -1,0 +1,691 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "marpple-shop",
+    "name": "Marpple Shop",
+    "country": "KR",
+    "category": "ecommerce",
+    "homepage": "https://marpple.shop/kr/",
+    "primary_color": "#1c75ff",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=marpple.shop&sz=128"
+    },
+    "verified": "2026-11-04",
+    "added": "2026-11-04"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-11-04",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-11-04",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-surface",
+        "url": "https://marpple.shop/kr/",
+        "inspected": "2026-11-04"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://marpple.shop/kr/",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "control-404",
+        "kind": "product-surface",
+        "url": "https://marpple.shop/zz-this-does-not-exist",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "imprint",
+        "kind": "official-doc",
+        "url": "https://marpple.shop/kr/@/about",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "company",
+        "kind": "official-doc",
+        "url": "https://www.marpplecorp.com/about",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "corporate-home",
+        "kind": "official-doc",
+        "url": "https://www.marpplecorp.com/",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "contact",
+        "kind": "official-doc",
+        "url": "https://www.marpplecorp.com/about/contact",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "history",
+        "kind": "official-doc",
+        "url": "https://www.marpplecorp.com/about/history",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "company-control",
+        "kind": "product-surface",
+        "url": "https://www.marpplecorp.com/zz-this-does-not-exist",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "terms",
+        "kind": "official-doc",
+        "url": "https://mauth.marpple.com/kr/terms/service",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "privacy",
+        "kind": "official-doc",
+        "url": "https://mauth.marpple.com/kr/terms/privacy",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "renewal",
+        "kind": "official-doc",
+        "url": "https://updatenote.marpplecorp.com/1b653281-6352-8011-8068-d2ccbe867c3a",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "renewal-control",
+        "kind": "product-surface",
+        "url": "https://updatenote.marpplecorp.com/zz-this-does-not-exist",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "pretendard-css",
+        "kind": "brand-asset",
+        "url": "https://marpple.shop/font/pretendard.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "font-catalog-css",
+        "kind": "brand-asset",
+        "url": "https://marpple.shop/font/font.css?t=20260413",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-core-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/18096_a8e1d630b7b48633a54c.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-63314-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/63314_71eb445543cea271c9e1.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-53236-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/53236_e3a6867d697ede0ec15f.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-38792-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/38792_dddc8c5fee3e53646ee4.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-72076-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/72076_7ba86e6ef541d76eb960.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-34231-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/34231_f9b2a172092f37aa1f4b.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-19874-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/19874_f0b2715f7f8887f7d4cd.css",
+        "captured": "2026-11-04"
+      },
+      {
+        "id": "product-72556-css",
+        "kind": "brand-asset",
+        "url": "https://s3.marpple.co/build/prod_tts_mps_dist/72556_bbcb925c74c36994d5e5.css",
+        "captured": "2026-11-04"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.active": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.error": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.error-light": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.ink": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.model": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.muted": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.primary-dark": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.primary-light": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.product": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.quick-menu": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.ranking-orange": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.subtle": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.success": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.success-light": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.tab-border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.tab-ink": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.tab-selected": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.warning": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "colors.warning-light": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "components.goods-nav.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-04"
+      },
+      "rounded.maker": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "rounded.quick-menu": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "rounded.small": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "rounded.tab": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.body.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.body.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.body.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.button.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.button.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.button.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "fonts.roles.display": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "fonts.roles.sans": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.heading.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.heading.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      },
+      "typography.heading.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-04"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 28,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 3,
+      "extension-component-property": 4,
+      "orphaned-tokens": 21
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.heading.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.body.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.button.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.goods-nav.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.goods-nav.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.goods-nav.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.goods-nav.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-light",
+        "message": "'primary-light' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.primary-dark",
+        "message": "'primary-dark' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.active",
+        "message": "'active' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ink",
+        "message": "'ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted",
+        "message": "'muted' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.subtle",
+        "message": "'subtle' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.product",
+        "message": "'product' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.model",
+        "message": "'model' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.quick-menu",
+        "message": "'quick-menu' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.border",
+        "message": "'border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.tab-border",
+        "message": "'tab-border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.tab-ink",
+        "message": "'tab-ink' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.tab-selected",
+        "message": "'tab-selected' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.warning",
+        "message": "'warning' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.warning-light",
+        "message": "'warning-light' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.ranking-orange",
+        "message": "'ranking-orange' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.error-light",
+        "message": "'error-light' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success",
+        "message": "'success' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.success-light",
+        "message": "'success-light' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "5c9fd6b43743ec1065028e221de514e45f3666d66dc6f72d35b0bd7750f2436b",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.heading.fontSize",
+      "typography.body.fontSize",
+      "typography.button.fontSize",
+      "rounded.none",
+      "rounded.small",
+      "rounded.tab",
+      "rounded.maker",
+      "rounded.quick-menu",
+      "components.goods-nav.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "added",
+        "omd",
+        "tokens",
+        "verification_v2"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "rounded",
+        "components",
+        "components_harvested"
+      ],
+      "tokens.typography": [
+        "family",
+        "heading",
+        "body",
+        "button"
+      ]
+    }
+  }
+}

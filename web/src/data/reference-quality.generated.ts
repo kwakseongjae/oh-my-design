@@ -450,6 +450,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "aiahk",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 90,
+    "evidenceClaimCount": 90,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 16,
+    "conflictCount": 0,
+    "tier1SourceCount": 16,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "airbnb",
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
@@ -1321,6 +1343,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "byd",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 64,
+    "evidenceClaimCount": 64,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
+    "conflictCount": 0,
+    "tier1SourceCount": 12,
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "cabify",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -1747,31 +1791,27 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "classting",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-03",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-03",
+    "tokensExtractedAt": "2026-11-03",
+    "nextReverifyAt": "2027-05-02",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 85,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 63,
+    "evidenceClaimCount": 63,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 6,
-    "interactiveComponentCount": 3,
+    "tier1SourceCount": 14,
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
     "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
+      "component_absent"
     ],
-    "paletteGrounding": 0.625
+    "paletteGrounding": null
   },
   {
     "id": "classum",
@@ -6724,6 +6764,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 4,
     "interactiveComponentCount": 4,
     "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "marpple-shop",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-04",
+    "tokensExtractedAt": "2026-11-04",
+    "nextReverifyAt": "2027-05-03",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 48,
+    "evidenceClaimCount": 48,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
+    "conflictCount": 0,
+    "tier1SourceCount": 22,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -13743,10 +13805,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 393,
+  "verified_v2": 397,
   "partial": 89,
-  "legacy_snapshot": 91,
-  "total": 573
+  "legacy_snapshot": 90,
+  "total": 576
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

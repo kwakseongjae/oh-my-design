@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 393,
-  "sources": 3312,
+  "references_with_verification_v2": 397,
+  "sources": 3376,
   "sources_by_kind": {
-    "brand-asset": 217,
+    "brand-asset": 228,
     "license": 141,
-    "official-doc": 1526,
-    "product-surface": 1428
+    "official-doc": 1561,
+    "product-surface": 1446
   },
   "references": {
     "104": {
@@ -716,6 +716,108 @@
           "kind": "official-doc",
           "captured": "2026-11-03",
           "host": "ahamo.com"
+        }
+      ]
+    },
+    "aiahk": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-colour",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "brand-spacing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "brand-typography",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "campaign",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "company-filing",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "design-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "design-home",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "ds-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "design.aia.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "privacy-hk",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "privacy-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
+        },
+        {
+          "id": "terms-index",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.aia.com.hk"
         }
       ]
     },
@@ -1763,6 +1865,84 @@
         }
       ]
     },
+    "byd": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "banner-code",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "brand-direction",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "brand-entry-code",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "global-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.bydglobal.com"
+        },
+        {
+          "id": "group-about",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.bydglobal.com"
+        },
+        {
+          "id": "group-info",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.bydglobal.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.byd.com"
+        }
+      ]
+    },
     "cabify": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -2324,6 +2504,96 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "class101.net"
+        }
+      ]
+    },
+    "classting": {
+      "checked": "2026-11-03",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ctcorp.ai"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.ctcorp.ai"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.ctcorp.ai"
+        },
+        {
+          "id": "company-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "company.classting.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.classting.com"
+        },
+        {
+          "id": "corporate-brand",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "www.ctcorp.ai"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.classting.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "policies.classting.com"
+        },
+        {
+          "id": "marketing-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-03",
+          "host": "cdn.prod.website-files.com"
+        },
+        {
+          "id": "old-brand-path",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "ctcorp.ai"
+        },
+        {
+          "id": "personalized",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.classting.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "policies.classting.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-03",
+          "host": "blog.classting.com"
+        },
+        {
+          "id": "self-directed",
+          "kind": "product-surface",
+          "captured": "2026-11-03",
+          "host": "www.classting.com"
         }
       ]
     },
@@ -11738,6 +12008,144 @@
           "kind": "official-doc",
           "captured": "2026-10-29",
           "host": "shop.mango.com"
+        }
+      ]
+    },
+    "marpple-shop": {
+      "checked": "2026-11-04",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "www.marpplecorp.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-04",
+          "host": "www.marpplecorp.com"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "www.marpplecorp.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-04",
+          "host": "marpple.shop"
+        },
+        {
+          "id": "corporate-home",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "www.marpplecorp.com"
+        },
+        {
+          "id": "font-catalog-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "marpple.shop"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "www.marpplecorp.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-04",
+          "host": "marpple.shop"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "marpple.shop"
+        },
+        {
+          "id": "pretendard-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "marpple.shop"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "mauth.marpple.com"
+        },
+        {
+          "id": "product-19874-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-34231-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-38792-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-53236-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-63314-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-72076-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-72556-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "product-core-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-04",
+          "host": "s3.marpple.co"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "updatenote.marpplecorp.com"
+        },
+        {
+          "id": "renewal-control",
+          "kind": "product-surface",
+          "captured": "2026-11-04",
+          "host": "updatenote.marpplecorp.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-04",
+          "host": "mauth.marpple.com"
         }
       ]
     },

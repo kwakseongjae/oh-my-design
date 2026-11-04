@@ -1070,6 +1070,67 @@
     ]
    }
   },
+  "aiahk": {
+   "hash": "feb1568b71f232ab",
+   "terms": {
+    "en": [
+     "insurance website",
+     "financial protection",
+     "health and wellbeing",
+     "family photography banners",
+     "red call to action",
+     "white navigation bar",
+     "pale grey sections",
+     "charcoal footer",
+     "hong kong customer site",
+     "traditional chinese interface",
+     "small rounded corners",
+     "crimson and white palette"
+    ],
+    "ko": [
+     "보험 사이트",
+     "금융 보호",
+     "건강한 삶",
+     "가족 사진 배너",
+     "빨간색 버튼",
+     "흰색 내비게이션",
+     "연한 회색 섹션",
+     "차콜 푸터",
+     "홍콩 고객 사이트",
+     "번체 중국어 화면",
+     "작은 둥근 모서리",
+     "진홍색과 흰색"
+    ],
+    "ja": [
+     "保険サイト",
+     "金融保障",
+     "健康的な暮らし",
+     "家族写真のバナー",
+     "赤いアクションボタン",
+     "白いナビゲーション",
+     "淡いグレーの区画",
+     "チャコールのフッター",
+     "香港の顧客向けサイト",
+     "繁体字中国語",
+     "小さな角丸",
+     "深紅と白の配色"
+    ],
+    "zh": [
+     "保險網站",
+     "財務保障",
+     "健康生活",
+     "家庭攝影橫幅",
+     "紅色行動按鈕",
+     "白色導覽列",
+     "淺灰區塊",
+     "炭灰頁尾",
+     "香港客戶網站",
+     "繁體中文介面",
+     "小圓角",
+     "紅白配色"
+    ]
+   }
+  },
   "airbnb": {
    "hash": "c89a3ae69312ed16",
    "terms": {
@@ -3325,6 +3386,71 @@
     ]
    }
   },
+  "byd": {
+   "hash": "478cb0efea3477c2",
+   "terms": {
+    "en": [
+     "automotive",
+     "new energy vehicles",
+     "electric car brand",
+     "car manufacturer website",
+     "large vehicle photography",
+     "minimal white layout",
+     "spacious light sections",
+     "neutral palette",
+     "dark navy buttons",
+     "test drive booking",
+     "compact overlay navigation",
+     "hybrid and battery electric",
+     "technology focused"
+    ],
+    "ko": [
+     "자동차",
+     "신에너지 자동차",
+     "전기차 브랜드",
+     "자동차 제조사 사이트",
+     "대형 차량 사진",
+     "미니멀 화이트",
+     "여백 넉넉한 레이아웃",
+     "중립 색상",
+     "어두운 네이비 버튼",
+     "시승 신청",
+     "이미지 위 간결한 내비게이션",
+     "하이브리드 전기차",
+     "기술 중심"
+    ],
+    "ja": [
+     "自動車",
+     "新エネルギー車",
+     "電気自動車ブランド",
+     "自動車メーカーサイト",
+     "大きな車両写真",
+     "白基調ミニマル",
+     "余白の広いセクション",
+     "ニュートラル配色",
+     "濃紺ボタン",
+     "試乗予約",
+     "画像上のコンパクトナビ",
+     "ハイブリッドと電気",
+     "技術重視"
+    ],
+    "zh": [
+     "汽車",
+     "新能源車",
+     "電動車品牌",
+     "車廠官網",
+     "大幅車輛攝影",
+     "白色極簡",
+     "留白寬敞版面",
+     "中性色調",
+     "深藍黑按鈕",
+     "預約試駕",
+     "圖片上緊湊導覽",
+     "插電混合與純電",
+     "科技感"
+    ]
+   }
+  },
   "cabify": {
    "hash": "fb4b86ff1acf3415",
    "terms": {
@@ -4420,63 +4546,63 @@
    }
   },
   "classting": {
-   "hash": "0bffc11467721c19",
+   "hash": "9697290fe3f3141c",
    "terms": {
     "en": [
+     "school communication app",
+     "ai personalized learning",
+     "teachers students parents",
      "education platform",
-     "k-12 school app",
-     "teacher dashboard",
-     "student learning tool",
-     "class communication",
-     "ai diagnostic reports",
-     "mint green",
-     "friendly rounded cards",
-     "soft gradient washes",
-     "light diffuse shadows",
-     "generous white space",
-     "korean-first typography"
+     "green and purple palette",
+     "green action buttons",
+     "purple ai highlight",
+     "rounded cards",
+     "white clean layout",
+     "gradient accents",
+     "learning diagnosis",
+     "korean edtech"
     ],
     "ko": [
+     "학교 소통 앱",
+     "AI 맞춤 학습",
+     "교사 학생 학부모",
      "교육 플랫폼",
-     "초중고 학교 앱",
-     "교사용 대시보드",
-     "학생 학습 앱",
-     "학급 소통",
-     "AI 진단 리포트",
-     "민트 그린",
+     "초록 보라 색상",
+     "초록색 행동 버튼",
+     "AI 보라색 강조",
      "둥근 카드",
-     "부드러운 그라데이션",
-     "은은한 그림자",
-     "여백 넉넉한",
-     "친근하고 신뢰감 있는"
+     "깔끔한 화이트 배경",
+     "그라데이션 포인트",
+     "학습 진단",
+     "에듀테크"
     ],
     "ja": [
+     "学校コミュニケーション",
+     "AI個別学習",
+     "教師 生徒 保護者",
      "教育プラットフォーム",
-     "学校向けアプリ",
-     "教師用ダッシュボード",
-     "生徒の学習支援",
-     "クラス連絡",
-     "AI診断レポート",
-     "ミントグリーン",
+     "緑と紫の配色",
+     "緑のアクションボタン",
+     "AI紫のハイライト",
      "角丸カード",
-     "やわらかなグラデーション",
-     "軽い影",
-     "余白たっぷり",
-     "親しみやすく信頼感"
+     "白基調の清潔感",
+     "グラデーション",
+     "学習診断",
+     "韓国エドテック"
     ],
     "zh": [
+     "學校溝通應用",
+     "AI 個人化學習",
+     "老師 學生 家長",
      "教育平台",
-     "中小學校園應用",
-     "教師儀表板",
-     "學生學習工具",
-     "班級溝通",
-     "AI 診斷報告",
-     "薄荷綠",
+     "綠色與紫色配色",
+     "綠色行動按鈕",
+     "紫色 AI 標示",
      "圓角卡片",
-     "柔和漸層背景",
-     "輕柔陰影",
-     "大量留白",
-     "親切且值得信賴"
+     "白色簡潔版面",
+     "漸層點綴",
+     "學習診斷",
+     "韓國教育科技"
     ]
    }
   },
@@ -17611,6 +17737,67 @@
      "暖米色點綴",
      "置中標誌",
      "極簡電商"
+    ]
+   }
+  },
+  "marpple-shop": {
+   "hash": "36a97ea46c404ec8",
+   "terms": {
+    "en": [
+     "creator merchandise store",
+     "print on demand goods",
+     "made to order",
+     "creator marketplace",
+     "illustrator and streamer shops",
+     "handmade and digital products",
+     "white clean interface",
+     "artwork focused",
+     "rounded shortcut buttons",
+     "bright blue accent",
+     "creator rankings",
+     "pop-up store curation"
+    ],
+    "ko": [
+     "크리에이터 굿즈 쇼핑몰",
+     "주문 제작 굿즈",
+     "굿즈 제작 판매",
+     "핸드메이드 상품",
+     "디지털 상품",
+     "일러스트레이터 스토어",
+     "버튜버 유튜버 굿즈",
+     "흰 배경 깔끔한 화면",
+     "작품 중심 레이아웃",
+     "둥근 바로가기 버튼",
+     "선명한 파란색 포인트",
+     "크리에이터 랭킹 큐레이션"
+    ],
+    "ja": [
+     "クリエイターグッズ販売",
+     "受注生産ショップ",
+     "ハンドメイド商品",
+     "デジタル商品",
+     "イラストレーター向け",
+     "配信者向けストア",
+     "白基調のすっきりUI",
+     "作品を引き立てるデザイン",
+     "丸いショートカット",
+     "鮮やかな青のアクセント",
+     "クリエイターランキング",
+     "ポップアップストア"
+    ],
+    "zh": [
+     "創作者周邊商店",
+     "接單生產商品",
+     "手作商品",
+     "數位商品",
+     "插畫家與實況主商店",
+     "白色簡潔介面",
+     "以作品為主的版面",
+     "圓角快捷按鈕",
+     "鮮明藍色重點色",
+     "創作者排行榜",
+     "快閃店策展",
+     "電商平台"
     ]
    }
   },
