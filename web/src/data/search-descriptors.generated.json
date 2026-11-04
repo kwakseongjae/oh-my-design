@@ -17740,6 +17740,67 @@
     ]
    }
   },
+  "marpple-shop": {
+   "hash": "36a97ea46c404ec8",
+   "terms": {
+    "en": [
+     "creator merchandise store",
+     "print on demand goods",
+     "made to order",
+     "creator marketplace",
+     "illustrator and streamer shops",
+     "handmade and digital products",
+     "white clean interface",
+     "artwork focused",
+     "rounded shortcut buttons",
+     "bright blue accent",
+     "creator rankings",
+     "pop-up store curation"
+    ],
+    "ko": [
+     "크리에이터 굿즈 쇼핑몰",
+     "주문 제작 굿즈",
+     "굿즈 제작 판매",
+     "핸드메이드 상품",
+     "디지털 상품",
+     "일러스트레이터 스토어",
+     "버튜버 유튜버 굿즈",
+     "흰 배경 깔끔한 화면",
+     "작품 중심 레이아웃",
+     "둥근 바로가기 버튼",
+     "선명한 파란색 포인트",
+     "크리에이터 랭킹 큐레이션"
+    ],
+    "ja": [
+     "クリエイターグッズ販売",
+     "受注生産ショップ",
+     "ハンドメイド商品",
+     "デジタル商品",
+     "イラストレーター向け",
+     "配信者向けストア",
+     "白基調のすっきりUI",
+     "作品を引き立てるデザイン",
+     "丸いショートカット",
+     "鮮やかな青のアクセント",
+     "クリエイターランキング",
+     "ポップアップストア"
+    ],
+    "zh": [
+     "創作者周邊商店",
+     "接單生產商品",
+     "手作商品",
+     "數位商品",
+     "插畫家與實況主商店",
+     "白色簡潔介面",
+     "以作品為主的版面",
+     "圓角快捷按鈕",
+     "鮮明藍色重點色",
+     "創作者排行榜",
+     "快閃店策展",
+     "電商平台"
+    ]
+   }
+  },
   "mastercard": {
    "hash": "c9823e2cd9098262",
    "terms": {

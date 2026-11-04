@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 575,
+ "count": 576,
  "items": [
   {
    "id": "104",
@@ -7019,6 +7019,28 @@
    ],
    "has_personas": false,
    "category_raw": "fashion retail"
+  },
+  {
+   "id": "marpple-shop",
+   "primary_color_hex": "#1c75ff",
+   "category": "ecommerce",
+   "visual_theme": "Marpple Shop connects a creator's goods with the work of selling them: its product introduction describes an integrated service for production, orders, payments, delivery and settlement, including goods made after an order arrives. The current offering include",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "mastercard",

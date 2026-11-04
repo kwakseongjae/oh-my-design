@@ -6769,6 +6769,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "marpple-shop",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-04",
+    "tokensExtractedAt": "2026-11-04",
+    "nextReverifyAt": "2027-05-03",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 48,
+    "evidenceClaimCount": 48,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
+    "conflictCount": 0,
+    "tier1SourceCount": 22,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "mastercard",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-06-06",
@@ -13783,10 +13805,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 396,
+  "verified_v2": 397,
   "partial": 89,
   "legacy_snapshot": 90,
-  "total": 575
+  "total": 576
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
