@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-04T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 574,
+ "count": 575,
  "items": [
   {
    "id": "104",
@@ -427,6 +427,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "aiahk",
+   "primary_color_hex": "#d31145",
+   "category": "fintech",
+   "visual_theme": "AIA Hong Kong brings insurance, financial protection and healthier living into one customer-facing site. Its company history traces the group's beginnings to an insurance agency in Shanghai in 1919 and the establishment of a Hong Kong branch in 1931. Today, it",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "airbnb",
