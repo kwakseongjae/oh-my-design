@@ -9,7 +9,7 @@
 - **이슈 #99 마플샵:** Sol 워커 → 독립 재측정(굿즈 #141414→#1c75ff hover·press, 헤더는 Tab 303회 순환에 안 걸려 focus 미측정) → `feat/reverify-w1` `a3883b3f` verified_v2, 운영사 (주)마플코퍼레이션. 이슈에 착수 코멘트. **main 머지 후 링크 남기고 닫기.**
 - **5차 잔여 완료:** byd(CN, 查看更多 ::before #1a1d25) `9c6a675f` · aiahk(HK, #d31145→#b40e3a, 카드 focus 2px 3px) `ee048a49` · classting 재검증(hover·press 무변화·브라우저 링만을 측정값으로 기록, legacy→verified) `9ea37898`, 모션 래칫 155→154. 브랜치 **576 / 397 / 89 / 90**(main 573/393/89/91). **main 머지 = 오너 GO 대기.**
 - **로고(`feat/first-party-icons`, 푸시):** 자체 선언 아이콘 351곳(로고 없음 118→36, 구글 파비콘 경유 379→110). 컨택트시트 검토로 queenit·supertone·triple 제외(다른 회사 마크), NCSOFT는 nc PLAY 대신 www.nc.com의 NC 마크(`6712f3c8`, PAGE_OVERRIDE). 프리뷰(보호됨, 오너 로그인으로 열림) `https://oh-my-design-git-feat-first-party-icons-kwakseongjaes-projects.vercel.app/design-systems/hncb` — CLI 우회로 hncb·mastercard·docomo-smtb-netbank 아이콘 렌더 확인. **UI라 오너 프리뷰 GO 후 머지.** 판단 대기: 256px 축소(원본 크기는 기록에 남김), kintone(Cybozu 제품 아이콘 유지).
-- 오너 백로그 이슈(#22~#97) 완료 여부 대조 중(읽기 전용 서브에이전트).
+- **오너 백로그 대조(22건, 읽기 전용 서브에이전트, main `ce5b317d` 기준):** #82 완료 확인 → 근거 코멘트 후 닫음. #75는 몇 줄짜리라 고쳐서 닫음(`0ded3741`, --print-prompt가 폴더를 만들지 않음). 일부 완료 6건: #87(grok 경로 미기재)·#86(LI 항목 1·3, 첫 화면만)·#83(orchestrator 절·slop-audit 미배선)·#81(DESIGN.md 안 사다리 미기재)·#78(리셋 규칙이 landing에만)·#37(src/core 미통합, 컴포넌트 enum 2곳). 미착수 14건(#97·#84·#80·#79·#77·#76·#38·#36·#35·#34·#33·#31·#30·#22). **오너 판단:** #77(T3 벤치 레인 A로 종결)·#76(440 이관 완료)은 더는 필요 없어 닫아도 됨, #38·#36은 Core v2 이전 구조([FILL IN]·§10–15) 전제라 다시 써야 함.
 
 ## ▶ 2026-11-04 오후 · 4·5차 main 머지(573/393) · 로고 공백 해소 착수
 

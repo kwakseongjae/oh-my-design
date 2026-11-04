@@ -1,3 +1,8 @@
+## 2026-11-04 저녁 · 이슈·PR 정리
+- 한 일: PR #98 검증(CVE 실재·npm 무결성 일치·스팸 아님) → 같은 패치를 main `ce5b317d`에 적용하고 PR 닫음(Vercel 빨간 체크 = 포크 배포 승인 대기). #99 마플샵 측정·재측정 → 브랜치 verified. 5차 잔여 byd·aiahk·classting 반영(브랜치 576/397). #75 수정·#82 확인 후 닫음. 로고 브랜치 NC 마크 교정·프리뷰 렌더 확인.
+- 열린 것: `feat/reverify-w1` 4건 main 머지 GO, `feat/first-party-icons` 프리뷰 GO, #99는 머지 후 링크 남기고 닫기, #77·#76 닫을지 오너 판단.
+- 다음: 머지 후 운영 확인(/design-systems/marpple-shop, /ko), 콘텐츠 엔진(릴 한국어 오버레이·Threads 4주 초안).
+
 ## 2026-11-03 오후 — 재검증 2·3차 main 머지(545/349), 확산 계획, 4차 CJK 진행
 - 한 일: 재개 후 2차 나머지·3차 21건(CJK 신규 11·재검증 10) 반영 → 오너 "2차·3차 묶음 머지 진행해"로 main `77403deb`, 운영 확인(349/89/107, MCP zabank HK). 프로브 pressed 계통 누락 수정 `f3688a88`, 색 대조 스냅샷 범위 수정 `1715414b`, HK 국가 추가, 확산 계획 `docs/GROWTH_PLAN_2026-11-03.md`(오너 질문: SNS·블로그·CJK·영상).
 - 열린 것: 오너 결정 G1~G3(확산), MCP 1b 프리뷰 GO, OpenRouter 키 교체(MCP 2a). uniqlo는 Access Denied로 제외. 4차(CJK 22) 진행 중, chinatimes 반영.
