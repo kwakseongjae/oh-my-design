@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-11-04",
   "note": "Each brand's own icon, as its homepage declares it (link rel=icon / apple-touch-icon, the web app manifest, or /apple-touch-icon.png and /favicon.ico on the same origin), harvested by scripts/harvest-brand-icons.mjs. Stored at web/public/<file>. source_url is the file the page pointed at; host is where it was served from. Rasters over 256px were scaled to 256 (source_width/source_height keep the original). Never Simple Icons, a favicon service, a platform default or a redrawing; a reference without a record shows no logo.",
-  "count": 351,
+  "count": 353,
   "records": [
     {
       "id": "29cm",
@@ -102,6 +102,18 @@
       "width": 512,
       "height": 512,
       "format": "svg",
+      "captured": "2026-11-04"
+    },
+    {
+      "id": "aiahk",
+      "file": "logos/icons/aiahk.png",
+      "source_url": "https://www.aia.com.hk/apple-touch-icon.png",
+      "page_url": "https://www.aia.com.hk/zh-hk",
+      "host": "www.aia.com.hk",
+      "declared": "conventional",
+      "width": 180,
+      "height": 180,
+      "format": "png",
       "captured": "2026-11-04"
     },
     {
@@ -2074,6 +2086,18 @@
       "width": 180,
       "height": 180,
       "format": "png",
+      "captured": "2026-11-04"
+    },
+    {
+      "id": "marpple-shop",
+      "file": "logos/icons/marpple-shop.png",
+      "source_url": "https://marpple.shop/ico/creator/favicon.ico?v=2024021601",
+      "page_url": "https://marpple.shop/kr/",
+      "host": "marpple.shop",
+      "declared": "icon",
+      "width": 256,
+      "height": 256,
+      "format": "ico(png frame)",
       "captured": "2026-11-04"
     },
     {
