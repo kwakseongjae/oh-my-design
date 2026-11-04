@@ -297,6 +297,9 @@ const SVG_UNSAFE = [
   [/<(foreignObject|iframe|embed|object)\b/i, "svg embeds foreign content"],
   [/(?:xlink:)?href\s*=\s*["']\s*(?:https?:)?\/\//i, "svg loads an external resource"],
   [/@import/i, "svg imports a stylesheet"],
+  // Browsers evaluate these inside an <img> against the visitor's OS setting; several marks turn
+  // near-white there (bolt, mercury, superhuman, 2026-11-04), and the card tile is always white.
+  [/prefers-color-scheme|light-dark\(/i, "svg changes colour with the visitor's colour scheme (the tile is always white)"],
 ];
 
 /** Fraction of a 64px render, on the white card tile, that differs from white and from its own dominant colour. */
