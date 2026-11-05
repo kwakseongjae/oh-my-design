@@ -201,6 +201,7 @@
   .hg-split--chapter .hg-switch-box{position:sticky;top:calc(var(--sq-header-h,56px) + 8px);z-index:3}
   .hg-split-stage,.hg-split--hero .hg-split-stage,.hg-split--chapter .hg-split-stage{grid-template-columns:minmax(0,1fr);grid-template-areas:"s" "m";gap:24px}
   .hg-side,.hg-side--after{grid-area:s;transition:opacity .45s ease}
+  .hg-split--hero .hg-side{transition-duration:.3s}
   .hg-split[data-side="before"] .hg-side--after,.hg-split[data-side="after"] .hg-side--before{opacity:0;pointer-events:none}
   .hg-side-l{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .hg-phone{width:340px;max-width:100%;height:clamp(480px,calc(100lvh - 168px),640px);border-radius:44px}
