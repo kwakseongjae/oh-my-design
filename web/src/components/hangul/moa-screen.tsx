@@ -47,7 +47,8 @@ function Icon({ name }: { name: keyof typeof ICONS }) {
  * (moa-copy.ts); the furniture, figures and art are the same on both sides, so a pair of screens
  * differs in exactly one of the two. `marks` pins rule tags to the strings a chapter talks about,
  * on both sides of the pair. `chrome="fixed"` keeps the status bar, app bar and tab bar still while
- * the content between them scrolls (the hero's phones); `"flow"` lays the whole screen out at length.
+ * the content between them moves, with a spotlight over it (the hero's phones, split-view.tsx walks
+ * them); `"flow"` lays the whole screen out at length.
  *
  * Nothing in it is interactive: the buttons and tabs are drawings of buttons and tabs, so a keyboard
  * never stops on them and a screen reader reads the screen as text.
@@ -207,6 +208,7 @@ export function MoaScreen({
           </li>
         ))}
       </ul>
+      {chrome === "fixed" ? <span className="moa-focus" aria-hidden="true" /> : null}
     </div>
   );
 }

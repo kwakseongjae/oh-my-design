@@ -33,7 +33,19 @@ function Cmd({ cmd }: { cmd: string }) {
   );
 }
 
-/** The hero's screens sit in a phone; the content scrolls between the bars on its own. */
+/** Where the hero's tour stops for each rule tag. copy.ts lists the tags in this order, top of the screen down. */
+const HERO_STOP: Readonly<Record<string, string>> = {
+  "HW-12": ".moa-hello",
+  "HG-1": ".moa-balance",
+  "HW-8": ".moa-toast",
+  "HG-7": ".moa-stats-h",
+  "HG-3": ".moa-asof",
+  "HW-5": ".moa-sheet",
+  "HW-4": ".moa-error",
+  "HW-2": ".moa-helper",
+};
+
+/** The hero's screens sit in a phone; the content moves between the bars on its own. */
 function Phone({ side }: { side: MoaSide }) {
   return (
     <div className="hg-phone">
@@ -94,8 +106,9 @@ function ChapterSection({
 
 /**
  * /ko/hangul and /hangul: the launch page for the /hangul skill. Owner review 2026-10-24 (r16):
- *   1. hero (B) — the same moa screen twice on ink, without the skill and with it, scrolling side by
- *      side; the rules that differ light up between them. Phones: one screen and a switch.
+ *   1. hero (B) — the same moa screen twice on ink, without the skill and with it, side by side. A
+ *      tour scrolls a little, spotlights one string on both screens and lights its rule between
+ *      them, then moves on (owner 2026-11-05). Phones: one screen, and each stop shows both sides.
  *   2. 조판 — the same strings, typeset two ways, with the five rules that changed
  *   3. 문구 — the same typesetting, two sets of strings, with the rules each string breaks
  *   4. the 28 rules (14 typography, 14 writing), one line each
@@ -132,10 +145,11 @@ export function HangulPage({ locale }: { locale: HangulLocale }) {
               labels={t.sides}
               before={<Phone side="ai" />}
               after={<Phone side="fix" />}
+              tour={t.hero.tags.map((tag) => ({ target: HERO_STOP[tag.id], rule: tag.id, label: `${tag.id} ${tag.text}` }))}
               between={
                 <ul className="hg-tags" aria-label={t.hero.tagsLabel}>
-                  {t.hero.tags.map((tag, i) => (
-                    <li key={tag.id} className="hg-tag" style={{ animationDelay: `${(i * 1.4).toFixed(1)}s` }}>
+                  {t.hero.tags.map((tag) => (
+                    <li key={tag.id} className="hg-tag" data-rule={tag.id}>
                       <b lang="en">{tag.id}</b> {tag.text}
                     </li>
                   ))}
