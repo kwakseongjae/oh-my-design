@@ -135,15 +135,14 @@
 .moa-tabs svg{display:block}
 .moa-tabs span{font-size:var(--moa-tab);font-weight:600;line-height:1.2}
 
-/* ---- fixed chrome: bars stay, the content between them scrolls by itself (the hero's phones).
-   --moa-h is the screen's height, set by the frame; the scroll ends where the content does. ---- */
-.moa--fixed{height:100%;max-width:none}
+/* ---- fixed chrome: bars stay, and split-view.tsx walks the content between them: it moves
+   .moa-scroll and sizes .moa-focus, a spotlight, to the string in view. --moa-focus is the side's
+   colour (hangul.css). ---- */
+.moa--fixed{position:relative;height:100%;max-width:none}
 .moa--fixed .moa-view{flex:1;min-height:0;overflow:hidden}
-@keyframes moa-scroll{
-  0%,8%{transform:translateY(0)}
-  46%,58%{transform:translateY(calc(-100% + var(--moa-h) - 158px))}
-  96%,100%{transform:translateY(0)}
-}
+.moa-focus{position:absolute;border-radius:14px;opacity:0;pointer-events:none;
+  box-shadow:0 0 0 2px var(--moa-focus),0 0 0 100vmax rgba(11,12,16,.5);transition:opacity .3s ease}
+.moa--fixed[data-focus] .moa-focus{opacity:1}
 @media (prefers-reduced-motion:no-preference){
-  .moa--fixed .moa-scroll{animation:moa-scroll 18s ease-in-out infinite;will-change:transform}
+  .moa--fixed .moa-scroll{transition:transform .8s cubic-bezier(.4,0,.2,1);will-change:transform}
 }

@@ -73,22 +73,20 @@
 .hg-btn:active{transform:scale(.98)}
 .hg-btn:focus-visible{outline:2px solid var(--hg-night-ink);outline-offset:3px}
 
-/* the phone: a frame, a screen, the island over the status bar; moa.css scrolls what is inside */
-.hg-phone{width:376px;height:536px;padding:8px;border-radius:48px;
+/* the phone: a frame, a screen, the island over the status bar; its height follows the viewport so
+   the whole phone fits on screen */
+.hg-phone{width:376px;height:720px;height:clamp(536px,calc(100svh - 168px),720px);padding:8px;border-radius:48px;
   background:linear-gradient(160deg,#2c2e33,#151619);
   box-shadow:0 0 0 1px #34363c,inset 0 0 0 1px rgba(255,255,255,.05),0 48px 80px -48px rgba(0,0,0,.9)}
-.hg-phone-screen{--moa-h:520px;position:relative;height:100%;overflow:hidden;border-radius:40px;background:#f2f4f6;isolation:isolate}
+.hg-phone-screen{position:relative;height:100%;overflow:hidden;border-radius:40px;background:#f2f4f6;isolation:isolate}
 .hg-phone-screen::before{content:"";position:absolute;z-index:2;top:10px;left:50%;width:92px;height:26px;border-radius:14px;background:#0b0b0c;transform:translateX(-50%)}
 
-/* the rules that differ, lit one after another while the screens scroll (one 18 s cycle) */
-.hg-tags{list-style:none;display:flex;flex-direction:column;gap:10px;margin:64px 0 0;padding:0}
-.hg-tag{padding:10px 14px;border:1px solid var(--hg-night-line);border-radius:12px;font-size:14px;line-height:1.45;color:var(--hg-night-ink-2);text-align:left}
+/* the rules that differ; split-view.tsx lights the one the tour is stopped on */
+.hg-tags{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
+.hg-tag{padding:10px 14px;border:1px solid var(--hg-night-line);border-radius:12px;font-size:14px;line-height:1.45;color:var(--hg-night-ink-2);text-align:left;
+  transition:border-color .3s,color .3s,background-color .3s}
+.hg-tag[data-on]{border-color:#7cb8ff;color:#fff;background-color:rgba(124,184,255,.1)}
 .hg-tag b{margin-right:4px;font:600 13px/1.45 var(--sq-f-mono);color:var(--hg-night-ink)}
-@keyframes hg-lit{
-  0%,16%,100%{border-color:var(--hg-night-line);color:var(--hg-night-ink-2);background-color:transparent}
-  4%,11%{border-color:#7cb8ff;color:#fff;background-color:rgba(124,184,255,.1)}
-}
-@media (prefers-reduced-motion:no-preference){.hg-tag{animation:hg-lit 18s ease-in-out infinite both}}
 
 /* ---- the pair (split-view.tsx): wide = side by side with the middle column; narrow = one place
    and a switch ---- */
@@ -99,7 +97,10 @@
 .hg-split--chapter .hg-split-stage{grid-template-columns:360px minmax(0,300px) 360px}
 .hg-side{grid-area:b;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0;margin:0}
 .hg-side--after{grid-area:a}
+.hg-side--before{--moa-focus:var(--hg-before-dot)}
+.hg-side--after{--moa-focus:var(--hg-after-dot)}
 .hg-split-mid{grid-area:m;min-width:0}
+.hg-split--hero .hg-split-mid{align-self:center}
 .hg-side-l{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.5;font-weight:650}
 .hg-side-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
 .hg-split--hero .hg-side--before .hg-side-l{color:var(--hg-night-before)}
@@ -202,8 +203,8 @@
   .hg-side,.hg-side--after{grid-area:s;transition:opacity .45s ease}
   .hg-split[data-side="before"] .hg-side--after,.hg-split[data-side="after"] .hg-side--before{opacity:0;pointer-events:none}
   .hg-side-l{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .hg-phone{width:340px;max-width:100%;height:500px;border-radius:44px}
-  .hg-phone-screen{--moa-h:484px;border-radius:36px}
+  .hg-phone{width:340px;max-width:100%;height:clamp(480px,calc(100lvh - 168px),640px);border-radius:44px}
+  .hg-phone-screen{border-radius:36px}
   .hg-split--hero .hg-tags{gap:6px;max-width:400px}
   .hg-split--hero .hg-tag{padding:4px 10px;border-radius:var(--sq-r-pill);font-size:13px}
   .hg-split--hero .hg-tag b{font-size:12px}
