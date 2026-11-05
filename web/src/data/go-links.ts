@@ -18,12 +18,12 @@ export type GoLink = {
 };
 
 export const GO_LINKS: Record<string, GoLink> = {
-  "example-post": {
-    to: "/design-systems",
+  "hangul-threads-ko": {
+    to: "/ko/hangul",
     source: "threads",
     medium: "social",
-    campaign: "20261103-example",
+    campaign: "20261105-hangul-video",
     content: "ko",
-    note: "Seed example. Replace with real posts.",
+    note: "/hangul video thread, link in the last reply (docs/HANGUL_VIRAL_2026-11-05.md).",
   },
 };
