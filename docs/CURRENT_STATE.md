@@ -1,7 +1,14 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-04 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-05 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-05 오후 · /hangul 진입점(PR #100, 프리뷰 확인 대기) · 바이럴 타래 초안
+
+- **PR #100 `feat/hangul-entry` `48c92f46`:** 푸터 Product 열에 `/hangul` 링크(한국어 페이지 → `/ko/hangul`, 나머지 → `/hangul`), 문서 스킬 목록의 이름 칩이 설명 높이만큼 늘어나던 것 고침(`.dx-skill code{align-self:start}`), go-link 시드 `example-post`를 `hangul-threads-ko`(→ `/ko/hangul`)로 교체. tsc 무오류, 웹 1337 통과. 프리뷰 `oh-my-design-csaxpfmsn-…`에서 `/ko`·`/docs/ko/skills` 푸터 → `/ko/hangul`, `/design-systems` → `/hangul`, `/go/hangul-threads-ko` 302 확인. **머지 = 오너 프리뷰 확인 후**(확인할 곳: `/docs/ko/skills`의 hangul 칩, 푸터).
+- 머지 전 /hangul 진입점: 문서 스킬 목록 한 줄, 블로그 글 하나(배민 타이포그래피), 사이트맵. 헤더·랜딩에는 없음.
+- **바이럴 타래:** `docs/HANGUL_VIRAL_2026-11-05.md`(출시 타래 형식, 촬영 대본, Threads 본문+댓글 6개). 이미지 3장은 `claudedocs/viral/2026-11-05-hangul/`(gitignore): 실제 평가 결과물 카드(전자결재), 수치 카드(5.40 → 2.65, 20/20, 한계), 예시 화면 카드(규칙 적용 예시라고 표기). 오너가 영상을 찍어 올림. 링크는 #100 운영 반영 후 302 확인하고 건다.
+- 주의: 저장소에 예전 세션의 스태시 8개(`sundae … llms timestamp` 등)가 있음. `git stash pop`을 쓰지 말 것(11/05에 실수로 꺼냈다가 HEAD로 되돌림, 스태시 목록은 그대로).
 
 ## ▶ 2026-11-04 밤(4) · 기본 로고 운영 반영(오너 "머지해. 괜찮네.")
 
