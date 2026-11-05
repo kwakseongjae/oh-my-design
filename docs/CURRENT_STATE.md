@@ -3,7 +3,13 @@
 갱신: **2026-11-05 오후** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ▶ 2026-11-05 오후 · /hangul 진입점(PR #100, 프리뷰 확인 대기) · 바이럴 타래 초안
+## ▶ 2026-11-05 저녁 · #100 운영 반영 · 타래를 @daon_k 문체로 다시 씀
+
+- **main `9d5d827f`(#100 머지, 오너 "프리뷰는 확인했어").** 운영: `/ko` 푸터 → `/ko/hangul`, `/go/hangul-threads-ko` 302 → `/ko/hangul?utm_…`.
+- **hangul 단독 설치 확인:** 빈 폴더에서 `npx skills add kwakseongjae/oh-my-design --skill hangul` → `.agents/skills/hangul` + Claude Code 링크(`.claude/skills/hangul`), `check.mjs`·`copy-check.mjs` 자체 시험 통과, 예시 ko.json에서 HW-2·5·8 검출. 단독으로 동작.
+- **오너 피드백 반영:** 이미지에서 출처 문구·"읽을 때 주의" 상자 제거(한계는 댓글 2/ 글로), 댓글 6(참여 유도) 삭제, 마지막 댓글은 전체 설치(`npx oh-my-design-cli@latest`)와 hangul만 설치 두 가지. 초안은 오너 Threads(`@daon_k`) 공개 글 문체로 다시 씀(1인칭 도입, 합니다체 중심, `1/` 번호 댓글, 🧵·🔥·🍀). /hangul `copy-check`로 초안의 말투 섞임을 줄임. 영상은 오너가 찍음.
+
+### (이전) 2026-11-05 오후 · /hangul 진입점(PR #100, 프리뷰 확인 대기) · 바이럴 타래 초안
 
 - **PR #100 `feat/hangul-entry` `48c92f46`:** 푸터 Product 열에 `/hangul` 링크(한국어 페이지 → `/ko/hangul`, 나머지 → `/hangul`), 문서 스킬 목록의 이름 칩이 설명 높이만큼 늘어나던 것 고침(`.dx-skill code{align-self:start}`), go-link 시드 `example-post`를 `hangul-threads-ko`(→ `/ko/hangul`)로 교체. tsc 무오류, 웹 1337 통과. 프리뷰 `oh-my-design-csaxpfmsn-…`에서 `/ko`·`/docs/ko/skills` 푸터 → `/ko/hangul`, `/design-systems` → `/hangul`, `/go/hangul-threads-ko` 302 확인. **머지 = 오너 프리뷰 확인 후**(확인할 곳: `/docs/ko/skills`의 hangul 칩, 푸터).
 - 머지 전 /hangul 진입점: 문서 스킬 목록 한 줄, 블로그 글 하나(배민 타이포그래피), 사이트맵. 헤더·랜딩에는 없음.
