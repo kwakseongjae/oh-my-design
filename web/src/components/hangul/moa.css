@@ -141,8 +141,8 @@
 .moa--fixed{position:relative;height:100%;max-width:none}
 .moa--fixed .moa-view{flex:1;min-height:0;overflow:hidden}
 .moa-focus{position:absolute;border-radius:14px;opacity:0;pointer-events:none;
-  box-shadow:0 0 0 2px var(--moa-focus),0 0 0 100vmax rgba(11,12,16,.5);transition:opacity .3s ease}
+  box-shadow:0 0 0 2px var(--moa-focus),0 0 0 100vmax rgba(11,12,16,.5);transition:opacity .25s ease}
 .moa--fixed[data-focus] .moa-focus{opacity:1}
 @media (prefers-reduced-motion:no-preference){
-  .moa--fixed .moa-scroll{transition:transform .8s cubic-bezier(.4,0,.2,1);will-change:transform}
+  .moa--fixed .moa-scroll{transition:transform .67s cubic-bezier(.4,0,.2,1);will-change:transform}
 }

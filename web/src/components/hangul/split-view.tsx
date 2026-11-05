@@ -25,11 +25,11 @@ const EVERY_MS = 3200;
 
 /** The tour's beats. TRAVEL_MS is moa.css's scroll transition; a wide stop holds both screens for
  *  HOLD_MS, a narrow one gives each screen SIDE_MS. */
-const TRAVEL_MS = 800;
-const HOLD_MS = 2400;
-const SIDE_MS = 1700;
-const GAP_MS = 300;
-const HOME_MS = 1400;
+const TRAVEL_MS = 670;
+const HOLD_MS = 2000;
+const SIDE_MS = 1420;
+const GAP_MS = 250;
+const HOME_MS = 1170;
 /** the spotlight's margin around its string, in the 12 px gap between moa's cards */
 const FOCUS_PAD = 6;
 
