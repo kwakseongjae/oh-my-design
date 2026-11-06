@@ -3,6 +3,13 @@
 갱신: **2026-11-06 오후 늦게** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-11-06 밤 · **6차 2차 머지 완료(오너 GO "진행해")** → 운영 확인
+
+- main `736a46bd`(6차 나머지 18건) → **597 / 427 / 89 / 81**. 충돌 없음. 루트·web 테스트·tsc·lint 통과(부하 시간 초과 5건은 단독 재실행 통과).
+- **고친 것 `bc9ce8a5`:** 6차 KR 신규 everytime·wooricard에 한글 표시 이름(`catalog.display_name_kr`)이 빠져 `/ko` 상세가 영문 이름을 띄웠음 → 에브리타임·우리카드(라이브 사이트의 자기 표기 근거). 운영 `/ko/design-systems/everytime` h1 "에브리타임 DESIGN.md", 영문 페이지는 영문 유지. **워커 지시서에 KR 레퍼런스는 display_name_kr 필수로 넣을 것(다음 묶음 전).**
+- 운영: aliyun·cookpad·hktvmall·kkday·note·bunjang 등 200.
+- 6차 결과: 31건 중 30건 반영, dcard 보류(봇 확인 화면). 워커 0개. 다음 묶음(7차)은 미착수.
+
 ## ▶ 2026-11-06 저녁 · **묶음 머지 완료(오너 GO "묶음 머지는 진행")** → 운영 확인
 
 - **main에 합친 것:** #108(스킬 피드백 묶음) · #109(go-link) · `feat/skill-batch-nov`(omd-3d-hero pile·셰이더 #111·hangul #110·break 모드) · `feat/refs-batch6`(6차 첫 12건) → main `94815356`·`510cc402`, **585 / 409 / 89 / 87**. 생성 파일 충돌은 병합 후 build-registry + sync-catalog로 다시 만듦.
