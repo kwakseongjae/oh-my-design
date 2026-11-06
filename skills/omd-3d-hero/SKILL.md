@@ -74,6 +74,9 @@ Poster first, by design:
 - **Phones (≤ 720px), `prefers-reduced-motion: reduce` and no WebGL2 get only the poster**: no three.js download, no video. On phones the poster sits at the bottom (`auto 58%`) under the copy.
 - three.js loads with a dynamic `import()` after the poster; a failed import leaves the poster and logs one warning.
 - The canvas pauses offscreen (IntersectionObserver) and in hidden tabs. Pixel ratio is capped at 2.
+- **A pause button** (bottom right, 44px target) appears once the scene or video is live. WCAG 2.2.2: motion that runs longer than 5 s needs a way to stop it.
+- **Frame budget** (pattern from taste-skill, MIT): after 40 warm-up frames, every 60 frames are averaged. Over 20 ms (under 50 fps) the pixel ratio drops by 0.75× down to 1; at 1 and still over 33.3 ms (under 30 fps) the scene stops and the page returns to the poster.
+- **Failures return to the poster**: a lost WebGL context (`webglcontextlost`) or a shader that fails to compile (`renderer.debug.onShaderError`) removes `data-live`, records the reason in `data-fallback`, and frees the GPU resources.
 
 Budget (three branch): three@0.186.1 + `RoundedBoxGeometry` + `RoomEnvironment` is **~194 KiB gzip** over jsDelivr's minified files (the import map remaps `three.module`'s relative `three.core.js` import to `three.core.min.js`), **~136 KiB gzip** bundled and tree-shaken (esbuild). That is twenty times `omd-shader-hero`'s 7 KiB. It is acceptable only because nothing waits for it. Measure your own bundle; never put three.js on the critical path.
 
@@ -86,20 +89,26 @@ npm i -D playwright-core && npx playwright-core install chromium
 node <skill>/scripts/verify.mjs path/to/hero.html ./hero-verify
 ```
 
-A local file is served over http automatically (ES modules don't load from `file://`). Four passes: desktop GPU 1440×900, phone 390×844 @2x, reduced motion, no WebGL. Checks:
+A local file is served over http automatically (ES modules don't load from `file://`). Five passes: desktop GPU 1440×900, phone 390×844 @2x, reduced motion, no WebGL, shader compile failure. Checks:
 - `liveOnDesktop`, `animates`: the canvas or video is on screen and moves;
 - `posterBeforeLive`: the page's own clock shows the poster painted before the live layer;
 - `headlineVisibleAtLoad`: the headline is at full opacity on load;
 - `contrastHeadline`, `contrastSubcopy` ≥ 4.5:1 in every pass, on the worst of 8 frames across the period, measured inside the text's line boxes with the copy hidden;
 - `mobilePosterOnly`, `reducedMotionPosterOnly`, `noWebGLPosterOnly`: no canvas or video in those states;
+- `shaderFailPosterOnly`: a fifth pass breaks every `shaderSource` call (context present, compile fails) and expects `data-fallback="shader-error"` and no live layer. "No WebGL" and "WebGL that fails" are different paths;
+- `pauseStopsMotion`: the pause button is visible on the live pass and two frames 1.2 s apart are identical after pressing it;
 - frame time (median, p95) from the scene's own rAF loop over 3 s, and the WebGL renderer string, so you know a real GPU drew it.
 
-Measured on 2026-11-06 (headless Chromium, `ANGLE Metal Renderer: Apple M5 Pro`, Blender 5.2.2), all checks passing:
+Measured on 2026-11-06 (headless Chromium, `ANGLE Metal Renderer: Apple M5 Pro`, Blender 5.2.2; another GPU job was running, so frame times are an upper bound). All five passes and every check passed for all six:
 
-| Fixture | Engine | Worst headline contrast (gpu / phone / reduced / no-GL) | Frame ms (median / p95) |
-|---|---|---|---|
-| karrot | three | 14.08 / 15.11 / 14.06 / 14.06 | 8.3 / 9.1 |
-| karrot | blender | 11.67 / 15.11 / 13.31 / 11.68 | video |
+| Fixture | Engine | Worst headline contrast (gpu / phone / reduced / no-GL / shader-fail) | Frame ms (median / p95) | Poster → live |
+|---|---|---|---|---|
+| toss | three | 14.27 / 15.02 / 14.37 / 14.37 / 14.37 | 8.3 / 10.2 | 111 → 310 ms |
+| toss | blender | 11.5 / 15.02 / 13.33 / 11.5 / 11.5 | video | 77 → 180 ms |
+| karrot | three | 14.08 / 15.11 / 14.06 / 14.06 / 14.06 | 8.3 / 9.9 | 75 → 270 ms |
+| karrot | blender | 11.68 / 15.11 / 13.31 / 11.68 / 11.68 | video | 61 → 166 ms |
+| baemin | three | 13.82 / 14.45 / 13.8 / 13.8 / 13.8 | 8.3 / 10.1 | 58 → 217 ms |
+| baemin | blender | 11.05 / 14.45 / 13.07 / 11.05 / 11.05 | video | 53 → 130 ms |
 
 Blender timings on the same machine: Cycles poster 1920×1080 at 128 samples + denoise 11–16 s (Metal GPU); EEVEE loop 192 frames at 1280px in 56 s.
 
@@ -115,3 +124,9 @@ Blender timings on the same machine: Cycles poster 1920×1080 at 128 samples + d
 ## 7. Attribution
 
 Structure from `omd-shader-hero` (token readers, poster under every canvas, background on `html`, first-frame copy, reduced motion as a state, the real-GPU verify loop), which itself comes from the owner's tf-shaders experiment. Market context and gaps: `docs/research/2026-11-06-skill-trends.md` §4. External references and their licenses: `docs/research/2026-11-06-3d-shader-references.md`.
+
+Patterns taken (numbers and structure only, no code copied):
+- **Leonxlnx/taste-skill** 2.5 (MIT): the frame-budget ladder (50 fps → lower resolution, 30 fps → still), the forced shader-compile-failure check, the pause control for loops over 5 s.
+- **MengTo/Skills** `webgl-landing-steering` (MIT): poster before WebGL, DPR cap, context-loss handling.
+- **CloudAI-X/threejs-skills** (MIT) and three.js `llms-full.txt` (MIT): the outdated-API list (`PCFSoftShadowMap`, `Clock`, `examples/jsm`), `WebGLRenderer` as the default renderer, `setAnimationLoop`.
+- **ahujasid/mcp-for-blender** (MIT): bpy render settings only; the MCP server itself is not used.

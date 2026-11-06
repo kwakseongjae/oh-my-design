@@ -50,7 +50,7 @@ function geometry(o, shape) {
   }
 }
 
-export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1, 2) } = {}) {
+export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1, 2), onFallback } = {}) {
   // preserveDrawingBuffer lets verify.mjs --bake read the frame back as the poster; cost is negligible for one canvas.
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -120,19 +120,52 @@ export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1,
     camera.fov = camera.aspect < 16 / 9 ? THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(C.fovY) / 2) * (16 / 9) / camera.aspect)) : C.fovY;
     camera.updateProjectionMatrix();
   }
-  new ResizeObserver(resize).observe(host);
+  const ro = new ResizeObserver(resize);
+  ro.observe(host);
   resize();
 
-  // Clock: wall time unless verify freezes it. Pause offscreen and in hidden tabs.
-  let frozen = null, visible = true, last = performance.now();
-  const frameTimes = [];
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
+  // Any failure returns the page to the poster: the canvas fades out (data-live removed) and the GPU
+  // resources go. Reasons are written to host.dataset.fallback so verify.mjs can assert them.
+  let stopped = false;
+  function fallback(reason) {
+    if (stopped) return;
+    stopped = true;
+    renderer.setAnimationLoop(null);
+    delete host.dataset.live;
+    host.dataset.fallback = reason;
+    onFallback?.(reason);
+    ro.disconnect(); io.disconnect();
+    setTimeout(() => { renderer.dispose(); pmrem.dispose(); canvas.remove(); }, 700);
+  }
+  // A shader that fails to compile still "renders" (nothing). Catch it and keep the poster.
+  let shaderError = false;
+  renderer.debug.onShaderError = () => { shaderError = true; };
+  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); fallback('context-lost'); });
+
+  // Clock: wall time unless verify freezes it. Pause offscreen, in hidden tabs, and on the user's pause.
+  // Frame budget (pattern from taste-skill, MIT): skip 40 warm-up frames, average 60; over 20 ms (< 50 fps)
+  // lower the pixel ratio by 0.75x down to 1; at 1 and still over 33.3 ms (< 30 fps) go back to the poster.
+  let frozen = null, visible = true, paused = false, last = performance.now(), pr = pixelRatio, skip = 40;
+  const frameTimes = [], window60 = [];
+  const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
+  io.observe(host);
   function frame(now) {
-    if (!visible || document.hidden) return;
-    frameTimes.push(now - last); if (frameTimes.length > 600) frameTimes.shift();
+    const dt = now - last;
     last = now;
+    if (!visible || document.hidden || paused) return;
+    frameTimes.push(dt); if (frameTimes.length > 600) frameTimes.shift();
+    if (frozen == null && dt < 250) {               // a long gap is a tab switch, not a slow frame
+      if (skip > 0) skip--;
+      else if (window60.push(dt) >= 60) {
+        const avg = window60.reduce((a, b) => a + b, 0) / window60.length;
+        window60.length = 0;
+        if (avg > 20 && pr > 1) { pr = Math.max(1, pr * 0.75); renderer.setPixelRatio(pr); resize(); }
+        else if (avg > 33.3) return fallback('frame-budget');
+      }
+    }
     pose(frozen ?? now / 1000);
     renderer.render(scene, camera);
+    if (shaderError) return fallback('shader-error');
     if (!('live' in host.dataset)) host.dataset.live = '';
   }
   renderer.setAnimationLoop(frame);
@@ -142,9 +175,13 @@ export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1,
   const api = {
     renderer: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER),
     frameTimes,
+    get pixelRatio() { return pr; },
     setTime(t) { frozen = t; pose(t); renderer.render(scene, camera); },
     release() { frozen = null; },
-    dispose() { renderer.setAnimationLoop(null); renderer.dispose(); pmrem.dispose(); canvas.remove(); },
+    pause() { paused = true; },
+    resume() { paused = false; last = performance.now(); },
+    get paused() { return paused; },
+    dispose() { stopped = true; ro.disconnect(); io.disconnect(); renderer.setAnimationLoop(null); renderer.dispose(); pmrem.dispose(); canvas.remove(); },
   };
   window.__omd3d = api;
   return api;

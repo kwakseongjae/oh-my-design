@@ -39,7 +39,15 @@
     align-self: flex-start; margin-top: 8px; padding: 14px 24px; border-radius: var(--hero-radius, 0);
     background: var(--hero-brand); color: var(--hero-on-brand, #fff); font-weight: 700; font-size: 19px; text-decoration: none; /* 19px bold = WCAG large text */
   }
-  .cta:focus-visible { outline: 3px solid var(--hero-text); outline-offset: 3px; }
+  .cta:focus-visible, .pause:focus-visible { outline: 3px solid var(--hero-text); outline-offset: 3px; }
+  /* WCAG 2.2.2: motion that runs longer than 5 s needs a way to stop it. */
+  .pause {
+    position: absolute; right: 16px; bottom: 16px; min-width: 44px; min-height: 44px; padding: 0 16px;
+    border: 1px solid color-mix(in srgb, var(--hero-text) 22%, transparent); border-radius: 999px;
+    background: color-mix(in srgb, var(--hero-bg) 86%, transparent); color: var(--hero-text);
+    font: 600 14px/1 inherit; cursor: pointer;
+  }
+  .pause[hidden] { display: none; }
   @media (max-width: 720px) {
     .hero { height: 100svh; background-position: 78% 100%; background-size: auto 58%; }
     .copy { max-width: none; justify-content: flex-start; padding: 72px 24px 0; }
@@ -53,6 +61,7 @@
     <p>한 문장으로 쓰는 보조 문구. 지표나 고객 이름을 지어내지 않습니다.</p>
     <a class="cta" href="#">시작하기</a>
   </div>
+  <button type="button" class="pause" hidden>일시정지</button>
 </section>
 <script type="module">
   const hero = document.querySelector('.hero');
@@ -62,18 +71,28 @@
   const webgl2 = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
   window.__omd3dState = { reduce, narrow, webgl2, engine: hero.dataset.engine, mounted: false };
   // Poster stays for reduced motion, phones (battery, data) and no WebGL2. Motion is an enhancement.
+  const pause = hero.querySelector('.pause');
+  let control = null, held = false; // control: { pause(), resume() } for whichever layer is live
+  // The label says what the button does next; no aria-pressed on top of a changing label.
+  pause.addEventListener('click', () => {
+    held = !held;
+    pause.textContent = held ? '재생' : '일시정지';
+    held ? control?.pause() : control?.resume();
+  });
   if (!reduce && !narrow) {
     if (hero.dataset.engine === 'video') {
       const v = Object.assign(document.createElement('video'), { muted: true, loop: true, playsInline: true, autoplay: true, preload: 'auto' });
       v.setAttribute('aria-hidden', 'true');
       for (const [ext, type] of [['webm', 'video/webm'], ['mp4', 'video/mp4']]) v.append(Object.assign(document.createElement('source'), { src: `${hero.dataset.videoSrc}.${ext}`, type }));
-      v.addEventListener('playing', () => { hero.dataset.live = ''; }, { once: true });
+      v.addEventListener('playing', () => { hero.dataset.live = ''; pause.hidden = false; }, { once: true });
       hero.prepend(v);
+      control = { pause: () => v.pause(), resume: () => v.play() };
       window.__omd3dState.mounted = true;
     } else if (webgl2 && spec.objects) {
       try {
         const { mount } = await import(hero.dataset.sceneSrc);
-        mount(hero, spec);
+        control = mount(hero, spec, { onFallback: () => { pause.hidden = true; } });
+        pause.hidden = false;
         window.__omd3dState.mounted = true;
       } catch (e) { console.warn('3d hero: staying on the poster', e); }
     }

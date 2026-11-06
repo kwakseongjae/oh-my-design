@@ -44,7 +44,8 @@ MATS = {}
 for key, m in SPEC["materials"].items():
     mat = bpy.data.materials.new(f"omd-{key}")
     mat.use_nodes = True
-    bsdf = mat.node_tree.nodes.get("Principled BSDF")
+    # Find the node by type, not by its (localizable) name. use_nodes is deprecated for 6.0; fine in 4.2-5.x.
+    bsdf = next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
     bsdf.inputs["Base Color"].default_value = hex_rgba(m["hex"])
     bsdf.inputs["Roughness"].default_value = m["roughness"]
     if "Coat Weight" in bsdf.inputs:
@@ -160,7 +161,7 @@ area("rim", SPEC["lights"]["rim"], 1.0)
 world = bpy.data.worlds.new("omd-world")
 sc.world = world
 world.use_nodes = True
-bg = world.node_tree.nodes.get("Background")
+bg = next(n for n in world.node_tree.nodes if n.type == "BACKGROUND")
 bg.inputs["Color"].default_value = hex_rgba(SPEC["materials"]["backdrop"]["hex"])
 bg.inputs["Strength"].default_value = SPEC["lights"]["world"]
 

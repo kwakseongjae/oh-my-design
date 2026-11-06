@@ -55,15 +55,25 @@ process.on('exit', () => server?.close());
 const require = createRequire(process.env.PW_CORE ? process.env.PW_CORE + '/' : path.join(process.cwd(), 'noop.js'));
 const { chromium } = require('playwright-core');
 const GPU_ARGS = ['--enable-gpu', '--ignore-gpu-blocklist', ...(process.platform === 'darwin' ? ['--use-angle=metal'] : [])];
+// Context exists but every shader fails to compile (taste-skill's consistency check, MIT): a second failure
+// path that the no-WebGL stub doesn't cover.
+const SHADER_FAIL = () => {
+  for (const C of [window.WebGLRenderingContext, window.WebGL2RenderingContext]) {
+    if (!C) continue;
+    const orig = C.prototype.shaderSource;
+    C.prototype.shaderSource = function (sh) { return orig.call(this, sh, '#version 300 es\nthis does not compile'); };
+  }
+};
 const NO_GL = () => {
   const orig = HTMLCanvasElement.prototype.getContext;
   HTMLCanvasElement.prototype.getContext = function (t, ...r) { return /webgl/i.test(t) ? null : orig.call(this, t, ...r); };
 };
 
-async function open({ width = 1440, height = 900, reduce = false, noGL = false, dpr = 1 } = {}) {
+async function open({ width = 1440, height = 900, reduce = false, noGL = false, shaderFail = false, dpr = 1 } = {}) {
   const browser = await chromium.launch({ headless: !HEADED, args: GPU_ARGS });
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr, reducedMotion: reduce ? 'reduce' : 'no-preference' });
   if (noGL) await ctx.addInitScript(NO_GL);
+  if (shaderFail) await ctx.addInitScript(SHADER_FAIL);
   // Record when the poster and the live layer first appear, from the page's own clock.
   await ctx.addInitScript(() => {
     window.__omd3dTimeline = {};
@@ -148,9 +158,9 @@ mkdirSync(outDir, { recursive: true });
 async function pass(label, opts) {
   const { browser, page, logs } = await open(opts);
   await page.waitForTimeout(1200);
-  const state = await page.evaluate(() => ({ ...window.__omd3dState, live: 'live' in document.querySelector('.hero').dataset, layers: document.querySelectorAll('.hero > canvas, .hero > video').length, h1Opacity: getComputedStyle(document.querySelector('.hero h1')).opacity, timeline: window.__omd3dTimeline }));
+  const state = await page.evaluate(() => { const h = document.querySelector('.hero'); const b = h.querySelector('.pause'); return { ...window.__omd3dState, live: 'live' in h.dataset, fallback: h.dataset.fallback ?? null, layers: h.querySelectorAll(':scope > canvas, :scope > video').length, pauseVisible: !!b && !b.hidden, h1Opacity: getComputedStyle(h.querySelector('h1')).opacity, timeline: window.__omd3dTimeline }; });
   const rects = await rectsOf(page), text = await textColor(page);
-  const live = state.engine === 'three' && !!(await page.evaluate(() => window.__omd3d));
+  const live = state.engine === 'three' && state.live && !!(await page.evaluate(() => window.__omd3d));
   const r = { label, ...state, text, logs };
   if (live) r.renderer = await page.evaluate(() => window.__omd3d.renderer);
   let wh = Infinity, wp = Infinity;
@@ -173,6 +183,15 @@ async function pass(label, opts) {
     const ft = await page.evaluate(() => [...window.__omd3d.frameTimes].slice(1).sort((x, y) => x - y));
     const q = (p) => +ft[Math.min(ft.length - 1, Math.floor(p * ft.length))].toFixed(2);
     r.frameMs = { n: ft.length, median: q(0.5), p95: q(0.95) };
+    r.pixelRatioAfter = await page.evaluate(() => window.__omd3d.pixelRatio);
+  }
+  // WCAG 2.2.2: the pause control must stop the motion.
+  if (state.live && state.pauseVisible) {
+    await page.click('.hero .pause');
+    await page.waitForTimeout(300);
+    const a = await page.screenshot(); await page.waitForTimeout(1200); const b = await page.screenshot();
+    r.pausedDiff = await diff(page, a, b);
+    await page.click('.hero .pause');
   }
   await browser.close();
   return r;
@@ -183,7 +202,8 @@ report.passes.push(await pass('gpu', { width: 1440, height: 900 }));
 report.passes.push(await pass('mobile', { width: 390, height: 844, dpr: 2 }));
 report.passes.push(await pass('reduced-motion', { width: 1440, height: 900, reduce: true }));
 report.passes.push(await pass('no-webgl', { width: 1440, height: 900, noGL: true }));
-const [gpu, mobile, still, nogl] = report.passes;
+report.passes.push(await pass('shader-fail', { width: 1440, height: 900, shaderFail: true }));
+const [gpu, mobile, still, nogl, sfail] = report.passes;
 const tl = gpu.timeline || {};
 report.checks = {
   liveOnDesktop: gpu.mounted && gpu.live && gpu.layers === 1,
@@ -195,10 +215,12 @@ report.checks = {
   mobilePosterOnly: mobile.layers === 0,
   reducedMotionPosterOnly: still.layers === 0,
   noWebGLPosterOnly: gpu.engine !== 'three' || nogl.layers === 0,
+  shaderFailPosterOnly: gpu.engine !== 'three' || (!sfail.live && sfail.fallback === 'shader-error'),
+  pauseStopsMotion: gpu.pauseVisible === true && (gpu.pausedDiff ?? 1) < 0.002,
   softwareRenderer: /swiftshader|llvmpipe|software/i.test(gpu.renderer || ''),
 };
 writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ engine: gpu.engine, renderer: gpu.renderer, frameMs: gpu.frameMs, timeline: tl, ...report.checks, contrast: Object.fromEntries(report.passes.map((p) => [p.label, p.worstContrast])) }, null, 2));
+console.log(JSON.stringify({ engine: gpu.engine, renderer: gpu.renderer, frameMs: gpu.frameMs, pixelRatioAfter: gpu.pixelRatioAfter, pausedDiff: gpu.pausedDiff, timeline: tl, ...report.checks, contrast: Object.fromEntries(report.passes.map((p) => [p.label, p.worstContrast])) }, null, 2));
 const fail = Object.entries(report.checks).filter(([k, v]) => k !== 'softwareRenderer' && !v);
 server?.close();
 if (fail.length) { console.error('FAIL:', fail.map(([k]) => k).join(', ')); process.exit(1); }
