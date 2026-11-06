@@ -8831,6 +8831,67 @@
     ]
    }
   },
+  "everytime": {
+   "hash": "c8f7d9d3af053410",
+   "terms": {
+    "en": [
+     "campus community app",
+     "university student service",
+     "timetable and scheduling",
+     "group chat for students",
+     "school directory sidebar",
+     "white and pale grey",
+     "red accent signup",
+     "friendly smiling symbol",
+     "flat square list rows",
+     "dark rounded store buttons",
+     "feature illustrations",
+     "meeting time poll"
+    ],
+    "ko": [
+     "대학생 커뮤니티",
+     "캠퍼스 앱",
+     "시간표 앱",
+     "학교별 커뮤니티",
+     "단체 채팅",
+     "흰색 회색 배경",
+     "빨간 포인트 컬러",
+     "친근한 분위기",
+     "학교 목록 사이드바",
+     "일정 조율",
+     "대학생활 서비스",
+     "평평한 목록 행"
+    ],
+    "ja": [
+     "大学生向けコミュニティ",
+     "キャンパスアプリ",
+     "時間割アプリ",
+     "学校別コミュニティ",
+     "グループチャット",
+     "白とライトグレー",
+     "赤いアクセント",
+     "親しみやすい雰囲気",
+     "学校一覧サイドバー",
+     "日程調整",
+     "フラットな一覧行",
+     "イラスト中心"
+    ],
+    "zh": [
+     "大學生社群",
+     "校園應用程式",
+     "課表與行程規劃",
+     "學校社群",
+     "群組聊天",
+     "白色與淺灰色",
+     "紅色強調色",
+     "親切友善風格",
+     "學校目錄側邊欄",
+     "時間投票協調",
+     "扁平方形列表",
+     "功能插圖"
+    ]
+   }
+  },
   "expo": {
    "hash": "77e3f7f4fdb115e8",
    "terms": {

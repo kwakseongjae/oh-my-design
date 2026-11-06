@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 589,
+ "count": 590,
  "items": [
   {
    "id": "104",
@@ -3518,6 +3518,28 @@
    },
    "tone_keywords": [
     "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "everytime",
+   "primary_color_hex": "#f91f15",
+   "category": "consumer-tech",
+   "visual_theme": "Everytime is Vinu Labs' campus community and planning service. Its official product page brings together school communities, group chat, timetables and campus information. The company's December 2023 rebrand announcement dates the service's opening to 2009 and",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "flat"
    ],
    "antipatterns": [
     "off-brand"

@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 414,
-  "sources": 3592,
+  "references_with_verification_v2": 415,
+  "sources": 3603,
   "sources_by_kind": {
-    "brand-asset": 246,
+    "brand-asset": 247,
     "license": 141,
-    "official-doc": 1689,
-    "product-surface": 1516
+    "official-doc": 1695,
+    "product-surface": 1520
   },
   "references": {
     "104": {
@@ -5762,6 +5762,78 @@
           "kind": "license",
           "captured": "2026-07-14",
           "host": "github.com"
+        }
+      ]
+    },
+    "everytime": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "blog-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cf-ownedmedia.vinuteam.com"
+        },
+        {
+          "id": "brand-guide",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "cf-ownedmedia.vinuteam.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "company-product",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "everytime.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "everytime.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "product-planning",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
         }
       ]
     },
