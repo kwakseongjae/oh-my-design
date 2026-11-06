@@ -8192,32 +8192,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "note",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 50,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 72,
+    "evidenceClaimCount": 72,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 6,
+    "tier1SourceCount": 22,
+    "componentCount": 4,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.375
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "notion",
@@ -14010,9 +14003,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 410,
+  "verified_v2": 411,
   "partial": 89,
-  "legacy_snapshot": 87,
+  "legacy_snapshot": 86,
   "total": 586
 } as const;
 
