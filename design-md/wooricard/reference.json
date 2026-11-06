@@ -12,7 +12,8 @@
       "slug": "https://www.google.com/s2/favicons?domain=pc.wooricard.com&sz=128"
     },
     "verified": "2026-11-06",
-    "added": "2026-11-06"
+    "added": "2026-11-06",
+    "display_name_kr": "우리카드"
   },
   "tokens": {
     "source": "live-extract",
