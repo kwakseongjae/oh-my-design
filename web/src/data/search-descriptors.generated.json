@@ -18059,6 +18059,67 @@
     ]
    }
   },
+  "megabank": {
+   "hash": "923aac7b252731a4",
+   "terms": {
+    "en": [
+     "taiwan commercial bank",
+     "personal banking website",
+     "trade and foreign exchange",
+     "purple and pink gradient",
+     "white space layout",
+     "rounded controls",
+     "currency calculator",
+     "exchange rate tabs",
+     "service navigation links",
+     "wcag aa accessibility",
+     "gold logo",
+     "traditional chinese bank site"
+    ],
+    "ko": [
+     "대만 상업은행",
+     "개인 뱅킹 웹사이트",
+     "무역 외환 금융",
+     "보라 분홍 그라데이션",
+     "여백 많은 화이트",
+     "둥근 입력창",
+     "환율 계산기",
+     "환율 탭",
+     "서비스 바로가기",
+     "접근성 AA 인증",
+     "금색 로고",
+     "은행 홈페이지"
+    ],
+    "ja": [
+     "台湾の商業銀行",
+     "個人向けバンキング",
+     "貿易と外国為替",
+     "紫からピンクのグラデーション",
+     "余白の多い白基調",
+     "丸みのあるコントロール",
+     "為替計算機",
+     "為替レートタブ",
+     "サービスリンク",
+     "アクセシビリティ対応",
+     "金色のロゴ",
+     "銀行ウェブサイト"
+    ],
+    "zh": [
+     "台灣商業銀行",
+     "個人金融網站",
+     "貿易與外匯",
+     "紫粉漸層",
+     "白色留白版面",
+     "圓角控制項",
+     "匯率計算機",
+     "現金匯率分頁",
+     "服務導覽連結",
+     "無障礙 AA 認證",
+     "金色標誌",
+     "繁體中文銀行網站"
+    ]
+   }
+  },
   "megabox": {
    "hash": "f54bcd19000cf8cd",
    "terms": {

@@ -6887,6 +6887,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "megabank",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 83,
+    "evidenceClaimCount": 83,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
+    "conflictCount": 0,
+    "tier1SourceCount": 9,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "megabox",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -13910,10 +13932,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 403,
+  "verified_v2": 404,
   "partial": 89,
   "legacy_snapshot": 89,
-  "total": 581
+  "total": 582
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

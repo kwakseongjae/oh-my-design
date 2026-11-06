@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 581,
+ "count": 582,
  "items": [
   {
    "id": "104",
@@ -7138,6 +7138,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "healthcare"
+  },
+  {
+   "id": "megabank",
+   "primary_color_hex": "#903f98",
+   "category": "fintech",
+   "visual_theme": "Mega Bank (兆豐銀行) is the Taiwanese commercial bank formed when the International Commercial Bank of China and Chiao Tung Bank merged on **21 August 2006**, taking the name Mega International Commercial Bank. Its own history emphasizes international trade, forei",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "megabox",
