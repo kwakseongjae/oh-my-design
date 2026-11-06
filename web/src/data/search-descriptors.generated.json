@@ -4010,6 +4010,65 @@
     ]
    }
   },
+  "cgmh": {
+   "hash": "bff4627c96fd059a",
+   "terms": {
+    "en": [
+     "hospital system website",
+     "healthcare appointment booking",
+     "find a doctor",
+     "warm orange on white",
+     "patient-first service",
+     "medical line icons",
+     "rounded outlined links",
+     "brown footer",
+     "service directory navigation",
+     "symptom reference",
+     "nonprofit medical care",
+     "traditional chinese site"
+    ],
+    "ko": [
+     "병원 웹사이트",
+     "의료 예약 접수",
+     "의사 찾기",
+     "흰색 바탕 따뜻한 주황",
+     "환자 중심 서비스",
+     "의료 라인 아이콘",
+     "둥근 윤곽선 링크",
+     "갈색 푸터",
+     "진료과 선택",
+     "증상 안내",
+     "비영리 의료기관"
+    ],
+    "ja": [
+     "病院ウェブサイト",
+     "診察予約",
+     "医師検索",
+     "白地に暖かいオレンジ",
+     "患者第一",
+     "医療ラインアイコン",
+     "角丸のアウトラインリンク",
+     "ブラウンのフッター",
+     "診療科の選択",
+     "症状案内",
+     "非営利の医療機関"
+    ],
+    "zh": [
+     "醫院網站",
+     "預約掛號",
+     "找醫師",
+     "白底暖橘色",
+     "病患優先",
+     "醫療線條圖示",
+     "圓角外框連結",
+     "咖啡色頁尾",
+     "科別選擇",
+     "症狀參考",
+     "非營利醫療",
+     "服務導覽"
+    ]
+   }
+  },
   "cgv": {
    "hash": "de64ddaf90ab8912",
    "terms": {
@@ -5861,6 +5920,64 @@
      "親切友善",
      "奶油色底",
      "免費試用"
+    ]
+   }
+  },
+  "cygames": {
+   "hash": "393c0bce4ad3f62e",
+   "terms": {
+    "en": [
+     "game company website",
+     "entertainment corporate site",
+     "mobile game publisher",
+     "recruitment page",
+     "black and white",
+     "editorial cards",
+     "pale grey sections",
+     "large hero imagery",
+     "uppercase navigation",
+     "yellow accent stripe",
+     "neutral interface",
+     "japanese corporate homepage"
+    ],
+    "ko": [
+     "게임 회사 사이트",
+     "엔터테인먼트 기업",
+     "모바일 게임 퍼블리셔",
+     "채용 페이지",
+     "흑백 디자인",
+     "에디토리얼 카드",
+     "연한 회색 섹션",
+     "대형 히어로 이미지",
+     "대문자 내비게이션",
+     "노란색 포인트",
+     "일본 기업 홈페이지"
+    ],
+    "ja": [
+     "ゲーム会社サイト",
+     "エンタメ企業",
+     "モバイルゲーム",
+     "採用ページ",
+     "白黒配色",
+     "編集風カード",
+     "薄いグレーの区画",
+     "大きなメインビジュアル",
+     "大文字ナビゲーション",
+     "黄色のアクセント",
+     "企業コーポレートサイト"
+    ],
+    "zh": [
+     "遊戲公司網站",
+     "娛樂企業官網",
+     "手機遊戲發行商",
+     "招募頁面",
+     "黑白配色",
+     "編輯風卡片",
+     "淺灰區塊",
+     "大型主視覺",
+     "大寫導覽列",
+     "黃色點綴",
+     "日本企業首頁"
     ]
    }
   },
@@ -15559,67 +15676,63 @@
    }
   },
   "kkbox": {
-   "hash": "7da64836c179c06e",
+   "hash": "e35c8ae573956819",
    "terms": {
     "en": [
-     "music streaming app",
+     "music streaming",
+     "consumer music app",
      "dark theme",
-     "near-black background",
-     "cinematic mood",
-     "premium audio",
-     "cyan blue accent",
-     "single accent color",
-     "oversized display type",
-     "editorial typography",
-     "rounded pill buttons",
-     "generous spacing",
-     "album art imagery",
-     "download call to action"
+     "near-black canvas",
+     "cyan accent",
+     "large white headings",
+     "pill buttons",
+     "rounded actions",
+     "layered colored shapes",
+     "album imagery",
+     "podcast and lossless audio",
+     "subscription faqs"
     ],
     "ko": [
-     "음악 스트리밍 앱",
+     "음악 스트리밍",
+     "소비자 음악 앱",
      "다크 테마",
      "검정에 가까운 배경",
-     "영화 같은 분위기",
-     "프리미엄 오디오",
-     "시안 블루 포인트",
-     "단일 강조색",
-     "큰 디스플레이 타이포",
-     "에디토리얼 타이포",
-     "둥근 알약 버튼",
-     "넉넉한 여백",
-     "앨범 아트",
-     "다운로드 버튼"
+     "시안 포인트",
+     "큰 흰색 제목",
+     "알약형 버튼",
+     "둥근 버튼",
+     "겹쳐진 컬러 도형",
+     "앨범 이미지",
+     "팟캐스트 무손실 음원",
+     "구독 안내 FAQ"
     ],
     "ja": [
      "音楽ストリーミング",
+     "音楽アプリ",
      "ダークテーマ",
-     "ほぼ黒の背景",
-     "シネマティック",
-     "プレミアム感",
-     "シアンブルーのアクセント",
-     "単一アクセントカラー",
-     "特大ディスプレイ文字",
-     "エディトリアル調",
-     "丸いピルボタン",
-     "ゆとりある余白",
-     "アルバムアート",
-     "ダウンロード誘導"
+     "黒に近い背景",
+     "シアンのアクセント",
+     "大きな白い見出し",
+     "ピル型ボタン",
+     "丸みのあるボタン",
+     "重なる色面",
+     "アルバム画像",
+     "ポッドキャスト",
+     "サブスクリプション"
     ],
     "zh": [
-     "音樂串流平台",
+     "音樂串流",
+     "消費者音樂服務",
      "深色主題",
      "近黑背景",
-     "電影感氛圍",
-     "高質感音樂",
-     "青藍色強調色",
-     "單一強調色",
-     "超大標題字體",
-     "編輯風排版",
-     "圓角膠囊按鈕",
-     "寬鬆留白",
-     "專輯封面視覺",
-     "下載行動按鈕"
+     "青色強調色",
+     "大型白色標題",
+     "膠囊按鈕",
+     "圓角按鈕",
+     "層疊彩色圖形",
+     "專輯圖像",
+     "podcast 無損音質",
+     "訂閱方案 常見問題"
     ]
    }
   },
@@ -18000,6 +18113,67 @@
     ]
    }
   },
+  "megabank": {
+   "hash": "923aac7b252731a4",
+   "terms": {
+    "en": [
+     "taiwan commercial bank",
+     "personal banking website",
+     "trade and foreign exchange",
+     "purple and pink gradient",
+     "white space layout",
+     "rounded controls",
+     "currency calculator",
+     "exchange rate tabs",
+     "service navigation links",
+     "wcag aa accessibility",
+     "gold logo",
+     "traditional chinese bank site"
+    ],
+    "ko": [
+     "대만 상업은행",
+     "개인 뱅킹 웹사이트",
+     "무역 외환 금융",
+     "보라 분홍 그라데이션",
+     "여백 많은 화이트",
+     "둥근 입력창",
+     "환율 계산기",
+     "환율 탭",
+     "서비스 바로가기",
+     "접근성 AA 인증",
+     "금색 로고",
+     "은행 홈페이지"
+    ],
+    "ja": [
+     "台湾の商業銀行",
+     "個人向けバンキング",
+     "貿易と外国為替",
+     "紫からピンクのグラデーション",
+     "余白の多い白基調",
+     "丸みのあるコントロール",
+     "為替計算機",
+     "為替レートタブ",
+     "サービスリンク",
+     "アクセシビリティ対応",
+     "金色のロゴ",
+     "銀行ウェブサイト"
+    ],
+    "zh": [
+     "台灣商業銀行",
+     "個人金融網站",
+     "貿易與外匯",
+     "紫粉漸層",
+     "白色留白版面",
+     "圓角控制項",
+     "匯率計算機",
+     "現金匯率分頁",
+     "服務導覽連結",
+     "無障礙 AA 認證",
+     "金色標誌",
+     "繁體中文銀行網站"
+    ]
+   }
+  },
   "megabox": {
    "hash": "f54bcd19000cf8cd",
    "terms": {
@@ -20246,6 +20420,69 @@
      "漸層按鈕",
      "溫暖暗色模式",
      "無程式碼整合"
+    ]
+   }
+  },
+  "nanshanlife": {
+   "hash": "1aa238ddf331cf01",
+   "terms": {
+    "en": [
+     "insurance company",
+     "life insurance",
+     "taiwan insurer",
+     "traditional chinese website",
+     "blue yellow green",
+     "warm friendly tone",
+     "rounded white panels",
+     "blue pill buttons",
+     "illustrated people",
+     "policy service shortcuts",
+     "colorful service tiles",
+     "member club",
+     "help search"
+    ],
+    "ko": [
+     "보험사",
+     "생명보험",
+     "대만 보험",
+     "번체 중국어 사이트",
+     "파랑 노랑 초록",
+     "따뜻한 분위기",
+     "둥근 흰색 패널",
+     "파란 알약 버튼",
+     "일러스트 인물",
+     "보험 서비스 바로가기",
+     "컬러 서비스 타일",
+     "회원 클럽"
+    ],
+    "ja": [
+     "保険会社",
+     "生命保険",
+     "台湾の保険",
+     "繁体字中国語サイト",
+     "青 黄 緑",
+     "温かい雰囲気",
+     "角丸の白パネル",
+     "青いピル型ボタン",
+     "人物イラスト",
+     "保険サービス導線",
+     "カラフルなサービスタイル",
+     "会員クラブ"
+    ],
+    "zh": [
+     "保險公司",
+     "人壽保險",
+     "台灣保險業",
+     "繁體中文網站",
+     "藍黃綠配色",
+     "溫暖親切",
+     "圓角白色面板",
+     "藍色膠囊按鈕",
+     "插畫人物",
+     "保單服務捷徑",
+     "彩色服務磚",
+     "會員俱樂部",
+     "說明搜尋"
     ]
    }
   },
@@ -23033,65 +23270,63 @@
    }
   },
   "paypay": {
-   "hash": "c898aa3ab5efacf7",
+   "hash": "92774cb4de8f3950",
    "terms": {
     "en": [
-     "qr code mobile wallet",
-     "cashless payment app",
-     "consumer payments app",
-     "bold red brand",
-     "bright and energetic",
-     "playful rewarding feel",
-     "red and white",
-     "rounded corners",
-     "pill buttons",
-     "point rewards",
-     "mobile first",
-     "celebratory animations",
-     "large balance numbers"
+     "mobile payment app",
+     "qr code payment",
+     "barcode payment",
+     "fintech",
+     "everyday shopping",
+     "coupons and campaigns",
+     "friendly illustrations",
+     "light white layout",
+     "red and blue accents",
+     "step by step onboarding",
+     "retail consumer",
+     "balance transfer to friends"
     ],
     "ko": [
-     "qr 코드 모바일 지갑",
-     "간편결제 앱",
-     "소비자 결제 앱",
-     "강렬한 빨간색",
-     "밝고 활기찬",
-     "재미있는 보상 느낌",
-     "빨강과 흰색",
-     "둥근 모서리",
-     "알약형 버튼",
-     "포인트 적립",
-     "모바일 우선",
-     "축하 애니메이션"
+     "모바일 결제 앱",
+     "QR코드 결제",
+     "바코드 결제",
+     "핀테크",
+     "일상 쇼핑",
+     "쿠폰 캠페인",
+     "친근한 일러스트",
+     "밝은 화이트 레이아웃",
+     "빨강 파랑 포인트",
+     "단계별 시작 안내",
+     "소비자 대상",
+     "친구 송금"
     ],
     "ja": [
-     "qrコード決済",
-     "キャッシュレス決済アプリ",
-     "モバイルウォレット",
-     "鮮やかな赤",
-     "明るく元気",
-     "楽しいリワード感",
-     "赤と白",
-     "角丸デザイン",
-     "丸型ボタン",
-     "ポイント還元",
-     "モバイルファースト",
-     "大きな残高表示",
-     "お祝いアニメーション"
+     "スマホ決済",
+     "QRコード決済",
+     "バーコード決済",
+     "フィンテック",
+     "日常の買い物",
+     "クーポンとキャンペーン",
+     "親しみやすいイラスト",
+     "明るい白基調",
+     "赤と青のアクセント",
+     "始め方ステップ",
+     "一般消費者向け",
+     "友達への送金"
     ],
     "zh": [
-     "qr碼行動錢包",
-     "無現金支付應用",
-     "消費者支付app",
-     "鮮明紅色品牌",
-     "明亮有活力",
-     "趣味回饋感",
-     "紅白配色",
-     "圓角設計",
-     "膠囊按鈕",
-     "點數回饋",
-     "行動優先",
-     "慶祝動畫"
+     "行動支付應用",
+     "QR碼支付",
+     "條碼支付",
+     "金融科技",
+     "日常購物",
+     "優惠券活動",
+     "親切插圖",
+     "明亮白色版面",
+     "紅藍點綴",
+     "分步驟上手",
+     "一般消費者",
+     "好友轉帳"
     ]
    }
   },
@@ -24969,6 +25204,67 @@
      "小圓角",
      "範本庫",
      "自助註冊"
+    ]
+   }
+  },
+  "raksul": {
+   "hash": "c6897f5740a58ded",
+   "terms": {
+    "en": [
+     "online printing",
+     "print ecommerce",
+     "business cards flyers",
+     "product catalog store",
+     "dense storefront",
+     "white background",
+     "blue navigation",
+     "orange signup button",
+     "cyan prices",
+     "flat product cards",
+     "wide search field",
+     "left category directory"
+    ],
+    "ko": [
+     "온라인 인쇄",
+     "인쇄 쇼핑몰",
+     "명함 전단지 주문",
+     "상품 카탈로그",
+     "빽빽한 레이아웃",
+     "흰 배경",
+     "파란 내비게이션",
+     "주황 가입 버튼",
+     "하늘색 가격",
+     "평평한 카드",
+     "넓은 검색창",
+     "왼쪽 카테고리"
+    ],
+    "ja": [
+     "ネット印刷",
+     "印刷通販",
+     "名刺チラシ注文",
+     "商品一覧",
+     "高密度レイアウト",
+     "白背景",
+     "青いナビゲーション",
+     "オレンジの登録ボタン",
+     "水色の価格表示",
+     "フラットなカード",
+     "大きな検索窓",
+     "左カテゴリ一覧"
+    ],
+    "zh": [
+     "線上印刷",
+     "印刷電商",
+     "名片傳單訂購",
+     "商品目錄",
+     "高密度版面",
+     "白色背景",
+     "藍色導覽列",
+     "橘色註冊按鈕",
+     "青藍色價格",
+     "扁平商品卡片",
+     "寬版搜尋欄",
+     "左側分類目錄"
     ]
    }
   },
@@ -27196,6 +27492,67 @@
     ]
    }
   },
+  "sega": {
+   "hash": "d819140b30d02165",
+   "terms": {
+    "en": [
+     "game publisher",
+     "video game portal",
+     "game releases",
+     "gaming news",
+     "bright blue header",
+     "large game artwork",
+     "angular heading stripes",
+     "small rounded corners",
+     "blue and white",
+     "red notice banner",
+     "promotion cards",
+     "carousel banners"
+    ],
+    "ko": [
+     "게임 퍼블리셔",
+     "게임 포털",
+     "게임 출시 정보",
+     "게임 뉴스",
+     "밝은 파란 헤더",
+     "대형 게임 이미지",
+     "각진 줄무늬 제목",
+     "작은 둥근 모서리",
+     "파랑과 흰색",
+     "프로모션 카드",
+     "캐러셀 배너",
+     "일본 게임 사이트"
+    ],
+    "ja": [
+     "ゲーム会社",
+     "ゲームポータル",
+     "新作情報",
+     "ゲームニュース",
+     "明るい青のヘッダー",
+     "大きなゲーム画像",
+     "斜めストライプ見出し",
+     "小さな角丸",
+     "青と白",
+     "重要なお知らせ",
+     "セールカード",
+     "カルーセルバナー"
+    ],
+    "zh": [
+     "遊戲發行商",
+     "遊戲入口網站",
+     "遊戲發售資訊",
+     "遊戲新聞",
+     "亮藍色標頭",
+     "大幅遊戲圖像",
+     "斜角條紋標題",
+     "小圓角",
+     "藍白配色",
+     "紅色重要公告",
+     "促銷卡片",
+     "輪播橫幅"
+    ]
+   }
+  },
   "selectstar": {
    "hash": "0c3ba3d4381aad09",
    "terms": {
@@ -27809,6 +28166,73 @@
      "柔和陰影",
      "繁體中文",
      "親切清爽"
+    ]
+   }
+  },
+  "shueisha": {
+   "hash": "b0b2d8455bec547d",
+   "terms": {
+    "en": [
+     "publisher website",
+     "manga and magazine publishing",
+     "corporate site",
+     "editorial layout",
+     "tiled cover mosaic",
+     "dark header white sections",
+     "cyan accent",
+     "fine divider rules",
+     "square action buttons",
+     "black and white palette",
+     "grey surfaces",
+     "content discovery",
+     "book search",
+     "news archive"
+    ],
+    "ko": [
+     "출판사 웹사이트",
+     "만화 잡지 출판",
+     "기업 사이트",
+     "에디토리얼 레이아웃",
+     "타일형 표지 모자이크",
+     "어두운 헤더",
+     "시안 포인트",
+     "얇은 구분선",
+     "사각 버튼",
+     "흑백 팔레트",
+     "회색 배경",
+     "도서 검색",
+     "뉴스 아카이브"
+    ],
+    "ja": [
+     "出版社サイト",
+     "漫画雑誌",
+     "企業サイト",
+     "エディトリアル",
+     "タイル状モザイク",
+     "黒いヘッダー",
+     "シアンのアクセント",
+     "細い罫線",
+     "角ボタン",
+     "白黒基調",
+     "グレーの面",
+     "書籍検索",
+     "ニュース一覧",
+     "コンテンツ導線"
+    ],
+    "zh": [
+     "出版社網站",
+     "漫畫雜誌出版",
+     "企業官網",
+     "編輯風版面",
+     "磚塊拼貼封面",
+     "深色頁首",
+     "青色點綴",
+     "細分隔線",
+     "方形按鈕",
+     "黑白配色",
+     "灰色底面",
+     "書籍搜尋",
+     "新聞存檔"
     ]
    }
   },
@@ -31272,6 +31696,65 @@
     ]
    }
   },
+  "tigerair": {
+   "hash": "3df0b932542c5ba5",
+   "terms": {
+    "en": [
+     "low-cost airline",
+     "airline booking",
+     "travel booking site",
+     "flight search",
+     "friendly travel",
+     "orange accent",
+     "mascot illustration",
+     "destination photo cards",
+     "white booking panel",
+     "compact form",
+     "grey text",
+     "taiwan travel"
+    ],
+    "ko": [
+     "저가 항공사",
+     "항공권 예약",
+     "여행 예약",
+     "항공편 검색",
+     "친근한 여행",
+     "오렌지 포인트",
+     "마스코트 일러스트",
+     "여행지 사진 카드",
+     "흰색 예약 패널",
+     "컴팩트한 폼",
+     "대만 여행"
+    ],
+    "ja": [
+     "格安航空会社",
+     "航空券予約",
+     "旅行予約サイト",
+     "フライト検索",
+     "親しみやすい旅行",
+     "オレンジのアクセント",
+     "マスコットイラスト",
+     "目的地の写真カード",
+     "白い予約パネル",
+     "コンパクトなフォーム",
+     "台湾旅行"
+    ],
+    "zh": [
+     "廉價航空",
+     "機票預訂",
+     "旅遊訂購",
+     "航班搜尋",
+     "親切旅遊",
+     "橘色重點色",
+     "吉祥物插畫",
+     "目的地照片卡片",
+     "白色訂票面板",
+     "精簡表單",
+     "台灣旅遊",
+     "灰色文字"
+    ]
+   }
+  },
   "timee": {
    "hash": "dc831289090b3afc",
    "terms": {
@@ -31775,6 +32258,71 @@
      "商品揭露頁面",
      "24小時客服",
      "金融資訊網站"
+    ]
+   }
+  },
+  "toyokeizai": {
+   "hash": "227dd2e63cd34988",
+   "terms": {
+    "en": [
+     "business news site",
+     "japanese news media",
+     "editorial layout",
+     "dense news homepage",
+     "article rankings",
+     "topic following",
+     "paid membership",
+     "cyan links",
+     "charcoal text",
+     "slate navigation",
+     "pale grey background",
+     "orange accent button",
+     "restrained interactions"
+    ],
+    "ko": [
+     "비즈니스 뉴스",
+     "일본 뉴스 매체",
+     "에디토리얼 레이아웃",
+     "고밀도 홈페이지",
+     "기사 랭킹",
+     "토픽 팔로우",
+     "유료 회원제",
+     "시안 링크",
+     "차콜 텍스트",
+     "슬레이트 내비게이션",
+     "옅은 회색 배경",
+     "오렌지 포인트 버튼",
+     "절제된 인터랙션"
+    ],
+    "ja": [
+     "経済ニュース",
+     "ビジネスメディア",
+     "編集型レイアウト",
+     "高密度なトップページ",
+     "記事ランキング",
+     "トピックフォロー",
+     "有料会員",
+     "シアンのリンク",
+     "チャコールの見出し",
+     "スレートのナビ",
+     "淡いグレー背景",
+     "オレンジの会員ボタン",
+     "控えめなインタラクション"
+    ],
+    "zh": [
+     "商業新聞網站",
+     "日本新聞媒體",
+     "編輯式版面",
+     "高密度首頁",
+     "文章排行榜",
+     "主題追蹤",
+     "付費會員",
+     "青色連結",
+     "炭灰標題",
+     "石板灰導覽列",
+     "淺灰背景",
+     "橘色會員按鈕",
+     "克制的互動效果"
     ]
    }
   },
@@ -35957,62 +36505,71 @@
    }
   },
   "zozotown": {
-   "hash": "325b4dd2c13b2577",
+   "hash": "f3babd70a5754812",
    "terms": {
     "en": [
-     "fashion ecommerce",
-     "online fashion marketplace",
-     "black and white",
-     "monochrome",
-     "editorial magazine grid",
-     "dense product grid",
-     "red sale accent",
-     "mobile-first shopping",
-     "flat minimal",
-     "photo-led",
-     "bottom tab bar",
-     "sans-serif gothic type"
+     "fashion marketplace",
+     "online clothing store",
+     "japanese fashion shopping",
+     "photo-driven storefront",
+     "information-dense layout",
+     "light gray header",
+     "large promotional banners",
+     "product rails",
+     "left sidebar navigation",
+     "charcoal text",
+     "cyan links",
+     "red accent",
+     "brand and ranking browsing",
+     "sale and coupon badges"
     ],
     "ko": [
-     "패션 쇼핑몰",
      "패션 마켓플레이스",
-     "흑백",
-     "모노크롬",
-     "잡지 같은 편집 디자인",
-     "촘촘한 상품 그리드",
-     "빨간 세일 강조",
-     "모바일 우선",
-     "플랫 미니멀",
-     "사진 중심",
-     "하단 탭바"
+     "온라인 의류 쇼핑몰",
+     "일본 패션 쇼핑",
+     "사진 중심 스토어",
+     "정보 밀도 높은 화면",
+     "연한 회색 헤더",
+     "대형 프로모션 배너",
+     "상품 목록 레일",
+     "왼쪽 사이드바 내비게이션",
+     "차콜 텍스트",
+     "시안 링크",
+     "빨간색 강조",
+     "브랜드 랭킹 탐색",
+     "세일 쿠폰 배지"
     ],
     "ja": [
      "ファッション通販",
-     "ファッションECサイト",
-     "モノトーン",
-     "白黒",
-     "雑誌風レイアウト",
-     "高密度グリッド",
-     "赤いセール表示",
-     "モバイルファースト",
-     "フラットデザイン",
-     "写真主体",
-     "ボトムタブバー",
-     "ゴシック体"
+     "アパレルECサイト",
+     "日本のファッションモール",
+     "写真中心のストア",
+     "情報量の多いレイアウト",
+     "ライトグレーのヘッダー",
+     "大型プロモーションバナー",
+     "商品レール",
+     "左サイドナビ",
+     "チャコール文字",
+     "水色リンク",
+     "赤のアクセント",
+     "ブランド・ランキング検索",
+     "セール クーポン表示"
     ],
     "zh": [
-     "時尚電商",
-     "服飾購物平台",
-     "黑白配色",
-     "單色調",
-     "雜誌編輯風",
-     "高密度商品網格",
-     "紅色特價強調",
-     "行動優先",
-     "扁平簡約",
-     "圖片為主",
-     "底部分頁列",
-     "黑體字"
+     "時尚購物平台",
+     "線上服飾商城",
+     "日本時尚電商",
+     "攝影主導店面",
+     "高資訊密度版面",
+     "淺灰色頁首",
+     "大型促銷橫幅",
+     "商品橫向列表",
+     "左側導覽欄",
+     "炭黑文字",
+     "青藍色連結",
+     "紅色強調",
+     "品牌排行瀏覽",
+     "折扣優惠券標籤"
     ]
    }
   }

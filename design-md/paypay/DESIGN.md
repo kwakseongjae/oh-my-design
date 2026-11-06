@@ -2,241 +2,102 @@
 name: PayPay
 colors:
   primary: '#ff0033'
-  primary-pressed: '#e0002e'
-  primary-deep: '#cc0029'
-  primary-tint: '#ffebef'
-  primary-disabled: '#ffb3c1'
+  action: '#3895ff'
+  foreground: '#242323'
   canvas: '#ffffff'
-  ink: '#222222'
-  success: '#00b900'
-  error: '#e0002e'
-  warning: '#ff8800'
-  info: '#0088ff'
-  point-gold: '#ffb200'
-  gray-50: '#f5f5f5'
-  gray-100: '#eeeeee'
-  gray-200: '#e0e0e0'
-  gray-300: '#cccccc'
-  gray-400: '#999999'
-  gray-500: '#767676'
-  gray-700: '#555555'
+  surface: '#f7f7f7'
+  muted: '#606060'
+  campaign-border: '#d8d8d8'
+  onboarding-section: '#f24f4f'
 typography:
-  display-hero:
-    fontSize: 32px
+  action:
+    fontSize: 16px
     fontWeight: 700
-    lineHeight: 1.38
-    use: Splash, campaign hero, big point moments
-  balance:
-    fontSize: 28px
+    lineHeight: 1.6
+    use: Measured main and inverse action links; live-loaded Noto Sans JP
+  faq:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: Measured FAQ question button; live-loaded Noto Sans JP
+  store-caption:
+    fontSize: 14px
     fontWeight: 700
-    lineHeight: 1.29
-    use: Wallet balance, the emotional center
-  display-lg:
-    fontSize: 24px
+    use: Visible paragraph label inside the store-card link
+  bank-caption:
+    fontSize: 13px
     fontWeight: 700
-    lineHeight: 1.42
-    use: Section headers, key metrics
-  heading-lg:
-    fontSize: 20px
+    use: Visible paragraph label inside the bank-card link
+  nav:
+    fontSize: 16px
     fontWeight: 700
     lineHeight: 1.4
-    use: Feature titles, modal headers
-  heading:
-    fontSize: 18px
-    fontWeight: 700
-    lineHeight: 1.44
-    use: Card headings, sub-sections
-  subtitle:
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: List headers, nav titles
-  body-lg:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.63
-    use: Descriptions, explanations
-  body:
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.57
-    use: Standard reading text
-  body-sm:
-    fontSize: 13px
-    fontWeight: 400
-    lineHeight: 1.54
-    use: Secondary information
-  caption:
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.5
-    use: Timestamps, fine print, legal
-  amount-hero:
-    fontSize: 36px
-    fontWeight: 700
-    use: Payment amount on checkout/complete
+    use: Header link metrics only; its Hiragino declaration is not loaded-face evidence
 rounded:
-  sm: 8px
-  md: 12px
-  lg: 16px
-  xl: 24px
-  full: 9999px
+  none: 0px
+  action: 6px
 spacing:
-  sm: 8
   base: 16
   lg: 24
+  action-inline: 32
+  faq-block: 22
+  faq-leading: 77
 components:
-  button-primary:
+  main-cta:
     type: button
-    backgroundColor: '#ff0033'
+    backgroundColor: '#3895ff'
     textColor: '#ffffff'
-    rounded: 24px
-    padding: 0 24px
-    typography: 16px/700
-    use: Primary money action (支払う, チャージ, 送る)
-  button-secondary:
+    rounded: 6px
+    height: 57.6px
+    padding: 16px 32px
+    typography: 16px / 700
+    hover: opacity 0.7
+    pressed: opacity 0.7
+    use: 'Link: その他のチャージ方法, 250px wide. Hover and pointer press reduce the whole link opacity from 1 to 0.7; computed colours stay unchanged.'
+  inverse-cta:
     type: button
     backgroundColor: '#ffffff'
-    textColor: '#ff0033'
-    rounded: 24px
-    padding: 0 24px
-    typography: 16px/700
-    use: Secondary action paired with red primary
-  button-neutral:
-    type: button
-    backgroundColor: '#f5f5f5'
-    textColor: '#555555'
-    rounded: 24px
-    padding: 0 24px
-    typography: 16px/700
-    use: Low-emphasis dismiss (閉じる, 戻る)
-  button-text:
-    type: button
-    backgroundColor: transparent
-    textColor: '#ff0033'
-    padding: 8px 12px
-    typography: 15px/700
-    use: Inline tertiary action (もっと見る)
-  input-box:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    rounded: 8px
-    padding: 14px 16px
-    typography: 16px/400
-    use: Standard form input
-  input-filled:
-    type: input
-    backgroundColor: '#f5f5f5'
-    textColor: '#222222'
-    rounded: 8px
-    padding: 14px 16px
-    typography: 16px/400
-    use: Dense forms, search bars
-  card:
+    textColor: '#3895ff'
+    rounded: 6px
+    height: 57.6px
+    padding: 16px 32px
+    typography: 16px / 700
+    hover: opacity 0.7
+    pressed: opacity 0.7
+    use: 'Link: PayPayの始め方, 250px wide, on the red onboarding section. Hover and pointer press reduce opacity from 1 to 0.7.'
+  store-card:
     type: card
-    backgroundColor: '#ffffff'
-    rounded: 12px
-    padding: 16px
-    use: Transaction, feature, content cards
-  balance-card:
-    type: card
-    backgroundColor: '#ff0033'
-    textColor: '#ffffff'
-    rounded: 16px
-    padding: 20px
-    use: Wallet balance hero, signature surface
-  promo-card:
-    type: card
-    backgroundColor: '#ffebef'
-    rounded: 16px
-    padding: 20px
-    use: Point campaigns, あげる/もらえる offers
-  list-item:
-    type: listItem
-    backgroundColor: '#ffffff'
+    textColor: '#242323'
     rounded: 0px
-    padding: 14px 16px
-    use: Transaction history, settings rows
-  badge-red:
-    type: badge
-    backgroundColor: '#ff0033'
-    textColor: '#ffffff'
-    rounded: 10px
-    padding: 2px 8px
-    typography: 12px/700
-    use: NEW, 限定, primary emphasis
-  badge-gold:
-    type: badge
-    backgroundColor: '#ffb200'
-    textColor: '#ffffff'
-    rounded: 10px
-    padding: 2px 8px
-    typography: 12px/700
-    use: Point amounts, reward emphasis
-  badge-green:
-    type: badge
-    backgroundColor: '#00b900'
-    textColor: '#ffffff'
-    rounded: 10px
-    padding: 2px 8px
-    typography: 12px/700
-    use: 完了 / success state
-  badge-weak:
-    type: badge
-    backgroundColor: '#ffebef'
-    textColor: '#ff0033'
-    rounded: 10px
-    padding: 2px 8px
-    typography: 12px/700
-    use: Subtle brand-tinted label
-  bottom-tab:
-    type: tab
-    backgroundColor: '#ffffff'
-    textColor: '#767676'
-    typography: 10px/500
-    use: 5-tab bottom nav
-    active: '#ff0033 icon + label'
-  segmented:
-    type: tab
-    backgroundColor: '#f5f5f5'
-    textColor: '#767676'
-    rounded: 10px
-    padding: 8px 16px
-    typography: 14px/700
-    use: In-screen section switching
-    active: '#ffffff thumb, #ff0033 text'
-  toast:
-    type: toast
-    backgroundColor: '#222222'
-    textColor: '#ffffff'
-    rounded: 8px
-    padding: 12px 16px
-    typography: 14px/500
-    use: Transient confirmation (コピーしました)
-  dialog:
-    type: dialog
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    rounded: 16px
-    padding: 24px
-    use: Confirmation prompts, alerts
-  bottom-sheet:
-    type: dialog
-    backgroundColor: '#ffffff'
-    textColor: '#222222'
-    rounded: 20px
+    height: 200px
     padding: 24px 16px
-    use: Selection, picker, payment-method switch
-  toggle:
-    type: toggle
-    backgroundColor: '#ff0033'
-    rounded: 9999px
-    use: Boolean settings, on=red off=#cccccc
+    typography: 14px / 700
+    hover: link opacity 0.7
+    pressed: link opacity 0.7
+    use: 'Link: 全国のお店, 300px wide. Transparent anchor on a white wrapper; radius 0 is the anchor, while the wrapper CSS declares 11px. Visible caption is 14px/700; anchor is 16px/400. Hover and pointer press change link opacity only.'
+  bank-card:
+    type: card
+    textColor: '#242323'
+    rounded: 0px
+    height: 151.6px
+    padding: 16px
+    typography: 13px / 700
+    hover: link opacity 0.7
+    pressed: link opacity 0.7
+    use: 'Link: 銀行口座, 162px wide. Transparent anchor on a white wrapper; radius 0 is the anchor, while the wrapper CSS declares 11px. Visible caption is 13px/700; anchor is 16px/400. Hover and pointer press change link opacity only.'
+  faq-free:
+    type: button
+    textColor: '#242323'
+    rounded: 0px
+    height: 69.6px
+    padding: 22px 16px 22px 77px
+    typography: 16px / 400
+    hover: opacity 0.7
+    pressed: opacity 0.7
+    use: 'FAQ button: アプリの登録は無料ですか？, 852px wide, transparent on white. Hover and pointer press reduce opacity from 1 to 0.7. Its measured keyboard focus had no style change within the compared scope.'
 fonts:
   roles:
     sans: Noto Sans JP
-    mono: SF Mono
 ---
 
 # Design System Inspiration of PayPay (ペイペイ)
@@ -245,604 +106,203 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-PayPay is Japan's dominant QR-code mobile wallet — the app that, almost single-handedly, dragged a famously cash-loving country into cashless payments. Its visual language is loud where Japanese fintech is traditionally quiet: a single, screaming **PayPay Red (`#FF0033`)** sits at the center of everything, and the entire interface orbits it. Where a legacy Japanese bank app whispers in navy and gray, PayPay shouts in pure, saturated red. That red is the brand; remove it and nothing is left.
+PayPay is a Japanese smartphone-payment service: customers show a barcode or scan a shop's QR code, charge a balance and send that balance to friends or family. It launched on 5 October 2018 through the SoftBank–Yahoo Japan joint venture. The current homepage also introduces coupons, public-bill payments and investment experiences. These are useful starting points for the brand: everyday payment, an approachable explanation and a visible benefit. ([Launch](https://about.paypay.ne.jp/pr/20181005/01/), [homepage](https://paypay.ne.jp/))
 
-The atmosphere is **bright, confident, and aggressively friendly**. Surfaces are white (`#ffffff`) and very-light-gray (`#f5f5f5`); text is near-black (`#222222`); and the red functions as both the brand mark and the universal "tap here / this is money" signal. The aesthetic is closer to a consumer retail app — think convenience-store energy, point campaigns, lottery-style "あたり" (you won!) moments — than to the austere, trust-through-restraint posture of a private bank. PayPay's thesis is the opposite of restraint: payments should feel *fun*, *rewarding*, and *instant*, and the design celebrates every transaction with motion, sound, and color.
+The measured homepage combines a shop photograph and a phone showing the app with bold white Japanese copy. Small promotional images follow the hero; illustrations explain payment and charging. White and pale-grey sections give the content a light ground. Red `#ff0033` appears in the site's accent treatment, while the measured filled information actions are blue `#3895ff`. A warmer red, `#f24f4f`, fills the three-step getting-started section. The result is a retail-facing, explanatory page with several distinct roles for colour. These are observations of the public website, captured at 1440 × 1000; they do not establish native-app component specifications. ([Homepage](https://paypay.ne.jp/))
 
-Typography is unapologetically **system-native Japanese**: Hiragino Kaku Gothic on iOS, Noto Sans / Yu Gothic on Android and web, with rounded, friendly weights for headlines. There is no proprietary typeface — PayPay's identity lives in color and the wordmark, not in custom type. Numerals get heavy weight because balances and point totals are the emotional payload of the app.
+PayPay's own design writing describes an evolution beyond individual payment screens. In 2024 its design lead discussed connecting payment, banking and investing experiences. In October 2026 the Illustration Working Group described a shared Figma library, illustration guidelines and the Inspector and Builder plugins to support consistent work across product teams. This gives a builder a concrete direction: friendly explanatory illustration belongs to a growing financial-service ecosystem, with reusable visual rules across its experiences. ([Design lead](https://insideout.paypay.ne.jp/2024/08/01/professionals-vol78-jp/), [illustration system](https://insideout.paypay.ne.jp/2026/10/06/design-at-paypay-vol12-jp/))
 
-What defines PayPay visually is the **balance/point hero**: a large red or white number, the cheerful payment-complete screen, and the omnipresence of the red round "PayPay" wordmark badge. The brand is mobile-first to the bone — designed for one-handed use at a checkout counter in under two seconds.
+#### Primary tasks
 
-**Key Characteristics:**
-- PayPay Red (`#FF0033`) as the singular brand and primary interactive color — bold, saturated, impossible to miss
-- System-native Japanese type stack (Hiragino / Noto Sans JP / Yu Gothic), no proprietary font
-- White and light-gray surfaces; near-black text — red carries all the energy
-- Rounded, friendly geometry — generous radii (8–24px), pill CTAs, soft cards
-- Reward-driven, celebratory UX — payment-complete and point-grant moments are dedicated, animated screens
-- Mobile-first at 375px baseline, one-handed checkout-counter ergonomics
-- High-contrast, retail-bright aesthetic over fintech austerity
+- Learn the two payment methods: show a barcode or scan a shop's QR code.
+- Find charging methods and shops that accept PayPay.
+- Learn how to send a balance to friends or family and find coupons or campaigns.
+- Follow the homepage's download → charge → pay sequence.
 
-### Primary tasks
-
-- Pay at the counter with the QR screen one tap away
-- Top up automatically so the balance never runs out at the register
-- Send money to a family member from the same app
-- Check which point offers are running before choosing where to eat
-- Confirm as a shopkeeper that a customer payment landed
+These tasks are stated on the [homepage](https://paypay.ne.jp/); transactional app screens were not operated.
 
 ### Brand Narrative
 
-PayPay launched in **October 2018** as a joint venture of **SoftBank** and **Yahoo! Japan** (with early technology ties to India's Paytm), into a country where cash still dominated — Japan's cashless ratio lagged far behind its neighbors. PayPay's founding bet was blunt: subsidize adoption aggressively and make paying *fun*. The now-legendary **"100億円あげちゃうキャンペーン" (the ¥10-billion giveaway)** of late 2018 — refunding a portion of every payment, with lottery-style full refunds — detonated awareness overnight and made the red PayPay badge ubiquitous at convenience stores, restaurants, and tiny neighborhood shops.
+The service launched in October 2018 as a SoftBank–Yahoo Japan joint venture. Its November 2018 announcement introduced the “100億円あげちゃうキャンペーン”, beginning on 4 December: a payment rebate and a chance of a full rebate, subject to the announced conditions. The present homepage still gives campaigns, coupons and points prominent destinations. This is a supported connection between its early promotion-led launch and the website's current benefit emphasis; it does not establish a particular payment-completion animation. ([Launch](https://about.paypay.ne.jp/pr/20181005/01/), [campaign announcement](https://about.paypay.ne.jp/pr/20181122/02/), [homepage](https://paypay.ne.jp/))
 
-That campaign DNA defines the design. PayPay is not trying to feel like a private bank; it is trying to feel like the most rewarding way to pay. The screaming **`#FF0033`** red, the celebratory payment-complete screen, the falling-coin point animations, the cheerful clerk-like voice — all of it descends from "make paying feel like winning." Where Toss (Korea) earns trust through restraint and Stripe through precision, PayPay earns loyalty through **reward and delight**.
+The company was established on **15 June 2018**. Its current corporate page lists card, bank and securities companies among its related companies. Its 2024 design-lead interview frames the ambition as supporting more of users' financial lives beyond payment. ([Company](https://about.paypay.ne.jp/about/), [design lead](https://insideout.paypay.ne.jp/2024/08/01/professionals-vol78-jp/))
 
-Today PayPay is the dominant QR wallet in Japan with the largest user base among code-payment apps, now under **LY Corporation** (the merged LINE × Yahoo Japan entity within the SoftBank group). Its ecosystem spans payments, PayPayポイント, PayPay銀行 (bank), PayPayカード (card), and PayPay証券 (securities) — a super-app, but one whose center of gravity remains the in-store QR tap.
-
-What PayPay refuses: the austere navy seriousness of legacy Japanese banking, the muted minimalism of Western fintech, and any design that makes paying feel like a chore. PayPay occupies the loud, bright, reward-forward end of fintech — closer to retail than to banking, by deliberate design.
+The operating company is **PayPay株式会社**, with the legal notice giving **東京都新宿区四谷1-6-1 四谷タワー**. The company page separately gives the registered location as **東京都千代田区紀尾井町1番3号**. This reference proposes **JP**. SoftBank's opened investor page describes its PayPay voting interest as 62.2% as of 31 March 2026, including the B Holdings structure; ownership does not change the Japanese operating location. ([Legal notice](https://about.paypay.ne.jp/terms/consumer/legal/electronic-settlement/), [company](https://about.paypay.ne.jp/about/), [ownership](https://www.softbank.jp/corp/ir/investor/about/))
 
 ### Principles
 
-1. **One red rules.** `#FF0033` is the brand, the CTA, and the energy. Never split primary emphasis across multiple accent colors — the single saturated red is the identity.
-2. **Paying should feel like winning.** Every completed payment is celebrated, not merely confirmed. The full-screen red moment and point animations are core, not decoration.
-3. **Numbers are the hero.** Balances, amounts, and points get the largest, heaviest treatment on screen. Money is the emotional payload.
-4. **System-native for reliability.** At a checkout counter, the font must render instantly on any phone. Use the OS Japanese stack; never gate a payment on a webfont.
-5. **Friendly geometry.** Rounded corners, pill CTAs, soft cards. The shape language says approachable, not institutional.
-6. **Funnel removes friction.** When money moves, strip the screen to one amount and one button. Energy lives on home; focus lives in the flow.
-7. **Reward leads.** If there's a point or おトク benefit, surface it prominently — gold accent, enthusiastic copy. The deal is the draw.
-8. **Cheerful, never cold.** The voice is an upbeat shop clerk. Bank-formal tone is reserved only for legal disclosure.
+The following implementation guidance combines observed website treatments with the linked first-party design writing; it is not an official named principle set.
+
+1. **Make the everyday task legible.** Keep payment, charging and getting-started explanations concrete, as on the homepage.
+2. **Give actions and panels distinct colour roles.** Preserve the blue action, white inverse and red onboarding panel observed here.
+3. **Keep interaction feedback simple.** Reuse the measured opacity response across action links, card links and the FAQ question.
+4. **Check consistency across experiences.** PayPay's design-operations article describes research, a design-system check, design review and UX-writer wording checks. ([Design operations](https://insideout.paypay.ne.jp/2025/02/12/design-at-paypay-vol7-jp/))
+5. **Reuse illustration parts deliberately.** The Illustration Working Group describes checking for reusable assets before creating new work. ([Illustration system](https://insideout.paypay.ne.jp/2026/10/06/design-at-paypay-vol12-jp/))
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly described Japanese mobile-payment user segments, not individual people.*
-
-**ゆうき (Yuki), 26, Tokyo.** Office worker in Shibuya. Pays for everything with PayPay — convenience store lunch, izakaya splits, the vending machine. Opens the app a dozen times a day and lives for the point campaigns; checks "おトク" offers before deciding where to eat. Expects the QR/pay screen to be one tap from anywhere and the payment-complete animation to confirm in under a second. If a shop doesn't take PayPay, she's mildly annoyed.
-
-**田中さん (Mr. Tanaka), 58, Osaka.** Runs a small ramen shop. Adopted PayPay during the ¥10-billion campaign because customers asked for it and the merchant QR sticker was free to set up. Uses the merchant side daily to confirm incoming payments; values the clear, loud confirmation sound and the big amount on screen — he needs to verify a payment landed without squinting. Reads Japanese only; trusts the red badge as shorthand for "this works."
-
-**あや (Aya), 34, Fukuoka.** Working parent. Uses PayPay for groceries, kids' supplies, and 送る (sending money) to family. Relies on auto-charge (自動チャージ) so she never hits an empty balance at the register. Tracks points carefully — they offset real household spending. Wants the transaction history clean and searchable, and the balance always visible the instant she opens the app.
+No source-backed persona study was verified; the prior fictional profiles are not retained as company research.
 
 ## Colors
 
-### Primary
-- **PayPay Red** (`#FF0033`): The brand. Primary CTAs, the wordmark badge, active states, key balances, selection highlights. Every tappable money-action is this red.
-- **Red Pressed** (`#E0002E`): Darker red for hover/pressed state on red CTAs.
-- **Red Deep** (`#CC0029`): Strongest red — used sparingly for emphasis on red-on-red layering and gradients.
-- **Red Tint** (`#FFEBEF`): Very light red wash — informational backgrounds, selected-row tint, subtle brand-tinted surfaces.
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on red.
-- **Near Black** (`#222222`): Primary heading and body text. Warm-neutral near-black, never pure `#000`.
+These values come from the rendered colour census and identified homepage elements, rather than a published brand-token specification.
 
-### Brand (Logo / Marketing)
-- **PayPay Red** (`#FF0033`): Official brand red — the wordmark, app icon background, and all marketing key art. The single non-negotiable brand asset.
-- **White Wordmark**: The "PayPay" logotype reverses to white on red backgrounds; red on white otherwise. No third logo color exists.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary / brand accent | `#ff0033` | Surveyed `.top__button` background and red text/accent entries in the census. |
+| Action | `#3895ff` | Filled “その他のチャージ方法” link background; inverse “PayPayの始め方” label and chevron. |
+| Foreground | `#242323` | Dominant paragraph ink: 33 paragraph entries; also card captions, FAQ and header-link text. |
+| Canvas | `#ffffff` | Most frequent opaque background, white card wrappers and inverse action fill. |
+| Surface | `#f7f7f7` | Seven background entries; homepage CSS identifies the download band and explanatory sections. |
+| Muted | `#606060` | Five paragraph-ink entries; `.noteContents` declares this colour for notes. |
+| Campaign-image border | `#d8d8d8` | Five census border entries; `.campaignBanner__image` declares a 1px border. |
+| Onboarding section | `#f24f4f` | Measured ancestor background of “PayPayの始め方”, `section.start`. |
 
-### Semantic
-- **Success Green** (`#00B900`): Payment success, positive confirmations, "完了" states. (Echoes the LINE-green of the parent LY group ecosystem.)
-- **Error Red** (`#E0002E`): Errors, destructive actions. Distinguished from brand red by being slightly deeper and paired with an alert icon (brand red alone never means "error").
-- **Warning Orange** (`#FF8800`): Pending states, expiring-points warnings, attention banners.
-- **Info Blue** (`#0088FF`): Informational links, neutral system notices, KYC/verification flows.
-- **Point Gold** (`#FFB200`): PayPayポイント (points) accent — coins, point totals in campaign contexts, "もらえる" moments.
+Hover and pointer press on the measured blue action preserve its computed background and foreground. The whole link changes opacity from 1 to 0.7. Treat that as an opacity response; no separate darker-blue or darker-red state colour was observed.
 
-### Neutral Scale
-- **Gray 50** (`#f5f5f5`): Lightest gray — page section background, grouped-list backdrop.
-- **Gray 100** (`#eeeeee`): Card fills on white, disabled surfaces.
-- **Gray 200** (`#e0e0e0`): Default border, dividers, input outlines.
-- **Gray 300** (`#cccccc`): Strong border, disabled icon fills.
-- **Gray 400** (`#999999`): Placeholder text, inactive icons.
-- **Gray 500** (`#767676`): Caption text, secondary labels, metadata.
-- **Gray 700** (`#555555`): Body text, descriptions.
-- **Gray 900** (`#222222`): Headings, strong labels, primary text.
-
-### Surface & Borders
-- **Border Default**: `#e0e0e0` (gray200). Card borders, input borders, dividers.
-- **Border Strong**: `#cccccc` (gray300). Emphasized borders, active input outline base.
-- **Background Float**: `#ffffff`. Tooltips, dropdowns, floating panels.
-- **Overlay Scrim**: `rgba(0,0,0,0.5)`. Modal and bottom-sheet backdrop — neutral black, not red-tinted.
+The census contains additional colours, but no success, warning, error or points semantic palette was established. The only root custom-property namespace observed was WordPress `--wp--preset--*`; its 47 defaults are excluded from PayPay tokens.
 
 ## Typography
 
-### Font Family
-- **Primary**: `"Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "YuGothic", "Meiryo", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif`
-- **Numerals / Display**: Same stack, heavy weights (700) — PayPay leans on `Noto Sans JP` Bold and system bold for balances and point totals. No proprietary typeface.
-- **Monospace**: `"SF Mono", Menlo, Consolas, monospace` — rare, used only in developer/merchant dashboards.
+### Evidence classes
 
-### Hierarchy
+- **Official product use:** the PayPay pages opened for this reference did not identify an approved native-app font family.
+- **Live-loaded:** the homepage's `document.fonts` census records **Noto Sans JP 400 normal** and **Noto Sans JP 700 normal**. Both weights belong in this website reference. The page links the Google Fonts stylesheet `https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700`; the browser's stylesheet walk could not read its cross-origin `@font-face` rules. A separate HTTP text fetch of that endpoint returned font sources on `fonts.gstatic.com`; the capture browser's individual font URLs and format remain unresolved.
+- **Official distributed assets:** no PayPay-authored font distribution or font-licence document was verified.
+- **Declared-only:** the body's and header button's computed family declaration begins with “Hiragino Kaku Gothic ProN”, followed by Japanese/system fallbacks. These names were not recorded as loaded font faces. The `h1` declaration starts with “Noto Sans JP”. Do not turn the declared header family into a verified rendered-face specimen.
+- **Unresolved:** the prior app-balance, amount and developer-monospace font claims have no new supporting product-font source. **Substitute: none chosen.**
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | Noto Sans JP | 32px | 700 | 44px (1.38) | normal | Splash, campaign hero, big point moments |
-| Balance Display | Noto Sans JP | 28px | 700 | 36px (1.29) | normal | Wallet balance — the emotional center |
-| Display Large | Noto Sans JP | 24px | 700 | 34px (1.42) | normal | Section headers, key metrics |
-| Heading Large | Noto Sans JP | 20px | 700 | 28px (1.40) | normal | Feature titles, modal headers |
-| Heading | Noto Sans JP | 18px | 700 | 26px (1.44) | normal | Card headings, sub-sections |
-| Subtitle | Noto Sans JP | 16px | 700 | 24px (1.50) | normal | List headers, nav titles |
-| Body Large | Noto Sans JP | 16px | 400 | 26px (1.63) | normal | Descriptions, explanations |
-| Body | Noto Sans JP | 14px | 400 | 22px (1.57) | normal | Standard reading text |
-| Body Small | Noto Sans JP | 13px | 400 | 20px (1.54) | normal | Secondary information |
-| Caption | Noto Sans JP | 12px | 400 | 18px (1.50) | normal | Timestamps, fine print, legal |
-| Amount Hero | Noto Sans JP | 36px+ | 700 | tight | normal | Payment amount on checkout/complete |
+### Measured hierarchy
 
-### Principles
-- **System-native by design.** PayPay deliberately uses the OS Japanese font so text renders crisply on every device without webfont latency at a checkout counter. Hiragino on iOS, Noto Sans JP / Yu Gothic on Android & web.
-- **Weight is the hierarchy.** With one type family, PayPay separates levels almost entirely through weight (400 body, 700 headings/amounts) and size — not through multiple families or styles.
-- **Numbers shout.** Balances, payment amounts, and point totals are the loudest elements on any screen: 700 weight, large size, often in red or near-black with a `¥` / `P` (ポイント) unit at a smaller weight.
-- **Japanese-first, Latin-secondary.** Latin numerals and the "PayPay" wordmark coexist inside Japanese text; line-height runs generous (1.5–1.65) to give kanji/kana room to breathe.
-- **No italics, minimal letter-spacing.** Japanese type avoids italics; emphasis comes from weight and color, never slant.
+| Element | Size / weight | Line height | Face evidence |
+|---|---|---|---|
+| Blue and inverse action labels | 16px / 700 | 25.6px | Noto Sans JP loaded; control declaration names it. |
+| FAQ question | 16px / 400 | 25.6px | Noto Sans JP loaded; control declaration names it. |
+| Store-card visible caption | 14px / 700 | Not separately recorded | Caption inside a 16px / 400 anchor. |
+| Bank-card visible caption | 13px / 700 | Not separately recorded | Caption inside a 16px / 400 anchor. |
+| Header “はじめる” link | 16px / 700 | 22.4px | Hiragino declaration only; rendered face unresolved. |
+| Footer sitemap links | 13px / 400 | 18.2px | Hiragino declaration only. |
+| Footer terms links | 12px / 400 | 16.8px | Hiragino declaration only. |
+
+The action and FAQ metrics use a measured 1.6 line-height ratio. Their weight difference separates actions from questions without adding another loaded family. The table describes concrete website elements, not a complete app type scale.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px (4px allowed for tight internal gaps)
-- Common values: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px
-- Horizontal screen margin: 16px (standard mobile)
-- Grouped lists: full-bleed rows with 16px internal padding, gray-50 section backdrop
+The desktop homepage leads with a photographic payment scene, app-store links and a compact row of campaign images. Explanatory sections then cover the service, charging, reasons to use it, supported shops, identity verification, everyday scenarios, getting started and FAQs. The three-step getting-started section is a broad red panel containing white step cards. This order is visible in the captured homepage and its HTML.
 
-### Grid & Container
-- Design baseline: 375px mobile width
-- Single-column, mobile-first — no multi-column grid in the app
-- Marketing web (paypay.ne.jp): centered content, max-width ~960px, with large hero imagery
-- Action grids (home shortcuts): 4-per-row icon grid with labels
+For measured spacing, use **16px** bank-card padding, **24px** vertical store-card padding and **32px** horizontal action-link padding. The FAQ deliberately reserves **77px** at the leading side for its question marker, with **22px** vertical padding. These are local component measurements, not evidence for a universal 8px grid.
 
-### Whitespace Philosophy
-- **Money gets a stage.** The balance and payment amounts sit alone with generous margins — they are the hero, never crowded.
-- **Energetic density.** Unlike austere bank apps, PayPay packs the home screen with campaign banners, point promos, and shortcuts — it reads as a lively retail surface, not a sparse vault. Density rises on home/promotions, falls on transactional flows.
-- **Funnel focus.** Payment and charge flows strip everything away — one amount, one big red button. Distraction is removed at the moment money moves.
-
-### Border Radius Scale
-- Tight (8px): Inputs, badges, small chips
-- Standard (12px): Cards, inline buttons
-- Comfortable (16px): Hero cards, dialogs, campaign cards
-- Large (20–24px): Bottom-sheet top, pill CTAs
-- Pill (9999px): Toggles, filter chips, round QR/pay center button
+The homepage stylesheet declares `max-width:1128px; margin:0 auto; padding:0 24px` on `.about__inner`, `.merit__inner` and `.start__inner`. Treat this as declared website container geometry. No native-app design baseline was established.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile (Primary) | <600px | Full app fidelity, 375px baseline, single column |
-| Tablet | 600–960px | Marketing web expands hero, optional two-column feature rows |
-| Desktop (Web) | >960px | Marketing site centered, max-width ~960px; app mirrored as centered mobile column |
+The browser capture measured desktop at **1440 × 1000**. Mobile behavior was not rendered or tested.
 
-#### Touch Targets
-- CTAs: 52px tall, full-width with 16px margin
-- Bottom nav center pay button: 60–64px circle, raised
-- List rows: minimum 48px height
-- Number-pad keys: 56–64px for one-handed checkout entry
-
-#### Collapsing Strategy
-- App is mobile-only; the marketing web is responsive and points users to app-store downloads
-- Bottom sheet → centered modal on wider screens
-- Sticky bottom CTA bar with safe-area insets
-- Horizontal-scroll carousels for campaign banners and point offers
-
-#### Image Behavior
-- Merchant / bank logos: 32–40px, consistent sizing in lists
-- Campaign key art: full-bleed, responsive, maintains aspect ratio
-- QR code: large centered square, high-contrast, with brand-red frame accent
+The opened homepage CSS has explicit **max-width: 750px** rules and **min-width: 751px** hover rules. In the smaller-width rule, the action declares `width:74.6666666667vw`, `padding:5.6vw 6.4vw`, `font-size:4.8vw` and `border-radius:1.6vw`. Store cards declare `width:41.0666666667vw` and a matching height, with `padding:4.2666666667vw 4.2666666667vw` on their links. These are source declarations, not a mobile measurement. ([Homepage CSS](https://paypay.ne.jp/wp-content/themes/paypay/assets/top/css/top_58.css?v=9))
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline elements, list rows |
-| Subtle (Level 1) | `0px 1px 4px rgba(0,0,0,0.08)` | Cards, content panels |
-| Standard (Level 2) | `0px 2px 8px rgba(0,0,0,0.12)` | Raised cards, sticky headers |
-| Brand Lift (Level 2r) | `0px 2px 8px rgba(255,0,51,0.20)` | Red balance card / red CTAs — red-tinted glow |
-| Elevated (Level 3) | `0px 4px 12px rgba(0,0,0,0.15)` | Dropdowns, popovers, floating buttons |
-| Modal (Level 4) | `0px 8px 24px rgba(0,0,0,0.18)` | Bottom sheets, dialogs |
+The two card wrappers share the measured shadow **`rgba(155, 155, 155, 0.6) 4px 4px 12px 0px`**, with white backgrounds. The interactive anchors themselves have `box-shadow: none`. This separation matters: reproduce the shadow on the wrapper and apply the pointer opacity to the link content.
 
-**Shadow Philosophy**: PayPay's shadows are soft and neutral, with one signature exception — the **red-tinted lift** under the balance hero and primary red CTAs, which makes the brand red appear to glow. Elevation is gentle; the energy in PayPay comes from *color and motion*, not deep dramatic depth. The raised circular center "pay" button in the bottom nav uses a stronger neutral shadow to read as physically floating above the bar.
-
-### Blur Effects
-- Sticky headers apply a light backdrop blur on scroll
-- Modal scrims are flat black `rgba(0,0,0,0.5)`, no blur, keeping the celebratory surfaces crisp
+The blue and inverse actions, FAQ button and header link have no shadow on their inspected nodes. No multi-level elevation scale, red balance-card glow, modal blur or application scrim token was verified.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.card`: `0px 1px 4px rgba(0,0,0,0.08)`
-- `shadow.toast`: `0px 4px 12px rgba(0,0,0,0.15)`
-- `shadow.dialog`: `0px 8px 24px rgba(0,0,0,0.18)`
+- `shadow.card-wrapper`: `rgba(155, 155, 155, 0.6) 4px 4px 12px 0px`
 
 ## Motion & Easing
 
-**Durations:**
+All six inspected controls report the raw computed transition **`all 0.3s ease 0s`**. The five measured pointer responses settle at opacity 0.7. The header's computed transition does not establish its unmeasured pointer behavior.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, checkbox changes |
-| `motion-fast` | 150ms | Hover, focus, button-press, small reveals |
-| `motion-standard` | 250ms | Default — sheet open, card expand, tab switch |
-| `motion-slow` | 400ms | Emphasized — onboarding advance, balance update |
-| `motion-celebrate` | 700ms | Payment-complete checkmark + point animation |
-| `motion-page` | 300ms | Full-screen route transitions |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — sheets, toasts, screen pushes |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — collapsible cards, tabs |
-| `ease-bounce` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | The celebration — payment checkmark, point-coin drop. PayPay licenses overshoot freely here because delight is the brand. |
-
-**Signature motions.**
-
-1. **Payment celebration.** On a completed payment, the screen fills red, a white checkmark draws and pops with `ease-bounce` over `motion-celebrate`, the amount scales up, and — if points were earned — gold coins fall and a "+◯◯ポイント" badge bounces in. This is PayPay's defining animation: paying feels like winning.
-2. **Balance update.** When the balance changes, the old number fades and the new number counts up / slides in over `motion-slow` with `ease-standard`. Money is never cross-faded mid-value (looks like a bug).
-3. **Bottom-sheet presentation.** Sheets rise from `y+40px` with `motion-standard / ease-enter`, backdrop fades to `rgba(0,0,0,0.5)`. Dismissal uses `motion-fast / ease-exit` — lighter leaving than entering.
-4. **Center pay button.** Tapping the raised red QR/pay button gives a quick `motion-fast` press-scale (0.94) before opening the scanner full-screen — a tactile, confident launch.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all tokens collapse to `motion-instant` and the celebration becomes a static red success screen (checkmark + amount, no coins). The app stays joyful in color; just not kinetic.
-
-<!--
-OmD v0.1 Sources — PayPay (ペイペイ)
-
-Direct verification via WebFetch (2026-06-06):
-- https://paypay.ne.jp — confirms mobile-payment positioning, white surfaces with
-  red CTAs, app-download focus, and casual-friendly Japanese voice
-  ("スマホひとつで かんたんに お支払いはPayPayで", "登録は無料！最短1分",
-  "いますぐPayPayアプリをダウンロード"). Exact CSS hex not exposed in source.
-
-Brand color #FF0033 is PayPay's widely-documented official red (the saturated
-red of the wordmark and app icon). Used as primary_color and primary CTA hue.
-
-Typeface: PayPay ships no proprietary font and publishes no public design system.
-The system-native Japanese stack (Hiragino Kaku Gothic / Noto Sans JP / Yu Gothic)
-is the standard, documented approach for Japanese consumer apps and matches the
-app's rendering. Component tokens in §4 are reconstructed from the live app and
-marketing surfaces, expressed in PayPay's idiom — representative, not spec-exact.
-
-Brand history (§11): PayPay launched October 2018 as a SoftBank × Yahoo! Japan
-joint venture; the "100億円あげちゃうキャンペーン" (¥10bn giveaway) drove mass
-adoption; PayPay now sits under LY Corporation (LINE × Yahoo Japan, SoftBank group).
-These are widely documented public facts (see Wikipedia: PayPay).
-
-Personas (§13) are fictional archetypes informed by publicly described Japanese
-mobile-payment user segments. Any resemblance to specific individuals is unintended.
-
-Interpretive claims (e.g., "paying should feel like winning") are editorial
-readings of PayPay's campaign-driven design, not documented PayPay statements.
--->
+Card image and ancestor reveal changes persisted after blur, so they are not keyboard-focus animations. Payment celebrations, balance-counting motion, sheet transitions and reduced-motion behavior were not measured; no duration or easing token is supplied for them.
 
 ## Components
 
-> Note: PayPay publishes no public design-system documentation. The values below are reconstructed from the live PayPay app and paypay.ne.jp marketing surfaces, expressed as a coherent, agent-usable token set in PayPay's idiom. Treat geometry as representative rather than spec-exact.
+Five controls have an authored, measured pointer response. All are product-site controls; none is a consent button. Measurements identify the interactive node separately from its visual wrapper.
 
-### Buttons
+### Filled action link — “その他のチャージ方法”
 
-PayPay buttons are **pill or large-radius rectangles**, full-width on mobile, with the brand red as the default primary. Friendly, tappable, thumb-sized.
+`a.mainButton__button`, linking to `/guide/charge/`: **250 × 57.6px**, **6px radius**, **16px 32px padding**, **16px / 700 Noto Sans JP**, 25.6px line height. Rest is `#3895ff` background and `#ffffff` text, with no border or shadow on the anchor. A CSS `::after` draws an 8px × 8px chevron with two 2px white borders.
 
-**Primary (Fill / Red)**
-- Background: `#FF0033`
-- Text: `#ffffff`
-- Border: none
-- Radius: 24px (pill) on CTAs; 12px on inline actions
-- Padding: 0 24px
-- Font: 16px / 700 / Noto Sans JP
-- Height: 52px (full-width mobile CTA)
-- Pressed: background `#E0002E`
-- Disabled: background `#FFB3C1` (red at reduced saturation), text `#ffffff`
-- Loading: white spinner replaces label, width preserved
-- Use: Primary money action — 支払う (Pay), チャージ (Charge), 送る (Send)
+Hover and pointer press each set the entire link's opacity to **0.7**, from **1**. Keyboard focus adds the browser's `auto` outline; it supplies no authored brand-focus token.
 
-**Secondary (Outline / Red)**
-- Background: `#ffffff`
-- Text: `#FF0033`
-- Border: 1.5px solid `#FF0033`
-- Radius: 24px
-- Padding: 0 24px
-- Font: 16px / 700 / Noto Sans JP
-- Height: 52px
-- Pressed: background `#FFEBEF`
-- Use: Secondary action paired with a red primary (キャンセル alternatives, 後で)
+### Inverse action link — “PayPayの始め方”
 
-**Neutral (Fill / Gray)**
-- Background: `#f5f5f5`
-- Text: `#555555`
-- Border: none
-- Radius: 24px
-- Padding: 0 24px
-- Font: 16px / 700 / Noto Sans JP
-- Height: 52px
-- Use: Low-emphasis / dismiss action (閉じる, 戻る)
+`a.mainButton__button--inversion`, linking to `/start/`: **250 × 57.6px**, **6px radius**, **16px 32px padding**, **16px / 700 Noto Sans JP**, 25.6px line height. Rest is `#ffffff` background with `#3895ff` text and chevron, on the `#f24f4f` onboarding section. The anchor has no border or shadow. Hover and pointer press again set opacity to **0.7**. Its keyboard ring is browser `auto`.
 
-**Text Button**
-- Background: transparent
-- Text: `#FF0033`
-- Border: none
-- Padding: 8px 12px
-- Font: 15px / 700 / Noto Sans JP
-- Use: Inline tertiary action, "もっと見る", "詳細"
+### Store card link — “全国のお店”
 
-Size scale (height · font · radius): `small` 36px · 14px / 700 · 18px; `medium` 44px · 15px / 700 · 22px; `large` (default CTA) 52px · 16px / 700 · 24px. CTAs are full-width with 16px horizontal screen margin; inline buttons auto-width.
+`a.stores__link`, linking to `/shop/`: **300 × 200px**, **0px anchor radius**, **24px 16px padding**. The anchor is transparent, with `#242323` foreground; its visible caption is **14px / 700**, while the anchor's inherited metrics are 16px / 400 with 25.6px line height. It sits on a white wrapper. Homepage CSS declares **11px corners on that wrapper**; this is a stylesheet declaration, separate from the measured anchor radius.
 
-### Inputs
+Hover and pointer press change the link's opacity from **1 to 0.7**. The wrapper's background and shadow stay outside that link-level fade. Focus produces a browser `auto` ring; lazy image loading and ancestor reveal changes also appeared, persisted after blur and are not focus tokens.
 
-PayPay text fields are clean boxed inputs with a red focus state. Amount entry uses an oversized variant.
+### Bank card link — “銀行口座”
 
-**Box (default)**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: 1px solid `#e0e0e0`
-- Radius: 8px
-- Padding: 14px 16px
-- Font: 16px / 400 / Noto Sans JP
-- Placeholder: `#999999`
-- Focus: border 2px `#FF0033`
-- Use: Standard form input
+`a.charge__link`, linking to `/guide/bank/`: **162 × 151.6px**, **0px anchor radius**, **16px padding**. The transparent anchor sits on a white wrapper, with `#242323` foreground. Its visible caption is **13px / 700**; the anchor is 16px / 400 with 25.6px line height. The wrapper's **11px radius** is declared in the homepage CSS.
 
-**Filled**
-- Background: `#f5f5f5`
-- Text: `#222222`
-- Border: none
-- Radius: 8px
-- Padding: 14px 16px
-- Font: 16px / 400 / Noto Sans JP
-- Focus: background `#ffffff` + 2px `#FF0033` border
-- Use: Dense forms, search bars
+Hover and pointer press set link opacity to **0.7**. Keyboard focus has a browser `auto` ring and persistent loading/reveal changes, which are excluded from state tokens.
 
-**Amount (Hero)**
-- Background: transparent
-- Text: `#222222`
-- Border: 1px solid `#e0e0e0` (bottom only)
-- Radius: 0px
-- Padding: 0 0 8px
-- Font: 36px / 700 / Noto Sans JP, with `¥` prefix at 24px / 700
-- Use: Send/charge amount entry — the big-number moment, paired with on-screen number pad
+### FAQ button — “アプリの登録は無料ですか？”
 
-**Error**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: 2px solid `#E0002E`
-- Radius: 8px
-- Padding: 14px 16px
-- Helper: error text below in `#E0002E`, 12px, with alert icon
-- Use: Validation failure
+`button.faq__question`: **852 × 69.6px**, **0px radius**, **22px 16px 22px 77px padding**, **16px / 400 Noto Sans JP**, 25.6px line height. It is transparent on white, with `#242323` text and no border or shadow on the button. Its row parent has a bottom divider: **1px solid rgba(112, 112, 112, 0.2)**.
 
-PIN entry uses a 4-digit dot field with a randomized on-screen keypad for security; OTP uses 6 separate boxes (48px wide, 56px tall, 8px radius, red active border).
+Hover and pointer press change opacity from **1 to 0.7**. Keyboard focus was reached with a real Tab key and had **no style change within the probe's compared scope**. This does not establish behavior outside the measured DOM, pseudo-elements and three ancestor levels. Accordion expansion was not activated.
 
-### Cards
+### Header link — prose only
 
-**Standard**
-- Background: `#ffffff`
-- Border: none
-- Radius: 12px
-- Padding: 16px
-- Shadow: `0px 1px 4px rgba(0,0,0,0.08)`
-- Use: Transaction, feature, and content cards
+“はじめる” is a **64 × 60px** transparent link on white, **0px radius**, **0px padding**, **16px / 700**, 22.4px line height, `#242323` foreground. Its pointer pass found it outside the viewport, so hover and press are **UNMEASURED**. Keyboard focus showed only browser `auto`. It is excluded from component tokens.
 
-**Balance Card (Hero)**
-- Background: `#FF0033` (or red gradient `linear-gradient(135deg,#FF0033,#E0002E)`)
-- Text: `#ffffff`
-- Border: none
-- Radius: 16px
-- Padding: 20px
-- Shadow: `0px 2px 8px rgba(255,0,51,0.20)` (red-tinted lift)
-- Use: Wallet balance hero on home — the signature PayPay surface
-
-**Campaign / Promo**
-- Background: `#FFEBEF` or full-bleed promotional image
-- Border: none
-- Radius: 16px
-- Padding: 20px
-- Use: Point campaigns, あげる/もらえる offers — bright, image-forward
-
-**Compact (List Item)**
-- Background: `#ffffff`
-- Border: 1px solid `#eeeeee` (bottom divider only)
-- Radius: 0px
-- Padding: 14px 16px
-- Use: Transaction history rows, settings list rows
-
-### Badges
-
-**Fill / Red**
-- Background: `#FF0033`
-- Text: `#ffffff`
-- Radius: 10px
-- Padding: 2px 8px
-- Font: 12px / 700 / Noto Sans JP
-- Use: "NEW", "限定", primary emphasis
-
-**Fill / Gold (Point)**
-- Background: `#FFB200`
-- Text: `#ffffff`
-- Radius: 10px
-- Padding: 2px 8px
-- Font: 12px / 700 / Noto Sans JP
-- Use: Point amounts, "+100ポイント", reward emphasis
-
-**Fill / Green**
-- Background: `#00B900`
-- Text: `#ffffff`
-- Radius: 10px
-- Padding: 2px 8px
-- Font: 12px / 700
-- Use: 完了 / success state
-
-**Weak / Red**
-- Background: `#FFEBEF`
-- Text: `#FF0033`
-- Radius: 10px
-- Padding: 2px 8px
-- Font: 12px / 700
-- Use: Subtle brand-tinted label
-
-**Weak / Gray**
-- Background: `#f5f5f5`
-- Text: `#767676`
-- Radius: 10px
-- Padding: 2px 8px
-- Font: 12px / 700
-- Use: Neutral metadata badge (category, date)
-
-### Tabs
-
-**Bottom Tab (Active)**
-- Background: `#ffffff`
-- Border: 1px solid `#eeeeee` (top only)
-- Active: `#FF0033` icon + label
-- Inactive: `#999999` icon + `#767676` label
-- Font: 10px / 500 / Noto Sans JP
-- Center action: large red circular "支払う" / QR button, raised above the bar
-- Use: 5-tab bottom nav — home, points, QR-pay (center), promotions, account
-
-**Segmented**
-- Background: `#f5f5f5`
-- Inactive text: `#767676`
-- Radius: 10px (track), 8px (thumb)
-- Padding: 8px 16px
-- Active: `#ffffff` thumb + `#FF0033` text + `0px 1px 3px rgba(0,0,0,0.10)` shadow
-- Font: 14px / 700 / Noto Sans JP
-- Use: In-screen section switching
-
-### Toasts
-
-**Default**
-- Background: `#222222`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 12px 16px
-- Shadow: `0px 4px 12px rgba(0,0,0,0.15)`
-- Font: 14px / 500 / Noto Sans JP
-- Use: Transient confirmation ("コピーしました"). Payment success is a full dedicated screen, never a toast.
-
-### Dialogs
-
-**Centered Modal**
-- Background: `#ffffff`
-- Text: `#222222`
-- Radius: 16px
-- Padding: 24px
-- Shadow: `0px 8px 24px rgba(0,0,0,0.18)`
-- Buttons: stacked full-width — red primary on top, gray/text secondary below
-- Use: Confirmation prompts, alerts
-
-**Bottom Sheet**
-- Background: `#ffffff`
-- Text: `#222222`
-- Radius: 20px (top corners only)
-- Padding: 24px 16px
-- Drag handle: 36px × 4px `#e0e0e0` pill, centered top
-- Shadow: `0px -4px 16px rgba(0,0,0,0.10)`
-- Use: Selection, picker, payment-method switch — the dominant overlay pattern
-
-### Toggles
-
-**Default**
-- Background: `#FF0033` (on) / `#cccccc` (off)
-- Radius: 9999px
-- Thumb: `#ffffff` 22px circle, `0px 1px 3px rgba(0,0,0,0.20)` shadow
-- Use: Boolean settings (通知, 自動チャージ)
-
-### Payment-Complete Screen (Signature)
-- Full-screen `#FF0033` (or red gradient) background
-- Centered white checkmark animation, then amount in 36px / 700 white
-- Merchant name + timestamp below in white 14px
-- Single white button (`#ffffff` bg, `#FF0033` text, 24px radius): "閉じる"
-- Optional point-grant animation: gold coins falling + "+◯◯ポイント" badge
-- This is PayPay's most recognizable moment — the celebration, not a quiet receipt
-
-**Tier 1 sources:** https://paypay.ne.jp (live production site, verified via live DOM getComputedStyle); https://about.paypay.ne.jp (PayPay株式会社 corporate site, first-party).
+No search input was present in the survey. Native-app inputs, balances, badges, tabs, toggles, dialogs and toasts were not measured.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (first use)** | Friendly one-liner in `#555555` body (`まだ取引履歴がありません`) + one suggested action as a red outline button. Light, encouraging, never an error tone. |
-| **Empty (filter cleared)** | Single `#767676` caption line (`条件に合う結果がありません`). User resets the filter. |
-| **Loading (first paint)** | Skeleton blocks at `#eeeeee` matching final layout. Balance shows `¥--` until resolved, never a fake number. |
-| **Loading (refresh)** | Pull-down spinner in `#FF0033`. Content stays visible with prior values; no blocking overlay. |
-| **Error (inline field)** | 2px `#E0002E` border + error text below in `#E0002E` 12px with alert icon. One actionable sentence (`残高が不足しています`). |
-| **Error (toast)** | `#222222` bg, white 14px text, ~3s auto-dismiss, bottom inset 16px. One sentence, no celebration. |
-| **Error (screen-blocking)** | Server outage only: white screen, centered `#222222` 16px weight 700 message, red retry button below. No illustration of failure as fun. |
-| **Success (routine)** | Brief `#FFEBEF` flash behind the updated element, 300ms fade. For toggles/settings. |
-| **Success (payment)** | Dedicated full-screen `#FF0033` moment — white checkmark animation, amount 36px weight 700, merchant + timestamp, single `閉じる` button. Optional gold point-grant animation. Never a toast. |
-| **Skeleton** | `#eeeeee` blocks at final dimensions, 1.2s shimmer with white highlight, component-matched radius. Amounts show `¥--`, never skeleton bars. |
-| **Disabled** | Red CTA drops to `#FFB3C1`; neutral buttons to `#f5f5f5` + `#cccccc` text. Geometry stable. |
-| **Loading inside button** | White spinner replaces label, button width fixed, press committed — no double-submit. |
+| Control | Hover | Pointer press | Keyboard focus |
+|---|---|---|---|
+| Blue action | Opacity 1 → 0.7 | Opacity 1 → 0.7 | Browser `auto` outline only. |
+| White inverse action | Opacity 1 → 0.7 | Opacity 1 → 0.7 | Browser `auto` outline only. |
+| Store card link | Link opacity 1 → 0.7 | Link opacity 1 → 0.7 | Browser `auto`; persistent image/reveal changes excluded. |
+| Bank card link | Link opacity 1 → 0.7 | Link opacity 1 → 0.7 | Browser `auto`; persistent image/reveal changes excluded. |
+| FAQ question | Opacity 1 → 0.7 | Opacity 1 → 0.7 | No change within compared scope. |
+| Header “はじめる” link | UNMEASURED: outside viewport | UNMEASURED: outside viewport | Browser `auto` outline only. |
+
+Each measured pointer state had the matching hover/active flag. The comparison covered self and pseudo-elements, descendants and their pseudo-elements, and three ancestor levels. It did not cover sibling effects, canvas/video pixels, closed shadow roots or cross-origin frame contents. No disabled, loading, error, empty-result or payment-success state was measured.
 
 ## Do's and Don'ts
 
-### Do
-- Use PayPay Red (`#FF0033`) for the primary money action on every screen — it is the brand and the CTA
-- Keep surfaces white / gray-50 and let red carry all the energy
-- Use the system Japanese font stack (Hiragino / Noto Sans JP / Yu Gothic) — no webfont required
-- Make balances and amounts large and 700 weight — numbers are the emotional payload
-- Celebrate payment completion with a dedicated full-screen red moment, not a toast
-- Use pill / 24px-radius full-width CTAs for primary actions
-- Reserve gold (`#FFB200`) for points and green (`#00B900`) for success
+- Use the measured blue fill for the website's information actions, with the white inverse action on the red getting-started panel.
+- Keep body and question text near-black at `#242323`, with pale-grey explanatory sections and white cards.
+- Use the loaded Noto Sans JP 400/700 evidence for website typography; preserve the separate declared-only status of the header family.
+- Keep the 6px action corners distinct from the card wrapper's declared 11px corners and the anchor's measured 0px radius.
+- Fade the measured interactive node to 0.7 on hover and pointer press; keep the card shadow on its wrapper.
+- Do not infer darker state colours, semantic success colours or native-app geometry from these website measurements.
 
-### Don't
-- Don't dilute the red — one saturated brand red, never a palette of competing accents for primary actions
-- Don't use brand red (`#FF0033`) to mean "error"; errors use deeper `#E0002E` plus an alert icon
-- Don't render payment success as a quiet toast or inline checkmark — it is a full screen
-- Don't introduce a proprietary or decorative display font; stay system-native for checkout reliability
-- Don't crowd the payment/charge flow — at the moment money moves, one amount and one button only
-- Don't use pure black (`#000`) for text; use `#222222`
-- Don't make CTAs square-cornered — PayPay's geometry is rounded and friendly (≥12px, pill for primary)
+For illustration work, PayPay's [Illustration Working Group](https://insideout.paypay.ne.jp/2026/10/06/design-at-paypay-vol12-jp/) describes shared guidelines for colour, shape, composition and reusable parts. This supports consistency across related illustrations; it does not supply unmeasured UI tokens.
 
 ## Voice & Tone
 
-PayPay speaks like an enthusiastic, helpful shop clerk: cheerful, casual-polite Japanese (です・ます with friendly energy), short, and benefit-led. It emphasizes speed ("最短1分"), ease ("かんたん"), and reward ("もらえる", "おトク"). Exclamation is welcome — this is a brand that celebrates. Japanese is the only first-class voice; English is incidental.
+The homepage leads with ease and benefit: “スマホひとつで”, “かんたんに”, “おトク” and a three-step explanation. Its action labels identify destinations directly: charging methods, supported shops and getting started. FAQ questions are followed by practical answers and qualifications. This supports short Japanese benefit headings with concrete explanatory copy, without establishing a universal tone for app errors or legal disclosures. ([Homepage](https://paypay.ne.jp/))
 
-| Context | Tone |
-|---|---|
-| CTAs | Short imperative verbs (`支払う`, `チャージする`, `送る`, `今すぐダウンロード`) |
-| Success | Bright, complete (`お支払いが完了しました`), often with an exclamation in campaign contexts |
-| Errors | Polite, specific, actionable (`残高が不足しています。チャージしてください`). Apology is brief and not groveling. |
-| Onboarding | Friendly second-person, one benefit per screen (`スマホひとつで かんたんお支払い`) |
-| Amounts | `¥` prefix + comma separators, exact numerals (`¥1,240`), never rounded |
-| Points | Celebratory (`100ポイントもらえる！`, `おトク`) — gold accent, enthusiastic |
-| Empty states | Encouraging one-liner + one action (`まだ取引履歴がありません`) |
-| Legal / disclosure | Formal `ます/です` financial-regulation tone — the one place the cheer drops |
-
-**Forbidden moves.** Don't be cold or bank-formal on consumer surfaces. Don't over-apologize. Don't round monetary amounts on primary surfaces. Don't bury the reward — if there's a point benefit, it leads.
+PayPay also documents a **Wording Check** by UX writers and shared wording guidelines in its design process. That is first-party evidence for deliberate language consistency. ([Design operations](https://insideout.paypay.ne.jp/2025/02/12/design-at-paypay-vol7-jp/))
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / Brand: PayPay Red (`#FF0033`)
-- CTA Pressed: Red Pressed (`#E0002E`)
-- Background: White (`#ffffff`)
-- Background Surface: Light Gray (`#f5f5f5`)
-- Heading text: Near Black (`#222222`)
-- Body text: Gray (`#555555`)
-- Caption text: Gray (`#767676`)
-- Placeholder: Gray (`#999999`)
-- Border: Gray 200 (`#e0e0e0`)
-- Success: Green (`#00B900`)
-- Error: Deep Red (`#E0002E`)
-- Points accent: Gold (`#FFB200`)
+### Quick colour reference
 
-### Example Component Prompts
-- "Create a PayPay balance card: red gradient bg (#FF0033 → #E0002E), 16px radius, 20px padding, red-tinted shadow 0px 2px 8px rgba(255,0,51,0.20). Label 'PayPay残高' 13px weight 400 white 80% opacity. Amount '¥12,400' 28px weight 700 white. Noto Sans JP."
-- "Build a pay button: #FF0033 bg, white text, 16px weight 700, height 52px, 24px radius (pill), full-width with 16px margin. Pressed #E0002E. Label '支払う'."
-- "Design a transaction row: white bg, bottom divider 1px #eeeeee, 14px h-padding, 48px min-height. Left: 36px circle merchant icon + name 14px weight 700 #222222 + date 12px #767676. Right: '-¥1,200' 14px weight 700 #222222."
-- "Create the payment-complete screen: full-screen #FF0033 bg, centered white checkmark, amount '¥1,200' 36px weight 700 white, merchant + timestamp 14px white below, white pill button (#ffffff bg, #FF0033 text, 24px radius) '閉じる'."
-- "Design a bottom nav: white bg, top border 1px #eeeeee, 5 items. Active #FF0033 icon+label 10px weight 500, inactive #999999. Center raised red circle pay button 60px with neutral shadow."
+`#ff0033` accent · `#3895ff` information action · `#242323` foreground · `#ffffff` canvas/card wrapper · `#f7f7f7` section surface · `#606060` note text · `#d8d8d8` campaign-image border · `#f24f4f` getting-started panel.
 
-### Iteration Guide
-1. Use the system Japanese font stack (Hiragino / Noto Sans JP / Yu Gothic) — never a webfont
-2. Primary interactive + brand color is `#FF0033`; deeper `#E0002E` for errors/pressed
-3. Amounts and points: 700 weight, large size — they are the hero
-4. Geometry is rounded: 8px inputs, 12px cards, 16px dialogs, 24px/pill CTAs
-5. Surfaces are white / `#f5f5f5`; text `#222222` / `#555555`, never pure black
-6. Payment success is a full red screen, not a toast
-7. Gold (`#FFB200`) = points, green (`#00B900`) = success, orange (`#FF8800`) = warning
+### Example component prompts
 
----
+- “Build the measured PayPay website action: 250 × 57.6px, 6px corners, 16px 32px padding, blue fill, white 16px/700 Noto Sans JP label and a small right chevron. Hover and pointer press set the whole link to 0.7 opacity.”
+- “Build the white inverse of that action on the getting-started red panel. Preserve blue text and chevron, the same geometry and the same opacity response.”
+- “Build a 300 × 200px store link on a white card wrapper. Use 24px 16px anchor padding and a 14px/700 near-black caption. Apply the measured shadow to the wrapper and the hover fade to the link. The wrapper's stylesheet declares 11px corners.”
+
+These prompts describe measured or explicitly labelled source-declared website treatments.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `button-primary`.** Text `#ffffff` on `#ff0033` measures 3.96:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-secondary`.** Text `#ff0033` on `#ffffff` measures 3.96:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `balance-card`.** Text `#ffffff` on `#ff0033` measures 3.96:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-red`.** Text `#ffffff` on `#ff0033` measures 3.96:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-gold`.** Text `#ffffff` on `#ffb200` measures 1.81:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-green`.** Text `#ffffff` on `#00b900` measures 2.64:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-weak`.** Text `#ff0033` on `#ffebef` measures 3.47:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `segmented`.** Text `#767676` on `#f5f5f5` measures 4.17:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `main-cta`.** Text `#ffffff` on `#3895ff` measures 3.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `inverse-cta`.** Text `#3895ff` on `#ffffff` measures 3.04:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

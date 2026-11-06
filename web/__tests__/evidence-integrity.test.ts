@@ -192,7 +192,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 157 -> 156 (2026-11-03): zigbang.
     // 156 -> 155 (2026-11-03): ridi.
     // 155 -> 154 (2026-11-04): classting.
-    expect(flagged.length).toBe(154);
+    // 154 -> 153 (2026-11-06): zozotown.
+    // 153 -> 152 (2026-11-06): paypay.
+    expect(flagged.length).toBe(152);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T00:00:00Z",
+ "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 576,
+ "count": 585,
  "items": [
   {
    "id": "104",
@@ -1612,6 +1612,29 @@
    "category_raw": "process-intelligence"
   },
   {
+   "id": "cgmh",
+   "primary_color_hex": "#f68825",
+   "category": "healthcare",
+   "visual_theme": "Chang Gung Memorial Hospital is a Taiwanese hospital system founded in 1976. Its official introduction describes a nonprofit medical mission spanning service, teaching and research, with patients placed first. The public website brings that service role into i",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
+  },
+  {
    "id": "cgv",
    "primary_color_hex": "#121212",
    "category": "consumer-tech",
@@ -2355,6 +2378,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "cygames",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "Cygames is a Tokyo-based entertainment company founded in May 2011. Its business spans mobile and console games, comics, animation, licensing and esports. Its stated vision, **「最高のコンテンツを作る会社」**, connects those activities through the ambition to make the best c",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "dabang",
@@ -7117,6 +7162,27 @@
    "category_raw": "healthcare"
   },
   {
+   "id": "megabank",
+   "primary_color_hex": "#903f98",
+   "category": "fintech",
+   "visual_theme": "Mega Bank (兆豐銀行) is the Taiwanese commercial bank formed when the International Commercial Bank of China and Chiao Tung Bank merged on **21 August 2006**, taking the name Mega International Commercial Bank. Its own history emphasizes international trade, forei",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "megabox",
    "primary_color_hex": "#503396",
    "category": "consumer-tech",
@@ -8014,6 +8080,28 @@
    ],
    "has_personas": false,
    "category_raw": "workflow-automation"
+  },
+  {
+   "id": "nanshanlife",
+   "primary_color_hex": "#006fbc",
+   "category": "fintech",
+   "visual_theme": "Nan Shan Life (南山人壽) is a Taiwanese insurer founded in July 1963. Its company introduction pairs the vision of building a better future with the brand promise **「未來 有備而來」**: preparing people for the changes and risks ahead. The homepage makes that practical th",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "naver",
@@ -9924,6 +10012,29 @@
    "category_raw": "productivity"
   },
   {
+   "id": "raksul",
+   "primary_color_hex": "#0264bf",
+   "category": "ecommerce",
+   "visual_theme": "Raksul is a Japanese online printing and customer-acquisition platform. It connects orders to spare capacity at partner printing companies, and also offers newspaper inserts and posting services. Its company history records establishment in September 2009 and ",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "rakuten",
    "primary_color_hex": "#bf0000",
    "category": "ecommerce",
@@ -10778,6 +10889,27 @@
    "category_raw": "ai"
   },
   {
+   "id": "sega",
+   "primary_color_hex": "#0082ca",
+   "category": "consumer-tech",
+   "visual_theme": "SEGA develops and sells game content for consoles, PCs and smart devices. Its company outline dates its establishment to 3 June 1960; its history records the arrival of Sonic the Hedgehog in 1991. The Japanese product portal brings that catalog together throug",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "selectstar",
    "primary_color_hex": "#0c5fdb",
    "category": "ai",
@@ -11017,6 +11149,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "e-commerce"
+  },
+  {
+   "id": "shueisha",
+   "primary_color_hex": "#3399bb",
+   "category": "consumer-tech",
+   "visual_theme": "Shueisha is a Tokyo publisher established in 1926. Its own history describes an origin in entertainment publishing; its current company message spans manga, literature, fashion and journalism, alongside digital publishing, rights, events, merchandise and overs",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "sionic",
@@ -12377,6 +12531,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "tigerair",
+   "primary_color_hex": "#faa836",
+   "category": "consumer-tech",
+   "visual_theme": "Tigerair Taiwan is a Taiwanese low-cost airline whose first flight departed on 26 September 2014. Its company history records the purchase of the Tigerair brand rights in 2021. The fleet page connects the identity to Taiwan-island forms in its logo lettering a",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "friendly",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "timee",
    "primary_color_hex": "#ffd700",
    "category": "consumer-tech",
@@ -12564,6 +12742,28 @@
    "signature_motion": "Balance updates slide-and-fade (never cross-fade money); daily-interest triggers a blue50 flash + spring number tick-up.",
    "has_personas": true,
    "category_raw": "Fintech"
+  },
+  {
+   "id": "toyokeizai",
+   "primary_color_hex": "#0f9cc4",
+   "category": "consumer-tech",
+   "visual_theme": "Toyo Keizai Online is the Japanese business-news service of Toyo Keizai Inc. The publisher dates its founding to November 15, 1895, and its history records the online service's launch in June 2003. The product describes its purpose as helping people make bette",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "toyota",
