@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 593,
+ "count": 594,
  "items": [
   {
    "id": "104",
@@ -9549,6 +9549,27 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "peterpanz",
+   "primary_color_hex": "#1db177",
+   "category": "consumer-tech",
+   "visual_theme": "피터팬의 좋은방 구하기 is a Korean property-finding service operated by 주식회사 두꺼비세상. Its [official product introduction](https://about.peterpanz.com/intro) traces it to a Naver café for direct property transactions and describes its present scope as homes from one-room a",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "petfriends",

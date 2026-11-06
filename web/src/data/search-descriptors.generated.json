@@ -24076,6 +24076,64 @@
     ]
    }
   },
+  "peterpanz": {
+   "hash": "96e3b1f6fb0ad1ce",
+   "terms": {
+    "en": [
+     "property search",
+     "home finding app",
+     "rental listings",
+     "real estate map",
+     "one-room and apartment",
+     "verified listings",
+     "filter bar",
+     "list and map split",
+     "green accent",
+     "white surface",
+     "compact layout",
+     "parking pet elevator filters"
+    ],
+    "ko": [
+     "부동산 앱",
+     "방 구하기",
+     "원룸 찾기",
+     "매물 검색",
+     "지도 기반 검색",
+     "검증된 매물",
+     "필터 바",
+     "초록색 포인트",
+     "흰색 배경",
+     "컴팩트한 레이아웃",
+     "주차 반려동물 엘리베이터"
+    ],
+    "ja": [
+     "不動産検索",
+     "部屋探しアプリ",
+     "賃貸物件",
+     "地図検索",
+     "ワンルーム",
+     "認証済み物件",
+     "フィルターバー",
+     "グリーンのアクセント",
+     "白背景",
+     "コンパクトなレイアウト",
+     "韓国の住まい探し"
+    ],
+    "zh": [
+     "房屋搜尋",
+     "找房應用",
+     "租屋物件",
+     "地圖搜尋",
+     "套房與公寓",
+     "驗證房源",
+     "篩選列",
+     "綠色重點色",
+     "白色背景",
+     "緊湊版面",
+     "韓國租屋平台"
+    ]
+   }
+  },
   "petfriends": {
    "hash": "53448c40ac087b36",
    "terms": {
