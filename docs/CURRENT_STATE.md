@@ -12,6 +12,7 @@
   - **3D 고도화 `2267bb88`(`feat/skill-batch-nov`, 푸시·머지 보류):** 고정 물체 5개 → 브랜드 물체 28개 무리(`engines/three/pile.js`, 캡슐 충돌·고정 120Hz·시드=주 색상). spec.mjs가 Node에서 정착시켜 포스터·첫 프레임·Blender가 같은 자세. 커서로 밀기·클릭 흩뜨리기·`setSpec` 브랜드 전환(엇갈린 축소→교체→튀어 오름), GTAO·브랜드 색 유리, 품질 사다리 AO→해상도→정지 컷, 문구 칸 하드 평면. Blender는 같은 자세(Cycles 유리)·rim을 sun으로(벽 쐐기 제거). verify에 포인터 훑기(최근접 물체 715px vs 헤드라인 끝 523px, 대비 매 6프레임) + 일시정지 중 포인터·클릭. 6조합 전부 통과(헤드라인 최저 9.88:1, three 8.3ms·AO 유지, 워커 4개 부하 상한). 번들 CDN ~229 / 번들 ~150 KiB gzip. 5개 로캘 설명 갱신.
   - 브랜드 전환 영상 `claudedocs/3d-hero/switch/switch.mp4`(16초 1080p60, 프레임 단위 캡처 `capture.mjs`), 노트 `claudedocs/3d-hero/3d-hero-notes.html` 재생성(5.2MB, 전환 영상 포함). 아티팩트 서버는 여전히 "endpoint not found". Threads #6 초안을 이 영상 기준으로 갱신.
   - **#110 수정 `903c0b2d`:** hangul HG-12가 단독 HTML에서 첫 한글 웹 글꼴 로드를 요구, check.mjs WARN(원래 덱에서 재현), fixtures/deck. R2 break 모드는 hangul의 동사로 두는 것을 추천(새 스킬 아님) — 다음 차례.
+  - **머지 날 주의:** `feat/skill-batch-nov`와 `feat/refs-batch6`(그리고 #108·#109)가 `catalog-meta.generated.ts`·`llms*.txt`·개수 표면을 함께 건드린다. 합칠 때 생성 파일은 손으로 풀지 말고 병합 후 `node web/scripts/sync-catalog.mjs`로 다시 만든다.
   - **6차 반영(`feat/refs-batch6`, main 기준, 푸시):** toyokeizai·cgmh `cdfadfa2`, raksul `f0592819`, zozotown(legacy→verified) `8981dc7c` → **579 / 401 / 89 / 89**, 래칫 153. 헤드라인은 워커 자신의 cfg로 본 세션 재측정(전부 일치). 진행: sega(일치, 착지 중)·nanshanlife 재측정, 워커 4개 가동.
 
 ## ▶ 2026-11-06 오후 · 3D·셰이더 스킬 개발 착수(오너 결정)
