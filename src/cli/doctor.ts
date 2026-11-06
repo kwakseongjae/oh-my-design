@@ -60,6 +60,7 @@ function shellQuote(value: string): string {
 export const REQUIRED_PRODUCT_SKILLS = [
   'claude-design',
   'hangul',
+  'omd-3d-hero',
   'omd-aphrodite',
   'omd-autopilot',
   'omd-apply',
