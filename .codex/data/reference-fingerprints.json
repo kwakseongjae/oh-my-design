@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 584,
+ "count": 585,
  "items": [
   {
    "id": "104",
@@ -11149,6 +11149,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "e-commerce"
+  },
+  {
+   "id": "shueisha",
+   "primary_color_hex": "#3399bb",
+   "category": "consumer-tech",
+   "visual_theme": "Shueisha is a Tokyo publisher established in 1926. Its own history describes an origin in entertainment publishing; its current company message spans manga, literature, fashion and journalism, alongside digital publishing, rights, events, merchandise and overs",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "sionic",
