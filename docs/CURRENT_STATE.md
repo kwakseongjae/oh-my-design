@@ -3,6 +3,13 @@
 갱신: **2026-11-06 오후 늦게** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ▶ 2026-11-06 저녁 · **묶음 머지 완료(오너 GO "묶음 머지는 진행")** → 운영 확인
+
+- **main에 합친 것:** #108(스킬 피드백 묶음) · #109(go-link) · `feat/skill-batch-nov`(omd-3d-hero pile·셰이더 #111·hangul #110·break 모드) · `feat/refs-batch6`(6차 첫 12건) → main `94815356`·`510cc402`, **585 / 409 / 89 / 87**. 생성 파일 충돌은 병합 후 build-registry + sync-catalog로 다시 만듦.
+- **병합 중 고친 것:** `src/cli/doctor.ts` REQUIRED_PRODUCT_SKILLS에 omd-3d-hero 누락(스킬 묶음 브랜치에서 루트 테스트를 안 돌려 놓침), llms zh-CN·zh-TW의 Cursor 스킬 수 31→32 두 군데(check-counts가 이 문형은 안 읽음 — 게이트 보강 후보). 전체 루트·web 테스트·tsc·lint 통과(부하 시간 초과 4건은 단독 재실행 통과).
+- **운영 확인:** `/design-systems/raksul`·`/ko/design-systems/zozotown`·`/design-systems/megabank` 200, `/docs/ko/skills`에 omd:3d-hero 한국어 설명, llms.zh-tw "32 個相容", `/go/3d-hero-ko` → `/docs/ko/skills?utm…`(등록 `007ae999`). #108·#109는 MERGED.
+- 작업 브랜치 두 개(`feat/refs-batch6`, `feat/skill-batch-nov`)는 main으로 앞당김. 6차 나머지는 계속 `feat/refs-batch6`에 쌓는다.
+
 ## ▶ 2026-11-06 오후 늦게 · 오너: three.js 바이럴 고도화 + 레퍼런스 재가동 + "다음 후보는 추천대로"
 
 - **레퍼런스:** 11/4 5차 머지 뒤 정지 상태였음(main 576 / 397 / 89 / 90). **6차 착수** = `~/.omd-workers/queue-batch6.txt`(31건): 신규 JP raksul·toyokeizai·sega·cygames·shueisha·unext·andpad·syosetu·kodansha / TW cgmh·nanshanlife·megabank·tigerair·cw·books / KR everytime·peterpanz·wooricard / HK parknshop·hktvmall / CN aliyun, 재검증 legacy zozotown·dcard·paypay·kkbox·note·pinkoi·smartnews·kkday·cookpad·bunjang. `run-queue.sh` Sol 4, Monitor로 진행. 반영 브랜치는 main 기준 새로 판다(착지 때).
