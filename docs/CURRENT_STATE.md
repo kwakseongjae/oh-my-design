@@ -13,7 +13,10 @@
   - 브랜드 전환 영상 `claudedocs/3d-hero/switch/switch.mp4`(16초 1080p60, 프레임 단위 캡처 `capture.mjs`), 노트 `claudedocs/3d-hero/3d-hero-notes.html` 재생성(5.2MB, 전환 영상 포함). 아티팩트 서버는 여전히 "endpoint not found". Threads #6 초안을 이 영상 기준으로 갱신.
   - **#110 수정 `903c0b2d`:** hangul HG-12가 단독 HTML에서 첫 한글 웹 글꼴 로드를 요구, check.mjs WARN(원래 덱에서 재현), fixtures/deck. R2 break 모드는 hangul의 동사로 두는 것을 추천(새 스킬 아님) — 다음 차례.
   - **머지 날 주의:** `feat/skill-batch-nov`와 `feat/refs-batch6`(그리고 #108·#109)가 `catalog-meta.generated.ts`·`llms*.txt`·개수 표면을 함께 건드린다. 합칠 때 생성 파일은 손으로 풀지 말고 병합 후 `node web/scripts/sync-catalog.mjs`로 다시 만든다.
-  - **6차 반영(`feat/refs-batch6`, main 기준, 푸시):** toyokeizai·cgmh `cdfadfa2`, raksul `f0592819`, zozotown(legacy→verified) `8981dc7c` → **579 / 401 / 89 / 89**, 래칫 153. 헤드라인은 워커 자신의 cfg로 본 세션 재측정(전부 일치). 진행: sega(일치, 착지 중)·nanshanlife 재측정, 워커 4개 가동.
+  - **6차 반영(`feat/refs-batch6`, main 기준, 푸시):** toyokeizai·cgmh `cdfadfa2`, raksul `f0592819`, zozotown(legacy→verified) `8981dc7c`, sega `76f14436`, nanshanlife `2ac74d9c`(긴급 공지 팝업 → `--hide-overlays`), megabank(사기 경고 모달 닫기) → **582 / 404 / 89 / 89**, 래칫 153. 헤드라인은 워커 자신의 cfg로 본 세션 재측정(전부 일치). 재측정 도구 `scratchpad/rm6/rm.sh <id> <url> <locale> [probe 옵션]`.
+  - **dcard 보류:** 재측정 두 번 모두 사이트의 "연결 확인" 화면(봇 확인)이 덮음. 우회하지 않음 → 헤드라인 검증 불가로 반영 보류. 다음 세션에 한 번 더, 그래도 막히면 큐에서 뺀다.
+  - **hangul break 모드(R2) `a5af6d89`:** `break-data.json`(합성 최악 데이터) + `break.mjs`(360/390/1440, spill·clip·sideways·broken). 3D 템플릿 CTA가 "…혜택 | 받기"로 갈리는 것을 실제로 잡아 고침. 다음은 R3 `/brand-look`.
+  - 진행 중 워커: paypay·cygames·tigerair·kkbox. 큐 남은 것 약 20건.
 
 ## ▶ 2026-11-06 오후 · 3D·셰이더 스킬 개발 착수(오너 결정)
 
