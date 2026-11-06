@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 406,
-  "sources": 3486,
+  "references_with_verification_v2": 407,
+  "sources": 3502,
   "sources_by_kind": {
-    "brand-asset": 231,
+    "brand-asset": 236,
     "license": 141,
-    "official-doc": 1632,
-    "product-surface": 1482
+    "official-doc": 1640,
+    "product-surface": 1485
   },
   "references": {
     "104": {
@@ -10712,6 +10712,108 @@
           "kind": "brand-asset",
           "captured": "2026-11-03",
           "host": "www1.kiwoom.com"
+        }
+      ]
+    },
+    "kkbox": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "annual-report",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "ir.kkcompany.com"
+        },
+        {
+          "id": "brand-book",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "pkg.kfs.io"
+        },
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "pkg.kfs.io"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "company-contact",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkcompany.com"
+        },
+        {
+          "id": "footer-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "a-www.kfs.io"
+        },
+        {
+          "id": "group-company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkcompany.com"
+        },
+        {
+          "id": "group-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkcompany.com"
+        },
+        {
+          "id": "header-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "a-www.kfs.io"
+        },
+        {
+          "id": "home-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "a-www.kfs.io"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkbox.com"
+        },
+        {
+          "id": "reset-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "a-www.kfs.io"
         }
       ]
     },

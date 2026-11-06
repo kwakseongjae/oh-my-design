@@ -5991,30 +5991,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "kkbox",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-01",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 32,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 66,
+    "evidenceClaimCount": 66,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 16,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 1,
-    "interactiveComponentCount": 1,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 1
+    "tier1SourceCount": 16,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kkday",
@@ -13949,9 +13944,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 406,
+  "verified_v2": 407,
   "partial": 89,
-  "legacy_snapshot": 88,
+  "legacy_snapshot": 87,
   "total": 583
 } as const;
 

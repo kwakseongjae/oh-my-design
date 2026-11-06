@@ -1,30 +1,39 @@
 ---
 name: KKBOX
 colors:
-  primary: '#00b6e1'
-  brand: '#00b6e1'
+  primary: '#09cef6'
+  brand: '#09cef6'
   canvas: '#111111'
   foreground: '#ffffff'
-  on-primary: '#00b6e1'
+  cta-foreground: '#00b6e1'
   surface: '#f2f2f2'
+  feature-surface: '#232323'
+  card-surface: '#1e1e1e'
+  secondary-foreground: '#cdcdcd'
+  muted-foreground: '#a0a0a0'
+  footer-foreground: '#7d7d7d'
 typography:
   display-hero:
     fontSize: 120px
     fontWeight: 600
-    use: Hero headings, white on dark ground
+    use: Desktop hero h1 CSS at min-width 1024px; Work Sans is declared-only, with no loaded face established
   body:
+    fontSize: 16px
+    fontWeight: 400
+    use: Subscription paragraph CSS; feature-link labels also measured at 16px/400; the CSS root baseline is 14px
+  navigation:
     fontSize: 14px
     fontWeight: 400
-    use: Body copy, Helvetica Neue, quiet
+    use: Measured desktop header links, line-height 26.04px
   button:
     fontSize: 18px
     fontWeight: 500
-    use: Download CTA label
+    use: Measured first hero experience link, line-height 25px
 rounded:
-  sm: 30px
-  md: 30px
-  lg: 30px
-  full: 9999px
+  none: 0px
+  card: 12px
+  feature: 17px
+  action: 30px
 spacing:
   sm: 16
   base: 48
@@ -37,11 +46,38 @@ components:
     padding: 16px 48px
     height: 57px
     typography: 18px / 500
-    use: 'Primary download CTA, light pill floating on #111111 ground'
-fonts:
-  roles:
-    sans: Work Sans
-    mono: SF Mono
+    hover: '#ffffff'
+    pressed: '#ffffff'
+    use: 'Link: first 立即免費體驗 in .key-vision, href /get-app, on the #111111 homepage. Hover and press brighten the pill; focus is the browser auto ring.'
+  nav-feature:
+    type: button
+    textColor: '#ffffff'
+    rounded: 0px
+    padding: 0px
+    height: 16px
+    typography: 14px / 400
+    hover: 'fg #09cef6; ::after border-bottom 1px solid #09cef6'
+    use: 'Link: header 特色功能, href /tw/tc/feature. Transparent over the header''s rgba(18, 18, 18, 0.8) surface. Press was unmeasured; focus is browser auto.'
+  nav-download:
+    type: button
+    textColor: '#09cef6'
+    rounded: 0px
+    padding: 0px
+    height: 16px
+    typography: 14px / 400
+    hover: '::after border-bottom 1px solid #09cef6'
+    pressed: '::after border-bottom 1px solid #09cef6'
+    use: 'Link: header 下載, href /tw/tc/download. Transparent over the header''s rgba(18, 18, 18, 0.8) surface; its cyan label stays cyan.'
+  lossless-more:
+    type: button
+    textColor: '#cdcdcd'
+    rounded: 0px
+    padding: 0px
+    height: 22px
+    typography: 16px / 400
+    hover: 'label span text-decoration: underline solid #cdcdcd'
+    pressed: 'label span text-decoration: underline solid #cdcdcd'
+    use: 'Link: 了解更多, href /service/lossless/tw, transparent on the #232323 lossless panel. The anchor is 511px wide; the visible label span is 64px wide.'
 ---
 
 # Design System Inspiration of KKBOX
@@ -50,114 +86,137 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-KKBOX wraps its interface in a near-black, cinematic canvas where the music itself feels like the source of light. The ground is a deep #111111 that recedes into the background, letting album art, hero photography, and oversized white display type carry the visual weight. A single signature accent — the KKBOX cyan-blue #00B6E1 — punches through the darkness, reserved for the moments that matter most, like the download call to action. The mood is premium and audio-forward, the kind of room you'd want to sit in with headphones on. Typography does the heavy lifting here: Work Sans at hero scale (up to 120px) gives the page an editorial, almost poster-like confidence. Softly rounded pill buttons and generous spacing keep the experience calm rather than busy, so the brand feels less like a utility and more like a stage.
+KKBOX is a Taiwan-origin music streaming service within KKCompany Technologies. The group's annual report dates its Taiwan launch to 2005. Its identity connects listening with being heard: the official logo explanation describes changing the musical lowercase “b” into an uppercase “B” as the service expanded into music and podcasts. The open-box icon represents sound moving between creators and listeners. [Company history](https://ir.kkcompany.com/files/uploads/%E5%85%AC%E9%96%8B%E8%AA%AA%E6%98%8E%E6%9B%B8/2023%20Annual%20Report%2020240607_Final.pdf), [official brand guide](https://www.kkbox.com/about/tw/zh-tw/logo).
 
-### Primary tasks
+The homepage gives that identity a dark stage: a near-black `#111111` canvas, large white lettering, layered coloured background shapes, and pale pill actions. The cyan navigation and the quieter cyan CTA label are distinct colours. Feature panels introduce album imagery and product illustrations below the typographic hero; the page continues into subscriptions and FAQs. These are observations of the captured homepage, rather than a rule for every KKBOX surface.
 
-- Discover and play music in a distraction-free space
-- Download the app from the page's single call to action
-- Browse the album art and photography on the page
+KKBOX's current evolution also extends beyond listening. The company announced KKBOX ONE in May 2026, connecting subscriptions across video, entertainment, daily living, dining and travel through one account. That is product context; this reference's interface measurements come from the public homepage. [KKBOX ONE announcement](https://www.kkcompany.com/en-us/newsroom/kkbox-launches-kkbox-one/).
+
+The measured homepage is the Taiwan Traditional Chinese edition (`www.kkbox.com/tw/tc/`), reached from the global URL with HTML language `zh-hant`.
+
+#### Primary tasks
+
+- Explore music-service features, including lossless listening and social listening.
+- Follow “立即免費體驗” to `/get-app` or review subscription options.
+- Browse feature imagery and the service FAQs.
 
 ### Brand Narrative
 
-KKBOX is Taiwan's pioneering music-streaming service, the audio flagship of the KKCompany group. Its story is one of being first and staying premium — a service that helped define what streaming felt like in its region and has carried a refined, design-led sensibility ever since. The near-black canvas, the singular cyan accent, and the editorial display type all tell the same story: this is a brand that treats music as the main event and the interface as a quiet, cinematic frame around it.
+The company's history records KKBOX's Taiwan launch in **2005**, its podcast-service launch in **2020**, and a Hi-Res format in **2021**. The current brand guide connects the uppercase B to broader sound experiences and describes an opened box where creators can be heard and listeners can explore. Its branding therefore has documented roots in both listening and participation. [Company history](https://ir.kkcompany.com/files/uploads/%E5%85%AC%E9%96%8B%E8%AA%AA%E6%98%8E%E6%9B%B8/2023%20Annual%20Report%2020240607_Final.pdf), [brand explanation](https://www.kkbox.com/about/tw/zh-tw/logo).
+
+The **2026** KKBOX ONE announcement extends the service into subscriptions across everyday activities. It supports describing an expanding product ecosystem, without assigning those other products the homepage's measured design tokens. [Official announcement](https://www.kkcompany.com/en-us/newsroom/kkbox-launches-kkbox-one/).
 
 ### Principles
 
-- **One accent, used with intent** — the cyan #00B6E1 appears where decisions happen, never as decoration.
-- **Darkness as a stage** — the #111111 ground exists to make music, art, and white type glow.
-- **Editorial scale** — oversized Work Sans display type gives every page a poster's confidence.
-- **Calm over clutter** — generous spacing and soft pills keep the experience premium and unhurried.
+The official About page's values are **Daring, Curiosity and Diversity**. Its stated mission links diverse voices, creators being seen and heard, and listeners finding resonance. For the measured homepage, retain the large white hierarchy, dark surfaces, rounded actions and specific hover feedback as implementation observations. [Official values](https://www.kkbox.com/about/tw/zh-tw).
 
 ### Personas
 
-- **The Headphone Listener** — wants an immersive, distraction-free space to discover and play music; rewarded by the cinematic dark canvas and uncluttered hero.
-- **The Returning Subscriber** — values a premium, dependable service from a regional pioneer; the singular clear CTA makes the next action obvious.
-- **The Design-Conscious Browser** — appreciates editorial typography and restraint; drawn in by the oversized Work Sans display type and the disciplined single accent.
+No first-party personas were verified.
 
 ## Colors
 
-The palette is intentionally narrow and high-contrast, built for a dark environment where one accent has to do all the work.
+The official brand guide specifies **`#09cef6`**, RGB 9 / 206 / 246, Pantone 305C. The live header uses that colour for its highlighted download link and for the feature link's hover label and underline. The hero CTA retains the darker **`#00b6e1`** label. Preserve this distinction. [Official colour specification](https://www.kkbox.com/about/tw/zh-tw/logo).
 
-- **Ground / Canvas** — `#111111` (near-black) — the dominant surface behind nearly everything; sets the cinematic, music-forward mood.
-- **Brand Accent** — `#00B6E1` (KKBOX cyan-blue) — the single signature color; used sparingly for the download CTA text and brand moments so it never loses impact.
-- **Light Button Surface** — `#F2F2F2` — a pale neutral pill surface that floats on the dark ground and carries the cyan accent.
-- **Display Text** — `#FFFFFF` (white) — headings and hero copy set in white for maximum legibility against the near-black canvas.
+| Role | Value | Evidence and use |
+|---|---|---|
+| Primary / brand | `#09cef6` | Official standard colour; computed header link colour and hover underline |
+| Canvas | `#111111` | Homepage CSS body background; measured background census and secondary-link backdrop |
+| Foreground | `#ffffff` | White hero CSS and the most frequent paragraph ink: 10 paragraphs |
+| CTA foreground | `#00b6e1` | First “立即免費體驗” link label at rest, hover and press |
+| Pale action surface | `#f2f2f2` | Hero CTA rest background; becomes `#ffffff` on hover and press |
+| Feature surface | `#232323` | Measured lossless-panel ancestor background |
+| Card surface | `#1e1e1e` | Background census and desktop feature-card CSS |
+| Secondary foreground | `#cdcdcd` | Lossless link label; also paragraph ink on 5 paragraphs |
+| Muted foreground | `#a0a0a0` | Subscription-options link and one paragraph |
+| Footer foreground | `#7d7d7d` | Footer links in the survey |
 
-Role discipline matters more than palette size: the cyan is an event, not a texture. Let the near-black ground and white type establish the room, and bring #00B6E1 in only at the decision point.
+The header behind the navigation is `rgba(18, 18, 18, 0.8)`. These values are measured or directly declared; the census did not expose a first-party custom-property palette.
 
 ## Typography
 
-Two families split the labor. **Work Sans** is the display voice — confident, oversized, and editorial — running all the way up to 120px at weight 600 for hero headings, always in white on the dark ground. **Helvetica Neue** handles body copy at a quiet 14px, stepping back so the display type and album art can lead. The contrast between a 120px hero and 14px body is dramatic by design: it creates a poster-like hierarchy where there's never any doubt about where to look first. Keep headings white; keep body restrained; let scale, not color, signal importance.
+Keep the evidence classes separate:
+
+- **Official product use:** no opened first-party document establishes a named typeface as the product UI face.
+- **Live-loaded:** the homepage census reports `fonts.loaded: []` and `fontFaces: []`. No face qualifies for a live specimen or a typography-family token from this capture. This does not prove that the page rendered without locally installed fonts.
+- **Official distributed font assets:** none opened. The About page offers a brand asset pack; its download was not followed. The opened 2020 brand book is a document, not a verified font binary; its typeface text extraction is encoded and its PDF screenshots were unavailable.
+- **Declared-only:** body CSS lists `"Helvetica Neue", Arial, "PingFang TC", "Heiti TC", 微軟正黑體, sans-serif`. The hero prepends `"Work Sans", "Franklin Gothic"`. The census's sampled native button declares `Arial`. These are declarations, with no loaded-face identification. Work Sans and Helvetica Neue retain this metadata, without specimens.
+- **Unresolved:** the actual rendered face identity was not established; no named family is promoted to the family tokens.
+
+**Substitute: none chosen.**
+
+The hierarchy remains useful without asserting a rendered family. The homepage stylesheet declares the desktop hero at **120px / 600**, white, with line-height **1.1719** at widths from **1024px**. Its root baseline is **14px**. Subscription paragraphs are **16px / 400** in CSS; the measured lossless and subscription links are also **16px / 400**. Header links measure **14px / 400**, line-height **26.04px**. The hero CTA measures **18px / 500**, line-height **25px**. [Homepage stylesheet](https://a-www.kfs.io/static/css/page-home-86d44e85ce.css), [reset stylesheet](https://a-www.kfs.io/static/css/reset-fce0431c69.css).
 
 ## Layout
 
-KKBOX leans on the dark canvas as negative space rather than filling it. Hero sections give oversized Work Sans display type room to breathe, with generous padding around the pill CTA (16px 48px) so the interactive target never feels crowded. The composition is vertical and editorial — large headline, supporting imagery, a single clear action — reading more like a music poster than a dense product page. Because the ground is near-black, content blocks are defined by spacing and contrast instead of heavy dividers or boxed containers, keeping the page cinematic and uncluttered.
+Preserve the homepage's vertical sequence: large typographic hero, lossless feature panel, horizontal feature cards, subscription area, FAQs and footer. The full-page capture shows substantial dark space between sections. The hero's main action has `16px` vertical and `48px` horizontal padding; those are component dimensions, not evidence of a universal spacing scale.
+
+The stylesheet caps the hero slogan at **1144px**, the main feature panel at **1096px**, and the lower homepage container at **1030px**. At desktop widths the main feature panel uses two columns and the smaller feature cards use a horizontally scrolling row. These are CSS declarations, corroborated by the desktop composition. [Homepage stylesheet](https://a-www.kfs.io/static/css/page-home-86d44e85ce.css).
 
 ### Responsive Behavior
 
-The blob captures KKBOX at desktop scale, where the hero headline reaches up to 120px in Work Sans. The system's logic — a near-black ground, a single light pill CTA, and a dramatic gap between display and body type — adapts naturally to smaller viewports by scaling the oversized headline down while preserving the same hierarchy and the same generous 16px 48px tap padding on the pill. The download button's 57px height already sits comfortably above a thumb-friendly minimum, so the primary action stays easy to hit on a phone. (Exact mobile breakpoints and resized values were not captured in this inspection; describe responsive intent qualitatively rather than asserting specific small-screen numbers.)
+The browser capture is **1440 × 1000** only. The homepage CSS declares hero sizes of **45px** by default, **90px** from **768px**, and **120px** from **1024px**. The CTA's `16px 48px` padding is declared outside those media queries. The header stylesheet switches from its mobile header to its desktop header at **1024px**. These are stylesheet facts; mobile rendering and touch behaviour were not tested. [Homepage CSS](https://a-www.kfs.io/static/css/page-home-86d44e85ce.css), [header CSS](https://a-www.kfs.io/static/external/portal-menu/header-5e41cb8c98.css).
 
 ## Elevation & Depth
 
-Depth here is achieved through contrast, not heavy shadow. The light #F2F2F2 pill reads as elevated simply because it's a bright surface lifting off the #111111 ground — the tonal jump does the work a drop shadow normally would. The fully rounded 30px radius on the button softens its edge and reinforces the sense of a discrete, tappable object resting on the dark plane. Keep elevation cues subtle and tonal: let brightness and rounding signal interactivity rather than stacking visible shadow layers.
+The pale `#f2f2f2` CTA contrasts with the `#111111` ground and has `box-shadow: none`. The measured lossless-panel ancestor also has no shadow; its `#232323` surface separates it from the page. Homepage CSS declares **17px** corners for that desktop panel and **12px** corners for the smaller feature cards. Keep the **30px** action radius separate from those panel radii.
+
+The header supplies a translucent surface; its stylesheet declares backdrop blur. This is not evidence of a global elevation scale. [Header stylesheet](https://a-www.kfs.io/static/external/portal-menu/header-5e41cb8c98.css).
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.none`: `Depth via tonal contrast — bright pill on near-black ground, not drop shadow`
+- `shadow.none`: `none`
 
 ## Motion & Easing
 
-No motion timings, durations, or easing curves were captured in this inspection, so none are asserted here. In keeping with the brand's calm, cinematic character, any motion should feel unhurried and smooth — gentle transitions that match the premium, music-forward atmosphere rather than snappy or playful animation. Treat motion as the brand treats color: sparingly and with intent.
+The hero CTA's raw computed transition is **`background-color 0.2s ease 0s`**. The other four links report **`all 0s ease 0s`** on the link itself. That does not specify the duration of their pseudo-elements or ancestors. No shared motion system or reduced-motion behaviour was verified.
 
 ---
-**Verified:** 2026-06-01
-**Tier 1 sources:** https://www.kkbox.com (live homepage — colors, typography, download button), https://www.kkcompany.com (KKCompany group brand site), https://github.com/KKBOX (brand-owned engineering org)
-**Tier 2 sources:** getdesign.md/kkbox — NOT LISTED. refero — not listed.
-**Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof block)
+
+**Verified:** 2026-11-06. **Proof:** see `verification.md` for source quotations, census, control identities, state limitations and changes since the prior reference. Homepage tokens describe the captured Taiwan marketing homepage.
 
 ## Components
 
-### Download Button
+All measurements below are from the desktop homepage. Each action is an anchor link. The measured links have no border or box-shadow at rest.
 
-**Default (light pill)**
-- Background: #F2F2F2
-- Text: #00B6E1
-- Border: none
-- Radius: 30px
-- Padding: 16px 48px
-- Height: 57px
-- Font: 18px / 500
-- Use: Primary download call to action; a light pill that floats on the #111111 ground and carries the brand cyan as its label.
+| Control | Rest identity | Measured interaction |
+|---|---|---|
+| Hero “立即免費體驗” | 204 × 57px; 30px radius; `16px 48px` padding; 18px / 500; `#f2f2f2` background and `#00b6e1` label | Hover and press change only its background to `#ffffff` within the compared scope |
+| Header “特色功能” | 56 × 16px anchor; 0px radius and padding; 14px / 400; transparent with white label | Hover changes the label to `#09cef6` and paints a 1px cyan bottom border on `::after`; press unmeasured |
+| Header “下載” | 28 × 16px anchor; 0px radius and padding; 14px / 400; transparent with `#09cef6` label | Hover and press paint a 1px `#09cef6` bottom border on `::after` |
+| Lossless-panel “了解更多” | 511 × 22px anchor; 0px radius and padding; 16px / 400; transparent with `#cdcdcd` label on `#232323` | Hover and press underline the child label span in `#cdcdcd` |
+
+The survey records two pale “立即免費體驗” links with the same 204 × 57px geometry, plus an inline FAQ experience link. The lossless control is a text link inside a panel; its 511px anchor width is not the width of a full-card link. Its visible label span measures 64 × 22px.
+
+The secondary “了解 KKBOX 所有訂閱方案” link measures 204.1 × 26px, 0px radius and padding, 16px / 400, with `#a0a0a0` text over `#111111`. Its pointer states were unmeasured and its only focus change was the browser ring, so it is documented here without an interactive component token.
+
+No visible search input or full-card anchor appeared in the homepage survey. The header screenshot shows a search opener; its closed-panel input was not measured.
 
 ### States
 
-The captured inspection documents the download button's default (resting) state: an #F2F2F2 pill with #00B6E1 label text, 30px radius, 57px height, and 18px/500 type on the #111111 ground. Hover, pressed, focus, and disabled states were not captured in this live inspection, so they are intentionally left undocumented rather than invented. For consistency, any future interactive states should stay within the same palette — adjusting the pill's brightness or the cyan's intensity rather than introducing new hues — to preserve the one-accent discipline.
+**Hover:** the hero CTA turns white; “特色功能” turns cyan and gains a cyan pseudo-element underline; “下載” gains that underline; the lossless link's label gains text underlining. **Pressed:** the CTA, download-nav and lossless-link readings match their hover appearance while `:active` matches. The feature-nav press is **UNMEASURED** because `:active` did not match. The subscription-options link's hover and press are **UNMEASURED** because `:hover` did not match.
+
+**Keyboard focus:** all five controls were reached by real Tab navigation. Their only measured focus difference was `rgb(0, 95, 204) auto 1px off 1px`, Chromium's own outline; it is not a KKBOX focus token. The focus differences did not persist after blur. **Disabled:** no disabled variant was measured.
+
+The probe compared the control and its pseudo-elements, descendants and their pseudo-elements, and three ancestor levels, across computed visual properties and relevant image/SVG attributes. There were no descendants for the CTA or nav links and one label span for each content link. This scope excludes pixel-only effects and unrelated siblings.
 
 ## Do's and Don'ts
 
-### Do
-- Keep the canvas near-black (#111111) so album art and white type carry the light.
-- Reserve the cyan #00B6E1 for the single most important action.
-- Go big with Work Sans display type for an editorial, poster-like hero.
-- Use the pale #F2F2F2 pill to lift the CTA off the dark ground.
-
-### Don't
-- Scatter the cyan accent across many elements — it loses its punch.
-- Crowd the hero; the dark negative space is part of the brand.
-- Set headings in a color other than white on the dark canvas.
-- Square off the buttons — the soft 30px pill is part of the character.
+- Keep the measured homepage's near-black canvas, white hierarchy and pale rounded CTA.
+- Distinguish official cyan `#09cef6` from CTA-label cyan `#00b6e1`.
+- Reproduce the measured hover feedback: white CTA fill, cyan navigation underline, and underlined feature-link label.
+- Write **KKBOX** in uppercase. The official guide explains the uppercase B and forbids changing logo colour, angle or letter spacing, adding an outline, or adding shadow effects. Use the official logo artwork and its clear space. [Logo rules](https://www.kkbox.com/about/tw/zh-tw/logo).
+- Preserve the distinction between declared font names and loaded faces; no substitute has been selected.
 
 ## Voice & Tone
 
-KKBOX speaks like a confident host of a premium listening room — calm, music-forward, and unhurried. The tone is more cinematic than promotional: it trusts the work (the music, the art) to do the persuading, so copy stays clean and direct rather than shouty. Calls to action are simple and singular, matching the interface's one-accent discipline. The voice carries the assurance of a pioneer who's been doing this longer than most, without needing to say so loudly.
+The About page names **Daring, Curiosity and Diversity** and presents sound as a source of inspiration. The homepage's “LISTEN, AND BE HEARD” pairs listening with expression; “立即免費體驗” gives the next action directly. Use those observed messages and stated values as the voice reference. A formal tone-of-voice rule set was not verified. [About KKBOX](https://www.kkbox.com/about/tw/zh-tw).
 
 ## Agent Prompt Guide
 
-When generating KKBOX-flavored UI, lead with the atmosphere: a near-black #111111 canvas, white Work Sans display type at large scale, and exactly one accent — cyan #00B6E1 — held in reserve for the primary action. Build the primary CTA as a light #F2F2F2 pill with #00B6E1 label text, a 30px radius, 57px height, and 16px 48px padding at 18px/500. Set body copy in Helvetica Neue at 14px and keep it quiet. Phrase prompts around restraint: "single cyan accent on a near-black ground," "oversized editorial headline," "soft pill CTA." Avoid asking for additional colors, shadows, or squared corners — the brand's identity lives in the discipline of one accent, one ground, and one bold typeface.
+“Build a KKBOX homepage-style composition with a `#111111` canvas, large white display lettering, layered background shapes and feature imagery. Use a 57px-high pale `#f2f2f2` action link with `#00b6e1` text, a 30px radius, `16px 48px` padding and 18px / 500 labels. Its background becomes `#ffffff` on hover and press. Use `#09cef6` for highlighted navigation and hover underlines. Separate the `#232323` feature panel from `#1e1e1e` desktop cards. Preserve typography sizes; a loaded font family has not been established. Substitute: none chosen.”
 
 ## Governance
 
