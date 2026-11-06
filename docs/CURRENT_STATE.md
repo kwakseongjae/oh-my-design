@@ -7,6 +7,12 @@
 
 - **결정(오너 11/6):** 3D는 스킬 하나로 묶고 엔진 분기(three.js / Blender). `omd-taste` 이름 유지. **머지는 레퍼런스·스킬 작업이 쌓이면 한꺼번에** — PR #108·#109 보류. 11/11 글의 링크 댓글은 #109가 배포돼야 `/go/`가 살아난다. 그 전이면 추적 없는 `/ko/design-systems?region=KR`로 대체.
 - **범위:** #104 `omd-3d-hero` 한 줄기 먼저(장면 유형 1개 × 레퍼런스 3곳 toss·karrot·baemin × 엔진 2개, 같은 HTML 틀) → #111 셰이더 고도화(cjk-type-shader 어두운 바탕 모드, shader-hero 검증·토큰 공유) → 결과를 아티팩트로. 브랜치 `feat/skill-batch-nov`(#108과 별개, 열어 둔 채로 쌓음).
+- **결과(11/6 저녁, `feat/skill-batch-nov` 푸시·머지 보류, #108과 별개):**
+  - `omd-3d-hero` v0(`723354d9`·`2d48fa18`): 장면 명세 하나 → three.js(0.186.1) / 헤드리스 Blender 5.2.2. 정지 컷 우선, 일시정지 버튼(WCAG 2.2.2), 프레임 예산(50fps↓ 해상도, 30fps↓ 정지 컷), 컨텍스트 손실·셰이더 컴파일 실패 시 정지 컷 복귀. verify 5경로(데스크톱·폰·동작 줄이기·WebGL 없음·셰이더 실패) + 일시정지 + 프레임 시간. 토스·당근·배민 × 두 엔진 6조합 전부 통과(헤드라인 최저 11.05:1, three 8.3ms 중간값). 공개 스킬로 12/33/32 동기화, asset-curator 3D 라우팅 수리.
+  - 셰이더 #111(`db165c43`): cjk-type-shader 어두운 바탕 = 금니(감지) 자동 전환, 글자 핵심부 가독성 검사(밝은 8.01 / 금니 4.58:1). shader-hero ripple 형태 + 두 잉크 픽셀 전수·정지 컷 우선·프레임 시간 검사(둘 다 18.81:1, 다른 색 0). 워크트리 에이전트가 사용량 한도로 멈춰 메인에서 마무리, 워크트리 제거.
+  - 레퍼런스 조사 `docs/research/2026-11-06-3d-shader-references.md`(기능 브랜치에 커밋).
+  - **아티팩트 서버 불통**: claude-artifacts MCP가 모든 호출에 "endpoint not found"(가이드·목록·게시). 대신 한 파일 노트 `claudedocs/3d-hero/3d-hero-notes.html`(1.3MB, 실시간 three.js + Blender 영상·정지 컷 + 셰이더 전후, file://로 열림). 서버 복구되면 `claudedocs/3d-hero/artifact/publish.html`(미디어 없는 41KB판)이나 single.html로 게시.
+  - Threads #6(11/28) 3D 공개 글 초안 → THREADS_PLAN.
 
 ## ▶ 2026-11-06 · 다음 계획 결정(오너) · 6갈래 착수
 
