@@ -1,7 +1,20 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-05 저녁** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-06 낮** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-06 · 다음 계획 결정(오너) · 6갈래 착수
+
+- **결정(오너 11/6):** Threads 주 2회. 첫 데이터 스토리 = 한국 기업 브랜드 컬러 지도. Threads는 한국 기업 중심, 대만은 상황 따라 번역본(omd-locale-adapter, 오너가 고른 글만).
+- **새 이슈:** #103 스킬 트렌드 조사(research) · #104 Blender풍 배경 + three.js 스킬(engine) · #105 브랜드 컬러 지도 · #106 hangul PPT 비교 → Threads · #107 Threads 4주 8개 초안(docs). 대기열 정본 = `claudedocs/asks/queue.json`(`asktrack queue show`), audit 0.
+- **진행(11/6 낮):**
+  - #103 조사 완료 → `docs/research/2026-11-06-skill-trends.md`. 9/29 이후 빨라진 건 v2·주간 출시하는 취향형(impeccable·taste·hallmark·Emil), 카탈로그와 우리는 식음(★567, 일 1.2). 권고: R1 #104는 `omd-3d-hero` 하나(Blender는 채널, three.js API 팩 안 만듦), R2 hangul 깨뜨리기 모드, R3 /brand-look을 실제 회사 테마+4폭 검사형으로. omd-taste 이름이 taste 스킬과 겹침(오너 판단).
+  - PR #108 `feat/skill-feedback-batch`(#78·#80·#83, 스킬 문서만) — 머지 GO 대기. #86·#87은 이미 main에 있어 근거 달고 닫음.
+  - PR #109 `growth/threads-kit-nov`(go-link 3개) — 11/11 전 머지 GO 필요.
+  - #105 컬러 지도: 검증 KR 167곳 집계, 카드 5장 `claudedocs/viral/2026-11-06-color-map/`, 초안 2편은 `docs/THREADS_PLAN_2026-11.md`(4주 8편 일정 포함).
+  - #104 설계안 `docs/SKILL_3D_HERO_DESIGN_2026-11-06.md` — 하나로 묶을지 오너 판단 대기, 짓지 않음.
+  - #106 hangul PPT: Codex 두 갈래(스킬 없음 / hangul만)를 HOME·CODEX_HOME 분리로 재실행 중. 첫 실행은 사용자 폴더의 slides-grab을 두 쪽 다 읽어서 폐기(`scratchpad/ppt/run1`).
+- 컨셉 순서와 700 확충(백그라운드), ja/zh-tw 상세, 700 출시는 11/5 답변대로 유지.
 
 ## ▶ 2026-11-05 밤(2) · /hangul 히어로 투어 운영 반영(오너 "머지 ㄱㄱ")
 
