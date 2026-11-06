@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T00:00:00Z",
+ "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 576,
+ "count": 578,
  "items": [
   {
    "id": "104",
@@ -1610,6 +1610,29 @@
    ],
    "has_personas": false,
    "category_raw": "process-intelligence"
+  },
+  {
+   "id": "cgmh",
+   "primary_color_hex": "#f68825",
+   "category": "healthcare",
+   "visual_theme": "Chang Gung Memorial Hospital is a Taiwanese hospital system founded in 1976. Its official introduction describes a nonprofit medical mission spanning service, teaching and research, with patients placed first. The public website brings that service role into i",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "cgv",
@@ -12564,6 +12587,28 @@
    "signature_motion": "Balance updates slide-and-fade (never cross-fade money); daily-interest triggers a blue50 flash + spring number tick-up.",
    "has_personas": true,
    "category_raw": "Fintech"
+  },
+  {
+   "id": "toyokeizai",
+   "primary_color_hex": "#0f9cc4",
+   "category": "consumer-tech",
+   "visual_theme": "Toyo Keizai Online is the Japanese business-news service of Toyo Keizai Inc. The publisher dates its founding to November 15, 1895, and its history records the online service's launch in June 2003. The product describes its purpose as helping people make bette",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "toyota",

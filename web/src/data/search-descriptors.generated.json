@@ -4010,6 +4010,65 @@
     ]
    }
   },
+  "cgmh": {
+   "hash": "bff4627c96fd059a",
+   "terms": {
+    "en": [
+     "hospital system website",
+     "healthcare appointment booking",
+     "find a doctor",
+     "warm orange on white",
+     "patient-first service",
+     "medical line icons",
+     "rounded outlined links",
+     "brown footer",
+     "service directory navigation",
+     "symptom reference",
+     "nonprofit medical care",
+     "traditional chinese site"
+    ],
+    "ko": [
+     "병원 웹사이트",
+     "의료 예약 접수",
+     "의사 찾기",
+     "흰색 바탕 따뜻한 주황",
+     "환자 중심 서비스",
+     "의료 라인 아이콘",
+     "둥근 윤곽선 링크",
+     "갈색 푸터",
+     "진료과 선택",
+     "증상 안내",
+     "비영리 의료기관"
+    ],
+    "ja": [
+     "病院ウェブサイト",
+     "診察予約",
+     "医師検索",
+     "白地に暖かいオレンジ",
+     "患者第一",
+     "医療ラインアイコン",
+     "角丸のアウトラインリンク",
+     "ブラウンのフッター",
+     "診療科の選択",
+     "症状案内",
+     "非営利の医療機関"
+    ],
+    "zh": [
+     "醫院網站",
+     "預約掛號",
+     "找醫師",
+     "白底暖橘色",
+     "病患優先",
+     "醫療線條圖示",
+     "圓角外框連結",
+     "咖啡色頁尾",
+     "科別選擇",
+     "症狀參考",
+     "非營利醫療",
+     "服務導覽"
+    ]
+   }
+  },
   "cgv": {
    "hash": "de64ddaf90ab8912",
    "terms": {
@@ -31775,6 +31834,71 @@
      "商品揭露頁面",
      "24小時客服",
      "金融資訊網站"
+    ]
+   }
+  },
+  "toyokeizai": {
+   "hash": "227dd2e63cd34988",
+   "terms": {
+    "en": [
+     "business news site",
+     "japanese news media",
+     "editorial layout",
+     "dense news homepage",
+     "article rankings",
+     "topic following",
+     "paid membership",
+     "cyan links",
+     "charcoal text",
+     "slate navigation",
+     "pale grey background",
+     "orange accent button",
+     "restrained interactions"
+    ],
+    "ko": [
+     "비즈니스 뉴스",
+     "일본 뉴스 매체",
+     "에디토리얼 레이아웃",
+     "고밀도 홈페이지",
+     "기사 랭킹",
+     "토픽 팔로우",
+     "유료 회원제",
+     "시안 링크",
+     "차콜 텍스트",
+     "슬레이트 내비게이션",
+     "옅은 회색 배경",
+     "오렌지 포인트 버튼",
+     "절제된 인터랙션"
+    ],
+    "ja": [
+     "経済ニュース",
+     "ビジネスメディア",
+     "編集型レイアウト",
+     "高密度なトップページ",
+     "記事ランキング",
+     "トピックフォロー",
+     "有料会員",
+     "シアンのリンク",
+     "チャコールの見出し",
+     "スレートのナビ",
+     "淡いグレー背景",
+     "オレンジの会員ボタン",
+     "控えめなインタラクション"
+    ],
+    "zh": [
+     "商業新聞網站",
+     "日本新聞媒體",
+     "編輯式版面",
+     "高密度首頁",
+     "文章排行榜",
+     "主題追蹤",
+     "付費會員",
+     "青色連結",
+     "炭灰標題",
+     "石板灰導覽列",
+     "淺灰背景",
+     "橘色會員按鈕",
+     "克制的互動效果"
     ]
    }
   },

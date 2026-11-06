@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 397,
-  "sources": 3376,
+  "references_with_verification_v2": 399,
+  "sources": 3399,
   "sources_by_kind": {
-    "brand-asset": 228,
+    "brand-asset": 231,
     "license": 141,
-    "official-doc": 1561,
-    "product-surface": 1446
+    "official-doc": 1573,
+    "product-surface": 1454
   },
   "references": {
     "104": {
@@ -2138,6 +2138,72 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "www.celonis.com"
+        }
+      ]
+    },
+    "cgmh": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "anniversary",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "homepage-script",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "hospital-locations",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "icon-font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cgmh.org.tw"
         }
       ]
     },
@@ -20252,6 +20318,90 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "toss.im"
+        }
+      ]
+    },
+    "toyokeizai": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about-service",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "toyokeizai.net"
+        },
+        {
+          "id": "biz-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "biz.toyokeizai.net"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.toyokeizai.net"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "toyokeizai.net"
+        },
+        {
+          "id": "corp-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "corp.toyokeizai.net"
+        },
+        {
+          "id": "corporate",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.toyokeizai.net"
+        },
+        {
+          "id": "desktop-shared-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "tk.ismcdn.jp"
+        },
+        {
+          "id": "desktop-top-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "tk.ismcdn.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.toyokeizai.net"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "toyokeizai.net"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.toyokeizai.net"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "toyokeizai.net"
+        },
+        {
+          "id": "renewal-campaign",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "biz.toyokeizai.net"
         }
       ]
     },

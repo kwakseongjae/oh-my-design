@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-04",
+  "generated_at": "2026-11-06",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 576,
+  "count": 578,
   "counts": {
-    "verified_v2": 397,
+    "verified_v2": 399,
     "partial": 89,
     "legacy_snapshot": 90,
-    "total": 576
+    "total": 578
   },
   "items": [
     {
@@ -766,6 +766,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cgmh",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6011,6 +6022,17 @@
       "evidence_coverage": 1,
       "surface_count": 4,
       "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "toyokeizai",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
       "conflict_count": 0,
       "reason_codes": []
     },
