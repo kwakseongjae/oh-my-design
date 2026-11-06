@@ -11076,32 +11076,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "smartnews",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 68,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 2,
-    "componentCount": 7,
-    "interactiveComponentCount": 4,
+    "tokenSource": "live-extract",
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
+    "conflictCount": 0,
+    "tier1SourceCount": 22,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.429
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "snapchat",
@@ -14153,9 +14146,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 419,
+  "verified_v2": 420,
   "partial": 89,
-  "legacy_snapshot": 85,
+  "legacy_snapshot": 84,
   "total": 593
 } as const;
 

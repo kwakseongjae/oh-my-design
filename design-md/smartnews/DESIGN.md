@@ -1,89 +1,69 @@
 ---
 name: SmartNews
 colors:
-  primary: '#EB0B22'
-  brand: '#EB0B22'
-  canvas: '#FFFFFF'
-  foreground: '#000000'
-  muted: '#666666'
-  on-primary: '#FFFFFF'
-  surface: '#F5F5F5'
+  primary: '#0099eb'
+  canvas: '#ffffff'
+  on-primary: '#ffffff'
+  black: '#000000'
+  surface: '#f9f9f9'
+  red: '#fd4749'
+  blue: '#329fe7'
+  green: '#00cc8b'
+  orange: '#fb9200'
+  yellow: '#ffd700'
+  blue-100: '#f3f7fb'
+  gray-200: '#ececec'
+  gray-300: '#e0e0e0'
+  gray-500: '#bebebe'
+  gray-600: '#606060'
+  gray-700: '#4c4c4c'
+  gray-800: '#2b2b2b'
+  gray-900: '#1c1c1c'
+  grey36: '#363636'
+  greyf8: '#f8f8f8'
+  yellow-500: '#e19d00'
 typography:
-  headline:
-    fontSize: 18px
+  action:
+    fontSize: 12px
     fontWeight: 700
-    lineHeight: 1.3
-    use: Bold scannable article headlines
-  body:
-    fontSize: 16px
-    fontWeight: 400
     lineHeight: 1.5
-    use: Article preview / body text
-  meta:
-    fontSize: 13px
+    use: Visible labels of the Japanese homepage header action links; computed declaration only, rendered face unresolved.
+  search:
+    fontSize: 12px
     fontWeight: 400
-    lineHeight: 1.4
-    use: Source name, timestamp, channel labels
+    lineHeight: 1.55
+    use: Header search input; computed declaration only, rendered face unresolved.
+  edition-label:
+    fontSize: 12px
+    fontWeight: 300
+    use: Visible US版 child label; wrapper is 10px/400.
+  app-action-label:
+    fontSize: 14px
+    fontWeight: 600
+    use: Visible アプリの詳細 child label; wrapper is 10px/400.
+  feature-label:
+    fontSize: 14px
+    fontWeight: 300
+    use: Visible スマニューAI eyebrow on the lead story; headline metrics unresolved.
 rounded:
+  none: 0px
   sm: 4px
-  md: 8px
-  lg: 12px
-  full: 9999px
+  action: 5px
 spacing:
-  xs: 4
-  sm: 8
-  md: 12
-  base: 16
-  lg: 24
-  xl: 32
+  action-y: 11
+  primary-x: 25
+  secondary-x: 10
+  app-action-x: 14
 components:
-  tab-channel:
-    type: tab
-    backgroundColor: '#FFFFFF'
-    textColor: '#666666'
-    active: 'text #000000 bold, #EB0B22 underline bar'
-    use: Swipeable channel bar — core navigation
-  button-primary:
-    type: button
-    backgroundColor: '#EB0B22'
-    textColor: '#FFFFFF'
-    rounded: 8px
-    use: Key conversion action (Get the app, Subscribe)
-  button-secondary:
-    type: button
-    backgroundColor: '#FFFFFF'
-    textColor: '#000000'
-    border: 1px solid neutral
-    rounded: 8px
-    use: Lower-emphasis action
-  button-download:
-    type: button
-    backgroundColor: '#000000'
-    textColor: '#FFFFFF'
-    rounded: 12px
-    typography: / 700
-    use: App Store / Google Play download tile
-  card-article:
-    type: card
-    backgroundColor: '#FFFFFF'
-    textColor: '#000000'
-    rounded: 8px
-    use: Headline + source + timestamp + thumbnail feed unit
-  card-image:
-    type: card
-    textColor: '#FFFFFF'
-    use: Featured story — photo fill, white headline over dark scrim
-  badge-breaking:
-    type: badge
-    backgroundColor: '#EB0B22'
-    textColor: '#FFFFFF'
-    rounded: 4px
-    typography: / 700
-    use: Breaking / live emphasis, uppercase
-fonts:
-  roles:
-    sans: system-ui
-    mono: system-ui
+  search-input:
+    type: input
+    rounded: 0px
+    height: 18.6px
+    padding: 0px
+    typography: 12px / 400
+    pressed: width 96px to 60px while the input is focused; height stays 18.6px
+    focus: width 96px to 60px; returns to 96px after blur; outline remains none
+    use: Header text input with placeholder キーワードで検索, transparent over the photographic hero. Rest foreground is black at 87% opacity. Keyboard focus and the focused mouse-pressed sample narrow the input; no form was submitted.
 ---
 
 # Design System Inspiration of SmartNews
@@ -92,330 +72,157 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-SmartNews (スマートニュース) is the machine-learning news-discovery app born in Japan and now read across 150+ countries — and its visual identity is built around a single, unmissable asset: a **bright, urgent red** (`#EB0B22`). News is time-critical and attention-competitive, and SmartNews's brand red functions like a newsstand flag or a breaking-news banner: it cuts through, it says *now*, it says *important*. The red is paired with crisp black-and-white for maximum legibility, because the entire premise of the product is **delivering the world's quality information to the people who need it**, fast, even on a poor connection (the app's "SmartView" technology renders articles instantly under bad signal). The aesthetic is therefore high-contrast, clean, and confident — closer to a well-designed newspaper masthead than a soft consumer app.
+SmartNews (スマートニュース) is a Japanese news-discovery company established in 2012. Its mission is “Delivering the world's quality information to the people who need it.” The product brings together news from a broad publisher network; its business page describes more than 3,000 media partners and its corporate homepage reports more than 400,000 articles delivered daily. Its company mission connects content-discovery algorithms with an interface made for smart devices. [Company overview](https://about.smartnews.com/en/about/company.html), [mission](https://about.smartnews.com/en/mission/), [business](https://about.smartnews.com/en/business/), [corporate homepage](https://about.smartnews.com/en/).
 
-The atmosphere is **fast, trustworthy, and information-dense-but-scannable**. SmartNews is a *discovery* engine, not a search box: its tab-and-channel layout lets a reader swipe across topics (Top, World, Politics, Tech, Sports…) and scan headlines at speed. The design supports that scanning with clear typographic hierarchy, generous tap targets, and the red used as the orienting brand signal (active tab, brand mark, breaking emphasis) against an otherwise neutral black-on-white canvas. There is no decorative excess; every element earns its place because a news reader's attention is the scarcest resource.
+The measured homepage is the Japanese edition (`smartnews.com/`), rendered with HTML `lang="ja"`. Its expression combines a multicolour app icon, black wordmark, a wide photographic app-promotion hero, a white news surface and blue actions. Below the hero, a large image-led lead story sits beside two stacked stories. Strong headline hierarchy, small source labels and repeated article links make the page dense but scannable. These are observations of this web edition, rather than specifications of the native app. [Live homepage](https://www.smartnews.com/).
 
-Typography defers to **clean system fonts** for instant, native rendering of Japanese, English, and dozens of other languages across the app's global footprint — legibility and speed beat any bespoke typeface for a product whose job is to get words in front of eyes immediately. The wordmark itself ships in black or white depending on background brightness, with the red reserved for the brandmark and key accents. The overall message: this is serious, quality information, delivered fast and fairly — and the design is the confident, high-contrast, red-flagged frame that gets you to it.
+The current product story includes AI-assisted reading. The July 2025 launch of SmartNews AI Matome introduced grouped summaries with attribution and original-article links, alongside the Mercury-san navigator character. A July 2026 release added on-demand Spanish and Chinese translation for U.S. iOS readers, with machine-generated disclosures and a way to return to English. These are documented product developments; the measured Japanese homepage visibly labels its featured summaries スマニューAI. [AI Matome announcement](https://about.smartnews.com/en/upload/Press_Release__SmartNews_AI_Matome.pdf), [translation announcement](https://about.smartnews.com/en/news/2579.html).
 
-**Key Characteristics:**
-- **SmartNews Red** `#EB0B22` — a bright, urgent red as the singular brand signal (newsstand-flag energy)
-- High-contrast black-and-white canvas — maximum legibility for fast headline scanning
-- Wordmark in **black or white** depending on background brightness; red reserved for the brandmark + key accents
-- **Discovery, not search** — tab/channel layout (Top / World / Politics / Tech …) built for swipe-and-scan
-- Clean **system fonts** for instant native rendering across 150+ countries and many languages
-- Speed-first: "SmartView" instant article rendering even under poor connectivity informs the lightweight aesthetic
-- No decorative excess — every element earns its place; the reader's attention is scarce
-- Information-dense but scannable: clear hierarchy, generous tap targets, neutral canvas + red orientation cues
-- Trustworthy-news register: confident, clean, fair — combating clutter, slowness, and filter-bubble bias
+#### Primary tasks
 
-### Primary tasks
-
-- Swipe across topic channels and scan headlines at speed
-- Open a headline and start reading on a weak connection
-- Read a range of sources instead of one social feed
-- Check the daily coupons during a quick headline scan
-- Spot genuinely important stories flagged as breaking
+- Scan the featured stories and article feed, then follow an article link.
+- Look up a keyword through the header search input.
+- Follow links to SmartNews＋ information, the app details or the U.S. edition.
+- In the broader app offering, use coupons and discover news across publishers; these features are described by the company, not exercised in this capture. [Company site](https://about.smartnews.com/en/).
 
 ### Brand Narrative
 
-SmartNews was incorporated in Tokyo on **June 15, 2012** (originally as Gocro, Inc.) by **Ken Suzuki (鈴木健)** — a University of Tokyo Ph.D. in complex systems — and engineer **Kaisei Hamamoto (浜本階生)**. The founding insight was that news in the early-2010s mobile era was broken by **clutter, slowness, and bias**, and that the fix was not better *search* but a mathematically-driven **discovery engine**: machine-learning models that evaluate millions of articles and social signals to surface the most important stories, rather than relying on human editors or an engagement-maximizing algorithm. The first app shipped free and ad-supported, using proprietary **SmartView** technology to render articles instantly even under poor connectivity — and it hit a million monthly active users in Japan within a year. <!-- source: SmartNews company history via WebSearch 2026-05-19 (businessmodelcanvas, restofworld, about.smartnews.com leadership) -->
+The company overview dates establishment to June 15, 2012. The official history identifies the original name as Gocro, Inc. and names co-founders Kaisei Hamamoto and Ken Suzuki. It traces the news app's expansion into advertising, coupons, investigative-journalism support and the SmartNews＋ subscription service. [Company overview](https://about.smartnews.com/en/about/company.html), [history](https://about.smartnews.com/en/about/history.html).
 
-SmartNews's design language is the visible form of that mission. **One**, *quality information must cut through* — hence the loud, urgent brand red that flags importance like a newsstand banner, against a clean high-contrast canvas. **Two**, *the reader's attention is scarce and the connection may be poor* — hence the lightweight, scannable, system-font, SmartView-fast aesthetic; nothing decorative is allowed to slow the read. **Three**, *trust is the whole product* — SmartNews positions itself explicitly against the filter bubble and against clickbait, so the verbal brand stays even-handed and journalistic even as the visual brand stays bold. The 2014 expansion to a San Francisco office (backed by a $36M Series B) carried that same combination — bold red, restrained words, fast and fair — into a global market, growing SmartNews into a unicorn read across 150+ countries.
+A March 2015 release records the U.S. edition's October 2014 launch, the August 2014 $36 million Series B and the February 2015 international-edition launch in more than 150 countries. These are historical milestones, not a present-day readership or market count. That release describes machine-learning discovery at scale. A May 2015 release documents offline reading; the current publisher page names SmartView as its native reading experience. [International expansion](https://about.smartnews.com/en/news/2322.html), [offline-reading history](https://about.smartnews.com/en/news/2326.html), [publisher information](https://about.smartnews.com/en/press/publishers.html).
 
-What SmartNews refuses: the engagement-maximizing dark patterns of low-quality aggregators, clickbait headlines in its own chrome, decorative weight that slows the read, and any design that trades the reader's trust for a metric. It chooses speed, contrast, fairness, and a single confident red.
+Today the opened company sources connect that discovery mission to publisher partnerships, subscriptions and AI-assisted access. The 2025 summary announcement specifies original-source links and multiple perspectives; the 2026 translation announcement describes reader-triggered language changes. The measured web composition presents that evolution through featured AI stories alongside publisher articles. [Business](https://about.smartnews.com/en/business/), [AI Matome](https://about.smartnews.com/en/upload/Press_Release__SmartNews_AI_Matome.pdf), [translation](https://about.smartnews.com/en/news/2579.html).
 
 ### Principles
 
-1. **Quality information, delivered fast.** The mission is the product. *UI implication:* Lightweight, scannable, system-font, SmartView-fast. No decoration is allowed to slow the read; headlines lead, metadata recedes.
+The following design takeaways connect the opened company writing with the measured web page; they are not an official UI principles document.
 
-2. **The red is the one signal.** A single urgent red flags what matters. *UI implication:* `#EB0B22` for the active tab, brandmark, and breaking/live emphasis only. Keep it scarce; its urgency is its scarcity. Everything else stays black-on-white.
-
-3. **Discovery, not search.** SmartNews surfaces what you should read, across channels. *UI implication:* The swipeable channel/tab bar is the core primitive; design for swipe-and-scan triage, not query-and-result.
-
-4. **Trust through restraint.** Credibility depends on sounding fair. *UI implication:* The verbal brand is even-handed and journalistic; no clickbait or editorializing in product chrome. The red carries urgency so the words don't have to.
-
-5. **Legibility is non-negotiable.** A news app that's hard to read has failed. *UI implication:* High-contrast near-black on white, bold scannable headlines, clear hierarchy, multi-language-robust system fonts. Never sacrifice legibility for style.
+- **Quality information:** carry forward the company's stated mission through a clear article hierarchy.
+- **Multiple perspectives:** retain source attribution and routes to original reporting, as documented for AI Matome.
+- **Clear action hierarchy:** distinguish the filled blue header action from the outlined subscription link and the white app-details link.
+- **Readable image features:** use the observed dark scrim and light text over photography.
+- **Reader control:** the translation announcement documents on-demand activation and return to English; apply that fact only to that feature.
 
 ### Personas
 
-*Personas are fictional archetypes informed by SmartNews's publicly-described readership (50M+ readers across 150+ countries seeking trustworthy news), not real individuals.*
-
-**伊東 雅人 (Masato Ito), 45, Tokyo.** Commuter who opens SmartNews on the train every morning to triage the day's news across channels (Top, Politics, Business) in a few swipes. Values speed and breadth, distrusts sensationalism. Relies on SmartView when the train tunnel kills his signal.
-
-**Dana Whitfield, 33, Chicago.** US reader who installed SmartNews to get news *outside* her social-media filter bubble. Likes that it surfaces a range of sources and stays neutral in its chrome. Reads on her phone in short bursts; the bold-headline scan fits her attention budget.
-
-**佐藤 恵 (Megumi Sato), 28, Fukuoka.** Casual reader who uses SmartNews for the daily coupons and a quick headline scan. Not a news junkie, but trusts the app to flag genuinely important stories with its breaking emphasis. Wants it fast, light, and not annoying.
+No first-party persona research was verified.
 
 ## Colors
 
-SmartNews's brand is anchored on a single strong red against black-and-white. Values below come from SmartNews's documented brand red plus the high-contrast neutral system the app uses.
+The Japanese homepage registers a multicolour palette. Its filled header action uses **`#0099eb`**, also registered as `--color-blue-400` and `--color-jp-aplp-blue`. The page surface is **`#ffffff`** and the primary action label is **`#ffffff`**. **`#000000`** appears as a rendered background and as the base of translucent foreground colours.
 
-### Brand
-- **SmartNews Red** (`#EB0B22`): The primary brand color — brandmark, active/selected tab indicator, breaking-news emphasis, key accents. Bright and urgent; the singular brand signal.
-- **Black** (`#000000` / near-black): Primary text, wordmark on light backgrounds, dense headline type.
-- **White** (`#FFFFFF`): Page surface, wordmark on dark/photo backgrounds, card base.
+| Role or registered name | Measured value | Evidence |
+|---|---|---|
+| Primary web action | `#0099eb` | Filled header link; root blue aliases |
+| Canvas / on-primary | `#ffffff` | Rendered census; app-details surface / primary label |
+| Secondary surface | `#f9f9f9` | `--background-color-secondary`, `--color-gray-100` |
+| Red | `#fd4749` | `--color-red`; also rendered as a background |
+| Blue | `#329fe7` | `--color-blue`, `--color-blue-200`; also rendered |
+| Green | `#00cc8b` | `--color-green`, `--text-color-success`; also rendered |
+| Orange | `#fb9200` | `--color-orange`; also rendered |
+| Yellow | `#ffd700` | Root `--color-yellow: gold`; census `rgb(255, 215, 0)` |
+| Pale blue | `#f3f7fb` | `--color-blue-100`; also rendered |
+| Grey register | `#ececec`, `#e0e0e0`, `#bebebe`, `#606060`, `#4c4c4c`, `#2b2b2b`, `#1c1c1c` | `--color-gray-200`, `-300`, `-500`, `-600`, `-700`, `-800`, `-900` |
+| Other grey aliases | `#363636`, `#f8f8f8` | `--color-grey36`, `--color-greyf8` |
+| Yellow 500 | `#e19d00` | `--color-yellow-500` |
 
-### Surface
-- **White** (`#FFFFFF`): Default content surface — headlines and previews on white for legibility.
-- **Light Neutral** (`#F5F5F5`–`#FAFAFA`): Subtle section/background separation between channels and cards.
-- **Image Tiles**: Article thumbnails carry their own photography; a dark scrim supports white overlay text where needed.
+The grey and yellow registers establish available CSS values, not a measured assignment to every UI role. The two first-party CDN stylesheets were unreadable to the census's CSSOM walk; root computed properties remained readable. Framework defaults are separated in the verification notes.
 
-### Text
-- **Primary Text** (`#000000` / near-black): Headlines, body, primary labels — maximum contrast for scanning.
-- **Secondary / Meta** (mid-gray, e.g. `#666666`): Source name, timestamp, channel labels.
-- **On-Red Text** (`#FFFFFF`): White text/labels on the red brand surfaces.
+**Foreground:** the search input and app-details label use `rgba(0, 0, 0, 0.87)`; the edition link uses `rgba(0, 0, 0, 0.6)`. The subscription label uses `oklab(0 0 0 / 0.87)` and its 1px border uses `oklab(0 0 0 / 0.4)`. The lead story's visible label and headline use `rgba(255, 255, 255, 0.87)`. Preserve these alpha values in context rather than replacing them with opaque grey tokens.
 
-### Accent / Status
-- The red doubles as the **emphasis/alert** color (breaking, live). Secondary status colors stay restrained so the brand red keeps its urgency.
+The paragraph census is dominated by `oklab(0 0 0 / 0.4)` (45 paragraphs), followed by white at 87% (6) and black at 87% (3). This mixes source metadata with featured-story text; it does not establish one universal paragraph colour. All values above come from the [live homepage](https://www.smartnews.com/).
 
 ## Typography
 
-### Font Stack
-SmartNews defers to clean platform system fonts for instant, native, multi-language rendering — Japanese, English, and many others must render perfectly at speed across the global app.
-```
--apple-system, system-ui, "Segoe UI", Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans", sans-serif
-```
-No bespoke brand webfont: in a news app, legibility and load-speed beat a custom typeface every time.
+| Evidence class | Verified finding |
+|---|---|
+| Official product use | No opened first-party source identifies a product font family. |
+| Live-loaded | The census reports `document.fonts` loaded faces as `[]`; no live font specimen is supported. |
+| Official distributed assets | The press page distributes logo assets and a brand manual; no font asset was verified. A wordmark asset does not identify the UI typeface. |
+| Declared-only | Body: `system-ui, roboto, sans-serif`; first button: `Roboto, sans-serif`; sampled controls: `Roboto`. The census found no `h1`. |
+| Unresolved | The rendered face, per-script fallback resolution, font delivery and native-app typography remain unresolved. |
 
-### Conventions
-- **Bold, scannable headlines** — headline weight is heavier so a reader can scan a channel of stories at a glance.
-- **High contrast always** — near-black text on white; the design never sacrifices legibility for style.
-- **Clear hierarchy**: headline → source/timestamp → preview. Metadata stays small and gray so headlines lead.
-- **Multi-language discipline**: the type system must hold up in Japanese, English, and dozens of locales — system fonts ensure it does.
-- Tabular/compact where needed (channel labels, timestamps) but headlines get room to breathe.
+The root `--font-smartview` declaration is `system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`. This is a declared stack, not proof that those faces loaded or that the measured homepage applies that stack to its articles. Substitute: none chosen.
+
+| Sampled text | Size / weight | Additional metric |
+|---|---|---|
+| Header action labels | 12px / 700 | 18px line height, ratio 1.5 |
+| Search input | 12px / 400 | 18.6px line height, ratio 1.55 |
+| Visible US版 child label | 12px / 300 | Wrapper declares 10px / 400 |
+| Visible アプリの詳細 child label | 14px / 600 | Wrapper declares 10px / 400 |
+| Visible スマニューAI lead-story eyebrow | 14px / 300 | Wrapper declares 10px / 400 |
+
+The sampled headline is an `h2` with white-at-87% foreground, but its exact computed font size and weight were not recorded. Root semantic sizes such as `--text-headline1: 2.4rem`, `--text-body2: 1.6rem` and `--text-title1: 4rem` remain declarations, without an inferred pixel scale. [Live homepage](https://www.smartnews.com/), [official press assets](https://about.smartnews.com/ja/press/media.html).
 
 ## Layout
 
-### Density
-SmartNews is **information-dense but scannable**. A channel surfaces many headlines, but clear hierarchy (bold headline, small gray meta) and generous tap targets keep it readable at swipe speed. The reader should be able to triage a channel in seconds.
+At 1440×1000, the header places the logo on the left and edition, search, subscription and login actions on the right. A wide photo hero contains the app proposition and download badges; the first story row begins at y=480px. The lead link is 635px wide, while the two stacked links to its right are approximately 598.8px wide. Below this area the survey records repeated article links, topic-search pills, a SmartNews＋ section and footer links. [Live homepage](https://www.smartnews.com/).
 
-### Structure
-- Top-level: swipeable horizontal **channel/tab bar** (the signature navigation)
-- Within a channel: a vertical feed of headline-led article cards
-- Imagery used purposefully (top stories, featured) but headlines lead the scan
-- Neutral black-on-white canvas with red as the orientation/emphasis signal
+Preserve the observed distinction between large feature photography and the denser article list. Use headline hierarchy and small source metadata to organise the scan. The root registers `--max-width-desktop: min(1280px, 100vw - 4rem)` and a custom rem spacing family; those declarations do not establish a measured mobile breakpoint or a universal pixel grid.
+
+Measured action padding is 11px vertically, with 25px horizontally on the filled header link and 10px on the outlined link. The app-details link uses 14px horizontal padding. These are local measurements, not a reconstructed spacing scale.
 
 ### Responsive Behavior
 
-| Width | Behavior |
-|---|---|
-| Mobile (primary) | The native app context: swipeable channel bar + vertical headline feed; generous tap targets; SmartView instant rendering |
-| Tablet | Wider feed, possibly multi-column story grid; channel bar persists |
-| Desktop / web | Marketing + web reader: hero with app-download badges, channel/story grid; high-contrast headline-led layout |
-
-#### Touch & Mobile
-- SmartNews is **mobile-first** — the channel swipe and headline scan are designed for thumbs
-- App-store download tiles (`12px` radius, weight-700 white text on dark) are prominent on marketing surfaces
-- Lightweight rendering for poor-connectivity contexts is a first-class concern, not an edge case
+Only the desktop 1440×1000 edition was measured; mobile, tablet and native-app responsive behaviour remain unverified.
 
 ## Elevation & Depth
 
-SmartNews reads **clean and largely flat** — news content needs legibility, not decoration. Depth comes from card separation on a light neutral background and from purposeful imagery, not heavy shadows.
-
-- Cards: minimal shadow / 1px separation on a light-neutral feed background
-- Image tiles: dark scrim over photos for white overlay headline legibility
-- Dropdowns / modals / app-store badges: light shadow where it aids affordance
-- The red is the loudest thing on screen; everything else stays restrained
-
-### Values kept in prose
-
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
-
-- `shadow.card`: `minimal / 1px separation on light-neutral feed`
+All six sampled wrappers have `box-shadow: none`. The lead story places a darkening layer over its image: `linear-gradient(rgba(0, 0, 0, 0) 0%, oklab(0 0 0 / 0.8) 100%)`. Its visible label and headline are white at 87% opacity. This directly supports the prior reference's image-and-scrim treatment. [Live homepage](https://www.smartnews.com/).
 
 ## Motion & Easing
 
-SmartNews's motion is **fast, snappy, and purposeful** — it supports quick scanning and swiping, never decorative delight. A news reader's time is the constraint, so motion is brief.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Tab selection commit, toggle |
-| `motion-fast` | 150ms | Tab/channel switch, button press, save tap |
-| `motion-standard` | 220ms | Card reveal, dropdown, image fade-in |
-| `motion-modal` | 280ms | Modal/sheet enter-exit |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | The default |
-| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things arriving (sheets, modals) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Dismissals |
-
-**Spring stance.** Spring / overshoot easing is **forbidden** on SmartNews surfaces. News is serious and time-critical; bouncy motion would undercut the trustworthy register and slow the scan. Motion clarifies the swipe and the load; it never performs.
-
-**Signature motions.**
-1. **Channel swipe.** Horizontal swipe between channels tracks the finger 1:1 and settles over `motion-fast / ease-standard`; the red active indicator slides to the new tab. Direct and immediate.
-2. **Article open (SmartView).** Tapping a headline opens the article as fast as the connection allows; the transition is brief (`motion-standard`) so the read starts instantly.
-3. **Feed image fade-in.** Thumbnails fade in `opacity 0→1` over `motion-standard / ease-standard` as they load; no slide, no jump.
-4. **Modal/sheet enter.** Scrim fades in; sheet rises over `motion-modal / ease-enter`. Quick, no bounce.
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` collapse to `motion-instant`; channel switches and image loads become immediate; sheets appear without translate. Speed and accessibility align — both favor less motion.
-
-<!--
-OmD v0.1 Sources — SmartNews
-
-Tier 1 (official, WebFetch/WebSearch 2026-05-19):
-- about.smartnews.com/en/ — mission "Delivering the world's quality information to the people
-  who need it"; 3,000+ media partners, 400,000+ articles daily; filter-bubble framing;
-  wordmark ships black or white per background brightness; SmartNews+ subscription.
-- SmartNews brand manual referenced at about.smartnews.com/assets/.../smartnews_brandmanual_en.pdf
-  (PDF binary not text-extractable in this pass — see note).
-
-Tier 2 / narrative (WebSearch 2026-05-19):
-- Company history (businessmodelcanvas, restofworld "Behind SmartNews the $2bn unicorn",
-  about.smartnews.com leadership): incorporated Tokyo 2012-06-15 as Gocro Inc. by Ken Suzuki
-  (鈴木健, UTokyo Ph.D. complex systems) + Kaisei Hamamoto (浜本階生); ML discovery engine vs
-  search; SmartView instant rendering; 1M MAU in year one; 2014 SF office + $36M Series B;
-  grew to unicorn, 50M+ readers, 150+ countries.
-
-Verified vs assumed:
-- VERIFIED: mission statement, founding date/founders, ML-discovery + SmartView premise,
-  global footprint, wordmark black/white-per-background rule. The brand red #EB0B22 is the
-  brief-supplied value and SmartNews's widely-documented brand red; the brand-manual PDF that
-  would confirm the exact hex was not text-extractable this pass, so #EB0B22 is treated as the
-  documented-but-not-pixel-reverified brand red.
-- ASSUMED/INFERRED: the high-contrast black-on-white neutral system, channel-tab/card/badge
-  component specs in §4, and the light-neutral surface values are inferred from SmartNews's
-  known news-app UI pattern (channel bar + headline feed + red active indicator), not from a
-  live computed-style inspect (the live www.smartnews.com/en fetch redirected to an unrelated
-  page in this session). Motion tokens (§15) duration values are illustrative. Voice samples
-  marked illustrative are not verbatim live strings except the verified mission.
-- Personas (§13) are fictional archetypes of SmartNews's described global readership.
--->
-
----
-
-**Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://about.smartnews.com/en (mission "Delivering the world's quality information to the people who need it"; 3,000+ partners / 400k+ daily articles; filter-bubble positioning; wordmark black/white per background). SmartNews brand red #EB0B22 (documented brand red — brand-manual PDF not text-extractable this pass); https://developer.smartnews.com (SmartNews Engineering Blog, first-party).
-**Tier 2 sources:** SmartNews company history (restofworld / businessmodelcanvas / about.smartnews.com leadership — Gocro Inc. 2012-06-15, Ken Suzuki + Kaisei Hamamoto, ML discovery engine, SmartView, 50M+ readers / 150+ countries); getdesign.md / refero not separately fetched.
-**Conflicts unresolved:** Brand red #EB0B22 documented but not pixel-reverified (brand-manual PDF unparseable; live homepage fetch redirected to an unrelated page this session). §4 component values inferred from SmartNews's known channel-bar + headline-feed UI pattern, not a live computed-style inspect.
+All six sampled controls compute `transition: all 0s ease 0s`. The search input's reversible width change was observed without a computed transition duration. No app-wide timing, spring, channel-swipe or reduced-motion policy was verified. [Live homepage](https://www.smartnews.com/).
 
 ## Components
 
-### Tabs / Channels
+These six observations identify the exact desktop controls. “Transparent” describes their own computed fill; their visible backgrounds include the photographic hero or article imagery. Values are from the [live homepage](https://www.smartnews.com/).
 
-**Channel Tab (the signature component)**
-- Active text: near-black `#000000`, bold
-- Active indicator: SmartNews Red `#EB0B22` underline/bar
-- Inactive text: mid-gray `#666666`
-- Background: `#FFFFFF`
-- Use: The horizontal swipeable channel bar (Top / World / Politics / Tech …) — the core navigation primitive
+| Control | Geometry: width × height / radius / padding | Rest appearance and visible label |
+|---|---|---|
+| `primary-cta`: ログイン / 登録, link to `/news/signin` | 135.5×40px / 5px / 11px 25px | `#0099eb` fill, `#ffffff` label, 12px/700; border and shadow none |
+| `secondary-cta`: スマニュー＋を購読, link to `/news/product` | 130×42px / 5px / 11px 10px | Transparent; foreground `oklab(0 0 0 / 0.87)`; 1px solid `oklab(0 0 0 / 0.4)` border; 12px/700; shadow none |
+| `us-nav`: US版, edition link | 53.3×16px / 0 / 0 | Transparent; black-at-60% label, 12px/300; wrapper 10px/400; border and shadow none |
+| `search-input`: キーワードで検索 | 96×18.6px / 0 / 0 | Transparent; black-at-87% foreground, 12px/400; border, shadow and outline none |
+| `hero-story`: first large image-led article link | 635×423.3px / 0 / 0 | Wrapper transparent, 10px/400 and black-at-87%; visible eyebrow 14px/300 and white-at-87%; headline also white-at-87%; border and shadow none |
+| `app-details`: アプリの詳細, link to `/ja` | 112×40px / 4px / 0px 14px | `#ffffff` fill; black-at-87% visible label, 14px/600; wrapper 10px/400; border and shadow none |
 
-### Buttons
+The story wrapper's 0px radius does not describe every image clipping layer: the screenshot shows softened image corners. Smaller featured links elsewhere in the survey have 5px wrapper radii. Keep wrapper and child measurements distinct.
 
-**Primary**
-- Background: SmartNews Red `#EB0B22`
-- Text: `#FFFFFF`
-- Radius: soft rounded (`8px`–pill, used sparingly)
-- Use: The key conversion action (Open / Get the app / Subscribe to SmartNews+)
-
-**Secondary / Outline**
-- Background: `#FFFFFF`
-- Text: `#000000`
-- Border: `1px solid` neutral
-- Radius: soft rounded
-- Use: Lower-emphasis actions
-
-**App-store / Download Tile**
-- Background: dark (`rgba(0,0,0,0.3)`+) or black
-- Text: `#FFFFFF`, weight 700
-- Radius: `12px`
-- Use: App Store / Google Play download badges on marketing surfaces
-
-### Cards
-
-**Article Card (headline-led)**
-- Background: `#FFFFFF`
-- Text: near-black `#000000` headline + mid-gray meta
-- Radius: soft rounded / minimal
-- Use: Headline + source + timestamp + thumbnail; the scannable unit of a channel feed
-
-**Image-led Card**
-- Background: photo fills the tile
-- Text: white headline over a dark scrim
-- Use: Featured/top stories with strong imagery
-
-### Badges
-
-**Breaking / Live Badge**
-- Background: SmartNews Red `#EB0B22`
-- Text: `#FFFFFF`, bold, often uppercase
-- Radius: small / pill
-- Use: Breaking-news and live emphasis — the red's most literal job
+The search input has a reversible focus state: width becomes 60px, height stays 18.6px, and blur restores 96px. The mouse-pressed sample also has focus and the same narrower width. It has no drawn outline in either sample. This is the single interactive component encoded in the frontmatter. The five links retain their measured rest specifications here because their only focus change is Chromium's `auto` ring; their hover and pressed samples are unchanged within the recorded comparison scope.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (channel no stories)** | Clean white canvas, one neutral line explaining the channel is updating, no alarm. Pull-to-refresh affordance. |
-| **Empty (search no results)** | Calm single line + suggested channels; factual, not "nothing found, sorry." |
-| **Loading (feed)** | Skeleton headline+thumbnail blocks at final dimensions; quick shimmer; SmartView-fast perceived speed is the goal. |
-| **Loading (article open)** | Instant SmartView render where possible; progress kept minimal and fast. |
-| **Error (field)** | Neutral border swap + one calm helper line; cause + fix. |
-| **Error (network/offline)** | Honest banner: "Not connected" / offline; SmartNews's promise is delivery, so it's plain about when delivery is interrupted, and recovers quietly. |
-| **Success (subscribed / saved)** | Restrained confirmation; value-clear, no celebration spectacle. |
-| **Disabled** | Muted fill/text. Palette swap is the signal. |
-| **Skeleton** | Neutral blocks at exact final size (headline + thumbnail shapes); respects reduced-motion. |
-| **Breaking / Live** | Red `#EB0B22` badge + factual headline; the visual urgency is the red, the words stay even-handed. |
+| Control | Hover | Mouse pressed | Keyboard focus |
+|---|---|---|---|
+| Filled header action | No compared change | No compared change | Browser `auto` outline only |
+| Outlined subscription action | No compared change | No compared change | Browser `auto` outline only |
+| US edition link | No compared change | No compared change | Browser `auto` outline only |
+| Search input | No compared change | Width 96→60px while focused | Width 96→60px; blur restores 96px; outline none |
+| Lead story link | No compared change | No compared change | Browser `auto` outline only |
+| App-details link | No compared change | No compared change | Browser `auto` outline only |
+
+Every hover sample matched `:hover`, every pressed sample matched `:active`, and keyboard focus came from a real Tab walk. Comparison covered self, descendants and three ancestor levels, including their pseudo-elements, computed paint/geometry, image references and SVG internals. Descendant counts were 2 / 2 / 3 / 0 / 7 / 2 respectively; the lead story included two images and the edition link included one SVG and path. Siblings, cross-origin frame contents, closed shadow roots and pixel-only effects remain outside the probe's scope. No loading, empty, error, success, disabled or native channel-selection state was measured. [Live homepage](https://www.smartnews.com/).
 
 ## Do's and Don'ts
 
-- **DO** make SmartNews Red (`#EB0B22`) the singular brand signal — active tab, brandmark, breaking emphasis. **DON'T** scatter multiple bright colors; the red's urgency depends on its scarcity.
-- **DO** keep the canvas high-contrast black-on-white for fast scanning. **DON'T** use low-contrast or muted text for headlines — legibility is the product.
-- **DO** lead with bold, scannable headlines and small gray metadata. **DON'T** bury the headline under chrome.
-- **DO** use the swipeable channel/tab bar with a red active indicator. **DON'T** hide navigation — discovery across channels is the core loop.
-- **DO** use clean system fonts for instant multi-language rendering. **DON'T** load a heavy bespoke webfont — speed and legibility win in news.
-- **DO** keep the design lightweight and fast (SmartView ethos). **DON'T** add decorative weight that slows the read.
-- **DO** put the wordmark in black or white per background brightness. **DON'T** force the red wordmark onto a clashing background.
-- **DO** reserve red for emphasis/breaking. **DON'T** dilute it into a general accent everywhere.
+- Use the measured blue for the filled web action and keep the multicolour palette available.
+- Keep action wrappers and their visible child labels distinct when applying typography.
+- Preserve the white news surface, photographic features, dark scrim and small source labels observed on this edition.
+- For service-logo assets, follow the official manual's black/white wordmark variants according to background brightness. Its horizontal service logo specifies one-quarter-icon clear space and a minimum digital height of 50px. These are logo-asset instructions, not UI sizing tokens. [Brand manual, pp. 21–23](https://about.smartnews.com/assets/images/press/smartnews_brandmanual_en.pdf).
+- Keep unresolved font families out of specimens; Substitute: none chosen.
 
 ## Voice & Tone
 
-SmartNews's voice is **clear, neutral, and trustworthy** — fitting a product whose mission is *delivering the world's quality information to the people who need it* and whose explicit purpose is to help readers escape the filter bubble and find trustworthy news. The copy is journalistic in register: factual, unsensational, and fair. It does not editorialize, does not clickbait, and does not adopt the breathless urgency of low-quality news aggregators — its credibility depends on restraint. Where the *visual* brand is loud (the red flag), the *verbal* brand is disciplined and calm, because trust in news comes from sounding even-handed. In Japanese the register is polite-neutral (です・ます調 / 報道調); in English it's plain journalistic standard; across locales it stays even-handed and unhyped.
+The homepage uses short functional labels: US版, キーワードで検索, スマニュー＋を購読, ログイン / 登録 and アプリの詳細. The AI feature label identifies the reading format. Its app-promotion copy introduces publisher breadth and practical benefits including coupons and weather. [Live homepage](https://www.smartnews.com/).
 
-| Context | Tone |
-|---|---|
-| Headlines (chrome around UGC) | SmartNews frames publisher headlines; its own chrome copy stays neutral and factual. |
-| Channel/tab labels | Single clear nouns — Top, World, Politics, Tech, Sports. No editorializing. |
-| CTAs | Plain imperative — `Get the app`, `アプリで開く`, `Subscribe`. No hype. |
-| Notifications | Context-aware and restrained — breaking pushes are factual, not breathless. |
-| Empty / error states | Calm, blameless, one sentence + fix. |
-| Subscription (SmartNews+) | Value-clear, not pushy; respects the reader's choice. |
-| Mission/about copy | Earnest about quality information and combating the filter bubble — the one place the brand states its values directly. |
-
-**Forbidden patterns.** Clickbait and sensationalism, editorializing in product chrome, breathless urgency that fakes importance, hype superlatives, FOMO pushes, and anything that undermines the even-handed, trustworthy register news credibility depends on. The red carries urgency visually so the words don't have to.
-
-**Voice samples.**
-- "Delivering the world's quality information to the people who need it." — SmartNews's stated mission. <!-- verified: about.smartnews.com/en/, WebFetch 2026-05-19 -->
-- SmartNews frames its purpose around helping users find trustworthy news beyond the filter bubble. <!-- verified: about.smartnews.com mission framing + brandfetch summary, 2026-05-19 -->
-- `Top` / `World` / `Tech` — neutral single-noun channel labels. <!-- illustrative: representative of SmartNews's channel taxonomy; exact live labels vary by locale -->
+Company writing emphasises trustworthy information and encounters with perspectives beyond one's own. The CEO message explicitly joins technology with human judgment. For a design derived from these sources, explain what a feature does and retain attribution to publishers. No universal notification, error-copy or anti-clickbait style policy was verified. [Mission](https://about.smartnews.com/en/mission/), [CEO message](https://about.smartnews.com/en/about/message.html).
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Brand / emphasis: SmartNews Red `#EB0B22`
-- Text: near-black `#000000`; meta mid-gray `#666666`
-- Surface: `#FFFFFF`; subtle separation `#F5F5F5`
-- On-red text: `#FFFFFF`
-- Radius: soft rounded; app-store tiles `12px`
+- “Build the measured Japanese SmartNews header action as a 40px-high link with 5px corners, 11px 25px padding, `#0099eb` fill and a `#ffffff` 12px/700 label. No authored hover or pressed change was observed.”
+- “Build the outlined subscription link at 130×42px, 5px corners, 11px 10px padding, 12px/700 label, black-at-87% foreground and a 1px black-at-40% border over its surrounding hero.”
+- “Build the header keyword input at 96×18.6px, zero padding and radius, 12px/400 and black-at-87% foreground. Focus narrows it to 60px; blur restores 96px. No font family is specified.”
+- “Build the lead story around photography and the measured transparent-to-black-at-80% gradient, with white-at-87% text and a small AI label. Use the measured wrapper dimensions for this desktop composition.”
 
-### Example Component Prompts
-- "Create a SmartNews channel tab bar: horizontal swipeable tabs (Top / World / Tech …) on white, active tab bold near-black with a `#EB0B22` red underline indicator, inactive tabs mid-gray `#666666`. This is the signature navigation."
-- "Build a SmartNews article card: white bg, bold near-black headline, small gray source + timestamp row, right-aligned thumbnail, minimal chrome. Scannable in under a second."
-- "Design a SmartNews breaking badge: solid `#EB0B22` red bg, white bold uppercase text, small radius. Use only for breaking/live — the red is a scarce signal."
-- "Create a SmartNews app-download section: dark app-store + Google-Play tiles (`12px` radius, white weight-700 text), on a high-contrast headline-led hero. Optional red primary CTA `#EB0B22`."
-
-### Iteration Guide
-1. **Red (`#EB0B22`) is the singular brand signal** — active tab, brandmark, breaking. Keep it scarce.
-2. **High-contrast black-on-white** — legibility is the product; never mute the headlines.
-3. **Bold scannable headlines + small gray meta** — the reader triages a channel in seconds.
-4. **Swipeable channel/tab bar with red active indicator** — the core navigation.
-5. **Clean system fonts** — instant multi-language rendering; no heavy webfont.
-6. **Lightweight and fast** — SmartView ethos; don't slow the read with decoration.
-7. **Wordmark black or white per background**; red for the brandmark/emphasis only.
-
----
+These prompts translate the measured components in §4; they do not specify native channel tabs, loading states or a new font family.
