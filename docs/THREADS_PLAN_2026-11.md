@@ -6,7 +6,7 @@
 
 - 게시는 오너(@daon_k)가 한다. 초안은 그 문체를 따른다(1인칭 도입, 합니다체 중심, 댓글 `1/ 소제목`, 글 끝 이모지 하나, 첫 글 끝 🧵).
 - 이미지에는 출처 캡션이나 주의 상자를 넣지 않는다. 단서와 측정 방법은 글에 쓴다.
-- 링크는 마지막 댓글에만, `oh-my-design.kr/go/<code>`로. 코드는 `web/src/data/go-links.ts`에 등록한다.
+- 링크는 마지막 댓글에만, `oh-my-design.kr/go/<code>`로. 코드는 `web/src/data/go-links.ts`에 등록한다. 11월 코드 3개는 PR #109에 있고, 오너가 머지를 묶어서 하기로 했다(11/6). 게시 전에 `/go/<code>`가 302인지 확인하고, 아직 404면 추적 없는 목적지 주소를 그대로 쓴다.
 - 수치는 공개 레포에 있는 값만 쓴다. 게시 뒤 유입은 `node scripts/analytics/pull-posts.mjs --days 7`로 보고, 숫자는 레포에 적지 않는다.
 - 초안은 `node skills/hangul/scripts/copy-check.mjs`로 검사한다.
 
