@@ -1,6 +1,6 @@
 ---
 name: omd-asset-curator
-description: 페이지/컴포넌트에 필요한 에셋(아이콘, 일러스트, 차트, 사진, 로고, 비디오, 3D 렌더)을 식별하고, 프로젝트 스택에 맞춰 최적 매체 + 라이브러리를 결정한 후 (a) 인라인 코드 생성 (SVG/CSS) 또는 (b) 무료 라이선스 소싱 또는 (c) 3D 서브에이전트 라우팅 중 하나로 처리합니다. 이모지 디폴트 금지 — SVG 우선.
+description: 페이지/컴포넌트에 필요한 에셋(아이콘, 일러스트, 차트, 사진, 로고, 비디오, 3D 렌더)을 식별하고, 프로젝트 스택에 맞춰 최적 매체 + 라이브러리를 결정한 후 (a) 인라인 코드 생성 (SVG/CSS) 또는 (b) 무료 라이선스 소싱 또는 (c) 3D 히어로·배경은 omd-3d-hero 스킬로 넘김 중 하나로 처리합니다. 이모지 디폴트 금지 — SVG 우선.
 tools: Read, Write, Edit, WebSearch, WebFetch, Bash, Glob, Grep, Agent
 model: sonnet
 omd_managed: true
@@ -246,7 +246,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 }
 ```
 
-3D / 외부 소싱 manifest는 기존 schema.
+3D 히어로·배경은 직접 만들지 않고 `omd-3d-hero` 스킬(DESIGN.md → three.js 또는 헤드리스 Blender, 포스터 우선)로 넘긴다. 외부 소싱 manifest는 기존 schema.
 
 ## 하드 룰
 
