@@ -8,6 +8,11 @@
 - **레퍼런스:** 11/4 5차 머지 뒤 정지 상태였음(main 576 / 397 / 89 / 90). **6차 착수** = `~/.omd-workers/queue-batch6.txt`(31건): 신규 JP raksul·toyokeizai·sega·cygames·shueisha·unext·andpad·syosetu·kodansha / TW cgmh·nanshanlife·megabank·tigerair·cw·books / KR everytime·peterpanz·wooricard / HK parknshop·hktvmall / CN aliyun, 재검증 legacy zozotown·dcard·paypay·kkbox·note·pinkoi·smartnews·kkday·cookpad·bunjang. `run-queue.sh` Sol 4, Monitor로 진행. 반영 브랜치는 main 기준 새로 판다(착지 때).
 - **3D 고도화(three.js):** 작업 트리 `../oh-my-design-3d`(워크트리, `feat/skill-batch-nov`). 순서 ① 포인터에 반응하는 무리(고정 시간 간격·시드 고정 시뮬레이션, 문구 칸 침범 금지 = 하드 제약, 포인터 훑기 verify 경로) ② 렌더 품질(AO·합성기, 품질 사다리 AO→해상도→정지 컷) ③ `setSpec` 브랜드 전환(토스→당근→배민, Threads #6 영상). Blender는 같은 정지 자세를 받아 포스터 일치. 프레임 시간은 워커 Chrome 4개와 GPU를 나눠 쓰므로 상한값으로 표기.
 - **다음 후보 순서(오너 위임):** 3D 고도화 → hangul 줄바꿈 모드(R2)+#110 Pretendard 로드 수정 → `/brand-look` 재구성(R3).
+- **결과(11/6 15시):**
+  - **3D 고도화 `2267bb88`(`feat/skill-batch-nov`, 푸시·머지 보류):** 고정 물체 5개 → 브랜드 물체 28개 무리(`engines/three/pile.js`, 캡슐 충돌·고정 120Hz·시드=주 색상). spec.mjs가 Node에서 정착시켜 포스터·첫 프레임·Blender가 같은 자세. 커서로 밀기·클릭 흩뜨리기·`setSpec` 브랜드 전환(엇갈린 축소→교체→튀어 오름), GTAO·브랜드 색 유리, 품질 사다리 AO→해상도→정지 컷, 문구 칸 하드 평면. Blender는 같은 자세(Cycles 유리)·rim을 sun으로(벽 쐐기 제거). verify에 포인터 훑기(최근접 물체 715px vs 헤드라인 끝 523px, 대비 매 6프레임) + 일시정지 중 포인터·클릭. 6조합 전부 통과(헤드라인 최저 9.88:1, three 8.3ms·AO 유지, 워커 4개 부하 상한). 번들 CDN ~229 / 번들 ~150 KiB gzip. 5개 로캘 설명 갱신.
+  - 브랜드 전환 영상 `claudedocs/3d-hero/switch/switch.mp4`(16초 1080p60, 프레임 단위 캡처 `capture.mjs`), 노트 `claudedocs/3d-hero/3d-hero-notes.html` 재생성(5.2MB, 전환 영상 포함). 아티팩트 서버는 여전히 "endpoint not found". Threads #6 초안을 이 영상 기준으로 갱신.
+  - **#110 수정 `903c0b2d`:** hangul HG-12가 단독 HTML에서 첫 한글 웹 글꼴 로드를 요구, check.mjs WARN(원래 덱에서 재현), fixtures/deck. R2 break 모드는 hangul의 동사로 두는 것을 추천(새 스킬 아님) — 다음 차례.
+  - **6차 반영(`feat/refs-batch6`, main 기준, 푸시):** toyokeizai·cgmh `cdfadfa2`, raksul `f0592819`, zozotown(legacy→verified) `8981dc7c` → **579 / 401 / 89 / 89**, 래칫 153. 헤드라인은 워커 자신의 cfg로 본 세션 재측정(전부 일치). 진행: sega(일치, 착지 중)·nanshanlife 재측정, 워커 4개 가동.
 
 ## ▶ 2026-11-06 오후 · 3D·셰이더 스킬 개발 착수(오너 결정)
 
