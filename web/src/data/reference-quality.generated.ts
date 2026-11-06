@@ -9239,31 +9239,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "pinkoi",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-15",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 126,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 91,
+    "evidenceClaimCount": 91,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 1,
-    "componentCount": 10,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.652
+    "tier1SourceCount": 22,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "pinterest",
@@ -14159,9 +14153,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 418,
+  "verified_v2": 419,
   "partial": 89,
-  "legacy_snapshot": 86,
+  "legacy_snapshot": 85,
   "total": 593
 } as const;
 
