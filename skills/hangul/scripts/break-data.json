@@ -1,0 +1,24 @@
+{
+  "about": "Worst-case Korean data for /hangul break: put these into a component on a throwaway stress page, then run break.mjs on it. Every value is synthetic (no real person, company or address). Use the slot that matches the field; the 'why' says what each one is meant to break.",
+  "slots": {
+    "companyName": { "value": "주식회사가나다라마바사아자차카타파하글로벌솔루션즈", "why": "one 27-syllable word with no space: keep-all cannot break it, so a fixed-width box overflows unless overflow-wrap: anywhere is set (HG-9, HG-10)" },
+    "personName": { "value": "남궁하늘별빛", "why": "a six-syllable name; split across lines it reads as two words" },
+    "productName": { "value": "오에이치마이디자인Pro맥스울트라에디션2026", "why": "Hangul, Latin and digits glued together: the browser may break at the script change, mid-word" },
+    "wordWithParticle": { "value": "스마트스토어통합관리센터에서는", "why": "a long compound with the particle attached; a break before 에서는 strands the particle" },
+    "mixedCompound": { "value": "React컴포넌트라이브러리마이그레이션가이드", "why": "Latin + Hangul compound in a heading or tab" },
+    "price": { "value": "1,234,567,890원", "why": "the longest price; the unit stays attached to the number (HG-13) and the figure must not wrap" },
+    "negativePrice": { "value": "-12,345원", "why": "sign + grouping + unit" },
+    "countZero": { "value": "0건", "why": "empty state: the component must say what zero means" },
+    "countOne": { "value": "1건", "why": "singular: Korean has no plural, so '1개의 항목들' style output is an error" },
+    "countMany": { "value": "999+", "why": "a capped badge; three digits plus a sign in a round badge" },
+    "url": { "value": "https://www.example.co.kr/events/2026/winter-sale?utm_source=newsletter&utm_medium=email", "why": "an unbroken token: needs overflow-wrap: anywhere (HG-9), never break-all on the whole block (HG-8)" },
+    "email": { "value": "very.long.korean.user.name.2026@example-company.co.kr", "why": "an unbroken token in a form or a profile row" },
+    "buttonLabel": { "value": "지금바로무료체험시작하고첫달혜택받기", "why": "a label written without spaces: a button that cannot grow either wraps mid-word or clips" },
+    "tabLabel": { "value": "자주묻는질문과고객센터안내", "why": "a tab with no room to wrap: truncate with an ellipsis (HG-14) or let the tab bar scroll" },
+    "address": { "value": "서울특별시 강남구 테헤란로123길 45, 오에이치마이디자인타워 17층 1701호", "why": "a long address with numbers and a building name" },
+    "sentenceMixedLevels": { "value": "결제가 완료되었습니다. 영수증은 메일로 보내 드려요.", "why": "합니다체 and 해요체 in one message: copy-check.mjs flags it (HW-11)" },
+    "longParagraph": { "value": "이번 업데이트에서는 정기 결제를 등록한 고객이 결제일을 직접 고를 수 있게 되었습니다. 결제일을 바꾸면 다음 결제부터 적용되고, 이미 결제된 금액은 다시 청구하지 않습니다. 자세한 내용은 고객센터의 정기결제안내페이지에서확인할수있습니다.", "why": "body prose may break between syllables (HG-10), but the last unspaced run tests the column at 360px" },
+    "single": { "value": "가", "why": "the shortest text: badges and avatars should not collapse" },
+    "empty": { "value": "", "why": "no value: the component shows a placeholder, not an empty box" }
+  }
+}

@@ -38,6 +38,7 @@
   .cta {
     align-self: flex-start; margin-top: 8px; padding: 14px 24px; border-radius: var(--hero-radius, 0);
     background: var(--hero-brand); color: var(--hero-on-brand, #fff); font-weight: 700; font-size: 19px; text-decoration: none; /* 19px bold = WCAG large text */
+    word-break: keep-all; overflow-wrap: anywhere; /* /hangul HG-10: a button label breaks at spaces, not mid-word (found by /hangul break) */
   }
   .cta:focus-visible, .pause:focus-visible { outline: 3px solid var(--hero-text); outline-offset: 3px; }
   /* WCAG 2.2.2: motion that runs longer than 5 s needs a way to stop it. */
