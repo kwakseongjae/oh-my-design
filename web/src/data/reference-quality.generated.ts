@@ -8848,30 +8848,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "paypay",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 202,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 82,
+    "evidenceClaimCount": 82,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 16,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 20,
-    "interactiveComponentCount": 9,
-    "statedComponentCount": 2,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.316
+    "tier1SourceCount": 16,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "pchome",
@@ -13932,9 +13927,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 404,
+  "verified_v2": 405,
   "partial": 89,
-  "legacy_snapshot": 89,
+  "legacy_snapshot": 88,
   "total": 582
 } as const;
 

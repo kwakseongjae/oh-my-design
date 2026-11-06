@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 404,
-  "sources": 3457,
+  "references_with_verification_v2": 405,
+  "sources": 3473,
   "sources_by_kind": {
     "brand-asset": 231,
     "license": 141,
-    "official-doc": 1613,
-    "product-surface": 1472
+    "official-doc": 1623,
+    "product-surface": 1478
   },
   "references": {
     "104": {
@@ -15932,6 +15932,108 @@
           "kind": "official-doc",
           "captured": "2026-11-02",
           "host": "lineto.com"
+        }
+      ]
+    },
+    "paypay": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "campaign-history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "common-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "paypay.ne.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "paypay.ne.jp"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "design-lead",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "insideout.paypay.ne.jp"
+        },
+        {
+          "id": "design-operations",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "insideout.paypay.ne.jp"
+        },
+        {
+          "id": "design-team",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "paypay.ne.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "paypay.ne.jp"
+        },
+        {
+          "id": "illustration-system",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "insideout.paypay.ne.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "insideout-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "insideout.paypay.ne.jp"
+        },
+        {
+          "id": "launch",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
+        },
+        {
+          "id": "parent-ownership",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.softbank.jp"
+        },
+        {
+          "id": "trademark",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.paypay.ne.jp"
         }
       ]
     },
