@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 426,
-  "sources": 3768,
+  "references_with_verification_v2": 427,
+  "sources": 3786,
   "sources_by_kind": {
-    "brand-asset": 253,
+    "brand-asset": 258,
     "license": 141,
-    "official-doc": 1797,
-    "product-surface": 1577
+    "official-doc": 1807,
+    "product-surface": 1580
   },
   "references": {
     "104": {
@@ -998,6 +998,120 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "open.alipay.com"
+        }
+      ]
+    },
+    "aliyun": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-index",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "design-center",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "design-language",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "global-legal",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "global-membership",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "global-product-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.aliyun.com"
+        },
+        {
+          "id": "live-base-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "g.alicdn.com"
+        },
+        {
+          "id": "live-footer-icons-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "at.alicdn.com"
+        },
+        {
+          "id": "live-nav-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "website.alcasset.com"
+        },
+        {
+          "id": "live-product-icons-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "at.alicdn.com"
+        },
+        {
+          "id": "logo-history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabagroup.com"
         }
       ]
     },

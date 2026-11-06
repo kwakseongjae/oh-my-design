@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 596,
+ "count": 597,
  "items": [
   {
    "id": "104",
@@ -580,6 +580,27 @@
    "signature_motion": "The button wave - a faint outline expands and fades on primary-button click; calm dependable transitions everywhere else.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "aliyun",
+   "primary_color_hex": "#ff6a00",
+   "category": "backend-devops",
+   "visual_theme": "Alibaba Cloud provides cloud computing and data-management platforms. The company dates its establishment to September 2009; its current Chinese company page presents global cloud infrastructure, large-scale computing and AI technology as the foundations for e",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "amazingtalker",

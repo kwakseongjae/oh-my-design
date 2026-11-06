@@ -1448,6 +1448,71 @@
     ]
    }
   },
+  "aliyun": {
+   "hash": "108de8ef571bc4f3",
+   "terms": {
+    "en": [
+     "cloud computing platform",
+     "enterprise cloud services",
+     "developer infrastructure",
+     "ai cloud offering",
+     "white canvas",
+     "orange brand accent",
+     "blue action buttons",
+     "blue to lilac gradient",
+     "square buttons",
+     "compact header",
+     "spacious hero",
+     "geometric imagery",
+     "free trial call to action"
+    ],
+    "ko": [
+     "클라우드 컴퓨팅 플랫폼",
+     "기업용 클라우드",
+     "개발자 인프라",
+     "AI 클라우드 서비스",
+     "흰색 배경",
+     "오렌지 브랜드 포인트",
+     "파란색 액션 버튼",
+     "파랑 라일락 그라데이션",
+     "각진 버튼",
+     "컴팩트한 헤더",
+     "여유로운 히어로 영역",
+     "기하학적 이미지",
+     "무료 체험 버튼"
+    ],
+    "ja": [
+     "クラウドコンピューティング",
+     "企業向けクラウド",
+     "開発者向けインフラ",
+     "AIクラウドサービス",
+     "白いキャンバス",
+     "オレンジのブランド色",
+     "青いアクションボタン",
+     "青から薄紫のグラデーション",
+     "角ばったボタン",
+     "コンパクトなヘッダー",
+     "ゆったりしたヒーロー",
+     "幾何学的なビジュアル",
+     "無料トライアル導線"
+    ],
+    "zh": [
+     "雲端運算平台",
+     "企業雲端服務",
+     "開發者基礎架構",
+     "AI 雲端服務",
+     "白色畫布",
+     "橘色品牌點綴",
+     "藍色行動按鈕",
+     "藍紫漸層",
+     "方形按鈕",
+     "精簡頁首",
+     "寬敞主視覺",
+     "幾何圖像",
+     "免費試用入口"
+    ]
+   }
+  },
   "amazingtalker": {
    "hash": "4c9a38970718f4c0",
    "terms": {
