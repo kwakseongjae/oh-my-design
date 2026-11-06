@@ -9,7 +9,7 @@
 - **병합 중 고친 것:** `src/cli/doctor.ts` REQUIRED_PRODUCT_SKILLS에 omd-3d-hero 누락(스킬 묶음 브랜치에서 루트 테스트를 안 돌려 놓침), llms zh-CN·zh-TW의 Cursor 스킬 수 31→32 두 군데(check-counts가 이 문형은 안 읽음 — 게이트 보강 후보). 전체 루트·web 테스트·tsc·lint 통과(부하 시간 초과 4건은 단독 재실행 통과).
 - **운영 확인:** `/design-systems/raksul`·`/ko/design-systems/zozotown`·`/design-systems/megabank` 200, `/docs/ko/skills`에 omd:3d-hero 한국어 설명, llms.zh-tw "32 個相容", `/go/3d-hero-ko` → `/docs/ko/skills?utm…`(등록 `007ae999`). #108·#109는 MERGED.
 - 작업 브랜치 두 개(`feat/refs-batch6`, `feat/skill-batch-nov`)는 main으로 앞당김. 6차 나머지는 계속 `feat/refs-batch6`에 쌓는다.
-- **머지 뒤 6차 반영(`feat/refs-batch6`, main 미반영):** cw·note(L→V)·unext·andpad·books·everytime·parknshop·kodansha·syosetu·pinkoi(L→V)·smartnews(L→V)·kkday(L→V)·peterpanz·hktvmall·wooricard·cookpad(L→V) → 브랜치 전체 수치는 아래 커밋 참고. 전부 워커 cfg로 재측정 일치. 진행: bunjang·aliyun(큐 마지막). dcard 보류. 큐가 끝나면 오너에게 2차 머지 GO 요청.
+- **머지 뒤 6차 반영(`feat/refs-batch6`, main 미반영):** cw·note(L→V)·unext·andpad·books·everytime·parknshop·kodansha·syosetu·pinkoi(L→V)·smartnews(L→V)·kkday(L→V)·peterpanz·hktvmall·wooricard·cookpad(L→V)·bunjang(L→V)·aliyun → **6차 큐 끝: 30/31 반영, 브랜치 597 / 427 / 89 / 81**(main 585 / 409 / 89 / 87), 래칫 147. 전부 워커 cfg로 재측정 일치. aliyun은 aliyun.com이 국제판 중문(alibabacloud.com/zh)으로 넘어가 그것을 쟀다고 본문에 명시(본토 화면은 비움). **dcard 보류**(봇 확인 화면 2회). **오너에게 2차 머지 GO 요청 중**(main보다 18커밋 앞).
 
 ## ▶ 2026-11-06 오후 늦게 · 오너: three.js 바이럴 고도화 + 레퍼런스 재가동 + "다음 후보는 추천대로"
 
