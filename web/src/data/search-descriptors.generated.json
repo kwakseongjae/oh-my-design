@@ -27316,6 +27316,67 @@
     ]
    }
   },
+  "sega": {
+   "hash": "d819140b30d02165",
+   "terms": {
+    "en": [
+     "game publisher",
+     "video game portal",
+     "game releases",
+     "gaming news",
+     "bright blue header",
+     "large game artwork",
+     "angular heading stripes",
+     "small rounded corners",
+     "blue and white",
+     "red notice banner",
+     "promotion cards",
+     "carousel banners"
+    ],
+    "ko": [
+     "게임 퍼블리셔",
+     "게임 포털",
+     "게임 출시 정보",
+     "게임 뉴스",
+     "밝은 파란 헤더",
+     "대형 게임 이미지",
+     "각진 줄무늬 제목",
+     "작은 둥근 모서리",
+     "파랑과 흰색",
+     "프로모션 카드",
+     "캐러셀 배너",
+     "일본 게임 사이트"
+    ],
+    "ja": [
+     "ゲーム会社",
+     "ゲームポータル",
+     "新作情報",
+     "ゲームニュース",
+     "明るい青のヘッダー",
+     "大きなゲーム画像",
+     "斜めストライプ見出し",
+     "小さな角丸",
+     "青と白",
+     "重要なお知らせ",
+     "セールカード",
+     "カルーセルバナー"
+    ],
+    "zh": [
+     "遊戲發行商",
+     "遊戲入口網站",
+     "遊戲發售資訊",
+     "遊戲新聞",
+     "亮藍色標頭",
+     "大幅遊戲圖像",
+     "斜角條紋標題",
+     "小圓角",
+     "藍白配色",
+     "紅色重要公告",
+     "促銷卡片",
+     "輪播橫幅"
+    ]
+   }
+  },
   "selectstar": {
    "hash": "0c3ba3d4381aad09",
    "terms": {

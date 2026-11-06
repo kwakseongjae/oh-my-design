@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 579,
+ "count": 580,
  "items": [
   {
    "id": "104",
@@ -10822,6 +10822,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "sega",
+   "primary_color_hex": "#0082ca",
+   "category": "consumer-tech",
+   "visual_theme": "SEGA develops and sells game content for consoles, PCs and smart devices. Its company outline dates its establishment to 3 June 1960; its history records the arrival of Sonic the Hedgehog in 1991. The Japanese product portal brings that catalog together throug",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "selectstar",
