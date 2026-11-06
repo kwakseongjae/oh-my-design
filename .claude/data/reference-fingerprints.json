@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 594,
+ "count": 595,
  "items": [
   {
    "id": "104",
@@ -4940,6 +4940,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "hktvmall",
+   "primary_color_hex": "#36b449",
+   "category": "ecommerce",
+   "visual_theme": "HKTVmall is a Hong Kong online shopping platform operated by Hong Kong TV Shopping Network Company Limited, a wholly owned subsidiary of Hong Kong Technology Venture Company Limited. Its 2015 history records a February launch with more than 333 stores from Hon",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "hm",

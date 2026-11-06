@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 422,
-  "sources": 3713,
+  "references_with_verification_v2": 423,
+  "sources": 3726,
   "sources_by_kind": {
     "brand-asset": 251,
     "license": 141,
-    "official-doc": 1759,
-    "product-surface": 1562
+    "official-doc": 1768,
+    "product-surface": 1566
   },
   "references": {
     "104": {
@@ -8624,6 +8624,90 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "www.heydealer.com"
+        }
+      ]
+    },
+    "hktvmall": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ad-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cloud.marketing.hktvmall.com"
+        },
+        {
+          "id": "ad-spec",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cloud.marketing.hktvmall.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "corporate-information",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "ir.hktv.com.hk"
+        },
+        {
+          "id": "faq",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "ir.hktv.com.hk"
+        },
+        {
+          "id": "history-2015",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "measured-home-appliances",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "milestones",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
         }
       ]
     },
