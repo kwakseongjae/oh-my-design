@@ -1,7 +1,13 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-06 낮** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-06 오후 늦게** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-06 오후 늦게 · 오너: three.js 바이럴 고도화 + 레퍼런스 재가동 + "다음 후보는 추천대로"
+
+- **레퍼런스:** 11/4 5차 머지 뒤 정지 상태였음(main 576 / 397 / 89 / 90). **6차 착수** = `~/.omd-workers/queue-batch6.txt`(31건): 신규 JP raksul·toyokeizai·sega·cygames·shueisha·unext·andpad·syosetu·kodansha / TW cgmh·nanshanlife·megabank·tigerair·cw·books / KR everytime·peterpanz·wooricard / HK parknshop·hktvmall / CN aliyun, 재검증 legacy zozotown·dcard·paypay·kkbox·note·pinkoi·smartnews·kkday·cookpad·bunjang. `run-queue.sh` Sol 4, Monitor로 진행. 반영 브랜치는 main 기준 새로 판다(착지 때).
+- **3D 고도화(three.js):** 작업 트리 `../oh-my-design-3d`(워크트리, `feat/skill-batch-nov`). 순서 ① 포인터에 반응하는 무리(고정 시간 간격·시드 고정 시뮬레이션, 문구 칸 침범 금지 = 하드 제약, 포인터 훑기 verify 경로) ② 렌더 품질(AO·합성기, 품질 사다리 AO→해상도→정지 컷) ③ `setSpec` 브랜드 전환(토스→당근→배민, Threads #6 영상). Blender는 같은 정지 자세를 받아 포스터 일치. 프레임 시간은 워커 Chrome 4개와 GPU를 나눠 쓰므로 상한값으로 표기.
+- **다음 후보 순서(오너 위임):** 3D 고도화 → hangul 줄바꿈 모드(R2)+#110 Pretendard 로드 수정 → `/brand-look` 재구성(R3).
 
 ## ▶ 2026-11-06 오후 · 3D·셰이더 스킬 개발 착수(오너 결정)
 
