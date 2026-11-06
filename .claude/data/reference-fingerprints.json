@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 588,
+ "count": 589,
  "items": [
   {
    "id": "104",
@@ -1302,6 +1302,27 @@
    ],
    "has_personas": false,
    "category_raw": "mobility-platform"
+  },
+  {
+   "id": "books",
+   "primary_color_hex": "#12ae57",
+   "category": "ecommerce",
+   "visual_theme": "Books.com.tw, known as 博客來, began in 1995 and has expanded from books into a broader online retail platform. Its company page connects reading and everyday life through the brand expression **“Book Your Life”** and a positioning that joins digital technology w",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "booth",

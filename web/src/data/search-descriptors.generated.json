@@ -3199,6 +3199,69 @@
     ]
    }
   },
+  "books": {
+   "hash": "5bffba1414cd8daa",
+   "terms": {
+    "en": [
+     "online bookstore",
+     "ecommerce retail",
+     "book shopping",
+     "digital reading",
+     "dense category lists",
+     "white canvas",
+     "green navigation",
+     "green search bar",
+     "red promotional text",
+     "orange link hover",
+     "illustrated campaigns",
+     "compact catalogue text",
+     "taiwan shopping"
+    ],
+    "ko": [
+     "온라인 서점",
+     "쇼핑몰",
+     "도서 쇼핑",
+     "전자책 읽기",
+     "촘촘한 카테고리 목록",
+     "흰색 배경",
+     "초록색 내비게이션",
+     "초록 검색창",
+     "빨간 프로모션 텍스트",
+     "주황색 링크 호버",
+     "일러스트 캠페인",
+     "대만 쇼핑"
+    ],
+    "ja": [
+     "オンライン書店",
+     "ECサイト",
+     "書籍通販",
+     "電子書籍",
+     "高密度カテゴリ一覧",
+     "白背景",
+     "緑のナビゲーション",
+     "緑の検索バー",
+     "赤い販促テキスト",
+     "オレンジのリンクホバー",
+     "イラスト広告",
+     "台湾の通販"
+    ],
+    "zh": [
+     "網路書店",
+     "電商購物",
+     "書籍購物",
+     "電子書閱讀",
+     "密集分類列表",
+     "白色背景",
+     "綠色導覽列",
+     "綠色搜尋列",
+     "紅色促銷文字",
+     "橘色連結懸停",
+     "插畫活動橫幅",
+     "台灣購物網站",
+     "緊湊目錄文字"
+    ]
+   }
+  },
   "booth": {
    "hash": "8c05bb5677165f67",
    "terms": {
