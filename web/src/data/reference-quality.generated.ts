@@ -2148,33 +2148,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cookpad",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 87,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 2,
-    "componentCount": 9,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.75
+    "tokenSource": "live-extract",
+    "claimCount": 90,
+    "evidenceClaimCount": 90,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 17,
+    "conflictCount": 0,
+    "tier1SourceCount": 17,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "coolblue",
@@ -14206,9 +14198,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 424,
+  "verified_v2": 425,
   "partial": 89,
-  "legacy_snapshot": 83,
+  "legacy_snapshot": 82,
   "total": 596
 } as const;
 

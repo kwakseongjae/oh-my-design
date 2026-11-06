@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 424,
-  "sources": 3737,
+  "references_with_verification_v2": 425,
+  "sources": 3754,
   "sources_by_kind": {
-    "brand-asset": 252,
+    "brand-asset": 253,
     "license": 141,
-    "official-doc": 1775,
-    "product-surface": 1569
+    "official-doc": 1786,
+    "product-surface": 1574
   },
   "references": {
     "104": {
@@ -3164,6 +3164,114 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "coinone.co.kr"
+        }
+      ]
+    },
+    "cookpad": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "brand-release",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "prtimes.jp"
+        },
+        {
+          "id": "brand-release-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "company-root",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "control-company",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "control-note",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "control-prtimes",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "prtimes.jp"
+        },
+        {
+          "id": "design-magazine",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "ds-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "global-web-assets.cpcdn.com"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
         }
       ]
     },

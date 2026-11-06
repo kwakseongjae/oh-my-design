@@ -1,43 +1,58 @@
 ---
 name: Cookpad
 colors:
-  primary: '#FF9933'
-  brand: '#FF9933'
-  canvas: '#F8F6F2'
-  surface: '#FFFFFF'
-  cream-tint: '#FEF9EE'
-  warm-gray: '#ECEBE9'
-  foreground: '#0F0F0F'
-  body: '#4A4A4A'
-  muted: '#4A4A4A'
-  on-primary: '#FFFFFF'
-  accent-yellow: '#E9B83F'
-  pale-yellow: '#FAF5D7'
+  primary: '#ff9933'
+  brand: '#ff9933'
+  canvas: '#f8f6f2'
+  surface: '#ffffff'
+  layer: '#fcfcfb'
+  layer-gray: '#f4f1ec'
+  warm-gray: '#ecebe9'
+  foreground: '#000000'
+  charcoal: '#4a4a4a'
+  muted: '#767676'
+  tertiary: '#939290'
+  border: '#cececd'
+  on-primary: '#fcfcfb'
+  accent-yellow: '#e9b83f'
+  premium-tint: '#fff3d8'
+  accent-light: '#fdf1e2'
 typography:
   section:
-    fontSize: 22px
-    fontWeight: 700
-    lineHeight: 1.3
-    use: Section headings
+    fontSize: 18px
+    fontWeight: 600
+    use: Popular-ingredient and category headings; live markup and the linked product CSS, not a measured heading control
   title:
     fontSize: 16px
     fontWeight: 600
-    lineHeight: 1.4
-    use: Recipe card title
+    use: Premium collection headings in live markup; the carousel recipe title instead uses the 18px/700 CSS rule
   button:
     fontSize: 16px
     fontWeight: 600
-    lineHeight: 1.4
-    use: Primary button label
+    lineHeight: 1.5
+    use: Measured Search submit label
+  secondary:
+    fontSize: 16px
+    fontWeight: 500
+    use: Measured visible Login button span inside a link
   body:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
-    use: Body / recipe meta / category label
+    use: Measured hero search input and the product's body-large CSS rule; recipe-detail text was not measured
+  category:
+    fontSize: 14px
+    fontWeight: 400
+    use: Measured visible label inside the Vegetable category link
+  navigation:
+    fontSize: 18px
+    fontWeight: 400
+    use: Measured Recipe Challenge sidebar link
 rounded:
-  sm: 8px
-  md: 8px
-  lg: 8px
+  square: 0px
+  trending-photo: 6px
+  control: 8px
+  recipe-frame: 8px
   full: 9999px
 spacing:
   xs: 4
@@ -45,67 +60,53 @@ spacing:
   md: 16
   base: 16
   lg: 24
-  xl: 32
-  xxl: 48
-  section: 64
 components:
   button-primary:
     type: button
-    backgroundColor: '#FF9933'
-    textColor: '#FFFFFF'
+    backgroundColor: '#ff9933'
+    textColor: '#fcfcfb'
     rounded: 8px
-    padding: 8px 24px
-    typography: 16/600
-    use: Main action — search, post recipe, sign up
+    height: 48px
+    padding: 0px 16px
+    typography: 16px / 600
+    hover: box-shadow rgba(0, 0, 0, 0.06) 0px 0px 0px 999px inset
+    pressed: box-shadow rgba(0, 0, 0, 0.16) 0px 0px 0px 999px inset
+    focus: box-shadow rgba(0, 0, 0, 0.12) 0px 0px 0px 999px inset
+    use: '検索: input[type=submit][name=commit], the orange special variant. Focus records only the authored inset shadow; Chrome''s auto outline is excluded. The CSS primary variant is black.'
   button-secondary:
     type: button
-    backgroundColor: '#FFFFFF'
-    textColor: '#FF9933'
+    textColor: '#4a4a4a'
+    border: '1px solid #cececd'
     rounded: 8px
-    use: 'Outline, 1px #FF9933 border — lower-emphasis beside primary'
+    height: 48px
+    typography: 16px / 500
+    hover: visible child box-shadow rgba(0, 0, 0, 0.06) 0px 0px 0px 999px inset
+    pressed: visible child box-shadow rgba(0, 0, 0, 0.16) 0px 0px 0px 999px inset
+    use: 'Link: header ログイン at /jp/login, transparent on white. These are the visible span''s measured size, label and border; its 8px radius is from the linked product CSS. The anchor itself is 23px high with 0px radius and #939290 colour, changing to #000000 on hover/press; visible text stays #4a4a4a.'
   button-text:
     type: button
-    textColor: '#4A4A4A'
-    use: Transparent tertiary / navigation action
-  button-disabled:
-    type: button
-    backgroundColor: '#ECEBE9'
-    textColor: '#4A4A4A'
-    use: Unavailable action
+    textColor: '#767676'
+    rounded: 0px
+    height: 28px
+    padding: 0px
+    typography: 18px / 400
+    hover: 'fg #000000, including the visible label and inline SVG strokes'
+    pressed: 'fg #000000, including the visible label and inline SVG strokes'
+    use: 'Link: sidebar レシピチャレンジ at /jp/challenges, transparent on the white navigation panel. Its auto focus outline is browser supplied.'
   category-tile:
     type: button
-    textColor: '#0F0F0F'
+    textColor: '#000000'
     rounded: 8px
+    height: 64px
     padding: 16px
-    typography: 16/400
-    use: Ingredient/category navigation — large tappable icon + label
-  recipe-card:
-    type: card
-    backgroundColor: '#FFFFFF'
-    textColor: '#0F0F0F'
-    rounded: 8px
-    use: Food photo top, title + meta below, floating on cream page
-  promoted-card:
-    type: card
-    backgroundColor: '#FEF9EE'
-    rounded: 8px
-    use: Featured / promoted recipe region
-  search-input:
-    type: input
-    backgroundColor: '#FFFFFF'
-    textColor: '#0F0F0F'
-    rounded: 8px
-    padding: 12px 16px
-    use: 'Central recipe search; focus ring in #FF9933'
-  rating-badge:
-    type: badge
-    backgroundColor: '#FAF5D7'
-    textColor: '#4A4A4A'
-    rounded: 8px
-    use: Ratings, つくれぽ counts, promoted labels
+    typography: 14px / 400
+    shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px 0px
+    hover: 'bg #f8f6f2'
+    pressed: 'bg #f8f6f2'
+    use: 'Link: 野菜 at /jp/categories/10, transparent on the white content panel. The anchor''s inherited font is 16px/400; its visible label is 14px/400. Its auto focus outline is browser supplied.'
 fonts:
   roles:
-    sans: Noto Sans
+    sans: noto-sans
 ---
 
 # Design System Inspiration of Cookpad
@@ -114,363 +115,244 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Cookpad (クックパッド) is Japan's dominant recipe-sharing platform — used by more than half the country's population at least once a month — and its visual identity is built to feel like a **warm, well-lit home kitchen**, not a glossy food magazine. The single most important atmospheric decision is the background: Cookpad does not sit on pure white. The working surface is a **warm off-white** (`#F8F6F2`, a soft cream), which immediately softens the whole interface and makes the food photography (the real star) feel like it's resting on a clean wooden countertop rather than a clinical screen. Recipe cards float on that cream as crisp white tiles, and the brand's **friendly orange** (`#FF9933`) appears on the primary action and brand mark like a pop of carrot or persimmon.
+Cookpad is a recipe posting and search service whose community also shares **つくれぽ**, recommendations of dishes people have cooked. Its mission is **「毎日の料理を楽しみにする」**, to make everyday cooking fun. Ingredient search, browsing and contributors' food photographs give the product a practical starting point: deciding what to cook. These product and mission descriptions come from Cookpad's [service page](https://info.cookpad.com/service) and [company philosophy](https://info.cookpad.com/about).
 
-The mood is **homey, appetizing, and unintimidating**. Cookpad's premise is that everyday home cooking — not chef-grade technique — should be fun, so the design avoids anything that reads as elite or fussy. There are no dark moody food-blog aesthetics, no celebrity-chef polish; instead, generous warm neutrals, rounded `8px` corners that feel soft and approachable, and large, mouth-watering recipe photos. Text is a near-black (`#0F0F0F`) for crisp readability against the cream, with a charcoal gray (`#4A4A4A`) for chrome and secondary UI. The primary button is a confident solid orange with white text and semibold (600) weight — friendly but clear.
+The measured desktop design puts large **white panels (`#ffffff`) inside a warm cream frame (`#f8f6f2`)**. Orange `#ff9933` appears on Search, the recipe-writing action and the active discovery navigation. The chef-hat logo, generous food images and small author portraits make the recipe community visible. This is an observation of the page's composition, rather than a claim that Cookpad prescribes a home-kitchen metaphor. The measured homepage is the Japanese edition (`cookpad.com/jp`), reached from `https://cookpad.com`, with HTML `lang="ja"`.
 
-Typography leads with **Noto Sans** backed by a system-font chain (`system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial`), rendering Japanese and alphanumerics cleanly without a bespoke webfont. Body sits at a comfortable 16px. The overall effect is a platform that feels like it's *rooting for you* in the kitchen — approachable, warm, photo-forward, and built so a tired parent on a Tuesday night can find dinner in three taps.
+Cookpad's published design work has evolved beyond a single visual layer. A [2021 account by its design-strategy team](https://note.com/fjkn/n/nf73742ec925a) describes Apron, guidelines joining iOS, Android and Web after earlier Sara and Citrus work. Separately, the company's [2022 Organic announcement](https://prtimes.jp/main/html/rd/p/000000255.000027849.html) introduced corporate branding and Cookpad Sans. That announcement concerns corporate communications; the product font evidence below comes from the live recipe site. The current homepage combines a persistent discovery sidebar, a central ingredient search, a recommendation carousel, category navigation and a premium-service strip.
 
-**Key Characteristics:**
-- **Warm off-white background** `#F8F6F2` (cream) — never pure white; the signature "home kitchen" canvas
-- **Friendly orange** `#FF9933` (verified live) as the primary action + brand color — appetizing, not corporate
-- White recipe tiles floating on the cream base for crisp food-photo presentation
-- Near-black text `#0F0F0F` for readability; charcoal `#4A4A4A` for chrome/secondary
-- Soft, approachable **`8px` border-radius** on buttons, cards, and category tiles
-- Photo-forward: large, mouth-watering recipe images are the primary content
-- **Noto Sans-led** system font stack; comfortable 16px body
-- Primary button: solid orange, white text, 16px **weight 600** — friendly but clear
-- Warm accent neutrals (e.g. `#FEF9EE` cream tint, `#ECEBE9` warm gray) keep the palette cozy
-- Homey, unintimidating mood — everyday cooking made fun, never chef-elite
+#### Primary tasks
 
-### Primary tasks
-
-- Search for a recipe by an ingredient you already have
-- Browse ingredient and category tiles when nothing comes to mind
-- Cook from a recipe's ingredient list and steps at the stove
-- Save a recipe to find it again later
-- Post your own recipes and read the made-it reports left on them
+- Search by an ingredient, using **「つかいたい食材は？」** and **「検索」**.
+- Browse ingredient photographs, popular keywords and categories such as 野菜, お肉, 魚介 and たまご.
+- Save or create recipes after logging in; the sidebar explicitly explains that requirement.
+- Post recipes and exchange つくれぽ, as described on the official service page.
 
 ### Brand Narrative
 
-Cookpad was founded in Japan in **1997** by **Akimitsu Sano (佐野陽光)**, an engineer trained in neural computing at Keio University who had been selling produce for local farmers on the side. Sano saw a decline in home cooking eroding people's connection to food, and believed technology could make everyday cooking *fun* again. The service launched in **1998** as "Kitchen@coin," was renamed **Cookpad** in 1999, and — after Sano dropped a paid-subscription model and made it free — grew into a vast community of user-submitted recipes long before social networks existed. By 2003 it had a million users in Japan; today more than half the Japanese population uses it monthly. <!-- source: medium.com/cookpadteam founding story + Crunchbase (Akimitsu Sano), WebSearch 2026-05-19 -->
+Cookpad's [official history](https://info.cookpad.com/corporate) dates the company to **October 1997 in Fujisawa**, the recipe posting/search service **`kitchen@coin` to March 1998**, and the change to **クックパッド to June 1999**. It records the premium service and conversion to the current company form in September 2004. The current mission centres the value of everyday cooking for people, communities and the environment, as explained on the company philosophy page.
 
-The design language flows directly from the mission **"make everyday cooking fun."** **One**, it must feel *homey and unintimidating* — hence the warm cream background, the friendly orange, the soft `8px` corners, and the deliberate refusal of chef-elite polish. Cooking dinner on a Tuesday is the use case, not plating for Instagram. **Two**, *food must look appetizing* — hence the photo-forward recipe cards and the warm neutral canvas that makes images pop like food on a clean countertop. **Three**, it is fundamentally a *community* product — recipes come from millions of home cooks, and the "つくれぽ" made-it-report culture means the design celebrates ordinary people cooking for the people they love.
+The 2021 Apron article describes a move from the older Web framework Sara and the 2018 Citrus system toward guidelines shared across iOS, Android and Web, and then a React component library. It is historical design-development evidence, not proof that all 2026 classes or tokens belong to Apron. The 2022 corporate Organic identity used warm organic shapes and colours; its Latin Cookpad Sans was developed from the logotype with Fontworks. These corporate facts retain their own context alongside the live product measurements.
 
-What Cookpad refuses: the moody dark aesthetics of premium food blogs, the celebrity-chef gloss of TV cooking brands, and the cold utility of a pure-white app. It chooses warmth, approachability, and community every time — software that feels like a friend cheering you on in the kitchen.
+The legal notice identifies **「クックパッド株式会社」**, **「東京都目黒区大橋2-22-44」**. The company history records its headquarters moving to Meguro in May 2024. Its corporate page also lists a Bristol office and describes the UK operation as a second headquarters in its 2016 history; the Japanese product's legal operator and Tokyo address support the country proposal **JP**. No parent company is named in the opened Japanese legal notice.
 
 ### Principles
 
-1. **Make everyday cooking fun.** The founding mission and the lens for every decision. *UI implication:* Warmth over polish, encouragement over instruction, approachable over elite. The cream background, friendly orange, and soft radius all serve this.
-
-2. **Food is the hero.** Recipes exist to be cooked, and appetizing photos drive that. *UI implication:* Recipe cards are photo-forward; chrome stays out of the way; the warm canvas makes images pop. Don't clutter a card.
-
-3. **Never make the cook feel inadequate.** Cookpad's user is a home cook, not a chef. *UI implication:* Plain helpful copy, no jargon, blameless errors, low-pressure CTAs. The voice roots for the user.
-
-4. **Community first.** The platform is built on user recipes and made-it reports (つくれぽ). *UI implication:* Surface and celebrate contributors; make posting and reporting easy and warm; treat the community as the product, not an add-on.
-
-5. **Warm, not clinical.** The whole interface should feel like a home kitchen. *UI implication:* Warm off-white `#F8F6F2` instead of pure white; warm-neutral accents; soft corners; gentle (never dramatic) depth.
+- **Make everyday cooking fun.** This is the company's stated mission, not an inferred visual principle.
+- **Help people help each other.** The company philosophy describes a platform that supports mutual help; its service description provides the concrete mechanism of shared recipes and つくれぽ.
+- **Make reusable product design available across platforms.** The historical Apron account describes shared guidelines and implementation libraries as a way to improve design quality and give developers more time with users.
+- **For this reference, keep the measured roles distinct.** White content, cream frame, orange special actions, gray quiet navigation and gold premium labels come from the current page; this last point is implementation guidance derived from the measurements.
 
 ### Personas
 
-*Personas are fictional archetypes informed by Cookpad's publicly-described user base (Japanese home cooks, majority of the population uses it monthly), not real individuals.*
-
-**高橋 由美 (Yumi Takahashi), 36, Saitama.** Working parent of two. Opens Cookpad on her phone in the supermarket and again at the stove. Searches by the ingredient she already has ("鶏むね肉"), wants a 3-tap path to a doable weeknight recipe. Posts an occasional つくれぽ when something works. Has zero patience for fussy or chef-grade instructions.
-
-**中村 健 (Ken Nakamura), 27, Tokyo.** Lives alone, learning to cook to save money and eat better. Browses category tiles (麺 / ごはんもの) for ideas. Appreciates that Cookpad doesn't make him feel like a beginner — the warm, encouraging tone keeps him cooking instead of ordering delivery.
-
-**小林 さち (Sachi Kobayashi), 58, Hiroshima.** Experienced home cook who *contributes* recipes and reads つくれぽ on her dishes. Cookpad is her community and her recipe box. Values the warmth and the recognition of fellow home cooks far more than any slick feature.
+No sourced persona study was opened; the prior fictional biographies are not retained as product facts.
 
 ## Colors
 
-Values below are observed live from cookpad.com/jp computed styles (2026-05-19), supplemented by warm-neutral tints visible in the same render.
+The survey found **90 computed `--cookpad-*` custom properties**. The values below are either those first-party properties or colours observed on the product controls. Spaced RGB triplets are converted to six-digit hex without changing the channels. Framework and carousel defaults are excluded.
 
-### Brand
-- **Cookpad Orange** (`#FF9933`): RGB `rgb(255, 153, 51)`. The primary brand color — primary buttons, brand mark, key accents. Friendly, appetizing orange.
-- **Orange on white**: primary button uses `#FF9933` bg with `#FFFFFF` text.
+| Role | Value | Direct evidence |
+|---|---|---|
+| Brand / orange action | `#ff9933` | `--cookpad-base-orange`, `--cookpad-button-special-background`; Search background |
+| Outer canvas | `#f8f6f2` | `--cookpad-surface-canvas-default`; category hover/press |
+| White product panels | `#ffffff` | `--cookpad-base-white`; navigation ancestors and search field |
+| Default layer / inverse content | `#fcfcfb` | `--cookpad-surface-layer-default`, `--cookpad-text-inverse`; Search label |
+| Gray layer | `#f4f1ec` | `--cookpad-surface-layer-gray` |
+| Subtle border / gray4 | `#ecebe9` | `--cookpad-border-secondary`, `--cookpad-gray4` |
+| Foreground | `#000000` | `--cookpad-text-primary`; most frequent paragraph ink, 52 paragraphs |
+| Charcoal | `#4a4a4a` | `--cookpad-gray9`; search input and visible Login label |
+| Secondary / muted | `#767676` | `--cookpad-text-secondary`; inactive Recipe Challenge navigation |
+| Tertiary | `#939290` | `--cookpad-text-tertiary`; Login anchor's own colour |
+| Main border | `#cececd` | `--cookpad-border-primary`; visible Login border |
+| Premium gold | `#e9b83f` | `--cookpad-premium-gold`; premium icon inside the recipe card |
+| Premium attention fill | `#fff3d8` | `--cookpad-premium-attention-background`; premium label inside the recipe card |
+| Light orange accent | `#fdf1e2` | `--cookpad-background-accent-primary-light`; token existence, not a measured component assignment |
 
-### Surface
-- **Warm Off-White / Cream** (`#F8F6F2`): RGB `rgb(248, 246, 242)`. The signature page background — soft cream, never pure white.
-- **Card White** (`#FFFFFF`): Recipe cards and content tiles float on the cream.
-- **Cream Tint** (`#FEF9EE`): RGB `rgb(254, 249, 238)`. Subtle warm fill for highlighted/promoted regions.
-- **Warm Gray Surface** (`#ECEBE9`): RGB `rgb(236, 235, 233)`. Dividers, subtle fills.
+The actual orange Search label is **`#fcfcfb`**, while the recipe title and author name over the photograph use **`#ffffff`**. These are different roles. The site also declares `--cookpad-button-primary-background: 0 0 0`: its named primary CSS variant is black, and the measured orange action uses `mise-btn--special`.
 
-### Text
-- **Near-Black Text** (`#0F0F0F`): RGB `rgb(15, 15, 15)`. Primary text — recipe titles, body, on the cream and on white cards.
-- **Charcoal** (`#4A4A4A`): RGB `rgb(74, 74, 74)`. Chrome, secondary text, icon default, input text.
-- **White** (`#FFFFFF`): Text on the orange primary button.
-
-### Accent / Misc
-- **Warm Yellow** (`#E9B83F`): RGB `rgb(233, 184, 63)`. Secondary warm accent (ratings/highlights), observed in the render.
-- **Pale Yellow Tint** (`#FAF5D7`): RGB `rgb(250, 245, 215)`. Light highlight fill.
-- **Scrim** (`rgba(0,0,0,0.2)`): Image/overlay darkening on photo tiles.
+Authored interaction layers include `--cookpad-background-hover: #0000000f`, `--cookpad-background-focused: #0000001f` and `--cookpad-background-ripple: #00000029`. The measured inset shadows resolve these to black at 6%, 12% and 16%. The overlay token `--cookpad-surface-overlay: #0003` is a declared 20% black scrim; it is not the measured recipe-photo gradient described in §6.
 
 ## Typography
 
-### Font Stack
-```
-noto-sans, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, arial, sans-serif
-```
-Cookpad leads with Noto Sans for clean Japanese + alphanumeric rendering, then falls back to each platform's system font. No bespoke brand webfont — recipes load fast on every device.
+### Evidence classes
 
-### Size Scale (observed)
-| Use | Size | Weight |
-|---|---|---|
-| Body / recipe meta | `16px` | 400 |
-| Recipe title (card) | `16px` | 600–700 |
-| Primary button | `16px` | 600 |
-| Category label | `16px` | 400 |
-| Section heading | `20–24px` | 600–700 |
+- **Official product-use statement:** no opened company publication identifies a prescribed recipe-product typeface. Product use is instead established by the live font census and linked stylesheet.
+- **Live-loaded:** `document.fonts` reports **`noto-sans 400 normal`**, **`noto-sans 500 normal`** and **`noto-sans 600 normal`**. The machine family is therefore the exact CSS name **`noto-sans`**. The homepage links the [Adobe Typekit kit `zbz2cyk`](https://use.typekit.net/zbz2cyk.css); its opened CSS supplies these normal faces through WOFF2, WOFF and OpenType source alternatives with `font-display: swap`. No font binary was downloaded for this report.
+- **Official distributed assets:** the product-linked Adobe kit is a delivery source for `noto-sans`. Cookpad's corporate announcement documents **Cookpad Sans**, a Latin typeface developed from its logotype with Fontworks. It does not establish recipe-product use or a public font download or redistribution licence. Cookpad Sans was not loaded in this product capture and receives no specimen.
+- **Declared-only:** body, h1 and button declarations all list `noto-sans, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, arial, sans-serif`. Only `noto-sans` is in the loaded-face census; the other names remain fallback declarations, not additional verified product faces. The Adobe kit also declares italic 400/500/600 faces, but none was loaded. Product CSS contains weight 700 rules; no loaded 700 face appears in the census, so those metrics do not justify a 700-face specimen.
+- **Unresolved:** the actual face supplying individual Japanese Kana and Han glyphs was not resolved. No script-specific rendering claim is made. **Substitute: none chosen.**
 
-### Conventions
-- **16px is the comfortable body default** — readable for long recipe steps and ingredient lists.
-- **Weight 600 (semibold)** carries buttons and titles; **700** for stronger headings. Hierarchy from size + weight + the warm background contrast.
-- **Body weight 400** for ingredient lists and step text — easy on the eye while cooking.
-- Always carry the Noto Sans + system fallback chain; never hardcode a Latin-only font.
+### Measured text and authored scale
+
+| Use | Size / weight | Line height | Evidence |
+|---|---|---|---|
+| Search submit | `16px / 600` | `24px` | Control identity and visible label |
+| Hero search input | `16px / 400` | `24px` | Control identity |
+| Visible Login span | `16px / 500` | CSS `24px` | Probe label font; `.mise-btn--secondary` CSS line height |
+| Sidebar Recipe Challenge | `18px / 400` | `28px` | Control identity and visible label |
+| Vegetable category label | `14px / 400` | CSS `20px` | Probe label font; `.text-cookpad-body-medium` CSS |
+| Popular-ingredient section heading | CSS `18px / 600` | CSS `28px` | Live h1 classes `text-cookpad-18 font-semibold leading-7` |
+| Recommendation heading / large carousel recipe title | CSS `18px / 700` | CSS `28px` / `24px` respectively | Live classes and their product CSS; not a loaded 700 face |
+| Premium collection headings | CSS `16px / 600` | Inherited CSS `24px` | Live h2 `font-semibold` and body declaration |
+| Product CSS `title-large` rule | CSS `22px / 700` | CSS `30px` | Rule exists; not the measured homepage's section-heading treatment |
+
+The measured Search and input have `-0.4px` letter spacing; the navigation link has `-0.45px`. A category anchor inherits `16px / 400`, but its visible child label is `14px / 400`. Preserve that distinction when reproducing the tile.
 
 ## Layout
 
-### Density
-Cookpad is **medium density, photo-forward**. The grid of recipe cards packs efficiently, but each card gives its food photo room to look appetizing. The warm `#F8F6F2` background provides separation between white cards without heavy borders or shadows.
+At `1440 × 1000`, the survey records a `270px` sticky sidebar and a `1131 × 72px` sticky header. The hero logo is `224 × 61.2px`. A centred ingredient field and orange submit sit above the recommendations. The recommendation group combines one large photograph with two smaller ones; subsequent ingredient and category sections use four columns. These are the captured desktop arrangements, not a tested breakpoint specification.
 
-### Spacing & Structure
-- Top search bar is the hero — recipe discovery is the core loop
-- Category tiles (large `64px`, `8px` radius, `16px` padding) form a tappable navigation grid
-- Recipe cards in a responsive grid float on the cream base
-- Generous padding inside category tiles makes them comfortable tap targets
+Eight-pixel and sixteen-pixel spacing are directly present in the measured input and category padding and Search's horizontal padding. The opened product CSS and live classes also establish a `4px` small gap and `24px` section margins. These documented values support the normalized spacing entries; they do not establish the old draft's entire spacing scale. Category tiles keep their icon and label within a `64px` row. The page's white panels, cream frame, image crops and restrained dividers carry the hierarchy.
 
 ### Responsive Behavior
 
-| Width | Behavior |
-|---|---|
-| Desktop | Wide recipe grid (multi-column) on the cream base; top search + category grid prominent |
-| Tablet | Recipe grid reflows to fewer columns; category tiles wrap |
-| Mobile | Single/two-column recipe feed; search bar pinned; category tiles in a scrollable grid; mobile-first cooking context |
-
-#### Touch & Mobile
-- Category tiles (~64px) and primary buttons (~48px) clear touch minimums comfortably
-- Recipe photos crop responsively; titles stay readable at 16px
-- Cookpad's core usage is mobile (cooking with a phone propped in the kitchen) — touch targets are generous by design
+Rendered mobile and tablet behavior was not measured; this capture is desktop `1440 × 1000` only. Source CSS separately declares a three-column category grid, `16px` grid gaps and padded tiles at `970px`, and four columns at `1034px`; those are authored rules, not verified mobile rendering. Pinned mobile search, scrollable categories and mobile usage proportions remain unverified.
 
 ## Elevation & Depth
 
-Cookpad reads **soft and mostly flat**. Depth comes from the warm cream background separating white cards, plus the food photography itself. Shadows, where present, are gentle.
+Depth varies by element. Search has **no rest shadow**; the Vegetable tile has the measured `rgba(0, 0, 0, 0.1) 0px 1px 5px 0px` shadow. Search and Login use very large **inset** shadows for state overlays, rather than an elevated outer shadow.
 
-- Recipe cards: minimal shadow; cream-vs-white contrast + `8px` radius separates them
-- Photo tiles: a subtle `rgba(0,0,0,0.2)` scrim over images supports white overlay text
-- Dropdowns / modals: light shadow + scrim
-- The brand never goes heavy/glossy — the kitchen should feel calm, not dramatic
+The recipe image contains an empty overlay layer with `linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0))` and layer opacity `0.4`. This raw combination supports the white recipe title and author name. It is not a uniform 20% overlay. Dropdown or modal elevation was not measured.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.soft`: `none — depth via warm cream background separating white cards`
+- `shadow.category`: `rgba(0, 0, 0, 0.1) 0px 1px 5px 0px`
 
 ## Motion & Easing
 
-Cookpad's motion is **gentle and warm** — it supports a calm, fun cooking experience and never feels mechanical or aggressive. Motion clarifies and delights lightly; it doesn't dominate.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle commits, selection |
-| `motion-fast` | 150ms | Button hover/press, save-heart tap |
-| `motion-standard` | 250ms | Card reveal, dropdown, image fade-in |
-| `motion-modal` | 300ms | Modal/dialog enter-exit |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | The default |
-| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things arriving (cards, modals) |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Dismissals |
-| `ease-warm` | `cubic-bezier(0.34, 1.2, 0.64, 1)` | **Reserved** — a soft overshoot for the save/つくれぽ "heart" tap only |
-
-**Spring stance.** A single soft overshoot is permitted on the save / made-it-report interaction (the emotional, community moment), matching the warm brand register. Everywhere else, motion stays calm and standard — no bouncy chrome, no kinetic flourish on navigation.
-
-**Signature motions.**
-1. **Recipe card image fade-in.** Food photos fade in `opacity 0→1` over `motion-standard / ease-standard` as they load — appetizing reveal, no slide.
-2. **Save-recipe heart.** On tap, the heart icon scales `1.0 → 1.15 → 1.0` over `motion-standard / ease-warm` and fills orange — the one warm overshoot, fitting an emotional community moment.
-3. **Category tile press.** Subtle background tint + `motion-fast / ease-standard` on press; tappable and immediate.
-4. **Modal enter.** Scrim fades in; dialog appears with opacity + slight translate over `motion-modal / ease-enter`. Calm.
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` collapse to `motion-instant`; the heart overshoot flattens to a simple fill; image fade-ins become immediate. Warmth never costs accessibility.
-
-<!--
-OmD v0.1 Sources — Cookpad
-
-Tier 1 (live inspect, Playwright computed styles, 2026-05-19):
-- cookpad.com/jp — primary orange rgb(255,153,51) = #FF9933 (primary button bg, white text,
-  8px radius, 8px 24px padding, 16px/600); page bg rgb(248,246,242) = #F8F6F2 (warm cream);
-  text rgb(15,15,15) = #0F0F0F; chrome rgb(74,74,74) = #4A4A4A; category tiles 8px radius,
-  16px padding, ~64px; warm tints #FEF9EE, #ECEBE9, #FAF5D7, accent #E9B83F observed;
-  font stack "noto-sans, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, arial".
-
-Tier 2 / narrative (WebSearch 2026-05-19):
-- medium.com/cookpadteam founding story + Crunchbase — Akimitsu Sano (佐野陽光) founded 1997,
-  launched 1998 as "Kitchen@coin", renamed Cookpad 1999; mission "make everyday cooking fun";
-  >50% of Japan uses it monthly; community/つくれぽ culture.
-
-Verified vs assumed:
-- VERIFIED: #FF9933 primary, #F8F6F2 cream bg, #0F0F0F text, #4A4A4A chrome, 8px radius,
-  primary button spec, category tile spec, font stack — all live computed styles.
-- NOTE: brief supplied #FF7F33; the LIVE primary is #FF9933 (rgb 255,153,51). Using the
-  verified live value #FF9933.
-- INFERRED: secondary/outline button, search input, badge variants in §4; warm-tint usage in
-  notices/highlights; motion tokens in §15 (duration values illustrative). Voice samples marked
-  illustrative are not verbatim live strings except the published mission.
-- Personas (§13) are fictional archetypes of Cookpad's described home-cook user base.
--->
+Every measured control's raw computed transition is **`all 0s ease 0s`**. No nonzero transition duration or authored easing curve was established for these controls. The homepage HTML declares a carousel autoplay interval of **`5000` milliseconds** through `data-slider-redux-autoplay-value`; that is an interval declaration, not a measured transition duration. Card image fades, heart scaling, modal motion, springs and reduced-motion behavior remain unverified.
 
 ---
 
-**Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://cookpad.com/jp (live computed styles — primary orange #FF9933 [rgb 255,153,51], cream page bg #F8F6F2, text #0F0F0F, chrome #4A4A4A, 8px radius, primary button 16px/600 8px·24px, ~64px category tiles, Noto Sans system stack); https://info.cookpad.com (Cookpad corporate site, first-party).
-**Tier 2 sources:** medium.com/cookpadteam + Crunchbase (founding 1997 / Akimitsu Sano / mission "make everyday cooking fun"); getdesign.md / refero not separately fetched.
-**Conflicts unresolved:** Brief-supplied #FF7F33 corrected to live-verified #FF9933.
+**Evidence:** live homepage survey and keyboard-state capture, 2026-11-06; the linked [product stylesheet](https://global-web-assets.cpcdn.com/packs/css/application-v2-e3bfe30d.css); the linked [font delivery CSS](https://use.typekit.net/zbz2cyk.css). Company and design-history sources are linked at their claims. Raw control identities, census counts, source quotations and changes from the prior reference are in `verification.md` and `report.md`.
 
 ## Components
 
 ### Buttons
 
-**Primary**
-- Background: `#FF9933` (Cookpad Orange)
-- Text: `#FFFFFF`
+**Search — orange special variant**
+
+- Background: `#ff9933`
+- Text: `#fcfcfb`
+- Border: none
 - Radius: `8px`
-- Padding: `8px 24px`
-- Height: ~`48px`
-- Font: `16px` / `600`
-- Use: The main action — search, post a recipe, sign up
+- Padding: `0px 16px`
+- Height: `48px` (`63.2px` wide in the capture)
+- Font: `16px / 600 / noto-sans`
+- Shadow: none at rest
+- Hover: `rgba(0, 0, 0, 0.06) 0px 0px 0px 999px inset`
+- Pressed: `rgba(0, 0, 0, 0.16) 0px 0px 0px 999px inset`
+- Focus: authored `rgba(0, 0, 0, 0.12) 0px 0px 0px 999px inset`; it clears after blur
+- Use: the central `検索` submit, `input[type="submit"][name="commit"]`; states were measured without submitting the form
 
-**Secondary / Outline** (inferred from palette)
-- Background: `#FFFFFF`
-- Text: `#FF9933`
-- Border: `1px solid #FF9933`
-- Radius: `8px`
-- Use: Lower-emphasis action beside a primary
+Chrome additionally draws an `auto` outline on keyboard focus. That outline is not a Cookpad focus token. The authored inset shadow above is separate evidence.
 
-**Text / Quiet**
-- Background: transparent
-- Text: `#4A4A4A` (charcoal)
-- Use: Tertiary/navigation actions
+**Login — secondary link with a styled span**
 
-**Disabled** (inferred)
-- Background: `#ECEBE9` (warm gray)
-- Text: `#4A4A4A` at reduced emphasis
-- Use: Unavailable actions
+- Text: visible label `#4a4a4a`
+- Border: visible span `1px solid #cececd`, as computed by the probe
+- Radius: CSS `8px` on `.mise-btn--secondary`
+- Height: visible span `48px`, approximately `95px` wide
+- Font: visible label `16px / 500 / noto-sans`
+- Hover: the span gains `rgba(0, 0, 0, 0.06) 0px 0px 0px 999px inset`
+- Pressed: the span gains `rgba(0, 0, 0, 0.16) 0px 0px 0px 999px inset`
+- Use: link `ログイン` in the header, transparent over its white panel
+
+The focusable anchor itself is `94.8 × 23px`, radius `0px`, padding `0px`, `16px / 400`, transparent, without a border. Its own colour changes from `#939290` to `#000000` on hover/press; the visible child text stays `#4a4a4a`. Keyboard focus changes only the anchor's browser `auto` outline. The linked CSS specifies `16px` horizontal padding and a `1.5px` authored border for the child; the raw computed child border is `1px`, so the component record uses the computed result.
+
+**Recipe Challenge — quiet navigation link**
+
+- Text: `#767676` at rest
+- Border: none
+- Radius: `0px`
+- Padding: `0px`
+- Height: `28px` (`230px` wide)
+- Font: `18px / 400 / noto-sans`
+- Hover: label and inline SVG strokes become `#000000`
+- Pressed: same colour change while hovered and pressed
+- Use: sidebar link `レシピチャレンジ` at `/jp/challenges`, transparent on white; focus is the browser `auto` outline
 
 ### Category Tiles
 
-**Category Button**
-- Background: transparent
-- Text: `#0F0F0F`
+**Vegetable — category link**
+
+- Text: `#000000`
+- Border: none
 - Radius: `8px`
 - Padding: `16px`
-- Height: ~`64px`
-- Font: `16px` / `400`
-- Use: Ingredient/category navigation (野菜 / お肉 / 魚介 / たまご …) — large, tappable, icon + label
+- Height: `64px` (`262.8px` wide)
+- Font: visible child `14px / 400 / noto-sans`; anchor `16px / 400`
+- Shadow: `rgba(0, 0, 0, 0.1) 0px 1px 5px 0px`
+- Hover: transparent rest background becomes `#f8f6f2`
+- Pressed: same `#f8f6f2` fill; no further change relative to hover
+- Use: link `野菜` at `/jp/categories/10`, over the white content panel; includes a measured `32 × 32px` ingredient icon
+
+Its focus treatment is a browser `auto` outline. Other category links in the survey share the `64px` height and `8px` radius; only 野菜 received state measurements.
 
 ### Cards
 
-**Recipe Card**
-- Background: `#FFFFFF`
-- Text: `#0F0F0F`
-- Radius: `8px`
-- Padding: `0` (image-led; title strip below)
-- Use: Recipe tile — large food photo on top, title (16px 600) + meta below, floating on the `#F8F6F2` cream page
+The measured recommendation link is **「スルメイカで2品！イカ焼きとゲソのホイル焼き」**, at `/jp/recipes/26713911?ref=search_top&via=recommended_top_recipe`. Its anchor is `604.4 × 293.1px`, transparent, radius `0px`, padding `0px`, without border or shadow. Its clipping wrapper has the live classes `overflow-hidden rounded-lg`, which supply an **8px photo-frame radius** in the opened product CSS. The visible title and author name are white over the image, not the anchor's inherited black. A premium label has `#fff3d8` fill, orange text and a gold icon. The carousel recipe title uses the source CSS's `18px / 700` rule. This layout overlays text on the photograph; it does not place that title in a separate strip below it.
 
-**Promoted / Highlight Card** (inferred from cream tints)
-- Background: `#FEF9EE` (cream tint)
-- Radius: `8px`
-- Use: Featured/promoted recipe regions
+Hover and press were **UNMEASURED** because this carousel link was outside the viewport during the pointer pass. Tab #17 changed only its browser `auto` outline; the focus crop was also outside the viewport. It is documented here without an interactive component token. Elsewhere, live trending-image markup uses `.rounded-md`, whose opened CSS is `6px`. Keep that treatment distinct from the recommendation's 8px clipping frame and the links' own square geometry.
 
 ### Inputs
 
-**Search Field** (inferred from chrome)
-- Background: `#FFFFFF`
-- Text: `#4A4A4A` (placeholder), `#0F0F0F` (typed)
-- Radius: `8px`
-- Padding: `~12px 16px`
-- Focus: border/ring in `#FF9933`
-- Use: The central recipe search — the front door of the product
+The hero ingredient input is `359.5 × 24px`, white `#ffffff`, with `#4a4a4a` computed text, radius `0px`, no border or shadow, `0px 0px 0px 8px` padding and `16px / 400` type. Its parent supplies the visible white field container and a computed `1px solid #939290` border. Live markup and source CSS specify a `400px` wide, `48px` high container with `8px` radius and `8px` padding.
 
-### Badges
+Hover, held press and real Tab focus all produced **no computed change within the probe's scope**: self, both pseudo-elements and three ancestor levels, with zero descendants. Focus landed at Tab #12. No orange focus ring was measured. The placeholder colour is declared as `#767676` by the product CSS; no typed text was entered. This all-unchanged input stays out of `tokens.components`.
 
-**Rating / Highlight Badge** (inferred)
-- Background: `#FAF5D7` (pale yellow) or `#E9B83F`
-- Text: `#4A4A4A` / `#0F0F0F`
-- Radius: `8px` or `full`
-- Use: Ratings, "つくれぽ" counts, promoted labels
+### Badges and disabled styles
+
+The recipe card's visible premium label establishes the fill, orange label and gold icon above. Its radius and interaction were not measured, so there is no badge component token. No rating or つくれぽ-count badge was measured.
+
+The first-party CSS declares disabled special/primary content `#767676` on `#cececd`. These are **declared disabled values**, not measurements of a disabled control; no disabled component or measured disabled state is exported.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no search results)** | Warm cream canvas, one encouraging line (`#0F0F0F`) suggesting a broader search or a popular category, plus the search field. Never "no results, sorry." |
-| **Empty (no saved recipes)** | Friendly one-liner inviting the user to save a recipe; an orange primary to browse. Warm, not blaming. |
-| **Loading (recipe grid)** | Skeleton cards in warm-gray `#ECEBE9` at final card dimensions; gentle shimmer; no layout shift when photos load. |
-| **Loading (inline)** | In-button spinner; button keeps `8px` radius and orange fill; label swaps to loading. |
-| **Error (field)** | Gentle border swap + one calm helper line; cause + fix, friendly tone. |
-| **Error (page/network)** | Soft notice on cream; one sentence + retry. No alarm, no apology-flood. |
-| **Success (recipe saved/posted)** | Warm confirmation (`保存しました` / つくれぽ thanks); a touch of celebration for community actions. |
-| **Disabled** | Warm-gray `#ECEBE9` fill, muted text. Palette swap is the signal. |
-| **Skeleton** | Warm-gray blocks at exact final size, especially for the photo region; respects reduced-motion. |
-| **Empty (new contributor)** | Encouraging invitation to post a first recipe; celebrate the act of sharing, never gate it behind intimidation. |
+| Control | Hover | Held press | Keyboard focus |
+|---|---|---|---|
+| Search | Black 6% inset shadow | Black 16% inset shadow, beyond hover | Black 12% inset shadow plus browser `auto` outline; both clear on blur |
+| Login header link | Child 6% inset shadow; anchor own colour becomes black | Child 16% inset shadow; anchor remains black | Browser `auto` outline on anchor only |
+| Recipe Challenge nav | Visible label and SVG strokes become black | Same change as hover | Browser `auto` outline only |
+| Ingredient input | Measured, no computed change | Measured, no computed change | Tab #12, measured, no computed change |
+| Recipe carousel link | UNMEASURED: outside viewport | UNMEASURED: outside viewport | Tab #17, browser `auto` outline only; no visible crop |
+| Vegetable category link | Cream fill `#f8f6f2` | Same fill as hover | Browser `auto` outline only |
+
+All six controls were enabled when read. No disabled state, empty state, loading skeleton, form error or saved/posted confirmation was measured. The no-change statements are limited to the probe's computed-style and DOM comparison scope: self and pseudo-elements, descendants and their pseudo-elements, and three ancestor levels. The input has zero descendants; navigation includes its inline SVG; the recipe comparison includes the image/source strings and empty gradient layer. Pixels inside image assets, canvas/video, external sprites, closed shadow trees, cross-origin frames and unrelated siblings are outside that scope.
 
 ## Do's and Don'ts
 
-- **DO** put the interface on the warm cream `#F8F6F2`, not pure white. **DON'T** use a clinical pure-white canvas — the warmth is the brand.
-- **DO** reserve Cookpad Orange (`#FF9933`) for the primary action and brand mark. **DON'T** flood the UI with orange — it's a pop, not a wash.
-- **DO** let food photography dominate the recipe cards. **DON'T** clutter cards with chrome that competes with the photo.
-- **DO** use the soft `8px` radius everywhere. **DON'T** use sharp corners or huge pill radii — `8px` is the approachable signature.
-- **DO** use near-black `#0F0F0F` text for readability on cream. **DON'T** use low-contrast gray for primary recipe text.
-- **DO** keep copy warm, plain, and encouraging. **DON'T** adopt a chef-elite or fussy tone — everyday cooking is the point.
-- **DO** make category tiles large and tappable (64px). **DON'T** shrink navigation into tiny dense rows — cooks browse with thumbs.
-- **DO** lead with Noto Sans + system fallback. **DON'T** load a heavy brand webfont — recipes must load fast on every phone.
+The following are implementation guidance derived from this capture, not quotations from an official brand manual.
+
+- Preserve the cream outer frame **and white content panels**.
+- Reproduce the orange Search action with its `#fcfcfb` label and inset interaction layers.
+- Keep food photography and contributor identity visible in recommendation cards.
+- Use the measured `8px` corners for Search and category controls; retain the distinct `6px` photo treatment, square anchors and circular carousel controls where evidenced.
+- Use black paragraph ink, charcoal input/Login labels and the measured gray navigation roles separately.
+- Keep the Vegetable tile's `64px` height and `16px` padding, with its visible `14px` label.
+- Use only the loaded `noto-sans` family as a verified font token. Preserve the declared fallback stack as evidence without presenting its members as loaded faces.
 
 ## Voice & Tone
 
-Cookpad's voice is **warm, encouraging, and refreshingly unpretentious** — the brand's mission is literally to *make everyday cooking fun*, and the copy embodies that. It speaks to the home cook who is tired, busy, and not a professional chef, and it never makes them feel inadequate. The register is friendly polite Japanese (です・ます調) with a homey, peer-to-peer warmth — closer to a helpful friend sharing a recipe than an authoritative cookbook. Community is central: Cookpad is built on user-submitted recipes and "つくれぽ" (made-it reports), so the voice celebrates the contributors and the act of cooking-for-others.
+The official mission supplies an encouraging purpose, while the homepage's task labels are short and concrete: **「さがす」**, **「検索」**, **「レシピを書く」** and **「つかいたい食材は？」**. The sidebar explains that saving and creating recipes require login. These are observed product strings, rather than invented examples of success, error or onboarding copy.
 
-| Context | Tone |
-|---|---|
-| Buttons | Short friendly JP verb — `検索`, `レシピを投稿`, `保存`. Inviting, no pressure. |
-| Recipe meta | Plain and helpful — ingredients, steps, time. Practical, never fussy. |
-| Empty states | Encouraging — invite the user to search or post; never imply failure. |
-| Community (つくれぽ) | Warm and celebratory — thank and highlight the people who cooked and shared. |
-| Errors | Gentle and blameless; one calm sentence + the fix. |
-| Success | Friendly confirmation (`保存しました`) with a touch of warmth. |
-| Onboarding | Welcoming, low-pressure — cooking is supposed to be fun. |
-
-**Forbidden patterns.** Chef-elite condescension, fussy/technical jargon that intimidates home cooks, hype superlatives (`究極の`, `プロ級`), pressure/FOMO copy, exclamation-mark-button shouting, and anything that makes a tired parent feel they're cooking wrong. Cookpad roots for the cook.
-
-**Voice samples.**
-- `レシピを投稿` — post-a-recipe action; community-celebrating. <!-- illustrative: standard Cookpad-register JP action label; not quoted verbatim from a specific live screen -->
-- `検索` — the central recipe-search action. <!-- illustrative -->
-- "Make everyday cooking fun" — Cookpad's stated mission. <!-- verified: widely-published Cookpad mission statement, WebSearch 2026-05-19 (medium.com/cookpadteam) -->
+The [official service description](https://info.cookpad.com/service) connects recipe contributions with つくれぽ and everyday cooking. That supports community-oriented context. A complete authored voice guide, forbidden-word policy and emotional treatments for empty, error or success states were not established.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary / brand: Cookpad Orange `#FF9933`
-- Page bg: warm cream `#F8F6F2`; card bg `#FFFFFF`
-- Text: `#0F0F0F`; chrome/secondary `#4A4A4A`
-- Warm accents: `#E9B83F` (yellow), `#FEF9EE` (cream tint), `#FAF5D7` (pale yellow)
-- Radius: `8px` everywhere
+Use these prompts to reproduce the measured surface:
 
-### Example Component Prompts
-- "Create a Cookpad primary button: solid `#FF9933` bg, white text, `8px` radius, `8px 24px` padding, height ~48px, 16px weight 600. Place it on a warm `#F8F6F2` page background."
-- "Build a Cookpad recipe card: white bg, `8px` radius, large food photo filling the top, recipe title below at 16px weight 600 `#0F0F0F`, meta row in `#4A4A4A`. Float it on the `#F8F6F2` cream page with minimal shadow."
-- "Design a Cookpad category grid: large tappable tiles (~64px, `8px` radius, 16px padding), transparent bg, icon + label at 16px `#0F0F0F` (野菜 / お肉 / 魚介 / サラダ …)."
-- "Create a Cookpad search bar: white field, `8px` radius, `#4A4A4A` placeholder, focus ring in `#FF9933`, pinned at top of a `#F8F6F2` page. It's the front door of the product."
+- “Build the Cookpad desktop discovery composition with a cream `#f8f6f2` outer frame, white panels, a left sidebar, central ingredient search and large recipe photographs. Use `#000000` body ink and keep premium gold `#e9b83f` distinct from action orange `#ff9933`.”
+- “Create the observed Search submit: `48px` high, `8px` radius, `0px 16px` padding, `16px / 600` `noto-sans`, orange background and `#fcfcfb` text. Add black inset shadows at 6% on hover, 16% on press and 12% on keyboard focus.”
+- “Create the Vegetable category link: `64px` high, `16px` padding, `8px` radius, a `32px` icon and black `14px / 400` visible label. Start transparent over white; fill it with `#f8f6f2` on hover and held press.”
+- “Keep the ingredient input's white container and gray border, using the measured input geometry in §4. Do not add an unmeasured orange focus treatment.”
 
-### Iteration Guide
-1. **Warm cream `#F8F6F2` background**, never pure white — this is the brand's home-kitchen feel.
-2. **Orange (`#FF9933`) is a pop**, not a wash — primary action + brand mark only.
-3. **Photos are the content** — recipe cards exist to showcase appetizing food images.
-4. **`8px` radius everywhere** — soft and approachable.
-5. **Text `#0F0F0F`** on cream/white for crisp readability; chrome `#4A4A4A`.
-6. **16px body, weight 600 for buttons/titles** — friendly but clear.
-7. **Large tappable navigation** (64px category tiles) — cooks browse with thumbs.
-8. **Noto Sans + system fallback**; never a heavy webfont.
-
----
+Check the actual visible label when a transparent anchor contains a separately styled child. Keep declarations, loaded fonts and measured states distinct throughout implementation.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `button-primary`.** Text `#ffffff` on `#ff9933` measures 2.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `button-secondary`.** Text `#ff9933` on `#ffffff` measures 2.13:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `button-primary`.** Text `#fcfcfb` on `#ff9933` measures 2.08:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
