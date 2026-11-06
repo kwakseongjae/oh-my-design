@@ -796,6 +796,35 @@ function buildContext(files) {
   return ctx;
 }
 
+// HG-12 (load first): a standalone HTML document (a deck, a one-off page) has no font pipeline of its own, so
+// the first Korean web face its stacks name must be loaded inside the document: a <link>, @import, @font-face
+// or url() that points at it. Otherwise it renders only where the face happens to be installed (#110: a deck
+// that named Pretendard and loaded nothing passed every other check).
+const WEB_FACE = [
+  [/pretendard/i, /pretendard/i], [/spoqa/i, /spoqa/i], [/^suit( variable)?$/i, /suit/i],
+  [/noto ?sans ?(kr|korean)/i, /noto[+\s_-]?sans[+\s_-]?kr/i], [/noto ?serif ?(kr|korean)/i, /noto[+\s_-]?serif[+\s_-]?kr/i],
+  [/wanted ?sans/i, /wanted[+\s_-]?sans/i], [/ibm ?plex ?sans ?kr/i, /ibm[+\s_-]?plex[+\s_-]?sans[+\s_-]?kr/i],
+  [/nanum/i, /nanum/i], [/gmarket/i, /gmarket/i], [/paperlogy/i, /paperlogy/i], [/gowun/i, /gowun/i],
+  [/hahmlet/i, /hahmlet/i], [/line ?seed/i, /line[+\s_-]?seed/i], [/min ?sans/i, /min[+\s_-]?sans/i],
+];
+function checkWebFaceLoaded(env, text, lineAt) {
+  if ((env.ext !== '.html' && env.ext !== '.htm') || !/<html[\s>]/i.test(text) || !HANGUL.test(text) || visibleWords(text) < 20) return;
+  const re = /font-family\s*:\s*([^;}"<]+)/gi;
+  let m, first = null;
+  while ((m = re.exec(text)) && !first) {
+    for (const raw of m[1].split(',')) {
+      const name = raw.trim().replace(/^['"]|['"]$/g, '');
+      const face = WEB_FACE.find(([n]) => n.test(name));
+      if (face) { first = { name, slug: face[1], at: m.index }; break; }
+    }
+  }
+  if (!first) return;
+  const urls = [...text.matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']|@import\s+(?:url\()?\s*["']?([^"')\s;]+)|url\(\s*["']?([^"')]+)/gi)].map((u) => u[1] || u[2] || u[3]);
+  const faces = [...text.matchAll(/@font-face\s*{[^}]*font-family\s*:\s*([^;}]+)/gi)].map((u) => u[1]);
+  if (urls.some((u) => first.slug.test(decodeURIComponent(u))) || faces.some((n) => first.slug.test(n))) return;
+  env.F.add(env.file, lineAt(first.at), 'WARN', 'HG-12', `"${first.name}" is named but never loaded in this standalone document; it shows only where it is installed. Load it (<link> to its CSS, e.g. Pretendard Variable from jsDelivr, or @font-face)`);
+}
+
 function visibleWords(html) {
   return html.replace(/<script\b[\s\S]*?<\/script>/gi, ' ').replace(/<style\b[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 }
@@ -819,6 +848,7 @@ function run(inputs, { base = process.cwd(), assumeKo = false } = {}) {
       if (!STYLE_EXT.has(f.ext)) {
         checkLines(env, f.text.split('\n'));
         if (!EMBED_STYLE_EXT.has(f.ext)) checkFontFamilyConfig(env, f.text, lineAt);
+        checkWebFaceLoaded(env, f.text, lineAt);
         const rec = ctx.markup.get(f.abs);
         if (rec && !ctx.emReset) {
           for (const el of rec.els) {
@@ -883,6 +913,9 @@ const EXPECTED_TP = [
   'page.tsx:21 WARN HG-6', 'page.tsx:26 WARN HG-1', 'page.tsx:27 WARN HG-6',
 ];
 
+// fixtures/deck: a standalone deck that names Pretendard and loads nothing (#110). fixtures/good loads it.
+const EXPECTED_DECK = ['deck.html:7 WARN HG-12'];
+
 function selfTest() {
   const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
   const key = (f) => `${f.file}:${f.line} ${f.severity} ${f.rule}`;
@@ -890,7 +923,7 @@ function selfTest() {
   const again = JSON.stringify(scan('bad'));
   let ok = true;
   const parts = [];
-  for (const [name, expected] of [['bad', EXPECTED_BAD], ['good', []], ['fp', EXPECTED_FP], ['tp', EXPECTED_TP]]) {
+  for (const [name, expected] of [['bad', EXPECTED_BAD], ['good', []], ['fp', EXPECTED_FP], ['tp', EXPECTED_TP], ['deck', EXPECTED_DECK]]) {
     const res = scan(name);
     const got = new Set(res.findings.map(key));
     const want = new Set(expected);

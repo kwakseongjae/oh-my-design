@@ -71,53 +71,87 @@ async function run(label, { reduce = false, noGL = false, launchArgs = GPU_ARGS 
     const ext = gl.getExtension('WEBGL_debug_renderer_info');
     return ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
   });
-  const heading = page.locator('.ink').first();
-  const box = await heading.boundingBox();
-  const clip = { x: Math.max(0, box.x - 60), y: Math.max(0, box.y - 60), width: Math.min(1440, box.width + 120), height: box.height + 120 };
-  const a11y = await page.evaluate(() => {
-    const h = document.querySelector('.ink');
-    const sel = getSelection(); const r = document.createRange(); r.selectNodeContents(h); sel.removeAllRanges(); sel.addRange(r);
-    const selected = sel.toString().replace(/\s+/g, ' ').trim(); sel.removeAllRanges();
-    const layer = h.querySelector('.ink-layer');
-    return {
-      headingText: h.textContent.replace(/\s+/g, ' ').trim(),
-      selectedText: selected,
-      layerAriaHidden: layer ? layer.getAttribute('aria-hidden') : 'no-layer',
-      layerPointerEvents: layer ? getComputedStyle(layer).pointerEvents : 'no-layer',
-      canvases: document.querySelectorAll('.ink-layer canvas').length,
-      staticFallback: document.querySelectorAll('.ink.ink-static').length,
-      states: [...document.querySelectorAll('.ink')].map((e) => e.dataset.inkState || null),
-    };
-  });
-  const result = { label, renderer, a11y, logs };
-
-  if (!noGL && a11y.canvases > 0) {
-    // Deterministic frames: freeze the clock and step it, so the GIF is the effect, not screenshot jitter.
-    const duration = await page.evaluate(() => +document.querySelector('.ink').dataset.inkDuration || 2.6);
-    const set = (ms) => page.evaluate((ms) => window.__ink.handles.forEach((h) => { h?.mount.setSpeed(0); h?.mount.setFrame(ms); }), ms);
-    const frames = reduce ? 1 : FRAMES;
-    for (let i = 0; i < frames; i++) {
-      const ms = reduce ? duration * 1000 : Math.round((i / (frames - 1)) * duration * 1000);
-      if (!reduce) await set(ms);
+  const result = { label, renderer, logs, grounds: {} };
+  // One heading per ground: the sumi variant on the light page and the 금니 variant on a dark section.
+  for (const ground of ['light', 'dark']) {
+    const sel = `.ink[data-ink-ground="${ground}"]`;
+    if (!(await page.locator(sel).count())) continue;
+    const heading = page.locator(sel).first();
+    await heading.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(120);
+    const box = await heading.boundingBox();
+    const clip = { x: Math.max(0, box.x - 60), y: Math.max(0, box.y - 60), width: Math.min(1440 - Math.max(0, box.x - 60), box.width + 120), height: Math.min(900 - Math.max(0, box.y - 60), box.height + 120) };
+    const a11y = await page.evaluate((sel) => {
+      const h = document.querySelector(sel);
+      const s = getSelection(); const r = document.createRange(); r.selectNodeContents(h); s.removeAllRanges(); s.addRange(r);
+      const selected = s.toString().replace(/\s+/g, ' ').trim(); s.removeAllRanges();
+      const layer = h.querySelector('.ink-layer');
+      return {
+        headingText: h.textContent.replace(/\s+/g, ' ').trim(),
+        selectedText: selected,
+        layerAriaHidden: layer ? layer.getAttribute('aria-hidden') : 'no-layer',
+        layerPointerEvents: layer ? getComputedStyle(layer).pointerEvents : 'no-layer',
+        canvases: h.querySelectorAll('.ink-layer canvas').length,
+        staticFallback: h.classList.contains('ink-static'),
+        state: h.dataset.inkState || null,
+      };
+    }, sel);
+    const g = { a11y };
+    if (!noGL && a11y.canvases > 0) {
+      const idx = await page.evaluate((sel) => [...document.querySelectorAll('.ink')].indexOf(document.querySelector(sel)), sel);
+      const duration = await page.evaluate((sel) => +document.querySelector(sel).dataset.inkDuration || 2.6, sel);
+      const set = (ms) => page.evaluate(([i, ms]) => { const h = window.__ink.handles[i]; h?.mount.setSpeed(0); h?.mount.setFrame(ms); }, [idx, ms]);
+      const layerVis = (v) => page.evaluate(([sel, v]) => { document.querySelector(sel).querySelector('.ink-layer').style.visibility = v ? '' : 'hidden'; }, [sel, v]);
+      // Glyph mask for the legibility check: text on vs text transparent, both without the layer.
+      await layerVis(false);
+      const withText = await page.screenshot({ clip });
+      await page.evaluate((sel) => { document.querySelector(sel).querySelector('.ink-text').style.color = 'transparent'; }, sel);
       await page.waitForTimeout(60);
-      await page.screenshot({ path: path.join(outDir, `${label}-frame-${String(i).padStart(3, '0')}.png`), clip });
+      const noText = await page.screenshot({ clip });
+      await page.evaluate((sel) => { document.querySelector(sel).querySelector('.ink-text').style.color = ''; }, sel);
+      await layerVis(true);
+      const frames = reduce ? 1 : FRAMES;
+      const shots = [];
+      for (let i = 0; i < frames; i++) {
+        const ms = reduce ? duration * 1000 : Math.round((i / (frames - 1)) * duration * 1000);
+        if (!reduce) await set(ms);
+        await page.waitForTimeout(60);
+        const shot = await page.screenshot({ path: path.join(outDir, `${label}-${ground}-frame-${String(i).padStart(3, '0')}.png`), clip });
+        if (i % 6 === 0 || i === frames - 1) shots.push(shot);
+      }
+      // Legibility: contrast of each glyph pixel (as drawn, with the effect) against the paper behind it
+      // (the no-text, no-layer shot), 10th percentile so anti-aliased edges don't decide it, worst frame.
+      g.legibilityP10 = Math.min(...(await Promise.all(shots.map((f) => page.evaluate(async ([a, b, f]) => {
+        const load = async (s) => { const i = new Image(); i.src = 'data:image/png;base64,' + s; await i.decode(); return i; };
+        const [ia, ib, ifr] = await Promise.all([load(a), load(b), load(f)]);
+        const c = new OffscreenCanvas(ia.width, ia.height); const x = c.getContext('2d');
+        const px = (im) => { x.clearRect(0, 0, ia.width, ia.height); x.drawImage(im, 0, 0); return x.getImageData(0, 0, ia.width, ia.height).data; };
+        const da = px(ia), db = px(ib), df = px(ifr);
+        const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+        const L = (d, k) => 0.2126 * lin(d[k]) + 0.7152 * lin(d[k + 1]) + 0.0722 * lin(d[k + 2]);
+        const rs = [];
+        for (let k = 0; k < da.length; k += 4) {
+          if (Math.abs(da[k] - db[k]) + Math.abs(da[k + 1] - db[k + 1]) + Math.abs(da[k + 2] - db[k + 2]) < 90) continue; // glyph core only
+          const lt = L(df, k), lg = L(db, k);
+          rs.push((Math.max(lt, lg) + 0.05) / (Math.min(lt, lg) + 0.05));
+        }
+        rs.sort((p, q) => p - q);
+        return rs.length ? +rs[Math.floor(rs.length * 0.1)].toFixed(2) : 0;
+      }, [withText.toString('base64'), noText.toString('base64'), f.toString('base64')])))));
+      await set(duration * 1000); await page.waitForTimeout(80);
+      const on = await page.screenshot({ clip });
+      await layerVis(false); await page.waitForTimeout(80);
+      const off = await page.screenshot({ clip });
+      await layerVis(true);
+      if (!reduce) { await set(0); await page.waitForTimeout(80); }
+      const start = await page.screenshot({ clip });
+      g.shaderPixelsChanged = await diffRatio(page, on, off);   // >0: the shader drew something
+      g.startVsDry = reduce ? null : await diffRatio(page, start, on); // >0: it animates
+      if (!reduce) { await set(duration * 1000); await page.waitForTimeout(80); }
     }
-    await set(duration * 1000); await page.waitForTimeout(80);
-    const on = await page.screenshot({ clip });
-    await page.evaluate(() => document.querySelectorAll('.ink-layer').forEach((l) => { l.style.visibility = 'hidden'; }));
-    await page.waitForTimeout(80);
-    const off = await page.screenshot({ clip });
-    await page.evaluate(() => document.querySelectorAll('.ink-layer').forEach((l) => { l.style.visibility = ''; }));
-    if (!reduce) { await set(0); await page.waitForTimeout(80); }
-    const start = await page.screenshot({ clip });
-    result.shaderPixelsChanged = await diffRatio(page, on, off);   // >0: the shader drew something
-    result.startVsDry = reduce ? null : await diffRatio(page, start, on); // >0: it animates
-    await page.screenshot({ path: path.join(outDir, `${label}-full-start.png`) });
-    if (!reduce) { await set(duration * 1000); await page.waitForTimeout(80); }
-    await page.screenshot({ path: path.join(outDir, `${label}-full.png`) });
-  } else {
-    await page.screenshot({ path: path.join(outDir, `${label}-full.png`) });
+    result.grounds[ground] = g;
   }
+  await page.screenshot({ path: path.join(outDir, `${label}-full.png`), fullPage: true });
   await browser.close();
   return result;
 }
@@ -134,17 +168,21 @@ report.passes.push(await run('reduced-motion', { reduce: true }));
 report.passes.push(await run('no-webgl', { noGL: true }));
 
 const [gpu, still, nogl] = report.passes;
-const textOk = (p) => p.a11y.selectedText === p.a11y.headingText && p.a11y.headingText.length > 0;
+const each = (p, fn) => Object.values(p.grounds).length > 0 && Object.values(p.grounds).every(fn);
+const textOk = (g) => g.a11y.selectedText === g.a11y.headingText && g.a11y.headingText.length > 0;
 report.checks = {
-  rendered: (gpu.shaderPixelsChanged ?? 0) > 0.002,
-  animates: (gpu.startVsDry ?? 0) > 0.002,
-  textSelectableAllPasses: report.passes.every(textOk),
-  layerDecorative: gpu.a11y.layerAriaHidden === 'true' && gpu.a11y.layerPointerEvents === 'none',
-  reducedMotionStill: still.a11y.states.every((s) => s === 'still'),
-  noWebGLFallback: nogl.a11y.canvases === 0 && nogl.a11y.staticFallback > 0,
+  bothGrounds: ['light', 'dark'].every((k) => k in gpu.grounds),
+  rendered: each(gpu, (g) => (g.shaderPixelsChanged ?? 0) > 0.002),
+  animates: each(gpu, (g) => (g.startVsDry ?? 0) > 0.002),
+  // Display headings are WCAG large text: 3:1 for the glyph cores in every frame of the effect.
+  legibleEveryFrame: each(gpu, (g) => (g.legibilityP10 ?? 0) >= 3),
+  textSelectableAllPasses: report.passes.every((p) => each(p, textOk)),
+  layerDecorative: each(gpu, (g) => g.a11y.layerAriaHidden === 'true' && g.a11y.layerPointerEvents === 'none'),
+  reducedMotionStill: each(still, (g) => g.a11y.state === 'still'),
+  noWebGLFallback: each(nogl, (g) => g.a11y.canvases === 0 && g.a11y.staticFallback),
   softwareRenderer: /swiftshader|llvmpipe|software/i.test(gpu.renderer || ''),
 };
 writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ renderer: gpu.renderer, ...report.checks, shaderPixelsChanged: gpu.shaderPixelsChanged, startVsDry: gpu.startVsDry }, null, 2));
+console.log(JSON.stringify({ renderer: gpu.renderer, ...report.checks, grounds: Object.fromEntries(Object.entries(gpu.grounds).map(([k, g]) => [k, { shaderPixelsChanged: g.shaderPixelsChanged, startVsDry: g.startVsDry, legibilityP10: g.legibilityP10 }])) }, null, 2));
 const fail = Object.entries(report.checks).filter(([k, v]) => k !== 'softwareRenderer' && !v);
 if (fail.length) { console.error('FAIL:', fail.map(([k]) => k).join(', ')); process.exit(1); }

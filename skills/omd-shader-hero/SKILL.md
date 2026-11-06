@@ -1,6 +1,6 @@
 ---
 name: omd-shader-hero
-description: "One full-bleed launch hero in two inks from the project's DESIGN.md: the base color and exactly one brand color, as a slowly folding ordered-dither (Bayer) field — a print/riso look, not a generic gradient. Two flat inks never blend, so there is no mud. The copy sits on a hard-edged base-ink knockout, so headline and sub copy both clear 4.5:1 by construction, and a verify script measures it across the whole timeline. Reads Core v2 tokens (and Google-compatible frontmatter), refuses to invent a palette, ships a CSS halftone poster fallback, respects prefers-reduced-motion, ~7 KiB gzip of library JS. Use for a launch page, product hero, waitlist, event or rebrand first screen that needs motion in brand color. Triggers: '셰이더 히어로', '런칭 히어로', '디더링 배경', '리소 느낌 히어로', '브랜드 컬러 배경 애니메이션', 'dither hero', 'shader hero from DESIGN.md', 'launch hero background', 'riso print hero', 'シェーダーのヒーロー', '著陸頁主視覺 shader'. Whole scroll-native landing → omd-landing / omd-aphrodite. CJK headline ink effect → omd-cjk-type-shader. Brand tokens missing → omd-init first."
+description: "One full-bleed launch hero in two inks from the project's DESIGN.md: the base color and exactly one brand color, as a slowly folding (or, with data-shape="ripple", rippling) ordered-dither (Bayer) field — a print/riso look, not a generic gradient. Two flat inks never blend, so there is no mud. The copy sits on a hard-edged base-ink knockout, so headline and sub copy both clear 4.5:1 by construction, and a verify script measures it across the whole timeline. Reads Core v2 tokens (and Google-compatible frontmatter), refuses to invent a palette, ships a CSS halftone poster fallback, respects prefers-reduced-motion, ~7 KiB gzip of library JS. Use for a launch page, product hero, waitlist, event or rebrand first screen that needs motion in brand color. Triggers: '셰이더 히어로', '런칭 히어로', '디더링 배경', '리소 느낌 히어로', '브랜드 컬러 배경 애니메이션', 'dither hero', 'shader hero from DESIGN.md', 'launch hero background', 'riso print hero', 'シェーダーのヒーロー', '著陸頁主視覺 shader'. Whole scroll-native landing → omd-landing / omd-aphrodite. CJK headline ink effect → omd-cjk-type-shader. Brand tokens missing → omd-init first."
 argument-hint: "<DESIGN.md path> [--scheme dark|light] — <headline + one line of sub copy>"
 user-invocable: true
 ---
@@ -47,7 +47,14 @@ Don't use when:
 
 ## 3. The scene and its two parameters
 
-Paper's `ditheringFragmentShader`: `shape = warp` (slow folding bands), `type = 4x4` (ordered Bayer), `colorBack` = base ink, `colorFront` = brand ink.
+Paper's `ditheringFragmentShader`: `type = 4x4` (ordered Bayer), `colorBack` = base ink, `colorFront` = brand ink, and one of two field shapes chosen with `data-shape` on `.hero-scene`:
+
+| `data-shape` | Field | Reads as |
+|---|---|---|
+| `warp` (default) | slow diagonal folds of brand light, scale 1 | a riso poster, energy at two corners |
+| `ripple` | concentric rings centered on the hero, behind the copy, scale 0.5 | a print with a center of gravity: the copy sits in the eye |
+
+The shape is a choice of composition, not a third parameter: each shape's scale is fixed so its cells read at `px` 2–6, and an unknown value falls back to `warp`. Both shapes stay two flat inks (verified by pixel count, §5). Paper's other dithering shapes and its other shaders were left out: most blend the two colors at their edges, which breaks the rule this skill exists for.
 
 | Param | Range | Default | What it does |
 |---|---|---|---|
@@ -58,13 +65,14 @@ Layout rules:
 - **Knockout, not scrim.** The copy box sits on an opaque base-ink panel with hard edges (inset 2rem × 2.5rem around the copy). A translucent scrim, or a feathered edge, would lay base over brand dots and recreate the mud. Small text (the footer label) gets its own knockout too.
 - **Contrast: 4.5:1 for the headline and the sub copy.** The headline is large enough that WCAG would accept 3:1, but this skill doesn't rely on that. `verify.mjs` fails below 4.5:1 for either.
 - **Hero copy paints on the first frame**: no `opacity: 0`, no waiting for the canvas. The canvas fades in over 600ms above an already complete CSS poster.
+- **The poster is two inks too.** It follows the shape (corners for `warp`, rings for `ripple`, laid out after the still frame) and gets its tone from dot size in two hard-edged bands (4×4 squares in the cores, 2×2 at the shoulders), never from alpha: a faded mask would blend brand over base. Square dots on whole pixels, like the Bayer cells.
 - Korean display type follows `/hangul`: `keep-all` + `overflow-wrap: anywhere`, line-height 1.3, tracking -0.02em (never below -0.03em), `text-wrap: balance`, `font-synthesis: none`.
 - Background on `html`, never on `body` (a body background paints over a negative-z scene; tf-shaders pitfall).
 - Radius, type scale and spacing come from DESIGN.md too. The fixture defines no radius, so the CTA is square.
 
 ## 4. Library, license, budget, fallback
 
-**Library: `@paper-design/shaders` 0.0.81 (vanilla `ShaderMount` + `ditheringFragmentShader`), WebGL2.** Licenses verified 2026-10-13 from the npm tarballs' LICENSE files, npm metadata and the GitHub license API:
+**Library: `@paper-design/shaders` 0.0.82 (vanilla `ShaderMount` + `ditheringFragmentShader`), WebGL2.** 0.0.82 (2026-10-21) changes only `shader-mount.js`: `dispose()` now releases the WebGL context. Licenses verified 2026-10-13 from the npm tarballs' LICENSE files, npm metadata and the GitHub license API:
 
 | | `@paper-design/shaders` 0.0.81 | `shaders` 4.0.4 (shaders.com) |
 |---|---|---|
@@ -89,16 +97,24 @@ Fallback (part of the design, not an afterthought):
 
 ```bash
 npm i -D playwright-core && npx playwright-core install chromium   # fresh Playwright Chromium, not your own Chrome
-node <skill>/scripts/verify.mjs path/to/hero.html ./hero-verify --frames 48 --seconds 12
+node <skill>/scripts/verify.mjs path/to/hero.html ./hero-verify --frames 48 --seconds 12 --shape all
 ```
 
-It runs four passes (1440px GPU, 390px mobile, reduced-motion, no-WebGL) with `--enable-gpu --ignore-gpu-blocklist --use-angle=metal` (macOS), and for each one:
+`--shape warp|ripple|all` sets `data-shape` before the page's module runs. For each shape it runs four passes (1440px GPU, 390px mobile, reduced-motion, no-WebGL) with `--enable-gpu --ignore-gpu-blocklist --use-angle=metal` (macOS), and for each one:
 - records the WebGL renderer, so you know whether a real GPU or SwiftShader drew the frames;
 - steps the shader clock deterministically across 12s and saves frames (ffmpeg → demo GIF/MP4);
 - **measures contrast**: hides the copy, samples the scene behind the headline and sub copy in every frame, and takes the worst ratio against the text color. It fails below 4.5:1 for either;
+- **counts the inks**: outside the knockouts, every pixel of the canvas and of the CSS poster must be the base ink or the brand ink (`twoInksScene`, `twoInksPoster`);
+- **poster before canvas**, from the page's own clock: an init script samples each rendered frame and records the first frame the poster is on screen and the first frame the canvas has drawn and is not transparent, plus paint timing and LCP;
+- **frame time** on the GPU pass: rAF intervals for 3 s while the field runs, median and p95;
 - checks that the canvas (not the poster) is on screen, that the field moves, that the headline is at full opacity on load, that reduced motion is still, and that no-WebGL shows the poster with no canvas.
 
-Measured on 2026-10-13 with the fixture (headless Chromium 149, `ANGLE Metal Renderer: Apple M5 Pro`): worst headline and sub copy 18.81:1 in every pass (1440px, 390px, reduced motion), 13.1:1 on the no-WebGL poster. All checks passed.
+Measured on 2026-11-06 with the fixture (headless Chromium, `ANGLE Metal Renderer: Apple M5 Pro`), all checks passed for both shapes:
+
+| Shape | Worst headline / sub copy | Other-ink pixels (scene / poster) | Poster frame → canvas frame (GPU pass) | Frame ms (median / p95) |
+|---|---|---|---|---|
+| warp | 18.81 / 18.81 in all four passes | 0 / 0 | 62 → 112 ms | 8.3 / 9.2 |
+| ripple | 18.81 / 18.81 in all four passes | 0 / 0 | 44 → 127 ms | 8.3 / 9.2 |
 
 ## 6. Next.js / React port
 

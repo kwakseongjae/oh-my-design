@@ -35,7 +35,7 @@ const BROWSER_PATHS = [
   'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
 ];
 
-async function loadChromium() {
+export async function loadChromium() {
   for (const from of [HERE, process.cwd()]) {
     const req = createRequire(path.join(from, 'noop.js'));
     for (const name of ['playwright-core', 'playwright']) {
@@ -49,7 +49,7 @@ async function loadChromium() {
   return null;
 }
 
-async function launchBrowser(chromium) {
+export async function launchBrowser(chromium) {
   const tries = [];
   if (process.env.CHROME_PATH) tries.push({ executablePath: process.env.CHROME_PATH });
   tries.push({ channel: 'chrome' }, {}); // installed Chrome, then Playwright's own Chromium if downloaded
@@ -60,13 +60,13 @@ async function launchBrowser(chromium) {
   return null;
 }
 
-function toUrl(target) {
+export function toUrl(target) {
   if (/^(https?|file):/i.test(target)) return target;
   if (fs.existsSync(target)) return pathToFileURL(path.resolve(target)).href;
   return null;
 }
 
-async function brokenWords(browser, url, width) {
+export async function brokenWords(browser, url, width) {
   const ctx = await browser.newContext({ viewport: { width, height: 900 }, locale: 'ko-KR', reducedMotion: 'reduce' });
   try {
     const page = await ctx.newPage();
@@ -169,4 +169,5 @@ async function main(argv) {
   return total || failed ? 1 : 0;
 }
 
-process.exitCode = await main(process.argv.slice(2));
+// break.mjs imports the browser helpers above; run main only when this file is the entry point.
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) process.exitCode = await main(process.argv.slice(2));

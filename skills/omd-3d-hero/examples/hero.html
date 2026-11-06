@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Hero</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- three@0.186.1 pinned. The .min files are jsDelivr's Terser builds; the second entry remaps three.module's
+     relative import of three.core.js to its minified twin. With the AO composer addons and scene.js + pile.js: ~229 KiB gzip over the CDN, ~150 KiB bundled. -->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.min.js","https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.core.js":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.core.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"}}</script>
+<!-- spec.mjs --write fills the two blocks below from DESIGN.md; never edit the colors by hand. -->
+<style id="hero-vars">:root{--hero-bg:#f7f8fa;--hero-text:#212124;--hero-brand:#ff6f0f;--hero-poster:url(poster.webp)}</style>
+<script type="application/json" id="hero-spec">{}</script>
+<style>
+  html { background: var(--hero-bg); }               /* never on body: it would paint over the canvas */
+  body { margin: 0; font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; color: var(--hero-text); }
+  .hero {
+    position: relative; isolation: isolate; overflow: hidden;
+    height: min(100svh, 900px); min-height: 560px;
+    /* First paint, no-WebGL, reduced motion and mobile: the poster, a still of the same scene. */
+    background: var(--hero-bg) var(--hero-poster) 70% 50% / cover no-repeat;
+  }
+  .hero > canvas, .hero > video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%;
+    z-index: -1; opacity: 0; transition: opacity .6s ease-out;
+  }
+  .hero[data-live] > canvas, .hero[data-live] > video { opacity: 1; }
+  .copy {
+    position: relative; height: 100%; box-sizing: border-box;
+    display: flex; flex-direction: column; justify-content: center; gap: 20px;
+    max-width: min(44%, 640px); padding: 0 0 0 clamp(24px, 6vw, 112px);
+  }
+  h1 {
+    margin: 0; font-size: clamp(40px, 5vw, 76px); font-weight: 700; line-height: 1.3; letter-spacing: -0.02em;
+    word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; font-synthesis: none;
+  }
+  .copy p { margin: 0; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.6; letter-spacing: -0.01em; word-break: keep-all; overflow-wrap: anywhere; }
+  .cta {
+    align-self: flex-start; margin-top: 8px; padding: 14px 24px; border-radius: var(--hero-radius, 0);
+    background: var(--hero-brand); color: var(--hero-on-brand, #fff); font-weight: 700; font-size: 19px; text-decoration: none; /* 19px bold = WCAG large text */
+    word-break: keep-all; overflow-wrap: anywhere; /* /hangul HG-10: a button label breaks at spaces, not mid-word (found by /hangul break) */
+  }
+  .cta:focus-visible, .pause:focus-visible { outline: 3px solid var(--hero-text); outline-offset: 3px; }
+  /* WCAG 2.2.2: motion that runs longer than 5 s needs a way to stop it. */
+  .pause {
+    position: absolute; right: 16px; bottom: 16px; min-width: 44px; min-height: 44px; padding: 0 16px;
+    border: 1px solid color-mix(in srgb, var(--hero-text) 22%, transparent); border-radius: 999px;
+    background: color-mix(in srgb, var(--hero-bg) 86%, transparent); color: var(--hero-text);
+    font: 600 14px/1 inherit; cursor: pointer;
+  }
+  .pause[hidden] { display: none; }
+  @media (max-width: 720px) {
+    .hero { height: 100svh; background-position: 78% 100%; background-size: auto 58%; }
+    .copy { max-width: none; justify-content: flex-start; padding: 72px 24px 0; }
+  }
+</style>
+</head>
+<body>
+<section class="hero" data-engine="three" data-scene-src="../engines/three/scene.js" data-video-src="loop">
+  <div class="copy">
+    <h1>헤드라인은 사용자의 실제 문구로</h1>
+    <p>한 문장으로 쓰는 보조 문구. 지표나 고객 이름을 지어내지 않습니다.</p>
+    <a class="cta" href="#">시작하기</a>
+  </div>
+  <button type="button" class="pause" hidden>일시정지</button>
+</section>
+<script type="module">
+  const hero = document.querySelector('.hero');
+  const spec = JSON.parse(document.getElementById('hero-spec').textContent);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const narrow = matchMedia('(max-width: 720px)').matches;
+  const webgl2 = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
+  window.__omd3dState = { reduce, narrow, webgl2, engine: hero.dataset.engine, mounted: false };
+  // Poster stays for reduced motion, phones (battery, data) and no WebGL2. Motion is an enhancement.
+  const pause = hero.querySelector('.pause');
+  let control = null, held = false; // control: { pause(), resume() } for whichever layer is live
+  // The label says what the button does next; no aria-pressed on top of a changing label.
+  pause.addEventListener('click', () => {
+    held = !held;
+    pause.textContent = held ? '재생' : '일시정지';
+    held ? control?.pause() : control?.resume();
+  });
+  if (!reduce && !narrow) {
+    if (hero.dataset.engine === 'video') {
+      const v = Object.assign(document.createElement('video'), { muted: true, loop: true, playsInline: true, autoplay: true, preload: 'auto' });
+      v.setAttribute('aria-hidden', 'true');
+      for (const [ext, type] of [['webm', 'video/webm'], ['mp4', 'video/mp4']]) v.append(Object.assign(document.createElement('source'), { src: `${hero.dataset.videoSrc}.${ext}`, type }));
+      v.addEventListener('playing', () => { hero.dataset.live = ''; pause.hidden = false; }, { once: true });
+      hero.prepend(v);
+      control = { pause: () => v.pause(), resume: () => v.play() };
+      window.__omd3dState.mounted = true;
+    } else if (webgl2 && spec.pile) {
+      try {
+        const { mount } = await import(hero.dataset.sceneSrc);
+        control = mount(hero, spec, { onFallback: () => { pause.hidden = true; } });
+        pause.hidden = false;
+        window.__omd3dState.mounted = true;
+      } catch (e) { console.warn('3d hero: staying on the poster', e); }
+    }
+  }
+</script>
+</body>
+</html>

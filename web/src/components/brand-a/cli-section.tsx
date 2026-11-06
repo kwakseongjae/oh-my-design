@@ -40,7 +40,7 @@ export function CmdText({ cmd = INSTALL }: { cmd?: string }) {
 /** The skills `npx skills` lists (no `metadata.internal`); __tests__/r13-cli.test.ts pins them to skills/. */
 export const PUBLIC_SKILLS = [
   "omd-init", "omd-apply", "omd-autopilot", "omd-feel", "hangul", "omd-restraint",
-  "omd-slop-audit", "omd-humanize", "omd-landing", "omd-shader-hero", "omd-cjk-type-shader",
+  "omd-slop-audit", "omd-humanize", "omd-landing", "omd-shader-hero", "omd-3d-hero", "omd-cjk-type-shader",
 ] as const;
 
 /** Hooks the installer writes for Claude Code, read from the real 2.0.4 run's Done line. */
