@@ -15,6 +15,10 @@
     --paper: #f3eee4;
     --ink: #3a3530;   /* sumi grey-black: the shader pools darker ink on top of it */
     --ink-soft: #5d574d;
+    /* Dark ground: 감지(紺紙), indigo-dyed paper, written in 금니(金泥), gold powder in glue. */
+    --kamji: #1a2440;
+    --geumni: #d4b062; /* 7.4:1 on --kamji: room for the wet state and the thin passes */
+    --kamji-soft: #b9b4a6;
   }
   /* Page background on html, not body (tf-shaders pitfall: a body background paints over -z layers). */
   html {
@@ -45,6 +49,22 @@
   .ink > .ink-text { position: relative; z-index: 1; }
   /* No-WebGL2 fallback: a still, quiet wash. The heading is already complete without it. */
   .ink.ink-static > .ink-text { text-shadow: 0 0 0.08em color-mix(in srgb, var(--ink) 22%, transparent); }
+  /* Pigment doesn't bleed, so the dark-ground fallback is the plain gold heading: no halo. */
+  .ink.ink-static[data-ink-ground="dark"] > .ink-text { text-shadow: none; }
+
+  /* ---- Dark ground: a sheet of 감지 on the hanji page. The shader reads this background. ---- */
+  .kamji {
+    color: var(--kamji-soft);
+    /* indigo dye is uneven: a slow mottle and faint fibers, white/black only over the token color */
+    background: var(--kamji) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.8 1.05'/%3E%3C/filter%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.4 .9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='.22'/%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.05'/%3E%3C/svg%3E");
+    padding: 7vh clamp(16px, 5vw, 64px) 8vh;
+    display: grid; gap: 5vh;
+  }
+  .kamji .eyebrow { color: var(--kamji-soft); }
+  .kamji .ink { color: var(--geumni); }
+  .kamji .ink:lang(ko) { font-size: clamp(2.4rem, 5.6vw, 5rem); }
+  .kamji .lede { color: var(--kamji-soft); }
+  .kamji ::selection { background: color-mix(in srgb, var(--geumni) 30%, transparent); }
 
   /* ---- CJK typesetting (rules from /hangul; ja/zh scoped separately) ---- */
   .ink:lang(ko) {
@@ -89,13 +109,26 @@
     <h2 class="ink" lang="ja" data-ink-bleed="0.8" data-ink-duration="2.6">墨がにじむように、<wbr>名前が<wbr>紙に染みこむ。</h2>
     <h2 class="ink" lang="zh-Hant" data-ink-bleed="0.8" data-ink-duration="2.6">墨跡暈開，<wbr>名字<wbr>慢慢<wbr>滲入<wbr>紙中。</h2>
   </div>
+  <!-- Dark ground: no option needed. The heading's color is lighter than this section's background,
+       so inkBleed() picks the 금니 variant by itself (data-ink-ground="dark" forces it). -->
+  <section class="kamji">
+    <div>
+      <p class="eyebrow">어두운 바탕 · 감지금니(紺紙金泥)</p>
+      <h2 class="ink" lang="ko" data-ink-bleed="0.7" data-ink-duration="3.2">금니는 번지지 않고, 마르면서 빛을 얻습니다</h2>
+      <p class="lede">고려 사경은 쪽물 들인 감지에 금가루를 아교에 개어 썼습니다. 금니는 먹처럼 종이에 스며들지 않고 표면에 얹힙니다. 마르면서 알갱이가 가라앉고 광이 납니다.</p>
+    </div>
+    <div class="row">
+      <h2 class="ink" lang="ja" data-ink-bleed="0.7" data-ink-duration="3.2">金泥は<wbr>にじまず、<wbr>乾くにつれて<wbr>光を<wbr>帯びる。</h2>
+      <h2 class="ink" lang="zh-Hant" data-ink-bleed="0.7" data-ink-duration="3.2">泥金<wbr>不會<wbr>暈開，<wbr>乾了<wbr>才<wbr>泛起<wbr>光澤。</h2>
+    </div>
+  </section>
   <div><button type="button" id="replay">다시 번지기 · Replay</button></div>
 </main>
 
 <script type="module">
 // Pinned per-file ESM build of Paper Shaders' ShaderMount (Apache-2.0, https://github.com/paper-design/shaders).
 // Imported, not vendored: nothing of Paper's is redistributed in this file.
-import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shader-mount.js/+esm';
+import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.82/dist/shader-mount.js/+esm';
 
 // ---------------------------------------------------------------------------
 // Fragment shader: sumi ink on hanji, drawn OVER the real DOM text (which is already in ink).
@@ -106,6 +139,11 @@ import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@
 // Wet: the strokes are glossy-dark with a soft bloom around them that shrinks as the ink dries.
 // Dry: ink pooled darker at the stroke rim and at ends/corners, paper fibers showing through the
 // middle of thick strokes, and capillary feathering along fibers at a few edges, never all of them.
+// Dark ground (u_mode 1): 금니 on 감지, gold pigment in glue on indigo paper. Pigment sits on the
+// surface, so nothing feathers and there is no bloom. Wet glue reads dull and a little darker; as it
+// dries the grains settle and catch light (a sparse glint), one slow sheen crosses the line, ends and
+// corners where the brush paused read richer, and thin passes let the indigo show through.
+// Every color is the heading's own color (darker or brighter) or the ground's: nothing is invented.
 // ---------------------------------------------------------------------------
 const OUT_EM = 0.4, IN_EM = 0.12;
 const FRAG = `#version 300 es
@@ -118,6 +156,7 @@ uniform vec4 u_paper;     // rgb = paper color (for fibers showing through dry s
 uniform vec2 u_boxEm;     // overlay box size in em: noise scale follows the type size
 uniform float u_bleed;    // 0..1 how far the capillary feathering reaches (param 1)
 uniform float u_duration; // seconds from wet to dry (param 2)
+uniform float u_mode;     // 0 = sumi on a light ground, 1 = gold pigment on a dark ground
 out vec4 fragColor;
 const float OUT_EM = ${OUT_EM.toFixed(2)};
 const float IN_EM = ${IN_EM.toFixed(2)};
@@ -154,6 +193,28 @@ void main() {
   float grain = vnoise(p * 38.) * .6 + vnoise(p * 90.) * .4;
   float where = smoothstep(.6, .9, vnoise(p * 1.1 + 3.1));  // only some edges feather
 
+  if (u_mode > .5) {
+    // 금니: the pigment edge sits a hair past the DOM glyph, slightly irregular; no feathering.
+    float edge = (1. - inside) * (1. - smoothstep(0., .012, dOut - (grain - .5) * .008)) * .35;
+    float dull = inside * wet * .38;                                  // wet glue: darker, no shine
+    float ends = smoothstep(.78, .5, cov);
+    float richer = inside * ends * (.25 + .5 * dry);                  // pooled pigment at ends and corners
+    float s = uv.x * .8 + uv.y * .35;                                 // one diagonal sheen while it dries
+    float pos = mix(-.3, 1.4, smoothstep(.1, .95, t));
+    float sheen = inside * exp(-pow(s - pos, 2.) / .006) * (.3 + .7 * dry);
+    float spark = inside * step(.965, hash(floor(p * 70.))) * dry * .55;   // settled grains catch the light
+    float thin = inside * smoothstep(.025, .08, dIn) * smoothstep(.55, .9, grain * .7 + fib * .5) * dry * .3;
+    vec3 darker = u_ink.rgb * .62, brighter = min(u_ink.rgb * 1.42, vec3(1.));
+    float aB = clamp(sheen * .75 + spark + richer * .35, 0., .9);
+    float aD = clamp(dull + edge, 0., .8);
+    vec3 col = brighter * aB + darker * aD * (1. - aB);              // premultiplied
+    float a = aB + aD * (1. - aB);
+    col = u_paper.rgb * thin + col * (1. - thin);                    // indigo through thin passes
+    a = thin + a * (1. - thin);
+    fragColor = vec4(col * u_ink.a, a * u_ink.a);
+    return;
+  }
+
   // outside the strokes ------------------------------------------------------
   float reach = u_bleed * .12 * smoothstep(0., .6, t) * where;
   float finger = fib * (1. - smoothstep(0., reach * (.35 + .65 * fib) + 1e-4, dOut));
@@ -188,6 +249,16 @@ function parseColor(css) {
   const m = css.match(/[\d.]+/g)?.map(Number) ?? [0, 0, 0, 1];
   return [m[0] / 255, m[1] / 255, m[2] / 255];
 }
+// The ground is the nearest ancestor that paints a background (a dark section on a light page counts),
+// falling back to the page's own background on <html>.
+function groundColor(el) {
+  for (let a = el.parentElement; a; a = a.parentElement) {
+    const c = getComputedStyle(a).backgroundColor.match(/[\d.]+/g)?.map(Number);
+    if (c && (c.length < 4 || c[3] > 0.5)) return [c[0] / 255, c[1] / 255, c[2] / 255];
+  }
+  return parseColor(getComputedStyle(document.documentElement).backgroundColor);
+}
+const luminance = ([r, g, b]) => { const l = (v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4); return 0.2126 * l(r) + 0.7152 * l(g) + 0.0722 * l(b); };
 
 // Wrap the heading's text in .ink-text so the canvas can sit between paper and type.
 function prepare(el) {
@@ -289,6 +360,10 @@ async function glyphField(el, pad) {
 
 async function inkBleed(el, { bleed = 0.7, duration = 2.6 } = {}) {
   prepare(el);
+  // Light text on a darker ground switches to the 금니 variant by itself; data-ink-ground forces it.
+  const inkRGB = parseColor(getComputedStyle(el).color), ground = groundColor(el);
+  const dark = el.dataset.inkGround ? el.dataset.inkGround === 'dark' : luminance(inkRGB) > luminance(ground);
+  el.dataset.inkGround = dark ? 'dark' : 'light';
   if (!hasWebGL2) { el.classList.add('ink-static'); return null; }
   const em = parseFloat(getComputedStyle(el).fontSize);
   const pad = Math.round(em * (0.12 + 0.2 * bleed)); // covers bloom + feathering, nothing more
@@ -299,8 +374,8 @@ async function inkBleed(el, { bleed = 0.7, duration = 2.6 } = {}) {
   el.prepend(layer);
 
   let field = await glyphField(el, pad);
-  const [r, g, b] = parseColor(getComputedStyle(el).color);
-  const paper = parseColor(getComputedStyle(document.documentElement).backgroundColor);
+  const [r, g, b] = inkRGB;
+  const paper = ground;
   const still = reduceMotion.matches;
   let mount;
   try {
@@ -311,6 +386,7 @@ async function inkBleed(el, { bleed = 0.7, duration = 2.6 } = {}) {
       u_boxEm: [field.w / field.em, field.h / field.em],
       u_bleed: bleed,
       u_duration: duration,
+      u_mode: dark ? 1 : 0,
     }, { premultipliedAlpha: true, alpha: true }, 0, still ? duration * 1000 : 0, 1, 1920 * 1080);
   } catch (err) {
     layer.remove(); el.classList.add('ink-static'); return null;

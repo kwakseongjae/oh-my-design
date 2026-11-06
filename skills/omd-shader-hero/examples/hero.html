@@ -18,15 +18,33 @@
   :lang(ko) { font-synthesis: none; }
 
   .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; isolation: isolate; }
-  /* Poster: the same two inks as a CSS halftone (dots of the brand ink, denser toward two corners).
-     It is the no-WebGL2 path and the first paint before the shader. */
+  /* Poster: the same two inks as a CSS halftone, laid out like the shader's shape. It is the first
+     paint and the no-WebGL2 path. Tone comes from dot SIZE in two hard-edged bands (4x4 squares in
+     the cores, 2x2 at the shoulders), never from alpha: a faded mask would blend brand over base.
+     Square dots on whole pixels, like the Bayer cells, so every poster pixel is one ink or the other. */
   .hero-poster, .hero-scene { position: absolute; inset: 0; z-index: -2; }
   .hero-poster { background: var(--hero-c0); }
+  .hero-poster::before, .hero-poster::after { content: ""; position: absolute; inset: 0; }
+  .hero-poster::before { background: conic-gradient(at 4px 4px, transparent 75%, var(--hero-c1) 0) 0 0 / 6px 6px; }
+  .hero-poster::after  { background: conic-gradient(at 2px 2px, transparent 75%, var(--hero-c1) 0) 0 0 / 6px 6px; }
+  /* warp (default): folds of brand light gathered toward two corners */
   .hero-poster::before {
-    content: ""; position: absolute; inset: 0;
-    background: radial-gradient(circle, var(--hero-c1) 1.2px, transparent 1.6px) 0 0 / 6px 6px;
-    -webkit-mask: radial-gradient(70% 80% at 12% 90%, #000 0%, transparent 70%), radial-gradient(60% 70% at 92% 8%, #000 0%, transparent 65%);
-            mask: radial-gradient(70% 80% at 12% 90%, #000 0%, transparent 70%), radial-gradient(60% 70% at 92% 8%, #000 0%, transparent 65%);
+    -webkit-mask: radial-gradient(70% 80% at 12% 90%, #000 0 32%, transparent 0), radial-gradient(60% 70% at 92% 8%, #000 0 28%, transparent 0);
+            mask: radial-gradient(70% 80% at 12% 90%, #000 0 32%, transparent 0), radial-gradient(60% 70% at 92% 8%, #000 0 28%, transparent 0);
+  }
+  .hero-poster::after {
+    -webkit-mask: radial-gradient(70% 80% at 12% 90%, transparent 0 32%, #000 0 62%, transparent 0), radial-gradient(60% 70% at 92% 8%, transparent 0 28%, #000 0 56%, transparent 0);
+            mask: radial-gradient(70% 80% at 12% 90%, transparent 0 32%, #000 0 62%, transparent 0), radial-gradient(60% 70% at 92% 8%, transparent 0 28%, #000 0 56%, transparent 0);
+  }
+  /* ripple: the rings of Paper's ripple field at the still frame (8000ms, scale .5), radii in vmin
+     because the field is sized by the hero's shorter side. Cores where the field is > .7, shoulders .3-.7. */
+  .hero-scene[data-shape="ripple"] ~ .hero-poster::before {
+    --rings: radial-gradient(circle at 50% 50%, #000 0 25.1vmin, transparent 0 46.2vmin, #000 0 55.8vmin, transparent 0 70vmin, #000 0 77.5vmin, transparent 0 89.1vmin, #000 0 95.5vmin, transparent 0 105.7vmin, #000 0 111.3vmin, transparent 0 120.6vmin, #000 0 125.8vmin, transparent 0);
+    -webkit-mask: var(--rings); mask: var(--rings);
+  }
+  .hero-scene[data-shape="ripple"] ~ .hero-poster::after {
+    --rings: radial-gradient(circle at 50% 50%, transparent 0 25.1vmin, #000 0 30.3vmin, transparent 0 42.5vmin, #000 0 46.2vmin, transparent 0 55.8vmin, #000 0 59vmin, transparent 0 67.3vmin, #000 0 70vmin, transparent 0 77.5vmin, #000 0 80vmin, transparent 0 86.8vmin, #000 0 89.1vmin, transparent 0 95.5vmin, #000 0 97.6vmin, transparent 0 103.6vmin, #000 0 105.7vmin, transparent 0 111.3vmin, #000 0 113.3vmin, transparent 0 118.7vmin, #000 0 120.6vmin, transparent 0 125.8vmin, #000 0 127.6vmin, transparent 0);
+    -webkit-mask: var(--rings); mask: var(--rings);
   }
   .hero-scene { z-index: -1; opacity: 0; transition: opacity 600ms cubic-bezier(.22,1,.36,1); }
   .hero-scene.is-ready { opacity: 1; }
@@ -56,8 +74,9 @@
 </head>
 <body>
 <section class="hero" aria-labelledby="hero-title">
+  <!-- The scene comes first so the poster CSS can follow its data-shape (z-index does the stacking). -->
+  <div class="hero-scene" aria-hidden="true" data-shape="warp" data-speed="0.3" data-px="3"></div>
   <div class="hero-poster" aria-hidden="true"></div>
-  <div class="hero-scene" aria-hidden="true" data-speed="0.3" data-px="3"></div>
   <div class="hero-copy">
     <h1 id="hero-title">해가 뜨기 전, 가장 조용한 1분</h1>
     <p>새벽은 아침 루틴을 하루 1분부터 쌓게 돕는 앱입니다.</p>
@@ -69,18 +88,27 @@
 <script type="module">
 // Pinned per-file ESM builds of Paper Shaders (Apache-2.0, https://github.com/paper-design/shaders).
 // Imported from the CDN, not vendored. Paper has no telemetry (its only fetch() reads a local blob's type).
-import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shader-mount.js/+esm';
-import { ditheringFragmentShader } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.81/dist/shaders/dithering.js/+esm';
+import { ShaderMount } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.82/dist/shader-mount.js/+esm';
+import { ditheringFragmentShader, DitheringShapes, DitheringTypes } from 'https://cdn.jsdelivr.net/npm/@paper-design/shaders@0.0.82/dist/shaders/dithering.js/+esm';
 
 const tokens = JSON.parse(document.getElementById('hero-tokens').textContent);
 document.querySelector('[data-token-source]').textContent = tokens.source;
 const el = document.querySelector('.hero-scene');
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).concat(1);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const speed = reduce ? 0 : +el.dataset.speed;          // param 1: how fast the warp field drifts (0 = still)
+const speed = reduce ? 0 : +el.dataset.speed;          // param 1: how fast the field drifts (0 = still)
 const px = +el.dataset.px;                             // param 2: dither cell size in CSS px (2 fine .. 6 coarse print)
-const STILL_FRAME = 8000;                              // the composition reduced-motion users get
+const STILL_FRAME = 8000;                              // the composition reduced-motion users get (and the poster draws)
 const [back, front] = tokens.stops;                    // base ink + exactly one brand ink: no blends, no mud
+
+// data-shape picks the field: a choice of composition, not a third parameter. Each shape's scale is
+// fixed so its riso cells read at px 2-6. Anything else falls back to warp.
+const SHAPES = {
+  warp:   { id: DitheringShapes.warp,   scale: 1 },    // slow diagonal folds of brand light
+  ripple: { id: DitheringShapes.ripple, scale: 0.5 },  // concentric rings spreading from behind the copy
+};
+const shape = SHAPES[el.dataset.shape] ? el.dataset.shape : 'warp';
+el.dataset.shape = shape;                              // keeps the poster CSS on the same composition
 
 let mount = null;
 const gl2 = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
@@ -89,17 +117,17 @@ if (gl2) {
     mount = new ShaderMount(el, ditheringFragmentShader, {
       u_colorBack: hex(back),
       u_colorFront: hex(front),
-      u_shape: 2,           // DitheringShapes.warp: slow folds of brand light
-      u_type: 3,            // DitheringTypes['4x4']: ordered Bayer dots, the print look
+      u_shape: SHAPES[shape].id,
+      u_type: DitheringTypes['4x4'],  // ordered Bayer cells, the print look
       u_pxSize: px,
-      // pattern sizing (Paper's defaultPatternSizing)
-      u_fit: 0, u_scale: 1, u_rotation: 0, u_offsetX: 0, u_offsetY: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
+      // pattern sizing (Paper's defaultPatternSizing; ripple is centred on the hero, behind the copy)
+      u_fit: 0, u_scale: SHAPES[shape].scale, u_rotation: 0, u_offsetX: 0, u_offsetY: 0, u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
     }, undefined, speed, STILL_FRAME, 1, 1920 * 1080); // minPixelRatio 1: the dither cell size is the resolution
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-ready')));
   } catch { mount = null; }
 }
 document.documentElement.dataset.hero = mount ? (reduce ? 'still' : 'shader') : 'poster';
-window.__hero = { mount, tokens };
+window.__hero = { mount, tokens, shape };
 </script>
 </body>
 </html>

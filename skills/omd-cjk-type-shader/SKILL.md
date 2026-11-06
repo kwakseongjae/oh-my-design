@@ -1,6 +1,6 @@
 ---
 name: omd-cjk-type-shader
-description: "One effect, done well: 먹 번짐 — a large Korean, Japanese or Chinese display headline that reads as sumi ink printed on hanji. The heading stays real, selectable DOM text in ink color from the first frame; a WebGL2 layer over it adds what real ink does: a wet, glossy stroke with a soft bloom that shrinks as it dries, ink pooling darker at stroke rims, ends and corners, paper fibers showing through thick strokes, and capillary feathering along fibers at a few edges only. Two parameters (bleed, duration), ~5 KiB gzip of library JS, procedural paper texture, static fallback, prefers-reduced-motion, real-GPU verification script. Use for a CJK hero/launch headline, brand title, campaign line or section opener that should feel like a printed calligraphy poster. Triggers: '먹 번짐', '잉크 번짐', '한지 느낌 제목', '한글 타이포 셰이더', '제목에 셰이더', '墨のにじみ', '和紙', '筆文字っぽく', '墨跡暈開', '宣紙', 'CJK headline shader', 'sumi ink text effect', 'ink bleed text', 'Hangul shader'. Not for body text, buttons, or Latin-only headlines. Full-page shader backgrounds → omd-shader-hero. Korean typesetting rules → hangul. Brand tokens → omd-apply."
+description: "One effect, done well: 먹 번짐 — a large Korean, Japanese or Chinese display headline that reads as sumi ink printed on hanji. The heading stays real, selectable DOM text in ink color from the first frame; a WebGL2 layer over it adds what real ink does: a wet, glossy stroke with a soft bloom that shrinks as it dries, ink pooling darker at stroke rims, ends and corners, paper fibers showing through thick strokes, and capillary feathering along fibers at a few edges only. On a dark ground it switches by itself to 금니 on 감지 (gold pigment on indigo paper): no feathering, a dull wet state, settling grains, one slow sheen. Two parameters (bleed, duration), ~5 KiB gzip of library JS, procedural paper texture, static fallback, prefers-reduced-motion, real-GPU verification script. Use for a CJK hero/launch headline, brand title, campaign line or section opener that should feel like a printed calligraphy poster. Triggers: '먹 번짐', '잉크 번짐', '한지 느낌 제목', '한글 타이포 셰이더', '제목에 셰이더', '墨のにじみ', '和紙', '筆文字っぽく', '墨跡暈開', '宣紙', '금니', '어두운 배경 제목 셰이더', '金泥', 'CJK headline shader', 'sumi ink text effect', 'ink bleed text', 'Hangul shader'. Not for body text, buttons, or Latin-only headlines. Full-page shader backgrounds → omd-shader-hero. Korean typesetting rules → hangul. Brand tokens → omd-apply."
 argument-hint: "<selector or file of the CJK headline> [bleed 0..1] [duration seconds]"
 user-invocable: true
 ---
@@ -16,21 +16,22 @@ How it works. The heading is ordinary DOM text in the ink color, readable and se
 - **nijimi:** capillary feathering runs along a few paper fibers at some edges, chosen by low-frequency noise, never as an even ring around every glyph;
 - **paper:** a procedural hanji texture (SVG turbulence, no image) on the page.
 
+**On a dark ground the same signature switches to 금니(金泥) on 감지(紺紙).** Goryeo sutra scribes wrote in gold powder mixed with glue on indigo-dyed paper. Pigment doesn't soak in the way ink does, so this variant never feathers and has no bloom. Wet glue reads dull and a little darker; as it dries the grains settle and catch the light (a sparse glint), one slow sheen crosses the line, ends and corners where the brush paused read richer, and thin passes let the indigo show through. It turns on by itself when the heading's color is lighter than the nearest painted background (`data-ink-ground="dark"` or `"light"` forces it). Every color it draws is the heading's own color, darker or brighter, or the ground's.
+
 It plays once when the heading enters the viewport, then the render loop stops. Line wrapping, `keep-all`, font swaps and resizes are re-traced.
 
-Working example: [`examples/demo.html`](./examples/demo.html) (single file, Korean + Japanese + Traditional Chinese). Proof: [`scripts/verify.mjs`](./scripts/verify.mjs).
+Working example: [`examples/demo.html`](./examples/demo.html) (single file, Korean + Japanese + Traditional Chinese, on hanji and on a 감지 section). Proof: [`scripts/verify.mjs`](./scripts/verify.mjs).
 
 ## 1. When to use / when not
 
 Use when:
 - a Korean, Japanese or Chinese **display** headline (≥ 40px; hero, launch title, campaign line, section opener) should feel inked, calligraphic, "printed on hanji / washi / 宣紙";
-- the brand's ink and paper colors are known (DESIGN.md foreground/canvas, or the heading's computed `color` and the page background).
+- the brand's ink and paper colors are known (DESIGN.md foreground/canvas, or the heading's computed `color` and the nearest painted background). Dark grounds get the 금니 variant: use a warm light text color with room to darken (the demo's `#d4b062` on `#1a2440` is 7.4:1).
 
 Don't use for:
 - body text, labels, buttons, nav, anything below ~32px (pooling and feathering need stroke width to read);
 - Latin-only headlines (it works, but the cultural point is gone);
-- more than one or two headings per page. Boldness in one place (tf-shaders rule);
-- light text on dark paper. The effect darkens ink, so it needs a paper that ink reads on.
+- more than one or two headings per page. Boldness in one place (tf-shaders rule).
 
 ## 2. The effect and its two parameters
 
@@ -71,7 +72,7 @@ From `/hangul` (HG rules) for Korean; ja/zh scoped separately so Korean rules do
 
 ## 5. Library, license, budget
 
-**Library: `@paper-design/shaders` (vanilla `ShaderMount`), pinned 0.0.81, WebGL2.** Decision record (verified 2026-10-13 from the npm tarballs' LICENSE files, npm metadata and the GitHub license API):
+**Library: `@paper-design/shaders` (vanilla `ShaderMount`), pinned 0.0.82 (2026-10-21; `dispose()` now releases the WebGL context), WebGL2.** Decision record (verified 2026-10-13 from the npm tarballs' LICENSE files, npm metadata and the GitHub license API):
 
 | | `@paper-design/shaders` 0.0.81 | `shaders` 4.0.4 (shaders.com) |
 |---|---|---|
@@ -106,14 +107,21 @@ npm i -D playwright-core && npx playwright-core install chromium   # a fresh Pla
 node <skill>/scripts/verify.mjs path/to/page.html ./ink-verify --frames 36
 ```
 
-It launches headless Chromium with `--enable-gpu --ignore-gpu-blocklist --use-angle=metal` (macOS) and runs three passes: GPU, reduced-motion, no-WebGL. Then it:
+It launches headless Chromium with `--enable-gpu --ignore-gpu-blocklist --use-angle=metal` (macOS) and runs three passes: GPU, reduced-motion, no-WebGL. It measures the first heading on each ground (`data-ink-ground="light"` and `"dark"`). Then it:
 
 - records the WebGL renderer string, so you know whether a real GPU or SwiftShader drew the frames;
 - steps the shader clock deterministically and saves frames (feed them to ffmpeg for the demo GIF/MP4);
 - proves rendering with pixels: shader-on vs shader-off inside the heading box, and first frame vs dried frame;
+- measures legibility through the whole effect: the glyph cores (text on vs text transparent) as drawn in each sampled frame against the paper behind them, 10th percentile so anti-aliased edges don't decide it, worst frame. Display headings are WCAG large text, so the bar is 3:1;
 - checks that the selected text equals the heading text, the layer is `aria-hidden` + `pointer-events: none`, reduced motion is still, and no-WebGL leaves no canvas.
 
-Measured on 2026-10-13 (headless Chromium 149, `ANGLE Metal Renderer: Apple M5 Pro`, not SwiftShader): 10.2% of heading-box pixels changed by the shader, wet ≠ dry (5.9% differ), all checks passed. Look at the frames anyway, at full size: a misaligned field (wrong baseline) shows as pooling offset from the strokes, and a feathering setting that is too strong reads as fur. Only your eyes catch those.
+Measured on 2026-11-06 (headless Chromium, `ANGLE Metal Renderer: Apple M5 Pro`, not SwiftShader), all checks passed:
+
+| Ground | Heading-box pixels changed by the shader | Wet vs dry | Glyph legibility (p10, worst frame) |
+|---|---|---|---|
+| light (sumi on hanji, `#3a3530` on `#f3eee4`) | 10.2% | 5.9% | 8.01:1 |
+| dark (금니 on 감지, `#d4b062` on `#1a2440`) | 8.8% | 8.7% | 4.58:1 |
+ Look at the frames anyway, at full size: a misaligned field (wrong baseline) shows as pooling offset from the strokes, and a feathering setting that is too strong reads as fur. Only your eyes catch those.
 
 ## 8. Next.js / React port
 
@@ -121,7 +129,7 @@ Keep the same function and lifecycle in a `'use client'` leaf: `useEffect(() => 
 
 ## 9. Attribution
 
-The budget-first framing, the fallback-is-design rule, the first-frame-LCP rule, 어절-not-syllable reveals, `keep-all`, and the real-GPU screenshot loop come from the owner's **tf-shaders** experiment (`skill/shader-landing/SKILL.md`, `references/cjk-type.md`, `scripts/shoot.mjs`, `RESEARCH.md`, 2026-10). Korean type values come from OmD's `/hangul` skill. The distance transform is Felzenszwalb & Huttenlocher's linear-time EDT, written fresh here.
+The budget-first framing, the fallback-is-design rule, the first-frame-LCP rule, 어절-not-syllable reveals, `keep-all`, and the real-GPU screenshot loop come from the owner's **tf-shaders** experiment (`skill/shader-landing/SKILL.md`, `references/cjk-type.md`, `scripts/shoot.mjs`, `RESEARCH.md`, 2026-10). Korean type values come from OmD's `/hangul` skill. The distance transform is Felzenszwalb & Huttenlocher's linear-time EDT, written fresh here. The dark-ground variant follows a pattern stated in Leonxlnx/taste-skill's `print3d.js` (MIT), "on dark paper the ink is the light": the treatment inverts, it doesn't just recolor. No code was copied; the gold model is written fresh from the 감지금니 practice.
 
 ## Don't
 
@@ -131,4 +139,5 @@ The budget-first framing, the fallback-is-design rule, the first-frame-LCP rule,
 - Don't put two runtimes (Paper + `shaders`) on one page for one heading.
 - Don't feather every edge or draw a uniform halo. An even ring around each glyph reads as a sticker, not ink; feathering belongs to a few edges.
 - Don't use pure black text ink. Pools need a darker value to show, and sumi is grey-black anyway.
+- Don't make the dark-ground variant glow. Gold pigment reflects light, it doesn't emit it: no halo, no bloom, no blur outside the strokes.
 - Don't push `bleed` until the fibers read as fur. Check the dried frame at your real font size.
