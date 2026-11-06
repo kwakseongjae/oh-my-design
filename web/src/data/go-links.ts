@@ -51,11 +51,11 @@ export const GO_LINKS: Record<string, GoLink> = {
     note: "Color map 2: services sharing one hex (docs/THREADS_PLAN_2026-11.md #3).",
   },
   "3d-hero-ko": {
-    to: "/docs/ko",
+    to: "/docs/ko/skills",
     source: "threads",
     medium: "social",
     campaign: "20261128-3d-hero",
     content: "ko",
-    note: "New skill omd-3d-hero, brand-switch video (docs/THREADS_PLAN_2026-11.md #6). The Korean CLI docs list the skill.",
+    note: "New skill omd-3d-hero, brand-switch video (docs/THREADS_PLAN_2026-11.md #6). /docs/ko/skills lists the skill with its Korean description.",
   },
 };
