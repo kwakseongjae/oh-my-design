@@ -13,7 +13,7 @@
   - PR #109 `growth/threads-kit-nov`(go-link 3개) — 11/11 전 머지 GO 필요.
   - #105 컬러 지도: 검증 KR 167곳 집계, 카드 5장 `claudedocs/viral/2026-11-06-color-map/`, 초안 2편은 `docs/THREADS_PLAN_2026-11.md`(4주 8편 일정 포함).
   - #104 설계안 `docs/SKILL_3D_HERO_DESIGN_2026-11-06.md` — 하나로 묶을지 오너 판단 대기, 짓지 않음.
-  - #106 hangul PPT: Codex 두 갈래(스킬 없음 / hangul만)를 HOME·CODEX_HOME 분리로 재실행 중. 첫 실행은 사용자 폴더의 slides-grab을 두 쪽 다 읽어서 폐기(`scratchpad/ppt/run1`).
+  - #106 hangul PPT: Codex(gpt-6.1-sol) 두 갈래를 HOME·CODEX_HOME 분리로 실행(첫 실행은 두 쪽 다 사용자 폴더 slides-grab을 읽어 폐기). 스킬 없이: 조판 BLOCK 5(제목 자간 −0.045~−0.066em)·문구 WARN 3·영어 라벨·숫자 Arial / hangul: 0·0·0. 카드 4장 `claudedocs/viral/2026-11-06-hangul-ppt/`, 초안은 THREADS_PLAN #2. hangul 덱이 Pretendard를 불러오지 않는 결함 발견 → #110(글에 밝힘).
 - 컨셉 순서와 700 확충(백그라운드), ja/zh-tw 상세, 700 출시는 11/5 답변대로 유지.
 
 ## ▶ 2026-11-05 밤(2) · /hangul 히어로 투어 운영 반영(오너 "머지 ㄱㄱ")
