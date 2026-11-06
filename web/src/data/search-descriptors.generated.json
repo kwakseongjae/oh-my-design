@@ -23156,6 +23156,67 @@
     ]
    }
   },
+  "parknshop": {
+   "hash": "9b62a0cc11ef8221",
+   "terms": {
+    "en": [
+     "supermarket online shopping",
+     "grocery delivery app",
+     "hong kong retail",
+     "blue header",
+     "yellow announcement text",
+     "white panels light grey",
+     "colourful campaign banners",
+     "category shortcut icons",
+     "rounded delivery buttons",
+     "product preview cards",
+     "promotional browsing",
+     "friendly mascot"
+    ],
+    "ko": [
+     "슈퍼마켓 온라인 쇼핑",
+     "식료품 배달 앱",
+     "홍콩 리테일",
+     "파란 헤더",
+     "노란 공지 문구",
+     "흰색 패널 연회색 배경",
+     "화려한 캠페인 배너",
+     "카테고리 바로가기",
+     "둥근 배송 버튼",
+     "상품 미리보기 카드",
+     "프로모션 중심",
+     "친근한 마스코트"
+    ],
+    "ja": [
+     "スーパー通販",
+     "食料品配達アプリ",
+     "香港の小売",
+     "青いヘッダー",
+     "黄色のお知らせ文字",
+     "白パネルと薄グレー背景",
+     "カラフルなキャンペーン画像",
+     "カテゴリショートカット",
+     "丸い配送ボタン",
+     "商品プレビューカード",
+     "販促重視",
+     "親しみやすいキャラクター"
+    ],
+    "zh": [
+     "超級市場網購",
+     "食品雜貨外送",
+     "香港零售",
+     "藍色頁首",
+     "黃色公告文字",
+     "白色面板淺灰背景",
+     "多彩活動橫幅",
+     "分類捷徑圖示",
+     "圓角送貨按鈕",
+     "商品預覽卡片",
+     "促銷導向",
+     "親切吉祥物"
+    ]
+   }
+  },
   "patreon": {
    "hash": "c283346be75f4698",
    "terms": {

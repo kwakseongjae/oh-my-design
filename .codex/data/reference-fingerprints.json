@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 590,
+ "count": 591,
  "items": [
   {
    "id": "104",
@@ -9178,6 +9178,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "parknshop",
+   "primary_color_hex": "#3fa7f3",
+   "category": "ecommerce",
+   "visual_theme": "PARKnSHOP is a Hong Kong supermarket business founded in 1972 and part of AS Watson Group. Its [company page](https://www.pns.hk/en/aboutParknshop) connects physical retail with PNS.hk and the PNS mobile app, and presents its promise as best, easy and value. T",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "friendly"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "patreon",
