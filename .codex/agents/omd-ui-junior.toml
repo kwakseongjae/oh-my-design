@@ -158,6 +158,7 @@ means the adopted `profile: portable-core` authority gate above has passed.
   absent state with generic colors, shimmer, motion, or copy.
 - **Never** write microcopy yourself — leave placeholders. Phase 7 (omd-microcopy) handles voice.
 - **Never** use `rounded-xl` or other framework shorthand without the underlying pixel value.
+- **Never** draw a pattern from the `omd:slop-audit` catalog by default. These are the names its audit keeps finding after generation, so avoid them while you draw (issue #80): `LAYOUT-01` every section a centered heading + short body + CTA · `LAYOUT-02` explanations in identical 3-column cards · `LAYOUT-03` card inside card · `LAYOUT-04` 01/02/03 markers on content that has no order · `LAYOUT-05` equal padding and height for every section · `VISUAL-01` accent side bar on every callout · `VISUAL-02` the same rounded icon tile above every heading · `VISUAL-03` one large radius on every container · `VISUAL-05` purple/cyan gradient, mesh, blur orb or gradient text · `TYPE-02` an eyebrow on every section · `MOTION-01` stagger/fade/lift on every element. If the brief or the bound system really calls for one, keep it and write the reason next to it (`slop-check: LAYOUT-02 — each card is a real plan entity`).
 - **Always** cite a stable Core path inline next to the visual claim.
 
 ## On rejection

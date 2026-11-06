@@ -106,6 +106,26 @@ Round 2 후에도 BLOCK이면:
 2. 강제 통과 시 known issues 섹션을 artifact frontmatter에 명시
 3. 재작성 시 Stage 1로 회귀, 카운터 리셋
 
+## 4.1 UI 자평 루프 — 렌더된 화면이 있을 때
+
+렌더된 HTML이나 실제 route가 생기면 리뷰 라운드에 앞서 아래 체인을 이 순서대로 돈다. 근거: `docs/design-excellence/harness-hardening-testset.md` §2(이슈 #83).
+
+```
+생성 → ①  omd check render <page>     결정론: overflow·escape·UA 기본 여백·폰트·이미지·인코딩
+     → ①′ omd check contrast <page>   명목 글자색 vs 실제 배경 픽셀, 포커스 링, JS 없이 숨은 요소
+     → ①″ omd check landing <page>    랜딩일 때만
+     → ②  omd-slop-auditor             rule ID + route 증거
+     → ③  omd-designer-review          DESIGN.md 대비, BLOCK만 센다
+     → FAIL·BLOCK 항목만 지목해 caller가 고친다(§2.1, 전면 재생성 금지) → ①부터 다시
+```
+
+- 레포 안에서는 `node test-v2/tools/render-integrity.mjs`·`text-contrast.mjs`·`landing-integrity.mjs`가 같은 도구다.
+- **상한 3회.** §4의 critic 라운드와 따로 센다.
+- **중단:** 같은 rule ID가 2회 연속 FAIL이면 멈추고 `omd:issue`로 그 rule을 접수한다. 탐지가 두 번 놓친 패턴은 생성 프롬프트(예방 층)로 올린다.
+- **수렴 기록:** 회차마다 `<work_dir>/loop-trace.json`의 `rounds[]`에 `{round, renderIntegrity: {defects, items}, contrast: {fails}, slop: {hits}, designerReview: {block}, fixed: []}`를 더한다.
+- **판정 기준:** 고쳤는데 회차별 수치가 줄지 않으면 생성기보다 검사기를 먼저 의심한다(오탐, 엉뚱한 측정 대상). 검사기를 고치기 전에는 루프를 더 돌리지 않는다.
+- 3회 뒤에도 FAIL·BLOCK이 남으면 §4처럼 사용자에게 올리고 남은 항목을 known issues로 적는다. 중단은 성공이 아니다.
+
 ## 5. Handoff 로그 (필수)
 
 각 stage 전후로 `<work_dir>/.orchestrator.log`에 append:

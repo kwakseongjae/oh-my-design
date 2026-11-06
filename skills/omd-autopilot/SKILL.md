@@ -450,6 +450,15 @@ here because violating them wastes the whole run:
   1440px. A bottom bar or a scroll-triggered appearance is fine; a sheet over
   the hero is not. Hero image crops must keep the subject the brief asks for
   intact at mobile width.
+- Read `references/slop-gates.md` BEFORE PRODUCT_BUILD as the do-not-generate
+  list, not only during the critique sweep. Gates the critique keeps catching
+  are patterns to avoid while writing; detection alone lets the generator
+  repeat them every run (issue #80).
+- Every standalone page resets user-agent margins before any layout:
+  `figure, blockquote, ul, ol, dl, dd { margin: 0 }`, and `padding: 0` on
+  lists used for layout. An unreset `figure` (default `margin: 1em 40px`)
+  plus `width: 100%` pushed a hero 16px past a 1440px viewport (issue #78);
+  render-integrity flags it, but the reset prevents it.
 - After building, run the ONE-round self-critique from the contract (5 axes
   + gate sweep, System Fidelity replaces variety) and write `critique.md`
   into the run directory before the mission proof.
