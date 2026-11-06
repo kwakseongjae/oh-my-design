@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-06",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 592,
+  "count": 593,
   "counts": {
-    "verified_v2": 417,
+    "verified_v2": 418,
     "partial": 89,
     "legacy_snapshot": 86,
-    "total": 592
+    "total": 593
   },
   "items": [
     {
@@ -5892,6 +5892,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "syosetu",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 15,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "tabling",

@@ -31194,6 +31194,67 @@
     ]
    }
   },
+  "syosetu": {
+   "hash": "b4149b3f8ead85c1",
+   "terms": {
+    "en": [
+     "fiction posting site",
+     "web novel reading",
+     "novel submission platform",
+     "reader and writer community",
+     "ranking lists",
+     "busy directory layout",
+     "cyan navigation",
+     "pale grey page",
+     "white list panels",
+     "blue links",
+     "orange signup button",
+     "dark teal footer"
+    ],
+    "ko": [
+     "소설 투고 사이트",
+     "웹소설 읽기",
+     "소설 연재 플랫폼",
+     "독자와 작가 커뮤니티",
+     "랭킹 목록",
+     "빽빽한 목록형 구성",
+     "청록색 내비게이션",
+     "옅은 회색 배경",
+     "흰색 목록 패널",
+     "파란 링크",
+     "주황색 가입 버튼",
+     "어두운 청록 푸터"
+    ],
+    "ja": [
+     "小説投稿サイト",
+     "ウェブ小説閲覧",
+     "小説投稿サービス",
+     "読者と作者のコミュニティ",
+     "ランキング一覧",
+     "情報量の多い一覧",
+     "シアンのナビゲーション",
+     "淡いグレー背景",
+     "白いリストパネル",
+     "青いリンク",
+     "オレンジの登録ボタン",
+     "濃い青緑のフッター"
+    ],
+    "zh": [
+     "小說投稿網站",
+     "網路小說閱讀",
+     "小說發表平台",
+     "讀者與作者社群",
+     "排行榜列表",
+     "資訊密集的目錄",
+     "青色導覽列",
+     "淺灰色背景",
+     "白色列表面板",
+     "藍色連結",
+     "橘色註冊按鈕",
+     "深青綠頁尾"
+    ]
+   }
+  },
   "tabling": {
    "hash": "fe608d722976bb94",
    "terms": {

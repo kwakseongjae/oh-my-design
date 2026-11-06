@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 592,
+ "count": 593,
  "items": [
   {
    "id": "104",
@@ -12324,6 +12324,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "syosetu",
+   "primary_color_hex": "#18b7cd",
+   "category": "consumer-tech",
+   "visual_theme": "Shosetsuka ni Narou is a Japanese fiction submission and reading service operated by HinaProject. Its site guide describes free registration, reading published fiction, bookmarks and writing tools. The operator dates the service to 2004 and describes its found",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "tabling",
