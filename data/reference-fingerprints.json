@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 595,
+ "count": 596,
  "items": [
   {
    "id": "104",
@@ -14070,6 +14070,29 @@
    "tone_keywords": [
     "flat",
     "utilitarian"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "wooricard",
+   "primary_color_hex": "#006cea",
+   "category": "fintech",
+   "visual_theme": "Woori Card combines card discovery, benefits and account services. Its official history dates the present company's launch to 1 April 2013, the first three independent card products to 24 July 2023, and Woori WON Travel to 3 April 2024. The live homepage conti",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "flat"
    ],
    "antipatterns": [
     "off-brand"

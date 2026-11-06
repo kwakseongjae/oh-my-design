@@ -35675,6 +35675,69 @@
     ]
    }
   },
+  "wooricard": {
+   "hash": "91c3f47d61dd10fe",
+   "terms": {
+    "en": [
+     "credit card service",
+     "card benefits",
+     "account services",
+     "korean consumers",
+     "fintech",
+     "white header",
+     "pastel campaign backgrounds",
+     "rounded buttons",
+     "service shortcuts",
+     "illustrated shortcuts",
+     "diagonal section boundary",
+     "blue accent",
+     "lavender",
+     "bold navigation"
+    ],
+    "ko": [
+     "카드사",
+     "신용카드",
+     "카드 혜택",
+     "금융 서비스",
+     "핀테크",
+     "흰색 헤더",
+     "파스텔 배경",
+     "둥근 버튼",
+     "서비스 바로가기",
+     "일러스트 아이콘",
+     "파란색 포인트",
+     "라벤더"
+    ],
+    "ja": [
+     "クレジットカード",
+     "カード特典",
+     "金融サービス",
+     "韓国の利用者",
+     "フィンテック",
+     "白いヘッダー",
+     "パステル背景",
+     "丸みのあるボタン",
+     "ショートカット",
+     "イラスト付き",
+     "青のアクセント",
+     "ラベンダー"
+    ],
+    "zh": [
+     "信用卡服務",
+     "卡片優惠",
+     "金融服務",
+     "韓國用戶",
+     "金融科技",
+     "白色頁首",
+     "粉彩背景",
+     "圓角按鈕",
+     "服務捷徑",
+     "插畫圖示",
+     "藍色強調",
+     "薰衣草色"
+    ]
+   }
+  },
   "workday": {
    "hash": "7857f70ebde8df51",
    "terms": {
