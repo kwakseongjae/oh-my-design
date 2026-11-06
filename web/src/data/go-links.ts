@@ -26,4 +26,28 @@ export const GO_LINKS: Record<string, GoLink> = {
     content: "ko",
     note: "/hangul video thread, link in the last reply (docs/HANGUL_VIRAL_2026-11-05.md).",
   },
+  "color-map-ko": {
+    to: "/ko/design-systems?region=KR",
+    source: "threads",
+    medium: "social",
+    campaign: "20261111-kr-color-map",
+    content: "ko",
+    note: "Color map 1: 167 verified KR primaries by hue (docs/THREADS_PLAN_2026-11.md #1).",
+  },
+  "hangul-ppt-ko": {
+    to: "/ko/hangul",
+    source: "threads",
+    medium: "social",
+    campaign: "20261114-hangul-ppt",
+    content: "ko",
+    note: "Pitch deck without vs with /hangul (docs/THREADS_PLAN_2026-11.md #2).",
+  },
+  "same-color-ko": {
+    to: "/ko/design-systems?region=KR",
+    source: "threads",
+    medium: "social",
+    campaign: "20261118-kr-same-color",
+    content: "ko",
+    note: "Color map 2: services sharing one hex (docs/THREADS_PLAN_2026-11.md #3).",
+  },
 };
