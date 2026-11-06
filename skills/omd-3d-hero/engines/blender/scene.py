@@ -8,7 +8,7 @@ three (x, y, z) -> blender (x, -z, y). Written against Blender 5.2 (engine ids C
 view transform "Khronos PBR Neutral", Principled BSDF input "Coat Weight").
 """
 import bpy, json, math, os, sys, time
-from mathutils import Vector
+from mathutils import Quaternion, Vector
 
 argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 def arg(name, default=None):
@@ -46,10 +46,20 @@ for key, m in SPEC["materials"].items():
     mat.use_nodes = True
     # Find the node by type, not by its (localizable) name. use_nodes is deprecated for 6.0; fine in 4.2-5.x.
     bsdf = next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
-    bsdf.inputs["Base Color"].default_value = hex_rgba(m["hex"])
     bsdf.inputs["Roughness"].default_value = m["roughness"]
-    if "Coat Weight" in bsdf.inputs:
-        bsdf.inputs["Coat Weight"].default_value = m.get("coat", 0)
+    if m.get("kind") == "glass":
+        # three.js tints glass by absorption: color^(thickness / attenuation distance) per linear channel.
+        k = m["thickness"] / m["attenuation"]
+        bsdf.inputs["Base Color"].default_value = tuple(c ** k for c in hex_rgba(m["hex"])[:3]) + (1.0,)
+        bsdf.inputs["Transmission Weight"].default_value = 1.0
+        bsdf.inputs["IOR"].default_value = m["ior"]
+        for attr in ("use_raytrace_refraction",):  # EEVEE: refract what is behind, not just the world
+            if hasattr(mat, attr):
+                setattr(mat, attr, True)
+    else:
+        bsdf.inputs["Base Color"].default_value = hex_rgba(m["hex"])
+        if "Coat Weight" in bsdf.inputs:
+            bsdf.inputs["Coat Weight"].default_value = m.get("coat", 0)
     MATS[key] = mat
 
 
@@ -105,43 +115,38 @@ def rounded_box(name, dims, bevel_frac):
     return ob
 
 
-def make(o):
-    s = o["size"]
-    kind = o["shape"]
-    if kind in ("sphere", "sphere-small"):
+# The pile (spec.pile.bodies): settled poses from engines/three/pile.js, in three.js coordinates. Each shape is
+# built with its long axis on Blender Z (three.js local Y), and the orientation converted by conjugating with
+# the axis swap: q_blender = R q_three R^-1, R = +90 deg about X.
+R = Quaternion((1, 0, 0), math.radians(90))
+
+
+def make(i, o):
+    s, kind = o["size"], o["shape"]
+    if kind == "sphere":
         bpy.ops.mesh.primitive_uv_sphere_add(radius=s / 2, segments=64, ring_count=32)
         ob = bpy.context.object
         bpy.ops.object.shade_smooth()
-        h = s
-    elif kind == "capsule-lying":  # x-length 1.6s, diameter 0.62s
-        d = 0.62 * s
-        ob = rounded_box(o["id"], (1.6 * s, d, d), 0.5)
-        h = d
-    elif kind == "capsule-standing":
-        d = 0.55 * s
-        ob = rounded_box(o["id"], (d, d, 1.4 * s), 0.5)
-        h = 1.4 * s
+    elif kind == "capsule":  # 1.6 s long, 0.62 s across
+        ob = rounded_box(f"b{i}", (0.62 * s, 0.62 * s, 1.6 * s), 0.5)
     elif kind == "box":
-        ob = rounded_box(o["id"], (s, s, s), S["bevel"])
-        h = s
+        ob = rounded_box(f"b{i}", (s, s, s), S["bevel"])
     elif kind == "box-tall":
-        ob = rounded_box(o["id"], (0.7 * s, 0.7 * s, 1.5 * s), S["bevel"])
-        h = 1.5 * s
-    elif kind == "slab":
-        bev = 0.5 if S["kind"] == "pill" else S["bevel"]
-        ob = rounded_box(o["id"], (1.2 * s, 0.9 * s, 0.18 * s), bev)
-        h = 0.18 * s
+        ob = rounded_box(f"b{i}", (0.7 * s, 0.7 * s, 1.5 * s), S["bevel"])
     else:
         raise SystemExit(f"unknown shape {kind}")
-    ob.name = o["id"]
+    ob.name = f"b{i}"
+    ob.rotation_mode = "QUATERNION"
     assign(ob, o["material"])
-    o["_ob"], o["_h"] = ob, h
+    x, y, z, w = o["quat"]
+    o["_ob"], o["_q"], o["_p"] = ob, R @ Quaternion((w, x, y, z)) @ R.inverted(), o["pos"]
+    o["_phase"] = (i * 0.137) % 1
     return ob
 
 
-OBJS = SPEC["objects"] if "objects" in SPEC else []
-for o in OBJS:
-    make(o)
+OBJS = SPEC["pile"]["bodies"]
+for i, o in enumerate(OBJS):
+    make(i, o)
 
 # ---------- lights + world ----------
 def area(name, L, energy_scale):
@@ -157,7 +162,15 @@ def area(name, L, energy_scale):
 
 
 area("key", SPEC["lights"]["key"], 1.0)
-area("rim", SPEC["lights"]["rim"], 1.0)
+# The rim is a sun, like three.js's DirectionalLight: an area light this close to the wall lights it only on
+# one side of its own plane and draws a hard-edged dark wedge across the upper right of the frame.
+L = SPEC["lights"]["rim"]
+rim_d = bpy.data.lights.new("rim", "SUN")
+rim_d.energy = 3.0 * L["energy"]
+rim_d.angle = math.radians(8)
+rim = bpy.data.objects.new("rim", rim_d)
+sc.collection.objects.link(rim)
+rim.rotation_euler = (b(L["target"]) - b(L["pos"])).to_track_quat("-Z", "Y").to_euler()
 world = bpy.data.worlds.new("omd-world")
 sc.world = world
 world.use_nodes = True
@@ -180,18 +193,19 @@ sc.view_settings.view_transform = "Khronos PBR Neutral" if SPEC.get("toneMapping
 sc.view_settings.look = "None"
 sc.view_settings.exposure = math.log2(SPEC.get("exposure", 1.0))
 
-# ---------- motion: identical functions to engines/three/scene.js ----------
+# ---------- motion (loop video only) ----------
 M = SPEC["motion"]
 
 
 def pose(t):
+    # The three.js branch moves by simulation; the loop video can't, so each body bobs and rocks around its
+    # settled pose on one sin period (seamless), and the camera sways. t = 0 is exactly the settled pose.
     for o in OBJS:
-        ph = 2 * math.pi * (t / M["period"] + o["phase"])
-        ob = o["_ob"]
-        x, _, z = o["pos"]
-        y = o["_h"] / 2 + M["bob"] * (0.5 + 0.5 * math.sin(ph))
-        ob.location = b((x, y, z))
-        ob.rotation_euler = (0, 0, o["rotY"] + M["spin"] * math.sin(ph))
+        ph = 2 * math.pi * (t / M["period"] + o["_phase"])
+        x, y, z = o["_p"]
+        o["_ob"].location = b((x, y + M["bob"] * (math.sin(ph) - math.sin(2 * math.pi * o["_phase"])), z))
+        rock = Quaternion((0, 0, 1), M["spin"] * (math.sin(ph) - math.sin(2 * math.pi * o["_phase"])))
+        o["_ob"].rotation_quaternion = rock @ o["_q"]
     sway = M["sway"] * math.sin(2 * math.pi * t / M["period"])
     cam.location = CAM0 + Vector((sway, 0, 0))
     cam.rotation_euler = (TARGET - cam.location).to_track_quat("-Z", "Y").to_euler()
@@ -225,6 +239,8 @@ if DO_POSTER:
 if DO_LOOP:
     r.engine = "BLENDER_EEVEE"
     sc.eevee.taa_render_samples = 32
+    if hasattr(sc.eevee, "use_raytracing"):
+        sc.eevee.use_raytracing = True
     r.resolution_x, r.resolution_y = LOOP_W, round(LOOP_W * 9 / 16)
     frames = int(M["period"] * FPS)
     fdir = os.path.join(OUT, "frames")

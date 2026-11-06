@@ -15,6 +15,7 @@
 // No brand color -> exit 3. The scene never invents a palette or a shape (unknown means absent).
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { bodiesFor, settle, guardPlane } from '../engines/three/pile.js';
 
 const args = process.argv.slice(2);
 const opt = (k) => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
@@ -110,43 +111,57 @@ const shape = pill ? 'pill' : !radii.length ? 'rounded' : maxR <= 2 ? 'square' :
 const bevel = shape === 'square' ? 0.02 : shape === 'pill' ? 0.5 : Math.min(0.35, Math.max(0.06, maxR / 64));
 
 // ---------- scene ----------
-const mat = (role, hex, kind) => ({ role, hex, ...(kind === 'gloss' ? { roughness: 0.32, coat: 0.35 } : kind === 'satin' ? { roughness: 0.5, coat: 0.1 } : { roughness: 0.82, coat: 0 }) });
+const mat = (role, hex, kind) => ({ role, hex, kind, ...(kind === 'gloss' ? { roughness: 0.32, coat: 0.35 } : kind === 'satin' ? { roughness: 0.5, coat: 0.1 } : { roughness: 0.82, coat: 0 }) });
 const materials = {
   backdrop: mat(backdrop.role, backdrop.hex, 'clay'),
   primary: mat(primary.role, primary.hex, 'gloss'),
   ink: mat(ink.role, ink.hex, 'satin'),
   clay: mat(clay.role, clay.hex, 'clay'),
+  // Clear glass tinted by the brand color through its depth (absorption), not painted on.
+  glass: { role: primary.role, hex: primary.hex, kind: 'glass', roughness: 0.05, ior: 1.45, thickness: 0.6, attenuation: 2.4 },
   ...(accent ? { accent: mat(accent.role, accent.hex, 'gloss') } : {}),
 };
-// One composition for now: "cluster-right". Objects stay right of x = -0.2 so the left of the frame is
-// clean backdrop for the headline. Sizes are in world units; y is set by the engines to rest on the floor.
-const primShapes = shape === 'pill'
-  ? ['capsule-lying', 'sphere', 'capsule-standing', 'sphere-small', 'slab']
-  : ['box', 'sphere', 'box-tall', 'sphere-small', 'slab'];
-const objects = [
-  { id: 'hero', shape: primShapes[0], material: 'primary', pos: [2.1, 0, 0.2], size: 1.5, rotY: -0.5, phase: 0.0 },
-  { id: 'ink', shape: primShapes[1], material: 'ink', pos: [3.5, 0, -1.4], size: 0.95, rotY: 0.3, phase: 0.27 },
-  { id: 'clay', shape: primShapes[2], material: 'clay', pos: [1.0, 0, -1.7], size: 0.9, rotY: 0.6, phase: 0.55 },
-  { id: 'dot', shape: primShapes[3], material: accent ? 'accent' : 'primary', pos: [2.9, 0, 1.6], size: 0.42, rotY: 0, phase: 0.8 },
-  { id: 'slab', shape: primShapes[4], material: 'clay', pos: [1.0, 0, 1.6], size: 1.0, rotY: 0.9, phase: 0.4 },
-];
+// Composition "pile-right": 28 objects float in a cluster near 70% of the frame width, held by a spring
+// toward `center`. The copy guard is the plane through the camera at the screen's vertical center line, so no
+// object can ever enter the left half where the headline sits (engines/three/pile.js). The settled pose is computed
+// here, once, so the poster, the first live frame and the Blender render all start from the same bodies.
+const camera = { pos: [-0.6, 2.25, 8.3], target: [0.9, 1.95, 0], fovY: 32 };
+const cyclorama = { floorFront: 12, coveZ: -2, coveRadius: 2.5, wallTop: 14, width: 40 };
+const pile = {
+  // Seed from the brand color: each brand gets its own arrangement, and the same DESIGN.md always the same one.
+  seed: parseInt(primary.hex.slice(1), 16) % 100003,
+  center: [2.85, 2.05, -0.4],
+  spring: 6, damping: 2.4, angularDamping: 1.2, restitution: 0.25, friction: 0.3,
+  orbit: { period: 8, amp: [0.22, 0.1, 0.18] },
+  pointer: { r: 0.55 },
+  planes: [
+    { n: [0, 1, 0], d: 0.05, id: 'floor' },
+    { n: [0, 0, 1], d: cyclorama.coveZ - cyclorama.coveRadius + 0.1, id: 'wall' },
+    guardPlane(camera, 0.0),
+    // Keep a scattered pile in the frame: not past the right edge, not above y 4.3, not nearer the lens than 2.4.
+    (({ n, d }) => ({ n: n.map((v) => -v), d: -d, id: 'right-edge' }))(guardPlane(camera, 0.92)),
+    { n: [0, -1, 0], d: -4.3, id: 'ceiling' },
+    { n: [0, 0, -1], d: -2.0, id: 'front' },
+  ],
+  bodies: [],
+};
+pile.bodies = settle({ ...pile, bodies: bodiesFor({ kind: shape, accent: !!accent, seed: pile.seed }) });
 
 const spec = {
   version: 1,
   source: file.split('/').slice(-2).join('/'),
   scheme,
   archetype: 'studio',
-  composition: 'cluster-right',
+  composition: 'pile-right',
   shape: { kind: shape, bevel: +bevel.toFixed(3), radiusPx: finite, pill },
   materials,
-  objects,
+  pile,
   text: { role: text.role, hex: text.hex, contrastOnBackdropToken: +text.cr.toFixed(2) },
   headline: opt('headline') ?? '',
   sub: opt('sub') ?? '',
   // Cyclorama: floor from z=+12 back to z=-2, a cove of radius 2.5, then a wall up to y=14.
-  cyclorama: { floorFront: 12, coveZ: -2, coveRadius: 2.5, wallTop: 14, width: 40 },
-  // Target sits left of the cluster (x~2.2) so the cluster lands near 75% of the frame width.
-  camera: { pos: [-1.0, 1.7, 7.6], target: [0.4, 0.65, 0], fovY: 32 },
+  cyclorama,
+  camera,
   lights: {
     key: { pos: [-4, 8, 6], target: [1.5, 0.4, 0], size: 6, energy: 1.0 },
     rim: { pos: [6, 5, -4], target: [2, 0.6, 0], size: 3, energy: 0.35 },
@@ -154,7 +169,9 @@ const spec = {
   },
   toneMapping: 'neutral', // Khronos PBR Neutral in both engines: keeps base colors close to the tokens
   exposure: 1.0,
-  motion: { period: 8, bob: 0.06, spin: 0.08, sway: 0.15 },
+  // Blender's loop (the three branch moves by simulation): each body bobs and rocks around its settled pose.
+  motion: { period: 8, bob: 0.05, spin: 0.12, sway: 0.12 },
+  quality: { ao: true },
   poster: { width: 1920, height: 1080 },
 };
 if (text.cr < 4.5) spec.warning = 'The best text token is under 4.5:1 on the backdrop token. Choose another text token or the dark scheme.';

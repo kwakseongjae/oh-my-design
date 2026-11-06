@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-// omd-3d-hero real-GPU proof. Same four passes as omd-shader-hero/scripts/verify.mjs, plus two checks a
-// 3D scene needs: the poster is on screen before the canvas, and frame time on the GPU pass.
+// omd-3d-hero real-GPU proof. Same four passes as omd-shader-hero/scripts/verify.mjs, plus the checks a live
+// 3D scene needs: the poster is on screen before the canvas, frame time on the GPU pass, and an interaction
+// sweep (the pointer drags across the pile and into the copy column, then clicks) during which no object may
+// reach the headline and contrast is measured on every sampled frame.
 //
 //   node verify.mjs <hero.html|url> <outDir> [--steps 8] [--headed]
 //   node verify.mjs <hero.html|url> --bake poster.webp      # three branch: still of the live scene at t=0
@@ -177,6 +179,31 @@ async function pass(label, opts) {
     await page.evaluate(() => window.__omd3d.setTime(0)); await page.waitForTimeout(40); const a = await page.screenshot();
     await page.evaluate(() => window.__omd3d.setTime(2)); await page.waitForTimeout(40); const b = await page.screenshot();
     r.animates = await diff(page, a, b);
+    // Interaction sweep on the real clock: the pointer enters from the right, drags through the pile and on into
+    // the copy column, clicks the pile (scatter), and wanders over the copy. Every few moves: the leftmost
+    // screen x any object reaches, and the headline contrast on that frame.
+    await page.evaluate(() => { window.__omd3d.setTime(0); window.__omd3d.release(); });
+    const vw = opts.width ?? 1440, vh = opts.height ?? 900;
+    const textRight = Math.max(...rects.map((q) => q.x + q.width));
+    const route = [];
+    for (let i = 0; i <= 40; i++) route.push([vw * (0.95 - i * 0.016), vh * (0.3 + i * 0.008)]);
+    route.push('click');
+    for (let i = 0; i <= 30; i++) route.push([vw * (0.42 + 0.06 * Math.sin(i / 3)), vh * (0.25 + i * 0.018)]);
+    let minLeft = Infinity, wi = Infinity, n = 0;
+    await page.mouse.move(vw * 0.95, vh * 0.3);
+    for (const [k, pt] of route.entries()) {
+      if (pt === 'click') { await page.mouse.move(vw * 0.72, vh * 0.48, { steps: 4 }); await page.mouse.down(); await page.mouse.up(); continue; }
+      await page.mouse.move(pt[0], pt[1]);
+      await page.waitForTimeout(24);
+      minLeft = Math.min(minLeft, await page.evaluate(() => window.__omd3d.leftmost()));
+      if (k % 6 === 0) {
+        await hideCopy(page, true); const bare = await page.screenshot(); await hideCopy(page, false);
+        const [h] = await worstContrast(page, bare, rects, text); wi = Math.min(wi, h); n++;
+      }
+    }
+    await page.mouse.move(vw - 4, vh - 80);
+    r.interaction = { samples: n, worstHeadline: wi, minLeft: +minLeft.toFixed(1), textRight: +textRight.toFixed(1) };
+    r.worstContrast.headline = Math.min(r.worstContrast.headline, wi);
     // Frame time with the real clock: 3 s of rAF deltas from the scene's own loop.
     await page.evaluate(() => { window.__omd3d.release(); window.__omd3d.frameTimes.length = 0; });
     await page.waitForTimeout(3000);
@@ -184,12 +211,19 @@ async function pass(label, opts) {
     const q = (p) => +ft[Math.min(ft.length - 1, Math.floor(p * ft.length))].toFixed(2);
     r.frameMs = { n: ft.length, median: q(0.5), p95: q(0.95) };
     r.pixelRatioAfter = await page.evaluate(() => window.__omd3d.pixelRatio);
+    r.aoAfter = await page.evaluate(() => window.__omd3d.ao);
   }
   // WCAG 2.2.2: the pause control must stop the motion.
   if (state.live && state.pauseVisible) {
     await page.click('.hero .pause');
     await page.waitForTimeout(300);
-    const a = await page.screenshot(); await page.waitForTimeout(1200); const b = await page.screenshot();
+    // While paused the pointer must not move anything either.
+    const a = await page.screenshot();
+    const vw = opts.width ?? 1440, vh = opts.height ?? 900;
+    for (let i = 0; i <= 20; i++) { await page.mouse.move(vw * (0.9 - i * 0.02), vh * 0.45); await page.waitForTimeout(30); }
+    if (state.engine === 'three') { await page.mouse.move(vw * 0.72, vh * 0.48); await page.mouse.down(); await page.mouse.up(); }
+    await page.mouse.move(vw - 4, vh - 80);
+    await page.waitForTimeout(400); const b = await page.screenshot();
     r.pausedDiff = await diff(page, a, b);
     await page.click('.hero .pause');
   }
@@ -217,10 +251,11 @@ report.checks = {
   noWebGLPosterOnly: gpu.engine !== 'three' || nogl.layers === 0,
   shaderFailPosterOnly: gpu.engine !== 'three' || (!sfail.live && sfail.fallback === 'shader-error'),
   pauseStopsMotion: gpu.pauseVisible === true && (gpu.pausedDiff ?? 1) < 0.002,
+  pointerKeepsCopyClear: gpu.engine !== 'three' || (gpu.interaction != null && gpu.interaction.minLeft >= gpu.interaction.textRight + 8),
   softwareRenderer: /swiftshader|llvmpipe|software/i.test(gpu.renderer || ''),
 };
 writeFileSync(path.join(outDir, 'report.json'), JSON.stringify(report, null, 2));
-console.log(JSON.stringify({ engine: gpu.engine, renderer: gpu.renderer, frameMs: gpu.frameMs, pixelRatioAfter: gpu.pixelRatioAfter, pausedDiff: gpu.pausedDiff, timeline: tl, ...report.checks, contrast: Object.fromEntries(report.passes.map((p) => [p.label, p.worstContrast])) }, null, 2));
+console.log(JSON.stringify({ engine: gpu.engine, renderer: gpu.renderer, frameMs: gpu.frameMs, pixelRatioAfter: gpu.pixelRatioAfter, aoAfter: gpu.aoAfter, interaction: gpu.interaction, pausedDiff: gpu.pausedDiff, timeline: tl, ...report.checks, contrast: Object.fromEntries(report.passes.map((p) => [p.label, p.worstContrast])) }, null, 2));
 const fail = Object.entries(report.checks).filter(([k, v]) => k !== 'softwareRenderer' && !v);
 server?.close();
 if (fail.length) { console.error('FAIL:', fail.map(([k]) => k).join(', ')); process.exit(1); }

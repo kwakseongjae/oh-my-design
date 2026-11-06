@@ -88,7 +88,7 @@
       hero.prepend(v);
       control = { pause: () => v.pause(), resume: () => v.play() };
       window.__omd3dState.mounted = true;
-    } else if (webgl2 && spec.objects) {
+    } else if (webgl2 && spec.pile) {
       try {
         const { mount } = await import(hero.dataset.sceneSrc);
         control = mount(hero, spec, { onFallback: () => { pause.hidden = true; } });
