@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 578,
+ "count": 579,
  "items": [
   {
    "id": "104",
@@ -9945,6 +9945,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "raksul",
+   "primary_color_hex": "#0264bf",
+   "category": "ecommerce",
+   "visual_theme": "Raksul is a Japanese online printing and customer-acquisition platform. It connects orders to spare capacity at partner printing companies, and also offers newspaper inserts and posting services. Its company history records establishment in September 2009 and ",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "rakuten",

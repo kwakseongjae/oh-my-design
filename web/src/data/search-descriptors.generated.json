@@ -25031,6 +25031,67 @@
     ]
    }
   },
+  "raksul": {
+   "hash": "c6897f5740a58ded",
+   "terms": {
+    "en": [
+     "online printing",
+     "print ecommerce",
+     "business cards flyers",
+     "product catalog store",
+     "dense storefront",
+     "white background",
+     "blue navigation",
+     "orange signup button",
+     "cyan prices",
+     "flat product cards",
+     "wide search field",
+     "left category directory"
+    ],
+    "ko": [
+     "온라인 인쇄",
+     "인쇄 쇼핑몰",
+     "명함 전단지 주문",
+     "상품 카탈로그",
+     "빽빽한 레이아웃",
+     "흰 배경",
+     "파란 내비게이션",
+     "주황 가입 버튼",
+     "하늘색 가격",
+     "평평한 카드",
+     "넓은 검색창",
+     "왼쪽 카테고리"
+    ],
+    "ja": [
+     "ネット印刷",
+     "印刷通販",
+     "名刺チラシ注文",
+     "商品一覧",
+     "高密度レイアウト",
+     "白背景",
+     "青いナビゲーション",
+     "オレンジの登録ボタン",
+     "水色の価格表示",
+     "フラットなカード",
+     "大きな検索窓",
+     "左カテゴリ一覧"
+    ],
+    "zh": [
+     "線上印刷",
+     "印刷電商",
+     "名片傳單訂購",
+     "商品目錄",
+     "高密度版面",
+     "白色背景",
+     "藍色導覽列",
+     "橘色註冊按鈕",
+     "青藍色價格",
+     "扁平商品卡片",
+     "寬版搜尋欄",
+     "左側分類目錄"
+    ]
+   }
+  },
   "rakuten": {
    "hash": "8165c60d78d58da2",
    "terms": {
