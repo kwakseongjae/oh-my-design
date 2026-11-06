@@ -31629,6 +31629,65 @@
     ]
    }
   },
+  "tigerair": {
+   "hash": "3df0b932542c5ba5",
+   "terms": {
+    "en": [
+     "low-cost airline",
+     "airline booking",
+     "travel booking site",
+     "flight search",
+     "friendly travel",
+     "orange accent",
+     "mascot illustration",
+     "destination photo cards",
+     "white booking panel",
+     "compact form",
+     "grey text",
+     "taiwan travel"
+    ],
+    "ko": [
+     "저가 항공사",
+     "항공권 예약",
+     "여행 예약",
+     "항공편 검색",
+     "친근한 여행",
+     "오렌지 포인트",
+     "마스코트 일러스트",
+     "여행지 사진 카드",
+     "흰색 예약 패널",
+     "컴팩트한 폼",
+     "대만 여행"
+    ],
+    "ja": [
+     "格安航空会社",
+     "航空券予約",
+     "旅行予約サイト",
+     "フライト検索",
+     "親しみやすい旅行",
+     "オレンジのアクセント",
+     "マスコットイラスト",
+     "目的地の写真カード",
+     "白い予約パネル",
+     "コンパクトなフォーム",
+     "台湾旅行"
+    ],
+    "zh": [
+     "廉價航空",
+     "機票預訂",
+     "旅遊訂購",
+     "航班搜尋",
+     "親切旅遊",
+     "橘色重點色",
+     "吉祥物插畫",
+     "目的地照片卡片",
+     "白色訂票面板",
+     "精簡表單",
+     "台灣旅遊",
+     "灰色文字"
+    ]
+   }
+  },
   "timee": {
    "hash": "dc831289090b3afc",
    "terms": {

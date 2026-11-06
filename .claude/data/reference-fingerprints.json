@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 583,
+ "count": 584,
  "items": [
   {
    "id": "104",
@@ -12500,6 +12500,30 @@
    },
    "tone_keywords": [
     "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "tigerair",
+   "primary_color_hex": "#faa836",
+   "category": "consumer-tech",
+   "visual_theme": "Tigerair Taiwan is a Taiwanese low-cost airline whose first flight departed on 26 September 2014. Its company history records the purchase of the Tigerair brand rights in 2021. The fleet page connects the identity to Taiwan-island forms in its logo lettering a",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "friendly",
+    "vivid"
    ],
    "antipatterns": [
     "off-brand"
