@@ -5855,6 +5855,67 @@
     ]
    }
   },
+  "cw": {
+   "hash": "bbed6bf080abdef2",
+   "terms": {
+    "en": [
+     "news publication",
+     "economics magazine",
+     "traditional chinese news site",
+     "dense news homepage",
+     "photo-led layout",
+     "large lead story",
+     "red and blue accents",
+     "red editorial labels",
+     "blue subscription button",
+     "white background",
+     "paid digital reading",
+     "trust-focused media"
+    ],
+    "ko": [
+     "뉴스 매체",
+     "경제 잡지",
+     "번체 중국어 뉴스",
+     "정보 밀도 높은 홈",
+     "사진 중심 레이아웃",
+     "대형 메인 기사",
+     "빨강 파랑 포인트",
+     "빨간 카테고리 라벨",
+     "파란 구독 버튼",
+     "흰 배경",
+     "유료 디지털 구독",
+     "신뢰감 있는 언론"
+    ],
+    "ja": [
+     "ニュースメディア",
+     "経済雑誌",
+     "繁体字中国語サイト",
+     "情報密度の高いトップ",
+     "写真中心レイアウト",
+     "大きなリード記事",
+     "赤と青のアクセント",
+     "赤いカテゴリラベル",
+     "青い購読ボタン",
+     "白背景",
+     "有料デジタル購読",
+     "信頼感のある報道"
+    ],
+    "zh": [
+     "新聞媒體",
+     "財經雜誌",
+     "繁體中文新聞網站",
+     "高密度新聞首頁",
+     "圖片為主版面",
+     "大型頭條報導",
+     "紅藍配色",
+     "紅色分類標籤",
+     "藍色訂閱按鈕",
+     "白色背景",
+     "付費數位閱讀",
+     "信任感媒體"
+    ]
+   }
+  },
   "cybozu": {
    "hash": "687e5ea77f117973",
    "terms": {

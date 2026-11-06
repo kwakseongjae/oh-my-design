@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 585,
+ "count": 586,
  "items": [
   {
    "id": "104",
@@ -2354,6 +2354,30 @@
    "signature_motion": "Hover text shifts to warm crimson #cf2d56; shadows transition over 200ms ease for elevation changes.",
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "cw",
+   "primary_color_hex": "#d60c18",
+   "category": "consumer-tech",
+   "visual_theme": "CommonWealth is a Taiwanese news and economics publication founded in 1981. Its About page puts trust at the centre of its identity: “我們經營的是「信任」.” Paid digital reading launched in 2017, followed by an app combining magazine content and current news in 2018. Th",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "editorial",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "cybozu",
