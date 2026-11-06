@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 420,
-  "sources": 3686,
+  "references_with_verification_v2": 421,
+  "sources": 3694,
   "sources_by_kind": {
     "brand-asset": 251,
     "license": 141,
-    "official-doc": 1747,
-    "product-surface": 1547
+    "official-doc": 1753,
+    "product-surface": 1549
   },
   "references": {
     "104": {
@@ -11072,6 +11072,60 @@
           "kind": "brand-asset",
           "captured": "2026-11-06",
           "host": "a-www.kfs.io"
+        }
+      ]
+    },
+    "kkday": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "company-editorial",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "company-update",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "culture",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "product-explanation",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
         }
       ]
     },
