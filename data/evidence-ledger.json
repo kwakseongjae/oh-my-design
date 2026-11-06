@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 416,
-  "sources": 3615,
+  "references_with_verification_v2": 417,
+  "sources": 3627,
   "sources_by_kind": {
     "brand-asset": 247,
     "license": 141,
-    "official-doc": 1703,
-    "product-surface": 1524
+    "official-doc": 1712,
+    "product-surface": 1527
   },
   "references": {
     "104": {
@@ -11168,6 +11168,84 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "kmong.com"
+        }
+      ]
+    },
+    "kodansha": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-host-control-blocked",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "brand-interview",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "legal-data",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "id.kodansha.co.jp"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "id.kodansha.co.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
         }
       ]
     },

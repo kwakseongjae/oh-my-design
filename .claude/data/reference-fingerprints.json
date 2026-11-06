@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 591,
+ "count": 592,
  "items": [
   {
    "id": "104",
@@ -6410,6 +6410,29 @@
    ],
    "antipatterns": [
     "austere"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "kodansha",
+   "primary_color_hex": "#001a70",
+   "category": "consumer-tech",
+   "visual_theme": "Kodansha is a Japanese publisher founded in 1909. Its history records 野間清治 establishing 大日本雄弁会, followed by Kodansha and the magazine 講談倶楽部 in 1911. Its purpose, **Inspire Impossible Stories**, expresses the meeting of interesting and beneficial storytelling. ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
    ],
    "signature_motion": "See §15 Motion.",
    "has_personas": true,

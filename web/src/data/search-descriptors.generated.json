@@ -16224,6 +16224,63 @@
     ]
    }
   },
+  "kodansha": {
+   "hash": "a15b7f8aa5af4890",
+   "terms": {
+    "en": [
+     "publisher website",
+     "book publishing",
+     "manga and magazine directory",
+     "publication listings",
+     "reader homepage",
+     "editorial artwork",
+     "restrained navy links",
+     "white header",
+     "hero carousel",
+     "angular logo panel",
+     "notices and recommendations",
+     "japanese publisher"
+    ],
+    "ko": [
+     "출판사 사이트",
+     "도서 출판",
+     "만화 잡지 목록",
+     "출판물 목록",
+     "독자용 홈페이지",
+     "편집 일러스트",
+     "절제된 네이비 링크",
+     "흰색 헤더",
+     "대형 캐러셀",
+     "일본 출판사"
+    ],
+    "ja": [
+     "出版社サイト",
+     "書籍出版",
+     "マンガ雑誌一覧",
+     "刊行物リスト",
+     "読者向けトップページ",
+     "編集アートワーク",
+     "控えめな紺色リンク",
+     "白いヘッダー",
+     "大型カルーセル",
+     "お知らせとおすすめ",
+     "角張ったロゴ"
+    ],
+    "zh": [
+     "出版社網站",
+     "圖書出版",
+     "漫畫雜誌目錄",
+     "出版品列表",
+     "讀者首頁",
+     "編輯插畫",
+     "低調藏青連結",
+     "白色頁首",
+     "大型輪播",
+     "日本出版社",
+     "公告與推薦"
+    ]
+   }
+  },
   "komoot": {
    "hash": "80a55af00fcc17c6",
    "terms": {
