@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 582,
+ "count": 583,
  "items": [
   {
    "id": "104",
@@ -2378,6 +2378,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "cygames",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "Cygames is a Tokyo-based entertainment company founded in May 2011. Its business spans mobile and console games, comics, animation, licensing and esports. Its stated vision, **「最高のコンテンツを作る会社」**, connects those activities through the ambition to make the best c",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "dabang",

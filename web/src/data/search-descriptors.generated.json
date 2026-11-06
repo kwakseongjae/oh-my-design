@@ -5923,6 +5923,64 @@
     ]
    }
   },
+  "cygames": {
+   "hash": "393c0bce4ad3f62e",
+   "terms": {
+    "en": [
+     "game company website",
+     "entertainment corporate site",
+     "mobile game publisher",
+     "recruitment page",
+     "black and white",
+     "editorial cards",
+     "pale grey sections",
+     "large hero imagery",
+     "uppercase navigation",
+     "yellow accent stripe",
+     "neutral interface",
+     "japanese corporate homepage"
+    ],
+    "ko": [
+     "게임 회사 사이트",
+     "엔터테인먼트 기업",
+     "모바일 게임 퍼블리셔",
+     "채용 페이지",
+     "흑백 디자인",
+     "에디토리얼 카드",
+     "연한 회색 섹션",
+     "대형 히어로 이미지",
+     "대문자 내비게이션",
+     "노란색 포인트",
+     "일본 기업 홈페이지"
+    ],
+    "ja": [
+     "ゲーム会社サイト",
+     "エンタメ企業",
+     "モバイルゲーム",
+     "採用ページ",
+     "白黒配色",
+     "編集風カード",
+     "薄いグレーの区画",
+     "大きなメインビジュアル",
+     "大文字ナビゲーション",
+     "黄色のアクセント",
+     "企業コーポレートサイト"
+    ],
+    "zh": [
+     "遊戲公司網站",
+     "娛樂企業官網",
+     "手機遊戲發行商",
+     "招募頁面",
+     "黑白配色",
+     "編輯風卡片",
+     "淺灰區塊",
+     "大型主視覺",
+     "大寫導覽列",
+     "黃色點綴",
+     "日本企業首頁"
+    ]
+   }
+  },
   "dabang": {
    "hash": "dd15b0b3e41a7b51",
    "terms": {
