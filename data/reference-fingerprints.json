@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 587,
+ "count": 588,
  "items": [
   {
    "id": "104",
@@ -606,6 +606,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "andpad",
+   "primary_color_hex": "#ef3340",
+   "category": "saas",
+   "visual_theme": "ANDPAD connects construction-site work with business management: photographs, schedules, drawings and chat sit within a cloud construction-project management service. It launched in 2016. In May 2020, the company changed its name from Oct to ANDPAD and renewed",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "systematic",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "appier",

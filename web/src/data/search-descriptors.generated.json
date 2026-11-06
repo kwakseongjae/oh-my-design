@@ -1507,6 +1507,67 @@
     ]
    }
   },
+  "andpad": {
+   "hash": "a8f8747901aa5089",
+   "terms": {
+    "en": [
+     "construction project management",
+     "cloud saas",
+     "construction site app",
+     "japanese marketing site",
+     "red and white",
+     "square red buttons",
+     "black headings",
+     "generous white space",
+     "rectangular image panels",
+     "business software",
+     "subcontractor collaboration",
+     "pricing and inquiry"
+    ],
+    "ko": [
+     "건설 프로젝트 관리",
+     "클라우드 saas",
+     "건설 현장 앱",
+     "일본어 마케팅 사이트",
+     "빨강과 흰색",
+     "각진 빨간 버튼",
+     "검정 제목",
+     "넉넉한 여백",
+     "직사각형 이미지 패널",
+     "업무용 소프트웨어",
+     "협력업체 협업",
+     "가격 및 문의"
+    ],
+    "ja": [
+     "建設プロジェクト管理",
+     "クラウドサービス",
+     "建設現場アプリ",
+     "日本語マーケティングサイト",
+     "赤と白",
+     "角型の赤ボタン",
+     "黒い見出し",
+     "余白が広い",
+     "縦長の画像パネル",
+     "業務ソフト",
+     "協力会社との連携",
+     "料金と資料請求"
+    ],
+    "zh": [
+     "營建專案管理",
+     "雲端 saas",
+     "工地現場應用",
+     "日文行銷網站",
+     "紅白配色",
+     "方形紅色按鈕",
+     "黑色標題",
+     "大量留白",
+     "矩形圖像面板",
+     "企業軟體",
+     "協力廠商協作",
+     "價格與諮詢"
+    ]
+   }
+  },
   "appier": {
    "hash": "375be980135b54fd",
    "terms": {
