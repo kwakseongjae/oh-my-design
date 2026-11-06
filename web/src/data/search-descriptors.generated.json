@@ -20308,6 +20308,69 @@
     ]
    }
   },
+  "nanshanlife": {
+   "hash": "1aa238ddf331cf01",
+   "terms": {
+    "en": [
+     "insurance company",
+     "life insurance",
+     "taiwan insurer",
+     "traditional chinese website",
+     "blue yellow green",
+     "warm friendly tone",
+     "rounded white panels",
+     "blue pill buttons",
+     "illustrated people",
+     "policy service shortcuts",
+     "colorful service tiles",
+     "member club",
+     "help search"
+    ],
+    "ko": [
+     "보험사",
+     "생명보험",
+     "대만 보험",
+     "번체 중국어 사이트",
+     "파랑 노랑 초록",
+     "따뜻한 분위기",
+     "둥근 흰색 패널",
+     "파란 알약 버튼",
+     "일러스트 인물",
+     "보험 서비스 바로가기",
+     "컬러 서비스 타일",
+     "회원 클럽"
+    ],
+    "ja": [
+     "保険会社",
+     "生命保険",
+     "台湾の保険",
+     "繁体字中国語サイト",
+     "青 黄 緑",
+     "温かい雰囲気",
+     "角丸の白パネル",
+     "青いピル型ボタン",
+     "人物イラスト",
+     "保険サービス導線",
+     "カラフルなサービスタイル",
+     "会員クラブ"
+    ],
+    "zh": [
+     "保險公司",
+     "人壽保險",
+     "台灣保險業",
+     "繁體中文網站",
+     "藍黃綠配色",
+     "溫暖親切",
+     "圓角白色面板",
+     "藍色膠囊按鈕",
+     "插畫人物",
+     "保單服務捷徑",
+     "彩色服務磚",
+     "會員俱樂部",
+     "說明搜尋"
+    ]
+   }
+  },
   "naver": {
    "hash": "d72ae9d0713aaf13",
    "terms": {

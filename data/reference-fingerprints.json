@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 580,
+ "count": 581,
  "items": [
   {
    "id": "104",
@@ -8037,6 +8037,28 @@
    ],
    "has_personas": false,
    "category_raw": "workflow-automation"
+  },
+  {
+   "id": "nanshanlife",
+   "primary_color_hex": "#006fbc",
+   "category": "fintech",
+   "visual_theme": "Nan Shan Life (南山人壽) is a Taiwanese insurer founded in July 1963. Its company introduction pairs the vision of building a better future with the brand promise **「未來 有備而來」**: preparing people for the changes and risks ahead. The homepage makes that practical th",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "naver",
