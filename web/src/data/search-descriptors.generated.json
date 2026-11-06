@@ -1448,6 +1448,71 @@
     ]
    }
   },
+  "aliyun": {
+   "hash": "108de8ef571bc4f3",
+   "terms": {
+    "en": [
+     "cloud computing platform",
+     "enterprise cloud services",
+     "developer infrastructure",
+     "ai cloud offering",
+     "white canvas",
+     "orange brand accent",
+     "blue action buttons",
+     "blue to lilac gradient",
+     "square buttons",
+     "compact header",
+     "spacious hero",
+     "geometric imagery",
+     "free trial call to action"
+    ],
+    "ko": [
+     "클라우드 컴퓨팅 플랫폼",
+     "기업용 클라우드",
+     "개발자 인프라",
+     "AI 클라우드 서비스",
+     "흰색 배경",
+     "오렌지 브랜드 포인트",
+     "파란색 액션 버튼",
+     "파랑 라일락 그라데이션",
+     "각진 버튼",
+     "컴팩트한 헤더",
+     "여유로운 히어로 영역",
+     "기하학적 이미지",
+     "무료 체험 버튼"
+    ],
+    "ja": [
+     "クラウドコンピューティング",
+     "企業向けクラウド",
+     "開発者向けインフラ",
+     "AIクラウドサービス",
+     "白いキャンバス",
+     "オレンジのブランド色",
+     "青いアクションボタン",
+     "青から薄紫のグラデーション",
+     "角ばったボタン",
+     "コンパクトなヘッダー",
+     "ゆったりしたヒーロー",
+     "幾何学的なビジュアル",
+     "無料トライアル導線"
+    ],
+    "zh": [
+     "雲端運算平台",
+     "企業雲端服務",
+     "開發者基礎架構",
+     "AI 雲端服務",
+     "白色畫布",
+     "橘色品牌點綴",
+     "藍色行動按鈕",
+     "藍紫漸層",
+     "方形按鈕",
+     "精簡頁首",
+     "寬敞主視覺",
+     "幾何圖像",
+     "免費試用入口"
+    ]
+   }
+  },
   "amazingtalker": {
    "hash": "4c9a38970718f4c0",
    "terms": {
@@ -1504,6 +1569,67 @@
      "教育平台",
      "溫暖有人味",
      "淺灰區塊"
+    ]
+   }
+  },
+  "andpad": {
+   "hash": "a8f8747901aa5089",
+   "terms": {
+    "en": [
+     "construction project management",
+     "cloud saas",
+     "construction site app",
+     "japanese marketing site",
+     "red and white",
+     "square red buttons",
+     "black headings",
+     "generous white space",
+     "rectangular image panels",
+     "business software",
+     "subcontractor collaboration",
+     "pricing and inquiry"
+    ],
+    "ko": [
+     "건설 프로젝트 관리",
+     "클라우드 saas",
+     "건설 현장 앱",
+     "일본어 마케팅 사이트",
+     "빨강과 흰색",
+     "각진 빨간 버튼",
+     "검정 제목",
+     "넉넉한 여백",
+     "직사각형 이미지 패널",
+     "업무용 소프트웨어",
+     "협력업체 협업",
+     "가격 및 문의"
+    ],
+    "ja": [
+     "建設プロジェクト管理",
+     "クラウドサービス",
+     "建設現場アプリ",
+     "日本語マーケティングサイト",
+     "赤と白",
+     "角型の赤ボタン",
+     "黒い見出し",
+     "余白が広い",
+     "縦長の画像パネル",
+     "業務ソフト",
+     "協力会社との連携",
+     "料金と資料請求"
+    ],
+    "zh": [
+     "營建專案管理",
+     "雲端 saas",
+     "工地現場應用",
+     "日文行銷網站",
+     "紅白配色",
+     "方形紅色按鈕",
+     "黑色標題",
+     "大量留白",
+     "矩形圖像面板",
+     "企業軟體",
+     "協力廠商協作",
+     "價格與諮詢"
     ]
    }
   },
@@ -3138,6 +3264,69 @@
     ]
    }
   },
+  "books": {
+   "hash": "5bffba1414cd8daa",
+   "terms": {
+    "en": [
+     "online bookstore",
+     "ecommerce retail",
+     "book shopping",
+     "digital reading",
+     "dense category lists",
+     "white canvas",
+     "green navigation",
+     "green search bar",
+     "red promotional text",
+     "orange link hover",
+     "illustrated campaigns",
+     "compact catalogue text",
+     "taiwan shopping"
+    ],
+    "ko": [
+     "온라인 서점",
+     "쇼핑몰",
+     "도서 쇼핑",
+     "전자책 읽기",
+     "촘촘한 카테고리 목록",
+     "흰색 배경",
+     "초록색 내비게이션",
+     "초록 검색창",
+     "빨간 프로모션 텍스트",
+     "주황색 링크 호버",
+     "일러스트 캠페인",
+     "대만 쇼핑"
+    ],
+    "ja": [
+     "オンライン書店",
+     "ECサイト",
+     "書籍通販",
+     "電子書籍",
+     "高密度カテゴリ一覧",
+     "白背景",
+     "緑のナビゲーション",
+     "緑の検索バー",
+     "赤い販促テキスト",
+     "オレンジのリンクホバー",
+     "イラスト広告",
+     "台湾の通販"
+    ],
+    "zh": [
+     "網路書店",
+     "電商購物",
+     "書籍購物",
+     "電子書閱讀",
+     "密集分類列表",
+     "白色背景",
+     "綠色導覽列",
+     "綠色搜尋列",
+     "紅色促銷文字",
+     "橘色連結懸停",
+     "插畫活動橫幅",
+     "台灣購物網站",
+     "緊湊目錄文字"
+    ]
+   }
+  },
   "booth": {
    "hash": "8c05bb5677165f67",
    "terms": {
@@ -3261,63 +3450,61 @@
    }
   },
   "bunjang": {
-   "hash": "91a40a80205392e6",
+   "hash": "913d939f1804339a",
    "terms": {
     "en": [
      "used goods marketplace",
-     "c2c flea market app",
-     "secondhand resale feed",
-     "mobile-first commerce",
-     "monochrome white and red",
-     "sober minimal interface",
-     "portrait product cards",
-     "no shadows flat borders",
-     "escrow trust chips",
-     "infinite listing scroll",
-     "korean marketplace",
-     "sneakers and phones resale"
+     "secondhand shopping",
+     "recommerce",
+     "peer to peer selling",
+     "white canvas",
+     "near-black text",
+     "product photo grid",
+     "price-led cards",
+     "rounded search bar",
+     "red accent",
+     "gray neutrals",
+     "image-rich feed"
     ],
     "ko": [
-     "중고거래 앱",
+     "중고거래",
      "중고 마켓",
-     "개인간 거래",
-     "모바일 우선 쇼핑",
-     "흰색 바탕 빨간 포인트",
-     "절제된 미니멀",
-     "세로형 상품 카드",
-     "그림자 없는 플랫",
-     "안전결제 칩",
-     "무한 스크롤 피드",
-     "리셀 플랫폼",
-     "직거래 플리마켓"
+     "리커머스",
+     "개인 간 거래",
+     "흰색 배경",
+     "상품 사진 그리드",
+     "가격 강조 카드",
+     "둥근 검색창",
+     "레드 포인트",
+     "회색 중립색",
+     "이미지 중심 피드",
+     "판매자 구매자"
     ],
     "ja": [
      "中古品マーケット",
      "フリマアプリ",
+     "リユース",
      "個人間取引",
-     "モバイルファースト",
-     "白と赤のモノクロ",
-     "控えめでシンプル",
-     "縦長の商品カード",
-     "影なしフラット",
-     "エスクロー安心表示",
-     "無限スクロール",
-     "韓国の中古売買",
-     "リセール"
+     "白い背景",
+     "商品写真グリッド",
+     "価格重視カード",
+     "丸い検索バー",
+     "赤のアクセント",
+     "グレー基調",
+     "画像中心のフィード"
     ],
     "zh": [
      "二手交易平台",
-     "跳蚤市場應用",
+     "二手商品市集",
+     "循環再利用",
      "個人對個人買賣",
-     "行動優先購物",
-     "白底紅色點綴",
-     "沉穩極簡",
-     "直式商品卡片",
-     "無陰影扁平",
-     "安全付款標籤",
-     "無限捲動商品流",
-     "韓國二手市集",
-     "球鞋手機轉售"
+     "白色背景",
+     "商品照片網格",
+     "價格優先卡片",
+     "圓角搜尋列",
+     "紅色強調",
+     "灰色中性色",
+     "圖片為主的推薦"
     ]
    }
   },
@@ -5358,62 +5545,61 @@
    }
   },
   "cookpad": {
-   "hash": "8577bb931842f590",
+   "hash": "faf0efadd50b3efb",
    "terms": {
     "en": [
-     "recipe sharing app",
-     "home cooking community",
-     "warm cream background",
-     "friendly orange accent",
-     "homey appetizing mood",
-     "photo-forward recipe cards",
-     "rounded 8px corners",
-     "white cards on cream",
-     "food and cooking platform",
-     "approachable casual tone",
+     "recipe search app",
+     "cooking community",
+     "recipe sharing platform",
      "ingredient search",
-     "orange primary button"
+     "warm cream background",
+     "white panels",
+     "orange accent",
+     "food photography",
+     "japanese consumer web",
+     "premium subscription strip",
+     "sidebar navigation",
+     "friendly home cooking"
     ],
     "ko": [
-     "레시피 공유 앱",
-     "집밥 요리 커뮤니티",
-     "따뜻한 크림 배경",
-     "친근한 오렌지 포인트",
-     "아늑하고 먹음직한 분위기",
-     "사진 중심 레시피 카드",
-     "둥근 모서리",
-     "크림색 위 흰색 카드",
-     "요리 플랫폼",
-     "부담 없는 캐주얼 톤",
-     "재료로 레시피 검색"
+     "레시피 검색",
+     "요리 커뮤니티",
+     "레시피 공유 서비스",
+     "재료 검색",
+     "따뜻한 크림색 배경",
+     "흰색 패널",
+     "주황색 포인트",
+     "음식 사진 중심",
+     "일본 소비자 웹",
+     "프리미엄 구독",
+     "사이드바 내비게이션"
     ],
     "ja": [
-     "レシピ共有サービス",
-     "家庭料理コミュニティ",
-     "温かみのあるクリーム背景",
-     "親しみやすいオレンジ",
-     "家庭的で食欲をそそる",
-     "写真中心のレシピカード",
-     "角丸8px",
-     "クリーム地に白いカード",
-     "料理アプリ",
-     "気取らないカジュアルな雰囲気",
-     "食材からレシピ検索",
-     "オレンジの主ボタン"
+     "レシピ検索",
+     "料理コミュニティ",
+     "レシピ投稿サービス",
+     "食材検索",
+     "温かいクリーム背景",
+     "白いパネル",
+     "オレンジのアクセント",
+     "料理写真中心",
+     "つくれぽ",
+     "プレミアム会員",
+     "サイドバーナビ",
+     "家庭料理"
     ],
     "zh": [
+     "食譜搜尋",
+     "料理社群",
      "食譜分享平台",
-     "家常料理社群",
+     "食材搜尋",
      "溫暖奶油色背景",
-     "親切橘色重點色",
-     "居家且誘人食慾",
-     "照片為主的食譜卡片",
-     "圓角設計",
-     "奶油底白色卡片",
-     "烹飪應用",
-     "輕鬆親民風格",
-     "依食材搜尋食譜",
-     "橘色主要按鈕"
+     "白色面板",
+     "橘色強調",
+     "美食照片",
+     "日本消費者網站",
+     "付費會員區塊",
+     "側邊欄導覽"
     ]
    }
   },
@@ -5852,6 +6038,67 @@
      "企業管控",
      "自動完成",
      "終端機指令"
+    ]
+   }
+  },
+  "cw": {
+   "hash": "bbed6bf080abdef2",
+   "terms": {
+    "en": [
+     "news publication",
+     "economics magazine",
+     "traditional chinese news site",
+     "dense news homepage",
+     "photo-led layout",
+     "large lead story",
+     "red and blue accents",
+     "red editorial labels",
+     "blue subscription button",
+     "white background",
+     "paid digital reading",
+     "trust-focused media"
+    ],
+    "ko": [
+     "뉴스 매체",
+     "경제 잡지",
+     "번체 중국어 뉴스",
+     "정보 밀도 높은 홈",
+     "사진 중심 레이아웃",
+     "대형 메인 기사",
+     "빨강 파랑 포인트",
+     "빨간 카테고리 라벨",
+     "파란 구독 버튼",
+     "흰 배경",
+     "유료 디지털 구독",
+     "신뢰감 있는 언론"
+    ],
+    "ja": [
+     "ニュースメディア",
+     "経済雑誌",
+     "繁体字中国語サイト",
+     "情報密度の高いトップ",
+     "写真中心レイアウト",
+     "大きなリード記事",
+     "赤と青のアクセント",
+     "赤いカテゴリラベル",
+     "青い購読ボタン",
+     "白背景",
+     "有料デジタル購読",
+     "信頼感のある報道"
+    ],
+    "zh": [
+     "新聞媒體",
+     "財經雜誌",
+     "繁體中文新聞網站",
+     "高密度新聞首頁",
+     "圖片為主版面",
+     "大型頭條報導",
+     "紅藍配色",
+     "紅色分類標籤",
+     "藍色訂閱按鈕",
+     "白色背景",
+     "付費數位閱讀",
+     "信任感媒體"
     ]
    }
   },
@@ -8643,6 +8890,67 @@
      "井然有序",
      "企業資訊頁面",
      "國際旅客"
+    ]
+   }
+  },
+  "everytime": {
+   "hash": "c8f7d9d3af053410",
+   "terms": {
+    "en": [
+     "campus community app",
+     "university student service",
+     "timetable and scheduling",
+     "group chat for students",
+     "school directory sidebar",
+     "white and pale grey",
+     "red accent signup",
+     "friendly smiling symbol",
+     "flat square list rows",
+     "dark rounded store buttons",
+     "feature illustrations",
+     "meeting time poll"
+    ],
+    "ko": [
+     "대학생 커뮤니티",
+     "캠퍼스 앱",
+     "시간표 앱",
+     "학교별 커뮤니티",
+     "단체 채팅",
+     "흰색 회색 배경",
+     "빨간 포인트 컬러",
+     "친근한 분위기",
+     "학교 목록 사이드바",
+     "일정 조율",
+     "대학생활 서비스",
+     "평평한 목록 행"
+    ],
+    "ja": [
+     "大学生向けコミュニティ",
+     "キャンパスアプリ",
+     "時間割アプリ",
+     "学校別コミュニティ",
+     "グループチャット",
+     "白とライトグレー",
+     "赤いアクセント",
+     "親しみやすい雰囲気",
+     "学校一覧サイドバー",
+     "日程調整",
+     "フラットな一覧行",
+     "イラスト中心"
+    ],
+    "zh": [
+     "大學生社群",
+     "校園應用程式",
+     "課表與行程規劃",
+     "學校社群",
+     "群組聊天",
+     "白色與淺灰色",
+     "紅色強調色",
+     "親切友善風格",
+     "學校目錄側邊欄",
+     "時間投票協調",
+     "扁平方形列表",
+     "功能插圖"
     ]
    }
   },
@@ -12230,6 +12538,59 @@
     ]
    }
   },
+  "hktvmall": {
+   "hash": "deeace2c47a03698",
+   "terms": {
+    "en": [
+     "online shopping mall",
+     "hong kong ecommerce",
+     "grocery and household shopping",
+     "green and white",
+     "turquoise account strip",
+     "compact category labels",
+     "pale grey category sidebar",
+     "photographic promotions",
+     "white header",
+     "broad product marketplace"
+    ],
+    "ko": [
+     "온라인 쇼핑몰",
+     "홍콩 이커머스",
+     "식료품 생활용품 쇼핑",
+     "초록과 흰색",
+     "청록색 계정 바",
+     "촘촘한 카테고리 라벨",
+     "연회색 카테고리 사이드바",
+     "사진 중심 프로모션",
+     "흰색 헤더",
+     "종합 쇼핑 플랫폼"
+    ],
+    "ja": [
+     "オンラインモール",
+     "香港のEC",
+     "食品と家電の通販",
+     "緑と白",
+     "ターコイズのアカウント帯",
+     "コンパクトなカテゴリ表示",
+     "薄いグレーのサイドバー",
+     "写真中心のプロモーション",
+     "白いヘッダー",
+     "総合ショッピングサイト"
+    ],
+    "zh": [
+     "網購平台",
+     "香港電商",
+     "超市家居購物",
+     "綠白配色",
+     "青綠色帳戶列",
+     "緊湊分類標籤",
+     "淺灰分類側欄",
+     "大圖促銷橫幅",
+     "白色頁首",
+     "綜合購物商城"
+    ]
+   }
+  },
   "hm": {
    "hash": "2cc14f7badfb4e35",
    "terms": {
@@ -15737,60 +16098,63 @@
    }
   },
   "kkday": {
-   "hash": "4d0c098f752778af",
+   "hash": "6217bd87a142e4f5",
    "terms": {
     "en": [
-     "online travel marketplace",
-     "tours and activities booking",
-     "travel ecommerce",
-     "orange call to action",
-     "bright warm energetic",
-     "white photo-heavy layout",
-     "card grid layout",
-     "price and discount emphasis",
-     "trust chips",
-     "rounded 8px corners",
-     "multilingual system fonts",
-     "orange and white"
+     "travel experiences marketplace",
+     "attraction tickets",
+     "tours and transport",
+     "local activities booking",
+     "airport transfers and esim",
+     "digital voucher qr code",
+     "turquoise teal accent",
+     "white clean surface",
+     "photo-led homepage",
+     "product cards with ratings",
+     "coral discount tags",
+     "destination tiles carousel"
     ],
     "ko": [
-     "온라인 여행 마켓플레이스",
-     "투어 액티비티 예약",
-     "여행 쇼핑몰",
-     "주황색 버튼",
-     "밝고 따뜻한 느낌",
-     "흰 배경 사진 중심",
-     "카드 그리드",
-     "할인 가격 강조",
-     "신뢰 배지",
-     "다국어 시스템 폰트",
-     "주황 흰색"
+     "여행 액티비티 마켓플레이스",
+     "관광지 입장권",
+     "투어 교통 예약",
+     "현지 체험 예약",
+     "공항 이동 이심",
+     "모바일 바우처",
+     "청록색 포인트",
+     "흰색 깔끔한 배경",
+     "사진 중심 홈",
+     "평점 상품 카드",
+     "코랄 할인 태그",
+     "여행지 캐러셀"
     ],
     "ja": [
-     "旅行マーケットプレイス",
-     "現地ツアー予約",
-     "旅行ECサイト",
-     "オレンジのボタン",
-     "明るく温かい",
-     "白基調で写真重視",
-     "カードグリッド",
-     "割引価格の強調",
-     "信頼バッジ",
-     "多言語システムフォント",
-     "オレンジと白"
+     "旅行体験マーケットプレイス",
+     "観光チケット予約",
+     "ツアーと交通手配",
+     "現地アクティビティ",
+     "空港送迎とeSIM",
+     "デジタルバウチャー",
+     "ターコイズの差し色",
+     "白基調の清潔感",
+     "写真主体のトップ",
+     "評価付き商品カード",
+     "コーラルの割引タグ",
+     "目的地カルーセル"
     ],
     "zh": [
-     "線上旅遊市集",
-     "旅遊體驗預訂",
-     "旅遊電商",
-     "橘色行動按鈕",
-     "明亮溫暖活力",
-     "白底大圖",
-     "卡片網格",
-     "折扣價格強調",
-     "信任標籤",
-     "多語系統字體",
-     "橘白配色"
+     "旅遊體驗預訂平台",
+     "景點門票",
+     "行程與交通票券",
+     "當地體驗預約",
+     "機場接送與eSIM",
+     "電子憑證QR code",
+     "青綠色主色",
+     "白底簡潔介面",
+     "大幅旅遊照片首頁",
+     "評價商品卡片",
+     "珊瑚色折扣標籤",
+     "目的地輪播"
     ]
    }
   },
@@ -15975,6 +16339,63 @@
      "簡潔直接的版面",
      "評價與服務列表",
      "韓國線上市集"
+    ]
+   }
+  },
+  "kodansha": {
+   "hash": "a15b7f8aa5af4890",
+   "terms": {
+    "en": [
+     "publisher website",
+     "book publishing",
+     "manga and magazine directory",
+     "publication listings",
+     "reader homepage",
+     "editorial artwork",
+     "restrained navy links",
+     "white header",
+     "hero carousel",
+     "angular logo panel",
+     "notices and recommendations",
+     "japanese publisher"
+    ],
+    "ko": [
+     "출판사 사이트",
+     "도서 출판",
+     "만화 잡지 목록",
+     "출판물 목록",
+     "독자용 홈페이지",
+     "편집 일러스트",
+     "절제된 네이비 링크",
+     "흰색 헤더",
+     "대형 캐러셀",
+     "일본 출판사"
+    ],
+    "ja": [
+     "出版社サイト",
+     "書籍出版",
+     "マンガ雑誌一覧",
+     "刊行物リスト",
+     "読者向けトップページ",
+     "編集アートワーク",
+     "控えめな紺色リンク",
+     "白いヘッダー",
+     "大型カルーセル",
+     "お知らせとおすすめ",
+     "角張ったロゴ"
+    ],
+    "zh": [
+     "出版社網站",
+     "圖書出版",
+     "漫畫雜誌目錄",
+     "出版品列表",
+     "讀者首頁",
+     "編輯插畫",
+     "低調藏青連結",
+     "白色頁首",
+     "大型輪播",
+     "日本出版社",
+     "公告與推薦"
     ]
    }
   },
@@ -21487,63 +21908,66 @@
    }
   },
   "note": {
-   "hash": "ca5bab1b607beee2",
+   "hash": "4733fc9964f13be1",
    "terms": {
     "en": [
      "creator publishing platform",
      "blogging and writing",
-     "long-form reading",
-     "paid membership content",
-     "calm and sincere",
-     "content-first minimal",
-     "teal green accent",
-     "black primary buttons",
-     "off-white background",
-     "generous whitespace",
-     "soft rounded corners",
-     "editorial curated discovery"
+     "paid content memberships",
+     "monochrome minimal",
+     "white background",
+     "blue-black buttons",
+     "neutral interface",
+     "modest rounded corners",
+     "desktop discovery page",
+     "topic sidebar",
+     "colorful thumbnails",
+     "warm illustration",
+     "japanese media site"
     ],
     "ko": [
-     "크리에이터 퍼블리싱",
+     "창작자 퍼블리싱",
      "글쓰기 플랫폼",
-     "블로그 서비스",
-     "긴 글 읽기",
-     "유료 멤버십",
-     "차분하고 진중한",
-     "콘텐츠 중심",
-     "틸 그린 포인트",
-     "검정 주요 버튼",
-     "오프화이트 배경",
-     "넉넉한 여백",
-     "둥근 모서리"
+     "유료 콘텐츠 멤버십",
+     "모노크롬 미니멀",
+     "흰색 배경",
+     "블루블랙 버튼",
+     "중립적인 인터페이스",
+     "완만한 둥근 모서리",
+     "콘텐츠 탐색 화면",
+     "왼쪽 주제 메뉴",
+     "일본 미디어 사이트",
+     "따뜻한 일러스트"
     ],
     "ja": [
-     "クリエイター投稿サイト",
-     "文章投稿プラットフォーム",
-     "長文読書",
-     "有料メンバーシップ",
-     "落ち着いた誠実さ",
-     "コンテンツ第一",
-     "ティールグリーン",
-     "黒のメインボタン",
-     "オフホワイト背景",
-     "余白たっぷり",
-     "丸みのある角",
-     "キュレーション推薦"
+     "クリエイター投稿サービス",
+     "ブログ・文章投稿",
+     "有料コンテンツ",
+     "モノクロ ミニマル",
+     "白背景",
+     "ブルーブラックのボタン",
+     "ニュートラルなUI",
+     "控えめな角丸",
+     "記事発見ページ",
+     "左トピックレール",
+     "カラフルなサムネイル",
+     "温かみのあるイラスト",
+     "メディアプラットフォーム"
     ],
     "zh": [
      "創作者發佈平台",
-     "寫作部落格",
-     "長文閱讀",
-     "付費會員內容",
-     "沉靜誠懇",
-     "內容優先",
-     "藍綠色點綴",
-     "黑色主要按鈕",
-     "米白背景",
-     "大量留白",
-     "柔和圓角",
-     "編輯精選推薦"
+     "寫作與部落格",
+     "付費內容會員",
+     "黑白極簡",
+     "白色背景",
+     "藍黑色按鈕",
+     "中性介面",
+     "小圓角",
+     "內容探索頁面",
+     "左側主題欄",
+     "彩色縮圖",
+     "溫暖插畫",
+     "日本媒體網站"
     ]
    }
   },
@@ -22907,6 +23331,67 @@
     ]
    }
   },
+  "parknshop": {
+   "hash": "9b62a0cc11ef8221",
+   "terms": {
+    "en": [
+     "supermarket online shopping",
+     "grocery delivery app",
+     "hong kong retail",
+     "blue header",
+     "yellow announcement text",
+     "white panels light grey",
+     "colourful campaign banners",
+     "category shortcut icons",
+     "rounded delivery buttons",
+     "product preview cards",
+     "promotional browsing",
+     "friendly mascot"
+    ],
+    "ko": [
+     "슈퍼마켓 온라인 쇼핑",
+     "식료품 배달 앱",
+     "홍콩 리테일",
+     "파란 헤더",
+     "노란 공지 문구",
+     "흰색 패널 연회색 배경",
+     "화려한 캠페인 배너",
+     "카테고리 바로가기",
+     "둥근 배송 버튼",
+     "상품 미리보기 카드",
+     "프로모션 중심",
+     "친근한 마스코트"
+    ],
+    "ja": [
+     "スーパー通販",
+     "食料品配達アプリ",
+     "香港の小売",
+     "青いヘッダー",
+     "黄色のお知らせ文字",
+     "白パネルと薄グレー背景",
+     "カラフルなキャンペーン画像",
+     "カテゴリショートカット",
+     "丸い配送ボタン",
+     "商品プレビューカード",
+     "販促重視",
+     "親しみやすいキャラクター"
+    ],
+    "zh": [
+     "超級市場網購",
+     "食品雜貨外送",
+     "香港零售",
+     "藍色頁首",
+     "黃色公告文字",
+     "白色面板淺灰背景",
+     "多彩活動橫幅",
+     "分類捷徑圖示",
+     "圓角送貨按鈕",
+     "商品預覽卡片",
+     "促銷導向",
+     "親切吉祥物"
+    ]
+   }
+  },
   "patreon": {
    "hash": "c283346be75f4698",
    "terms": {
@@ -23706,6 +24191,64 @@
     ]
    }
   },
+  "peterpanz": {
+   "hash": "96e3b1f6fb0ad1ce",
+   "terms": {
+    "en": [
+     "property search",
+     "home finding app",
+     "rental listings",
+     "real estate map",
+     "one-room and apartment",
+     "verified listings",
+     "filter bar",
+     "list and map split",
+     "green accent",
+     "white surface",
+     "compact layout",
+     "parking pet elevator filters"
+    ],
+    "ko": [
+     "부동산 앱",
+     "방 구하기",
+     "원룸 찾기",
+     "매물 검색",
+     "지도 기반 검색",
+     "검증된 매물",
+     "필터 바",
+     "초록색 포인트",
+     "흰색 배경",
+     "컴팩트한 레이아웃",
+     "주차 반려동물 엘리베이터"
+    ],
+    "ja": [
+     "不動産検索",
+     "部屋探しアプリ",
+     "賃貸物件",
+     "地図検索",
+     "ワンルーム",
+     "認証済み物件",
+     "フィルターバー",
+     "グリーンのアクセント",
+     "白背景",
+     "コンパクトなレイアウト",
+     "韓国の住まい探し"
+    ],
+    "zh": [
+     "房屋搜尋",
+     "找房應用",
+     "租屋物件",
+     "地圖搜尋",
+     "套房與公寓",
+     "驗證房源",
+     "篩選列",
+     "綠色重點色",
+     "白色背景",
+     "緊湊版面",
+     "韓國租屋平台"
+    ]
+   }
+  },
   "petfriends": {
    "hash": "53448c40ac087b36",
    "terms": {
@@ -23892,63 +24435,63 @@
    }
   },
   "pinkoi": {
-   "hash": "44e678185dedc629",
+   "hash": "1342728e5969bffd",
    "terms": {
     "en": [
      "design marketplace",
-     "cross-border e-commerce",
-     "independent designer shop",
-     "high density layout",
-     "teal navy primary",
-     "flat solid buttons",
-     "coral purchase button",
-     "near-white background",
-     "bold headlines",
-     "small rounded corners",
-     "multilingual interface",
-     "handmade goods shopping"
+     "handmade design goods",
+     "cross-border ecommerce",
+     "themed collections",
+     "image-led product photos",
+     "white clean surfaces",
+     "deep blue search button",
+     "navy and salmon coral",
+     "minimal international look",
+     "rounded corners",
+     "category navigation",
+     "gradient title on hover"
     ],
     "ko": [
      "디자인 마켓플레이스",
-     "크로스보더 쇼핑",
-     "독립 디자이너 상품",
-     "고밀도 레이아웃",
-     "틸 네이비",
-     "플랫 버튼",
-     "코랄 구매 버튼",
-     "밝은 흰색 배경",
-     "굵은 제목",
-     "작은 둥근 모서리",
-     "다국어 인터페이스",
-     "핸드메이드 쇼핑"
+     "디자인 상품 쇼핑",
+     "크로스보더 쇼핑몰",
+     "테마별 컬렉션",
+     "이미지 중심 상품",
+     "흰색 깔끔한 배경",
+     "짙은 파랑 검색 버튼",
+     "네이비와 코랄",
+     "미니멀 국제적 느낌",
+     "둥근 모서리",
+     "카테고리 탐색",
+     "호버 그라디언트 제목"
     ],
     "ja": [
      "デザインマーケット",
+     "デザイン雑貨通販",
      "越境EC",
-     "インディーズデザイナー",
-     "高密度レイアウト",
-     "ティールネイビー",
-     "フラットなボタン",
-     "コーラルの購入ボタン",
-     "オフホワイト背景",
-     "太字の見出し",
-     "小さな角丸",
-     "多言語対応",
-     "ハンドメイド雑貨"
+     "テーマ別コレクション",
+     "写真中心の商品表示",
+     "白基調で清潔",
+     "濃い青の検索ボタン",
+     "ネイビーとサーモン",
+     "ミニマルで国際的",
+     "丸みのある角",
+     "カテゴリ検索",
+     "ホバーでグラデーション"
     ],
     "zh": [
      "設計商品市集",
      "跨境電商",
-     "獨立設計師",
-     "高密度排版",
-     "藍綠深藍主色",
-     "扁平按鈕",
-     "珊瑚色購買按鈕",
-     "近白背景",
-     "粗體標題",
-     "小圓角",
-     "多語系介面",
-     "手作商品購物"
+     "主題精選集",
+     "大圖商品攝影",
+     "白色簡潔介面",
+     "深藍搜尋按鈕",
+     "藏青與鮭魚粉",
+     "極簡國際感",
+     "圓角設計",
+     "分類導覽",
+     "設計師賣家",
+     "懸停漸層標題"
     ]
    }
   },
@@ -28661,64 +29204,67 @@
    }
   },
   "smartnews": {
-   "hash": "d1ce9fea93dd6550",
+   "hash": "bdff6ac2af0c6e68",
    "terms": {
     "en": [
      "news app",
-     "news discovery",
-     "headline scanning",
-     "bright red accent",
-     "high contrast",
-     "black and white",
-     "clean system fonts",
-     "swipe tabs",
-     "information dense",
-     "no decoration",
-     "fast lightweight",
-     "newspaper masthead feel",
-     "trustworthy journalistic"
+     "news aggregator",
+     "japanese news site",
+     "article feed",
+     "dense scannable layout",
+     "image-led lead story",
+     "blue action button",
+     "white background",
+     "multicolour palette",
+     "dark scrim over photo",
+     "ai summaries",
+     "headline hierarchy",
+     "source labels",
+     "publisher articles"
     ],
     "ko": [
      "뉴스 앱",
-     "뉴스 큐레이션",
-     "헤드라인 탐색",
-     "선명한 빨강",
-     "고대비",
-     "흑백",
-     "시스템 폰트",
-     "스와이프 탭",
-     "정보 밀도 높음",
-     "장식 없는 디자인",
-     "빠르고 가벼운",
-     "신뢰감 있는"
+     "뉴스 모음 서비스",
+     "일본 뉴스 사이트",
+     "기사 피드",
+     "촘촘하고 훑기 쉬운",
+     "이미지 중심 헤드라인",
+     "파란색 버튼",
+     "흰색 배경",
+     "다색 팔레트",
+     "사진 위 어두운 오버레이",
+     "AI 요약",
+     "출처 표기"
     ],
     "ja": [
      "ニュースアプリ",
-     "ニュース発見",
-     "見出しスキャン",
-     "鮮やかな赤",
-     "高コントラスト",
-     "白黒基調",
-     "システムフォント",
-     "スワイプタブ",
+     "ニュース配信",
+     "日本のニュースサイト",
+     "記事フィード",
      "情報密度が高い",
-     "装飾なし",
-     "軽量で高速",
-     "信頼感のある"
+     "画像中心のトップ記事",
+     "青いボタン",
+     "白い背景",
+     "マルチカラー",
+     "写真上の暗いスクリム",
+     "AI要約",
+     "見出し階層",
+     "配信元ラベル"
     ],
     "zh": [
      "新聞應用程式",
-     "新聞探索",
-     "標題快速瀏覽",
-     "鮮紅色強調",
-     "高對比",
-     "黑白配色",
-     "系統字體",
-     "滑動分頁",
-     "資訊密集",
-     "無多餘裝飾",
-     "輕量快速",
-     "值得信賴"
+     "新聞聚合",
+     "日本新聞網站",
+     "文章動態",
+     "資訊密度高",
+     "圖片主導頭條",
+     "藍色按鈕",
+     "白色背景",
+     "多色調色盤",
+     "照片深色遮罩",
+     "AI 摘要",
+     "標題層級",
+     "來源標籤"
     ]
    }
   },
@@ -30824,6 +31370,67 @@
      "小圓角按鈕",
      "柔和中性陰影",
      "方案價格比較"
+    ]
+   }
+  },
+  "syosetu": {
+   "hash": "b4149b3f8ead85c1",
+   "terms": {
+    "en": [
+     "fiction posting site",
+     "web novel reading",
+     "novel submission platform",
+     "reader and writer community",
+     "ranking lists",
+     "busy directory layout",
+     "cyan navigation",
+     "pale grey page",
+     "white list panels",
+     "blue links",
+     "orange signup button",
+     "dark teal footer"
+    ],
+    "ko": [
+     "소설 투고 사이트",
+     "웹소설 읽기",
+     "소설 연재 플랫폼",
+     "독자와 작가 커뮤니티",
+     "랭킹 목록",
+     "빽빽한 목록형 구성",
+     "청록색 내비게이션",
+     "옅은 회색 배경",
+     "흰색 목록 패널",
+     "파란 링크",
+     "주황색 가입 버튼",
+     "어두운 청록 푸터"
+    ],
+    "ja": [
+     "小説投稿サイト",
+     "ウェブ小説閲覧",
+     "小説投稿サービス",
+     "読者と作者のコミュニティ",
+     "ランキング一覧",
+     "情報量の多い一覧",
+     "シアンのナビゲーション",
+     "淡いグレー背景",
+     "白いリストパネル",
+     "青いリンク",
+     "オレンジの登録ボタン",
+     "濃い青緑のフッター"
+    ],
+    "zh": [
+     "小說投稿網站",
+     "網路小說閱讀",
+     "小說發表平台",
+     "讀者與作者社群",
+     "排行榜列表",
+     "資訊密集的目錄",
+     "青色導覽列",
+     "淺灰色背景",
+     "白色列表面板",
+     "藍色連結",
+     "橘色註冊按鈕",
+     "深青綠頁尾"
     ]
    }
   },
@@ -33264,6 +33871,67 @@
     ]
    }
   },
+  "unext": {
+   "hash": "f848082226c79bb6",
+   "terms": {
+    "en": [
+     "video streaming",
+     "entertainment service",
+     "movies tv and books",
+     "dark catalogue interface",
+     "content-first design",
+     "artwork-led layout",
+     "horizontal shelves",
+     "dark navy palette",
+     "blue call to action",
+     "restrained ui",
+     "live events and sports",
+     "japanese consumer service"
+    ],
+    "ko": [
+     "동영상 스트리밍",
+     "엔터테인먼트 서비스",
+     "영화 드라마 도서",
+     "어두운 카탈로그",
+     "콘텐츠 중심 디자인",
+     "아트워크 강조",
+     "가로 스크롤 목록",
+     "짙은 남색 팔레트",
+     "파란색 행동 버튼",
+     "절제된 인터페이스",
+     "라이브 스포츠",
+     "일본 소비자 서비스"
+    ],
+    "ja": [
+     "動画配信サービス",
+     "エンタメアプリ",
+     "映画ドラマ書籍",
+     "ダークな作品一覧",
+     "コンテンツ主役",
+     "作品画像を引き立てる",
+     "横スクロールの棚",
+     "ダークネイビー",
+     "青い体験ボタン",
+     "抑制されたUI",
+     "ライブ配信とスポーツ",
+     "国内向け消費者サービス"
+    ],
+    "zh": [
+     "影音串流服務",
+     "娛樂平台",
+     "電影影集與書籍",
+     "深色片庫介面",
+     "內容優先設計",
+     "作品圖像主導",
+     "橫向排列區塊",
+     "深藍色調",
+     "藍色行動按鈕",
+     "克制的介面",
+     "直播與運動賽事",
+     "日本消費者服務"
+    ]
+   }
+  },
   "uniqlo": {
    "hash": "c719d35baead8579",
    "terms": {
@@ -35066,6 +35734,69 @@
      "傳統網頁",
      "緊湊版面",
      "機構信任感"
+    ]
+   }
+  },
+  "wooricard": {
+   "hash": "91c3f47d61dd10fe",
+   "terms": {
+    "en": [
+     "credit card service",
+     "card benefits",
+     "account services",
+     "korean consumers",
+     "fintech",
+     "white header",
+     "pastel campaign backgrounds",
+     "rounded buttons",
+     "service shortcuts",
+     "illustrated shortcuts",
+     "diagonal section boundary",
+     "blue accent",
+     "lavender",
+     "bold navigation"
+    ],
+    "ko": [
+     "카드사",
+     "신용카드",
+     "카드 혜택",
+     "금융 서비스",
+     "핀테크",
+     "흰색 헤더",
+     "파스텔 배경",
+     "둥근 버튼",
+     "서비스 바로가기",
+     "일러스트 아이콘",
+     "파란색 포인트",
+     "라벤더"
+    ],
+    "ja": [
+     "クレジットカード",
+     "カード特典",
+     "金融サービス",
+     "韓国の利用者",
+     "フィンテック",
+     "白いヘッダー",
+     "パステル背景",
+     "丸みのあるボタン",
+     "ショートカット",
+     "イラスト付き",
+     "青のアクセント",
+     "ラベンダー"
+    ],
+    "zh": [
+     "信用卡服務",
+     "卡片優惠",
+     "金融服務",
+     "韓國用戶",
+     "金融科技",
+     "白色頁首",
+     "粉彩背景",
+     "圓角按鈕",
+     "服務捷徑",
+     "插畫圖示",
+     "藍色強調",
+     "薰衣草色"
     ]
    }
   },

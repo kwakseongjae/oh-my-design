@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 409,
-  "sources": 3529,
+  "references_with_verification_v2": 427,
+  "sources": 3786,
   "sources_by_kind": {
-    "brand-asset": 240,
+    "brand-asset": 258,
     "license": 141,
-    "official-doc": 1653,
-    "product-surface": 1495
+    "official-doc": 1807,
+    "product-surface": 1580
   },
   "references": {
     "104": {
@@ -1001,6 +1001,204 @@
         }
       ]
     },
+    "aliyun": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-index",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "design-center",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "design-language",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "design.aliyun.com"
+        },
+        {
+          "id": "global-legal",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "global-membership",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "global-product-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabacloud.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.aliyun.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.aliyun.com"
+        },
+        {
+          "id": "live-base-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "g.alicdn.com"
+        },
+        {
+          "id": "live-footer-icons-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "at.alicdn.com"
+        },
+        {
+          "id": "live-nav-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "website.alcasset.com"
+        },
+        {
+          "id": "live-product-icons-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "at.alicdn.com"
+        },
+        {
+          "id": "logo-history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.alibabagroup.com"
+        }
+      ]
+    },
+    "andpad": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "anniversary-news",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "andpad.jp"
+        },
+        {
+          "id": "corporate",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.co.jp"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "andpad.co.jp"
+        },
+        {
+          "id": "design-system-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "tech.andpad.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "page.andpad.jp"
+        },
+        {
+          "id": "history-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "page.andpad.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "andpad.jp"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.jp"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.co.jp"
+        },
+        {
+          "id": "tech-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "tech.andpad.co.jp"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "andpad.jp"
+        }
+      ]
+    },
     "apple": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -1739,6 +1937,60 @@
         }
       ]
     },
+    "books": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "anniversary",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.uniopen.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.books.com.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.books.com.tw"
+        },
+        {
+          "id": "group-affiliates",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.7-11.com.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.books.com.tw"
+        },
+        {
+          "id": "icon-font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "jci.book.com.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.books.com.tw"
+        },
+        {
+          "id": "membership",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.books.com.tw"
+        }
+      ]
+    },
     "booth": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -1814,6 +2066,96 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "bunjang": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "campaign-history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company-home",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "m.bunjang.co.kr"
+        },
+        {
+          "id": "growth-tech",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "m.bunjang.co.kr"
+        },
+        {
+          "id": "home-redesign",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "sell-to-love",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "service-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.bunjang.co.kr"
+        },
+        {
+          "id": "service-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.bunjang.co.kr"
         }
       ]
     },
@@ -3029,6 +3371,114 @@
         }
       ]
     },
+    "cookpad": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "brand-release",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "prtimes.jp"
+        },
+        {
+          "id": "brand-release-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "company-root",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "control-company",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "control-note",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "control-prtimes",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "prtimes.jp"
+        },
+        {
+          "id": "design-magazine",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "ds-writing",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        },
+        {
+          "id": "product-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "global-web-assets.cpcdn.com"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "info.cookpad.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cookpad.com"
+        }
+      ]
+    },
     "coolblue": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -3314,6 +3764,54 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "cursor.com"
+        }
+      ]
+    },
+    "cw": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "web.cw.com.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cw.com.tw"
+        },
+        {
+          "id": "copyright",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cw.com.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.cw.com.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "event.cw.com.tw"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "member.cwg.tw"
+        },
+        {
+          "id": "redesign-2015",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.cw.com.tw"
         }
       ]
     },
@@ -5576,6 +6074,78 @@
           "kind": "license",
           "captured": "2026-07-14",
           "host": "github.com"
+        }
+      ]
+    },
+    "everytime": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "blog-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cf-ownedmedia.vinuteam.com"
+        },
+        {
+          "id": "brand-guide",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "cf-ownedmedia.vinuteam.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "company-product",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "everytime.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "everytime.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "product-planning",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
+        },
+        {
+          "id": "rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.vinuteam.com"
         }
       ]
     },
@@ -8369,6 +8939,90 @@
         }
       ]
     },
+    "hktvmall": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ad-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cloud.marketing.hktvmall.com"
+        },
+        {
+          "id": "ad-spec",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cloud.marketing.hktvmall.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "corporate-information",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "ir.hktv.com.hk"
+        },
+        {
+          "id": "faq",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "ir.hktv.com.hk"
+        },
+        {
+          "id": "history-2015",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "measured-home-appliances",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "milestones",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktvmall.com"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.hktv.com.hk"
+        }
+      ]
+    },
     "hm": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -10817,6 +11471,60 @@
         }
       ]
     },
+    "kkday": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "company-editorial",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "company-update",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "culture",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        },
+        {
+          "id": "product-explanation",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kkday.com"
+        }
+      ]
+    },
     "klarna": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -10910,6 +11618,84 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "kmong.com"
+        }
+      ]
+    },
+    "kodansha": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-host-control-blocked",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "brand-interview",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
+        },
+        {
+          "id": "legal-data",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "id.kodansha.co.jp"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "id.kodansha.co.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.kodansha.co.jp"
         }
       ]
     },
@@ -15173,6 +15959,144 @@
         }
       ]
     },
+    "note": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "black-primary",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "brand-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.help-note.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.help-note.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.jp"
+        },
+        {
+          "id": "design-home",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.design"
+        },
+        {
+          "id": "design-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.design"
+        },
+        {
+          "id": "design-tokens",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "features",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "homepage-css-1",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "frontend.st-note.com"
+        },
+        {
+          "id": "homepage-css-2",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "frontend.st-note.com"
+        },
+        {
+          "id": "homepage-css-3",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "frontend.st-note.com"
+        },
+        {
+          "id": "homepage-css-4",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "frontend.st-note.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "press-kit",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "note.jp"
+        },
+        {
+          "id": "pro-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "biz.note.com"
+        },
+        {
+          "id": "pro-theme",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "biz.note.com"
+        },
+        {
+          "id": "rebrand-announcement",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.jp"
+        },
+        {
+          "id": "rebrand-reflection",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.jp"
+        },
+        {
+          "id": "recommendations-2026",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        }
+      ]
+    },
     "notion": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -15857,6 +16781,84 @@
         }
       ]
     },
+    "parknshop": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.aswatson.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.aswatson.com"
+        },
+        {
+          "id": "brand-refresh",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "watson.aswatson.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pns.hk"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.parknshop.com"
+        },
+        {
+          "id": "head-office",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pns.hk"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "watson.aswatson.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.parknshop.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pns.hk"
+        },
+        {
+          "id": "mascot-story",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "watson.aswatson.com"
+        },
+        {
+          "id": "news-host-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "watson.aswatson.com"
+        },
+        {
+          "id": "select-refresh",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "watson.aswatson.com"
+        }
+      ]
+    },
     "patternfly": {
       "checked": "2026-09-21",
       "claims": 0,
@@ -16295,6 +17297,126 @@
         }
       ]
     },
+    "peterpanz": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "about.peterpanz.com"
+        },
+        {
+          "id": "app-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "app-js",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "bootstrap-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.peterpanz.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "duse-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.duse.co.kr"
+        },
+        {
+          "id": "duse-home",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.duse.co.kr"
+        },
+        {
+          "id": "faq-footer",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "focus-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "fonts-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.duse.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "product-intro",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.peterpanz.com"
+        },
+        {
+          "id": "support-1",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "support-3",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "support-4",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        },
+        {
+          "id": "support-5",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.peterpanz.com"
+        }
+      ]
+    },
     "petfriends": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -16370,6 +17492,144 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "pinkoi": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-anniversary",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "en.pinkoi.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "close-template",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "company-en",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "en.pinkoi.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "control-en",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "en.pinkoi.com"
+        },
+        {
+          "id": "core-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "header-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "home-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "press-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "sheet-4171",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "sheet-824",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "sheet-8548",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "sheet-8863",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "sheet-postinit",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "sheet-react",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
+        },
+        {
+          "id": "shop-agreement",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "cdn04.pinkoi.com"
+        },
+        {
+          "id": "team",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.pinkoi.com"
+        },
+        {
+          "id": "utilities-css",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "cdn02.pinkoi.com"
         }
       ]
     },
@@ -19145,6 +20405,144 @@
         }
       ]
     },
+    "smartnews": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ai-matome",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "brand-manual",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "brand-manual-ja",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "business",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "ceo",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "company-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.smartnews.com"
+        },
+        {
+          "id": "corporate",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.smartnews.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.smartnews.com"
+        },
+        {
+          "id": "international-2015",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "mission",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "newsroom",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "offline-2015",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "press-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "publishers",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.smartnews.com"
+        },
+        {
+          "id": "translation",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "about.smartnews.com"
+        }
+      ]
+    },
     "socar": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -20048,6 +21446,102 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "syosetu": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "author-redesign",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "blog.syosetu.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "hinaproject.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "hinaproject.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "control-company",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "hinaproject.co.jp"
+        },
+        {
+          "id": "css-base",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "static.syosetu.com"
+        },
+        {
+          "id": "css-home",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "static.syosetu.com"
+        },
+        {
+          "id": "help-about",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "home-help",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "hinaproject.co.jp"
+        },
+        {
+          "id": "product-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
+        },
+        {
+          "id": "ranking-redesign",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "blog.syosetu.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "syosetu.com"
         }
       ]
     },
@@ -21659,6 +23153,90 @@
         }
       ]
     },
+    "unext": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "www.unext.co.jp"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.unext.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.unext.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "video.unext.jp"
+        },
+        {
+          "id": "group",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "unext-hd.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "video.unext.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "docs.unext.jp"
+        },
+        {
+          "id": "paravi",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "www.unext.co.jp"
+        },
+        {
+          "id": "terms-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "help.unext.jp"
+        },
+        {
+          "id": "ui-design",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.unext.co.jp"
+        },
+        {
+          "id": "ui-design-canonical",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "ui-design-canonical-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.com"
+        },
+        {
+          "id": "ui-design-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "note.unext.co.jp"
+        }
+      ]
+    },
     "upbit": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -22490,6 +24068,78 @@
           "kind": "product-surface",
           "captured": "2026-10-16",
           "host": "spot.wooribank.com"
+        }
+      ]
+    },
+    "wooricard": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "brand-story",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "error-fallback",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "pc.wooricard.com"
         }
       ]
     },

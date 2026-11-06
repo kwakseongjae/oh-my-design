@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-06",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 585,
+  "count": 597,
   "counts": {
-    "verified_v2": 409,
+    "verified_v2": 427,
     "partial": 89,
-    "legacy_snapshot": 87,
-    "total": 585
+    "legacy_snapshot": 81,
+    "total": 597
   },
   "items": [
     {
@@ -280,6 +280,17 @@
       "reason_codes": []
     },
     {
+      "id": "aliyun",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 18,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "amazingtalker",
       "status": "partial",
       "verified_at": "2026-06-08",
@@ -291,6 +302,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "andpad",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "appier",
@@ -601,6 +623,17 @@
       "reason_codes": []
     },
     {
+      "id": "books",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "booth",
       "status": "verified_v2",
       "verified_at": "2026-09-26",
@@ -624,19 +657,14 @@
     },
     {
       "id": "bunjang",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-14",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 14,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "tier1_source_missing",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "buzzvil",
@@ -1024,19 +1052,14 @@
     },
     {
       "id": "cookpad",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 17,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "coolblue",
@@ -1114,6 +1137,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cw",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -1636,6 +1670,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "everytime",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2309,6 +2354,17 @@
       "reason_codes": []
     },
     {
+      "id": "hktvmall",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "hm",
       "status": "verified_v2",
       "verified_at": "2026-09-26",
@@ -2967,18 +3023,14 @@
     },
     {
       "id": "kkday",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "klarna",
@@ -3010,6 +3062,17 @@
       "evidence_coverage": 1,
       "surface_count": 2,
       "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kodansha",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4033,18 +4096,14 @@
     },
     {
       "id": "note",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 22,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "notion",
@@ -4306,6 +4365,17 @@
       "reason_codes": []
     },
     {
+      "id": "parknshop",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "patreon",
       "status": "partial",
       "verified_at": "2026-06-17",
@@ -4464,6 +4534,17 @@
       ]
     },
     {
+      "id": "peterpanz",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 19,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "petfriends",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -4501,17 +4582,14 @@
     },
     {
       "id": "pinkoi",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-15",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 22,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "pinterest",
@@ -5419,19 +5497,14 @@
     },
     {
       "id": "smartnews",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
-      "conflict_count": 1,
-      "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 22,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "snapchat",
@@ -5830,6 +5903,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "syosetu",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 15,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "tabling",
@@ -6295,6 +6379,17 @@
       "reason_codes": []
     },
     {
+      "id": "unext",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "uniqlo",
       "status": "legacy_snapshot",
       "verified_at": "2026-06-06",
@@ -6646,6 +6741,17 @@
       "evidence_coverage": 1,
       "surface_count": 4,
       "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "wooricard",
+      "status": "verified_v2",
+      "verified_at": "2026-11-06",
+      "next_reverify_at": "2027-05-05",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },

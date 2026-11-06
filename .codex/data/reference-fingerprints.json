@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 585,
+ "count": 597,
  "items": [
   {
    "id": "104",
@@ -582,6 +582,27 @@
    "category_raw": "fintech"
   },
   {
+   "id": "aliyun",
+   "primary_color_hex": "#ff6a00",
+   "category": "backend-devops",
+   "visual_theme": "Alibaba Cloud provides cloud computing and data-management platforms. The company dates its establishment to September 2009; its current Chinese company page presents global cloud infrastructure, large-scale computing and AI technology as the foundations for e",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
+  },
+  {
    "id": "amazingtalker",
    "primary_color_hex": "#02cab9",
    "category": "consumer-tech",
@@ -606,6 +627,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "andpad",
+   "primary_color_hex": "#ef3340",
+   "category": "saas",
+   "visual_theme": "ANDPAD connects construction-site work with business management: photographs, schedules, drawings and chat sit within a cloud construction-project management service. It launched in 2016. In May 2020, the company changed its name from Oct to ANDPAD and renewed",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "systematic",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "appier",
@@ -1278,6 +1323,27 @@
    ],
    "has_personas": false,
    "category_raw": "mobility-platform"
+  },
+  {
+   "id": "books",
+   "primary_color_hex": "#12ae57",
+   "category": "ecommerce",
+   "visual_theme": "Books.com.tw, known as 博客來, began in 1995 and has expanded from books into a broader online retail platform. Its company page connects reading and everyday life through the brand expression **“Book Your Life”** and a positioning that joins digital technology w",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "booth",
@@ -2354,6 +2420,30 @@
    "signature_motion": "Hover text shifts to warm crimson #cf2d56; shadows transition over 200ms ease for elevation changes.",
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "cw",
+   "primary_color_hex": "#d60c18",
+   "category": "consumer-tech",
+   "visual_theme": "CommonWealth is a Taiwanese news and economics publication founded in 1981. Its About page puts trust at the centre of its identity: “我們經營的是「信任」.” Paid digital reading launched in 2017, followed by an app combining magazine content and current news in 2018. Th",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "editorial",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "cybozu",
@@ -3449,6 +3539,28 @@
    },
    "tone_keywords": [
     "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "everytime",
+   "primary_color_hex": "#f91f15",
+   "category": "consumer-tech",
+   "visual_theme": "Everytime is Vinu Labs' campus community and planning service. Its official product page brings together school communities, group chat, timetables and campus information. The company's December 2023 rebrand announcement dates the service's opening to 2009 and",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "flat"
    ],
    "antipatterns": [
     "off-brand"
@@ -4849,6 +4961,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "hktvmall",
+   "primary_color_hex": "#36b449",
+   "category": "ecommerce",
+   "visual_theme": "HKTVmall is a Hong Kong online shopping platform operated by Hong Kong TV Shopping Network Company Limited, a wholly owned subsidiary of Hong Kong Technology Venture Company Limited. Its 2015 history records a February launch with more than 333 stores from Hon",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "hm",
@@ -6319,6 +6453,29 @@
    ],
    "antipatterns": [
     "austere"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "kodansha",
+   "primary_color_hex": "#001a70",
+   "category": "consumer-tech",
+   "visual_theme": "Kodansha is a Japanese publisher founded in 1909. Its history records 野間清治 establishing 大日本雄弁会, followed by Kodansha and the magazine 講談倶楽部 in 1911. Its purpose, **Inspire Impossible Stories**, expresses the meeting of interesting and beneficial storytelling. ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
    ],
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
@@ -9089,6 +9246,28 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "parknshop",
+   "primary_color_hex": "#3fa7f3",
+   "category": "ecommerce",
+   "visual_theme": "PARKnSHOP is a Hong Kong supermarket business founded in 1972 and part of AS Watson Group. Its [company page](https://www.pns.hk/en/aboutParknshop) connects physical retail with PNS.hk and the PNS mobile app, and presents its promise as best, easy and value. T",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "friendly"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "patreon",
    "primary_color_hex": "#000000",
    "category": "consumer-tech",
@@ -9413,6 +9592,27 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "peterpanz",
+   "primary_color_hex": "#1db177",
+   "category": "consumer-tech",
+   "visual_theme": "피터팬의 좋은방 구하기 is a Korean property-finding service operated by 주식회사 두꺼비세상. Its [official product introduction](https://about.peterpanz.com/intro) traces it to a Naver café for direct property transactions and describes its present scope as homes from one-room a",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "petfriends",
@@ -12190,6 +12390,28 @@
    "category_raw": "productivity"
   },
   {
+   "id": "syosetu",
+   "primary_color_hex": "#18b7cd",
+   "category": "consumer-tech",
+   "visual_theme": "Shosetsuka ni Narou is a Japanese fiction submission and reading service operated by HinaProject. Its site guide describes free registration, reading published fiction, bookmarks and writing tools. The operator dates the service to 2004 and describes its found",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "tabling",
    "primary_color_hex": "#ff5100",
    "category": "consumer-tech",
@@ -13135,6 +13357,27 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "unext",
+   "primary_color_hex": "#0080de",
+   "category": "consumer-tech",
+   "visual_theme": "U-NEXT brings video and reading into one entertainment service. Its history starts with GyaO NEXT in 2007 and the U-NEXT name in 2009. The homepage expresses that combination directly: “観るのも読むのも、これひとつ。” A large programme image and a white U-NEXT mark lead into",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "uniqlo",
    "primary_color_hex": "#ed1d24",
    "category": "Commerce",
@@ -13848,6 +14091,29 @@
    "tone_keywords": [
     "flat",
     "utilitarian"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "wooricard",
+   "primary_color_hex": "#006cea",
+   "category": "fintech",
+   "visual_theme": "Woori Card combines card discovery, benefits and account services. Its official history dates the present company's launch to 1 April 2013, the first three independent card products to 24 July 2023, and Woori WON Travel to 3 April 2024. The live homepage conti",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "flat"
    ],
    "antipatterns": [
     "off-brand"

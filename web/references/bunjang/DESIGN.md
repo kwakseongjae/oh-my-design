@@ -5,134 +5,147 @@ colors:
   brand: '#d80c18'
   canvas: '#ffffff'
   foreground: '#191919'
-  muted: '#999999'
-  on-primary: '#ffffff'
+  muted: '#7f7f7f'
   surface: '#f6f6f6'
   hairline: '#e5e5e5'
-  body: '#666666'
-  error: '#d80c18'
-  success: '#00a587'
-  info: '#027aff'
-  warning: '#ffc200'
-  safe: '#5558a8'
-  care: '#ffe1a6'
+  secondary: '#4c4c4c'
+  black: '#000000'
+  blue-100: '#d9ebff'
+  blue-400: '#b3d7ff'
+  blue-50: '#ebf5ff'
+  blue-500: '#027aff'
+  care-100: '#f8ecd3'
+  care-300: '#f6e5c3'
+  care-50: '#fdf4e2'
+  care-500: '#ffe1a6'
+  gray-10: '#fafafa'
+  gray-100: '#e5e5e5'
+  gray-150: '#cccccc'
+  gray-200: '#b2b2b2'
+  gray-300: '#999999'
+  gray-400: '#8c8c8c'
+  gray-50: '#f6f6f6'
+  gray-500: '#7f7f7f'
+  gray-600: '#666666'
+  gray-70: '#f0f0f0'
+  gray-700: '#4c4c4c'
+  gray-800: '#333333'
+  gray-900: '#191919'
+  green-100: '#dbf2ee'
+  green-400: '#a6dfd5'
+  green-50: '#edf9f7'
+  green-500: '#00a587'
+  red-100: '#fbe7e8'
+  red-400: '#f5c2c5'
+  red-50: '#fdf3f3'
+  red-500: '#d80c18'
+  safe-100: '#e1e7fe'
+  safe-300: '#7775e3'
+  safe-400: '#6458e2'
+  safe-50: '#eff2fe'
+  safe-500: '#5558a8'
+  yellow-100: '#fff6db'
+  yellow-400: '#ffeaa6'
+  yellow-50: '#fffbed'
+  yellow-500: '#ffc200'
 typography:
-  section-title:
-    fontSize: 20px
-    fontWeight: 700
-    lineHeight: 1.2
-    use: Section title (오늘의 추천 아이템), gray-900
-  subsection:
+  price:
     fontSize: 18px
     fontWeight: 700
-    lineHeight: 1.2
-    use: Subsection title / large emphasis, gray-900
-  body:
-    fontSize: 16px
-    fontWeight: 400
-    lineHeight: 1.2
-    use: Default body, CTA label, gray-900 / white-on-red
-  price:
-    fontSize: 16px
+    use: Live-loaded face; visible price paragraph in the measured recommendation card
+  navigation-label:
+    fontSize: 18px
     fontWeight: 700
-    lineHeight: 1.2
-    use: Price — the headline, gray-900
+    use: Visible child label of the women clothing navigation link
   search-input:
     fontSize: 15px
     fontWeight: 500
     lineHeight: 18
-    use: Search input value + placeholder, gray-900
-  card-title:
+    use: Computed input value style; placeholder wording recorded separately, placeholder color unresolved
+  login-label:
+    fontSize: 14px
+    fontWeight: 700
+    use: Visible child span of the secondary login button; enclosing button computes 16px/400
+  app-nudge-label:
+    fontSize: 15px
+    fontWeight: 700
+    use: Visible child span of the top app nudge; enclosing button computes 16px/400
+  load-more-label:
+    fontSize: 16px
+    fontWeight: 700
+    use: Visible child span of the feed continuation button; enclosing button computes 16px/400
+  footer-link:
+    fontSize: 16px
+    fontWeight: 500
+    lineHeight: 24
+    use: Surveyed company, terms and policy footer links
+  footer-business-link:
     fontSize: 14px
     fontWeight: 500
-    lineHeight: 1.2
-    use: 'Product card title, gray-600 #666'
-  chip-emphasis:
-    fontSize: 13px
-    fontWeight: 700
-    lineHeight: 1.2
-    use: Compact emphasized chip
-  meta:
-    fontSize: 12px
-    fontWeight: 500
-    lineHeight: 1.2
-    use: 'Meta / timestamp / region, gray-300 #999'
+    lineHeight: 21
+    use: Surveyed business-information link in the footer
+  control-box:
+    fontSize: 16px
+    fontWeight: 400
+    use: Computed enclosing app, login, category, card and load-more elements; visible children may override this
 rounded:
-  sm: 4px
+  none: 0px
   md: 6px
-  lg: 20px
-  full: 999px
 spacing:
-  xs: 4
-  sm: 8
-  md: 16
-  base: 16
-  lg: 24
-  xl: 32
-  xxl: 48
-  section: 64
+  card-image-to-price: 12
+  card-price-to-title: 6
+  card-title-to-meta: 12
+  login-block: 12
+  load-more-block: 16
+  button-inline: 20
 components:
-  button-primary:
-    type: button
-    backgroundColor: '#d80c18'
-    textColor: '#ffffff'
-    border: none
-    rounded: 6px
-    padding: 16px 20px
-    typography: 16px / 400
-    use: Single highest-intent CTA per surface — the only place red appears
   button-secondary:
     type: button
     backgroundColor: '#ffffff'
     textColor: '#4c4c4c'
     border: '1px solid #e5e5e5'
     rounded: 6px
+    height: 42.8px
     padding: 12px 20px
-    typography: 16px / 400
-    use: Secondary action
+    typography: 14px / 700
+    hover: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 9999px inset'
+    pressed: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 9999px inset'
+    use: 로그인/회원가입 button inside a link to /login?header=true. Visible label is 14px/700; button computes 16px/400. Hover and held press add the inset shadow without changing bg or fg. Native auto focus ring is excluded.
   input-search:
     type: input
-    backgroundColor: transparent
     textColor: '#191919'
-    rounded: 999px
+    rounded: 0px
+    height: 18px
+    padding: 0px
     typography: 15px / 500
-    use: Search input; rounded pill container carries chrome, placeholder 검색
+    pressed: 'parent form border: 1px solid #191919'
+    focus: 'parent form border: 1px solid #191919'
+    use: 'Transparent input on a #f6f6f6 search form; line-height 18px. Press and real Tab focus change the ancestor form border from transparent to #191919. The input itself has no drawn border or outline. Measured input width 442px.'
   product-card:
     type: card
-    backgroundColor: '#f6f6f6'
-    rounded: 6px
-    use: '81:100 portrait thumb placeholder; price 16/700 #191919, title 14/500 #666, meta 12/500 #999, heart top-right'
-  chip-safe:
-    type: badge
-    backgroundColor: '#5558a8'
-    textColor: '#ffffff'
-    rounded: 6px
-    typography: 13px / 700
-    use: 안전결제 escrow chip — indigo --color-safe ladder
-  chip-care:
-    type: badge
-    backgroundColor: '#ffe1a6'
     textColor: '#191919'
+    rounded: 0px
+    height: 326.3px
+    padding: 0px
+    typography: 16px / 400
+    hover: 'descendant image transform: matrix(1.2, 0, 0, 1.2, 0, 0)'
+    pressed: 'descendant image transform: matrix(1.2, 0, 0, 1.2, 0, 0)'
+    use: 'Transparent product link on the white page; measured href starts /products/443158688 and width is 193.3px. Radius 0 belongs to the link, not the rounded thumbnail. Price child is 18px/700 #191919; metadata ink is #7f7f7f. Hover and held press scale only the image. Native focus and the following child heart ring are excluded.'
+  button-load-more:
+    type: button
+    backgroundColor: '#f6f6f6'
+    textColor: '#4c4c4c'
+    border: none
     rounded: 6px
-    typography: 13px / 700
-    use: 감정완료 luxury-auth chip — warm amber --color-care ladder
-  chip-info:
-    type: badge
-    backgroundColor: '#027aff'
-    textColor: '#ffffff'
-    rounded: 6px
-    typography: 13px / 700
-    use: 내폰시세 price-verified chip — info blue
-  heart-button:
-    type: toggle
-    textColor: '#ffffff'
-    shadow: 10% black inner-fill glow under SVG
-    active: 'solid #d80c18 fill'
-    use: 찜 heart button, white stroke legible on any thumbnail
+    height: 51.2px
+    padding: 16px 20px
+    typography: 16px / 700
+    hover: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 9999px inset'
+    pressed: 'box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 9999px inset'
+    use: 더보기 continuation button, 400px wide, in the recommendation feed. Visible label is 16px/700; enclosing button computes 16px/400. Hover and held press add the inset shadow. Native auto focus ring is excluded.
 fonts:
   roles:
     sans: Pretendard Variable
-    mono: sans-serif
 ---
 
 # Design System Inspiration of Bunjang (번개장터)
@@ -141,341 +154,263 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Bunjang is what happens when Korea's first generation of mobile flea-market sellers — high-school sneakerheads, K-pop merch traders, used-iPhone flippers — grow up and demand an interface that respects their hustle. The home screen is a near-monochrome canvas: pure white (`#ffffff`) underneath, near-black text (`#191919`), and a single accent — **Bunjang Red** (`#d80c18`) — used so sparingly that when it appears, it lands. There is no gradient sweep, no shadow ladder, no marketing flourish. Depth is signaled by 1px gray-100 (`#e5e5e5`) borders and the occasional gray-50 (`#f6f6f6`) tint behind the footer or as a placeholder for an image that hasn't loaded yet. The aesthetic is **trader-tool sober** — adjacent to Karrot's warm-orange neighborliness, but Bunjang is less "친근한 동네 이웃" and more "거래 정확하게 끝내자."
+Bunjang is a Korean marketplace for used goods, operated by 번개장터 주식회사 in Seoul. Its official history records a January 2011 service launch and the 2017 change from Quicket to the Bunjang company name. The company frames its work around extending the life of things and using technology to remove friction from recommerce. [Company and history](https://bgzt.co.kr/about), [legal notice](https://bgzt.co.kr/article/584).
 
-The atomic unit is the **portrait product card** — a 81:100 vertical thumbnail (the brand has formalized this with `--bun-ui-aspect-ratio-vertical: 81 / 100`), price in 16px/700, title in 14px/500 gray-600, a single meta row in 12px/500 gray-300 ("19시간 전 · 지역 · 찜 N"), and a top-right heart button outlined against the photo with a 10% inner glow so it stays legible no matter what photo the seller uploaded. Cards stack 2-up on mobile, 4-up on desktop, and they go on, and on, and on — because Bunjang's defining promise is that *the next listing you scroll to could be exactly the thing you've been searching for at the price you've been waiting for.*
+The web interface puts a white `#ffffff` canvas and near-black `#191919` text around portrait product photographs. Prices lead the measured cards in 18px/700 type. A long recommendation grid sits below a promotional carousel and six illustrated shortcuts. The primary color remains `#d80c18` in the live CSS; the captured app nudge instead uses light text on a black gradient. This is an image-rich marketplace with restrained utility chrome, rounded search chrome, a thin gray button border and a small set of direct actions. These are observations of the captured homepage, not a published rule limiting red to one action.
 
-Pretendard Variable carries 100% of UI text. There is no display face, no custom logotype anywhere outside the rounded-square app icon. The brand voice rides entirely on Pretendard's weight axis — 400 for body, 500 for secondary, 700 for price. The "Bun UI" internal design system (private; CSS custom-property prefix `--bun-ui-*` visible in production) provides the radius, aspect-ratio, z-index, and safe-area tokens; the rest is `--color-*` semantic ladders.
+The company's June 2026 product explanation describes a reorganized **app** home with four purpose-based tabs: selling, finding one's next item, popular items and benefits. It explicitly connects the redesign to observed buying and selling journeys. That is the documented product evolution; the measured web surface presents search, category navigation and a recommendation feed. [June product explanation](https://bgzt.co.kr/article/625).
 
-**Key Characteristics:**
-- **Bunjang Red** (`#d80c18`) as a *scarcity asset* — exclusively reserved for the single highest-intent CTA on a surface (e.g. "앱 다운로드", "번개장터 앱으로 시작하기")
-- 81:100 portrait thumbnail as the canonical product photo (phones, sneakers, K-pop goods photograph taller than they are wide)
-- Pretendard Variable as the only typeface — three weights (400/500/700), no italics
-- No box-shadow anywhere in sampled production code — depth is borders + tints, not elevation
-- Two-tier card economics: basic card vs. service-tagged card (`안전결제` escrow chip, `감정완료` luxury-auth chip, `내폰시세` price-verified chip)
-- Mobile-first at 390px baseline — `m.bunjang.co.kr` is the canonical web surface; desktop is a courtesy
-- Korean text dominates; the system stack handles incidental Latin (prices use Hindu-Arabic numerals + "원" suffix)
-- Bottom of the home page is always an app-install rail — web is a discovery funnel, the app is the trade venue
+Bunjang's campaign writing adds a personal dimension: selling something once loved makes room for the next interest. Its 2025 account traces the SellToLove project to 2020, and the July 2026 campaign joins a sale and a purchase into a rewarded cycle. The reusable visual idea is a consistent frame for varied possessions, with the price, name and age of a listing easy to scan. [Campaign history](https://bgzt.co.kr/article/424), [July campaign](https://bgzt.co.kr/article/633).
 
-### Primary tasks
+The measured homepage is the Korean surface at `m.bunjang.co.kr/`, HTML `lang="ko-KR"`, at 1440×1000; it did not redirect to another path.
 
-- Scroll a deep feed of listings until the right item appears
-- Search for a specific item from the header
-- Check whether a listing carries escrow or authentication
-- Save a listing to come back to it later
-- Sell your own used goods to other traders
+#### Primary tasks
 
-### Iconography & Imagery
+- Browse recommended listings and open a product link.
+- Search by product or shop name from the header.
+- Browse product categories; reach favorites and recently viewed items through the shortcuts.
+- Buy and sell used goods; the service terms define both buyer and seller roles. [Service terms](https://terms.bunjang.co.kr/terms/service.html).
 
-- **Logo:** A 100×100 rounded-square app icon (radius 22px) with a stylized lightning-bolt mark inside a gradient field. The web wordmark sits next to it in Pretendard 700. The logo icon SVG is served from `https://static.bunjang.co.kr/web/ui/logo-icon.svg`.
-- **System icons:** Inline SVG, 20×20 default, fill via `path[fill]` attribute (not CSS) — fill `#191919` for foreground, `#8c8c8c` for muted (close ×, secondary nav).
-- **Heart (찜) button:** outlined SVG with a 10% black-fill inner shape underneath, so the white outline reads against any thumbnail. Tapped state: solid red fill (`--color-red-500`).
-- **Product thumbnails:** `loading="lazy"`, served from `media.bunjang.co.kr` with a `?crop=` parameter (e.g. `media.bunjang.co.kr/product/{id}_1_{ts}_w1200.jpg?crop=0`). Aspect ratio forced to 81/100 via inline `--aspectRatioVar__1nf1jaf0: var(--bun-ui-aspect-ratio-vertical)`.
-- **Photo aesthetic:** seller-uploaded, unedited, often well-lit-but-amateur. The platform does not impose a photography style — Bunjang's identity comes from *containing* heterogeneous photos consistently, not from prescribing what they look like.
-- **No illustrations** observed in the home-page surface. No mascot. No empty-state cartoons in sampled nodes.
+### Brand Narrative
 
-### When to draw inspiration from Bunjang
+Bunjang's official history includes an escrow-based payment service introduced in 2018 and a total-care service introduced in 2022. Its 2025 campaign history explains SellToLove as a project that helps people pursue a new interest by selling possessions associated with an earlier one. The July 2026 campaign develops the sale-and-purchase cycle into club benefits. This makes reuse and personal taste part of the company's stated story, beyond a visual emphasis on price. [History](https://bgzt.co.kr/about), [campaign account](https://bgzt.co.kr/article/424), [July campaign](https://bgzt.co.kr/article/633).
 
-Use this reference for:
-- C2C / P2P marketplaces where listing volume is the value proposition
-- Surfaces where the user's primary mode is **scanning many similar items** (resale, classifieds, vertical commerce)
-- Brands that need to feel **trustworthy without being formal** — escrow / payments / verification services that prove credibility through small color-coded chips rather than long copy
-- Mobile-first Korean (or East-Asian) audiences who expect Pretendard-grade type rendering and won't accept laggy infinite scroll
-- Products where **one CTA per surface** is the right discipline (vs. dashboards with five competing primaries)
+The production implementation has a `--bun-ui-*` group for safe areas, pill radius and aspect ratios, as well as color, layout and stacking groups. That namespace is observable. An official public title, maturity claim or private/public status for a system named “Bun UI” was not established by the opened pages.
 
-Do NOT use this reference for:
-- Premium / luxury brands where shadows, gradients, and curated photography are the value
-- Editorial commerce where the photo deserves a 4:5 or 1:1 art-directed frame
-- B2B SaaS where information density and table-rendering trump scrollable feeds
+### Principles
+
+The company's stated mission centers on reducing recommerce friction through technology, and its vision connects reuse with sustainable consumption. Its June home-redesign account describes bringing recurring buying and selling tasks closer to the first screen. [Company](https://bgzt.co.kr/about), [home-redesign account](https://bgzt.co.kr/article/625).
+
+As design guidance from the capture, keep a consistent frame for varied product imagery, let the price lead within each card, make search focus visible on its frame, and use measured state layers without inventing extra palette roles. These are analytical applications of the evidence, not a quoted corporate design manifesto.
+
+### Personas
+
+The service terms distinguish **buyers** and **sellers**, including general and professional shop forms. Those are documented service roles. Age cohorts, personality comparisons with competitors and demographic personas were not established by the measured page. [Service terms](https://terms.bunjang.co.kr/terms/service.html).
 
 ## Colors
 
-All colors below were extracted from production `:root` CSS custom properties (`getComputedStyle(document.documentElement)`) on 2026-05-14. Token names preserve Bunjang's own naming.
+The live root census contains 79 computed custom properties. The first-party palette comprises 43 `--color-*` names plus nine partner-named `--color-brand-*` names. The values below retain the production names. Color presence is distinguished from a verified component role.
 
-### Primary
-- **Bunjang Red** (`#d80c18`) — `--color-primary` / `--color-red-500`. The single brand accent. Used on `_variant-primary` buttons only. Pressed-state would darken toward `#c00b15` (interpolated; not directly observed in computed styles since no hover state was captured).
-- **Pure White** (`#ffffff`) — `--color-white`. Page background, card surface, primary CTA text color.
-- **Gray-900** (`#191919`) — `--color-gray-900`. Primary text. Used on body, all headings, prices.
+### Observed roles
 
-### Neutral Scale
-The gray ladder is unusually granular — 11 stops. This is the spine of Bunjang's depth system.
-- `--color-gray-900` `#191919` — primary text
-- `--color-gray-800` `#333333` — strong secondary text
-- `--color-gray-700` `#4c4c4c` — secondary button text
-- `--color-gray-600` `#666666` — product card title, footer text
-- `--color-gray-500` `#7f7f7f` — tertiary text
-- `--color-gray-400` `#8c8c8c` — icon-only buttons, banner-close ×
-- `--color-gray-300` `#999999` — meta / timestamp / "19시간 전"
-- `--color-gray-200` `#b2b2b2` — disabled-ish placeholder text
-- `--color-gray-150` `#cccccc` — strong dividers
-- `--color-gray-100` `#e5e5e5` — secondary button border, light dividers
-- `--color-gray-70` `#f0f0f0` — subtle row hover / pressed bg
-- `--color-gray-50` `#f6f6f6` — footer surface, image placeholder bg (also aliased as `--color-gray`)
-- `--color-gray-10` `#fafafa` — barely-tinted section divider
+| Role in this capture | Value | Evidence |
+|---|---|---|
+| Primary palette value | `#d80c18` | Both `--color-primary` and `--color-red-500`; no red primary button was measured |
+| Canvas | `#ffffff` | Homepage screenshot and white secondary button |
+| Foreground | `#191919` | All 96 paragraph-ink entries in the survey; measured price, navigation label and input |
+| Secondary action text | `#4c4c4c` | Login and feed continuation labels |
+| Muted listing metadata | `#7f7f7f` | Timestamp and favorite-count children of the measured card |
+| Light surface | `#f6f6f6` | Search form, thumbnail image background and continuation button |
+| Hairline | `#e5e5e5` | Login button's 1px solid border |
+| App nudge label | `#fafafa` | Visible label span and arrow, rather than the enclosing button's inherited color |
 
-### Semantic Tiers (4-stop ladders)
-- **Red** — `--color-red-{50: #fdf3f3, 100: #fbe7e8, 400: #f5c2c5, 500: #d80c18}` — error / destructive / primary share the 500
-- **Green** — `--color-green-{50: #edf9f7, 100: #dbf2ee, 400: #a6dfd5, 500: #00a587}` — success / available / verified-OK (note: a teal-leaning green, not a Korean-marketplace stoplight green)
-- **Blue** — `--color-blue-{50: #ebf5ff, 100: #d9ebff, 400: #b3d7ff, 500: #027aff}` — informational link / verified info (e.g. `내폰시세` price-check confirmed)
-- **Yellow** — `--color-yellow-{50: #fffbed, 100: #fff6db, 400: #ffeaa6, 500: #ffc200}` — warning / highlight
+The most frequent text color in the census is `#7f7f7f` (122 entries), followed by `#191919` (106). The paragraph-ink result, rather than the overall text-frequency winner, establishes `foreground`.
 
-### Specialty Tiers (Bunjang's distinctive contribution)
-These two ladders don't appear in generic DS palettes — they map to Bunjang's escrow + luxury-authentication services.
-- **Care** — `--color-care-{50: #FDF4E2, 100: #F8ECD3, 300: #F6E5C3, 500: #FFE1A6}` — warm amber / cream, used on the `감정완료` (authentication-complete) badge family for luxury items (watches, bags, K-pop signed goods). It's the color of "this thing is worth careful handling."
-- **Safe** — `--color-safe-{50: #EFF2FE, 100: #E1E7FE, 300: #7775E3, 400: #6458E2, 500: #5558A8}` — a cool indigo / blue-violet ladder used on `안전결제` (escrow) chips. Distinct from informational blue — it specifically signals "Bunjang holds the money until both parties confirm."
+### Neutral primitives
 
-### Partner Brand Colors (social login only)
-- `--color-brand-kakao` `#fae100` + `--color-brand-kakao-2` `#3c1e1e` (KakaoTalk yellow + dark text)
-- `--color-brand-naver` `#03cf5d`
-- `--color-brand-facebook` `#1877f2` (+ gradient variant `#00B2FF → #006AFF`)
-- `--color-brand-twitter` `#1da1f2`
-- `--color-brand-line` `#00b900`
-- `--color-brand-band` `#21c531`
-- `--color-brand-apple` `#000000`
+There are **13 numbered gray stops**, plus black and white. `--color-gray` is an alias for `#f6f6f6`.
 
-These are NOT brand-extension colors — they are partner-correct fills for federated login buttons only. Never reuse them in Bunjang chrome.
+| Production property | Computed value |
+|---|---|
+| `--color-gray-900` | `#191919` |
+| `--color-gray-800` | `#333333` |
+| `--color-gray-700` | `#4c4c4c` |
+| `--color-gray-600` | `#666666` |
+| `--color-gray-500` | `#7f7f7f` |
+| `--color-gray-400` | `#8c8c8c` |
+| `--color-gray-300` | `#999999` |
+| `--color-gray-200` | `#b2b2b2` |
+| `--color-gray-150` | `#cccccc` |
+| `--color-gray-100` | `#e5e5e5` |
+| `--color-gray-70` | `#f0f0f0` |
+| `--color-gray-50` | `#f6f6f6` |
+| `--color-gray-10` | `#fafafa` |
+| `--color-black` | `#000000` |
+| `--color-white` | `#ffffff` |
+
+`#666666` is measured on company/terms footer links. The remaining neutral values are retained as live palette primitives without assigning unobserved disabled, row-hover or divider behaviors.
+
+### Chromatic primitives
+
+| Property family (`--color-…`) | Stops and computed values |
+|---|---|
+| `red` | 100: `#fbe7e8` · 400: `#f5c2c5` · 50: `#fdf3f3` · 500: `#d80c18` |
+| `green` | 100: `#dbf2ee` · 400: `#a6dfd5` · 50: `#edf9f7` · 500: `#00a587` |
+| `blue` | 100: `#d9ebff` · 400: `#b3d7ff` · 50: `#ebf5ff` · 500: `#027aff` |
+| `yellow` | 100: `#fff6db` · 400: `#ffeaa6` · 50: `#fffbed` · 500: `#ffc200` |
+| `care` | 100: `#f8ecd3` · 300: `#f6e5c3` · 50: `#fdf4e2` · 500: `#ffe1a6` |
+| `safe` | 100: `#e1e7fe` · 300: `#7775e3` · 400: `#6458e2` · 50: `#eff2fe` · 500: `#5558a8` |
+
+`--color-green` also resolves to `#edf9f7`. The `care` and `safe` ladders are present in the product's own root CSS. Their association with particular authentication or payment badges was not re-measured; the palette values remain useful without turning those associations into component recipes. Success, warning and error use beyond the primary alias is likewise unresolved.
+
+### Partner-named values
+
+These names are present in Bunjang's stylesheet. They are kept separate from Bunjang's own palette and excluded from the machine color collection; social-login usage was not inspected.
+
+| Production property | Raw computed value |
+|---|---|
+| `--color-brand-apple` | `#000000` |
+| `--color-brand-band` | `#21c531` |
+| `--color-brand-facebook` | `#1877f2` |
+| `--color-brand-facebook-2` | `linear-gradient(180deg, #00B2FF 0%, #006AFF 100%)` |
+| `--color-brand-kakao` | `#fae100` |
+| `--color-brand-kakao-2` | `#3c1e1e` |
+| `--color-brand-line` | `#00b900` |
+| `--color-brand-naver` | `#03cf5d` |
+| `--color-brand-twitter` | `#1da1f2` |
 
 ## Typography
 
-One family. Three weights. No exceptions.
+### Font evidence classes
 
-- **Family:** Pretendard Variable, fallback `sans-serif`. Self-hosted from a Bunjang CDN. Verified across 211/211 sampled DOM nodes — there is no second typeface anywhere in the production tree.
-- **Weights:** 400 (regular), 500 (medium), 700 (bold). No 600 stop observed; the visual hierarchy jumps directly from 500 to 700, which is why prices feel as urgent as they do — they're not just "a little heavier," they're *significantly* heavier.
+- **Official product use:** no opened company page explicitly documents a product typeface.
+- **Live-loaded:** `document.fonts` reports **Pretendard Variable**, weight range `45 920`, style `normal`. It is the only loaded face reported by this capture. Body and button declarations begin with it; the census has no `h1` sample.
+- **Official distributed assets:** the live product stylesheet declares `/static/media/PretendardVariable.subset.0.BHUkWNFR.woff2`, format `woff2-variations`, on the same `m.bunjang.co.kr` origin. This is a served product asset, not evidence of a public brand-font distribution or a license grant. No such distribution or license was opened.
+- **Declared-only:** the remaining CSS fallback stack is recorded verbatim in the verification notes. None of those entries appears in the loaded-face list, and none becomes a family token or a specimen here.
+- **Unresolved:** official brand-font attribution, licensing, mobile type metrics and a site-wide claim that every glyph uses this face.
 
-### Observed scale (mobile)
-| Size | Weight | Role | Color |
+**Substitute: none chosen.** The family token contains only the live-loaded face.
+
+### Measured scale
+
+| Text | Size / weight | Ink | Line-height evidence |
 |---|---|---|---|
-| 20px | 700 | Section title ("오늘의 추천 아이템") | gray-900 |
-| 18px | 700 | Subsection title / large emphasis | gray-900 |
-| 16px | 400 | Default body, CTA label | gray-900 / white-on-red |
-| 16px | 700 | **Price** | gray-900 |
-| 15px | 500 | Search input value + placeholder | gray-900 |
-| 14px | 500 | Product card title | gray-600 (`#666`) |
-| 13px | 700 | Compact emphasized chip | varies |
-| 12px | 500 | Meta / timestamp / region | gray-300 (`#999`) |
+| Product price | 18px / 700 | `#191919` | Visible child label; paragraph line-height not captured |
+| Women clothing navigation label | 18px / 700 | `#191919` | Visible child label; enclosing link computes `normal` |
+| App nudge label | 15px / 700 | `#fafafa` | Visible child label; enclosing button computes `normal` |
+| Login label | 14px / 700 | `#4c4c4c` | Visible child label; enclosing button computes `normal` |
+| Feed continuation label | 16px / 700 | `#4c4c4c` | Visible child label; enclosing button computes `normal` |
+| Search input value | 15px / 500 | `#191919` | 18px |
+| Company / terms footer links | 16px / 500 | `#666666` | 24px |
+| Business-information footer link | 14px / 500 | `#7f7f7f` | 21px |
 
-Line-height is `normal` (browser default) for almost every node — Bunjang relies on padding and explicit gap, not line-height, for vertical rhythm. The single exception observed: the search input forces `line-height: 18px` to align caret height across browsers.
-
-Letter-spacing is `normal` everywhere. Hangul stems are never tightened.
+The app button, login button, category link, card link and continuation button themselves compute to 16px/400. Their visible descendants override that inherited style. Use the label metrics when reproducing the text. All six probed control elements have `letter-spacing: normal`; that does not establish tracking for every descendant or every route.
 
 ## Layout
 
-### Spacing, Radius & Elevation
+The root exposes `--layout-width-xsmall: 480px`, `--layout-width-small: 640px`, `--layout-width-large: 1240px` and `--layout-width-full: 100vw`. At the measured desktop width, the six card columns occupy the 1240px content area. Their rounded survey x positions are 93, 302, 511, 720, 930 and 1139px, and each link is 193.3px wide. These coordinates imply gaps of about 16px; they do not establish an exact spacing token.
 
-#### Radius
-- `4px` — small chip / banner CTA (XS variant: "앱 다운로드")
-- `6px` — primary CTA, secondary CTA, thumbnail container (`--radiusVar__1j9duj80: 6px`)
-- `20px` — soft large chip
-- `999px` — circular icon button, pill counter chip, heart button hit area
-- Token: `--bun-ui-radius-pill: 999px`
+The root's current `--layout-gutter` computes to **30px**, while the first declaration encountered by the stylesheet walk is **0**. The two values represent different evidence classes; the initial declaration is not substituted for the computed value. `--drawer-width` is **480px**; no drawer was opened.
 
-#### Spacing
-Bunjang does not expose a numeric spacing scale via CSS variable. Observed padding patterns:
-- CTA button padding: `12px 20px` (medium), `8px 12px` (XS), `16px 20px` (XL/full-width)
-- Footer padding: `20px 132px 40px` desktop, tighter on mobile
-- Section vertical rhythm: ~24-32px between sections
-- Card grid gap: ~12-16px
+Header size values are `--header-height-small: 56px`, `--header-height-large: 129px`, `--app-nudge-banner-height-small: 60px` and `--app-nudge-banner-height-large: 50px`. The runtime `--app-shell-top-reserve` is **179px**, and the fixed header slot measures **1425×179px** at z-index **200**. It contains the app nudge and navigation rather than a consent dialog. The captured full page is 4453px high and ends in a legal/support footer after the feed continuation action.
 
-#### Elevation
-**There is no box-shadow on any sampled element.** Depth comes from:
-1. A 1px solid `#e5e5e5` border (secondary buttons, dividers)
-2. A `#f6f6f6` background tint (footer surface, image placeholders)
-3. A 10% black inner-fill on overlay icons (heart button against bright thumbnails)
-4. A `rgba(0,0,0,0.3)` semi-transparent bubble for overlay chips (carousel counter "1 / 10")
+### Stacking and safe areas
 
-This is a deliberate choice. Bunjang treats every surface as a *transparent ledger* — you can see what's there, you can see how it's edged, but nothing floats. The product is the photograph; the chrome shouldn't compete for elevation.
+| Production property | Computed value |
+|---|---|
+| `--z-index-drawer` | 1000 |
+| `--z-index-drawer-dim` | 900 |
+| `--z-index-footer` | 100 |
+| `--z-index-header` | 200 |
+| `--z-index-popup` | 1200 |
+| `--z-index-popup-dim` | 1100 |
+| `--z-index-snackbar` | 1500 |
+| `--z-index-sticky` | 100 |
+| `--z-index-widget` | 500 |
 
-### Layout & Grid
+These are stack values, not evidence of a preference for snackbars over dialogs. The four `--bun-ui-sa*` properties declare the corresponding `env(safe-area-inset-top/right/bottom/left)` values and compute to **0px** in this desktop capture. The root also defines `--bun-ui-aspect-ratio-square: 1 / 1` alongside its portrait ratio.
 
-- Page max-width tokens: `--layout-width-xsmall: 480px` / `--layout-width-small: 640px` / `--layout-width-large: 1240px` / `--layout-width-full: 100vw`
-- Canonical viewport: **390px mobile** (m.bunjang.co.kr is mobile-first; desktop centers content within 1240px with generous side gutters)
-- Drawer width: `--drawer-width: 480px` (used for category drawer, filter sheet)
-- Product grid: 2-col mobile / 4-col desktop, card gap ~12-16px
-- iOS safe-area: `--bun-ui-sat`, `--bun-ui-sab`, `--bun-ui-sal`, `--bun-ui-sar` (top/bottom/left/right inset variables; populate at runtime on iPhone)
+### Responsive Behavior
 
-### z-index Tokens
-
-Bunjang ships explicit named z-index tokens — a sign of an internal DS that's gone through stacking-context disputes:
-- `--z-index-sticky: 100`
-- `--z-index-footer: 100`
-- `--z-index-header: 200`
-- `--z-index-widget: 500`
-- `--z-index-drawer-dim: 900`
-- `--z-index-drawer: 1000`
-- `--z-index-popup-dim: 1100`
-- `--z-index-popup: 1200`
-- `--z-index-snackbar: 1500`
-
-Snackbar (transient toast) sits on top of everything — confirms Bunjang's preference for transient, non-blocking feedback over modal interruption.
+Only the 1440×1000 desktop viewport was measured; mobile columns, baseline width and responsive breakpoints remain unresolved.
 
 ## Elevation & Depth
 
-### Values kept in prose
+All six controls have `box-shadow: none` at rest. The secondary action's `#e5e5e5` border and the `#f6f6f6` input/button/photo surfaces give the utility chrome a flat appearance. Interaction adds an **inset** 10% black shadow to the two measured buttons; this is a darkening layer within their bounds.
 
-Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+The card photo's `::after` has the computed background image `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1))`. The heart combines white and low-opacity black filled paths. The census also records one `rgba(0, 0, 0, 0.3)` background, visible as the carousel counter bubble in the screenshot. These local overlays are part of the observed design; a site-wide absence of gradients or shadows would be inaccurate.
 
-- `shadow.none`: `none — no box-shadow on any sampled element`
-- `shadow.overlay-chip`: `rgba(0,0,0,0.3) semi-transparent bubble for carousel counter overlay`
-- `shadow.heart-inner`: `10% black inner-fill under heart SVG so white stroke reads on any thumbnail`
+The measured button radius is **6px**; the search input and card anchor have **0px** radii. The root pill value `--bun-ui-radius-pill: 999px` is retained as a production primitive in prose, without assigning it to an unmeasured control. No general spacing scale was found among the census's custom properties. The numeric spacing entries in the token block describe the measured spacers and button padding only.
+
+## Motion & Easing
+
+All six control elements report the raw computed transition **`all 0s ease 0s`**. Their own transition string does not describe every child: the product card's descendant scan reports a **200ms** longest transition and samples after **900ms**, when the image is settled at `matrix(1.2, 0, 0, 1.2, 0, 0)`. The descendant's raw easing string was not retained in `states.json`, so no curve is specified. No broader motion system was verified.
 
 ## Components
 
-### Components — atomic anatomy
+### Secondary login action
 
-#### Button (Bun UI `_button_1cw4e_1`)
-Three variants × four sizes observed in class names: `_variant-{normal|primary|…}` × `_size-{XS|M|XL}` × `_full`.
+The `로그인/회원가입` control is a button inside a link to `/login?header=true`. It measures **131.9×42.8px**, radius **6px**, padding **12px 20px**, white `#ffffff` background, `#4c4c4c` text and a **1px solid `#e5e5e5`** border. The enclosing button computes 16px/400; its visible label is **14px/700**.
 
-| variant | bg | text | border | radius | size XS pad | size M pad | size XL pad |
-|---|---|---|---|---|---|---|---|
-| primary | `#d80c18` | `#ffffff` | none | 4-6px | `8 12` | — | `16 20` |
-| normal (secondary) | `#ffffff` | `#4c4c4c` | `1px solid #e5e5e5` | 6px | — | `12 20` | — |
+Hover and held press both add `box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 9999px inset`. Background and text stay at their rest values. Keyboard focus draws Chrome's `auto` outline; it is not a brand focus token.
 
-#### Search input (Bun UI `_input_au7f1_17`)
-- Pretendard Variable, 15px / 500 / `#191919`
-- Line-height: 18px (explicit override for caret alignment)
-- Transparent background — the rounded pill container behind it carries the visual chrome
-- Placeholder: "검색" (or contextual)
+The login and continuation buttons share `_button_1cw4e_1`; their observed variant classes are `_variant-normal_1cw4e_53` and `_variant-normal-gray_1cw4e_65`. These are captured implementation classes, not a documented public variant API.
 
-#### Product Card (Bun UI `_container_15rjm_1`)
-```
-┌─────────────────┐ ← Thumbnail
-│                 │    aspect-ratio: 81 / 100
-│      [img]    ♡│   border-radius: 6px
-│                 │    bg #f6f6f6 (placeholder)
-│                 │   heart absolute top-right, 40×40 hit
-└─────────────────┘    SVG fill=none stroke=#fff + 10% black inner glow
-  600,000원            ← Price: 16px / 700 / #191919
-  맥북에어 m1 2020...    ← Title: 14px / 500 / #666 (1-2 lines)
-  19시간 전 · 강남 · 찜2 ← Meta: 12px / 500 / #999
-```
+### Feed continuation
 
-Card variants add a single small chip (4-6px radius) above the title row:
-- `안전결제` — `--color-safe-*` ladder, indigo
-- `감정완료` — `--color-care-*` ladder, warm amber
-- `내폰시세` — `--color-blue-*` ladder, info blue
+The `더보기` button is **400×51.2px**, radius **6px**, padding **16px 20px**, background `#f6f6f6`, text `#4c4c4c`, no border and no rest shadow. Its visible label is **16px/700**, while the enclosing element computes 16px/400. Hover and held press use the same 10% black inset shadow as the login action. Keyboard focus uses the browser's `auto` ring.
 
-#### Header
-- Hamburger (left) — 20×20 icon button
-- Logo wordmark (clickable, /)
-- Search input (center, flex-grow)
-- Right cluster: notification bell, wishlist heart, login button or avatar
-- Sticky at z-index 200
+### Search
 
-#### App-Download Top Banner
-- Sticky above header at z-index 100 (footer/sticky tier)
-- Logo icon 32×32 + body copy + primary CTA chip + close ×
-- Dismissible (close × on right)
+The measured input, class `_input_au7f1_17`, is **442×18px**, radius **0px**, padding **0px**, with transparent background, no border, 15px/500 text and 18px line-height. Its containing form supplies the `#f6f6f6` surface and the rounded visible frame. The placeholder is `상품명이나 상점명을 검색해주세요`; its separate pseudo-element color was not measured.
+
+Hover has no computed change within the probe's comparison scope. Held press and real Tab focus change **the parent form's** border from `1px solid rgba(0, 0, 0, 0)` to **`1px solid #191919`**. The input's own border and outline remain absent. Reproduce that change on the form, with the input's 0px radius kept separate from the frame's shape.
+
+The pointer press also focuses the input. The observed border therefore does not establish a separate `:active` rule independent of focus.
+
+### Product card link
+
+The measured listing links to `/products/443158688` (with capture-specific query parameters), class `_container_tnuga_1`. Its transparent anchor is **193.3×326.3px**, radius **0px**, padding **0px**, with no border or rest shadow. It sits on the white page. The rounded photo is a descendant; the anchor's 0px radius does not describe the photo corners.
+
+The live portrait-ratio token is `--bun-ui-aspect-ratio-vertical: 81 / 100`; the photo box in this card measures approximately 193×239px. The first paragraph is a near-black **18px/700 price**, followed by the item title and a metadata row. The title's ink is `#191919`; the timestamp and favorite-count ink is `#7f7f7f`. The card's explicit spacer descendants measure **12px** from image to price, **6px** from price to title and **12px** from title to metadata. Title and metadata font metrics were not captured.
+
+Hover and held press change only the descendant image's transform from `none` to **`matrix(1.2, 0, 0, 1.2, 0, 0)`**. The link itself does not scale. Keyboard focus gives the link a native `auto` ring; the following Tab stop is its child heart button, whose separate native ring appears in the after-blur snapshot. Neither is a brand state.
+
+The heart hit area is **52×52px** with **14px padding** in the survey, surrounding a **24×24px inline SVG**. Its white contour is a filled path with additional black paths at **0.1 fill opacity**. A red selected-heart state was not exercised. The thumbnail is served from `media.bunjang.co.kr`; the measured image source ends `_w360.jpg?crop=0`.
+
+### Other measured controls and header anatomy
+
+The top app nudge is a transparent **357.1×20px** button, radius 0px, padding 0px. Its enclosing text style is 16px/400 `#191919`, but the visible label and arrow are `#fafafa`, with a 15px/700 label. It sits on the banner's black gradient. The adjacent **20×20px** close button is labelled `닫기`, and the logo image inside the nudge is **20×20px**. No authored hover or press change was detected; focus uses a native ring.
+
+The `여성의류` navigation link is **62.2×21.6px**, radius 0px, padding 0px, transparent background and `#191919` text, with an 18px/700 child label. Hover and press have no computed change in scope; focus is native. These two controls stay in prose because their only detected state indication is browser-owned.
+
+The header also has a clickable wordmark linking to `/`, the search field, the login link/button and category navigation. The captured wordmark link measures **100×21.3px**. The app icon shows a lightning-bolt mark in the viewport. Its image URL `https://static.bunjang.co.kr/web/ui/logo-icon.svg` is observed in the app nudge's DOM; the asset itself was not separately downloaded or redistributed.
+
+### States
+
+Every hover below had `:hover` true, every held press had `:active` true, and keyboard focus was reached by a real Tab walk. “No change” is limited to the compared control, its descendants, pseudo-elements and three ancestor levels; it does not assert pixel identity or behavior outside that scope.
+
+| Control | Hover | Held press | Keyboard focus |
+|---|---|---|---|
+| App nudge | No computed change in scope | No computed change in scope | Browser `auto` ring only |
+| Login/registration | 10% black inset box-shadow | Same inset shadow; no additional change from hover | Browser `auto` ring only |
+| Women clothing nav link | No computed change in scope | No computed change in scope | Browser `auto` ring only |
+| Search input | No computed change in scope | Parent form border becomes 1px solid `#191919` | Same parent form border; clears after blur |
+| Product link `/products/443158688` | Descendant image scales to 1.2 | Same image scale; no additional change from hover | Browser `auto` ring; subsequent child-heart ring excluded |
+| Feed continuation | 10% black inset box-shadow | Same inset shadow; no additional change from hover | Browser `auto` ring only |
+
+No disabled state was sampled. The two unchanged/native-only controls are excluded from `tokens.components`; the four components with measured authored changes are included. No consent button is included.
 
 ## Do's and Don'ts
 
-### Patterns & Anti-Patterns
-
-#### Patterns this DS encodes
-- **Restraint of red.** A single hex (`#d80c18`) marks one action per surface. Red is a finite resource; spending it on everything makes it worth nothing.
-- **Portrait product photography.** 81:100 is non-negotiable — designers crop, not photographers re-shoot.
-- **Borders, not shadows.** Every depth signal is a 1px gray-100 line or a gray-50 fill.
-- **Typography as hierarchy.** No need for color emphasis on the price when 16px/700 vs. 14px/500 already does the work.
-- **Service tiers are colorways.** Safe = indigo; Care = warm amber; Verified = info blue. Each chip teaches the user the brand's product taxonomy without copy.
-
-#### Anti-patterns to refuse
-- ❌ Red used for secondary or tertiary actions (drains the primary).
-- ❌ Square or square-ish thumbnails on product cards (breaks the 81:100 vertical convention and makes phones / sneakers look stunted).
-- ❌ Box-shadow on cards or buttons (introduces an elevation language the rest of the system rejects).
-- ❌ Mixing Noto Sans KR, Apple SD Gothic Neo, or a display face — Pretendard Variable is the contract.
-- ❌ Heart icon without the 10% black inner glow — it disappears on bright photos.
-- ❌ Manufactured urgency copy ("마지막 1개!", "지금 바로!"). The platform's depth IS the urgency.
-- ❌ Modal interruptions where a snackbar would do (z-index 1500 is meant for non-blocking confirmation, not consent gates).
-
 ### Do
-- Reserve Bunjang Red (#d80c18, --color-primary) for the single highest-intent CTA per surface — the only place red appears
-- Build the product card on the 81:100 portrait thumbnail (--bun-ui-aspect-ratio-vertical: 81 / 100) with a 6px radius and #f6f6f6 placeholder bg
-- Signal depth with 1px #e5e5e5 (gray-100) borders and #f6f6f6 (gray-50) tints instead of elevation
-- Set all UI text in Pretendard Variable using only the 400/500/700 weights, letting 16px/700 price outweigh 14px/500 gray-600 (#666) titles
-- Color-code service chips by their dedicated ladders — indigo --color-safe-* for 안전결제, warm-amber --color-care-* for 감정완료, info-blue --color-blue-* for 내폰시세
-- Outline the heart (찜) button with a 10% black inner glow so its white stroke stays legible on any seller photo, flipping to solid --color-red-500 when tapped
+
+- Use the white canvas, dark price, muted metadata and portrait image as the core listing hierarchy.
+- Keep label typography distinct from an enclosing button's inherited font.
+- Reproduce the login and continuation buttons' inset hover/press layer.
+- Put the search focus border on the containing form.
+- Preserve the card's local image zoom while keeping the link box in place.
+- Retain the 10% black paths that help define the heart on varied photographs.
 
 ### Don't
-- Spend red (#d80c18) on secondary or tertiary actions — it drains the single primary it is meant to mark
-- Use square or square-ish thumbnails that break the 81:100 vertical convention and make phones and sneakers look stunted
-- Add box-shadow to any card or button — no sampled element carries elevation, and it contradicts the borders-and-tints depth language
-- Mix in Noto Sans KR, Apple SD Gothic Neo, or any display face — Pretendard Variable carries 100% of UI text
-- Manufacture urgency with copy like '마지막 1개!' or '지금 바로!' — the platform's listing depth is the urgency, and only price typography earns emphasis
-- Reuse partner login colors (kakao #fae100, naver #03cf5d, etc.) or interrupt with a modal where a z-index 1500 snackbar would do
 
----
+- Turn a named palette primitive into an unverified service-badge recipe.
+- Treat a native `auto` outline as a Bunjang color or authored focus token.
+- Apply the card anchor's 0px radius to the separately rounded image.
+- Infer a no-gradient, no-shadow or one-red-action rule from this capture.
+- Render a declared fallback face as the measured product face.
 
 ## Voice & Tone
 
-### Microcopy & Voice (analysis-only — do not transplant phrases verbatim)
+The captured web labels are short and task-specific: login/registration, categories, favorites, recently viewed items and feed continuation. Listing ages use relative time, including the measured card's 11-day age. The app nudge ends with an exclamation mark, so an absolute rule against exclamation marks would not describe this surface.
 
-Bunjang's voice on the home surface is **direct, fast, lower-case-energy even when written in Korean.** Sentences default to plain `~해요/세요` register without exclamation marks. The brand does NOT shout.
+The company's home-redesign explanation speaks conversationally about the different steps involved in buying and selling. Its campaign writing talks about changing interests and making room for the next thing one likes. Those observed patterns support concise task labels alongside more personal editorial copy; they do not establish a ban on excitement or urgency. [Product explanation](https://bgzt.co.kr/article/625), [campaign history](https://bgzt.co.kr/article/424).
 
-Observed patterns:
-- CTAs use verbs over nouns: "앱 다운로드" not "앱 다운로드 페이지로"
-- App-install nudges acknowledge the user's autonomy: the banner copy frames the app as a *better* path, not the only path
-- Product cards never editorialize the listing — no "🔥 인기!" "마지막 1개!" — the only emphasis comes from typography weight on the price
-- Time stamps are conversational ("19시간 전") not absolute ("2026-05-13 22:14")
-- Region is abbreviated to the smallest disambiguating unit ("강남" not "서울특별시 강남구")
+## Agent Prompt Guide
 
-**Voice principles when you write Bunjang-tier copy:**
-1. **Verb-first, present-tense.** Push the next action; don't describe the current state.
-2. **No urgency manufacturing.** Bunjang trusts that scarcity is already real — there are 6 million listings and the user knows it.
-3. **Specificity over enthusiasm.** "오늘 19시간 전 등록" beats "방금 막!"
-4. **The price is the headline.** Never write a marketing line above a price; let the price be loud and let the title be quiet.
-5. **Respect the trader.** Both buyer and seller are users — never copy that flatters one side at the other's expense.
+The following are design translations of the measured surface, not additional company rules. This reference is useful for a marketplace or classified feed where users compare many listings by photograph, price, title and relative age.
 
-### Brand Voice Summary
-
-If Karrot is your warm neighbor who'll meet you at the playground after work, Bunjang is the high-volume trader at the next desk who already has the link, the price, and the timestamp — and who will absolutely close the deal before lunch. Both serve the same market; they serve it from completely different temperaments.
-
-Bunjang's interface earns trust by being *unsentimental about its job*. White canvas, monochrome type, one red button. The promise is not warmth — it's **velocity and price discovery**. Six million listings, sort by lowest, scroll until you find it. The internal DS (`bun-ui`) is the rails; the marketplace is the freight.
-
-## Governance
-
-### Verification footer
-
-**Verified:** 2026-05-14
-**Verifier:** omd:add-reference live capture
-**URL:** https://m.bunjang.co.kr/
-
-#### Tier 1 — Live inspection (PASS)
-- Chrome DevTools Protocol over `:9222` (websocket, `suppress_origin=True` to bypass `--remote-allow-origins` block)
-- Two viewport captures: desktop 1280×713 dpr=2 + mobile-emulated 390×844 dpr=3 (iPhone UA)
-- 73 CSS custom properties extracted from `:root` via `getComputedStyle(document.documentElement)`
-- 211 DOM nodes sampled across header / nav / cards / buttons / footer / price / heart / meta
-- 9 raw_samples preserved in `assets/_reference/.live-inspect-proof.json`
-- Logo SVG archived in `assets/_reference/logo-icon.svg`
-
-#### Tier 1 — Official published DS (NEGATIVE — documented)
-Attempted lookups (all 2026-05-14):
-- `https://design.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://bun-ui.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://tech.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://brand.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://company.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://blog.bunjang.co.kr/` → DNS no-resolve (000)
-- `https://medium.com/bunjang-tech/` → 404
-- `https://github.com/bunjang` → 200 but **org has no public repos / members / packages**
-- `https://www.npmjs.com/package/@bunjang/bun-ui` → 403 (package does not exist on public npm)
-
-**Conclusion:** Bunjang operates a real, mature internal design system branded **"Bun UI"** (proven by `--bun-ui-*` CSS-variable prefix, vanilla-extract class-name patterns `Box__7nn0kn17`, `Flex__wsrgth3`, `Typography_typography__1wr8iu13`, and explicit z-index/radius/aspect-ratio token families). However, as of the verification date there is **no public Storybook, no public npm package, no published documentation site, and no public GitHub presence**. The DS exists; the public artifacts do not.
-
-#### Tier 2 — 3rd-party indexes (NEGATIVE)
-- `https://getdesign.md/bunjang` → "No designs found for 'bunjang'"
-- `https://styles.refero.design/?q=bunjang` → no entry
-
-Consistent with the KR-10 systemic finding (2026-05-13 audit): English-tooling-oriented DS directories have weak Korean coverage.
-
-#### Tier 3 — Reconciliation
-This DESIGN.md reconciles Tier 1 live capture as the sole authoritative source. Token names, hex values, type scale, radius scale, z-index scale, aspect-ratio tokens, and semantic palette ladders are all taken verbatim from production CSS custom properties. Component anatomy and microcopy patterns are observed from rendered DOM and live text, then re-described in our own analytical voice — **no taglines or copy are transplanted verbatim**. Brand red, gray ladder, and Bun UI primitives are documented as a *reference* for downstream design work, not for re-use of brand assets.
-
-#### IP / asset guardrails
-- Logo SVG is archived in `assets/_reference/` for verification of capture fidelity only — **not for downstream use** in derivative products
-- No taglines, no marketing copy, no product-listing text is reproduced verbatim
-- Brand color names ("Bunjang Red"), service-feature names ("안전결제", "감정완료", "내폰시세") are used descriptively for accurate documentation — they are not appropriated as product names
-- Voice analysis in §9 describes patterns observed in production; the practical guidance is original interpretation
-
-### Known Gaps
-
-- **Contrast, `input-search`.** Text `#191919` on `#00000000` measures 1.19:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `chip-info`.** Text `#ffffff` on `#027aff` measures 4.01:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- Build a white secondary login action, 42.8px high, 6px radius, 12px 20px padding, `#4c4c4c` 14px/700 Pretendard Variable label and a 1px `#e5e5e5` border. Add the measured 10% black inset shadow on hover and held press.
+- Build a 400×51.2px continuation action with a `#f6f6f6` ground and `#4c4c4c` 16px/700 label, with the same inset state layer.
+- Build a transparent 15px/500 search input inside a light form; make the form border `#191919` while the input is focused.
+- Build a transparent product link with the 81:100 photo primitive and an 18px/700 price. Hover or hold the link to scale the image to 1.2 while leaving its layout box unchanged.

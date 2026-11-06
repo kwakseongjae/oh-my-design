@@ -1,0 +1,448 @@
+{
+  "format": "3.0.0",
+  "catalog": {
+    "id": "books",
+    "name": "Books.com.tw (博客來)",
+    "country": "TW",
+    "category": "ecommerce",
+    "homepage": "https://www.books.com.tw/",
+    "primary_color": "#12ae57",
+    "logo": {
+      "type": "favicon",
+      "slug": "https://www.google.com/s2/favicons?domain=books.com.tw&sz=128"
+    },
+    "verified": "2026-11-06",
+    "added": "2026-11-06"
+  },
+  "tokens": {
+    "source": "live-extract",
+    "extracted": "2026-11-06",
+    "components_harvested": true
+  },
+  "claimPaths": "design-md-v3",
+  "verification_v2": {
+    "schema": 2,
+    "checked": "2026-11-06",
+    "surfaces": [
+      {
+        "id": "home",
+        "kind": "product-surface",
+        "url": "https://www.books.com.tw/",
+        "inspected": "2026-11-06"
+      }
+    ],
+    "sources": [
+      {
+        "id": "home-live",
+        "kind": "product-surface",
+        "url": "https://www.books.com.tw/",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "control-404",
+        "kind": "product-surface",
+        "url": "https://www.books.com.tw/zz-this-does-not-exist",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "company",
+        "kind": "official-doc",
+        "url": "https://www.books.com.tw/isi/aboutbooks.htm?loc=footer_01_001",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "imprint",
+        "kind": "product-surface",
+        "url": "https://www.books.com.tw/web/sys_sbbrand/0/AX000000001_0000002883?loc=P_0003_028",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "anniversary",
+        "kind": "official-doc",
+        "url": "https://www.uniopen.com/news/content/6895a39af8cb7039e870fa1a",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "membership",
+        "kind": "official-doc",
+        "url": "https://www.books.com.tw/activity/vip/index.html",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "group-affiliates",
+        "kind": "official-doc",
+        "url": "https://www.7-11.com.tw/Company/esg/aboutus.aspx",
+        "captured": "2026-11-06"
+      },
+      {
+        "id": "icon-font-css",
+        "kind": "brand-asset",
+        "url": "https://jci.book.com.tw/css/iconfont/icon_01.css",
+        "captured": "2026-11-06"
+      }
+    ],
+    "conflicts": [],
+    "claims": {
+      "colors.canvas": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.foreground": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.link-hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.muted-link": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.neutral-fill": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.paragraph-accent": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.primary": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.search-border": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "colors.search-category": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.textColor": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.typography": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.height": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.hover": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.padding": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.pressed": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.rounded": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.type": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "components.book-title.width": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "live-inspect",
+        "captured": "2026-11-06"
+      },
+      "rounded.none": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.category.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.category.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.category.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.category.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.product-title.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.product-title.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.product-title.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.product-title.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.search.lineHeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.search.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.search.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.search.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.utility.fontSize": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.utility.use": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      },
+      "typography.utility.fontWeight": {
+        "surface_id": "home",
+        "source_id": "home-live",
+        "method": "computed-style",
+        "captured": "2026-11-06"
+      }
+    }
+  },
+  "lint": {
+    "tool": "@google/design.md@0.4.0",
+    "summary": {
+      "errors": 0,
+      "warnings": 16,
+      "infos": 2
+    },
+    "byRule": {
+      "unknown-typography-property": 4,
+      "extension-component-property": 4,
+      "orphaned-tokens": 8
+    },
+    "findings": [
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.utility.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.category.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.search.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": null,
+        "path": "typography.product-title.use",
+        "message": "'use' is not a recognized typography property. Valid properties: fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, fontFeature, fontVariation."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.book-title.type",
+        "message": "'type' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.book-title.hover",
+        "message": "'hover' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.book-title.pressed",
+        "message": "'pressed' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "broken-ref",
+        "path": "components.book-title.use",
+        "message": "'use' is not a recognized component sub-token. Valid sub-tokens: backgroundColor, textColor, typography, rounded, padding, size, height, width."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.foreground",
+        "message": "'foreground' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.canvas",
+        "message": "'canvas' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.search-category",
+        "message": "'search-category' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.search-border",
+        "message": "'search-border' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.link-hover",
+        "message": "'link-hover' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.paragraph-accent",
+        "message": "'paragraph-accent' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.muted-link",
+        "message": "'muted-link' is defined but never referenced by any component."
+      },
+      {
+        "severity": "warning",
+        "rule": "orphaned-tokens",
+        "path": "colors.neutral-fill",
+        "message": "'neutral-fill' is defined but never referenced by any component."
+      }
+    ]
+  },
+  "migration": {
+    "from": "omd-0.1",
+    "sourceSha256": "f7d40b95893b04a8f0dc65c4ba66cf01db49e701a22a7b095f84bf2c8064e8e3",
+    "overlay": null,
+    "prose": [],
+    "numeric": [
+      "typography.utility.fontSize",
+      "typography.category.fontSize",
+      "typography.search.fontSize",
+      "typography.product-title.fontSize",
+      "rounded.none",
+      "components.book-title.rounded"
+    ],
+    "order": {
+      "": [
+        "id",
+        "name",
+        "country",
+        "category",
+        "homepage",
+        "primary_color",
+        "logo",
+        "verified",
+        "added",
+        "omd",
+        "tokens",
+        "verification_v2"
+      ],
+      "tokens": [
+        "source",
+        "extracted",
+        "colors",
+        "typography",
+        "rounded",
+        "components",
+        "components_harvested"
+      ]
+    }
+  }
+}

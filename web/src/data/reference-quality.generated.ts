@@ -592,6 +592,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "aliyun",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 18,
+    "conflictCount": 0,
+    "tier1SourceCount": 18,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "amazingtalker",
     "status": "partial",
     "verifiedAt": "2026-06-08",
@@ -615,6 +637,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "andpad",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 78,
+    "evidenceClaimCount": 78,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -1247,6 +1291,30 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "books",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 35,
+    "evidenceClaimCount": 35,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 8,
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ],
+    "paletteGrounding": null
+  },
+  {
     "id": "booth",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -1295,30 +1363,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "bunjang",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-14",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 113,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 126,
+    "evidenceClaimCount": 126,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
     "conflictCount": 0,
-    "tier1SourceCount": 0,
-    "componentCount": 8,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "proof_incomplete",
-      "tier1_source_missing",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 14,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.4
+    "paletteGrounding": null
   },
   {
     "id": "buzzvil",
@@ -2102,33 +2165,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cookpad",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 87,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 2,
-    "componentCount": 9,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.75
+    "tokenSource": "live-extract",
+    "claimCount": 90,
+    "evidenceClaimCount": 90,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 17,
+    "conflictCount": 0,
+    "tier1SourceCount": 17,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "coolblue",
@@ -2288,6 +2343,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_noninteractive_only"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "cw",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 76,
+    "evidenceClaimCount": 76,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 7,
+    "conflictCount": 0,
+    "tier1SourceCount": 7,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -3347,6 +3424,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "everytime",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 37,
+    "evidenceClaimCount": 37,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -4689,6 +4788,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "hktvmall",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 64,
+    "evidenceClaimCount": 64,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "hm",
     "status": "verified_v2",
     "verifiedAt": "2026-09-26",
@@ -6013,30 +6134,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "kkday",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 117,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 140,
+    "evidenceClaimCount": 140,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 9,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 4,
-    "reasonCodes": [
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "tier1SourceCount": 8,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -6105,6 +6220,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "kodansha",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 71,
+    "evidenceClaimCount": 71,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
+    "conflictCount": 0,
+    "tier1SourceCount": 12,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -8170,32 +8307,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "note",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 50,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 72,
+    "evidenceClaimCount": 72,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 6,
+    "tier1SourceCount": 22,
+    "componentCount": 4,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.375
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "notion",
@@ -8720,6 +8850,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "parknshop",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 62,
+    "evidenceClaimCount": 62,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
+    "conflictCount": 0,
+    "tier1SourceCount": 12,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "patreon",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -9037,6 +9189,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.136
   },
   {
+    "id": "peterpanz",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 75,
+    "evidenceClaimCount": 75,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 19,
+    "conflictCount": 0,
+    "tier1SourceCount": 19,
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "petfriends",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -9112,31 +9286,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "pinkoi",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-15",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 126,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 91,
+    "evidenceClaimCount": 91,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
     "conflictCount": 0,
-    "tier1SourceCount": 1,
-    "componentCount": 10,
-    "interactiveComponentCount": 6,
-    "statedComponentCount": 0,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
-    ],
-    "paletteGrounding": 0.652
+    "tier1SourceCount": 22,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "pinterest",
@@ -10955,32 +11123,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "smartnews",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 68,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
-    "conflictCount": 1,
-    "tier1SourceCount": 2,
-    "componentCount": 7,
-    "interactiveComponentCount": 4,
+    "tokenSource": "live-extract",
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 22,
+    "conflictCount": 0,
+    "tier1SourceCount": 22,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
-    "paletteGrounding": 0.429
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "snapchat",
@@ -11786,6 +11947,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "syosetu",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 77,
+    "evidenceClaimCount": 77,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
+    "conflictCount": 0,
+    "tier1SourceCount": 15,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -12723,6 +12906,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "unext",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 67,
+    "evidenceClaimCount": 67,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "uniqlo",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-06-06",
@@ -13430,6 +13635,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "wooricard",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 61,
+    "evidenceClaimCount": 61,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "workday",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -13988,10 +14215,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 409,
+  "verified_v2": 427,
   "partial": 89,
-  "legacy_snapshot": 87,
-  "total": 585
+  "legacy_snapshot": 81,
+  "total": 597
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

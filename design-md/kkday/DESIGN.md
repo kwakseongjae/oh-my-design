@@ -1,141 +1,161 @@
 ---
 name: KKday
 colors:
-  primary: '#ff5c00'
-  primary-hover: '#e65300'
-  brand: '#ff5c00'
+  primary: '#26bec9'
+  primary-button: '#1ab6c1'
+  primary-hover: '#13a3b6'
+  primary-deep: '#03748a'
+  primary-text-deep: '#068b9f'
+  brand-tint: '#f0fafb'
+  brand-tint-strong: '#cef0f3'
   canvas: '#ffffff'
-  foreground: '#1a1a1a'
-  muted: '#888888'
   on-primary: '#ffffff'
-  surface: '#f7f7f8'
-  hairline: '#e5e5e6'
-  border-mid: '#d9d9d9'
-  body: '#4a4a4a'
-  brand-tint: '#fff0e8'
-  success: '#1fa463'
-  warning: '#f5a623'
-  error: '#e0353b'
-  rating: '#ffb400'
+  foreground: '#212121'
+  secondary: '#727272'
+  muted: '#9c9da0'
+  text-light: '#babbbe'
+  surface: '#f1f4f8'
+  surface-soft: '#f7fafc'
+  hairline: '#e6e9ed'
+  border-mid: '#d5d6db'
+  critical: '#e65f50'
+  critical-surface: '#fff2f2'
+  sale: '#ef7a70'
+  warning: '#f5b53d'
+  highlight: '#ffb400'
+  loyalty-silver: '#2e97ff'
+  loyalty-gold: '#cc8f00'
+  loyalty-platinum: '#9d6dff'
+  loyalty-diamond: '#384b68'
+  category-label: '#333333'
+  carousel-icon: '#000000'
 typography:
-  hero:
-    fontSize: 32px
-    fontWeight: 700
-    use: Hero headline
   section-heading:
-    fontSize: 23px
+    fontSize: 24px
     fontWeight: 700
-    use: Section heading
+    lineHeight: 30px
+    use: Root --kk-text-h4 tokens; not a measured hero size
+  heading-small:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 28px
+    use: Root --kk-text-h5 tokens
+  heading-xs:
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 26px
+    use: Root --kk-text-h6 tokens
   card-heading:
-    fontSize: 19px
+    fontSize: 16px
     fontWeight: 700
-    use: Card heading
+    lineHeight: 24px
+    use: Root --kk-text-subtitle-lg tokens
+  subtitle:
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 20px
+    use: Root --kk-text-subtitle-md tokens
   price:
     fontSize: 18px
     fontWeight: 700
-    use: Price, prominent bold
+    lineHeight: 18px
+    use: Root --kk-text-price-bold-xl tokens; separate from the sampled card price
   body:
-    fontSize: 15px
+    fontSize: 14px
     fontWeight: 400
-    use: Body, card title
-  body-small:
-    fontSize: 13px
+    lineHeight: 20px
+    use: Root --kk-text-body-md tokens
+  body-large:
+    fontSize: 16px
     fontWeight: 400
-    use: Location label, secondary
+    lineHeight: 24px
+    use: Root body-lg tokens; also the measured search input
   caption:
     fontSize: 12px
     fontWeight: 400
-    use: Caption, meta
+    lineHeight: 16px
+    use: Root --kk-text-body-sm tokens; sampled trust-chip child label
+  category-label:
+    fontSize: 14px
+    fontWeight: 700
+    use: Measured visible KKday專屬團 label
+  navigation:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 23.8px
+    use: Measured 門票/體驗 link
 rounded:
+  xs: 2px
   sm: 4px
   md: 8px
-  lg: 8px
-  full: 9999px
+  lg: 12px
+  xl: 16px
+  search-button: 24px
+  link-box: 0px
 spacing:
+  s025: 2
   xs: 4
+  s075: 6
   sm: 8
   md: 12
   base: 16
+  s250: 20
   lg: 24
+  s400: 32
   xl: 40
-  xxl: 64
+  s600: 48
 components:
-  button-primary:
+  search-submit:
     type: button
-    backgroundColor: '#ff5c00'
+    backgroundColor: '#1ab6c1'
     textColor: '#ffffff'
-    rounded: 8px
-    padding: 10px 20px
-    typography: 16px / 600
-    hover: '#e65300'
-    use: Book Now, Add to Cart, primary conversion CTA
-  button-outline:
+    rounded: 24px
+    height: 48px
+    padding: 12px
+    typography: 14px / 400
+    hover: 'bg #13a3b6'
+    pressed: 'bg #13a3b6'
+    use: 搜尋 hero search button. Initial 48×48 icon control with a 20px SVG. The 16px/700 text label is initially hidden. Expansion observed during the Tab walk persists after blur, so it is not a focus token.
+  carousel-next:
     type: button
     backgroundColor: '#ffffff'
-    textColor: '#1a1a1a'
-    border: '1px solid #d9d9d9'
-    rounded: 8px
-    padding: 10px 20px
-    typography: 16px / 600
-    hover: '#f7f7f8'
-    use: View Details, secondary actions
-  button-ghost:
+    textColor: '#000000'
+    height: 45px
+    padding: 0px
+    typography: 14px / 400
+    hover: opacity 0.5
+    pressed: opacity 0.5
+    use: First offers-carousel next-arrow button; 45×45, circular with CSS border-radius 50%, 24px SVG; measured shadow rgba(60, 64, 67, 0.2) 0px 4px 10px 0px. No accessible label was present.
+  nav-experiences:
     type: button
-    backgroundColor: transparent
-    textColor: '#ff5c00'
-    rounded: 8px
-    padding: 8px 12px
-    use: Inline tertiary actions, See more
-  input:
-    type: input
-    backgroundColor: '#ffffff'
-    textColor: '#1a1a1a'
-    border: '1px solid #d9d9d9'
-    rounded: 8px
-    padding: 10px 14px
-    typography: 16px / 400
-    focus: 'border #ff5c00'
-    states: 'error border #e0353b'
-    use: Search, traveler details, contact forms
-  card-experience:
+    textColor: '#212121'
+    rounded: 0px
+    height: 59.8px
+    padding: 18px 0px
+    typography: 14px / 400
+    hover: 'fg #26bec9; ::after underline 96px × 2px in #26bec9'
+    pressed: 'fg #26bec9; ::after underline 96px × 2px in #26bec9'
+    use: 門票/體驗 is a transparent category navigation link on white; measured width 96px. Browser auto focus outline excluded.
+  category-card:
     type: card
-    backgroundColor: '#ffffff'
-    border: '1px solid #e5e5e6'
-    rounded: 8px
-    padding: '0'
-    use: Grid product card, image-led with title/rating/price/trust chips
-  badge-sale:
-    type: badge
-    backgroundColor: '#ff5c00'
-    textColor: '#ffffff'
-    rounded: 4px
-    padding: 2px 6px
-    typography: 12px / 700
-    use: Discount/sale ribbon on product image
-  badge-trust:
-    type: badge
-    backgroundColor: '#fff0e8'
-    textColor: '#1fa463'
-    rounded: 4px
-    padding: 2px 8px
-    typography: 12px / 500
-    use: Instant confirmation, Free cancellation
-  badge-urgency:
-    type: badge
-    backgroundColor: transparent
-    textColor: '#f5a623'
-    typography: 12px / 600
-    use: Only 2 left, Selling fast
-  tab-nav:
-    type: tab
-    textColor: '#1a1a1a'
-    typography: 15px / 500
-    active: 'orange #ff5c00 active/hover accent'
-    use: Sticky header nav links
-fonts:
-  roles:
-    sans: '-apple-system'
-    mono: SF Mono
+    textColor: '#333333'
+    rounded: 0px
+    height: 181.1px
+    padding: 0px
+    typography: 14px / 400
+    hover: parent .hot-activity-card opacity 0.8
+    pressed: parent .hot-activity-card opacity 0.8
+    use: KKday專屬團 category link on the white page, 177.5px wide. Geometry and font describe the transparent anchor; fg describes its visible 14px/700 child label. The visual wrapper radius was not measured. Browser link colours excluded.
+  product-card:
+    type: card
+    textColor: '#212121'
+    rounded: 0px
+    height: 321px
+    padding: 0px
+    typography: 14px / 400
+    hover: 'image wrapper opacity 0.8; h3 title underline solid #212121'
+    pressed: 'image wrapper opacity 0.8; h3 title underline solid #212121'
+    use: Taiwan PASS 台鐵版 link /zh-tw/product/284326, 273.8px wide. Transparent anchor over a white child surface; fg describes the visible title, not the anchor's default link colour. Image approximately 274×153; wrapper radius unmeasured. Browser auto focus outline excluded.
 ---
 
 # Design System Inspiration of KKday
@@ -144,434 +164,223 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-KKday is a Taiwan-born online travel marketplace — the place a traveler books a tea-ceremony in Kyoto, a SIM card for Bangkok, or a high-speed-rail pass before a trip — and its design system is built for one job: turning the overwhelming abundance of "things to do" into a confident, scannable, conversion-ready surface. The atmosphere is **bright, warm, and energetic**, anchored by a saturated travel-orange (`#FF5C00`) that behaves like a sunrise over a white, photography-dense canvas. Where a luxury OTA might whisper in muted neutrals, KKday is unembarrassed about enthusiasm: orange CTAs, big colorful destination imagery, and price/discount signals that pop. The feel is closer to a vibrant night-market stall than a quiet concierge desk — abundance presented cleanly.
+KKday is a Taiwan-founded marketplace for local travel experiences, attraction tickets, tours and transport. Its own introduction presents the company as a travel companion that makes independent travel easier to arrange and brings travelers closer to local experiences. The founder profile dates Ming Chen's creation of KKday to 2014. [Company introduction](https://www.kkday.com/static/zh-tw/about/about.html)
 
-Typography runs a **locale-aware system stack** (no custom display typeface), leading with Latin system sans and layering Traditional Chinese (`PingFang TC`, `Microsoft JhengHei`), Simplified Chinese, Japanese, Korean, and Thai fallbacks — because KKday operates across 90+ markets and every traveler must read in their own script. Hierarchy is **weight- and color-driven**: bold product titles, bold prices, lighter metadata, with orange reserved for action and price-urgency. The layout is **card-grid first** — products, experiences, and destinations all resolve to image-led cards in responsive grids, optimized for browse-many-options behavior.
+The measured homepage is the Traditional Chinese Taiwan edition (`www.kkday.com/zh-tw`, HTML `lang="zh-TW"`). Its expression combines a turquoise wordmark and search action, a large travel photograph, a short white headline, and a white browsing surface. Category photographs lead into destination tiles and product carousels. Dark titles, review counts, cancellation conditions, struck-through original prices and discount tags give the product cards several distinct scan points. These are observations of the captured homepage, not an official published design philosophy.
 
-What distinguishes KKday from a generic e-commerce template is the discipline around its single hot color. Orange is the **action and conversion signal** — primary CTAs, "Book Now", sale badges, selected states — and the rest of the palette stays deliberately neutral so that orange always reads as "do this next." It is a high-density commerce surface engineered for a traveler comparing twelve tours at once, where warmth invites and orange directs.
+The colour structure is particularly useful to reproduce: base primary **`#26bec9`**, search-button fill **`#1ab6c1`**, and button hover **`#13a3b6`** are separate values. The sampled rating star is turquoise too; the sampled discount tag is coral. Colour therefore separates discovery, rating and promotional information without making every signal identical.
 
-**Key Characteristics:**
-- **Travel-orange (`#FF5C00`)** as the singular hot/action color — CTAs, sale badges, selected states
-- Locale-aware system font stack (TC / SC / JP / KR / TH fallbacks) — no custom typeface, design-as-localization
-- White-dominant, photography-dense canvas — destination/experience imagery carries the page
-- Card-grid-first layout for browse-many-options travel-marketplace behavior
-- Weight + color drive hierarchy: bold titles, bold prices, neutral metadata
-- Conservative radius (`8px` workhorse on cards/buttons, smaller on badges) for a clean commerce feel
-- Price and discount signals are first-class — strikethrough originals, orange sale emphasis
-- Trust signals everywhere — ratings, review counts, "instant confirmation", "free cancellation" chips
-- Warm, enthusiastic, abundance-clean register — the night-market energy, organized
-- Neutral gray scale for text hierarchy so orange never has to compete
+KKday continues to develop the booking relationship beyond individual purchases. Its May 2026 official article reports an April membership update that added Gold between Silver and Platinum. The live stylesheet carries separate silver, gold, platinum and diamond colour families. That connects the current product evolution to a concrete extension of the palette; it does not establish a rebrand. [2026 membership article](https://www.kkday.com/en/blog/63077/kkday-promo-codes)
 
-### Primary tasks
+#### Primary tasks
 
-- Book a local experience before you land in a city
-- Compare a dozen tours on rating and price
-- Pre-book airport transfers and a SIM card for a trip
-- Buy theme-park tickets late to skip the ticket line
-- Show a mobile voucher at the gate without a printout
-- Save tours to a wishlist and wait for a sale
+- Discover and book local experiences by destination, before arrival or during a trip.
+- Compare the rating, price and usage conditions visible on product cards.
+- Find attraction tickets, transport passes, eSIMs and airport transfers.
+- Retrieve a digital voucher or QR code, following the experience's redemption instructions.
+
+The booking and voucher tasks are documented in KKday's [own product explanation](https://www.kkday.com/en/blog/85928/kkday-reviews-about-us); the comparison fields are visible in the capture.
 
 ### Brand Narrative
 
-KKday was founded in **2014 in Taipei, Taiwan**, by **Ming Chen** — a travel-industry veteran who had previously built and taken Star Travel and Ezfly to IPO ([en.wikipedia.org/wiki/KKday](https://en.wikipedia.org/wiki/KKday)). The thesis: while flights and hotels had been commoditized online for years, the **"things to do" layer of travel — the tea ceremony, the day tour, the airport transfer, the local SIM card — remained fragmented, offline, and language-locked.** KKday set out to be the marketplace that aggregates curated local experiences and makes them bookable, in your language, before you land.
+Ming Chen founded KKday in 2014, according to the company's founder profile. The official 2026 article locates the founding in Taipei and describes earlier involvement with ezTravel and Star Travel. Its core product is arranging individual destination experiences online, with digital redemption instructions. [Founder profile](https://www.kkday.com/static/zh-tw/about/about.html), [official 2026 company account](https://www.kkday.com/en/blog/63077/kkday-promo-codes)
 
-The design language is the product-surface expression of that thesis. Travel is overwhelming — there are thousands of things to do in any destination — so the system is engineered to make abundance feel **navigable and trustworthy** rather than chaotic: image-led cards for fast visual scanning, bold prices and ratings as decision anchors, and trust chips (instant confirmation, free cancellation) that defuse the anxiety of booking an experience in a place you've never been. The saturated orange is the warmth of anticipation made into an action color — the "yes, do this" of trip-planning.
+The 2026 article reports 350,000+ experiences in 92 countries and 550 cities, citing a December 2024 announcement. It reports US$250 million+ raised and names H.I.S. and Cool Japan Fund among investors. Keep the inventory figure attached to its stated date. No official visual rebrand announcement was found.
 
-KKday now operates across **90+ countries with over 300,000 curated experiences**, has raised over **US$250 million** across funding rounds (Series D of $70M in late 2024, with Japanese travel giant **H.I.S.** among its investors), and has expanded from a pure activities marketplace toward an **all-in-one travel super-app** spanning tours, tickets, transport, hotels, SIM/WiFi, and rail passes — while operating B2B and luxury-travel subsidiaries (Rezio, FineDayClub, ActivityJapan). ([en.wikipedia.org/wiki/KKday](https://en.wikipedia.org/wiki/KKday)) <!-- source: Wikipedia via WebFetch 2026-05-19; metrics not independently audited -->
+The opened terms name regional operating entities and refer to KKday Holdings Co., Ltd. and affiliates. The Taiwan company footer lists tourism provider 酷遊天國際旅行社股份有限公司 and other-products provider 酷遊天股份有限公司, with a Taipei contact address. KKday's Korean company page explicitly places its headquarters in Taiwan. This supports the Taiwan country attribution while keeping contracting entities separate from the place of operation. [Terms](https://www.kkday.com/static/en/about/TermsAndConditions.html), [Korean company page](https://www.kkday.com/static/ko/about/about.html)
 
 ### Principles
 
-1. **Orange is the path, not the paint.** The hot orange exists to point a comparing traveler at the next action. *UI implication:* One dominant orange action per decision moment (the Book CTA, the selected date). Keep surrounding surfaces neutral so orange always means "proceed."
+The company introduction explicitly discusses honest reviews, selecting service providers, an integrated transaction platform, and easy booking. Its Korean culture page describes turning crises into opportunities, working with autonomy and responsibility, collaborating with global colleagues, and adapting to change. These are company statements; they are not evidence for invented colour, motion or accessibility principles. [Company introduction](https://www.kkday.com/static/zh-tw/about/about.html), [culture page](https://www.kkday.com/static/ko/about/about.html)
 
-2. **Abundance must feel navigable.** Travelers face thousands of options; the system's job is fast, confident comparison. *UI implication:* Card grids with consistent anchors — image, title, rating, price, trust chip in the same position every time. Predictable layout lowers cognitive load across many cards.
-
-3. **Trust is a component, not a footnote.** Booking an experience abroad is anxious; reassurance must be visible at the moment of decision. *UI implication:* Surface instant-confirmation / free-cancellation / mobile-voucher chips on the card and the CTA area — not buried in fine print.
-
-4. **Locale is infrastructure.** Every traveler reads in their own script; the brand is authored per market. *UI implication:* Always use the full locale-aware font stack; route microcopy through locale bundles; show prices in the user's currency exactly.
-
-5. **Honest urgency only.** Scarcity signals must be factual, never manufactured. *UI implication:* Use amber `#F5A623` for real low-availability states; never use countdown manipulation or fake "selling fast" without data behind it.
-
-6. **The image is the salesperson.** Experiences are bought on the feeling the photo evokes. *UI implication:* Cards are image-led with consistent aspect ratios and quality bars; chrome stays minimal so the destination carries the page.
+For construction, the measured interface gives three practical priorities: separate primary action from sale colour; keep review and usage conditions adjacent to a product's price; and preserve the specific feedback of links, cards and arrow buttons. These priorities are derived from this homepage observation.
 
 ### Personas
 
-*Personas are fictional archetypes informed by publicly described KKday user segments (TW/HK/JP independent travelers and APAC outbound tourists), not individual people.*
-
-**怡君 (Yi-Jun), 28, Taipei.** Plans her own trips meticulously, opens KKday weeks before departure to pre-book day tours, airport transfers, and a SIM card for Japan. Compares a dozen tour options on rating and price, and will only book ones with "instant confirmation" because she finalizes her itinerary the night before flying.
-
-**Kenji, 35, Osaka.** Books last-minute weekend experiences and theme-park tickets to skip ticket lines. Uses the mobile app almost exclusively, values mobile-voucher delivery, and cares most about whether the voucher works at the gate without a printout.
-
-**Wing, 24, Hong Kong.** Budget-conscious solo traveler who discovers experiences through curated collections and social posts, bookmarks tours to a wishlist, and waits for a sale badge before booking. Reads reviews carefully and abandons anything with opaque cancellation terms.
+KKday's own product explanation identifies travelers who prefer digital booking and advance planning, including first-time international travelers, families or groups managing several bookings, and theme-park visitors using digital vouchers. These are stated audiences, not researched personas with invented names, ages or preferences. [Official audience description](https://www.kkday.com/en/blog/85928/kkday-reviews-about-us)
 
 ## Colors
 
-> **Note:** Live computed-style verification was not completed this pass (the inspection browser session redirected unreliably). Values below combine the brief-provided primary, KKday's known orange-led commerce identity, and conventional OTA roles. Treat hexes other than the primary as well-grounded approximations pending live re-inspection.
+The homepage exposed **511 computed root custom properties**: 497 `--kk-*`, 12 `--layout-*`, and two Swiper defaults. The stylesheet walk recorded 618 unique declared property names and no unreadable stylesheets. KKday's role names are explicit; the following values come from them unless a control is named.
 
-### Primary (Action / Hot)
-- **KKday Orange** (`#FF5C00`): Primary brand + action color. Primary CTAs ("Book Now", "Add to Cart"), selected states, key emphasis, sale signal. The sunrise.
-- **Orange Hover** (`#E65300`): Darker press/hover state for orange CTAs.
-- **Orange Tint** (`#FFF0E8`): Very light orange wash for selected-card backgrounds, highlight rows, soft emphasis surfaces.
+| Role | Value | Live evidence |
+|---|---|---|
+| Base primary | `#26bec9` | `--kk-color-background-primary-medium`; nav hover and sampled star fill |
+| Primary action | `#1ab6c1` | `--kk-color-background-primary-button`; search button rest |
+| Primary dark | `#13a3b6` | `--kk-color-background-primary-dark`; search hover/press |
+| Primary deeper background | `#03748a` | `--kk-color-background-primary-darker` |
+| Primary deeper text | `#068b9f` | `--kk-color-text-primary-darker` |
+| Primary washes | `#f0fafb`, `#cef0f3` | Background primary lighter/light |
+| Canvas / on-action | `#ffffff` | White product child surface; search icon |
+| Foreground | `#212121` | Text darker token; visible product title and nav text |
+| Secondary / muted | `#727272`, `#9c9da0` | Text dark/medium; review metadata and original price |
+| Light text | `#babbbe` | Text light token; wishlist icon container |
+| Surface | `#f1f4f8` | Surface light token; cancellation and confirmation tags |
+| Lighter surface | `#f7fafc` | Background surface lighter token |
+| Light divider / border | `#e6e9ed`, `#d5d6db` | Border lighter/light tokens; search container observations |
+| Critical | `#e65f50` | Text/background critical dark; special-offer labels in survey |
+| Critical wash | `#fff2f2` | Background critical lighter; special-offer tag surfaces |
+| Coral sale fill | `#ef7a70` | Background critical medium; sampled `50% OFF` tag |
+| Warning | `#f5b53d` | Text warning medium token; no warning interaction sampled |
+| Highlight | `#ffb400` | Highlight medium tokens; the sampled rating star uses primary turquoise instead |
+| Category label | `#333333` | Visible `KKday專屬團` child label |
+| Carousel arrow | `#000000` | Sampled next-arrow button's computed icon colour |
 
-### Surface & Background
-- **Pure White** (`#FFFFFF`): Card surfaces, primary content background.
-- **Surface Soft** (`#F7F7F8`): Grouped section background, page tint between white cards.
-- **Surface Hover** (`#EEEEEF`): Hover/pressed neutral surface.
+Membership background-medium tokens are **silver `#2e97ff`**, **gold `#cc8f00`**, **platinum `#9d6dff`**, and **diamond `#384b68`**. These are live token definitions; a member-tier screen was not operated.
 
-### Neutral / Text
-- **Text Primary** (`#1A1A1A`): Headings, product titles, prices. Near-black for maximum legibility against dense imagery.
-- **Text Secondary** (`#4A4A4A`): Secondary copy, descriptions.
-- **Text Muted** (`#888888`): Metadata, timestamps, location labels, captions.
-- **Text Disabled** (`#BDBDBD`): Disabled labels, strikethrough original prices.
+The paragraph-only census is separate from the role named `foreground`: `<p>` ink was white ×28, `rgb(229, 231, 235)` ×1 and `rgb(0, 166, 166)` ×1. White paragraphs and the visible consent layer make that sample unsuitable for declaring a universal dark paragraph colour. The dark foreground above is backed by its named token and the actual product/nav labels.
 
-### Borders & Dividers
-- **Border Light** (`#E5E5E6`): Row dividers, soft separators.
-- **Border Mid** (`#D9D9D9`): Component borders (inputs, outlined cards, secondary button outline).
-
-### Semantic
-- **Success / Confirmed** (`#1FA463`): "Instant confirmation", availability, success toasts. Travel-green, trustworthy.
-- **Warning** (`#F5A623`): Limited-availability, "only 2 left" urgency. Amber, distinct from the orange action color.
-- **Error / Danger** (`#E0353B`): Form validation, failed payment, destructive actions.
-- **Rating Gold** (`#FFB400`): Review-star fills — the trust signal color, separate from the orange brand.
-
-### Accent (legacy)
-- **Heritage Teal** (`#26BEC9`): An older KKday brand teal documented in brand-asset aggregators; treat as a legacy/secondary accent, not the current primary. Modern surfaces lead with orange.
+Swiper defaults and social-provider identity colours are excluded from the brand palette. The full raw property list and colour counts are in the measurement report.
 
 ## Typography
 
-### Font Stack (locale-aware, inferred from OTA/TW conventions)
-| Locale | Stack |
-|---|---|
-| Default | `-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif` |
-| Traditional Chinese | `… "PingFang TC", "Microsoft JhengHei", sans-serif` |
-| Simplified Chinese | `… "PingFang SC", "Microsoft YaHei", sans-serif` |
-| Japanese | `… "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif` |
-| Korean | `… "Apple SD Gothic Neo", "Malgun Gothic", sans-serif` |
-| Thai | `… "Thonburi", "Noto Sans Thai", sans-serif` |
+### Evidence classes
 
-No custom web font — system stacks keep LCP fast across slow APAC connections and respect each market's native reading habits.
+- **Official product use:** no first-party typography guideline was found in the opened sources.
+- **Live-loaded:** the survey's `document.fonts` loaded-face list is empty. No family is promoted to a rendered brand-face token or specimen.
+- **Official distributed assets:** no first-party text-font distribution or font licence was verified. The only visible `@font-face` record is `swiper-icons`, normal 400, served as an embedded WOFF data URL; it is a library icon face, not a text face, and was not reported loaded.
+- **Declared-only:** body and h1 declare `"Noto Sans TC", 微软雅黑, "Microsoft YaHei", sans-serif`. The census's first button declares `system-ui, -apple-system, "Noto Sans TC", "PingFang TC", Arial, sans-serif`; that button is the consent close/allow control. The sampled product controls separately declare `Noto Sans TC`. These declarations do not establish which installed font rendered each glyph.
+- **Unresolved:** the actual rendered Latin and Han faces, other locales' stacks, and a brand monospace face. **Substitute: none chosen.**
 
-### Weights
-- **700 (Bold)**: Product titles, prices, section headings, CTA emphasis.
-- **600 (Semibold)**: Subheads, button labels, selected tabs.
-- **400 (Regular)**: Body, descriptions, metadata.
+### Verified metrics
 
-### Size Scale (px, inferred)
-| Use | Size |
-|---|---|
-| Caption / meta | `12px` |
-| Body small / location label | `13px` |
-| Body / card title | `14–16px` |
-| Price | `16–20px` (bold) |
-| Card heading | `18–20px` |
-| Section heading | `22–24px` |
-| Hero headline | `28–36px` |
+These are root typography tokens, with size / line height / weight in pixels where applicable; they are not a claim that the hero uses the same scale.
 
-### Conventions
-- **Hierarchy is weight + color**, not extreme size — commerce density favors compact headings (16–20px) over 48px display type.
-- **Prices are bold and prominent**; original (pre-discount) prices use `text-decoration: line-through` in muted gray.
-- **Star ratings + review counts** sit next to titles as compact trust signals (`4.8 · 1,240`).
-- **Numerals flow with prose** — no forced tabular figures except in pricing tables.
+| Token family | Size | Line height | Weight |
+|---|---:|---:|---:|
+| h4 | 24 | 30 | 700 |
+| h5 | 22 | 28 | 700 |
+| h6 | 18 | 26 | 700 |
+| subtitle lg | 16 | 24 | 700 |
+| subtitle md | 14 | 20 | 500 |
+| subtitle sm | 12 | 16 | 500 |
+| body lg | 16 | 24 | 400 |
+| body md | 14 | 20 | 400 |
+| body sm / category | 12 | 16 | 400 |
+| price bold xxl / xl / lg / md | 22 / 18 / 16 / 14 | 22 / 18 / 16 / 14 | 700 |
+| price medium lg / md | 16 / 14 | 16 / 14 | 500 |
+| price regular md / sm | 14 / 12 | 14 / 12 | 400 |
+
+The measured nav link is 14px/400 with 23.8px line height. The search field is 16px/400 with 24px line height. The category-card label is 14px/700; its anchor computes 14px/400. The search button computes 14px/400; its initially hidden `搜尋` label separately computes 16px/700. Preserve this distinction between a control container and its visible label.
+
+Root font weights also include 300, 400, 500, 600 (`medium-android`) and 700. The existence of 600 does not establish that the sampled desktop buttons use it.
 
 ## Layout
 
-### Grid
-- Responsive card grid: 4 columns desktop → 3 → 2 → 1 mobile
-- Container max-width ~1200px, centered, with consistent gutters
-- Horizontal scroll carousels for curated collections (destinations, "popular near you")
+At the measured 1440×1000 desktop viewport, the screenshot shows a 60px sticky header above a category row. The hero spans the available page width, followed by a centred category collection. The six category anchors start at x=143, 335, 528, 720, 913 and 1105; each is 177.5px wide, with gaps approximately 15px. The repeated product-card anchors are 273.8px wide with approximately 15px gaps; four fit within the visible content area while further cards continue horizontally. This establishes a desktop carousel arrangement, not mobile breakpoints or a universal grid specification.
 
-### Spacing
-- 8px-based spacing scale
-- Tight card internals (8–12px), generous section rhythm (40–64px)
+The first-party `--kk-spacing-*` scale is 2, 4, 6, 8, 12, 16, 20, 24, 32, 40 and 48px. `--layout-spacing-*` repeats those values and adds 0. Use the measured 12px search-button padding and 18px vertical nav padding for their particular controls; neither requires every spacing value to be a multiple of eight.
 
-### Density
-KKday is **medium-high density** — a traveler compares many options at once, so cards pack efficiently while staying scannable. Whitespace is functional (separating cards, framing imagery), not luxurious.
+Root radius tokens are xs 2px, sm 4px, md 8px, lg 12px and xl 16px. The search action's measured 24px radius and the carousel arrow's 50% radius sit alongside that scale. An anchor's 0px radius does not measure the clipping radius of its image or visual wrapper.
+
+The capture supports a dense comparison layout through repeated image, rating, condition and price fields. It does not establish how many items a traveler compares or why they convert.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Width | Behavior |
-|---|---|
-| Desktop `>1200px` | 4-column grid, full nav + mega-menu, centered container |
-| Laptop `1024–1200px` | 3–4 column grid, condensed nav |
-| Tablet `768–1024px` | 2–3 column grid, search collapses |
-| Mobile `<768px` | 1–2 column grid, hamburger nav, full-width orange CTAs, sticky bottom "Book" bar on product pages |
-
-#### Touch & Mobile
-- Full-width primary CTA at viewport bottom on product detail (sticky book bar)
-- Filter sidebar becomes a bottom sheet
-- Horizontal carousels for curated collections
-- Large tap targets (44px+) on cards and CTAs
-
-#### Image Behavior
-- Destination/experience images dominate cards; `object-fit: cover`, fixed aspect ratio
-- Lazy-load + responsive srcset; WebP standard
+Only the 1440×1000 desktop edition was measured; mobile breakpoints, sticky booking bars, filter sheets and touch layouts are unverified.
 
 ## Elevation & Depth
 
-KKday leans **mostly flat with soft commerce shadows**. Cards separate via a 1px border or a subtle shadow; orange CTAs are flat (color is the weight).
+Three explicit root shadows are available:
 
-- **Card shadow**: `0 2px 8px rgba(0,0,0,0.08)` — soft lift on hover for grid cards
-- **Sticky header**: `0 1px 4px rgba(0,0,0,0.06)` on scroll
-- **Dropdown / mega-menu**: `0 4px 16px rgba(0,0,0,0.12)`
-- **Modal**: `0 8px 32px rgba(0,0,0,0.2)`
-- Buttons carry **no shadow** — flat orange does the work.
+- `--kk-elevation-action`: `0px 1px 4px 0px #2632381f`.
+- `--kk-elevation-fixed`: `0px 2px 24px 0px #2632381f`.
+- `--kk-elevation-raised`: `0px 8px 24px 0px #252a313d`.
 
-### Z-Index
-- Sticky header above content; mega-menu above header; modals above all chrome; toasts highest.
+The search container uses the action shadow as a computed rgba value. The category-card wrapper has a different observed shadow, `rgba(0, 0, 0, 0.1) 0px 8px 20px 0px`; the carousel button uses `rgba(60, 64, 67, 0.2) 0px 4px 10px 0px`. The product anchor and the primary search button have no shadow. No shadow change was reported for either sampled card on hover.
+
+A translucent campaign tag on the product image is white at 85% opacity, with a 1px white border at 50%, `backdrop-filter: blur(5px)`, and the fixed shadow. These values describe that tag, not a general dialog material.
+
+The fixed-element list records the sticky header at z-index 1005, the promotional bottom banner at 1000, the scroll-top wrapper at 1001, and the cookie banner at 2147483645. A modal/toast stacking hierarchy was not measured.
 
 ### Values kept in prose
 
 Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
-- `shadow.card`: `0 2px 8px rgba(0,0,0,0.08)`
-- `shadow.header`: `0 1px 4px rgba(0,0,0,0.06)`
-- `shadow.dropdown`: `0 4px 16px rgba(0,0,0,0.12)`
-- `shadow.modal`: `0 8px 32px rgba(0,0,0,0.2)`
+- `shadow.action`: `0px 1px 4px 0px #2632381f`
+- `shadow.fixed`: `0px 2px 24px 0px #2632381f`
+- `shadow.raised`: `0px 8px 24px 0px #252a313d`
+- `shadow.category-card`: `rgba(0, 0, 0, 0.1) 0px 8px 20px 0px`
+- `shadow.carousel-next`: `rgba(60, 64, 67, 0.2) 0px 4px 10px 0px`
 
 ## Motion & Easing
 
-KKday motion is **brisk and commerce-functional** — fast feedback, no theatrics.
+The next-arrow button's raw computed transition is **`all 0.3s ease-in-out 0s`**. The search button reports **`grid-template-columns, grid-gap, padding 0.3s, 0.3s, 0.3s ease-out, ease-out, ease-out 0s, 0s, 0s`**; retain that raw serialization as evidence for search geometry changes rather than treating it as a colour-transition token.
 
-**Durations:**
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle flips, reduce-motion fallback |
-| `motion-fast` | 120ms | Hover/press on cards, buttons, links |
-| `motion-standard` | 200ms | Dropdowns, mega-menu, tooltip fades, cart-count update |
-| `motion-slow` | 300ms | Modal open, filter bottom-sheet slide, image lightbox |
-| `motion-page` | 250ms | Route transition + top progress bar |
-
-**Easings:**
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default two-way transitions |
-| `ease-enter` | `cubic-bezier(0, 0, 0.2, 1)` | Things appearing — modals, sheets, toasts |
-| `ease-exit` | `cubic-bezier(0.4, 0, 1, 1)` | Dismissals |
-
-**Spring stance.** Spring/overshoot is **avoided** — KKday is a high-density commerce surface where bouncy motion fights fast comparison and reads as a flash-sale tic. Add-to-cart and booking confirmations resolve cleanly, not elastically.
-
-**Signature motions.**
-1. **Card hover (desktop).** Subtle lift via shadow fade-in (`0 2px 8px rgba(0,0,0,0.08)`) over `motion-fast`; optional alternate-image swap. No scale jump.
-2. **Filter bottom-sheet.** On mobile, the filter panel slides up over `motion-slow / ease-enter`; backdrop fades in. Dismiss reverses with `ease-exit`.
-3. **Cart-count badge.** On add-to-cart, the cart badge count updates with a quiet `motion-standard` fade — no bounce.
-4. **Carousel scroll.** Curated-collection carousels scroll-snap with `ease-standard`; arrows fade in on hover (desktop).
-
-**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` collapse to `motion-instant`; sheet slides become instant opacity toggles; progress bar hidden. Hover color/shadow state changes still apply.
-
-<!--
-OmD v0.1 Sources — kkday
-Created: 2026-05-19
-
-Tier 1 (attempted): live computed-style inspection of kkday.com was NOT completed — WebFetch
-returned HTTP 403 (bot challenge) and the Playwright MCP session redirected to injected ad
-interstitials, making a clean DOM read impossible this pass. primary_color #FF5C00 is the
-creation-brief-provided value and matches KKday's known orange-led commerce identity, but the
-exact production hex and the secondary palette in §2 are NOT live-verified — they are well-grounded
-approximations. A future omd:add-reference UPDATE pass with a working browser should confirm.
-
-Note: brandcolorcode.com/kkday documents a HERITAGE teal #26BEC9 (Pantone 319C) and explicitly
-states "These color values have not been given explicitly in the KKday brand guidelines." The
-modern KKday product surface leads with orange; teal is treated as a legacy/secondary accent in §2.
-
-Tier 2 (philosophy/founders):
-- en.wikipedia.org/wiki/KKday (WebFetch 2026-05-19) — founded 2014 Taipei by Ming Chen (ex Star
-  Travel / Ezfly); OTA experiences marketplace; 90+ countries, 300k+ experiences; >$250M raised,
-  Series D $70M late 2024; H.I.S. investor; subsidiaries Rezio / FineDayClub / ActivityJapan.
-- kkday.com/en-us hero "EXPLORE. DREAM. DISCOVER" (WebSearch result 2026-05-19).
-- lilingh.com/projects/kkday — UX case study noting brand-color-on-white contrast was too low and
-  button shades were adjusted for WCAG (informs the orange-hover / accessibility note).
-
-Illustrative (not verified as live copy): CTA/trust-chip/empty/error strings, type scale, semantic
-hexes, font stack (inferred from OTA + TW conventions). Marked inline. Personas fictional (§13).
--->
-
----
-
-**Verified:** 2026-05-19
-**Tier 1 sources:** https://kkday.com — live inspect NOT completed (403 + browser redirect); primary `#FF5C00` is brief-provided and matches KKday's orange-led identity (hexes other than primary are grounded approximations pending live re-inspection). https://kkday.com/en-us hero "EXPLORE. DREAM. DISCOVER" (WebSearch).
-**Tier 2 sources:** brandcolorcode.com/kkday (heritage teal `#26BEC9`, noted as legacy/unofficial); lilingh.com KKday UX case study (WCAG contrast note).
-**Tier 2 (Philosophy/founders):** Wikipedia (KKday — Ming Chen / 2014 Taipei / 90+ countries / H.I.S. / $250M+).
-**Style ref:** `pinkoi` (TW commerce tone). **Conflicts unresolved:** exact production hexes beyond primary not live-verified this pass (browser session unreliable) — flagged for UPDATE.
+The nav link, input and two card anchors each report **`all 0s ease 0s`** on the element itself. The pointer captures nevertheless detect changes on the nav pseudo, card parent and image wrapper; an anchor's own transition string does not describe every descendant's animation. No global duration/easing scale, spring policy, route animation or reduced-motion behavior was verified.
 
 ## Components
 
-### Buttons
+Measurements below identify exact homepage controls. Consent controls are excluded. Transparent anchors keep their transparent background; the colour of the visible child is reported separately from default link colour.
 
-**Primary (Book / Action)**
-- Background: `#FF5C00`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: `8px`
-- Padding: `10px 20px`
-- Font: `16px` / `600`
-- Hover: bg `#E65300`
-- Use: "Book Now", "Add to Cart", primary conversion CTA
+| Control | Rest geometry and appearance | Measured authored state |
+|---|---|---|
+| `search-submit` — `搜尋` | 48×48; radius 24px; padding 12px; fill `#1ab6c1`; white 20×20 SVG; no border or shadow | Hover and held press fill `#13a3b6` |
+| `carousel-next` — first offers arrow | 45×45; radius 50%; padding 0; white with black 24px SVG; shadow `rgba(60, 64, 67, 0.2) 0px 4px 10px 0px` | Hover and held press reduce whole-control opacity from 1 to 0.5 |
+| `nav-experiences` — `門票/體驗` link | 96×59.8; anchor radius 0; padding 18px 0; 14px/400; transparent on white; visible `#212121` | Hover and held press use `#26bec9` text and a 96×2px `::after` underline |
+| `category-card` — `KKday專屬團` link | 177.5×181.1; anchor radius 0; padding 0; visible `#333333` 14px/700 label; image about 178×133 | Hover and held press reduce parent `.hot-activity-card` opacity to 0.8 |
+| `product-card` — Taiwan PASS 台鐵版 link | 273.8×321; anchor radius 0; padding 0; white child surface; visible `#212121` title; image about 274×153 | Hover and held press reduce image-wrapper opacity to 0.8 and underline the h3 title |
 
-**Secondary (Outlined)**
-- Background: `#FFFFFF`
-- Text: `#1A1A1A`
-- Border: `1px solid #D9D9D9`
-- Radius: `8px`
-- Padding: `10px 20px`
-- Font: `16px` / `600`
-- Hover: bg `#F7F7F8`
-- Use: "View Details", neutral/secondary actions
+The sampled product card retains the image → title → rating/review count → conditions → price/discount order. The original price is `#9c9da0` with a measured line-through. The star's SVG fill is `#26bec9`. Its `出發前可免費取消`, `即買即用`, and `立即確認` tags have `#f1f4f8` backgrounds and dark child text. Survey tag boxes use 4px radius and 2px 4px padding; the nested body-sm label is 12px/400 even though the outer tag computes 14px/400. The coral discount tag uses white text. These are rest observations, not separately harvested interactive badge components.
 
-**Ghost / Text**
-- Background: transparent
-- Text: `#FF5C00`
-- Radius: `8px`
-- Padding: `8px 12px`
-- Use: Inline tertiary actions, "See more"
+### Search input — descriptive only
 
-### Inputs
+`input.search-input-field__input`, accessible name `搜尋景點、地區或城市`, is initially 540×60, radius 0, padding 0, 16px/400, dark text, no own border/shadow, transparent over the white search container. The container's initial border is 2px solid `#e6e9ed` and its shadow is `rgba(38, 50, 56, 0.12) 0px 1px 4px 0px`.
 
-**Default**
-- Background: `#FFFFFF`
-- Text: `#1A1A1A`
-- Border: `1px solid #D9D9D9`
-- Radius: `8px`
-- Padding: `10px 14px`
-- Font: `16px` / `400`
-- Focus: border `#FF5C00`
-- Error: border `#E0353B`
-- Use: Search, traveler details, contact forms
+Hover and held press showed no computed change across the input, its pseudos and three ancestor levels. During the Tab walk, the input narrowed to 500px, the container border became `#d5d6db`, and the shadow disappeared. All those differences remained after blur, so they are not a clean focus treatment. This input has no interactive component token.
 
-**Search (hero)**
-- Background: `#FFFFFF`
-- Border: `1px solid #D9D9D9` (or shadowed pill on hero)
-- Radius: `8px`
-- Trailing: orange search-submit button (`#FF5C00`)
-- Use: Destination/experience search — the primary discovery entry point
-
-### Cards
-
-**Experience Card**
-- Background: `#FFFFFF`
-- Border: `1px solid #E5E5E6` (or shadow-separated)
-- Radius: `8px`
-- Padding: `0` (image-led top, padded body)
-- Use: Grid product card — image, title (2-line clamp), rating + review count, price (bold), trust chips
-
-**Destination Card**
-- Background: image-led with gradient overlay
-- Radius: `8px`
-- Text: white overlay on darkened image bottom
-- Use: Destination discovery tiles
-
-### Badges & Chips
-
-**Sale Badge**
-- Background: `#FF5C00`
-- Text: `#FFFFFF`
-- Radius: `4px`
-- Padding: `2px 6px`
-- Font: `12px` / `700`
-- Use: Discount/sale ribbon on product image
-
-**Trust Chip**
-- Background: `#FFF0E8` or `#FFFFFF`
-- Text: `#1FA463` (confirmed) / `#1A1A1A`
-- Radius: `4px`
-- Padding: `2px 8px`
-- Font: `12px` / `500`
-- Use: "Instant confirmation", "Free cancellation", "Mobile voucher"
-
-**Urgency Chip**
-- Background: transparent
-- Text: `#F5A623`
-- Font: `12px` / `600`
-- Use: "Only 2 left", "Selling fast"
-
-### Navigation
-- Sticky white header: logo left, search center, locale/currency + account right
-- Category mega-menu on hover (Tours, Tickets, Transport, SIM/WiFi, Hotels)
-- Nav links `14–16px` / `400–500`, orange active/hover accent
+The search button also widened to 88×48 with 12px 16px padding and revealed its text while the search suggestions were open. Those changes persisted after blur. They describe an observed expanded search presentation, not a dedicated focus state.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (search no results)** | One `#888888` line explaining the zero-match in the user's terms + 3–5 suggested nearby-date / nearby-city chips. Never a terminal "No results". |
-| **Empty (wishlist)** | One-line `#888888` explanation + secondary CTA to browse a popular destination. No illustration required. |
-| **Loading (grid first paint)** | Skeleton cards at `#F7F7F8` with 8px radius matching final cards; image area fixed-aspect, title/price as gray bars. Shimmer ~1.2s. No spinner. |
-| **Loading (inline action — booking)** | Orange CTA holds width; label swaps to a white 3-dot/spinner; prevents double-tap and layout shift. |
-| **Error (form field)** | Border switches to `1px solid #E0353B`; helper text below in `#E0353B` 12px; field-specific and blameless. |
-| **Error (payment declined)** | Escalated card at checkout top, `#E0353B` accent, one blameless sentence describing the decline + single retry in `#FF5C00`. No generic "Something went wrong" alone. |
-| **Success (added to cart)** | Toast top-right, dark bg, white 14px text, 3s auto-dismiss, "View cart" action. No celebratory animation. |
-| **Success (booking confirmed)** | Dedicated confirmation screen — order number, voucher access, per-experience date/time. Not a toast. No orange CTA here (the purchase moment is past). |
-| **Skeleton** | `#F7F7F8` blocks at exact card dimensions; price placeholder renders as `—` in the user's currency, never `$0`. |
-| **Disabled (button)** | Faded fill, `#BDBDBD` text, geometry preserved so re-enabled controls don't shift. |
+| Control | Hover | Held press | Keyboard focus |
+|---|---|---|---|
+| Search action | Fill `#13a3b6` | Same fill; no additional delta versus hover | Browser `auto` ring; expansion/container changes persist after blur |
+| Offers next arrow | Opacity 0.5 | Same opacity; no additional delta versus hover | Browser `auto` ring |
+| `門票/體驗` link | Turquoise text and 2px after-underline | Same treatment | Browser `auto` ring |
+| Search input | No computed change in measured scope | No computed change in measured scope | Width/container changes persist after blur; no clean authored focus token |
+| `KKday專屬團` link | Parent opacity 0.8 | Same authored opacity | Browser `auto` ring |
+| Taiwan PASS link | Image opacity 0.8; title underlined | Same authored treatment | Browser `auto` ring |
+
+The card anchors also change their unstyled computed link colour from browser blue to red on press. Their visible title colours stay dark. That is not a brand press token. Likewise, the computed blue `auto` focus outline is browser feedback, so no focus colour is harvested.
+
+“No computed change” is restricted to the probe's scope: self and pseudos, descendants and their pseudos, three ancestor levels, and the listed computed style/DOM/SVG attributes. For the input there were no descendants. Canvas, video, closed shadow trees, cross-origin frames and siblings are outside that comparison.
+
+Consent remained open and `hideOverlays: true` was used for the pointer pass. These are raw observations for reviewer remeasurement. Disabled, loading, empty, validation, payment and booking-confirmation presentations were not exercised.
 
 ## Do's and Don'ts
 
-- **DO** reserve orange (`#FF5C00`) for action and conversion — primary CTAs, sale badges, selected states.
-- **DON'T** flood layouts with orange. It signals "do this next" only because the rest is neutral.
-- **DO** use the locale-aware font stack with the user's language fallback second.
-- **DON'T** load a single custom web font — system stacks respect each market and keep APAC LCP fast.
-- **DO** keep cards image-led with bold titles, bold prices, and compact trust chips.
-- **DON'T** bury price or rating — they are primary scan targets for a comparing traveler.
-- **DO** use `8px` radius on cards/buttons, `4px` on badges.
-- **DON'T** use pill-fully-rounded CTAs — they break the clean commerce density.
-- **DO** distinguish urgency-amber (`#F5A623`) from action-orange (`#FF5C00`) and success-green (`#1FA463`).
-- **DON'T** conflate the brand orange with the error red or rating gold.
-- **DO** show trust chips ("Instant confirmation", "Free cancellation") — they reduce booking anxiety.
-- **DON'T** use shouty discount adjectives; the sale badge + strikethrough price carry the message.
+Construction guidance derived from this capture:
+
+- Use the three distinct primary values for base colour, action fill and hovered action fill.
+- Keep product photography, review information, conditions and the original/current price relationship visible together.
+- Reproduce the measured opacity changes on the appropriate element: whole category wrapper, product image wrapper, or carousel button.
+- Use the role-specific typography metrics while keeping the unresolved family out of rendered specimens.
+- Keep default link colours and the browser's `auto` outline out of the brand token palette.
+- Preserve rounded and circular actions where measured; do not impose one radius on every control.
 
 ## Voice & Tone
 
-KKday speaks like an enthusiastic local friend who has actually done the tour — warm, specific, and encouraging, never pushy. The register is **inviting and benefit-led**: it sells the feeling of the experience ("explore", "dream", "discover") and backs it with concrete trust ("instant confirmation", "free cancellation"). The brand is genuinely multilingual — Traditional Chinese, English, Japanese, Korean, Thai, and more are first-class voices authored per market, not translated from one master. Copy avoids hard-sell discount-shouting; urgency, when present, is factual ("only 2 left") rather than manipulative. The homepage line "EXPLORE. DREAM. DISCOVER" captures the tone — aspirational verbs, clean and unhyped.
+The captured Taiwan hero says **`我的天 超好玩`**, and the current page title describes KKday as **`全球旅遊神隊友`**. The short playful headline accompanies a concrete search action, **`搜尋`**, and explicit navigation categories. Product condition labels are practical: **`出發前可免費取消`**, **`即買即用`**, **`立即確認`**. Sale language is also visible through **`雙11x最強旅展`** and **`50% OFF`**. These observed examples support a playful discovery headline alongside direct transactional information; they do not establish a prohibition on promotional language.
 
-| Context | Tone |
-|---|---|
-| Hero / discovery | Aspirational verbs. `Explore. Dream. Discover.` Invitational, not transactional. |
-| CTAs | Imperative + concrete. `Book Now`, `Add to Cart`, `See availability`. No trailing exclamation. |
-| Trust chips | Factual reassurance. `Instant confirmation`, `Free cancellation`, `Mobile voucher`. |
-| Urgency | Factual scarcity only. `Only 2 left` — never `BUY NOW OR MISS OUT!`. |
-| Product copy | Specific and experiential — what you'll see/do/taste, with practical logistics. |
-| Empty states | One-line reason + one suggested next destination/category. Never terminal "No results". |
-| Errors | Blameless, field-specific, actionable. |
-| Success (booking) | Confirm what happened + next step (voucher in app / view booking). |
-
-**Forbidden phrases.** Manipulative urgency (`HURRY!`, `LAST CHANCE!`), `Oops! Something went wrong` without a reason, `No results found.` as a dead end, hype superlatives without substance (`the best tour in the world`), approximate prices (always show exact amount in the user's currency), emoji on checkout/payment screens, Simplified-Chinese characters on TW-Traditional surfaces.
-
-**Voice samples.**
-- `EXPLORE. DREAM. DISCOVER` — homepage hero positioning <!-- verified: kkday.com/en-us hero copy via WebSearch result 2026-05-19 -->
-- `Book Now` — primary conversion CTA <!-- illustrative/conventional: standard OTA CTA, not independently re-verified on live KKday surface this pass -->
-- `Instant confirmation · Free cancellation` — trust chips on experience cards <!-- illustrative: conventional KKday trust signals; not live-verified this pass -->
-- `Only 2 spots left for this date` — illustrative factual-urgency string <!-- illustrative: not verified as live KKday copy -->
-- `No experiences match these filters yet — try a nearby date or city.` — illustrative empty state <!-- illustrative: not verified as live KKday copy -->
+The company introduction's companion framing supports this reading of the homepage. No official copywriting rulebook, forbidden-phrase list, or empty/error/success-message policy was verified.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary / action: KKday Orange (`#FF5C00`); hover `#E65300`; tint `#FFF0E8`
-- Text primary: `#1A1A1A`; muted: `#888888`
-- Surface: white `#FFFFFF`; soft `#F7F7F8`
-- Border: `#D9D9D9`
-- Success: `#1FA463`; Warning/urgency: `#F5A623`; Error: `#E0353B`; Rating gold: `#FFB400`
+### Quick colour reference
 
-### Example Component Prompts
-- "Create a KKday experience card: white bg, 8px radius, 1px solid #E5E5E6, image fills top with `object-fit: cover`, sale badge top-left (`#FF5C00` bg, white, 4px radius, 12px/700), body padding 12px, title 16px/700 #1A1A1A (2-line clamp), rating row `4.8 · 1,240` in 13px #888888 with #FFB400 stars, price 18px/700 #1A1A1A with strikethrough original in muted gray, trust chip 'Instant confirmation' in #1FA463."
-- "Build a KKday primary CTA: `#FF5C00` bg, white text, 8px radius, 16px/600, padding 10px 20px, no shadow. Hover bg `#E65300`. Label 'Book Now'."
-- "Design a KKday hero search: white pill/box, 1px solid #D9D9D9, 8px radius, destination input + date + travelers, trailing orange (`#FF5C00`) search button. Soft shadow `0 4px 16px rgba(0,0,0,0.12)`."
-- "Create a sticky mobile book-bar: white bar at viewport bottom, price left (18px/700), full-width-ish orange 'Book Now' CTA right (`#FF5C00`, 8px radius)."
+Base `#26bec9`; action `#1ab6c1`; hovered/pressed action `#13a3b6`; foreground `#212121`; metadata `#727272`; old price `#9c9da0`; white canvas; neutral conditions `#f1f4f8`; coral sale `#ef7a70`.
 
-### Iteration Guide
-1. **Orange is action; keep the rest neutral.** It must always read as "do this next."
-2. **Locale-aware font stack, never a single custom font.**
-3. **Cards: image-led, bold title, bold price, trust chips.** Price and rating are primary scan targets.
-4. **8px radius (cards/buttons), 4px (badges).** No fully-rounded CTAs.
-5. **Separate the warm colors:** action-orange ≠ urgency-amber ≠ rating-gold ≠ success-green.
-6. **Medium-high density** — travelers compare many options; pack cards, ration whitespace.
-7. **Trust chips reduce booking anxiety** — surface confirmation/cancellation policy.
+### Examples grounded in the capture
 
----
+- “Build the KKday homepage's initial search action as a 48×48 button, 24px radius, 12px padding, white 20px search SVG, `#1ab6c1` fill; hover and held press change only the fill to `#13a3b6`. Do not add an authored focus ring from this reference.”
+- “Build a transparent `門票/體驗` navigation link on white: 96×59.8, 18px vertical padding, 14px/400, dark text. On hover and held press, change the text to `#26bec9` and paint its 96×2px after-underline in the same colour.”
+- “Build a product link with a white inner surface, approximately 274×153 image, dark title, turquoise rating star, neutral condition tags, and current/original prices. Fade only the image wrapper to opacity 0.8 and underline the title on hover or held press.”
+
+Font family and visual-wrapper radius remain unresolved for these prompts; use no substitute specimen or guessed wrapper radius.
 
 ## Governance
 
 ### Known Gaps
 
-- **Contrast, `button-primary`.** Text `#ffffff` on `#ff5c00` measures 3.10:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-sale`.** Text `#ffffff` on `#ff5c00` measures 3.10:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
-- **Contrast, `badge-trust`.** Text `#1fa463` on `#fff0e8` measures 2.88:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+- **Contrast, `search-submit`.** Text `#ffffff` on `#1ab6c1` measures 2.47:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
