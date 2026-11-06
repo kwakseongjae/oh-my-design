@@ -625,8 +625,10 @@ main agent는 다음 순서를 지킨다.
 
 1. delivery packet과 승인된 artifact를 읽는다.
 2. `consumer_route`가 null이면 코드에서 실제 사용자 진입 경로를 찾는다. 추정 route로 대체하지 않는다.
-3. 제품 동작을 보존하며 승인 범위만 통합한다.
-4. 변경 전과 **같은 route·viewport·state**에서 다시 검증한다.
+3. 제품 동작을 보존하며 승인 범위만 통합한다. 새로 만드는 페이지(제품 route든 단독 미리보기든)는 `omd:autopilot`과 같은 바닥을 지킨다.
+   - 레이아웃보다 먼저 브라우저 기본 여백을 지운다: `figure, blockquote, ul, ol, dl, dd { margin: 0 }`, 레이아웃용 목록은 `padding: 0`(#78).
+   - `omd-ui-junior` 하드 규칙에 이름이 적힌 `omd:slop-audit` 패턴은 바운드 시스템이 요구할 때만 쓴다(#80).
+4. 변경 전과 **같은 route·viewport·state**에서 다시 검증한다. 렌더된 페이지마다 `omd check render`와 `omd check contrast`를 돌린다(이 레포 안에서는 `node test-v2/tools/render-integrity.mjs`·`text-contrast.mjs`). FAIL이면 끝난 게 아니다. 실패 항목만 고쳐 다시 돌리고, 최대 3회까지는 `omd:orchestrator` §4.1의 루프를 따른다.
 5. `<RUN_DIR>/handoff/delivery-verification.json`에 changed product files, 실행한 checks, unresolved를 기록한다.
 
 제품 파일 변경과 실제 route 검증 전에는 `status: done`을 최종 delivery 완료로 해석하지 않는다. 그것은 design archive 완료일 뿐이다.

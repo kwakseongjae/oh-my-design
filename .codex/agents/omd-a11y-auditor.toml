@@ -75,6 +75,14 @@ npx --yes @axe-core/cli@latest <URL> --reporter v2 > eval/axe-output.json 2>&1 |
 
 If unavailable, mark this check as `skipped: "axe-core requires Playwright + rendered HTML"`.
 
+### Check 3b — Render integrity and text contrast (rendered HTML only)
+
+If the run has a rendered page (a standalone preview `.html`, or the implemented route saved as HTML), run both deterministic checkers on every such page. In this repository they are `node test-v2/tools/render-integrity.mjs <page.html…>` and `node test-v2/tools/text-contrast.mjs <page.html…>`; in an installed project use `omd check render <page.html…>` and `omd check contrast <page.html…>`.
+
+- `render_integrity` fails on any overflow-x, viewport escape, text clip, unreset UA margin (an unreset `figure` once pushed a hero 16px past a 1440px viewport, issue #78), missing font, broken image or encoding defect.
+- `text_contrast` measures the nominal text color against the real background pixel: body text below 4.5:1, large text, focus rings or UI boundaries below 3:1, or large elements hidden without JavaScript fail.
+- A page the tool could not load is `fail`, not `skipped`. With no rendered page, mark both `skipped: "no rendered HTML in this run"`.
+
 ### Check 4 — lighthouse (if available)
 
 ```bash
@@ -118,6 +126,8 @@ Write `eval/deterministic.json`:
     "tier1_urls": { "status": "...", "results": [...] },
     "axe_core": { "status": "pass|fail|skipped", "violations": [...] },
     "lighthouse": { "status": "pass|fail|skipped", "score": 96 },
+    "render_integrity": { "status": "pass|fail|skipped", "pages": [...], "defects": [...] },
+    "text_contrast": { "status": "pass|fail|skipped", "pages": [...], "fails": [...] },
     "wireframe_states": { "status": "...", "missing": [...] },
     "forbidden_phrases": { "status": "...", "hits": [...] }
   },
