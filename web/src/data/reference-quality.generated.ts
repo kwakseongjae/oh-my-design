@@ -1341,30 +1341,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "bunjang",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-14",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-06",
+    "tokensExtractedAt": "2026-11-06",
+    "nextReverifyAt": "2027-05-05",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 113,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 126,
+    "evidenceClaimCount": 126,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 14,
     "conflictCount": 0,
-    "tier1SourceCount": 0,
-    "componentCount": 8,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "proof_incomplete",
-      "tier1_source_missing",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 14,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
     "advisoryCodes": [],
-    "paletteGrounding": 0.4
+    "paletteGrounding": null
   },
   {
     "id": "buzzvil",
@@ -14198,9 +14193,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 425,
+  "verified_v2": 426,
   "partial": 89,
-  "legacy_snapshot": 82,
+  "legacy_snapshot": 81,
   "total": 596
 } as const;
 

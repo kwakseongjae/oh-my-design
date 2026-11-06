@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 425,
-  "sources": 3754,
+  "references_with_verification_v2": 426,
+  "sources": 3768,
   "sources_by_kind": {
     "brand-asset": 253,
     "license": 141,
-    "official-doc": 1786,
-    "product-surface": 1574
+    "official-doc": 1797,
+    "product-surface": 1577
   },
   "references": {
     "104": {
@@ -1952,6 +1952,96 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "bunjang": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "campaign-history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "company-home",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "m.bunjang.co.kr"
+        },
+        {
+          "id": "growth-tech",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "m.bunjang.co.kr"
+        },
+        {
+          "id": "home-redesign",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "sell-to-love",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "bgzt.co.kr"
+        },
+        {
+          "id": "service-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.bunjang.co.kr"
+        },
+        {
+          "id": "service-terms",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "terms.bunjang.co.kr"
         }
       ]
     },
