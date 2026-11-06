@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 400,
-  "sources": 3410,
+  "references_with_verification_v2": 401,
+  "sources": 3424,
   "sources_by_kind": {
     "brand-asset": 231,
     "license": 141,
-    "official-doc": 1580,
-    "product-surface": 1458
+    "official-doc": 1591,
+    "product-surface": 1461
   },
   "references": {
     "104": {
@@ -22868,6 +22868,96 @@
           "kind": "product-surface",
           "captured": "2026-09-29",
           "host": "zigzag.kr"
+        }
+      ]
+    },
+    "zozotown": {
+      "checked": "2026-11-06",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "company-overview",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "zozo.jp"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "corporate-home-control",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "design-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "design-practice",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "help-index",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "zozo.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-06",
+          "host": "zozo.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "store.shopping.yahoo.co.jp"
+        },
+        {
+          "id": "native-imprint-shell",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "zozo.jp"
+        },
+        {
+          "id": "rename",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
+        },
+        {
+          "id": "service",
+          "kind": "official-doc",
+          "captured": "2026-11-06",
+          "host": "corp.zozo.com"
         }
       ]
     }
