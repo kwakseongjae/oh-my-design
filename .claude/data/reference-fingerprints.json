@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-06T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 586,
+ "count": 587,
  "items": [
   {
    "id": "104",
@@ -13150,6 +13150,27 @@
     "dense",
     "flat",
     "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "unext",
+   "primary_color_hex": "#0080de",
+   "category": "consumer-tech",
+   "visual_theme": "U-NEXT brings video and reading into one entertainment service. Its history starts with GyaO NEXT in 2007 and the U-NEXT name in 2009. The homepage expresses that combination directly: “観るのも読むのも、これひとつ。” A large programme image and a white U-NEXT mark lead into",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
    ],
    "antipatterns": [
     "off-brand"

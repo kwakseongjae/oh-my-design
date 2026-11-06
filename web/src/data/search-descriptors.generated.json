@@ -33328,6 +33328,67 @@
     ]
    }
   },
+  "unext": {
+   "hash": "f848082226c79bb6",
+   "terms": {
+    "en": [
+     "video streaming",
+     "entertainment service",
+     "movies tv and books",
+     "dark catalogue interface",
+     "content-first design",
+     "artwork-led layout",
+     "horizontal shelves",
+     "dark navy palette",
+     "blue call to action",
+     "restrained ui",
+     "live events and sports",
+     "japanese consumer service"
+    ],
+    "ko": [
+     "동영상 스트리밍",
+     "엔터테인먼트 서비스",
+     "영화 드라마 도서",
+     "어두운 카탈로그",
+     "콘텐츠 중심 디자인",
+     "아트워크 강조",
+     "가로 스크롤 목록",
+     "짙은 남색 팔레트",
+     "파란색 행동 버튼",
+     "절제된 인터페이스",
+     "라이브 스포츠",
+     "일본 소비자 서비스"
+    ],
+    "ja": [
+     "動画配信サービス",
+     "エンタメアプリ",
+     "映画ドラマ書籍",
+     "ダークな作品一覧",
+     "コンテンツ主役",
+     "作品画像を引き立てる",
+     "横スクロールの棚",
+     "ダークネイビー",
+     "青い体験ボタン",
+     "抑制されたUI",
+     "ライブ配信とスポーツ",
+     "国内向け消費者サービス"
+    ],
+    "zh": [
+     "影音串流服務",
+     "娛樂平台",
+     "電影影集與書籍",
+     "深色片庫介面",
+     "內容優先設計",
+     "作品圖像主導",
+     "橫向排列區塊",
+     "深藍色調",
+     "藍色行動按鈕",
+     "克制的介面",
+     "直播與運動賽事",
+     "日本消費者服務"
+    ]
+   }
+  },
   "uniqlo": {
    "hash": "c719d35baead8579",
    "terms": {
