@@ -53,14 +53,18 @@ function geometry(shape, s, bevel) {
   }
 }
 
-function material(m) {
+// `env` (dark scheme): this material takes the environment at its own strength instead of the scene's fill.
+// Glass: on a dark set it transmits the dark wall and reads only by what it reflects. Backdrop: the set keeps
+// the light-scheme fill so it renders close to its token while the objects get the stronger one.
+function material(m, envTex) {
+  const env = m.env != null && envTex ? { envMap: envTex, envMapIntensity: m.env } : {};
   if (m.kind === 'glass') {
     return new THREE.MeshPhysicalMaterial({
       color: 0xffffff, roughness: m.roughness, metalness: 0, transmission: 1, ior: m.ior, thickness: m.thickness,
-      attenuationColor: new THREE.Color(m.hex), attenuationDistance: m.attenuation, specularIntensity: 1,
+      attenuationColor: new THREE.Color(m.hex), attenuationDistance: m.attenuation, specularIntensity: 1, ...env,
     });
   }
-  return new THREE.MeshPhysicalMaterial({ color: m.hex, roughness: m.roughness, clearcoat: m.coat ?? 0, clearcoatRoughness: 0.18 });
+  return new THREE.MeshPhysicalMaterial({ color: m.hex, roughness: m.roughness, clearcoat: m.coat ?? 0, clearcoatRoughness: 0.18, ...env });
 }
 
 const easeOut = (x) => 1 - (1 - x) ** 3;
@@ -86,14 +90,18 @@ export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1,
   scene.environmentIntensity = spec.lights.world;
 
   let S = spec, mats = {}, geoms = new Map();
-  const makeMats = (sp) => Object.fromEntries(Object.entries(sp.materials).map(([k, m]) => [k, material(m)]));
+  const makeMats = (sp) => Object.fromEntries(Object.entries(sp.materials).map(([k, m]) => [k, material(m, scene.environment)]));
   const geom = (shape, size, bevel) => {
     const k = `${shape}:${size}:${bevel}`;
     if (!geoms.has(k)) geoms.set(k, geometry(shape, size, bevel));
     return geoms.get(k);
   };
   mats = makeMats(S);
+  // The backdrop material lives for the whole mount (setSpec eases its color and fill), so its environment is
+  // always explicit: the spec's backdrop.env, else the scene's fill.
   const backdrop = mats.backdrop;
+  backdrop.envMap = scene.environment;
+  backdrop.envMapIntensity = S.materials.backdrop.env ?? S.lights.world;
   scene.add(cyclorama(S.cyclorama, backdrop));
 
   const pile = new Pile(S.pile);
@@ -231,15 +239,17 @@ export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1,
 
   // ---------- brand switch ----------
   // setSpec(next): each object shrinks, takes the next brand's shape and material, and pops back with a
-  // spring, staggered by 22 ms; the backdrop color eases over 600 ms. Collision radii scale with the objects,
+  // spring, staggered by 22 ms; the backdrop color and the light levels (key, rim, environment, exposure: a
+  // light/dark switch changes them) ease over 600 ms. Collision radii scale with the objects,
   // so the pile contracts and re-forms on its own. The pile's bodies keep their positions: the scene changes
   // brand without cutting. The page updates its own CSS variables and copy (see examples/hero.html).
   let swap = null;
+  const levels = (sp) => [2.4 * sp.lights.key.energy, 2.4 * sp.lights.rim.energy, sp.lights.world, sp.exposure ?? 1, sp.materials.backdrop.env ?? sp.lights.world];
   function setSpec(next) {
     if (next.pile.bodies.length !== pile.bodies.length) throw new Error('setSpec: the next spec has a different body count');
     if (swap) { swap.t = 1e9; stepSwap(0); } // a switch during a switch: land the first one at once
     const nextMats = makeMats(next);
-    swap = { t: 0, from: new THREE.Color(S.materials.backdrop.hex), to: new THREE.Color(next.materials.backdrop.hex), next, nextMats, oldMats: mats, done: new Set() };
+    swap = { t: 0, from: new THREE.Color(S.materials.backdrop.hex), to: new THREE.Color(next.materials.backdrop.hex), lv: [levels(S), levels(next)], next, nextMats, oldMats: mats, done: new Set() };
   }
   function stepSwap(h) {
     if (!swap) return;
@@ -247,6 +257,7 @@ export function mount(host, spec, { pixelRatio = Math.min(devicePixelRatio || 1,
     const k = easeOut(Math.min(1, swap.t / 0.6));
     scene.background.copy(swap.from).lerp(swap.to, k);
     backdrop.color.copy(swap.from).lerp(swap.to, k);
+    [key.intensity, rim.intensity, scene.environmentIntensity, renderer.toneMappingExposure, backdrop.envMapIntensity] = swap.lv[0].map((a, j) => a + (swap.lv[1][j] - a) * k);
     pile.bodies.forEach((b, i) => {
       const t = swap.t - i * 0.022;
       if (t <= 0) return;
