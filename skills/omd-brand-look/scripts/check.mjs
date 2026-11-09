@@ -212,10 +212,13 @@ for (const b of brands) {
         if (!byPair.has(k)) { byPair.set(k, { check: 'C1', ...info, els: [] }); W.fails.push(byPair.get(k)); }
         byPair.get(k).els.push({ el: x.el, text: x.text, pctBelow: x.pctBelow, min: x.min, floor: x.floor });
       }
+      // a pair whose both sides are the screen's own values fails on the unthemed screen too: WARN, not the brand's FAIL
+      for (const f of byPair.values()) if (f.cause === 'screen') { W.fails.splice(W.fails.indexOf(f), 1); W.warns.push(f); }
       for (const f of byPair.values()) { f.el = [...new Set(f.els.map((e) => e.el))].join(', '); f.detail = `${f.els.length} element(s), glyph px under ${f.els[0].floor}:1 (min ${Math.min(...f.els.map((e) => e.min))}): ${f.els.slice(0, 4).map((e) => `"${e.text}"`).join(', ')}${f.els.length > 4 ? ' …' : ''}`; }
-      for (const x of r.rings) if (x.pctBelow > 5) {
+      const rings = r.rings.filter((x) => x.pctBelow > 5);
+      if (rings.length) {
         const ring = t.slots.ring;
-        W.fails.push({ check: 'C1', el: 'focus ring', text: x.text, detail: `${x.pctBelow}% of ring px < 3:1 (min ${x.min})`, pair: 'ring on background',
+        W.fails.push({ check: 'C1', el: 'focus ring', detail: `${rings.length} focus ring(s), ring px under 3:1 (min ${Math.min(...rings.map((x) => x.min))}): ${rings.slice(0, 4).map((x) => `"${x.text}"`).join(', ')}${rings.length > 4 ? ' …' : ''}`, pair: 'ring on background',
           tokenRatio: valueOf(t, 'ring') && valueOf(t, 'background') ? +ratio(valueOf(t, 'ring'), valueOf(t, 'background')).toFixed(2) : null,
           ...(ring && ring.from.startsWith('components.') ? { cause: 'inherited', why: `${ring.from} is the reference's measured focus colour` } : { cause: 'mapping', why: ring ? `${ring.from} assigned as the ring` : '--ring omitted: the screen\'s own ring on a brand background' }) });
       }
@@ -256,12 +259,12 @@ const causeCount = (B) => { const seen = new Map(); for (const W of Object.value
 const fmtCause = (n) => Object.entries(n).map(([k, v]) => `${k} ${v}`).join(' · ');
 md.push(`# omd-brand-look report`, '', `Run \`${report.run}\` · ${report.created.slice(0, 10)} · sample screen · widths ${WIDTHS.map((v) => v.width).join(' · ')} · lang ${run.lang}`, '');
 md.push(`Engines: look/C5/C6 ${engines.c5c6.mode} ${engines.c5c6.version} · C1 ${engines.c1?.mode ?? 'skipped'} · C2/C3 ${engines.c2c3 ? (engines.c2c3.executable ? 'same Chromium via CHROME_PATH' : engines.c2c3.mode) : 'skipped'}`, '');
-md.push('A cell is PASS when C1, C2 (heading/button/label/badge), C3, C5 (primary button fill) and C6 have no FAIL. Causes: **inherited** = the reference declares the pair (left as measured) · **mapping** = our slot assignment made it (incl. an omitted slot) · **layout** = C2/C3 after the swap · **font** = C6 label mismatch.', '');
+md.push('A cell is PASS when C1, C2 (heading/button/label/badge), C3, C5 (primary button fill) and C6 have no FAIL. Causes: **inherited** = the reference declares the pair (left as measured) · **mapping** = our slot assignment made it (incl. an omitted slot) · **layout** = C2/C3 after the swap · **font** = C6 label mismatch. A **screen** finding (both sides are the unthemed screen\'s own values, or the unthemed screen has the same fault) is a WARN.', '');
 md.push('FAIL causes count distinct findings (one slot pair, one layout fault) across all widths.', '');
 md.push(`| brand | slots | font | ${WIDTHS.map((v) => v.width).join(' | ')} | FAIL causes |`, `|---|---|---|${WIDTHS.map(() => '---').join('|')}|---|`);
 for (const B of report.brands) md.push(`| ${B.displayName} (\`${B.id}\`) | ${B.filled}/18 | ${B.font.caption} | ${WIDTHS.map((v) => { const W = B.widths[tag(v)]; return W.fails.length ? `FAIL ${W.fails.length}` : 'PASS'; }).join(' | ')} | ${fmtCause(causeCount(B)) || '—'} |`);
 md.push('');
-md.push('Suggestion rule: only for a mapping FAIL. Move the omitted side if there is one, else the text side, to another declared `colors.*` value (role keys or single-word keys only, so `corporate-*` and other surface-prefixed keys never cross evidence domains) that reaches 4.5:1 against every colour it sits with; among those, the lowest ratio (least change in hierarchy). An inherited pair is never "fixed". `look.mjs --assign` applies the suggestions.', '');
+md.push('Suggestion rule: only for a mapping FAIL. Try the omitted side first, then the other side (never the page canvas), and reassign it to another declared `colors.*` value of the same kind (`--destructive` only danger keys, `--primary` only primary keys, a surface only canvas/surface keys, a text slot role keys or single-word keys, so `corporate-*` and other surface-prefixed keys never cross evidence domains) that reaches 4.5:1 against every colour that slot sits with on the screen; among those, the lowest ratio (least change in hierarchy). An inherited pair is never "fixed", and nothing is lightened, darkened or mixed. `look.mjs --assign` applies the suggestions.', '');
 for (const B of report.brands) {
   md.push(`## ${B.displayName} · \`${B.id}\``, '');
   md.push(`- Source \`${B.file}\` · verified ${B.verified_at} · slots ${B.filled}/18 · omitted: ${B.omitted.length ? B.omitted.map((o) => `\`${o}\``).join(' ') : 'none'}`);

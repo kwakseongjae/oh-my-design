@@ -330,6 +330,7 @@ const valueOf = (t, slot, kept) => t.slots[slot]?.v ?? kept?.[slot] ?? null;
 // declared text colour on the declared canvas. mapping = our assignment made it, including a pair with an omitted side.
 export function pairCause(t, fg, bg) {
   const F = t.slots[fg], B = t.slots[bg];
+  if (!F && !B) return { cause: 'screen', why: 'both sides are omitted: the unthemed screen paints this pair itself' };
   if (!F || !B) return { cause: 'mapping', why: `${!F ? `--${fg}` : `--${bg}`} is omitted, so the screen's own value sits next to a brand value` };
   const comp = t.componentPairs.find((p) => p.bg === B.v && p.fg === F.v);
   if (comp) return { cause: 'inherited', why: `${comp.from} declares ${F.v} on ${B.v}` };
@@ -352,29 +353,40 @@ export function contrastOf(t, pairs, kept = null) {
 }
 
 // Suggestion rule (also printed in report.md): only for mapping FAILs (an inherited pair is the reference's own and stays
-// as measured). The slot to move is the omitted side if there is one, else the text side. Candidates are declared colors.*
-// hex values whose key is a role key or a single unhyphenated word (so corporate-*, baemin-*, on-dark and other
-// surface-prefixed keys never cross evidence domains); background slots take only canvas/surface keys. The winner is the
-// candidate whose smallest ratio against every colour it must sit with is >= 4.5 and is the smallest such ratio
-// (the least change in hierarchy). No value is lightened, darkened or mixed.
+// as measured; a screen pair is the unthemed screen's). Try the omitted side first if there is one, then the other side.
+// Candidates are declared colors.* hex values of the slot's own kind: --destructive only danger keys, --primary only
+// primary keys, a surface only canvas/surface keys (the page canvas itself is never moved), a text slot role keys or single-word keys (so corporate-*, baemin-*,
+// on-dark and other surface-prefixed keys never cross evidence domains). The winner reaches 4.5:1 against every colour
+// the slot sits with on the screen and has the smallest such ratio (the least change in hierarchy). No value is
+// lightened, darkened or mixed.
+const SURFACE_SLOTS = new Set(['background', 'card', 'popover', 'secondary', 'muted', 'accent']);
+const kindOk = (slot, k) => slot === 'destructive' ? DANGER_KEYS.includes(k)
+  : slot === 'primary' ? PRIMARY_KEYS.includes(k)
+    : slot === 'ring' ? [...RING_KEYS, ...PRIMARY_KEYS].includes(k)
+      : SURFACE_SLOTS.has(slot) ? [...CANVAS_KEYS, ...SURFACE_COLOR_KEYS].includes(k)
+        : !DANGER_KEYS.includes(k) && !PRIMARY_KEYS.includes(k) && (ROLE_KEYS.has(k) || /^[a-z]+$/.test(k));
 export function suggest(t, pairs, kept = null) {
   const out = [];
-  const done = new Set();
+  const moved = new Set(), tried = new Set();
   for (const c of contrastOf(t, pairs, kept)) {
     if (c.body === 'PASS' || c.cause !== 'mapping') continue;
-    const move = !t.slots[c.bg] && t.slots[c.fg] ? c.bg : c.fg;
-    if (done.has(move)) continue;
-    done.add(move);
-    const isBg = move === c.bg;
-    // every pair the moved slot takes part in, with the other side's current value
-    const partners = pairs.filter(([f, b]) => f === move || b === move).map(([f, b]) => valueOf(t, f === move ? b : f, kept)).filter(Boolean);
-    const eligible = Object.entries(t.colors).filter(([k, v]) => v !== valueOf(t, move, kept)
-      && (isBg ? [...CANVAS_KEYS, ...SURFACE_COLOR_KEYS].includes(k) : ROLE_KEYS.has(k) || /^[a-z]+$/.test(k)));
-    const scored = eligible.map(([k, v]) => ({ k, v, min: Math.min(...partners.map((p) => ratio(v, p))) })).filter((x) => x.min >= 4.5).sort((a, b) => a.min - b.min);
-    const best = scored[0];
-    out.push(best
-      ? { slot: move, from: t.slots[move]?.from ?? 'omitted (screen value kept)', to: `colors.${best.k}`, value: best.v, minRatio: +best.min.toFixed(2), for: c.pair }
-      : { slot: move, from: t.slots[move]?.from ?? 'omitted (screen value kept)', to: null, for: c.pair, note: 'no declared colour reaches 4.5:1 against every partner' });
+    // a moved slot clears 4.5:1 against all its partners, so every pair it is in is covered
+    if (moved.has(c.fg) || moved.has(c.bg)) continue;
+    // the page canvas is never moved to rescue one pair
+    const sides = (!t.slots[c.bg] ? [c.bg, c.fg] : [c.fg, c.bg]).filter((x) => x !== 'background' && !tried.has(x));
+    if (!sides.length) continue;
+    let pick = null;
+    for (const move of sides) {
+      // every pair the moved slot takes part in on this screen, with the other side's current value
+      const partners = pairs.filter(([f, b]) => f === move || b === move).map(([f, b]) => valueOf(t, f === move ? b : f, kept)).filter(Boolean);
+      const scored = Object.entries(t.colors).filter(([k, v]) => v !== valueOf(t, move, kept) && kindOk(move, k))
+        .map(([k, v]) => ({ k, v, min: Math.min(...partners.map((p) => ratio(v, p))) })).filter((x) => x.min >= 4.5).sort((a, b) => a.min - b.min);
+      if (scored[0]) { pick = { move, best: scored[0] }; break; }
+    }
+    if (pick) moved.add(pick.move); else for (const x of sides) tried.add(x);
+    out.push(pick
+      ? { slot: pick.move, from: t.slots[pick.move]?.from ?? 'omitted (screen value kept)', to: `colors.${pick.best.k}`, value: pick.best.v, minRatio: +pick.best.min.toFixed(2), for: c.pair }
+      : { slot: sides.join(' / '), from: sides.map((x) => t.slots[x]?.from ?? 'omitted').join(' / '), to: null, for: c.pair, note: `no declared colour of the right kind reaches 4.5:1 against every partner of --${sides.join(' or --')}` });
   }
   return out;
 }

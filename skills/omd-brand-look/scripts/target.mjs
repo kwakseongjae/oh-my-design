@@ -9,7 +9,7 @@ export const readTarget = (file = SAMPLE) => readFileSync(file, 'utf8');
 
 // The screen's own values for the shadcn slots (its first :root block). An omitted slot keeps this value.
 export function keptValues(html) {
-  const block = /:root\s*\{([\s\S]*?)\}/.exec(html)?.[1] ?? '';
+  const block = /^\s*:root\s*\{([\s\S]*?)\}/m.exec(html)?.[1] ?? ''; // a rule at line start, not a mention in a comment
   const out = {};
   for (const m of block.matchAll(/--([a-z-]+):\s*(#[0-9a-f]{6})\s*;/gi)) if (SLOT_NAMES.includes(m[1])) out[m[1]] = m[2].toLowerCase();
   return out;

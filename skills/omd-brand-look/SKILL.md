@@ -96,8 +96,12 @@ Every FAIL carries one cause:
   value kept next to a brand value).
 - **layout**: C2 / C3, i.e. what the font swap did to line breaks and widths.
 
-Fixes are only ever *suggestions* to reassign a slot to another declared colour (rule in `report.md`);
-nothing is lightened, darkened or mixed. `--assign` applies them.
+A pair whose two sides are both the screen's own values (both slots omitted), or a layout fault the unthemed
+screen already has, is **screen** and only a WARN.
+
+Fixes are only ever *suggestions* to reassign a slot to another declared colour of the same kind (danger for
+`--destructive`, primary for `--primary`, canvas/surface for a surface, never the page canvas itself; rule in
+`report.md`); nothing is lightened, darkened or mixed. `--assign` applies them.
 
 ## Not in the MVP
 
