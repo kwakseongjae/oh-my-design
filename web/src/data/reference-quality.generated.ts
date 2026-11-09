@@ -4788,6 +4788,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "hkairport",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 86,
+    "evidenceClaimCount": 86,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "hktvmall",
     "status": "verified_v2",
     "verifiedAt": "2026-11-06",
@@ -5923,6 +5945,28 @@ export const REFERENCE_QUALITY = [
       "source_url_dead",
       "component_state_prose_only"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "kbinsurance",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 84,
+    "evidenceClaimCount": 84,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 12,
+    "conflictCount": 0,
+    "tier1SourceCount": 12,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -8284,6 +8328,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "nomura",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 95,
+    "evidenceClaimCount": 95,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "nota",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -9794,6 +9860,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "railway",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 94,
+    "evidenceClaimCount": 94,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 26,
+    "conflictCount": 0,
+    "tier1SourceCount": 26,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "raksul",
     "status": "verified_v2",
     "verifiedAt": "2026-11-06",
@@ -10486,6 +10574,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 11,
     "interactiveComponentCount": 9,
     "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "samsunghospital",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 79,
+    "evidenceClaimCount": 79,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 16,
+    "conflictCount": 0,
+    "tier1SourceCount": 16,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -13892,6 +14002,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "yomiuri",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-09",
+    "tokensExtractedAt": "2026-11-09",
+    "nextReverifyAt": "2027-05-08",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 80,
+    "evidenceClaimCount": 80,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
+    "conflictCount": 0,
+    "tier1SourceCount": 8,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "yourator",
     "status": "partial",
     "verifiedAt": "2026-06-08",
@@ -14215,10 +14347,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 427,
+  "verified_v2": 433,
   "partial": 89,
   "legacy_snapshot": 81,
-  "total": 597
+  "total": 603
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T00:00:00Z",
+ "generated_at": "2026-11-09T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 597,
+ "count": 603,
  "items": [
   {
    "id": "104",
@@ -4963,6 +4963,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "hkairport",
+   "primary_color_hex": "#3d51e4",
+   "category": "consumer-tech",
+   "visual_theme": "Hong Kong International Airport (HKIA) brings flight information, passenger guidance, ground transport, shopping, dining and entertainment into one passenger portal. Airport Authority Hong Kong operates and develops the airport; its own account dates the Autho",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "hktvmall",
    "primary_color_hex": "#36b449",
    "category": "ecommerce",
@@ -6119,6 +6143,27 @@
    "has_personas": true,
    "category_raw": "Internet-only Bank",
    "country": "KR"
+  },
+  {
+   "id": "kbinsurance",
+   "primary_color_hex": "#ffdb40",
+   "category": "fintech",
+   "visual_theme": "KB손해보험 is a Korean insurer whose public homepage combines insurance products with policy lookup, claims, payments and insurance-contract loans. Its [official history](https://www.kbinsure.co.kr/CU601020001.ec) dates its launch as 범한해상 to 27 January 1959, recor",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "kbpay",
@@ -8649,6 +8694,27 @@
    "category_raw": "automotive"
   },
   {
+   "id": "nomura",
+   "primary_color_hex": "#ca2420",
+   "category": "fintech",
+   "visual_theme": "Nomura Securities is a Japanese securities company whose current public offer puts wealth management at the centre: investment, inheritance, real estate and business succession are presented as connected parts of a customer's future. Its wealth-management stre",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "nota",
    "primary_color_hex": "#3264f0",
    "category": "ai",
@@ -10212,6 +10278,27 @@
    "category_raw": "productivity"
   },
   {
+   "id": "railway",
+   "primary_color_hex": "#256fa0",
+   "category": "consumer-tech",
+   "visual_theme": "Taiwan Railway's passenger portal brings timetable searches, individual ticket booking and rail travel into one service homepage. The operator is **國營臺灣鐵路股份有限公司**. Its [official timeline](https://www.railway.gov.tw/tra-tip-web/adr/about-timeline?selectIndex=2)",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "raksul",
    "primary_color_hex": "#0264bf",
    "category": "ecommerce",
@@ -10891,6 +10978,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "samsunghospital",
+   "primary_color_hex": "#0b50a1",
+   "category": "healthcare",
+   "visual_theme": "Samsung Medical Center, **삼성서울병원**, opened in 1994. Its current introduction describes a hospital concentrating on severe, complex conditions and developing an advanced intelligent hospital through remodeling, smart wards and digital services. The history reco",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "sandoll",
@@ -14384,6 +14494,28 @@
    "signature_motion": "Cart badge increments with a 1.15 scale-pop in red; sticky bottom cart bar slides up when the cart gains an item.",
    "has_personas": true,
    "category_raw": "Food Delivery"
+  },
+  {
+   "id": "yomiuri",
+   "primary_color_hex": "#4b0082",
+   "category": "consumer-tech",
+   "visual_theme": "The group's own overview calls Yomiuri a \"総合メディア集団\" — a \"comprehensive media group\" — \"１５０年の歴史がある読売新聞を中心に\", built around a newspaper with 150 years of history and run under a holding company, 読売新聞グループ本社. The history page dates the paper to \"１８７４年（明治７年）１１月２日\", ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "yourator",

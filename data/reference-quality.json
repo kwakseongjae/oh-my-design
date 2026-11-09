@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-06",
+  "generated_at": "2026-11-09",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 597,
+  "count": 603,
   "counts": {
-    "verified_v2": 427,
+    "verified_v2": 433,
     "partial": 89,
     "legacy_snapshot": 81,
-    "total": 597
+    "total": 603
   },
   "items": [
     {
@@ -2354,6 +2354,17 @@
       "reason_codes": []
     },
     {
+      "id": "hkairport",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "hktvmall",
       "status": "verified_v2",
       "verified_at": "2026-11-06",
@@ -2913,6 +2924,17 @@
       "evidence_coverage": 1,
       "surface_count": 5,
       "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kbinsurance",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 12,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4084,6 +4106,17 @@
       "reason_codes": []
     },
     {
+      "id": "nomura",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "nota",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -4837,6 +4870,17 @@
       ]
     },
     {
+      "id": "railway",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 26,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "raksul",
       "status": "verified_v2",
       "verified_at": "2026-11-06",
@@ -5179,6 +5223,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "samsunghospital",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 16,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6869,6 +6924,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "yomiuri",
+      "status": "verified_v2",
+      "verified_at": "2026-11-09",
+      "next_reverify_at": "2027-05-08",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },

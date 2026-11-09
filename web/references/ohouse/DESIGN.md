@@ -170,6 +170,17 @@ components:
 fonts:
   roles:
     ui: Pretendard Variable
+  faces:
+    Pretendard Variable:
+      scripts:
+        - hangul
+        - latin
+      evidence:
+        - live-surface-use
+      source: https://github.com/orioncactus/pretendard
+      licence: OFL-1.1
+      distribution: public
+      note: Ohouse serves its own dynamic subsets of Pretendard Variable from assets.ohou.se.
 ---
 
 # Design System Inspiration of Ohouse (오늘의집)
