@@ -73,7 +73,9 @@ server.registerTool('probe_page', {
   else {
     if (!controls?.length) return { content: [{ type: 'text', text: 'mode "states" needs controls (run mode "survey" first)' }], isError: true };
     const cfg = path.join(dir, 'cfg.json');
-    fs.writeFileSync(cfg, JSON.stringify({ controls }, null, 2));
+    // close / hideOverlays are recorded beside the controls so the orchestrator's re-measurement can repeat the
+    // exact call (2026-11-06: four batch-6 headlines needed a second run because these flags weren't saved).
+    fs.writeFileSync(cfg, JSON.stringify({ controls, ...(close?.length ? { close } : {}), ...(hideOverlays ? { hideOverlays: true } : {}) }, null, 2));
     args.push('--cfg', cfg, '--shots', path.join(dir, 'shots'), '--visual', dir);
     if (hideOverlays) args.push('--hide-overlays');
   }
