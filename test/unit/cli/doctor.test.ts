@@ -33,7 +33,7 @@ import {
   REQUIRED_HARNESS_HELPERS,
   REQUIRED_PRODUCT_SKILLS,
 } from '../../../src/cli/doctor.js';
-import { runInstallSkills } from '../../../src/cli/install-skills.js';
+import { DEVELOPMENT_ONLY_SKILLS, runInstallSkills } from '../../../src/cli/install-skills.js';
 import { renderManagedHook } from '../../../src/cli/hook-contract.js';
 
 describe('omd doctor', () => {
@@ -249,7 +249,7 @@ describe('omd doctor', () => {
       .filter(
         (entry) =>
           entry.isDirectory() &&
-          entry.name !== 'omd-lab-02-design-harness' &&
+          !DEVELOPMENT_ONLY_SKILLS.has(entry.name) &&
           existsSync(join(process.cwd(), 'skills', entry.name, 'SKILL.md')),
       )
       .map((entry) => entry.name)

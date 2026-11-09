@@ -34,7 +34,8 @@ import type { WorkflowLanguage } from './workflows.js';
 export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
 const VALID_SKILL_TARGETS = ['claude-code', 'codex', 'opencode', 'cursor'] as const;
-const DEVELOPMENT_ONLY_SKILLS = new Set(['omd-lab-02-design-harness']);
+// Kept in the repo but never installed: lab experiments, and skills marked `internal: true` until their launch.
+export const DEVELOPMENT_ONLY_SKILLS = new Set(['omd-lab-02-design-harness', 'omd-brand-look']);
 
 const SKILL_EXTERNAL_DEPENDENCIES: Record<string, readonly string[]> = {
   'omd-aphrodite': [
