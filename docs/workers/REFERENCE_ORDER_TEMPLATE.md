@@ -51,6 +51,7 @@ The order matters. A WAF often starts blocking after browser probes, so read the
   - narrative sources with short quotes.
 - **`front.yaml`**:
   - `id: {{ID}}`, `name`, `country`, `category`, `homepage`, `primary_color`, and `logo` as the Google favicon form in the example;
+  - **Korean companies (`country: KR`): `display_name_kr`**, the brand's own Hangul name exactly as its live site writes it (a title, a button, the footer), with the place you read it in `verification.md`. Korean item pages show this name; without it they fall back to the English `name` (2026-11-06: everytime and wooricard shipped as "Everytime" / "Woori Card" on /ko). Never transliterate an English name yourself; if the site has no Hangul name, omit the field.
   - `verified: "{{TODAY}}"`, `added: "{{TODAY}}"`, `omd: "0.1"`;
   - `tokens`, with `source: live-extract`, `extracted: "{{TODAY}}"`, `colors`, `typography`, `rounded` and `components` (plus `components_harvested: true`).
   - `category` must be one of: ecommerce, fintech, saas, ai, consumer-tech, education, productivity, developer-tools, design-tools, backend-devops, automotive, marketing, government, healthcare.
