@@ -52,6 +52,8 @@ const lin = (c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 const lum = (h) => { const [r, g, b] = rgb(h).map(lin); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
 const contrast = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
 const sat = (h) => { const c = rgb(h); const mx = Math.max(...c), mn = Math.min(...c); const l = (mx + mn) / 2; return mx === mn ? 0 : (mx - mn) / (1 - Math.abs(2 * l - 1)); };
+// Chroma (max - min): unlike HSL saturation it stays near 0 for a near-white tint (#fff5f0 has sat 1, chroma 0.06).
+const chroma = (h) => { const c = rgb(h); return Math.max(...c) - Math.min(...c); };
 const dist = (a, b) => Math.hypot(...rgb(a).map((v, i) => v - rgb(b)[i]));
 
 // ---------- classify (same vocabulary as omd-shader-hero) ----------
@@ -90,11 +92,17 @@ const rankedBrand = [...brand].filter((c) => dist(c.hex, backdrop.hex) > 0.15)
   .sort((a, b) => (has(b.role, ['primary', 'brand']) - has(a.role, ['primary', 'brand'])) || sat(b.hex) - sat(a.hex));
 if (!rankedBrand.length) { console.error('Every brand color is too close to the backdrop.'); process.exit(3); }
 const primary = rankedBrand[0];
-// A second brand ink only when DESIGN.md names one (accent/secondary/...); palette steps like red100 don't count.
-const accent = rankedBrand.slice(1).find((c) => has(c.role, BRAND) && dist(c.hex, primary.hex) > 0.25 && sat(c.hex) > 0.25) ?? null;
-// The "ink" object: the opposite end of the scheme (a dark satin object on light, a light clay one on dark).
+// A second brand ink only when DESIGN.md names one (accent/secondary/...); palette steps like red100 don't count,
+// and neither does a near-white brand tint (a surface, not an ink: chroma gate, not HSL saturation).
+const accent = rankedBrand.slice(1).find((c) => has(c.role, BRAND) && dist(c.hex, primary.hex) > 0.25 && sat(c.hex) > 0.25 && chroma(c.hex) >= 0.2) ?? null;
+// The "ink" object: the opposite end of the scheme (a dark satin object on light, a light satin one on dark).
 const ink = scheme === 'light' ? darkest : lightest;
-const clay = scheme === 'light' ? lightest : (neutrals.filter((c) => lum(c.hex) > 0.02 && lum(c.hex) < 0.2).sort(byL).at(-1) ?? backdrop);
+// The "clay" objects are the quiet neighbours of the set. On light, the lightest neutral (white clay on a tinted
+// set reads by shading). On dark, a near-black clay on a near-black set vanishes, so take the darkest grey
+// neutral or ink token (chroma < 0.15, so not a tinted ink like weak-foreground) that clears 2:1 against the
+// chosen backdrop (a mid grey a step up from the set), else the lightest. Never the backdrop itself.
+const clay = scheme === 'light' ? lightest
+  : (pool.filter((c) => chroma(c.hex) < 0.15 && contrast(c.hex, backdrop.hex) >= 2 && lum(c.hex) > lum(backdrop.hex)).sort(byL)[0] ?? lightest);
 
 // Text sits on the backdrop, left of the cluster. Pick the ink with the best contrast against the
 // backdrop; the verify script then measures the real lit frames, which are darker than the token.
@@ -113,12 +121,15 @@ const bevel = shape === 'square' ? 0.02 : shape === 'pill' ? 0.5 : Math.min(0.35
 // ---------- scene ----------
 const mat = (role, hex, kind) => ({ role, hex, kind, ...(kind === 'gloss' ? { roughness: 0.32, coat: 0.35 } : kind === 'satin' ? { roughness: 0.5, coat: 0.1 } : { roughness: 0.82, coat: 0 }) });
 const materials = {
-  backdrop: mat(backdrop.role, backdrop.hex, 'clay'),
+  // Dark: the set keeps the light-scheme fill (0.3) so it renders close to its token; only the objects get lights.world.
+  backdrop: { ...mat(backdrop.role, backdrop.hex, 'clay'), ...(scheme === 'dark' ? { env: 0.3 } : {}) },
   primary: mat(primary.role, primary.hex, 'gloss'),
   ink: mat(ink.role, ink.hex, 'satin'),
   clay: mat(clay.role, clay.hex, 'clay'),
-  // Clear glass tinted by the brand color through its depth (absorption), not painted on.
-  glass: { role: primary.role, hex: primary.hex, kind: 'glass', roughness: 0.05, ior: 1.45, thickness: 0.6, attenuation: 2.4 },
+  // Clear glass tinted by the brand color through its depth (absorption), not painted on. On a dark set the glass
+  // transmits the dark wall and reads as a muddy brown/teal ball, so it reads by reflection instead: its own
+  // environment strength (`env`, three branch; Cycles path-traces the glass).
+  glass: { role: primary.role, hex: primary.hex, kind: 'glass', roughness: 0.05, ior: 1.45, thickness: 0.6, attenuation: 2.4, ...(scheme === 'dark' ? { env: 2.4 } : {}) },
   ...(accent ? { accent: mat(accent.role, accent.hex, 'gloss') } : {}),
 };
 // Composition "pile-right": 28 objects float in a cluster near 70% of the frame width, held by a spring
@@ -162,10 +173,13 @@ const spec = {
   // Cyclorama: floor from z=+12 back to z=-2, a cove of radius 2.5, then a wall up to y=14.
   cyclorama,
   camera,
+  // Dark set: the same key, a stronger rim to cut the silhouettes out of the dark backdrop, and a stronger
+  // environment fill. Glass on a dark set transmits the dark wall, so it reads by what it reflects, and the
+  // brand objects need the fill to keep their token color instead of sinking toward the set.
   lights: {
     key: { pos: [-4, 8, 6], target: [1.5, 0.4, 0], size: 6, energy: 1.0 },
-    rim: { pos: [6, 5, -4], target: [2, 0.6, 0], size: 3, energy: 0.35 },
-    world: 0.3,
+    rim: { pos: [6, 5, -4], target: [2, 0.6, 0], size: 3, energy: scheme === 'dark' ? 0.7 : 0.35 },
+    world: scheme === 'dark' ? 0.6 : 0.3,
   },
   toneMapping: 'neutral', // Khronos PBR Neutral in both engines: keeps base colors close to the tokens
   exposure: 1.0,
