@@ -27,7 +27,7 @@
 
 ## 1. 약속, 그리고 아닌 것
 
-**한 줄 약속.** `/omd-brand-look --sample toss,karrot,baemin,linear.app,apple`: 화면 하나를 실측 검증된 실제 회사 5곳의 토큰으로 다시 칠한다. 1440·1024·768·390에서 렌더해 규칙별 PASS/FAIL을 내고, 같은 화면 × 5 브랜드 그리드를 만든다.
+**한 줄 약속.** `/omd-brand-look --sample toss,karrot,ohouse,linear.app,apple`: 화면 하나를 실측 검증된 실제 회사 5곳의 토큰으로 다시 칠한다. 1440·1024·768·390에서 렌더해 규칙별 PASS/FAIL을 내고, 같은 화면 × 5 브랜드 그리드를 만든다.
 
 **아닌 것**
 - **테마 생성기가 아니다.** 팔레트, 중간 톤, hover 색을 지어내지 않는다. 출력하는 값은 모두 레퍼런스 frontmatter에 선언된 값이고, 줄마다 출처 경로를 주석으로 단다(`/* colors.canvas */`).
@@ -346,6 +346,7 @@ W2 다섯 중 둘(baemin, apple)은 그리드에서 **Noto Sans KR**로 그려�
 3. **Q3. `--assign`(선언값 사이의 역할 재배정 자동 적용)의 기본값.** 권고는 끄기(제안만)다.
 4. **Q4. MVP 전 apple SF Pro 대체 측정(§6).** 하지 않으면 W2 다섯 중 둘이 safe default로 그려진다.
 5. **Q5. W2 브랜드 구성.** baemin은 18슬롯 중 8개만 차고, 키가 corporate 표면 중심이며, on-primary가 없다. 정직한 생략과 함께 그대로 둘지, 핵심 4슬롯이 찬 KR verified 레퍼런스(235곳 중)로 바꿀지 정해야 한다. 후보는 고르지 않았다.
+   - **결정(owner 2026-11-09): ohouse.** W2 기본 다섯은 toss, karrot, ohouse(오늘의집), linear.app, apple이다. `look.mjs --sample`에 id를 주지 않으면 이 다섯을 쓴다. MVP 수용 런은 baemin과 ohouse를 모두 그려 비교했다. 반-쌍 가드(표면이 생략되면 그 위 `*-foreground`도 생략) 적용 후 baemin은 5/18 슬롯, 민트 하나, 서체는 safe default였다. ohouse는 10/18 슬롯(`#00a1ff`, 4px 반경, 측정된 포커스 링)이었다. 이 문서의 다른 곳에 남은 "W2 다섯 = …baemin…" 표기(§1 서체 표, §6 수용 기준)는 이 결정 이전의 것이다.
 6. **Q6. 채택 경로.** brand-look은 소스를 고치지 않는다. 고른 브랜드는 omd-init(DESIGN.md 부트스트랩)으로 넘기는 것을 권한다. 그 대신 `tokens.css`를 사용자의 `globals.css`에 바로 쓰는 `--adopt`를 둘지 정해야 한다.
 7. **Q7. 컴포넌트 단계(버튼 높이·pill)를 사용자 화면에도 MVP에서 할지.** 권고는 MVP에서 샘플 화면만 하는 것이다.
 8. **이름 충돌(범위 밖, 기록만).** R3가 지적한 `omd-taste`와 "taste" 범주(738K)의 충돌은 이 설계와 무관하다. 개명은 별도의 owner 판단이다.

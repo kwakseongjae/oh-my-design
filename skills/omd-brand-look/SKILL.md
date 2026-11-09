@@ -53,8 +53,8 @@ oh-my-design repo that is `web`). Fonts load from Google Fonts / jsDelivr / rsms
 node skills/omd-brand-look/scripts/tokens.mjs toss                 # --format auto|hex|hsl, --lang ko|ja|zh-TW|zh-CN|en, --json, --assign
 
 # 2. repaint + shoot + grid + Threads cards
-PW_CORE=$PWD/web node skills/omd-brand-look/scripts/look.mjs --sample toss karrot baemin linear.app apple \
-  --out .omd/brand-look/<run-id>
+PW_CORE=$PWD/web node skills/omd-brand-look/scripts/look.mjs --sample [<id> …] --out .omd/brand-look/<run-id>
+#    no ids = the W2 default set: toss karrot ohouse linear.app apple (owner 2026-11-09)
 
 # 3. checks -> report.md / report.json in the same folder
 PW_CORE=$PWD/web node skills/omd-brand-look/scripts/check.mjs .omd/brand-look/<run-id>

@@ -16,7 +16,8 @@ import { brandTokens, renderCss, contrastOf, suggest, applySuggestions } from '.
 import { SAMPLE, readTarget, keptValues, textPairs, themedCopy } from './target.mjs';
 import { launchChromium } from './browser.mjs';
 
-const W2 = ['toss', 'karrot', 'baemin', 'linear.app', 'apple'];
+// W2 default set (owner 2026-11-09, design doc §7 Q5: ohouse takes the fifth slot instead of baemin)
+const W2 = ['toss', 'karrot', 'ohouse', 'linear.app', 'apple'];
 const HEIGHTS = { 1440: 900, 1024: 768, 768: 1024, 390: 844 };
 const args = process.argv.slice(2);
 const VALUE_FLAGS = new Set(['--out', '--widths', '--lang', '--card']);
