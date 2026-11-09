@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample screen · omd-brand-look</title>
+<!-- HG-12: a standalone page loads the Korean face it names. look.mjs drops this link in a brand copy that sets its own
+     --font-sans, so the face that paints is the one the brand's label names. -->
+<link rel="stylesheet" data-omd-default-font href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* shadcn-style theme (v4 names, hex values read with var()). omd-brand-look overrides these with :root:root { … }.
+   The first class of every text element names the slot pair it paints (t-<text slot>__<background slot>);
+   check.mjs reads it to tell an inherited pair from one the mapping made. */
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #e7000b;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+  --radius: 0.625rem;
+  --font-sans: "Pretendard Variable", Pretendard, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--background); color: var(--foreground);
+  font-family: var(--font-sans); font-size: 15px; line-height: 1.6;
+  word-break: keep-all; overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, p { margin: 0; }
+button, input { font: inherit; }
+
+/* header */
+.app-header { display: flex; align-items: center; gap: 32px; height: 60px; padding: 0 32px; border-bottom: 1px solid var(--border); background: var(--background); }
+.app-name { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; white-space: nowrap; }
+.nav { display: flex; gap: 4px; }
+.nav-link { padding: 6px 10px; border-radius: var(--radius-md); font-size: 14px; font-weight: 500; text-decoration: none; color: var(--muted-foreground); }
+.nav-link.is-active { color: var(--foreground); }
+.header-end { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.search { width: 240px; }
+.avatar { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9999px; background: var(--muted); color: var(--muted-foreground); font-size: 13px; font-weight: 600; }
+
+/* layout */
+main { max-width: 1200px; margin: 0 auto; padding: 32px 32px 48px; display: grid; gap: 24px; }
+.page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.eyebrow { font-size: 13px; font-weight: 500; color: var(--muted-foreground); }
+h1 { font-size: 28px; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; color: var(--foreground); margin-top: 4px; }
+.lede { margin-top: 6px; color: var(--muted-foreground); max-width: 560px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cols { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.stack { display: grid; gap: 12px; }
+
+/* button (shadcn: h-9 px-4 rounded-md text-sm font-medium) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: var(--radius-md); border: 1px solid transparent; font-size: 14px; font-weight: 500; line-height: 1; white-space: nowrap; cursor: pointer; }
+.btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.btn-secondary { background: var(--secondary); color: var(--secondary-foreground); }
+.btn-outline { background: var(--background); color: var(--foreground); border-color: var(--input); }
+.btn-ghost { background: transparent; color: var(--foreground); }
+.btn-destructive-ghost { background: transparent; color: var(--destructive); }
+.btn:focus-visible, .tab:focus-visible, .nav-link:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring); }
+
+/* input */
+.input { display: block; width: 100%; height: 36px; padding: 0 12px; border-radius: var(--radius-md); border: 1px solid var(--input); background: var(--background); color: var(--foreground); font-size: 14px; }
+.input::placeholder { color: var(--muted-foreground); }
+.input:focus-visible, .input.is-focused { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--background), 0 0 0 5px var(--ring); }
+.input.is-invalid { border-color: var(--destructive); }
+.field { display: grid; gap: 6px; }
+label { font-size: 14px; font-weight: 500; }
+.hint { font-size: 13px; color: var(--muted-foreground); }
+.error { font-size: 13px; color: var(--destructive); font-weight: 500; }
+
+/* card */
+.card { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 20px; }
+.card h2, .panel h2 { font-size: 17px; line-height: 1.4; font-weight: 600; letter-spacing: -0.01em; }
+.card-sub { font-size: 13px; color: var(--muted-foreground); margin-top: 2px; }
+.panel { background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 20px; display: grid; gap: 16px; }
+.stat-label { font-size: 13px; color: var(--muted-foreground); }
+.stat-value { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.stat-delta { font-size: 13px; color: var(--muted-foreground); margin-top: 2px; }
+
+/* tabs (shadcn TabsList: bg-muted text-muted-foreground; active trigger bg-background text-foreground) */
+.tabs { display: inline-flex; gap: 2px; padding: 3px; background: var(--muted); border-radius: var(--radius-lg); }
+.tab { height: 30px; padding: 0 12px; border: 0; border-radius: var(--radius-md); background: transparent; color: var(--muted-foreground); font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; }
+.tab.is-active { background: var(--background); color: var(--foreground); }
+
+/* list + badge */
+.list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; }
+.row { display: flex; align-items: center; gap: 12px; padding: 12px 10px; border-top: 1px solid var(--border); }
+.row:first-child { border-top: 0; }
+.row.is-selected { background: var(--accent); color: var(--accent-foreground); border-radius: var(--radius-md); }
+.row.is-selected + .row { border-top-color: transparent; }
+.row-main { min-width: 0; flex: 1; }
+.row-title { font-size: 14px; font-weight: 600; }
+.row-meta { font-size: 13px; color: var(--muted-foreground); }
+.row-amount { font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.badge { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--radius-md); border: 1px solid transparent; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.badge-default { background: var(--primary); color: var(--primary-foreground); }
+.badge-secondary { background: var(--secondary); color: var(--secondary-foreground); }
+.badge-outline { border-color: var(--border); color: var(--card-foreground); }
+.form-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.form-actions .push { margin-left: auto; }
+
+@media (max-width: 1023px) {
+  .cols { grid-template-columns: 1fr; }
+  .search { width: 180px; }
+}
+@media (max-width: 767px) {
+  .app-header { padding: 0 16px; gap: 16px; height: 56px; }
+  .nav, .search { display: none; }
+  main { padding: 20px 16px 40px; gap: 20px; }
+  h1 { font-size: 24px; }
+  .actions .btn { flex: 1 1 auto; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stats .card:nth-child(3) { display: none; }
+  .stat-value { font-size: 20px; }
+  .card, .panel { padding: 16px; }
+  .order-list { order: -1; }
+}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="t-foreground__background app-name">샘플 스토어 관리</div>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a class="t-foreground__background nav-link is-active" href="#orders" aria-current="page">주문</a>
+    <a class="t-muted-foreground__background nav-link" href="#products">상품</a>
+    <a class="t-muted-foreground__background nav-link" href="#settlement">정산</a>
+    <a class="t-muted-foreground__background nav-link" href="#settings">설정</a>
+  </nav>
+  <div class="header-end">
+    <input class="input search" type="search" placeholder="주문번호, 고객 이름 검색" aria-label="검색">
+    <span class="t-muted-foreground__muted avatar" aria-label="내 계정">김</span>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div>
+      <p class="t-muted-foreground__background eyebrow">Orders · 11월 둘째 주</p>
+      <h1 class="t-foreground__background">주문 관리</h1>
+      <p class="t-muted-foreground__background lede">이번 주 새 주문 12건 중 5건이 배송 준비 중이에요. Review today's orders before 6 PM.</p>
+    </div>
+    <div class="actions">
+      <button class="t-primary-foreground__primary btn btn-primary" type="button">새 주문 만들기</button>
+      <button class="t-secondary-foreground__secondary btn btn-secondary" type="button">내보내기</button>
+      <button class="t-foreground__background btn btn-outline" type="button">필터</button>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="오늘 요약">
+    <div class="card">
+      <p class="t-muted-foreground__card stat-label">오늘 매출</p>
+      <p class="t-card-foreground__card stat-value">₩1,284,000</p>
+      <p class="t-muted-foreground__card stat-delta">어제보다 8.2% 늘었어요</p>
+    </div>
+    <div class="card">
+      <p class="t-muted-foreground__card stat-label">배송 준비</p>
+      <p class="t-card-foreground__card stat-value">5건</p>
+      <p class="t-muted-foreground__card stat-delta">오후 6시 전 출고 3건</p>
+    </div>
+    <div class="card">
+      <p class="t-muted-foreground__card stat-label">Refund requests</p>
+      <p class="t-card-foreground__card stat-value">2</p>
+      <p class="t-muted-foreground__card stat-delta">평균 처리 1.4일</p>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div class="stack order-list">
+      <div class="tabs" role="tablist" aria-label="주문 상태">
+        <button class="t-foreground__background tab is-active" role="tab" aria-selected="true" type="button">전체 12</button>
+        <button class="t-muted-foreground__muted tab" role="tab" aria-selected="false" type="button">결제 완료</button>
+        <button class="t-muted-foreground__muted tab" role="tab" aria-selected="false" type="button">배송 준비</button>
+        <button class="t-muted-foreground__muted tab" role="tab" aria-selected="false" type="button">취소</button>
+      </div>
+      <div class="card">
+        <h2 class="t-card-foreground__card">최근 주문</h2>
+        <p class="t-muted-foreground__card card-sub">Recent orders · 방금 전 업데이트</p>
+        <ul class="list">
+          <li class="row is-selected">
+            <div class="row-main">
+              <p class="t-accent-foreground__accent row-title">이서윤 · 핸드드립 원두 세트</p>
+              <p class="t-muted-foreground__accent row-meta">#A-20481 · 오늘 10:24</p>
+            </div>
+            <span class="t-primary-foreground__primary badge badge-default">결제 완료</span>
+            <span class="t-accent-foreground__accent row-amount">₩38,000</span>
+          </li>
+          <li class="row">
+            <div class="row-main">
+              <p class="t-card-foreground__card row-title">박지훈 · Ceramic mug, 2 pcs</p>
+              <p class="t-muted-foreground__card row-meta">#A-20477 · 오늘 09:51</p>
+            </div>
+            <span class="t-secondary-foreground__secondary badge badge-secondary">배송 준비</span>
+            <span class="t-card-foreground__card row-amount">₩24,500</span>
+          </li>
+          <li class="row">
+            <div class="row-main">
+              <p class="t-card-foreground__card row-title">최민준 · 리넨 테이블 매트</p>
+              <p class="t-muted-foreground__card row-meta">#A-20470 · 어제 21:08</p>
+            </div>
+            <span class="t-card-foreground__card badge badge-outline">취소 요청</span>
+            <span class="t-card-foreground__card row-amount">₩19,900</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <form class="panel" onsubmit="return false">
+      <div>
+        <h2 class="t-foreground__background">배송지 변경</h2>
+        <p class="t-muted-foreground__background card-sub">주문 #A-20481 · Delivery address</p>
+      </div>
+      <div class="field">
+        <label class="t-foreground__background" for="addr">받는 분 주소</label>
+        <input id="addr" class="input is-focused" value="서울특별시 성동구 왕십리로 83-21">
+        <p class="t-muted-foreground__background hint">도로명 주소로 입력해 주세요.</p>
+      </div>
+      <div class="field">
+        <label class="t-foreground__background" for="tel">연락처</label>
+        <input id="tel" class="input is-invalid" value="010-1234" aria-invalid="true" aria-describedby="tel-error">
+        <p id="tel-error" class="t-destructive__background error">전화번호 11자리를 모두 입력해 주세요.</p>
+      </div>
+      <div class="form-actions">
+        <button class="t-primary-foreground__primary btn btn-primary" type="submit">저장</button>
+        <button class="t-foreground__background btn btn-ghost" type="button">취소</button>
+        <button class="t-destructive__background btn btn-destructive-ghost push" type="button">주문 삭제</button>
+      </div>
+    </form>
+  </section>
+</main>
+</body>
+</html>
