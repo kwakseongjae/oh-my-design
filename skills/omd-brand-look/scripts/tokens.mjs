@@ -264,6 +264,8 @@ export function brandTokens(target, { format = 'auto', lang = 'ko', assign = fal
       font.labels.push(`${script}: ${face} has no ${script} glyphs; ${script} renders in ${safeFace}: safe default (not the brand face)`);
       font.caption += ` · ${script === 'hangul' ? 'Hangul' : script}: ${safeFace}, safe default (not the brand face)`;
       font.expect[script] = { families: [safeFace] };
+    } else if (script !== 'latin') {
+      font.expect[script] = { families: [face] };
     }
   } else if (faceMeta?.substitutes) {
     font.case = 'B';
