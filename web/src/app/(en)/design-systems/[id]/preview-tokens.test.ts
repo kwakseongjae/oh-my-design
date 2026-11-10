@@ -94,7 +94,8 @@ describe("item preview model, built from a reference's own tokens", () => {
         const pattern = s.name ? `${s.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}:\\s*${s.px}\\b` : `[\\[,\\s]${s.px}\\b`;
         expect(md, `${id} spacing ${s.name || s.px}`).toMatch(new RegExp(pattern));
       }
-      for (const t of m.scale) expect(md, `${id} type ${t.name}`).toContain(`${t.name}:`);
+      // md is lowercased above, so the key is too (samsunghospital's `cardLabel`).
+      for (const t of m.scale) expect(md, `${id} type ${t.name}`).toContain(`${t.name.toLowerCase()}:`);
     }
   });
 });

@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 427,
-  "sources": 3786,
+  "references_with_verification_v2": 433,
+  "sources": 3869,
   "sources_by_kind": {
-    "brand-asset": 258,
+    "brand-asset": 271,
     "license": 141,
-    "official-doc": 1807,
-    "product-surface": 1580
+    "official-doc": 1848,
+    "product-surface": 1609
   },
   "references": {
     "104": {
@@ -8939,6 +8939,72 @@
         }
       ]
     },
+    "hkairport": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-development",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "operator",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "privacy-loyalty",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "site-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.hongkongairport.com"
+        }
+      ]
+    },
     "hktvmall": {
       "checked": "2026-11-06",
       "claims": 0,
@@ -10922,6 +10988,84 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.kbanknow.com"
+        }
+      ]
+    },
+    "kbinsurance": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "basic-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "group-privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "layout-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
+        },
+        {
+          "id": "style-imports",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.kbinsure.co.kr"
         }
       ]
     },
@@ -15917,6 +16061,72 @@
         }
       ]
     },
+    "nomura": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "common-js",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "company-hub",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "top-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        },
+        {
+          "id": "wealth",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.nomura.co.jp"
+        }
+      ]
+    },
     "nota": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -18155,6 +18365,168 @@
         }
       ]
     },
+    "railway": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company-profile",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "company-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "css-bootstrap-datepicker",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-bootstrap-datepicker-standalone",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-bootstrap-min",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-cookie",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-font-awesome-min",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-jquery-confirm-min",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-jquery-ui-autocomplete",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-jquery-ui-min",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-marquee",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-nav-quick",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-tip_default_v2",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-tip_english",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-tip_normal",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-tip_station_map",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "css-tip_theme",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "tip-tr4cdn.cdn.hinet.net"
+        },
+        {
+          "id": "design-area",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "domain-update",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "history-2024",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.railway.gov.tw"
+        }
+      ]
+    },
     "raksul": {
       "checked": "2026-11-06",
       "claims": 0,
@@ -19124,6 +19496,108 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.samsung.com"
+        }
+      ]
+    },
+    "samsunghospital": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "a11y-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "caregiver-culture",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "component-imports",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "font-declarations",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "founding",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "home-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "mission-page",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "site-styles",
+          "kind": "brand-asset",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "sitemap",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.samsunghospital.com"
         }
       ]
     },
@@ -24554,6 +25028,66 @@
           "kind": "official-doc",
           "captured": "2026-11-03",
           "host": "www.wesang.com"
+        }
+      ]
+    },
+    "yomiuri": {
+      "checked": "2026-11-09",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-history",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "company-control",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.yomiuri.co.jp"
+        },
+        {
+          "id": "group",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-09",
+          "host": "www.yomiuri.co.jp"
+        },
+        {
+          "id": "principles",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "product-overview",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "info.yomiuri.co.jp"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-09",
+          "host": "www.yomiuri.co.jp"
         }
       ]
     },

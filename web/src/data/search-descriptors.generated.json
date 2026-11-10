@@ -12538,6 +12538,68 @@
     ]
    }
   },
+  "hkairport": {
+   "hash": "0112ff88d6a866cf",
+   "terms": {
+    "en": [
+     "airport portal",
+     "flight information",
+     "travel passenger website",
+     "vivid blue header",
+     "mint green accent",
+     "aqua and coral accents",
+     "large photography",
+     "dark flight panel",
+     "white search area",
+     "transport and parking",
+     "arrivals departures",
+     "shopping dining services",
+     "bootstrap based layout"
+    ],
+    "ko": [
+     "공항 포털",
+     "항공편 정보",
+     "여행객 웹사이트",
+     "선명한 파란색 헤더",
+     "민트 그린 포인트",
+     "아쿠아 코랄 강조",
+     "대형 사진",
+     "어두운 운항 패널",
+     "흰색 검색 영역",
+     "교통 및 주차",
+     "출도착 안내",
+     "쇼핑 식음 서비스"
+    ],
+    "ja": [
+     "空港ポータル",
+     "フライト情報",
+     "旅行者向けサイト",
+     "鮮やかな青のヘッダー",
+     "ミントグリーンの差し色",
+     "アクアとコーラルの強調",
+     "大型の写真",
+     "暗いフライトパネル",
+     "白い検索エリア",
+     "交通と駐車場",
+     "到着出発案内",
+     "ショッピングと飲食"
+    ],
+    "zh": [
+     "機場入口網站",
+     "航班資訊",
+     "旅客網站",
+     "鮮藍色頁首",
+     "薄荷綠點綴",
+     "水藍與珊瑚色強調",
+     "大幅攝影",
+     "深色航班面板",
+     "白色搜尋區",
+     "交通與停車",
+     "抵達出發資訊",
+     "購物餐飲服務"
+    ]
+   }
+  },
   "hktvmall": {
    "hash": "deeace2c47a03698",
    "terms": {
@@ -15530,6 +15592,71 @@
      "產品介紹頁",
      "藍白配色",
      "親切的金融服務"
+    ]
+   }
+  },
+  "kbinsurance": {
+   "hash": "e43bab281336cfd5",
+   "terms": {
+    "en": [
+     "insurance company",
+     "korean insurer",
+     "claims and policy lookup",
+     "insurance loans",
+     "payments",
+     "pale yellow service grid",
+     "white page",
+     "rounded promo panels",
+     "soft pastel cards",
+     "yellow login button",
+     "task-oriented links",
+     "small line icons",
+     "illustrated folders and charts"
+    ],
+    "ko": [
+     "손해보험",
+     "보험사 홈페이지",
+     "보험금 청구",
+     "계약 조회",
+     "보험계약대출",
+     "연한 노란 서비스 영역",
+     "흰 배경",
+     "둥근 프로모션 패널",
+     "파스텔 카드",
+     "노란 로그인 버튼",
+     "빠른 서비스 메뉴",
+     "단색 아이콘",
+     "친근한 금융"
+    ],
+    "ja": [
+     "損害保険",
+     "韓国の保険会社",
+     "保険金請求",
+     "契約照会",
+     "契約者貸付",
+     "淡い黄色のサービス欄",
+     "白い背景",
+     "丸みのあるパネル",
+     "パステルカード",
+     "黄色のログインボタン",
+     "クイックメニュー",
+     "モノクロアイコン",
+     "親しみやすい金融"
+    ],
+    "zh": [
+     "產險公司",
+     "韓國保險公司",
+     "理賠申請",
+     "保單查詢",
+     "保單貸款",
+     "淡黃色服務區",
+     "白色背景",
+     "圓角宣傳區塊",
+     "柔和粉彩卡片",
+     "黃色登入按鈕",
+     "快速服務選單",
+     "單色圖示",
+     "親切的金融"
     ]
    }
   },
@@ -21842,6 +21969,75 @@
     ]
    }
   },
+  "nomura": {
+   "hash": "e01226886a1f39b0",
+   "terms": {
+    "en": [
+     "securities firm",
+     "wealth management",
+     "investment services",
+     "inheritance and succession",
+     "real estate planning",
+     "japanese financial site",
+     "spacious hero landscape",
+     "white and pale grey surfaces",
+     "red accent",
+     "square buttons",
+     "service cards",
+     "dated news list",
+     "account opening",
+     "customer login"
+    ],
+    "ko": [
+     "증권사",
+     "자산관리",
+     "투자 서비스",
+     "상속 및 승계",
+     "부동산 컨설팅",
+     "일본 금융 사이트",
+     "넓은 히어로 풍경",
+     "흰색과 연회색 배경",
+     "빨간 포인트",
+     "사각 버튼",
+     "서비스 카드",
+     "날짜별 뉴스",
+     "계좌 개설",
+     "고객 로그인"
+    ],
+    "ja": [
+     "証券会社",
+     "資産管理",
+     "投資サービス",
+     "相続・事業承継",
+     "不動産相談",
+     "日本の金融サイト",
+     "広々としたヒーロー",
+     "白とライトグレー",
+     "赤のアクセント",
+     "角型ボタン",
+     "サービスカード",
+     "日付付きニュース",
+     "口座開設",
+     "ログイン導線"
+    ],
+    "zh": [
+     "證券公司",
+     "財富管理",
+     "投資服務",
+     "繼承與傳承",
+     "不動產規劃",
+     "日本金融網站",
+     "寬闊主視覺風景",
+     "白色與淺灰背景",
+     "紅色點綴",
+     "方形按鈕",
+     "服務卡片",
+     "日期新聞列表",
+     "開立帳戶",
+     "客戶登入"
+    ]
+   }
+  },
   "nota": {
    "hash": "cd3fff228248c28e",
    "terms": {
@@ -25750,6 +25946,67 @@
     ]
    }
   },
+  "railway": {
+   "hash": "bae60d70e3c80813",
+   "terms": {
+    "en": [
+     "railway passenger portal",
+     "train ticket booking",
+     "timetable search",
+     "public transport service",
+     "blue navigation",
+     "dense timetable form",
+     "train photography",
+     "white and blue palette",
+     "square input fields",
+     "fixed service sidebar",
+     "travel booking website",
+     "practical utilitarian controls"
+    ],
+    "ko": [
+     "철도 승객 포털",
+     "기차표 예매",
+     "시간표 검색",
+     "대중교통 서비스",
+     "파란색 내비게이션",
+     "빽빽한 시간표 폼",
+     "기차 사진",
+     "흰색 파란색 팔레트",
+     "사각 입력창",
+     "고정 서비스 바",
+     "여행 예약 사이트",
+     "실용적인 인터페이스"
+    ],
+    "ja": [
+     "鉄道旅客ポータル",
+     "乗車券予約",
+     "時刻表検索",
+     "公共交通サービス",
+     "青いナビゲーション",
+     "高密度な検索フォーム",
+     "列車写真",
+     "白と青の配色",
+     "角型入力欄",
+     "固定サービスバー",
+     "旅行予約サイト",
+     "実用的な操作部品"
+    ],
+    "zh": [
+     "鐵路旅客入口網站",
+     "火車訂票",
+     "時刻表查詢",
+     "大眾運輸服務",
+     "藍色導覽列",
+     "高密度查詢表單",
+     "列車照片",
+     "白藍配色",
+     "方形輸入欄位",
+     "固定服務側欄",
+     "旅遊訂票網站",
+     "實用型介面"
+    ]
+   }
+  },
   "raksul": {
    "hash": "c6897f5740a58ded",
    "terms": {
@@ -27531,6 +27788,68 @@
      "產品卡片",
      "分頁標籤瀏覽",
      "黑白配色"
+    ]
+   }
+  },
+  "samsunghospital": {
+   "hash": "b9f35c38e273b2d3",
+   "terms": {
+    "en": [
+     "hospital website",
+     "healthcare",
+     "medical center",
+     "appointment booking",
+     "doctor search",
+     "patient services",
+     "colorful service panels",
+     "blue and green palette",
+     "orange and purple accents",
+     "yellow interaction accents",
+     "white background",
+     "institutional tone",
+     "notice board"
+    ],
+    "ko": [
+     "병원 웹사이트",
+     "의료 서비스",
+     "대학병원",
+     "진료 예약",
+     "의료진 검색",
+     "환자 서비스",
+     "다채로운 서비스 패널",
+     "파랑 초록 팔레트",
+     "노랑 포인트",
+     "흰색 배경",
+     "제도적인 분위기",
+     "공지사항"
+    ],
+    "ja": [
+     "病院サイト",
+     "医療サービス",
+     "総合病院",
+     "診療予約",
+     "医師検索",
+     "患者向けサービス",
+     "カラフルなパネル",
+     "青と緑の配色",
+     "黄色のアクセント",
+     "白背景",
+     "公式な雰囲気",
+     "お知らせ"
+    ],
+    "zh": [
+     "醫院網站",
+     "醫療服務",
+     "醫學中心",
+     "預約掛號",
+     "醫師搜尋",
+     "病患服務",
+     "多彩服務面板",
+     "藍綠配色",
+     "黃色強調",
+     "白色背景",
+     "機構式風格",
+     "公告欄"
     ]
    }
   },
@@ -36426,6 +36745,67 @@
      "方形分類卡片",
      "細邊框無陰影",
      "橘色搜尋按鈕"
+    ]
+   }
+  },
+  "yomiuri": {
+   "hash": "aad056e863e37fec",
+   "terms": {
+    "en": [
+     "japanese news site",
+     "newspaper online edition",
+     "dense news front page",
+     "purple category bar",
+     "orange subscribe button",
+     "square corners",
+     "small compact type",
+     "white background",
+     "news portal",
+     "purple and orange",
+     "light blue surfaces",
+     "subscription news service"
+    ],
+    "ko": [
+     "일본 뉴스 사이트",
+     "신문 온라인판",
+     "빽빽한 뉴스 첫 화면",
+     "보라색 카테고리 바",
+     "주황색 구독 버튼",
+     "각진 모서리",
+     "작은 글씨",
+     "흰색 배경",
+     "뉴스 포털",
+     "보라와 주황",
+     "연한 파랑 배경",
+     "구독형 뉴스"
+    ],
+    "ja": [
+     "日本のニュースサイト",
+     "新聞オンライン",
+     "高密度なニュース面",
+     "紫のカテゴリバー",
+     "オレンジの購読ボタン",
+     "角ばった形",
+     "小さな文字",
+     "白背景",
+     "ニュースポータル",
+     "紫とオレンジ",
+     "淡い青の背景",
+     "購読サービス"
+    ],
+    "zh": [
+     "日本新聞網站",
+     "報紙線上版",
+     "高密度新聞首頁",
+     "紫色分類列",
+     "橘色訂閱按鈕",
+     "直角造型",
+     "小字體",
+     "白色背景",
+     "新聞入口網站",
+     "紫色與橘色",
+     "淺藍色底",
+     "訂閱制新聞"
     ]
    }
   },

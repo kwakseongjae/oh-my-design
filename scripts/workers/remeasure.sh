@@ -14,6 +14,7 @@ ID=$1; URL=$2; LOC=$3; shift 3 || { echo "usage: remeasure.sh <id> <url> <locale
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
 OUT=${REMEASURE_OUT:-${TMPDIR:-/tmp}/omd-remeasure}
 mkdir -p "$OUT"
+OUT=$(cd "$OUT" && pwd)   # the probe runs from web/, so a relative REMEASURE_OUT would land in the wrong place
 EV="$REPO/artifacts/reference-evidence/visual/$ID"
 CFG=${REMEASURE_CFG:-$(python3 - "$EV" <<'PY'
 import glob, json, sys
