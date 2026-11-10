@@ -4020,6 +4020,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.533
   },
   {
+    "id": "fujitsu",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-10",
+    "tokensExtractedAt": "2026-11-10",
+    "nextReverifyAt": "2027-05-09",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 107,
+    "evidenceClaimCount": 107,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
+    "conflictCount": 0,
+    "tier1SourceCount": 15,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "funnow",
     "status": "partial",
     "verifiedAt": "2026-06-10",
@@ -4788,6 +4810,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "hk01",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-10",
+    "tokensExtractedAt": "2026-11-10",
+    "nextReverifyAt": "2027-05-09",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 60,
+    "evidenceClaimCount": 60,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 15,
+    "conflictCount": 0,
+    "tier1SourceCount": 15,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "hkairport",
     "status": "verified_v2",
     "verifiedAt": "2026-11-09",
@@ -4849,6 +4893,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 4,
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "hmall",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-10",
+    "tokensExtractedAt": "2026-11-10",
+    "nextReverifyAt": "2027-05-09",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 64,
+    "evidenceClaimCount": 64,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -7144,6 +7210,28 @@ export const REFERENCE_QUALITY = [
     "conflictCount": 0,
     "tier1SourceCount": 13,
     "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "megazone",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-10",
+    "tokensExtractedAt": "2026-11-10",
+    "nextReverifyAt": "2027-05-09",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 97,
+    "evidenceClaimCount": 97,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
     "interactiveComponentCount": 4,
     "statedComponentCount": 4,
     "reasonCodes": [],
@@ -14347,10 +14435,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 433,
+  "verified_v2": 437,
   "partial": 89,
   "legacy_snapshot": 81,
-  "total": 603
+  "total": 607
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
