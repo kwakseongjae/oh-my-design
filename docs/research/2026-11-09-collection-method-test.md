@@ -63,3 +63,58 @@ claims are within −10 %, and wall time or uncached tokens drop by ≥ 25 %. Th
 - **Claude author on Codex evidence**: capture by Codex, writing by Claude (`spawn.sh --engine claude`). Needs the
   owner to name the available channels and limits first (project rule: ask before each comparison run).
 - **Two references per worker**: amortizes reading the order and examples; risk of cross-contamination.
+
+## Results (2026-11-09)
+
+### Round 1 — effort `max` (A) vs `high` (H), same 6 sites, Codex `gpt-6.1-sol`
+
+| | A max | H high | H vs A |
+|---|---|---|---|
+| verified_v2 | 6 / 6 | 6 / 6 | same |
+| wall time, median | 19.2 min | 13.3 min | **−31 %** |
+| — writing stage, median | 14.1 min | 9.8 min | −30 % |
+| output tokens, median | 43 k | 25 k | −42 % |
+| uncached input, median | 176 k | 172 k | same |
+| components with measured states (sum of 6) | 33 | 27 | **−18 %** |
+| stated components | 27 | 22 | −19 % |
+| claims (sum) | 516 | 408 | **−21 %** |
+| colors in DESIGN.md not found in the evidence | 0 | 0 | same |
+
+Decision rule (≤ −10 % on components and claims): **H fails. Keep effort `max`.** `high` is faster because it writes
+less, not because it writes the same thing faster.
+
+Both arms ran on an idle-ish machine today (A median 19 min vs batch 6's 29 min under heavier load), so compare
+within the round only.
+
+### Round 2 — Claude Sonnet 5.5 (C) writes from arm A's evidence, 3 sites, one worker at a time
+
+Owner 11/9: Sonnet 5.5, few workers. No new browser runs: the Codex worker's capture folders and fetched first-party
+pages were copied into the Claude worker's folder (`spawn.sh --engine claude --model claude-sonnet-5-5 --effort medium`;
+no network, no browser). First attempt stopped at once: the Claude worker may only read its own folder, so the capture
+folders must be copied in, not referenced (fixed in the runner).
+
+| site | A writing stage | C total | A components / stated / claims | C components / stated / claims |
+|---|---|---|---|---|
+| yomiuri | 15.3 min | 4.2 min | 6 / 5 / 78 | 6 / 5 / 80 |
+| kbinsurance | 13.0 min | 3.8 min | 5 / 4 / 84 | 5 / 3 / 78 |
+| hkairport | 10.9 min | 4.0 min | 5 / 4 / 86 | 3 / 2 / 43 |
+
+- All three verified_v2; every color in C's DESIGN.md is in the evidence (0 misses).
+- Writing time −70 %. Tokens: 2.1–3.8 M input (mostly cache reads; 91–205 k uncached), 26–33 k output; list cost
+  about $1.2 for yomiuri.
+- Coverage −12 % components / −19 % claims over the 3, all of it hkairport: C kept three controls in prose (no
+  colour change, a tile without declared size) where A promoted them to components. An editorial choice, not a
+  measurement miss.
+- §1 depth (yomiuri, read by the orchestrator): both ground the history in first-party pages; C quotes more of them
+  (first newspaper website in Japan 1995, ヨミウリ・オンライン 1996, the 2019 service and its +0 円 terms).
+- C wrote "HK is new to the catalog" — false (zabank, hangseng); the order template's country list predates HK.
+
+**Reading:** a split pipeline — Codex for sources + capture (≈ 4–6 min), Claude Sonnet for writing (≈ 4 min) — could
+cut a reference from ≈ 19 to ≈ 10 minutes with similar quality, and moves 70 % of the work off the Codex quota. Three
+sites is too few to adopt it; the coverage gap on hkairport needs a rule in the writer order (promote every measured
+control with a changed state to `components`).
+
+### Next (round 3, proposed)
+
+End-to-end split on 3–4 new sites: a Codex order that stops after sources + capture, then the Claude Sonnet writer with
+the coverage rule above. One Claude worker at a time. Adopt if verified_v2, coverage within −10 % and grounding stay.
