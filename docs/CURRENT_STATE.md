@@ -1,7 +1,14 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: **2026-11-09** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-11-10** (아래 최신 항목 기준; 이 줄 아래 9/17 서술은 과거 기록) · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
+
+- **머지(오너 "머지 ㄱㄱ"):** #117 문서 → #116 brand-look → #118 7차, main `c65b335b`. 운영 확인: `/ko/design-systems/kbinsurance`에 "KB손해보험", 새 5곳 200, llms.txt 603, main CI 통과. 머지된 워크트리 3개(brandlook·reverify-w1·3d) 정리, 로컬 브랜치 4개 삭제(brandlook의 미커밋 변경은 번들 경로 주석뿐이라 되돌림).
+- **라운드 3(오너 "라운드 3도 해보쇼") 진행 중:** 새 CJK 4곳(hmall·fujitsu·megazone·hk01), 짝 비교. A = 지금 방식(Codex max 전체), S = Codex max 수집 전용 지시서 → W = Claude Sonnet 5.5가 S 폴더만 보고 작성(한 번에 1개). 사이트마다 두 Codex 갈래는 동시에 돌지 않고 먼저 도는 쪽을 번갈아 둠. 스크립트 `scratchpad/exp8/`(run-r3.sh·run-writer-r3.sh·make-capture-order.py·make-writer-folder.py), 웨이브 `~/.omd-workers/exp8{a,s,w}`. 결과는 `docs/research/2026-11-09-collection-method-test.md`에 이어 적는다.
+- **앱 근거 iOS 확인(오너 "iOS로 해보면 어때?"):** 이 맥에 Xcode·iOS 26.5 시뮬레이터가 이미 있음(다운로드 불필요). 다만 시뮬레이터는 App Store 앱을 못 설치하고, 배민·오늘의집은 App Store 호환 목록에 Mac이 없음(배민 iPhone만, 오늘의집 iPhone·iPad·Vision). 남는 iOS 경로 = 오너 아이폰에서 직접 찍은 스크린샷(픽셀 색·크기만, 요소 트리·폰트 파일 없음). `devicectl`에 스크린샷 명령 없음, iPhone 미러링은 영상 압축이라 색 측정에 부적합. **경로 선택은 오너 답 대기.**
+- **아직 켜져 있음:** 3D 데모용 로컬 서버 127.0.0.1:8791(`claudedocs/3d-hero`), 오너가 다 보면 끈다.
 
 ## ▶ 2026-11-09 오후 · 수집 방식 실험 결과 · brand-look MVP · 7차 착지 준비
 
