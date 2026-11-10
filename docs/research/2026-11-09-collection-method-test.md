@@ -159,6 +159,11 @@ make-capture-order.py, make-writer-folder.py, metrics8.py).
 from the same or equivalent evidence. Keep the current method (Codex max end to end). The split stays a fallback for
 a Codex quota squeeze, with that cost known.
 
+Caveat: the arms ran at different effort. A's writer is Codex at `max`, W is Sonnet at `medium` (carried over from round
+2; the owner named the model, not the effort). "The Claude writer writes less" holds as measured but is untested at
+matched effort. The cheapest test is a W re-run at `high` or `max` on the same four S folders: no browser, no Codex,
+four Claude runs, paired against today's W.
+
 Possible follow-up if wanted: hand the writer a mechanical list of the controls whose state changed (the parse used
 above) and require each to be in `components` or carry a rule-based reason; that targets the component gap but not
 the claims gap.
