@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandChanges, compileControl, componentsYaml, mergeControls } from "../scripts/compile-evidence.mjs";
+import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, tokenCandidates } from "../scripts/compile-evidence.mjs";
 
 // Shapes follow probe-keyboard-states.mjs states.json: controls[key] = { found, identity, rest, hover, pressed, focus }.
 const identity = { tag: "a", role: null, text: "Contact Us", rect: { w: 194.8, h: 56 }, radius: "100px", padding: "0px 40px", font: "18px/700" };
@@ -59,6 +59,55 @@ describe("compile-evidence", () => {
     const first = { controls: { cta: control({ hover: { measured: true, changed: fill } }) } };
     const second = { controls: { cta: control({ hover: { measured: false } }) } };
     expect(compileControl(mergeControls([first, second])[0]).fields.hover).toBe("#dddddd");
+  });
+});
+
+describe("token candidates", () => {
+  // Shapes follow survey.json: census.census.{bg,text,border,paragraphInk}, census.computedVars, rows.
+  const survey = {
+    census: {
+      census: { bg: [{ color: "rgb(244, 244, 244)", count: 34 }, { color: "rgba(0, 0, 0, 0.5)", count: 99 }], text: [{ color: "rgb(30, 36, 40)", count: 456 }], border: [], paragraphInk: [] },
+      computedVars: { "--brand": "#4B0082", "--ink": "rgb(30, 36, 40)", "--soft": "silver", "--glass": "#00000080", "--grad": "linear-gradient(#fff, #000)", "--hue": "hsl(0, 100%, 50%)" },
+      fonts: { body: "Pretendard", h1: "Pretendard", button: "Arial" },
+    },
+    rows: [
+      { font: "13px/700", lineHeight: "14.3px", family: "Pretendard", radius: "3px", bg: "rgba(0, 0, 0, 0)", fg: "rgb(30, 36, 40)", border: "none" },
+      { font: "13px/700", lineHeight: "14.3px", family: "Pretendard", radius: "0px", bg: "rgb(255, 118, 0)", fg: "rgb(255, 255, 255)", border: "1px solid rgb(255, 118, 0)" },
+      { font: "0px/400", lineHeight: "normal", family: "Pretendard", radius: "0px", bg: "rgba(0, 0, 0, 0)", fg: "rgb(30, 36, 40)", border: "none" },
+    ],
+  };
+  const fill = [{ set: "self", prop: "bg", from: "rgb(255, 255, 255)", to: "rgb(221, 221, 221)" }];
+  const controls = mergeControls([{ controls: { cta: control({ hover: { measured: true, changed: fill } }) } }]);
+  const cand = tokenCandidates(survey, controls, controls.map(compileControl));
+  const values = (list: { value: string }[]) => list.map((c) => c.value);
+
+  it("lists every opaque colour once, with where it was seen, most painted first", () => {
+    // #ffffff and #ff7600 are each on one row; the one a measured control also carries comes first.
+    expect(values(cand.colours)).toEqual(["#1e2428", "#f4f4f4", "#ffffff", "#ff7600", "#414aff", "#dddddd"]);
+    expect(cand.colours[0]).toMatchObject({ painted: { text: 456 }, interactive: 2, declared: ["--ink"] });
+    expect(cand.colours.find((c) => c.value === "#dddddd")?.controls).toEqual(["cta hover"]);
+    expect(cand.colours.find((c) => c.value === "#ff7600")?.interactive).toBe(1); // bg and border of one row count once
+  });
+
+  it("keeps a colour that only a custom property holds apart from the ones the page painted", () => {
+    expect(cand.declaredOnly).toEqual([{ value: "#4b0082", declared: ["--brand"] }, { value: "#ff0000", declared: ["--hue"] }, { value: "#c0c0c0", declared: ["--soft"] }]);
+    expect(declaredColor("#00000080")).toBeNull(); // translucent
+    expect(declaredColor("linear-gradient(#fff, #000)")).toBeNull(); // not one colour
+    expect(declaredColor("rebeccapurple")).toBeNull(); // outside the basic keywords: left out, not guessed
+  });
+
+  it("tallies type sizes and radii from rows and controls, skipping hidden 0px text", () => {
+    expect(cand.type).toEqual([
+      { size: 13, weight: 700, interactive: 2, controls: [], lineHeight: "14.3px", family: "Pretendard" },
+      { size: 18, weight: 700, interactive: 0, controls: ["cta"], lineHeight: null, family: null },
+    ]);
+    expect(cand.radii).toEqual([{ value: "0px", interactive: 2, controls: [] }, { value: "3px", interactive: 1, controls: [] }, { value: "100px", interactive: 0, controls: ["cta"] }]);
+  });
+
+  it("is the same list for the same evidence, and says what the capture does not hold", () => {
+    const again = tokenCandidates(survey, controls, controls.map(compileControl));
+    expect(candidatesMarkdown(again)).toBe(candidatesMarkdown(cand));
+    expect(candidatesMarkdown(cand)).toContain("Not captured: the size of headings and running text");
   });
 });
 

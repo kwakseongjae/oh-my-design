@@ -2,6 +2,9 @@
 # Collection round 4 (owner 2026-11-11: 「수집 관련해서 max로 굳이 안써도 돼. 가장 효율적인 방식을 찾아봐줘」).
 # Writers at lower effort, given the compiled measurements, on the evidence the max-effort runs gathered.
 #   run.sh <arm> <engine> <model|-> <effort> [site-id…]      e.g.  run.sh m codex - medium
+# Arms so far: m = medium, census digest only (R4_CANDIDATES=0 rebuilds that folder). The folder now also carries
+# compiled/candidates.md (every measured colour, type size and radius), so a new arm tests the candidate list:
+#   run.sh c codex - medium        medium + candidates        R4_CANDIDATES=0 run.sh h codex - high    high, as arm m
 # Codex arms run up to 4 at a time (owner 2026-10-29); Claude arms one at a time. Restartable: a site whose run
 # directory exists is skipped. Run names: rv-x9<arm>-<id>; folders: ~/.omd-workers/exp9<arm>/<id>.
 set -u

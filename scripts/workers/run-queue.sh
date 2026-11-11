@@ -14,6 +14,9 @@
 # expiring, a TaskStop) never ends a worker. An id that already has a run directory (other than
 # *.killed) is skipped, so the script can be restarted with the same file at any time.
 # Orders: reverify -> make-reverify-order.py (wave reverify1); new -> make-reference-order.py (wave new1).
+# For `new` items the environment can change the method without changing the default (max effort, headed capture):
+#   OMD_QUEUE_WAVE=<folder under ~/.omd-workers, default new1>  OMD_QUEUE_EFFORT=<effort>  OMD_QUEUE_MCP=capture-headless
+#   OMD_ORDER_COMPILED=1 (read by make-reference-order.py: capture, then compile, then write)
 # Landing a finished run is the orchestrator's job (scripts/workers/land-reference.sh, then review).
 # bash 3.2 (macOS): no associative arrays, no `set -u` with arrays that may empty.
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
@@ -67,8 +70,9 @@ while :; do
       new)
         locale=$3; url=$4; shift 4; name="$*"
         origin=$(printf '%s' "$url" | sed -E 's#^(https?://[^/]+).*#\1#')
-        if python3 "$REPO/scripts/workers/make-reference-order.py" new1 "$id" "$name" "$url" "$locale" "$origin" >/dev/null 2>&1; then
-          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/new1/$id" --order "$HOME_W/new1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
+        wave=${OMD_QUEUE_WAVE:-new1}
+        if python3 "$REPO/scripts/workers/make-reference-order.py" "$wave" "$id" "$name" "$url" "$locale" "$origin" >/dev/null 2>&1; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/$wave/$id" --order "$HOME_W/$wave/$id/order.md" --name "rv-$id" --mcp "${OMD_QUEUE_MCP:-capture}" ${OMD_QUEUE_EFFORT:+--effort "$OMD_QUEUE_EFFORT"} >/dev/null 2>&1
           echo "SPAWNED new:$id"; sleep 20
         else echo "SKIPPED new:$id (no order)"; fi ;;
       spawn)

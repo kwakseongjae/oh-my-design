@@ -6,8 +6,11 @@ compiled measurements (web/scripts/compile-evidence.mjs).
 
 The folder gets: a fresh full order (same template every arm has had), the source run's inputs (fetched pages,
 ledgers, controls; not its drafts, report, outputs or helper scripts), its capture folders under capture/, and
-compiled/ (components.yaml, proof.md, census.md, measure.json, values.json). A note at the top of the order says
-what is already done and that the compiled parts are pasted, not re-derived.
+compiled/ (components.yaml, proof.md, census.md, candidates.md, measure.json, values.json). A note at the top of the
+order says what is already done and that the compiled parts are pasted, not re-derived.
+
+R4_CANDIDATES=0 builds the folder as arm m had it (2026-11-11): no candidates.md, and the writer chooses colour
+roles, typography and radii from census.md alone.
 """
 import datetime, glob, json, os, pathlib, shutil, subprocess, sys, urllib.parse
 
@@ -45,12 +48,21 @@ for f in folders:
     shutil.copytree(f, DST / "capture" / f.name)
 subprocess.run(["node", str(REPO / "web/scripts/compile-evidence.mjs"), *[str(DST / "capture" / f.name) for f in folders],
                 "--out", str(DST / "compiled"), "--id", cid], check=True, capture_output=True)
+CANDIDATES = os.environ.get("R4_CANDIDATES", "1") != "0"
+if not CANDIDATES:
+    for f in ("candidates.md", "candidates.json"):
+        (DST / "compiled" / f).unlink()
 
 listing = "".join(f"\n  - `capture/{f.name}/` ({', '.join(sorted(p.name for p in f.glob('*.json')))})" for f in folders)
 assemble = ("Run the Verify command as written." if engine == "codex" else
             "Only plain `node …` commands are allowed in your sandbox: no `$(…)`, pipes, `cd … &&` or `sh` scripts. Run the "
             "Verify command from this folder with the contents of `sources.json` pasted inline as one single-quoted "
             "argument in place of `\"$(cat sources.json)\"`. `out/` already exists.")
+# The wording for the compiled parts is the one a live order uses (docs/workers/COMPILED_PARTS.md).
+parts = (REPO / "docs/workers/COMPILED_PARTS.md").read_text(encoding="utf-8").rstrip()
+if not CANDIDATES:
+    parts = parts[:parts.index("- `compiled/candidates.md`")] + \
+        "  Choose colour roles, typography and radii from it; open `survey.json` only for a value the digest does not carry."
 note = f"""# Experiment note — read this first (it overrides the steps below where they conflict)
 
 Steps 1–3, 5 and 6 of this order (curl controls, first-party sources, survey, control choice, states) were already
@@ -63,14 +75,7 @@ files in this folder:
 
 **The measured parts are already compiled** by a script from that capture, in `compiled/`:
 
-- `compiled/components.yaml` is the `components` block. Paste it under `tokens:` in `front.yaml` as it is and write
-  each `use` line. Do not add, drop or re-derive components or their values. If one of this order's rules says a
-  compiled component must be prose only, leave it out and name the rule in report.md. If you think a control the
-  script left as prose only should be a component, say so in report.md and still leave it out.
-- `compiled/proof.md` is the controls table with the raw transition strings. Paste it into the Proof block of
-  `verification.md`.
-- `compiled/census.md` is a digest of the survey: page facts, fonts, colours by count, custom properties by prefix.
-  Choose colour roles, typography and radii from it; open `survey.json` only for a value the digest does not carry.
+{parts}
 
 What is left is the part a script cannot do: step 4 (separate first-party from framework tokens), the colour roles,
 typography and radius tokens, the narrative (§1 and §3 above all), the `use` lines, country and category, and the

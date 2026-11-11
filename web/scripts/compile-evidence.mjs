@@ -17,6 +17,8 @@
  *   census.md        a digest of the survey: page facts, fonts, colours by count, custom properties by prefix
  *   measure.json     the pinned measurement list: url, locale, viewport, controls, close selectors
  *   values.json      the measured values per control and state, normalised, for diffing against a later run
+ *   candidates.md    every colour, type size and corner radius the capture measured, with where it was seen;
+ *                    the writer names tokens from this list (candidates.json is the same list as data)
  *
  * A control becomes a component when hover, pressed or focus was measured and changed something the brand
  * painted. Not counted: a change in descendant count, a change that persists after blur, and the browser's
@@ -195,6 +197,142 @@ export function censusMarkdown(survey) {
   ].join("\n");
 }
 
+/** Opaque colours in a computed value (`rgb()` / `rgba()` with alpha 1), as 6-digit hex. Computed styles only. */
+export function computedColors(v) {
+  const out = [];
+  for (const m of String(v ?? "").matchAll(/rgba?\((\d+), ?(\d+), ?(\d+)(?:, ?([\d.]+))?\)/g)) {
+    if (m[4] !== undefined && Number(m[4]) !== 1) continue;
+    out.push("#" + [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join(""));
+  }
+  return out;
+}
+
+// The 16 basic colour keywords (CSS Color 4 §6.1). Other named colours are left out, not guessed.
+const BASIC_COLOURS = { black: "#000000", silver: "#c0c0c0", gray: "#808080", white: "#ffffff", maroon: "#800000", red: "#ff0000",
+  purple: "#800080", fuchsia: "#ff00ff", green: "#008000", lime: "#00ff00", olive: "#808000", yellow: "#ffff00", navy: "#000080",
+  blue: "#0000ff", teal: "#008080", aqua: "#00ffff" };
+
+/** A custom property's value as 6-digit hex when the whole value is one opaque colour; null for anything else. */
+export function declaredColor(v) {
+  const s = String(v ?? "").trim().toLowerCase();
+  if (Object.hasOwn(BASIC_COLOURS, s)) return BASIC_COLOURS[s];
+  const hex = /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/.exec(s)?.[1];
+  if (hex) {
+    if (hex.length === 8) return hex.endsWith("ff") ? "#" + hex.slice(0, 6) : null;
+    return "#" + (hex.length === 3 ? [...hex].map((c) => c + c).join("") : hex);
+  }
+  if (/^rgba?\([^)]*\)$/.test(s)) return computedColors(s.replace(/\s*,\s*/g, ", "))[0] ?? null;
+  const hsl = /^hsla?\(\s*([\d.]+)(?:deg)?[\s,]+([\d.]+)%[\s,]+([\d.]+)%\s*\)$/.exec(s);
+  if (!hsl) return null;
+  const [h, sat, l] = [Number(hsl[1]) / 30, Number(hsl[2]) / 100, Number(hsl[3]) / 100];
+  const a = sat * Math.min(l, 1 - l);
+  const f = (n) => Math.round(255 * (l - a * Math.max(-1, Math.min((n + h) % 12 - 3, 9 - (n + h) % 12, 1))));
+  return "#" + [f(0), f(8), f(4)].map((n) => n.toString(16).padStart(2, "0")).join("");
+}
+
+const COLOUR_CAP = 60, DECLARED_CAP = 200, TYPE_CAP = 24, RADIUS_CAP = 16;
+const mode = (counts) => [...counts.entries()].sort((a, z) => z[1] - a[1] || String(a[0]).localeCompare(String(z[0])))[0]?.[0] ?? null;
+
+/**
+ * Every colour, type size and corner radius the capture measured, with where it was seen. The list is a function
+ * of the evidence (fixed order, fixed cut-offs); which candidate becomes a token and what it is called stays with
+ * the writer. Sizes and radii come from the survey's rows (the interactive elements it listed) and the measured
+ * controls: the survey does not record the size of headings or running text.
+ */
+export function tokenCandidates(survey, controls = [], compiled = []) {
+  const cz = survey?.census ?? {}, cc = cz.census ?? {};
+  const colours = new Map(), sizes = new Map(), radii = new Map();
+  const colour = (hex) => colours.get(hex) ?? colours.set(hex, { value: hex, painted: {}, interactive: 0, controls: [], declared: [] }).get(hex);
+  const size = (font) => {
+    const m = /^(\d+(?:\.\d+)?)px ?\/ ?(\d+)$/.exec(font ?? "");
+    if (!m || Number(m[1]) === 0) return null; // 0px: an image link with hidden text
+    const key = `${m[1]}/${m[2]}`;
+    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, lineHeights: new Map(), families: new Map(), controls: [] }).get(key);
+  };
+  const radius = (v) => (v ? radii.get(v) ?? radii.set(v, { value: v, interactive: 0, controls: [] }).get(v) : null);
+  const bump = (map, k) => { if (k) map.set(k, (map.get(k) ?? 0) + 1); };
+  const note = (list, text) => { if (!list.includes(text)) list.push(text); };
+
+  for (const [list, label] of [["bg", "background"], ["text", "text"], ["border", "border"], ["paragraphInk", "paragraph"]]) {
+    for (const e of cc[list] ?? []) for (const hex of computedColors(e.color)) colour(hex).painted[label] = (colour(hex).painted[label] ?? 0) + e.count;
+  }
+  for (const r of survey?.rows ?? []) {
+    for (const hex of new Set([r.bg, r.fg, r.border].flatMap(computedColors))) colour(hex).interactive += 1;
+    const t = size(r.font);
+    if (t) { t.interactive += 1; bump(t.lineHeights, r.lineHeight); bump(t.families, r.family); }
+    const rad = radius(r.radius);
+    if (rad) rad.interactive += 1;
+  }
+  controls.forEach((c, i) => {
+    const rest = c.rest ?? {};
+    for (const [field, v] of [...Object.entries(rest), ...Object.entries(rest.label ?? {}).map(([k, v]) => [`label.${k}`, v])]) {
+      if (typeof v === "string") for (const hex of computedColors(v)) note(colour(hex).controls, `${c.key} rest.${field}`);
+    }
+    for (const s of STATES) for (const ch of compiled[i]?.per?.[s] ?? []) for (const hex of computedColors(ch.to)) note(colour(hex).controls, `${c.key} ${s}`);
+    for (const font of new Set([c.identity?.font, rest.label?.font])) {
+      const t = size(font);
+      if (t) { note(t.controls, c.key); bump(t.lineHeights, c.identity?.lineHeight); bump(t.families, c.identity?.family); }
+    }
+    const rad = radius(c.identity?.radius);
+    if (rad) note(rad.controls, c.key);
+  });
+  for (const [name, v] of Object.entries(cz.computedVars ?? {})) {
+    const hex = declaredColor(v);
+    if (hex) colour(hex).declared.push(name);
+  }
+
+  const weight = (c) => Object.values(c.painted).reduce((a, n) => a + n, 0) + c.interactive;
+  const all = [...colours.values()].map((c) => ({ ...c, declared: c.declared.sort() }));
+  const seen = all.filter((c) => weight(c) || c.controls.length)
+    .sort((a, z) => weight(z) - weight(a) || z.controls.length - a.controls.length || a.value.localeCompare(z.value));
+  const declaredOnly = all.filter((c) => !weight(c) && !c.controls.length).sort((a, z) => a.declared[0].localeCompare(z.declared[0]))
+    .map((c) => ({ value: c.value, declared: c.declared }));
+  const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || z.size - a.size || z.weight - a.weight)
+    .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families) }));
+  const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value));
+  return {
+    colours: seen.slice(0, COLOUR_CAP), declaredOnly: declaredOnly.slice(0, DECLARED_CAP),
+    type: type.slice(0, TYPE_CAP), radii: rad.slice(0, RADIUS_CAP),
+    families: Object.fromEntries(["body", "h1", "button"].map((r) => [r, cz.fonts?.[r] ?? null])),
+    notListed: { colours: Math.max(0, seen.length - COLOUR_CAP), declaredOnly: Math.max(0, declaredOnly.length - DECLARED_CAP),
+      type: Math.max(0, type.length - TYPE_CAP), radii: Math.max(0, rad.length - RADIUS_CAP) },
+  };
+}
+
+export function candidatesMarkdown(cand) {
+  const few = (list, n = 4) => (list.length > n ? `${list.slice(0, n).join("; ")}; +${list.length - n}` : list.join("; ")) || "—";
+  const more = (n, where) => (n ? [`${n} more not listed here; see ${where}.`] : []);
+  const painted = (c) => [...Object.entries(c.painted).map(([k, n]) => `${k} ×${n}`), ...(c.interactive ? [`interactive ×${c.interactive}`] : [])].join(" · ") || "—";
+  return [
+    "# Token candidates", "",
+    "Every colour, type size and corner radius this capture measured, and where it was seen. The order and the",
+    "cut-offs are fixed by the script. Naming a token and saying what it is for is the writer's part.", "",
+    `## Colours seen on the page (${cand.colours.length})`, "",
+    "Element counts are from the survey's colour census; `interactive` counts the survey's rows (links, buttons,",
+    "fields) that carry the colour; the controls column names the measured control and the state or rest field.", "",
+    "| value | elements painted | measured controls | custom property |", "|---|---|---|---|",
+    ...cand.colours.map((c) => `| \`${c.value}\` | ${painted(c)} | ${few(c.controls)} | ${few(c.declared.map((n) => `\`${n}\``), 3)} |`),
+    ...more(cand.notListed.colours, "`survey.json`"), "",
+    `## Colours declared only (${cand.declaredOnly.length})`, "",
+    "A custom property computed on `:root` holds the value, and no surveyed element or measured control was painted",
+    "with it. A declared colour is not evidence that the page uses it.", "",
+    ...(cand.declaredOnly.length ? ["| value | custom property |", "|---|---|",
+      ...cand.declaredOnly.map((c) => `| \`${c.value}\` | ${few(c.declared.map((n) => `\`${n}\``), 3)} |`)] : ["- none"]),
+    ...more(cand.notListed.declaredOnly, "`census.computedVars` in `survey.json`"), "",
+    `## Type sizes (${cand.type.length})`, "",
+    "From the survey's rows and the measured controls. Not captured: the size of headings and running text that",
+    "are not links or controls.", "",
+    ...["body", "h1", "button"].map((r) => `- ${r} family: ${cand.families[r] ?? "not read"}`), "",
+    "| size / weight | interactive elements | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|",
+    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${t.interactive} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
+    ...more(cand.notListed.type, "`rows` in `survey.json`"), "",
+    `## Corner radii (${cand.radii.length})`, "",
+    "| radius | interactive elements | measured controls |", "|---|---|---|",
+    ...cand.radii.map((r) => `| ${r.value} | ${r.interactive} | ${few(r.controls)} |`),
+    ...more(cand.notListed.radii, "`rows` in `survey.json`"), "",
+  ].join("\n");
+}
+
 export function measureSpec(id, survey, statesFiles, cfgs) {
   const boot = survey?.boot ?? statesFiles[0]?.boot ?? {};
   const controls = new Map();
@@ -241,8 +379,11 @@ function main() {
   writeFileSync(path.join(out, "census.md"), censusMarkdown(survey));
   writeFileSync(path.join(out, "measure.json"), JSON.stringify(measureSpec(id, survey, statesFiles, cfgs), null, 1) + "\n");
   writeFileSync(path.join(out, "values.json"), JSON.stringify(valuesOf(controls, compiled), null, 1) + "\n");
+  const candidates = tokenCandidates(survey, controls, compiled);
+  writeFileSync(path.join(out, "candidates.md"), candidatesMarkdown(candidates));
+  writeFileSync(path.join(out, "candidates.json"), JSON.stringify(candidates, null, 1) + "\n");
   const n = compiled.filter((c) => c.emitted).length;
-  console.log(`compiled ${n} component(s) of ${controls.length} measured control(s) → ${out}`);
+  console.log(`compiled ${n} component(s) of ${controls.length} measured control(s), ${candidates.colours.length} + ${candidates.declaredOnly.length} colour, ${candidates.type.length} type and ${candidates.radii.length} radius candidate(s) → ${out}`);
   for (const c of compiled) if (!c.emitted) console.log(`  prose only: ${c.key} (${c.reason})`);
 }
 

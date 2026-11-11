@@ -11,6 +11,10 @@
  * states.json, summary.txt, shots/<key>-<state>.png, viewport.png, full.png, scroll.webm.
  *
  * Wired by scripts/workers/spawn.sh --mcp capture. Uses the MCP SDK installed under packages/mcp.
+ *
+ * `--browser headless` (spawn.sh --mcp capture-headless) runs the same probe with no window, so a batch can run
+ * while the owner is at the computer (docs/ROADMAP.md T0). The default stays the headed worker Chrome. A site that
+ * blocks headless is recorded as BLOCKED by the worker and re-queued for the headed night window, never worked around.
  */
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
@@ -24,6 +28,8 @@ const { McpServer } = await import(req.resolve('@modelcontextprotocol/sdk/server
 const { StdioServerTransport } = await import(req.resolve('@modelcontextprotocol/sdk/server/stdio.js'));
 const { z } = await import(req.resolve('zod'));
 
+const BROWSER = process.argv.includes('--browser') ? process.argv[process.argv.indexOf('--browser') + 1] : 'worker';
+if (BROWSER !== 'worker' && BROWSER !== 'headless') { console.error('--browser must be "worker" or "headless"'); process.exit(2); }
 const PROBE = path.join(REPO, 'web/scripts/probe-keyboard-states.mjs');
 const ROOT = path.join(REPO, 'artifacts/reference-evidence/visual');
 const stamp = () => new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, '').replace('T', '-');
@@ -42,7 +48,7 @@ function run(args, timeoutMs) {
 const server = new McpServer({ name: 'omd-capture', version: '0.1.0' });
 server.registerTool('probe_page', {
   description:
-    'Load one public page in the worker Chrome (headed, fresh profile, consent rejected) and measure it with probe-keyboard-states.mjs. ' +
+    `Load one public page in ${BROWSER === 'headless' ? 'a headless Chrome (no window' : 'the worker Chrome (headed'}, fresh profile, consent rejected) and measure it with probe-keyboard-states.mjs. ` +
     'mode "survey" lists interactive elements to choose from and records the census (every custom property with its value, the top rendered colours, paragraph ink, fonts and @font-face sources) plus page screenshots and a scroll video; mode "states" measures up to 6 controls (identity, rest, hover, pressed, keyboard focus) ' +
     'and saves a PNG crop of each control in each state, page screenshots (viewport, full) and a scroll video. Returns the summary and the output directory.',
   inputSchema: {
@@ -67,7 +73,7 @@ server.registerTool('probe_page', {
 }, async ({ url, id, locale, mode, controls, close, hideOverlays }) => {
   const dir = path.join(ROOT, id, stamp());
   fs.mkdirSync(dir, { recursive: true });
-  const args = [url, '--browser', 'worker', '--locale', locale, '--out', path.join(dir, mode === 'survey' ? 'survey.json' : 'states.json'), '--quiet', '--summary'];
+  const args = [url, '--browser', BROWSER, '--locale', locale, '--out', path.join(dir, mode === 'survey' ? 'survey.json' : 'states.json'), '--quiet', '--summary'];
   if (close?.length) args.push('--close', close.join(','));
   if (mode === 'survey') args.push('--survey', '--census', '--visual', dir);
   else {
