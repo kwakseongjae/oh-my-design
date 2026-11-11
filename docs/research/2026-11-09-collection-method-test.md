@@ -118,3 +118,55 @@ control with a changed state to `components`).
 
 End-to-end split on 3–4 new sites: a Codex order that stops after sources + capture, then the Claude Sonnet writer with
 the coverage rule above. One Claude worker at a time. Adopt if verified_v2, coverage within −10 % and grounding stay.
+
+## Round 3 — the split end to end vs the current method (2026-11-10)
+
+Owner 11/10: 「라운드 3도 해보쇼.」 Four fresh CJK sites, paired: **A** = current method (Codex `gpt-6.1-sol` max, full
+order). **S** = the same Codex model and effort on a capture-only order (steps 1–3, 5, 6; save every first-party page
+as served, `sources.json`, `controls.json`, a fact report). **W** = Claude Sonnet 5.5 (effort medium) writes from S's
+folder alone, no network, one at a time. Per site the two Codex arms never ran at once, and which went first
+alternated (hmall and megazone A first, fujitsu and hk01 S first). Both arms got the same post-#118 order template,
+including "a change in any property counts → `components`". Runner: `scratchpad/exp8/` (run-r3.sh, run-writer-r3.sh,
+make-capture-order.py, make-writer-folder.py, metrics8.py).
+
+| site | A min | S + W min | A components / stated / claims | W components / stated / claims |
+|---|---|---|---|---|
+| fujitsu (JP) | 24.9 | 22.0 (19.0 + 3.0) | 6 / 5 / 107 | 4 / 3 / 65 |
+| hk01 (HK) | 25.2 | 19.7 (16.5 + 3.2) | 4 / 3 / 60 | 1 / 1 / 31 |
+| hmall (KR) | 27.9 | 15.1 (11.5 + 3.6) | 2 / 2 / 67 | 3 / 2 / 64 |
+| megazone (KR) | 23.3 | 16.7 (13.9 + 2.8) | 5 / 4 / 97 | 5 / 4 / 67 |
+| **sum / median** | median 25.1 | median 18.2 (**−27 %**) | 17 / 14 / 331 | 13 / 10 / 227 (**−24 % / −29 % / −31 %**) |
+
+- All 8 outputs `verified_v2`. Grounding: the same two hex values are missing from the evidence text in both arms
+  (`#333333` fujitsu, `#aaaaaa` megazone; likely shorthand `#333` / `#aaa` in CSS), so no arm-specific invention.
+- Tokens: S used 3.8–5.0 M Codex input and 24–33 k output against A's 6.1–7.7 M and 45–58 k (≈ −40 % Codex). W used
+  1.2–1.8 M input (mostly cache reads) and 20–27 k output, list cost ≈ $1 each.
+- **Where the coverage gap comes from.** Controls whose state changed beyond the browser's focus ring, counted from
+  the states summaries: A captured 17, S captured 16 (hk01 S picked two hero-carousel controls with
+  `pointer-events: none`; hmall S found one more than A). A's writer promoted 17 / 17 to `components`; W promoted
+  13 / 16. One omission follows the rules (fujitsu search input: the widened state persisted after blur), the others
+  are over-strict (hk01 search link: "the anchor colour changes but its SVG does not, so it stays in prose").
+  Claims fall further (−31 %): W writes shorter verification and component prose.
+- The capture half took 11.5–19 min, not the hoped 4–6: S spent 5–12 min after its last capture packaging the
+  hand-off (manifests, summaries, saved pages: 28–122 files).
+- Harness faults on the way, not counted above (runs kept as `void-rv-x8w-*`): the writer-folder builder truncated
+  `order.md` before reading it (2 runs wrote without the order), and the Claude worker's Bash allowlist refuses
+  `$(cat sources.json)` and `sh` wrappers, so one writer could not run the assembler (round 2's writer had pasted the
+  JSON inline). Fixed: the note now gives the inline form and `out/` exists.
+
+**Decision (rule from round 2: adopt if verified_v2, coverage within −10 % and grounding hold): not adopted.** Time
+−27 % and Codex −40 %, but components −24 % and claims −31 %. Across rounds 2 and 3 the Claude writer writes less
+from the same or equivalent evidence. Keep the current method (Codex max end to end). The split stays a fallback for
+a Codex quota squeeze, with that cost known.
+
+Caveat: the arms ran at different effort. A's writer is Codex at `max`, W is Sonnet at `medium` (carried over from round
+2; the owner named the model, not the effort). "The Claude writer writes less" holds as measured but is untested at
+matched effort. The cheapest test is a W re-run at `high` or `max` on the same four S folders: no browser, no Codex,
+four Claude runs, paired against today's W.
+
+Possible follow-up if wanted: hand the writer a mechanical list of the controls whose state changed (the parse used
+above) and require each to be in `components` or carry a rule-based reason; that targets the component gap but not
+the claims gap.
+
+Landing: the better arm per site (components, then claims) goes to batch 8: A for fujitsu, hk01 and megazone, W for
+hmall.
