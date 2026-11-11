@@ -7,7 +7,7 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 ## Repository quick map
 
 - `src/` — TypeScript source for the `omd` CLI (`bin/oh-my-design.ts` is the entrypoint).
-- `web/references/<id>/DESIGN.md` — 100+ real-company DESIGN.md files; the **canonical source of truth** for the reference catalog. It lives under `web/` because the Vercel project root is `web/` (the site build can only read files beneath it). The root `references` symlink, `design-md/`, and `packages/mcp/data/references/` are all derived from here. Rule: edit `web/references/` only.
+- `web/references/<id>/DESIGN.md` — one real company's DESIGN.md per folder; the **canonical source of truth** for the reference catalog. It lives under `web/` because the Vercel project root is `web/` (the site build can only read files beneath it). The root `references` symlink, `design-md/`, and `packages/mcp/data/references/` are all derived from here. Rule: edit `web/references/` only.
 - `skills/omd-*` — Claude Code / Codex / OpenCode skill files (installed into target projects via `omd install-skills`).
 - `.claude/agents/` — Subagent definitions for the design harness (Claude Code).
 - `.codex/agents/` — Mirror TOML definitions for the design harness (Codex).
@@ -109,7 +109,7 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 
 ## Product surface ownership (mandatory)
 
-- oh-my-design is a DESIGN.md archive plus frontend skills. The user-facing funnel is Home → **`/design-systems/[id]`** (the item page) → its **`#use`** action group in the hero: Copy DESIGN.md and Download. The install command, the first prompt and the raw-.md link left the item page with its "how to use" section on 2026-10-20 (round 11, owner review #21–#23). Landing rows and search on `/` and `/ko` open the item page. Decided 2026-10-01 (IA D1–D4, `docs/REDESIGN_DECISIONS_2026-10-01.md`): the item page is where 8.9K bot/AI fetches and 7.7K human requests a month already land, so the catalog's hand-off belongs there. Korean item pages shipped 2026-10-14 (D5, growth plan P2): **`/ko/design-systems/[id]`** exists for every Korean reference plus every verified one (`web/src/lib/i18n/ko-detail.ts` is the single predicate for routes, hreflang, sitemap and links), and `/ko` keycaps and search open it; anything outside that set keeps only its English page. The Korean page shows the canonical English DESIGN.md byte for byte under Korean chrome, names the brand by the registry's Hangul `displayName` or else the English `name` (never a transliteration), and its summary is a Korean sentence over values the page shows, never a translation.
+- oh-my-design is a DESIGN.md archive plus frontend skills. The user-facing funnel is Home → **`/design-systems/[id]`** (the item page) → its **`#use`** action group in the hero: Copy DESIGN.md and Download. The install command, the first prompt and the raw-.md link left the item page with its "how to use" section on 2026-10-20 (round 11, owner review #21–#23). Landing rows and search on `/` and `/ko` open the item page. Decided 2026-10-01 (IA D1–D4, `docs/REDESIGN_DECISIONS_2026-10-01.md`): the item page is where most bot/AI fetches and human requests already land, so the catalog's hand-off belongs there. Korean item pages shipped 2026-10-14 (D5, growth plan P2): **`/ko/design-systems/[id]`** exists for every Korean reference plus every verified one (`web/src/lib/i18n/ko-detail.ts` is the single predicate for routes, hreflang, sitemap and links), and `/ko` keycaps and search open it; anything outside that set keeps only its English page. The Korean page shows the canonical English DESIGN.md byte for byte under Korean chrome, names the brand by the registry's Hangul `displayName` or else the English `name` (never a transliteration), and its summary is a Korean sentence over values the page shows, never a translation.
 - In product discussions, “preview”, “미리보기”, and “사용자가 보는 화면” mean the item page's preview (`ReferencePreview` on `/design-systems/[id]`). There is no customize tool any more: “builder”, “빌더”, “Customize” or “커스터마이즈” in an old note or request refers to the removed `/builder`; read it as the item page and its `#use` actions.
 - **`/design-systems/[id]`** carries the only indexed per-reference HTML and the JSON-LD (Article, BreadcrumbList; FAQPage was dropped on 2026-10-20 because the page no longer shows those answers as Q&A, and FAQ markup must mirror visible content), its one `<h1>` is “{Name} DESIGN.md” and its title “{Name} DESIGN.md — Colors, Typography, Components” (owner decision 3, 2026-10-20; URLs unchanged), and `generateStaticParams` covers every reference. Changes to how a reference *reads* or is handed off belong here and are acceptance-tested through Home → brand row → `/design-systems/<id>` → `#use`.
 - **`/builder` was removed on 2026-10-13** (owner decision Q1, complete removal; the customize feature went with it). It survives only as a 308 Route Handler (`web/src/app/builder/route.ts`, table in `web/src/lib/legacy-builder/redirect.ts`): `/builder?ref=<known id>&…` → `/design-systems/<id>#use`; no ref or an unknown ref → `/design-systems`. Those links sit inside prompts users have already pasted, so the redirect must keep resolving; do not rebuild a page at `/builder` or link to it.
@@ -136,10 +136,10 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 - Never delete a run directory. They are permanent learning artifacts.
 
 ## 세션 연속성 프로토콜
-- 시작: `scripts/context_restore.sh` 실행(또는 docs/CURRENT_STATE.md 읽기) → 막힘/대기부터 처리.
-- 체크포인트: 작업 단위 완료·결정 확정마다 CURRENT_STATE.md를 먼저 갱신하고 나서 보고한다.
-- 종료: JOURNAL.md 맨 위에 항목 추가(한 일/열린 것/다음, 5줄 이내). 채팅에만 있는 맥락은 잃어버린 것으로 간주.
-- 컨텍스트가 요약(compact)된 채 재개되면: 첫 행동으로 context_restore.sh를 실행해 복원한다.
+- 시작, 그리고 컨텍스트가 요약(compact)된 뒤: `scripts/context_restore.sh`를 실행한다(Claude Code는 SessionStart 훅이 자동으로 돌린다). 출력의 「지금」 블록에 있는 막힘과 대기부터 처리한다.
+- 체크포인트: 작업 단위를 끝내거나 결정이 확정되면 `docs/CURRENT_STATE.md`의 「지금」 블록을 먼저 고치고 나서 보고한다. 이 파일은 짧게 유지하고, 오래된 날짜 절은 `docs/archive/state/`로 옮긴다.
+- 종료: `docs/JOURNAL.md` 맨 위에 항목을 추가한다(한 일/열린 것/다음, 5줄 이내). 채팅에만 있는 맥락은 잃어버린 것으로 본다.
+- 방향과 트랙의 정본은 `docs/ROADMAP.md`다.
 
 ## Pre-existing OmD shims (managed by `omd sync`)
 
