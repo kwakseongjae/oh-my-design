@@ -1,6 +1,6 @@
 # Work order: research, measure and draft the oh-my-design reference for {{NAME}} ({{URL}})
 
-You are a worker in a research folder outside the oh-my-design repository: `{{WORKDIR}}`. The repository is at `/Users/kwakseongjae/Desktop/projects/oh-my-design`; you may read it but never write to it.
+You are a worker in a research folder outside the oh-my-design repository: `{{WORKDIR}}`. The repository is at `{{REPO}}`; you may read it but never write to it.
 
 oh-my-design publishes DESIGN.md files that describe real companies' live design systems: colours, type, components and their states, measured from the live site and backed by first-party sources. A reviewer (the orchestrator) re-measures your strongest claim, checks every sentence against your sources and decides what ships. **This order is a trial of you as the drafting author.** An earlier trial rejected another model's drafts for narrative and source errors: sentences that the cited pages did not say. Accuracy beats coverage. Anything you cannot back with a source you opened, or a value you measured, is left out.
 
@@ -92,7 +92,7 @@ The order matters. A WAF often starts blocking after browser probes, so read the
 Run this from `{{WORKDIR}}` and quote its last lines in your final message:
 
 ```
-node /Users/kwakseongjae/Desktop/projects/oh-my-design/web/scripts/assemble-reference.mjs front.yaml body.md ./out/DESIGN.md {{TODAY}} {{URL}} "$(cat sources.json)"
+node {{REPO}}/web/scripts/assemble-reference.mjs front.yaml body.md ./out/DESIGN.md {{TODAY}} {{URL}} "$(cat sources.json)"
 ```
 
 It must print `claims N · DESIGN.md v3 + reference.json written`, with no `⚠ not in body text` warning. If it fails, fix your files and run it again.
