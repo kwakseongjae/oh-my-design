@@ -61,3 +61,19 @@ describe("compile-evidence", () => {
     expect(compileControl(mergeControls([first, second])[0]).fields.hover).toBe("#dddddd");
   });
 });
+
+describe("diff-values", () => {
+  const ctl = (bg: string, hover: unknown) => ({ identity: { tag: "a", h: 56 }, rest: { bg }, states: { hover, pressed: [], focus: [] } });
+  it("reports a changed value and leaves agreeing fields alone", async () => {
+    const { diffValues } = await import("../scripts/diff-values.mjs");
+    const d = diffValues({ cta: ctl("rgb(255, 255, 255)", []) }, { cta: ctl("rgb(250, 250, 250)", []) });
+    expect(d.changed).toEqual([{ key: "cta", field: "rest.bg", before: "rgb(255, 255, 255)", after: "rgb(250, 250, 250)" }]);
+    expect(d.same).toBe(d.compared - 1);
+  });
+  it("does not call a state changed when one side could not measure it", async () => {
+    const { diffValues } = await import("../scripts/diff-values.mjs");
+    const d = diffValues({ cta: ctl("rgb(255, 255, 255)", [{ set: "self", prop: "bg", from: "a", to: "b" }]) }, { cta: ctl("rgb(255, 255, 255)", "unmeasured") });
+    expect(d.changed).toEqual([]);
+    expect(d.unmeasured).toEqual([{ key: "cta", state: "hover", side: "after" }]);
+  });
+});
