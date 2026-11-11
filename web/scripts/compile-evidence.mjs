@@ -102,6 +102,7 @@ export function compileControl(c) {
     : STATES.every((s) => per[s] === null) ? "every state unmeasured"
     : "no brand change in a measured state";
   const { identity: idn, rest } = c;
+  /** @type {Record<string, string | number>} */
   const fields = { type: componentType(c.key, idn) };
   // The text a person reads is the label element, which can differ from the control that wraps it (a link whose
   // own colour is the browser default while its span carries the brand ink). Report the label's ink and font.
