@@ -235,7 +235,10 @@ seen, in a fixed order. The writer names; the script lists.
   and running-text sizes are not in the capture, so no writer can measure them. Adding them is a probe change.
 - Not yet known: whether a medium writer given the list closes the claims gap (−17 %) without naming one-off
   colours. That is arm c: `scripts/collection-r4/run.sh c codex - medium` (10 Codex runs, about 5 minutes each),
-  then `metrics.py --quality <scratch worktree of origin/main>`.
+  then `metrics.py --quality <scratch worktree of origin/main>` and `recall.py ~/.omd-workers/exp9c exp9c --list`
+  (how many max-named tokens the arm named, and what it named that max did not).
 - Ready for the live batch, opt-in and off by default: headless capture (`spawn.sh --mcp capture-headless`; one
-  survey through the capture server returned status 200 with the same 86 rows as the headed run) and an order
+  megazone survey through the capture server returned status 200, and its candidate list, 11 + 8 colours, 12 type
+  sizes and 6 radii with every count, is identical to the headed survey of the day before; the arguments were
+  checked by running `spawn.sh` against a stub `codex`, not yet through a real Codex worker) and an order
   whose step 6b has the worker compile its own capture (`OMD_ORDER_COMPILED=1`).

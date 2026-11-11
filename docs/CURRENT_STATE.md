@@ -14,16 +14,16 @@
 |---|---|---|
 | PR #123 머지(결정 기록, 이슈 양식 3종, 지시서 경로 자리표시) | 없음 | 오너 GO |
 | PR #124 머지(측정 컴파일러, 후보 목록, 창 없는 캡처 옵션). #123 위에 쌓였다 | 없음 | 오너 GO. 실제 한 묶음은 이것이 main에 있어야 돈다 |
-| 후보 목록 갈래 c: medium + 후보 목록, 같은 10곳 | Codex 10회, 각 5분쯤 | `.claude/worktrees/t1-trust/scripts/collection-r4/run.sh c codex - medium` → 끝나면 같은 폴더의 `metrics.py --quality <origin/main 스크래치 워크트리>` |
+| 후보 목록 갈래 c: medium + 후보 목록, 같은 10곳 | Codex 10회, 각 5분쯤 | `.claude/worktrees/t1-trust/scripts/collection-r4/run.sh c codex - medium` → 끝나면 같은 폴더의 `metrics.py --quality <origin/main 스크래치 워크트리>`와 `recall.py ~/.omd-workers/exp9c exp9c --list`(max가 붙인 토큰을 몇 개 붙였는지, max가 안 붙인 것을 무엇을 붙였는지) |
 | 일본어 규칙 후보 102개 검증 | Claude 에이전트 2회 | `ops-rule-checker` 둘. 입력 `~/.omd-workers/kana/research-typography/`와 `research-writing/`의 `rules.md`·`sources.json`, 출력은 각 폴더의 `verdicts.md` |
 | high 갈래(10곳) | Codex 10회 | `R4_CANDIDATES=0 .claude/worktrees/t1-trust/scripts/collection-r4/run.sh h codex - high`. 갈래 c가 근거 차이를 메우면 돌리지 않는다 |
-| 실제 한 묶음(창 없는 캡처 → 컴파일 → medium 작성) | Codex 워커 + 검수 워커 1회 | #124 머지 뒤 `OMD_QUEUE_WAVE=new2 OMD_QUEUE_EFFORT=medium OMD_QUEUE_MCP=capture-headless OMD_ORDER_COMPILED=1 scripts/workers/run-queue.sh <큐 파일>` |
+| 실제 한 묶음(창 없는 캡처 → 컴파일 → medium 작성) | Codex 워커 + 검수 워커 1회 | #123·#124 머지 뒤 본 체크아웃을 main으로 옮기고 `OMD_QUEUE_WAVE=new2 OMD_QUEUE_EFFORT=medium OMD_QUEUE_MCP=capture-headless OMD_ORDER_COMPILED=1 scripts/workers/run-queue.sh <큐 파일> --cap 1`로 한 곳만 먼저 돌려 `worker.log`에 `probe_page` 호출이 찍히는지 본 뒤 나머지를 채운다(창 없는 캡처를 Codex 워커가 부르는 것은 아직 안 돌려 봤다) |
 
 **이번에 준비한 것** (`docs/research/2026-11-09-collection-method-test.md` Round 4 follow-up)
 
 - medium이 색을 덜 적은 이유를 찾았다. max가 이름 붙인 색 154개 중 153개가 캡처 안에 있었다. medium이 놓친 73개 중 28개는 요약본에 값이 안 보이던 CSS 변수였고, 29개는 요약본에 있었지만 훑으라는 지시가 없었다.
 - 컴파일러가 후보 목록(`candidates.md`)을 낸다. 캡처가 잰 색·글자 크기·모서리를 본 곳과 함께 전부 적는다. 10곳에서 max가 붙인 토큰이 색 154/154, 글자 37/37, 모서리 27/27 들어온다. 이름 붙이기는 작성자 몫으로 남겼다.
-- 사전 점검(실행해 본 것): 갈래 폴더가 이사 뒤 경로로 만들어진다, 옛 경로 0건, Codex 로그인 유효, 멈춘 high 갈래 찌꺼기는 `void-`로 치워져 있어 건너뛰지 않는다, 창 없는 캡처 1회(megazone, 200, 창 있는 측정과 같은 86행), 규칙 파일 32개·70개와 `sources.json` 읽힘.
+- 사전 점검(실행해 본 것): 10곳 전부 갈래 폴더가 이사 뒤 경로로 만들어진다(옛 경로 0건). Codex 로그인 유효. 멈춘 high 갈래 찌꺼기는 `void-`로 치워져 있어 건너뛰지 않는다. 창 없는 캡처 1회(megazone, 200): 후보 목록이 전날 창 있는 측정과 값·개수까지 전부 같다. `spawn.sh`는 가짜 `codex`로 돌려 인자를 확인했다. 규칙 파일 32개·70개와 `sources.json` 읽힘.
 
 **아직 없는 것(재개 뒤에 정할 것)**
 
