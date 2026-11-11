@@ -10446,6 +10446,67 @@
     ]
    }
   },
+  "fujitsu": {
+   "hash": "f7fde654070f5acf",
+   "terms": {
+    "en": [
+     "japanese it services",
+     "enterprise technology company",
+     "corporate website",
+     "editorial long page",
+     "red and blue accents",
+     "gradient panels",
+     "blue purple hero",
+     "white clean layout",
+     "customer stories",
+     "visible keyboard focus",
+     "square action buttons",
+     "accessible color use"
+    ],
+    "ko": [
+     "일본 IT 서비스",
+     "기업 기술 회사",
+     "기업 홈페이지",
+     "긴 에디토리얼 페이지",
+     "빨강 파랑 포인트",
+     "그라데이션 패널",
+     "청보라 히어로",
+     "흰색 깔끔한 레이아웃",
+     "고객 사례",
+     "키보드 포커스 표시",
+     "사각형 버튼",
+     "접근성 색상"
+    ],
+    "ja": [
+     "日本のITサービス",
+     "企業向けテクノロジー",
+     "コーポレートサイト",
+     "縦長の編集型ページ",
+     "赤と青のアクセント",
+     "グラデーションパネル",
+     "青紫のヒーロー",
+     "白基調の清潔なレイアウト",
+     "導入事例",
+     "キーボードフォーカス表示",
+     "角型ボタン",
+     "アクセシブルな配色"
+    ],
+    "zh": [
+     "日本資訊服務",
+     "企業科技公司",
+     "企業官網",
+     "長版編輯式頁面",
+     "紅藍強調色",
+     "漸層面板",
+     "藍紫主視覺",
+     "白底簡潔版面",
+     "客戶案例",
+     "鍵盤焦點可見",
+     "方形按鈕",
+     "無障礙配色"
+    ]
+   }
+  },
   "funnow": {
    "hash": "937c7dcad6dbc95f",
    "terms": {
@@ -12538,6 +12599,65 @@
     ]
    }
   },
+  "hk01": {
+   "hash": "764e865a7be0be97",
+   "terms": {
+    "en": [
+     "hong kong news portal",
+     "news and lifestyle platform",
+     "dense editorial layout",
+     "consumer internet services",
+     "blue accent on white",
+     "cool pale grey background",
+     "photo-led lead story",
+     "long category navigation",
+     "service shortcuts",
+     "square text links",
+     "compact utility controls",
+     "light and dark palette"
+    ],
+    "ko": [
+     "홍콩 뉴스 포털",
+     "뉴스 라이프스타일 플랫폼",
+     "밀도 높은 편집 레이아웃",
+     "소비자 인터넷 서비스",
+     "흰색 바탕 파란 포인트",
+     "차가운 연회색 배경",
+     "사진 중심 메인 기사",
+     "긴 카테고리 내비게이션",
+     "서비스 바로가기",
+     "각진 텍스트 링크",
+     "컴팩트한 컨트롤"
+    ],
+    "ja": [
+     "香港のニュースポータル",
+     "ニュースとライフスタイル",
+     "高密度な編集レイアウト",
+     "消費者向けネットサービス",
+     "白地に青のアクセント",
+     "涼しげな淡いグレー背景",
+     "写真主体のトップ記事",
+     "長いカテゴリナビ",
+     "サービスショートカット",
+     "角ばったテキストリンク",
+     "コンパクトな操作部品"
+    ],
+    "zh": [
+     "香港新聞入口網站",
+     "新聞與生活平台",
+     "高密度編輯版面",
+     "消費者網路服務",
+     "白底藍色重點",
+     "冷調淺灰背景",
+     "大幅照片頭條",
+     "長分類導覽列",
+     "服務快捷入口",
+     "方正文字連結",
+     "精簡實用控制項",
+     "淺色與深色色盤"
+    ]
+   }
+  },
   "hkairport": {
    "hash": "0112ff88d6a866cf",
    "terms": {
@@ -12711,6 +12831,67 @@
      "紅色標誌點綴",
      "多語系字體排版",
      "促銷活動配色"
+    ]
+   }
+  },
+  "hmall": {
+   "hash": "f7aa6e08fb4ebfa4",
+   "terms": {
+    "en": [
+     "online shopping mall",
+     "home shopping",
+     "tv shopping",
+     "live commerce",
+     "korean retail",
+     "department store products",
+     "mobile app shop",
+     "white background",
+     "orange-red accent",
+     "outline buttons",
+     "grey neutrals",
+     "rounded corners"
+    ],
+    "ko": [
+     "종합 쇼핑몰",
+     "홈쇼핑",
+     "TV홈쇼핑",
+     "라이브 커머스",
+     "백화점 상품",
+     "쇼핑 앱",
+     "흰색 배경",
+     "주황 빨강 포인트",
+     "아웃라인 버튼",
+     "회색 중립",
+     "둥근 모서리",
+     "편성표"
+    ],
+    "ja": [
+     "総合ショッピングモール",
+     "ホームショッピング",
+     "テレビ通販",
+     "ライブコマース",
+     "韓国の小売",
+     "百貨店商品",
+     "ショッピングアプリ",
+     "白背景",
+     "オレンジレッドのアクセント",
+     "アウトラインボタン",
+     "グレー基調",
+     "角丸"
+    ],
+    "zh": [
+     "綜合購物商城",
+     "電視購物",
+     "直播電商",
+     "韓國零售",
+     "百貨商品",
+     "購物應用程式",
+     "白色背景",
+     "橘紅色強調",
+     "外框按鈕",
+     "灰色中性色",
+     "圓角設計",
+     "節目表"
     ]
    }
   },
@@ -18850,6 +19031,71 @@
      "精簡導覽",
      "小圓角按鈕",
      "學習服務平台"
+    ]
+   }
+  },
+  "megazone": {
+   "hash": "521aff7996c146c1",
+   "terms": {
+    "en": [
+     "enterprise cloud partner",
+     "ai and data services",
+     "cloud security",
+     "corporate website",
+     "dark hero section",
+     "blue and violet accents",
+     "pink highlight",
+     "white content sections",
+     "image-led cards",
+     "rounded buttons",
+     "large display text",
+     "multicolour gradient",
+     "customer stories"
+    ],
+    "ko": [
+     "기업용 클라우드",
+     "AI 데이터 서비스",
+     "클라우드 보안",
+     "기업 홈페이지",
+     "어두운 히어로",
+     "파랑 보라 포인트",
+     "핑크 하이라이트",
+     "흰색 정보 섹션",
+     "이미지 중심 카드",
+     "둥근 버튼",
+     "큰 영문 타이틀",
+     "멀티컬러 그라데이션",
+     "고객 사례"
+    ],
+    "ja": [
+     "企業向けクラウド",
+     "AIとデータ",
+     "クラウドセキュリティ",
+     "コーポレートサイト",
+     "ダークなヒーロー",
+     "青と紫のアクセント",
+     "ピンクのハイライト",
+     "白い情報セクション",
+     "画像中心のカード",
+     "角丸ボタン",
+     "大きな英字見出し",
+     "マルチカラーグラデーション",
+     "導入事例"
+    ],
+    "zh": [
+     "企業雲端夥伴",
+     "AI與數據服務",
+     "雲端資安",
+     "企業官網",
+     "深色首屏",
+     "藍紫色點綴",
+     "粉紅色強調",
+     "白色資訊區塊",
+     "圖像卡片",
+     "圓角按鈕",
+     "大型英文標題",
+     "多色漸層",
+     "客戶案例"
     ]
    }
   },

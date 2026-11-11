@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T00:00:00Z",
+ "generated_at": "2026-11-10T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 603,
+ "count": 607,
  "items": [
   {
    "id": "104",
@@ -4146,6 +4146,28 @@
    "category_raw": "fintech / Taiwan equity trading platform"
   },
   {
+   "id": "fujitsu",
+   "primary_color_hex": "#ea0000",
+   "category": "backend-devops",
+   "visual_theme": "Fujitsu began in 1935 as a communications-equipment manufacturer. Its current corporate profile lists service solutions, hardware solutions and ubiquitous solutions. The Japanese corporate site connects this engineering history to technology that supports soci",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
+  },
+  {
    "id": "funnow",
    "primary_color_hex": "#ff5537",
    "category": "consumer-tech",
@@ -4963,6 +4985,29 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "hk01",
+   "primary_color_hex": "#0033e8",
+   "category": "consumer-tech",
+   "visual_theme": "HK01 (香港01) combines news with consumer internet services in Hong Kong. Its company introduction describes a “媒体+” platform spanning more than 60 news and lifestyle channels, personalised information and services that connect online and offline life. The intro",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "hkairport",
    "primary_color_hex": "#3d51e4",
    "category": "consumer-tech",
@@ -5035,6 +5080,29 @@
    ],
    "has_personas": false,
    "category_raw": "fashion-retail"
+  },
+  {
+   "id": "hmall",
+   "primary_color_hex": "#FF4321",
+   "category": "ecommerce",
+   "visual_theme": "Hyundai Hmall (현대Hmall) is the online shop of **㈜현대홈쇼핑** (Hyundai Home Shopping). The company's own business page describes it this way: \"APP 누적 다운로드수 2,200만의 Hmall은 TV홈쇼핑, 현대백화점, 모바일라이브 상품 등을 판매하는 종합 인터넷 쇼핑몰입니다.\" The company was established on 2001. 5. 29 and",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "hncb",
@@ -7427,6 +7495,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "education"
+  },
+  {
+   "id": "megazone",
+   "primary_color_hex": "#414aff",
+   "category": "backend-devops",
+   "visual_theme": "MegazoneCloud helps enterprises with cloud, AI/data and security. Its [company story](https://www.megazone.com/about/company) traces a progression from web agency and hosting services in 1998, through SaaS in 2009 and IaaS in 2012, to the timeline's **AI-Nativ",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "meituan",
