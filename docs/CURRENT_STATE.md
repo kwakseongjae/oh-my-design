@@ -18,7 +18,7 @@
 **오너 GO 대기:** 없음(11/11에 #119·#120·#121 머지, 운영 607 확인).
 
 - **운영:** main `8b320ec7`. 레퍼런스 607(verified 437 / partial 89 / legacy 81).
-- **막힘이 있었던 것:** 세션이 `herdr` 아래에서 시작되면 `~/Desktop`을 못 읽는다(11/11에 두 번). 그때는 GitHub 쪽 일만 한다.
+- **저장소 위치:** 2026-11-11에 `~/Desktop/projects` 전체를 `~/projects`로 옮겼다(오너 결정. macOS의 데스크탑 권한이 세션 도중에 끊겨서). 이 저장소는 `~/projects/oh-my-design`. 옛 경로는 링크로 남아 있다. 옮긴 스크립트는 `~/.claude/scripts/move-desktop-projects.sh`.
 - **남은 정리:** `scratchpad/omd-clone`·`focus-test`(삭제 명령이 권한 설정에서 거절됨).
 - **켜져 있는 것:** 3D 데모 서버 127.0.0.1:8791(`claudedocs/3d-hero`). 오너가 다 보면 끈다.
 
