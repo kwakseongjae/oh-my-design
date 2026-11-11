@@ -209,3 +209,33 @@ worker's on 10 of 10 sites (50 of 50). Field agreement: bg 17/17, border 15/15, 
 **Reading:** the efficient method is capture → compile → a medium-effort writer. It keeps verified_v2 and the
 component set, and cuts writing time and output tokens by about 70 %. Before adopting: compile colour and type
 candidates, then one live batch (capture at lower effort, headless) with independent review.
+
+### Round 4 follow-up — where the missing tokens were, and a candidate list (2026-11-11, no model, no browser)
+
+The medium writers named 81 of the 154 colours the max writers named (53 %), 28 of 37 type sizes and 21 of 27
+radii. Each max-named colour was traced to the capture the medium writer had:
+
+| where the colour sits in the capture | max named | medium did not name |
+|---|---|---|
+| census list, inside the digest's cut-off | 98 | 29 |
+| custom property only (the digest showed three samples per prefix) | 32 | 28 |
+| a measured control, at rest or in a state | 18 | 11 |
+| census list, past the cut-off | 4 | 3 |
+| survey rows only | 1 | 1 |
+| a named colour in a custom property (`silver`) | 1 | 1 |
+
+So the gap has two parts: values the digest did not carry (custom properties above all), and values it carried
+that the writer was not told to go through. `compile-evidence.mjs` now also writes `candidates.md`: every opaque
+colour, type size and corner radius in the census, the survey rows and the measured controls, with where each was
+seen, in a fixed order. The writer names; the script lists.
+
+- Recall against the max writers' tokens, 10 sites (`scripts/collection-r4/recall.py`): colours 154 / 154, type
+  sizes 37 / 37, radii 27 / 27. The list is 3–9 KB per site. The components block is byte-identical to arm m's.
+- A capture gap, not fixed here: the survey records type sizes for interactive elements and controls only. Heading
+  and running-text sizes are not in the capture, so no writer can measure them. Adding them is a probe change.
+- Not yet known: whether a medium writer given the list closes the claims gap (−17 %) without naming one-off
+  colours. That is arm c: `scripts/collection-r4/run.sh c codex - medium` (10 Codex runs, about 5 minutes each),
+  then `metrics.py --quality <scratch worktree of origin/main>`.
+- Ready for the live batch, opt-in and off by default: headless capture (`spawn.sh --mcp capture-headless`; one
+  survey through the capture server returned status 200 with the same 86 rows as the headed run) and an order
+  whose step 6b has the worker compile its own capture (`OMD_ORDER_COMPILED=1`).

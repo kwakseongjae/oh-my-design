@@ -4,33 +4,39 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-11 저녁 갱신) — 멈춤. 오너가 다시 시작하라고 하면 여기서부터
+## 지금 (2026-11-11 밤 갱신) — 출발선. 오너가 「재개」라고 하면 아래 표의 명령을 그대로 돌린다
 
-오너 11/11: 「현재 도는것 종료하고 작업 재개 준비해줘. 돈없어.」 돌던 워커와 테스트를 전부 종료했다. 지금 도는 것은 없다(3D 데모 서버 8791만 켜져 있다).
-그 전 지시: 「실제 작업까진 들어가지말고 조사 및 테스트 그리고 계획 및 보고까지」. 운영 파이프라인과 main은 바꾸지 않았다.
+오너 11/11: 「현재 도는것 종료하고 작업 재개 준비해줘. 돈없어.」 → 「재개 신호 시에 바로 달리는 직전까지」. 돈 드는 실행(Codex 워커, Claude 에이전트)은 하나도 띄우지 않았다. 본 세션에서 되는 준비만 끝냈다. 지금 도는 것은 3D 데모 서버 8791뿐이다.
 
-**재개할 때 비용이 드는 순서(싼 것부터)**
+**재개 순서(싼 것부터). 명령은 저장소 루트 `~/projects/oh-my-design`에서**
 
-| 할 일 | 비용 | 어디 |
+| 할 일 | 비용 | 바로 돌리는 것 |
 |---|---|---|
 | PR #123 머지(결정 기록, 이슈 양식 3종, 지시서 경로 자리표시) | 없음 | 오너 GO |
-| 색·글자 토큰 후보도 컴파일하기(라운드 4의 근거 −17%를 메우는 일) | 본 세션만 | `feat/t1-measure-contract` |
-| 일본어 규칙 후보 102개를 검증 에이전트로 확인 | Claude 에이전트 2회 | `~/.omd-workers/kana/research-*/rules.md` |
-| 라운드 4의 high 갈래(10곳) | Codex 10회, 각 5분쯤 | `scripts/collection-r4/run.sh h codex - high` |
-| 수집을 낮은 effort·창 없는 방식으로 실제 한 묶음 | Codex 워커 | T0·T1 |
+| PR #124 머지(측정 컴파일러, 후보 목록, 창 없는 캡처 옵션). #123 위에 쌓였다 | 없음 | 오너 GO. 실제 한 묶음은 이것이 main에 있어야 돈다 |
+| 후보 목록 갈래 c: medium + 후보 목록, 같은 10곳 | Codex 10회, 각 5분쯤 | `.claude/worktrees/t1-trust/scripts/collection-r4/run.sh c codex - medium` → 끝나면 같은 폴더의 `metrics.py --quality <origin/main 스크래치 워크트리>` |
+| 일본어 규칙 후보 102개 검증 | Claude 에이전트 2회 | `ops-rule-checker` 둘. 입력 `~/.omd-workers/kana/research-typography/`와 `research-writing/`의 `rules.md`·`sources.json`, 출력은 각 폴더의 `verdicts.md` |
+| high 갈래(10곳) | Codex 10회 | `R4_CANDIDATES=0 .claude/worktrees/t1-trust/scripts/collection-r4/run.sh h codex - high`. 갈래 c가 근거 차이를 메우면 돌리지 않는다 |
+| 실제 한 묶음(창 없는 캡처 → 컴파일 → medium 작성) | Codex 워커 + 검수 워커 1회 | #124 머지 뒤 `OMD_QUEUE_WAVE=new2 OMD_QUEUE_EFFORT=medium OMD_QUEUE_MCP=capture-headless OMD_ORDER_COMPILED=1 scripts/workers/run-queue.sh <큐 파일>` |
 
-**테스트로 확인된 것** (`docs/research/2026-11-09-collection-method-test.md` Round 4)
+**이번에 준비한 것** (`docs/research/2026-11-09-collection-method-test.md` Round 4 follow-up)
 
-- 컴파일러(`web/scripts/compile-evidence.mjs`)만으로 낸 컴포넌트가 max Codex가 쓴 것과 10곳 50개 전부 같다.
-- Codex medium + 컴파일된 측정값: 10/10 verified, 컴포넌트 50 = 50, 작성 시간 −71%(15.8분 → 4.6분), 출력 토큰 −73%, 근거 −17%.
-- 창 없는 재측정: 13회 1,108개 값 중 1,099개 일치. 다른 9개는 기사처럼 바뀌는 내용이다.
-- 일본어 출처 조사: 타이포 후보 32개, 글쓰기 후보 70개. 아직 검증 전이다.
+- medium이 색을 덜 적은 이유를 찾았다. max가 이름 붙인 색 154개 중 153개가 캡처 안에 있었다. medium이 놓친 73개 중 28개는 요약본에 값이 안 보이던 CSS 변수였고, 29개는 요약본에 있었지만 훑으라는 지시가 없었다.
+- 컴파일러가 후보 목록(`candidates.md`)을 낸다. 캡처가 잰 색·글자 크기·모서리를 본 곳과 함께 전부 적는다. 10곳에서 max가 붙인 토큰이 색 154/154, 글자 37/37, 모서리 27/27 들어온다. 이름 붙이기는 작성자 몫으로 남겼다.
+- 사전 점검(실행해 본 것): 갈래 폴더가 이사 뒤 경로로 만들어진다, 옛 경로 0건, Codex 로그인 유효, 멈춘 high 갈래 찌꺼기는 `void-`로 치워져 있어 건너뛰지 않는다, 창 없는 캡처 1회(megazone, 200, 창 있는 측정과 같은 86행), 규칙 파일 32개·70개와 `sources.json` 읽힘.
+
+**아직 없는 것(재개 뒤에 정할 것)**
+
+- 실제 한 묶음의 사이트 목록. 큐 파일이 없다. CJK 후보는 `~/.omd-workers/census-cjk`에 있다.
+- 갈래 c의 결과. 후보 목록을 준 medium이 근거 차이(−17%)를 메우는지, 한 번만 쓰인 색까지 이름 붙이는지는 돌려 봐야 안다.
+- 제목·본문 글자 크기는 캡처에 없다(링크·버튼 크기만 있다). 재려면 측정 도구를 고치고 다시 캡처해야 한다.
+- 일본어 글쓰기 규칙의 출처는 대부분 PDF다. 검증 에이전트가 PDF를 못 열면 「출처 못 엶」으로 나온다.
 
 **열린 것**
 
-- PR #123(오너 GO 대기). 브랜치 `feat/t1-measure-contract`는 테스트용이라 PR을 열지 않았다(푸시만).
-- 버린 실행: `~/.omd-workers/runs/void-rv-x9*`. 스크래치 워크트리 `scratchpad/t1/wt`.
-- **저장소 위치:** 2026-11-11에 `~/Desktop/projects` 전체를 `~/projects`로 옮겼다. 이 저장소는 `~/projects/oh-my-design`. 새 세션은 여기서 시작한다. 다른 프로젝트용 안내는 전역 지침과 `projects-moved` 스킬에 있다.
+- PR #123, #124(오너 GO 대기).
+- 버린 실행: `~/.omd-workers/runs/void-rv-x9*`. 옛 세션 임시 폴더에 스크래치 워크트리가 남아 있다(`/private/tmp/claude-501/-Users-kwakseongjae-Desktop-projects-oh-my-design/…/scratchpad/t1/wt`, 다른 세션 것이라 지우지 않았다. 없어졌으면 `git worktree prune` 뒤 `git worktree add --detach <경로> origin/main`).
+- **저장소 위치:** 2026-11-11에 `~/Desktop/projects` 전체를 `~/projects`로 옮겼다. 이 저장소는 `~/projects/oh-my-design`. 새 세션은 여기서 시작한다.
 - 운영: main `8b320ec7`, 레퍼런스 607(437 / 89 / 81).
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
