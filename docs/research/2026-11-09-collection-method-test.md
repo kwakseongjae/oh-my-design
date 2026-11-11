@@ -170,3 +170,42 @@ the claims gap.
 
 Landing: the better arm per site (components, then claims) goes to batch 8: A for fujitsu, hk01 and megazone, W for
 hmall.
+
+## Round 4 — compiled measurements + a lower-effort writer (2026-11-11)
+
+Owner 11/11: 「수집 관련해서 max로 굳이 안써도 돼. 가장 효율적인 방식을 찾아봐줘.」 Rounds 1–3 lost coverage whenever the
+writer changed, because the writer decided which measured controls to carry into the document. Round 4 removes that
+decision: `web/scripts/compile-evidence.mjs` (branch `feat/t1-measure-contract`) turns the capture into the
+`components` block, the proof table and a census digest with no model, and the writer adds what a script cannot
+(token roles, narrative, `use` lines, sources).
+
+**Compiler alone, against the max-effort runs' own captures (10 sites):** the compiled component set equals the
+worker's on 10 of 10 sites (50 of 50). Field agreement: bg 17/17, border 15/15, radius 50/50, padding 50/50, height
+49/50, fg 45/50, font 43/48, states 113/118. The differences are where the worker chose between two measurements.
+
+**Arm m — Codex `gpt-6.1-sol` at effort medium, same evidence, compiled parts pasted in** (runner
+`scripts/collection-r4/`, no browser):
+
+| | A max (rounds 1, 3) | m medium + compiled | change |
+|---|---|---|---|
+| verified_v2, no reason or advisory codes | 10 / 10 | 10 / 10 | same |
+| writing time, median | 15.8 min | 4.6 min | **−71 %** |
+| output tokens, median | 44.5 k | 11.9 k | **−73 %** |
+| components (sum of 10) | 50 | 50 | same |
+| stated components | 41 | 43 | +2 |
+| claims (sum) | 847 | 706 | **−17 %** |
+| Overview length, median | 2,723 | 2,954 | +8 % |
+
+- Coverage of measured controls no longer depends on effort. The claims gap is in the tokens the writer still picks
+  by hand: the medium writer names fewer colour and type tokens (first four sites: 36 colour tokens against 49).
+  Compiling colour and type candidates from the census is the next step, and should close most of it.
+- Not tested here: research and capture at lower effort (the arms reused the max-effort runs' sources and capture),
+  and effort high (started, stopped by the owner for cost before any run finished). Four medium runs were cut off by
+  a macOS permission drop and rerun; the cut-off runs are kept as `void-rv-x9m-*`.
+- Headless against headed, the same pinned controls re-measured without a window (`diff-values.mjs`): 1,099 of 1,108
+  compared fields agree over 13 states runs on 9 sites. The 9 differences are on rotating content (a lead story, a
+  card whose text changed), not on brand values.
+
+**Reading:** the efficient method is capture → compile → a medium-effort writer. It keeps verified_v2 and the
+component set, and cuts writing time and output tokens by about 70 %. Before adopting: compile colour and type
+candidates, then one live batch (capture at lower effort, headless) with independent review.

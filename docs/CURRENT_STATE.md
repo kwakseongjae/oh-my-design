@@ -4,23 +4,34 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-11 오후 갱신)
+## 지금 (2026-11-11 저녁 갱신) — 멈춤. 오너가 다시 시작하라고 하면 여기서부터
 
-**스프린트 1 진행 중** (오너 11/11: 「추천으로 진행할게. 진행하자.」). 목표: 다시 재도 같은 DESIGN.md 20곳을 숫자로 보이고, 일본어 스킬 `kana`의 규칙 초안을 낸다. 결정 사항은 `docs/ROADMAP.md` §6.
+오너 11/11: 「현재 도는것 종료하고 작업 재개 준비해줘. 돈없어.」 돌던 워커와 테스트를 전부 종료했다. 지금 도는 것은 없다(3D 데모 서버 8791만 켜져 있다).
+그 전 지시: 「실제 작업까진 들어가지말고 조사 및 테스트 그리고 계획 및 보고까지」. 운영 파이프라인과 main은 바꾸지 않았다.
 
-| 레인 | 지금 | 어디 |
+**재개할 때 비용이 드는 순서(싼 것부터)**
+
+| 할 일 | 비용 | 어디 |
 |---|---|---|
-| A 신뢰 층(T1) | 측정값을 문서 블록으로 옮기는 컴파일러를 만드는 중. 시제품은 Codex max가 쓴 컴포넌트 수(6·5·5)를 모델 없이 그대로 냈다 | 워크트리 `.claude/worktrees/t1-trust`, 브랜치 `feat/t1-measure-contract` |
-| A 수집 효율(라운드 4) | 컴파일러 + 낮은 effort 작성자를 저장된 증거 7곳으로 비교할 예정 | `scripts/experiments/` (옮길 곳) |
-| B 일본어(T2) | 출처 조사 에이전트 2개(타이포, 글쓰기) 실행 중 | `~/.omd-workers/kana/research-*/` |
-| 배경(T0·T4) | 이슈 양식 3종과 결정 기록 PR. 다음은 수집을 창 없는 방식 기본으로 전환 | 브랜치 `chore/sprint1-kickoff` |
+| PR #123 머지(결정 기록, 이슈 양식 3종, 지시서 경로 자리표시) | 없음 | 오너 GO |
+| 색·글자 토큰 후보도 컴파일하기(라운드 4의 근거 −17%를 메우는 일) | 본 세션만 | `feat/t1-measure-contract` |
+| 일본어 규칙 후보 102개를 검증 에이전트로 확인 | Claude 에이전트 2회 | `~/.omd-workers/kana/research-*/rules.md` |
+| 라운드 4의 high 갈래(10곳) | Codex 10회, 각 5분쯤 | `scripts/collection-r4/run.sh h codex - high` |
+| 수집을 낮은 effort·창 없는 방식으로 실제 한 묶음 | Codex 워커 | T0·T1 |
 
-**오너 GO 대기:** 없음(11/11에 #119·#120·#121 머지, 운영 607 확인).
+**테스트로 확인된 것** (`docs/research/2026-11-09-collection-method-test.md` Round 4)
 
-- **운영:** main `8b320ec7`. 레퍼런스 607(verified 437 / partial 89 / legacy 81).
-- **저장소 위치:** 2026-11-11에 `~/Desktop/projects` 전체를 `~/projects`로 옮겼다(오너 결정. macOS의 데스크탑 권한이 세션 도중에 끊겨서). 이 저장소는 `~/projects/oh-my-design`. 옛 경로는 링크로 남아 있다. 옮긴 스크립트는 `~/.claude/scripts/move-desktop-projects.sh`.
-- **남은 정리:** `scratchpad/omd-clone`·`focus-test`(삭제 명령이 권한 설정에서 거절됨).
-- **켜져 있는 것:** 3D 데모 서버 127.0.0.1:8791(`claudedocs/3d-hero`). 오너가 다 보면 끈다.
+- 컴파일러(`web/scripts/compile-evidence.mjs`)만으로 낸 컴포넌트가 max Codex가 쓴 것과 10곳 50개 전부 같다.
+- Codex medium + 컴파일된 측정값: 10/10 verified, 컴포넌트 50 = 50, 작성 시간 −71%(15.8분 → 4.6분), 출력 토큰 −73%, 근거 −17%.
+- 창 없는 재측정: 13회 1,108개 값 중 1,099개 일치. 다른 9개는 기사처럼 바뀌는 내용이다.
+- 일본어 출처 조사: 타이포 후보 32개, 글쓰기 후보 70개. 아직 검증 전이다.
+
+**열린 것**
+
+- PR #123(오너 GO 대기). 브랜치 `feat/t1-measure-contract`는 테스트용이라 PR을 열지 않았다(푸시만).
+- 버린 실행: `~/.omd-workers/runs/void-rv-x9*`. 스크래치 워크트리 `scratchpad/t1/wt`.
+- **저장소 위치:** 2026-11-11에 `~/Desktop/projects` 전체를 `~/projects`로 옮겼다. 이 저장소는 `~/projects/oh-my-design`. 새 세션은 여기서 시작한다. 다른 프로젝트용 안내는 전역 지침과 `projects-moved` 스킬에 있다.
+- 운영: main `8b320ec7`, 레퍼런스 607(437 / 89 / 81).
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
 
