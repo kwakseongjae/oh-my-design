@@ -312,8 +312,8 @@ T1 is to pin names: carry the published reference's names for values that are un
 | same primary colour | — | yes | — | yes |
 
 The worker called the headless capture tool (one survey, two states calls), ran the compiler itself and pasted its
-output. It chose partly different controls from the max worker (megazone 1 of 5 keys in common by name, nomura 4 of
-6), which is the same spread two max workers show. One megazone card could not be hovered headless and stayed in
+output. It chose partly different controls from the max worker (by key name megazone shares 0 of 5, though two are the
+same control under another name, and nomura 3 of 6), the spread two max workers also show. One megazone card could not be hovered headless and stayed in
 prose. **Whole-run time −52 %, output tokens −57 %, uncached input −21 %.**
 
 **Cost of this part:** 28 Codex runs, 137 minutes, 326 k output tokens and 2.3 M uncached input: about what 7 max
@@ -328,11 +328,11 @@ batch. Batch 9 (7 new CJK sites, `~/.omd-workers/queue-batch9.txt`) is the first
 compiled values (`scripts/t1/summary.mjs`). Pilot: the 20 most recently verified references with evidence, KR 10,
 JP 5, TW 5, three runs each, against baselines a worker captured headed 2 to 9 days earlier.
 
-- 20 of 20 opened headless. 7,611 of 7,652 compared fields agree with the baseline (99.5 %); between consecutive
-  runs 4,953 of 4,963 (99.8 %).
-- The 41 differing fields are 15 controls' content or geometry: the text or link of a rotating card (bunjang,
-  kkday, pinkoi, marpple-shop, hmall, fujitsu, wooricard), a live count (everytime), a width that follows text
-  (classting 89.4 → 89.5, cookpad, megazone). **One is a brand value:** wooricard `nav-card` showed an ink change on
+- 20 of 20 opened headless, 60 runs. 7,989 of 8,032 compared fields agree with the baseline (99.5 %); between
+  consecutive runs 5,333 of 5,343 (99.8 %).
+- Of the 43 differing fields, 31 are content (the text or link of a rotating card: bunjang, kkday, pinkoi,
+  marpple-shop, hmall, fujitsu, wooricard; a live count on everytime) and 9 are geometry (a width that follows
+  text: classting 89.4 → 89.5, cookpad, megazone). **3 are a brand value, all one control:** wooricard `nav-card` showed an ink change on
   keyboard focus in the baseline and none in three headless runs.
 - Not measured the same way twice: 86 states measured on one side only (peterpanz, pinkoi, wooricard) and 26
   control lookups that found nothing (a card that rotated away). These are reported, not counted as changes.
