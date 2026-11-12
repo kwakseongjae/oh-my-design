@@ -242,3 +242,97 @@ seen, in a fixed order. The writer names; the script lists.
   sizes and 6 radii with every count, is identical to the headed survey of the day before; the arguments were
   checked by running `spawn.sh` against a stub `codex`, not yet through a real Codex worker) and an order
   whose step 6b has the worker compile its own capture (`OMD_ORDER_COMPILED=1`).
+
+### Round 4, part 2 — the candidate list with a writer, other efforts and models, and the whole run at medium (2026-11-12)
+
+Owner 11/12: 「작업 재개하자. codex effort나 모델 뭘 쓸지도 고민 충분히 해본거지? 작업을 하면서도 계속 테스트를 하면서 방향 고도화해도 좋아.」
+Until now only `gpt-6.1-sol` at max, high and medium had been run. This part adds low, two cheaper models, a repeat
+run, and the first runs where the capture and the research are also done at medium. All arms reuse the folders of
+part 1; every run's log was checked for the published references and the max runs' folders (`leak-check.sh`), none
+opened them. Wording of the compiled parts: `docs/workers/COMPILED_PARTS.md` at `ebf13780` (a first-party declared
+colour is named and labelled as declared; a colour on one or two elements with no control and no property is left
+out unless the evidence shows what it is).
+
+**Arm c — sol medium + candidate list, 10 sites**
+
+| | A max | m medium, digest only | c medium + candidates |
+|---|---|---|---|
+| verified_v2, no codes | 10 / 10 | 10 / 10 | 10 / 10 |
+| writing time, median | 15.8 min | 4.6 min | 5.4 min |
+| output tokens, median | 44.5 k | 11.9 k | 12.6 k |
+| uncached input, median | 186 k (whole run) | 78 k | 80 k |
+| components / stated | 50 / 41 | 50 / 43 | 50 / 43 |
+| claims | 847 | 706 | 1,116 |
+| max-named colours also named | — | 81 / 154 | 152 / 154 |
+| max-named type sizes / radii also named | — | 28 / 37 · 21 / 27 | 37 / 37 · 27 / 27 |
+
+- The list closes the gap and goes past max: arm c names 151 colours max did not. 75 are first-party declared palette
+  steps (hmall 53, hk01 22: the wording asks for them), 38 are seen colours with a role, 38 are colours on one or
+  two elements. Of the extra seen colours whose role cites a selector, 20 of 20 have that selector and the colour
+  together in the evidence; 46 state a role in words only and need a reviewer.
+- A reference written this way carries many more colour tokens than the catalog's norm (median 13, p90 21 across
+  607; hmall comes out at 76). `toss` already ships 92. Whether declared palettes belong in full is a product
+  call; the item page for a batch-9 reference shows what it looks like.
+
+**Arm d — the same thing twice (4 sites: yomiuri, kbinsurance, hmall, samsunghospital)**
+
+Two medium writers given the same folder name the same values: colour sets agree 0.95 / 1.00 / 0.97 / 0.97 (Jaccard,
+median 0.97), type sizes 1.00 / 1.00 / 1.00 / 0.82, components identical. Two writers without the list agreed 0.83
+(median, 16 pairs, 2026-11-11), and max against either medium arm agrees 0.30–0.83. **Names do not repeat:** a
+colour both runs name has the same token name in 12 / 18, 6 / 28, 67 / 74 and 8 / 37 cases (high only where the
+name is the custom property's). Values are now a function of the capture; names still are not. The next step for
+T1 is to pin names: carry the published reference's names for values that are unchanged.
+
+**Effort and model screen (4 sites: yomiuri, hmall, fujitsu, hk01; writer only)**
+
+| | c sol medium | l sol low | t terra medium | u luna medium |
+|---|---|---|---|---|
+| verified_v2 | 4 / 4 | 4 / 4 | 4 / 4 | 4 / 4, 3 with `component_absent` |
+| components | 18 | 18 | 18 | 4 |
+| claims | 452 | 435 | 442 | 255 |
+| time, median | 5.5 min | 3.7 min | 2.5 min | 3.7 min |
+| output tokens, median | 13.2 k | 8.6 k | 6.9 k | 10.6 k |
+| Overview length, median (max: 2,728) | 3,062 | 2,250 | 1,056 | 1,669 |
+
+- `gpt-6-luna` drops the compiled components on 3 of 4 sites: out.
+- `gpt-6.1-terra` keeps every measured part and writes a third of the Overview. Reference depth is part of
+  correctness (AGENTS.md), so it is out for the writer unless the narrative is written separately.
+- sol low keeps the measured parts and loses about a quarter of the Overview for 1.8 minutes and 4.6 k output
+  tokens per site. Not worth it: **sol medium stays.** Narrative accuracy was not judged here for any arm; that is
+  the independent review's job on the live batch.
+
+**Arm v — the whole run at medium: research, headless capture, compile, write (megazone, nomura)**
+
+| | megazone A max | megazone v | nomura A max | nomura v |
+|---|---|---|---|---|
+| whole run | 23.3 min | 11.3 min | 20.6 min | 9.9 min |
+| uncached input / output tokens | 166 k / 44.5 k | 134 k / 20.1 k | 172 k / 47.9 k | 133 k / 17.4 k |
+| verified_v2, no codes | yes | yes | yes | yes |
+| components / claims | 5 / 97 | 4 / 100 | 6 / 95 | 6 / 102 |
+| same primary colour | — | yes | — | yes |
+
+The worker called the headless capture tool (one survey, two states calls), ran the compiler itself and pasted its
+output. It chose partly different controls from the max worker (megazone 1 of 5 keys in common by name, nomura 4 of
+6), which is the same spread two max workers show. One megazone card could not be hovered headless and stayed in
+prose. **Whole-run time −52 %, output tokens −57 %, uncached input −21 %.**
+
+**Cost of this part:** 28 Codex runs, 137 minutes, 326 k output tokens and 2.3 M uncached input: about what 7 max
+runs produce.
+
+**Reading:** adopt capture (headless) → compile → sol medium for new references, with the independent review per
+batch. Batch 9 (7 new CJK sites, `~/.omd-workers/queue-batch9.txt`) is the first batch run this way.
+
+### T1 — the same controls measured again with no model (2026-11-12)
+
+`scripts/t1/remeasure.mjs` replays each capture call of a reference's latest session headless and compares the
+compiled values (`scripts/t1/summary.mjs`). Pilot: the 20 most recently verified references with evidence, KR 10,
+JP 5, TW 5, three runs each, against baselines a worker captured headed 2 to 9 days earlier.
+
+- 20 of 20 opened headless. 7,611 of 7,652 compared fields agree with the baseline (99.5 %); between consecutive
+  runs 4,953 of 4,963 (99.8 %).
+- The 41 differing fields are 15 controls' content or geometry: the text or link of a rotating card (bunjang,
+  kkday, pinkoi, marpple-shop, hmall, fujitsu, wooricard), a live count (everytime), a width that follows text
+  (classting 89.4 → 89.5, cookpad, megazone). **One is a brand value:** wooricard `nav-card` showed an ink change on
+  keyboard focus in the baseline and none in three headless runs.
+- Not measured the same way twice: 86 states measured on one side only (peterpanz, pinkoi, wooricard) and 26
+  control lookups that found nothing (a card that rotated away). These are reported, not counted as changes.
