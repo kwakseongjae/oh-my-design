@@ -4,42 +4,48 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-12 밤 갱신) — 재개함. 9차 묶음(새 방식)이 도는 중
+## 지금 (2026-11-12 자정 갱신) — 9차 PR 올림. 도는 것 없음
 
 오너 11/12: 「추천대로 할게. 작업 재개하자. codex effort나 모델 뭘 쓸지도 고민 충분히 해본거지? 작업을 하면서도 계속 테스트를 하면서 방향 고도화해도 좋아.」
 
-**오너 GO 대기(머지)**
+**오너 GO 대기(머지 3건, 이 순서)**
 
-- PR #123(결정 기록, 이슈 양식 3종, 상태·실험 문서) → PR #124(측정 컴파일러, 후보 목록, 창 없는 캡처, 재측정 스크립트). #124는 #123 위에 쌓였다. 9차 착지 PR은 이 둘 뒤에 연다.
+1. PR #123: 결정 기록, 이슈 양식 3종, 상태·실험 문서.
+2. PR #124: 측정 컴파일러, 후보 목록, 창 없는 캡처, 재측정 스크립트, 워커 지시문 규칙. #123 위에 쌓였다.
+3. PR #125: 9차 7곳(tver·tokyo·aeon·koexpressway·nhis·samsungfire·1111), 607 → 614(443 / 90 / 81). main에서 바로 갈라져 있어 따로 머지할 수 있다. 독립 검수 반영 끝, CI 통과. 새 레퍼런스가 아이템 페이지에 어떻게 보이는지는 오너가 프리뷰에서 확인(본 세션은 프리뷰 로그인 벽 때문에 못 열었다).
 
-**정해진 것(실험 결과, `docs/research/2026-11-09-collection-method-test.md` Round 4 part 2)**
+**정해진 것(실험, `docs/research/2026-11-09-collection-method-test.md` Round 4 part 2 · Batch 9 · T1)**
 
-- **수집 방식 = 창 없는 캡처 → 컴파일 → `gpt-6.1-sol` medium.** 전체 실행 시간 −52%, 출력 토큰 −57%(megazone·nomura 짝 비교, 둘 다 verified). 작성만 보면 10곳 모두 verified, 컴포넌트 50 = 50, max가 붙인 색 152/154.
-- 모델·effort 선별(4곳): `gpt-6-luna`는 컴포넌트를 떨어뜨림(탈락), `gpt-6.1-terra`는 개요가 1/3로 줄어듦(탈락), sol low는 개요 −27%에 절약이 사이트당 1.8분이라 medium 유지.
-- 같은 폴더로 두 번 쓰면 색 값 목록이 97% 같다(후보 목록 없을 때 83%). **토큰 이름은 안 같다**(6/28 ~ 67/74). T1의 다음 일은 이름 고정(값이 그대로면 실린 레퍼런스의 이름을 이어받기).
-- T1 재측정(`scripts/t1/remeasure.mjs`, 모델·창 없음): 시범 20곳 × 3회, 8,032개 값 중 7,989개(99.5%)가 2~9일 전 측정과 같다. 다른 43개 중 브랜드 값은 3개(wooricard `nav-card` 포커스 색 하나), 나머지는 바뀌는 상품·숫자와 글자 따라 변하는 폭.
-- 일본어(`kana`): 규칙 후보 102개 독립 검증 → 근거 없음 0, 「출처보다 세게 적음」 27개를 출처가 말하는 만큼으로 낮춘 `rules.v2.md`(타이포 32, 글쓰기 70). JP 88곳 타이포 실측(77곳 읽힘). 자료는 `~/.omd-workers/kana/`, 스크립트는 `feat/kana-skill`(`.claude/worktrees/kana`, 푸시 전).
+- **수집 방식 = 창 없는 캡처 → 컴파일 → `gpt-6.1-sol` medium.** 9차 7곳: 전부 verified, 한 곳 9~13분(max는 21분쯤), 출력 토큰 약 −57%. luna(컴포넌트 떨어뜨림)·terra(개요 1/3)·sol low(개요 −27%)는 탈락.
+- **착지 검사 = 모든 컨트롤을 창 없이 다시 재기**(`scripts/t1/remeasure.mjs <id> --runs 1`). 9차는 778개 값 전부 일치. 헤드라인 하나만 창 띄워 다시 재던 일을 대신한다.
+- **선언만 된 색은 토큰이 아니다.** 화면에 칠해진 색만 토큰으로 올리고, 자사 CSS에 선언만 된 팔레트는 Colors 절의 표로 둔다(안 그러면 1111이 색 토큰 100개).
+- **독립 검수**(Codex high 2개, 각 7~8분): BLOCK 1 · WARN 7. BLOCK은 컴파일러 결함(포커스에 화면 진입 애니메이션이 섞임)이라 컴파일러를 고쳤다. 반복된 지적 3종(§ 번호 참조, 워커 폴더 파일 링크, 인용 없는 서술)은 지시문 규칙으로 올렸다.
+- 같은 폴더로 두 번 쓰면 색 값 목록이 97% 같다. **토큰 이름은 안 같다**(6/28 ~ 67/74). T1의 다음 일은 이름 고정.
+- T1 재측정 시범: 20곳 × 3회, 8,032개 값 중 7,989개(99.5%)가 2~9일 전 측정과 같다. 브랜드 값 차이는 wooricard `nav-card` 포커스 하나.
+- 일본어(`kana`): 규칙 102개 독립 검증(근거 없음 0, 세게 적음 27) → 낮춰 쓴 `rules.v2.md`. JP 88곳 타이포 실측(77곳 읽힘, `measured-jp.md`). 자료 `~/.omd-workers/kana/`, 스크립트 `feat/kana-skill`(푸시함, PR 없음).
 
-**도는 중 / 다음**
+**다음(싼 것부터)**
 
-| 할 일 | 상태 | 어디 |
+| 할 일 | 비용 | 어디 |
 |---|---|---|
-| 9차 묶음 7곳(tver·tokyo·aeon·koexpressway·nhis·samsungfire·1111) | Codex medium 워커 도는 중 | `~/.omd-workers/queue-batch9.txt`, 폴더 `~/.omd-workers/new2/<id>`, 워크트리 `t1-trust`에서 실행 |
-| 9차 착지 | 워커 보고 읽기 → `scripts/t1/remeasure.mjs <id> --runs 1`(창 없는 전체 재측정) → `feat/refs-batch9` 워크트리에 `land-batch.sh` → 독립 검수 워커 1회 → PR | 검수 보고 없이는 착지하지 않는다 |
-| 이름 고정(T1) | 설계 전 | `web/scripts/compile-evidence.mjs`의 `measure.json`에 이름을 싣는 방향 |
-| kana 스킬 초안 | 규칙 v2·실측 표 준비됨. 검사기 1개와 평가 설계가 남음 | `feat/kana-skill` |
-| 유효 기간 만료 대비: 「안 바뀌었음 확인」 재측정(`scripts/measure-surface-drift.mjs`, 마지막 2026-09-20) | `figma`는 이미 만료(품질을 다시 만들면 partial). sendbird 11/28, 42곳 1월 초, 296곳 3월 중순 | T1. 1월 초 전에 한 번 돌린다 |
-| 막힌 사이트용 야간 큐(새벽 2~7시, 창 있는 방식) | 아직 없음 | T0 |
+| 이름 고정: 값이 그대로면 실린 레퍼런스의 토큰 이름을 이어받게 | 본 세션 | `web/scripts/compile-evidence.mjs`, `measure.json` |
+| 조립기의 spacing 문구(「No verified values…」, 157곳) 고치기 | 본 세션 | `web/scripts/assemble-reference.mjs` |
+| 컴파일러가 의사 요소 변화를 통째 문자열로 적는 것 다듬기(aeon 포커스 값이 길다) | 본 세션 | `describe()` in `compile-evidence.mjs` |
+| 유효 기간 만료 대비 재측정(`scripts/measure-surface-drift.mjs`, 마지막 9/20) | 모델 없음, 브라우저 | figma 만료됨, sendbird 11/28, 42곳 1월 초, 296곳 3월 중순 |
+| kana 초안: 검사기 1개, 평가 설계, 스킬 문서 | 본 세션 + 원어민 검토 필요 | `feat/kana-skill` |
+| 10차 묶음(새 방식) | Codex medium, 곳당 10분쯤 + 검수 2회 | 후보 16곳 남음: `~/.omd-workers/census-cjk`(유망 7곳은 9차에 씀) |
+| 막힌 사이트용 야간 큐(새벽 2~7시, 창 있는 방식) | 스크립트 | T0. 9차에서는 막힌 곳이 없었다 |
 
-**오너가 볼 것(다음 보고에 넣을 결정)**
+**11/12에 쓴 것**
 
-- 새 방식으로 쓴 레퍼런스는 색 토큰이 많다. 자사 CSS에 선언된 팔레트를 전부 「선언됨, 화면에서는 못 봄」으로 나눠 적기 때문이다(hmall 23 → 76개. 카탈로그 중앙값 13, toss 92). 9차 프리뷰에서 아이템 페이지로 확인.
+- Codex 37회(실험 28 · 9차 7 · 검수 2): 출력 토큰 약 50만, max 레퍼런스 실행 11회분. Claude 에이전트 3회(검증 2, 규칙 수정 1).
 
 **열린 것**
 
-- 실험 실행 기록: `~/.omd-workers/runs/rv-x9[cdltuv]-*`(28회), 버린 것 `void-rv-x9*`. 옛 세션 임시 폴더의 스크래치 워크트리(`…/7924e40f-…/scratchpad/t1/wt`)를 품질 판정에 계속 쓰고 있다. 없어졌으면 `git worktree prune` 뒤 `git worktree add --detach <경로> origin/main`.
-- 워크트리 `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<새 id>`는 본 체크아웃을 가리키는 링크다(커밋 안 됨). megazone·nomura 폴더는 방식 시험의 캡처라 본 저장소 증거와 섞지 않는다.
-- 3D 데모 서버 8791이 켜져 있다.
+- 워크트리: `t1-trust`(#124), `refs-batch9`(#125), `kana`(`feat/kana-skill`). 머지되면 정리한다.
+- `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<9차 id>`는 본 체크아웃을 가리키는 링크다. 같은 폴더의 megazone·nomura는 방식 시험 캡처다(본 저장소 증거와 섞지 않는다).
+- 옛 세션 임시 폴더의 스크래치 워크트리(`…/7924e40f-…/scratchpad/t1/wt`)를 품질 판정에 썼다. 없어졌으면 `git worktree prune` 뒤 `git worktree add --detach <경로> origin/main`.
+- 3D 데모 서버 8791이 켜져 있다(오너가 다 보면 끈다).
 - 운영: main `8b320ec7`, 레퍼런스 607(437 / 89 / 81).
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
