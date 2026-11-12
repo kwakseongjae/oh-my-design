@@ -5,7 +5,10 @@
  *
  *   node scripts/t1/summary.mjs [<dir>] [--changes]      <dir> defaults to ~/.omd-workers/t1-stability
  *
- * A field is "stable" for a site when it agrees with the baseline in every run that measured it.
+ * A changed field is put in one of three kinds, by its name alone:
+ *   content   identity.text / identity.href: what a rotating card or a live counter shows
+ *   geometry  identity.w / identity.h: a box that follows its text
+ *   value     everything else (rest colours, radius, padding, font, transition, a state): what a reference states
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import os from "node:os";
@@ -17,6 +20,8 @@ const rows = readdirSync(root).filter((d) => existsSync(path.join(root, d, "resu
   .map((d) => JSON.parse(readFileSync(path.join(root, d, "result.json"), "utf8")));
 const tot = { sites: 0, blocked: 0, runs: 0, compared: 0, same: 0, prevCompared: 0, prevSame: 0, unmeasured: 0, missing: 0 };
 const changes = [];
+const kindOf = (field) => (/ identity\.(text|href)$/.test(field) ? "content" : / identity\.(w|h)$/.test(field) ? "geometry" : "value");
+const kinds = { content: 0, geometry: 0, value: 0 };
 console.log("site\truns\tblocked\tcontrols\tvs baseline\tvs previous run\tunmeasured on one side\tcontrols missing\tfields that changed");
 for (const r of rows) {
   const ok = r.runs.filter((x) => x.againstBaseline);
@@ -26,6 +31,7 @@ for (const r of rows) {
   const pc = sum((x) => x.againstPrevious?.compared ?? 0), ps = sum((x) => x.againstPrevious?.same ?? 0);
   const un = sum((x) => x.againstBaseline.unmeasured.length), mi = sum((x) => x.againstBaseline.missing.length);
   const fields = new Map();
+  for (const x of ok) for (const ch of x.againstBaseline.changed) kinds[kindOf(`${ch.key} ${ch.field}`)] += 1;
   for (const x of ok) for (const ch of x.againstBaseline.changed) fields.set(`${ch.key} ${ch.field}`, (fields.get(`${ch.key} ${ch.field}`) ?? 0) + 1);
   for (const [f, n] of fields) changes.push({ id: r.id, field: f, runs: n, of: ok.length, sample: ok.flatMap((x) => x.againstBaseline.changed).find((ch) => `${ch.key} ${ch.field}` === f) });
   tot.sites += 1; tot.blocked += blocked === r.runs.length ? 1 : 0; tot.runs += ok.length; tot.compared += c; tot.same += s; tot.prevCompared += pc; tot.prevSame += ps; tot.unmeasured += un; tot.missing += mi;
@@ -34,6 +40,7 @@ for (const r of rows) {
 const pct = (a, b) => (b ? `${a}/${b} (${(100 * a / b).toFixed(1)}%)` : "—");
 console.log(`\n${tot.sites} site(s), ${tot.blocked} blocked in every run, ${tot.runs} measured run(s)`);
 console.log(`agree with the baseline: ${pct(tot.same, tot.compared)} · agree with the previous run: ${pct(tot.prevSame, tot.prevCompared)}`);
+console.log(`differing fields by kind: content ${kinds.content} · geometry ${kinds.geometry} · value ${kinds.value}` + (kinds.value ? ` (${changes.filter((c) => kindOf(c.field) === "value").map((c) => `${c.id} ${c.field}`).join("; ")})` : ""));
 console.log(`states unmeasured on one side: ${tot.unmeasured} · controls not found: ${tot.missing}`);
 if (process.argv.includes("--changes")) {
   console.log("\nchanged fields (site, field, in how many runs, baseline -> run):");
