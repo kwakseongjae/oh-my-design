@@ -303,7 +303,7 @@ The following five components come directly from compiled/components.yaml. Their
 - **Occupation filter:** 171×40px, 10px radius, 7px 16px padding; transparent on the white search bar, `#212529` label at 16px/500. Hover and press fill it with `#e9ecef`.
 - **職接配 navigation link:** 76×64px, square, 1px 0px 0px padding; transparent on white, `#2066ec` visible label at 16px/500. Hover and press reveal a 2px bottom border of the same blue.
 - **各地人力銀行 service card link:** 226.9×66px, 16px radius, 8px 16px padding, `#f8f9fa` background and 1px `#e9ecef` border. Heading `#212529` at 16px/500; inherited anchor ink `#343a40`. Hover and press add shadow and 30px backdrop blur without changing its fill.
-- **AI 小精靈 tool card link:** 225.6×224px, transparent square anchor, zero padding; heading `#212529` at 20px/500. The inner rounded div, rather than the anchor, receives the border, blur and shadows described in §6.
+- **AI 小精靈 tool card link:** 225.6×224px, transparent square anchor, zero padding; heading `#212529` at 20px/500. The inner rounded div, rather than the anchor, receives the border, blur and shadows described under Elevation & Depth.
 
 The search input stays prose-only: 284×40px, 8px radius, 8px 40px padding, white `#ffffff` fill, `#495057` ink at 16px/400. Hover produces no measured change. Press and keyboard focus produce an `auto` outline, which is excluded from brand states.
 

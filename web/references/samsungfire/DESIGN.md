@@ -263,7 +263,7 @@ Control padding is measured geometry, not a universal spacing scale. The root CS
 
 ### States
 
-Reuse the per-control states in §4. All six controls were measured with real hover, mouse-down and keyboard Tab focus. “Unchanged” is limited to self, descendants, pseudo-elements and three ancestor levels in the probe's CSS/DOM comparison; it makes no claim about sibling pixels or external/canvas animation. The nav focus underline is excluded because it persists after blur. Browser `outline-style: auto` is not a brand focus token. Disabled, error, validation and submitted states were not measured.
+Reuse the per-control states under Components. All six controls were measured with real hover, mouse-down and keyboard Tab focus. “Unchanged” is limited to self, descendants, pseudo-elements and three ancestor levels in the probe's CSS/DOM comparison; it makes no claim about sibling pixels or external/canvas animation. The nav focus underline is excluded because it persists after blur. Browser `outline-style: auto` is not a brand focus token. Disabled, error, validation and submitted states were not measured.
 
 ## Do's and Don'ts
 
@@ -275,7 +275,7 @@ The page combines short service labels such as “보험금 청구” with conve
 
 ## Agent Prompt Guide
 
-Build a Korean insurance service homepage with a two-tier header, a wide campaign area, a narrower login/service rail and two columns of rounded product cards. Apply the specific measured values in §§2–4; do not infer search-field, validation or disabled states from CSS variable names.
+Build a Korean insurance service homepage with a two-tier header, a wide campaign area, a narrower login/service rail and two columns of rounded product cards. Apply the specific measured values under Colors, Typography and Components; do not infer search-field, validation or disabled states from CSS variable names.
 
 ## Governance
 

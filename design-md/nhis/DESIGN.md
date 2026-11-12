@@ -270,7 +270,7 @@ The survey also measures 6px corners on utility text actions and a fixed 35px ra
 
 ### States
 
-Every listed component has a measured authored change. Hover and pressed changes are specified in §4. All six controls acquire `rgb(37, 110, 244) 0px 0px 0px 2px` shadow (`#256ef4`) under real Tab focus. The primary login adds a `rgba(255, 255, 255, 0.9) solid 2px` outline at -4px offset; the secondary adds a `#ee0000 solid 3px` outline at -4px. The navigation button, header login link, refund card and search trigger add `#256ef4 solid 3px` outlines at -4px. These are authored solid outlines, not the browser's `auto` ring. Disabled, error and validation states were not measured.
+Every listed component has a measured authored change. Hover and pressed changes are specified under Components. All six controls acquire `rgb(37, 110, 244) 0px 0px 0px 2px` shadow (`#256ef4`) under real Tab focus. The primary login adds a `rgba(255, 255, 255, 0.9) solid 2px` outline at -4px offset; the secondary adds a `#ee0000 solid 3px` outline at -4px. The navigation button, header login link, refund card and search trigger add `#256ef4 solid 3px` outlines at -4px. These are authored solid outlines, not the browser's `auto` ring. Disabled, error and validation states were not measured.
 
 ## Do's and Don'ts
 
@@ -286,4 +286,4 @@ The homepage asks direct service questions, including “올해 건강검진 대
 
 ## Agent Prompt Guide
 
-“Build an NHIS-style service entry using the live-loaded Pretendard GOV face: a 48px-high red login button with 8px corners and a pale-red companion; use the values and states in §4. Place light 12px-radius service cards below a white navigation header. A refund card link underlines on hover and pressed. Use the focus details in §14.” This is a construction guide derived from the measured controls, not an official NHIS instruction.
+“Build an NHIS-style service entry using the live-loaded Pretendard GOV face: a 48px-high red login button with 8px corners and a pale-red companion; use the values and states under Components. Place light 12px-radius service cards below a white navigation header. A refund card link underlines on hover and pressed. Use the focus details under States.” This is a construction guide derived from the measured controls, not an official NHIS instruction.

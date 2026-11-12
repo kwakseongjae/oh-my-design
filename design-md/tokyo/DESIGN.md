@@ -206,7 +206,7 @@ Only the 1440×1000 desktop surface was rendered and measured; mobile behavior w
 
 ## Elevation & Depth
 
-The measured controls have no resting box shadow. Link keyboard focus uses the measured translucent blue shadow quoted in §4. The census records eight backgrounds of `rgba(250, 255, 252, 0.2)`; no global elevation scale is inferred from that count.
+The measured controls have no resting box shadow. Link keyboard focus uses the measured translucent blue shadow quoted under Components. The census records eight backgrounds of `rgba(250, 255, 252, 0.2)`; no global elevation scale is inferred from that count.
 
 ## Motion & Easing
 
