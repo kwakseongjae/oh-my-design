@@ -4,49 +4,45 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-12 자정 갱신) — 9차 PR 올림. 도는 것 없음
+## 지금 (2026-11-12 자정) — 도는 것 없음. 머지 GO 3건 대기
 
-오너 11/12: 「추천대로 할게. 작업 재개하자. codex effort나 모델 뭘 쓸지도 고민 충분히 해본거지? 작업을 하면서도 계속 테스트를 하면서 방향 고도화해도 좋아.」
+**오너 GO 대기. 순서가 중요하다: #125 → #123 → #124**
 
-**오너 GO 대기(머지 3건, 이 순서)**
+1. PR #125: 9차 7곳(tver·tokyo·aeon·koexpressway·nhis·samsungfire·1111), 607 → 614(443 / 90 / 81). 독립 검수 반영. 프리뷰는 오너가 확인(본 세션은 로그인 벽 때문에 못 열었다).
+2. PR #123(결정 기록, 이슈 양식, 문서)과 PR #124(컴파일러, 재측정, 워커 스크립트): **지금 CI 실패. 원인은 `figma` 만료**(출처 확인 2026-05-15 + 180일). main의 품질 데이터가 오늘부터 「낡음」이라, 데이터를 다시 만든 #125가 먼저 들어가야 한다. 그 뒤 두 브랜치에 main을 합치면 통과한다.
 
-1. PR #123: 결정 기록, 이슈 양식 3종, 상태·실험 문서.
-2. PR #124: 측정 컴파일러, 후보 목록, 창 없는 캡처, 재측정 스크립트, 워커 지시문 규칙. #123 위에 쌓였다.
-3. PR #125: 9차 7곳(tver·tokyo·aeon·koexpressway·nhis·samsungfire·1111), 607 → 614(443 / 90 / 81). main에서 바로 갈라져 있어 따로 머지할 수 있다. 독립 검수 반영 끝, CI 통과. 새 레퍼런스가 아이템 페이지에 어떻게 보이는지는 오너가 프리뷰에서 확인(본 세션은 프리뷰 로그인 벽 때문에 못 열었다).
+**새 방식(11/12 확정, 근거 `docs/research/2026-11-09-collection-method-test.md` Round 4 part 2 · Batch 9)**
 
-**정해진 것(실험, `docs/research/2026-11-09-collection-method-test.md` Round 4 part 2 · Batch 9 · T1)**
+- 새 레퍼런스 = 창 없는 캡처 → 스크립트가 측정값 컴파일 → `gpt-6.1-sol` medium. `run-queue.sh`의 `new` 기본값이다(#124). 9차: 전부 verified, 한 곳 9~13분(max 21분).
+- 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1 --out <폴더>`(모델·창 없음, 컨트롤 전부). 9차 778/778.
+- 선언만 된 색은 토큰이 아니다(Colors 절의 표로). **이 지시문을 워커가 직접 따른 적은 아직 없다**(9차는 `declared-to-prose.py`로 맞춤). 10차 첫 한 곳에서 확인한다.
+- 독립 검수 = Codex high 2개(`make-review-order.py`). 9차: BLOCK 1 · WARN 7, 반영함.
+- 안 해 본 것: 검수자 high와 max 비교, low·terra의 서술 정확도, 캡처만 low, 재검증(기존 레퍼런스)을 새 방식으로.
 
-- **수집 방식 = 창 없는 캡처 → 컴파일 → `gpt-6.1-sol` medium.** 9차 7곳: 전부 verified, 한 곳 9~13분(max는 21분쯤), 출력 토큰 약 −57%. luna(컴포넌트 떨어뜨림)·terra(개요 1/3)·sol low(개요 −27%)는 탈락.
-- **착지 검사 = 모든 컨트롤을 창 없이 다시 재기**(`scripts/t1/remeasure.mjs <id> --runs 1`). 9차는 778개 값 전부 일치. 헤드라인 하나만 창 띄워 다시 재던 일을 대신한다.
-- **선언만 된 색은 토큰이 아니다.** 화면에 칠해진 색만 토큰으로 올리고, 자사 CSS에 선언만 된 팔레트는 Colors 절의 표로 둔다(안 그러면 1111이 색 토큰 100개).
-- **독립 검수**(Codex high 2개, 각 7~8분): BLOCK 1 · WARN 7. BLOCK은 컴파일러 결함(포커스에 화면 진입 애니메이션이 섞임)이라 컴파일러를 고쳤다. 반복된 지적 3종(§ 번호 참조, 워커 폴더 파일 링크, 인용 없는 서술)은 지시문 규칙으로 올렸다.
-- 같은 폴더로 두 번 쓰면 색 값 목록이 97% 같다. **토큰 이름은 안 같다**(6/28 ~ 67/74). T1의 다음 일은 이름 고정.
-- T1 재측정 시범: 20곳 × 3회, 8,032개 값 중 7,989개(99.5%)가 2~9일 전 측정과 같다. 브랜드 값 차이는 wooricard `nav-card` 포커스 하나.
-- 일본어(`kana`): 규칙 102개 독립 검증(근거 없음 0, 세게 적음 27) → 낮춰 쓴 `rules.v2.md`. JP 88곳 타이포 실측(77곳 읽힘, `measured-jp.md`). 자료 `~/.omd-workers/kana/`, 스크립트 `feat/kana-skill`(푸시함, PR 없음).
+**10차를 돌리려면**(#124가 main에 있어야 한다. 그 전에는 `.claude/worktrees/t1-trust`에서)
+
+```
+scripts/workers/run-queue.sh ~/.omd-workers/queue-batch10.txt --cap 1   # 큐 파일은 아직 없다. 첫 곳에서 선언 색 표를 확인한 뒤 --cap 4
+```
+후보 16곳: `~/.omd-workers/census-cjk/summary.json`(유망 7곳은 9차에 썼다). 9차 큐가 양식이다: `~/.omd-workers/queue-batch9.txt`.
 
 **다음(싼 것부터)**
 
 | 할 일 | 비용 | 어디 |
 |---|---|---|
-| 이름 고정: 값이 그대로면 실린 레퍼런스의 토큰 이름을 이어받게 | 본 세션 | `web/scripts/compile-evidence.mjs`, `measure.json` |
-| 조립기의 spacing 문구(「No verified values…」, 157곳) 고치기 | 본 세션 | `web/scripts/assemble-reference.mjs` |
-| 컴파일러가 의사 요소 변화를 통째 문자열로 적는 것 다듬기(aeon 포커스 값이 길다) | 본 세션 | `describe()` in `compile-evidence.mjs` |
-| 유효 기간 만료 대비 재측정(`scripts/measure-surface-drift.mjs`, 마지막 9/20) | 모델 없음, 브라우저 | figma 만료됨, sendbird 11/28, 42곳 1월 초, 296곳 3월 중순 |
-| kana 초안: 검사기 1개, 평가 설계, 스킬 문서 | 본 세션 + 원어민 검토 필요 | `feat/kana-skill` |
-| 10차 묶음(새 방식) | Codex medium, 곳당 10분쯤 + 검수 2회 | 후보 16곳 남음: `~/.omd-workers/census-cjk`(유망 7곳은 9차에 씀) |
-| 막힌 사이트용 야간 큐(새벽 2~7시, 창 있는 방식) | 스크립트 | T0. 9차에서는 막힌 곳이 없었다 |
-
-**11/12에 쓴 것**
-
-- Codex 37회(실험 28 · 9차 7 · 검수 2): 출력 토큰 약 50만, max 레퍼런스 실행 11회분. Claude 에이전트 3회(검증 2, 규칙 수정 1).
+| 토큰 이름 고정(값은 두 번 써도 97% 같고 이름은 안 같다) | 본 세션 | `compile-evidence.mjs`의 `measure.json` |
+| 조립기 spacing 문구(「No verified values…」, 157곳) · 의사 요소 변화를 통째 문자열로 적는 것 | 본 세션 | `assemble-reference.mjs`, `describe()` |
+| 만료 대비 「안 바뀌었음」 재측정(`scripts/measure-surface-drift.mjs`, 마지막 9/20) | 모델 없음 | figma 만료, sendbird 11/28, 42곳 1월 초, 296곳 3월 중순 |
+| kana: 검사기 1개, 평가 설계, 스킬 문서, 원어민 검토 | 본 세션 | `feat/kana-skill`, 자료 `~/.omd-workers/kana/`(`rules.v2.md`, `measured-jp.md`) |
+| 10차 묶음 | Codex medium 곳당 10분쯤 + 검수 2회 | 위 명령 |
 
 **열린 것**
 
-- 워크트리: `t1-trust`(#124), `refs-batch9`(#125), `kana`(`feat/kana-skill`). 머지되면 정리한다.
-- `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<9차 id>`는 본 체크아웃을 가리키는 링크다. 같은 폴더의 megazone·nomura는 방식 시험 캡처다(본 저장소 증거와 섞지 않는다).
-- 옛 세션 임시 폴더의 스크래치 워크트리(`…/7924e40f-…/scratchpad/t1/wt`)를 품질 판정에 썼다. 없어졌으면 `git worktree prune` 뒤 `git worktree add --detach <경로> origin/main`.
-- 3D 데모 서버 8791이 켜져 있다(오너가 다 보면 끈다).
-- 운영: main `8b320ec7`, 레퍼런스 607(437 / 89 / 81).
+- 9차 중 koexpressway·samsungfire는 법적 고지에서 법인 인용을 못 얻었다(국가는 회사 소개·푸터 근거). `.verification.md`에 적혀 있다.
+- T1 시범(20곳 × 3회, 99.5% 일치)에서 한쪽만 잰 상태 86건은 다시 잴 때 뜬 팝업이 화면을 덮어서다(peterpanz·pinkoi·wooricard, 11/9 전 캡처는 닫기 설정이 기록돼 있지 않다). 새로 캡처한 것끼리는 창 없는 쪽 99.2%, 창 있는 쪽 98.9%로 차이가 없다.
+- 워크트리 `t1-trust`(#124) · `refs-batch9`(#125) · `kana`. `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<9차 id>`는 본 체크아웃을 가리키는 링크. 품질 판정용 스크래치 워크트리는 옛 세션 임시 폴더(`…/7924e40f-…/scratchpad/t1/wt`)에 있다.
+- 11/12 사용: Codex 37회(실험 28 · 9차 7 · 검수 2, 출력 약 50만 토큰 = max 실행 11회분), Claude 에이전트 3회.
+- 3D 데모 서버 8791 켜져 있음. 운영: main `8b320ec7`, 607(437 / 89 / 81).
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
 

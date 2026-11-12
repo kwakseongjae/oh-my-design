@@ -263,7 +263,7 @@ out unless the evidence shows what it is).
 | uncached input, median | 186 k (whole run) | 78 k | 80 k |
 | components / stated | 50 / 41 | 50 / 43 | 50 / 43 |
 | claims | 847 | 706 | 1,116 |
-| max-named colours also named | — | 81 / 154 | 152 / 154 |
+| max-named colours also named (seen on the page: 120; declared only: 34) | — | 81 / 154 (77 + 4) | 152 / 154 (118 + 34) |
 | max-named type sizes / radii also named | — | 28 / 37 · 21 / 27 | 37 / 37 · 27 / 27 |
 
 - The list closes the gap and goes past max: arm c names 151 colours max did not. 75 are first-party declared palette
@@ -334,8 +334,13 @@ JP 5, TW 5, three runs each, against baselines a worker captured headed 2 to 9 d
   marpple-shop, hmall, fujitsu, wooricard; a live count on everytime) and 9 are geometry (a width that follows
   text: classting 89.4 → 89.5, cookpad, megazone). **3 are a brand value, all one control:** wooricard `nav-card` showed an ink change on
   keyboard focus in the baseline and none in three headless runs.
-- Not measured the same way twice: 86 states measured on one side only (peterpanz, pinkoi, wooricard) and 26
-  control lookups that found nothing (a card that rotated away). These are reported, not counted as changes.
+- Not measured the same way twice: 86 states measured on one side only (84 of them missing in the re-run) and 26
+  control lookups that found nothing in the re-run (a card that had rotated away). The 84 are three sites
+  (peterpanz, pinkoi, wooricard) where a popup or locale notice covered the page in the re-run; their captures
+  predate 2026-11-09, when the capture tool began to record the worker's close selectors. The wooricard focus
+  difference is on that same covered page. These are reported, not counted as changes.
+- Does headless measure fewer states? Not in fresh captures: batch 9 (headless) measured 122 of 123 control
+  states, the ten round-4 sites (headed, max workers) 178 of 180.
 
 ### Batch 9 — the first batch made this way (2026-11-12, PR #125)
 
