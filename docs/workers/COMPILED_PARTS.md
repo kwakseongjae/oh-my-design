@@ -11,10 +11,10 @@
   - A colour **seen on the page** gets a token when you can state its role from where it was seen (what it paints,
     which control, which state). An element count alone is not a role: a colour on one or two elements, with no
     measured control and no custom property, is left out unless another file in the evidence shows what it is.
-  - A colour that is **declared only** gets a token when its custom property is in a namespace step 4 found to be
-    the company's own and the property name states the role or the palette step (`--color-negative`, `--blue-600`).
-    Name the token after the property. In `body.md`, list these apart from the seen colours and say they are
-    declared in the site's CSS and were not seen painted on the measured page. A declared colour from a framework
-    or third-party namespace is left out.
+  - A colour that is **declared only** is not a token: nothing in the capture was painted with it. When its custom
+    property is in a namespace step 4 found to be the company's own, list it in `body.md` §2 under its own heading
+    ("Declared in the site's CSS, not seen painted"), in a table of CSS property and value, and say there that the
+    list is not exported as tokens. Leave a declared colour from a framework or third-party namespace out
+    altogether. (Batch 9, 2026-11-12: exported as tokens, these gave references of 57 to 100 colour tokens.)
   - Type sizes and radii: a token for each row you can tie to a kind of element or a measured control.
   - A value that is not in the list needs its source named in report.md.
