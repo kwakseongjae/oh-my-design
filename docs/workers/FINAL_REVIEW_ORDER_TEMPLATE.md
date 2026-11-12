@@ -2,7 +2,7 @@
 
 You are a reviewer in a folder outside the oh-my-design repository: `{{WORKDIR}}`. You may read anything under `{{REPO}}`, but you write only in `{{WORKDIR}}`.
 
-oh-my-design publishes DESIGN.md files that describe real companies' live design systems, measured from the live site and backed by first-party sources. The references below were drafted by another worker and then reviewed and edited by the orchestrator. They are about to go to production. **Your job is to find what is still wrong.** Assume nothing is right because it was reviewed. A finding you cannot back with a line number and the evidence you checked is not a finding; leave it out. Reporting nothing is a valid result when nothing is wrong.
+oh-my-design publishes DESIGN.md files that describe real companies' live design systems, measured from the live site and backed by first-party sources. The references below were drafted by another worker and then reviewed and edited by the orchestrator.{{NOTE}} They are about to go to production. **Your job is to find what is still wrong.** Assume nothing is right because it was reviewed. A finding you cannot back with a line number and the evidence you checked is not a finding; leave it out. Reporting nothing is a valid result when nothing is wrong.
 
 **Do not:**
 - write anywhere except `{{WORKDIR}}`; edit, commit or push anything in the repository;
@@ -15,9 +15,10 @@ Time box: about 30 minutes. A partial report is better than none.
 ## What to read
 
 For each id in {{IDS}}:
-- `{{REPO}}/.claude/worktrees/eu-wave5/web/references/<id>/DESIGN.md`: the published reference. Frontmatter (tokens, components) plus the 15-section body.
-- `{{REPO}}/.claude/worktrees/eu-wave5/web/references/<id>/.verification.md`: the evidence notes. The Proof block, the controls table, the narrative sources with quotes, and any "Orchestrator review" block.
-- `{{REPO}}/artifacts/reference-evidence/visual/<id>/*/`: the raw capture output (`survey.json`, `states.json`, `*.txt` summaries, crops). A `review-20261029/` folder holds the orchestrator's re-measurements, which take precedence over the worker's run when they disagree.
+- `{{CATALOG}}/web/references/<id>/DESIGN.md`: the published reference. Frontmatter (tokens, components) plus the 15-section body.
+- `{{CATALOG}}/web/references/<id>/.verification.md`: the evidence notes. The Proof block, the controls table, the narrative sources with quotes, and any "Orchestrator review" block.
+- `{{REPO}}/artifacts/reference-evidence/visual/<id>/*/`: the raw capture output (`survey.json`, `states.json`, `*.txt` summaries, crops).
+- {{REMEASURE}}
 - `{{REPO}}/AGENTS.md`, section "Hard rules".
 
 ## Checks
