@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, tokenCandidates } from "../scripts/compile-evidence.mjs";
+import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, proofMarkdown, tokenCandidates } from "../scripts/compile-evidence.mjs";
 
 // Shapes follow probe-keyboard-states.mjs states.json: controls[key] = { found, identity, rest, hover, pressed, focus }.
 const identity = { tag: "a", role: null, text: "Contact Us", rect: { w: 194.8, h: 56 }, radius: "100px", padding: "0px 40px", font: "18px/700" };
@@ -52,6 +52,26 @@ describe("compile-evidence", () => {
     expect(c.fields.fg).toBeUndefined();
     expect(c.fields.bg).toBeUndefined();
     expect(c.notes).toEqual(["fg at rest is rgba(0, 0, 0, 0.78)"]);
+  });
+
+  it("takes focus from the comparison with the after-blur rest when something persisted", () => {
+    // A scroll-entry fade finishes while the control is focused: opacity 0 -> 1 stays after blur, the ink does not.
+    const before = (color: string, op: number) => `::before{color:${color};op:${op}}`;
+    const focus = {
+      measured: true,
+      changed: [{ set: "self-pseudo", prop: "before", from: before("rgb(182, 0, 129)", 0), to: before("rgb(255, 255, 255)", 1) }],
+      persistsAfterBlur: [{ set: "self-pseudo", prop: "before", from: before("rgb(182, 0, 129)", 0), to: before("rgb(182, 0, 129)", 1) }],
+      changedVsAfterBlur: [{ set: "self-pseudo", prop: "before", from: before("rgb(182, 0, 129)", 1), to: before("rgb(255, 255, 255)", 1) }],
+    };
+    expect(brandChanges(focus, "focus")).toEqual(focus.changedVsAfterBlur);
+    expect(brandChanges({ ...focus, persistsAfterBlur: [] }, "focus")).toEqual(focus.changed); // nothing persisted: as measured
+    expect(brandChanges(focus, "hover")).toEqual(focus.changed); // only focus has an after-blur reading
+  });
+
+  it("escapes pipes in the proof table", () => {
+    const controls = mergeControls([{ controls: { nav: control({ rest: { ...rest, border: "none | none | 4px solid rgba(0, 0, 0, 0) | none" } }) } }]);
+    const row = proofMarkdown(controls, controls.map(compileControl)).split("\n")[2];
+    expect(row.split(/(?<!\\)\|/).length).toBe(8); // six cells, plus the empty ends
   });
 
   it("keeps a state an earlier run measured when a later run could not", () => {

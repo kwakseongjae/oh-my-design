@@ -48,7 +48,12 @@ export function colorToken(v) {
 /** The changes in one state that the brand painted; null when the state was not measured. */
 export function brandChanges(state, name) {
   if (!state?.measured) return null;
-  return (state.changed ?? []).filter((c) => {
+  // Focus is measured against the page-top rest, so it also carries whatever changed for another reason and
+  // stayed (a scroll-entry animation that had not finished: AEON, 2026-11-12). Where the probe saw something
+  // persist after blur, its comparison against the after-blur rest is the focus change. `alsoPersists` alone
+  // misses a pseudo-element whose one descriptor string holds both a focus colour and a persisting opacity.
+  const list = name === "focus" && state.persistsAfterBlur?.length && Array.isArray(state.changedVsAfterBlur) ? state.changedVsAfterBlur : state.changed ?? [];
+  return list.filter((c) => {
     // `alsoPersists` is the probe's per-change mark for a focus change that stays after blur (a search field
     // that stays widened): that is a toggled layout, not a focus style.
     if (c.prop === "dom" || c.alsoPersists) return false;
@@ -144,17 +149,20 @@ export function componentsYaml(compiled) {
   return lines.join("\n") + "\n";
 }
 
+// A computed value can hold pipes (a border written edge by edge: `none | none | 4px solid … | none`); in a
+// markdown table they would split the cell.
+const cell = (v) => String(v).replaceAll("|", "\\|");
 function stateCell(per) {
   if (per === null) return "UNMEASURED";
   if (!per.length) return "no brand change";
-  return per.map((c) => `${c.set} ${c.prop}: \`${c.from}\` → \`${c.to}\``).join("<br>");
+  return per.map((c) => `${c.set} ${c.prop}: \`${cell(c.from)}\` → \`${cell(c.to)}\``).join("<br>");
 }
 
 export function proofMarkdown(controls, compiled) {
   const rows = controls.map((c, i) => {
     const idn = c.identity;
     const id = `\`<${idn.tag}>\` ${JSON.stringify((idn.text ?? "").slice(0, 40))} · ${idn.rect.w}×${idn.rect.h} · radius ${idn.radius} · ${idn.font}`;
-    const rest = `bg \`${c.rest?.bg}\` · fg \`${c.rest?.fg}\` · border \`${c.rest?.border}\``;
+    const rest = `bg \`${c.rest?.bg}\` · fg \`${c.rest?.fg}\` · border \`${cell(c.rest?.border)}\``;
     return `| \`${c.key}\` | ${id} | ${rest} | ${STATES.map((s) => stateCell(compiled[i].per[s])).join(" | ")} |`;
   });
   const transitions = controls.filter((c) => c.identity.transition).map((c) => `- \`${c.key}\`: \`${c.identity.transition}\``);
