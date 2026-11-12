@@ -12,6 +12,11 @@ The max writer's tokens are read from ~/.omd-workers/<source-wave>/<id>/front.ya
 how many of them the arm named, and how many tokens the arm named that max did not (with how many of those are in
 the candidate list: an arm told to go through the list may name one-off values max left out). A site the arm has
 not written yet is skipped. No model, no browser.
+
+Colours are also split by where the candidate list has them: seen on the page, or declared only (a custom property
+holds the value and nothing surveyed was painted with it). Among colours only the arm named, a **one-off** is a
+colour on at most two elements with no measured control and no custom property (defined 2026-11-12, before any
+arm that was given the list had run): naming those inflates the count without adding a role.
 """
 import json, os, pathlib, re, sys
 import yaml
@@ -34,6 +39,8 @@ def px(v):
     m = re.fullmatch(r"(\d+(?:\.\d+)?)px", v)
     return float(m.group(1)) if m else None
 
+split = {"seen": [0, 0], "declared": [0, 0]}   # max named, arm named of those
+arm_only = {"seen": 0, "declared": 0, "one-off": 0, "not in list": 0}
 total = {k: [0, 0, 0, 0, 0] for k in ("colour", "type", "radius")}   # max named, in candidates, arm named, arm-only, arm-only in candidates
 missing, extra = [], []
 print(f"{'site':16} {'colour':>18} {'type':>16} {'radius':>16}   (in candidates / max named · {arm} named · {arm} only)")
@@ -49,6 +56,16 @@ for sid, wave in sites:
     }
     mx = dict(zip(("colour", "type", "radius"), tokens(W / wave / sid / "front.yaml")))
     md = dict(zip(("colour", "type", "radius"), tokens(W / arm / sid / "front.yaml")))
+    seen = {c["value"]: c for c in cand["colours"]}; declared = {c["value"] for c in cand["declaredOnly"]}
+    mxc, mdc = set(mx["colour"].values()), set(md["colour"].values())
+    for bucket, values in (("seen", set(seen)), ("declared", declared)):
+        split[bucket][0] += len(mxc & values); split[bucket][1] += len(mxc & mdc & values)
+    for v in mdc - mxc:
+        c = seen.get(v)
+        if c and sum(c["painted"].values()) + c["interactive"] <= 2 and not c["controls"] and not c["declared"]: arm_only["one-off"] += 1
+        elif c: arm_only["seen"] += 1
+        elif v in declared: arm_only["declared"] += 1
+        else: arm_only["not in list"] += 1
     cells = []
     for kind in ("colour", "type", "radius"):
         named, medium = set(mx[kind].values()), set(md[kind].values())
@@ -66,6 +83,9 @@ for kind, (named, hit, medium, only, only_in) in total.items():
     if named:
         print(f"{kind:7} max named {named:3} · in candidates {hit:3} ({hit / named:.0%}) · {arm} named {medium:3} ({medium / named:.0%})"
               f" · {arm} only {only:3} ({only_in} in candidates)")
+for bucket, (named, got) in split.items():
+    if named: print(f"colour, {bucket:8} max named {named:3} · {arm} named {got:3} ({got / named:.0%})")
+print(f"colour, only {arm} named: " + " · ".join(f"{k} {v}" for k, v in arm_only.items()))
 print("not in the candidate list:" if missing else "every max-named token is in the candidate list")
 print("\n".join(missing))
 if "--list" in sys.argv:

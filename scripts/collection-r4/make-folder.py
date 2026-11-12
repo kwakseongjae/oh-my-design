@@ -67,7 +67,9 @@ note = f"""# Experiment note — read this first (it overrides the steps below w
 
 Steps 1–3, 5 and 6 of this order (curl controls, first-party sources, survey, control choice, states) were already
 done by another worker. You have **no browser and no probe_page tool, and you fetch nothing**. Work only from the
-files in this folder:
+files in this folder. A finished reference for this company exists elsewhere on this machine; this run tests what
+you write without it. Do not open `web/references/`, `design-md/` or `packages/mcp/data/` in the repository, or any
+other folder under `~/.omd-workers`. A run that opens them is discarded.
 
 - the capture, as the capture tool wrote it:{listing}
 - first-party pages as fetched, with the source ledger `sources.json` (and `source-evidence/` or `raw/` where present)
