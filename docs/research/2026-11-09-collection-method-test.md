@@ -336,3 +336,34 @@ JP 5, TW 5, three runs each, against baselines a worker captured headed 2 to 9 d
   keyboard focus in the baseline and none in three headless runs.
 - Not measured the same way twice: 86 states measured on one side only (peterpanz, pinkoi, wooricard) and 26
   control lookups that found nothing (a card that rotated away). These are reported, not counted as changes.
+
+### Batch 9 — the first batch made this way (2026-11-12, PR #125)
+
+Seven new CJK sites (tver, tokyo, aeon, koexpressway, nhis, samsungfire, 1111): headless capture, the worker
+compiles its own capture (order step 6b), `gpt-6.1-sol` at medium.
+
+- 7 of 7 opened headless and finished: 8.8 to 13.3 minutes each (median 11.5; max-effort runs in rounds 1 and 3:
+  21), 158 k uncached input and 19.7 k output tokens (median). All `verified_v2` with no codes.
+- **Re-measured with no model** (`scripts/t1/remeasure.mjs`, one headless run per site): 778 of 778 fields on the 41
+  pinned controls agree with the workers' captures.
+- The order then told workers to export declared-only colours as tokens. That gave 100 colour tokens on 1111, 62 on
+  samsungfire and 61 on tver (catalog median 13). Decided: a token is what the capture saw painted; the declared
+  palette stays in section 2 as a labelled table (`declared-to-prose.py` for this batch, `COMPILED_PARTS.md` from
+  now on). After it: 14 to 21 colour tokens per reference, 84 to 114 claims.
+- **Independent review** (two `gpt-6.1-sol` reviewers at high, 8.3 and 6.8 minutes): 1 BLOCK, 7 WARN, three
+  references with nothing.
+  - BLOCK, aeon: two CTAs' compiled focus recipes carried a scroll-entry fade that was still there after blur. A
+    compiler defect, fixed in the compiler (focus is read against the after-blur rest when something persisted).
+  - WARN ×3 (nhis, samsungfire, and the same pattern in tokyo and 1111): "see §4" pointing at the wrong section
+    after the headings are unnumbered. Now an order rule and a landing check.
+  - WARN, nhis: a border value with pipes broke a table row (compiler and worker table; escaped).
+  - WARN ×2, samsungfire: a link to a file that only existed in the worker's folder; four narrative facts noted in
+    the worker's own words with no quote. All four were read on the company's pages and the exact sentences added.
+    Both are now order rules. This is the weak spot of a medium writer: the facts were right, the record of them thin.
+  - WARN ×2 (aeon, tokyo), not changed: the assembler's "No verified values in current evidence" for the spacing
+    group while the body documents declared spacing. The same generated line is in 157 references; the fix belongs
+    in the assembler's wording.
+- A reviewer at high effort is untested against one at max; three earlier reviews ran at max.
+
+**Cost of 11/12 in Codex runs:** 28 experiment runs, 7 batch runs, 2 reviews: about 503 k output tokens, what 11
+max-effort reference runs produce (45.8 k each).
