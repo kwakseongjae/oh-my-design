@@ -349,7 +349,7 @@ compiles its own capture (order step 6b), `gpt-6.1-sol` at medium.
 - The order then told workers to export declared-only colours as tokens. That gave 100 colour tokens on 1111, 62 on
   samsungfire and 61 on tver (catalog median 13). Decided: a token is what the capture saw painted; the declared
   palette stays in section 2 as a labelled table (`declared-to-prose.py` for this batch, `COMPILED_PARTS.md` from
-  now on). After it: 14 to 21 colour tokens per reference, 84 to 114 claims.
+  now on). After it: 4 to 21 colour tokens per reference (aeon 4, tver 10, 1111 15), 84 to 114 claims.
 - **Independent review** (two `gpt-6.1-sol` reviewers at high, 8.3 and 6.8 minutes): 1 BLOCK, 7 WARN, three
   references with nothing.
   - BLOCK, aeon: two CTAs' compiled focus recipes carried a scroll-entry fade that was still there after blur. A
