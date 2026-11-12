@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """For every quoted passage in a rules.md, say whether it is in the fetched sources verbatim (whitespace removed,
-NFKC). No model. Writes <dir>/quote-check.md and quote-check.json."""
+NFKC). No model. Writes <dir>/quote-check.md and quote-check.json.
+
+    quote-check.py <dir> [rules-file]      <dir> holds the rules file (default rules.md) and fetched/ (fetch-sources.py)"""
 import json, pathlib, re, sys, unicodedata
 
 d = pathlib.Path(sys.argv[1]); f = d / "fetched"
+RULES = sys.argv[2] if len(sys.argv) > 2 else "rules.md"          # e.g. rules.v2.md → quote-check.v2.md
+OUT = "quote-check" + RULES[len("rules"):-len(".md")]
 norm = lambda s: re.sub(r"\s+", "", unicodedata.normalize("NFKC", s))
 man = json.load(open(f / "manifest.json"))
 docs = []
@@ -29,7 +33,7 @@ def quotes(text):
     out += re.findall(r'(?<![\w=])"([^"\n]{20,})"', text) + re.findall(r"“([^”\n]{20,})”", text)
     return out
 
-rules = re.split(r"(?m)^(?=#{2,4} +[A-Z]{1,4}-?\d+)", (d / "rules.md").read_text(encoding="utf-8"))
+rules = re.split(r"(?m)^(?=#{2,4} +[A-Z]{1,4}-?\d+)", (d / RULES).read_text(encoding="utf-8"))
 rows = []
 for block in rules:
     m = re.match(r"#{2,4} +([A-Z]{1,4}-?\d+)", block)
@@ -50,7 +54,7 @@ for block in rules:
                     if h: partial = (piece.strip()[:60], h); break
         rows.append({"rule": rid, "quote": q, "found": bool(hits), "file": first[0] if first else None, "where": first[1] if first else None,
                      "partial": partial})
-json.dump(rows, open(d / "quote-check.json", "w"), indent=1, ensure_ascii=False)
+json.dump(rows, open(d / (OUT + ".json"), "w"), indent=1, ensure_ascii=False)
 ids = sorted({r["rule"] for r in rows}, key=lambda x: int(re.search(r"\d+", x).group()))
 allids = [re.match(r"#{2,4} +([A-Z]{1,4}-?\d+)", b).group(1) for b in rules if re.match(r"#{2,4} +([A-Z]{1,4}-?\d+)", b)]
 lines = ["# Quote check (script, no model)", "",
@@ -64,7 +68,7 @@ for r in rows:
     lines.append(f"| {r['rule']} | {r['quote'][:60].replace('|', '/')} | {res} | {where} |")
 noq = [i for i in allids if i not in ids]
 lines += ["", f"Rules with no quoted passage long enough to check: {', '.join(noq) or 'none'}"]
-(d / "quote-check.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(d / (OUT + ".md")).write_text("\n".join(lines) + "\n", encoding="utf-8")
 n = len(rows); fnd = sum(r["found"] for r in rows); part = sum(bool(r["partial"]) for r in rows)
 bad = sorted({r["rule"] for r in rows if not r["found"]}, key=lambda x: int(re.search(r"\d+", x).group()))
 print(f"{d.name}: rules {len(allids)}, quotes {n}, found {fnd}, part found {part}, not found {n - fnd - part}; rules with a quote not found verbatim: {len(bad)} {bad}; no checkable quote: {noq}")
