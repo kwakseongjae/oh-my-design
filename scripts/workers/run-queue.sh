@@ -84,7 +84,9 @@ while :; do
     esac
   done
   ours=0
-  for d in "$RUNS"/rv-*; do [ -f "$d/pid" ] && [ ! -f "$d/exit-code" ] && ours=$((ours + 1)); done
+  # A run is still ours only while its process lives: a worker killed without an exit-code (2026-11-02 left four)
+  # must not keep this loop from reaching IDLE.
+  for d in "$RUNS"/rv-*; do [ -f "$d/pid" ] && [ ! -f "$d/exit-code" ] && kill -0 "$(cat "$d/pid")" 2>/dev/null && ours=$((ours + 1)); done
   if [ "$i" -ge "${#LINES[@]}" ] && [ "$ours" -eq 0 ]; then echo "IDLE"; exit 0; fi
   sleep 60
 done
