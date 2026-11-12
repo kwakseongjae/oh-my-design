@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 437,
-  "sources": 3919,
+  "references_with_verification_v2": 444,
+  "sources": 3979,
   "sources_by_kind": {
-    "brand-asset": 271,
+    "brand-asset": 272,
     "license": 141,
-    "official-doc": 1886,
-    "product-surface": 1621
+    "official-doc": 1926,
+    "product-surface": 1640
   },
   "references": {
     "104": {
@@ -56,6 +56,42 @@
           "kind": "official-doc",
           "captured": "2026-07-14",
           "host": "corp.104.com.tw"
+        }
+      ]
+    },
+    "1111": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.1111.com.tw"
+        },
+        {
+          "id": "service-introduction",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.1111.com.tw"
         }
       ]
     },
@@ -626,6 +662,60 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "www.adyen.com"
+        }
+      ]
+    },
+    "aeon": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "concept",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.aeon.info"
         }
       ]
     },
@@ -12101,6 +12191,36 @@
         }
       ]
     },
+    "koexpressway": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.ex.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.ex.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.ex.co.kr"
+        },
+        {
+          "id": "privacy-candidate-error",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.ex.co.kr"
+        }
+      ]
+    },
     "komoot": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -15995,6 +16115,90 @@
         }
       ]
     },
+    "nhis": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "component-css",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "font-css",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "hq",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "krds-css",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "purpose",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        },
+        {
+          "id": "vision",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.nhis.or.kr"
+        }
+      ]
+    },
     "nhn": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -19823,6 +20027,72 @@
         }
       ]
     },
+    "samsungfire": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "color-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "design-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "identity",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "legacy-legal-entity",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "logo-guide",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.samsungfire.com"
+        }
+      ]
+    },
     "samsunghospital": {
       "checked": "2026-11-09",
       "claims": 0,
@@ -23081,6 +23351,66 @@
         }
       ]
     },
+    "tokyo": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "address",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "ds-docs",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "www.metro.tokyo.lg.jp"
+        }
+      ]
+    },
     "tokyo-metropolitan": {
       "checked": "2026-11-03",
       "claims": 0,
@@ -23588,6 +23918,78 @@
           "kind": "official-doc",
           "captured": "2026-11-03",
           "host": "www.tsmc.com"
+        }
+      ]
+    },
+    "tver": {
+      "checked": "2026-11-12",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "tver.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "tver.jp"
+        },
+        {
+          "id": "corporate-control",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "tver.co.jp"
+        },
+        {
+          "id": "design-change",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "help.tver.jp"
+        },
+        {
+          "id": "help-control",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "help.tver.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "tver.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "tver.co.jp"
+        },
+        {
+          "id": "issuer-history",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "prtimes.jp"
+        },
+        {
+          "id": "product-css-0",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "tver.jp"
+        },
+        {
+          "id": "product-css-1",
+          "kind": "product-surface",
+          "captured": "2026-11-12",
+          "host": "tver.jp"
+        },
+        {
+          "id": "redesign",
+          "kind": "official-doc",
+          "captured": "2026-11-12",
+          "host": "tver.co.jp"
         }
       ]
     },

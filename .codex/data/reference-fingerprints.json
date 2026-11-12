@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-10T00:00:00Z",
+ "generated_at": "2026-11-12T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 607,
+ "count": 614,
  "items": [
   {
    "id": "104",
@@ -27,6 +27,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "1111",
+   "primary_color_hex": "#2066ec",
+   "category": "consumer-tech",
+   "visual_theme": "1111 人力銀行 is a job-matching service for jobseekers and employers. Its company introduction dates 全球華人股份有限公司 to 11 November 1999 and connects employment with helping businesses earn, employees progress and society benefit. The company identifies its head office",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "1111-jobbank",
@@ -406,6 +429,27 @@
    ],
    "has_personas": false,
    "category_raw": "payments-platform"
+  },
+  {
+   "id": "aeon",
+   "primary_color_hex": "#b60081",
+   "category": "ecommerce",
+   "visual_theme": "AEON is a Japanese retail group whose holding company manages businesses in retail, property development, finance and services. Its company profile dates incorporation to September 1926; its history traces predecessor Okadaya to 1758. The group adopted the AEO",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "ahamo",
@@ -6595,6 +6639,28 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "koexpressway",
+   "primary_color_hex": "#063a74",
+   "category": "consumer-tech",
+   "visual_theme": "한국도로공사 presents highway information, toll and Hi-Pass services, public disclosures, procurement and recruitment on one corporate homepage. Its current page title is “한국도로공사 - 모두의 이동 가치를 실현하는 글로벌 NO.1 모빌리티 플랫폼”. A March 2026 recruitment notice used “안전하고 편리한 미래",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "komoot",
    "primary_color_hex": "#4f6814",
    "category": "consumer-tech",
@@ -8603,6 +8669,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "nhis",
+   "primary_color_hex": "#ee0000",
+   "category": "healthcare",
+   "visual_theme": "National Health Insurance Service (국민건강보험공단) administers health insurance and long-term care insurance in Korea. Its official history records the service's launch on 1 July 2000, combining the National Medical Insurance Management Corporation and 139 workplace",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "nhn",
@@ -11069,6 +11158,29 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "samsungfire",
+   "primary_color_hex": "#0068ff",
+   "category": "fintech",
+   "visual_theme": "Samsung Fire & Marine Insurance (삼성화재) offers insurance and risk solutions for individuals and businesses. Its company overview dates its establishment to 26 January 1952 and places its headquarters in Seoul. The current identity combines protecting everyday l",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "samsunghospital",
    "primary_color_hex": "#0b50a1",
    "category": "healthcare",
@@ -13044,6 +13156,30 @@
    "category_raw": "ai-infrastructure"
   },
   {
+   "id": "tokyo",
+   "primary_color_hex": "#1a753f",
+   "category": "government",
+   "visual_theme": "Tokyo Metropolitan Government is the public authority behind Tokyo’s general government portal. Its site policy identifies it as Japan’s local government, “東京都”; the official chronology records the establishment of Tokyo Metropolis in July 1943. The portal bri",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "editorial",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
+  },
+  {
    "id": "tokyo-metropolitan",
    "primary_color_hex": "#1a753f",
    "category": "government",
@@ -13372,6 +13508,27 @@
    "signature_motion": "Coral funding-bar fills 0→current% with a confident ease-out as the number counts up.",
    "has_personas": true,
    "category_raw": "Crowdfunding"
+  },
+  {
+   "id": "tver",
+   "primary_color_hex": "#152642",
+   "category": "consumer-tech",
+   "visual_theme": "TVer is a free Japanese commercial-broadcast television streaming service operated by 株式会社TVer. The company’s October 2026 release describes catch-up, live and simultaneous broadcast viewing; its issuer release dates the service’s start to 2015. [Company relea",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "tving",
