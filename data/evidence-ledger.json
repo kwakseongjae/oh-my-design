@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 444,
-  "sources": 3979,
+  "references_with_verification_v2": 452,
+  "sources": 4045,
   "sources_by_kind": {
-    "brand-asset": 272,
+    "brand-asset": 281,
     "license": 141,
-    "official-doc": 1926,
-    "product-surface": 1640
+    "official-doc": 1962,
+    "product-surface": 1661
   },
   "references": {
     "104": {
@@ -338,6 +338,78 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "42dot.ai"
+        }
+      ]
+    },
+    "42maru": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "bootstrap-style",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "contact",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "korean-home",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "korean-legal",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "site-overrides",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
+        },
+        {
+          "id": "site-style",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.42maru.ai"
         }
       ]
     },
@@ -7343,6 +7415,48 @@
         }
       ]
     },
+    "genesis": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        },
+        {
+          "id": "copyright",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.genesis.com"
+        }
+      ]
+    },
     "genie": {
       "checked": "2026-10-16",
       "claims": 0,
@@ -8900,6 +9014,72 @@
           "kind": "brand-asset",
           "captured": "2026-11-03",
           "host": "www.hangseng.com"
+        }
+      ]
+    },
+    "hankyung": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "company.hankyung.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "company.hankyung.com"
+        },
+        {
+          "id": "company-control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "company.hankyung.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.hankyung.com"
+        },
+        {
+          "id": "font-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "hkstatic.hankyung.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "company.hankyung.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.hankyung.com"
+        },
+        {
+          "id": "homepage-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "hkstatic.hankyung.com"
+        },
+        {
+          "id": "premium-evolution",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.hankyung.com"
+        },
+        {
+          "id": "terms",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.hankyung.com"
         }
       ]
     },
@@ -15125,6 +15305,36 @@
         }
       ]
     },
+    "modetour": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.modetour.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.modetour.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.modetour.com"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.modetournetwork.com"
+        }
+      ]
+    },
     "modusign": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -16052,6 +16262,60 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "about.ncsoft.com"
+        }
+      ]
+    },
+    "nec": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "annual-2026",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "group.nec"
+        },
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "jpn.nec.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "group.nec"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "jpn.nec.com"
+        },
+        {
+          "id": "design-philosophy",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "jpn.nec.com"
+        },
+        {
+          "id": "group-control",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "group.nec"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "jpn.nec.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "group.nec"
         }
       ]
     },
@@ -19127,6 +19391,78 @@
         }
       ]
     },
+    "rakus": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-page",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "current-message",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "integration",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "locations",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "renewal",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        },
+        {
+          "id": "site-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.rakus.co.jp"
+        }
+      ]
+    },
     "rakutenbank": {
       "checked": "2026-11-03",
       "claims": 0,
@@ -19964,6 +20300,78 @@
           "kind": "official-doc",
           "captured": "2026-11-02",
           "host": "www.salesforce.com"
+        }
+      ]
+    },
+    "saltlux": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "base-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "common-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "kind.krx.co.kr"
+        },
+        {
+          "id": "inquiry",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "legacy-company-redirect",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "main-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "www.saltlux.com"
         }
       ]
     },
@@ -24686,6 +25094,42 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.vipps.no"
+        }
+      ]
+    },
+    "visitkorea": {
+      "checked": "2026-11-13",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "korean.visitkorea.or.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "korean.visitkorea.or.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "korean.visitkorea.or.kr"
+        },
+        {
+          "id": "privacy",
+          "kind": "official-doc",
+          "captured": "2026-11-13",
+          "host": "korean.visitkorea.or.kr"
+        },
+        {
+          "id": "service",
+          "kind": "product-surface",
+          "captured": "2026-11-13",
+          "host": "korean.visitkorea.or.kr"
         }
       ]
     },
