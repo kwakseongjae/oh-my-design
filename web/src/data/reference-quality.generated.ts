@@ -5798,27 +5798,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "jobplanet",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-14",
+    "tokensExtractedAt": "2026-11-14",
+    "nextReverifyAt": "2027-05-13",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 99,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 128,
+    "evidenceClaimCount": 128,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 6,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 7,
+    "tier1SourceCount": 6,
+    "componentCount": 6,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -14765,8 +14763,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 452,
-  "partial": 89,
+  "verified_v2": 453,
+  "partial": 88,
   "legacy_snapshot": 81,
   "total": 622
 } as const;

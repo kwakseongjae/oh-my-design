@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 452,
-  "sources": 4045,
+  "references_with_verification_v2": 453,
+  "sources": 4051,
   "sources_by_kind": {
     "brand-asset": 281,
     "license": 141,
-    "official-doc": 1962,
-    "product-surface": 1661
+    "official-doc": 1966,
+    "product-surface": 1663
   },
   "references": {
     "104": {
@@ -10754,6 +10754,48 @@
           "kind": "product-surface",
           "captured": "2026-11-03",
           "host": "static.jejuair.net"
+        }
+      ]
+    },
+    "jobplanet": {
+      "checked": "2026-11-14",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-14",
+          "host": "team.jobplanet.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-14",
+          "host": "www.jobplanet.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-14",
+          "host": "www.jobplanet.co.kr"
+        },
+        {
+          "id": "imprint",
+          "kind": "official-doc",
+          "captured": "2026-11-14",
+          "host": "www.jobplanet.co.kr"
+        },
+        {
+          "id": "membership",
+          "kind": "official-doc",
+          "captured": "2026-11-14",
+          "host": "marketing.jobplanet.co.kr"
+        },
+        {
+          "id": "tech-blog",
+          "kind": "official-doc",
+          "captured": "2026-11-14",
+          "host": "techspace.jobplanet.co.kr"
         }
       ]
     },

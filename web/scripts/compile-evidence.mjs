@@ -25,9 +25,10 @@
  *   candidates.md    every colour, type size and corner radius the capture measured, with where it was seen;
  *                    the writer names tokens from this list (candidates.json is the same list as data)
  *
- * A control becomes a component when hover, pressed or focus was measured and changed something the brand
- * painted. Not counted: a change in descendant count, a change that persists after blur, and the browser's
- * `auto` focus ring. An unmeasured state is reported as unmeasured, never as "no change".
+ * A control becomes a component when hover, pressed or focus was measured. A measured state that changed
+ * nothing the brand painted is written as `no brand change`. Not counted as a change: a change in descendant
+ * count, a change that persists after blur, and the browser's `auto` focus ring arriving or leaving. An
+ * unmeasured state is reported as unmeasured, never as "no change".
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -51,6 +52,15 @@ export function colorToken(v) {
   return c.alpha === 1 ? c.hex : v;
 }
 
+/** A box-shadow value that draws nothing: `none`, or every layer with no offset, blur or spread. */
+export function paintsNoShadow(v) {
+  if (!v || v === "none") return true;
+  return v.split(/,(?![^(]*\))/).every((layer) => {
+    const lengths = layer.replace(/rgba?\([^)]*\)/g, "").match(/-?[\d.]+px/g) ?? [];
+    return lengths.length > 0 && lengths.every((n) => parseFloat(n) === 0);
+  });
+}
+
 /** The changes in one state that the brand painted; null when the state was not measured. */
 export function brandChanges(state, name) {
   if (!state?.measured) return null;
@@ -64,9 +74,14 @@ export function brandChanges(state, name) {
     // that stays widened): that is a toggled layout, not a focus style.
     if (c.prop === "dom" || c.alsoPersists) return false;
     // The browser's own styles are not the brand's: the `auto` focus ring (a click focuses too, so it shows up
-    // under pressed as well) and the default link colours, blue at rest and red while active.
-    if (/outline/.test(c.prop ?? "") && / auto( |$)/.test(` ${c.to ?? ""}`)) return false;
+    // under pressed as well) and the default link colours, blue at rest and red while active. The ring also
+    // shows up leaving: a button inside a card kept focus from the step before, and focusing the card took the
+    // ring off it (jobplanet's job card, 2026-11-13), which is the browser moving its ring, not a focus style.
+    if (/outline/.test(c.prop ?? "") && [c.from, c.to].some((v) => / auto( |$)/.test(` ${v ?? ""}`))) return false;
     if (/fg$/.test(c.prop ?? "") && c.from === UA_LINK && c.to === UA_LINK_ACTIVE) return false;
+    // A shadow that goes from nothing to layers of zero size is a change in the computed string and not on the
+    // screen: utility CSS sets its ring shadow on focus even when the ring is 0 wide (jobplanet's search field).
+    if (/shadow$/.test(c.prop ?? "") && paintsNoShadow(c.from) && paintsNoShadow(c.to)) return false;
     return true;
   });
 }
@@ -158,12 +173,20 @@ export function mergeControls(statesFiles) {
   return [...out.values()];
 }
 
+/**
+ * What a component says for a state that was measured and showed nothing the brand painted. A button with no hover
+ * style is still a button: until 2026-11-13 such a control was left out of `components` (a component needed a
+ * change in some state), and a re-verified reference lost most of its components to prose (jobplanet: 7 to 1).
+ * The words are the proof table's own, and the quality gate accepts them only beside that control's proof row.
+ */
+export const NO_BRAND_CHANGE = "no brand change";
+
 export function compileControl(c) {
   const per = Object.fromEntries(STATES.map((s) => [s, brandChanges(c.states[s], s)]));
-  const emitted = STATES.some((s) => per[s]?.length);
-  const reason = emitted ? null
-    : STATES.every((s) => per[s] === null) ? "every state unmeasured"
-    : "no brand change in a measured state";
+  // A control is a component when at least one state was measured, whether or not it changed. With every state
+  // unmeasured there is nothing to say about how it behaves, and it stays prose.
+  const emitted = STATES.some((s) => per[s] !== null);
+  const reason = emitted ? null : "every state unmeasured";
   const { identity: idn, rest } = c;
   /** @type {Record<string, string | number>} */
   const fields = { type: componentType(c.key, idn) };
@@ -191,7 +214,8 @@ export function compileControl(c) {
   fields.height = `${idn.rect.h}px`;
   if (idn.padding) fields.padding = idn.padding;
   if (font && !/^0px/.test(font) && !iconOnly) fields.font = font.replace("/", " / "); // 0px: an image link with hidden text
-  for (const s of STATES) if (per[s]?.length) fields[s] = describe(per[s]);
+  // Every measured state is stated; an unmeasured one is left out (UNMEASURED is not "no change").
+  for (const s of STATES) if (per[s]?.length) fields[s] = describe(per[s]); else if (per[s]) fields[s] = NO_BRAND_CHANGE;
   return { key: c.key, emitted, reason, fields, per, notes };
 }
 
@@ -334,7 +358,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     const m = /^(\d+(?:\.\d+)?)px ?\/ ?(\d+)$/.exec(font ?? "");
     if (!m || Number(m[1]) === 0) return null; // 0px: an image link with hidden text
     const key = `${m[1]}/${m[2]}`;
-    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, heading: 0, paragraph: 0, lineHeights: new Map(), families: new Map(), controls: [] }).get(key);
+    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, heading: 0, paragraph: 0, lineHeights: new Map(), textLineHeights: new Map(), families: new Map(), controls: [] }).get(key);
   };
   const radius = (v) => (v ? radii.get(v) ?? radii.set(v, { value: v, interactive: 0, controls: [] }).get(v) : null);
   const bump = (map, k) => { if (k) map.set(k, (map.get(k) ?? 0) + 1); };
@@ -369,7 +393,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
       const t = size(`${e.size}px/${e.weight}`);
       if (!t) continue;
       t[role] += e.chars;
-      bump(t.lineHeights, e.lineHeight); bump(t.families, e.family);
+      bump(t.lineHeights, e.lineHeight); bump(t.textLineHeights, e.lineHeight); bump(t.families, e.family);
     }
   }
   for (const [name, v] of Object.entries(cz.computedVars ?? {})) {
@@ -388,7 +412,13 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
   const declaredOnly = all.filter((c) => !weight(c) && !c.controls.length).sort((a, z) => a.declared[0].localeCompare(z.declared[0]))
     .map((c) => ({ value: c.value, declared: c.declared }));
   const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || (z.heading + z.paragraph) - (a.heading + a.paragraph) || z.size - a.size || z.weight - a.weight)
-    .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families), ...named("type", `${t.size}/${t.weight}`) }));
+    // One size can sit on two line heights: 13px control text at 19.5px and a 13px paragraph at 20px (jobplanet,
+    // 2026-11-14: two reviewers each found a row that gave the controls' line height to the paragraph). The most
+    // common one stays the row's line height; the heading and paragraph text's own is given beside it when it differs.
+    .map(({ lineHeights, textLineHeights, families, ...t }) => {
+      const lineHeight = mode(lineHeights), ofText = mode(textLineHeights);
+      return { ...t, lineHeight, ...(ofText && ofText !== lineHeight ? { textLineHeight: ofText } : {}), family: mode(families), ...named("type", `${t.size}/${t.weight}`) };
+    });
   const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value))
     .map((r) => ({ ...r, ...named("radii", `${parseFloat(r.value)}px`) }));
   // Published tokens whose value this capture no longer holds: the writer says what happened to them.
@@ -438,7 +468,7 @@ export function candidatesMarkdown(cand) {
         "are not links or controls."]), "",
     ...["body", "h1", "button"].map((r) => `- ${r} family: ${cand.families[r] ?? "not read"}`), "",
     "| size / weight | name | interactive elements | heading chars | paragraph chars | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|---|---|---|",
-    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.heading || "—"} | ${t.paragraph || "—"} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
+    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.heading || "—"} | ${t.paragraph || "—"} | ${t.lineHeight ?? "—"}${t.textLineHeight ? ` · heading and paragraph text ${t.textLineHeight}` : ""} | ${t.family ?? "—"} | ${few(t.controls)} |`),
     ...more(cand.notListed.type, "`rows` in `survey.json`"), "",
     `## Corner radii (${cand.radii.length})`, "",
     "| radius | name | interactive elements | measured controls |", "|---|---|---|---|",

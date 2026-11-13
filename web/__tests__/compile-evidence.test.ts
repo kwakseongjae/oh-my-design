@@ -18,19 +18,32 @@ describe("compile-evidence", () => {
     const c = compile("primary-cta", control({ hover: { measured: true, changed: fill }, pressed: { measured: true, changed: fill } }));
     expect(c.emitted).toBe(true);
     expect(c.fields).toMatchObject({ type: "button", bg: "#ffffff", fg: "#414aff", radius: 100, height: "56px", font: "18px / 700", hover: "#dddddd", pressed: "#dddddd" });
-    expect(c.fields.focus).toBeUndefined(); // the browser's auto ring is not a brand token
+    expect(c.fields.focus).toBe("no brand change"); // measured; the browser's auto ring is not the brand's
   });
 
-  it("keeps a control in prose when nothing the brand painted changed", () => {
+  it("keeps a control whose measured states changed nothing as a component, and says so per state", () => {
     const c = compile("nav", control());
-    expect(c).toMatchObject({ emitted: false, reason: "no brand change in a measured state" });
-    expect(componentsYaml([c])).toContain("# nav: prose only");
+    expect(c).toMatchObject({ emitted: true, reason: null });
+    expect(c.fields).toMatchObject({ hover: "no brand change", pressed: "no brand change", focus: "no brand change" });
+    expect(componentsYaml([c])).not.toContain("prose only");
+  });
+
+  it("states only the states that were measured", () => {
+    const off = { measured: false };
+    const c = compile("nav-review", control({ hover: off, pressed: off }));
+    expect(c.emitted).toBe(true);
+    expect(c.fields.hover).toBeUndefined();
+    expect(c.fields.pressed).toBeUndefined();
+    expect(c.fields.focus).toBe("no brand change");
   });
 
   it("reports unmeasured as unmeasured, never as no change", () => {
     const off = { measured: false };
     expect(brandChanges(off, "hover")).toBeNull();
     expect(compile("tile", control({ hover: off, pressed: off, focus: off })).reason).toBe("every state unmeasured");
+    const tile = compile("tile", control({ hover: off, pressed: off, focus: off }));
+    expect(tile.emitted).toBe(false);
+    expect(componentsYaml([tile])).toContain("# tile: prose only");
   });
 
   it("ignores browser defaults and changes that persist after blur", () => {
@@ -38,6 +51,20 @@ describe("compile-evidence", () => {
     const widened = { set: "self", prop: "size", from: "110x38", to: "276x38", alsoPersists: true };
     expect(brandChanges({ measured: true, changed: [uaActive, autoRing] }, "pressed")).toEqual([]);
     expect(brandChanges({ measured: true, changed: [widened] }, "focus")).toEqual([]);
+  });
+
+  it("does not read a shadow of zero size as a change, and still reads one that paints", () => {
+    const zero = "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px";
+    const ring = "rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 2px";
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: zero }] }, "focus")).toEqual([]);
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: ring }] }, "focus")).toHaveLength(1);
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: "rgba(0, 0, 0, 0.1) 0px 4px 12px 0px" }] }, "hover")).toHaveLength(1);
+  });
+
+  it("does not read the browser's ring leaving a descendant as a focus style", () => {
+    const ringLeft = { set: "descendant", prop: "button@0.0.0.1.outline", from: "rgb(0, 95, 204) auto 1px off 0px", to: "none" };
+    expect(brandChanges({ measured: true, changed: [ringLeft] }, "focus")).toEqual([]);
+    expect(compile("job-card", control({ focus: { measured: true, changed: [ringLeft] } })).fields.focus).toBe("no brand change");
   });
 
   it("reads ink and font from the label, and keeps translucent rest colours out of token fields", () => {
@@ -178,6 +205,8 @@ describe("token candidates", () => {
     expect(row(16, 400)).toMatchObject({ paragraph: 1292, heading: 0, interactive: 0, lineHeight: "24px" });
     expect(row(32, 700)).toMatchObject({ heading: 15, lineHeight: "44px" });
     expect(row(13, 700)).toMatchObject({ interactive: 2, paragraph: 8 }); // a size the rows already had gains its paragraph count
+    expect(row(13, 700)).toMatchObject({ lineHeight: "14.3px", textLineHeight: "19.5px" }); // the paragraph keeps its own line height
+    expect(row(16, 400)?.textLineHeight).toBeUndefined();
     const md = candidatesMarkdown(withText);
     expect(md).toContain("| 16px / 400 | — | 0 | — | 1292 | 24px | Pretendard | — |");
     expect(md).not.toContain("Not captured: the size of headings");

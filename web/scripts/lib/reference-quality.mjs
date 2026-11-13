@@ -404,14 +404,26 @@ function componentCoverage(tokens) {
   return { total, interactive, stated, proseStateOnly };
 }
 
-function componentStateGaps(tokens) {
+/**
+ * "no brand change" is a measurement: the state was exercised and the brand painted nothing different. It is also
+ * the cheapest string to type into a state key, so on its own it does not count. It counts when the verification
+ * record's Proof table has that control's row saying the same (the compile step writes both from one capture).
+ */
+const NO_BRAND_CHANGE = "no brand change";
+function proofSaysNoChange(verificationMarkdown, name) {
+  return verificationMarkdown.split("\n").some((line) => line.startsWith(`| \`${name}\` |`) && line.includes(NO_BRAND_CHANGE));
+}
+
+function componentStateGaps(tokens, verificationMarkdown = "") {
   const components = tokens?.components;
   if (!components || typeof components !== "object" || Array.isArray(components)) return [];
   const gaps = [];
   for (const [name, component] of Object.entries(components)) {
     if (!component || typeof component !== "object" || Array.isArray(component)) continue;
     if (!INTERACTIVE_COMPONENT_TYPES.has(component.type)) continue;
-    if (!Object.keys(component).some((key) => OBSERVED_STATE_KEYS.has(key))) gaps.push(name);
+    const backed = Object.keys(component).filter((key) => OBSERVED_STATE_KEYS.has(key)
+      && (String(component[key]).trim() !== NO_BRAND_CHANGE || proofSaysNoChange(verificationMarkdown, name)));
+    if (backed.length === 0) gaps.push(name);
   }
   return gaps;
 }
@@ -549,7 +561,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     const unknownClaims = Object.keys(claimEvidence).filter((path) => !claims.includes(path));
     if (unknownClaims.length > 0) blockVerified("claim_path_unknown");
 
-    if (componentStateGaps(tokens).length > 0) blockVerified("interactive_state_missing");
+    if (componentStateGaps(tokens, verificationMarkdown).length > 0) blockVerified("interactive_state_missing");
   }
 
   // Advisory, never blocking — these name the two cheap exits from the blocking
