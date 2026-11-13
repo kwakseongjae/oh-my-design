@@ -204,3 +204,67 @@ button and Face ID, which a test runner cannot give: the harness can go up to th
 Paid apps and in-app purchases stay behind the guard.
 
 Walks stay on this Mac (`~/.omd-workers/screens/walks/`), outside the repository.
+
+## How the others take and keep screens (surveyed 2026-11-13)
+
+Owner: 「phone harness나 다른 모바일 UX 레퍼런스 사이트나 MCP에서는 어떻게 화면을 찍고 가져가는지 … 그래야지 실효성이 나올거 같아.」
+
+**Tools that drive a phone for an agent**
+
+| | sees the screen by | acts by | records | secrets and prompts |
+|---|---|---|---|---|
+| Phone Harness (MIT) | iPhone: a capture of the Mac's iPhone Mirroring window read with Apple Vision OCR. Android: adb screenshot and the accessibility tree | input events into the mirroring window; adb | nothing: the agent keeps its own helper scripts | none described; "connecting the phone is always the user's job" |
+| mobile-mcp (Apache-2.0, 34 tools) | "the native accessibility tree (no vision model, no image tokens)", "falling back to screenshots + coordinates only when needed" | tap, double tap, long press, swipe, type, hardware buttons, open URL, install and launch apps | `mobile_save_screenshot`, `mobile_start_screen_recording` / `stop` to a video file; no flow record (it suggests asking the agent to write a test) | none described; permission dialogs not addressed |
+| Maestro 2.8 (on this Mac) | its own XCTest driver: hierarchy and screenshots | flows in YAML; an MCP server | `takeScreenshot`, `record` renders a video of a flow | none; real iPhones through an undocumented `driver-setup` |
+| ours (`tools/phone-recorder`) | an XCUITest runner on the phone: the phone's own screenshot plus the accessibility tree | tap by label or point, swipe, back, type, launch, answer system alerts | every step into a walk folder (PNG, element list, `flow.json`), scroll clips, replay | `settle` (least access, pop-ups, login wall reported), a guard on paying/sending/deleting labels, `type --secret` from the macOS Keychain |
+
+Every serious driver ended up in the same place: **the accessibility tree first, the picture where the tree is
+silent.** Phone Harness's iPhone path is the exception (picture only), which is why it "sees text, not icons". Our
+Musinsa run met the same limit from the other side: the floating bottom bar and two pop-ups were not in the tree
+and had to be tapped from the picture.
+
+**Libraries that publish screens**
+
+| | what a screen is | how it gets there (as far as they say) |
+|---|---|---|
+| Mobbin | a still or, since Nov 2025, a short video for screens with motion; grouped into flows; tagged by pattern and element; past versions kept | "hand-curated and tagged weekly since 2018"; includes "region-locked and subscription-only apps", so people sign in and pay on real devices; about 13 new apps a week |
+| Page Flows | a screen recording of a whole flow with annotations, plus stills | recordings of a person going through the flow, desktop and mobile |
+| Refero | stills with structured metadata on every screen, and flows | "expertly curated", new screens weekly |
+| UIBowl (KR) | stills by category and pattern, MAU as a filter | outside contributors paid per contribution |
+| Mobbin MCP | `search_screens` returns images with app name, category and URL, 30 at most | the library above; nothing is captured on request |
+
+None of them documents a capture pipeline, and none is automated end to end: the unit of work is a person with a
+signed-in phone, and the value they add afterwards is **order (flows), labels (patterns, elements) and history
+(versions)**. That is what to match. Our recorder already yields order and an element list per screen for free;
+labels are a pass over those lists; history is running the same walk again.
+
+**What this changes for us**
+
+- Driving is a solved problem with two open-source options (mobile-mcp, Maestro) beside ours. Ours needed nothing
+  installed on the Mac and took a day; if it becomes a burden, the driver can be swapped and the walk format kept.
+- The parts nobody ships are the ones worth owning: the walk as data (frames, trees, flow), the policy for prompts
+  and pop-ups, redaction of a signed-in phone's personal data, and the sheet.
+- Video matters: Mobbin and Page Flows both moved to motion. `scrollclip` covers scrolling; transitions and
+  micro-interactions would need a real screen recording (mobile-mcp has one; a UI test runner cannot start one).
+
+**Sign-in.** No tool surveyed handles credentials. Ours: the agent names an account, `phone.mjs type --secret
+<account>` reads the value from the macOS Keychain (service `omd-phone`) and sends it to the device; it is not
+printed and a walk records only the account name. The owner stores the item. Not used yet: the owner's Musinsa was
+already signed in. A second factor (SMS, an authenticator, Face ID) still needs the owner.
+
+## Musinsa, the first sheet (2026-11-13)
+
+`~/Downloads/musinsa-screens/index.html`: 26 screens in five groups (first run, home and top tabs, search to
+product, the other bottom-bar tabs, everything that interrupts), two scroll clips, six findings, filters by screen
+type and pattern. Built by `make-sheet.py` from two walks and a curation file
+(`~/.omd-workers/screens/sheets/musinsa.json`); six areas with the nickname, account id, balances and recent
+searches are painted over. It stays on this Mac.
+
+What the run did to the owner's account, in full: it closed five things the app put up (an attendance promotion,
+a card promotion, a prompt to move to 29CM, a notice that the account becomes a unified account, and a request
+for marketing consent) with their own close or decline control. It agreed to nothing and bought nothing.
+
+What the harness got wrong, and the fix: typing with no keyboard up ended the session (the runner now keeps going
+and returns an error); a 닫기 in a page's top bar was taken for a pop-up's dismiss (only lower ones count now); a
+tap by the label 검색 landed on an icon that opened a promotion (labels need a look afterwards, which the
+exploration loop has to do every time).
