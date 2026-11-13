@@ -53,6 +53,12 @@ describe("compile-evidence", () => {
     expect(brandChanges({ measured: true, changed: [widened] }, "focus")).toEqual([]);
   });
 
+  it("does not read the browser's ring leaving a descendant as a focus style", () => {
+    const ringLeft = { set: "descendant", prop: "button@0.0.0.1.outline", from: "rgb(0, 95, 204) auto 1px off 0px", to: "none" };
+    expect(brandChanges({ measured: true, changed: [ringLeft] }, "focus")).toEqual([]);
+    expect(compile("job-card", control({ focus: { measured: true, changed: [ringLeft] } })).fields.focus).toBe("no brand change");
+  });
+
   it("reads ink and font from the label, and keeps translucent rest colours out of token fields", () => {
     const c = compile("nav-news", control({
       rest: { bg: "rgba(0, 0, 0, 0)", fg: "rgb(0, 0, 238)", border: "none", label: { fg: "rgba(0, 0, 0, 0.78)", font: "16px/400" } },

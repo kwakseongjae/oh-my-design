@@ -25,9 +25,10 @@
  *   candidates.md    every colour, type size and corner radius the capture measured, with where it was seen;
  *                    the writer names tokens from this list (candidates.json is the same list as data)
  *
- * A control becomes a component when hover, pressed or focus was measured and changed something the brand
- * painted. Not counted: a change in descendant count, a change that persists after blur, and the browser's
- * `auto` focus ring. An unmeasured state is reported as unmeasured, never as "no change".
+ * A control becomes a component when hover, pressed or focus was measured. A measured state that changed
+ * nothing the brand painted is written as `no brand change`. Not counted as a change: a change in descendant
+ * count, a change that persists after blur, and the browser's `auto` focus ring arriving or leaving. An
+ * unmeasured state is reported as unmeasured, never as "no change".
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -64,8 +65,10 @@ export function brandChanges(state, name) {
     // that stays widened): that is a toggled layout, not a focus style.
     if (c.prop === "dom" || c.alsoPersists) return false;
     // The browser's own styles are not the brand's: the `auto` focus ring (a click focuses too, so it shows up
-    // under pressed as well) and the default link colours, blue at rest and red while active.
-    if (/outline/.test(c.prop ?? "") && / auto( |$)/.test(` ${c.to ?? ""}`)) return false;
+    // under pressed as well) and the default link colours, blue at rest and red while active. The ring also
+    // shows up leaving: a button inside a card kept focus from the step before, and focusing the card took the
+    // ring off it (jobplanet's job card, 2026-11-13), which is the browser moving its ring, not a focus style.
+    if (/outline/.test(c.prop ?? "") && [c.from, c.to].some((v) => / auto( |$)/.test(` ${v ?? ""}`))) return false;
     if (/fg$/.test(c.prop ?? "") && c.from === UA_LINK && c.to === UA_LINK_ACTIVE) return false;
     return true;
   });
