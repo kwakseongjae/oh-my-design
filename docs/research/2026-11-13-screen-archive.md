@@ -268,3 +268,33 @@ What the harness got wrong, and the fix: typing with no keyboard up ended the se
 and returns an error); a 닫기 in a page's top bar was taken for a pop-up's dismiss (only lower ones count now); a
 tap by the label 검색 landed on an icon that opened a promotion (labels need a look afterwards, which the
 exploration loop has to do every time).
+
+## After the first sheet: owner's notes and what changed (2026-11-13, evening)
+
+Owner on the Musinsa sheet: 「느낌은 괜찮아. 이걸 오픈소스화 해도 좋을 거 같아. 일단 염두만 해줘 … 검색 진입과 같이 일부는 전부 렌더링
+되기 전에 찍은 것도 같네 … 영상은 메인화면에 대해서만 … 금융앱은 조금 조심해서 금전이나 내 계좌번호 같은게 노출이 안되게끔 … 첫
+스타트는 무신사랑 당근 … 필요하다면 아예 앱 삭제 후 로그인부터 시작해도 좋을 거 같아. 일주일에 10개 정도 업로드가 목표야.」
+
+Decisions:
+- **Open source:** keep it in mind (and mobster as a possible home); no repository or licence work yet.
+- **Video:** one scroll clip per app, of its main screen.
+- **Finance apps:** nothing that shows money or an account number may be kept. Capture with `--private`.
+- **First two apps:** Musinsa and Karrot. Deleting an app and starting from sign-in is allowed where a first run is
+  needed. It ends the owner's session in that app, so it is done only with the owner at hand (Karrot signs in by SMS).
+- **Pace:** ten apps a week.
+
+Changes made the same evening (Simulator-checked; not yet run on the phone):
+- **Frames shot before the screen finished drawing.** `look` now waits until two looks in a row agree, up to 6 s,
+  and marks a frame that was still moving (a video, a carousel) instead of passing it off as settled.
+- **Private capture.** `look --private` paints over every element whose label holds a digit or one of the owner's
+  strings (`~/.omd-workers/screens/private.json`) before the frame and its element list are written; a frame with
+  no tree to check is blurred whole. The unredacted picture never reaches the disk. This is the mode for finance
+  apps, and for any "my" screen.
+- **Exploration loop.** `explore` opens the tab bar's tabs, or the first rows of the content, one at a time;
+  after each tap it checks the screen changed, records, scrolls once and comes back. A tap that changed nothing is
+  recorded as such and skipped.
+
+What a week of ten needs that does not exist yet: a per-app plan of screens to reach (the Mobbin top-search list
+is the checklist: home, search, list, detail, cart, my page, sign-in, onboarding, empty states), labels proposed
+from the element lists instead of written by hand, and a first-run path (delete, reinstall, onboarding, sign-in)
+with the owner present for the second factor.
