@@ -1,0 +1,12 @@
+{
+ "arm": "A",
+ "startedAt": "2026-11-13T16:56:33.380Z",
+ "templateTgzSha256": "f1654d1cc57d6d79f05d7a0bb33ddd7713bde8928e276bd2852e79cd04919978",
+ "checkerSha256": "4b4c729a2c5e235a4ee1a018712206628a7299ee11d62774d8a5128452a25130",
+ "skillMdSha256": "1b847379a76c5603330e84891129abbb443501a617884861e8a2574541692899",
+ "skillCommit": "b051e6944e9477ac8053e095ac973bebad8e36bd",
+ "codexVersion": "codex-cli 0.165.0",
+ "model": "gpt-6.1-sol",
+ "effort": "medium",
+ "promptsReviewedByNativeReader": false
+}
