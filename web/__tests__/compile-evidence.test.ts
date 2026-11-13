@@ -205,3 +205,18 @@ describe("diff-values", () => {
     expect(d.unmeasured).toEqual([{ key: "cta", state: "hover", side: "after" }]);
   });
 });
+
+describe("a control with no text", () => {
+  it("gives no fg and no font for an icon-only button, and says why in notes", () => {
+    const fill = { set: "self", prop: "bg", from: "rgb(35, 108, 246)", to: "rgb(32, 97, 221)" };
+    const out = compile("search", control({ identity: { ...identity, tag: "button", text: "" }, rest: { ...rest, bg: "rgb(35, 108, 246)", fg: "rgb(102, 102, 102)" },
+      hover: { measured: true, changed: [fill] } }));
+    expect(out.fields.bg).toBe("#236cf6");
+    expect(out.fields.fg).toBeUndefined();
+    expect(out.fields.font).toBeUndefined();
+    expect(out.notes.join(" ")).toContain("paints nothing");
+  });
+  it("keeps fg for a button that has text", () => {
+    expect(compile("cta", control({ identity: { ...identity, tag: "button", text: "Start" } })).fields.fg).toBe("#414aff");
+  });
+});

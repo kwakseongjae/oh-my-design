@@ -173,8 +173,13 @@ export function compileControl(c) {
   // Token fields take opaque colours only (the catalog gate reads them as 6-digit hex); a translucent rest
   // colour goes to `notes` for the writer to state in `use`.
   const notes = [];
+  // A button or link with no text of its own paints nothing in its computed colour: what a person sees is the
+  // icon. Reporting that colour as `fg` makes a contrast check compare a colour that is not on the screen
+  // (visitkorea's search button: computed #666666, white magnifier). It goes to `notes` instead.
+  const iconOnly = ["button", "a"].includes(idn.tag) && !(idn.text ?? "").trim() && !rest?.label;
   for (const [k, v] of [["bg", rest?.bg], ["fg", ink]]) {
     const c = parseColor(v);
+    if (k === "fg" && iconOnly) { if (c) notes.push(`no text: the computed colour ${v} paints nothing here, so no fg is given; state the icon's own colour in \`use\` if it was measured`); continue; }
     if (c?.alpha === 1) fields[k] = c.hex; else if (c && c.alpha > 0) notes.push(`${k} at rest is ${v}`);
   }
   const border = parseColor(/rgba?\([^)]*\)/.exec(rest?.border ?? "")?.[0]);
@@ -184,7 +189,7 @@ export function compileControl(c) {
   if (fields.type === "card") fields.width = `${idn.rect.w}px`;
   fields.height = `${idn.rect.h}px`;
   if (idn.padding) fields.padding = idn.padding;
-  if (font && !/^0px/.test(font)) fields.font = font.replace("/", " / "); // 0px: an image link with hidden text
+  if (font && !/^0px/.test(font) && !iconOnly) fields.font = font.replace("/", " / "); // 0px: an image link with hidden text
   for (const s of STATES) if (per[s]?.length) fields[s] = describe(per[s]);
   return { key: c.key, emitted, reason, fields, per, notes };
 }
