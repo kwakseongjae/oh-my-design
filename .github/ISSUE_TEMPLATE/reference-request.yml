@@ -1,0 +1,36 @@
+name: Add a company · 회사 추가 요청
+description: Ask for a company's DESIGN.md to be added to the catalog. · 카탈로그에 없는 회사의 DESIGN.md를 요청합니다.
+title: "[ref-request] "
+labels: ["reference-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We measure the company's live site and publish what we measured. A request needs only the name and the URL.
+        회사의 실제 사이트를 측정해서 올립니다. 이름과 주소만 있으면 됩니다.
+  - type: input
+    id: company
+    attributes:
+      label: Company or product · 회사 또는 제품
+      placeholder: 마플샵 (MarppleShop)
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Site to measure · 측정할 사이트 주소
+      description: The product's main site. If the product is mostly an app, add its mobile web address or public design system too. · 앱 중심이면 모바일 웹이나 공개 디자인 시스템 주소도 적어 주세요.
+      placeholder: https://marpple.shop/kr/
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything we should know · 참고할 것
+      description: A public design system, a brand page, the screens that matter most. Optional. · 공개 디자인 시스템, 브랜드 페이지, 중요한 화면. 선택.
+  - type: checkboxes
+    id: relation
+    attributes:
+      label: Your relation · 관계
+      options:
+        - label: I work at this company. · 이 회사에서 일합니다.

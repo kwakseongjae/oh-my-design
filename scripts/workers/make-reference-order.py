@@ -32,7 +32,7 @@ agents = (REPO / "AGENTS.md").read_text()
 (d / "HARD_RULES.md").write_text(agents[agents.index("## Hard rules"):agents.index("## Pre-existing OmD shims")])
 
 t = (REPO / "docs/workers/REFERENCE_ORDER_TEMPLATE.md").read_text()
-values = dict(ID=cid, NAME=name, URL=url, LOCALE=locale, ORIGIN=origin, WORKDIR=str(d),
+values = dict(ID=cid, NAME=name, URL=url, LOCALE=locale, ORIGIN=origin, WORKDIR=str(d), REPO=str(REPO),
               TODAY=datetime.date.today().isoformat(), PRIOR=prior)
 for k, v in values.items():
     t = t.replace("{{%s}}" % k, v)

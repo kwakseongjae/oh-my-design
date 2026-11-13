@@ -128,6 +128,24 @@ describe("reference quality v2", () => {
     expect(stale.reasonCodes).toContain("freshness_conflict");
   });
 
+  // Owner decision 2026-11-13: a date no longer demotes on its own (EXPIRE_SOURCES_BY_DATE in the library).
+  // The rule is still there and still tested, with `expireByDate: true`.
+  it("leaves an old source verified by default: age alone does not demote", () => {
+    const referenceTokens = tokens();
+    const v2 = verification(referenceTokens);
+    v2.checked = "2026-01-01";
+    v2.sources[0].captured = "2026-01-01";
+    const result = evaluateReferenceQuality({
+      id: "fixture",
+      markdown,
+      frontmatter: { verified: "2026-01-01", tokens: { ...referenceTokens, extracted: "2026-01-01" }, verification_v2: v2 },
+      verificationMarkdown: proof,
+      asOf: "2026-07-10",
+    });
+    expect(result.reasonCodes).not.toContain("source_expired");
+    expect(result.nextReverifyAt).toBe("2026-06-30"); // the due date is still reported: it orders re-measurement
+  });
+
   it("demotes expired live evidence without deleting the reference", () => {
     const referenceTokens = tokens();
     const v2 = verification(referenceTokens);
@@ -139,6 +157,7 @@ describe("reference quality v2", () => {
       frontmatter: { verified: "2026-01-01", tokens: { ...referenceTokens, extracted: "2026-01-01" }, verification_v2: v2 },
       verificationMarkdown: proof,
       asOf: "2026-07-10",
+      expireByDate: true,
     });
     expect(result.status).toBe("partial");
     expect(result.reasonCodes).toContain("source_expired");
@@ -164,6 +183,7 @@ describe("reference quality v2", () => {
         verificationMarkdown: proof,
         asOf: "2026-07-10",
         driftConfirmations,
+        expireByDate: true,
       });
     };
     const sourceId = verification(tokens()).sources[0].id;

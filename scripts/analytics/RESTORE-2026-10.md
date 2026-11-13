@@ -49,10 +49,10 @@ then move the file:
 
 ```bash
 mv ~/Downloads/omd-analytics-2026-*.json \
-   /Users/kwakseongjae/Desktop/projects/oh-my-design/scripts/analytics/.secrets/sa.json
-chmod 600 /Users/kwakseongjae/Desktop/projects/oh-my-design/scripts/analytics/.secrets/sa.json
+   /Users/kwakseongjae/projects/oh-my-design/scripts/analytics/.secrets/sa.json
+chmod 600 /Users/kwakseongjae/projects/oh-my-design/scripts/analytics/.secrets/sa.json
 # Print only the service-account email for steps 5 and 6:
-node -e 'console.log(require("/Users/kwakseongjae/Desktop/projects/oh-my-design/scripts/analytics/.secrets/sa.json").client_email)'
+node -e 'console.log(require("/Users/kwakseongjae/projects/oh-my-design/scripts/analytics/.secrets/sa.json").client_email)'
 ```
 
 This overwrites the dead key. `scripts/analytics/.secrets/` is gitignored, so never
@@ -76,7 +76,7 @@ Click **Add**. Remove the old service account here too.
 
 ### 7. Verify (shell)
 ```bash
-cd /Users/kwakseongjae/Desktop/projects/oh-my-design
+cd /Users/kwakseongjae/projects/oh-my-design
 node scripts/analytics/pull-all.mjs --days 28
 ```
 Expected: `✓ ga4` and `✓ gsc` in the summary, with raw output in
