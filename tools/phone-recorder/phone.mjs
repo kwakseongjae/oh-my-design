@@ -6,11 +6,13 @@
  * client. It is meant to be driven by a coding agent one step at a time: look, decide, act, look again.
  *
  *   phone.mjs start <device-id|simulator-udid> [--minutes 20] [--port 8123]
- *   phone.mjs look [--bundle ID] [--walk DIR] [--note "…"] [--private] [--no-wait]
+ *   phone.mjs look [--bundle ID] [--walk DIR] [--note "…"] [--private] [--cover "x,y,w,h;…"] [--no-wait]
  *                                                          screenshot + the app's elements; with --walk, kept as the next frame.
  *                                                          It waits until the screen stops changing (up to 6 s) before it shoots.
  *                                                          --private paints over every number and every string listed in
  *                                                          ~/.omd-workers/screens/private.json before anything is written.
+ *                                                          --cover paints whole rectangles (points) the same way, for a
+ *                                                          list of other people's names and messages.
  *   phone.mjs explore --walk DIR [--bundle ID] [--max 8] [--private]   open what the screen offers, one at a time, checking
  *                                                          each tap changed the screen, recording and coming back
  *   phone.mjs tap <x> <y> | tap --label "텍스트" [--bundle ID] [--nth N] [--allow-risky]
@@ -21,7 +23,7 @@
  *   phone.mjs launch <bundle-id> | terminate <bundle-id> | home | back
  *   phone.mjs alert [--tap "버튼"]                         the system alert in front
  *   phone.mjs settle [--bundle ID] [--walk DIR]            answer system alerts and close pop-ups by the policy below
- *   phone.mjs scrollclip --walk DIR [--steps 16] [--note "…"]  scroll down in small steps, a screenshot after each, made
+ *   phone.mjs scrollclip --walk DIR [--steps 16] [--cover "x,y,w,h"] [--note "…"]  scroll down in small steps, a screenshot after each, made
  *                                                          into an mp4 with ffmpeg (clip-NNN.mp4 + its first frame)
  *   phone.mjs replay <walk/flow.json>                      run a recorded walk's actions again
  *   phone.mjs stop
@@ -59,7 +61,18 @@ const session = () => { if (!existsSync(SESSION)) { console.error("no session: r
 const save = (s) => { mkdirSync(HOME, { recursive: true }); writeFileSync(SESSION, JSON.stringify(s, null, 1) + "\n"); };
 async function call(method, route, body) {
   const s = session();
-  const res = await fetch(s.base + route, { method, ...(body ? { body: JSON.stringify(body) } : {}), signal: AbortSignal.timeout(60000) });
+  // A wireless link drops for a second now and then. A read is asked again; an action is asked again only when the
+  // request never left (no route, refused), because a tap that did arrive must not be made twice.
+  let res;
+  for (let attempt = 1; ; attempt += 1) {
+    try { res = await fetch(s.base + route, { method, ...(body ? { body: JSON.stringify(body) } : {}), signal: AbortSignal.timeout(60000) }); break; }
+    catch (e) {
+      const code = e.cause?.code ?? e.name;
+      const unsent = ["ECONNREFUSED", "ENOTFOUND", "EHOSTUNREACH", "ENETUNREACH", "EAI_AGAIN", "EHOSTDOWN"].includes(code);
+      if (attempt >= 4 || !(method === "GET" || unsent)) throw new Error(`the phone did not answer ${method} ${route} (${code})`);
+      await new Promise((r) => setTimeout(r, 1500 * attempt));
+    }
+  }
   if (res.headers.get("content-type")?.startsWith("image/")) return Buffer.from(await res.arrayBuffer());
   const data = await res.json();
   if (data.ok === false) throw new Error(data.error);
@@ -114,7 +127,16 @@ function record(walk, entry) {
   return flow.steps.length;
 }
 
-async function look({ bundle, walk, note, quiet = false, wait = true, priv = false }) {
+/** Paint the given rectangles (points) and blank the labels of what lies inside them: for a list of other people's
+ *  names and messages, which no pattern can pick out. */
+function cover(png, elements, rects, scale) {
+  const filter = rects.map(([x, y, w, h]) => `drawbox=x=${Math.round(x * scale)}:y=${Math.round(y * scale)}:w=${Math.round(w * scale)}:h=${Math.round(h * scale)}:color=0x9aa0a6:t=fill`).join(",");
+  const out = execFileSync("ffmpeg", ["-loglevel", "error", "-f", "png_pipe", "-i", "pipe:0", "-vf", filter, "-f", "image2pipe", "-vcodec", "png", "pipe:1"], { input: png, maxBuffer: 64 << 20 });
+  const inside = (e) => rects.some(([x, y, w, h]) => e.x + e.w / 2 >= x && e.x + e.w / 2 <= x + w && e.y + e.h / 2 >= y && e.y + e.h / 2 <= y + h);
+  return { png: out, elements: elements.map((e) => (inside(e) && e.label ? { ...e, label: "•••" } : e)) };
+}
+
+async function look({ bundle, walk, note, quiet = false, wait = true, priv = false, covered = null }) {
   const settled = wait ? await stable() : { stable: null, waitedMs: 0 };
   let png = await call("GET", "/screen");
   let tree = bundle ? await call("GET", `/elements?bundle=${encodeURIComponent(bundle)}`) : { front: null, elements: [] };
@@ -124,6 +146,10 @@ async function look({ bundle, walk, note, quiet = false, wait = true, priv = fal
     const r = redact(png, tree.elements, (await call("GET", "/health")).scale);
     png = r.png; tree = { ...tree, elements: r.elements }; redacted = r.redacted;
   }
+  if (covered) {   // also before anything touches the disk
+    const r = cover(png, tree.elements, covered, (await call("GET", "/health")).scale);
+    png = r.png; tree = { ...tree, elements: r.elements };
+  }
   let frame = null;
   if (walk) {
     mkdirSync(walk, { recursive: true });
@@ -132,7 +158,7 @@ async function look({ bundle, walk, note, quiet = false, wait = true, priv = fal
     writeFileSync(path.join(walk, frame + ".png"), png);
     writeFileSync(path.join(walk, frame + ".elements.json"), JSON.stringify({ bundle, alert, ...tree }, null, 1) + "\n");
     record(walk, { action: "look", frame, bundle, ...(note ? { note } : {}), elements: tree.elements.length, ...(alert.alert ? { alert } : {}),
-      ...(wait ? { stable: settled.stable, waitedMs: settled.waitedMs } : {}), ...(priv ? { private: true, redacted } : {}) });
+      ...(wait ? { stable: settled.stable, waitedMs: settled.waitedMs } : {}), ...(priv ? { private: true, redacted } : {}), ...(covered ? { covered } : {}) });
   } else {
     writeFileSync(path.join(HOME, "last.png"), png);
   }
@@ -181,7 +207,12 @@ const commands = {
     }
     throw new Error(`the agent server did not answer in 5 minutes (see ${log})`);
   },
-  async look() { const priv = flag("--private"), wait = !flag("--no-wait"); await look({ bundle: bundleOf(), walk: opt("--walk"), note: opt("--note"), priv, wait }); },
+  async look() {
+    const priv = flag("--private"), wait = !flag("--no-wait"), c = opt("--cover");
+    const covered = c ? c.split(";").map((r) => r.split(",").map(Number)) : null;
+    if (covered?.some((r) => r.length !== 4 || r.some(Number.isNaN))) throw new Error('--cover takes "x,y,w,h" in points, several joined with ;');
+    await look({ bundle: bundleOf(), walk: opt("--walk"), note: opt("--note"), priv, wait, covered });
+  },
   /**
    * Open what the screen offers, one at a time: tabs if the tree has a tab bar, otherwise the first rows or buttons of
    * the content. After each tap it checks the screen really changed, records it, scrolls once, and comes back; a tap
@@ -306,7 +337,8 @@ const commands = {
   },
   /** A scroll as a clip: the device's own screenshots, one per small step, so it shows what a still cannot. */
   async scrollclip() {
-    const walk = opt("--walk"), steps = Number(opt("--steps", 16)), note = opt("--note");
+    const walk = opt("--walk"), steps = Number(opt("--steps", 16)), note = opt("--note"), c = opt("--cover");
+    const covered = c ? c.split(";").map((r) => r.split(",").map(Number)) : null;   // for a bar that stays put while the page scrolls
     if (!walk) throw new Error("scrollclip needs --walk");
     const h = await call("GET", "/health");
     mkdirSync(walk, { recursive: true });
@@ -314,7 +346,8 @@ const commands = {
     const name = `clip-${String(n).padStart(3, "0")}`, dir = path.join(walk, name);
     mkdirSync(dir, { recursive: true });
     for (let i = 0; i <= steps; i += 1) {
-      writeFileSync(path.join(dir, `${String(i).padStart(3, "0")}.png`), await call("GET", "/screen"));
+      const shot = await call("GET", "/screen");
+      writeFileSync(path.join(dir, `${String(i).padStart(3, "0")}.png`), covered ? cover(shot, [], covered, h.scale).png : shot);
       if (i < steps) { await call("POST", "/swipe", { x1: h.width / 2, y1: h.height * 0.62, x2: h.width / 2, y2: h.height * 0.62 - 150 }); await sleep(650); }
     }
     let video = null;
@@ -322,7 +355,7 @@ const commands = {
       execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", "5", "-i", path.join(dir, "%03d.png"), "-vf", "scale=402:-2", "-pix_fmt", "yuv420p", path.join(walk, name + ".mp4")]);
       video = name + ".mp4";
     } catch { /* no ffmpeg: the frames stay as they are */ }
-    record(walk, { action: "scrollclip", clip: name, steps, video, ...(note ? { note } : {}) });
+    record(walk, { action: "scrollclip", clip: name, steps, video, ...(note ? { note } : {}), ...(covered ? { covered } : {}) });
     console.log(`${name}: ${steps + 1} frames${video ? ` → ${path.join(walk, video)}` : " (ffmpeg not found; frames kept)"}`);
   },
   async replay() {
