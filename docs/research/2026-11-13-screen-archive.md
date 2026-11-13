@@ -457,7 +457,10 @@ Owner, 11/14: 「폰 세션에서 이전에 촬영했던 방식이나 속도를 
 5. *Banners.* Focus mode on; and a frame is still viewed before it is kept.
 
 *Projected* for a 25-screen app once the lookup fix holds and `go` is used: 25–35 commands at ~15 s, about 6–9
-minutes on the phone, against 26 minutes for Musinsa's 26 on 11/13. The time off the phone (writing the sheet's
+minutes on the phone, against 26 minutes for Musinsa's 26 on 11/13. `go --walk` records a screen nobody has looked
+at yet, so it is for public screens (home, search, lists, details) and for screens already seen; the first visit to
+a "my", chat, notification or map screen stays three commands (tap, a look that is not kept, then a kept look with
+`--private` or `--cover`). With five or six such screens in an app the projection is nearer 8–11 minutes. The time off the phone (writing the sheet's
 titles and notes, viewing every frame) was not logged, so there is no number for it; Mobbin shows tags and no
 prose per screen, and the sheet's per-frame notes can go the same way (type and patterns from the suggestion, a
 person corrects them; prose only in the app-level findings).
@@ -485,6 +488,7 @@ the owner says otherwise; the recommendation is to drop it.
 
 **Checked on the Simulator only** (the phone waits; `feat/screen-archive` `a6ae2389`). Settings app on an iPhone 17
 Simulator: `look` with its wait 1.4 s (settled in 1.0 s, the first time the wait has been seen to pass), `go --label`
-2.4 s, `go --back` 2.9 s, `pages` three overlapping stills of the Settings list in 10.6 s, stopping by itself at
+2.4 s, `go --back` 2.9 s, `go <x> <y>`, `go --swipe up` and `go --label … --private --cover …` each recorded their
+action and frame, `pages` three overlapping stills of the Settings list in 10.6 s, stopping by itself at
 the end of the list and with no fling. The Simulator answers on 127.0.0.1, so none of this says how fast the
 phone will be; the first thing to time in the next session is still one tap.
