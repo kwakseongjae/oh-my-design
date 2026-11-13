@@ -336,3 +336,58 @@ evening of 11/13 it was paired but its tunnel stayed unavailable, and nothing on
 **Choosing the ten.** From what is installed on the phone (`devicectl device info apps`), most-used Korean services
 first, one category at most twice a week, finance last and only in private mode. Musinsa and Karrot are the first
 two. An app that is not installed waits for the owner (the App Store asks for Face ID).
+
+## The second phone session: Musinsa re-shot, Karrot's first walk (2026-11-13, 17:30–18:03)
+
+**What exists now.** `~/Downloads/kr-screens/index.html` (two apps, 39 screens, one set of filters) and a sheet per
+app under it: Musinsa 27 screens and a home clip, Karrot 12 screens and a home clip. Local only.
+
+| walk | steps | frames kept | time by its own timestamps |
+|---|---|---|---|
+| `musinsa-20261113c` (re-shoot: home, search, suggestions, results, a product, a promotion page; home clip) | 18 | 6 | 15 min |
+| `karrot-20261113` (five tabs, settings, search to a listing, all services, notifications; home clip) | 32 | 12 | 17 min |
+
+Karrot at 12 frames in 17 minutes is slower per frame than Musinsa's first walk (33 in 31). The reasons are below;
+none of them is the app.
+
+**What went wrong, and what was done about it**
+
+- **The phone answers slowly.** A swipe takes 12 s and a tap 6 s on the phone, against about 1 s on a Simulator.
+  The runner log showed XCUITest waiting 12 s for the system to go idle before each event. The framework has a
+  switch for skipping that wait (`XCUIApplicationProcess.shouldSkipPreEventQuiescence` and its post-event twin,
+  getters with no setters). Making both answer yes removed the wait from the log, and the event itself then took
+  the same 12 s, so the time is spent on the device, not in the wait the switch controls. Reverted; not solved.
+  Next to try: time the same tap on the home screen and inside a quiet app, to learn whether it follows the app in
+  front; and a cable instead of the wireless link.
+- **"Still moving" on almost every frame.** `look` waits for two matching looks; a home screen with a carousel or a
+  video never gives them, so every look runs to its 6 s limit (about 11 s with the calls) and the frame is marked
+  unsettled although it is fully drawn. The check answers "is anything moving", and the question is "has it
+  finished loading". Open.
+- **A notification banner landed in a frame** (someone's message, over Musinsa's search results). The frame and its
+  element list were deleted. The runner already looks for the banner view before each event; `look` should refuse
+  to shoot while one is up. Open.
+- **A nickname was shot unpainted.** `--private` paints numbers and the strings in `private.json`; the owner's Karrot
+  nickname was not in it. The frame was deleted, the string added, the screen shot again. A "my" screen in a new app
+  should be looked at without `--walk` first.
+- **Lists of other people.** Chat, notifications and a seller's row are names and messages no pattern can pick
+  out. New: `look --cover "x,y,w,h;…"` and `scrollclip --cover` paint whole rectangles before a frame is written.
+- **Location is everywhere in Karrot**: the header, the search placeholder, every listing's neighbourhood and
+  distance, the map. Stills are painted (some at capture, the listing lines when the sheet is built). The home clip
+  can only be painted where the screen does not move, so listing neighbourhoods are visible in it: the Karrot
+  clip must be cut or re-shot before that sheet leaves this Mac.
+- **The link.** The phone was paired but its tunnel stayed unavailable for about twenty minutes until the owner
+  reconnected it; the first start then failed with "Timed out while enabling automation mode" and the second
+  worked. The client now asks again when a read fails on the network, and repeats an action only when the request
+  never left.
+- **Musinsa's search field is an advertisement slot.** Tapping its placeholder opens that promotion's page; the
+  magnifier runs a search for the promoted word. Getting to an empty search took three taps. It is in the sheet as
+  a finding and a screen.
+
+**What the run did on the owner's accounts.** Musinsa: opened a promotion page and a product page, ran one search
+for the word the app proposed. Karrot: opened the five tabs, settings, search (typed 자전거), one listing, the
+services menu and notifications. Nothing was written, sent, liked, bought or agreed to; the search word 자전거 is now
+in Karrot's recent searches.
+
+**Third parties.** Karrot's screens are mostly other people's posts and photos. Painting a seller's name does not
+make a listing ours to publish. Before any of this is public, the Karrot sheet needs a decision of its own: screens
+without user content, a staged account in a quiet neighbourhood, or structure-only frames.
