@@ -372,3 +372,27 @@ compiles its own capture (order step 6b), `gpt-6.1-sol` at medium.
 
 **Cost of 11/12 in Codex runs:** 28 experiment runs, 7 batch runs, 2 reviews: about 503 k output tokens, what 11
 max-effort reference runs produce (45.8 k each).
+
+### Token names — a naming rule, and published names pinned (2026-11-13)
+
+Owner: 「토큰 이름에도 뭔가 내부적인 명명 규칙이 있거나 해당 레퍼런스를 참고해서 활용하는 방법도 고민해보면 좋을듯.」 Both were
+built (`COMPILED_PARTS.md`, `compile-evidence.mjs --published`) and run on the four sites of arm d (yomiuri,
+kbinsurance, hmall, samsunghospital), sol medium, no leaks.
+
+| same name for a value both sides name | colours | type sizes | radii |
+|---|---|---|---|
+| two runs, no rule (c vs d), the three sites without hmall's property names | 26 / 83 (31 %) | 14 / 37 (38 %, all four) | 10 / 17 (59 %, all four) |
+| two runs with the naming rule (e vs f), the same three sites | 36 / 81 (44 %) | 24 / 36 (67 %, all four) | 14 / 16 (88 %, all four) |
+| a run without pins against the published reference (e) | 11 / 57 (19 %) | 7 / 13 | 3 / 12 |
+| **a run given the published names against the published reference (p)** | **59 / 59** | **13 / 13** | **13 / 13** |
+
+- The rule's vocabulary is the catalog's own: across 434 verified references, `canvas` 343, `primary` 330,
+  `foreground` 297, `muted` 198, `surface` 164, `on-primary` 123, `ink` 112, `border` 98 …; 40 names cover 47 % of
+  all colour tokens and 30 % of tokens carry a name used by one reference only.
+- The rule settles type and radius names and helps colours a little: a first writing still names the colours
+  outside the core roles freely. That matters less than it looks, because a reference is named once.
+- Pinning is what makes a re-written reference keep its names: every value the published reference names came
+  back under the same name. A re-verification should always be given `--published`; the reverify order does not
+  do that yet.
+- These runs were also the first where workers followed the "declared colours stay in prose" wording themselves:
+  hmall came out at 15 to 19 colour tokens with a declared table in the body (76 tokens under the old wording).
