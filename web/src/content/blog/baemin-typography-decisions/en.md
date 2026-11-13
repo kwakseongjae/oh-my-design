@@ -2,6 +2,7 @@
 title: "Reading Baemin’s typography before turning it into DESIGN.md"
 description: "Separate brand lettering, conference typography, and a dated app rebrand, then turn those references into decisions for your own product."
 date: "2026-09-29"
+updated: "2026-10-21"
 tags: ["curation", "baemin", "typography", "DESIGN.md"]
 ---
 

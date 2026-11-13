@@ -15,8 +15,8 @@ import {
   POST_LOCALES,
   type PostLocale,
 } from "./locales";
-import { getPost, getPostLocales } from "./posts";
-import { SITE_ORIGIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
+import { getPost, getPostLocales, lastModified } from "./posts";
+import { DEFAULT_OG_IMAGE, SITE_ORIGIN, blogFeedUrl, blogIndexUrl, blogPostUrl } from "@/lib/site";
 
 const SITE_NAME = "oh-my-design";
 
@@ -35,23 +35,41 @@ function languageMap(
   return languages;
 }
 
+/** RSS autodiscovery: each page points at the feed of its own locale. */
+function feedAlternate(locale: PostLocale): Record<string, string> {
+  return { "application/rss+xml": blogFeedUrl(locale) };
+}
+
 export function blogIndexMetadata(locale: PostLocale): Metadata {
   const chrome = BLOG_CHROME[locale];
   const url = blogIndexUrl(locale);
+  const shareTitle = `${SITE_NAME} — ${chrome.indexTitle}`;
 
+  // Both share blocks are set in full: a page's openGraph/twitter replaces the
+  // root layout's, and anything left out would fall back to the main site's
+  // English defaults. /og/blog draws post cards only (it needs a slug), so the
+  // index shares the site's default card.
   return {
     title: `${chrome.indexTitle} — ${SITE_NAME}`,
     description: chrome.indexIntro,
     alternates: {
       canonical: url,
       languages: languageMap([...POST_LOCALES], blogIndexUrl),
+      types: feedAlternate(locale),
     },
     openGraph: {
-      title: `${SITE_NAME} — ${chrome.indexTitle}`,
+      title: shareTitle,
       description: chrome.indexIntro,
       url,
       type: "website",
       locale: OG_LOCALE[locale],
+      images: [DEFAULT_OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: shareTitle,
+      description: chrome.indexIntro,
+      images: [DEFAULT_OG_IMAGE.url],
     },
   };
 }
@@ -70,6 +88,7 @@ export function blogPostMetadata(slug: string, locale: PostLocale): Metadata {
     alternates: {
       canonical: url,
       languages: languageMap(locales, (l) => blogPostUrl(slug, l)),
+      types: feedAlternate(post.locale),
     },
     openGraph: {
       title: post.title,
@@ -77,6 +96,7 @@ export function blogPostMetadata(slug: string, locale: PostLocale): Metadata {
       url,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: lastModified(post),
       locale: OG_LOCALE[post.locale],
       images: [{ url: ogImageUrl(slug, post.locale), width: 1200, height: 630 }],
     },
@@ -100,7 +120,7 @@ export function blogPostJsonLd(slug: string, locale: PostLocale) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: lastModified(post),
     inLanguage: HTML_LANG[post.locale],
     author: { "@type": "Organization", name: SITE_NAME },
     publisher: { "@type": "Organization", name: SITE_NAME },

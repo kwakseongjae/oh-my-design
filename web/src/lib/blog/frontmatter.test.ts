@@ -37,6 +37,21 @@ describe("frontmatter", () => {
     expect(() => parseFrontmatter(VALID.replace("[release, ai]", "release"), "post.md")).toThrow(/inline list/);
   });
 
+  it("reads an optional correction date, and leaves it out when absent", () => {
+    expect(parseFrontmatter(VALID, "post.md").data).not.toHaveProperty("updated");
+    const corrected = VALID.replace("date: 2026-08-20\n", "date: 2026-08-20\nupdated: \"2026-10-21\"\n");
+    expect(parseFrontmatter(corrected, "post.md").data.updated).toBe("2026-10-21");
+    const sameDay = VALID.replace("date: 2026-08-20\n", "date: 2026-08-20\nupdated: 2026-08-20\n");
+    expect(parseFrontmatter(sameDay, "post.md").data.updated).toBe("2026-08-20");
+  });
+
+  it("rejects a correction date that is malformed or before publication", () => {
+    const withUpdated = (value: string) =>
+      VALID.replace("date: 2026-08-20\n", `date: 2026-08-20\nupdated: ${value}\n`);
+    expect(() => parseFrontmatter(withUpdated("Oct 21"), "post.md")).toThrow(/post\.md.*updated must be YYYY-MM-DD/);
+    expect(() => parseFrontmatter(withUpdated("2026-08-19"), "post.md")).toThrow(/earlier than date/);
+  });
+
   it("rejects a typo'd key instead of dropping it", () => {
     expect(() => parseFrontmatter(VALID.replace("tags:", "tag:"), "post.md")).toThrow(/unknown frontmatter key "tag"/);
   });

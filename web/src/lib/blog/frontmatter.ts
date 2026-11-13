@@ -1,7 +1,7 @@
 /**
  * Minimal YAML frontmatter reader for blog posts.
  *
- * Deliberately not a YAML dependency: posts carry four scalar fields and one
+ * Deliberately not a YAML dependency: posts carry a few scalar fields and one
  * inline list, and a strict 40-line parser that names the offending file beats
  * a general parser that silently accepts a typo'd key. Unknown keys and missing
  * required fields throw, so a malformed post fails the build instead of
@@ -13,10 +13,18 @@ export interface PostFrontmatter {
   description: string;
   /** ISO date, publication day. */
   date: string;
+  /**
+   * ISO date of the last substantive correction, when there was one. Feeds
+   * machine-readable freshness only (JSON-LD dateModified, article:modified_time,
+   * sitemap lastmod); the page does not print it.
+   */
+  updated?: string;
   tags: string[];
 }
 
 const REQUIRED_KEYS = ["title", "description", "date", "tags"] as const;
+const OPTIONAL_KEYS = ["updated"] as const;
+const ALLOWED_KEYS: readonly string[] = [...REQUIRED_KEYS, ...OPTIONAL_KEYS];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 function fail(source: string, message: string): never {
@@ -57,8 +65,8 @@ export function parseFrontmatter(
     const separator = line.indexOf(":");
     if (separator === -1) fail(source, `frontmatter line is not key: value — ${line}`);
     const key = line.slice(0, separator).trim();
-    if (!(REQUIRED_KEYS as readonly string[]).includes(key)) {
-      fail(source, `unknown frontmatter key "${key}" — allowed: ${REQUIRED_KEYS.join(", ")}`);
+    if (!ALLOWED_KEYS.includes(key)) {
+      fail(source, `unknown frontmatter key "${key}" — allowed: ${ALLOWED_KEYS.join(", ")}`);
     }
     parsed[key] = parseValue(key, line.slice(separator + 1), source);
   }
@@ -68,6 +76,12 @@ export function parseFrontmatter(
   }
   const date = parsed.date as string;
   if (!DATE_RE.test(date)) fail(source, `date must be YYYY-MM-DD — got ${date}`);
+  const updated = parsed.updated as string | undefined;
+  if (updated !== undefined) {
+    if (!DATE_RE.test(updated)) fail(source, `updated must be YYYY-MM-DD — got ${updated}`);
+    // Same-format ISO dates compare correctly as strings.
+    if (updated < date) fail(source, `updated (${updated}) is earlier than date (${date})`);
+  }
   const tags = parsed.tags as string[];
   if (tags.length === 0) fail(source, "tags must not be empty");
 
@@ -76,6 +90,7 @@ export function parseFrontmatter(
       title: parsed.title as string,
       description: parsed.description as string,
       date,
+      ...(updated !== undefined && { updated }),
       tags,
     },
     body: raw.slice(end + 5).replace(/^\n+/, "").trimEnd(),
