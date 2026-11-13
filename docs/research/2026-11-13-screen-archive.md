@@ -73,3 +73,59 @@ Sources: mobbin.com/index.md, mobbin.com/blog/how-to-use-mobbin-mcp, mobbin.com/
 dev.classmethod.jp/articles/mobbin-mcp-setup-claude-code, businesswire.com (Mobbin MCP launch, 2026-05-11),
 doc.refero.design/legal/copyright-policy, design.lazyweb.com/compare/lazyweb-vs-mobbin-vs-refero.md, uibowl.io,
 wwit.design, starterstory.com/mobbin-breakdown, yozm.wishket.com (WWIT), itunes.apple.com lookup API.
+
+## Owner decisions (2026-11-13) and the app-screen question
+
+- **Publication:** held. Build a pilot of ten Korean references inside, show it on a preview link, decide after.
+- **When:** after the current sprint.
+- **App screens:** 「phone harness 같은 걸 이용해서 내 폰으로 촬영해도 좋아 … 우리가 오픈소스로 구축해보고(내가 만드는 mobster의
+  피쳐로 둬도 좋고)」. So: work out how we can shoot native screens ourselves, on the owner's iPhone.
+
+### What exists to drive or read a real phone (checked 2026-11-13)
+
+| | how | pixels | reads | needs | limits |
+|---|---|---|---|---|---|
+| **Phone Harness** (`phone-harness/phone-harness`, MIT, launched Nov 2026) | iPhone through the Mac's iPhone Mirroring window; Android over adb; an agent runs Python helpers (`open_app`, `tap_text`, `screen`, …) | a capture of the mirroring window (a scaled video stream, not the phone's own pixels) | Apple Vision OCR on iPhone; the accessibility tree on Android | macOS 15+, iOS 18+, Accessibility and Screen Recording permission | the iPhone must stay locked while mirrored; "OCR sees text, not icons"; no multi-touch, no Face ID; "DRM video renders black" |
+| **pymobiledevice3** `developer dvt screenshot` | USB, Developer Mode, a root tunnel on iOS 17+ | the phone's own screenshot as PNG | nothing | `sudo … remote tunneld`, Developer Mode switched on by the owner | no input: someone or something else has to navigate |
+| **Screenshots taken on the phone** (side button + volume), synced by iCloud or AirDrop | the owner taps | native PNG | nothing | nothing | owner's time per screen |
+| **adb** `screencap` + `uiautomator dump` | USB or emulator | native PNG | the element tree with bounds, text, class | an Android device, or an emulator signed in to Google | apps that set `FLAG_SECURE` (banking) come out black |
+| **mobsnap** (owner's, `~/projects/mobster`) | save points for the iOS **Simulator** | — | — | — | the Simulator cannot install App Store apps, so it does not reach third-party apps |
+
+On this Mac: Maestro 2.8.0 and Xcode are installed; adb, scrcpy, libimobiledevice and pymobiledevice3 are not. The
+owner's iPhone is known to Xcode (`iPhone18,3`) and was not connected when checked.
+
+### The pipeline that fits ("walk and shoot")
+
+Navigation and pixels are separate jobs, and no single tool does both well on an iPhone:
+
+1. **Navigate:** the owner taps through a short list of screens (the list comes from us, per app), or an agent does
+   through Phone Harness when the owner does not need the phone.
+2. **Shoot:** each distinct screen is taken as the phone's own PNG, either by the tunnel (`dvt screenshot`, on a key
+   press or when the mirrored picture changes) or simply by the owner's screenshot button with a folder that syncs.
+3. **Keep the order:** the frames of one walk, in order, are a flow. That is the thing Mobbin sells and a web
+   capture cannot give.
+4. **Before anything leaves the Mac:** drop or mask frames with personal data (name, address, balance, order
+   history). A signed-in phone shows these on most screens past the home tab. Nothing is uploaded unreviewed.
+5. **Label and attach:** screen type and patterns, the app's App Store version and date, and the reference it
+   belongs to.
+
+Unknowns that only a ten-minute test with the phone answers: whether `dvt screenshot` works on this iOS version,
+whether it runs while mirroring is active, and which Korean apps blank their screens while the phone is being
+captured (finance apps commonly do).
+
+### As an open-source tool
+
+The owner's mobster line already has mobsnap (Simulator save points). A sibling for **real devices** would be the
+missing half and is useful beyond this archive (release notes, store screenshots, design QA of one's own app):
+a CLI that records a walk on a connected phone into a folder of native PNGs plus `flow.json` (order, app, version,
+timestamps, optional OCR text), de-duplicates frames, and has a redaction step. OmD would be its first consumer.
+Phone Harness covers "an agent taps for you"; it does not record, order or clean screens, so the two do not overlap.
+
+### Proposed order, after the sprint
+
+1. Ten Korean references from what needs no phone: mobile web at 390 px, desktop, state crops, store screenshots
+   linked. A "Screens" block on the item page and an MCP tool, as static mock-ups first, then on a preview link.
+2. In parallel, the ten-minute phone test (USB, Developer Mode) on two apps, to settle the unknowns above.
+3. If the test works: the recorder as a small open-source tool, and app screens for the pilot ten.
+
+Further sources: github.com/phone-harness/phone-harness, pypi.org/project/pymobiledevice3.
