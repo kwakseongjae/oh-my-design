@@ -228,19 +228,7 @@
         "method": "live-inspect",
         "captured": "2026-11-13"
       },
-      "components.hero-next.textColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
       "components.hero-next.focus": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
-      "components.hero-next.typography": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -343,12 +331,6 @@
         "captured": "2026-11-13"
       },
       "components.search.backgroundColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
-      "components.search.typography": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -997,7 +979,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "974a0fbe9039e782061f8f7148ee479931eba1093755de9ab6a9532019163ebc",
+    "sourceSha256": "3903b459b5d3fca8ffb73f6ef3ff5438a88dfdbe6318b6fd4781680d491f7e4e",
     "overlay": null,
     "prose": [],
     "numeric": [

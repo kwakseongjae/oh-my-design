@@ -74,7 +74,6 @@ components:
     backgroundColor: '#236cf6'
     height: 36px
     padding: 0px
-    typography: 13px / 400
     hover: '#2061dd'
     pressed: '#2061dd'
     use: '검색 icon button on the white header. Circular radius 50%; computed fg #666666 is not its visible SVG stroke, which is #ffffff. Browser auto focus ring excluded.'
@@ -113,10 +112,8 @@ components:
     use: '2026 대한민국 우리술 대축제 card link on white. Visible title is #29292c at 20px/600; anchor font is 13px/400 and computed ink #333333. Pointer states unmeasured. Compiled focus includes carousel translation; its red ::after border is visible in the focus crop.'
   hero-next:
     type: button
-    textColor: '#3d3d43'
     height: 56px
     padding: 0px
-    typography: 18px / 700
     hover: 'self bg: rgba(0, 0, 0, 0.4) -> rgb(255, 255, 255); fill: none|rgb(255, 255, 255) -> none|rgb(61, 61, 67) (2 descendants)'
     pressed: 'self bg: rgba(0, 0, 0, 0.4) -> rgb(255, 255, 255); fill: none|rgb(255, 255, 255) -> none|rgb(61, 61, 67) (2 descendants)'
     focus: 'self outline: none -> rgb(41, 41, 44) solid 2px off 2px'
@@ -163,7 +160,7 @@ The primary choice is the measured search background, not a colour sampled from 
 | `footer-ink` | `#333333` | Footer utility and legal links in survey.rows; not the festival card’s visible title ink. |
 | `ink` | `#29292c` | Header navigation, shortcut text and festival-card title; solid focus outline on hero-next and shortcut. |
 | `foreground` | `#58585f` | Most frequent paragraph ink: 15 paragraphs; also the festival card date. |
-| `global-gray-80` | `#3d3d43` | Hero-next computed foreground and the two arrow paths on hover/pressed. |
+| `global-gray-80` | `#3d3d43` | The two arrow paths of hero-next on hover and pressed. |
 | `primary` | `#236cf6` | Search button background; theme navigation hover, pressed and focus; shortcut parent border on hover/pressed. |
 | `global-gray-05` | `#f3f3fa` | AI-summary 바로가기 link background at rest. |
 | `carousel-border` | `#949499` | 1px borders on small previous/next carousel buttons in survey.rows. |

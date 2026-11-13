@@ -89,12 +89,6 @@
         "method": "computed-style",
         "captured": "2026-11-13"
       },
-      "colors.control-ink": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "computed-style",
-        "captured": "2026-11-13"
-      },
       "colors.focus-ring": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -215,19 +209,7 @@
         "method": "live-inspect",
         "captured": "2026-11-13"
       },
-      "components.carousel-next.textColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
       "components.carousel-next.focus": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
-      "components.carousel-next.typography": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -395,19 +377,7 @@
         "method": "live-inspect",
         "captured": "2026-11-13"
       },
-      "components.search-trigger.textColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
       "components.search-trigger.focus": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
-      "components.search-trigger.typography": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -737,13 +707,13 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 49,
+      "warnings": 48,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 10,
       "extension-component-property": 30,
-      "orphaned-tokens": 9
+      "orphaned-tokens": 8
     },
     "findings": [
       {
@@ -1013,12 +983,6 @@
       {
         "severity": "warning",
         "rule": "orphaned-tokens",
-        "path": "colors.control-ink",
-        "message": "'control-ink' is defined but never referenced by any component."
-      },
-      {
-        "severity": "warning",
-        "rule": "orphaned-tokens",
         "path": "colors.primary-hover",
         "message": "'primary-hover' is defined but never referenced by any component."
       },
@@ -1044,7 +1008,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "d7df898536a2a217d8b61371bbced1e9b6e61178d8682b095895ebd7efa0a297",
+    "sourceSha256": "25df425bbac181fc233aa5867859d30baba4fd7e251589a5532674a5d7f2bef0",
     "overlay": null,
     "prose": [],
     "numeric": [

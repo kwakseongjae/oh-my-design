@@ -6,7 +6,6 @@ colors:
   muted: '#a7b1c7'
   canvas: '#ffffff'
   primary: '#2c69ff'
-  control-ink: '#000000'
   primary-hover: '#0f1ed2'
   focus-ring: '#2459e6'
   nec-sky-10: '#cadbff'
@@ -97,11 +96,9 @@ components:
     use: ソリューション — a paragraph with button role in the white header; transparent at rest.
   search-trigger:
     type: button
-    textColor: '#000000'
     rounded: 4px
     height: 38px
     padding: 0px
-    typography: 16px / 500
     hover: '#cadbff'
     pressed: '#cadbff'
     focus: 'self outline: none -> rgb(36, 89, 230) solid 2px off 2px'
@@ -120,11 +117,9 @@ components:
     use: Client-zero story link on the white page; transparent at rest. Visible title remains grey while wrapper colour changes; image opacity and source changes that persisted after blur are excluded.
   carousel-next:
     type: button
-    textColor: '#000000'
     rounded: 8px
     height: 38px
     padding: 1px 6px
-    typography: 16px / 400
     focus: 'self border: 1px solid rgba(0, 0, 0, 0) -> 1px solid rgb(36, 89, 230); self outline: rgb(15, 30, 210) solid 1px off 0px -> rgb(36, 89, 230) solid 2px off 2px'
     use: Next cards — an icon button on the white page; transparent at rest, with an external forward SVG background and a blue rest outline.
 omitted:
@@ -174,7 +169,6 @@ The rendered palette is a restrained subset of the CSS palette. The primary belo
 | muted | `#a7b1c7` | Footer links (survey rows 33–51). |
 | canvas | `#ffffff` | White page canvas and the ink on blue action links. |
 | primary | `#2c69ff` | Purpose and About action fill and border at rest. |
-| control-ink | `#000000` | Computed foreground of search-trigger and carousel-next; the search icon is an external SVG, so this is not a measured SVG fill. |
 | primary-hover | `#0f1ed2` | Purpose and About hover fill/border and pressed ink; carousel-next rest outline. |
 | focus-ring | `#2459e6` | Authored keyboard outline, About outer shadow and carousel-next focus border. |
 | nec-sky-10 | `#cadbff` | Header menu and search-trigger hover/pressed backgrounds. |
