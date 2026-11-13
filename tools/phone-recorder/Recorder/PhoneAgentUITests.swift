@@ -19,6 +19,9 @@ import XCTest
 final class PhoneAgentUITests: XCTestCase {
     private let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
 
+    // A failed XCUITest call (typing with no keyboard up, a tap on something that left) must not end the session.
+    override func setUp() { continueAfterFailure = true }
+
     func testServe() throws {
         let env = ProcessInfo.processInfo.environment
         let port = UInt16(env["AGENT_PORT"] ?? "") ?? 8123
@@ -81,6 +84,7 @@ final class PhoneAgentUITests: XCTestCase {
             return json(["ok": true])
         case ("POST", "/type"):
             guard let target = app(r.body), let text = r.body["text"] as? String else { return fail("bundle and text are required") }
+            guard target.keyboards.firstMatch.exists else { return fail("no keyboard is up: tap a text field first") }
             target.typeText(text)
             return json(["ok": true])
         case ("POST", "/launch"):

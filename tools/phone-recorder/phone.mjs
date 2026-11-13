@@ -9,10 +9,14 @@
  *   phone.mjs look [--bundle ID] [--walk DIR] [--note "…"]   screenshot + the app's elements; with --walk, kept as the next frame
  *   phone.mjs tap <x> <y> | tap --label "텍스트" [--bundle ID] [--nth N] [--allow-risky]
  *   phone.mjs swipe up|down|left|right | swipe <x1> <y1> <x2> <y2>
- *   phone.mjs type "text" [--bundle ID]
+ *   phone.mjs type "text" [--bundle ID] | type --secret <account>   --secret types a value from the macOS Keychain
+ *                                                          (service "omd-phone"); it is never printed or written to a walk.
+ *                                                          Store one yourself: security add-generic-password -s omd-phone -a <account> -w
  *   phone.mjs launch <bundle-id> | terminate <bundle-id> | home | back
  *   phone.mjs alert [--tap "버튼"]                         the system alert in front
  *   phone.mjs settle [--bundle ID] [--walk DIR]            answer system alerts and close pop-ups by the policy below
+ *   phone.mjs scrollclip --walk DIR [--steps 16] [--note "…"]  scroll down in small steps, a screenshot after each, made
+ *                                                          into an mp4 with ffmpeg (clip-NNN.mp4 + its first frame)
  *   phone.mjs replay <walk/flow.json>                      run a recorded walk's actions again
  *   phone.mjs stop
  *
@@ -56,6 +60,10 @@ async function call(method, route, body) {
   return data;
 }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+function secret(account) {
+  try { return execFileSync("security", ["find-generic-password", "-s", "omd-phone", "-a", account, "-w"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).replace(/\n$/, ""); }
+  catch { throw new Error(`no Keychain item for ${JSON.stringify(account)} (service omd-phone): add it with \`security add-generic-password -s omd-phone -a ${account} -w\``); }
+}
 const bundleOf = () => opt("--bundle") ?? session().bundle ?? null;
 
 /** Append an action to a walk's flow.json. */
@@ -157,7 +165,14 @@ const commands = {
     console.log(`swiped ${args[0] ?? ""}`);
   },
   async back() { const walk = opt("--walk"); const h = await call("GET", "/health"); await call("POST", "/swipe", { x1: 2, y1: h.height / 2, x2: h.width * 0.7, y2: h.height / 2 }); record(walk, { action: "back" }); console.log("swiped back from the left edge"); },
-  async type() { const walk = opt("--walk"), bundle = bundleOf(); await call("POST", "/type", { bundle, text: args[0] }); record(walk, { action: "type", text: args[0], bundle }); console.log("typed"); },
+  async type() {
+    const walk = opt("--walk"), bundle = bundleOf(), account = opt("--secret");
+    // A credential comes from the Keychain and goes straight to the device: the agent names the account, it does not see the value.
+    const text = account ? secret(account) : args[0];
+    await call("POST", "/type", { bundle, text });
+    record(walk, { action: "type", ...(account ? { secret: account } : { text }), bundle });
+    console.log(account ? `typed the secret for ${JSON.stringify(account)} (not shown)` : "typed");
+  },
   async launch() { const walk = opt("--walk"); const r = await call("POST", "/launch", { bundle: args[0] }); save({ ...session(), bundle: args[0] }); record(walk, { action: "launch", bundle: args[0] }); console.log(`launched ${args[0]} (state ${r.state})`); },
   async terminate() { await call("POST", "/terminate", { bundle: args[0] }); console.log(`terminated ${args[0]}`); },
   async home() { const walk = opt("--walk"); await call("POST", "/home"); record(walk, { action: "home" }); console.log("home"); },
@@ -190,7 +205,9 @@ const commands = {
         console.log(`LOGIN WALL${ways.length ? `: ways past it on this screen: ${ways.map((e) => JSON.stringify(e.label)).join(", ")}` : ": no way past it on this screen"} — left for the agent`);
         return;
       }
-      const dismiss = elements.find((e) => ["button", "link"].includes(e.type) && DISMISS.includes(e.label.trim()));
+      // 닫기 / Close in the top bar closes the page, not a pop-up (Musinsa's cart, 2026-11-13): only lower ones count.
+      const height = (await call("GET", "/health")).height;
+      const dismiss = elements.find((e) => ["button", "link"].includes(e.type) && DISMISS.includes(e.label.trim()) && !(/^(닫기|Close)$/.test(e.label.trim()) && e.y < height * 0.18));
       if (!dismiss) break;
       if (walk) await look({ bundle, walk, note: `pop-up closed with ${dismiss.label}`, quiet: true });
       await call("POST", "/tap", { x: dismiss.x + dismiss.w / 2, y: dismiss.y + dismiss.h / 2 });
@@ -199,6 +216,27 @@ const commands = {
       await sleep(900);
     }
     console.log("settled");
+  },
+  /** A scroll as a clip: the device's own screenshots, one per small step, so it shows what a still cannot. */
+  async scrollclip() {
+    const walk = opt("--walk"), steps = Number(opt("--steps", 16)), note = opt("--note");
+    if (!walk) throw new Error("scrollclip needs --walk");
+    const h = await call("GET", "/health");
+    mkdirSync(walk, { recursive: true });
+    const n = (existsSync(path.join(walk, "flow.json")) ? JSON.parse(readFileSync(path.join(walk, "flow.json"), "utf8")).steps.filter((x) => x.clip).length : 0) + 1;
+    const name = `clip-${String(n).padStart(3, "0")}`, dir = path.join(walk, name);
+    mkdirSync(dir, { recursive: true });
+    for (let i = 0; i <= steps; i += 1) {
+      writeFileSync(path.join(dir, `${String(i).padStart(3, "0")}.png`), await call("GET", "/screen"));
+      if (i < steps) { await call("POST", "/swipe", { x1: h.width / 2, y1: h.height * 0.62, x2: h.width / 2, y2: h.height * 0.62 - 150 }); await sleep(650); }
+    }
+    let video = null;
+    try {
+      execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", "5", "-i", path.join(dir, "%03d.png"), "-vf", "scale=402:-2", "-pix_fmt", "yuv420p", path.join(walk, name + ".mp4")]);
+      video = name + ".mp4";
+    } catch { /* no ffmpeg: the frames stay as they are */ }
+    record(walk, { action: "scrollclip", clip: name, steps, video, ...(note ? { note } : {}) });
+    console.log(`${name}: ${steps + 1} frames${video ? ` → ${path.join(walk, video)}` : " (ffmpeg not found; frames kept)"}`);
   },
   async replay() {
     const flow = JSON.parse(readFileSync(args[0], "utf8"));
@@ -211,7 +249,7 @@ const commands = {
         await call("POST", "/tap", e ? { x: e.x + e.w / 2, y: e.y + e.h / 2 } : { x: s.x, y: s.y });
       } else if (s.action === "tap") await call("POST", "/tap", { x: s.x, y: s.y });
       else if (s.action === "swipe") await call("POST", "/swipe", s);
-      else if (s.action === "type") await call("POST", "/type", { bundle: s.bundle, text: s.text });
+      else if (s.action === "type") await call("POST", "/type", { bundle: s.bundle, text: s.secret ? secret(s.secret) : s.text });
       else if (s.action === "alert") await call("POST", "/alert", { button: s.button }).catch(() => {});
       else if (s.action === "home") await call("POST", "/home");
       else continue;
