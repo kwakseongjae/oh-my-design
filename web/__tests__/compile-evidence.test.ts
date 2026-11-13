@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, proofMarkdown, publishedNames, tokenCandidates } from "../scripts/compile-evidence.mjs";
+import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, describeChange, mergeControls, proofMarkdown, publishedNames, tokenCandidates } from "../scripts/compile-evidence.mjs";
 
 // Shapes follow probe-keyboard-states.mjs states.json: controls[key] = { found, identity, rest, hover, pressed, focus }.
 const identity = { tag: "a", role: null, text: "Contact Us", rect: { w: 194.8, h: 56 }, radius: "100px", padding: "0px 40px", font: "18px/700" };
@@ -66,6 +66,27 @@ describe("compile-evidence", () => {
     expect(brandChanges(focus, "focus")).toEqual(focus.changedVsAfterBlur);
     expect(brandChanges({ ...focus, persistsAfterBlur: [] }, "focus")).toEqual(focus.changed); // nothing persisted: as measured
     expect(brandChanges(focus, "hover")).toEqual(focus.changed); // only focus has an after-blur reading
+  });
+
+  it("says what changed in a pseudo-element instead of quoting both descriptors", () => {
+    const d = (color: string, op: number) => `::before{content:"a;b";bg:rgba(0, 0, 0, 0);img:none;color:${color};op:${op};tf:none;bs:none;size:16pxx22.4px}`;
+    expect(describeChange({ set: "self-pseudo", prop: "before", from: d("rgb(182, 0, 129)", 1), to: d("rgb(255, 255, 255)", 1) }))
+      .toBe("::before color: rgb(182, 0, 129) -> rgb(255, 255, 255)");
+    expect(describeChange({ set: "self-pseudo", prop: "before", from: d("rgb(0, 0, 0)", 0), to: d("rgb(0, 0, 0)", 1) })).toBe("::before opacity: 0 -> 1");
+    // a ring drawn by a pseudo-element that exists only while focused
+    expect(describeChange({ set: "self-pseudo", prop: "after", from: "", to: '::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:rgb(13, 153, 229) 0px 0px 0px 2px;size:256pxx201.75px}' }))
+      .toBe("::after appears: shadow rgb(13, 153, 229) 0px 0px 0px 2px, 256px x 201.75px");
+    expect(describeChange({ set: "label-pseudo", prop: "after", from: "::after{size:0pxx2px}", to: "::after{size:63.6pxx2px}" })).toBe("label ::after size: 0px x 2px -> 63.6px x 2px");
+    expect(describeChange({ set: "self", prop: "opacity", from: "1", to: "0.75" })).toBe("self opacity: 1 -> 0.75"); // anything else: as before
+  });
+
+  it("says a change once when the control, its label and its descendants all show it", () => {
+    const ink = (set: string, prop: string) => ({ set, prop, from: "rgb(0, 0, 0)", to: "rgb(255, 255, 255)" });
+    const c = compile("cta", control({ hover: { measured: true, changed: [
+      ink("self", "fg"), ink("label", "label.fg"), ink("descendant", "span@0.fg"), ink("descendant", "span@0.0.fg"),
+      { set: "self", prop: "opacity", from: "1", to: "0.75" },
+    ] } }));
+    expect(c.fields.hover).toBe("fg: rgb(0, 0, 0) -> rgb(255, 255, 255) (self, label, 2 descendants); self opacity: 1 -> 0.75");
   });
 
   it("escapes pipes in the proof table", () => {

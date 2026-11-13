@@ -82,7 +82,60 @@ function describe(changes) {
     const value = colorToken(changes[0].to);
     return [...kinds][0] === "bg" ? value : `fg ${value}`;
   }
-  return changes.map((c) => `${c.set} ${c.prop}: ${c.from} -> ${c.to}`).join("; ");
+  // The same change read on the control, its label and its descendants is one change: say it once, and where.
+  const groups = new Map();
+  for (const c of changes) {
+    const pseudo = parsePseudo(c.from) || parsePseudo(c.to);
+    const key = pseudo ? `pseudo|${c.set}|${c.prop}|${c.from}|${c.to}` : `${/([^.]+)$/.exec(c.prop ?? "")?.[1]}|${c.from}|${c.to}`;
+    (groups.get(key) ?? groups.set(key, []).get(key)).push(c);
+  }
+  return [...groups.values()].map((g) => {
+    if (g.length === 1) return describeChange(g[0]);
+    const kind = /([^.]+)$/.exec(g[0].prop)[1];
+    const sets = g.map((c) => c.set), n = sets.filter((x) => x === "descendant").length;
+    const where = [...new Set(sets.filter((x) => x !== "descendant")), ...(n ? [`${n} descendant${n > 1 ? "s" : ""}`] : [])];
+    return `${kind}: ${g[0].from} -> ${g[0].to} (${where.join(", ")})`;
+  }).join("; ");
+}
+
+// The probe records a pseudo-element as one string: `::after{content:"";bg:…;color:…;op:1;tf:none;bs:none;size:WxH;bd:…}`.
+const PSEUDO_FIELDS = { content: "content", bg: "bg", img: "image", color: "color", op: "opacity", tf: "transform", bs: "shadow", size: "size", bd: "border" };
+const PSEUDO_IDLE = { content: '""', bg: "rgba(0, 0, 0, 0)", img: "none", color: "-", op: "1", tf: "none", bs: "none" };
+export function parsePseudo(text) {
+  const m = /^(::[a-z-]+)\{(.*)\}$/s.exec(text ?? "");
+  if (!m) return null;
+  const fields = new Map();
+  let part = "", quote = null;
+  const push = () => { const i = part.indexOf(":"); if (i > 0) fields.set(part.slice(0, i), part.slice(i + 1)); part = ""; };
+  for (const ch of m[2]) {
+    if (quote) { part += ch; if (ch === quote) quote = null; }
+    else if (ch === '"' || ch === "'") { quote = ch; part += ch; }
+    else if (ch === ";") push();
+    else part += ch;
+  }
+  push();
+  return { name: m[1], fields };
+}
+
+/**
+ * One change as text. A pseudo-element change says only what differs (`::before color: A -> B`), or, when the
+ * pseudo-element appears with the state, what it paints. The raw strings stay in the proof table.
+ */
+export function describeChange(c) {
+  const a = parsePseudo(c.from), b = parsePseudo(c.to);
+  if (!a && !b) return `${c.set} ${c.prop}: ${c.from} -> ${c.to}`;
+  const where = c.set.replace(/-?pseudo$/, "");
+  const who = `${where && where !== "self" ? where + " " : ""}${(b ?? a).name}`;
+  const label = (k) => PSEUDO_FIELDS[k] ?? k;
+  const size = (v) => v.replace(/pxx/, "px x ");
+  const show = (k, v) => (k === "size" ? size(v) : v);
+  if (a && b) {
+    const keys = [...new Set([...a.fields.keys(), ...b.fields.keys()])].filter((k) => a.fields.get(k) !== b.fields.get(k));
+    return keys.map((k) => `${who} ${label(k)}: ${show(k, a.fields.get(k) ?? "none")} -> ${show(k, b.fields.get(k) ?? "none")}`).join("; ") || `${who}: no change in the recorded fields`;
+  }
+  if (!b) return `${who} removed`;
+  const painted = [...b.fields].filter(([k, v]) => k !== "size" && PSEUDO_IDLE[k] !== v).map(([k, v]) => `${label(k)} ${v}`);
+  return `${who} appears: ${[...painted, b.fields.has("size") ? size(b.fields.get("size")) : null].filter(Boolean).join(", ")}`;
 }
 
 function componentType(key, identity) {
