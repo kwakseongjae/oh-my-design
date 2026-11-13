@@ -31,7 +31,7 @@
 
 | 순서 | 글 | 언어 | 근거 데이터 | 상태 |
 |---|---|---|---|---|
-| 1 | 한국 서비스의 브랜드 컬러를 재 봤다: 어떤 색이 많고, 같은 색을 쓰는 곳은 어디인가 | 한국어 → 영어 | verified 한국 레퍼런스의 주 버튼 색과 `primary` 토큰(`web/references/*/DESIGN.md`) | 표 계산 중(2026-11-14). 2026-11-06 오너 결정의 첫 데이터 스토리 |
+| 1 | 한국 서비스의 브랜드 컬러를 재 봤다: 어떤 색이 많고, 같은 색을 쓰는 곳은 어디인가 | 한국어 → 영어 | verified 한국 레퍼런스의 주 버튼 색과 `primary` 토큰(`web/references/*/DESIGN.md`) | 표와 원본 행 `docs/research/2026-11-14-kr-brand-colours/`(2026-11-14 계산, 다시 돌려도 같은 파일). 초안 작성 중. 2026-11-06 오너 결정의 첫 데이터 스토리 |
 | 2 | 한국 서비스 67곳은 본문을 몇 px로, 행간과 자간은 얼마로 쓰나 | 한국어 | `skills/hangul/references/measured-67.md`(캡처 2026-07) | 데이터 있음. 캡처가 넉 달 전이라 다시 잴지 정해야 한다 |
 | 3 | Fintech brand colours, measured: Revolut, Wise, Monzo, Toss and others | 영어 | 1번과 같은 계산을 핀테크 분류에 | 1번 뒤. 영어권에서 이미 검색 노출이 있는 주제 |
 | 4 | AI가 만든 한국어·일본어 화면은 아직도 틀리나: 9월의 평가를 지금 모델로 다시 | 한국어 | `skills/hangul/references/eval-2026-09.md`, 일본어 기준선(`feat/kana-skill`의 `docs/research/2026-11-14-kana-eval-arm-a.md`) | 한국어 기준선을 지금 모델로 다시 돌려야 한다(9회) |
