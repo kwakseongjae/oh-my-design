@@ -1,6 +1,6 @@
 # Work order: research, measure and draft the oh-my-design reference for {{NAME}} ({{URL}})
 
-You are a worker in a research folder outside the oh-my-design repository: `{{WORKDIR}}`. The repository is at `/Users/kwakseongjae/Desktop/projects/oh-my-design`; you may read it but never write to it.
+You are a worker in a research folder outside the oh-my-design repository: `{{WORKDIR}}`. The repository is at `{{REPO}}`; you may read it but never write to it.
 
 oh-my-design publishes DESIGN.md files that describe real companies' live design systems: colours, type, components and their states, measured from the live site and backed by first-party sources. A reviewer (the orchestrator) re-measures your strongest claim, checks every sentence against your sources and decides what ships. **This order is a trial of you as the drafting author.** An earlier trial rejected another model's drafts for narrative and source errors: sentences that the cited pages did not say. Accuracy beats coverage. Anything you cannot back with a source you opened, or a value you measured, is left out.
 
@@ -85,6 +85,9 @@ The order matters. A WAF often starts blocking after browser probes, so read the
 - **Consent.** If the survey or states summary does not print `# consent rejected via …`, the banner stayed open. Check the viewport screenshot. Name the banner's reject button in your report, quoting its exact text, so that the orchestrator can teach the probe. Do not withhold states only for that reason: record them as raw observations, and the orchestrator re-measures.
 - **Other dialogs.** The capture browser runs from South Korea, so shops often open a shipping-region dialog, and many sites show newsletter or promo popups. Both cover the page and trap focus. If the survey's viewport or its `fixed` list shows one, find its close button in `survey.json` (an icon button labelled "Close", "Fermer", "Schließen", "Cerrar" and so on) and pass its CSS selector in `close` on the states call; the summary prints `# closed <selector>: <label>`. Close buttons only: never choose a country, Confirm or Accept. If a fixed layer still covers a control during the pointer pass, you may set `hideOverlays: true`, and you must say so in the report. (Withings, 2026-10-29: a worker without this option got no states at all.)
 - **Regional redirects.** The capture browser runs from South Korea, so a global site may send it to its Korean edition (Skyscanner and Salesforce did, 2026-11-02). Measure the edition you were given if it uses the same design system, and say so in `body.md` §1, in one sentence naming the edition and its path (e.g. "The measured homepage is the Korean edition (`example.com/kr/`)…"), as well as in `verification.md` with the final URL and HTML `lang`. Do not try to force another country's edition with headers or cookies.
+- **Do not refer to another section by its number** ("see §4", "§§2–4"). The published file has unnumbered headings in a different order, so the number points at the wrong section. Name it: "under Components", "under States". (Batch 9, 2026-11-12: four of seven references carried a stale §.)
+- **A link in `verification.md` must open for a reader of the repository.** Files in your folder are not published: point at the capture file (`survey.json` → `census.computedVars`) or quote the content, never a relative link to a note you wrote here.
+- **Narrative sources carry the exact words.** For every company or brand fact in `body.md` (a date, a named value, a commitment), `verification.md` quotes the first-party sentence it rests on in the original language. A summary of the page in your own words is not a quote.
 - No `[FILL IN]`, no placeholders, no guessed values.
 
 ## Verify
@@ -92,7 +95,7 @@ The order matters. A WAF often starts blocking after browser probes, so read the
 Run this from `{{WORKDIR}}` and quote its last lines in your final message:
 
 ```
-node /Users/kwakseongjae/Desktop/projects/oh-my-design/web/scripts/assemble-reference.mjs front.yaml body.md ./out/DESIGN.md {{TODAY}} {{URL}} "$(cat sources.json)"
+node {{REPO}}/web/scripts/assemble-reference.mjs front.yaml body.md ./out/DESIGN.md {{TODAY}} {{URL}} "$(cat sources.json)"
 ```
 
 It must print `claims N · DESIGN.md v3 + reference.json written`, with no `⚠ not in body text` warning. If it fails, fix your files and run it again.

@@ -14,6 +14,10 @@
 # expiring, a TaskStop) never ends a worker. An id that already has a run directory (other than
 # *.killed) is skipped, so the script can be restarted with the same file at any time.
 # Orders: reverify -> make-reverify-order.py (wave reverify1); new -> make-reference-order.py (wave new1).
+# `new` items run the round-4 method by default (adopted 2026-11-12 after batch 9, docs/research/2026-11-09-collection-method-test.md):
+# headless capture, the worker compiles its own capture (order step 6b), effort medium. The environment turns each back:
+#   OMD_QUEUE_MCP=capture (headed)   OMD_QUEUE_EFFORT=max   OMD_ORDER_COMPILED=0   OMD_QUEUE_WAVE=<folder under ~/.omd-workers, default new2>
+# `reverify` and `spawn` items are unchanged (spawn.sh defaults: max effort, headed capture).
 # Landing a finished run is the orchestrator's job (scripts/workers/land-reference.sh, then review).
 # bash 3.2 (macOS): no associative arrays, no `set -u` with arrays that may empty.
 REPO=$(cd "$(dirname "$0")/../.." && pwd)
@@ -60,15 +64,20 @@ while :; do
     if has_run "$id"; then continue; fi
     case "$kind" in
       reverify)
-        if python3 "$REPO/scripts/workers/make-reverify-order.py" reverify1 "$id" >/dev/null 2>&1; then
-          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/reverify1/$id" --order "$HOME_W/reverify1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
+        # OMD_REVERIFY_COMPILED=1 runs a re-verification the round-4 way too (compiled, published names pinned,
+        # headless, medium). Off by default until it has been tried on more than one reference.
+        rwave=reverify1; rmcp=capture; reffort=()
+        if [ "${OMD_REVERIFY_COMPILED:-0}" = 1 ]; then rwave=reverify2; rmcp=${OMD_QUEUE_MCP:-capture-headless}; reffort=(--effort "${OMD_QUEUE_EFFORT:-medium}"); fi
+        if OMD_ORDER_COMPILED=${OMD_REVERIFY_COMPILED:-0} python3 "$REPO/scripts/workers/make-reverify-order.py" "$rwave" "$id" >/dev/null 2>&1; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/$rwave/$id" --order "$HOME_W/$rwave/$id/order.md" --name "rv-$id" --mcp "$rmcp" ${reffort[@]+"${reffort[@]}"} >/dev/null 2>&1
           echo "SPAWNED $id"; sleep 20
         else echo "SKIPPED $id (no reverify order)"; fi ;;
       new)
         locale=$3; url=$4; shift 4; name="$*"
         origin=$(printf '%s' "$url" | sed -E 's#^(https?://[^/]+).*#\1#')
-        if python3 "$REPO/scripts/workers/make-reference-order.py" new1 "$id" "$name" "$url" "$locale" "$origin" >/dev/null 2>&1; then
-          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/new1/$id" --order "$HOME_W/new1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
+        wave=${OMD_QUEUE_WAVE:-new2}
+        if OMD_ORDER_COMPILED=${OMD_ORDER_COMPILED:-1} python3 "$REPO/scripts/workers/make-reference-order.py" "$wave" "$id" "$name" "$url" "$locale" "$origin" >/dev/null 2>&1; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/$wave/$id" --order "$HOME_W/$wave/$id/order.md" --name "rv-$id" --mcp "${OMD_QUEUE_MCP:-capture-headless}" --effort "${OMD_QUEUE_EFFORT:-medium}" >/dev/null 2>&1
           echo "SPAWNED new:$id"; sleep 20
         else echo "SKIPPED new:$id (no order)"; fi ;;
       spawn)
@@ -80,7 +89,9 @@ while :; do
     esac
   done
   ours=0
-  for d in "$RUNS"/rv-*; do [ -f "$d/pid" ] && [ ! -f "$d/exit-code" ] && ours=$((ours + 1)); done
+  # A run is still ours only while its process lives: a worker killed without an exit-code (2026-11-02 left four)
+  # must not keep this loop from reaching IDLE.
+  for d in "$RUNS"/rv-*; do [ -f "$d/pid" ] && [ ! -f "$d/exit-code" ] && kill -0 "$(cat "$d/pid")" 2>/dev/null && ours=$((ours + 1)); done
   if [ "$i" -ge "${#LINES[@]}" ] && [ "$ours" -eq 0 ]; then echo "IDLE"; exit 0; fi
   sleep 60
 done
