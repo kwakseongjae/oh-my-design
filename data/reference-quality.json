@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-10",
+  "generated_at": "2026-11-13",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 607,
+  "count": 622,
   "counts": {
-    "verified_v2": 437,
+    "verified_v2": 452,
     "partial": 89,
     "legacy_snapshot": 81,
-    "total": 607
+    "total": 622
   },
   "items": [
     {
@@ -18,6 +18,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "1111",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -88,6 +99,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "42maru",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -196,6 +218,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "aeon",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2038,6 +2071,17 @@
       ]
     },
     {
+      "id": "genesis",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "genie",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -2301,6 +2345,17 @@
       "status": "verified_v2",
       "verified_at": "2026-11-03",
       "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hankyung",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 10,
@@ -3132,6 +3187,17 @@
       "reason_codes": []
     },
     {
+      "id": "koexpressway",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "komoot",
       "status": "verified_v2",
       "verified_at": "2026-09-27",
@@ -3776,6 +3842,17 @@
       "reason_codes": []
     },
     {
+      "id": "modetour",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "modusign",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -4021,6 +4098,17 @@
       "reason_codes": []
     },
     {
+      "id": "nec",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "neosapience",
       "status": "partial",
       "verified_at": "2026-06-26",
@@ -4066,6 +4154,17 @@
       "evidence_coverage": 1,
       "surface_count": 2,
       "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nhis",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 13,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4936,6 +5035,17 @@
       "reason_codes": []
     },
     {
+      "id": "rakus",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "rakuten",
       "status": "partial",
       "verified_at": "2026-06-10",
@@ -5260,6 +5370,17 @@
       "reason_codes": []
     },
     {
+      "id": "saltlux",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "samsung",
       "status": "verified_v2",
       "verified_at": "2026-07-13",
@@ -5267,6 +5388,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "samsungfire",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6225,6 +6357,17 @@
       "reason_codes": []
     },
     {
+      "id": "tokyo",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "tokyo-metropolitan",
       "status": "verified_v2",
       "verified_at": "2026-11-03",
@@ -6382,6 +6525,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "tver",
+      "status": "verified_v2",
+      "verified_at": "2026-11-12",
+      "next_reverify_at": "2027-05-11",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "tving",
@@ -6579,6 +6733,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "visitkorea",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },
