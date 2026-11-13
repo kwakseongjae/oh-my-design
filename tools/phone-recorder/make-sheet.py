@@ -15,6 +15,10 @@ sheet.json is the curation, written by whoever looked at the frames:
 Images are written as JPEGs 660 px wide. `redact` paints over every element of that frame whose label matches (the
 element list recorded with the frame gives the rectangle); `redact_band` paints the full-width band between two
 labelled elements. A signed-in phone shows names, ids and balances: redact before a sheet leaves the machine.
+
+Types and patterns are folded into the fixed words of taxonomy.json (a sheet may be curated in looser words; the
+sheet shows the fixed ones), and a word the taxonomy does not know is reported. The sheet also says which of the
+core screen types this app's walk reached. Beside index.html it writes screens.json, the same content as data.
 Needs ffmpeg. No network, no model.
 """
 import html, json, pathlib, re, shutil, subprocess, sys
@@ -24,6 +28,17 @@ spec = json.loads(spec_path.read_text(encoding="utf-8"))
 (out / "img").mkdir(parents=True, exist_ok=True)
 walks = {k: pathlib.Path(v).expanduser() for k, v in spec["walks"].items()}
 SCALE = 3  # points to pixels on the recorded device
+
+taxonomy = json.loads((pathlib.Path(__file__).parent / "taxonomy.json").read_text(encoding="utf-8"))
+fold = {kind: {w: e["ko"] for e in taxonomy[kind] for w in [e["ko"], *e.get("also", [])]} for kind in ("screens", "patterns")}
+english = {e["ko"]: e["en"] for kind in ("screens", "patterns") for e in taxonomy[kind]}
+unknown = set()
+
+
+def fixed(kind, word):
+    if word not in fold[kind]:
+        unknown.add(f"{kind[:-1]}: {word}")
+    return fold[kind].get(word, word)
 
 
 def boxes(frame):
@@ -55,13 +70,17 @@ def render(frame):
 
 
 esc = html.escape
-cards, redacted = [], 0
+cards, redacted, data = [], 0, []
 types, patterns = {}, {}
 for gi, g in enumerate(spec["groups"]):
     items = []
     for fr in g["frames"]:
         name, n = render(fr)
         redacted += n
+        fr["type"] = fixed("screens", fr["type"])
+        fr["patterns"] = list(dict.fromkeys(fixed("patterns", p) for p in fr.get("patterns", [])))
+        data.append({"image": f"img/{name}", "flow": g["title"], "title": fr["title"], "type": fr["type"], "type_en": english.get(fr["type"], ""),
+                     "patterns": fr["patterns"], "patterns_en": [english.get(p, "") for p in fr["patterns"]], "note": fr.get("note", ""), "redacted": bool(n)})
         types[fr["type"]] = types.get(fr["type"], 0) + 1
         for p in fr.get("patterns", []):
             patterns[p] = patterns.get(p, 0) + 1
@@ -83,6 +102,8 @@ for c in spec.get("clips", []):
 findings = "".join(f'<article class="finding"><h3>{esc(f["title"])}</h3><p>{esc(f["body"])}</p></article>' for f in spec.get("findings", []))
 summary = "".join(f"<li>{esc(s)}</li>" for s in spec.get("summary", []))
 method = "".join(f"<li>{esc(s)}</li>" for s in spec.get("method", []))
+core = [e["ko"] for e in taxonomy["screens"] if e.get("core")]
+coverage = "".join(f'<span class="cov{" hit" if c in types else ""}">{esc(c)}{" " + str(types[c]) if c in types else " 없음"}</span>' for c in core)
 chips = lambda d, attr: "".join(f'<button class="chip" data-{attr}="{esc(k)}">{esc(k)} <b>{v}</b></button>' for k, v in sorted(d.items(), key=lambda kv: (-kv[1], kv[0])))
 total = sum(types.values())
 
@@ -132,6 +153,9 @@ figcaption {{ padding:12px 14px 14px; }}
 .finding h3 {{ margin:0 0 6px; font-size:16px; }}
 .finding p {{ margin:0; color:var(--sub); }}
 .method {{ color:var(--sub); font-size:14px; border-top:1px solid var(--line); margin-top:36px; padding-top:18px; }}
+.coverage {{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:10px 0 0; font-size:13px; color:var(--sub); }}
+.cov {{ border:1px dashed var(--line); border-radius:4px; padding:1px 8px; font-variant-numeric:tabular-nums; }}
+.cov.hit {{ border-style:solid; color:var(--ink); background:var(--panel); }}
 dialog {{ border:0; padding:0; background:transparent; max-width:96vw; max-height:96vh; }}
 dialog::backdrop {{ background:rgba(0,0,0,.78); }}
 dialog img {{ display:block; max-height:94vh; max-width:94vw; border-radius:8px; }}
@@ -141,6 +165,7 @@ dialog img {{ display:block; max-height:94vh; max-width:94vw; border-radius:8px;
   <h1>{esc(spec["title"])}</h1>
   <div class="meta">{esc(spec["app"])} <b>{esc(spec["version"])}</b> · {esc(spec["device"])} · 수집 <b>{esc(spec["captured"])}</b> · 화면 <b>{total}</b>장 · 영상 <b>{len(clips)}</b>개{f' · 가림 처리 <b>{redacted}</b>곳' if redacted else ''}</div>
   <div class="summary"><ul>{summary}</ul></div>
+  <div class="coverage" aria-label="기본 화면 유형 가운데 이 시트에 있는 것"><span>기본 화면</span>{coverage}</div>
 </header>
 <main>
   <div class="filters" role="group" aria-label="화면 걸러 보기">
@@ -171,4 +196,8 @@ zoom.addEventListener('click', () => zoom.close());
 </body></html>
 '''
 (out / "index.html").write_text(page, encoding="utf-8")
+(out / "screens.json").write_text(json.dumps({"app": spec["app"], "version": spec["version"], "device": spec["device"], "captured": spec["captured"],
+                                              "core_missing": [c for c in core if c not in types], "screens": data}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+for word in sorted(unknown):
+    print(f"not in taxonomy.json — {word}")
 print(f"{total} screens, {len(clips)} clips, {redacted} redacted area(s) → {out / 'index.html'}")
