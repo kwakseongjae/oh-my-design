@@ -1,0 +1,39 @@
+name: PhoneRecorder
+options:
+  bundleIdPrefix: dev.ohmydesign.recorder
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  Host:
+    type: application
+    platform: iOS
+    sources: [Host]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: dev.ohmydesign.recorder.host
+        INFOPLIST_KEY_CFBundleDisplayName: Recorder
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+  Recorder:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Recorder]
+    dependencies:
+      - target: Host
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: dev.ohmydesign.recorder.tests
+        TEST_TARGET_NAME: Host
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+schemes:
+  Recorder:
+    build:
+      targets:
+        Host: all
+        Recorder: [test]
+    test:
+      targets: [Recorder]
