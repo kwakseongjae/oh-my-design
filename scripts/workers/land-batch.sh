@@ -29,6 +29,9 @@ for SRC in "$@"; do
   cp "$SRC/out/DESIGN.md" "$WT/web/references/$ID/DESIGN.md"
   cp "$SRC/out/reference.json" "$WT/web/references/$ID/reference.json"
   cp "$SRC/verification.md" "$WT/web/references/$ID/.verification.md"
+  # A numbered cross-reference written against the worker's 15 numbered sections points at the wrong section once
+  # the headings are unnumbered and reordered (batch 9: four of seven). Fix it in the worker's body.md and reassemble.
+  grep -nE '§§?[0-9]' "$SRC/out/DESIGN.md" | cut -c1-140 | sed "s/^/[$ID] numbered section reference: /" >&2 || true
   IDS+=("$ID:$NEW")
 done
 
