@@ -1,0 +1,38 @@
+{
+ "about": "The apps of the Korean screen archive, in the order they are walked. `reference` is the catalog id of the same service's DESIGN.md, so a sheet and an item page can point at each other. `core` routes are where the eleven core screens of taxonomy.json are expected; they are guesses until the first walk confirms them, and the first walk rewrites them. `private` lists screens that are looked at without --walk first and kept only with --private or --cover. `never` lists what is not tapped. Bundle ids are from the App Store's public lookup (country kr), 2026-11-14. Whether an app is installed on the phone is not known from here.",
+ "apps": [
+  {"slug": "musinsa", "name": "무신사", "bundle": "com.grab.musinsa", "reference": "musinsa", "status": "sheet built, 4 stills to re-shoot", "walked": "2026-11-13"},
+  {"slug": "karrot", "name": "당근", "bundle": "com.towneers.www", "reference": "karrot", "status": "sheet built, 9 stills to re-shoot; needs another phone number for a demo account", "walked": "2026-11-13"},
+  {"slug": "ohouse", "name": "오늘의집", "bundle": "net.bucketplacet.ohouse", "reference": "ohouse", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["피드", "콘텐츠", "카테고리", "장바구니"], "private": ["마이", "알림"], "never": ["구매하기", "결제", "팔로우"]},
+  {"slug": "29cm", "name": "29CM", "bundle": "kr.co.29cm.App29CM", "reference": "29cm", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["카테고리", "좋아요", "장바구니", "콘텐츠"], "private": ["마이", "알림"], "never": ["구매하기", "결제"]},
+  {"slug": "oliveyoung", "name": "올리브영", "bundle": "com.cjmall.iphone-oliveyoung", "reference": "oliveyoung", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["카테고리", "장바구니", "이벤트", "지도"], "private": ["마이", "알림"], "never": ["구매하기", "결제", "오늘드림 주문"]},
+  {"slug": "baemin", "name": "배달의민족", "bundle": "com.jawebs.baedal", "reference": "baemin", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["카테고리", "장바구니", "지도", "좋아요"], "private": ["마이", "알림", "주소 설정", "주문내역"], "never": ["주문하기", "결제", "담기 뒤 주문"],
+   "note": "The home screen shows the delivery address: --cover it. A shop's menu and photos are the shop's own."},
+  {"slug": "yanolja", "name": "NOL (야놀자)", "bundle": "com.yanolja.motel", "reference": "yanolja", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["지도", "카테고리", "좋아요", "이벤트"], "private": ["마이", "알림"], "never": ["예약하기", "결제"]},
+  {"slug": "kurly", "name": "컬리", "bundle": "com.kurly.MarketKurly1", "reference": "kurly", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["카테고리", "장바구니", "이벤트"], "private": ["마이", "알림", "배송지"], "never": ["주문하기", "결제"]},
+  {"slug": "coupang", "name": "쿠팡", "bundle": "com.coupang.Coupang", "reference": "coupang", "status": "not walked; install to be confirmed by the owner",
+   "extra": ["카테고리", "장바구니", "이벤트"], "private": ["마이쿠팡", "알림", "배송지"], "never": ["구매하기", "바로구매", "결제", "와우 멤버십 가입"]},
+  {"slug": "toss", "name": "토스", "bundle": "com.vivarepublica.cash", "reference": "toss", "status": "not walked; finance: every look is --private, and nothing with money or an account number is kept",
+   "extra": ["전체 메뉴", "혜택(이벤트)"], "private": ["홈", "자산", "송금", "알림", "마이", "설정"], "never": ["송금", "보내기", "결제", "가입", "개설", "동의"],
+   "note": "Last of the week, and only with the owner at the phone: the app opens on balances. A demo account cannot sign in without identity verification, so most of it may have to stay out."}
+ ],
+ "core_route": {
+  "온보딩": "first launch after install only (owner present); otherwise absent",
+  "로그인": "signed out: the app's own log-in entry, usually from 마이. The sign-in options on this screen say whether a demo account works",
+  "홈": "first screen after launch and settle; then `pages --count 4` for what is below",
+  "검색": "the search field or magnifier on home; a screen already seen may be reached with `go`",
+  "검색 결과": "type a plain product word of the app's own category, submit from the keyboard",
+  "목록": "a category, ranking or sale tab from home",
+  "상세": "the first item of a list; then `pages --count 4`",
+  "알림": "the bell on home or 마이: look without --walk first",
+  "마이": "the last bottom tab: look without --walk first, keep with --private",
+  "설정": "the gear on 마이",
+  "팝업": "whatever opens on launch is recorded by `settle --walk` before it is closed"
+ }
+}

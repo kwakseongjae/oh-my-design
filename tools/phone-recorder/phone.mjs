@@ -33,7 +33,9 @@
  *   phone.mjs settle [--bundle ID] [--walk DIR]            answer system alerts and close pop-ups by the policy below
  *   phone.mjs scrollclip --walk DIR [--steps 16] [--cover "x,y,w,h"] [--note "…"]  scroll down in small steps, a screenshot after each, made
  *                                                          into an mp4 with ffmpeg (clip-NNN.mp4 + its first frame)
- *   phone.mjs replay <walk/flow.json>                      run a recorded walk's actions again
+ *   phone.mjs replay <walk/flow.json> [--walk NEW] [--from N] [--plain]   run a recorded walk's actions again; with --walk
+ *                                                          its stills are taken again into NEW. It stops, with the step
+ *                                                          number, at a labelled tap whose element is not on screen.
  *   phone.mjs stop
  *
  * `--bundle` is remembered from the last `launch`. Every action given `--walk DIR` is appended to DIR/flow.json, so
@@ -414,23 +416,40 @@ const commands = {
     record(walk, { action: "scrollclip", clip: name, steps, video, ...(note ? { note } : {}), ...(covered ? { covered } : {}) });
     console.log(`${name}: ${steps + 1} frames${video ? ` → ${path.join(walk, video)}` : " (ffmpeg not found; frames kept)"}`);
   },
+  /**
+   * Run a recorded walk again. With --walk NEW it also takes the walk's stills again into NEW (same notes, same
+   * --private and --cover), which is how a path already walked is re-shot under another account. A tap recorded by
+   * label that finds no such element stops the replay there and says how to go on: positions move and pop-ups
+   * differ between accounts, so a blind tap at the old point is worse than stopping.
+   */
   async replay() {
+    const walk = opt("--walk"), from = Number(opt("--from", 1)), plain = flag("--plain");
     const flow = JSON.parse(readFileSync(args[0], "utf8"));
-    for (const s of flow.steps) {
-      if (s.action === "launch") await call("POST", "/launch", { bundle: s.bundle });
+    for (const [i, s] of flow.steps.entries()) {
+      const n = i + 1;
+      if (n < from) continue;
+      if (s.action === "launch") { await call("POST", "/launch", { bundle: s.bundle }); save({ ...session(), bundle: s.bundle }); record(walk, { action: "launch", bundle: s.bundle }); }
       else if (s.action === "tap" && s.label && s.bundle) {          // by label where there is one: positions move
         const { elements } = await call("GET", `/elements?bundle=${encodeURIComponent(s.bundle)}`);
         const e = elements.find((x) => x.label === s.label) ?? null;
-        if (e && RISKY.test(e.label)) throw new Error(`replay stopped at ${JSON.stringify(e.label)}`);
-        await call("POST", "/tap", e ? { x: e.x + e.w / 2, y: e.y + e.h / 2 } : { x: s.x, y: s.y });
-      } else if (s.action === "tap") await call("POST", "/tap", { x: s.x, y: s.y });
-      else if (s.action === "swipe") await call("POST", "/swipe", s);
-      else if (s.action === "type") await call("POST", "/type", { bundle: s.bundle, text: s.secret ? secret(s.secret) : s.text });
+        if (!e) { console.log(`replay stopped at step ${n}: nothing on screen is labelled ${JSON.stringify(s.label)}. Do this step by hand, then: phone.mjs replay ${args[0]}${walk ? ` --walk ${walk}` : ""} --from ${n + 1}`); process.exitCode = 3; return; }
+        if (RISKY.test(e.label)) throw new Error(`replay stopped at step ${n}: ${JSON.stringify(e.label)}`);
+        await call("POST", "/tap", { x: e.x + e.w / 2, y: e.y + e.h / 2 });
+        record(walk, { action: "tap", x: Math.round(e.x + e.w / 2), y: Math.round(e.y + e.h / 2), label: e.label, type: e.type, bundle: s.bundle, by: "replay" });
+      } else if (s.action === "tap") { await call("POST", "/tap", { x: s.x, y: s.y }); record(walk, { action: "tap", x: s.x, y: s.y, bundle: s.bundle, by: "replay" }); }
+      else if (s.action === "swipe") { await call("POST", "/swipe", s); record(walk, { action: "swipe", x1: s.x1, y1: s.y1, x2: s.x2, y2: s.y2, ...(s.hold ? { hold: s.hold } : {}) }); }
+      else if (s.action === "back") { const h = await call("GET", "/health"); await call("POST", "/swipe", { x1: 2, y1: h.height / 2, x2: h.width * 0.7, y2: h.height / 2 }); record(walk, { action: "back" }); }
+      else if (s.action === "type") { await call("POST", "/type", { bundle: s.bundle, text: s.secret ? secret(s.secret) : s.text }); record(walk, { action: "type", ...(s.secret ? { secret: s.secret } : { text: s.text }), bundle: s.bundle }); }
       else if (s.action === "alert") await call("POST", "/alert", { button: s.button }).catch(() => {});
-      else if (s.action === "home") await call("POST", "/home");
-      else continue;
-      console.log(`replayed ${s.action}${s.label ? " " + JSON.stringify(s.label) : ""}`);
-      await sleep(1200);
+      else if (s.action === "home") { await call("POST", "/home"); record(walk, { action: "home" }); }
+      else if (s.action === "look" && walk) {
+        // --plain drops the recorded --cover rectangles (a demo account has nothing of the owner's under them); --private stays.
+        const r = await look({ bundle: s.bundle ?? bundleOf(), walk, note: s.note, quiet: true, priv: Boolean(s.private), covered: plain ? null : s.covered ?? null });
+        console.log(`step ${n}: ${r.frame} ${JSON.stringify(s.note ?? "")}${r.settled.stable === false ? " (still moving)" : ""}`);
+        continue;
+      } else continue;
+      console.log(`step ${n}: ${s.action}${s.label ? " " + JSON.stringify(s.label) : ""}`);
+      await sleep(s.action === "launch" ? 2500 : 600);
     }
   },
   async stop() { await call("POST", "/quit").catch(() => {}); console.log("session ended"); },
