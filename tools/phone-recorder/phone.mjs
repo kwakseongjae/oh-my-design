@@ -107,12 +107,14 @@ function privatePatterns() {
 }
 function redact(png, elements, scale) {
   const patterns = privatePatterns();
-  const hit = (e) => e.label && e.w < 400 && e.h < 140 && patterns.some((rx) => rx.test(e.label));
+  const words = (e) => [e.label, e.id, e.placeholder].filter(Boolean).join(" ");
+  const hit = (e) => words(e) && e.w < 400 && e.h < 140 && patterns.some((rx) => rx.test(words(e)));
   const boxes = elements.filter((e) => ["text", "button", "link", "textField", "secureTextField", "cell", "other", "image"].includes(e.type) && hit(e));
   // No tree to go by (a secure view, a web view): blur the whole frame rather than keep what cannot be checked.
   const filter = elements.length < 3 ? "boxblur=24:6" : boxes.length ? boxes.map((e) => `drawbox=x=${Math.round((e.x - 2) * scale)}:y=${Math.round((e.y - 2) * scale)}:w=${Math.round((e.w + 4) * scale)}:h=${Math.round((e.h + 4) * scale)}:color=0x9aa0a6:t=fill`).join(",") : null;
   const out = filter ? execFileSync("ffmpeg", ["-loglevel", "error", "-f", "png_pipe", "-i", "pipe:0", "-vf", filter, "-f", "image2pipe", "-vcodec", "png", "pipe:1"], { input: png, maxBuffer: 64 << 20 }) : png;
-  const clean = elements.map((e) => (hit(e) ? { ...e, label: e.label.replace(/[^\s]/g, "•").slice(0, 12) } : e));
+  const dots = (v) => v.replace(/[^\s]/g, "•").slice(0, 12);
+  const clean = elements.map((e) => (hit(e) ? { ...e, ...(e.label ? { label: dots(e.label) } : {}), ...(e.id ? { id: dots(e.id) } : {}), ...(e.placeholder ? { placeholder: dots(e.placeholder) } : {}) } : e));
   return { png: out, elements: clean, redacted: elements.length < 3 ? "blurred" : boxes.length };
 }
 
@@ -133,7 +135,9 @@ function cover(png, elements, rects, scale) {
   const filter = rects.map(([x, y, w, h]) => `drawbox=x=${Math.round(x * scale)}:y=${Math.round(y * scale)}:w=${Math.round(w * scale)}:h=${Math.round(h * scale)}:color=0x9aa0a6:t=fill`).join(",");
   const out = execFileSync("ffmpeg", ["-loglevel", "error", "-f", "png_pipe", "-i", "pipe:0", "-vf", filter, "-f", "image2pipe", "-vcodec", "png", "pipe:1"], { input: png, maxBuffer: 64 << 20 });
   const inside = (e) => rects.some(([x, y, w, h]) => e.x + e.w / 2 >= x && e.x + e.w / 2 <= x + w && e.y + e.h / 2 >= y && e.y + e.h / 2 <= y + h);
-  return { png: out, elements: elements.map((e) => (inside(e) && e.label ? { ...e, label: "•••" } : e)) };
+  // Apps put the same words in the label, the identifier and the placeholder: all three go.
+  const blank = (e) => ({ ...e, ...(e.label ? { label: "•••" } : {}), ...(e.id ? { id: "•••" } : {}), ...(e.placeholder ? { placeholder: "•••" } : {}) });
+  return { png: out, elements: elements.map((e) => (inside(e) ? blank(e) : e)) };
 }
 
 async function look({ bundle, walk, note, quiet = false, wait = true, priv = false, covered = null }) {
