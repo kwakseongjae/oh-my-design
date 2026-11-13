@@ -38,6 +38,7 @@
  * tapped unless --allow-risky is given. The guard reads labels; it cannot know what an unlabelled control does.
  */
 import { execFileSync, spawn } from "node:child_process";
+import { lookup } from "node:dns/promises";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -204,7 +205,22 @@ const commands = {
     save({ base, device, simulator, pid: child.pid, started: new Date().toISOString(), minutes });
     for (let i = 0; i < 150; i += 1) {
       await sleep(2000);
-      try { const h = await call("GET", "/health"); console.log(`ready: ${h.device} (iOS ${h.system}), ${h.width}x${h.height} pt @${h.scale}x, ${base}, for ${minutes} min`); return; } catch { /* still building or installing */ }
+      try {
+        const h = await call("GET", "/health");
+        // Looking up <name>.coredevice.local takes the Mac about five seconds, every time, and every command is a
+        // new process: that was 6 s for a tap and 12 s for a swipe on the first phone walks. Look it up once and
+        // keep the address for the session.
+        let at = base;
+        if (!simulator) {
+          try {
+            const { address } = await lookup(host);
+            const direct = `http://${address.includes(":") ? `[${address}]` : address}:${port}`;
+            save({ ...session(), base: direct });
+            try { await call("GET", "/health"); at = direct; } catch { save({ ...session(), base }); }
+          } catch { /* no address: keep the name */ }
+        }
+        console.log(`ready: ${h.device} (iOS ${h.system}), ${h.width}x${h.height} pt @${h.scale}x, ${at}, for ${minutes} min`); return;
+      } catch { /* still building or installing */ }
       const text = existsSync(log) ? readFileSync(log, "utf8") : "";
       const bad = /error: .*|The device is locked.*|TEST FAILED.*/.exec(text);
       if (bad) throw new Error(`could not start: ${bad[0].slice(0, 200)} (see ${log})`);
