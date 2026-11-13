@@ -209,7 +209,7 @@ describe("diff-values", () => {
 describe("a control with no text", () => {
   it("gives no fg and no font for an icon-only button, and says why in notes", () => {
     const fill = { set: "self", prop: "bg", from: "rgb(35, 108, 246)", to: "rgb(32, 97, 221)" };
-    const out = compile("search", control({ identity: { ...identity, tag: "button", text: "" }, rest: { ...rest, bg: "rgb(35, 108, 246)", fg: "rgb(102, 102, 102)" },
+    const out = compile("search", control({ identity: { ...identity, tag: "button", text: "" }, rest: { ...rest, bg: "rgb(35, 108, 246)", fg: "rgb(102, 102, 102)", label: { k: "button#headerSearchBtn", fg: "rgb(102, 102, 102)", font: "13px/400" } },
       hover: { measured: true, changed: [fill] } }));
     expect(out.fields.bg).toBe("#236cf6");
     expect(out.fields.fg).toBeUndefined();

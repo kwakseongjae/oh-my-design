@@ -176,7 +176,8 @@ export function compileControl(c) {
   // A button or link with no text of its own paints nothing in its computed colour: what a person sees is the
   // icon. Reporting that colour as `fg` makes a contrast check compare a colour that is not on the screen
   // (visitkorea's search button: computed #666666, white magnifier). It goes to `notes` instead.
-  const iconOnly = ["button", "a"].includes(idn.tag) && !(idn.text ?? "").trim() && !rest?.label;
+  // (`rest.label` is always there: with no inner label it is the control itself, so it cannot tell the two apart.)
+  const iconOnly = ["button", "a"].includes(idn.tag) && !(idn.text ?? "").trim();
   for (const [k, v] of [["bg", rest?.bg], ["fg", ink]]) {
     const c = parseColor(v);
     if (k === "fg" && iconOnly) { if (c) notes.push(`no text: the computed colour ${v} paints nothing here, so no fg is given; state the icon's own colour in \`use\` if it was measured`); continue; }
