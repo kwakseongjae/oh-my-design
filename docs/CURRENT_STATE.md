@@ -13,6 +13,7 @@
 - **유효 기간으로 verified를 내리지 않는다**(`EXPIRE_SOURCES_BY_DATE = false`). #123과 #125에 같은 커밋이 있다. figma는 verified로 돌아왔다. 대신할 것은 모델 없는 재측정이다.
 - **토큰 이름:** 내부 명명 규칙 + 실린 이름 이어받기. 시험 결과 이어받기는 59/59 일치, 규칙만으로는 색 44%·글자 67%·모서리 88%. 컴파일러 `--published`, 지시문 `COMPILED_PARTS.md`.
 - **화면 아카이브(Mobbin처럼, 한국부터 주 10곳):** 공개는 보류하고 내부 시범 10곳을 프리뷰로 먼저 본다. **시작은 이번 스프린트 뒤.** 앱 화면은 오너 아이폰으로 찍는 방법을 찾는다(Phone Harness류, 필요하면 오픈소스로, mobster의 기능으로 둬도 된다). 조사와 순서: `docs/research/2026-11-13-screen-archive.md`.
+- **(11/13 오후) 폰 작업은 지금 시작.** 오너: 「내 폰을 활용 해보는것도 좋을 거 같아 … 우리가 만들어도 된다 … mobster의 기능과 콜라보」. 기록기 시제품 `tools/phone-recorder/`(브랜치 `feat/screen-archive`, 워크트리 `.claude/worktrees/screens`): 폰에 UI 테스트 러너를 올려 원본 PNG + 요소 트리 + 순서를 남긴다. 시뮬레이터에서 확인됨. **폰에서는 아직 안 돌렸다: 폰 잠금이 풀려 있어야 한다.** 오너가 잠금을 풀고 앱을 알려 주면 `tools/phone-recorder/record.sh CDAA1DBF-B0CC-543E-9E4C-ED3EEB524C7A <번들 id> 90`.
 
 **새 방식(11/12 확정):** 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium(`run-queue.sh`의 `new` 기본값). 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1`. 선언만 된 색은 토큰이 아니다. 독립 검수 = Codex high 2개(`make-review-order.py`). 근거 `docs/research/2026-11-09-collection-method-test.md`.
 

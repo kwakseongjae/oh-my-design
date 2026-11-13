@@ -129,3 +129,41 @@ Phone Harness covers "an agent taps for you"; it does not record, order or clean
 3. If the test works: the recorder as a small open-source tool, and app screens for the pilot ten.
 
 Further sources: github.com/phone-harness/phone-harness, pypi.org/project/pymobiledevice3.
+
+## A recorder of our own (2026-11-13, prototype)
+
+Owner: 「내 폰을 활용 해보는것도 좋을 거 같아. 모바일 웹으로는 제한되는 부분이 너무 많아 … 더 좋은 방식이 있다면 우리가 만들어도
+된다는거야. mobster의 기능과 콜라보해서.」 The phone work starts now instead of after the sprint.
+
+**What the Mac and the phone already allow.** The owner's iPhone 17 (iOS 27.2) is paired with this Mac over the
+local network with Developer Mode on; the Mac has Xcode 26.5 and a paid development team. That is enough to run an
+XCUITest bundle on the phone, which is the same mechanism Appium and Maestro use underneath. Compared with driving
+the iPhone Mirroring window (Phone Harness):
+
+| | XCUITest bundle on the phone | iPhone Mirroring window |
+|---|---|---|
+| pixels | the phone's own screenshot, 1206 × 2622 PNG | a capture of a scaled video stream |
+| what it reads | the accessibility tree: element type, label, frame for every element | OCR of the picture ("sees text, not icons") |
+| the phone while recording | in the owner's hand, unlocked, used normally | locked and untouched |
+| on the Mac | nothing on screen | a window that must stay open, plus Accessibility and Screen Recording permission |
+| setup | a signed test runner installed on the phone | none on the phone |
+
+**The prototype** (`tools/phone-recorder/`, branch `feat/screen-archive`): a UI test that looks at the screen every
+0.6 s and keeps a frame when it differs from the last kept one and two looks in a row agree (so a transition in
+flight is skipped; the status bar is left out of the comparison). Each kept frame is the PNG plus the tree of the
+named app as JSON, and `flow.json` holds the order and timing. `record.sh <device> [bundle-id] [seconds]` builds,
+runs and exports a walk folder under `~/.omd-workers/screens/walks/`. Nothing is uploaded and walks are not in the
+repository.
+
+- Checked on the iOS 26.5 Simulator: the Settings screen as a 1206 × 2622 PNG with a tree of 168 elements read in
+  0.18 s.
+- On the phone: signing is found, and the build stops at "the device is locked" (the developer disk image mounts
+  only on an unlocked phone). Not yet run on the phone.
+- Still to learn from the first real walk: whether a third-party app's tree is readable and how long it takes,
+  whether finance apps blank their screens to a test runner, and how many frames a carousel or a video produces.
+
+**Towards mobster.** mobsnap restores a Simulator to a saved state; this records what a real device shows. Together:
+walk an app once on a phone, keep the frames and trees as the reference for a flow. The recorder is Swift and
+Xcode-only like mobsnap, so it can move there as a command once the phone runs settle its shape. Maestro 2.8.0 on
+this Mac also lists a `driver-setup` command "for real iOS devices" and an MCP server; it does not list the paired
+phone today, and its real-device path is undocumented, so it is noted and not relied on.
