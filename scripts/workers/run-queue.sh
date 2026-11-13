@@ -64,8 +64,12 @@ while :; do
     if has_run "$id"; then continue; fi
     case "$kind" in
       reverify)
-        if python3 "$REPO/scripts/workers/make-reverify-order.py" reverify1 "$id" >/dev/null 2>&1; then
-          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/reverify1/$id" --order "$HOME_W/reverify1/$id/order.md" --name "rv-$id" --mcp capture >/dev/null 2>&1
+        # OMD_REVERIFY_COMPILED=1 runs a re-verification the round-4 way too (compiled, published names pinned,
+        # headless, medium). Off by default until it has been tried on more than one reference.
+        rwave=reverify1; rmcp=capture; reffort=()
+        if [ "${OMD_REVERIFY_COMPILED:-0}" = 1 ]; then rwave=reverify2; rmcp=${OMD_QUEUE_MCP:-capture-headless}; reffort=(--effort "${OMD_QUEUE_EFFORT:-medium}"); fi
+        if OMD_ORDER_COMPILED=${OMD_REVERIFY_COMPILED:-0} python3 "$REPO/scripts/workers/make-reverify-order.py" "$rwave" "$id" >/dev/null 2>&1; then
+          "$REPO/scripts/workers/spawn.sh" --workdir "$HOME_W/$rwave/$id" --order "$HOME_W/$rwave/$id/order.md" --name "rv-$id" --mcp "$rmcp" ${reffort[@]+"${reffort[@]}"} >/dev/null 2>&1
           echo "SPAWNED $id"; sleep 20
         else echo "SKIPPED $id (no reverify order)"; fi ;;
       new)

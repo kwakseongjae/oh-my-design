@@ -9,6 +9,7 @@ PROBE_BRIEF.md, HARD_RULES.md (the AGENTS.md hard rules) and three format exempl
 (n8n and zara as committed before the v3 conversion; their legacy shape is what the assembler reads).
 Prints the order path; spawn with scripts/workers/spawn.sh --workdir <folder> --order <order> --mcp capture.
 
+OMD_ORDER_PUBLISHED=<file in the folder> (with OMD_ORDER_COMPILED=1) makes that step pin the published token names.
 OMD_ORDER_COMPILED=1 adds step 6b: the worker runs web/scripts/compile-evidence.mjs on its own capture and takes the
 measured parts (components, proof table, token candidates) from compiled/ instead of re-reading states.json. That is
 the round 4 method (docs/research/2026-11-09-collection-method-test.md): the default order is unchanged.
@@ -38,9 +39,13 @@ agents = (REPO / "AGENTS.md").read_text()
 t = (REPO / "docs/workers/REFERENCE_ORDER_TEMPLATE.md").read_text()
 if os.environ.get("OMD_ORDER_COMPILED") == "1":
     parts = "\n".join("   " + l for l in (REPO / "docs/workers/COMPILED_PARTS.md").read_text().rstrip().splitlines())
+    # A reference that is already published keeps its token names for unchanged values: the compiler reads them
+    # from the published file in the worker's folder (make-reverify-order.py puts it there).
+    published = os.environ.get("OMD_ORDER_PUBLISHED", "")
+    pin = f" --published {published}" if published else ""
     step = f"""6b. **Compile the measurements.** From `{{{{WORKDIR}}}}`, run the compiler on the survey folder and every states folder `probe_page` printed:
    ```
-   node {{{{REPO}}}}/web/scripts/compile-evidence.mjs <survey-folder> <states-folder>… --out compiled --id {{{{ID}}}}
+   node {{{{REPO}}}}/web/scripts/compile-evidence.mjs <survey-folder> <states-folder>… --out compiled --id {{{{ID}}}}{pin}
    ```
    Quote the line it prints. The measured parts of your outputs come from `compiled/`, not from your own reading of `states.json`:
 {parts}
