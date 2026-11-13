@@ -75,8 +75,8 @@ components:
     height: 83px
     padding: 0px
     typography: 20px / 700
-    hover: 'descendant-pseudo strong@0.pseudo: ::after{content:"";bg:rgb(11, 13, 15);img:none;color:-;op:1;tf:matrix(1, 0, 0, 1, 0, 0);bs:none;size:0pxx3px} -> ::after{content:"";bg:rgb(11, 13, 15);img:none;color:-;op:1;tf:matrix(1, 0, 0, 1, -42.6016, 0);bs:none;size:85.2031pxx3px}'
-    pressed: 'descendant-pseudo strong@0.pseudo: ::after{content:"";bg:rgb(11, 13, 15);img:none;color:-;op:1;tf:matrix(1, 0, 0, 1, 0, 0);bs:none;size:0pxx3px} -> ::after{content:"";bg:rgb(11, 13, 15);img:none;color:-;op:1;tf:matrix(1, 0, 0, 1, -42.6016, 0);bs:none;size:85.2031pxx3px}'
+    hover: 'descendant ::after transform: matrix(1, 0, 0, 1, 0, 0) -> matrix(1, 0, 0, 1, -42.6016, 0); descendant ::after size: 0px x 3px -> 85.2031px x 3px'
+    pressed: 'descendant ::after transform: matrix(1, 0, 0, 1, 0, 0) -> matrix(1, 0, 0, 1, -42.6016, 0); descendant ::after size: 0px x 3px -> 85.2031px x 3px'
     use: 계약관리 — transparent navigation link on the white header; visible strong label is 20px/700. Hover and press reveal the 3px underline. The focus underline persisted after blur, so it is excluded from focus tokens.
   product-card:
     type: card
@@ -87,9 +87,9 @@ components:
     height: 301px
     padding: 30px 26px
     typography: 18px / 700
-    hover: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:0;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)}'
-    pressed: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:0;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)}'
-    focus: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:0;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:271pxx301px;bd:2px solid rgb(0, 104, 255)}'
+    hover: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); ::after opacity: 0 -> 1'
+    pressed: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); ::after opacity: 0 -> 1'
+    focus: 'self shadow: rgba(0, 0, 0, 0.18) 0px 10px 24px -8px, rgba(0, 0, 0, 0.04) 0px -6px 15px -6px -> rgba(0, 0, 0, 0.18) 0px 10px 24px 0px; self transform: none -> matrix(1, 0, 0, 1, 0, -20); ::after opacity: 0 -> 1'
     use: THE FIT — product card link on the white homepage; 18px/700 title. Hover, press and keyboard focus lift it 20px, strengthen the shadow and reveal a 2px primary-blue pseudo-element border. Browser auto outline excluded.
   expert:
     type: button
@@ -99,9 +99,9 @@ components:
     height: 120px
     padding: 25px 24px
     typography: 14px / 400
-    hover: 'self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1, 0, 0, 1, 0, -60);bs:none;size:140pxx120px} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1.1, 0, 0, 1.1, 0, -60);bs:none;size:140pxx120px}'
-    pressed: 'self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1, 0, 0, 1, 0, -60);bs:none;size:140pxx120px} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1.1, 0, 0, 1.1, 0, -60);bs:none;size:140pxx120px}'
-    focus: 'self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1, 0, 0, 1, 0, -60);bs:none;size:140pxx120px} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.samsungfire.com/v2/resources/images/main/ho…#21929971/86;pos:0% 0% / contain / no-repeat;color:-;op:1;tf:matrix(1.1, 0, 0, 1.1, 0, -60);bs:none;size:140pxx120px}'
+    hover: '::after transform: matrix(1, 0, 0, 1, 0, -60) -> matrix(1.1, 0, 0, 1.1, 0, -60)'
+    pressed: '::after transform: matrix(1, 0, 0, 1, 0, -60) -> matrix(1.1, 0, 0, 1.1, 0, -60)'
+    focus: '::after transform: matrix(1, 0, 0, 1, 0, -60) -> matrix(1.1, 0, 0, 1.1, 0, -60)'
     use: 전문가에게 문의하기 — inquiry button on a pale blue panel. The compiler uses the h5 caption (14px/400, grey) as its label; the larger description retains dark foreground. Hover, press and focus scale the decorative after layer to 1.1.
 omitted:
   - section: spacing

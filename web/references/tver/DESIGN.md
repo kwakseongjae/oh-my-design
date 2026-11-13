@@ -51,8 +51,8 @@ components:
     height: 40px
     padding: 0px 12px
     typography: 12px / 700
-    hover: 'self-pseudo before:  -> ::before{content:"";bg:rgba(31, 43, 62, 0.05);img:none;color:-;op:1;tf:none;bs:none;size:68.125pxx40px}'
-    pressed: 'self-pseudo before:  -> ::before{content:"";bg:rgba(31, 43, 62, 0.05);img:none;color:-;op:1;tf:none;bs:none;size:68.125pxx40px}'
+    hover: '::before appears: bg rgba(31, 43, 62, 0.05), 68.125px x 40px'
+    pressed: '::before appears: bg rgba(31, 43, 62, 0.05), 68.125px x 40px'
     focus: 'self outline: none -> rgb(13, 153, 229) solid 2px off 2px'
     use: Header ログイン button on the light homepage; navy fill and white label. Hover and press add a 5% dark ::before layer; focus uses a 2px sky-blue outline with 2px offset.
   settings:
@@ -62,8 +62,8 @@ components:
     height: 40px
     padding: 0px
     typography: 16px / 700
-    hover: 'self-pseudo before:  -> ::before{content:"";bg:rgba(31, 43, 62, 0.05);img:none;color:-;op:1;tf:none;bs:none;size:40pxx40px}'
-    pressed: 'self-pseudo before:  -> ::before{content:"";bg:rgba(31, 43, 62, 0.05);img:none;color:-;op:1;tf:none;bs:none;size:40pxx40px}'
+    hover: '::before appears: bg rgba(31, 43, 62, 0.05), 40px x 40px'
+    pressed: '::before appears: bg rgba(31, 43, 62, 0.05), 40px x 40px'
     focus: 'self outline: none -> rgb(13, 153, 229) solid 2px off 2px'
     use: 'Header gear icon button, aria-label メニューを開く・閉じる; transparent on #fafbfc. The red notification dot is a separate pseudo-element. Hover and press add the same 5% dark layer as Login.'
   mypage:
@@ -73,8 +73,8 @@ components:
     height: 48px
     padding: 0px 20px
     typography: 14px / 700
-    hover: 'self fg: rgb(82, 82, 82) -> rgb(6, 6, 6); label label.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant svg@0.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant span@1.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.0.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.0.fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none; descendant path@0.1.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.1.fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none'
-    pressed: 'self fg: rgb(82, 82, 82) -> rgb(6, 6, 6); label label.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant svg@0.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant span@1.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.0.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.0.fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none; descendant path@0.1.fg: rgb(82, 82, 82) -> rgb(6, 6, 6); descendant path@0.1.fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none'
+    hover: 'fg: rgb(82, 82, 82) -> rgb(6, 6, 6) (self, label, 4 descendants); fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none (2 descendants)'
+    pressed: 'fg: rgb(82, 82, 82) -> rgb(6, 6, 6) (self, label, 4 descendants); fill: rgb(82, 82, 82)|none -> rgb(6, 6, 6)|none (2 descendants)'
     focus: 'self outline: none -> rgb(13, 153, 229) solid 2px off 2px'
     use: 'マイページ navigation link to /mypage/fav; transparent on #fafbfc. Its label and icon darken from #525252 to #060606 on hover and press.'
   search:
@@ -95,7 +95,7 @@ components:
     height: 205.8px
     padding: 0px 0px 0px 19px
     typography: 12px / 700
-    focus: 'self-pseudo after:  -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:rgb(13, 153, 229) 0px 0px 0px 2px;size:256pxx201.75px}'
+    focus: '::after appears: shadow rgb(13, 153, 229) 0px 0px 0px 2px, 256px x 201.75px'
     use: 'First drama-ranking episode link, ポリティカルパン, /episodes/eptnq9s7ly; transparent on #fafbfc. The visible series title is #212121 at 12px/700; the anchor wrapper is 16px/400. Keyboard focus paints a 2px blue ::after shadow. No brand hover or pressed change was measured.'
   special-card:
     type: card

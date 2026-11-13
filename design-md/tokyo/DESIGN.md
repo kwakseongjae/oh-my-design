@@ -69,9 +69,9 @@ components:
     height: 44px
     padding: 0px 0px 8px
     typography: 16px / 400
-    hover: 'self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255)'
-    pressed: 'self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255)'
-    focus: 'self shadow: none -> rgba(0, 123, 255, 0.25) 0px 0px 0px 3.2px; self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255)'
+    hover: 'deco: none -> underline solid rgb(255, 255, 255) (self, label)'
+    pressed: 'deco: none -> underline solid rgb(255, 255, 255) (self, label)'
+    focus: 'self shadow: none -> rgba(0, 123, 255, 0.25) 0px 0px 0px 3.2px; deco: none -> underline solid rgb(255, 255, 255) (self, label)'
     use: '暮らし・健康・福祉 — a transparent header navigation link over #018838. Hover and press add a white underline; keyboard focus also adds the measured translucent blue shadow.'
   keyword-input:
     type: input
@@ -81,8 +81,8 @@ components:
     height: 60px
     padding: 16px
     typography: 16px / 400
-    pressed: 'ancestor-pseudo up1.pseudo: ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:600pxx60px;bd:1px solid rgb(26, 26, 28)} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:600pxx60px;bd:2px solid rgb(209, 141, 15)}'
-    focus: 'ancestor-pseudo up1.pseudo: ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:600pxx60px;bd:1px solid rgb(26, 26, 28)} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:none;size:600pxx60px;bd:2px solid rgb(209, 141, 15)}'
+    pressed: 'ancestor ::after border: 1px solid rgb(26, 26, 28) -> 2px solid rgb(209, 141, 15)'
+    focus: 'ancestor ::after border: 1px solid rgb(26, 26, 28) -> 2px solid rgb(209, 141, 15)'
     use: 'キーワードを入力してください — the white keyword field on the light search panel. The input itself has no border; its parent’s ::after paints the resting 1px border and the 2px #d18d0f press/focus border. Hover was measured with no change.'
   event-card:
     type: card

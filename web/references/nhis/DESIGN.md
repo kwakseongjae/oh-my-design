@@ -83,8 +83,8 @@ components:
     height: 62px
     padding: 4px 16px 0px
     typography: 19px / 700
-    hover: 'self border: none | none | 4px solid rgba(0, 0, 0, 0) | none -> none | none | 4px solid rgb(238, 0, 0) | none; self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#b76ec1f4/74;pos:50% 50% / contain / no-repeat;color:-;op:1;tf:none;bs:none;size:20pxx20px} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#5ad6df62/77;pos:50% 50% / contain / no-repeat;color:-;op:1;tf:none;bs:none;size:20pxx20px}'
-    pressed: 'self border: none | none | 4px solid rgba(0, 0, 0, 0) | none -> none | none | 4px solid rgb(238, 0, 0) | none; self-pseudo after: ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#b76ec1f4/74;pos:50% 50% / contain / no-repeat;color:-;op:1;tf:none;bs:none;size:20pxx20px} -> ::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#5ad6df62/77;pos:50% 50% / contain / no-repeat;color:-;op:1;tf:none;bs:none;size:20pxx20px}'
+    hover: 'self border: none | none | 4px solid rgba(0, 0, 0, 0) | none -> none | none | 4px solid rgb(238, 0, 0) | none; ::after image: url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#b76ec1f4/74 -> url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#5ad6df62/77'
+    pressed: 'self border: none | none | 4px solid rgba(0, 0, 0, 0) | none -> none | none | 4px solid rgb(238, 0, 0) | none; ::after image: url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#b76ec1f4/74 -> url("https://www.nhis.or.kr/_res/nhis/nhis/img/icon/head_gnb…#5ad6df62/77'
     focus: 'self shadow: none -> rgb(37, 110, 244) 0px 0px 0px 2px; self outline: none -> rgb(37, 110, 244) solid 3px off -4px'
     use: 민원서비스열기 — navigation button on the white header; transparent at rest, with a red bottom border and a changed ::after icon reference on hover and press.
   login-link:

@@ -10771,7 +10771,7 @@ export const REFERENCE_QUALITY = [
     "tier1SourceCount": 10,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 4,
+    "statedComponentCount": 3,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null

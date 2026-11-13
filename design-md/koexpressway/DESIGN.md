@@ -72,8 +72,8 @@ components:
     height: 76.5px
     padding: 24px 30px
     typography: 19px / 400
-    hover: 'self bg: rgb(6, 58, 116) -> rgb(2, 26, 53); self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self transform: none -> matrix(1, 0, 0, 1, 0, -2); self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255); label label.tf: none -> matrix(1, 0, 0, 1, 0, -2)'
-    pressed: 'self bg: rgb(6, 58, 116) -> rgb(2, 26, 53); self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self transform: none -> matrix(1, 0, 0, 1, 0, -2); self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255); label label.tf: none -> matrix(1, 0, 0, 1, 0, -2)'
+    hover: 'self bg: rgb(6, 58, 116) -> rgb(2, 26, 53); self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self transform: none -> matrix(1, 0, 0, 1, 0, -2); deco: none -> underline solid rgb(255, 255, 255) (self, label); label label.tf: none -> matrix(1, 0, 0, 1, 0, -2)'
+    pressed: 'self bg: rgb(6, 58, 116) -> rgb(2, 26, 53); self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self transform: none -> matrix(1, 0, 0, 1, 0, -2); deco: none -> underline solid rgb(255, 255, 255) (self, label); label label.tf: none -> matrix(1, 0, 0, 1, 0, -2)'
     focus: 'self outline: none -> rgb(252, 1, 1) dashed 3px off 1px'
     use: 한국도로공사 전자조달(e-bid) — a link to the separate e-bid service, over the photographic disclosure section.
   nav-about:
@@ -83,8 +83,8 @@ components:
     height: 50px
     padding: 10px 0px
     typography: 20px / 700
-    hover: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self deco: none -> underline solid rgb(19, 20, 22); label label.deco: none -> underline solid rgb(19, 20, 22)'
-    pressed: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self deco: none -> underline solid rgb(19, 20, 22); label label.deco: none -> underline solid rgb(19, 20, 22)'
+    hover: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; deco: none -> underline solid rgb(19, 20, 22) (self, label)'
+    pressed: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; deco: none -> underline solid rgb(19, 20, 22) (self, label)'
     focus: 'self outline: none -> rgb(252, 1, 1) dashed 3px off 1px'
     use: 공사소개 — a transparent navigation link over the photographic hero header. Persisting header foreground changes are not focus tokens.
   search-open:
@@ -105,8 +105,8 @@ components:
     height: 25.5px
     padding: 0px
     typography: 17px / 500
-    hover: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255); ancestor up1.bg: rgba(255, 255, 255, 0.15) -> rgba(255, 255, 255, 0.25); ancestor up1.tf: none -> matrix(1, 0, 0, 1, 0, -5)'
-    pressed: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; self deco: none -> underline solid rgb(255, 255, 255); label label.deco: none -> underline solid rgb(255, 255, 255); ancestor up1.bg: rgba(255, 255, 255, 0.15) -> rgba(255, 255, 255, 0.25); ancestor up1.tf: none -> matrix(1, 0, 0, 1, 0, -5)'
+    hover: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; deco: none -> underline solid rgb(255, 255, 255) (self, label); ancestor up1.bg: rgba(255, 255, 255, 0.15) -> rgba(255, 255, 255, 0.25); ancestor up1.tf: none -> matrix(1, 0, 0, 1, 0, -5)'
+    pressed: 'self outline: none -> rgb(255, 0, 0) dashed 3px off -2px; deco: none -> underline solid rgb(255, 255, 255) (self, label); ancestor up1.bg: rgba(255, 255, 255, 0.15) -> rgba(255, 255, 255, 0.25); ancestor up1.tf: none -> matrix(1, 0, 0, 1, 0, -5)'
     focus: 'self outline: none -> rgb(252, 1, 1) dashed 3px off 1px'
     use: 경영공시 자세히보기 — a transparent link inside an image-backed disclosure card. Hover and press also brighten and lift its parent panel.
   footer-sites:

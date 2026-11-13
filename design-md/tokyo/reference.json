@@ -877,7 +877,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "ee073a111024b3b945ae4fc6b3b13fc44bd1d986d6ded440f39567f90d34081e",
+    "sourceSha256": "6da6b6b2e4886fc887d592b9946ce877904fba7bdb7995f09bc70936875fb5d2",
     "overlay": null,
     "prose": [],
     "numeric": [
