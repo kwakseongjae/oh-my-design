@@ -31,12 +31,13 @@ const { z } = await import(req.resolve('zod'));
 const BROWSER = process.argv.includes('--browser') ? process.argv[process.argv.indexOf('--browser') + 1] : 'worker';
 if (BROWSER !== 'worker' && BROWSER !== 'headless') { console.error('--browser must be "worker" or "headless"'); process.exit(2); }
 const PROBE = path.join(REPO, 'web/scripts/probe-keyboard-states.mjs');
+const TEXT_CENSUS = path.join(REPO, 'web/scripts/text-census.mjs');
 const ROOT = path.join(REPO, 'artifacts/reference-evidence/visual');
 const stamp = () => new Date().toISOString().replace(/[-:]/g, '').replace(/\..+/, '').replace('T', '-');
 
-function run(args, timeoutMs) {
+function run(args, timeoutMs, script = PROBE) {
   return new Promise((resolve) => {
-    const p = spawn(process.execPath, [PROBE, ...args], { cwd: path.join(REPO, 'web') });
+    const p = spawn(process.execPath, [script, ...args], { cwd: path.join(REPO, 'web') });
     let out = '', err = '';
     const t = setTimeout(() => p.kill('SIGTERM'), timeoutMs);
     p.stdout.on('data', (d) => (out += d));
@@ -49,7 +50,7 @@ const server = new McpServer({ name: 'omd-capture', version: '0.1.0' });
 server.registerTool('probe_page', {
   description:
     `Load one public page in ${BROWSER === 'headless' ? 'a headless Chrome (no window' : 'the worker Chrome (headed'}, fresh profile, consent rejected) and measure it with probe-keyboard-states.mjs. ` +
-    'mode "survey" lists interactive elements to choose from and records the census (every custom property with its value, the top rendered colours, paragraph ink, fonts and @font-face sources) plus page screenshots and a scroll video; mode "states" measures up to 6 controls (identity, rest, hover, pressed, keyboard focus) ' +
+    'mode "survey" lists interactive elements to choose from and records the census (every custom property with its value, the top rendered colours, paragraph ink, fonts and @font-face sources), a text census (text-census.json: the sizes headings and paragraphs are set in) plus page screenshots and a scroll video; mode "states" measures up to 6 controls (identity, rest, hover, pressed, keyboard focus) ' +
     'and saves a PNG crop of each control in each state, page screenshots (viewport, full) and a scroll video. Returns the summary and the output directory.',
   inputSchema: {
     url: z.string().regex(/^https?:\/\/[^\s]+$/),
@@ -86,9 +87,17 @@ server.registerTool('probe_page', {
     if (hideOverlays) args.push('--hide-overlays');
   }
   const r = await run(args, 15 * 60 * 1000);
-  fs.writeFileSync(path.join(dir, 'summary.txt'), r.out + r.err);
+  // A survey also records the sizes headings and paragraphs are set in (they are not interactive, so the probe's
+  // rows do not hold them). Always headless: it only reads, and it must not open a second window. A failure here
+  // leaves the survey as it is.
+  let census = '';
+  if (mode === 'survey' && r.code === 0) {
+    const t = await run([url, '--locale', locale, '--out', path.join(dir, 'text-census.json')], 2 * 60 * 1000, TEXT_CENSUS);
+    census = `\n${(t.out + t.err).trim().split('\n').pop()}`;
+  }
+  fs.writeFileSync(path.join(dir, 'summary.txt'), r.out + r.err + census);
   const files = fs.readdirSync(dir, { recursive: true }).filter((f) => /\.(png|webm|json|txt)$/.test(f)).sort();
-  const text = [`exit ${r.code} · output ${dir}`, `files: ${files.join(', ')}`, '', (r.out + r.err).slice(-12000)].join('\n');
+  const text = [`exit ${r.code} · output ${dir}`, `files: ${files.join(', ')}`, '', (r.out + r.err).slice(-12000) + census].join('\n');
   return { content: [{ type: 'text', text }], isError: r.code !== 0 && r.code !== 3 };
 });
 

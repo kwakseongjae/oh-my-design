@@ -145,8 +145,8 @@ describe("token candidates", () => {
 
   it("tallies type sizes and radii from rows and controls, skipping hidden 0px text", () => {
     expect(cand.type).toEqual([
-      { size: 13, weight: 700, interactive: 2, controls: [], lineHeight: "14.3px", family: "Pretendard" },
-      { size: 18, weight: 700, interactive: 0, controls: ["cta"], lineHeight: null, family: null },
+      { size: 13, weight: 700, interactive: 2, heading: 0, paragraph: 0, controls: [], lineHeight: "14.3px", family: "Pretendard" },
+      { size: 18, weight: 700, interactive: 0, heading: 0, paragraph: 0, controls: ["cta"], lineHeight: null, family: null },
     ]);
     expect(cand.radii).toEqual([{ value: "0px", interactive: 2, controls: [] }, { value: "3px", interactive: 1, controls: [] }, { value: "100px", interactive: 0, controls: ["cta"] }]);
   });
@@ -169,6 +169,18 @@ describe("token candidates", () => {
     // what the reference publishes and this capture does not hold is listed, not silently dropped
     expect(again.publishedNotMeasured).toEqual({ colours: [{ name: "old-accent", value: "#123456" }], type: [{ name: "lead", value: "40/400" }], radii: [] });
     expect(candidatesMarkdown(again)).toContain("| `#1e2428` | `ink` (published) |");
+  });
+
+  it("takes heading and paragraph sizes from the text census when the capture has one", () => {
+    const text = { roles: { heading: [{ size: 32, weight: 700, chars: 15, lineHeight: "44px", family: "Pretendard" }], paragraph: [{ size: 16, weight: 400, chars: 1292, lineHeight: "24px", family: "Pretendard" }, { size: 13, weight: 700, chars: 8, lineHeight: "19.5px", family: "Pretendard" }] } };
+    const withText = tokenCandidates(survey, controls, controls.map(compileControl), null, text);
+    const row = (size: number, weight: number) => withText.type.find((t) => t.size === size && t.weight === weight);
+    expect(row(16, 400)).toMatchObject({ paragraph: 1292, heading: 0, interactive: 0, lineHeight: "24px" });
+    expect(row(32, 700)).toMatchObject({ heading: 15, lineHeight: "44px" });
+    expect(row(13, 700)).toMatchObject({ interactive: 2, paragraph: 8 }); // a size the rows already had gains its paragraph count
+    const md = candidatesMarkdown(withText);
+    expect(md).toContain("| 16px / 400 | — | 0 | — | 1292 | 24px | Pretendard | — |");
+    expect(md).not.toContain("Not captured: the size of headings");
   });
 
   it("is the same list for the same evidence, and says what the capture does not hold", () => {

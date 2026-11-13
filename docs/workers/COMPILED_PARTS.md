@@ -16,7 +16,9 @@
     ("Declared in the site's CSS, not seen painted"), in a table of CSS property and value, and say there that the
     list is not exported as tokens. Leave a declared colour from a framework or third-party namespace out
     altogether. (Batch 9, 2026-11-12: exported as tokens, these gave references of 57 to 100 colour tokens.)
-  - Type sizes and radii: a token for each row you can tie to a kind of element or a measured control.
+  - Type sizes and radii: a token for each row you can tie to a kind of element or a measured control. The
+    `heading chars` and `paragraph chars` columns say how much heading and paragraph text is set in a size: the
+    largest paragraph count is the body size, and heading sizes come from the heading column, not from guesses.
   - A value that is not in the list needs its source named in report.md.
 - **Token names.** Where the `name` column of `candidates.md` gives a name, use it. A `(published)` name is the
   one the reference already carries for that value: keep it exactly, and do not give it to another value. For a

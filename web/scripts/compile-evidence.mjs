@@ -11,7 +11,8 @@
  * token carries the published name, so a re-written reference keeps its names where nothing changed (names.json
  * holds the same pins as data). Without it, a paragraph-ink colour is still marked `foreground`.
  *
- * <capture-folder> holds survey.json and/or states.json (with its cfg.json), as written by the capture service
+ * <capture-folder> holds survey.json and/or states.json (with its cfg.json), and text-census.json where the
+ * capture ran one (heading and paragraph sizes; text-census.mjs), as written by the capture service
  * under artifacts/reference-evidence/visual/<id>/<timestamp>/. Give every folder of one capture session; later
  * folders win per control, except that a state an earlier run measured is kept when a later run could not.
  *
@@ -318,8 +319,8 @@ export function publishedNames(front) {
   return out;
 }
 
-/** @param {any} survey @param {any[]} [controls] @param {any[]} [compiled] @param {ReturnType<typeof publishedNames> | null} [published] */
-export function tokenCandidates(survey, controls = [], compiled = [], published = null) {
+/** @param {any} survey @param {any[]} [controls] @param {any[]} [compiled] @param {ReturnType<typeof publishedNames> | null} [published] @param {any} [text] the text census (text-census.mjs), when the capture has one */
+export function tokenCandidates(survey, controls = [], compiled = [], published = null, text = null) {
   const cz = survey?.census ?? {}, cc = cz.census ?? {};
   const colours = new Map(), sizes = new Map(), radii = new Map();
   const colour = (hex) => colours.get(hex) ?? colours.set(hex, { value: hex, painted: {}, interactive: 0, controls: [], declared: [] }).get(hex);
@@ -327,7 +328,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     const m = /^(\d+(?:\.\d+)?)px ?\/ ?(\d+)$/.exec(font ?? "");
     if (!m || Number(m[1]) === 0) return null; // 0px: an image link with hidden text
     const key = `${m[1]}/${m[2]}`;
-    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, lineHeights: new Map(), families: new Map(), controls: [] }).get(key);
+    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, heading: 0, paragraph: 0, lineHeights: new Map(), families: new Map(), controls: [] }).get(key);
   };
   const radius = (v) => (v ? radii.get(v) ?? radii.set(v, { value: v, interactive: 0, controls: [] }).get(v) : null);
   const bump = (map, k) => { if (k) map.set(k, (map.get(k) ?? 0) + 1); };
@@ -356,6 +357,15 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     const rad = radius(c.identity?.radius);
     if (rad) note(rad.controls, c.key);
   });
+  // Headings and paragraphs are not interactive, so the survey's rows do not hold their sizes: the text census does.
+  for (const role of ["heading", "paragraph"]) {
+    for (const e of text?.roles?.[role] ?? []) {
+      const t = size(`${e.size}px/${e.weight}`);
+      if (!t) continue;
+      t[role] += e.chars;
+      bump(t.lineHeights, e.lineHeight); bump(t.families, e.family);
+    }
+  }
   for (const [name, v] of Object.entries(cz.computedVars ?? {})) {
     const hex = declaredColor(v);
     if (hex) colour(hex).declared.push(name);
@@ -371,7 +381,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     .sort((a, z) => weight(z) - weight(a) || z.controls.length - a.controls.length || a.value.localeCompare(z.value));
   const declaredOnly = all.filter((c) => !weight(c) && !c.controls.length).sort((a, z) => a.declared[0].localeCompare(z.declared[0]))
     .map((c) => ({ value: c.value, declared: c.declared }));
-  const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || z.size - a.size || z.weight - a.weight)
+  const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || (z.heading + z.paragraph) - (a.heading + a.paragraph) || z.size - a.size || z.weight - a.weight)
     .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families), ...named("type", `${t.size}/${t.weight}`) }));
   const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value))
     .map((r) => ({ ...r, ...named("radii", `${parseFloat(r.value)}px`) }));
@@ -383,6 +393,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     colours: seen.slice(0, COLOUR_CAP), declaredOnly: declaredOnly.slice(0, DECLARED_CAP),
     type: type.slice(0, TYPE_CAP), radii: rad.slice(0, RADIUS_CAP),
     families: Object.fromEntries(["body", "h1", "button"].map((r) => [r, cz.fonts?.[r] ?? null])),
+    textCensus: Boolean(text?.roles),
     ...(gone ? { publishedNotMeasured: gone } : {}),
     notListed: { colours: Math.max(0, seen.length - COLOUR_CAP), declaredOnly: Math.max(0, declaredOnly.length - DECLARED_CAP),
       type: Math.max(0, type.length - TYPE_CAP), radii: Math.max(0, rad.length - RADIUS_CAP) },
@@ -413,11 +424,15 @@ export function candidatesMarkdown(cand) {
       ...cand.declaredOnly.map((c) => `| \`${c.value}\` | ${few(c.declared.map((n) => `\`${n}\``), 3)} |`)] : ["- none"]),
     ...more(cand.notListed.declaredOnly, "`census.computedVars` in `survey.json`"), "",
     `## Type sizes (${cand.type.length})`, "",
-    "From the survey's rows and the measured controls. Not captured: the size of headings and running text that",
-    "are not links or controls.", "",
+    ...(cand.textCensus
+      ? ["From the survey's rows, the measured controls and the text census. `heading` and `paragraph` count the",
+        "characters of text set in that size inside h1–h3 and inside <p>: the larger counts are the page's heading",
+        "and body sizes."]
+      : ["From the survey's rows and the measured controls. Not captured: the size of headings and running text that",
+        "are not links or controls."]), "",
     ...["body", "h1", "button"].map((r) => `- ${r} family: ${cand.families[r] ?? "not read"}`), "",
-    "| size / weight | name | interactive elements | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|---|",
-    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
+    "| size / weight | name | interactive elements | heading chars | paragraph chars | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|---|---|---|",
+    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.heading || "—"} | ${t.paragraph || "—"} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
     ...more(cand.notListed.type, "`rows` in `survey.json`"), "",
     `## Corner radii (${cand.radii.length})`, "",
     "| radius | name | interactive elements | measured controls |", "|---|---|---|---|",
@@ -464,9 +479,10 @@ function main() {
   if (!args.length) { console.error("usage: compile-evidence.mjs <capture-folder>... [--out <dir>] [--id <id>]"); process.exit(2); }
   const read = (f) => JSON.parse(readFileSync(f, "utf8"));
   const folders = [...args].sort();
-  let survey = null; const statesFiles = [], cfgs = [];
+  let survey = null, text = null; const statesFiles = [], cfgs = [];
   for (const f of folders) {
     if (existsSync(path.join(f, "survey.json"))) survey = read(path.join(f, "survey.json"));
+    if (existsSync(path.join(f, "text-census.json"))) text = read(path.join(f, "text-census.json"));
     if (existsSync(path.join(f, "states.json"))) statesFiles.push(read(path.join(f, "states.json")));
     if (existsSync(path.join(f, "cfg.json"))) cfgs.push(read(path.join(f, "cfg.json")));
   }
@@ -487,7 +503,7 @@ function main() {
     published = publishedNames(yaml.load(text.slice(4, close), { schema: yaml.JSON_SCHEMA }));
     writeFileSync(path.join(out, "names.json"), JSON.stringify(published, null, 1) + "\n");
   }
-  const candidates = tokenCandidates(survey, controls, compiled, published);
+  const candidates = tokenCandidates(survey, controls, compiled, published, text);
   writeFileSync(path.join(out, "candidates.md"), candidatesMarkdown(candidates));
   writeFileSync(path.join(out, "candidates.json"), JSON.stringify(candidates, null, 1) + "\n");
   const n = compiled.filter((c) => c.emitted).length;
