@@ -6,7 +6,13 @@
  * client. It is meant to be driven by a coding agent one step at a time: look, decide, act, look again.
  *
  *   phone.mjs start <device-id|simulator-udid> [--minutes 20] [--port 8123]
- *   phone.mjs look [--bundle ID] [--walk DIR] [--note "…"]   screenshot + the app's elements; with --walk, kept as the next frame
+ *   phone.mjs look [--bundle ID] [--walk DIR] [--note "…"] [--private] [--no-wait]
+ *                                                          screenshot + the app's elements; with --walk, kept as the next frame.
+ *                                                          It waits until the screen stops changing (up to 6 s) before it shoots.
+ *                                                          --private paints over every number and every string listed in
+ *                                                          ~/.omd-workers/screens/private.json before anything is written.
+ *   phone.mjs explore --walk DIR [--bundle ID] [--max 8] [--private]   open what the screen offers, one at a time, checking
+ *                                                          each tap changed the screen, recording and coming back
  *   phone.mjs tap <x> <y> | tap --label "텍스트" [--bundle ID] [--nth N] [--allow-risky]
  *   phone.mjs swipe up|down|left|right | swipe <x1> <y1> <x2> <y2>
  *   phone.mjs type "text" [--bundle ID] | type --secret <account>   --secret types a value from the macOS Keychain
@@ -66,6 +72,37 @@ function secret(account) {
 }
 const bundleOf = () => opt("--bundle") ?? session().bundle ?? null;
 
+const sigOf = async () => Buffer.from((await call("GET", "/signature")).sig, "base64");
+const sigDistance = (a, b) => { let n = 0; for (let i = 0; i < a.length; i += 1) if (Math.abs(a[i] - b[i]) > 12) n += 1; return n / a.length; };
+/** Wait until two looks in a row agree (images loaded, transition over). Says how long it took and whether it settled. */
+async function stable(maxMs = 6000) {
+  const t0 = Date.now(); let prev = await sigOf(), calm = 0;
+  while (Date.now() - t0 < maxMs) {
+    await sleep(350);
+    const cur = await sigOf();
+    calm = sigDistance(prev, cur) < 0.006 ? calm + 1 : 0;
+    prev = cur;
+    if (calm >= 2) return { stable: true, waitedMs: Date.now() - t0, sig: cur };
+  }
+  return { stable: false, waitedMs: Date.now() - t0, sig: prev };   // a video or a carousel keeps moving: shot anyway, and marked
+}
+/** What must not be kept from a signed-in phone: every number, and the strings the owner listed. */
+function privatePatterns() {
+  const f = path.join(HOME, "private.json");
+  const extra = existsSync(f) ? JSON.parse(readFileSync(f, "utf8")).patterns ?? [] : [];
+  return [/\d/, ...extra.map((p) => new RegExp(p, "i"))];
+}
+function redact(png, elements, scale) {
+  const patterns = privatePatterns();
+  const hit = (e) => e.label && e.w < 400 && e.h < 140 && patterns.some((rx) => rx.test(e.label));
+  const boxes = elements.filter((e) => ["text", "button", "link", "textField", "secureTextField", "cell", "other", "image"].includes(e.type) && hit(e));
+  // No tree to go by (a secure view, a web view): blur the whole frame rather than keep what cannot be checked.
+  const filter = elements.length < 3 ? "boxblur=24:6" : boxes.length ? boxes.map((e) => `drawbox=x=${Math.round((e.x - 2) * scale)}:y=${Math.round((e.y - 2) * scale)}:w=${Math.round((e.w + 4) * scale)}:h=${Math.round((e.h + 4) * scale)}:color=0x9aa0a6:t=fill`).join(",") : null;
+  const out = filter ? execFileSync("ffmpeg", ["-loglevel", "error", "-f", "png_pipe", "-i", "pipe:0", "-vf", filter, "-f", "image2pipe", "-vcodec", "png", "pipe:1"], { input: png, maxBuffer: 64 << 20 }) : png;
+  const clean = elements.map((e) => (hit(e) ? { ...e, label: e.label.replace(/[^\s]/g, "•").slice(0, 12) } : e));
+  return { png: out, elements: clean, redacted: elements.length < 3 ? "blurred" : boxes.length };
+}
+
 /** Append an action to a walk's flow.json. */
 function record(walk, entry) {
   if (!walk) return;
@@ -77,10 +114,16 @@ function record(walk, entry) {
   return flow.steps.length;
 }
 
-async function look({ bundle, walk, note, quiet = false }) {
-  const png = await call("GET", "/screen");
-  const tree = bundle ? await call("GET", `/elements?bundle=${encodeURIComponent(bundle)}`) : { front: null, elements: [] };
+async function look({ bundle, walk, note, quiet = false, wait = true, priv = false }) {
+  const settled = wait ? await stable() : { stable: null, waitedMs: 0 };
+  let png = await call("GET", "/screen");
+  let tree = bundle ? await call("GET", `/elements?bundle=${encodeURIComponent(bundle)}`) : { front: null, elements: [] };
   const alert = await call("GET", "/alert");
+  let redacted = null;
+  if (priv) {   // before anything touches the disk
+    const r = redact(png, tree.elements, (await call("GET", "/health")).scale);
+    png = r.png; tree = { ...tree, elements: r.elements }; redacted = r.redacted;
+  }
   let frame = null;
   if (walk) {
     mkdirSync(walk, { recursive: true });
@@ -88,19 +131,20 @@ async function look({ bundle, walk, note, quiet = false }) {
     frame = `frame-${String(n).padStart(3, "0")}`;
     writeFileSync(path.join(walk, frame + ".png"), png);
     writeFileSync(path.join(walk, frame + ".elements.json"), JSON.stringify({ bundle, alert, ...tree }, null, 1) + "\n");
-    record(walk, { action: "look", frame, bundle, ...(note ? { note } : {}), elements: tree.elements.length, ...(alert.alert ? { alert } : {}) });
+    record(walk, { action: "look", frame, bundle, ...(note ? { note } : {}), elements: tree.elements.length, ...(alert.alert ? { alert } : {}),
+      ...(wait ? { stable: settled.stable, waitedMs: settled.waitedMs } : {}), ...(priv ? { private: true, redacted } : {}) });
   } else {
     writeFileSync(path.join(HOME, "last.png"), png);
   }
   if (!quiet) {
-    console.log(`${frame ?? "screen"}: ${path.join(walk ?? HOME, (frame ?? "last") + ".png")}${bundle ? ` · ${bundle} ${tree.front ? "in front" : "NOT in front"}` : ""}`);
+    console.log(`${frame ?? "screen"}: ${path.join(walk ?? HOME, (frame ?? "last") + ".png")}${bundle ? ` · ${bundle} ${tree.front ? "in front" : "NOT in front"}` : ""}${wait ? (settled.stable ? ` · settled in ${settled.waitedMs} ms` : ` · STILL MOVING after ${settled.waitedMs} ms`) : ""}${priv ? ` · private: ${redacted} painted over` : ""}`);
     if (alert.alert) console.log(`SYSTEM ALERT: ${alert.texts.join(" / ")} → buttons: ${alert.buttons.join(" | ")}`);
     for (const e of tree.elements) {
       if (e.type === "other" && !e.label) continue;
       console.log(`  ${String(e.i).padStart(3)} ${e.type.padEnd(13)} ${JSON.stringify(e.label).slice(0, 60).padEnd(34)} @${e.x + Math.round(e.w / 2)},${e.y + Math.round(e.h / 2)}${e.selected ? " selected" : ""}${e.disabled ? " disabled" : ""}`);
     }
   }
-  return { tree, alert, frame };
+  return { tree, alert, frame, settled };
 }
 
 const commands = {
@@ -137,7 +181,50 @@ const commands = {
     }
     throw new Error(`the agent server did not answer in 5 minutes (see ${log})`);
   },
-  async look() { await look({ bundle: bundleOf(), walk: opt("--walk"), note: opt("--note") }); },
+  async look() { const priv = flag("--private"), wait = !flag("--no-wait"); await look({ bundle: bundleOf(), walk: opt("--walk"), note: opt("--note"), priv, wait }); },
+  /**
+   * Open what the screen offers, one at a time: tabs if the tree has a tab bar, otherwise the first rows or buttons of
+   * the content. After each tap it checks the screen really changed, records it, scrolls once, and comes back; a tap
+   * that changed nothing is noted and skipped, and losing the way back ends the round with a relaunch.
+   */
+  async explore() {
+    const walk = opt("--walk"), bundle = bundleOf(), max = Number(opt("--max", 8)), priv = flag("--private");
+    if (!walk || !bundle) throw new Error("explore needs --walk and --bundle (or a previous launch)");
+    const h = await call("GET", "/health");
+    const root = await look({ bundle, walk, note: "explore: start", quiet: true, priv });
+    const els = root.tree.elements, mid = (e) => ({ x: e.x + e.w / 2, y: e.y + e.h / 2 });
+    // A tab bar: elements the app calls tabs, or three or more labelled buttons sharing one row at the very bottom.
+    // (Rows of a list that happen to end near the bottom are not one: Settings, 2026-11-13.)
+    const low = els.filter((e) => e.type === "button" && e.label && e.y > h.height * 0.88);
+    const sameRow = low.filter((e) => low.filter((o) => Math.abs(o.y - e.y) < 12).length >= 3);
+    const tabs = els.some((e) => e.type === "tab") ? els.filter((e) => e.type === "tab") : sameRow;
+    const rows = els.filter((e) => ["cell", "button", "link"].includes(e.type) && e.label && !RISKY.test(e.label) && e.y > h.height * 0.14 && e.y < h.height * 0.86 && e.h >= 28);
+    const seen = new Set(); const targets = [];
+    for (const e of (tabs.length >= 2 ? tabs : rows)) { const k = `${e.label}|${Math.round(e.y / 8)}`; if (!seen.has(k)) { seen.add(k); targets.push(e); } }
+    console.log(`explore: ${tabs.length >= 2 ? "tab bar" : "content rows"}, ${Math.min(max, targets.length)} of ${targets.length} target(s)`);
+    let done = 0;
+    for (const t of targets.slice(0, max)) {
+      const before = await sigOf();
+      const { x, y } = mid(t);
+      await call("POST", "/tap", { x, y });
+      const after = await stable();
+      if (sigDistance(before, after.sig) < 0.02) { record(walk, { action: "tap", label: t.label, x, y, bundle, by: "explore", result: "no change" }); console.log(`  ${JSON.stringify(t.label)}: no change, skipped`); continue; }
+      record(walk, { action: "tap", label: t.label, type: t.type, x: Math.round(x), y: Math.round(y), bundle, by: "explore" });
+      const opened = await look({ bundle, walk, note: `explore: ${t.label}`, quiet: true, priv });
+      if (!opened.tree.front) { console.log(`  ${JSON.stringify(t.label)}: left the app — relaunching`); await call("POST", "/launch", { bundle }); await stable(); continue; }
+      await call("POST", "/swipe", { x1: h.width / 2, y1: h.height * 0.72, x2: h.width / 2, y2: h.height * 0.28 });
+      await look({ bundle, walk, note: `explore: ${t.label}, scrolled`, quiet: true, priv });
+      done += 1;
+      console.log(`  ${JSON.stringify(t.label)}: recorded (${opened.frame}${opened.settled.stable ? "" : ", still moving"})`);
+      if (tabs.length >= 2) continue;                              // tabs: no way back needed
+      await call("POST", "/swipe", { x1: 2, y1: h.height / 2, x2: h.width * 0.7, y2: h.height / 2 });
+      const back = await stable();
+      if (sigDistance(root.settled.sig ?? before, back.sig) > 0.25) {  // not where we started: one more back, then give up on this round
+        await call("POST", "/swipe", { x1: 2, y1: h.height / 2, x2: h.width * 0.7, y2: h.height / 2 }); await stable();
+      }
+    }
+    console.log(`explore: ${done} screen(s) recorded`);
+  },
   async tap() {
     const walk = opt("--walk"), label = opt("--label"), nth = Number(opt("--nth", 0)), risky = flag("--allow-risky"), bundle = bundleOf();
     let x, y, hit = null;

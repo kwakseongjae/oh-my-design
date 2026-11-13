@@ -5,6 +5,7 @@ import XCTest
 ///
 ///   GET  /health                      device, system, screen size in points and its pixel scale
 ///   GET  /screen                      the device's own screenshot, PNG
+///   GET  /signature                   a small grey thumbnail of the screen (base64), to wait for it to stop changing
 ///   GET  /elements?bundle=ID          the visible, labelled or interactive elements of that app, flat
 ///   GET  /tree?bundle=ID              the whole accessibility snapshot of that app
 ///   GET  /alert                       the system alert in front, if any: its text and button labels
@@ -52,6 +53,9 @@ final class PhoneAgentUITests: XCTestCase {
             let shot = XCUIScreen.main.screenshot().image
             return json(["ok": true, "device": UIDevice.current.name, "system": UIDevice.current.systemVersion,
                          "width": shot.size.width, "height": shot.size.height, "scale": shot.scale])
+        case ("GET", "/signature"):
+            // A 24 x 48 grey thumbnail without the status bar: enough to tell "still loading" from "settled".
+            return json(["sig": Data(RecorderUITests.signature(XCUIScreen.main.screenshot().image)).base64EncodedString()])
         case ("GET", "/screen"):
             return AgentServer.Response(type: "image/png", data: XCUIScreen.main.screenshot().pngRepresentation)
         case ("GET", "/elements"), ("GET", "/tree"):
