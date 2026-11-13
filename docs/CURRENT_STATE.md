@@ -13,7 +13,7 @@
 - **유효 기간으로 verified를 내리지 않는다**(`EXPIRE_SOURCES_BY_DATE = false`). #123과 #125에 같은 커밋이 있다. figma는 verified로 돌아왔다. 대신할 것은 모델 없는 재측정이다.
 - **토큰 이름:** 내부 명명 규칙 + 실린 이름 이어받기. 시험 결과 이어받기는 59/59 일치, 규칙만으로는 색 44%·글자 67%·모서리 88%. 컴파일러 `--published`, 지시문 `COMPILED_PARTS.md`.
 - **화면 아카이브(Mobbin처럼, 한국부터 주 10곳):** 공개는 보류하고 내부 시범 10곳을 프리뷰로 먼저 본다. **시작은 이번 스프린트 뒤.** 앱 화면은 오너 아이폰으로 찍는 방법을 찾는다(Phone Harness류, 필요하면 오픈소스로, mobster의 기능으로 둬도 된다). 조사와 순서: `docs/research/2026-11-13-screen-archive.md`.
-- **(11/13 오후) 폰 작업은 지금 시작.** 오너: 「내 폰을 활용 해보는것도 좋을 거 같아 … 우리가 만들어도 된다 … mobster의 기능과 콜라보」. 기록기 시제품 `tools/phone-recorder/`(브랜치 `feat/screen-archive`, 워크트리 `.claude/worktrees/screens`): 폰에 UI 테스트 러너를 올려 원본 PNG + 요소 트리 + 순서를 남긴다. 시뮬레이터에서 확인됨. **폰에서는 아직 안 돌렸다: 폰 잠금이 풀려 있어야 한다.** 오너가 잠금을 풀고 앱을 알려 주면 `tools/phone-recorder/record.sh CDAA1DBF-B0CC-543E-9E4C-ED3EEB524C7A <번들 id> 90`.
+- **(11/13 오후) 폰 하네스:** 오너가 「에이전트가 알아서 조작하고 허용·로그인·비회원을 스스로 넘기는 형태(aside처럼)」를 원해 기록기를 하네스로 바꿨다. `tools/phone-recorder/`(브랜치 `feat/screen-archive`, 워크트리 `.claude/worktrees/screens`): 폰의 테스트 러너가 명령 서버를 띄우고 `phone.mjs`로 보기·탭·스와이프·입력·알림 처리·기록·재생을 한다. **오너 아이폰에서 무신사로 첫 실행 성공**(화면 7장, 요소 트리 읽힘, `~/.omd-workers/screens/walks/musinsa-20261113`). 시작: 폰 잠금을 푼 상태에서 `node tools/phone-recorder/phone.mjs start CDAA1DBF-B0CC-543E-9E4C-ED3EEB524C7A`. 남은 것: 탐색을 자동으로 도는 루프, 금융 앱·로그인 벽 시험, mobster로 옮기는 안. 기록은 조사 문서의 「From recorder to harness」.
 
 **새 방식(11/12 확정):** 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium(`run-queue.sh`의 `new` 기본값). 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1`. 선언만 된 색은 토큰이 아니다. 독립 검수 = Codex high 2개(`make-review-order.py`). 근거 `docs/research/2026-11-09-collection-method-test.md`.
 

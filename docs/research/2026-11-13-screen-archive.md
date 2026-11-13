@@ -167,3 +167,40 @@ walk an app once on a phone, keep the frames and trees as the reference for a fl
 Xcode-only like mobsnap, so it can move there as a command once the phone runs settle its shape. Maestro 2.8.0 on
 this Mac also lists a `driver-setup` command "for real iOS devices" and an MCP server; it does not list the paired
 phone today, and its real-device path is undocumented, so it is noted and not relied on.
+
+## From recorder to harness, and the first run on the phone (2026-11-13)
+
+Owner, after stopping the passive recorder: 「너가 알아서 조작해서 저런 허용이나 로그인이나 비회원 로그인이나 자동으로 감지해서
+넘어가는 그런 형태가 되면 좋을 거 같은데 … 자율성을 확보할 수 있는(aside처럼)」. The UI test bundle now also serves the
+device over HTTP (`PhoneAgentUITests`, `AgentServer`), and `phone.mjs` is the client an agent drives one step at a
+time: look (screenshot + elements), tap by label or point, swipe, back, type, launch, answer alerts, `settle`
+(alerts answered with the least access offered, pop-ups closed by their own dismiss control, a login wall reported
+with the ways past it), and every step appended to `flow.json` so a walk replays as a macro. `tap --label` refuses
+controls about paying, sending, deleting or leaving an account unless told otherwise.
+
+**Simulator (iOS 26.5):** Settings walked by label; Maps' location alert read (text and three buttons), recorded
+and answered with 「허용 안 함」.
+
+**The owner's iPhone 17 (iOS 27.2), Musinsa, about four minutes:**
+
+- The Mac reaches the server on the phone at `<name>.coredevice.local:8123` over the pairing tunnel. No cable, no
+  mirroring window, no root tunnel. The first start builds, signs and installs the runner in under two minutes.
+- A third-party app's tree is readable: the permission guide as 18 elements, the ranking tab with every tab, chip
+  and product image labelled, the product page as 109 to 120 elements.
+- Walked: permission guide → 「확인」 by label → an attendance promo closed → home → 「랭킹」 by label → the top
+  product by position → scrolled → back → another page. Seven frames at 1206 × 2622, 10 MB, with their element
+  lists and the flow.
+- **What the tree does not hold:** the promo pop-up's two buttons were not in it (a web view or a custom layer with
+  no accessibility labels). It was closed by reading the screenshot and tapping the position. So the loop needs
+  both: the tree where the app exposes it, the picture where it does not.
+- **A tap by label can land on the wrong thing:** 「검색」 matched the icon inside a search bar whose placeholder was
+  a rotating promotion, and opened that promotion's page. Labels need the element type and a look afterwards.
+- No system alert appeared (Musinsa asks for each permission when the feature is first used), and no login wall
+  on this path. Finance apps were not tried.
+
+**Installing from the App Store:** driving the App Store app is the same as driving any app. A re-download (the
+cloud icon) needs no confirmation and can be automated. A first download asks for a double-click of the side
+button and Face ID, which a test runner cannot give: the harness can go up to that sheet and the owner confirms.
+Paid apps and in-app purchases stay behind the guard.
+
+Walks stay on this Mac (`~/.omd-workers/screens/walks/`), outside the repository.
