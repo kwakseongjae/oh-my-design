@@ -1,0 +1,3 @@
+/* plain English stylesheet */
+p { line-height: 1.2; font-style: italic; }
+.cut { text-overflow: ellipsis; }

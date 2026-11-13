@@ -1,0 +1,4 @@
+/* 本文の字間 */
+body { letter-spacing: 0.02em; }
+h1 { letter-spacing: -0.02em; }
+p { letter-spacing: 0; }

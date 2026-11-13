@@ -1,0 +1,2 @@
+/* 文節改行 */
+.headline { word-break: auto-phrase; }

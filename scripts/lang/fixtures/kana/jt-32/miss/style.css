@@ -1,0 +1,4 @@
+/* 省略表示 */
+.cut { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; }
+.x { overflow-x: clip; text-wrap: nowrap; text-overflow: ellipsis; }
