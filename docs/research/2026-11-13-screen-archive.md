@@ -492,3 +492,44 @@ Simulator: `look` with its wait 1.4 s (settled in 1.0 s, the first time the wait
 action and frame, `pages` three overlapping stills of the Settings list in 10.6 s, stopping by itself at
 the end of the list and with no fling. The Simulator answers on 127.0.0.1, so none of this says how fast the
 phone will be; the first thing to time in the next session is still one tap.
+
+## Before the next phone session: the first ten apps, replay, and three stills of where it could live (2026-11-14)
+
+- **Apps.** `tools/phone-recorder/apps.json` lists the first ten in walking order: Musinsa and Karrot (walked),
+  then 오늘의집, 29CM, 올리브영, 배달의민족, NOL(야놀자), 컬리, 쿠팡, 토스. All ten have a DESIGN.md in the catalog,
+  so a sheet and an item page can point at each other. Bundle ids are from the App Store's public lookup; whether
+  each is installed on the phone is not known. Toss is last and only with the owner at the phone: it opens on
+  balances, and a demo account cannot pass identity verification. The file also holds where each of the eleven
+  core screens is expected; those routes are guesses until a first walk confirms them.
+- **Replay.** `phone.mjs replay <flow.json> --walk NEW` runs a recorded walk's actions and takes its stills again
+  into NEW with the same notes and the same `--private` / `--cover`; `--plain` drops the cover rectangles. A tap
+  recorded by label that finds no such element stops the replay with the step number instead of tapping the old
+  point. Checked on the Simulator (five steps replayed, stopped at the sixth as built to).
+- **Not done:** noticing a notification banner inside `look`. It cannot be exercised on the Simulator as set up,
+  so it waits for the phone; until then Focus mode and viewing each frame stay the guard.
+
+**Three stills of where the archive could live on the site** (local files, `~/Downloads/kr-screens/mock/`; the
+frames are not uploaded anywhere):
+
+| still | what it is | what it is good for | what it costs |
+|---|---|---|---|
+| `a-gallery.html` | its own gallery at `/screens`: filters by app, screen type and pattern over one grid | the Mobbin shape people already know; one URL to share | a new section to keep alive; thin with two apps |
+| `b-item-page.html` | a Screens tab on `/design-systems/<id>`, flows in rows, the reference's tokens beside them | nobody else has screens next to measured values; the pages that already get the visits | only apps that are in the catalog; no cross-app view |
+| `c-compare.html` | one page per screen type (`/screens/home`): the same screen across apps, and a pattern table | a page per search intent ("앱 홈 화면 비교"); the form articles can quote | needs several apps per type before a page says anything |
+
+They are not exclusive: B can ship with the first apps, C once five or six apps share a type, A as the index over
+both. Which comes first is the owner's call.
+
+**Publication rules, a draft for the owner to change** (publication is still on hold):
+
+1. *Published:* the app's own interface on screens anyone signed in sees the same way (home, search, results,
+   lists, details, settings, sign-in, onboarding, pop-ups), shot with a demo account.
+2. *Not published:* a still where more than a small strip had to be painted grey; any screen whose content is
+   mostly other people's writing or photos (a Karrot post, a chat, a community thread); anything with money, an
+   account number or an address; checkout.
+3. *Open, the owner's decision:* product photos and brand imagery inside commerce screens belong to sellers and
+   brands. Choices: publish as shot, publish at thumbnail size only, or blur image areas. This note takes no legal
+   position.
+4. *On every sheet:* app name and version, capture date and device, a line that the screens belong to their
+   companies and this is not affiliated, and where to ask for removal.
+5. *Size:* a JPEG about 400 points wide; the original PNGs and the element lists stay on this Mac.
