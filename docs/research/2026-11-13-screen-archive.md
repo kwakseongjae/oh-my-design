@@ -298,3 +298,40 @@ What a week of ten needs that does not exist yet: a per-app plan of screens to r
 is the checklist: home, search, list, detail, cart, my page, sign-in, onboarding, empty states), labels proposed
 from the element lists instead of written by hand, and a first-run path (delete, reinstall, onboarding, sign-in)
 with the owner present for the second factor.
+
+## Priority one, and what a week of ten is made of (2026-11-13, night)
+
+Owner: 「우리의 핵심은 mobbin like를 일단 한국에 대해서 확실히 제공하는게 1순위야. 내 생각이지만 이걸 통해서 star 1000을 달성할
+수도 있을 것 같아.」 The Korean screen archive is the first priority of the project from here; reference collection and
+the language skills keep running beside it. Publication is still held until the owner has seen the pilot.
+
+**The unit of work is one app, and it has four steps.**
+
+| step | who | tool | what comes out |
+|---|---|---|---|
+| walk | the agent on the owner's phone | `phone.mjs` (`settle`, `look`, `explore`, `scrollclip`; `--private` on any "my" screen and in finance apps) | a walk folder: frames, element lists, `flow.json`, one clip of the main screen |
+| first pass | a script | `suggest-labels.py <walk> --scaffold <sheet.json>` | a type and patterns per frame in the fixed vocabulary, and which core screens are missing |
+| curation | the agent, looking at every frame | the sheet's JSON | titles, notes, groups by flow, corrected labels, redactions, findings |
+| sheet | a script | `make-sheet.py` | `index.html` and `screens.json` (the same content as data, for an index page or an MCP tool later) |
+
+**A fixed vocabulary** (`tools/phone-recorder/taxonomy.json`): 30 screen types and 47 patterns, Korean with an English
+name. Filters only mean something across apps if every sheet uses the same words; the first Musinsa curation had 84
+pattern words on 26 screens, most used once. The builder now folds looser words into the fixed ones and reports a
+word it does not know. Eleven types are *core*: onboarding, log in, home, search, search results, list, detail,
+notifications, my page, settings, pop-up. A sheet shows which of them it reached. Musinsa lacks three (onboarding,
+log in, settings): the first two need a first run, which needs the owner beside the phone.
+
+**How far rules get on labels.** Against the hand-curated Musinsa sheet, `suggest-labels.py` names the type on 14
+of 24 frames, and 27 of the 64 patterns it proposes are in the curated set. It is right on the standard screens
+(home, search, results, detail, cart, my page, notifications) and blind where the tree is: which top tab is selected
+(ranking, sale and release all read as home), a pop-up drawn without labels, a web view. So it saves typing; it does
+not replace looking at the frame.
+
+**What decides the pace.** Musinsa took two walks and about two hours including the tool fixes; the walk itself was
+about 25 minutes of phone time. At that rate ten apps are four to five hours of an unlocked phone a week, in
+sessions of two or three apps. The phone has to be awake and reachable from the Mac (same Wi-Fi, or a cable): on
+the evening of 11/13 it was paired but its tunnel stayed unavailable, and nothing on the Mac's side can open it.
+
+**Choosing the ten.** From what is installed on the phone (`devicectl device info apps`), most-used Korean services
+first, one category at most twice a week, finance last and only in private mode. Musinsa and Karrot are the first
+two. An app that is not installed waits for the owner (the App Store asks for Face ID).
