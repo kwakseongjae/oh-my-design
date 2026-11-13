@@ -13,7 +13,6 @@ colors:
   footer-border: '#e4e4e4'
   muted: '#717171'
   news-bg: '#f8f8f8'
-  search-fg: '#666666'
   primary-hover: '#2061dd'
   banner-tourcard-bg: '#1f70ea'
   banner-ai-bg: '#8fdaff'
@@ -73,7 +72,6 @@ components:
   search:
     type: button
     backgroundColor: '#236cf6'
-    textColor: '#666666'
     height: 36px
     padding: 0px
     typography: 13px / 400
@@ -173,7 +171,6 @@ The primary choice is the measured search background, not a colour sampled from 
 | `footer-border` | `#e4e4e4` | 1px borders around six footer social links. |
 | `muted` | `#717171` | Text of the three 더보기 links, including events-more. |
 | `news-bg` | `#f8f8f8` | Backgrounds of the three 여행소식 article links in survey.rows. |
-| `search-fg` | `#666666` | Computed foreground of the search control; its visible SVG stroke is white, not this value. |
 | `primary-hover` | `#2061dd` | Search hover and pressed background; footer 개인정보처리방침 link ink. |
 | `banner-tourcard-bg` | `#1f70ea` | Background of the 디지털 관광주민증 promotional link. |
 | `banner-ai-bg` | `#8fdaff` | Background of the AI 콕콕 promotional link. |
@@ -326,9 +323,3 @@ The official heading “완벽한 여행 준비를 위한 구석구석 서비스
 “Build a white domestic-travel homepage with Pretendard GOV where available, 16px/400 paragraph text in `#58585f` and 26px/800 section headings. Use a 36px circular `#236cf6` search control that darkens to `#2061dd` on hover and press. Present seasonal photography, service shortcuts and festival posters in distinct rows.”
 
 The font is the measured loaded face; no substitute is specified. Use the measured component states above without inventing disabled or validation variants.
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `search`.** Text `#666666` on `#236cf6` measures 1.24:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.

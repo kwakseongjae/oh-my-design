@@ -174,12 +174,6 @@
         "method": "computed-style",
         "captured": "2026-11-13"
       },
-      "colors.search-fg": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "computed-style",
-        "captured": "2026-11-13"
-      },
       "components.festival-card.textColor": {
         "surface_id": "home",
         "source_id": "home-live",
@@ -349,12 +343,6 @@
         "captured": "2026-11-13"
       },
       "components.search.backgroundColor": {
-        "surface_id": "home",
-        "source_id": "home-live",
-        "method": "live-inspect",
-        "captured": "2026-11-13"
-      },
-      "components.search.textColor": {
         "surface_id": "home",
         "source_id": "home-live",
         "method": "live-inspect",
@@ -696,14 +684,13 @@
     "tool": "@google/design.md@0.4.0",
     "summary": {
       "errors": 0,
-      "warnings": 52,
+      "warnings": 50,
       "infos": 2
     },
     "byRule": {
       "unknown-typography-property": 11,
       "extension-component-property": 22,
-      "contrast-ratio": 1,
-      "orphaned-tokens": 18
+      "orphaned-tokens": 17
     },
     "findings": [
       {
@@ -906,12 +893,6 @@
       },
       {
         "severity": "warning",
-        "rule": "contrast-ratio",
-        "path": "components.search",
-        "message": "textColor (#666666) on backgroundColor (#236cf6) has contrast ratio 1.24:1, below WCAG AA minimum of 4.5:1."
-      },
-      {
-        "severity": "warning",
         "rule": "orphaned-tokens",
         "path": "colors.canvas",
         "message": "'canvas' is defined but never referenced by any component."
@@ -979,12 +960,6 @@
       {
         "severity": "warning",
         "rule": "orphaned-tokens",
-        "path": "colors.search-fg",
-        "message": "'search-fg' is defined but never referenced by any component."
-      },
-      {
-        "severity": "warning",
-        "rule": "orphaned-tokens",
         "path": "colors.primary-hover",
         "message": "'primary-hover' is defined but never referenced by any component."
       },
@@ -1022,7 +997,7 @@
   },
   "migration": {
     "from": "omd-0.1",
-    "sourceSha256": "e79b2f999113321ac506c522353cc9e94fe3c4cdb6631d4f51d09f3eaaba1b46",
+    "sourceSha256": "974a0fbe9039e782061f8f7148ee479931eba1093755de9ab6a9532019163ebc",
     "overlay": null,
     "prose": [],
     "numeric": [
