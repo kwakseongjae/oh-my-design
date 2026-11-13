@@ -347,18 +347,19 @@ app under it: Musinsa 27 screens and a home clip, Karrot 12 screens and a home c
 | `musinsa-20261113c` (re-shoot: home, search, suggestions, results, a product, a promotion page; home clip) | 18 | 6 | 15 min |
 | `karrot-20261113` (five tabs, settings, search to a listing, all services, notifications; home clip) | 32 | 12 | 17 min |
 
-Karrot at 12 frames in 17 minutes is slower per frame than Musinsa's first walk (33 in 31). The reasons are below;
-none of them is the app.
+Karrot at 12 frames in 17 minutes is slower per frame than Musinsa's first walk (33 in 31). The reasons are below.
 
 **What went wrong, and what was done about it**
 
-- **The phone answers slowly.** A swipe takes 12 s and a tap 6 s on the phone, against about 1 s on a Simulator.
-  The runner log showed XCUITest waiting 12 s for the system to go idle before each event. The framework has a
-  switch for skipping that wait (`XCUIApplicationProcess.shouldSkipPreEventQuiescence` and its post-event twin,
-  getters with no setters). Making both answer yes removed the wait from the log, and the event itself then took
-  the same 12 s, so the time is spent on the device, not in the wait the switch controls. Reverted; not solved.
-  Next to try: time the same tap on the home screen and inside a quiet app, to learn whether it follows the app in
-  front; and a cable instead of the wireless link.
+- **The phone answers slowly, and the cause was on the Mac.** A swipe took 12 s and a tap 6 s on the phone, against
+  about 1 s on a Simulator. First guess: XCUITest's wait for the system to go idle (the log showed 12 s of it
+  before each event). The framework's own switch for skipping that wait
+  (`XCUIApplicationProcess.shouldSkipPreEventQuiescence` and its post-event twin) removed the wait from the log
+  and changed nothing in the total, so that change was taken back out. The unfiltered log then showed the event
+  itself taking 0.3 s, with the 11 s falling between one command and the next. Each `phone.mjs` command is a new
+  process that looks up `<name>.coredevice.local` for every request, and that lookup takes 5.0 s on this Mac
+  (measured with `dns.lookup`); a tap is one request, a swipe two. `start` now resolves the name once and keeps
+  the address. **Not yet run on the phone** (it had locked): the next session's first job is to time a tap.
 - **"Still moving" on almost every frame.** `look` waits for two matching looks; a home screen with a carousel or a
   video never gives them, so every look runs to its 6 s limit (about 11 s with the calls) and the frame is marked
   unsettled although it is fully drawn. The check answers "is anything moving", and the question is "has it
@@ -375,6 +376,14 @@ none of them is the app.
   distance, the map. Stills are painted (some at capture, the listing lines when the sheet is built). The home clip
   can only be painted where the screen does not move, so listing neighbourhoods are visible in it: the Karrot
   clip must be cut or re-shot before that sheet leaves this Mac.
+- **Banners in the clips too.** Viewing every clip frame afterwards found a banner in two of Karrot's fifteen and
+  one of Musinsa's nineteen. Those frames were removed and the clips rebuilt (Karrot's now starts a little below the
+  top). Four banners in about half an hour: sessions need the phone's Focus mode on, and the check in `look`.
+- **The walk kept what the sheet hid.** The sheet's pictures were painted; the walk's own frames and element lists
+  were not, and an element's identifier and placeholder carried the same words as its label (a covered chat list
+  still had names in the file). `scrub-walk.py` now paints the sheet's rectangles into the walk and blanks all
+  three fields; capture blanks all three as well. Run on the three Musinsa walks and Karrot's; a count of the
+  private strings in their files is zero for the two new walks.
 - **The link.** The phone was paired but its tunnel stayed unavailable for about twenty minutes until the owner
   reconnected it; the first start then failed with "Timed out while enabling automation mode" and the second
   worked. The client now asks again when a read fails on the network, and repeats an action only when the request
@@ -385,7 +394,7 @@ none of them is the app.
 
 **What the run did on the owner's accounts.** Musinsa: opened a promotion page and a product page, ran one search
 for the word the app proposed. Karrot: opened the five tabs, settings, search (typed 자전거), one listing, the
-services menu and notifications. Nothing was written, sent, liked, bought or agreed to; the search words are now
+services menu and notifications (opening that screen may have cleared the app's unread mark). Nothing was written, sent, liked, bought or agreed to; the search words are now
 in the two apps' recent searches (기모 in Musinsa, 자전거 in Karrot).
 
 **Third parties.** Karrot's screens are mostly other people's posts and photos. Painting a seller's name does not
