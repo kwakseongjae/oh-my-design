@@ -4,44 +4,42 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-12 자정) — 도는 것 없음. 머지 GO 3건 대기
+## 지금 (2026-11-13 낮) — 스프린트 1 진행 중. 머지 GO 3건 대기
 
-**오너 GO 대기. 순서가 중요하다: #125 → #123 → #124**
+**오너 GO 대기(머지):** PR #123(결정 기록·이슈 양식·문서) → PR #124(컴파일러·재측정·워커 스크립트, #123 위에 쌓임), PR #125(9차 7곳, 614 = 444 / 89 / 81, main에서 따로 갈라짐). 셋 다 CI 통과. #125의 새 아이템 페이지는 오너가 프리뷰에서 확인한다.
 
-1. PR #125: 9차 7곳(tver·tokyo·aeon·koexpressway·nhis·samsungfire·1111), 607 → 614(443 / 90 / 81). 독립 검수 반영. 프리뷰는 오너가 확인(본 세션은 로그인 벽 때문에 못 열었다).
-2. PR #123(결정 기록, 이슈 양식, 문서)과 PR #124(컴파일러, 재측정, 워커 스크립트): **지금 CI 실패. 원인은 `figma` 만료**(출처 확인 2026-05-15 + 180일). main의 품질 데이터가 오늘부터 「낡음」이라, 데이터를 다시 만든 #125가 먼저 들어가야 한다. 그 뒤 두 브랜치에 main을 합치면 통과한다.
+**11/13 오너 결정**
 
-**새 방식(11/12 확정, 근거 `docs/research/2026-11-09-collection-method-test.md` Round 4 part 2 · Batch 9)**
+- **유효 기간으로 verified를 내리지 않는다**(`EXPIRE_SOURCES_BY_DATE = false`). #123과 #125에 같은 커밋이 있다. figma는 verified로 돌아왔다. 대신할 것은 모델 없는 재측정이다.
+- **토큰 이름:** 내부 명명 규칙 + 실린 이름 이어받기. 시험 결과 이어받기는 59/59 일치, 규칙만으로는 색 44%·글자 67%·모서리 88%. 컴파일러 `--published`, 지시문 `COMPILED_PARTS.md`.
+- **화면 아카이브(Mobbin처럼, 한국부터 주 10곳):** 공개는 보류하고 내부 시범 10곳을 프리뷰로 먼저 본다. **시작은 이번 스프린트 뒤.** 앱 화면은 오너 아이폰으로 찍는 방법을 찾는다(Phone Harness류, 필요하면 오픈소스로, mobster의 기능으로 둬도 된다). 조사와 순서: `docs/research/2026-11-13-screen-archive.md`.
 
-- 새 레퍼런스 = 창 없는 캡처 → 스크립트가 측정값 컴파일 → `gpt-6.1-sol` medium. `run-queue.sh`의 `new` 기본값이다(#124). 9차: 전부 verified, 한 곳 9~13분(max 21분).
-- 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1 --out <폴더>`(모델·창 없음, 컨트롤 전부). 9차 778/778.
-- 선언만 된 색은 토큰이 아니다(Colors 절의 표로). **이 지시문을 워커가 직접 따른 적은 아직 없다**(9차는 `declared-to-prose.py`로 맞춤). 10차 첫 한 곳에서 확인한다.
-- 독립 검수 = Codex high 2개(`make-review-order.py`). 9차: BLOCK 1 · WARN 7, 반영함.
-- 안 해 본 것: 검수자 high와 max 비교, low·terra의 서술 정확도, 캡처만 low, 재검증(기존 레퍼런스)을 새 방식으로.
+**새 방식(11/12 확정):** 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium(`run-queue.sh`의 `new` 기본값). 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1`. 선언만 된 색은 토큰이 아니다. 독립 검수 = Codex high 2개(`make-review-order.py`). 근거 `docs/research/2026-11-09-collection-method-test.md`.
 
-**10차를 돌리려면**(#124가 main에 있어야 한다. 그 전에는 `.claude/worktrees/t1-trust`에서)
+**도는 중(11/13 12:30)**
 
-```
-scripts/workers/run-queue.sh ~/.omd-workers/queue-batch10.txt --cap 1   # 큐 파일은 아직 없다. 첫 곳에서 선언 색 표를 확인한 뒤 --cap 4
-```
-후보 16곳: `~/.omd-workers/census-cjk/summary.json`(유망 7곳은 9차에 썼다). 9차 큐가 양식이다: `~/.omd-workers/queue-batch9.txt`.
+| 무엇 | 어디 |
+|---|---|
+| 재측정 117곳(모델·창 없음) | `~/.omd-workers/t1-sweep-1113/`, 요약 `node scripts/t1/summary.mjs ~/.omd-workers/t1-sweep-1113 --changes`(워크트리 `t1-trust`) |
+| jobplanet 재검증(새 방식 + 이름 이어받기 첫 시험, Codex medium) | `~/.omd-workers/reverify2/jobplanet`, 실행 `rv-jobplanet-20261113T122651` |
 
 **다음(싼 것부터)**
 
 | 할 일 | 비용 | 어디 |
 |---|---|---|
-| 토큰 이름 고정(값은 두 번 써도 97% 같고 이름은 안 같다) | 본 세션 | `compile-evidence.mjs`의 `measure.json` |
-| 조립기 spacing 문구(「No verified values…」, 157곳) · 의사 요소 변화를 통째 문자열로 적는 것 | 본 세션 | `assemble-reference.mjs`, `describe()` |
-| 만료 대비 「안 바뀌었음」 재측정(`scripts/measure-surface-drift.mjs`, 마지막 9/20) | 모델 없음 | figma 만료, sendbird 11/28, 42곳 1월 초, 296곳 3월 중순 |
-| kana: 검사기 1개, 평가 설계, 스킬 문서, 원어민 검토 | 본 세션 | `feat/kana-skill`, 자료 `~/.omd-workers/kana/`(`rules.v2.md`, `measured-jp.md`) |
-| 10차 묶음 | Codex medium 곳당 10분쯤 + 검수 2회 | 위 명령 |
+| 재측정 결과에서 값이 바뀐 곳 추리기 → 재검증 큐 | 본 세션 | 위 요약 |
+| jobplanet 결과 확인: verified가 되는지, 이름이 유지되는지 → 되면 partial 89곳을 새 방식으로 재검증하는 묶음 | Codex medium 곳당 10분쯤 | `OMD_REVERIFY_COMPILED=1 scripts/workers/run-queue.sh <큐>` |
+| kana: 평가 설계, 스킬 문서, 원어민 검토(규칙 v2·실측 표·검사기는 됨) | 본 세션 | `feat/kana-skill`(`scripts/lang/kana-check.mjs`), 자료 `~/.omd-workers/kana/` |
+| 조립기 spacing 문구(「No verified values…」, 157곳) | 본 세션 | `web/scripts/lib/design-md-v3.mjs:313`. 157개 파일이 다시 만들어져 보류 중 |
+| 10차 묶음 | Codex medium + 검수 2회 | 후보 16곳 `~/.omd-workers/census-cjk/summary.json`, 큐 양식 `~/.omd-workers/queue-batch9.txt` |
+| 스프린트 뒤: 화면 아카이브 시범 10곳, 폰 10분 시험(USB·개발자 모드) | 모델 없음 | 조사 문서의 「Proposed order」 |
 
 **열린 것**
 
-- 9차 중 koexpressway·samsungfire는 법적 고지에서 법인 인용을 못 얻었다(국가는 회사 소개·푸터 근거). `.verification.md`에 적혀 있다.
-- T1 시범(20곳 × 3회, 99.5% 일치)에서 한쪽만 잰 상태 86건은 다시 잴 때 뜬 팝업이 화면을 덮어서다(peterpanz·pinkoi·wooricard, 11/9 전 캡처는 닫기 설정이 기록돼 있지 않다). 새로 캡처한 것끼리는 창 없는 쪽 99.2%, 창 있는 쪽 98.9%로 차이가 없다.
-- 워크트리 `t1-trust`(#124) · `refs-batch9`(#125) · `kana`. `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<9차 id>`는 본 체크아웃을 가리키는 링크. 품질 판정용 스크래치 워크트리는 옛 세션 임시 폴더(`…/7924e40f-…/scratchpad/t1/wt`)에 있다.
-- 11/12 사용: Codex 37회(실험 28 · 9차 7 · 검수 2, 출력 약 50만 토큰 = max 실행 11회분), Claude 에이전트 3회.
+- 9차 중 koexpressway·samsungfire는 법적 고지에서 법인 인용을 못 얻었다(`.verification.md`에 적혀 있다).
+- 안 해 본 것: 검수자 high와 max 비교, low·terra의 서술 정확도, 캡처만 low.
+- 워크트리 `t1-trust`(#124) · `refs-batch9`(#125) · `kana`. `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<id>` 링크는 본 체크아웃을 가리킨다. 품질 판정용 스크래치 워크트리는 옛 세션 임시 폴더(`…/7924e40f-…/scratchpad/t1/wt`)에 있다.
+- 11/12~13 사용: Codex 50회(실험 40 · 9차 7 · 검수 2 · 재검증 1), Claude 에이전트 4회.
 - 3D 데모 서버 8791 켜져 있음. 운영: main `8b320ec7`, 607(437 / 89 / 81).
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
