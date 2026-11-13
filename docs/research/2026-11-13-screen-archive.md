@@ -415,3 +415,76 @@ pop-ups): 「잘못 찍힌건 확인하고 다시 찍으면 좋겠어. 시범용
   location, so it needs another number, not another Google account. Which apps accept Google sign-in is not known
   until each login screen is on screen; shooting that screen is the first step of the next session, and it is one
   of the core screens both sheets lack. Other people's posts and photos in Karrot stay whatever the account.
+
+## Where the phone sessions' time went, and what to change (2026-11-14, from the walk logs; the phone was not touched)
+
+Owner, 11/14: 「폰 세션에서 이전에 촬영했던 방식이나 속도를 어떻게 개선할지(영상을 빼는 방향도 좋을듯)에 대해서 고민해줘. 폰은 내 재개
+신호 기다리고」. Everything below is read from the four walks' `flow.json` (each step carries its time) and from
+`phone.mjs`; nothing was run on the phone. Numbers marked *projected* have not been measured.
+
+**Measured: 62.8 minutes on the phone, 125 commands, 51 stills kept, 4 clips.**
+
+| what | times | minutes | each |
+|---|---|---|---|
+| `look` (a still and its element list) | 51 | 28.9 | 34 s |
+| `scrollclip` | 4 | 17.2 | 4 min 18 s |
+| `tap` | 51 | 11.9 | 14 s |
+| launch, back, swipe, type, home | 19 | 4.9 | |
+
+- **Half of it was the Mac looking up the phone's name.** The walks made about 398 requests at ~4.7 s of lookup
+  each: ~31 of the 62.8 minutes (estimated from the request count of each command). The fix in `start` (one lookup
+  per session) is in place and still untested on the phone.
+- **The other half is the agent's turn between commands:** 31.6 minutes over 125 commands, 15 s a command. A
+  screen cost 2.4 commands (tap, look, sometimes back). This part does not shrink with the lookup fix.
+- **The four clips took 27 % of the time** (the two home clips 7 min 56 s and 3 min 32 s) and produced 59 frames to
+  look through, against 51 stills for everything else.
+- **Correction: "carousel screens never settle" was wrong.** All 8 looks that waited ran 10.7–10.9 s and came back
+  "still moving": search results and the plain search page as much as the two home screens. The wait compares the screen
+  until two comparisons in a row agree, within 6 s; at 5 s a request only one comparison fits, so it could never
+  pass. It says nothing about carousels yet. To be tested once requests are fast.
+
+**What changes for the next session**
+
+1. *Fewer commands a screen.* `phone.mjs go` does the action and the look in one command (tap by label or point,
+   swipe, or back). One command a screen instead of 2.4: *projected* about 50–70 commands for the same 51 stills.
+2. *A known path is replayed, not walked again.* The 13 stills on the re-shoot list were reached by recorded taps;
+   `replay` runs them without an agent turn in between. A new account shows different pop-ups, so the agent takes
+   over where a replayed tap finds no element.
+3. *The core-screen list is the plan.* `suggest-labels.py` already prints which of the eleven core screens a walk
+   has not reached; run it during the walk, not after.
+4. *Demo account.* 13 of the 39 stills had a region painted grey; with nothing of the owner's on screen most of
+   the covering (and the looking-before-recording) goes away.
+5. *Banners.* Focus mode on; and a frame is still viewed before it is kept.
+
+*Projected* for a 25-screen app once the lookup fix holds and `go` is used: 25–35 commands at ~15 s, about 6–9
+minutes on the phone, against 26 minutes for Musinsa's 26 on 11/13. The time off the phone (writing the sheet's
+titles and notes, viewing every frame) was not logged, so there is no number for it; Mobbin shows tags and no
+prose per screen, and the sheet's per-frame notes can go the same way (type and patterns from the suggestion, a
+person corrects them; prose only in the app-level findings).
+
+**The clip: recommended out of the per-app set, replaced by stills of the scrolled home screen**
+
+What a clip costs beyond the session time:
+- *It cannot be checked the way a still is.* A still comes with its element list, so `--private` paints numbers
+  and listed strings before anything is written. A clip's frames have no element list: only fixed rectangles can
+  be painted, and what scrolls through cannot. Karrot's clip shows neighbourhoods, distances and people's photos.
+- *Every frame has to be viewed* (59 frames in four clips), and a notification banner in one frame means cutting
+  it: 3 frames in 2 of the 4 clips, which left Karrot's clip not starting at the top.
+- *It is not motion.* It is the device's screenshots after 150-point drags, played at 5 frames a second. It does
+  not show how the screen scrolls, how a header collapses or any animation, which is what a video is for.
+- *It has no labels,* so it is outside the index's filters.
+
+What it gives is the home screen below the first view: what sections there are and in what order. Stills give
+the same with labels and redaction: `phone.mjs pages --walk … --count 4` takes the screen, scrolls most of a
+screen with the finger held at the end (no fling), takes it again, and stops when the screen no longer moves.
+An 18-step clip covers about 2,700 points, which is four or five such stills. One tall stitched picture is a
+later option (the fixed bars' frames are in the element list, so they can be cropped).
+
+`scrollclip` stays in the tool. The owner's earlier decision ("one clip per app, of its main screen") stands until
+the owner says otherwise; the recommendation is to drop it.
+
+**Checked on the Simulator only** (the phone waits; `feat/screen-archive` `a6ae2389`). Settings app on an iPhone 17
+Simulator: `look` with its wait 1.4 s (settled in 1.0 s, the first time the wait has been seen to pass), `go --label`
+2.4 s, `go --back` 2.9 s, `pages` three overlapping stills of the Settings list in 10.6 s, stopping by itself at
+the end of the list and with no fling. The Simulator answers on 127.0.0.1, so none of this says how fast the
+phone will be; the first thing to time in the next session is still one tap.
