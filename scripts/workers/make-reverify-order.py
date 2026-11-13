@@ -138,8 +138,9 @@ if folder is not None:
                      "published one. History only: do not start from it.")
     files.append("`prior-verification.md`: the proof notes from that folder, if it had any. They are the claims to "
                  "re-check, not evidence.")
-    files.append("`prior-v3-DESIGN.md`: the published file, assembled from the prior. For reference only: you write "
-                 "`front.yaml` and `body.md`, and the assembler makes this format.")
+    made = "assembled from the prior" if assembled_published(folder) else "not assembled from this draft"
+    files.append(f"`prior-v3-DESIGN.md`: the published file, {made}. For reference only: you write `front.yaml` and "
+                 "`body.md`, and the assembler makes this format.")
 else:
     files.append(f"`prior-legacy-DESIGN.md`: the reference as last authored in the legacy shape (git `{legacy[0]}`). "
                  f"**Start your `front.yaml` and `body.md` from it**, {keep}")
