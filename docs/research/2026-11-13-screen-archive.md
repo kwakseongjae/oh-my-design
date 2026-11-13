@@ -385,8 +385,8 @@ none of them is the app.
 
 **What the run did on the owner's accounts.** Musinsa: opened a promotion page and a product page, ran one search
 for the word the app proposed. Karrot: opened the five tabs, settings, search (typed 자전거), one listing, the
-services menu and notifications. Nothing was written, sent, liked, bought or agreed to; the search word 자전거 is now
-in Karrot's recent searches.
+services menu and notifications. Nothing was written, sent, liked, bought or agreed to; the search words are now
+in the two apps' recent searches (기모 in Musinsa, 자전거 in Karrot).
 
 **Third parties.** Karrot's screens are mostly other people's posts and photos. Painting a seller's name does not
 make a listing ours to publish. Before any of this is public, the Karrot sheet needs a decision of its own: screens

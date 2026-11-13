@@ -4,46 +4,38 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-13 밤) — 1순위는 한국 화면 아카이브. 스프린트 1 진행 중. 머지 GO 3건 대기
+## 지금 (2026-11-13 밤) — 1순위는 한국 화면 아카이브. 머지 GO 4건 대기
 
-**1순위(오너 11/13 밤):** 「우리의 핵심은 mobbin like를 일단 한국에 대해서 확실히 제공하는게 1순위 … 이걸 통해서 star 1000을 달성할 수도」. 레퍼런스 수집과 언어 스킬은 옆에서 계속 돈다. 공개는 여전히 보류(오너가 시범을 본 뒤).
+**1순위(오너 11/13 밤):** 「우리의 핵심은 mobbin like를 일단 한국에 대해서 확실히 제공하는게 1순위 … 이걸 통해서 star 1000을 달성할 수도」. 레퍼런스 수집과 언어 스킬은 옆에서 계속 돈다. 공개는 보류(오너가 시범을 본 뒤).
 
-- **볼 것:** `~/Downloads/kr-screens/index.html`(앱 전체 화면 모음, 지금은 무신사 1개 26장) → 앱별 시트 `~/Downloads/kr-screens/musinsa/index.html`. 옛 경로 `~/Downloads/musinsa-screens`는 링크다.
-- **앱 하나의 네 단계:** 폰에서 걷기(`phone.mjs`) → 자동 라벨 초안(`suggest-labels.py --scaffold`) → 프레임을 보며 큐레이션 → `make-sheet.py` + `make-index.py`. 화면 유형 30개·패턴 47개는 `taxonomy.json`의 정해진 말만 쓴다(앱끼리 같은 필터). 기본 화면 11종 중 무신사에 없는 것: 온보딩·로그인·설정.
-- **막힌 것:** 11/13 저녁 오너 폰이 맥에서 잡히지 않았다(페어링은 됨, 터널 unavailable). 폰이 깨어 있고 같은 와이파이이거나 케이블로 꽂혀야 한다. 잡히면 바로 할 일: 무신사 덜 그려진 화면 다시 찍기 + 홈 스크롤 영상, 당근(`com.towneers.www`) 첫 수집.
-- **속도:** 무신사 걷기 5분 + 26분(폰 세션 42분). 주 10개면 폰이 주 5~7시간 열려 있어야 한다(한 앱 실측이라 당근이 두 번째 자료).
+**화면 아카이브: 앱 2개, 화면 39장**
 
-**오너 GO 대기(머지):** PR #123(결정 기록·이슈 양식·문서) → PR #124(컴파일러·재측정·워커 스크립트, #123 위에 쌓임), PR #125(9차 7곳, 614 = 444 / 89 / 81, main에서 따로 갈라짐). 셋 다 CI 통과. #125의 새 아이템 페이지는 오너가 프리뷰에서 확인한다.
+- **볼 것:** `~/Downloads/kr-screens/index.html`(앱 전체 화면 모음) → `musinsa/`(27장 + 홈 영상), `karrot/`(12장 + 홈 영상). 맥에만 있다.
+- **앱 하나의 네 단계:** 폰에서 걷기(`phone.mjs`) → 라벨 초안(`suggest-labels.py`) → 프레임을 보며 큐레이션(`~/.omd-workers/screens/sheets/<앱>.json`) → `make-sheet.py` + `make-index.py`. 화면 유형 30개·패턴 47개는 `taxonomy.json`의 말만 쓴다. 도구 `tools/phone-recorder/`(브랜치 `feat/screen-archive`, 워크트리 `.claude/worktrees/screens`).
+- **지켜야 할 것:** 결제·구매·송금·삭제·동의는 누르지 않는다 · 「나의」 화면과 금융 앱은 `--private` · 남의 이름·메시지·지도·동네는 `--cover`로 저장 전에 가린다 · 앱 삭제·재설치는 오너가 옆에 있을 때만 · 프레임과 시트는 커밋·업로드하지 않는다.
+- **안 풀린 것:** ① 폰에서 동작 하나가 6~12초(시뮬레이터 1초). 프레임워크의 대기 건너뛰기를 켜도 같아서 되돌렸다. ② 캐러셀이 있는 화면은 「멈춤」 판정이 안 나 매번 11초를 쓴다. ③ 알림 배너가 프레임에 찍힐 수 있다(한 장 지움). ④ 당근 홈 영상에 게시글의 동네·거리가 보인다. ⑤ 당근 화면은 대부분 남의 글과 사진이라 공개 전 따로 정해야 한다. 경과와 수치 `docs/research/2026-11-13-screen-archive.md` 끝 절.
+- **다음 폰 세션:** 세 번째 앱부터(폰에 깔린 한국 앱 중 많이 쓰는 것, 금융은 마지막). 무신사·당근에 없는 기본 화면(온보딩·로그인)은 앱을 지우고 다시 깔아야 해서 오너가 옆에 있을 때.
 
-**11/13 오너 결정**
+**오너 GO 대기(머지):** PR #123(결정 기록·문서) → #124(컴파일러·재측정·워커 스크립트, #123 위) · PR #125(9차 7곳, 614) → **#126(10차 8곳, 622 = 452 / 89 / 81, #125 위)**. 새 아이템 페이지는 오너가 프리뷰에서 확인한다.
 
-- **유효 기간으로 verified를 내리지 않는다**(`EXPIRE_SOURCES_BY_DATE = false`). #123과 #125에 같은 커밋이 있다. figma는 verified로 돌아왔다. 대신할 것은 모델 없는 재측정이다.
-- **토큰 이름:** 내부 명명 규칙 + 실린 이름 이어받기. 시험 결과 이어받기는 59/59 일치, 규칙만으로는 색 44%·글자 67%·모서리 88%. 컴파일러 `--published`, 지시문 `COMPILED_PARTS.md`.
-- **화면 아카이브 결정 모음(11/13):** 공개 보류·내부 시범 먼저 · 에이전트가 폰을 직접 조작(허용·팝업·로그인 벽을 스스로 처리) · 영상은 앱마다 메인 화면 하나 · 금융 앱은 금액·계좌번호가 남지 않게(`look --private`) · 첫 두 앱은 무신사와 당근 · 앱을 지우고 로그인부터 다시 하는 것은 오너가 옆에 있을 때만 · 오픈소스화와 mobster 이전은 염두만. 도구 `tools/phone-recorder/`(브랜치 `feat/screen-archive`, 워크트리 `.claude/worktrees/screens`), 경과 `docs/research/2026-11-13-screen-archive.md`.
+**11/13에 정해진 것:** 유효 기간으로 verified를 내리지 않는다(`EXPIRE_SOURCES_BY_DATE = false`) · 토큰 이름은 실린 이름 이어받기 + 명명 규칙(`COMPILED_PARTS.md`) · 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium, 착지 전 `scripts/t1/remeasure.mjs <id> --runs 1`, 독립 검수 = Codex high 2개.
 
-**새 방식(11/12 확정):** 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium(`run-queue.sh`의 `new` 기본값). 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1`. 선언만 된 색은 토큰이 아니다. 독립 검수 = Codex high 2개(`make-review-order.py`). 근거 `docs/research/2026-11-09-collection-method-test.md`.
+**10차(11/13 밤):** genesis·visitkorea·modetour·saltlux·42maru·hankyung·nec·rakus. 8곳 모두 재측정 100% 일치, 검수 차단 1건(visitkorea: 글자 없는 검색 버튼의 쓰이지 않는 글자색) 고침. 같은 일이 없게 컴파일러가 글자 없는 버튼·링크에는 글자색을 내지 않는다(#124).
 
-**도는 것 없음(11/13 오후).** 재측정 117곳 끝: 116곳 열림(zozotown 막힘), 11,618개 값 중 11,416개(98.3%) 일치. 다른 값 대부분은 사이트가 아니라 브라우저 차이(창 있는 기준 대 창 없는 재측정: 화소 배율, 스크롤바 폭, 대체 글꼴)다. 사이트가 바뀐 것으로 보이는 곳은 demaecan(확실), sega·gitlab(가능성 높음). 결과 `~/.omd-workers/t1-sweep-1113/`.
+**일본어 스킬(kana):** 초안 `docs/drafts/kana/`(브랜치 `feat/kana-skill`, PR 없음): 스킬 문서 370줄 + 규칙 102개 + 일본 사이트 실측 + 출처. 일관성 검사 통과(`scripts/lang/kana-draft/`). **원어민 검토와 평가(`docs/research/2026-11-13-kana-eval-plan.md`)는 안 했다.**
 
-**다음(싼 것부터)**
+**재측정:** `remeasure.mjs --prior <지난 결과 폴더>`로 지난 창 없는 재측정과도 비교한다(laftel·demaecan·byd 100% 일치). 사이트가 바뀐 것으로 보이는 곳: demaecan(확실), sega·gitlab(가능성 높음).
 
-| 할 일 | 비용 | 어디 |
+**오너가 정할 것**
+
+| 무엇 | 열어 볼 것 | 추천 |
 |---|---|---|
-| demaecan·sega·gitlab 재검증(재측정에서 값이 바뀐 곳) | Codex 3회 | 재검증을 어느 방식으로 돌릴지는 아래 보류 건과 같이 정한다 |
-| 옛 창 있는 캡처의 기준을 창 없는 재측정 값으로 갈아 두기(브라우저 차이를 변화로 읽지 않게) | 본 세션 | `scripts/t1/remeasure.mjs`의 baseline |
-| partial 89곳 재검증: **보류.** jobplanet 시험은 verified가 되고 이름도 유지(색 9/10, 글자·모서리 전부)됐지만 컴포넌트 7 → 1, 근거 99 → 65로 줄었다. 글자 크기 빈틈은 메웠고(`text-census.mjs`), 상태 변화가 없는 컨트롤을 컴포넌트로 못 적는 것은 게이트 규칙이라 오너 판단이 필요하다. 착지 안 함 | — | `~/.omd-workers/reverify2/jobplanet`, 실험 문서의 「A re-verification run the new way」 |
-| kana: 평가 설계, 스킬 문서, 원어민 검토(규칙 v2·실측 표·검사기는 됨) | 본 세션 | `feat/kana-skill`(`scripts/lang/kana-check.mjs`), 자료 `~/.omd-workers/kana/` |
-| 조립기 spacing 문구(「No verified values…」, 157곳) | 본 세션 | `web/scripts/lib/design-md-v3.mjs:313`. 157개 파일이 다시 만들어져 보류 중 |
-| 10차 묶음 | Codex medium + 검수 2회 | 후보 16곳 `~/.omd-workers/census-cjk/summary.json`, 큐 양식 `~/.omd-workers/queue-batch9.txt` |
-| 스프린트 뒤: 화면 아카이브 시범 10곳, 폰 10분 시험(USB·개발자 모드) | 모델 없음 | 조사 문서의 「Proposed order」 |
+| 머지 4건 | PR #123 → #124, #125 → #126 | 프리뷰에서 새 페이지를 본 뒤 순서대로 |
+| 재검증 때 컴포넌트가 줄어드는 문제(jobplanet 7 → 1) | 실험 문서의 「A re-verification run the new way」 | 「재 봤는데 변화 없음」도 측정으로 인정 |
+| 화면 아카이브의 다음 앱 8개와 폰을 열어 둘 시간 | `~/Downloads/kr-screens/index.html` | 주 2~3회, 한 번에 앱 2~3개 |
 
-**열린 것**
-
-- 9차 중 koexpressway·samsungfire는 법적 고지에서 법인 인용을 못 얻었다(`.verification.md`에 적혀 있다).
-- 안 해 본 것: 검수자 high와 max 비교, low·terra의 서술 정확도, 캡처만 low.
-- 워크트리 `t1-trust`(#124) · `refs-batch9`(#125) · `kana`. `t1-trust`의 `packages/mcp/node_modules`와 `artifacts/reference-evidence/visual/<id>` 링크는 본 체크아웃을 가리킨다. 품질 판정용 스크래치 워크트리는 옛 세션 임시 폴더(`…/7924e40f-…/scratchpad/t1/wt`)에 있다.
-- 11/12~13 사용: Codex 50회(실험 40 · 9차 7 · 검수 2 · 재검증 1), Claude 에이전트 4회.
-- 3D 데모 서버 8791 켜져 있음. 운영: main `8b320ec7`, 607(437 / 89 / 81).
+**열린 것:** partial 89곳 재검증 보류(위 결정 대기) · 조립기 spacing 문구 157곳 보류 · 워크트리 `t1-trust`·`refs-batch9`·`refs-batch10`·`kana`·`screens` · 3D 데모 서버 8791 켜져 있음 · 운영 main `8b320ec7`, 607.
+- 11/12~13 사용: Codex 60회(실험 40 · 9차 7 · 10차 8 · 검수 4 · 재검증 1), Claude 에이전트 5회.
 
 ## ▶ 2026-11-10 · 3건 머지 · 라운드 3 진행 · iOS 경로 확인
 
