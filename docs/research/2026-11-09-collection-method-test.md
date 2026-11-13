@@ -424,3 +424,34 @@ medium (`OMD_REVERIFY_COMPILED=1`): 16.3 minutes, 167 k uncached input, 29.8 k o
      says; whether a re-verification should be allowed to shrink a reference this much is not a tooling question.
 - Not landed. The worker's folder is `~/.omd-workers/reverify2/jobplanet`. Running the 89 partial references this
   way waits on that question and on a second trial with the text census in the capture.
+
+### T1 — every reference with replayable evidence, measured again (2026-11-13)
+
+With the date rule off (owner, 2026-11-13), this is what replaces it: 117 more references (all that have a capture
+with a control config, beyond the 20 of the pilot and batch 9), one headless run each, no model, about 80 minutes
+two at a time. Baselines are 3 to 15 days old (median 10) and were captured **headed**.
+
+- 116 of 117 opened headless; zozotown was blocked.
+- 11,416 of 11,618 compared fields agree (98.3 %). 288 states were measured on one side only and 67 control
+  lookups found nothing: older captures did not record the close selectors, so a popup covers the page on replay,
+  and cards rotate.
+- The 202 differing fields: 35 content (text or link of a rotating card), 67 geometry (a width or height), 21
+  state changes that differ only in a size, and 79 values on 23 sites.
+- **Most of the 79 are the browser, not the site.** The baselines were taken in a headed window and the re-run was
+  headless:
+  - *Device pixel ratio.* byd's `0.5px` hairline reads `1px`; laftel's `2.975px` radius and `11.9px` font read
+    `3px` and `12px`.
+  - *Scrollbar.* A headed window is 1425 px wide inside a 1440 viewport; widths that follow it move by a pixel.
+  - *Fallback font.* Where the brand face does not load, the first resolved family is `Apple SD Gothic Neo` headed
+    and `Times` headless (mercedes-benz, sixt).
+- **What looks like the site itself** (to re-verify, in this order): **demaecan** (login button radius 8 px →
+  pill, fill red → pale pink, family Meiryo → LINE Seed JP: a redesign), **sega** (radius and padding of the
+  company link), **gitlab** (on-dark ink `#ffffff` → `#fcfbfc` on six controls), then adobe, megastudy, hktvmall,
+  htc, hk01, where one control's rest colours flipped and a rotating hero or a header over it is as likely as a
+  change.
+- So: about 1 clear and 2 probable site changes in 116 references over ten days, and a comparison between a headed
+  and a headless capture is noisy in three known ways. From batch 9 on, captures are headless on both sides
+  (batch 9 replayed 778 of 778). For the older headed baselines, the first headless replay should become the new
+  baseline rather than be read as drift.
+
+Results: `~/.omd-workers/t1-sweep-1113/<id>/result.json`; `node scripts/t1/summary.mjs ~/.omd-workers/t1-sweep-1113 --changes`.

@@ -16,17 +16,14 @@
 
 **새 방식(11/12 확정):** 새 레퍼런스 = 창 없는 캡처 → 스크립트 컴파일 → `gpt-6.1-sol` medium(`run-queue.sh`의 `new` 기본값). 착지 전 대조 = `scripts/t1/remeasure.mjs <id> --runs 1`. 선언만 된 색은 토큰이 아니다. 독립 검수 = Codex high 2개(`make-review-order.py`). 근거 `docs/research/2026-11-09-collection-method-test.md`.
 
-**도는 중(11/13 12:30)**
-
-| 무엇 | 어디 |
-|---|---|
-| 재측정 117곳(모델·창 없음) | `~/.omd-workers/t1-sweep-1113/`, 요약 `node scripts/t1/summary.mjs ~/.omd-workers/t1-sweep-1113 --changes`(워크트리 `t1-trust`) |
+**도는 것 없음(11/13 오후).** 재측정 117곳 끝: 116곳 열림(zozotown 막힘), 11,618개 값 중 11,416개(98.3%) 일치. 다른 값 대부분은 사이트가 아니라 브라우저 차이(창 있는 기준 대 창 없는 재측정: 화소 배율, 스크롤바 폭, 대체 글꼴)다. 사이트가 바뀐 것으로 보이는 곳은 demaecan(확실), sega·gitlab(가능성 높음). 결과 `~/.omd-workers/t1-sweep-1113/`.
 
 **다음(싼 것부터)**
 
 | 할 일 | 비용 | 어디 |
 |---|---|---|
-| 재측정 결과에서 값이 바뀐 곳 추리기 → 재검증 큐 | 본 세션 | 위 요약 |
+| demaecan·sega·gitlab 재검증(재측정에서 값이 바뀐 곳) | Codex 3회 | 재검증을 어느 방식으로 돌릴지는 아래 보류 건과 같이 정한다 |
+| 옛 창 있는 캡처의 기준을 창 없는 재측정 값으로 갈아 두기(브라우저 차이를 변화로 읽지 않게) | 본 세션 | `scripts/t1/remeasure.mjs`의 baseline |
 | partial 89곳 재검증: **보류.** jobplanet 시험은 verified가 되고 이름도 유지(색 9/10, 글자·모서리 전부)됐지만 컴포넌트 7 → 1, 근거 99 → 65로 줄었다. 글자 크기 빈틈은 메웠고(`text-census.mjs`), 상태 변화가 없는 컨트롤을 컴포넌트로 못 적는 것은 게이트 규칙이라 오너 판단이 필요하다. 착지 안 함 | — | `~/.omd-workers/reverify2/jobplanet`, 실험 문서의 「A re-verification run the new way」 |
 | kana: 평가 설계, 스킬 문서, 원어민 검토(규칙 v2·실측 표·검사기는 됨) | 본 세션 | `feat/kana-skill`(`scripts/lang/kana-check.mjs`), 자료 `~/.omd-workers/kana/` |
 | 조립기 spacing 문구(「No verified values…」, 157곳) | 본 세션 | `web/scripts/lib/design-md-v3.mjs:313`. 157개 파일이 다시 만들어져 보류 중 |
