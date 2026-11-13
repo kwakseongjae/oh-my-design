@@ -21,14 +21,13 @@
 | 무엇 | 어디 |
 |---|---|
 | 재측정 117곳(모델·창 없음) | `~/.omd-workers/t1-sweep-1113/`, 요약 `node scripts/t1/summary.mjs ~/.omd-workers/t1-sweep-1113 --changes`(워크트리 `t1-trust`) |
-| jobplanet 재검증(새 방식 + 이름 이어받기 첫 시험, Codex medium) | `~/.omd-workers/reverify2/jobplanet`, 실행 `rv-jobplanet-20261113T122651` |
 
 **다음(싼 것부터)**
 
 | 할 일 | 비용 | 어디 |
 |---|---|---|
 | 재측정 결과에서 값이 바뀐 곳 추리기 → 재검증 큐 | 본 세션 | 위 요약 |
-| jobplanet 결과 확인: verified가 되는지, 이름이 유지되는지 → 되면 partial 89곳을 새 방식으로 재검증하는 묶음 | Codex medium 곳당 10분쯤 | `OMD_REVERIFY_COMPILED=1 scripts/workers/run-queue.sh <큐>` |
+| partial 89곳 재검증: **보류.** jobplanet 시험은 verified가 되고 이름도 유지(색 9/10, 글자·모서리 전부)됐지만 컴포넌트 7 → 1, 근거 99 → 65로 줄었다. 글자 크기 빈틈은 메웠고(`text-census.mjs`), 상태 변화가 없는 컨트롤을 컴포넌트로 못 적는 것은 게이트 규칙이라 오너 판단이 필요하다. 착지 안 함 | — | `~/.omd-workers/reverify2/jobplanet`, 실험 문서의 「A re-verification run the new way」 |
 | kana: 평가 설계, 스킬 문서, 원어민 검토(규칙 v2·실측 표·검사기는 됨) | 본 세션 | `feat/kana-skill`(`scripts/lang/kana-check.mjs`), 자료 `~/.omd-workers/kana/` |
 | 조립기 spacing 문구(「No verified values…」, 157곳) | 본 세션 | `web/scripts/lib/design-md-v3.mjs:313`. 157개 파일이 다시 만들어져 보류 중 |
 | 10차 묶음 | Codex medium + 검수 2회 | 후보 16곳 `~/.omd-workers/census-cjk/summary.json`, 큐 양식 `~/.omd-workers/queue-batch9.txt` |

@@ -396,3 +396,31 @@ kbinsurance, hmall, samsunghospital), sol medium, no leaks.
   do that yet.
 - These runs were also the first where workers followed the "declared colours stay in prose" wording themselves:
   hmall came out at 15 to 19 colour tokens with a declared table in the body (76 tokens under the old wording).
+
+### A re-verification run the new way — jobplanet (2026-11-13)
+
+One partial Korean reference, re-verified with headless capture, the compile step, published names pinned and sol
+medium (`OMD_REVERIFY_COMPILED=1`): 16.3 minutes, 167 k uncached input, 29.8 k output.
+
+| | published (partial) | re-verified |
+|---|---|---|
+| status | partial (`verification_v2_missing`) | verified_v2, no codes |
+| claims | 99 | 65 |
+| components / stated | 7 / 1 | 1 / 1 |
+| colour tokens | 13 | 20 |
+| file size | 29 KB | 20 KB |
+
+- **Names held:** of the 10 colour values both versions name, 9 kept their name (the tenth, `#323438`, went from
+  `ink-strong` to `foreground`, the role name the gate requires for body ink); type 2 of 2, radii 2 of 2.
+- **The reference got thinner, for two different reasons.**
+  1. *A capture gap.* The four published type tokens for headings and cards were listed as unconfirmed because the
+     survey records sizes for interactive elements only. Fixed the same day: `text-census.mjs` counts the
+     characters of heading and paragraph text set in each size, the capture tool runs it with every survey, and the
+     compiler lists the result (jobplanet: paragraphs 16 px / 400, headings 15 / 600, 22 / 700, 32 / 700; the
+     published 24 / 700 "section" size is not on the page now).
+  2. *The component gate.* Six of the seven published components came back as prose: five controls showed no
+     brand change in any measured state and one could not be hovered. A component may not be declared without a
+     measured state, and the old entries were written before states were measured. This is the gate doing what it
+     says; whether a re-verification should be allowed to shrink a reference this much is not a tooling question.
+- Not landed. The worker's folder is `~/.omd-workers/reverify2/jobplanet`. Running the 89 partial references this
+  way waits on that question and on a second trial with the text census in the capture.
