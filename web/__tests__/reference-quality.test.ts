@@ -405,3 +405,37 @@ describe("derived-value advisories", () => {
     expect(tokenCodes("- Hover: darken to `#304cad` (blue700)", { colors: { primary: "#3959cc" } })).toEqual([]);
   });
 });
+
+describe("a measured state that changed nothing", () => {
+  // The words are cheap to type. They count as an observed state only beside that control's Proof row, which the
+  // compile step writes from the same capture (web/scripts/compile-evidence.mjs, NO_BRAND_CHANGE).
+  const quiet = () => {
+    const t = tokens();
+    (t.components as Record<string, unknown>).primary = { type: "button", bg: "#112233", hover: "no brand change", pressed: "no brand change" };
+    return t;
+  };
+  const run = (verificationMarkdown: string) => {
+    const referenceTokens = quiet();
+    return evaluateReferenceQuality({
+      id: "fixture", markdown, verificationMarkdown, asOf: "2026-07-10",
+      frontmatter: { id: "fixture", verified: "2026-07-01", tokens: referenceTokens, verification_v2: verification(referenceTokens as ReturnType<typeof tokens>) },
+    });
+  };
+  const row = "| `primary` | `<button>` \"Start\" · 120×40 · radius 8px · 16px/400 | bg `rgb(17, 34, 51)` | no brand change | no brand change | UNMEASURED |";
+
+  it("is accepted with the control's proof row", () => {
+    const result = run(`${proof}\n| control | identity | rest | hover | pressed | focus |\n|---|---|---|---|---|---|\n${row}\n`);
+    expect(result.reasonCodes).not.toContain("interactive_state_missing");
+    expect(result.status).toBe("verified_v2");
+  });
+
+  it("is not accepted on its own, or beside another control's row", () => {
+    expect(run(proof).reasonCodes).toContain("interactive_state_missing");
+    expect(run(`${proof}\n${row.replace("`primary`", "`secondary`")}\n`).reasonCodes).toContain("interactive_state_missing");
+  });
+
+  it("does not count as a stated component", () => {
+    const result = run(`${proof}\n${row}\n`);
+    expect(result.advisoryCodes).toContain("component_state_prose_only");
+  });
+});

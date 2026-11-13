@@ -18,19 +18,32 @@ describe("compile-evidence", () => {
     const c = compile("primary-cta", control({ hover: { measured: true, changed: fill }, pressed: { measured: true, changed: fill } }));
     expect(c.emitted).toBe(true);
     expect(c.fields).toMatchObject({ type: "button", bg: "#ffffff", fg: "#414aff", radius: 100, height: "56px", font: "18px / 700", hover: "#dddddd", pressed: "#dddddd" });
-    expect(c.fields.focus).toBeUndefined(); // the browser's auto ring is not a brand token
+    expect(c.fields.focus).toBe("no brand change"); // measured; the browser's auto ring is not the brand's
   });
 
-  it("keeps a control in prose when nothing the brand painted changed", () => {
+  it("keeps a control whose measured states changed nothing as a component, and says so per state", () => {
     const c = compile("nav", control());
-    expect(c).toMatchObject({ emitted: false, reason: "no brand change in a measured state" });
-    expect(componentsYaml([c])).toContain("# nav: prose only");
+    expect(c).toMatchObject({ emitted: true, reason: null });
+    expect(c.fields).toMatchObject({ hover: "no brand change", pressed: "no brand change", focus: "no brand change" });
+    expect(componentsYaml([c])).not.toContain("prose only");
+  });
+
+  it("states only the states that were measured", () => {
+    const off = { measured: false };
+    const c = compile("nav-review", control({ hover: off, pressed: off }));
+    expect(c.emitted).toBe(true);
+    expect(c.fields.hover).toBeUndefined();
+    expect(c.fields.pressed).toBeUndefined();
+    expect(c.fields.focus).toBe("no brand change");
   });
 
   it("reports unmeasured as unmeasured, never as no change", () => {
     const off = { measured: false };
     expect(brandChanges(off, "hover")).toBeNull();
     expect(compile("tile", control({ hover: off, pressed: off, focus: off })).reason).toBe("every state unmeasured");
+    const tile = compile("tile", control({ hover: off, pressed: off, focus: off }));
+    expect(tile.emitted).toBe(false);
+    expect(componentsYaml([tile])).toContain("# tile: prose only");
   });
 
   it("ignores browser defaults and changes that persist after blur", () => {

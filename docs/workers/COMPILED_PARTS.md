@@ -2,6 +2,9 @@
   each `use` line. Do not add, drop or re-derive components or their values. If one of this order's rules says a
   compiled component must be prose only, leave it out and name the rule in report.md. If you think a control the
   script left as prose only should be a component, say so in report.md and still leave it out.
+  A state that reads `no brand change` was measured and showed nothing the brand painted: keep the line as it is
+  (it is what lets a control with no hover style stay a component), do not reword it, and do not add it to a state
+  the script left out, which was not measured. The same words must stay in that control's row of the Proof table.
 - `compiled/proof.md` is the controls table with the raw transition strings. Paste it into the Proof block of
   `verification.md`.
 - `compiled/census.md` is a digest of the survey: page facts, fonts, colours by count, custom properties by prefix.

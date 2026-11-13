@@ -158,12 +158,20 @@ export function mergeControls(statesFiles) {
   return [...out.values()];
 }
 
+/**
+ * What a component says for a state that was measured and showed nothing the brand painted. A button with no hover
+ * style is still a button: until 2026-11-13 such a control was left out of `components` (a component needed a
+ * change in some state), and a re-verified reference lost most of its components to prose (jobplanet: 7 to 1).
+ * The words are the proof table's own, and the quality gate accepts them only beside that control's proof row.
+ */
+export const NO_BRAND_CHANGE = "no brand change";
+
 export function compileControl(c) {
   const per = Object.fromEntries(STATES.map((s) => [s, brandChanges(c.states[s], s)]));
-  const emitted = STATES.some((s) => per[s]?.length);
-  const reason = emitted ? null
-    : STATES.every((s) => per[s] === null) ? "every state unmeasured"
-    : "no brand change in a measured state";
+  // A control is a component when at least one state was measured, whether or not it changed. With every state
+  // unmeasured there is nothing to say about how it behaves, and it stays prose.
+  const emitted = STATES.some((s) => per[s] !== null);
+  const reason = emitted ? null : "every state unmeasured";
   const { identity: idn, rest } = c;
   /** @type {Record<string, string | number>} */
   const fields = { type: componentType(c.key, idn) };
@@ -191,7 +199,8 @@ export function compileControl(c) {
   fields.height = `${idn.rect.h}px`;
   if (idn.padding) fields.padding = idn.padding;
   if (font && !/^0px/.test(font) && !iconOnly) fields.font = font.replace("/", " / "); // 0px: an image link with hidden text
-  for (const s of STATES) if (per[s]?.length) fields[s] = describe(per[s]);
+  // Every measured state is stated; an unmeasured one is left out (UNMEASURED is not "no change").
+  for (const s of STATES) if (per[s]?.length) fields[s] = describe(per[s]); else if (per[s]) fields[s] = NO_BRAND_CHANGE;
   return { key: c.key, emitted, reason, fields, per, notes };
 }
 
