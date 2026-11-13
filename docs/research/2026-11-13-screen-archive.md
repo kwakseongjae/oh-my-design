@@ -327,10 +327,11 @@ of 24 frames, and 27 of the 64 patterns it proposes are in the curated set. It i
 (ranking, sale and release all read as home), a pop-up drawn without labels, a web view. So it saves typing; it does
 not replace looking at the frame.
 
-**What decides the pace.** Musinsa took two walks and about two hours including the tool fixes; the walk itself was
-about 25 minutes of phone time. At that rate ten apps are four to five hours of an unlocked phone a week, in
-sessions of two or three apps. The phone has to be awake and reachable from the Mac (same Wi-Fi, or a cable): on
-the evening of 11/13 it was paired but its tunnel stayed unavailable, and nothing on the Mac's side can open it.
+**What decides the pace.** Musinsa's two walks are 5 and 26 minutes by their own timestamps (16 and 60 steps, 33
+frames), inside a 42-minute phone session, with the agent deciding each step. If other apps cost about the same,
+ten apps are five to seven hours of an unlocked phone a week; one app measured is not a rate, so the Karrot walk is
+the second data point. The phone has to be awake and reachable from the Mac (same Wi-Fi, or a cable): on the
+evening of 11/13 it was paired but its tunnel stayed unavailable, and nothing on the Mac's side can open it.
 
 **Choosing the ten.** From what is installed on the phone (`devicectl device info apps`), most-used Korean services
 first, one category at most twice a week, finance last and only in private mode. Musinsa and Karrot are the first
