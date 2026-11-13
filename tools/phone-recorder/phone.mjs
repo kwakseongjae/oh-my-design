@@ -40,7 +40,7 @@ const opt = (name, fallback = null) => { const i = args.indexOf(name); return i 
 const flag = (name) => { const i = args.indexOf(name); if (i === -1) return false; args.splice(i, 1); return true; };
 
 const ALERT_LEAST = ["허용 안 함", "Don’t Allow", "Don't Allow", "앱에 추적 금지 요청", "Ask App Not to Track", "나중에", "Not Now", "취소", "Cancel", "닫기", "Close", "확인", "OK"];
-const DISMISS = ["건너뛰기", "Skip", "나중에", "나중에 하기", "다음에", "다음에 하기", "오늘 하루 보지 않기", "오늘 그만 보기", "다시 보지 않기", "닫기", "Close", "괜찮아요",
+const DISMISS = ["건너뛰기", "Skip", "나중에", "나중에 하기", "다음에", "다음에 하기", "오늘 하루 보지 않기", "오늘 그만 보기", "다시 보지 않기", "닫기", "Close", "괜찮아요", "안 받을래요",
   "둘러보기", "로그인 없이 둘러보기", "비회원으로 계속", "비회원으로 둘러보기", "Not now", "Maybe later", "No thanks"];
 const GUEST = /둘러보기|비회원|건너뛰기|나중에|다음에|Skip|Later|Not now|guest/i;
 const RISKY = /결제|구매|주문하기|바로구매|송금|이체|보내기|충전|출금|삭제|탈퇴|로그아웃|구독|해지|Pay\b|Buy\b|Purchase|Send\b|Transfer|Delete|Sign out|Log out|Subscribe/i;
