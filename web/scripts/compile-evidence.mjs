@@ -99,21 +99,18 @@ function describe(changes) {
 }
 
 // The probe records a pseudo-element as one string: `::after{content:"";bg:…;color:…;op:1;tf:none;bs:none;size:WxH;bd:…}`.
-const PSEUDO_FIELDS = { content: "content", bg: "bg", img: "image", color: "color", op: "opacity", tf: "transform", bs: "shadow", size: "size", bd: "border" };
+const PSEUDO_FIELDS = { content: "content", bg: "bg", img: "image", pos: "image position", color: "color", op: "opacity", tf: "transform", bs: "shadow", size: "size", bd: "border" };
 const PSEUDO_IDLE = { content: '""', bg: "rgba(0, 0, 0, 0)", img: "none", color: "-", op: "1", tf: "none", bs: "none" };
 export function parsePseudo(text) {
   const m = /^(::[a-z-]+)\{(.*)\}$/s.exec(text ?? "");
   if (!m) return null;
   const fields = new Map();
-  let part = "", quote = null;
-  const push = () => { const i = part.indexOf(":"); if (i > 0) fields.set(part.slice(0, i), part.slice(i + 1)); part = ""; };
-  for (const ch of m[2]) {
-    if (quote) { part += ch; if (ch === quote) quote = null; }
-    else if (ch === '"' || ch === "'") { quote = ch; part += ch; }
-    else if (ch === ";") push();
-    else part += ch;
-  }
-  push();
+  // Only `content` is quoted by the probe, and it comes first; a `;` inside it is not a separator. An image URL
+  // further on can be cut short with an unbalanced quote, so quotes are not tracked past `content`.
+  let rest = m[2];
+  const content = /^content:("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|[^;]*)(?:;|$)/.exec(rest);
+  if (content) { fields.set("content", content[1]); rest = rest.slice(content[0].length); }
+  for (const part of rest.split(";")) { const i = part.indexOf(":"); if (i > 0) fields.set(part.slice(0, i), part.slice(i + 1)); }
   return { name: m[1], fields };
 }
 

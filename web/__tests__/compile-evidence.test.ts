@@ -77,6 +77,12 @@ describe("compile-evidence", () => {
     expect(describeChange({ set: "self-pseudo", prop: "after", from: "", to: '::after{content:"";bg:rgba(0, 0, 0, 0);img:none;color:-;op:1;tf:none;bs:rgb(13, 153, 229) 0px 0px 0px 2px;size:256pxx201.75px}' }))
       .toBe("::after appears: shadow rgb(13, 153, 229) 0px 0px 0px 2px, 256px x 201.75px");
     expect(describeChange({ set: "label-pseudo", prop: "after", from: "::after{size:0pxx2px}", to: "::after{size:63.6pxx2px}" })).toBe("label ::after size: 0px x 2px -> 63.6px x 2px");
+    // an icon swap: the probe cuts the URL short, leaving a quote open
+    const icon = (hash: string, tf: string) => `::after{content:"";bg:rgba(0, 0, 0, 0);img:url("https://example.com/img/head_gnb…#${hash};pos:50% 50% / contain / no-repeat;color:-;op:1;tf:${tf};bs:none;size:20pxx20px}`;
+    expect(describeChange({ set: "self-pseudo", prop: "after", from: icon("b76e/74", "none"), to: icon("5ad6/77", "none") }))
+      .toBe('::after image: url("https://example.com/img/head_gnb…#b76e/74 -> url("https://example.com/img/head_gnb…#5ad6/77');
+    expect(describeChange({ set: "self-pseudo", prop: "after", from: icon("a/1", "matrix(1, 0, 0, 1, 0, -60)"), to: icon("a/1", "matrix(1.1, 0, 0, 1.1, 0, -60)") }))
+      .toBe("::after transform: matrix(1, 0, 0, 1, 0, -60) -> matrix(1.1, 0, 0, 1.1, 0, -60)");
     expect(describeChange({ set: "self", prop: "opacity", from: "1", to: "0.75" })).toBe("self opacity: 1 -> 0.75"); // anything else: as before
   });
 
