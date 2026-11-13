@@ -205,6 +205,8 @@ describe("token candidates", () => {
     expect(row(16, 400)).toMatchObject({ paragraph: 1292, heading: 0, interactive: 0, lineHeight: "24px" });
     expect(row(32, 700)).toMatchObject({ heading: 15, lineHeight: "44px" });
     expect(row(13, 700)).toMatchObject({ interactive: 2, paragraph: 8 }); // a size the rows already had gains its paragraph count
+    expect(row(13, 700)).toMatchObject({ lineHeight: "14.3px", textLineHeight: "19.5px" }); // the paragraph keeps its own line height
+    expect(row(16, 400)?.textLineHeight).toBeUndefined();
     const md = candidatesMarkdown(withText);
     expect(md).toContain("| 16px / 400 | — | 0 | — | 1292 | 24px | Pretendard | — |");
     expect(md).not.toContain("Not captured: the size of headings");

@@ -25,7 +25,7 @@ typography:
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.5
-    use: 'Retained published name: small inherited control text and metadata; 20 paragraph characters at 13/400. Not the dominant paragraph size.'
+    use: 'Retained published name: small inherited control text and metadata (97 of the 108 interactive elements at this size sit on 19.5px). The one 13px / 400 paragraph, 20 characters, sits on a 20px line height. Not the dominant paragraph size.'
   label:
     fontSize: 13px
     fontWeight: 600
@@ -322,7 +322,7 @@ The dominant paragraph size is 16px/400 (951 paragraph characters); section head
 
 | Token | Size / weight | Line height | Observed use |
 |---|---|---|---|
-| `body` | 13px / 400 | 19.5px | Retained published name: small inherited control text and metadata; 20 paragraph characters at 13/400. Not the dominant paragraph size. |
+| `body` | 13px / 400 | 19.5px | Retained published name: small inherited control text and metadata (97 of the 108 interactive elements at this size sit on 19.5px). The one 13px / 400 paragraph, 20 characters, sits on a 20px line height. Not the dominant paragraph size. |
 | `label` | 13px / 600 | 20px | Company-name label in job-card. |
 | `button-lg` | 16px / 600 | 24px | 전체보기 action label. |
 | `nav` | 15px / 400 | 24px | Retained published name: now measured on the main search input, not the nav label. |

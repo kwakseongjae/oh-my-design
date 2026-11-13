@@ -358,7 +358,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
     const m = /^(\d+(?:\.\d+)?)px ?\/ ?(\d+)$/.exec(font ?? "");
     if (!m || Number(m[1]) === 0) return null; // 0px: an image link with hidden text
     const key = `${m[1]}/${m[2]}`;
-    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, heading: 0, paragraph: 0, lineHeights: new Map(), families: new Map(), controls: [] }).get(key);
+    return sizes.get(key) ?? sizes.set(key, { size: Number(m[1]), weight: Number(m[2]), interactive: 0, heading: 0, paragraph: 0, lineHeights: new Map(), textLineHeights: new Map(), families: new Map(), controls: [] }).get(key);
   };
   const radius = (v) => (v ? radii.get(v) ?? radii.set(v, { value: v, interactive: 0, controls: [] }).get(v) : null);
   const bump = (map, k) => { if (k) map.set(k, (map.get(k) ?? 0) + 1); };
@@ -393,7 +393,7 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
       const t = size(`${e.size}px/${e.weight}`);
       if (!t) continue;
       t[role] += e.chars;
-      bump(t.lineHeights, e.lineHeight); bump(t.families, e.family);
+      bump(t.lineHeights, e.lineHeight); bump(t.textLineHeights, e.lineHeight); bump(t.families, e.family);
     }
   }
   for (const [name, v] of Object.entries(cz.computedVars ?? {})) {
@@ -412,7 +412,13 @@ export function tokenCandidates(survey, controls = [], compiled = [], published 
   const declaredOnly = all.filter((c) => !weight(c) && !c.controls.length).sort((a, z) => a.declared[0].localeCompare(z.declared[0]))
     .map((c) => ({ value: c.value, declared: c.declared }));
   const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || (z.heading + z.paragraph) - (a.heading + a.paragraph) || z.size - a.size || z.weight - a.weight)
-    .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families), ...named("type", `${t.size}/${t.weight}`) }));
+    // One size can sit on two line heights: 13px control text at 19.5px and a 13px paragraph at 20px (jobplanet,
+    // 2026-11-14: two reviewers each found a row that gave the controls' line height to the paragraph). The most
+    // common one stays the row's line height; the heading and paragraph text's own is given beside it when it differs.
+    .map(({ lineHeights, textLineHeights, families, ...t }) => {
+      const lineHeight = mode(lineHeights), ofText = mode(textLineHeights);
+      return { ...t, lineHeight, ...(ofText && ofText !== lineHeight ? { textLineHeight: ofText } : {}), family: mode(families), ...named("type", `${t.size}/${t.weight}`) };
+    });
   const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value))
     .map((r) => ({ ...r, ...named("radii", `${parseFloat(r.value)}px`) }));
   // Published tokens whose value this capture no longer holds: the writer says what happened to them.
@@ -462,7 +468,7 @@ export function candidatesMarkdown(cand) {
         "are not links or controls."]), "",
     ...["body", "h1", "button"].map((r) => `- ${r} family: ${cand.families[r] ?? "not read"}`), "",
     "| size / weight | name | interactive elements | heading chars | paragraph chars | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|---|---|---|",
-    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.heading || "—"} | ${t.paragraph || "—"} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
+    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.heading || "—"} | ${t.paragraph || "—"} | ${t.lineHeight ?? "—"}${t.textLineHeight ? ` · heading and paragraph text ${t.textLineHeight}` : ""} | ${t.family ?? "—"} | ${few(t.controls)} |`),
     ...more(cand.notListed.type, "`rows` in `survey.json`"), "",
     `## Corner radii (${cand.radii.length})`, "",
     "| radius | name | interactive elements | measured controls |", "|---|---|---|---|",
