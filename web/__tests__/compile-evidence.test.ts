@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, proofMarkdown, tokenCandidates } from "../scripts/compile-evidence.mjs";
+import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, mergeControls, proofMarkdown, publishedNames, tokenCandidates } from "../scripts/compile-evidence.mjs";
 
 // Shapes follow probe-keyboard-states.mjs states.json: controls[key] = { found, identity, rest, hover, pressed, focus }.
 const identity = { tag: "a", role: null, text: "Contact Us", rect: { w: 194.8, h: 56 }, radius: "100px", padding: "0px 40px", font: "18px/700" };
@@ -122,6 +122,26 @@ describe("token candidates", () => {
       { size: 18, weight: 700, interactive: 0, controls: ["cta"], lineHeight: null, family: null },
     ]);
     expect(cand.radii).toEqual([{ value: "0px", interactive: 2, controls: [] }, { value: "3px", interactive: 1, controls: [] }, { value: "100px", interactive: 0, controls: ["cta"] }]);
+  });
+
+  it("names what it can: the paragraph ink, and whatever the published reference already names", () => {
+    const withInk = { ...survey, census: { ...survey.census, census: { ...survey.census.census, paragraphInk: [{ color: "rgb(30, 36, 40)", count: 24 }] } } };
+    const fresh = tokenCandidates(withInk, controls, controls.map(compileControl));
+    expect(fresh.colours[0]).toMatchObject({ value: "#1e2428", name: "foreground", from: "rule" });
+    expect(fresh.colours[1].name).toBeUndefined(); // no rule names it: the writer's
+
+    const published = publishedNames({
+      colors: { ink: "#1E2428", canvas: "#ffffff", "old-accent": "#123456", glass: "rgba(0,0,0,.5)" },
+      typography: { nav: { fontSize: "13px", fontWeight: 700 }, lead: { fontSize: "40px", fontWeight: 400 } },
+      rounded: { square: "0px", pill: "100px" },
+    });
+    const again = tokenCandidates(withInk, controls, controls.map(compileControl), published);
+    expect(again.colours[0]).toMatchObject({ value: "#1e2428", name: "ink", from: "published" }); // the published name wins over the rule
+    expect(again.type[0]).toMatchObject({ size: 13, weight: 700, name: "nav", from: "published" });
+    expect(again.radii.map((r) => r.name)).toEqual(["square", undefined, "pill"]);
+    // what the reference publishes and this capture does not hold is listed, not silently dropped
+    expect(again.publishedNotMeasured).toEqual({ colours: [{ name: "old-accent", value: "#123456" }], type: [{ name: "lead", value: "40/400" }], radii: [] });
+    expect(candidatesMarkdown(again)).toContain("| `#1e2428` | `ink` (published) |");
   });
 
   it("is the same list for the same evidence, and says what the capture does not hold", () => {

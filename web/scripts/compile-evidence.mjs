@@ -5,7 +5,11 @@
  * data; until now a writer re-read it and decided what to carry over, so two writers produced two documents from
  * one capture. This script makes that step a function of the evidence.
  *
- *   node scripts/compile-evidence.mjs <capture-folder>... [--out <dir>] [--id <id>]
+ *   node scripts/compile-evidence.mjs <capture-folder>... [--out <dir>] [--id <id>] [--published <DESIGN.md>]
+ *
+ * --published names the reference as it is published now. Each candidate whose value that file already gives a
+ * token carries the published name, so a re-written reference keeps its names where nothing changed (names.json
+ * holds the same pins as data). Without it, a paragraph-ink colour is still marked `foreground`.
  *
  * <capture-folder> holds survey.json and/or states.json (with its cfg.json), as written by the capture service
  * under artifacts/reference-evidence/visual/<id>/<timestamp>/. Give every folder of one capture session; later
@@ -25,6 +29,7 @@
  * `auto` focus ring. An unmeasured state is reported as unmeasured, never as "no change".
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 
 const STATES = ["hover", "pressed", "focus"];
@@ -247,7 +252,24 @@ const mode = (counts) => [...counts.entries()].sort((a, z) => z[1] - a[1] || Str
  * the writer. Sizes and radii come from the survey's rows (the interactive elements it listed) and the measured
  * controls: the survey does not record the size of headings or running text.
  */
-export function tokenCandidates(survey, controls = [], compiled = []) {
+/**
+ * Token names a published DESIGN.md (v3 frontmatter) gives to values: colours by hex, type by size/weight, radii
+ * by px. A value two tokens share keeps both names, in file order. `text` is the file's frontmatter as parsed.
+ */
+export function publishedNames(front) {
+  const out = { colours: {}, type: {}, radii: {} };
+  const add = (map, key, name) => { if (key !== null) (map[key] ??= []).push(name); };
+  for (const [name, v] of Object.entries(front?.colors ?? {})) add(out.colours, /^#[0-9a-fA-F]{6}$/.test(String(v)) ? String(v).toLowerCase() : null, name);
+  for (const [name, v] of Object.entries(front?.typography ?? {})) {
+    const size = /^(\d+(?:\.\d+)?)px$/.exec(String(v?.fontSize ?? ""))?.[1];
+    add(out.type, size && v?.fontWeight ? `${Number(size)}/${Number(v.fontWeight)}` : null, name);
+  }
+  for (const [name, v] of Object.entries(front?.rounded ?? {})) add(out.radii, /^\d+(?:\.\d+)?px$/.test(String(v)) ? `${parseFloat(v)}px` : null, name);
+  return out;
+}
+
+/** @param {any} survey @param {any[]} [controls] @param {any[]} [compiled] @param {ReturnType<typeof publishedNames> | null} [published] */
+export function tokenCandidates(survey, controls = [], compiled = [], published = null) {
   const cz = survey?.census ?? {}, cc = cz.census ?? {};
   const colours = new Map(), sizes = new Map(), radii = new Map();
   const colour = (hex) => colours.get(hex) ?? colours.set(hex, { value: hex, painted: {}, interactive: 0, controls: [], declared: [] }).get(hex);
@@ -290,36 +312,49 @@ export function tokenCandidates(survey, controls = [], compiled = []) {
   }
 
   const weight = (c) => Object.values(c.painted).reduce((a, n) => a + n, 0) + c.interactive;
-  const all = [...colours.values()].map((c) => ({ ...c, declared: c.declared.sort() }));
+  // A name the script can give on its own: the published one for an unchanged value, else `foreground` for the
+  // colour most paragraphs are set in (the catalog's name for body-text ink; the gate requires it).
+  const topInk = [...(cc.paragraphInk ?? [])].sort((a, z) => z.count - a.count).flatMap((e) => computedColors(e.color))[0];
+  const named = (kind, key, fallback) => (published?.[kind]?.[key]?.length ? { name: published[kind][key].join(", "), from: "published" } : fallback ? { name: fallback, from: "rule" } : {});
+  const all = [...colours.values()].map((c) => ({ ...c, declared: c.declared.sort(), ...named("colours", c.value, c.value === topInk ? "foreground" : null) }));
   const seen = all.filter((c) => weight(c) || c.controls.length)
     .sort((a, z) => weight(z) - weight(a) || z.controls.length - a.controls.length || a.value.localeCompare(z.value));
   const declaredOnly = all.filter((c) => !weight(c) && !c.controls.length).sort((a, z) => a.declared[0].localeCompare(z.declared[0]))
     .map((c) => ({ value: c.value, declared: c.declared }));
   const type = [...sizes.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || z.size - a.size || z.weight - a.weight)
-    .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families) }));
-  const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value));
+    .map(({ lineHeights, families, ...t }) => ({ ...t, lineHeight: mode(lineHeights), family: mode(families), ...named("type", `${t.size}/${t.weight}`) }));
+  const rad = [...radii.values()].sort((a, z) => z.interactive - a.interactive || z.controls.length - a.controls.length || a.value.localeCompare(z.value))
+    .map((r) => ({ ...r, ...named("radii", `${parseFloat(r.value)}px`) }));
+  // Published tokens whose value this capture no longer holds: the writer says what happened to them.
+  const have = { colours: new Set(all.map((c) => c.value)), type: new Set(type.map((t) => `${t.size}/${t.weight}`)), radii: new Set(rad.map((r) => `${parseFloat(r.value)}px`)) };
+  const gone = published ? Object.fromEntries(Object.entries(published).map(([kind, map]) => [kind,
+    Object.entries(map).filter(([key]) => !have[kind].has(key)).flatMap(([key, names]) => names.map((name) => ({ name, value: key })))])) : null;
   return {
     colours: seen.slice(0, COLOUR_CAP), declaredOnly: declaredOnly.slice(0, DECLARED_CAP),
     type: type.slice(0, TYPE_CAP), radii: rad.slice(0, RADIUS_CAP),
     families: Object.fromEntries(["body", "h1", "button"].map((r) => [r, cz.fonts?.[r] ?? null])),
+    ...(gone ? { publishedNotMeasured: gone } : {}),
     notListed: { colours: Math.max(0, seen.length - COLOUR_CAP), declaredOnly: Math.max(0, declaredOnly.length - DECLARED_CAP),
       type: Math.max(0, type.length - TYPE_CAP), radii: Math.max(0, rad.length - RADIUS_CAP) },
   };
 }
 
 export function candidatesMarkdown(cand) {
+  const nameCell = (c) => (c.name ? `\`${c.name}\`${c.from === "published" ? " (published)" : ""}` : "—");
   const few = (list, n = 4) => (list.length > n ? `${list.slice(0, n).join("; ")}; +${list.length - n}` : list.join("; ")) || "—";
   const more = (n, where) => (n ? [`${n} more not listed here; see ${where}.`] : []);
   const painted = (c) => [...Object.entries(c.painted).map(([k, n]) => `${k} ×${n}`), ...(c.interactive ? [`interactive ×${c.interactive}`] : [])].join(" · ") || "—";
   return [
     "# Token candidates", "",
     "Every colour, type size and corner radius this capture measured, and where it was seen. The order and the",
-    "cut-offs are fixed by the script. Naming a token and saying what it is for is the writer's part.", "",
+    "cut-offs are fixed by the script. Saying what a token is for is the writer's part. The `name` column is a",
+    "name the script can give: `(published)` is the name the reference already publishes for that value, to be",
+    "kept as it is; `foreground` is the colour most paragraphs are set in. `—` is the writer's to name.", "",
     `## Colours seen on the page (${cand.colours.length})`, "",
     "Element counts are from the survey's colour census; `interactive` counts the survey's rows (links, buttons,",
     "fields) that carry the colour; the controls column names the measured control and the state or rest field.", "",
-    "| value | elements painted | measured controls | custom property |", "|---|---|---|---|",
-    ...cand.colours.map((c) => `| \`${c.value}\` | ${painted(c)} | ${few(c.controls)} | ${few(c.declared.map((n) => `\`${n}\``), 3)} |`),
+    "| value | name | elements painted | measured controls | custom property |", "|---|---|---|---|---|",
+    ...cand.colours.map((c) => `| \`${c.value}\` | ${nameCell(c)} | ${painted(c)} | ${few(c.controls)} | ${few(c.declared.map((n) => `\`${n}\``), 3)} |`),
     ...more(cand.notListed.colours, "`survey.json`"), "",
     `## Colours declared only (${cand.declaredOnly.length})`, "",
     "A custom property computed on `:root` holds the value, and no surveyed element or measured control was painted",
@@ -331,13 +366,18 @@ export function candidatesMarkdown(cand) {
     "From the survey's rows and the measured controls. Not captured: the size of headings and running text that",
     "are not links or controls.", "",
     ...["body", "h1", "button"].map((r) => `- ${r} family: ${cand.families[r] ?? "not read"}`), "",
-    "| size / weight | interactive elements | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|",
-    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${t.interactive} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
+    "| size / weight | name | interactive elements | line height (most common) | family (most common) | measured controls |", "|---|---|---|---|---|---|",
+    ...cand.type.map((t) => `| ${t.size}px / ${t.weight} | ${nameCell(t)} | ${t.interactive} | ${t.lineHeight ?? "—"} | ${t.family ?? "—"} | ${few(t.controls)} |`),
     ...more(cand.notListed.type, "`rows` in `survey.json`"), "",
     `## Corner radii (${cand.radii.length})`, "",
-    "| radius | interactive elements | measured controls |", "|---|---|---|",
-    ...cand.radii.map((r) => `| ${r.value} | ${r.interactive} | ${few(r.controls)} |`),
+    "| radius | name | interactive elements | measured controls |", "|---|---|---|---|",
+    ...cand.radii.map((r) => `| ${r.value} | ${nameCell(r)} | ${r.interactive} | ${few(r.controls)} |`),
     ...more(cand.notListed.radii, "`rows` in `survey.json`"), "",
+    ...(cand.publishedNotMeasured ? ["## Published tokens this capture did not measure", "",
+      "The published reference names these values and this capture does not hold them. Keep one only if another",
+      "file in the evidence still shows it; otherwise drop it and say so in report.md.", "",
+      ...["colours", "type", "radii"].flatMap((k) => cand.publishedNotMeasured[k].map((g) => `- ${k}: \`${g.name}\` = ${g.value}`)),
+      ...(["colours", "type", "radii"].some((k) => cand.publishedNotMeasured[k].length) ? [] : ["- none"]), ""] : []),
   ].join("\n");
 }
 
@@ -370,6 +410,7 @@ function main() {
   const opt = (name) => { const i = args.indexOf(name); return i === -1 ? null : args.splice(i, 2)[1]; };
   const out = opt("--out") ?? "compiled";
   const id = opt("--id");
+  const publishedFile = opt("--published");
   if (!args.length) { console.error("usage: compile-evidence.mjs <capture-folder>... [--out <dir>] [--id <id>]"); process.exit(2); }
   const read = (f) => JSON.parse(readFileSync(f, "utf8"));
   const folders = [...args].sort();
@@ -387,7 +428,16 @@ function main() {
   writeFileSync(path.join(out, "census.md"), censusMarkdown(survey));
   writeFileSync(path.join(out, "measure.json"), JSON.stringify(measureSpec(id, survey, statesFiles, cfgs), null, 1) + "\n");
   writeFileSync(path.join(out, "values.json"), JSON.stringify(valuesOf(controls, compiled), null, 1) + "\n");
-  const candidates = tokenCandidates(survey, controls, compiled);
+  let published = null;
+  if (publishedFile) {
+    const text = readFileSync(publishedFile, "utf8");
+    const close = text.indexOf("\n---\n", 4);
+    if (!text.startsWith("---\n") || close < 0) { console.error(`--published ${publishedFile}: no YAML frontmatter`); process.exit(2); }
+    const yaml = createRequire(import.meta.url)("js-yaml");
+    published = publishedNames(yaml.load(text.slice(4, close), { schema: yaml.JSON_SCHEMA }));
+    writeFileSync(path.join(out, "names.json"), JSON.stringify(published, null, 1) + "\n");
+  }
+  const candidates = tokenCandidates(survey, controls, compiled, published);
   writeFileSync(path.join(out, "candidates.md"), candidatesMarkdown(candidates));
   writeFileSync(path.join(out, "candidates.json"), JSON.stringify(candidates, null, 1) + "\n");
   const n = compiled.filter((c) => c.emitted).length;

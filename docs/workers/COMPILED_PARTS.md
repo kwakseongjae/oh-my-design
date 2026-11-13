@@ -18,3 +18,22 @@
     altogether. (Batch 9, 2026-11-12: exported as tokens, these gave references of 57 to 100 colour tokens.)
   - Type sizes and radii: a token for each row you can tie to a kind of element or a measured control.
   - A value that is not in the list needs its source named in report.md.
+- **Token names.** Where the `name` column of `candidates.md` gives a name, use it. A `(published)` name is the
+  one the reference already carries for that value: keep it exactly, and do not give it to another value. For a
+  candidate marked `—`, take the first of these that applies:
+  1. a role from this list, when the evidence shows the role (each names one value): `primary` (the frontmatter
+     `primary_color`), `on-primary` (ink on it), `primary-hover` and `primary-pressed` (its measured states),
+     `canvas` (the page background), `surface` (a panel or card background on the canvas), `foreground`
+     (paragraph ink), `ink` (the strongest text colour, when it is not the paragraph ink), `muted` (secondary
+     text), `border` (the most used border or divider colour), `link`, `focus-ring`, `success`, `warning`,
+     `danger`, `info`, `disabled`;
+  2. the company's own custom property that holds the value (step 4), without the leading `--`;
+  3. for a colour that one measured control carries and nothing else does: `<component key>-bg`, `-fg` or
+     `-border`, and `<component key>-hover`, `-pressed` or `-focus` for a state colour;
+  4. otherwise `<where>-<what>`: the landmark or section it sits in, then `bg`, `ink`, `border` or `accent`
+     (`footer-bg`, `breaking-ink`).
+  Type sizes are named for the kind of element: `body`, `button`, `nav`, `heading`, `display`, `caption`,
+  `label`, `card-title`, `input`, `tab`; a second size of the same kind adds `-sm` or `-lg`. Radii: `none` for 0,
+  `pill` for a fully rounded end, otherwise the kind of control that carries it (`button`, `card`, `input`,
+  `chip`, `tab`). These are the names most of the catalog already uses, so a reader meets the same word for the
+  same role from one reference to the next.

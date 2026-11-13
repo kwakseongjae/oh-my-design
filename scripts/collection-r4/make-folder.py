@@ -46,8 +46,10 @@ for e in SRC.iterdir():
 (DST / "out").mkdir()
 for f in folders:
     shutil.copytree(f, DST / "capture" / f.name)
+# R4_PUBLISHED=1: the candidate list carries the token names of the reference as it is published (name pinning).
+pin = ["--published", str(MAIN / "web/references" / cid / "DESIGN.md")] if os.environ.get("R4_PUBLISHED") == "1" else []
 subprocess.run(["node", str(REPO / "web/scripts/compile-evidence.mjs"), *[str(DST / "capture" / f.name) for f in folders],
-                "--out", str(DST / "compiled"), "--id", cid], check=True, capture_output=True)
+                "--out", str(DST / "compiled"), "--id", cid, *pin], check=True, capture_output=True)
 CANDIDATES = os.environ.get("R4_CANDIDATES", "1") != "0"
 if not CANDIDATES:
     for f in ("candidates.md", "candidates.json"):
