@@ -72,6 +72,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "1111",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 97,
+    "evidenceClaimCount": 97,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 5,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "1111-jobbank",
     "status": "verified_v2",
     "verifiedAt": "2026-11-03",
@@ -423,6 +445,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 2,
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "aeon",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 84,
+    "evidenceClaimCount": 84,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 8,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -6355,6 +6399,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "koexpressway",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 114,
+    "evidenceClaimCount": 114,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 4,
+    "conflictCount": 0,
+    "tier1SourceCount": 4,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "komoot",
     "status": "verified_v2",
     "verifiedAt": "2026-09-27",
@@ -8252,6 +8318,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 12,
     "interactiveComponentCount": 8,
     "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "nhis",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 108,
+    "evidenceClaimCount": 108,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
+    "conflictCount": 0,
+    "tier1SourceCount": 13,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -10667,6 +10755,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "samsungfire",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 90,
+    "evidenceClaimCount": 90,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "samsunghospital",
     "status": "verified_v2",
     "verifiedAt": "2026-11-09",
@@ -12598,6 +12708,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "tokyo",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 84,
+    "evidenceClaimCount": 84,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 9,
+    "conflictCount": 0,
+    "tier1SourceCount": 9,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "tokyo-metropolitan",
     "status": "verified_v2",
     "verifiedAt": "2026-11-03",
@@ -12910,6 +13042,28 @@ export const REFERENCE_QUALITY = [
       "motion_value_unsourced"
     ],
     "paletteGrounding": 0.857
+  },
+  {
+    "id": "tver",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-12",
+    "tokensExtractedAt": "2026-11-12",
+    "nextReverifyAt": "2027-05-11",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 91,
+    "evidenceClaimCount": 91,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "tving",
@@ -14435,10 +14589,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 437,
+  "verified_v2": 444,
   "partial": 89,
   "legacy_snapshot": 81,
-  "total": 607
+  "total": 614
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
