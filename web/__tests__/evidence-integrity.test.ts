@@ -4,7 +4,7 @@ import { join } from "node:path";
 // The evaluator ships its own frontmatter parser; using it here avoids a second YAML
 // dependency in the test tree (js-yaml has no bundled types, so importing it directly
 // was the only tsc error in this project).
-import { SOURCE_TTLS, evaluateReferenceQuality, parseReferenceFrontmatter } from "../scripts/lib/reference-quality.mjs";
+import { EXPIRE_SOURCES_BY_DATE, SOURCE_TTLS, evaluateReferenceQuality, parseReferenceFrontmatter } from "../scripts/lib/reference-quality.mjs";
 import { readReferenceSource } from "../scripts/lib/reference-source.mjs";
 
 /**
@@ -62,6 +62,15 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       "brand-asset": 365,
       license: 365,
     });
+  });
+
+  it("pins whether a date alone demotes, so switching it is a deliberate change", () => {
+    // Owner decision 2026-11-13: 「유효기간이라는 개념 일단 날리자. 아니면 그 기간을 늘리든가.」 Off.
+    // This is cheap path #1 taken to its end, chosen by the owner and on the record, for the reason written beside
+    // the constant: the calendar stood in for a re-measurement that can now be run with no model. The TTLs stay
+    // pinned above because they still date every source's due re-measurement. Whoever turns this back on, or
+    // builds the scheduled re-measurement that replaces it, edits this line and says why.
+    expect(EXPIRE_SOURCES_BY_DATE).toBe(false);
   });
 
   it("keeps a live product surface short-lived relative to published artifacts", () => {
@@ -278,7 +287,9 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     expect(contradicted.filter((id) => low.includes(id))).toEqual([]);
   }, 120_000);
 
-  it("records what happens on the expiry date instead of discovering it in CI", () => {
+  // With EXPIRE_SOURCES_BY_DATE off (2026-11-13) nothing happens on that date any more. The test keeps running the
+  // dormant rule (`expireByDate: true`) so that turning it back on is still a known, dated fact.
+  it("records what would happen on the expiry date if the date rule were on", () => {
     // Forgeries 1-3 all exist to avoid this number. Asserting it means the cliff is a
     // known, dated fact in the test suite rather than a Saturday-morning surprise —
     // and a change that "fixes" it has to explain itself here first.
@@ -309,6 +320,7 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
           id, markdown, frontmatter: front,
           verificationMarkdown: existsSync(verification) ? readFileSync(verification, "utf8") : "",
           asOf,
+          expireByDate: true,
         });
         if (result.status === "verified_v2") out.push(id);
       }
@@ -329,6 +341,7 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
           frontmatter: front,
           verificationMarkdown: existsSync(verification) ? readFileSync(verification, "utf8") : "",
           asOf,
+          expireByDate: true,
         });
         if (result.status === "verified_v2") verified += 1;
       }

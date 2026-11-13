@@ -3663,7 +3663,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "figma",
-    "status": "partial",
+    "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-11-11",
@@ -3679,9 +3679,7 @@ export const REFERENCE_QUALITY = [
     "componentCount": 5,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "source_expired"
-    ],
+    "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
   },
@@ -14591,8 +14589,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 443,
-  "partial": 90,
+  "verified_v2": 444,
+  "partial": 89,
   "legacy_snapshot": 81,
   "total": 614
 } as const;
