@@ -5,7 +5,7 @@ they belong to, scroll clips, and the findings.
     make-sheet.py <sheet.json> <out-dir>
 
 sheet.json is the curation, written by whoever looked at the frames:
-    { "title", "app", "version", "device", "captured", "summary": [..], "findings": [{ "title", "body", "frames": [] }],
+    { "title", "app", "bundle", "version", "device", "captured", "summary": [..], "findings": [{ "title", "body", "frames": [] }],
       "walks": { "<key>": "<walk folder>" },
       "groups": [{ "title", "note", "frames": [{ "walk", "frame", "title", "type", "patterns": [], "note",
                                                     "redact": ["label regex", ...], "redact_band": ["from label", "to label"],
@@ -163,7 +163,7 @@ dialog img {{ display:block; max-height:94vh; max-width:94vw; border-radius:8px;
 </style></head><body>
 <header class="top">
   <h1>{esc(spec["title"])}</h1>
-  <div class="meta">{esc(spec["app"])} <b>{esc(spec["version"])}</b> · {esc(spec["device"])} · 수집 <b>{esc(spec["captured"])}</b> · 화면 <b>{total}</b>장 · 영상 <b>{len(clips)}</b>개{f' · 가림 처리 <b>{redacted}</b>곳' if redacted else ''}</div>
+  <div class="meta">{esc(spec["app"])}{" (" + esc(spec["bundle"]) + ")" if spec.get("bundle") else ""} <b>{esc(spec["version"])}</b> · {esc(spec["device"])} · 수집 <b>{esc(spec["captured"])}</b> · 화면 <b>{total}</b>장 · 영상 <b>{len(clips)}</b>개{f' · 가림 처리 <b>{redacted}</b>곳' if redacted else ''}</div>
   <div class="summary"><ul>{summary}</ul></div>
   <div class="coverage" aria-label="기본 화면 유형 가운데 이 시트에 있는 것"><span>기본 화면</span>{coverage}</div>
 </header>
@@ -196,7 +196,7 @@ zoom.addEventListener('click', () => zoom.close());
 </body></html>
 '''
 (out / "index.html").write_text(page, encoding="utf-8")
-(out / "screens.json").write_text(json.dumps({"app": spec["app"], "version": spec["version"], "device": spec["device"], "captured": spec["captured"],
+(out / "screens.json").write_text(json.dumps({"app": spec["app"], "bundle": spec.get("bundle", ""), "version": spec["version"], "device": spec["device"], "captured": spec["captured"],
                                               "core_missing": [c for c in core if c not in types], "screens": data}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 for word in sorted(unknown):
     print(f"not in taxonomy.json — {word}")

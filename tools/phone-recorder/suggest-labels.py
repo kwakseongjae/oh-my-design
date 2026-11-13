@@ -130,7 +130,7 @@ print("core screens reached: " + ", ".join(c for c in core if c in reached) + " 
 if scaffold:
     key = "w"
     frames = [{"walk": key, "frame": s["frame"], "title": s["note"] or s["type"], "type": s["type"], "patterns": s["patterns"], "note": ""} for s in suggested]
-    sheet = {"title": f"{walk.name} — 화면과 흐름", "app": "", "version": "", "device": flow.get("device", ""), "captured": flow.get("started", "")[:10],
+    sheet = {"title": f"{walk.name} — 화면과 흐름", "app": "", "bundle": next((s.get("bundle") for s in flow["steps"] if s.get("bundle")), ""), "version": "", "device": flow.get("device", ""), "captured": flow.get("started", "")[:10],
              "walks": {key: str(walk)}, "summary": [], "groups": [{"title": "전체", "note": "", "frames": frames}], "clips": [], "findings": [], "method": []}
     pathlib.Path(scaffold).expanduser().write_text(json.dumps(sheet, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"scaffold → {scaffold}")
