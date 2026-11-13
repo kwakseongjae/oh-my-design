@@ -41,6 +41,8 @@ const pct = (a, b) => (b ? `${a}/${b} (${(100 * a / b).toFixed(1)}%)` : "—");
 console.log(`\n${tot.sites} site(s), ${tot.blocked} blocked in every run, ${tot.runs} measured run(s)`);
 console.log(`agree with the baseline: ${pct(tot.same, tot.compared)} · agree with the previous run: ${pct(tot.prevSame, tot.prevCompared)}`);
 console.log(`differing fields by kind: content ${kinds.content} · geometry ${kinds.geometry} · value ${kinds.value}` + (kinds.value ? ` (${changes.filter((c) => kindOf(c.field) === "value").map((c) => `${c.id} ${c.field}`).join("; ")})` : ""));
+const moved = rows.flatMap((r) => r.runs.flatMap((x) => (x.againstPrevious?.changed ?? []).map((ch) => `${r.id} ${ch.key} ${ch.field}`)));
+if (tot.prevCompared) console.log(`differ from the run before (the same browser both times, so the site moved): ${moved.length ? [...new Set(moved)].join("; ") : "none"}`);
 console.log(`states unmeasured on one side: ${tot.unmeasured} · controls not found: ${tot.missing}`);
 if (process.argv.includes("--changes")) {
   console.log("\nchanged fields (site, field, in how many runs, baseline -> run):");

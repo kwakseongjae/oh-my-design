@@ -2,7 +2,7 @@
 /**
  * Re-measure a reference's pinned controls with no model and no window, and report what changed (docs/ROADMAP.md T1).
  *
- *   node scripts/t1/remeasure.mjs <id> [--runs 3] [--out <dir>] [--evidence <root>]
+ *   node scripts/t1/remeasure.mjs <id> [--runs 3] [--out <dir>] [--evidence <root>] [--prior <dir>]
  *
  * Baseline: the reference's latest capture session under artifacts/reference-evidence/visual/<id>/ (local-only, in
  * the main checkout), compiled by web/scripts/compile-evidence.mjs into the pinned list (url, locale, controls,
@@ -16,6 +16,12 @@
  * run-N/values.json, result.json.
  * <dir> defaults to ~/.omd-workers/t1-stability. A blocked page (probe exit 4) is recorded as blocked and is not
  * retried another way. An unmeasured state is reported as unmeasured, never as a change.
+ *
+ * --prior <dir> is the <dir> of an earlier re-measurement. Its last run of this id stands in as "the run before" for
+ * run 1, so the result carries two comparisons: against the capture (often taken in a window: another pixel ratio,
+ * scrollbar width and fallback font) and against the last headless run (the same browser both times). A field that
+ * differs from the capture but agrees with the last run is a browser difference; one that differs from both moved
+ * on the site between the two runs.
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -31,9 +37,10 @@ const args = process.argv.slice(2);
 const opt = (name, fallback) => { const i = args.indexOf(name); return i === -1 ? fallback : args.splice(i, 2)[1]; };
 const runs = Number(opt("--runs", 3));
 const outRoot = opt("--out", path.join(os.homedir(), ".omd-workers/t1-stability"));
+const priorRoot = opt("--prior", null);
 const evRoot = opt("--evidence", path.join(MAIN, "artifacts/reference-evidence/visual"));
 const id = args[0];
-if (!id) { console.error("usage: remeasure.mjs <id> [--runs 3] [--out <dir>] [--evidence <root>]"); process.exit(2); }
+if (!id) { console.error("usage: remeasure.mjs <id> [--runs 3] [--out <dir>] [--evidence <root>] [--prior <dir>]"); process.exit(2); }
 
 const read = (f) => JSON.parse(readFileSync(f, "utf8"));
 const stampMs = (s) => Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8), +s.slice(9, 11), +s.slice(11, 13), +s.slice(13, 15));
@@ -69,6 +76,11 @@ const calls = session.map((st) => path.join(evDir, st)).filter((f) => existsSync
   .map((f) => ({ cfg: read(path.join(f, "cfg.json")), boot: read(path.join(f, "states.json")).boot ?? {} }));
 const result = { id, url: base.spec.url, locale: base.spec.locale, baseline: session, controls: base.spec.controls.length, calls: calls.length, runs: [] };
 let previous = null;
+if (priorRoot) {
+  const pdir = path.join(priorRoot, id);
+  const last = existsSync(pdir) ? readdirSync(pdir).filter((n) => /^run-\d+$/.test(n) && existsSync(path.join(pdir, n, "values.json"))).sort((a, b) => a.slice(4) - b.slice(4)).at(-1) : null;
+  if (last) { previous = read(path.join(pdir, last, "values.json")); result.prior = path.join(pdir, last); }
+}
 for (let k = 1; k <= runs; k += 1) {
   const dir = path.join(out, `run-${k}`);
   const started = new Date().toISOString();
@@ -96,7 +108,7 @@ for (let k = 1; k <= runs; k += 1) {
     previous = now.values;
   }
   result.runs.push(run);
-  const b = run.againstBaseline;
-  console.log(`${id} run ${k}: ` + (run.blocked ? "BLOCKED" : b ? `${b.same}/${b.compared} agree with the baseline, ${b.changed.length} changed, ${b.unmeasured.length} unmeasured on one side, ${b.missing.length} control(s) missing` : `no measurement (exits ${exits.join(",")})`));
+  const b = run.againstBaseline, pv = run.againstPrevious;
+  console.log(`${id} run ${k}: ` + (run.blocked ? "BLOCKED" : b ? `${b.same}/${b.compared} agree with the baseline, ${b.changed.length} changed, ${b.unmeasured.length} unmeasured on one side, ${b.missing.length} control(s) missing` : `no measurement (exits ${exits.join(",")})`) + (pv ? `; ${pv.same}/${pv.compared} agree with the ${k === 1 ? "last headless run" : "run before"}` : ""));
 }
 writeFileSync(path.join(out, "result.json"), JSON.stringify(result, null, 1) + "\n");
