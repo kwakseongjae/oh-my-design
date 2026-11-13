@@ -209,3 +209,166 @@ worker's on 10 of 10 sites (50 of 50). Field agreement: bg 17/17, border 15/15, 
 **Reading:** the efficient method is capture → compile → a medium-effort writer. It keeps verified_v2 and the
 component set, and cuts writing time and output tokens by about 70 %. Before adopting: compile colour and type
 candidates, then one live batch (capture at lower effort, headless) with independent review.
+
+### Round 4 follow-up — where the missing tokens were, and a candidate list (2026-11-11, no model, no browser)
+
+The medium writers named 81 of the 154 colours the max writers named (53 %), 28 of 37 type sizes and 21 of 27
+radii. Each max-named colour was traced to the capture the medium writer had:
+
+| where the colour sits in the capture | max named | medium did not name |
+|---|---|---|
+| census list, inside the digest's cut-off | 98 | 29 |
+| custom property only (the digest showed three samples per prefix) | 32 | 28 |
+| a measured control, at rest or in a state | 18 | 11 |
+| census list, past the cut-off | 4 | 3 |
+| survey rows only | 1 | 1 |
+| a named colour in a custom property (`silver`) | 1 | 1 |
+
+So the gap has two parts: values the digest did not carry (custom properties above all), and values it carried
+that the writer was not told to go through. `compile-evidence.mjs` now also writes `candidates.md`: every opaque
+colour, type size and corner radius in the census, the survey rows and the measured controls, with where each was
+seen, in a fixed order. The writer names; the script lists.
+
+- Recall against the max writers' tokens, 10 sites (`scripts/collection-r4/recall.py`): colours 154 / 154, type
+  sizes 37 / 37, radii 27 / 27. The list is 3–9 KB per site. The components block is byte-identical to arm m's.
+- A capture gap, not fixed here: the survey records type sizes for interactive elements and controls only. Heading
+  and running-text sizes are not in the capture, so no writer can measure them. Adding them is a probe change.
+- Not yet known: whether a medium writer given the list closes the claims gap (−17 %) without naming one-off
+  colours. That is arm c: `scripts/collection-r4/run.sh c codex - medium` (10 Codex runs, about 5 minutes each),
+  then `metrics.py --quality <scratch worktree of origin/main>` and `recall.py ~/.omd-workers/exp9c exp9c --list`
+  (how many max-named tokens the arm named, and what it named that max did not).
+- Ready for the live batch, opt-in and off by default: headless capture (`spawn.sh --mcp capture-headless`; one
+  megazone survey through the capture server returned status 200, and its candidate list, 11 + 8 colours, 12 type
+  sizes and 6 radii with every count, is identical to the headed survey of the day before; the arguments were
+  checked by running `spawn.sh` against a stub `codex`, not yet through a real Codex worker) and an order
+  whose step 6b has the worker compile its own capture (`OMD_ORDER_COMPILED=1`).
+
+### Round 4, part 2 — the candidate list with a writer, other efforts and models, and the whole run at medium (2026-11-12)
+
+Owner 11/12: 「작업 재개하자. codex effort나 모델 뭘 쓸지도 고민 충분히 해본거지? 작업을 하면서도 계속 테스트를 하면서 방향 고도화해도 좋아.」
+Until now only `gpt-6.1-sol` at max, high and medium had been run. This part adds low, two cheaper models, a repeat
+run, and the first runs where the capture and the research are also done at medium. All arms reuse the folders of
+part 1; every run's log was checked for the published references and the max runs' folders (`leak-check.sh`), none
+opened them. Wording of the compiled parts: `docs/workers/COMPILED_PARTS.md` at `ebf13780` (a first-party declared
+colour is named and labelled as declared; a colour on one or two elements with no control and no property is left
+out unless the evidence shows what it is).
+
+**Arm c — sol medium + candidate list, 10 sites**
+
+| | A max | m medium, digest only | c medium + candidates |
+|---|---|---|---|
+| verified_v2, no codes | 10 / 10 | 10 / 10 | 10 / 10 |
+| writing time, median | 15.8 min | 4.6 min | 5.4 min |
+| output tokens, median | 44.5 k | 11.9 k | 12.6 k |
+| uncached input, median | 186 k (whole run) | 78 k | 80 k |
+| components / stated | 50 / 41 | 50 / 43 | 50 / 43 |
+| claims | 847 | 706 | 1,116 |
+| max-named colours also named (seen on the page: 120; declared only: 34) | — | 81 / 154 (77 + 4) | 152 / 154 (118 + 34) |
+| max-named type sizes / radii also named | — | 28 / 37 · 21 / 27 | 37 / 37 · 27 / 27 |
+
+- The list closes the gap and goes past max: arm c names 151 colours max did not. 75 are first-party declared palette
+  steps (hmall 53, hk01 22: the wording asks for them), 38 are seen colours with a role, 38 are colours on one or
+  two elements. Of the extra seen colours whose role cites a selector, 20 of 20 have that selector and the colour
+  together in the evidence; 46 state a role in words only and need a reviewer.
+- A reference written this way carries many more colour tokens than the catalog's norm (median 13, p90 21 across
+  607; hmall comes out at 76). `toss` already ships 92. Whether declared palettes belong in full is a product
+  call; the item page for a batch-9 reference shows what it looks like.
+
+**Arm d — the same thing twice (4 sites: yomiuri, kbinsurance, hmall, samsunghospital)**
+
+Two medium writers given the same folder name the same values: colour sets agree 0.95 / 1.00 / 0.97 / 0.97 (Jaccard,
+median 0.97), type sizes 1.00 / 1.00 / 1.00 / 0.82, components identical. Two writers without the list agreed 0.83
+(median, 16 pairs, 2026-11-11), and max against either medium arm agrees 0.30–0.83. **Names do not repeat:** a
+colour both runs name has the same token name in 12 / 18, 6 / 28, 67 / 74 and 8 / 37 cases (high only where the
+name is the custom property's). Values are now a function of the capture; names still are not. The next step for
+T1 is to pin names: carry the published reference's names for values that are unchanged.
+
+**Effort and model screen (4 sites: yomiuri, hmall, fujitsu, hk01; writer only)**
+
+| | c sol medium | l sol low | t terra medium | u luna medium |
+|---|---|---|---|---|
+| verified_v2 | 4 / 4 | 4 / 4 | 4 / 4 | 4 / 4, 3 with `component_absent` |
+| components | 18 | 18 | 18 | 4 |
+| claims | 452 | 435 | 442 | 255 |
+| time, median | 5.5 min | 3.7 min | 2.5 min | 3.7 min |
+| output tokens, median | 13.2 k | 8.6 k | 6.9 k | 10.6 k |
+| Overview length, median (max: 2,728) | 3,062 | 2,250 | 1,056 | 1,669 |
+
+- `gpt-6-luna` drops the compiled components on 3 of 4 sites: out.
+- `gpt-6.1-terra` keeps every measured part and writes a third of the Overview. Reference depth is part of
+  correctness (AGENTS.md), so it is out for the writer unless the narrative is written separately.
+- sol low keeps the measured parts and loses about a quarter of the Overview for 1.8 minutes and 4.6 k output
+  tokens per site. Not worth it: **sol medium stays.** Narrative accuracy was not judged here for any arm; that is
+  the independent review's job on the live batch.
+
+**Arm v — the whole run at medium: research, headless capture, compile, write (megazone, nomura)**
+
+| | megazone A max | megazone v | nomura A max | nomura v |
+|---|---|---|---|---|
+| whole run | 23.3 min | 11.3 min | 20.6 min | 9.9 min |
+| uncached input / output tokens | 166 k / 44.5 k | 134 k / 20.1 k | 172 k / 47.9 k | 133 k / 17.4 k |
+| verified_v2, no codes | yes | yes | yes | yes |
+| components / claims | 5 / 97 | 4 / 100 | 6 / 95 | 6 / 102 |
+| same primary colour | — | yes | — | yes |
+
+The worker called the headless capture tool (one survey, two states calls), ran the compiler itself and pasted its
+output. It chose partly different controls from the max worker (by key name megazone shares 0 of 5, though two are the
+same control under another name, and nomura 3 of 6), the spread two max workers also show. One megazone card could not be hovered headless and stayed in
+prose. **Whole-run time −52 %, output tokens −57 %, uncached input −21 %.**
+
+**Cost of this part:** 28 Codex runs, 137 minutes, 326 k output tokens and 2.3 M uncached input: about what 7 max
+runs produce.
+
+**Reading:** adopt capture (headless) → compile → sol medium for new references, with the independent review per
+batch. Batch 9 (7 new CJK sites, `~/.omd-workers/queue-batch9.txt`) is the first batch run this way.
+
+### T1 — the same controls measured again with no model (2026-11-12)
+
+`scripts/t1/remeasure.mjs` replays each capture call of a reference's latest session headless and compares the
+compiled values (`scripts/t1/summary.mjs`). Pilot: the 20 most recently verified references with evidence, KR 10,
+JP 5, TW 5, three runs each, against baselines a worker captured headed 2 to 9 days earlier.
+
+- 20 of 20 opened headless, 60 runs. 7,989 of 8,032 compared fields agree with the baseline (99.5 %); between
+  consecutive runs 5,333 of 5,343 (99.8 %).
+- Of the 43 differing fields, 31 are content (the text or link of a rotating card: bunjang, kkday, pinkoi,
+  marpple-shop, hmall, fujitsu, wooricard; a live count on everytime) and 9 are geometry (a width that follows
+  text: classting 89.4 → 89.5, cookpad, megazone). **3 are a brand value, all one control:** wooricard `nav-card` showed an ink change on
+  keyboard focus in the baseline and none in three headless runs.
+- Not measured the same way twice: 86 states measured on one side only (84 of them missing in the re-run) and 26
+  control lookups that found nothing in the re-run (a card that had rotated away). The 84 are three sites
+  (peterpanz, pinkoi, wooricard) where a popup or locale notice covered the page in the re-run; their captures
+  predate 2026-11-09, when the capture tool began to record the worker's close selectors. The wooricard focus
+  difference is on that same covered page. These are reported, not counted as changes.
+- Does headless measure fewer states? Not in fresh captures: batch 9 (headless) measured 122 of 123 control
+  states, the ten round-4 sites (headed, max workers) 178 of 180.
+
+### Batch 9 — the first batch made this way (2026-11-12, PR #125)
+
+Seven new CJK sites (tver, tokyo, aeon, koexpressway, nhis, samsungfire, 1111): headless capture, the worker
+compiles its own capture (order step 6b), `gpt-6.1-sol` at medium.
+
+- 7 of 7 opened headless and finished: 8.8 to 13.3 minutes each (median 11.5; max-effort runs in rounds 1 and 3:
+  21), 158 k uncached input and 19.7 k output tokens (median). All `verified_v2` with no codes.
+- **Re-measured with no model** (`scripts/t1/remeasure.mjs`, one headless run per site): 778 of 778 fields on the 41
+  pinned controls agree with the workers' captures.
+- The order then told workers to export declared-only colours as tokens. That gave 100 colour tokens on 1111, 62 on
+  samsungfire and 61 on tver (catalog median 13). Decided: a token is what the capture saw painted; the declared
+  palette stays in section 2 as a labelled table (`declared-to-prose.py` for this batch, `COMPILED_PARTS.md` from
+  now on). After it: 4 to 21 colour tokens per reference (aeon 4, tver 10, 1111 15), 84 to 114 claims.
+- **Independent review** (two `gpt-6.1-sol` reviewers at high, 8.3 and 6.8 minutes): 1 BLOCK, 7 WARN, three
+  references with nothing.
+  - BLOCK, aeon: two CTAs' compiled focus recipes carried a scroll-entry fade that was still there after blur. A
+    compiler defect, fixed in the compiler (focus is read against the after-blur rest when something persisted).
+  - WARN ×3 (nhis, samsungfire, and the same pattern in tokyo and 1111): "see §4" pointing at the wrong section
+    after the headings are unnumbered. Now an order rule and a landing check.
+  - WARN, nhis: a border value with pipes broke a table row (compiler and worker table; escaped).
+  - WARN ×2, samsungfire: a link to a file that only existed in the worker's folder; four narrative facts noted in
+    the worker's own words with no quote. All four were read on the company's pages and the exact sentences added.
+    Both are now order rules. This is the weak spot of a medium writer: the facts were right, the record of them thin.
+  - WARN ×2 (aeon, tokyo), not changed: the assembler's "No verified values in current evidence" for the spacing
+    group while the body documents declared spacing. The same generated line is in 157 references; the fix belongs
+    in the assembler's wording.
+- A reviewer at high effort is untested against one at max; three earlier reviews ran at max.
+
+**Cost of 11/12 in Codex runs:** 28 experiment runs, 7 batch runs, 2 reviews: about 503 k output tokens, what 11
+max-effort reference runs produce (45.8 k each).
