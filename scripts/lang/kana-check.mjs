@@ -48,7 +48,7 @@ const RANK = { WARN: 2, FYI: 1 };
 // What each rule's source says and how strong it is (rules.v2.md, "Strength:" lines). One sentence each.
 const SOURCE = {
   'JT-01': 'デジタル庁 design system (DADS) Typography, 行高: recommends keeping body text in reading content at 1.5 times the font size or more (government recommendation).',
-  'JT-05': 'DADS Typography, 文字間隔: its letter-spacing tokens are 0, 0.01em and 0.02em and none is negative; DADS states tokens, not a limit (government design system).',
+  'JT-05': 'DADS Typography, 文字間隔: its letter-spacing tokens are 0, 0.01em and 0.02em and none is negative; DADS states tokens, not a limit (government design system). The rule applies to a project that follows DADS; no source sets a letter-spacing value for Japanese web text in general, so elsewhere this is a note, not a finding.',
   'JT-07': 'OpenType feature registry, palt (Microsoft Typography, vendor documentation): palt is mutually exclusive with chws, fwid, halt, hwid, pwid, qwid and twid, which should be turned off when it is applied.',
   'JT-09': 'JLREQ §3.1.7 (W3C Working Group Note on book composition) keeps small kana, ー and 々 off line starts but notes that many books allow them, and CSS Text 3 §5.2 (Candidate Recommendation Draft) forbids those breaks under normal and strict and allows them under loose: a choice to review, not a defect.',
   'JT-12': 'Derived from the CSS Text 3 definition (Candidate Recommendation Draft): anywhere puts a break opportunity around every character, punctuation included, so it also drops the line-start limits reviewed under JT-09; the advice to keep it off Japanese body text is ours.',
@@ -568,7 +568,7 @@ function checkBlock(env, selector, decls, lineOf, { target = null, near = true }
     } else if (FONT_VAR.test(d.prop) && /[a-z]/i.test(v) && !/^[\d.]/.test(v)) checkStack(env, line, v); // consumed page-wide: not traced
     else if (d.prop === 'letter-spacing') { // JT-05
       const n = lsValue(v);
-      if (n != null && n < 0 && role === 'body' && maybeJa()) add(line, 'FYI', 'JT-05', `${say(d)}: negative letter-spacing on ${onJa('body text')}`);
+      if (n != null && n < 0 && role === 'body' && maybeJa()) add(line, 'FYI', 'JT-05', `${say(d)}: negative letter-spacing on ${onJa('body text')} (DADS has no negative token; outside a DADS project no source speaks to it)`);
     } else if (d.prop === 'font-feature-settings') { // JT-07
       const on = featuresOn(v);
       const clash = ['chws', 'fwid', 'halt', 'hwid', 'pwid', 'qwid', 'twid'].filter((f) => on.has(f));
