@@ -5813,9 +5813,11 @@ export const REFERENCE_QUALITY = [
     "tier1SourceCount": 6,
     "componentCount": 6,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
+    "statedComponentCount": 0,
     "reasonCodes": [],
-    "advisoryCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ],
     "paletteGrounding": null
   },
   {

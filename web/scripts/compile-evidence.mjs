@@ -52,6 +52,15 @@ export function colorToken(v) {
   return c.alpha === 1 ? c.hex : v;
 }
 
+/** A box-shadow value that draws nothing: `none`, or every layer with no offset, blur or spread. */
+export function paintsNoShadow(v) {
+  if (!v || v === "none") return true;
+  return v.split(/,(?![^(]*\))/).every((layer) => {
+    const lengths = layer.replace(/rgba?\([^)]*\)/g, "").match(/-?[\d.]+px/g) ?? [];
+    return lengths.length > 0 && lengths.every((n) => parseFloat(n) === 0);
+  });
+}
+
 /** The changes in one state that the brand painted; null when the state was not measured. */
 export function brandChanges(state, name) {
   if (!state?.measured) return null;
@@ -70,6 +79,9 @@ export function brandChanges(state, name) {
     // ring off it (jobplanet's job card, 2026-11-13), which is the browser moving its ring, not a focus style.
     if (/outline/.test(c.prop ?? "") && [c.from, c.to].some((v) => / auto( |$)/.test(` ${v ?? ""}`))) return false;
     if (/fg$/.test(c.prop ?? "") && c.from === UA_LINK && c.to === UA_LINK_ACTIVE) return false;
+    // A shadow that goes from nothing to layers of zero size is a change in the computed string and not on the
+    // screen: utility CSS sets its ring shadow on focus even when the ring is 0 wide (jobplanet's search field).
+    if (/shadow$/.test(c.prop ?? "") && paintsNoShadow(c.from) && paintsNoShadow(c.to)) return false;
     return true;
   });
 }

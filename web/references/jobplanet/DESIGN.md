@@ -60,7 +60,7 @@ typography:
     fontSize: 13px
     fontWeight: 700
     lineHeight: 1.5
-    use: Footer 이용약관 link; 8 paragraph characters also use this size/weight.
+    use: Small bold paragraph text (8 characters in the text census, 19.5px line height). The footer 이용약관 link has the same size and weight on a 22px line height.
   heading-sm:
     fontSize: 15px
     fontWeight: 600
@@ -122,9 +122,9 @@ components:
     padding: 0px
     typography: 15px / 400
     hover: no brand change
-    pressed: 'self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px'
-    focus: 'self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px'
-    use: Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. Raw zero-size shadow changes on press and focus do not establish a visible ring.
+    pressed: no brand change
+    focus: no brand change
+    use: Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. On press and focus the computed shadow string changes to layers of zero size, which paint nothing.
   job-card:
     type: card
     textColor: '#686a6d'
@@ -136,7 +136,7 @@ components:
     hover: no brand change
     pressed: no brand change
     focus: no brand change
-    use: 'Link to the 서일회계법인 job posting on Jobkorea, transparent inside a white wrapper with #e5e6e9 border. Exported fg/font describe its company-name child (#686a6d, 13px / 600); title is #242628 at 15px / 600. Link radius is 0, not its wrapper.'
+    use: 'Job-posting card link in the 마감임박 채용공고 row, opening the posting on Jobkorea; transparent inside a white wrapper with a #e5e6e9 border. The listings rotate, so this is the pattern measured on one card: exported fg/font describe the company-name child (#686a6d, 13px / 600); the title is #242628 at 15px / 600. Link radius is 0, not its wrapper.'
   carousel-next:
     type: button
     backgroundColor: '#ffffff'
@@ -195,7 +195,7 @@ These values come from the rendered homepage and its measured controls. Publishe
 | `gray-900` | `#242628` | Search-input ink and the job-card h3 title. |
 | `ink-strong`, `foreground` | `#323438` | Most frequent paragraph ink (12 paragraphs); visible 기업 리뷰 label and next-arrow icon. |
 | `gray-400` | `#85878c` | 전체보기 text and search magnifier SVG fill. |
-| `muted` | `#686a6d` | Company-name label 서일회계법인 in job-card. |
+| `muted` | `#686a6d` | Company-name label in job-card (서일회계법인 on the measured card). |
 | `footer-ink` | `#444444` | Footer links including 회사소개 and 개인정보처리방침, survey.rows. |
 | `surface` | `#f3f3f4` | Fill on the 복지, 워라밸, 조직문화 and 동료 topic buttons; 11 backgrounds overall. This is not the full-page canvas. |
 | `color-green-600` | `#00a866` | 워라밸 3.2 rating-chip ink in job-card rest.kids. |
@@ -329,7 +329,7 @@ The dominant paragraph size is 16px/400 (951 paragraph characters); section head
 | `input` | 16px / 400 | 24px | Retained published name: dominant paragraph size, 951 characters in text-census; current main search field is 15px. |
 | `body-lg` | 16px / 400 | 24px | Dominant paragraph size, 951 characters; Pretendard Variable in text-census.roles.paragraph. |
 | `body-sm` | 14px / 400 | 22px | Secondary paragraphs, 130 characters, and compact header search input. |
-| `label-sm` | 13px / 700 | 19.5px | Footer 이용약관 link; 8 paragraph characters also use this size/weight. |
+| `label-sm` | 13px / 700 | 19.5px | Small bold paragraph text (8 characters in the text census, 19.5px line height). The footer 이용약관 link has the same size and weight on a 22px line height. |
 | `heading-sm` | 15px / 600 | 24px | Job-card h3 titles (339 heading characters); visible navigation labels use the same size and weight. |
 | `heading` | 22px / 700 | 30px | Section h3 headings (39 heading characters). |
 | `display` | 32px / 700 | 44px | Search-hero h2 text (15 heading characters). |
@@ -390,15 +390,15 @@ focus: `no brand change`.
 
 ### search-input
 
-Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. Raw zero-size shadow changes on press and focus do not establish a visible ring.
+Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. On press and focus the computed shadow string changes to layers of zero size, which paint nothing.
 
 fg: `#242628`; radius: `0`; height: `24px`; padding: `0px`; font: `15px / 400`.
 
-hover: `no brand change`; pressed: `self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px`; focus: `self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px`.
+hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
 
 ### job-card
 
-Link to the 서일회계법인 job posting on Jobkorea, transparent inside a white wrapper with #e5e6e9 border. Exported fg/font describe its company-name child (#686a6d, 13px / 600); title is #242628 at 15px / 600. Link radius is 0, not its wrapper.
+Job-posting card link in the 마감임박 채용공고 row, opening the posting on Jobkorea; transparent inside a white wrapper with a #e5e6e9 border. The listings rotate, so this is the pattern measured on one card: exported fg/font describe the company-name child (#686a6d, 13px / 600); the title is #242628 at 15px / 600. Link radius is 0, not its wrapper.
 
 fg: `#686a6d`; radius: `0`; width: `334px`; height: `172px`; padding: `16px 20px 20px`; font: `13px / 600`.
 
@@ -416,7 +416,7 @@ hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
 
 Search-button, view-all, job-card and carousel-next retain `no brand change` for hover, pressed and focus within the probe's computed-style/DOM scope. Their automatic browser focus outlines are excluded from authored styling. Nav-link focus is also `no brand change`; hover and pressed remain UNMEASURED because the live pointer pass encountered `pointer-events:none`.
 
-Search-input hover is `no brand change`. Pressed and keyboard focus change its raw shadow from `none` to the zero-size layer string recorded under Component Stylings. That computed change does not establish a visible blue ring. Its focus crop was partly obscured by the search layer, so visual focus appearance remains unresolved. Empty results, loading, validation, success and disabled treatments were not exercised.
+Search-input hover, pressed and keyboard focus are `no brand change`. On press and focus its computed shadow goes from `none` to five layers with no offset, blur or spread (one of them `rgb(30, 136, 229)`); layers of zero size paint nothing, so no blue ring is claimed. Its focus crop was partly obscured by the search layer, so visual focus appearance remains unresolved. Empty results, loading, validation, success and disabled treatments were not exercised.
 
 ## Do's and Don'ts
 

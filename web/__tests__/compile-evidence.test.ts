@@ -53,6 +53,14 @@ describe("compile-evidence", () => {
     expect(brandChanges({ measured: true, changed: [widened] }, "focus")).toEqual([]);
   });
 
+  it("does not read a shadow of zero size as a change, and still reads one that paints", () => {
+    const zero = "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px";
+    const ring = "rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 2px";
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: zero }] }, "focus")).toEqual([]);
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: ring }] }, "focus")).toHaveLength(1);
+    expect(brandChanges({ measured: true, changed: [{ set: "self", prop: "shadow", from: "none", to: "rgba(0, 0, 0, 0.1) 0px 4px 12px 0px" }] }, "hover")).toHaveLength(1);
+  });
+
   it("does not read the browser's ring leaving a descendant as a focus style", () => {
     const ringLeft = { set: "descendant", prop: "button@0.0.0.1.outline", from: "rgb(0, 95, 204) auto 1px off 0px", to: "none" };
     expect(brandChanges({ measured: true, changed: [ringLeft] }, "focus")).toEqual([]);
