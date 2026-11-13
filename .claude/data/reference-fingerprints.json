@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-11-13T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 614,
+ "count": 622,
  "items": [
   {
    "id": "104",
@@ -202,6 +202,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "automotive"
+  },
+  {
+   "id": "42maru",
+   "primary_color_hex": "#1675c3",
+   "category": "ai",
+   "visual_theme": "42Maru develops a deep semantic TA/QA platform that interprets a user's question and extracts a single answer from unstructured data. Its own history records establishment in Seoul in October 2015. The About page traces the name's inspiration to the answer “42",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "591",
@@ -4337,6 +4359,28 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "genesis",
+   "primary_color_hex": "#111111",
+   "category": "automotive",
+   "visual_theme": "Genesis (제네시스) presents luxury cars through a design philosophy combining athleticism and elegance. Its official brand page defines that design as bold, progressive and distinctly Korean. The same page describes a lifestyle ambition that extends beyond time on",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
    "id": "genie",
    "primary_color_hex": "#fa4065",
    "category": "consumer-tech",
@@ -4906,6 +4950,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "hankyung",
+   "primary_color_hex": "#ca002c",
+   "category": "consumer-tech",
+   "visual_theme": "한국경제 is an economic-news destination operated by 한경닷컴. The company overview dates 한경닷컴's establishment to 1999.11.1, when it separated from 한국경제신문's new-media department. The homepage's own phrase, “성공을 부르는 습관”, frames news as part of a reader's daily progress",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "hashicorp",
@@ -8024,6 +8092,27 @@
    "category_raw": "fintech"
   },
   {
+   "id": "modetour",
+   "primary_color_hex": "#009c75",
+   "category": "ecommerce",
+   "visual_theme": "Modetour (모두투어) is a travel commerce service whose homepage presents overseas packages, air-and-hotel trips, flights and hotels. Its current surface combines a white canvas, green interaction accents, large destination photography, promotional carousels and co",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "modusign",
    "primary_color_hex": "#fed05f",
    "category": "saas",
@@ -8567,6 +8656,29 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "nec",
+   "primary_color_hex": "#2c69ff",
+   "category": "backend-devops",
+   "visual_theme": "NEC is the public-facing name of Japan's 日本電気株式会社 (NEC Corporation), founded on 17 July 1899 and headquartered in Tokyo. Its 2026 integrated report presents IT services and social infrastructure as its business areas. The current direction centres AI implement",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "neosapience",
@@ -10500,6 +10612,29 @@
    "category_raw": "ecommerce"
   },
   {
+   "id": "rakus",
+   "primary_color_hex": "#f08300",
+   "category": "saas",
+   "visual_theme": "Rakus provides business-support cloud services under the integrated 楽楽クラウド brand. Its mission is to keep supporting company growth through IT services, expressed as 働く人を「楽！」にする: making work easier for people. The company outline dates its establishment to 1 No",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
    "id": "rakuten",
    "primary_color_hex": "#bf0000",
    "category": "ecommerce",
@@ -11132,6 +11267,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "saltlux",
+   "primary_color_hex": "#0097f6",
+   "category": "ai",
+   "visual_theme": "Saltlux (솔트룩스) presents enterprise AI through agents, ontology, LLMs and an AI platform. Its company page frames the mission as helping everyone communicate knowledge freely, and its present direction as “AI를 이해에서 실행으로” — moving AI from understanding to execut",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "samsung",
@@ -13918,6 +14075,27 @@
    ],
    "has_personas": false,
    "category_raw": "mobile-payments"
+  },
+  {
+   "id": "visitkorea",
+   "primary_color_hex": "#236cf6",
+   "category": "consumer-tech",
+   "visual_theme": "대한민국 구석구석 is 한국관광공사’s travel service: its official terms describe nearby destination recommendations, while the current product page brings together digital tourism resident cards, festival calendars, travel courses and guidebooks. Its current offering include",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "vocus",

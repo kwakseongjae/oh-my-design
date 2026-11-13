@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-11-13",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 614,
+  "count": 622,
   "counts": {
-    "verified_v2": 444,
+    "verified_v2": 452,
     "partial": 89,
     "legacy_snapshot": 81,
-    "total": 614
+    "total": 622
   },
   "items": [
     {
@@ -99,6 +99,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "42maru",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -2060,6 +2071,17 @@
       ]
     },
     {
+      "id": "genesis",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "genie",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -2323,6 +2345,17 @@
       "status": "verified_v2",
       "verified_at": "2026-11-03",
       "next_reverify_at": "2027-05-02",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hankyung",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 10,
@@ -3809,6 +3842,17 @@
       "reason_codes": []
     },
     {
+      "id": "modetour",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "modusign",
       "status": "verified_v2",
       "verified_at": "2026-09-30",
@@ -4050,6 +4094,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nec",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -4980,6 +5035,17 @@
       "reason_codes": []
     },
     {
+      "id": "rakus",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "rakuten",
       "status": "partial",
       "verified_at": "2026-06-10",
@@ -5300,6 +5366,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 19,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "saltlux",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -6656,6 +6733,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "visitkorea",
+      "status": "verified_v2",
+      "verified_at": "2026-11-13",
+      "next_reverify_at": "2027-05-12",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },

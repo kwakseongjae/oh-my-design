@@ -237,6 +237,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "42maru",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 111,
+    "evidenceClaimCount": 111,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "591",
     "status": "partial",
     "verifiedAt": "2026-06-22",
@@ -4202,6 +4224,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "genesis",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 94,
+    "evidenceClaimCount": 94,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 6,
+    "conflictCount": 0,
+    "tier1SourceCount": 6,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "genie",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -4733,6 +4777,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 6,
     "interactiveComponentCount": 5,
     "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "hankyung",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 106,
+    "evidenceClaimCount": 106,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 10,
+    "conflictCount": 0,
+    "tier1SourceCount": 10,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -7730,6 +7796,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "modetour",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 80,
+    "evidenceClaimCount": 80,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 4,
+    "conflictCount": 0,
+    "tier1SourceCount": 4,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "modusign",
     "status": "verified_v2",
     "verifiedAt": "2026-09-30",
@@ -8223,6 +8311,28 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only"
     ],
+    "paletteGrounding": null
+  },
+  {
+    "id": "nec",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 103,
+    "evidenceClaimCount": 103,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 8,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -10080,6 +10190,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "rakus",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 116,
+    "evidenceClaimCount": 116,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "rakuten",
     "status": "partial",
     "verifiedAt": "2026-06-10",
@@ -10728,6 +10860,28 @@ export const REFERENCE_QUALITY = [
     "componentCount": 6,
     "interactiveComponentCount": 5,
     "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
+    "id": "saltlux",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 83,
+    "evidenceClaimCount": 83,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 11,
+    "conflictCount": 0,
+    "tier1SourceCount": 11,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
     "reasonCodes": [],
     "advisoryCodes": [],
     "paletteGrounding": null
@@ -13468,6 +13622,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "visitkorea",
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-13",
+    "tokensExtractedAt": "2026-11-13",
+    "nextReverifyAt": "2027-05-12",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 99,
+    "evidenceClaimCount": 99,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 5,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "vocus",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -14589,10 +14765,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 444,
+  "verified_v2": 452,
   "partial": 89,
   "legacy_snapshot": 81,
-  "total": 614
+  "total": 622
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
