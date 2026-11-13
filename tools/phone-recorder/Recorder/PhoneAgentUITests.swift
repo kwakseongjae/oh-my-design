@@ -84,7 +84,8 @@ final class PhoneAgentUITests: XCTestCase {
             return json(["ok": true])
         case ("POST", "/swipe"):
             guard let x1 = number("x1"), let y1 = number("y1"), let x2 = number("x2"), let y2 = number("y2") else { return fail("x1, y1, x2, y2 are required") }
-            point(x1, y1).press(forDuration: 0.05, thenDragTo: point(x2, y2), withVelocity: .default, thenHoldForDuration: 0)
+            // `hold` keeps the finger down at the end, so the page stops where the drag ends instead of flinging on.
+            point(x1, y1).press(forDuration: 0.05, thenDragTo: point(x2, y2), withVelocity: .default, thenHoldForDuration: number("hold") ?? 0)
             return json(["ok": true])
         case ("POST", "/type"):
             guard let target = app(r.body), let text = r.body["text"] as? String else { return fail("bundle and text are required") }

@@ -13,6 +13,14 @@
  *                                                          ~/.omd-workers/screens/private.json before anything is written.
  *                                                          --cover paints whole rectangles (points) the same way, for a
  *                                                          list of other people's names and messages.
+ *   phone.mjs go (<x> <y> | --label "텍스트" [--nth N] | --swipe up|down|left|right | --back) [--walk DIR] [--note "…"]
+ *                                                          [--private] [--cover "…"] [--no-wait]   one step of a walk in one
+ *                                                          command: act, wait for the screen to stop, then `look`. A screen
+ *                                                          costs one command instead of two.
+ *   phone.mjs pages --walk DIR [--count 4] [--note "…"] [--private] [--cover "…"]   a long screen as stills: look, scroll
+ *                                                          most of a screen without a fling, look again; stops when the
+ *                                                          screen no longer moves. Each still has its own element list, so
+ *                                                          --private works on it, which it cannot on a clip's frames.
  *   phone.mjs explore --walk DIR [--bundle ID] [--max 8] [--private]   open what the screen offers, one at a time, checking
  *                                                          each tap changed the screen, recording and coming back
  *   phone.mjs tap <x> <y> | tap --label "텍스트" [--bundle ID] [--nth N] [--allow-risky]
@@ -85,6 +93,11 @@ function secret(account) {
   catch { throw new Error(`no Keychain item for ${JSON.stringify(account)} (service omd-phone): add it with \`security add-generic-password -s omd-phone -a ${account} -w\``); }
 }
 const bundleOf = () => opt("--bundle") ?? session().bundle ?? null;
+const coverOpt = () => {
+  const c = opt("--cover"), covered = c ? c.split(";").map((r) => r.split(",").map(Number)) : null;
+  if (covered?.some((r) => r.length !== 4 || r.some(Number.isNaN))) throw new Error('--cover takes "x,y,w,h" in points, several joined with ;');
+  return covered;
+};
 
 const sigOf = async () => Buffer.from((await call("GET", "/signature")).sig, "base64");
 const sigDistance = (a, b) => { let n = 0; for (let i = 0; i < a.length; i += 1) if (Math.abs(a[i] - b[i]) > 12) n += 1; return n / a.length; };
@@ -228,10 +241,33 @@ const commands = {
     throw new Error(`the agent server did not answer in 5 minutes (see ${log})`);
   },
   async look() {
-    const priv = flag("--private"), wait = !flag("--no-wait"), c = opt("--cover");
-    const covered = c ? c.split(";").map((r) => r.split(",").map(Number)) : null;
-    if (covered?.some((r) => r.length !== 4 || r.some(Number.isNaN))) throw new Error('--cover takes "x,y,w,h" in points, several joined with ;');
+    const priv = flag("--private"), wait = !flag("--no-wait"), covered = coverOpt();
     await look({ bundle: bundleOf(), walk: opt("--walk"), note: opt("--note"), priv, wait, covered });
+  },
+  /** One step of a walk in one command: the action, then what the screen shows once it has stopped. */
+  async go() {
+    const walk = opt("--walk"), note = opt("--note"), priv = flag("--private"), wait = !flag("--no-wait"), covered = coverOpt();
+    const dir = opt("--swipe"), back = flag("--back"), bundle = bundleOf();
+    if (walk) args.push("--walk", walk);
+    if (bundle) args.push("--bundle", bundle);
+    if (back) await commands.back(); else if (dir) { args.unshift(dir); await commands.swipe(); } else await commands.tap();
+    await look({ bundle, walk, note, priv, wait, covered });
+  },
+  /** A long screen as stills. The drag is held at its end so the page does not fling, and each still overlaps the last. */
+  async pages() {
+    const walk = opt("--walk"), note = opt("--note") ?? "screen", count = Number(opt("--count", 4)), priv = flag("--private"), covered = coverOpt(), bundle = bundleOf();
+    if (!walk) throw new Error("pages needs --walk");
+    const h = await call("GET", "/health");
+    let last = (await look({ bundle, walk, note: `${note}, page 1`, priv, covered, quiet: true })).settled.sig, taken = 1;
+    for (let i = 2; i <= count; i += 1) {
+      await call("POST", "/swipe", { x1: h.width / 2, y1: h.height * 0.74, x2: h.width / 2, y2: h.height * 0.24, hold: 0.25 });
+      const now = await stable();
+      if (sigDistance(last, now.sig) < 0.02) { console.log(`pages: the screen stopped moving after page ${taken}`); break; }
+      record(walk, { action: "swipe", x1: h.width / 2, y1: h.height * 0.74, x2: h.width / 2, y2: h.height * 0.24, hold: 0.25 });
+      last = (await look({ bundle, walk, note: `${note}, page ${i}`, priv, covered, quiet: true, wait: false })).settled.sig ?? now.sig;
+      taken += 1;
+    }
+    console.log(`pages: ${taken} still(s) of ${JSON.stringify(note)} in ${walk}`);
   },
   /**
    * Open what the screen offers, one at a time: tabs if the tree has a tab bar, otherwise the first rows or buttons of
