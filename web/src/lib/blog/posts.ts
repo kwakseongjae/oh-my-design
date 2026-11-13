@@ -32,6 +32,8 @@ export interface BlogPost {
   description: string;
   /** ISO date, publication day. */
   date: string;
+  /** ISO date of the last correction, if any. Never earlier than `date`. */
+  updated?: string;
   tags: string[];
   /** Markdown body, frontmatter removed. */
   body: string;
@@ -118,6 +120,14 @@ export function listPosts(locale: PostLocale): BlogPost[] {
 export function getPost(slug: string, locale?: PostLocale): BlogPost | undefined {
   const byLocale = loadPosts().get(slug);
   return byLocale ? pick(byLocale, locale) : undefined;
+}
+
+/**
+ * The date a post last changed: its correction date, or its publication date.
+ * The one source for dateModified, article:modified_time and sitemap lastmod.
+ */
+export function lastModified(post: BlogPost): string {
+  return post.updated ?? post.date;
 }
 
 /** Which locales a post exists in — the input for hreflang links. */
