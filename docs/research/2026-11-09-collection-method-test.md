@@ -424,6 +424,21 @@ medium (`OMD_REVERIFY_COMPILED=1`): 16.3 minutes, 167 k uncached input, 29.8 k o
      says; whether a re-verification should be allowed to shrink a reference this much is not a tooling question.
 - Not landed. The worker's folder is `~/.omd-workers/reverify2/jobplanet`. Running the 89 partial references this
   way waits on that question and on a second trial with the text census in the capture.
+- **How it ended (2026-11-13 night to 11-14).** The owner's answer to the question: if a control that was measured
+  and showed no change is the true form, write it that way. So the compiler writes `no brand change` under each
+  measured state and keeps the control a component, and the gate accepts that line only with the control's Proof
+  row. Three trials on jobplanet, same site, same model and effort (`gpt-6.1-sol` medium, headless capture):
+
+  | trial | folder | compiler gave | reference kept | why |
+  |---|---|---|---|---|
+  | 1 | `~/.omd-workers/reverify2/jobplanet.trial1` | 1 of 6 | 1 component | the old compiler: only a control with a brand change |
+  | 2 | `~/.omd-workers/reverify2/jobplanet.trial2` | 6 of 6 | 1 component | the work order still said to leave out a control whose states were all unchanged; the writer followed the order over the compiler and said so in its report |
+  | 3 | `~/.omd-workers/reverify2/jobplanet` | 6 of 6 | 6 components, verified | order and reviewer order reworded; the browser's `auto` ring leaving a descendant no longer counts as a focus change |
+
+  Trial 3 landed (PR #127): partial → verified, 128 claims, 93 of 93 values agree on re-measurement; the job card
+  is a rotating listing and was not found again. The lesson for the method: when the compiler's rule changes, the
+  order's sentence about the same thing has to change in the same commit, because a writer given two rules
+  follows the written order.
 
 ### T1 — every reference with replayable evidence, measured again (2026-11-13)
 
