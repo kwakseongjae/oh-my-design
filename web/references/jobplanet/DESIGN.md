@@ -1,124 +1,156 @@
 ---
 name: Jobplanet
 colors:
-  primary: '#00c362'
-  primary-bright: '#00ff91'
-  green-line: '#00c274'
-  green-deep: '#003a1c'
-  ink: '#333333'
-  ink-strong: '#323438'
-  nav: '#4b4c50'
-  muted: '#686a6d'
   faint: '#a4a6ad'
-  disabled: '#c5c7cc'
   canvas: '#ffffff'
-  surface: '#f3f3f4'
-  hairline: '#e5e6e9'
   on-primary: '#ffffff'
+  hairline: '#e5e6e9'
+  gray-900: '#242628'
+  ink-strong: '#323438'
+  foreground: '#323438'
+  gray-400: '#85878c'
+  muted: '#686a6d'
+  footer-ink: '#444444'
+  surface: '#f3f3f4'
+  color-green-600: '#00a866'
+  color-green-50: '#e3f8ed'
+  color-jobkorea-text: '#083ccc'
+  color-jobkorea-border: '#96b1fd'
+  gray-600: '#57595b'
+  red-50: '#fff0f2'
+  primary: '#00c362'
+  nav: '#4b4c50'
 typography:
-  section:
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Section titles (오늘의 추천, 커뮤니티 인기글)
-  card-title:
-    fontSize: 16px
-    fontWeight: 700
-    lineHeight: 1.5
-    use: Card / list-entry headline (stat chips)
-  nav:
-    fontSize: 15px
-    fontWeight: 400
-    lineHeight: 1.4
-    use: Top navigation links
-  button:
-    fontSize: 14px
-    fontWeight: 700
-    use: Primary CTA label
-  input:
-    fontSize: 16px
-    fontWeight: 400
-    use: Global search field text
   body:
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.5
-    use: Body copy, metadata, captions
-  blog-hero:
-    fontSize: 48px
+    use: 'Retained published name: small inherited control text and metadata; 20 paragraph characters at 13/400. Not the dominant paragraph size.'
+  label:
+    fontSize: 13px
     fontWeight: 600
-    lineHeight: 1
-    use: Tech-blog hero headline (IBM Plex Sans)
+    lineHeight: 1.5384615384615385
+    use: Company-name label in job-card.
+  button-lg:
+    fontSize: 16px
+    fontWeight: 600
+    lineHeight: 1.5
+    use: 전체보기 action label.
+  nav:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.6
+    use: 'Retained published name: now measured on the main search input, not the nav label.'
+  input:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: 'Retained published name: dominant paragraph size, 951 characters in text-census; current main search field is 15px.'
+  body-lg:
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Dominant paragraph size, 951 characters; Pretendard Variable in text-census.roles.paragraph.
+  body-sm:
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5714285714285714
+    use: Secondary paragraphs, 130 characters, and compact header search input.
+  label-sm:
+    fontSize: 13px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: Footer 이용약관 link; 8 paragraph characters also use this size/weight.
+  heading-sm:
+    fontSize: 15px
+    fontWeight: 600
+    lineHeight: 1.6
+    use: Job-card h3 titles (339 heading characters); visible navigation labels use the same size and weight.
+  heading:
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.3636363636363635
+    use: Section h3 headings (39 heading characters).
+  display:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.375
+    use: Search-hero h2 text (15 heading characters).
 rounded:
-  sm: 4px
+  none: 0px
   md: 8px
+  button: 6px
   lg: 12px
-  full: 9999px
 spacing:
-  xs: 4
   sm: 6
   base: 8
-  md: 12
   lg: 16
-  xl: 24
 components:
-  button-primary:
+  search-button:
     type: button
-    backgroundColor: '#00c362'
-    textColor: '#ffffff'
-    rounded: 5px
-    height: 40px
-    padding: 0 16px
-    typography: 14px / 700
-    use: Primary CTA (바로가기) — the single interactive green
-  button-stat-chip:
-    type: button
-    backgroundColor: '#f3f3f4'
-    textColor: '#333333'
-    rounded: 8px
-    height: 48px
-    padding: 0 16px
-    typography: 16px / 700
-    use: Company stat entry (782개의 전∙현직자 리뷰)
-  icon-button-round:
-    type: button
-    backgroundColor: '#ffffff'
-    textColor: '#333333'
-    border: '1px solid #e5e6e9'
-    rounded: 9999px
-    padding: 6px
     height: 32px
-    use: Circular carousel / utility icon button
-  card-content:
-    type: card
-    backgroundColor: '#ffffff'
-    textColor: '#333333'
-    rounded: 12px
-    use: Story / content card on grey canvas, no shadow
+    padding: 0px
+    hover: no brand change
+    pressed: no brand change
+    focus: no brand change
+    use: '검색 icon button, transparent over the white search field; magnifier SVG fill #85878c. Fully round computed radius 3.35544e+07px. No text colour is exported.'
+  view-all:
+    type: button
+    textColor: '#85878c'
+    rounded: 0px
+    height: 24px
+    padding: 0px
+    typography: 16px / 600
+    hover: no brand change
+    pressed: no brand change
+    focus: no brand change
+    use: 전체보기 button beside 마감임박 채용공고, transparent over white.
+  nav-link:
+    type: button
+    textColor: '#323438'
+    rounded: 0px
+    height: 55px
+    padding: 0px
+    typography: 15px / 600
+    focus: no brand change
+    use: '기업 리뷰 navigation link to /review, transparent over white; visible child label is #323438 at 15px / 600. Pointer states were unmeasured.'
   search-input:
     type: input
-    backgroundColor: '#ffffff'
-    textColor: '#333333'
-    typography: 16px / 400
-    height: 48px
-    use: Global search field (기업, 공고, 콘텐츠 검색), borderless
-  nav-link:
-    type: tab
-    textColor: '#4b4c50'
+    textColor: '#242628'
+    rounded: 0px
+    height: 24px
+    padding: 0px
     typography: 15px / 400
-    active: 'green #00c362 text on active'
-    use: Top nav item (기업 랭킹, 커뮤니티, 채용)
-  badge-highlight:
-    type: badge
-    backgroundColor: '#00ff91'
-    textColor: '#333333'
-    rounded: 4px
-    typography: 13px / 400
-    use: Neon-green highlight marker / emphasis tag
+    hover: no brand change
+    pressed: 'self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px'
+    focus: 'self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px'
+    use: Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. Raw zero-size shadow changes on press and focus do not establish a visible ring.
+  job-card:
+    type: card
+    textColor: '#686a6d'
+    rounded: 0px
+    width: 334px
+    height: 172px
+    padding: 16px 20px 20px
+    typography: 13px / 600
+    hover: no brand change
+    pressed: no brand change
+    focus: no brand change
+    use: 'Link to the 서일회계법인 job posting on Jobkorea, transparent inside a white wrapper with #e5e6e9 border. Exported fg/font describe its company-name child (#686a6d, 13px / 600); title is #242628 at 15px / 600. Link radius is 0, not its wrapper.'
+  carousel-next:
+    type: button
+    backgroundColor: '#ffffff'
+    border: '#e5e6e9'
+    height: 40px
+    padding: 0px
+    hover: no brand change
+    pressed: no brand change
+    focus: no brand change
+    use: '다음 circular icon button for 마감임박 cards on white, with 1px #e5e6e9 border; SVG arrow fill #323438. Fully round computed radius 3.35544e+07px.'
 fonts:
   roles:
     body: Pretendard Variable
-    blog: IBM Plex Sans
+    latin: Roboto
 ---
 
 # Design System Inspiration of Jobplanet
@@ -127,161 +159,196 @@ fonts:
 
 ### Visual Theme & Atmosphere
 
-Jobplanet (잡플래닛) is Korea's leading company-review and recruitment platform — the domestic answer to Glassdoor — and its interface reads like a bright, data-dense information utility rather than a glossy marketing site. The canvas alternates pure white (`#ffffff`) cards over a soft cool-grey page background (`#f3f3f4`), so content organizes itself into flat, scannable blocks. Text sits in a near-black `#333333` (never pure black for body), and a single confident spring-green (`#00c362`) is reserved almost entirely for action: the primary CTA, links, pagination, and inline arrows. The result is trustworthy and functional — a product built to help people compare employers, salaries, and interviews at a glance.
+Jobplanet (잡플래닛) is a Korean company-review and career platform that began in April 2014. Its stated mission is to provide the most trustworthy information at moments of choice. The current company page describes accumulating company information and real user experience as data, structuring it against objective criteria, and developing a reference point for career decisions beyond recruitment. The membership page makes that purpose concrete through employer research, interview preparation and salary negotiation.
 
-The typographic personality is unmistakably Korean-product-modern. The whole product surface runs on **Pretendard Variable** — the de-facto hangul UI font — with headlines at a restrained 24px / weight 700 and body dropping to a dense 13px / 400 at 1.5 line-height. There is no dramatic display-size hero on the product; hierarchy is carried by weight (700 vs 400) and by the green accent, not by giant type. This is information architecture over spectacle: sizes stay tight so that ratings, review counts, and salary figures can pack in without feeling cramped. Jobplanet's separate **tech blog** (techspace) does adopt a larger editorial voice — a 48px / 600 hero set in **IBM Plex Sans** — a distinct surface that signals "engineering culture," kept deliberately apart from the product chrome.
+The homepage gives that information service a search-led expression: green-emphasized Korean hero text, a white field with a multicolour border, rows of job cards and compact employee-rating chips. The measured homepage is the Korean-language product at `jobplanet.co.kr/welcome/index` (`lang="ko"`). White is the dominant background. Green supports search and ratings; blue appears on the explicit “잡코리아 지원” labels. The current surface therefore has a broader accent vocabulary than a single green CTA.
 
-What distinguishes Jobplanet from flashier fintech or consumer peers is its restraint with depth. Live inspection found `box-shadow: none` across the hero, nav, story cards, and stat chips: separation comes from the flat `#f3f3f4` surface tint and thin `#e5e6e9` hairlines, not from elevation. Geometry is gently rounded — a 5px CTA, 8px stat chips, 12px content cards, and fully-round (9999px) circular icon buttons — never sharp, never heavily pill-shaped. The green comes in a small family: the workhorse `#00c362`, a vivid neon `#00ff91` used as a highlight marker, a slightly teal `#00c274` line/border variant, and a deep forest `#003a1c` for dark-on-light labels. The overall impression is clean, fast, and unintimidating — a serious data tool that still feels friendly.
+Pretendard Variable carries the interface. Section headings are 22px/700, job-card h3s 15px/600, and the search hero 32px/700. The hierarchy combines size, weight, metadata grey and green rating chips. Job cards remain flat bordered panels, while the search wrapper has a soft green glow. This combination is a useful reference for dense employer information with a conspicuous search entry point.
 
-**Key Characteristics:**
-- Pretendard Variable across the entire product; 700 for headlines, 400 for body — weight is the hierarchy signal
-- Single spring-green (`#00c362`) reserved for action — CTA, links, pagination, arrows
-- Near-black `#333333` text (and `#323438` on some headings) instead of pure black — warmer, more legible
-- Neon accent green (`#00ff91`) as a highlight marker, plus a `#00c274` line variant and deep `#003a1c` label green
-- Flat depth: `box-shadow: none`; separation via `#f3f3f4` surface tint and `#e5e6e9` hairlines
-- Gentle radius ladder — 5px CTA, 8px chips, 12px cards, full-round (`9999px`) icon buttons
-- Dense, tight type sizing (13px body, 24px section head) tuned for information-heavy company data
-- A separate tech-blog surface in IBM Plex Sans (48px / 600 hero) — editorial voice kept apart from product
+#### Primary tasks
 
-### Primary tasks
-
-- Compare employers, salaries and interviews before choosing where to apply
-- Read company rankings and salary data while weighing an offer
-- Search for a company from the field at the top
-- Submit a review of a company you have worked at
-- Keep your company page credible for the candidates reading it
+- Research employers through current and former employee reviews.
+- Prepare for interviews and salary negotiation.
+- Search company/job keywords and browse recruitment cards.
 
 ### Brand Narrative
 
-Jobplanet (잡플래닛) launched in **2014**, built by the team that would become **BrainCommerce** (later operating under the Jobplanet/기업 정보 group), to solve a distinctly Korean information asymmetry: job-seekers had almost no transparent, employee-sourced view of what companies were actually like — culture, salary, management, interview process — before they signed on. Jobplanet's founding premise was to open that black box by aggregating reviews and ratings from 전·현직자 (current and former employees), positioning itself as the country's answer to Glassdoor.
-
-Over the following decade the product matured into Korea's leading 기업 정보 (company-information) and recruitment platform, layering salary data, interview reports, company rankings, a jobs marketplace, and community discussion on top of the original review core. It also grew a B2B side — employer-branding and recruitment services for companies (기업 회원 서비스) — turning transparency into a two-sided marketplace where candidates get truth and employers get reach. The homepage's "NO.1 기업 정보 플랫폼" claim states that category leadership plainly.
-
-What Jobplanet's design refuses is the glossy, aspirational chrome of consumer marketing sites: there is no oversized hero, no heavy shadow-stacked cards, no single hero image doing the persuading. What it embraces is a flat, dense, data-first interface — a single trustworthy green for action, near-black text for legibility, and tight typography that lets ratings and review counts speak for themselves. The design is, in effect, an argument that the data is the product.
+The company page dates Jobplanet's start to April 2014 and presents it as a company-review and career platform. Its present direction is to make scattered employer information and real experiences useful at career decision points. The membership page organizes that promise into employer exploration, interview preparation and salary negotiation. In the product, search, job listings and employee-rating chips make those information tasks tangible.
 
 ### Principles
 
-1. **Transparency is the product.** Jobplanet exists to surface employee-sourced truth about companies. *UI implication:* foreground counts and sources ("782개의 전∙현직자 리뷰"); make data visible and scannable before any CTA.
-2. **Data density over spectacle.** A career decision needs many data points at once. *UI implication:* keep type tight (13px body), use weight for hierarchy, and pack ratings/salaries/reviews without resorting to giant display type.
-3. **One action, one color.** Green (`#00c362`) means "do this." *UI implication:* reserve the saturated green exclusively for the primary CTA, links, and pagination so the next step is never ambiguous.
-4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with the `#f3f3f4` tint and `#e5e6e9` hairlines; keep the page quick to scan.
-5. **Plain, insider voice.** Speak like a candid colleague, not a marketer. *UI implication:* descriptive headings and factual chips; embrace real job-market language rather than sanitized copy.
+The official mission is “선택의 순간에 가장 믿을 수 있는 정보를 제공합니다.” The following are implementation lessons from the measured surface, not a published design manifesto: establish a prominent search entry point; differentiate titles, employer names and metadata; keep employee ratings compact; retain an explicit destination label for Jobkorea applications.
 
 ### Personas
 
-*Personas below are fictional archetypes informed by publicly observable Jobplanet user segments (Korean job-seekers researching employers, career-movers comparing salaries, HR/employer-branding teams), not individual people.*
-
-**김도현, 28, 서울.** A developer preparing to switch jobs. Reads interview reports and 전·현직자 reviews on Jobplanet before applying, and cross-checks salary ranges. Trusts the platform because the reviews feel sourced and specific, not like a recruiter's pitch.
-
-**이서연, 33, 판교.** A product manager comparing two offers. Uses company rankings and 사내문화 ratings to sanity-check culture claims she heard in interviews. Values that the interface is dense enough to scan many companies in one sitting.
-
-**박준혁, 41, 기업 인사팀.** An HR lead at a mid-size company managing the employer-branding profile (기업 회원 서비스). Wants the company page to look credible and current; cares that reviews and job posts render cleanly. Sees Jobplanet as where candidates form first impressions.
+No first-party persona study was verified; fictional names, ages and biographies from the prior reference are not presented as research.
 
 ## Colors
 
-### Primary
-- **Jobplanet Green** (`#00c362`): The primary brand and action color. Background of the primary CTA ("바로가기"), and the text color of links, pagination numbers, footer links, and inline arrows — the system's single "action" hue.
-- **Neon Highlight** (`#00ff91`): A vivid spring-green used as a small highlight marker / emphasis background. Brighter and more electric than the primary.
-- **Green Line** (`#00c274`): A slightly teal-shifted green used for thin border/underline accents next to green elements.
-- **Deep Forest** (`#003a1c`): A very dark green used for dark-on-light label text — a low-key branded alternative to grey for small green-family labels.
-- **On-Primary White** (`#ffffff`): Text and icons on top of the green CTA.
+These values come from the rendered homepage and its measured controls. Published names are retained for unchanged values; names such as `nav` and `on-primary` remain compatibility aliases where the new capture supports a different or narrower role.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Card and content surfaces, search field background, text on green/dark.
-- **Surface Grey** (`#f3f3f4`): The cool-grey page background and stat-chip fill — the primary flat separation device.
-- **Hairline** (`#e5e6e9`): Thin 1px borders on circular buttons, dividers, and card outlines given the shadow-free system.
+| Token | Value | Observed role |
+|---|---|---|
+| `faint` | `#a4a6ad` | Job-card deadline, experience and location metadata; job-card rest.kids. |
+| `canvas`, `on-primary` | `#ffffff` | White canvas behind all six controls; carousel-next fill. on-primary is the retained published alias for this same value, not a newly verified green-button pairing. |
+| `hairline` | `#e5e6e9` | Carousel-next 1px border and the white job-card wrapper border. |
+| `gray-900` | `#242628` | Search-input ink and the job-card h3 title. |
+| `ink-strong`, `foreground` | `#323438` | Most frequent paragraph ink (12 paragraphs); visible 기업 리뷰 label and next-arrow icon. |
+| `gray-400` | `#85878c` | 전체보기 text and search magnifier SVG fill. |
+| `muted` | `#686a6d` | Company-name label 서일회계법인 in job-card. |
+| `footer-ink` | `#444444` | Footer links including 회사소개 and 개인정보처리방침, survey.rows. |
+| `surface` | `#f3f3f4` | Fill on the 복지, 워라밸, 조직문화 and 동료 topic buttons; 11 backgrounds overall. This is not the full-page canvas. |
+| `color-green-600` | `#00a866` | 워라밸 3.2 rating-chip ink in job-card rest.kids. |
+| `color-green-50` | `#e3f8ed` | 워라밸 3.2 rating-chip fill in job-card rest.kids. |
+| `color-jobkorea-text` | `#083ccc` | 잡코리아 지원 label inside job-card, rest.kids span@1.1. |
+| `color-jobkorea-border` | `#96b1fd` | 잡코리아 지원 1px border inside job-card, rest.kids span@1.1. |
+| `gray-600` | `#57595b` | 자세히 보기 button text, survey.rows. |
+| `red-50` | `#fff0f2` | TIP follow-company prompt background, survey.rows; 54px high, 12px radius. |
+| `primary` | `#00c362` | Footer 이용약관 link ink, survey.rows; --jply-maincolor and --green-500. |
+| `nav` | `#4b4c50` | 닫기 button ink in the header search layer; retained published alias, not current nav-label ink. |
 
-### Text Hierarchy
-- **Ink** (`#333333`): Primary body text, most headings, strong labels — a near-black used instead of pure black.
-- **Ink Strong** (`#323438`): A slightly cooler dark used on some section headings.
-- **Nav Slate** (`#4b4c50`): Top-navigation link text.
-- **Muted Slate** (`#686a6d`): Login/sign-up links and tertiary UI text.
-- **Faint Slate** (`#a4a6ad`): Secondary/meta text, captions — the highest-frequency muted tone.
-- **Disabled Grey** (`#c5c7cc`): Disabled text, placeholders, lowest-emphasis labels.
+The body-text role is `foreground` (`#323438`); `ink-strong` is its existing published alias. Transparent controls inherit the white surface; they do not have a black fill. The input's raw focus/pressed shadow contains `rgb(30, 136, 229)` (`#1e88e5`) with zero offsets, blur and spread, so it is not exported as a visible focus colour.
+
+### Observed values with unresolved visible roles
+
+These values are preserved as evidence, without exported colour tokens: `#333333` is computed on the measured nav/card wrappers but their visible labels have their own colours; `#00c274` appears in the census (one background and eight text elements) and in `--color-green-500`, but the exact element role was not isolated; `#ef5350` appears on ten text elements and in `--red-400` / `--color-red-400`, without an isolated semantic element. The earlier `green-line` underline role is not confirmed by that census.
+
+### Declared in the site's CSS, not seen painted
+
+The site's legacy `:root` palette (`--jply-*`, bare colour ramps and premium variables) and its adapted `--color-*` palette hold the following additional colours. This list is not exported as tokens. The generic Tailwind yellow default and Swiper colour are excluded. Declared presence does not establish a semantic status such as warning, danger or disabled.
+
+| CSS property | Value |
+|---|---|
+| `--blue-100`, `--color-blue-100` | `#bbdefb` |
+| `--blue-200`, `--color-blue-200` | `#90caf9` |
+| `--blue-30`, `--color-blue-30` | `#f6fbfe` |
+| `--blue-300`, `--color-blue-300` | `#64b5f6` |
+| `--blue-400`, `--color-blue-400` | `#42a5f5` |
+| `--blue-500`, `--color-blue-500` | `#2196f3` |
+| `--blue-700`, `--color-blue-700` | `#1976d2` |
+| `--blue-800`, `--color-blue-800` | `#1565c0` |
+| `--blue-900` | `#0d47a1` |
+| `--color-gray-200`, `--gray-200`, `--jply-gray05` | `#c5c7cc` |
+| `--color-gray-30`, `--gray-30` | `#f9f9fb` |
+| `--color-gray-750` | `#3e434b` |
+| `--color-green-100` | `#b8ebd0` |
+| `--color-green-200` | `#87e0b6` |
+| `--color-green-30` | `#f2fbf7` |
+| `--color-green-300` | `#57d49b` |
+| `--color-green-400` | `#29c886` |
+| `--color-green-700` | `#008552` |
+| `--color-kakao` | `#fee500` |
+| `--color-orange-100`, `--orange-100` | `#ffe0b2` |
+| `--color-orange-200`, `--orange-200` | `#ffcc80` |
+| `--color-orange-30`, `--orange-30` | `#fffaf5` |
+| `--color-orange-400`, `--orange-400` | `#ffa726` |
+| `--color-orange-50`, `--orange-50` | `#fff3e0` |
+| `--color-orange-500`, `--orange-500` | `#ff9800` |
+| `--color-orange-600`, `--orange-600` | `#fb8c00` |
+| `--color-premium-active`, `--premium-col-active` | `#139984` |
+| `--color-premium-default`, `--color-teal-500`, `--premium-col`, `--teal-500` | `#1cbda3` |
+| `--color-purple-100`, `--purple-100` | `#d0cbec` |
+| `--color-purple-30`, `--purple-30` | `#f9f8fc` |
+| `--color-purple-50`, `--purple-50` | `#f2f0f9` |
+| `--color-purple-500`, `--purple-500` | `#523cc3` |
+| `--color-purple-600`, `--purple-600` | `#4736b5` |
+| `--color-red-100`, `--red-100` | `#ffcdcd` |
+| `--color-red-200`, `--red-200` | `#f6a2a2` |
+| `--color-red-30`, `--red-30` | `#fff7f7` |
+| `--color-red-300`, `--red-300` | `#f38181` |
+| `--color-red-500`, `--red-500` | `#f44336` |
+| `--color-red-600`, `--red-600` | `#e53935` |
+| `--color-red-700`, `--red-700` | `#d32f2f` |
+| `--color-teal-50`, `--teal-50` | `#e0fffa` |
+| `--color-yellow-200` | `#f5e993` |
+| `--color-yellow-50` | `#faf9ec` |
+| `--color-yellow-600` | `#d79304` |
+| `--color-yellow-700` | `#ab6807` |
+| `--color-yellow-800` | `#8d510e` |
+| `--green-100` | `#bbecc8` |
+| `--green-200` | `#96e0aa` |
+| `--green-30` | `#f7fdfa` |
+| `--green-300` | `#76d792` |
+| `--green-400` | `#50cd7a` |
+| `--green-50` | `#ebf9ef` |
+| `--green-600` | `#00a855` |
+| `--green-700` | `#008040` |
+| `--green-800` | `#006633` |
+| `--green-900` | `#024b26` |
+| `--jply-color-orange` | `#ffa22b` |
+| `--jply-color-purple` | `#8a74ed` |
+| `--jply-color-red` | `#ff5757` |
+| `--jply-main-dark01` | `#00a85d` |
+| `--jply-main-light01` | `#2fdd78` |
+| `--jply-main-light02` | `#7ef2a9` |
+| `--jply-main-light03` | `#d9ffe6` |
+| `--jply-sub-dark01` | `#0994ff` |
+| `--jply-subcolor` | `#40b6ff` |
+| `--orange-300` | `#ffb74d` |
+| `--orange-700` | `#f57c00` |
+| `--orange-800` | `#ef6c00` |
+| `--orange-900` | `#e65100` |
+| `--purple-200` | `#aaa1dd` |
+| `--purple-300` | `#8477cf` |
+| `--purple-400` | `#6856c3` |
+| `--purple-700` | `#3b2ead` |
+| `--purple-800` | `#3127a0` |
+| `--purple-900` | `#2b1b92` |
+| `--red-800` | `#c62828` |
+| `--red-900` | `#b71c1c` |
+| `--teal-100` | `#b8f0e7` |
+| `--teal-200` | `#87ded0` |
+| `--teal-30` | `#f1fffd` |
+| `--teal-300` | `#63d3c1` |
+| `--teal-400` | `#40c8b2` |
+| `--teal-600` | `#15a78f` |
+| `--teal-700` | `#0e917b` |
+| `--teal-800` | `#077a68` |
+| `--teal-900` | `#006454` |
 
 ## Typography
 
-### Font Family
-- **Product**: `Pretendard Variable` (with `Roboto`, `Noto Sans KR` fallbacks) — the document default across the entire product surface, for headings, nav, buttons, and body.
-- **Tech blog**: `IBM Plex Sans` (with `Pretendard Variable` fallback) — used only on the techspace engineering blog for its editorial hero and headings.
+### Evidence classes
 
-### Hierarchy
+- **Official product use:** no opened brand or design document specifies the product font. The live interface is the evidence for the UI face.
+- **Live-loaded:** `document.fonts` reports `Pretendard Variable 45 920 normal`, `Roboto 400 normal` and `jp-icons-2402 400 normal`. Body and button stacks begin with Pretendard Variable. Pretendard's dynamic-subset stylesheet is requested from jsDelivr (`orioncactus/pretendard@v1.3.9`); its rules were unreadable to the stylesheet walker. Roboto Regular is declared from `common.jobplanet.co.kr/fonts/woff/Roboto-Regular.woff2`; the icon face has its own first-party WOFF URL. Roboto's loaded presence does not establish that every Latin label uses it. The icon face is not a text-family token.
+- **Official distributed assets:** the page declares font asset URLs on `common.jobplanet.co.kr` for Noto Sans KR, Roboto and the icon font. No licence or product-font specification was opened.
+- **Declared-only:** Noto Sans KR (400/500/700/900) and swiper-icons have font-face declarations but no loaded entry. SUIT and S-CoreDream are named in CSS custom-property stacks, with no loaded entry. CSS fallback names are not exported as the brand face.
+- **Unresolved:** the earlier IBM Plex Sans tech-blog claim remains unconfirmed; the opened blog text does not expose a font specification. No specimen is supplied for any unloaded or unresolved face. Substitute: none chosen.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Section Heading | Pretendard Variable | 24px (1.50rem) | 700 | 1.5 (36px) | Section titles (오늘의 추천, 커뮤니티 인기글) |
-| Card / List Title | Pretendard Variable | 16px (1.00rem) | 700 | 1.5 (24px) | Stat chips, card headlines |
-| Nav Link | Pretendard Variable | 15px (0.94rem) | 400 | 1.4 | Top navigation items |
-| Button | Pretendard Variable | 14px (0.88rem) | 700 | — | Primary CTA label |
-| Search Input | Pretendard Variable | 16px (1.00rem) | 400 | — | Global search field text |
-| Body | Pretendard Variable | 13px (0.81rem) | 400 | 1.5 (19.5px) | Body copy, metadata, captions |
-| Tech-Blog Hero | IBM Plex Sans | 48px (3.00rem) | 600 | 1.0 | techspace hero headline only |
+### Measured hierarchy
 
-### Principles
-- **Weight over size**: The product barely scales type — 24px is the largest common head. Hierarchy comes from 700 vs 400 weight and from the green accent, not from display sizes.
-- **Dense body sizing**: Body sits at a tight 13px / 1.5, tuned for information-rich company data (ratings, salaries, review counts) rather than airy marketing copy.
-- **One product font**: Pretendard Variable owns every product surface; IBM Plex Sans is quarantined to the tech blog so the editorial voice never bleeds into the product.
-- **Normal tracking**: Letter-spacing stays `normal` throughout — there is no tight display tracking because there is no display type in the product.
+The dominant paragraph size is 16px/400 (951 paragraph characters); section headings come from the heading census, not a presumed scale. The compiler retains the historical names `body` for 13px/400, `input` for 16px/400 and `nav` for 15px/400. Their observed roles are stated below; `body-lg` explicitly names the dominant paragraph style.
+
+| Token | Size / weight | Line height | Observed use |
+|---|---|---|---|
+| `body` | 13px / 400 | 19.5px | Retained published name: small inherited control text and metadata; 20 paragraph characters at 13/400. Not the dominant paragraph size. |
+| `label` | 13px / 600 | 20px | Company-name label in job-card. |
+| `button-lg` | 16px / 600 | 24px | 전체보기 action label. |
+| `nav` | 15px / 400 | 24px | Retained published name: now measured on the main search input, not the nav label. |
+| `input` | 16px / 400 | 24px | Retained published name: dominant paragraph size, 951 characters in text-census; current main search field is 15px. |
+| `body-lg` | 16px / 400 | 24px | Dominant paragraph size, 951 characters; Pretendard Variable in text-census.roles.paragraph. |
+| `body-sm` | 14px / 400 | 22px | Secondary paragraphs, 130 characters, and compact header search input. |
+| `label-sm` | 13px / 700 | 19.5px | Footer 이용약관 link; 8 paragraph characters also use this size/weight. |
+| `heading-sm` | 15px / 600 | 24px | Job-card h3 titles (339 heading characters); visible navigation labels use the same size and weight. |
+| `heading` | 22px / 700 | 30px | Section h3 headings (39 heading characters). |
+| `display` | 32px / 700 | 44px | Search-hero h2 text (15 heading characters). |
+
+The candidate digest associates 16px/400 with the chat launcher in one family summary. The separate text census records the 951 paragraph characters in Pretendard Variable. NotoSansKR on the third-party chat launcher is excluded from product typography. Measured control letter-spacing is `normal`.
 
 ## Layout
 
-### Spacing System
-- Base unit: 8px, with a dense small end (4px, 6px) for chip and icon padding
-- Scale: 4px, 6px, 8px, 12px, 16px, 24px
-- Notable: Interactive padding lands at `0px 16px` horizontally on both the 40px CTA and 48px stat chips, giving a consistent, tappable horizontal rhythm
+At 1440×1000, the navigation sits above a centered search hero; recruitment sections arrange three cards across the visible content area, with a right-side utility panel. The measured recruitment link is 334×172px with padding `16px 20px 20px`. It sits inside the white bordered card wrapper, so its own 0px radius must not be copied as the panel radius.
 
-### Grid & Container
-- White content cards float over a full-width `#f3f3f4` grey canvas
-- Section headings (24px / 700) anchor each block; recommendation and story cards arrange in horizontal carousels and responsive grids
-- The global search input is a prominent, borderless 48px field at the top of company-search surfaces
-- Stat chips ("N개의 전∙현직자 리뷰") group review + recruitment counts as flat grey entry points
-
-### Whitespace Philosophy
-- **Flat segmentation**: sections separate by background (white cards vs `#f3f3f4` canvas) and `#e5e6e9` hairlines, not by shadow.
-- **Dense but breathable**: body type is tight (13px) so data packs in, but generous card radius (12px) and 16px interior padding keep it from feeling cramped.
-- **Action lives in one color**: the green `#00c362` is spatially rare — one CTA per block — so the eye always knows where to click.
-
-### Border Radius Scale
-- Small (4px): highlight badges, inner elements
-- CTA (5px): the primary green button
-- Medium (8px): stat chips, mid-size containers
-- Large (12px): content and story cards — the workhorse card radius
-- Full (9999px): circular icon/carousel buttons
+The measured small actions and input use 0px internal padding. Retained spacing values are 6px (advertising-label horizontal padding), 8px (topic-button vertical padding) and 16px (job-card top padding); these are observed uses, not proof of a complete global scale. Radius candidates are 0px for the actual text controls and card link; 6px for the trending-search expander and advertising label; 8px (`md`) for 자세히 보기 buttons; 12px (`lg`) for the pink TIP prompt. Search and next-arrow buttons have computed radius `3.35544e+07px`, producing fully rounded ends. No invented numeric pill token is added.
 
 ### Responsive Behavior
 
-#### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, carousels become horizontal scroll, nav collapses |
-| Tablet | 640-1024px | 2-up card grids, moderate padding |
-| Desktop | 1024-1440px | Full layout, multi-column card grids, centered content |
-
-#### Touch Targets
-- Primary CTA at 40px height with 0px 16px padding — comfortably tappable
-- Stat chips at 48px height for easy tapping into company detail
-- Nav items at 50px height with 16px horizontal padding
-- Search field at 48px height, full-width on narrow viewports
-
-#### Collapsing Strategy
-- Section heads (24px / 700) hold their size; card grids reflow multi-column → stacked
-- Recommendation/story carousels switch to horizontal scroll on mobile
-- White cards maintain 12px radius across breakpoints; grey canvas stays full-width
-- Global search remains a prominent field near the top on all sizes
-
-#### Image Behavior
-- Card thumbnails and company logos carry no shadow at any size, consistent with the flat system
-- Story cards keep their 12px radius; imagery is contained within the white card
+Only the 1440×1000 desktop viewport was measured; responsive breakpoints and mobile rearrangement are unconfirmed.
 
 ## Elevation & Depth
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f3f3f4` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e5e6e9` border | Circular button outlines, dividers |
-
-**Shadow Philosophy**: Jobplanet is a near-shadowless system. Live inspection returned `box-shadow: none` across the hero, nav, story cards, and stat chips. Depth and grouping are communicated entirely through flat tinted surfaces (`#f3f3f4`) and thin `#e5e6e9` hairlines. This is a deliberate modern-flat choice that keeps a data-heavy company-review product feeling fast, light, and mobile-native — avoiding the heavy card-stack look. When emphasis is needed the system reaches for the green (`#00c362`) or the neon highlight (`#00ff91`), never elevation.
+The job-card wrapper has `box-shadow: none`, white fill and a 1px `#e5e6e9` border. The measured view-all, nav and next controls also have no box shadow at rest. The search wrapper has `rgba(184, 235, 208, 0.5) 0px 0px 24px 0px` after transparent zero-size shadow layers; the search icon has a `drop-shadow(rgba(0, 0, 0, 0.08) 0px 4px 16px)` filter. Flat recruitment cards and a glowing search entry coexist on this page.
 
 ### Values kept in prose
 
@@ -291,213 +358,86 @@ Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
 
 ## Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip/button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, carousel slide, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, rare hero reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, carousel |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, fast, data-first aesthetic. Cards and results fade in from below at `motion-standard / ease-enter`; carousels slide horizontally with `ease-standard`; buttons and chips respond to press with a subtle opacity/scale shift. No bounce or spring — a company-information product signals steadiness and credibility, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and carousels advance without animation; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle:
-- https://www.jobplanet.co.kr/welcome/index — nav, hero cards, primary CTA #00c362, stat chips, section heads
-- https://www.jobplanet.co.kr/companies — global search input, pagination (green #00c362), interactive green
-- https://techspace.jobplanet.co.kr/category/product — tech blog (IBM Plex Sans, 48px/600 hero) — second brand-owned surface
-Full computed-style samples + color/radius frequency scans recorded in web/references/jobplanet/.verification.md.
-
-Voice samples (§10) are verbatim from the live surfaces (page title, section head, stat chip).
-
-Brand narrative (§11): Jobplanet (잡플래닛) launched ~2014 as a Korean company-review / recruitment
-platform (the domestic Glassdoor analogue), later layering salary data, rankings, a jobs marketplace,
-and B2B employer-branding services (기업 회원 서비스). "NO.1 기업 정보 플랫폼" is the homepage's own
-category claim. Broader corporate-structure details are general public knowledge, not directly quoted
-from a verified Jobplanet statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Jobplanet user segments
-(Korean job-seekers, career-movers, HR/employer-branding teams). Names are illustrative; they do not
-refer to real people.
-
-Interpretive claims (e.g., "the data is the product", "one action, one color", "flat and fast as a
-rejection of glossy marketing chrome") are editorial readings connecting Jobplanet's observed design
-to its positioning, not directly sourced Jobplanet statements.
--->
+The six measured elements each report `transition: all 0s ease 0s`. No non-zero duration or easing curve is exported. The search/nav ancestors can change while focus opens a search layer; no general motion scale or reduced-motion behaviour was verified.
 
 ## Components
 
-### Buttons
+All six measured product controls are retained, including those whose measured states show `no brand change`. A nav link is represented as a button-type action; the recruitment link is a card. The measurements distinguish the actual interactive element from its surrounding panel.
 
-**Primary CTA (Green)**
-- Background: `#00c362`
-- Text: `#ffffff`
-- Radius: 5px
-- Padding: 0px 16px
-- Height: 40px
-- Font: 14px / 700 / Pretendard Variable
-- Use: Primary action ("바로가기") — the system's single green CTA
+### search-button
 
-**Stat Chip**
-- Background: `#f3f3f4`
-- Text: `#333333`
-- Radius: 8px
-- Padding: 0px 16px
-- Height: 48px
-- Font: 16px / 700 / Pretendard Variable
-- Use: Company stat entry-point ("782개의 전∙현직자 리뷰", "15개의 채용정보")
+검색 icon button, transparent over the white search field; magnifier SVG fill #85878c. Fully round computed radius 3.35544e+07px. No text colour is exported.
 
-**Circular Icon Button**
-- Background: `#ffffff`
-- Text: `#333333`
-- Border: 1px solid `#e5e6e9`
-- Radius: 9999px (full round)
-- Padding: 6px
-- Height: 32px
-- Use: Carousel prev/next and small utility icon buttons
+height: `32px`; padding: `0px`.
 
-### Inputs
+hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
 
-**Global Search**
-- Background: `#ffffff`
-- Text: `#333333`
-- Font: 16px / 400 / Pretendard Variable
-- Height: 48px
-- Placeholder: `#c5c7cc`
-- Use: Site-wide search field ("기업, 공고, 콘텐츠 검색") — borderless, sits on white
+### view-all
 
-### Cards
+전체보기 button beside 마감임박 채용공고, transparent over white.
 
-**Content / Story Card**
-- Background: `#ffffff`
-- Text: `#333333`
-- Radius: 12px
-- Shadow: none
-- Use: Story, interview, and recommendation cards on the grey canvas
+fg: `#85878c`; radius: `0`; height: `24px`; padding: `0px`; font: `16px / 600`.
 
-### Badges
+hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
 
-**Neon Highlight**
-- Background: `#00ff91`
-- Text: `#333333`
-- Radius: 4px
-- Font: 13px / 400 / Pretendard Variable
-- Use: Small highlight marker / emphasis tag
+### nav-link
 
-### Navigation
-- Background: `#ffffff`
-- Text: `#4b4c50`
-- Font: 15px / 400 / Pretendard Variable
-- Height: 50px items
-- Active: green `#00c362` text on the active item
-- Secondary links ("로그인", "회원가입"): `#686a6d`
-- Use: Top horizontal nav ("기업 랭킹", "커뮤니티", "채용", "콘텐츠", "연봉")
+기업 리뷰 navigation link to /review, transparent over white; visible child label is #323438 at 15px / 600. Pointer states were unmeasured.
 
----
+fg: `#323438`; radius: `0`; height: `55px`; padding: `0px`; font: `15px / 600`.
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 product surfaces + tech blog)
-**Tier 1 sources:** https://www.jobplanet.co.kr/welcome/index, https://www.jobplanet.co.kr/companies, https://techspace.jobplanet.co.kr/
-**Tier 2 sources:** getdesign.md/jobplanet (0 DESIGN.md files — not listed); styles.refero.design/?q=jobplanet (no Jobplanet-specific match)
-**Conflicts unresolved:** none (both Tier-2 catalogs returned no Jobplanet data; all values from Tier 1 live inspect)
+focus: `no brand change`.
+
+### search-input
+
+Main 회사·직무 키워드를 검색해 보세요 field, transparent over white. The 24px measurement is the input itself, not its rounded search wrapper. Raw zero-size shadow changes on press and focus do not establish a visible ring.
+
+fg: `#242628`; radius: `0`; height: `24px`; padding: `0px`; font: `15px / 400`.
+
+hover: `no brand change`; pressed: `self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px`; focus: `self shadow: none -> rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgb(30, 136, 229) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px`.
+
+### job-card
+
+Link to the 서일회계법인 job posting on Jobkorea, transparent inside a white wrapper with #e5e6e9 border. Exported fg/font describe its company-name child (#686a6d, 13px / 600); title is #242628 at 15px / 600. Link radius is 0, not its wrapper.
+
+fg: `#686a6d`; radius: `0`; width: `334px`; height: `172px`; padding: `16px 20px 20px`; font: `13px / 600`.
+
+hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
+
+### carousel-next
+
+다음 circular icon button for 마감임박 cards on white, with 1px #e5e6e9 border; SVG arrow fill #323438. Fully round computed radius 3.35544e+07px.
+
+bg: `#ffffff`; border: `#e5e6e9`; height: `40px`; padding: `0px`.
+
+hover: `no brand change`; pressed: `no brand change`; focus: `no brand change`.
 
 ### States
 
-| State | Treatment |
-|---|---|
-| **Empty (no reviews yet)** | White card on `#f3f3f4` canvas. Single Ink (`#333333`) line explaining no reviews exist yet, with one green (`#00c362`) CTA to write the first review. No illustration clutter. |
-| **Empty (no search results)** | Faint Slate (`#a4a6ad`) single line stating nothing matched, with the search field kept visible above so the query can be adjusted. |
-| **Loading (results fetch)** | Skeleton cards at final 12px-radius dimensions on the `#f3f3f4` surface. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Previous content stays visible; a subtle green (`#00c362`) progress indicator signals the update. Never blank the list. |
-| **Error (data load failed)** | Inline message in Ink (`#333333`) with a plain-language explanation and a retry, not a bare "오류가 발생했습니다". States what to do next. |
-| **Error (form validation)** | Field-level message below the input describing what is valid, not just "필수". |
-| **Success (review submitted)** | Brief inline confirmation in a calm tone; the new review surfaces immediately. No celebratory emoji. |
-| **Skeleton** | `#f3f3f4` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Disabled Grey (`#c5c7cc`) text on reduced-opacity surface; green actions fade rather than turn grey, to preserve brand read. |
+Search-button, view-all, job-card and carousel-next retain `no brand change` for hover, pressed and focus within the probe's computed-style/DOM scope. Their automatic browser focus outlines are excluded from authored styling. Nav-link focus is also `no brand change`; hover and pressed remain UNMEASURED because the live pointer pass encountered `pointer-events:none`.
+
+Search-input hover is `no brand change`. Pressed and keyboard focus change its raw shadow from `none` to the zero-size layer string recorded under Component Stylings. That computed change does not establish a visible blue ring. Its focus crop was partly obscured by the search layer, so visual focus appearance remains unresolved. Empty results, loading, validation, success and disabled treatments were not exercised.
 
 ## Do's and Don'ts
 
 ### Do
-- Use Pretendard Variable across the entire product; reserve IBM Plex Sans for the tech blog only
-- Carry hierarchy with weight (700 vs 400) rather than large display sizes
-- Reserve green (`#00c362`) for action — CTA, links, pagination — keep it the single "action" color
-- Use near-black `#333333` for body text instead of pure black
-- Separate sections with the `#f3f3f4` surface tint and `#e5e6e9` hairlines, not shadows
-- Keep body dense (13px / 1.5) so ratings, salaries, and review counts pack in cleanly
-- Use the gentle radius ladder — 5px CTA, 8px chips, 12px cards, full-round icon buttons
-- Use the neon `#00ff91` sparingly as a highlight marker, not as a fill color
+
+- Use the loaded Pretendard Variable face and the measured hierarchy.
+- Keep white job panels and hairline borders, with lighter grey metadata.
+- Preserve green employee-rating chips and the distinct blue Jobkorea application label.
+- Distinguish a link's inherited style from the visible child label.
 
 ### Don't
-- Add drop shadows for elevation — Jobplanet is a flat, shadow-free system
-- Spread green across many elements — it dilutes the single-action signal
-- Use pure black (`#000000`) for body text — reserve near-black `#333333`
-- Set giant display headlines on the product — the largest common head is 24px
-- Use IBM Plex Sans on product surfaces — that voice belongs to the tech blog
-- Use sharp square corners on cards or chips — everything is gently rounded
-- Introduce a second saturated accent color — the green family is the only saturated hue
-- Rely on size alone for hierarchy — weight and the green accent do that work
+
+- Treat the legacy 13px `body` name as the dominant paragraph size.
+- Turn the browser's automatic focus outline into a brand ring.
+- Give transparent controls a solid background token.
+- Render unloaded font names or convert declared-only palette entries into product tokens.
 
 ## Voice & Tone
 
-Jobplanet's voice is **candid, insider, and pragmatic** — the tone of a trusted colleague who tells you what a company is really like to work at. Copy is plain Korean, information-first, and comfortable with real employee slang ("네카라쿠배", "이직러") because the product's whole premise is unvarnished, from-the-inside truth about employers. It never oversells: headlines state what you'll find ("전∙현직자가 직접 평가한 '사내문화가 좋은 기업'") rather than hyping an outcome. The register treats the user as a job-seeker or career-mover who deserves transparent data — reviews, salaries, interview reports — not a marketing funnel.
-
-| Context | Tone |
-|---|---|
-| Section headings | Descriptive, benefit-clear. "전∙현직자가 직접 평가한 '사내문화가 좋은 기업'". |
-| Stat / entry chips | Plain and factual. "782개의 전∙현직자 리뷰", "15개의 채용정보". |
-| CTAs | Direct, low-pressure. "바로가기", "더 보기". |
-| Content / community titles | Conversational, insider, sometimes playful. "이직러가 꼽은 '네카라쿠배' 중 1위는?". |
-| Trust / data framing | Concrete and sourced. Emphasizes that reviews come from 전∙현직자 (current/former employees). |
-
-**Voice samples (verbatim from live surfaces):**
-- "NO.1 기업 정보 플랫폼 | 잡플래닛" — page title (category-leadership claim). *(verified live 2026-07-02)*
-- "전∙현직자가 직접 평가한 '사내문화가 좋은 기업'" — section head (transparency framing). *(verified live 2026-07-02)*
-- "782개의 전∙현직자 리뷰" — stat chip (data-density, sourced count). *(verified live 2026-07-02)*
-
-**Forbidden register**: hype superlatives detached from data, fear-based career pressure, undefined jargon, exclamation-heavy marketing. Jobplanet's authority comes from being specific and sourced, not loud.
+The current interface asks “어떤 회사·직무가 궁금하신가요?” and prompts “회사·직무 키워드를 검색해 보세요”. The TIP prompt explains the benefit directly: “회사를 팔로우하면 마감 임박 공고가 있을 때 알려드려요!” These are useful examples of question-led search, descriptive labels and an explicit reason to follow an employer; they do not establish an exhaustive editorial policy.
 
 ## Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action / CTA / links: Jobplanet Green (`#00c362`)
-- Neon highlight marker: (`#00ff91`)
-- Green line / border accent: (`#00c274`)
-- Deep green label: (`#003a1c`)
-- Body / heading text: Ink (`#333333`), Ink Strong (`#323438`)
-- Nav link: Nav Slate (`#4b4c50`)
-- Secondary link: Muted Slate (`#686a6d`)
-- Meta / caption: Faint Slate (`#a4a6ad`)
-- Disabled / placeholder: (`#c5c7cc`)
-- Canvas: Pure White (`#ffffff`); Surface: Grey (`#f3f3f4`); Hairline: (`#e5e6e9`)
-
-### Example Component Prompts
-- "Create a company-review card block on a #f3f3f4 grey canvas. White card (#ffffff, 12px radius, no shadow). Section title 24px Pretendard Variable weight 700, #333333. Inside, a grey stat chip: #f3f3f4 background, #333333 text, 8px radius, 0px 16px padding, 48px height, 16px/700 — '782개의 전∙현직자 리뷰'. One green CTA: #00c362 background, white text, 5px radius, 40px height, 14px/700."
-- "Build a top nav: white 50px header. Pretendard Variable 15px weight 400 links, #4b4c50 text, green #00c362 on the active item. Login/sign-up links in #686a6d."
-- "Design a global search field: white #ffffff background, borderless, 48px height, 16px Pretendard Variable, #333333 text, #c5c7cc placeholder — '기업, 공고, 콘텐츠 검색'."
-- "Add a neon highlight badge: #00ff91 background, #333333 text, 4px radius, 13px Pretendard Variable."
-
-### Iteration Guide
-1. Pretendard Variable everywhere on product; IBM Plex Sans only on the tech blog
-2. Green (`#00c362`) is the single action color — don't spread it
-3. No shadows — separate with `#f3f3f4` tint and `#e5e6e9` hairlines
-4. Weight, not size, drives hierarchy — 700 heads, 400 body
-5. Text color is `#333333` near-black, never pure black for body
-6. Radius ladder: 5px CTA, 8px chips, 12px cards, full-round icon buttons
-7. Keep body dense (13px / 1.5) for data-rich company layouts
-
----
-
-## Governance
-
-### Known Gaps
-
-- **Contrast, `button-primary`.** Text `#ffffff` on `#00c362` measures 2.34:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
+“Build a Korean employer-information homepage with a white canvas, a search-led hero, 32px/700 hero text, 22px/700 section headings and 15px/600 recruitment titles in Pretendard Variable. Use #323438 paragraph ink and #a4a6ad metadata. Place recruitment links in white panels with #e5e6e9 borders. Use #e3f8ed rating chips with #00a866 ink and #083ccc application labels outlined in #96b1fd. Keep the observed search glow separate from the flat job cards.”
