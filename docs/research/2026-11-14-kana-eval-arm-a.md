@@ -26,8 +26,13 @@ not the September eval's `gpt-6-astra`.
 | 3 pricing section | 0 (0–0) | 0 | 1 | JT-22 in 2 of 3 (FYI) |
 
 Read from the source of each run, not from the checker: all 9 changed `<html lang>` to `ja`; all 9 name a Japanese
-face (Hiragino in 7, Noto Sans JP in 2); the line-height values they wrote for running text sit between 1.4 and 2.1.
-None used italic on Japanese text or a negative letter-spacing the checker reports.
+face (Hiragino in 7, Noto Sans JP in 2). The line-height values they wrote run from 1 to 2.1; that list mixes
+headings with running text, and the report script does not separate them. What the checker says is narrower: it
+found no body text under 1.5 (JT-01), no italic on Japanese text and no negative letter-spacing it reports.
+
+The table above is the checker over each run's `app/` folder. Scored over the whole workspace instead, all nine
+give the same counts; every run changed only `app/globals.css`, `app/layout.tsx` and `app/page.tsx` (one also left
+build files behind).
 
 The checker was tried on a seeded file the same day (Tailwind classes in TSX: `leading-[1.2]`, `tracking-[-0.05em]`,
 `italic`, `lang="en"`): it reported 2 WARN and 2 FYI, so a clean result is not the checker failing to read TSX.
