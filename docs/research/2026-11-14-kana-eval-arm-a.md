@@ -10,7 +10,7 @@ logs) are on this Mac only, `~/.omd-workers/kana-eval/20261114`; the per-run tab
 
 3 prompts × 3 runs, Codex CLI, `gpt-6.1-sol` at medium, no skill. Each run had an empty `HOME` and `CODEX_HOME` holding
 only the login file, and a fresh copy of the `create-next-app` 16.4.3 template (`lang="en"`, Geist through `next/font`,
-no `AGENTS.md`) in a workspace outside the repository. All 9 finished (3.5 to 5 minutes each); no log names a skill
+no `AGENTS.md`) in a workspace outside the repository. All 9 finished (216 to 307 seconds each); no log names a skill
 file outside its workspace.
 
 Two departures from the plan: the template is the October one (SHA-256 `f1654d1c…`), because the September tarball
