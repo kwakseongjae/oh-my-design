@@ -400,3 +400,18 @@ in the two apps' recent searches (기모 in Musinsa, 자전거 in Karrot).
 **Third parties.** Karrot's screens are mostly other people's posts and photos. Painting a seller's name does not
 make a listing ours to publish. Before any of this is public, the Karrot sheet needs a decision of its own: screens
 without user content, a staged account in a quiet neighbourhood, or structure-only frames.
+
+## Owner on the two sheets: re-shoot with a demo account; the phone waits (2026-11-13, night)
+
+Owner, with screenshots of the grey frames (Karrot's map, chat and search; Musinsa's my page and the two account
+pop-ups): 「잘못 찍힌건 확인하고 다시 찍으면 좋겠어. 시범용 구글 계정으로 대부분 로그인해서 해보면 좋을 거 같아. 내가 다시
+로그인을 해주면 되는거잖아. 다음 폰 세션은 일단 대기.」
+
+- **Decision:** capture with a demo account the owner signs in with, so that a frame needs no paint. The frames
+  to re-shoot are listed with their painted share in `~/.omd-workers/screens/reshoot.md` (Musinsa 4 of 27 and the
+  clip; Karrot 9 of 12 and the clip, four of them more than 65 % grey).
+- **The phone waits.** No session is started, and no app is signed out of or deleted, until the owner says so.
+- **What a demo Google account does not solve.** Karrot signs up by phone number and takes its neighbourhood from
+  location, so it needs another number, not another Google account. Which apps accept Google sign-in is not known
+  until each login screen is on screen; shooting that screen is the first step of the next session, and it is one
+  of the core screens both sheets lack. Other people's posts and photos in Karrot stay whatever the account.
