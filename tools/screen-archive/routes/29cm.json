@@ -54,16 +54,11 @@
    "url": "/store/event"
   },
   {
-   "key": "cart",
-   "type": "장바구니",
-   "title": "장바구니 (로그아웃)",
-   "url": "/order/cart"
-  },
-  {
    "key": "my",
    "type": "로그인",
-   "title": "마이페이지 → 로그인",
-   "url": "/my-page"
+   "title": "로그인 (마이페이지·장바구니에서 넘어옴)",
+   "url": "/my-page",
+   "note": "로그아웃 상태에서 마이페이지와 장바구니는 둘 다 이 로그인 화면으로 넘어갑니다."
   },
   {
    "key": "notice",

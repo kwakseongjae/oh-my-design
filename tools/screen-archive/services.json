@@ -11,7 +11,7 @@
    "web": {
     "headless": "ok",
     "route": "routes/29cm.json",
-    "screens": 10,
+    "screens": 9,
     "signed_out": "home, search, results, list, detail, article, promotions and notices open; cart and my page go to the sign-in screen"
    }
   },
