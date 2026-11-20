@@ -60,6 +60,12 @@
    "type": "로그인",
    "title": "로그인",
    "url": "/ko/login"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
   }
  ]
 }

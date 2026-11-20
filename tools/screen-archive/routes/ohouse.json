@@ -32,6 +32,13 @@
    "url": "/search/index?query=소파"
   },
   {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search/index?query=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
    "key": "category",
    "type": "목록",
    "title": "카테고리 · 가구",
@@ -47,7 +54,10 @@
    "key": "detail",
    "type": "상세",
    "title": "상품 상세",
-   "url": "https://store.ohou.se/goods/3858646"
+   "from": {
+    "screen": "category",
+    "href": "store\\.ohou\\.se/goods/\\d+"
+   }
   },
   {
    "key": "projects",
@@ -80,6 +90,12 @@
    "type": "고객센터",
    "title": "고객센터",
    "url": "/customer_center"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
   }
  ]
 }

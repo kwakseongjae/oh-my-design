@@ -33,10 +33,20 @@
    "note": "처음 들어서면 「수업 검색」 안내 말풍선이 결과 위에 뜹니다."
   },
   {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search?s=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
    "key": "detail",
    "type": "상세",
    "title": "강의 상세",
-   "url": "/course/in-the-age-of-ai-dev"
+   "from": {
+    "screen": "courses",
+    "href": "/course/"
+   }
   },
   {
    "key": "challenges",
@@ -68,6 +78,12 @@
    "type": "로그인",
    "title": "로그인",
    "url": "/signin"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
   }
  ]
 }

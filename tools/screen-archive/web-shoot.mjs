@@ -4,11 +4,12 @@
  *
  *   node tools/screen-archive/web-shoot.mjs tools/screen-archive/routes/<slug>.json [--out DIR] [--only key,key] [--widths 1440,390] [--browser headless|headed]
  *
- * For every screen of the route file and every width it loads the page with no window (headless Chromium, the
- * browser's own user agent, a fresh profile, signed out), scrolls once so lazy content loads, and writes
+ * For every screen of the route file and every width it loads the page with no window (headless Chromium, a fresh
+ * profile, signed out; the browser's own user agent at 1440 and a phone's at 390, see PHONE_UA), scrolls once so lazy content loads, and writes
  *   <out>/<width>/<key>.png            the first viewport
  *   <out>/<width>/<key>.full.png       the whole page, height capped at 12000 px
- *   <out>/<width>/<key>.elements.json  links, buttons, fields, headings, images: type, label, x, y, w, h (CSS px, page coordinates)
+ *   <out>/<width>/<key>.elements.json  links, buttons, fields, headings, images: type, label, href, computed style (colour,
+ *                                      background, border, radius, font), x, y, w, h (CSS px, page coordinates)
  *   <out>/walk.json                    one record per shot: requested and final URL, HTTP status, title, viewport, user agent,
  *                                      blocked or not, overlays that cover the viewport, steps taken, time
  *
@@ -24,6 +25,7 @@
  * Route file: { slug, name, reference, platform: "mobile" | "web" | "both", origin, browser?: "headed", never: [], close?: [css, every screen], screens: [
  *   { key, type, title, url, note?, close?: [css of close buttons], steps?: [ {fill: {selector, text}} | {press: "Enter"} |
  *     {click: {selector} | {text}} | {wait: ms} ] } ] }
+ * Instead of "url" a screen may have "from": { "screen": key of an earlier screen, "href": regex } (see below).
  * "type" is one of the words of tools/phone-recorder/taxonomy.json, so web and phone screens filter the same way.
  */
 import { createRequire } from 'node:module';
@@ -65,7 +67,12 @@ function loadPlaywright() {
   }
   console.error('playwright-core not found under web/node_modules (run npm install in web/)'); process.exit(2);
 }
-const { chromium } = loadPlaywright();
+const { chromium, devices } = loadPlaywright();
+// Many Korean services choose between their desktop and mobile site by user agent, not by width: at 390 with a
+// desktop user agent Kurly, Olive Young and Musinsa serve the desktop page shrunk, which no phone user sees
+// (2026-11-21). So the narrow pass identifies as a phone (Playwright's iPhone descriptor); the wide pass keeps the
+// browser's own user agent. This is to ask for the mobile site, not to get past a refusal: a 403 is still recorded.
+const PHONE_UA = devices['iPhone 15']?.userAgent ?? devices['iPhone 13'].userAgent;
 
 const taxonomy = JSON.parse(fs.readFileSync(path.join(REPO, 'tools/phone-recorder/taxonomy.json'), 'utf8'));
 const knownTypes = new Set(taxonomy.screens.flatMap((s) => [s.ko, ...(s.also ?? [])]));
@@ -83,7 +90,18 @@ function pageFacts() {
     if (elements.length >= 500) break;
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
-    elements.push({ type: kind(el), label: label(el), ...(el.tagName === 'A' ? { href: String(el.href).slice(0, 200) } : {}), x: Math.round(r.left + scrollX), y: Math.round(r.top + scrollY), w: Math.round(r.width), h: Math.round(r.height) });
+    const cs = getComputedStyle(el);
+    const px = (v) => (v && v !== '0px' ? v : undefined);
+    // What the element is drawn with, as the browser computed it: the raw material for matching a screen to the
+    // service's measured tokens (link-tokens.mjs). Transparent backgrounds and zero-width borders are left out.
+    const style = {
+      color: cs.color,
+      ...(cs.backgroundColor !== 'rgba(0, 0, 0, 0)' ? { background: cs.backgroundColor } : {}),
+      ...(px(cs.borderTopWidth) && cs.borderTopStyle !== 'none' ? { border: cs.borderTopColor } : {}),
+      ...(px(cs.borderTopLeftRadius) ? { radius: cs.borderTopLeftRadius } : {}),
+      fontSize: cs.fontSize, fontWeight: cs.fontWeight, fontFamily: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim(),
+    };
+    elements.push({ type: kind(el), label: label(el), ...(el.tagName === 'A' ? { href: String(el.href).slice(0, 200) } : {}), style, x: Math.round(r.left + scrollX), y: Math.round(r.top + scrollY), w: Math.round(r.width), h: Math.round(r.height) });
   }
   // Layers that sit over the page: fixed or sticky, wide, and tall enough to matter.
   const overlays = [];
@@ -96,7 +114,9 @@ function pageFacts() {
     if (share >= 0.12) overlays.push({ position: cs.position, share: Math.round(share * 100) / 100, y: Math.round(r.top), h: Math.round(r.height), text: (el.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 70) });
   }
   const text = document.body ? document.body.innerText : '';
-  return { title: document.title, textLength: text.length, textHead: text.replace(/\s+/g, ' ').slice(0, 160), height: document.documentElement.scrollHeight, images: document.images.length, lang: document.documentElement.lang || null, elements, overlays: overlays.slice(0, 6) };
+  const bodyStyle = getComputedStyle(document.body);
+  const page = { background: bodyStyle.backgroundColor, color: bodyStyle.color, fontFamily: bodyStyle.fontFamily.split(',')[0].replace(/["']/g, '').trim(), fontSize: bodyStyle.fontSize };
+  return { page, title: document.title, textLength: text.length, textHead: text.replace(/\s+/g, ' ').slice(0, 160), height: document.documentElement.scrollHeight, images: document.images.length, lang: document.documentElement.lang || null, elements, overlays: overlays.slice(0, 6) };
 }
 
 async function runStep(page, step, never) {
@@ -124,12 +144,22 @@ for (const width of WIDTHS) {
   const viewport = { width, height: mobile ? 844 : 900 };
   fs.mkdirSync(path.join(OUT, String(width)), { recursive: true });
   // One context per width: cookies a site sets on the first screen (a region, a closed banner) carry to the next, as for a visitor.
-  const ctx = await browser.newContext({ viewport, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile, locale: 'ko-KR', timezoneId: 'Asia/Seoul' });
+  const ctx = await browser.newContext({ viewport, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile, ...(mobile ? { userAgent: PHONE_UA } : {}), locale: 'ko-KR', timezoneId: 'Asia/Seoul' });
   const page = await ctx.newPage();
   const ua = await page.evaluate(() => navigator.userAgent);
+  const hrefs = new Map();
   for (const s of screens) {
-    const url = new URL(s.url, route.origin).href;
-    const rec = { key: s.key, type: s.type, title: s.title, note: s.note ?? null, width, viewport, userAgent: ua, requested: url, shotAt: new Date().toISOString(), steps: [], errors: [] };
+    // A screen either names its address or takes the first link matching a pattern on an earlier screen of this
+    // run ("from": {"screen": "best", "href": "/goods/\\d+"}), so a detail screen follows whatever is listed today.
+    let target = s.url;
+    if (s.from) { const rx = new RegExp(s.from.href); target = (hrefs.get(s.from.screen) ?? []).find((h) => rx.test(h)); }
+    if (!target) {
+      records.push({ key: s.key, type: s.type, title: s.title, note: s.note ?? null, width, viewport, userAgent: ua, requested: null, shotAt: new Date().toISOString(), steps: [], errors: ['no link matching ' + s.from?.href + ' on screen ' + s.from?.screen] });
+      console.log([width, s.key.padEnd(16), 'SKIPPED: no link matching ' + s.from?.href].join('  '));
+      continue;
+    }
+    const url = new URL(target, route.origin).href;
+    const rec = { key: s.key, type: s.type, title: s.title, note: s.note ?? null, state: s.state ?? null, patterns: s.patterns ?? [], width, viewport, userAgent: ua, requested: url, shotAt: new Date().toISOString(), steps: [], errors: [] };
     const base = path.join(OUT, String(width), s.key);
     try {
       const resp = await page.goto(url, { waitUntil: 'load', timeout: 40000 }).catch(async (e) => { rec.errors.push('load: ' + String(e.message).split('\n')[0]); return null; });
@@ -148,21 +178,26 @@ for (const width of WIDTHS) {
       await page.evaluate(() => scrollTo(0, 0));
       await page.waitForTimeout(900);
       const facts = await page.evaluate(pageFacts);
+      hrefs.set(s.key, facts.elements.filter((e) => e.href).map((e) => e.href));
       rec.final = page.url();
       Object.assign(rec, { pageTitle: facts.title, textLength: facts.textLength, textHead: facts.textHead, height: facts.height, images: facts.images, lang: facts.lang, overlays: facts.overlays, elementCount: facts.elements.length });
-      rec.blocked = (rec.status !== null && rec.status >= 400) || (facts.textLength < 900 && BLOCK_TEXT.test(facts.title + ' ' + facts.textHead));
+      // Refused is not the same as absent: 404 and 410 are the service's own "nothing here" page (a screen worth
+      // keeping when the route asked for it, a wrong address in the route file otherwise). Refusals are 401, 403,
+      // 407, 429, 451, any 5xx, or a challenge page served with a 200.
+      rec.missing = rec.status === 404 || rec.status === 410;
+      rec.blocked = (rec.status !== null && rec.status >= 400 && !rec.missing) || (!rec.missing && facts.textLength < 900 && BLOCK_TEXT.test(facts.title + ' ' + facts.textHead));
       rec.redirected = new URL(rec.final).pathname !== new URL(url).pathname || new URL(rec.final).host !== new URL(url).host;
       await page.screenshot({ path: base + '.png' });
       if (!rec.blocked) {
         await page.screenshot({ path: base + '.full.png', fullPage: true, clip: { x: 0, y: 0, width, height: Math.min(facts.height, FULL_CAP) } }).catch((e) => rec.errors.push('full: ' + String(e.message).split('\n')[0]));
-        fs.writeFileSync(base + '.elements.json', JSON.stringify({ url: rec.final, width, elements: facts.elements }, null, 1));
+        fs.writeFileSync(base + '.elements.json', JSON.stringify({ url: rec.final, width, page: facts.page, elements: facts.elements }, null, 1));
       }
     } catch (e) {
       rec.errors.push(String(e.message).split('\n')[0]);
       await page.screenshot({ path: base + '.png' }).catch(() => {});
     }
     records.push(rec);
-    console.log([width, s.key.padEnd(16), rec.blocked ? 'BLOCKED' : 'ok', rec.status, rec.redirected ? '→ ' + rec.final : '', rec.overlays?.length ? 'overlays ' + rec.overlays.length : '', rec.errors.join(' | ')].join('  '));
+    console.log([width, s.key.padEnd(16), rec.blocked ? 'BLOCKED' : rec.missing ? (s.type === '오류' ? 'ok (404 page)' : 'MISSING') : 'ok', rec.status, rec.redirected ? '→ ' + rec.final : '', rec.overlays?.length ? 'overlays ' + rec.overlays.length : '', rec.errors.join(' | ')].join('  '));
   }
   // A page can hold a context open (a map, an unload prompt): closing gets a few seconds, and the walk is written either way.
   await Promise.race([ctx.close(), new Promise((r) => setTimeout(r, 5000))]);
@@ -171,10 +206,10 @@ for (const width of WIDTHS) {
 const walk = { slug: route.slug, name: route.name, reference: route.reference, platform: route.platform, origin: route.origin, routeFile: path.relative(REPO, path.resolve(routeFile)), shot: day, browser: BROWSER === 'headed' ? 'Chrome with a window (playwright-core, channel chrome), own user agent, fresh profile, signed out' : 'chromium headless (playwright-core), own user agent, fresh profile, signed out', records };
 // --only re-shoots some screens: keep the other records of an earlier run in the same folder.
 const walkFile = path.join(OUT, 'walk.json');
-if (ONLY && fs.existsSync(walkFile)) {
+if (fs.existsSync(walkFile)) {   // a second run into the same folder (some screens, or one width) replaces what it shot and keeps the rest
   const fresh = new Set(records.map((r) => r.width + '/' + r.key));
   const order = new Map(route.screens.map((s, i) => [s.key, i]));
-  walk.records = [...JSON.parse(fs.readFileSync(walkFile, 'utf8')).records.filter((r) => !fresh.has(r.width + '/' + r.key)), ...records]
+  walk.records = [...JSON.parse(fs.readFileSync(walkFile, 'utf8')).records.filter((r) => !fresh.has(r.width + '/' + r.key) && order.has(r.key)), ...records]
     .sort((a, b) => b.width - a.width || (order.get(a.key) ?? 99) - (order.get(b.key) ?? 99));
 }
 fs.writeFileSync(walkFile, JSON.stringify(walk, null, 1));

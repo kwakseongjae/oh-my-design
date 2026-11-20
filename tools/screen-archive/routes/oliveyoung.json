@@ -1,0 +1,104 @@
+{
+ "slug": "oliveyoung",
+ "name": "올리브영",
+ "reference": "oliveyoung",
+ "platform": "both",
+ "origin": "https://www.oliveyoung.co.kr",
+ "browser": "headed",
+ "never": [
+  "바로구매",
+  "장바구니",
+  "구매하기",
+  "쿠폰받기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/store/main/main.do"
+  },
+  {
+   "key": "ranking",
+   "type": "목록",
+   "title": "랭킹",
+   "url": "/store/main/getBestList.do"
+  },
+  {
+   "key": "hotdeal",
+   "type": "목록",
+   "title": "오특",
+   "url": "/store/main/getHotdealList.do"
+  },
+  {
+   "key": "sale",
+   "type": "목록",
+   "title": "세일",
+   "url": "/store/main/getSaleList.do"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 선크림",
+   "url": "/store/search/getSearchMain.do?query=선크림"
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/store/search/getSearchMain.do?query=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "상품 상세",
+   "from": {
+    "screen": "ranking",
+    "href": "getGoodsDetail\\.do\\?goodsNo="
+   }
+  },
+  {
+   "key": "planshop",
+   "type": "이벤트",
+   "title": "기획전 목록",
+   "url": "/store/main/getPlanShopList.do"
+  },
+  {
+   "key": "event",
+   "type": "이벤트",
+   "title": "이벤트 목록",
+   "url": "/store/main/getEventList.do"
+  },
+  {
+   "key": "membership",
+   "type": "화면",
+   "title": "멤버십/쿠폰",
+   "url": "/store/main/getMembership.do"
+  },
+  {
+   "key": "stores",
+   "type": "지도",
+   "title": "매장 찾기",
+   "url": "/store/store/getStoreInfoMain.do"
+  },
+  {
+   "key": "help",
+   "type": "고객센터",
+   "title": "고객센터 FAQ",
+   "url": "/store/counsel/getFaqList.do"
+  },
+  {
+   "key": "orders",
+   "type": "로그인",
+   "title": "주문배송 (로그아웃)",
+   "url": "/store/mypage/getOrderList.do"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}

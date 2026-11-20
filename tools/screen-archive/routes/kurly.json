@@ -1,0 +1,100 @@
+{
+ "slug": "kurly",
+ "name": "컬리",
+ "reference": "kurly",
+ "platform": "both",
+ "origin": "https://www.kurly.com",
+ "never": [
+  "담기",
+  "구매하기",
+  "주문하기",
+  "쿠폰 받기"
+ ],
+ "close": [
+  "text=배너 하루 안보기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/main"
+  },
+  {
+   "key": "best",
+   "type": "목록",
+   "title": "베스트",
+   "url": "/collection-groups/market-best-category?site=MARKET"
+  },
+  {
+   "key": "new",
+   "type": "목록",
+   "title": "신상",
+   "url": "/collection-groups/market-newproduct?site=MARKET"
+  },
+  {
+   "key": "sale",
+   "type": "목록",
+   "title": "세일",
+   "url": "/collection-groups/market-sales-group?site=MARKET"
+  },
+  {
+   "key": "category",
+   "type": "목록",
+   "title": "카테고리 목록",
+   "url": "/categories/294"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 우유",
+   "url": "/search?sword=우유"
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search?sword=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "상품 상세",
+   "from": {
+    "screen": "best",
+    "href": "/goods/\\d+"
+   }
+  },
+  {
+   "key": "benefit",
+   "type": "이벤트",
+   "title": "특가/혜택",
+   "url": "/market-benefit"
+  },
+  {
+   "key": "delivery",
+   "type": "고객센터",
+   "title": "배송 안내",
+   "url": "/user-guide/delivery"
+  },
+  {
+   "key": "cart",
+   "type": "장바구니",
+   "title": "장바구니 (로그아웃)",
+   "url": "/cart"
+  },
+  {
+   "key": "login",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/member/login"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}

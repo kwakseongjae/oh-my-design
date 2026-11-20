@@ -5,8 +5,12 @@
  *   node tools/screen-archive/make-web-sheet.mjs <walk dir> [<walk dir> ...] [--out DIR]
  *
  * Default output: ~/Downloads/kr-screens/web/<slug>/index.html and ~/Downloads/kr-screens/web/index.html. Each screen
- * is shown at every width it was shot at, with its type (the fixed words of tools/phone-recorder/taxonomy.json), the
- * address it ended on, what covered the viewport, and a link to the whole page. Images are JPEGs made with ffmpeg.
+ * is shown at every width it was shot at, with its type and patterns (the fixed words of
+ * tools/phone-recorder/taxonomy.json), its state (empty, error), the address it ended on, what covered the viewport,
+ * and a link to the whole page. When link-tokens.mjs has written tokens.json into the walk, the sheet also shows
+ * which values of the service's DESIGN.md were drawn on which screens, and links both ways: a screen lists the tokens
+ * seen on it, a token lists its screens. Findings come from the route file ("findings": [..]). Images are JPEGs
+ * made with ffmpeg.
  * The sheets hold other companies' screens: they stay on this machine (an output folder inside a git work tree is
  * refused) until the owner decides how screens are published.
  */
@@ -27,6 +31,7 @@ try { execFileSync('git', ['-C', OUT, 'rev-parse', '--is-inside-work-tree'], { s
 
 const taxonomy = JSON.parse(fs.readFileSync(path.join(REPO, 'tools/phone-recorder/taxonomy.json'), 'utf8'));
 const fold = new Map(taxonomy.screens.flatMap((s) => [s.ko, ...(s.also ?? [])].map((w) => [w, s])));
+const foldP = new Map(taxonomy.patterns.flatMap((s) => [s.ko, ...(s.also ?? [])].map((w) => [w, s])));
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const jpeg = (src, dst, w) => execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', src, '-vf', 'scale=' + w + ':-2', '-q:v', '4', dst]);
 const PLATFORM = { both: '웹과 앱 둘 다', web: '웹 중심', mobile: '모바일 중심' };
@@ -54,6 +59,17 @@ figure { margin: 0; min-width: 0; }
 figure.d { flex: 1 1 0; } figure.m { flex: 0 0 260px; }
 figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
 figcaption { font-size: 13px; color: var(--sub); margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.tok { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px 2px 4px; font-size: 12.5px; text-decoration: none; }
+.tok b { width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); display: inline-block; }
+.toks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
+.toks > span.l { font-size: 12.5px; color: var(--sub); margin-right: 2px; }
+table { border-collapse: collapse; width: 100%; margin-top: 12px; font-size: 14px; }
+th, td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--sub); font-size: 13px; }
+td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.panel { background: #fafafb; border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; margin-top: 24px; }
+.panel h2 { font-size: 17px; }
+.panel ul { margin: 10px 0 0; padding-left: 20px; max-width: 80ch; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 28px; }
 .card { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; text-decoration: none; display: block; }
 .card img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
@@ -65,12 +81,35 @@ footer { margin-top: 32px; color: var(--sub); font-size: 13px; max-width: 80ch; 
 const page = (title, body) => '<!doctype html>\n<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>' + esc(title) + '</title><style>' + CSS + '</style></head><body><main>' + body + '</main></body></html>\n';
 const RIGHTS = '화면은 각 회사의 것이고, oh-my-design은 이 회사들과 제휴하지 않았습니다. 이 시트는 이 Mac에만 있습니다(공개 보류). 로그아웃 상태로 누구에게나 같은 화면만 찍었고, 구매·결제·동의·팔로우는 누르지 않았습니다.';
 
+// What of the service's DESIGN.md was drawn on these screens. Exact values only; the table goes both ways:
+// each token names its screens (anchors on this sheet) and links to the reference's item page.
+function tokenPanel(t, itemUrl, walk, keys) {
+  const title = new Map(walk.records.map((r) => [r.key, r.title]));
+  const scr = (list) => list.filter((k) => keys.includes(k)).slice(0, 6).map((k) => '<a href="#' + esc(k) + '">' + esc(title.get(k) ?? k) + '</a>').join(', ') + (list.length > 6 ? ' 외 ' + (list.length - 6) : '');
+  const sw = (v) => (/^#[0-9a-f]{3,8}$/i.test(String(v)) ? '<b style="display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.12);vertical-align:-2px;background:' + esc(v) + '"></b> ' : '');
+  const rows = (list, name) => list.filter((x) => x.comparable).map((x) => '<tr><td>' + sw(x.value) + '<a href="' + esc(itemUrl) + '">' + esc(x[name]) + '</a></td><td class="n">' + esc(x.value ?? (x.compared ?? []).join(' + ')) + '</td><td class="n">' + (x.hits ? x.screens.length + '개 화면' : '<span style="color:var(--sub)">보이지 않음</span>') + '</td><td>' + (x.hits ? scr(x.screens) : '') + '</td></tr>').join('');
+  const s = t.summary;
+  const un = t.unmatched.colors.slice(0, 8).map((u) => '<span class="tok">' + sw(u.value) + esc(u.value) + ' <span style="color:var(--sub)">' + u.screens.length + '개 화면</span></span>').join(' ');
+  return '<div class="panel"><h2>DESIGN.md와 대조</h2><p class="meta" style="margin-top:6px">' + esc(walk.name) + ' DESIGN.md의 값이 이 화면들에 같은 값으로 그려졌는지 본 것입니다(정확히 같은 값만). 색 ' + s.colors.matched + '/' + s.colors.comparable + ' · 모서리 ' + s.rounded.matched + '/' + s.rounded.comparable + ' · 글자 크기 ' + s.fontSizes.matched + '/' + s.fontSizes.comparable + ' · 컴포넌트 ' + s.components.matched + '/' + s.components.comparable + '. 보이지 않는 값이 틀린 값이라는 뜻은 아닙니다. 로그아웃 상태의 웹 화면만 본 것입니다.</p>'
+    + '<table><thead><tr><th>색 토큰</th><th>값</th><th>보인 곳</th><th>화면</th></tr></thead><tbody>' + rows(t.colors, 'token') + '</tbody></table>'
+    + (t.components.some((c) => c.comparable) ? '<table><thead><tr><th>컴포넌트</th><th>비교한 값</th><th>보인 곳</th><th>화면</th></tr></thead><tbody>' + rows(t.components, 'component') + '</tbody></table>' : '')
+    + (un ? '<p class="meta" style="margin-top:14px">DESIGN.md에 없는데 화면에 자주 보인 색(관찰일 뿐, 토큰이 아닙니다)</p><div class="toks">' + un + '</div>' : '') + '</div>';
+}
+
 const index = [];
 for (const dir of dirs) {
   const walk = JSON.parse(fs.readFileSync(path.join(dir, 'walk.json'), 'utf8'));
   const out = path.join(OUT, walk.slug);
   fs.mkdirSync(path.join(out, 'img'), { recursive: true });
   const widths = [...new Set(walk.records.map((r) => r.width))].sort((a, b) => b - a);
+  // The route file holds what a person added after looking: findings for the service, state and patterns per screen.
+  let route = {}; try { route = JSON.parse(fs.readFileSync(path.join(REPO, walk.routeFile), 'utf8')); } catch { /* shot from a route outside the repository */ }
+  const routeScreen = new Map((route.screens ?? []).map((s) => [s.key, s]));
+  const tokens = fs.existsSync(path.join(dir, 'tokens.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'tokens.json'), 'utf8')) : null;
+  const itemUrl = walk.reference ? 'https://oh-my-design.kr/design-systems/' + walk.reference : null;
+  const swatch = (v) => (/^#[0-9a-f]{3,8}$/i.test(String(v)) ? '<b style="background:' + esc(v) + '"></b>' : '');
+  const tokChip = (t) => '<a class="tok" href="' + esc(itemUrl) + '" title="DESIGN.md의 ' + esc(t.token ?? t.component) + '">' + swatch(t.value) + esc(t.token ?? t.component) + (t.value ? ' <span style="color:var(--sub)">' + esc(t.value) + '</span>' : '') + '</a>';
+  const tokensOn = (key) => { if (!tokens) return ''; const cs = tokens.colors.filter((t) => t.screens.includes(key)); const comps = tokens.components.filter((t) => t.screens.includes(key)); if (!cs.length && !comps.length) return ''; return '<div class="toks"><span class="l">DESIGN.md와 같은 값</span>' + cs.map(tokChip).join('') + comps.map((c) => tokChip({ component: c.component })).join('') + '</div>'; };
   const keys = [...new Set(walk.records.map((r) => r.key))];
   const unknown = new Set();
   const sections = [];
@@ -78,11 +117,14 @@ for (const dir of dirs) {
   for (const key of keys) {
     const recs = widths.map((w) => walk.records.find((r) => r.key === key && r.width === w)).filter(Boolean);
     const first = recs[0];
+    const rs = routeScreen.get(key) ?? {};
+    const state = first.state ?? rs.state ?? null;
+    const patterns = (first.patterns?.length ? first.patterns : rs.patterns ?? []).map((w) => foldP.get(w) ?? { ko: w, en: null });
     const type = fold.get(first.type);
     if (!type) unknown.add(first.type);
     const figs = recs.map((r) => {
       const src = path.join(dir, String(r.width), key + '.png');
-      if (!fs.existsSync(src)) return '';
+      if (!fs.existsSync(src)) return '<figure class="' + (r.width < 600 ? 'm' : 'd') + '"><figcaption><span class="chip warn">' + esc((r.errors ?? []).join(' / ') || '찍지 못함') + '</span></figcaption></figure>';
       const mobile = r.width < 600;
       const name = r.width + '-' + key + '.jpg';
       jpeg(src, path.join(out, 'img', name), mobile ? 520 : 1280);
@@ -92,13 +134,15 @@ for (const dir of dirs) {
       if (r.blocked) blocked++;
       const flags = [
         r.blocked ? '<span class="chip warn">막힘 · HTTP ' + r.status + '</span>' : '',
+        r.missing && first.type !== '오류' ? '<span class="chip warn">주소 없음 · HTTP ' + r.status + '</span>' : '',
         (r.overlays ?? []).filter((o) => o.position === 'fixed' && o.share >= 0.25).length ? '<span class="chip warn">화면을 덮는 층 있음</span>' : '',
         (r.errors ?? []).length ? '<span class="chip warn">' + esc(r.errors.join(' / ')) + '</span>' : '',
       ].join('');
       return '<figure class="' + (mobile ? 'm' : 'd') + '"><img loading="lazy" src="img/' + name + '" alt="' + esc(walk.name + ' ' + first.title + ' ' + r.width + 'px') + '"><figcaption><span>' + r.viewport.width + '×' + r.viewport.height + '</span>' + full + flags + '</figcaption></figure>';
     }).join('');
-    const final = first.final ?? first.requested;
-    sections.push('<section id="' + esc(key) + '"><div class="head"><h2>' + esc(first.title) + '</h2><span class="chip">' + esc(type ? type.ko + ' · ' + type.en : first.type) + '</span>' + (first.redirected ? '<span class="chip">다른 주소로 넘어감</span>' : '') + '</div><p class="url">' + esc(decodeURI(final)) + '</p>' + (first.note ? '<p class="note">' + esc(first.note) + '</p>' : '') + '<div class="shots">' + figs + '</div></section>');
+    const final = first.final ?? first.requested ?? '';
+    let shown = final; try { shown = decodeURI(final); } catch { /* keep as is */ }
+    sections.push('<section id="' + esc(key) + '"><div class="head"><h2>' + esc(first.title) + '</h2><span class="chip">' + esc(type ? type.ko + ' · ' + type.en : first.type) + '</span>' + (state ? '<span class="chip">상태: ' + esc(state) + '</span>' : '') + patterns.map((p) => '<span class="chip">' + esc(p.ko) + '</span>').join('') + (first.redirected ? '<span class="chip">다른 주소로 넘어감</span>' : '') + '</div><p class="url">' + esc(shown) + '</p>' + (first.note ?? rs.note ? '<p class="note">' + esc(first.note ?? rs.note) + '</p>' : '') + tokensOn(key) + '<div class="shots">' + figs + '</div></section>');
   }
   const types = [...new Set(keys.map((k) => walk.records.find((r) => r.key === k).type))];
   const core = taxonomy.screens.filter((s) => s.core).map((s) => s.ko);
@@ -108,10 +152,13 @@ for (const dir of dirs) {
     + '<p class="meta">' + esc(day) + '에 찍음 · ' + esc(walk.origin) + ' · ' + (walk.browser.startsWith('Chrome') ? '창을 연 Chrome' : '창 없는 Chromium') + ', 새 프로필, 로그아웃 상태</p>'
     + '<ul class="facts"><li>분류: ' + esc(PLATFORM[walk.platform] ?? walk.platform) + '</li><li>폭 ' + widths.join(' · ') + '</li><li>' + walk.records.length + '장' + (blocked ? ', 막힘 ' + blocked : '') + '</li><li>핵심 화면 ' + reached.length + '/' + core.length + ' (' + esc(reached.join(', ')) + ')</li>'
     + (walk.reference ? '<li><a href="https://oh-my-design.kr/design-systems/' + esc(walk.reference) + '">' + esc(walk.name) + ' DESIGN.md</a></li>' : '') + '</ul>'
+    + ((route.findings ?? []).length ? '<div class="panel"><h2>발견</h2><ul>' + route.findings.map((f) => '<li>' + esc(f) + '</li>').join('') + '</ul></div>' : '')
+    + (tokens ? tokenPanel(tokens, itemUrl, walk, keys) : '')
     + '<nav class="toc">' + keys.map((k) => '<a href="#' + esc(k) + '">' + esc(walk.records.find((r) => r.key === k).title) + '</a>').join('') + '</nav>'
     + sections.join('') + '<footer><p>' + RIGHTS + '</p><p>경로 파일: ' + esc(walk.routeFile) + ' · 원본 PNG와 요소 목록: ' + esc(dir.replace(os.homedir(), '~')) + '</p></footer>';
   fs.writeFileSync(path.join(out, 'index.html'), page(walk.name + ' 웹 화면', body));
-  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, records: walk.records.map(({ userAgent, ...r }) => r) }, null, 1));
+  if (tokens) fs.writeFileSync(path.join(out, 'tokens.json'), JSON.stringify(tokens, null, 1));
+  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, findings: route.findings ?? [], records: walk.records.map(({ userAgent, ...r }) => ({ ...r, state: r.state ?? routeScreen.get(r.key)?.state ?? null, patterns: r.patterns?.length ? r.patterns : routeScreen.get(r.key)?.patterns ?? [] })) }, null, 1));
   index.push({ slug: walk.slug, name: walk.name, platform: walk.platform, day, screens: keys.length, shots: walk.records.length, cover: keys.includes('home') ? 'img/' + widths[0] + '-home.jpg' : null });
   for (const u of unknown) console.error('warning: ' + walk.slug + ': type "' + u + '" is not in taxonomy.json');
   console.log(walk.slug + ': ' + keys.length + ' screens, ' + walk.records.length + ' shots → ' + path.join(out, 'index.html'));

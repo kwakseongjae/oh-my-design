@@ -1,0 +1,100 @@
+{
+ "slug": "karrot",
+ "name": "당근",
+ "reference": "karrot",
+ "platform": "both",
+ "origin": "https://www.daangn.com",
+ "never": [
+  "채팅하기",
+  "관심",
+  "신고"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/kr/"
+  },
+  {
+   "key": "buy-sell",
+   "type": "목록",
+   "title": "중고거래 목록",
+   "url": "/kr/search/buy-sell/",
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 자전거",
+   "url": "/kr/search/?q=자전거",
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/kr/search/?q=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "중고거래 글 상세",
+   "from": {
+    "screen": "buy-sell",
+    "href": "/kr/buy-sell/[^/?]+-[a-z0-9]+/"
+   },
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "local",
+   "type": "목록",
+   "title": "동네업체 목록",
+   "url": "/kr/search/local-profile/"
+  },
+  {
+   "key": "community",
+   "type": "커뮤니티",
+   "title": "동네생활",
+   "url": "/kr/search/community/",
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "group",
+   "type": "목록",
+   "title": "모임 목록",
+   "url": "/kr/search/group/"
+  },
+  {
+   "key": "cars",
+   "type": "목록",
+   "title": "중고차 목록",
+   "url": "/kr/search/cars/"
+  },
+  {
+   "key": "jobs",
+   "type": "목록",
+   "title": "알바",
+   "url": "https://jobs.daangn.com/"
+  },
+  {
+   "key": "realty",
+   "type": "지도",
+   "title": "부동산",
+   "url": "https://realty.daangn.com/"
+  },
+  {
+   "key": "help",
+   "type": "고객센터",
+   "title": "고객센터",
+   "url": "/wv/faqs"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}

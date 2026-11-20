@@ -30,6 +30,13 @@
    "url": "/store/search?keyword=니트"
   },
   {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/store/search?keyword=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
    "key": "best",
    "type": "목록",
    "title": "BEST (랭킹)",
@@ -39,7 +46,10 @@
    "key": "detail",
    "type": "상세",
    "title": "상품 상세",
-   "url": "/product/catalog/4335939"
+   "from": {
+    "screen": "best",
+    "href": "/products?/(catalog/)?\\d+"
+   }
   },
   {
    "key": "magazine",
@@ -65,6 +75,12 @@
    "type": "고객센터",
    "title": "공지사항",
    "url": "/order/my-order/cscenter/notice/notice-list"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
   }
  ],
  "close": [

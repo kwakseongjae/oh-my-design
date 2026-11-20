@@ -1,0 +1,98 @@
+{
+ "slug": "musinsa",
+ "name": "무신사",
+ "reference": "musinsa",
+ "platform": "both",
+ "origin": "https://www.musinsa.com",
+ "never": [
+  "구매하기",
+  "바로구매",
+  "장바구니 담기",
+  "쿠폰 받기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈 · 추천",
+   "url": "/main/musinsa/recommend"
+  },
+  {
+   "key": "ranking",
+   "type": "목록",
+   "title": "랭킹",
+   "url": "/main/musinsa/ranking"
+  },
+  {
+   "key": "sale",
+   "type": "목록",
+   "title": "세일",
+   "url": "/main/musinsa/sale"
+  },
+  {
+   "key": "release",
+   "type": "목록",
+   "title": "발매",
+   "url": "/main/musinsa/release"
+  },
+  {
+   "key": "category",
+   "type": "카테고리",
+   "title": "카테고리 메뉴",
+   "url": "/menu/category"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 니트",
+   "url": "/search/goods?keyword=니트"
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search/goods?keyword=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "상품 상세",
+   "from": {
+    "screen": "ranking",
+    "href": "/products/\\d+"
+   }
+  },
+  {
+   "key": "magazine",
+   "type": "목록",
+   "title": "콘텐츠 목록",
+   "url": "/main/musinsa/magazine"
+  },
+  {
+   "key": "snap",
+   "type": "피드",
+   "title": "스냅",
+   "url": "/snap",
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "cart",
+   "type": "장바구니",
+   "title": "장바구니 (로그아웃)",
+   "url": "/order/cart"
+  },
+  {
+   "key": "login",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/auth/login"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}

@@ -30,10 +30,20 @@
    "url": "/search?query=디자이너"
   },
   {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search?query=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
    "key": "detail",
    "type": "상세",
    "title": "채용 공고 상세",
-   "url": "/wd/394433"
+   "from": {
+    "screen": "jobs",
+    "href": "/wd/\\d+"
+   }
   },
   {
    "key": "company",
@@ -66,6 +76,12 @@
    "title": "이력서 소개 (로그아웃)",
    "url": "/cv/list",
    "note": "로그아웃 상태에서 이력서 메뉴는 로그인 화면이 아니라 소개 페이지로 넘어갑니다."
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
   }
  ]
 }

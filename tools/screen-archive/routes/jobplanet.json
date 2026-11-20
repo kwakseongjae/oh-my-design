@@ -1,0 +1,106 @@
+{
+ "slug": "jobplanet",
+ "name": "잡플래닛",
+ "reference": "jobplanet",
+ "platform": "web",
+ "origin": "https://www.jobplanet.co.kr",
+ "browser": "headed",
+ "never": [
+  "지원하기",
+  "리뷰 작성",
+  "결제",
+  "구독"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/welcome/index"
+  },
+  {
+   "key": "review",
+   "type": "목록",
+   "title": "기업 리뷰",
+   "url": "/review",
+   "note": "재직자들이 쓴 리뷰가 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "job",
+   "type": "목록",
+   "title": "채용 공고",
+   "url": "/job"
+  },
+  {
+   "key": "salary",
+   "type": "화면",
+   "title": "연봉",
+   "url": "/buildup/salary"
+  },
+  {
+   "key": "contents",
+   "type": "목록",
+   "title": "잡플위키",
+   "url": "/contents"
+  },
+  {
+   "key": "community",
+   "type": "커뮤니티",
+   "title": "커뮤니티",
+   "url": "/community/home",
+   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "company",
+   "type": "프로필",
+   "title": "기업 정보",
+   "from": {
+    "screen": "home",
+    "href": "/companies/\\d+"
+   }
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 카카오",
+   "url": "/search?query=카카오"
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search?query=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "membership",
+   "type": "이벤트",
+   "title": "멤버십",
+   "url": "/events/membership"
+  },
+  {
+   "key": "sign-in",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/user-session/sign-in"
+  },
+  {
+   "key": "sign-up",
+   "type": "회원가입",
+   "title": "회원가입",
+   "url": "/user-session/sign-up"
+  },
+  {
+   "key": "notices",
+   "type": "고객센터",
+   "title": "공지사항",
+   "url": "/welcome/notices"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "slug": "yanolja",
+ "name": "NOL (야놀자)",
+ "reference": "yanolja",
+ "platform": "both",
+ "origin": "https://nol.yanolja.com",
+ "browser": "headed",
+ "never": [
+  "예약하기",
+  "결제",
+  "쿠폰 받기",
+  "구매하기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "hotel",
+   "type": "목록",
+   "title": "호텔/리조트 홈",
+   "url": "/sub-home/hotel?verticalCategory=LOCAL_ACCOMMODATION&verticalSubCategory=HOTEL"
+  },
+  {
+   "key": "ticket",
+   "type": "목록",
+   "title": "티켓",
+   "url": "/ticket"
+  },
+  {
+   "key": "promotion",
+   "type": "이벤트",
+   "title": "특가",
+   "url": "/promotion"
+  },
+  {
+   "key": "benefit",
+   "type": "이벤트",
+   "title": "쿠폰·혜택",
+   "url": "/benefit?category=BENEFIT_HOME"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "숙소 상세",
+   "from": {
+    "screen": "home",
+    "href": "/stay/domestic/\\d+"
+   }
+  },
+  {
+   "key": "ticket-detail",
+   "type": "상세",
+   "title": "공연 상세",
+   "from": {
+    "screen": "home",
+    "href": "/ticket/products/"
+   }
+  },
+  {
+   "key": "transport",
+   "type": "화면",
+   "title": "국내교통",
+   "url": "/transport"
+  },
+  {
+   "key": "feed",
+   "type": "피드",
+   "title": "요즘놀거리",
+   "url": "https://discovery.yanolja.com/feed"
+  },
+  {
+   "key": "wishlist",
+   "type": "좋아요",
+   "title": "찜 (로그아웃)",
+   "url": "/wishlist"
+  },
+  {
+   "key": "mypage",
+   "type": "로그인",
+   "title": "마이 (로그아웃)",
+   "url": "/mypage"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ]
+}
