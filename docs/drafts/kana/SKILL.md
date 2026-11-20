@@ -234,7 +234,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-61 · SmartHR: a dialog title is 「{対象}の{アクション}」, its confirm button 「{アクション}」; screen titles and field names are nouns.** `SmartHR` only.
 - **JW-62 · SmartHR: descriptions are full sentences, not 体言止め; audit-log entries are 体言止め** (「ユーザーを作成しました」 → 「ユーザーを作成」). `SmartHR`.
 - **JW-63 · A title names the subject and the document's nature; in public-facing text avoid a bare 「…について」; keep it to one line.** Worded as advice (「適当である」「とよい」). `公用文`.
-- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** *Composed:* 「エラーが発生しました。」 → 「ファイルをアップロードできませんでした。ファイルサイズが10MBを超えています。10MB以下のファイルを選択してください。」 Judgment only (a script can flag a message with no 対処 such as 〜してください). No source opened covers apology wording. `SmartHR`.
+- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** *Composed:* 「エラーが発生しました。」 → 「ファイルをアップロードできませんでした。ファイルサイズが10MBを超えています。10MB以下のファイルを選択してください。」 Judgment only (a script can flag a message with no 対処 such as 〜してください). Apology wording has one source, WordPress, for text translated from English (KW-11); no company or government page read covers it. `SmartHR`.
 
 ### Readers and fairness
 
