@@ -244,6 +244,19 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-68 · Readings: in public text, for kanji outside the 常用漢字表 (公用文); for foreign readers, on all kanji (やさしい); where ruby can't be used, the reading in brackets after the word (「忸怩（じくじ）たる思い」).** Markup: JT-28. `公用文` + `やさしい`.
 - **JW-69 · Avoid wording that implies bias by sex, job, origin, body or similar; consider how the reader feels, but don't ban words mechanically** (KB warns against excessive rules). 「交通事故のメッカ」 is KB's example of an inappropriate phrase. Judgment only; a word list may surface candidates. `公用文`.
 
+## 4c. Writing rules from company guides, translation guides and DADS components (KW)
+
+The 2026-11-21 round read four company design-system writing guides (SmartHR, Ubie, Ameba Spindle, GMO Pepabo), DADS component pages and two guides for translating into Japanese (Mozilla, WordPress). What held up under an independent reader's check is in [`references/writing-rules.md`](./references/writing-rules.md): 43 rules, KW-nn, each numbered after its research candidate, with its strength in words ("one company's guide", "2 of 4 company guides", "government design system", "translation guides only") and a quoted example only where the source gives one. Apply them like the JW rules above, at that strength and scope. Where a KW rule and a JW rule cover the same point, the KW rule adds sources; it overrides nothing.
+
+Twelve topics are house choices with sources on each side: action labels with or without the する ending, success wording, the final long vowel, a typed space beside Latin text, 。 on a single sentence, the width of exclamation and question marks, the width of parentheses, how UI names are bracketed in running text, the width of the colon, dates, times, and the space between a number and its unit. They are under "The project's DESIGN.md decides" in that file. Don't flag either side.
+
+**Writing checker:** `node scripts/lang/kana-copy-check.mjs [--json|--format=github] [--strict] <files-or-dirs>` (in the OmD repository until the skill ships).
+- It reads text, Markdown, HTML, JSX/TSX, Vue, Svelte, Astro and JS/TS string literals.
+- It tests the 24 KW rules that a pattern, a code point or a count can decide.
+- WARN only for KW-09 and KW-26's first check: there two company guides, or DADS and two company guides, give that exact form as wrong. Everything else is FYI, and there is no BLOCK.
+- Every finding gives the matched text and the source key.
+- `--self-test` runs `scripts/lang/fixtures/kana-copy/`, which is built only from quoted strings.
+
 ## 5. Precedence: the project wins
 
 1. **DESIGN.md** (via omd-apply): its type tokens (family, size, line-height, letter-spacing), its voice, its register (です・ます or だ・である, keigo level) and its house choices. Keep them even where they depart from a rule here, and give the row "kept (DESIGN.md)" in §7.
@@ -287,7 +300,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
    - JT-05's FYI fires in any project. JT-05 itself is about DADS tokens, so outside a DADS project read it as "no source supports negative tracking, and DADS has none", not as a defect.
    - JT-22's face list is a fixed pattern: a brand Japanese face it doesn't know reads as "no Japanese face". Check by name before reporting.
    - The checker reads source, not rendered pages. It can't see which font renders, where lines break, or styles set at runtime. It does not test JT-02, 08, 15, 17, 19, 20, 21, 27, 28, 29 or 30.
-4. **Check by hand what no script covers.** There is no writing checker yet. The patterns below come from the rules' Test lines. Every hit is a prompt to read in context, judged against the rule's scope (§3), never an automatic finding.
+4. **Run the writing checker** (§4c) for the KW rules, then **check by hand what no script covers.** The patterns below come from the JW rules' Test lines. Every hit is a prompt to read in context, judged against the rule's scope (§3), never an automatic finding.
 
 ```bash
 rg -n -e 'させていただ' -e 'いただけますようお願い'                 # JW-08 (SmartHR), JW-09
@@ -356,10 +369,10 @@ Every run ends with this table, in the user's language. One row per change; Why 
 
 - **These are recommendations.** The sources are the Japanese government design system (デジタル庁 DADS), 文化審議会 documents written for government text (公用文作成の考え方) and for keigo (敬語の指針), a 内閣告示 that calls itself a よりどころ (外来語の表記), the やさしい日本語 guideline, W3C notes and drafts (JLREQ is a Working Group Note; CSS Text 3 a Candidate Recommendation Draft; CSS Text 4 a Working Draft), browser vendors, and two style guides (JTF for translation, SmartHR for one company's products).
 - **Several rules describe book composition.** They are labelled `JLREQ`, and the ones with no web leg are in the background section of `references/rules.md`, not applied.
-- **Only two company or industry guides were opened** (SmartHR and JTF), so nothing here can be called common practice across Japanese companies.
+- **Few guides were opened.** The JW rules rest on two company or industry guides (SmartHR and JTF); the KW rules add Ubie, Ameba Spindle, GMO Pepabo and two translation guides (Mozilla, WordPress). Nothing here can be called common practice across Japanese companies.
 - **A native reviewer has not read this skill.** Quotes came through text extraction or were transcribed from page images; three glyph-level doubts are flagged in `references/rules.md` (JW-32, JW-33, JW-70).
 - **The measurement** is 77 home pages at desktop width on one date; 11 of 88 sites were unreadable. It describes marketing surfaces, not product screens.
-- **No writing checker exists yet**, and the typography checker reads source, not rendered pages. A clean run is not proof, and a hit is not always a defect.
+- **The writing checker covers only the 24 KW rules a pattern can decide**, and both checkers read source, not rendered pages. A clean run is not proof, and a hit is not always a defect.
 - **The skill has not been evaluated.** The plan is `docs/research/2026-11-13-kana-eval-plan.md`.
 
 ## 11. References
@@ -368,3 +381,5 @@ Every run ends with this table, in the user's language. One row per change; Why 
 - [`references/sources.md`](./references/sources.md): every source with its URL, document status, stated scope and the rules that rest on it; what was looked for and not found.
 - [`references/measured-jp.md`](./references/measured-jp.md): how OmD measured 77 Japanese home pages, the capture limits, the distributions and the per-site table.
 - `scripts/lang/kana-check.mjs` (OmD repository; moves into the skill when it ships): the deterministic typography checker, zero dependencies, WARN and FYI only. `--self-test` runs `scripts/lang/fixtures/kana/`.
+- [`references/writing-rules.md`](./references/writing-rules.md): the KW writing rules (2026-11-21) with strength, quote, sourced example and checker line; the house choices the sources split on; what was left out. Coverage of all 57 candidates: `writing/coverage.md`.
+- `scripts/lang/kana-copy-check.mjs` (OmD repository; moves into the skill with `kana-check.mjs`, whose markup reader it imports): the deterministic writing checker, zero dependencies, WARN and FYI only. `--self-test` runs `scripts/lang/fixtures/kana-copy/`.

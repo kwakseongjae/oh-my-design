@@ -338,7 +338,7 @@ function scanMarkup(abs, ext, raw) {
     // a form field holds text typed at runtime: unknown, not empty, unless its placeholder or value shows Japanese
     const field = tag === 'input' || tag === 'textarea' || /(?:^|\s)contenteditable\b/i.test(attrs);
     const fieldJa = field && [...attrs.matchAll(/(?:^|\s)(?:placeholder|value|defaultValue)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].some((x) => JA.test(x[1] ?? x[2]));
-    const el = { abs, raw: name, tag, cls: attrClasses(attrs), id: idm ? idm[1] ?? idm[2] : null, lang: attrLang(attrs), start: lt, tagEnd: j + 1, end: j + 1, parent: stack[stack.length - 1] || null, opaque, field, fieldJa, kind: null };
+    const el = { abs, raw: name, tag, attrs, attrsAt: lt + m[0].length, cls: attrClasses(attrs), id: idm ? idm[1] ?? idm[2] : null, lang: attrLang(attrs), start: lt, tagEnd: j + 1, end: j + 1, parent: stack[stack.length - 1] || null, opaque, field, fieldJa, kind: null };
     if (opaque) for (const a of stack) a.opaque = true;
     if (field) for (const a of stack) { a.field = true; a.fieldJa ||= fieldJa; }
     els.push(el);
@@ -985,7 +985,8 @@ function main(argv) {
   return exit;
 }
 
-export { run, JA, JA_FACE, SOURCE };
+// kana-copy-check.mjs (the writing checker beside this file) reads markup and prints findings through these.
+export { run, JA, JA_FACE, SOURCE, SKIP_DIR, scanMarkup, makeLineAt, escapeGithubMessage, escapeGithubProperty };
 
 const invokedDirectly = (() => {
   try { return fs.realpathSync(process.argv[1] || '') === fs.realpathSync(fileURLToPath(import.meta.url)); } catch { return false; }
