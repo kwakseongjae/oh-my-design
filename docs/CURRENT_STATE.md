@@ -4,15 +4,25 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-20 밤) — 웹 화면 수집 시작: 5곳 46화면 · 폰은 필요하면 써도 된다(오너) · 인계 문서의 나머지 차례는 그대로
+## 지금 (2026-11-21 새벽) — 스프린트 시작: 화면 11곳·138화면, 화면↔DESIGN.md 시안, 사이트 디자인 시스템 실측과 시안, 일본어 규칙 검증 중, 블로그 게이트 중, partial 8곳 재검증 중
 
-**11/20 밤 40분 블록(오너: 「웹쪽에서 레퍼런스를 쌓고 … 지금 당장 할 수 있는 작업 먼저」).** 웹 화면 수집기를 만들고 5곳을 찍었다: 29CM 9화면, 오늘의집 11, 클래스101 8, 원티드 9, 인프런 9. 화면마다 1440과 390 폭, 모두 92장, 막힘 0.
-- 도구: 가지 `feat/screen-archive`의 `tools/screen-archive/` — `web-shoot.mjs <routes/slug.json>`(찍기), `make-web-sheet.mjs`(시트), `services.json`(서비스별 모바일/웹/둘 다와 브라우저가 만난 것), `routes/`(5곳).
-- 결과(커밋·업로드하지 않는다): 원본 `~/.omd-workers/screens/web/<slug>-20261120/`, 시트 `~/Downloads/kr-screens/web/index.html`.
-- **창 없는 브라우저는 한국 사이트 12곳 중 6곳에서 403이다**(오늘의집·올리브영·NOL·원티드·인프런·잡플래닛). 우회하지 않았다. **오너 11/20: 막히면 창을 열거나 ego-browser·aside를 써도 되고, 필요하면 로그인해서 보여 줄 수 있다.** 창을 연 Chrome(새 프로필)으로는 6곳 모두 열린다(`--browser headed`).
-- **폰: 오너가 「필요하면 사용해서 시작해도 좋아」라고 했다(11/20 밤).** 이번 블록에서는 쓰지 않았다. 아래 「지킬 것(폰)」은 그대로다.
-- 다음: 「웹·앱 둘 다」 후보(무신사·컬리·당근·올리브영·NOL)와 웹 중심 후보(잡플래닛)의 경로 파일 → 로그인 뒤 화면(오너가 로그인) → 화면 요소를 잰 토큰과 잇기 → 같은 경로를 다시 찍어 바뀐 것 보이기. 안 한 것: 로드맵 고쳐 쓰기, 시안 3안 재생성.
-- 오너 몫(추가): 웹 중심으로 분류한 3곳(클래스101·원티드·인프런)은 앱도 있다. 분류는 내 판단이다 · 화면 공개 기준은 웹 시트에도 그대로 걸린다(보류).
+**오너 11/21:** 「10개 기업 기준으로 … UI를 어떻게 효율적으로 보여주고 DESIGN.md 페이지랑 자유자재로 오가게 할지」 · 「디자인 시스템쪽 작업도 꽤 시급 … 상세 페이지 상단 버튼 크기가 너무 크고」 · 핵심 셋 = **일본어 스킬 페이지, refero 식 사이트 심층 분석, 블로그** · 「시간 날때 레퍼런스 확충」. 스프린트 구성은 `docs/ROADMAP.md` §5-0.
+
+**오너가 볼 것(전부 이 Mac의 파일, 화면은 공개 보류 그대로):**
+- 화면 ↔ DESIGN.md 구조 시안 3장: `~/Downloads/kr-screens/mock/index.html` (A 한눈에 11곳×7종 / B 상세 페이지의 「화면」 탭 / C 화면 한 장과 DESIGN.md 값)
+- 11곳 시트: `~/Downloads/kr-screens/web/index.html`
+- 사이트 디자인 시스템 실측과 제안: `~/Downloads/omd-design-system/index.html` → 상세 페이지 머리 시안 A·B·C
+
+**오너 몫(고르면 바로 구현):** ① 상세 페이지 머리 A / B / C(추천 B) ② 화면 아카이브를 어디부터(추천: B 탭 → C → A) ③ 컨트롤 규격 32·40·48 ④ 화면 공개 기준(보류 중) ⑤ #129·#130·#131 머지 ⑥ 우리 `/design.md` 다시 쓰기 ⑦ 로그인 뒤 화면을 찍을지.
+
+**레인별 지금:**
+- **화면(T3).** 가지 `feat/screen-archive`(올림). `tools/screen-archive/`: `web-shoot.mjs`(요소의 계산된 색·모서리·글자, `from` 링크 따라가기, 404와 거절 구분, 390은 휴대폰으로 식별), `link-tokens.mjs`(화면의 값 ↔ DESIGN.md, 정확히 같은 값만, 한 방향), `make-web-sheet.mjs`, `make-ia-mocks.mjs`, `services.json`, `routes/` 11곳. 원본 `~/.omd-workers/screens/web/<slug>-20261121/`. 거절(403): 무신사 상품 상세, NOL 숙소 상세(창을 열어도). 창이 필요한 곳: 오늘의집·올리브영·NOL·원티드·인프런·잡플래닛. 안 한 것: 손으로 쓴 발견, 패턴 표시, 로그인 뒤 화면, 폰(앱) 화면과의 짝, 다시 찍어 바뀐 것 보이기.
+- **사이트 디자인 시스템(T9).** 가지 `feat/site-design-system`(올림, main에서 갈라짐). `scripts/site-audit/`: `controls.mjs`(실측), `item-hero-stills.mjs`(시안), `report.mjs`, `overflow-sweep.mjs`. 실측: 버튼 높이 12가지, 버튼 모서리 5가지, h1 7가지, 소수점 글자 크기 4가지. 고친 것(커밋만, PR 전): 본문 속 긴 인라인 코드·URL이 폰에서 페이지를 넓히던 것. 머리 구현은 오너가 고른 뒤.
+- **일본어 UX 라이팅(T2).** 워크트리 `kana`(`feat/kana-skill`): `docs/drafts/kana/writing/{rules.md(후보 57개),sources.json,gaps.md,fonts.md}`. 검증 에이전트 `ja-check`가 `verdicts.md`를 쓰는 중. Microsoft 일본어 스타일 가이드는 조사 에이전트가 못 읽어 본문만 `~/.omd-workers/kana/sources/`에 뽑아 둠(저장소에 넣지 않는다). 다음: 검증 통과한 규칙으로 스킬 초안 → 검사기 → `/kana` 시안. 일본어로 나가는 것은 원어민 검토 뒤.
+- **블로그(T5).** 워크트리 `blog-colour`(`blog/colour-map`, #131 가지에서 갈라짐): 표를 다시 계산(169/185곳, 파랑 29.5~36.6%), 2판 초안 `~/.omd-workers/blog/colour-map/draft-ko-v2.md`. 에이전트 `blog-gates`가 글을 저장소에 넣고 게이트를 도는 중. 끝나면 가지를 올려 프리뷰. 게시는 오너.
+- **레퍼런스(틈새).** Codex 4개가 한국 partial 8곳을 재검증 중(`OMD_REVERIFY_COMPILED=1`: 창 없는 캡처, medium). 대기열 `~/.omd-workers/queue-20261121-kr-partial.txt`, 워커 폴더 `~/.omd-workers/reverify2/<id>`. 끝나면 `remeasure.mjs` → 착지 → 독립 검수 → PR(「빠진 것 / 늘어난 것」 표).
+
+**11/20 밤에 정해진 것(유효):** 막히면 창을 열거나 ego-browser·aside를 써도 된다 · 필요하면 오너가 로그인해서 보여 줄 수 있다 · 폰은 필요하면 써도 된다(이번에도 쓰지 않았다).
 
 **아래는 11/20 저녁 인계 때의 요약이다(폰 대기 문구만 위 내용으로 바뀌었다).**
 
