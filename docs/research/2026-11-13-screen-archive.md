@@ -555,7 +555,7 @@ both where the two look alike), then asked for web first, in a 40-minute block. 
   installed Chrome with a window and a fresh profile all six opened. `--browser headed` (or `"browser": "headed"`
   in the route file) is that mode. It opens windows on the owner's screen, so a batch of headed services belongs in
   a window the owner has agreed to.
-- **Shot:** 29CM (10 screens), 오늘의집 (11), 클래스101 (8), 원티드 (9), 인프런 (9): 47 screens, 94 stills, none
+- **Shot:** 29CM (9 screens), 오늘의집 (11), 클래스101 (8), 원티드 (9), 인프런 (9): 46 screens, 92 stills, none
   blocked. The last three are filed as web-centred although each has an app; that is the session's reading of the
   route, not an owner decision.
 - **What signed-out reaches.** On all five services home, lists, search results and detail open without an account.
