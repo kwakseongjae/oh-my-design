@@ -1,0 +1,71 @@
+{
+ "slug": "wanted",
+ "name": "원티드",
+ "reference": "wanted",
+ "platform": "web",
+ "origin": "https://www.wanted.co.kr",
+ "browser": "headed",
+ "never": [
+  "지원하기",
+  "이력서 등록",
+  "제안 받기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "jobs",
+   "type": "목록",
+   "title": "채용 공고 목록",
+   "url": "/wdlist"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 디자이너",
+   "url": "/search?query=디자이너"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "채용 공고 상세",
+   "url": "/wd/394433"
+  },
+  {
+   "key": "company",
+   "type": "프로필",
+   "title": "기업 정보",
+   "url": "https://www.wanted.co.kr/company/59165"
+  },
+  {
+   "key": "salary",
+   "type": "화면",
+   "title": "직군별 연봉",
+   "url": "/salary"
+  },
+  {
+   "key": "map",
+   "type": "지도",
+   "title": "지도로 공고 찾기 · 진입 안내 창",
+   "url": "/position-map/home",
+   "note": "지도에 들어서면 탐색 기준(집 근처 역 / 지하철 라인 / 회사가 많은 역)을 고르는 창이 먼저 뜹니다."
+  },
+  {
+   "key": "contents",
+   "type": "목록",
+   "title": "콘텐츠 목록",
+   "url": "/events"
+  },
+  {
+   "key": "cv",
+   "type": "화면",
+   "title": "이력서 소개 (로그아웃)",
+   "url": "/cv/list",
+   "note": "로그아웃 상태에서 이력서 메뉴는 로그인 화면이 아니라 소개 페이지로 넘어갑니다."
+  }
+ ]
+}

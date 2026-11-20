@@ -1,0 +1,73 @@
+{
+ "slug": "inflearn",
+ "name": "인프런",
+ "reference": "inflearn",
+ "platform": "web",
+ "origin": "https://www.inflearn.com",
+ "browser": "headed",
+ "never": [
+  "수강신청",
+  "바로 수강",
+  "결제",
+  "구매",
+  "바구니에 담기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "courses",
+   "type": "목록",
+   "title": "강의 목록",
+   "url": "/courses"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 피그마",
+   "url": "/search?s=피그마",
+   "note": "처음 들어서면 「수업 검색」 안내 말풍선이 결과 위에 뜹니다."
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "강의 상세",
+   "url": "/course/in-the-age-of-ai-dev"
+  },
+  {
+   "key": "challenges",
+   "type": "목록",
+   "title": "챌린지 목록",
+   "url": "/challenges"
+  },
+  {
+   "key": "mentoring",
+   "type": "목록",
+   "title": "멘토링 목록",
+   "url": "https://mentoring.inflearn.com/mentors"
+  },
+  {
+   "key": "careers",
+   "type": "목록",
+   "title": "커리어(채용) 목록",
+   "url": "/careers"
+  },
+  {
+   "key": "community",
+   "type": "커뮤니티",
+   "title": "커뮤니티",
+   "url": "/community",
+   "note": "수강생들이 쓴 글이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "signin",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/signin"
+  }
+ ]
+}

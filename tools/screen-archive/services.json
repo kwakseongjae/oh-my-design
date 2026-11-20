@@ -1,0 +1,171 @@
+{
+ "about": "Which surface of each service the screen archive shoots. `platform` answers one question: can the service's core route (tools/phone-recorder/apps.json, core_route) be walked to the end on the web? mobile = the core route is only in the app (the site introduces the product); web = the product is used in the browser; both = web and app do the same job with similar screens, so the same screen type is shown side by side. `confirmed` is true only where a web walk was shot; the rest are guesses to be replaced by a walk. `web` records what the browser met on the date given: headless = Chromium with no window and its own user agent, headed = the installed Chrome with a window (allowed by the owner for sites that refuse headless, 2026-11-20). A 403 is recorded, never worked around. `reference` is the catalog id of the same service's DESIGN.md.",
+ "checked": "2026-11-20",
+ "services": [
+  {
+   "slug": "29cm",
+   "name": "29CM",
+   "reference": "29cm",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "headless": "ok",
+    "route": "routes/29cm.json",
+    "screens": 10,
+    "signed_out": "home, search, results, list, detail, article, promotions and notices open; cart and my page go to the sign-in screen"
+   }
+  },
+  {
+   "slug": "ohouse",
+   "name": "오늘의집",
+   "reference": "ohouse",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "headless": "403 (Access Denied)",
+    "headed": "ok",
+    "route": "routes/ohouse.json",
+    "screens": 11,
+    "signed_out": "home, shop home, results, category, deals, detail, both feeds, an empty cart, sign-in and help open"
+   }
+  },
+  {
+   "slug": "class101",
+   "name": "클래스101",
+   "reference": "class101",
+   "platform": "web",
+   "confirmed": true,
+   "note": "An app exists; \"web\" is the session's call from the route (catalog, search, class detail and subscription all work in the browser), not an owner decision.",
+   "web": {
+    "headless": "ok",
+    "route": "routes/class101.json",
+    "screens": 8,
+    "signed_out": "home, category, catalog, results, detail, subscription page and sign-in open; the detail video area was blank in headless"
+   }
+  },
+  {
+   "slug": "wanted",
+   "name": "원티드",
+   "reference": "wanted",
+   "platform": "web",
+   "confirmed": true,
+   "note": "An app exists; \"web\" is the session's call from the route, not an owner decision.",
+   "web": {
+    "headless": "403 (Request blocked)",
+    "headed": "ok",
+    "route": "routes/wanted.json",
+    "screens": 9,
+    "signed_out": "home, job list, results, job detail, company, salary, map (behind a first-visit dialog) and articles open; the résumé menu goes to an introduction page"
+   }
+  },
+  {
+   "slug": "inflearn",
+   "name": "인프런",
+   "reference": "inflearn",
+   "platform": "web",
+   "confirmed": true,
+   "note": "An app exists; \"web\" is the session's call from the route, not an owner decision.",
+   "web": {
+    "headless": "403 (Forbidden)",
+    "headed": "ok",
+    "route": "routes/inflearn.json",
+    "screens": 9,
+    "signed_out": "home, course list, results, course detail, challenges, mentoring, job board, community and sign-in open"
+   }
+  },
+  {
+   "slug": "musinsa",
+   "name": "무신사",
+   "reference": "musinsa",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "home ok (smoke test only)"
+   }
+  },
+  {
+   "slug": "karrot",
+   "name": "당근",
+   "reference": "karrot",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "home ok (smoke test only)"
+   }
+  },
+  {
+   "slug": "kurly",
+   "name": "컬리",
+   "reference": "kurly",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "home ok (smoke test only)"
+   }
+  },
+  {
+   "slug": "oliveyoung",
+   "name": "올리브영",
+   "reference": "oliveyoung",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "403 (challenge page)",
+    "headed": "home ok (smoke test only)"
+   }
+  },
+  {
+   "slug": "yanolja",
+   "name": "NOL (야놀자)",
+   "reference": "yanolja",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "403",
+    "headed": "home ok (smoke test only)"
+   }
+  },
+  {
+   "slug": "coupang",
+   "name": "쿠팡",
+   "reference": "coupang",
+   "platform": "both",
+   "confirmed": false,
+   "web": {
+    "headless": "not tried"
+   }
+  },
+  {
+   "slug": "baemin",
+   "name": "배달의민족",
+   "reference": "baemin",
+   "platform": "mobile",
+   "confirmed": false,
+   "web": {
+    "headless": "not tried"
+   }
+  },
+  {
+   "slug": "toss",
+   "name": "토스",
+   "reference": "toss",
+   "platform": "mobile",
+   "confirmed": false,
+   "note": "The site introduces the product; the product is the app (handoff 2026-11-20).",
+   "web": {
+    "headless": "not tried"
+   }
+  },
+  {
+   "slug": "jobplanet",
+   "name": "잡플래닛",
+   "reference": "jobplanet",
+   "platform": "web",
+   "confirmed": false,
+   "web": {
+    "headless": "403 (Cloudflare)",
+    "headed": "home ok (smoke test only)"
+   }
+  }
+ ]
+}

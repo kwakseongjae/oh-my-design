@@ -1,0 +1,65 @@
+{
+ "slug": "class101",
+ "name": "클래스101",
+ "reference": "class101",
+ "platform": "web",
+ "origin": "https://class101.net",
+ "never": [
+  "구독하기",
+  "구독 시작",
+  "결제",
+  "구매하기",
+  "무료 체험"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈 (구독)",
+   "url": "/ko"
+  },
+  {
+   "key": "category",
+   "type": "목록",
+   "title": "카테고리 · 디지털 드로잉",
+   "url": "/ko/categories/604f1c9756c3676f1ed0030e"
+  },
+  {
+   "key": "catalog",
+   "type": "목록",
+   "title": "구독에 포함된 클래스 전체",
+   "url": "/ko/plus/catalog"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 드로잉",
+   "url": "/ko/search?query=드로잉"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "클래스 상세",
+   "url": "/ko/products/684629e4ede458edd4f20d5e"
+  },
+  {
+   "key": "detail-popup",
+   "type": "팝업",
+   "title": "클래스 상세 위의 프로모션 창",
+   "url": "/ko/products/684629e4ede458edd4f20d5e",
+   "note": "상세에 들어서면 뜨는 할인 유도 창입니다. 열 때마다 뜨지는 않습니다(11/20에 일곱 번 열어 네 번)."
+  },
+  {
+   "key": "intro",
+   "type": "이벤트",
+   "title": "구독 소개",
+   "url": "/ko/intro"
+  },
+  {
+   "key": "login",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/ko/login"
+  }
+ ]
+}

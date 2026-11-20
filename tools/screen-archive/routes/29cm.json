@@ -1,0 +1,78 @@
+{
+ "slug": "29cm",
+ "name": "29CM",
+ "reference": "29cm",
+ "platform": "both",
+ "origin": "https://www.29cm.co.kr",
+ "never": [
+  "구매하기",
+  "결제",
+  "바로 구매",
+  "쿠폰 받기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "search",
+   "type": "검색",
+   "title": "검색 시작",
+   "url": "/store/search/start"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 니트",
+   "url": "/store/search?keyword=니트"
+  },
+  {
+   "key": "best",
+   "type": "목록",
+   "title": "BEST (랭킹)",
+   "url": "/best-products"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "상품 상세",
+   "url": "/product/catalog/4335939"
+  },
+  {
+   "key": "magazine",
+   "type": "콘텐츠",
+   "title": "29Magazine",
+   "url": "/content/29magazine"
+  },
+  {
+   "key": "event",
+   "type": "이벤트",
+   "title": "Event 목록",
+   "url": "/store/event"
+  },
+  {
+   "key": "cart",
+   "type": "장바구니",
+   "title": "장바구니 (로그아웃)",
+   "url": "/order/cart"
+  },
+  {
+   "key": "my",
+   "type": "로그인",
+   "title": "마이페이지 → 로그인",
+   "url": "/my-page"
+  },
+  {
+   "key": "notice",
+   "type": "고객센터",
+   "title": "공지사항",
+   "url": "/order/my-order/cscenter/notice/notice-list"
+  }
+ ],
+ "close": [
+  "text=오늘 하루 보지 않기"
+ ]
+}

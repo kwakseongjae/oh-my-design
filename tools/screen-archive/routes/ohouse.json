@@ -1,0 +1,85 @@
+{
+ "slug": "ohouse",
+ "name": "오늘의집",
+ "reference": "ohouse",
+ "platform": "both",
+ "origin": "https://ohou.se",
+ "browser": "headed",
+ "never": [
+  "구매하기",
+  "결제",
+  "팔로우",
+  "바로구매",
+  "장바구니 담기"
+ ],
+ "screens": [
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "store",
+   "type": "홈",
+   "title": "쇼핑 홈",
+   "url": "https://store.ohou.se/"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "통합검색 결과 · 소파",
+   "url": "/search/index?query=소파"
+  },
+  {
+   "key": "category",
+   "type": "목록",
+   "title": "카테고리 · 가구",
+   "url": "/store/category?category_id=10000000&order=popular"
+  },
+  {
+   "key": "deals",
+   "type": "목록",
+   "title": "오늘의딜",
+   "url": "https://store.ohou.se/today_deals"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "상품 상세",
+   "url": "https://store.ohou.se/goods/3858646"
+  },
+  {
+   "key": "projects",
+   "type": "피드",
+   "title": "집들이",
+   "url": "https://contents.ohou.se/projects",
+   "note": "사용자들이 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "photos",
+   "type": "피드",
+   "title": "집사진",
+   "url": "/contents/card_collections",
+   "note": "사용자들이 올린 사진이 대부분입니다(공개 기준 초안 2항)."
+  },
+  {
+   "key": "cart",
+   "type": "장바구니",
+   "title": "장바구니 (로그아웃)",
+   "url": "/cart"
+  },
+  {
+   "key": "login",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "/users/sign_in"
+  },
+  {
+   "key": "help",
+   "type": "고객센터",
+   "title": "고객센터",
+   "url": "/customer_center"
+  }
+ ]
+}
