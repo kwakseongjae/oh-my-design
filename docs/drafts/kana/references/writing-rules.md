@@ -7,7 +7,7 @@
 - **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. UW-45 (not supported) and UW-10 (states no rule) are left out. The twelve candidates recorded as a disagreement are not rules: they are listed under [The project's DESIGN.md decides](#the-projects-designmd-decides), each side with its source, and the checker tests none of them.
 - **Ids.** KW-nn carries the number of the candidate it came from (KW-09 is UW-09), so the numbering has gaps. Every candidate's fate is in [`../writing/coverage.md`](../writing/coverage.md).
 - **Relation to JW.** [`rules.md`](./rules.md) holds JW-01 … JW-70 (keys KB: the Agency for Cultural Affairs' guide for government writing; KG: its keigo guideline; GK: the cabinet notice on loanword spelling; YN: the plain-Japanese guideline for foreign residents; JTF; SmartHR). A KW rule that agrees with a JW rule says so and adds its sources; it does not restate the JW rule.
-- **Japanese text.** Every Japanese string below is copied from a quote in `writing/rules.md` or `verdicts.md`, with its source key. Where the two files differ, the verdict's text is used (UW-19). No example was composed. A rule whose sources give no OK/NG pair says "no sourced example". A test (`test/unit/scripts/kana-copy-check.test.mjs`) fails if a Japanese string in this file, in the coverage table or in the checker's fixtures is not in those quotes.
+- **Japanese text.** Every Japanese string below is copied from a quote in `writing/rules.md` or `verdicts.md`, with its source key. Where the two files differ, the verdict's text is used (UW-19). No example was composed. A rule whose sources give no OK/NG pair says "no sourced example". A test (`test/unit/scripts/kana-copy-check.test.mjs`) fails if a fixture string or a corner-bracketed string in this file is not inside one quote. Japanese outside brackets (single words in the rule text) is held only to being a substring of some quote, which a short word can pass by coincidence; those words were read by hand.
 - **Quotes came through an extraction tool**, not from page source; widths and code points are as `verdicts.md` reports them. A native reader should check them on the pages before the skill ships.
 
 ## Strength, in words
@@ -56,7 +56,8 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - **WARN**: a government design system or two of the four company guides state the rule, and the string is the form the source itself gives as wrong (KW-09, and KW-26's first check).
 - **FYI**: everything else. A hit is a prompt to read the string in its place.
 - There is no BLOCK.
-- Role rules (button, heading, dialog) read the element only. A string whose role can't be traced gets no role rule.
+- Role rules (button, heading, dialog) read the element only. A string whose role can't be traced gets no role rule; nor does a label passed as an expression (`label={t('…')}`), and a dialog split across components is not grouped.
+- Chinese text shares the kanji range. Only KW-35 skips strings without kana; the other rules read any string with kanji or CJK punctuation, so a Chinese string can trip a code-point or word rule.
 - `--json` prints `{files, ja, findings, notes, summary, exit}`. Each finding has `rule`, `severity`, `file`, `line`, `match` (the matched text), `message` and `source` (keys and standing). `--self-test` runs `scripts/lang/fixtures/kana-copy/`.
 
 ## Rules
@@ -320,7 +321,7 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-46 (UW-46) · Ranges take 〜 U+301C WAVE DASH, not ～ U+FF5E; Mozilla also allows U+2013 and never uses U+2015.
 - Kind: TYPO (code points).
-- Strength: the code points: translation guides only (Mozilla, the one source that names them). The wave dash for ranges: 2 of 4 company guides (SmartHR, Ubie); SmartHR names no code point, and its OK example came back as U+301C. With JW-45 (the guideline for foreign residents writes から and まで instead).
+- Strength: the code points: translation guides only (Mozilla, the one source that names them). The wave dash for ranges: 2 of 4 company guides (SmartHR, Ubie); SmartHR names no code point, and its OK example came back as U+301C. With JW-45 (the guideline for foreign residents writes a range in words instead).
 - Quote: MZ-ed21 「「–」(U+2013 二分ダッシュ) または「〜」(U+301C 波ダッシュ) は数字の範囲等を表すのに用いる。」 「「―」(U+2015 水平線) と「～」 (U+FF5E 全角チルダ) は用いない。」 「Windows のキーボードから「～」を入力すると、通常は U+FF5E 全角チルダが入力されてしまうので注意すること。」; SH-cnt 「期間を表す場合には、`〜`（波線）を使います。」
 - Example: SH-cnt NG 「2022/01/01 - 2022/03/01、2022/01/01−2022/03/01」 → OK 「2022/01/01〜2022/03/01」.
 - Checker: **KW-46, FYI**: any U+FF5E or U+2015; a YYYY/MM/DD range joined by U+002D or U+2212 (not U+2013, which Mozilla allows).
@@ -418,7 +419,7 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 - Ubie (UB) says 「感嘆符や疑問符、伸ばし棒は使いません。」, but its own Do examples end in ？ (U+FF1F) and ? (U+003F): for the question mark the page contradicts itself (verdict). For the exclamation mark, see KW-32.
 
 #### UW-43 Parentheses: width
-- Half-width with spaces outside (WP 1-5, 1-6): 「丸括弧 ( ) は半角にし、前後には、半角文字1文字分のスペースを入れる」; 「丸括弧「(」の次、「)」の前にスペースを入れない」.
+- Half-width with spaces outside (WP 1-5, 1-6): 「丸括弧 ( ) は半角にし、前後には、半角文字1文字分のスペースを入れる」; 「丸括弧「(」の次、「)」の前にスペースを入れない」. Mozilla (MZ) spaces them the same way: 「例えば “(” の前は半角空白だが後は詰める、“)” や “:” の前は詰めるが後は半角空白」.
 - Full-width: JW-42 (KB, JTF, SmartHR); DADS sample text 「＊氏（カタカナ）と名（カタカナ）を空白で区切ってください。」 (an example, not a rule); Ubie's symbol table (U+FF08, U+FF09).
 - Ubie's weekdays (UB): 「曜日の表記をする場合は、日付の後にスペースを空けずに半角()で表示しましょう。」
 
@@ -449,4 +450,4 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 
 - **UW-10**: it states no rule. Every UI example read ends a request in the same form (DADS-in 「＊氏名を入力してください。」, PB 「10 文字以内で入力してください」), and one DADS sample notice uses 「…期限までにご対応をお願いいたします。」. No source rules on one form over the other.
 - **UW-45** (ellipsis as one character): not supported. The one counted source, Mozilla, prescribes three half-width dots (「三点リーダーは半角ドット 3 つ「...」を採用する。」 on the wiki); "one" rests on an OPTiM heading. JW-44 stands.
-- The areas in [`../writing/gaps.md`](../writing/gaps.md) (apology wording, ください against お願いします, button pairs, destructive-button wording, empty states, currency, Korean-to-Japanese faults) have no source and no rule.
+- The areas in [`../writing/gaps.md`](../writing/gaps.md) (apology wording, the choice between two polite request forms, button pairs, destructive-button wording, empty states, currency, Korean-to-Japanese faults) have no source and no rule.

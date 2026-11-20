@@ -255,6 +255,7 @@ Twelve topics are house choices with sources on each side: action labels with or
 - It tests the 24 KW rules that a pattern, a code point or a count can decide.
 - WARN only for KW-09 and KW-26's first check: there two company guides, or DADS and two company guides, give that exact form as wrong. Everything else is FYI, and there is no BLOCK.
 - Every finding gives the matched text and the source key.
+- Chinese text shares the kanji range: only the kanji-share rule (KW-35) skips strings without kana, so on a Chinese string other rules can fire.
 - `--self-test` runs `scripts/lang/fixtures/kana-copy/`, which is built only from quoted strings.
 
 ## 5. Precedence: the project wins

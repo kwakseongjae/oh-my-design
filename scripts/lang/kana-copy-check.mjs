@@ -22,8 +22,12 @@
  * sources quote (the comment beside each pattern names the quote). Roles (button, heading, dialog) come
  * from the element only: <button>, a component whose name ends in Button, role="button", input type=submit,
  * <h1>-<h6>, <title>, Markdown headings, <dialog>, role="dialog", a component whose name has Dialog or
- * Modal. A string whose role cannot be traced gets no role rule. Every finding carries the source key and
- * the standing of the source. A hit is a prompt to read the string in its place, not a defect.
+ * Modal. A string whose role cannot be traced gets no role rule; a label passed as an expression
+ * (label={t(...)}) is not read, and a dialog split across components is not grouped. Every finding carries
+ * the source key and the standing of the source. A hit is a prompt to read the string in its place, not a defect.
+ *
+ * Chinese text shares the kanji range: only KW-35 skips strings without kana, so on a Chinese string the
+ * code-point and word rules can fire.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -55,10 +59,10 @@ const SOURCE = {
   'KW-17': 'SH-app, WP 3-2 (one company guide and one translation guide)',
   'KW-18': 'UB-btn (one company guide, Ubie; about 15 characters, as far as possible)',
   'KW-20': 'DADS-md (government design system; modal dialogs)',
-  'KW-23': 'WP 3-7, SH-act, MZ-ed (one company guide and two translation guides; the word chosen is each house\'s own)',
+  'KW-23': 'WP 3-7, SH-act, MZ-ed (consistency: one company guide and one translation guide; the word pair is Mozilla\'s own choice)',
   'KW-24': 'UB (one company guide, Ubie; written for screen readers)',
   'KW-25': 'SH-oth (one company guide, SmartHR; its own term)',
-  'KW-26': 'DADS-in, PB, SH (government design system and 2 of 4 company guides)',
+  'KW-26': 'DADS-in, PB, SmartHR via JW-64 (government design system and 2 of 4 company guides)',
   'KW-32': 'UB (one company guide, Ubie)',
   'KW-33': 'WP 3-6, MZ, MZ-ed (translation guides only)',
   'KW-35': 'UB, MZ (one company guide, Ubie, gives the 3:7 aim; one translation guide, Mozilla, the direction only)',
@@ -70,7 +74,7 @@ const SOURCE = {
 };
 
 // ---- rules on one string ------------------------------------------------------------------------
-// [id, severity, regex, message, roles (null: any string)]
+// [id, severity, regex, message, roles (null: any string), source when it differs from SOURCE[id]]
 const PATTERNS = [
   // MZ-ed OK/NG: NG 「皆様」「公開いたしました」「よろしくお願いいたします」
   ['KW-06', 'FYI', /皆様|いたしました|よろしくお願いいたします/g, 'politeness Mozilla lists as too formal for ordinary content', null],
@@ -91,7 +95,7 @@ const PATTERNS = [
   // SH-oth 「「必須入力」は使用しません。」
   ['KW-25', 'FYI', /必須入力/g, 'SmartHR writes the other word order for required fields', null],
   // DADS-in bad example 「＊正しい氏名（カタカナ）を入力してください。」
-  ['KW-26', 'FYI', /正しい\S*を入力してください/g, 'asks for the correct value without saying what it is (DADS gives this as a bad example)', null],
+  ['KW-26', 'FYI', /正しい\S*を入力してください/g, 'asks for the correct value without saying what it is (DADS gives this as a bad example)', null, 'DADS-in (government design system; one bad example)'],
   // UB 「煽り表現はNG。「!」「!?」などの感嘆符は使わない。」 Don't 「ありがとうございます！」
   ['KW-32', 'FYI', new RegExp('(?<=' + JA_CHAR + ')\\s?[\\u0021\\uFF01]', 'g'), 'exclamation mark; Ubie uses none (its width is a house choice, see writing-rules.md)', null],
   // WP 3-6 「「下さい」 は「ください」、「全て」は「すべて」、「既に」は「すでに」に統一する」; MZ-ed 「「居る」ではなく「いる」。」
@@ -129,9 +133,9 @@ const WHOLE = [
 // ---- findings -----------------------------------------------------------------------------------
 class Findings {
   constructor() { this.map = new Map(); }
-  add(file, line, severity, rule, match, message) {
+  add(file, line, severity, rule, match, message, source = SOURCE[rule]) {
     const k = file + '\0' + line + '\0' + rule + '\0' + match;
-    if (!this.map.has(k)) this.map.set(k, { file, line, severity, rule, match, message, source: SOURCE[rule] });
+    if (!this.map.has(k)) this.map.set(k, { file, line, severity, rule, match, message, source });
   }
   list() {
     const num = (r) => Number(r.slice(3));
@@ -266,9 +270,9 @@ function run(inputs, { base = process.cwd() } = {}) {
       for (const u of units) {
         const lead = u.text.length - u.text.trimStart().length;
         const t = u.text.trim();
-        for (const [id, sev, re, msg, roles] of PATTERNS) {
+        for (const [id, sev, re, msg, roles, source] of PATTERNS) {
           if (roles && !roles.includes(u.role)) continue;
-          for (const m of u.text.matchAll(re)) F.add(file, u.line(m.index), sev, id, m[0], msg);
+          for (const m of u.text.matchAll(re)) F.add(file, u.line(m.index), sev, id, m[0], msg, source);
         }
         for (const [id, sev, test, msg, roles] of WHOLE) {
           if (roles && !roles.includes(u.role)) continue;

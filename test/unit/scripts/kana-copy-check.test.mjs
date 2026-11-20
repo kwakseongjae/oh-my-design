@@ -50,16 +50,16 @@ const RULES = {
 // WordPress's passive example is written with U+FF5E (KW-46)
 const ALSO = { 'KW-07': ['KW-06'], 'KW-13': ['KW-46'] };
 
-// ---- the quotes: 「」 spans (nested too) and backtick spans, from the quote lines of rules.md and all of verdicts.md
-const JA_RUN = /[　-ヿ㐀-鿿＀-￯○◯※…―−]+/g;
-const KANA_KANJI = /[぀-ヿ㐀-鿿]/;
+// ---- the quotes: corner-bracket spans (nested too) and backtick spans, from the quote lines of rules.md and all of verdicts.md
+const JA_RUN = /[\u3000-\u30FF\u3400-\u9FFF\uFF00-\uFFEF\u25CB\u25EF\u203B\u2026\u2015\u2212]+/g;
+const KANA_KANJI = /[\u3040-\u30FF\u3400-\u9FFF]/;
 function spans(text) {
   const out = [];
   for (const line of text.split('\n')) {
     const open = [];
     for (let i = 0; i < line.length; i++) {
-      if (line[i] === '「') open.push(i + 1);
-      else if (line[i] === '」' && open.length) out.push(line.slice(open.pop(), i));
+      if (line[i] === '\u300C') open.push(i + 1);
+      else if (line[i] === '\u300D' && open.length) out.push(line.slice(open.pop(), i));
     }
     for (const m of line.matchAll(/\x60([^\x60]+)\x60/g)) out.push(m[1]);
   }
@@ -79,22 +79,22 @@ function corpus() {
     if (block === 'UW-36' && /^- MZ \/ MZ-ed:/.test(l)) return false;
     return true;
   });
-  return [...spans(kept.join('\n')), ...spans(verdicts)].filter((s) => KANA_KANJI.test(s) || /[　-〿＀-￯]/.test(s));
+  return [...spans(kept.join('\n')), ...spans(verdicts)].filter((s) => KANA_KANJI.test(s) || /[\u3000-\u303F\uFF00-\uFFEF]/.test(s));
 }
 const QUOTES = corpus();
 const JOINED = QUOTES.join('\n');
 const inOneQuote = (s) => QUOTES.some((q) => q.includes(s));
 // every run of Japanese text, split at corner brackets, must sit inside the quotes
-const strayPieces = (text) => (text.match(JA_RUN) || []).flatMap((r) => r.split(/[「」『』]/)).filter((p) => KANA_KANJI.test(p) && !JOINED.includes(p));
-// every outermost 「…」 written must be inside one quote
+const strayPieces = (text) => (text.match(JA_RUN) || []).flatMap((r) => r.split(/[\u300C\u300D\u300E\u300F]/)).filter((p) => KANA_KANJI.test(p) && !JOINED.includes(p));
+// every outermost \u300C\u2026\u300D written must be inside one quote
 function strayQuotes(text) {
   const out = [];
   for (const line of text.split('\n')) {
     let depth = 0;
     let start = 0;
     for (let i = 0; i < line.length; i++) {
-      if (line[i] === '「') { if (depth++ === 0) start = i + 1; }
-      else if (line[i] === '」' && depth > 0 && --depth === 0) {
+      if (line[i] === '\u300C') { if (depth++ === 0) start = i + 1; }
+      else if (line[i] === '\u300D' && depth > 0 && --depth === 0) {
         const s = line.slice(start, i);
         if (KANA_KANJI.test(s) && !inOneQuote(s)) out.push(s);
       }
@@ -202,7 +202,7 @@ describe('kana-copy-check', () => {
       for (const f of files) {
         const raw = readFileSync(f, 'utf8');
         const text = raw.replace(/<!--[\s\S]*?-->/g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/\/\/[^\n]*/g, '');
-        for (const s of text.match(/[^<>{}"\n]*[぀-ヿ㐀-鿿　-〿＀-￯][^<>{}"\n]*/g) || []) {
+        for (const s of text.match(/[^<>{}"\n]*[\u3040-\u30FF\u3400-\u9FFF\u3000-\u303F\uFF00-\uFFEF][^<>{}"\n]*/g) || []) {
           expect(inOneQuote(s.trim()), f + ': ' + s.trim()).toBe(true);
         }
         if (f.endsWith('.md')) for (const line of raw.split('\n')) if (KANA_KANJI.test(line.replace(/<!--[\s\S]*?-->/g, ''))) expect(line, f).toMatch(/<!-- \S.*-->\s*$/);
