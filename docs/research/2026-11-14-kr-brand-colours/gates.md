@@ -39,14 +39,14 @@
 
 | 검수 | 결과 | 근거 |
 |---|---|---|
-| `/omd-slop-audit` | 실행 안 함 | 이번 회차에서 돌리지 않았다. 독립 검수자 몫으로 남긴다. |
+| `/omd-slop-audit` | 자가 점검만(독립 검수 아님) | AUDIT 모드로 이 글의 route를 1440·390에서 봤다(아래 「slop-audit 자가 점검」). 글이 더한 것은 마크다운 표 5개와 그림 1장뿐이라 SLOP 군집은 0건. 루트 `DESIGN.md`가 워크트리에 없어 「DESIGN.md 예외 확인」 단계는 하지 못했다. |
 | `/omd-designer-review` | 실행 못 함 | 기준 문서인 루트 `DESIGN.md`가 워크트리에 없다. |
 
 ## 한국어 다듬기 (§2)
 
 - `node skills/hangul/scripts/copy-check.mjs --context=site <ko.md>` → `0 BLOCK · 0 WARN · 10 FYI · exit 0`. `--context=docs`도 같다. FYI 10개 중 9개는 렌더되지 않는 사실 대조 주석(fact map) 안이고, 본문은 33행 하나(HW-6, 한 문장에 수치 셋: 「파랑 60곳 다음은 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%)입니다.」)다. 표를 말로 읽어 주는 문장이라 그대로 두었다.
 - `skills/hangul/scripts/check.mjs`는 마크다운을 읽지 않는다(`Hangul not found`). 줄바꿈은 블로그 화면이 `keep-all`로 처리한다(`web/src/components/blog/post-view.tsx`).
-- `/omd-humanize`는 돌리지 않았다. 초안을 다시 쓰지 말라는 지시에 따라 사실이 어긋난 곳만 고쳤다.
+- `/omd-humanize`는 해당 없음: 그 스킬의 설명이 「한국어만 쓰거나 다듬는 일 … 은 길이와 상관없이 hangul 스킬이 맡고」라고 범위를 넘긴다. 대신 hangul의 번역투 목록에서 자주 나오는 꼴(`을/를 통해`, `에 있어`, `필요로`, `보여지`, `되어지`, `에 대해/대한`, `것이다`, `가지고 있`, `에 의해`)을 글 전체에서 찾았고 0건이다. 초안을 다시 쓰지 말라는 지시에 따라 문장은 사실이 어긋난 곳만 고쳤다.
 
 ## 사실 확인
 
@@ -66,7 +66,8 @@
 | 「나머지 11곳」 문장 | 채용 공고 링크, 블로그 머리의 버튼, 슬라이더 화살표, 메뉴를 펼치는 버튼, 글자 없는 아이콘 버튼이거나, 파일만으로는 용도를 알 수 없는 버튼 | 채용 공고나 채용 사이트로 가는 버튼, 메뉴를 펼치는 버튼과 슬라이더 화살표, 글자 없는 아이콘 버튼, 다른 슬라이드에서 색이 바뀌는 배너 버튼, 주요 작업에 없는 글쓰기 버튼, 파일이 용도나 주요 작업을 적지 않은 버튼 | W4b 11행. 뱅크샐러드(배너), 오늘의집(글쓰기), 문피아·굿닥(파일에 주요 작업 목록이 없음)은 초안의 어느 묶음에도 맞지 않았고, 스캐터랩은 한 버튼(블로그 머리의 채용 링크)인데 두 묶음으로 셌다. |
 | 같은 컬러 코드 목록 | 정부24 | Government24 | `rows.json`·`tables.md`의 이름은 `Government24`이고 한글 표시 이름이 없다. |
 | 대비 표 | 왓챠 | Watcha | `rows.json`·`tables.md`의 이름은 `Watcha`이고 한글 표시 이름이 없다. |
-| 그림 자리 | `<!-- figure: … -->` 주석 | 그림, alt, 캡션 | 배민 글과 같은 `![](/blog-assets/…)` 꼴. |
+| 「어떻게 셌는가」, 규칙 S 설명 | 규칙 S는 이름이 `primary`인 토큰만 봤기 때문에, 주 색을 다른 이름으로 적은 32곳이 빠졌습니다. | 규칙 S는 이름이 `primary`인 토큰과 이름에 `primary`가 든 버튼만 봤기 때문에, 둘 다 없는 32곳이 빠졌습니다. 대부분 주 색 토큰의 이름이 `primary`가 아닌 곳입니다. | `tables.md` Rule S 정의(토큰, 없으면 `primary`가 든 버튼)와 S1(버튼에서 정해진 곳 4), `missing-32.md` 첫 문단(「These 32 references have neither」), `method.md`(「mostly because their main colour token is not named `primary`」). 32곳 중 16곳은 주 색을 정할 수 없었으므로 「주 색을 다른 이름으로 적은 32곳」은 넘친 말이다. |
+| 그림 자리 | `<!-- figure: … -->` 주석 | 그림, alt, 캡션 | 배민 글과 같은 `![](/blog-assets/…)` 꼴. 캡션 문장(무엇을 셌고 어느 스크립트가 그리는지)은 새로 썼다. |
 
 그대로 둔 이름 차이(표시 이름의 한글 부분만 쓴 것): 신상마켓, 에이블리, 토스증권, 아이디어스, 여기어때, 클라썸, 팀스파르타, 올리브영, TVING, 강남언니.
 
@@ -79,8 +80,18 @@
 - `curl /blog/korean-brand-colors-measured` → 200 · 블로그 호스트(`Host: blog.localhost:3345`) `/korean-brand-colors-measured` → 200
 - 그림 `/blog-assets/korean-brand-colors-measured/figure-hues.svg` → 200 `image/svg+xml`(두 호스트 모두)
 - 블로그 호스트 `feed.xml`에 이 글이 맨 위 항목, `sitemap.xml`에 `<loc>`와 `hreflang="ko"`가 있다
-- OG 카드 `/og/blog?slug=korean-brand-colors-measured&locale=ko` → 200 `image/png`
+- OG 카드 `/og/blog?slug=korean-brand-colors-measured&locale=ko` → 200 `image/png`. 열어 봤다: 한글 tofu 없음, 제목 3줄이 잘리지 않는다. 다만 줄이 낱말 가운데서 끊긴다(「일 / 곱」, 「파 / 랑」). OG 그리는 쪽(`web/src/app/og/blog/route.tsx`)의 줄바꿈이라 이 글의 바이트로는 고칠 수 없다.
+- 1440 첫 화면을 열어 봤다: 제목 2줄, 설명, 답이 든 첫 문단, 그림 위쪽이 보인다. 첫 문단에서 「주 색(primary)」 뒤의 「으로」가 다음 줄로 넘어간다(블로그 화면의 `keep-all` + `overflow-wrap:anywhere` 조합, `web/src/components/blog/post-view.tsx`).
 - `npm run typecheck`(tsc --noEmit) exit 0 · `npx vitest run` 88 파일 통과·1 건너뜀, 1409 통과·2 건너뜀
+- 규칙 S 문장을 고친 뒤 다시: `npx vitest run src/lib/blog src/app/sitemap.test.ts` 5 파일·43 통과, `npx tsc --noEmit` exit 0, 같은 헤드리스 측정 1440·390 가로 스크롤 0, 블로그 호스트 200, 렌더 HTML에 `fact map` 0건. W4a 23행·더한 16곳·뺀 16곳 대조도 고친 파일로 다시 돌려 어긋남 0.
+
+## slop-audit 자가 점검 (독립 검수가 아니다)
+
+- Design read: 표와 그림으로 답부터 보여 주는 긴 데이터 글. 1440 첫 화면에 제목, 설명, 답이 든 첫 문단, 그림 위쪽이 들어온다 — 대기열이 정한 글의 꼴(답을 표와 그림으로 먼저)과 맞다.
+- SLOP: 0건. 글이 더한 것은 표 5개와 막대 그림 1장이고 카드·그라데이션·아이콘 타일이 없다.
+- [WARN · QUALITY] 390px에서 그림이 358px로 줄어 그림 속 글자가 약 7px(14px × 358/720)이 된다. 같은 값이 alt와 바로 아래 표에 있어 정보가 사라지지는 않는다. 위치: `ko.md` 그림 줄, `docs/research/2026-11-14-kr-brand-colours/figure_hues.py`(가로 720 고정).
+- [FYI · QUALITY] OG 카드의 낱말 중간 줄바꿈, 첫 문단의 「(primary)」 뒤 줄바꿈 — 둘 다 사이트 코드라 이 글의 범위 밖(위 「로컬 확인」).
+- 첫 화면 오른쪽 아래의 쿠키 안내는 사이트 공통이다.
 
 ## 글이 이름을 든 아이템 페이지 (역링크 후보, 이번 회차에서는 손대지 않음)
 
