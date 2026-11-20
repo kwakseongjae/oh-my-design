@@ -99,13 +99,18 @@ const fontSizes = Object.entries(fm.typography ?? {}).filter(([, v]) => v && typ
   const value = px(v.fontSize);
   return { token, value: v.fontSize, comparable: value != null, ...(value != null && seen.fontSize.has(value) ? summarise(seen.fontSize.get(value)) : { hits: 0, screens: [], examples: [] }) };
 });
-// A component matches an element only when every value the reference gives for it (background, text colour, radius)
-// is the element's value. A component that gives none of the three cannot be compared.
+// A component matches an element only when the element is the same kind of control and every value the reference
+// gives for it (background, text colour, radius, height, type size) is the element's value. Two colours alone match
+// unrelated things (a carousel arrow's white-on-dark matched an app banner, 2026-11-21), so a component needs its
+// kind and at least three comparable values, one of them a size, to be compared at all.
+const KIND = { button: ['button', 'link'], link: ['link'], input: ['field', 'searchbox', 'textbox'], tab: ['tab', 'button', 'link'], chip: ['button', 'link', 'tab'], select: ['select', 'button'] };
 const components = Object.entries(fm.components ?? {}).filter(([, v]) => v && typeof v === 'object').map(([name, c]) => {
-  const want = { background: hex(c.backgroundColor), color: hex(c.textColor), radius: c.rounded != null ? px(c.rounded) : null };
+  const size = String(c.typography ?? '').match(/(\d+(?:\.\d+)?)px/);
+  const want = { background: hex(c.backgroundColor), color: hex(c.textColor), radius: c.rounded != null ? px(c.rounded) : null, height: c.height != null ? px(c.height) : null, fontSize: size ? Number(size[1]) : null };
   const keys = Object.keys(want).filter((k) => want[k] != null);
-  if (keys.length < 2) return { component: name, type: c.type ?? null, comparable: false, hits: 0, screens: [], examples: [] };
-  const hits = elementsOf.filter((e) => ['button', 'link', 'field', 'tab', 'select'].includes(e.type) && keys.every((k) => e.style[k] === want[k]));
+  const kinds = KIND[String(c.type ?? '').toLowerCase()];
+  if (!kinds || keys.length < 3 || !(want.height != null || want.fontSize != null)) return { component: name, type: c.type ?? null, comparable: false, hits: 0, screens: [], examples: [] };
+  const hits = elementsOf.filter((e) => kinds.includes(e.type) && keys.every((k) => (k === 'height' ? e.h === want.height : e.style[k] === want[k])));
   return { component: name, type: c.type ?? null, comparable: true, compared: keys, ...summarise(hits) };
 });
 
@@ -115,12 +120,15 @@ const tokenRadii = new Set(rounded.map((c) => px(c.value)).filter((v) => v != nu
 const unmatchedRadii = [...seen.radius.entries()].filter(([v]) => !tokenRadii.has(v)).map(([value, hits]) => ({ value: value + 'px', ...summarise(hits) })).sort((a, b) => b.hits - a.hits).slice(0, 8);
 
 const count = (rows) => ({ matched: rows.filter((r) => r.hits > 0).length, comparable: rows.filter((r) => r.comparable).length, listed: rows.length });
+// Black and white match on any page through body text and the page background, so the colour count that says
+// something leaves them out.
+const plain = (r) => ['#000000', '#ffffff'].includes(hex(r.value));
 const out = {
   about: 'Exact-value comparison of the screens of this walk with the DESIGN.md of the same service. One way only: nothing here changes a reference. Unmatched tokens are not errors (the screens and the measured surfaces are different evidence domains), and unlisted colours are observations.',
   reference: walk.reference, referenceFile: path.relative(REPO, refFile), walk: walk.slug + '-' + walk.shot, elements: elementsOf.length,
-  summary: { colors: count(colors), rounded: count(rounded), fontSizes: count(fontSizes), components: count(components) },
+  summary: { colors: { ...count(colors), matchedBeyondBlackWhite: colors.filter((r) => r.hits > 0 && !plain(r)).length, comparableBeyondBlackWhite: colors.filter((r) => r.comparable && !plain(r)).length }, rounded: count(rounded), fontSizes: count(fontSizes), components: count(components) },
   colors, rounded, fontSizes, components, unmatched: { colors: unmatchedColors, radii: unmatchedRadii },
 };
 fs.writeFileSync(path.join(dir, 'tokens.json'), JSON.stringify(out, null, 1));
 const s = out.summary;
-console.log(walk.slug + ': colours ' + s.colors.matched + '/' + s.colors.comparable + ', radii ' + s.rounded.matched + '/' + s.rounded.comparable + ', font sizes ' + s.fontSizes.matched + '/' + s.fontSizes.comparable + ', components ' + s.components.matched + '/' + s.components.comparable + ' (of ' + elementsOf.length + ' elements)');
+console.log(walk.slug + ': colours ' + s.colors.matchedBeyondBlackWhite + '/' + s.colors.comparableBeyondBlackWhite + ' beyond black and white (' + s.colors.matched + '/' + s.colors.comparable + ' with), radii ' + s.rounded.matched + '/' + s.rounded.comparable + ', font sizes ' + s.fontSizes.matched + '/' + s.fontSizes.comparable + ', components ' + s.components.matched + '/' + s.components.comparable + ' (of ' + elementsOf.length + ' elements)');

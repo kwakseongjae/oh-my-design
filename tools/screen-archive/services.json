@@ -19,10 +19,10 @@
      "auth.29cm.co.kr"
     ],
     "design_md_match": {
-     "colors": "7/9",
+     "colors_beyond_black_white": "4/6",
      "rounded": "4/4",
      "font_sizes": "7/7",
-     "components": "4/5"
+     "components": "1/6"
     }
    }
   },
@@ -45,10 +45,10 @@
      "ohouse-support.aicx.kr"
     ],
     "design_md_match": {
-     "colors": "6/6",
+     "colors_beyond_black_white": "5/5",
      "rounded": "2/3",
      "font_sizes": "4/5",
-     "components": "8/10"
+     "components": "6/8"
     }
    }
   },
@@ -72,7 +72,7 @@
      "member.one.musinsa.com"
     ],
     "design_md_match": {
-     "colors": "5/5",
+     "colors_beyond_black_white": "2/2",
      "rounded": "2/3",
      "font_sizes": "2/2",
      "components": "5/5"
@@ -97,10 +97,10 @@
      "realty.daangn.com"
     ],
     "design_md_match": {
-     "colors": "7/15",
+     "colors_beyond_black_white": "5/13",
      "rounded": "3/3",
      "font_sizes": "3/6",
-     "components": "6/10"
+     "components": "3/9"
     }
    }
   },
@@ -120,10 +120,10 @@
      "www.kurly.com"
     ],
     "design_md_match": {
-     "colors": "8/8",
+     "colors_beyond_black_white": "7/7",
      "rounded": "2/2",
      "font_sizes": "3/3",
-     "components": "6/6"
+     "components": "4/5"
     }
    }
   },
@@ -144,10 +144,10 @@
      "www.oliveyoung.co.kr"
     ],
     "design_md_match": {
-     "colors": "7/7",
+     "colors_beyond_black_white": "6/6",
      "rounded": "3/3",
      "font_sizes": "1/2",
-     "components": "8/8"
+     "components": "5/6"
     }
    }
   },
@@ -171,10 +171,10 @@
      "discovery.yanolja.com"
     ],
     "design_md_match": {
-     "colors": "7/8",
+     "colors_beyond_black_white": "5/6",
      "rounded": "3/3",
      "font_sizes": "6/6",
-     "components": "8/9"
+     "components": "6/7"
     }
    }
   },
@@ -195,10 +195,10 @@
      "class101.net"
     ],
     "design_md_match": {
-     "colors": "3/5",
+     "colors_beyond_black_white": "1/3",
      "rounded": "3/3",
      "font_sizes": "5/5",
-     "components": "0/0"
+     "components": "0/1"
     }
    }
   },
@@ -219,10 +219,10 @@
      "www.wanted.co.kr"
     ],
     "design_md_match": {
-     "colors": "4/8",
+     "colors_beyond_black_white": "2/6",
      "rounded": "4/4",
      "font_sizes": "4/4",
-     "components": "4/4"
+     "components": "1/4"
     }
    }
   },
@@ -244,10 +244,10 @@
      "mentoring.inflearn.com"
     ],
     "design_md_match": {
-     "colors": "9/12",
+     "colors_beyond_black_white": "8/11",
      "rounded": "4/4",
      "font_sizes": "3/3",
-     "components": "12/15"
+     "components": "6/8"
     }
    }
   },
@@ -268,10 +268,10 @@
      "www.jobplanet.co.kr"
     ],
     "design_md_match": {
-     "colors": "15/19",
+     "colors_beyond_black_white": "13/17",
      "rounded": "3/4",
      "font_sizes": "11/11",
-     "components": "4/4"
+     "components": "2/3"
     }
    }
   },

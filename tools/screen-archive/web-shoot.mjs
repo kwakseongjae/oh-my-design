@@ -204,7 +204,7 @@ for (const width of WIDTHS) {
   await Promise.race([ctx.close(), new Promise((r) => setTimeout(r, 5000))]);
 }
 
-const walk = { slug: route.slug, name: route.name, reference: route.reference, platform: route.platform, origin: route.origin, routeFile: path.relative(REPO, path.resolve(routeFile)), shot: day, browser: BROWSER === 'headed' ? 'Chrome with a window (playwright-core, channel chrome), own user agent, fresh profile, signed out' : 'chromium headless (playwright-core), own user agent, fresh profile, signed out', records };
+const walk = { slug: route.slug, name: route.name, reference: route.reference, platform: route.platform, origin: route.origin, routeFile: path.relative(REPO, path.resolve(routeFile)), shot: day, browser: (BROWSER === 'headed' ? 'Chrome with a window (playwright-core, channel chrome)' : 'chromium headless (playwright-core)') + ', fresh profile, signed out; own user agent at 1440, a phone user agent at 390', records };
 // --only re-shoots some screens: keep the other records of an earlier run in the same folder.
 const walkFile = path.join(OUT, 'walk.json');
 if (fs.existsSync(walkFile)) {   // a second run into the same folder (some screens, or one width) replaces what it shot and keeps the rest
