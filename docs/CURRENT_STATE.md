@@ -4,7 +4,7 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-21 새벽) — 스프린트 시작: 화면 11곳·138화면, 화면↔DESIGN.md 시안, 사이트 디자인 시스템 실측과 시안, 일본어 규칙 검증 중, 블로그 게이트 중, partial 8곳 재검증 중
+## 지금 (2026-11-21 아침) — 스프린트 1회차 끝: 시안 네 묶음이 오너의 선택을 기다린다 · PR #132(블로그)·#133(디자인 시스템) 초안 · 재검증 시범 4곳은 착지 보류
 
 **오너 11/21:** 「10개 기업 기준으로 … UI를 어떻게 효율적으로 보여주고 DESIGN.md 페이지랑 자유자재로 오가게 할지」 · 「디자인 시스템쪽 작업도 꽤 시급 … 상세 페이지 상단 버튼 크기가 너무 크고」 · 핵심 셋 = **일본어 스킬 페이지, refero 식 사이트 심층 분석, 블로그** · 「시간 날때 레퍼런스 확충」. 스프린트 구성은 `docs/ROADMAP.md` §5-0.
 
@@ -12,15 +12,18 @@
 - 화면 ↔ DESIGN.md 구조 시안 3장: `~/Downloads/kr-screens/mock/index.html` (A 한눈에 11곳×7종 / B 상세 페이지의 「화면」 탭 / C 화면 한 장과 DESIGN.md 값)
 - 11곳 시트: `~/Downloads/kr-screens/web/index.html`
 - 사이트 디자인 시스템 실측과 제안: `~/Downloads/omd-design-system/index.html` → 상세 페이지 머리 시안 A·B·C
+- `/kana` 페이지 시안 3안: `~/Downloads/omd-kana/index.html` (A 출처가 보이는 규칙 / B 같은 화면, 다른 일본어 / C 두 독자)
+- 블로그 첫 글 프리뷰: PR #132의 Vercel 프리뷰에서 `/blog/korean-brand-colors-measured`
+- 폰으로 찍었던 무신사·당근 시트(다시 만듦): `~/Downloads/kr-screens/app/{musinsa,karrot}/index.html`
 
-**오너 몫(고르면 바로 구현):** ① 상세 페이지 머리 A / B / C(추천 B) ② 화면 아카이브를 어디부터(추천: B 탭 → C → A) ③ 컨트롤 규격 32·40·48 ④ 화면 공개 기준(보류 중) ⑤ #129·#130·#131 머지 ⑥ 우리 `/design.md` 다시 쓰기 ⑦ 로그인 뒤 화면을 찍을지.
+**오너 몫(고르면 바로 구현):** ① 상세 페이지 머리 A / B / C(추천 B, 화면 탭을 넣으면 C) ② 화면 아카이브를 어디부터(추천: B 탭 → C → A) ③ 컨트롤 규격 32·40·48 ④ `/kana` 시안(추천: 지금은 A, 원어민 검토 뒤 B의 첫 화면) ⑤ 블로그 글의 슬러그·발행일·문체, 게시 ⑥ 재검증 시범 4곳을 어떻게 넣을지(아래) ⑦ 화면 공개 기준(보류 중) ⑧ #129·#130·#131 머지(#132는 #131을 품고 있다) ⑨ 우리 `/design.md` 다시 쓰기 ⑩ 일본어 원어민 검토자 ⑪ 로그인 뒤 화면을 찍을지.
 
 **레인별 지금:**
-- **화면(T3).** 가지 `feat/screen-archive`(올림). `tools/screen-archive/`: `web-shoot.mjs`(요소의 계산된 색·모서리·글자, `from` 링크 따라가기, 404와 거절 구분, 390은 휴대폰으로 식별), `link-tokens.mjs`(화면의 값 ↔ DESIGN.md, 정확히 같은 값만, 한 방향), `make-web-sheet.mjs`, `make-ia-mocks.mjs`, `services.json`, `routes/` 11곳. 원본 `~/.omd-workers/screens/web/<slug>-20261121/`. 거절(403): 무신사 상품 상세, NOL 숙소 상세(창을 열어도). 창이 필요한 곳: 오늘의집·올리브영·NOL·원티드·인프런·잡플래닛. 안 한 것: 손으로 쓴 발견, 패턴 표시, 로그인 뒤 화면, 폰(앱) 화면과의 짝, 다시 찍어 바뀐 것 보이기.
-- **사이트 디자인 시스템(T9).** 가지 `feat/site-design-system`(올림, main에서 갈라짐). `scripts/site-audit/`: `controls.mjs`(실측), `item-hero-stills.mjs`(시안), `report.mjs`, `overflow-sweep.mjs`. 실측: 버튼 높이 12가지, 버튼 모서리 5가지, h1 7가지, 소수점 글자 크기 4가지. 고친 것(커밋만, PR 전): 본문 속 긴 인라인 코드·URL이 폰에서 페이지를 넓히던 것. 머리 구현은 오너가 고른 뒤.
-- **일본어 UX 라이팅(T2).** 워크트리 `kana`(`feat/kana-skill`): `docs/drafts/kana/writing/{rules.md(후보 57개),sources.json,gaps.md,fonts.md}`. 검증 에이전트 `ja-check`가 `verdicts.md`를 쓰는 중. Microsoft 일본어 스타일 가이드는 조사 에이전트가 못 읽어 본문만 `~/.omd-workers/kana/sources/`에 뽑아 둠(저장소에 넣지 않는다). 다음: 검증 통과한 규칙으로 스킬 초안 → 검사기 → `/kana` 시안. 일본어로 나가는 것은 원어민 검토 뒤.
-- **블로그(T5).** 워크트리 `blog-colour`(`blog/colour-map`, #131 가지에서 갈라짐): 표를 다시 계산(169/185곳, 파랑 29.5~36.6%), 2판 초안 `~/.omd-workers/blog/colour-map/draft-ko-v2.md`. 에이전트 `blog-gates`가 글을 저장소에 넣고 게이트를 도는 중. 끝나면 가지를 올려 프리뷰. 게시는 오너.
-- **레퍼런스(틈새).** Codex 4개가 한국 partial 8곳을 재검증 중(`OMD_REVERIFY_COMPILED=1`: 창 없는 캡처, medium). 대기열 `~/.omd-workers/queue-20261121-kr-partial.txt`, 워커 폴더 `~/.omd-workers/reverify2/<id>`. 끝나면 `remeasure.mjs` → 착지 → 독립 검수 → PR(「빠진 것 / 늘어난 것」 표).
+- **화면(T3).** 가지 `feat/screen-archive`(올림). `tools/screen-archive/`: `web-shoot.mjs`(요소의 계산된 색·모서리·글자, `from` 링크 따라가기, 404와 거절 구분, 390은 휴대폰으로 식별), `link-tokens.mjs`(화면의 값 ↔ DESIGN.md, 정확히 같은 값만, 한 방향. 색은 검정·흰색을 빼고 세고, 컴포넌트는 종류가 같고 값 셋 이상이 같을 때만), `suggest-patterns.mjs`(패턴 제안), `make-web-sheet.mjs`, `make-ia-mocks.mjs`, `services.json`, `routes/` 11곳. 원본 `~/.omd-workers/screens/web/<slug>-20261121/`. 거절(403): 무신사 상품 상세, NOL 숙소 상세(창을 열어도). 창이 필요한 곳: 오늘의집·올리브영·NOL·원티드·인프런·잡플래닛. 안 한 것: 손으로 쓴 발견, 패턴 표시, 로그인 뒤 화면, 폰(앱) 화면과의 짝, 다시 찍어 바뀐 것 보이기.
+- **사이트 디자인 시스템(T9).** PR **#133**(초안, `feat/site-design-system`, main에서 갈라짐). `scripts/site-audit/`: `controls.mjs`(실측), `item-hero-stills.mjs`(시안), `report.mjs`, `overflow-sweep.mjs`. 실측: 버튼 높이 12가지, 버튼 모서리 5가지, h1 7가지, 소수점 글자 크기 4가지. 고친 것(#133): 본문 속 긴 인라인 코드·URL이 폰에서 페이지를 넓히던 것(622곳 중 11곳, 한국어 6곳 → 규칙을 얹으면 0곳, 표의 열 폭은 그대로). 머리 시안 B는 가장 긴 이름과 900~1440 폭에서 겹침 없음. 머리 구현은 오너가 고른 뒤(구현 전에 `web/AGENTS.md`: 이 Next.js는 바뀐 점이 있으니 `node_modules/next/dist/docs/`를 먼저 읽는다).
+- **일본어 UX 라이팅(T2).** 워크트리 `kana`(`feat/kana-skill`, 올림): `docs/drafts/kana/writing/{rules.md(후보 57개),verdicts.md(통과 48),sources.json,gaps.md,fonts.md}`, 시안 생성기 `scripts/lang/kana-page-stills.mjs`. 통과하지 못한 9개(UW-07·15·19·42·45 등)는 규칙으로 쓰지 않는다. 출처가 없는 영역: 오류의 사과 문구, ください와 お願いします의 구분, 삭제 버튼 문구, 빈 상태, 円과 ¥, 한국어→일본어 번역 오류. Microsoft 일본어 스타일 가이드 본문은 `~/.omd-workers/kana/sources/`에 뽑아 둠(조사 에이전트가 PDF를 못 읽었다. 저장소에 넣지 않는다). 다음: 통과한 48개로 스킬 초안과 글쓰기 검사기, Microsoft 가이드로 2차 조사. 일본어로 나가는 것은 원어민 검토 뒤.
+- **블로그(T5).** PR **#132**(초안, `blog/colour-map`, #131에서 갈라져 #131을 품고 있다). 글 `web/src/content/blog/korean-brand-colors-measured/ko.md`, 게이트 기록 `docs/research/2026-11-14-kr-brand-colours/gates.md`. 표: 169/185곳, 파랑이 일곱 규칙 모두에서 가장 많고 29.5~36.6%. 1440·390에서 넘침 없이 렌더됨을 본 세션이 확인. 안 돈 것: 독립 final-qa, 검색어 게이트(브리프 없음), 영어판. 워크트리의 `web/node_modules`는 본 체크아웃으로 가는 링크다(추적 안 함).
+- **레퍼런스(틈새).** 한국 partial 4곳(spoqa·supertone·queenit·peoplefund)을 시범 방식(`OMD_REVERIFY_COMPILED=1`: 창 없는 캡처, 컴파일, medium)으로 재검증. 워커 폴더 `~/.omd-workers/reverify2/<id>`. **착지하지 않았다:** 본문이 크게 바뀐다(spoqa −43%, supertone −21%, peoplefund −19%, queenit +89%; 소제목 20~23개 탈락, 워커가 「미확인」으로 돌려보낸 항목 96~352개). 본문을 줄여 게이트를 통과시키지 않는다는 규칙상 곳마다 대조가 필요하다. 측정 재현(`remeasure.mjs`)은 spoqa 113/113 일치, 나머지는 `~/.omd-workers/t1-stability/`. 대기열의 남은 4곳(typed·dable·barogo·fitpet)은 돌리지 않았다(`~/.omd-workers/queue-20261121-kr-partial.txt`).
 
 **11/20 밤에 정해진 것(유효):** 막히면 창을 열거나 ego-browser·aside를 써도 된다 · 필요하면 오너가 로그인해서 보여 줄 수 있다 · 폰은 필요하면 써도 된다(이번에도 쓰지 않았다).
 
