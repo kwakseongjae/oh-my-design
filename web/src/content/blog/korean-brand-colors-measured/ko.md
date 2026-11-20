@@ -26,7 +26,7 @@ oh-my-design은 실제 서비스의 공개된 웹 화면과 자료에서 색·�
 | 흰색에 가까운 무채색 | L 95% 초과 | 2 | 1.2% |
 | 합계 | | 169 | |
 
-H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포함합니다. 위 표는 oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/tables.md`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/tables.md)에 있는 W1입니다. 이 글의 다른 표와 수치도 모두 이 파일에서 가져왔고(계산 2026-11-21), 괄호 안의 W1, W5 같은 이름은 이 파일의 절 이름입니다.
+H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포함합니다. 위 표는 oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/tables.md`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/tables.md)에 있는 W1입니다. 이 글의 다른 표와 수치는 이 파일과 같은 폴더의 원본 행(`rows.json`)에서 가져왔고(계산 2026-11-21), 버튼의 글자 크기는 각 서비스의 DESIGN.md에서 읽었습니다. 괄호 안의 W1, W5 같은 이름은 `tables.md`의 절 이름입니다.
 
 ## 어떤 색이 가장 많은가
 
