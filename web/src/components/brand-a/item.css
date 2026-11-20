@@ -62,6 +62,8 @@
 .sq-md-body li + li{margin-top:6px}
 .sq-md-body hr{margin:48px 0;border-color:transparent}
 .sq-md-body pre{font-size:14px;line-height:1.65;border-radius:var(--sq-r-ctl)}
+/* A long class name or URL in inline code has no break point: at 390 it pushed the page 83px wide (wadiz, 2026-11-21). */
+.sq-md-body :not(pre) > code{overflow-wrap:anywhere}
 .sq-md-body table{font-size:15px}
 .sq-md-body table td,.sq-md-body table th{padding:10px 14px}
 .sq-md-body div:has(> table){border-radius:var(--sq-r-ctl)}
