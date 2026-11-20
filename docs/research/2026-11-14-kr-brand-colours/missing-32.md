@@ -2,7 +2,7 @@
 
 Rule S (first draft) takes the frontmatter token named `primary`, else a `*primary*`-named button. These 32 references have neither. Each file was read for the token it uses for its main colour and for evidence, in the file, that it is the main colour. Quotes are verbatim from `web/references/<id>/DESIGN.md` and `compute.py` asserts each one is still there. The decisions live in `MAIN_TOKEN` and `LEFT_OUT` in `compute.py`; this file is generated from them.
 
-Evidence kinds: **identity** = the file names the value as the official, brand or catalogue identity colour; **action** = the value fills the service's main action; **registry** = the registry `primaryColor` is the same hex and that hex is this token (never used alone).
+Evidence kinds: **identity** = the file names the value as the official, brand or catalogue identity colour; **action** = the file's colour list names the token for the fill of an action control (a purchase, login, service or CTA fill); this does not by itself say the control is the service's main action, which W4 tests separately; **registry** = the registry `primaryColor` is the same hex and that hex is this token (never used alone).
 
 ## Added under Rule W (16)
 

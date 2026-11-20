@@ -324,6 +324,8 @@ Method: every `type: button` component whose `backgroundColor` equals the Rule S
 
 ### S4a. References below 4.5:1 (best button), ascending
 
+**Not for naming (superseded 2026-11-21).** This first-draft list was not checked for whether each control is the main action; W4a is the checked list and W4b gives the reason each other row is dropped.
+
 | ratio | id | name | fill | text | component |
 |---:|---|---|---|---|---|
 | 1.81 | scatterlab | 스캐터랩 | #fbb401 | #ffffff | blog-header-cta |
@@ -405,7 +407,7 @@ Blue share: Rule S 56/153 = 36.6%; original measured rule 54/176 = 30.7%; regist
 
 # Rule W (Rule S widened; the article uses this rule from 2026-11-21)
 
-Rule W: Rule S first. For a KR reference Rule S leaves out, the frontmatter colour token that the reference file itself presents as the main colour (official/brand/catalogue identity colour, or the fill of its main action), listed by id in `MAIN_TOKEN` in compute.py with a quote the script finds verbatim in the file. The registry `primaryColor` is used only as corroboration and only where the same hex is that token. References whose file does not let one main colour be told stay out (`LEFT_OUT`, with the reason). Per-reference evidence: `missing-32.md`. Fields `ruleW_*` in rows.json. JP and TW are not widened.
+Rule W: Rule S first. For a KR reference Rule S leaves out, the frontmatter colour token that the reference file itself presents as the main colour (official/brand/catalogue identity colour, or a colour its colour list names for the fill of an action control, always with the registry primaryColor equal to that token), listed by id in `MAIN_TOKEN` in compute.py with a quote the script finds verbatim in the file. The registry `primaryColor` is used only as corroboration and only where the same hex is that token. References whose file does not let one main colour be told stay out (`LEFT_OUT`, with the reason). Per-reference evidence: `missing-32.md`. Fields `ruleW_*` in rows.json. JP and TW are not widened.
 
 ## W1. Hue family, Rule W (KR verified_v2), with Rule S beside it
 
@@ -463,53 +465,64 @@ Same method as S4 (every `type: button` whose fill equals the Rule W primary exa
 - References with Rule W primary: 169; with at least one qualifying button: **95**; without: 74.
 - Reference-level ratio: min 1.81, Q1 3.71, median 5.03, Q3 11.83, max 21.00.
 - Below 4.5:1: **34** (35.8%); below 3:1: **12** (12.6%); any qualifying button below 4.5:1: 35.
-- Of the 34 below 4.5:1, the file makes clear that the measured control is the main action for **15**; 19 are dropped from any named list (W4b).
+- Of the 34 below 4.5:1, the file makes clear that the measured control is the main action for **23**; 11 are dropped from any named list (W4b).
+
+Test: kept when the file calls the control the primary action (its use line, or the site's own class), or the control performs a task the file lists under "Primary tasks". Dropped: recruiting/careers controls, navigation controls (menus, dropdowns, slider arrows), icon-only controls, and controls whose purpose the file leaves unclear.
 
 ### W4a. Named rows kept: the main action, below 4.5:1, ascending
 
 | ratio | id | name | family | fill | text | component | why this is the main action (from the file) |
 |---:|---|---|---|---|---|---|---|
-| 2.28 | gaudiolab | 가우디오랩 | teal/cyan | #00b7ff | #ffffff | cta-hero | The home hero action (Contact us). |
-| 2.30 | jandi | 잔디 | green | #00c473 | #ffffff | header-primary-action | The file calls it the global navigation primary action, repeated on every captured page. |
-| 2.64 | miricanvas | 미리캔버스 | teal/cyan | #21afbf | #ffffff | hero-primary-cta | The home hero filled action (same fill and text as the header button). |
-| 2.79 | karrot | 당근 | orange | #ff6f0f | #ffffff | box-button | The SEED design system action button; this fill is its primary variant. |
-| 2.89 | stibee | 스티비 | red | #ff6464 | #ffffff | button-primary | Sign-up start (무료로 시작하기) in the header of every page; the hero uses the same fill and text. |
-| 3.00 | idus | 아이디어스 (백패커) | orange | #ef7014 | #ffffff | button-primary | The product page purchase action (구매하기). |
-| 3.39 | yeogiotte | 여기어때 (GoodChoice) | blue | #1d8bff | #ffffff | search-cta | The home search submit; searching for a stay is the first primary task the file lists. |
-| 3.42 | classum | Classum (클라썸) | red | #ff4438 | #ffffff | medium-primary-action | The home hero primary action. |
-| 3.71 | toss | 토스 | blue | #3182f6 | #ffffff | tds-button | The TDS design system primary action button. |
+| 2.28 | gaudiolab | 가우디오랩 | teal/cyan | #00b7ff | #ffffff | cta-hero | Hero Contact us; a listed primary task ends in contacting the team. |
+| 2.30 | jandi | 잔디 | green | #00c473 | #ffffff | header-primary-action | The file calls it the global navigation primary action. |
+| 2.30 | laundrygo | 런드리고 | green | #0ac290 | #ffffff | floating-cta | Fixed 상담 문의하기 / B2B·대량세탁 문의 action; requesting a consultation is a listed primary task (the most favourable button, a recruiting banner, is not used). |
+| 2.64 | miricanvas | 미리캔버스 | teal/cyan | #21afbf | #ffffff | hero-primary-cta | The file calls it the home hero primary action. |
+| 2.79 | karrot | 당근 | orange | #ff6f0f | #ffffff | box-button | SEED design-system action button; this fill is its primary variant. |
+| 2.89 | stibee | 스티비 | red | #ff6464 | #ffffff | button-primary | 무료로 시작하기 in the header; starting a free account is a listed primary task. |
+| 3.00 | idus | 아이디어스 (백패커) | orange | #ef7014 | #ffffff | button-primary | 구매하기 on the product page; buying a piece is a listed primary task. |
+| 3.17 | moreh | 모레 | orange | #ff5700 | #ffffff | primary-button | Request Demo; requesting a demo is the first listed primary task. |
+| 3.18 | ably | Ably (에이블리) | red | #ff5160 | #ffffff | seller-primary | Seller Square primary entry; running a market as a seller is a listed primary task (the most favourable button, the ABLY Team recruiting action, is not used). |
+| 3.24 | greeting | 그리팅 | blue | #1890ff | #ffffff | header-demo-button | 도입 문의 in the header; requesting a demo or consultation is a listed primary task. |
+| 3.33 | petfriends | 펫프렌즈 | magenta/pink | #ff4081 | #ffffff | app-install-button | APP 설치하기 in the sign-up coupon sheet; claiming the app sign-up coupon is a listed primary task. |
+| 3.39 | yeogiotte | 여기어때 (GoodChoice) | blue | #1d8bff | #ffffff | search-cta | Home search submit; searching for a stay is the first listed primary task. |
+| 3.42 | classum | Classum (클라썸) | red | #ff4438 | #ffffff | medium-primary-action | Home hero action whose own class is primary-button. |
+| 3.68 | buzzvil | 버즈빌 | red | #f44336 | #ffffff | contact-button | 문의하기 in the header; contacting Buzzvil about a campaign is the first listed primary task. |
+| 3.71 | toss | 토스 | blue | #3182f6 | #ffffff | tds-button | The TDS design-system primary action button. |
 | 3.71 | toss-securities | Toss Securities (토스증권) | blue | #3182f6 | #ffffff | wts-primary-entry | The file calls it the public WTS primary link-action. |
-| 3.73 | moin | 모인 | blue | #0082ff | #ffffff | button-primary | Start-remittance action (송금 시작하기) of the exchange widget. |
-| 3.89 | protopie | 프로토파이 | blue | #8169ff | #ffffff | primary-button | Get started for free in the home hero. |
-| 4.09 | socar | 쏘카 | blue | #0078ff | #ffffff | primary-action | Booking from the web (웹에서 예약하기); booking a car is the service action. |
-| 4.11 | teamsparta | 팀스파르타 (스파르타코딩클럽) | red | #fa0030 | #ffffff | enroll-cta | Course enrolment action (수강신청하기). |
-| 4.33 | heydealer | 헤이딜러 | blue | #396eff | #ffffff | primary-button | The car-search action under the brand/type/model selects on home, and 10초 만에 확인 on /sell. |
+| 3.73 | moin | 모인 | blue | #0082ff | #ffffff | button-primary | 송금 시작하기; starting a transfer is a listed primary task. |
+| 3.77 | watcha | Watcha | magenta/pink | #f82f62 | #ffffff | button-primary | Header 로그인; signing in through the header login link is a listed primary task. |
+| 3.89 | protopie | 프로토파이 | blue | #8169ff | #ffffff | header-button | Book a Demo in the header; booking a demo is a listed primary task. |
+| 4.09 | socar | 쏘카 | blue | #0078ff | #ffffff | primary-action | 웹에서 예약하기; confirming a reservation is a listed primary task. |
+| 4.11 | teamsparta | 팀스파르타 (스파르타코딩클럽) | red | #fa0030 | #ffffff | enroll-cta | 수강신청하기; enrolling from the course page is a listed primary task. |
+| 4.14 | payhere | 페이히어 | blue | #0077fe | #ffffff | purchase-button | 구입하기 on the hardware cards; picking a store setup to buy is the first listed primary task. |
+| 4.33 | heydealer | 헤이딜러 | blue | #396eff | #ffffff | primary-button | Car-search action under the brand/type/model selects; finding a car by brand, type and model is a listed primary task. |
 
-- Kept rows below 3:1: 5. Text colours of the kept rows: #ffffff.
+- Kept rows below 3:1: 6. Text colours of the kept rows: #ffffff.
 
 ### W4b. Rows dropped from any named list, and why
 
 | ratio | id | name | component measured | verdict | reason (from the file) |
 |---:|---|---|---|---|---|
-| 1.81 | scatterlab | 스캐터랩 | blog-header-cta | dropped | Blog-header link to the recruiting page, not a service action. |
-| 2.30 | inflearn | 인프런 | product-search-submit | dropped | Icon-only search submit with no text, so there is no label whose contrast is measured. |
-| 2.30 | laundrygo | 런드리고 | recruit-button | dropped | Recruiting banner button; the other buttons on this fill are B2B inquiry actions, not the consumer service action. |
-| 2.44 | banksalad | Banksalad | hero-pill-cta | dropped | Hero carousel pill that other slides recolour; the file gives the primary-action button a different fill (#06a96c). |
-| 2.62 | douzone | Douzone Bizon | solution-menu | dropped | Dropdown menu trigger (solution shortcut), not an action. |
-| 2.70 | pinkfong | 더핑크퐁컴퍼니 | corporate-primary-action | dropped | Corporate-site and business-page CTAs; the file does not tie either to a service action. |
-| 2.78 | ohouse | 오늘의집 | compact-blue-action | dropped | Header write-post (글쓰기) button; the file does not present it as the main action. |
+| 1.81 | scatterlab | 스캐터랩 | blog-header-cta | dropped | Recruiting link (채용공고) in the blog header. |
+| 2.30 | inflearn | 인프런 | product-search-submit | dropped | Icon-only search submit: no text label to measure. |
+| 2.44 | banksalad | Banksalad | hero-pill-cta | dropped | Hero carousel pill that other slides recolour; the file gives its primary-action button another fill (#06a96c). |
+| 2.62 | douzone | Douzone Bizon | solution-menu | dropped | Navigation dropdown (솔루션 바로가기). |
+| 2.70 | pinkfong | 더핑크퐁컴퍼니 | corporate-primary-action | dropped | Corporate CTA whose purpose the file does not state. |
+| 2.78 | ohouse | 오늘의집 | compact-blue-action | dropped | Header 글쓰기 (write) button; no listed primary task names it. |
 | 3.14 | myrealtrip | 마이리얼트립 | primary-header-action | dropped | Header action whose purpose the file does not state. |
-| 3.17 | moreh | 모레 | primary-button | dropped | Demo-request link; the file does not call it the primary action. |
-| 3.18 | ably | Ably (에이블리) | corporate-primary | dropped | Corporate team-site action (recruiting) and seller-site entry, not the shopping service. |
-| 3.24 | greeting | 그리팅 | header-demo-button | dropped | Header inquiry link (도입 문의). |
-| 3.33 | petfriends | 펫프렌즈 | app-install-button | dropped | App-install prompt in an overlay sheet for logged-out visitors. |
-| 3.44 | shiftup | 시프트업 | slider-arrow | dropped | Previous/next arrows of a slider. |
-| 3.55 | catchtable | 캐치테이블 | careers-orange-action | dropped | Careers-site marketing actions, not the restaurant service. |
-| 3.68 | buzzvil | 버즈빌 | contact-button | dropped | Header inquiry link (문의하기). |
-| 3.75 | munpia | Munpia | login-primary | dropped | Sign-in button in the account panel. |
-| 3.77 | watcha | Watcha | button-primary | dropped | Header sign-in link. |
-| 4.14 | payhere | 페이히어 | purchase-button | dropped | Purchase buttons on two hardware cards; the file does not present them as the service action. |
-| 4.35 | goodoc | Goodoc | app-download | dropped | Header app-download button. |
+| 3.44 | shiftup | 시프트업 | slider-arrow | dropped | Slider previous/next arrows. |
+| 3.55 | catchtable | 캐치테이블 | careers-orange-action | dropped | Careers-site actions, not the restaurant service. |
+| 3.75 | munpia | Munpia | login-primary | dropped | Sign-in button; the file lists no primary tasks. |
+| 4.35 | goodoc | Goodoc | app-download | dropped | Header app-download button; the file lists no primary tasks. |
+
+### W4d. Other named rows: light primaries with dark text, same main-action test
+
+| ratio | id | name | family | fill | text | component | verdict | from the file |
+|---:|---|---|---|---|---|---|---|---|
+| 12.46 | 3o3 | 삼쩜삼 | orange | #fbbd41 | #000000 | refund-cta | main | The file calls it the primary refund action (내 환급금 조회하기). |
+| 13.89 | kbpay | KB페이 | yellow | #ffcc00 | #000000 | primary-button | dropped | Sign-in in the KB국민카드 home login panel; the listed task is the header sign-in, a different control. |
+| 12.24 | kmong | 크몽 | green | #92fa72 | #212224 | home-primary-cta | dropped | Public home CTA whose purpose the file does not state. |
+| 14.40 | modusign | 모두싸인 | orange | #fed05f | #000000 | header-cta | main | 무료 체험 시작; starting a free trial is a listed primary task. |
 
 ### W4c. HYPOTHETICAL: white text on every Rule W primary (not what the buttons state)
 

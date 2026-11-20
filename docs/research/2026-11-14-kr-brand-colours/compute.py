@@ -14,7 +14,8 @@ FIRST_RUN = '2026-11-14'
 # Each entry names the frontmatter colour token the file itself presents as the main colour, the kind of evidence,
 # and a quote that must appear verbatim in web/references/<id>/DESIGN.md (the script asserts it).
 # basis: 'identity'  = the file names the value as the official / brand / catalogue identity colour
-#        'action'    = the value is the fill of the service's main action in the file
+#        'action'    = the file's colour list gives the token an action role (it fills a recorded action control);
+#                      this alone does not say the control is the service's main action (that is W4's test)
 #        '+registry' = the registry primaryColor is the same hex (allowed only because that hex is this token)
 MAIN_TOKEN = {
     '11st':        dict(token='brand-red', basis='identity+registry', quote='**Brand red — `#FF0038`:**'),
@@ -35,42 +36,50 @@ MAIN_TOKEN = {
     'wooribank':   dict(token='brand-deep-blue', basis='identity+registry', quote='**Woori Deep Blue** (`#0067AC`): official logotype main color'),
 }
 CONTRAST_CHECK = {
-    # verdict: 'main' = the measured (most favourable) button is the main action; 'other-button-is-main' = another qualifying
-    # button on the same fill is, and is used instead; 'dropped' = the file does not make clear the control is the main action.
-    'scatterlab':  dict(verdict='dropped', component='blog-header-cta', note='Blog-header link to the recruiting page, not a service action.', quote='채용공고 in the blog header'),
-    'gaudiolab':   dict(verdict='main', component='cta-hero', note='The home hero action (Contact us).', quote='Hero Contact us link'),
-    'jandi':       dict(verdict='main', component='header-primary-action', note='The file calls it the global navigation primary action, repeated on every captured page.', quote='Global navigation primary action'),
-    'inflearn':    dict(verdict='dropped', component='product-search-submit', note='Icon-only search submit with no text, so there is no label whose contrast is measured.', quote='icon-only (no text node)'),
-    'laundrygo':   dict(verdict='dropped', component='recruit-button', note='Recruiting banner button; the other buttons on this fill are B2B inquiry actions, not the consumer service action.', quote='채용공고 보러가기 on the recruiting banner'),
-    'banksalad':   dict(verdict='dropped', component='hero-pill-cta', note='Hero carousel pill that other slides recolour; the file gives the primary-action button a different fill (#06a96c).', quote='other slides recolour the same pill'),
-    'douzone':     dict(verdict='dropped', component='solution-menu', note='Dropdown menu trigger (solution shortcut), not an action.', quote='솔루션 바로가기 is a native button'),
-    'miricanvas':  dict(verdict='other-button-is-main', component='hero-primary-cta', note='The home hero filled action (same fill and text as the header button).', quote='Home hero filled action'),
-    'pinkfong':    dict(verdict='dropped', component='corporate-primary-action', note='Corporate-site and business-page CTAs; the file does not tie either to a service action.', quote='one public corporate CTA'),
-    'ohouse':      dict(verdict='dropped', component='compact-blue-action', note='Header write-post (글쓰기) button; the file does not present it as the main action.', quote='Header 글쓰기 action'),
-    'karrot':      dict(verdict='main', component='box-button', note='The SEED design system action button; this fill is its primary variant.', quote='primary, primary-low, secondary, danger, disabled'),
-    'stibee':      dict(verdict='main', component='button-primary', note='Sign-up start (무료로 시작하기) in the header of every page; the hero uses the same fill and text.', quote='무료로 시작하기 in the header of all three captured pages'),
-    'idus':        dict(verdict='main', component='button-primary', note='The product page purchase action (구매하기).', quote="구매하기, the product page's purchase action"),
+    # Is the measured control the service's main action? Judged 2026-11-21 from the reference file only (no browser).
+    # Kept ('main' / 'other-button-is-main') when the file calls the control the primary action (its use line, or the site's
+    # own class), or the control performs a task the file lists under "Primary tasks". Dropped: recruiting/careers controls,
+    # navigation controls (menus, dropdowns, slider arrows), icon-only controls, and controls whose purpose the file leaves unclear.
+    # 'other-button-is-main' = another qualifying button on the same fill passes, and is used instead of the most favourable one.
+    'scatterlab':  dict(verdict='dropped', component='blog-header-cta', note='Recruiting link (채용공고) in the blog header.', quote='채용공고 in the blog header'),
+    'gaudiolab':   dict(verdict='main', component='cta-hero', note='Hero Contact us; a listed primary task ends in contacting the team.', quote='then contact the team'),
+    'jandi':       dict(verdict='main', component='header-primary-action', note='The file calls it the global navigation primary action.', quote='Global navigation primary action'),
+    'inflearn':    dict(verdict='dropped', component='product-search-submit', note='Icon-only search submit: no text label to measure.', quote='icon-only (no text node)'),
+    'laundrygo':   dict(verdict='other-button-is-main', component='floating-cta', note='Fixed 상담 문의하기 / B2B·대량세탁 문의 action; requesting a consultation is a listed primary task (the most favourable button, a recruiting banner, is not used).', quote='Weigh a hotel laundry partner before requesting a consultation (상담 문의하기)'),
+    'banksalad':   dict(verdict='dropped', component='hero-pill-cta', note='Hero carousel pill that other slides recolour; the file gives its primary-action button another fill (#06a96c).', quote='other slides recolour the same pill'),
+    'douzone':     dict(verdict='dropped', component='solution-menu', note='Navigation dropdown (솔루션 바로가기).', quote='솔루션 바로가기 is a native button'),
+    'miricanvas':  dict(verdict='other-button-is-main', component='hero-primary-cta', note='The file calls it the home hero primary action.', quote='Use: home hero primary action'),
+    'pinkfong':    dict(verdict='dropped', component='corporate-primary-action', note='Corporate CTA whose purpose the file does not state.', quote='one public corporate CTA'),
+    'ohouse':      dict(verdict='dropped', component='compact-blue-action', note='Header 글쓰기 (write) button; no listed primary task names it.', quote='Header 글쓰기 action'),
+    'karrot':      dict(verdict='main', component='box-button', note='SEED design-system action button; this fill is its primary variant.', quote='primary, primary-low, secondary, danger, disabled'),
+    'stibee':      dict(verdict='main', component='button-primary', note='무료로 시작하기 in the header; starting a free account is a listed primary task.', quote='Start a free account from any page (무료로 시작하기)'),
+    'idus':        dict(verdict='main', component='button-primary', note='구매하기 on the product page; buying a piece is a listed primary task.', quote="구매하기, the product page's purchase action"),
     'myrealtrip':  dict(verdict='dropped', component='primary-header-action', note='Header action whose purpose the file does not state.', quote='Public home and hotel-header action'),
-    'moreh':       dict(verdict='dropped', component='primary-button', note='Demo-request link; the file does not call it the primary action.', quote='Request Demo on moreh.io'),
-    'ably':        dict(verdict='dropped', component='corporate-primary', note='Corporate team-site action (recruiting) and seller-site entry, not the shopping service.', quote='Current ABLY Team primary action'),
-    'greeting':    dict(verdict='dropped', component='header-demo-button', note='Header inquiry link (도입 문의).', quote='도입 문의 at the right end of the header'),
-    'petfriends':  dict(verdict='dropped', component='app-install-button', note='App-install prompt in an overlay sheet for logged-out visitors.', quote='APP 설치하기 in the app-install sheet'),
-    'yeogiotte':   dict(verdict='other-button-is-main', component='search-cta', note="The home search submit; searching for a stay is the first primary task the file lists.", quote="Home search submit '검색'"),
-    'classum':     dict(verdict='other-button-is-main', component='medium-primary-action', note='The home hero primary action.', quote='Home hero primary action'),
-    'shiftup':     dict(verdict='dropped', component='slider-arrow', note='Previous/next arrows of a slider.', quote='Previous and next arrows of the games slider'),
-    'catchtable':  dict(verdict='dropped', component='careers-orange-action', note='Careers-site marketing actions, not the restaurant service.', quote='Careers-service marketing action'),
-    'buzzvil':     dict(verdict='dropped', component='contact-button', note='Header inquiry link (문의하기).', quote='문의하기 with an arrow icon in the fixed header'),
-    'toss':        dict(verdict='main', component='tds-button', note='The TDS design system primary action button.', quote='TDS Mobile xlarge primary action'),
+    'moreh':       dict(verdict='main', component='primary-button', note='Request Demo; requesting a demo is the first listed primary task.', quote='Request a demo of the inference software'),
+    'ably':        dict(verdict='other-button-is-main', component='seller-primary', note='Seller Square primary entry; running a market as a seller is a listed primary task (the most favourable button, the ABLY Team recruiting action, is not used).', quote='Start and run a market as a seller on the platform'),
+    'greeting':    dict(verdict='main', component='header-demo-button', note='도입 문의 in the header; requesting a demo or consultation is a listed primary task.', quote='Request a demo, a quote or a one-to-one consultation'),
+    'petfriends':  dict(verdict='main', component='app-install-button', note='APP 설치하기 in the sign-up coupon sheet; claiming the app sign-up coupon is a listed primary task.', quote='or the app sign-up coupon'),
+    'yeogiotte':   dict(verdict='other-button-is-main', component='search-cta', note='Home search submit; searching for a stay is the first listed primary task.', quote='Search for a stay after settling on a destination and dates'),
+    'classum':     dict(verdict='other-button-is-main', component='medium-primary-action', note='Home hero action whose own class is primary-button.', quote='Home hero primary action (a.primary-button.medium)'),
+    'shiftup':     dict(verdict='dropped', component='slider-arrow', note='Slider previous/next arrows.', quote='Previous and next arrows of the games slider'),
+    'catchtable':  dict(verdict='dropped', component='careers-orange-action', note='Careers-site actions, not the restaurant service.', quote='Careers-service marketing action'),
+    'buzzvil':     dict(verdict='main', component='contact-button', note='문의하기 in the header; contacting Buzzvil about a campaign is the first listed primary task.', quote='Contact Buzzvil about an advertising campaign'),
+    'toss':        dict(verdict='main', component='tds-button', note='The TDS design-system primary action button.', quote='TDS Mobile xlarge primary action'),
     'toss-securities': dict(verdict='main', component='wts-primary-entry', note='The file calls it the public WTS primary link-action.', quote='Public WTS compact primary link-action'),
-    'moin':        dict(verdict='main', component='button-primary', note='Start-remittance action (송금 시작하기) of the exchange widget.', quote='Exchange widget button 송금 시작하기'),
-    'munpia':      dict(verdict='dropped', component='login-primary', note='Sign-in button in the account panel.', quote='로그인 button in the right account panel'),
-    'watcha':      dict(verdict='dropped', component='button-primary', note='Header sign-in link.', quote='Header 로그인 link to sign-in'),
-    'protopie':    dict(verdict='main', component='primary-button', note='Get started for free in the home hero.', quote='Get started for free in the home hero'),
-    'socar':       dict(verdict='main', component='primary-action', note='Booking from the web (웹에서 예약하기); booking a car is the service action.', quote='on the /guide 웹에서 예약하기 link'),
-    'teamsparta':  dict(verdict='main', component='enroll-cta', note='Course enrolment action (수강신청하기).', quote='수강신청하기, the enrolment action of the course page'),
-    'payhere':     dict(verdict='dropped', component='purchase-button', note='Purchase buttons on two hardware cards; the file does not present them as the service action.', quote='구입하기 → closing the two hardware cards'),
-    'heydealer':   dict(verdict='main', component='primary-button', note='The car-search action under the brand/type/model selects on home, and 10초 만에 확인 on /sell.', quote='The count-and-보기 action under the brand, type and model selects'),
-    'goodoc':      dict(verdict='dropped', component='app-download', note='Header app-download button.', quote='Header 앱 다운로드 button'),
+    'moin':        dict(verdict='main', component='button-primary', note='송금 시작하기; starting a transfer is a listed primary task.', quote='Start a transfer and inspect its progress'),
+    'munpia':      dict(verdict='dropped', component='login-primary', note='Sign-in button; the file lists no primary tasks.', quote='로그인 button in the right account panel'),
+    'watcha':      dict(verdict='main', component='button-primary', note='Header 로그인; signing in through the header login link is a listed primary task.', quote='sign in through the header login link'),
+    'protopie':    dict(verdict='other-button-is-main', component='header-button', note='Book a Demo in the header; booking a demo is a listed primary task.', quote='Compare the plans before subscribing or booking a demo'),
+    'socar':       dict(verdict='main', component='primary-action', note='웹에서 예약하기; confirming a reservation is a listed primary task.', quote='on the /guide 웹에서 예약하기 link'),
+    'teamsparta':  dict(verdict='main', component='enroll-cta', note='수강신청하기; enrolling from the course page is a listed primary task.', quote='Enroll in a course from its course page'),
+    'payhere':     dict(verdict='main', component='purchase-button', note='구입하기 on the hardware cards; picking a store setup to buy is the first listed primary task.', quote='Pick which store setup to buy, from card terminal to kiosk'),
+    'heydealer':   dict(verdict='main', component='primary-button', note='Car-search action under the brand/type/model selects; finding a car by brand, type and model is a listed primary task.', quote='Find a certified used car by brand, type and model.'),
+    'goodoc':      dict(verdict='dropped', component='app-download', note='Header app-download button; the file lists no primary tasks.', quote='Header 앱 다운로드 button'),
+    # Named in the article for dark text on a light primary (not below 4.5:1); same test.
+    'kmong':       dict(verdict='dropped', component='home-primary-cta', note='Public home CTA whose purpose the file does not state.', quote='Public home CTA'),
+    'modusign':    dict(verdict='main', component='header-cta', note='무료 체험 시작; starting a free trial is a listed primary task.', quote='Start a free trial without booking a sales call first'),
+    '3o3':         dict(verdict='main', component='refund-cta', note='The file calls it the primary refund action (내 환급금 조회하기).', quote='Primary refund action'),
+    'kbpay':       dict(verdict='dropped', component='primary-button', note='Sign-in in the KB국민카드 home login panel; the listed task is the header sign-in, a different control.', quote='the only filled action on the four captured pages'),
 }
 
 # Left out: the file does not let one main colour be told. kind: 'ink-only' = the registry value is only a text/ink token;
@@ -509,6 +518,7 @@ b45 = [r for r in withb if r['_best']['ratio'] < 4.5]; b3 = [r for r in withb if
 anyb45 = [r for r in withb if r['_worst']['ratio'] < 4.5]
 w(f'- Below 4.5:1: **{len(b45)}** ({pct(len(b45), len(withb))}); below 3:1: **{len(b3)}** ({pct(len(b3), len(withb))}). References where at least one qualifying button is below 4.5:1: {len(anyb45)}.\n')
 w('### S4a. References below 4.5:1 (best button), ascending\n')
+w('**Not for naming (superseded 2026-11-21).** This first-draft list was not checked for whether each control is the main action; W4a is the checked list and W4b gives the reason each other row is dropped.\n')
 w('| ratio | id | name | fill | text | component |'); w('|---:|---|---|---|---|---|')
 for r in sorted(b45, key=lambda r: (r['_best']['ratio'], r['id'])):
     m = r['_best']; w(f'| {m["ratio"]:.2f} | {r["id"]} | {r["display_name"] or r["name"]} | {m["fill"]} | {m["text_hex"]} | {m["component"]} |')
@@ -560,7 +570,7 @@ assert noS == set(MAIN_TOKEN) | set(LEFT_OUT) and not (set(MAIN_TOKEN) & set(LEF
 for i, e in LEFT_OUT.items(): assert e['quote'] in design_text(i), ('quote not in file', i)
 cWc, nW = hue_n(kW, 'ruleW_family'); leftW = [r['id'] for r in kW if not r['ruleW_primary']]
 w('\n---\n\n# Rule W (Rule S widened; the article uses this rule from ' + TODAY + ')\n')
-w('Rule W: Rule S first. For a KR reference Rule S leaves out, the frontmatter colour token that the reference file itself presents as the main colour (official/brand/catalogue identity colour, or the fill of its main action), listed by id in `MAIN_TOKEN` in compute.py with a quote the script finds verbatim in the file. The registry `primaryColor` is used only as corroboration and only where the same hex is that token. References whose file does not let one main colour be told stay out (`LEFT_OUT`, with the reason). Per-reference evidence: `missing-32.md`. Fields `ruleW_*` in rows.json. JP and TW are not widened.\n')
+w('Rule W: Rule S first. For a KR reference Rule S leaves out, the frontmatter colour token that the reference file itself presents as the main colour (official/brand/catalogue identity colour, or a colour its colour list names for the fill of an action control, always with the registry primaryColor equal to that token), listed by id in `MAIN_TOKEN` in compute.py with a quote the script finds verbatim in the file. The registry `primaryColor` is used only as corroboration and only where the same hex is that token. References whose file does not let one main colour be told stay out (`LEFT_OUT`, with the reason). Per-reference evidence: `missing-32.md`. Fields `ruleW_*` in rows.json. JP and TW are not widened.\n')
 w('## W1. Hue family, Rule W (KR verified_v2), with Rule S beside it\n')
 w(f'- N = {len(kW)}; counted {nW} (Rule S {nS}); added by the widening {nW-nS}; left out {len(leftW)}: ' + ', '.join(leftW))
 w('- Step that gave the value: ' + ', '.join(f'{k} {v}' for k, v in collections.Counter((r['ruleW_step'] or 'none').split(':')[0] for r in kW).most_common()) + '\n')
@@ -598,20 +608,22 @@ bW45 = [r for r in withW if r['_bestW']['ratio'] < 4.5]; bW3 = [r for r in withW
 w(f'- References with Rule W primary: {nW}; with at least one qualifying button: **{len(withW)}**; without: {nW-len(withW)}.')
 w('- Reference-level ratio: min {:.2f}, Q1 {:.2f}, median {:.2f}, Q3 {:.2f}, max {:.2f}.'.format(*qW))
 w(f'- Below 4.5:1: **{len(bW45)}** ({pct(len(bW45), len(withW))}); below 3:1: **{len(bW3)}** ({pct(len(bW3), len(withW))}); any qualifying button below 4.5:1: {sum(1 for r in withW if r["_worstW"]["ratio"] < 4.5)}.')
-rowsW4 = []; unchecked = []
-for r in sorted(bW45, key=lambda r: (r['_bestW']['ratio'], r['id'])):
+def checked(r):
     chk = CONTRAST_CHECK.get(r['id'])
-    if not chk: unchecked.append(r['id']); continue
+    assert chk, ('no main-action verdict for', r['id'])
     assert chk['quote'] in design_text(r['id']), ('quote not in file', r['id'])
     m = r['_bestW']
     if chk['verdict'] == 'main':
         assert chk['component'] == m['component'], (r['id'], chk['component'], m['component'])
     elif chk['verdict'] == 'other-button-is-main':
         m = next(x for x in r['ruleW_buttons_on_primary'] if x['component'] == chk['component'])
-    rowsW4.append((r, m, chk))
-assert not unchecked or os.environ.get('OMD_ALLOW_UNCHECKED'), ('no main-action verdict for', unchecked)
+    else:
+        assert chk['verdict'] == 'dropped' and chk['component'] == m['component'], (r['id'], chk)
+    return m, chk
+rowsW4 = [(r,) + checked(r) for r in sorted(bW45, key=lambda r: (r['_bestW']['ratio'], r['id']))]
 kept = [(r, m, c) for r, m, c in rowsW4 if c['verdict'] in ('main', 'other-button-is-main') and m['ratio'] < 4.5]
 w(f'- Of the {len(bW45)} below 4.5:1, the file makes clear that the measured control is the main action for **{len(kept)}**; {len(bW45)-len(kept)} are dropped from any named list (W4b).\n')
+w('Test: kept when the file calls the control the primary action (its use line, or the site\'s own class), or the control performs a task the file lists under "Primary tasks". Dropped: recruiting/careers controls, navigation controls (menus, dropdowns, slider arrows), icon-only controls, and controls whose purpose the file leaves unclear.\n')
 w('### W4a. Named rows kept: the main action, below 4.5:1, ascending\n')
 w('| ratio | id | name | family | fill | text | component | why this is the main action (from the file) |'); w('|---:|---|---|---|---|---|---|---|')
 for r, m, c in sorted(kept, key=lambda x: (x[1]['ratio'], x[0]['id'])):
@@ -623,6 +635,13 @@ keptids = {r['id'] for r, _, _ in kept}
 for r, m, c in rowsW4:
     if r['id'] in keptids: continue
     w(f'| {m["ratio"]:.2f} | {r["id"]} | {r["display_name"] or r["name"]} | {m["component"]} | {c["verdict"]} | {c["note"]} |')
+w('')
+w('### W4d. Other named rows: light primaries with dark text, same main-action test\n')
+w('| ratio | id | name | family | fill | text | component | verdict | from the file |'); w('|---:|---|---|---|---|---|---|---|---|')
+b45ids = {r['id'] for r in bW45}
+for i in sorted(set(CONTRAST_CHECK) - b45ids):
+    r = next(x for x in withW if x['id'] == i); m, c = checked(r)
+    w(f'| {m["ratio"]:.2f} | {i} | {r["display_name"] or r["name"]} | {r["ruleW_family"]} | {m["fill"]} | {m["text_hex"]} | {m["component"]} | {c["verdict"]} | {c["note"]} |')
 w('')
 hyW = [r for r in kW if r['ruleW_primary']]
 hqW = quart([r['ruleW_white_text_contrast_hypothetical'] for r in hyW])
@@ -662,7 +681,7 @@ for i, h, intok, fam, kind in lo_reg: w(f'| {i} | {kind} | {h} | {"yes" if intok
 w(f'\nIf the registry value were taken for every left-out reference whose registry hex is a frontmatter token (the ink-only and declined ones included), blue would be {cSens["blue"]}/{nSens} = {pct(cSens["blue"], nSens)}; achromatic (black-ish + grey + white-ish) {sum(cSens[f] for f in ORDER if not is_chromatic(f))}/{nSens} (Rule W: {sum(cWc[f] for f in ORDER if not is_chromatic(f))}/{nW}). Rule W keeps them out because their files do not present that value as the main colour.\n')
 
 mw('\n## Rule W (third pass, ' + TODAY + ')\n')
-mw(f'- Rule S left out {len(noS)} KR verified references, mostly because their main colour token is not named `primary` (e.g. naver `brand`, 11st `brand-red`, shinhanbank `brand-primary`). Each of the {len(noS)} files was read on {TODAY}; `missing-32.md` lists the token name each uses and the evidence. {len(MAIN_TOKEN)} are added under Rule W because the file itself presents one token as its main colour (identity colour or main-action fill), with a verbatim quote the script checks; {len(LEFT_OUT)} stay out because the file does not let one main colour be told.')
+mw(f'- Rule S left out {len(noS)} KR verified references, mostly because their main colour token is not named `primary` (e.g. naver `brand`, 11st `brand-red`, shinhanbank `brand-primary`). Each of the {len(noS)} files was read on {TODAY}; `missing-32.md` lists the token name each uses and the evidence. {len(MAIN_TOKEN)} are added under Rule W because the file itself presents one token as its main colour (identity colour, or a colour its colour list names for an action fill, in every case equal to the registry primaryColor), with a verbatim quote the script checks; {len(LEFT_OUT)} stay out because the file does not let one main colour be told.')
 mw('- The widening is a per-id list, not a name pattern: a pattern such as `brand*` or `*primary*` also matches `text-primary` (melon), `nhis-primary-60` (nhis) and three `brand-*` tokens (wooribank).')
 mw('- Registry `primaryColor` is used only to corroborate, and only where the same hex is a frontmatter colour token of that reference (asserted by the script). A registry value that is only a text-ink token, or no token at all, does not admit a reference (W7 shows the effect of admitting them).')
 mw(f'- Rule W counts {nW} of {len(kW)} (Rule S {nS}); left out {len(leftW)}. JP and TW are not widened; S6 compares the three countries on Rule S.')
@@ -672,7 +691,7 @@ mw(f'- First computed {FIRST_RUN}; this run {TODAY}. Input as of this run: `data
 
 mm32 = [f'# The {len(noS)} KR verified references Rule S left out ({TODAY})\n',
         f'Rule S (first draft) takes the frontmatter token named `primary`, else a `*primary*`-named button. These {len(noS)} references have neither. Each file was read for the token it uses for its main colour and for evidence, in the file, that it is the main colour. Quotes are verbatim from `web/references/<id>/DESIGN.md` and `compute.py` asserts each one is still there. The decisions live in `MAIN_TOKEN` and `LEFT_OUT` in `compute.py`; this file is generated from them.\n',
-        'Evidence kinds: **identity** = the file names the value as the official, brand or catalogue identity colour; **action** = the value fills the service\'s main action; **registry** = the registry `primaryColor` is the same hex and that hex is this token (never used alone).\n',
+        'Evidence kinds: **identity** = the file names the value as the official, brand or catalogue identity colour; **action** = the file\'s colour list names the token for the fill of an action control (a purchase, login, service or CTA fill); this does not by itself say the control is the service\'s main action, which W4 tests separately; **registry** = the registry `primaryColor` is the same hex and that hex is this token (never used alone).\n',
         f'## Added under Rule W ({len(MAIN_TOKEN)})\n', '| id | name | main-colour token | hex | family | registry | evidence | quote from the file |', '|---|---|---|---|---|---|---|---|']
 for i in sorted(MAIN_TOKEN):
     r = next(x for x in kW if x['id'] == i); e = MAIN_TOKEN[i]
@@ -684,6 +703,6 @@ for i in sorted(LEFT_OUT):
     r = next(x for x in kW if x['id'] == i); e = LEFT_OUT[i]
     mm32.append(f'| {i} | {r["display_name"] or r["name"]} | {r["registry_primary"]} | {e["kind"]}: {e["note"]} | ' + e['quote'].replace('|', '\\|') + f' | {SETTLE[e["kind"]]} |')
 open(f'{OUT}/missing-32.md', 'w').write('\n'.join(mm32) + '\n')
-print('ruleS', nS, 'ruleW', nW, 'left', len(leftW), 'blue S', f'{cS["blue"]}/{nS}', 'blue W', f'{cWc["blue"]}/{nW}', 'W4 below 4.5', len(bW45), 'checked', len(rowsW4), 'kept', len(kept), 'unchecked', unchecked)
+print('ruleS', nS, 'ruleW', nW, 'left', len(leftW), 'blue S', f'{cS["blue"]}/{nS}', 'blue W', f'{cWc["blue"]}/{nW}', 'W4 below 4.5', len(bW45), 'checked', len(rowsW4), 'kept', len(kept), )
 
 open(f'{OUT}/tables.md', 'w').write('\n'.join(md)); open(f'{OUT}/method.md', 'w').write('\n'.join(mmx) + '\n')
