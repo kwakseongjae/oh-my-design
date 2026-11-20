@@ -49,6 +49,7 @@ a { color: inherit; }
 .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
 .facts li, .chip { background: var(--chip); border-radius: 6px; padding: 2px 10px; font-size: 13px; }
 .chip.warn { background: var(--warn-bg); color: var(--warn); }
+.chip.sug { background: #fff; outline: 1px dashed var(--line); outline-offset: -1px; color: var(--sub); }
 .toc { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 24px 0 0; padding: 16px 0; border-block: 1px solid var(--line); font-size: 14px; }
 section { padding: 36px 0; border-bottom: 1px solid var(--line); }
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
@@ -131,6 +132,7 @@ for (const dir of dirs) {
   let route = {}; try { route = JSON.parse(fs.readFileSync(path.join(REPO, walk.routeFile), 'utf8')); } catch { /* shot from a route outside the repository */ }
   const routeScreen = new Map((route.screens ?? []).map((s) => [s.key, s]));
   const tokens = fs.existsSync(path.join(dir, 'tokens.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'tokens.json'), 'utf8')) : null;
+  const suggested = fs.existsSync(path.join(dir, 'patterns.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'patterns.json'), 'utf8')) : {};
   const itemUrl = walk.reference ? 'https://oh-my-design.kr/design-systems/' + walk.reference : null;
   const swatch = (v) => (/^#[0-9a-f]{3,8}$/i.test(String(v)) ? '<b style="background:' + esc(v) + '"></b>' : '');
   const tokChip = (t) => '<a class="tok" href="' + esc(itemUrl) + '" title="DESIGN.md의 ' + esc(t.token ?? t.component) + '">' + swatch(t.value) + esc(t.token ?? t.component) + (t.value ? ' <span style="color:var(--sub)">' + esc(t.value) + '</span>' : '') + '</a>';
@@ -144,7 +146,9 @@ for (const dir of dirs) {
     const first = recs[0];
     const rs = routeScreen.get(key) ?? {};
     const state = first.state ?? rs.state ?? null;
-    const patterns = (first.patterns?.length ? first.patterns : rs.patterns ?? []).map((w) => foldP.get(w) ?? { ko: w, en: null });
+    // confirmed patterns come from the route file; the rest are suggestions by rule (suggest-patterns.mjs), drawn dashed
+    const confirmed = (first.patterns?.length ? first.patterns : rs.patterns ?? []).map((w) => foldP.get(w)?.ko ?? w);
+    const patterns = [...confirmed.map((ko) => ({ ko, sure: true })), ...(suggested[key] ?? []).filter((p) => !confirmed.includes(p)).map((ko) => ({ ko, sure: false }))];
     const type = fold.get(first.type);
     if (!type) unknown.add(first.type);
     const figs = recs.map((r) => {
@@ -167,7 +171,7 @@ for (const dir of dirs) {
     }).join('');
     const final = first.final ?? first.requested ?? '';
     let shown = final; try { shown = decodeURI(final); } catch { /* keep as is */ }
-    sections.push('<section id="' + esc(key) + '"><div class="head"><h2>' + esc(first.title) + '</h2><span class="chip">' + esc(type ? type.ko + ' · ' + type.en : first.type) + '</span>' + (state ? '<span class="chip">상태: ' + esc(state) + '</span>' : '') + patterns.map((p) => '<span class="chip">' + esc(p.ko) + '</span>').join('') + (first.redirected ? '<span class="chip">다른 주소로 넘어감</span>' : '') + '</div><p class="url">' + esc(shown) + '</p>' + (first.note ?? rs.note ? '<p class="note">' + esc(first.note ?? rs.note) + '</p>' : '') + tokensOn(key) + '<div class="shots">' + figs + '</div></section>');
+    sections.push('<section id="' + esc(key) + '"><div class="head"><h2>' + esc(first.title) + '</h2><span class="chip">' + esc(type ? type.ko + ' · ' + type.en : first.type) + '</span>' + (state ? '<span class="chip">상태: ' + esc(state) + '</span>' : '') + patterns.map((p) => '<span class="chip' + (p.sure ? '' : ' sug') + '"' + (p.sure ? '' : ' title="규칙으로 찾은 제안"') + '>' + esc(p.ko) + '</span>').join('') + (first.redirected ? '<span class="chip">다른 주소로 넘어감</span>' : '') + '</div><p class="url">' + esc(shown) + '</p>' + (first.note ?? rs.note ? '<p class="note">' + esc(first.note ?? rs.note) + '</p>' : '') + tokensOn(key) + '<div class="shots">' + figs + '</div></section>');
   }
   const types = [...new Set(keys.map((k) => walk.records.find((r) => r.key === k).type))];
   const core = taxonomy.screens.filter((s) => s.core).map((s) => s.ko);
@@ -183,7 +187,7 @@ for (const dir of dirs) {
     + sections.join('') + '<footer><p>' + RIGHTS + '</p><p>경로 파일: ' + esc(walk.routeFile) + ' · 원본 PNG와 요소 목록: ' + esc(dir.replace(os.homedir(), '~')) + '</p></footer>';
   fs.writeFileSync(path.join(out, 'index.html'), page(walk.name + ' 웹 화면', body));
   if (tokens) fs.writeFileSync(path.join(out, 'tokens.json'), JSON.stringify(tokens, null, 1));
-  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, findings: route.findings ?? [], facts: factsPanel(walk, tokens), records: walk.records.map(({ userAgent, ...r }) => ({ ...r, state: r.state ?? routeScreen.get(r.key)?.state ?? null, patterns: r.patterns?.length ? r.patterns : routeScreen.get(r.key)?.patterns ?? [] })) }, null, 1));
+  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, findings: route.findings ?? [], facts: factsPanel(walk, tokens), records: walk.records.map(({ userAgent, ...r }) => ({ ...r, state: r.state ?? routeScreen.get(r.key)?.state ?? null, patterns: r.patterns?.length ? r.patterns : routeScreen.get(r.key)?.patterns ?? [], suggestedPatterns: suggested[r.key] ?? [] })) }, null, 1));
   index.push({ slug: walk.slug, name: walk.name, platform: walk.platform, day, screens: keys.length, shots: walk.records.length, cover: keys.includes('home') ? 'img/' + widths[0] + '-home.jpg' : null });
   for (const u of unknown) console.error('warning: ' + walk.slug + ': type "' + u + '" is not in taxonomy.json');
   console.log(walk.slug + ': ' + keys.length + ' screens, ' + walk.records.length + ' shots → ' + path.join(out, 'index.html'));
