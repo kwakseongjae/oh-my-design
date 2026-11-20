@@ -22,7 +22,7 @@
  *   - Stills are not committed or uploaded: the default output is ~/.omd-workers/screens/web/, and an output folder
  *     inside a git work tree is refused.
  *
- * Route file: { slug, name, reference, platform: "mobile" | "web" | "both", origin, browser?: "headed", never: [], close?: [css, every screen], screens: [
+ * Route file: { slug, name, reference, platform: "mobile" | "web" | "both", origin, browser?: "headed", never: [], close?: [css of close buttons, tried on every screen], screens: [
  *   { key, type, title, url, note?, close?: [css of close buttons], steps?: [ {fill: {selector, text}} | {press: "Enter"} |
  *     {click: {selector} | {text}} | {wait: ms} ] } ] }
  * Instead of "url" a screen may have "from": { "screen": key of an earlier screen, "href": regex } (see below).
@@ -111,7 +111,8 @@ function pageFacts() {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
     const share = (Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0))) / (vw * vh);
-    if (share >= 0.12) overlays.push({ position: cs.position, share: Math.round(share * 100) / 100, y: Math.round(r.top), h: Math.round(r.height), text: (el.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 70) });
+    // chars tells a sheet or dialog (little text) from a page-sized layout wrapper that happens to be fixed (all of it)
+    if (share >= 0.12) overlays.push({ position: cs.position, share: Math.round(share * 100) / 100, y: Math.round(r.top), h: Math.round(r.height), chars: (el.innerText || '').length, text: (el.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 70) });
   }
   const text = document.body ? document.body.innerText : '';
   const bodyStyle = getComputedStyle(document.body);
@@ -166,7 +167,7 @@ for (const width of WIDTHS) {
       rec.status = resp ? resp.status() : null;
       await page.waitForLoadState('networkidle', { timeout: 6000 }).catch(() => {});
       await page.waitForTimeout(1200);
-      for (const sel of [...(route.close ?? []), ...(s.close ?? [])]) {
+      for (const sel of s.noClose ? [] : [...(route.close ?? []), ...(s.close ?? [])]) {   // "noClose": keep what covers the screen (the sheet itself is the screen)
         const b = page.locator(sel).first();
         if (await b.isVisible().catch(() => false)) { await b.click({ timeout: 3000 }).catch(() => {}); rec.steps.push('closed ' + sel); await page.waitForTimeout(400); }
       }

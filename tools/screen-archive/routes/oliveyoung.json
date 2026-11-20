@@ -11,7 +11,19 @@
   "구매하기",
   "쿠폰받기"
  ],
+ "close": [
+  "[aria-label=\"테마드로워 닫기\"]",
+  "text=오늘 하루 보지 않기"
+ ],
  "screens": [
+  {
+   "key": "app-sheet",
+   "type": "팝업",
+   "title": "첫 방문 · 테마 서랍",
+   "url": "/store/main/main.do",
+   "noClose": true,
+   "note": "휴대폰으로 처음 들어서면 화면을 덮는 층입니다. 1440 폭에서는 뜨지 않습니다."
+  },
   {
    "key": "home",
    "type": "홈",

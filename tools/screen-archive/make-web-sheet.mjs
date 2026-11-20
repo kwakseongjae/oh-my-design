@@ -81,6 +81,31 @@ footer { margin-top: 32px; color: var(--sub); font-size: 13px; max-width: 80ch; 
 const page = (title, body) => '<!doctype html>\n<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>' + esc(title) + '</title><style>' + CSS + '</style></head><body><main>' + body + '</main></body></html>\n';
 const RIGHTS = '화면은 각 회사의 것이고, oh-my-design은 이 회사들과 제휴하지 않았습니다. 이 시트는 이 Mac에만 있습니다(공개 보류). 로그아웃 상태로 누구에게나 같은 화면만 찍었고, 구매·결제·동의·팔로우는 누르지 않았습니다.';
 
+// What the walk's own records say about the service, with no judgement added: where a phone is sent, which screens ask
+// for an account, what covers the screen on a first visit, what refused the browser. Hand-written findings come from
+// the route file and are shown separately.
+function factsPanel(walk, tokens) {
+  const host = (u) => { try { return new URL(u).host; } catch { return null; } };
+  const recs = walk.records.filter((r) => r.final);
+  const wide = recs.filter((r) => r.width >= 600), narrow = recs.filter((r) => r.width < 600);
+  const hostsW = new Set(wide.map((r) => host(r.final))), hostsN = [...new Set(narrow.map((r) => host(r.final)))].filter((h) => h && !hostsW.has(h));
+  const title = (r) => r.title;
+  const uniq = (rows) => [...new Map(rows.map((r) => [r.key, r])).values()];
+  const toLogin = uniq(recs.filter((r) => r.redirected && /login|sign.?in|auth|member/i.test(r.final) && r.type !== '로그인'));
+  const blocked = uniq(walk.records.filter((r) => r.blocked));
+  const popup = uniq(walk.records.filter((r) => r.type === '팝업'));
+  const facts = [];
+  if (hostsN.length) facts.push('휴대폰으로 들어가면 다른 주소로 보냅니다: ' + hostsN.join(', ') + '.');
+  if (popup.length) facts.push('첫 방문에 뜨는 층: ' + popup.map(title).join(', ') + '.');
+  if (toLogin.length) facts.push('로그아웃 상태에서 로그인 화면으로 넘어가는 곳: ' + toLogin.map(title).join(', ') + '.');
+  if (blocked.length) facts.push('브라우저를 거절한 화면(우회하지 않음): ' + blocked.map((r) => r.title + ' HTTP ' + r.status).join(', ') + '.');
+  if (tokens) {
+    const top = tokens.unmatched.colors.filter((c) => !['#000000', '#ffffff'].includes(c.value))[0];
+    if (top) facts.push('DESIGN.md에 없는 색 가운데 가장 여러 화면에 보인 것: ' + top.value + ' (' + top.screens.length + '개 화면, ' + top.hits + '곳). 다시 잴 때 볼 후보입니다.');
+  }
+  return facts;
+}
+
 // What of the service's DESIGN.md was drawn on these screens. Exact values only; the table goes both ways:
 // each token names its screens (anchors on this sheet) and links to the reference's item page.
 function tokenPanel(t, itemUrl, walk, keys) {
@@ -135,7 +160,7 @@ for (const dir of dirs) {
       const flags = [
         r.blocked ? '<span class="chip warn">막힘 · HTTP ' + r.status + '</span>' : '',
         r.missing && first.type !== '오류' ? '<span class="chip warn">주소 없음 · HTTP ' + r.status + '</span>' : '',
-        (r.overlays ?? []).filter((o) => o.position === 'fixed' && o.share >= 0.25).length ? '<span class="chip warn">화면을 덮는 층 있음</span>' : '',
+        (r.overlays ?? []).some((o) => o.position === 'fixed' && o.share >= 0.25 && o.chars != null && o.chars < 400) ? '<span class="chip warn">화면을 덮는 층 있음</span>' : '',
         (r.errors ?? []).length ? '<span class="chip warn">' + esc(r.errors.join(' / ')) + '</span>' : '',
       ].join('');
       return '<figure class="' + (mobile ? 'm' : 'd') + '"><img loading="lazy" src="img/' + name + '" alt="' + esc(walk.name + ' ' + first.title + ' ' + r.width + 'px') + '"><figcaption><span>' + r.viewport.width + '×' + r.viewport.height + '</span>' + full + flags + '</figcaption></figure>';
@@ -152,13 +177,13 @@ for (const dir of dirs) {
     + '<p class="meta">' + esc(day) + '에 찍음 · ' + esc(walk.origin) + ' · ' + (walk.browser.startsWith('Chrome') ? '창을 연 Chrome' : '창 없는 Chromium') + ', 새 프로필, 로그아웃 상태</p>'
     + '<ul class="facts"><li>분류: ' + esc(PLATFORM[walk.platform] ?? walk.platform) + '</li><li>폭 ' + widths.join(' · ') + '</li><li>' + walk.records.length + '장' + (blocked ? ', 막힘 ' + blocked : '') + '</li><li>핵심 화면 ' + reached.length + '/' + core.length + ' (' + esc(reached.join(', ')) + ')</li>'
     + (walk.reference ? '<li><a href="https://oh-my-design.kr/design-systems/' + esc(walk.reference) + '">' + esc(walk.name) + ' DESIGN.md</a></li>' : '') + '</ul>'
-    + ((route.findings ?? []).length ? '<div class="panel"><h2>발견</h2><ul>' + route.findings.map((f) => '<li>' + esc(f) + '</li>').join('') + '</ul></div>' : '')
+    + (() => { const auto = factsPanel(walk, tokens); const hand = route.findings ?? []; return auto.length || hand.length ? '<div class="panel"><h2>발견</h2><ul>' + hand.map((f) => '<li>' + esc(f) + '</li>').join('') + auto.map((f) => '<li>' + esc(f) + ' <span class="meta">(기록에서 자동)</span></li>').join('') + '</ul></div>' : ''; })()
     + (tokens ? tokenPanel(tokens, itemUrl, walk, keys) : '')
     + '<nav class="toc">' + keys.map((k) => '<a href="#' + esc(k) + '">' + esc(walk.records.find((r) => r.key === k).title) + '</a>').join('') + '</nav>'
     + sections.join('') + '<footer><p>' + RIGHTS + '</p><p>경로 파일: ' + esc(walk.routeFile) + ' · 원본 PNG와 요소 목록: ' + esc(dir.replace(os.homedir(), '~')) + '</p></footer>';
   fs.writeFileSync(path.join(out, 'index.html'), page(walk.name + ' 웹 화면', body));
   if (tokens) fs.writeFileSync(path.join(out, 'tokens.json'), JSON.stringify(tokens, null, 1));
-  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, findings: route.findings ?? [], records: walk.records.map(({ userAgent, ...r }) => ({ ...r, state: r.state ?? routeScreen.get(r.key)?.state ?? null, patterns: r.patterns?.length ? r.patterns : routeScreen.get(r.key)?.patterns ?? [] })) }, null, 1));
+  fs.writeFileSync(path.join(out, 'screens.json'), JSON.stringify({ ...walk, findings: route.findings ?? [], facts: factsPanel(walk, tokens), records: walk.records.map(({ userAgent, ...r }) => ({ ...r, state: r.state ?? routeScreen.get(r.key)?.state ?? null, patterns: r.patterns?.length ? r.patterns : routeScreen.get(r.key)?.patterns ?? [] })) }, null, 1));
   index.push({ slug: walk.slug, name: walk.name, platform: walk.platform, day, screens: keys.length, shots: walk.records.length, cover: keys.includes('home') ? 'img/' + widths[0] + '-home.jpg' : null });
   for (const u of unknown) console.error('warning: ' + walk.slug + ': type "' + u + '" is not in taxonomy.json');
   console.log(walk.slug + ': ' + keys.length + ' screens, ' + walk.records.length + ' shots → ' + path.join(out, 'index.html'));

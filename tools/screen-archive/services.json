@@ -1,6 +1,6 @@
 {
- "about": "Which surface of each service the screen archive shoots. `platform` answers one question: can the service's core route (tools/phone-recorder/apps.json, core_route) be walked to the end on the web? mobile = the core route is only in the app (the site introduces the product); web = the product is used in the browser; both = web and app do the same job with similar screens, so the same screen type is shown side by side. `confirmed` is true only where a web walk was shot; the rest are guesses to be replaced by a walk. `web` records what the browser met on the date given: headless = Chromium with no window and its own user agent, headed = the installed Chrome with a window (allowed by the owner for sites that refuse headless, 2026-11-20). A 403 is recorded, never worked around. `reference` is the catalog id of the same service's DESIGN.md.",
- "checked": "2026-11-20",
+ "about": "Which surface of each service the screen archive shoots. `platform` answers one question: can the service's core route (tools/phone-recorder/apps.json, core_route) be walked to the end on the web? mobile = the core route is only in the app (the site introduces the product); web = the product is used in the browser; both = web and app do the same job with similar screens, so the same screen type is shown side by side. `confirmed` is true only where a web walk was shot; the rest are guesses to be replaced by a walk. `web` records what the browser met on the date given: headless = Chromium with no window (its own user agent at 1440, a phone's at 390), headed = the installed Chrome with a window (allowed by the owner for sites that refuse headless, 2026-11-20). A 403 is recorded, never worked around. `reference` is the catalog id of the same service's DESIGN.md.",
+ "checked": "2026-11-21",
  "services": [
   {
    "slug": "29cm",
@@ -9,10 +9,21 @@
    "platform": "both",
    "confirmed": true,
    "web": {
-    "headless": "ok",
+    "shot": "2026-11-21",
+    "browser": "headless",
     "route": "routes/29cm.json",
-    "screens": 9,
-    "signed_out": "home, search, results, list, detail, article, promotions and notices open; cart and my page go to the sign-in screen"
+    "screens": 11,
+    "stills": 22,
+    "phone_hosts": [
+     "www.29cm.co.kr",
+     "auth.29cm.co.kr"
+    ],
+    "design_md_match": {
+     "colors": "7/9",
+     "rounded": "4/4",
+     "font_sizes": "7/7",
+     "components": "4/5"
+    }
    }
   },
   {
@@ -22,11 +33,149 @@
    "platform": "both",
    "confirmed": true,
    "web": {
-    "headless": "403 (Access Denied)",
-    "headed": "ok",
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
     "route": "routes/ohouse.json",
-    "screens": 11,
-    "signed_out": "home, shop home, results, category, deals, detail, both feeds, an empty cart, sign-in and help open"
+    "screens": 14,
+    "stills": 27,
+    "phone_hosts": [
+     "ohou.se",
+     "store.ohou.se",
+     "contents.ohou.se",
+     "ohouse-support.aicx.kr"
+    ],
+    "design_md_match": {
+     "colors": "6/6",
+     "rounded": "2/3",
+     "font_sizes": "4/5",
+     "components": "8/10"
+    }
+   }
+  },
+  {
+   "slug": "musinsa",
+   "name": "무신사",
+   "reference": "musinsa",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-21",
+    "browser": "headless",
+    "route": "routes/musinsa.json",
+    "screens": 13,
+    "stills": 26,
+    "refused": [
+     "detail (403)"
+    ],
+    "phone_hosts": [
+     "www.musinsa.com",
+     "member.one.musinsa.com"
+    ],
+    "design_md_match": {
+     "colors": "5/5",
+     "rounded": "2/3",
+     "font_sizes": "2/2",
+     "components": "5/5"
+    }
+   }
+  },
+  {
+   "slug": "karrot",
+   "name": "당근",
+   "reference": "karrot",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-21",
+    "browser": "headless",
+    "route": "routes/karrot.json",
+    "screens": 13,
+    "stills": 26,
+    "phone_hosts": [
+     "www.daangn.com",
+     "jobs.daangn.com",
+     "realty.daangn.com"
+    ],
+    "design_md_match": {
+     "colors": "7/15",
+     "rounded": "3/3",
+     "font_sizes": "3/6",
+     "components": "6/10"
+    }
+   }
+  },
+  {
+   "slug": "kurly",
+   "name": "컬리",
+   "reference": "kurly",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-21",
+    "browser": "headless",
+    "route": "routes/kurly.json",
+    "screens": 13,
+    "stills": 26,
+    "phone_hosts": [
+     "www.kurly.com"
+    ],
+    "design_md_match": {
+     "colors": "8/8",
+     "rounded": "2/2",
+     "font_sizes": "3/3",
+     "components": "6/6"
+    }
+   }
+  },
+  {
+   "slug": "oliveyoung",
+   "name": "올리브영",
+   "reference": "oliveyoung",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
+    "route": "routes/oliveyoung.json",
+    "screens": 15,
+    "stills": 29,
+    "phone_hosts": [
+     "m.oliveyoung.co.kr",
+     "www.oliveyoung.co.kr"
+    ],
+    "design_md_match": {
+     "colors": "7/7",
+     "rounded": "3/3",
+     "font_sizes": "1/2",
+     "components": "8/8"
+    }
+   }
+  },
+  {
+   "slug": "yanolja",
+   "name": "NOL (야놀자)",
+   "reference": "yanolja",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
+    "route": "routes/yanolja.json",
+    "screens": 13,
+    "stills": 25,
+    "refused": [
+     "detail (403)"
+    ],
+    "phone_hosts": [
+     "nol.yanolja.com",
+     "discovery.yanolja.com"
+    ],
+    "design_md_match": {
+     "colors": "7/8",
+     "rounded": "3/3",
+     "font_sizes": "6/6",
+     "components": "8/9"
+    }
    }
   },
   {
@@ -37,10 +186,20 @@
    "confirmed": true,
    "note": "An app exists; \"web\" is the session's call from the route (catalog, search, class detail and subscription all work in the browser), not an owner decision.",
    "web": {
-    "headless": "ok",
+    "shot": "2026-11-21",
+    "browser": "headless",
     "route": "routes/class101.json",
-    "screens": 8,
-    "signed_out": "home, category, catalog, results, detail, subscription page and sign-in open; the detail video area was blank in headless"
+    "screens": 9,
+    "stills": 18,
+    "phone_hosts": [
+     "class101.net"
+    ],
+    "design_md_match": {
+     "colors": "3/5",
+     "rounded": "3/3",
+     "font_sizes": "5/5",
+     "components": "0/0"
+    }
    }
   },
   {
@@ -51,11 +210,20 @@
    "confirmed": true,
    "note": "An app exists; \"web\" is the session's call from the route, not an owner decision.",
    "web": {
-    "headless": "403 (Request blocked)",
-    "headed": "ok",
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
     "route": "routes/wanted.json",
-    "screens": 9,
-    "signed_out": "home, job list, results, job detail, company, salary, map (behind a first-visit dialog) and articles open; the résumé menu goes to an introduction page"
+    "screens": 12,
+    "stills": 23,
+    "phone_hosts": [
+     "www.wanted.co.kr"
+    ],
+    "design_md_match": {
+     "colors": "4/8",
+     "rounded": "4/4",
+     "font_sizes": "4/4",
+     "components": "4/4"
+    }
    }
   },
   {
@@ -66,63 +234,45 @@
    "confirmed": true,
    "note": "An app exists; \"web\" is the session's call from the route, not an owner decision.",
    "web": {
-    "headless": "403 (Forbidden)",
-    "headed": "ok",
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
     "route": "routes/inflearn.json",
-    "screens": 9,
-    "signed_out": "home, course list, results, course detail, challenges, mentoring, job board, community and sign-in open"
+    "screens": 11,
+    "stills": 22,
+    "phone_hosts": [
+     "www.inflearn.com",
+     "mentoring.inflearn.com"
+    ],
+    "design_md_match": {
+     "colors": "9/12",
+     "rounded": "4/4",
+     "font_sizes": "3/3",
+     "components": "12/15"
+    }
    }
   },
   {
-   "slug": "musinsa",
-   "name": "무신사",
-   "reference": "musinsa",
-   "platform": "both",
-   "confirmed": false,
+   "slug": "jobplanet",
+   "name": "잡플래닛",
+   "reference": "jobplanet",
+   "platform": "web",
+   "confirmed": true,
+   "note": "An app exists; \"web\" is the session's call from the route, not an owner decision.",
    "web": {
-    "headless": "home ok (smoke test only)"
-   }
-  },
-  {
-   "slug": "karrot",
-   "name": "당근",
-   "reference": "karrot",
-   "platform": "both",
-   "confirmed": false,
-   "web": {
-    "headless": "home ok (smoke test only)"
-   }
-  },
-  {
-   "slug": "kurly",
-   "name": "컬리",
-   "reference": "kurly",
-   "platform": "both",
-   "confirmed": false,
-   "web": {
-    "headless": "home ok (smoke test only)"
-   }
-  },
-  {
-   "slug": "oliveyoung",
-   "name": "올리브영",
-   "reference": "oliveyoung",
-   "platform": "both",
-   "confirmed": false,
-   "web": {
-    "headless": "403 (challenge page)",
-    "headed": "home ok (smoke test only)"
-   }
-  },
-  {
-   "slug": "yanolja",
-   "name": "NOL (야놀자)",
-   "reference": "yanolja",
-   "platform": "both",
-   "confirmed": false,
-   "web": {
-    "headless": "403",
-    "headed": "home ok (smoke test only)"
+    "shot": "2026-11-21",
+    "browser": "headed (headless: 403)",
+    "route": "routes/jobplanet.json",
+    "screens": 14,
+    "stills": 28,
+    "phone_hosts": [
+     "www.jobplanet.co.kr"
+    ],
+    "design_md_match": {
+     "colors": "15/19",
+     "rounded": "3/4",
+     "font_sizes": "11/11",
+     "components": "4/4"
+    }
    }
   },
   {
@@ -154,17 +304,6 @@
    "note": "The site introduces the product; the product is the app (handoff 2026-11-20).",
    "web": {
     "headless": "not tried"
-   }
-  },
-  {
-   "slug": "jobplanet",
-   "name": "잡플래닛",
-   "reference": "jobplanet",
-   "platform": "web",
-   "confirmed": false,
-   "web": {
-    "headless": "403 (Cloudflare)",
-    "headed": "home ok (smoke test only)"
    }
   }
  ]
