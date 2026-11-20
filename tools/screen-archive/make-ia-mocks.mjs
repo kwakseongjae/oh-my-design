@@ -152,7 +152,7 @@ const C = page('시안 C — 화면 한 장', String.raw`
 .rail h2{font-size:16px;margin-top:22px}.rail h2:first-child{margin-top:0}
 .row{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--n200);font-size:14px}
 .row i{width:22px;height:22px;border-radius:6px;border:1px solid rgba(0,0,0,.12);flex:none}
-.row b{font-weight:650}.row em{font-style:normal;color:var(--ink2);font-size:13px;margin-left:auto;white-space:nowrap}
+.row b{font-weight:650;overflow-wrap:normal;word-break:normal}.row em{font-style:normal;color:var(--ink2);font-size:13px;margin-left:auto;white-space:nowrap}
 .row a{color:var(--p);font-weight:600;font-size:13px;white-space:nowrap}
 .nav{display:flex;gap:8px;margin-left:auto}
 .strip{display:grid;grid-template-columns:repeat(` + Math.max(same.length, 1) + `,minmax(0,1fr));gap:12px;margin-top:14px}
