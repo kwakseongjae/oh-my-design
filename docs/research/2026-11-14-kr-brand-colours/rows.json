@@ -43,7 +43,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#ff0038",
+   "ruleW_step": "file-main-token:brand-red",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 346.8235294117647,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.9554691298289844
   },
   {
    "id": "29cm",
@@ -105,7 +114,24 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "buy-cta",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "3o3",
@@ -167,7 +193,24 @@
     11.105007387640365,
     67.74240345365294
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.6857700383321699
+   "ruleS_white_text_contrast_hypothetical": 1.6857700383321699,
+   "ruleW_primary": "#fbbd41",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "refund-cta",
+     "fill": "#fbbd41",
+     "textColor": "#000000",
+     "text_hex": "#000000",
+     "ratio": 12.45721511385771
+    }
+   ],
+   "ruleW_hue_deg": 40.0,
+   "ruleW_sat": 0.9587628865979382,
+   "ruleW_light": 0.6196078431372549,
+   "ruleW_white_text_contrast_hypothetical": 1.6857700383321699
   },
   {
    "id": "42dot",
@@ -229,7 +272,24 @@
     58.308203299920926,
     -86.44011657091279
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.689174501623114
+   "ruleS_white_text_contrast_hypothetical": 5.689174501623114,
+   "ruleW_primary": "#5a46fa",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "careers-button",
+     "fill": "#5a46fa",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.689174501623114
+    }
+   ],
+   "ruleW_hue_deg": 246.66666666666663,
+   "ruleW_sat": 0.9473684210526316,
+   "ruleW_light": 0.6274509803921569,
+   "ruleW_white_text_contrast_hypothetical": 5.689174501623114
   },
   {
    "id": "42maru",
@@ -298,7 +358,31 @@
     3.078753241577026,
     -47.881055921532976
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.809171346956166
+   "ruleS_white_text_contrast_hypothetical": 4.809171346956166,
+   "ruleW_primary": "#1675c3",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "demo-cta",
+     "fill": "#1675c3",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.809171346956166
+    },
+    {
+     "component": "technology-link",
+     "fill": "#1675c3",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.809171346956166
+    }
+   ],
+   "ruleW_hue_deg": 207.0520231213873,
+   "ruleW_sat": 0.7972350230414745,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 4.809171346956166
   },
   {
    "id": "8percent",
@@ -360,7 +444,24 @@
     50.279256540087026,
     -69.03931770173739
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.787662435690551
+   "ruleS_white_text_contrast_hypothetical": 5.787662435690551,
+   "ruleW_primary": "#6e49da",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-button",
+     "fill": "#6e49da",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.787662435690551
+    }
+   ],
+   "ruleW_hue_deg": 255.31034482758622,
+   "ruleW_sat": 0.6621004566210046,
+   "ruleW_light": 0.5705882352941176,
+   "ruleW_white_text_contrast_hypothetical": 5.787662435690551
   },
   {
    "id": "ably",
@@ -434,7 +535,31 @@
     66.3195773167693,
     29.819313575751536
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1828417610492634
+   "ruleS_white_text_contrast_hypothetical": 3.1828417610492634,
+   "ruleW_primary": "#ff5160",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "corporate-primary",
+     "fill": "#ff5160",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.1828417610492634
+    },
+    {
+     "component": "seller-primary",
+     "fill": "#ff5160",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.1828417610492634
+    }
+   ],
+   "ruleW_hue_deg": 354.82758620689657,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6588235294117647,
+   "ruleW_white_text_contrast_hypothetical": 3.1828417610492634
   },
   {
    "id": "airbridge",
@@ -529,7 +654,52 @@
     40.26143439510888,
     -84.0223054962597
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.245696961921662
+   "ruleS_white_text_contrast_hypothetical": 5.245696961921662,
+   "ruleW_primary": "#155dfc",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-cta",
+     "fill": "#155dfc",
+     "textColor": "#fafafa",
+     "text_hex": "#fafafa",
+     "ratio": 5.025744155156122
+    },
+    {
+     "component": "header-cta",
+     "fill": "#155dfc",
+     "textColor": "#fafafa",
+     "text_hex": "#fafafa",
+     "ratio": 5.025744155156122
+    },
+    {
+     "component": "plan-cta",
+     "fill": "#155dfc",
+     "textColor": "#fafafa",
+     "text_hex": "#fafafa",
+     "ratio": 5.025744155156122
+    },
+    {
+     "component": "subscribe-button",
+     "fill": "#155dfc",
+     "textColor": "#fafafa",
+     "text_hex": "#fafafa",
+     "ratio": 5.025744155156122
+    },
+    {
+     "component": "chat-launcher",
+     "fill": "#155dfc",
+     "textColor": "#fafafa",
+     "text_hex": "#fafafa",
+     "ratio": 5.025744155156122
+    }
+   ],
+   "ruleW_hue_deg": 221.29870129870127,
+   "ruleW_sat": 0.9746835443037976,
+   "ruleW_light": 0.5352941176470588,
+   "ruleW_white_text_contrast_hypothetical": 5.245696961921662
   },
   {
    "id": "baemin",
@@ -583,7 +753,16 @@
     -53.29380009756291,
     0.17531588383841168
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.4682375098428686
+   "ruleS_white_text_contrast_hypothetical": 1.4682375098428686,
+   "ruleW_primary": "#0cefd3",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 172.59911894273128,
+   "ruleW_sat": 0.9043824701195218,
+   "ruleW_light": 0.49215686274509807,
+   "ruleW_white_text_contrast_hypothetical": 1.4682375098428686
   },
   {
    "id": "banksalad",
@@ -650,7 +829,24 @@
     -54.216403535638115,
     20.9819187884116
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.439591229960707
+   "ruleS_white_text_contrast_hypothetical": 2.439591229960707,
+   "ruleW_primary": "#13bd7e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-pill-cta",
+     "fill": "#13bd7e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.439591229960707
+    }
+   ],
+   "ruleW_hue_deg": 157.76470588235293,
+   "ruleW_sat": 0.8173076923076924,
+   "ruleW_light": 0.40784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 2.439591229960707
   },
   {
    "id": "bithumb",
@@ -704,7 +900,16 @@
     0.4801222197028526,
     -5.985140551727508
    ],
-   "ruleS_white_text_contrast_hypothetical": 16.321832255792184
+   "ruleS_white_text_contrast_hypothetical": 16.321832255792184,
+   "ruleW_primary": "#1c2028",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 220.00000000000003,
+   "ruleW_sat": 0.17647058823529413,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 16.321832255792184
   },
   {
    "id": "brandi",
@@ -749,7 +954,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#1e1e1e",
+   "ruleW_step": "file-main-token:action-direct",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "product-buy-button",
+     "fill": "#1e1e1e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 16.67115667431794
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.11764705882352941,
+   "ruleW_white_text_contrast_hypothetical": 16.67115667431794
   },
   {
    "id": "bunjang",
@@ -803,7 +1025,16 @@
     69.85938707499217,
     51.309737571767734
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.269015494912067
+   "ruleS_white_text_contrast_hypothetical": 5.269015494912067,
+   "ruleW_primary": "#d80c18",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 356.47058823529414,
+   "ruleW_sat": 0.8947368421052633,
+   "ruleW_light": 0.44705882352941173,
+   "ruleW_white_text_contrast_hypothetical": 5.269015494912067
   },
   {
    "id": "buzzvil",
@@ -865,7 +1096,24 @@
     66.01287384845483,
     47.67169313982772
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.6824341707473893
+   "ruleS_white_text_contrast_hypothetical": 3.6824341707473893,
+   "ruleW_primary": "#f44336",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "contact-button",
+     "fill": "#f44336",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.6824341707473893
+    }
+   ],
+   "ruleW_hue_deg": 4.1052631578947425,
+   "ruleW_sat": 0.8962264150943399,
+   "ruleW_light": 0.5843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 3.6824341707473893
   },
   {
    "id": "cafe24",
@@ -919,7 +1167,16 @@
     49.599623027385185,
     -90.80390678436312
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.87787841796386
+   "ruleS_white_text_contrast_hypothetical": 5.87787841796386,
+   "ruleW_primary": "#084fff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 222.75303643724692,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5156862745098039,
+   "ruleW_white_text_contrast_hypothetical": 5.87787841796386
   },
   {
    "id": "catchtable",
@@ -964,7 +1221,38 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#ff3d00",
+   "ruleW_step": "file-main-token:brand-orange",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "careers-orange-action",
+     "fill": "#ff3d00",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.5475984866333756
+    },
+    {
+     "component": "careers-header-orange-item",
+     "fill": "#ff3d00",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.5475984866333756
+    },
+    {
+     "component": "careers-pill-action",
+     "fill": "#ff3d00",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.5475984866333756
+    }
+   ],
+   "ruleW_hue_deg": 14.35294117647059,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.5475984866333756
   },
   {
    "id": "cgv",
@@ -1009,7 +1297,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "channeltalk",
@@ -1087,7 +1380,38 @@
     1.0172093826900652,
     -2.653224358606443
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.46386789484898
+   "ruleS_white_text_contrast_hypothetical": 15.46386789484898,
+   "ruleW_primary": "#242428",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "marketing-primary",
+     "fill": "#242428",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.46386789484898
+    },
+    {
+     "component": "header-cta",
+     "fill": "#242428",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.46386789484898
+    },
+    {
+     "component": "marketing-band-cta",
+     "fill": "#242428",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.46386789484898
+    }
+   ],
+   "ruleW_hue_deg": 240.0,
+   "ruleW_sat": 0.05263157894736842,
+   "ruleW_light": 0.14901960784313725,
+   "ruleW_white_text_contrast_hypothetical": 15.46386789484898
   },
   {
    "id": "cjonstyle",
@@ -1156,7 +1480,31 @@
     61.36472054702632,
     -65.54562178867121
    ],
-   "ruleS_white_text_contrast_hypothetical": 9.420319994947757
+   "ruleS_white_text_contrast_hypothetical": 9.420319994947757,
+   "ruleW_primary": "#640faf",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "buy-button",
+     "fill": "#640faf",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 9.420319994947757
+    },
+    {
+     "component": "page-dot",
+     "fill": "#640faf",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 9.420319994947757
+    }
+   ],
+   "ruleW_hue_deg": 271.875,
+   "ruleW_sat": 0.8421052631578947,
+   "ruleW_light": 0.37254901960784315,
+   "ruleW_white_text_contrast_hypothetical": 9.420319994947757
   },
   {
    "id": "class101",
@@ -1186,7 +1534,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#ff5d00",
+   "ruleW_step": "file-main-token:brand",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 21.88235294117647,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.0801994564389035
   },
   {
    "id": "classting",
@@ -1234,7 +1591,16 @@
     -53.64683467889786,
     13.421541831538697
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.1644771105072382
+   "ruleS_white_text_contrast_hypothetical": 2.1644771105072382,
+   "ruleW_primary": "#00c896",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 165.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.39215686274509803,
+   "ruleW_white_text_contrast_hypothetical": 2.1644771105072382
   },
   {
    "id": "classum",
@@ -1315,7 +1681,38 @@
     69.02814857307904,
     49.45194342512453
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.4224508921824404
+   "ruleS_white_text_contrast_hypothetical": 3.4224508921824404,
+   "ruleW_primary": "#ff4438",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "nav-primary-action",
+     "fill": "#ff4438",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.4224508921824404
+    },
+    {
+     "component": "large-primary-action",
+     "fill": "#ff4438",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.4224508921824404
+    },
+    {
+     "component": "medium-primary-action",
+     "fill": "#ff4438",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.4224508921824404
+    }
+   ],
+   "ruleW_hue_deg": 3.618090452261302,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6098039215686275,
+   "ruleW_white_text_contrast_hypothetical": 3.4224508921824404
   },
   {
    "id": "codeit",
@@ -1391,7 +1788,38 @@
     75.69676465671404,
     -82.4217603707068
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.9157401390807935
+   "ruleS_white_text_contrast_hypothetical": 4.9157401390807935,
+   "ruleW_primary": "#9933ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-cta",
+     "fill": "#9933ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.9157401390807935
+    },
+    {
+     "component": "header-membership-button",
+     "fill": "#9933ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.9157401390807935
+    },
+    {
+     "component": "plan-cta",
+     "fill": "#9933ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.9157401390807935
+    }
+   ],
+   "ruleW_hue_deg": 270.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6,
+   "ruleW_white_text_contrast_hypothetical": 4.9157401390807935
   },
   {
    "id": "coinone",
@@ -1458,7 +1886,24 @@
     27.69177574084597,
     -69.21034844648588
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.169212441511175
+   "ruleS_white_text_contrast_hypothetical": 6.169212441511175,
+   "ruleW_primary": "#0b59d5",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "home-primary-cta",
+     "fill": "#0b59d5",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.169212441511175
+    }
+   ],
+   "ruleW_hue_deg": 216.8316831683168,
+   "ruleW_sat": 0.9017857142857144,
+   "ruleW_light": 0.4392156862745098,
+   "ruleW_white_text_contrast_hypothetical": 6.169212441511175
   },
   {
    "id": "corca",
@@ -1517,7 +1962,16 @@
     2.709121906388612,
     -46.66169557457576
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.333493664603234
+   "ruleS_white_text_contrast_hypothetical": 5.333493664603234,
+   "ruleW_primary": "#056eb9",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 205.00000000000003,
+   "ruleW_sat": 0.9473684210526314,
+   "ruleW_light": 0.37254901960784315,
+   "ruleW_white_text_contrast_hypothetical": 5.333493664603234
   },
   {
    "id": "coupang",
@@ -1547,7 +2001,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "dabang",
@@ -1614,7 +2073,24 @@
     31.46032482947486,
     -75.56564595717398
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.51753053041136
+   "ruleS_white_text_contrast_hypothetical": 4.51753053041136,
+   "ruleW_primary": "#326cf9",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "footer-primary-button",
+     "fill": "#326cf9",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.51753053041136
+    }
+   ],
+   "ruleW_hue_deg": 222.51256281407035,
+   "ruleW_sat": 0.9431279620853081,
+   "ruleW_light": 0.5862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 4.51753053041136
   },
   {
    "id": "danawa",
@@ -1668,7 +2144,16 @@
     22.343494746373928,
     -68.45501295149032
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.5864395308166435
+   "ruleS_white_text_contrast_hypothetical": 4.5864395308166435,
+   "ruleW_primary": "#2070eb",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 216.35467980295564,
+   "ruleW_sat": 0.8353909465020574,
+   "ruleW_light": 0.5235294117647058,
+   "ruleW_white_text_contrast_hypothetical": 4.5864395308166435
   },
   {
    "id": "datarize",
@@ -1713,7 +2198,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "dealicious",
@@ -1775,7 +2265,24 @@
     -4.199412345640141e-06,
     1.6797649382560564e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.909984431773273
+   "ruleS_white_text_contrast_hypothetical": 15.909984431773273,
+   "ruleW_primary": "#222222",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "recruit-pill",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 15.909984431773273
   },
   {
    "id": "digitalx",
@@ -1829,7 +2336,16 @@
     62.432960299354356,
     69.8884732955382
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.2207949213169744
+   "ruleS_white_text_contrast_hypothetical": 3.2207949213169744,
+   "ruleW_primary": "#ff5400",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 19.76470588235294,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.2207949213169744
   },
   {
    "id": "douzone",
@@ -1891,7 +2407,24 @@
     -11.690729381506838,
     -45.016793732954554
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.6223303749648803
+   "ruleS_white_text_contrast_hypothetical": 2.6223303749648803,
+   "ruleW_primary": "#00aaf0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "solution-menu",
+     "fill": "#00aaf0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.6223303749648803
+    }
+   ],
+   "ruleW_hue_deg": 197.50000000000003,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.47058823529411764,
+   "ruleW_white_text_contrast_hypothetical": 2.6223303749648803
   },
   {
    "id": "drdiary",
@@ -1945,7 +2478,16 @@
     -4.830449639700585,
     -49.00438025420162
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.4128924710614106
+   "ruleS_white_text_contrast_hypothetical": 2.4128924710614106,
+   "ruleW_primary": "#3eaeff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 205.18134715025903,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6215686274509804,
+   "ruleW_white_text_contrast_hypothetical": 2.4128924710614106
   },
   {
    "id": "drnow",
@@ -1993,7 +2535,16 @@
     36.31835788785243,
     75.61554662396077
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.3173818743805557
+   "ruleS_white_text_contrast_hypothetical": 2.3173818743805557,
+   "ruleW_primary": "#ff8d00",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 33.1764705882353,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 2.3173818743805557
   },
   {
    "id": "elice",
@@ -2068,7 +2619,31 @@
     -4.129311698131133e-06,
     1.6517246792524531e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 16.102191704447957
+   "ruleS_white_text_contrast_hypothetical": 16.102191704447957,
+   "ruleW_primary": "#212121",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#212121",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 16.102191704447957
+    },
+    {
+     "component": "large-primary-button",
+     "fill": "#212121",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 16.102191704447957
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.12941176470588237,
+   "ruleW_white_text_contrast_hypothetical": 16.102191704447957
   },
   {
    "id": "everytime",
@@ -2122,7 +2697,16 @@
     75.70157346139072,
     60.842836406708365
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.011637115600662
+   "ruleS_white_text_contrast_hypothetical": 4.011637115600662,
+   "ruleW_primary": "#f91f15",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 2.6315789473684226,
+   "ruleW_sat": 0.9500000000000001,
+   "ruleW_light": 0.5294117647058824,
+   "ruleW_white_text_contrast_hypothetical": 4.011637115600662
   },
   {
    "id": "finda",
@@ -2184,7 +2768,24 @@
     64.76319578160009,
     -89.33232941888713
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.148636298939668
+   "ruleS_white_text_contrast_hypothetical": 7.148636298939668,
+   "ruleW_primary": "#4e2eed",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-download-button",
+     "fill": "#4e2eed",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.148636298939668
+    }
+   ],
+   "ruleW_hue_deg": 250.05235602094243,
+   "ruleW_sat": 0.841409691629956,
+   "ruleW_light": 0.5549019607843138,
+   "ruleW_white_text_contrast_hypothetical": 7.148636298939668
   },
   {
    "id": "flex",
@@ -2229,7 +2830,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "frip",
@@ -2277,7 +2883,16 @@
     74.03605836480426,
     -88.39430884431476
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.957251131461539
+   "ruleS_white_text_contrast_hypothetical": 5.957251131461539,
+   "ruleW_primary": "#7a29fa",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 263.25358851674645,
+   "ruleW_sat": 0.954337899543379,
+   "ruleW_light": 0.5705882352941176,
+   "ruleW_white_text_contrast_hypothetical": 5.957251131461539
   },
   {
    "id": "furiosaai",
@@ -2353,7 +2968,38 @@
     71.11114984080463,
     61.58760227976137
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.8375768058518265
+   "ruleS_white_text_contrast_hypothetical": 4.8375768058518265,
+   "ruleW_primary": "#e21500",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-cta",
+     "fill": "#e21500",
+     "textColor": "#e1e1e1",
+     "text_hex": "#e1e1e1",
+     "ratio": 3.699328232681146
+    },
+    {
+     "component": "notice-close-button",
+     "fill": "#e21500",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.8375768058518265
+    },
+    {
+     "component": "access-form-submit",
+     "fill": "#e21500",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.8375768058518265
+    }
+   ],
+   "ruleW_hue_deg": 5.575221238938055,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.44313725490196076,
+   "ruleW_white_text_contrast_hypothetical": 4.8375768058518265
   },
   {
    "id": "gangnamunni",
@@ -2398,7 +3044,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "gaudiolab",
@@ -2460,7 +3111,24 @@
     -13.395321099453128,
     -46.16384852501314
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.2783010917435442
+   "ruleS_white_text_contrast_hypothetical": 2.2783010917435442,
+   "ruleW_primary": "#00b7ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "cta-hero",
+     "fill": "#00b7ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.2783010917435442
+    }
+   ],
+   "ruleW_hue_deg": 196.9411764705882,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 2.2783010917435442
   },
   {
    "id": "genesis",
@@ -2522,7 +3190,24 @@
     -2.182469621692107e-06,
     8.729878486768428e-07
    ],
-   "ruleS_white_text_contrast_hypothetical": 18.883060964594996
+   "ruleS_white_text_contrast_hypothetical": 18.883060964594996,
+   "ruleW_primary": "#111111",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "news-cta",
+     "fill": "#111111",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 18.883060964594996
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.06666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 18.883060964594996
   },
   {
    "id": "genie",
@@ -2576,7 +3261,16 @@
     5.346458274841758,
     -61.11172422930436
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.0852686538368137
+   "ruleS_white_text_contrast_hypothetical": 3.0852686538368137,
+   "ruleW_primary": "#0096ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 204.70588235294122,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.0852686538368137
   },
   {
    "id": "gmarket",
@@ -2630,7 +3324,16 @@
     -70.69730542212905,
     68.2335631855674
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.360619183008661
+   "ruleS_white_text_contrast_hypothetical": 2.360619183008661,
+   "ruleW_primary": "#00c400",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 120.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 2.360619183008661
   },
   {
    "id": "goodoc",
@@ -2692,7 +3395,24 @@
     25.031472625650142,
     -74.38441422250861
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.345379874721989
+   "ruleS_white_text_contrast_hypothetical": 4.345379874721989,
+   "ruleW_primary": "#0073fa",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "app-download",
+     "fill": "#0073fa",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.345379874721989
+    }
+   ],
+   "ruleW_hue_deg": 212.39999999999998,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.49019607843137253,
+   "ruleW_white_text_contrast_hypothetical": 4.345379874721989
   },
   {
    "id": "goorm",
@@ -2760,7 +3480,24 @@
     19.541378784579898,
     -64.50502535429881
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.5289833737692815
+   "ruleS_white_text_contrast_hypothetical": 4.5289833737692815,
+   "ruleW_primary": "#2a72e5",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "product-demo-primary",
+     "fill": "#2a72e5",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 216.89839572192514,
+   "ruleW_sat": 0.7824267782426778,
+   "ruleW_light": 0.5313725490196078,
+   "ruleW_white_text_contrast_hypothetical": 4.5289833737692815
   },
   {
    "id": "gov24",
@@ -2822,7 +3559,24 @@
     27.347452334428425,
     -73.12192440130256
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.550018540348443
+   "ruleS_white_text_contrast_hypothetical": 4.550018540348443,
+   "ruleW_primary": "#256ef4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-cta",
+     "fill": "#256ef4",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.550018540348443
+    }
+   ],
+   "ruleW_hue_deg": 218.84057971014494,
+   "ruleW_sat": 0.903930131004367,
+   "ruleW_light": 0.5509803921568628,
+   "ruleW_white_text_contrast_hypothetical": 4.550018540348443
   },
   {
    "id": "greencar",
@@ -2884,7 +3638,24 @@
     -4.199412345640141e-06,
     1.6797649382560564e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.909984431773273
+   "ruleS_white_text_contrast_hypothetical": 15.909984431773273,
+   "ruleW_primary": "#222222",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-fill",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 15.909984431773273
   },
   {
    "id": "greeting",
@@ -2946,7 +3717,24 @@
     9.659216457945375,
     -63.512332230981
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.2446756297921104
+   "ruleS_white_text_contrast_hypothetical": 3.2446756297921104,
+   "ruleW_primary": "#1890ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-demo-button",
+     "fill": "#1890ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.2446756297921104
+    }
+   ],
+   "ruleW_hue_deg": 208.83116883116884,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5470588235294118,
+   "ruleW_white_text_contrast_hypothetical": 3.2446756297921104
   },
   {
    "id": "hackle",
@@ -3022,7 +3810,38 @@
     39.223860190908674,
     -82.60323350757174
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.900409267024044
+   "ruleS_white_text_contrast_hypothetical": 4.900409267024044,
+   "ruleW_primary": "#2962ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-demo-button",
+     "fill": "#2962ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.900409267024044
+    },
+    {
+     "component": "contained-button",
+     "fill": "#2962ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.900409267024044
+    },
+    {
+     "component": "start-button",
+     "fill": "#2962ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.900409267024044
+    }
+   ],
+   "ruleW_hue_deg": 224.01869158878503,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5803921568627451,
+   "ruleW_white_text_contrast_hypothetical": 4.900409267024044
   },
   {
    "id": "hana",
@@ -3084,7 +3903,24 @@
     -29.16977771154372,
     -9.203766401530245
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.526645749649467
+   "ruleS_white_text_contrast_hypothetical": 4.526645749649467,
+   "ruleW_primary": "#008485",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "product-join-pill",
+     "fill": "#008485",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 180.45112781954887,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.2607843137254902,
+   "ruleW_white_text_contrast_hypothetical": 4.526645749649467
   },
   {
    "id": "hanatour",
@@ -3138,7 +3974,16 @@
     53.37854989732335,
     -65.53374400802606
    ],
-   "ruleS_white_text_contrast_hypothetical": 8.354465482661
+   "ruleS_white_text_contrast_hypothetical": 8.354465482661,
+   "ruleW_primary": "#5e2bb8",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 261.70212765957444,
+   "ruleW_sat": 0.6211453744493393,
+   "ruleW_light": 0.44509803921568625,
+   "ruleW_white_text_contrast_hypothetical": 8.354465482661
   },
   {
    "id": "hankyung",
@@ -3200,7 +4045,24 @@
     67.95937107890055,
     36.83762280292313
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.9193594885485386
+   "ruleS_white_text_contrast_hypothetical": 5.9193594885485386,
+   "ruleW_primary": "#ca002c",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "subscribe",
+     "fill": "#ca002c",
+     "textColor": "#f2dfcf",
+     "text_hex": "#f2dfcf",
+     "ratio": 4.575247256894917
+    }
+   ],
+   "ruleW_hue_deg": 346.9306930693069,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.396078431372549,
+   "ruleW_white_text_contrast_hypothetical": 5.9193594885485386
   },
   {
    "id": "heydealer",
@@ -3267,7 +4129,24 @@
     33.02076377518931,
     -76.96358590999803
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.331376224800399
+   "ruleS_white_text_contrast_hypothetical": 4.331376224800399,
+   "ruleW_primary": "#396eff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#396eff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.331376224800399
+    }
+   ],
+   "ruleW_hue_deg": 223.9393939393939,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.611764705882353,
+   "ruleW_white_text_contrast_hypothetical": 4.331376224800399
   },
   {
    "id": "hmall",
@@ -3315,7 +4194,16 @@
     68.78453236817606,
     59.89668717339354
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.4557531037177363
+   "ruleS_white_text_contrast_hypothetical": 3.4557531037177363,
+   "ruleW_primary": "#ff4321",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 9.189189189189188,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5647058823529412,
+   "ruleW_white_text_contrast_hypothetical": 3.4557531037177363
   },
   {
    "id": "humanscape",
@@ -3369,7 +4257,16 @@
     -10.811562677507048,
     -46.951448765907024
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.5238843186691193
+   "ruleS_white_text_contrast_hypothetical": 2.5238843186691193,
+   "ruleW_primary": "#00adf7",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 197.97570850202425,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 2.5238843186691193
   },
   {
    "id": "hwahae",
@@ -3414,7 +4311,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#3d3d3d",
+   "ruleW_step": "file-main-token:label",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "dark-block-button",
+     "fill": "#3d3d3d",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.23921568627450981,
+   "ruleW_white_text_contrast_hypothetical": 10.862246544121685
   },
   {
    "id": "hyperconnect",
@@ -3468,7 +4382,16 @@
     -60.79494128902985,
     20.97156805790734
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.7792746863971407
+   "ruleS_white_text_contrast_hypothetical": 1.7792746863971407,
+   "ruleW_primary": "#00dd99",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 161.53846153846152,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.43333333333333335,
+   "ruleW_white_text_contrast_hypothetical": 1.7792746863971407
   },
   {
    "id": "hyundai",
@@ -3530,7 +4453,24 @@
     8.76687584595534,
     -34.18396867335895
    ],
-   "ruleS_white_text_contrast_hypothetical": 13.765820271377336
+   "ruleS_white_text_contrast_hypothetical": 13.765820271377336,
+   "ruleW_primary": "#002c5f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "vehicle-action",
+     "fill": "#002c5f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 13.765820271377336
+    }
+   ],
+   "ruleW_hue_deg": 212.21052631578948,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.18627450980392157,
+   "ruleW_white_text_contrast_hypothetical": 13.765820271377336
   },
   {
    "id": "hyundaicard",
@@ -3575,7 +4515,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "idus",
@@ -3642,7 +4587,24 @@
     44.68800594099886,
     65.95710209433182
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.0008942523147817
+   "ruleS_white_text_contrast_hypothetical": 3.0008942523147817,
+   "ruleW_primary": "#ef7014",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#ef7014",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.0008942523147817
+    }
+   ],
+   "ruleW_hue_deg": 25.205479452054792,
+   "ruleW_sat": 0.8725099601593626,
+   "ruleW_light": 0.5078431372549019,
+   "ruleW_white_text_contrast_hypothetical": 3.0008942523147817
   },
   {
    "id": "iicombined",
@@ -3709,7 +4671,24 @@
     -2.182469621692107e-06,
     8.729878486768428e-07
    ],
-   "ruleS_white_text_contrast_hypothetical": 18.883060964594996
+   "ruleS_white_text_contrast_hypothetical": 18.883060964594996,
+   "ruleW_primary": "#111111",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#111111",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 18.883060964594996
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.06666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 18.883060964594996
   },
   {
    "id": "imweb",
@@ -3790,7 +4769,38 @@
     0.34808109677875176,
     -4.671418414357237
    ],
-   "ruleS_white_text_contrast_hypothetical": 17.77722156893842
+   "ruleS_white_text_contrast_hypothetical": 17.77722156893842,
+   "ruleW_primary": "#15181e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-cta",
+     "fill": "#15181e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 17.77722156893842
+    },
+    {
+     "component": "hero-cta",
+     "fill": "#15181e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 17.77722156893842
+    },
+    {
+     "component": "plan-cta-primary",
+     "fill": "#15181e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 17.77722156893842
+    }
+   ],
+   "ruleW_hue_deg": 220.00000000000003,
+   "ruleW_sat": 0.1764705882352941,
+   "ruleW_light": 0.1,
+   "ruleW_white_text_contrast_hypothetical": 17.77722156893842
   },
   {
    "id": "inflearn",
@@ -3852,7 +4862,24 @@
     -60.14572767936405,
     30.337141970527725
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.298996045395479
+   "ruleS_white_text_contrast_hypothetical": 2.298996045395479,
+   "ruleW_primary": "#00c471",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "product-search-submit",
+     "fill": "#00c471",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.298996045395479
+    }
+   ],
+   "ruleW_hue_deg": 154.59183673469389,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 2.298996045395479
   },
   {
    "id": "jandi",
@@ -3919,7 +4946,24 @@
     -59.76651067935435,
     29.344391662578673
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.296705465212286
+   "ruleS_white_text_contrast_hypothetical": 2.296705465212286,
+   "ruleW_primary": "#00c473",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-primary-action",
+     "fill": "#00c473",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.296705465212286
+    }
+   ],
+   "ruleW_hue_deg": 155.20408163265304,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 2.296705465212286
   },
   {
    "id": "jejuair",
@@ -3967,7 +5011,16 @@
     63.94157861154975,
     69.61695937180102
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.2815246688559143
+   "ruleS_white_text_contrast_hypothetical": 3.2815246688559143,
+   "ruleW_primary": "#ff5000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 18.823529411764707,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.2815246688559143
   },
   {
    "id": "jobplanet",
@@ -4015,7 +5068,16 @@
     -62.447934076465984,
     37.257519920762896
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.3379023523898645
+   "ruleS_white_text_contrast_hypothetical": 2.3379023523898645,
+   "ruleW_primary": "#00c362",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 150.15384615384616,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.38235294117647056,
+   "ruleW_white_text_contrast_hypothetical": 2.3379023523898645
   },
   {
    "id": "kakao",
@@ -4060,7 +5122,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#fee500",
+   "ruleW_step": "file-main-token:login",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "kakao-login",
+     "fill": "#fee500",
+     "textColor": "rgba(0, 0, 0, 0.85)",
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 54.09448818897638,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4980392156862745,
+   "ruleW_white_text_contrast_hypothetical": 1.2787808907246074
   },
   {
    "id": "kakaobank",
@@ -4114,7 +5193,16 @@
     -7.944971751452979,
     89.27842546720164
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.293132590720542
+   "ruleS_white_text_contrast_hypothetical": 1.293132590720542,
+   "ruleW_primary": "#ffe300",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 53.411764705882355,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 1.293132590720542
   },
   {
    "id": "kakaogames",
@@ -4144,7 +5232,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "kakaopage",
@@ -4206,7 +5299,24 @@
     -1.1867364552056725,
     84.46468947660021
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.410928440496347
+   "ruleS_white_text_contrast_hypothetical": 1.410928440496347,
+   "ruleW_primary": "#ffd618",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "first-episode-cta",
+     "fill": "#ffd618",
+     "textColor": "#222222",
+     "text_hex": "#222222",
+     "ratio": 11.276251846037168
+    }
+   ],
+   "ruleW_hue_deg": 49.35064935064935,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5470588235294118,
+   "ruleW_white_text_contrast_hypothetical": 1.410928440496347
   },
   {
    "id": "kakaopay",
@@ -4254,7 +5364,16 @@
     -11.899144998709588,
     90.73892174657631
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.225537947618001
+   "ruleS_white_text_contrast_hypothetical": 1.225537947618001,
+   "ruleW_primary": "#ffeb00",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 55.29411764705882,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 1.225537947618001
   },
   {
    "id": "kakaot",
@@ -4284,7 +5403,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "karrot",
@@ -4348,7 +5472,24 @@
     51.0670955903344,
     69.73285723268722
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.7878547274075838
+   "ruleS_white_text_contrast_hypothetical": 2.7878547274075838,
+   "ruleW_primary": "#ff6f0f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "box-button",
+     "fill": "#ff6f0f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.7878547274075838
+    }
+   ],
+   "ruleW_hue_deg": 24.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5294117647058824,
+   "ruleW_white_text_contrast_hypothetical": 2.7878547274075838
   },
   {
    "id": "kb-kookmin",
@@ -4378,7 +5519,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#ffcc00",
+   "ruleW_step": "file-main-token:header-accent",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 48.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 1.5119719826162943
   },
   {
    "id": "kbank",
@@ -4445,7 +5595,24 @@
     51.59722881367232,
     -75.19813696603029
    ],
-   "ruleS_white_text_contrast_hypothetical": 12.655504157491904
+   "ruleS_white_text_contrast_hypothetical": 12.655504157491904,
+   "ruleW_primary": "#0114a7",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "public-primary-action",
+     "fill": "#0114a7",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 12.655504157491904
+    }
+   ],
+   "ruleW_hue_deg": 233.1325301204819,
+   "ruleW_sat": 0.9880952380952381,
+   "ruleW_light": 0.32941176470588235,
+   "ruleW_white_text_contrast_hypothetical": 12.655504157491904
   },
   {
    "id": "kbinsurance",
@@ -4512,7 +5679,24 @@
     -2.6618375199601862,
     75.64062010952564
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.3584635941893985
+   "ruleS_white_text_contrast_hypothetical": 1.3584635941893985,
+   "ruleW_primary": "#ffdb40",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-primary",
+     "fill": "#ffdb40",
+     "textColor": "#333333",
+     "text_hex": "#333333",
+     "ratio": 9.300694106563192
+    }
+   ],
+   "ruleW_hue_deg": 48.69109947643979,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6254901960784314,
+   "ruleW_white_text_contrast_hypothetical": 1.3584635941893985
   },
   {
    "id": "kbpay",
@@ -4579,7 +5763,24 @@
     3.679771583161129,
     85.21749174327158
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.5119719826162943
+   "ruleS_white_text_contrast_hypothetical": 1.5119719826162943,
+   "ruleW_primary": "#ffcc00",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "yellow",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#ffcc00",
+     "textColor": "#000000",
+     "text_hex": "#000000",
+     "ratio": 13.889146254986752
+    }
+   ],
+   "ruleW_hue_deg": 48.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 1.5119719826162943
   },
   {
    "id": "kbs",
@@ -4627,7 +5828,16 @@
     -7.396793851265238,
     -43.68613691022358
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.5353554512758456
+   "ruleS_white_text_contrast_hypothetical": 3.5353554512758456,
+   "ruleW_primary": "#0090d4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 199.24528301886792,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.41568627450980394,
+   "ruleW_white_text_contrast_hypothetical": 3.5353554512758456
   },
   {
    "id": "kcd",
@@ -4681,7 +5891,16 @@
     10.37059867975898,
     -62.51881258314205
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1790546880495834
+   "ruleS_white_text_contrast_hypothetical": 3.1790546880495834,
+   "ruleW_primary": "#2d91ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 211.42857142857144,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5882352941176471,
+   "ruleW_white_text_contrast_hypothetical": 3.1790546880495834
   },
   {
    "id": "kia",
@@ -4748,7 +5967,24 @@
     -1.6468181513991098,
     -9.304755141815285
    ],
-   "ruleS_white_text_contrast_hypothetical": 18.645102339449355
+   "ruleS_white_text_contrast_hypothetical": 18.645102339449355,
+   "ruleW_primary": "#05141f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#05141f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 18.645102339449355
+    }
+   ],
+   "ruleW_hue_deg": 205.38461538461542,
+   "ruleW_sat": 0.7222222222222222,
+   "ruleW_light": 0.07058823529411765,
+   "ruleW_white_text_contrast_hypothetical": 18.645102339449355
   },
   {
    "id": "kiwoom",
@@ -4796,7 +6032,16 @@
     70.37205152550341,
     1.830813218579097
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.043486985233602
+   "ruleS_white_text_contrast_hypothetical": 4.043486985233602,
+   "ruleW_primary": "#e6367e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 335.4545454545455,
+   "ruleW_sat": 0.7787610619469025,
+   "ruleW_light": 0.5568627450980392,
+   "ruleW_white_text_contrast_hypothetical": 4.043486985233602
   },
   {
    "id": "kmong",
@@ -4863,7 +6108,24 @@
     -54.55414247277418,
     55.17749259793456
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.3011618141377086
+   "ruleS_white_text_contrast_hypothetical": 1.3011618141377086,
+   "ruleW_primary": "#92fa72",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "home-primary-cta",
+     "fill": "#92fa72",
+     "textColor": "#212224",
+     "text_hex": "#212224",
+     "ratio": 12.236544905357858
+    }
+   ],
+   "ruleW_hue_deg": 105.88235294117648,
+   "ruleW_sat": 0.9315068493150683,
+   "ruleW_light": 0.7137254901960784,
+   "ruleW_white_text_contrast_hypothetical": 1.3011618141377086
   },
   {
    "id": "koexpressway",
@@ -4908,7 +6170,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#063a74",
+   "ruleW_step": "file-main-token:service-fill",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "service-link",
+     "fill": "#063a74",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 11.259106714524775
+    }
+   ],
+   "ruleW_hue_deg": 211.63636363636363,
+   "ruleW_sat": 0.9016393442622952,
+   "ruleW_light": 0.2392156862745098,
+   "ruleW_white_text_contrast_hypothetical": 11.259106714524775
   },
   {
    "id": "krafton",
@@ -4956,7 +6235,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "krds",
@@ -5023,7 +6311,24 @@
     27.347452334428425,
     -73.12192440130256
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.550018540348443
+   "ruleS_white_text_contrast_hypothetical": 4.550018540348443,
+   "ruleW_primary": "#256ef4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#256ef4",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.550018540348443
+    }
+   ],
+   "ruleW_hue_deg": 218.84057971014494,
+   "ruleW_sat": 0.903930131004367,
+   "ruleW_light": 0.5509803921568628,
+   "ruleW_white_text_contrast_hypothetical": 4.550018540348443
   },
   {
    "id": "kream",
@@ -5077,7 +6382,16 @@
     -4.199412345640141e-06,
     1.6797649382560564e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.909984431773273
+   "ruleS_white_text_contrast_hypothetical": 15.909984431773273,
+   "ruleW_primary": "#222222",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 15.909984431773273
   },
   {
    "id": "kurly",
@@ -5131,7 +6445,16 @@
     53.71937339209645,
     -46.71284370560541
    ],
-   "ruleS_white_text_contrast_hypothetical": 11.67781397262292
+   "ruleS_white_text_contrast_hypothetical": 11.67781397262292,
+   "ruleW_primary": "#5f0080",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 284.53125,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.25098039215686274,
+   "ruleW_white_text_contrast_hypothetical": 11.67781397262292
   },
   {
    "id": "kyobobook",
@@ -5205,7 +6528,31 @@
     24.835099095191023,
     -49.84828549073145
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.411509997907513
+   "ruleS_white_text_contrast_hypothetical": 6.411509997907513,
+   "ruleW_primary": "#5055b1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "buy-now-button",
+     "fill": "#5055b1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.411509997907513
+    },
+    {
+     "component": "error-primary-button",
+     "fill": "#5055b1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.411509997907513
+    }
+   ],
+   "ruleW_hue_deg": 236.90721649484536,
+   "ruleW_sat": 0.38339920948616596,
+   "ruleW_light": 0.503921568627451,
+   "ruleW_white_text_contrast_hypothetical": 6.411509997907513
   },
   {
    "id": "laftel",
@@ -5253,7 +6600,16 @@
     45.456103311597055,
     -71.11407615049252
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.8317647825289023
+   "ruleS_white_text_contrast_hypothetical": 3.8317647825289023,
+   "ruleW_primary": "#816bff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 248.9189189189189,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.7098039215686275,
+   "ruleW_white_text_contrast_hypothetical": 3.8317647825289023
   },
   {
    "id": "laundrygo",
@@ -5329,7 +6685,38 @@
     -52.42993204988089,
     13.904789088931423
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.2995191861256976
+   "ruleS_white_text_contrast_hypothetical": 2.2995191861256976,
+   "ruleW_primary": "#0ac290",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "recruit-button",
+     "fill": "#0ac290",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.2995191861256976
+    },
+    {
+     "component": "floating-cta",
+     "fill": "#0ac290",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.2995191861256976
+    },
+    {
+     "component": "inquiry-button",
+     "fill": "#0ac290",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.2995191861256976
+    }
+   ],
+   "ruleW_hue_deg": 163.69565217391303,
+   "ruleW_sat": 0.9019607843137255,
+   "ruleW_light": 0.39999999999999997,
+   "ruleW_white_text_contrast_hypothetical": 2.2995191861256976
   },
   {
    "id": "lemonbase",
@@ -5404,7 +6791,38 @@
     -1.6666666158293708e-05,
     6.666666463317483e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.0
+   "ruleS_white_text_contrast_hypothetical": 1.0,
+   "ruleW_primary": "#ffffff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: white-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-primary-action",
+     "fill": "#ffffff",
+     "textColor": "#1a2128",
+     "text_hex": "#1a2128",
+     "ratio": 16.252546005316674
+    },
+    {
+     "component": "header-primary-action",
+     "fill": "#ffffff",
+     "textColor": "#1a2128",
+     "text_hex": "#1a2128",
+     "ratio": 16.252546005316674
+    },
+    {
+     "component": "inquiry-submit",
+     "fill": "#ffffff",
+     "textColor": "#1a2128",
+     "text_hex": "#1a2128",
+     "ratio": 16.252546005316674
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 1.0,
+   "ruleW_white_text_contrast_hypothetical": 1.0
   },
   {
    "id": "lezhin",
@@ -5452,7 +6870,16 @@
     75.4619500327347,
     57.28000681087829
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.622969446823345
+   "ruleS_white_text_contrast_hypothetical": 4.622969446823345,
+   "ruleW_primary": "#eb0014",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 354.8936170212766,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.46078431372549017,
+   "ruleW_white_text_contrast_hypothetical": 4.622969446823345
   },
   {
    "id": "lguplus",
@@ -5526,7 +6953,31 @@
     79.05628884145521,
     -2.584393203295754
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.500767879752513
+   "ruleS_white_text_contrast_hypothetical": 4.500767879752513,
+   "ruleW_primary": "#e6007e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "home-primary-cta",
+     "fill": "#e6007e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.500767879752513
+    },
+    {
+     "component": "subscription-purchase-cta",
+     "fill": "#e6007e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.500767879752513
+    }
+   ],
+   "ruleW_hue_deg": 327.1304347826087,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.45098039215686275,
+   "ruleW_white_text_contrast_hypothetical": 4.500767879752513
   },
   {
    "id": "likelion",
@@ -5580,7 +7031,16 @@
     57.58613363677212,
     70.80788563031521
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.032425977199499
+   "ruleS_white_text_contrast_hypothetical": 3.032425977199499,
+   "ruleW_primary": "#ff6000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 22.588235294117645,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.032425977199499
   },
   {
    "id": "liner",
@@ -5661,7 +7121,38 @@
     -37.21889702008874,
     26.08094572259676
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.441920575846451
+   "ruleS_white_text_contrast_hypothetical": 5.441920575846451,
+   "ruleW_primary": "#2c783c",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#2c783c",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.441920575846451
+    },
+    {
+     "component": "primary-button-xl",
+     "fill": "#2c783c",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.441920575846451
+    },
+    {
+     "component": "product-cta-pill",
+     "fill": "#2c783c",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.441920575846451
+    }
+   ],
+   "ruleW_hue_deg": 132.6315789473684,
+   "ruleW_sat": 0.4634146341463415,
+   "ruleW_light": 0.32156862745098036,
+   "ruleW_white_text_contrast_hypothetical": 5.441920575846451
   },
   {
    "id": "lotteon",
@@ -5709,7 +7200,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "makinarocks",
@@ -5757,7 +7257,16 @@
     4.2968538152000075,
     -10.179094980630598
    ],
-   "ruleS_white_text_contrast_hypothetical": 13.894196527451644
+   "ruleS_white_text_contrast_hypothetical": 13.894196527451644,
+   "ruleW_primary": "#2b2b3b",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 240.0,
+   "ruleW_sat": 0.1568627450980392,
+   "ruleW_light": 0.2,
+   "ruleW_white_text_contrast_hypothetical": 13.894196527451644
   },
   {
    "id": "marpple-shop",
@@ -5805,7 +7314,16 @@
     26.554753108697206,
     -75.2342034519621
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.16841080854011
+   "ruleS_white_text_contrast_hypothetical": 4.16841080854011,
+   "ruleW_primary": "#1c75ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 216.47577092511014,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5549019607843138,
+   "ruleW_white_text_contrast_hypothetical": 4.16841080854011
   },
   {
    "id": "maum-ai",
@@ -5867,7 +7385,24 @@
     41.30850887014709,
     -81.13817569367647
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.748205882792856
+   "ruleS_white_text_contrast_hypothetical": 4.748205882792856,
+   "ruleW_primary": "#4262ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "new-chat-button",
+     "fill": "#4262ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.748205882792856
+    }
+   ],
+   "ruleW_hue_deg": 229.84126984126982,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6294117647058823,
+   "ruleW_white_text_contrast_hypothetical": 4.748205882792856
   },
   {
    "id": "medibloc",
@@ -5915,7 +7450,16 @@
     35.196782352070024,
     -82.00610411070448
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.833643849926121
+   "ruleS_white_text_contrast_hypothetical": 4.833643849926121,
+   "ruleW_primary": "#0066ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 216.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.833643849926121
   },
   {
    "id": "megabox",
@@ -5977,7 +7521,24 @@
     37.32067331546732,
     -49.98778991777675
    ],
-   "ruleS_white_text_contrast_hypothetical": 9.312527332265718
+   "ruleS_white_text_contrast_hypothetical": 9.312527332265718,
+   "ruleW_primary": "#503396",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "booking-button",
+     "fill": "#503396",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 9.312527332265718
+    }
+   ],
+   "ruleW_hue_deg": 257.57575757575756,
+   "ruleW_sat": 0.4925373134328358,
+   "ruleW_light": 0.3941176470588236,
+   "ruleW_white_text_contrast_hypothetical": 9.312527332265718
   },
   {
    "id": "megastudy",
@@ -6022,7 +7583,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "megazone",
@@ -6070,7 +7636,16 @@
     55.26023924054474,
     -89.81172503782255
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.7561446920151855
+   "ruleS_white_text_contrast_hypothetical": 5.7561446920151855,
+   "ruleW_primary": "#414aff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 237.1578947368421,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6274509803921569,
+   "ruleW_white_text_contrast_hypothetical": 5.7561446920151855
   },
   {
    "id": "melon",
@@ -6115,7 +7690,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#00cd3c",
+   "ruleW_step": "file-main-token:signature-green",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 137.5609756097561,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4019607843137255,
+   "ruleW_white_text_contrast_hypothetical": 2.1433432172374847
   },
   {
    "id": "mildang",
@@ -6177,7 +7761,24 @@
     -49.124149593317014,
     5.552100896903611
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.823731181783
+   "ruleS_white_text_contrast_hypothetical": 1.823731181783,
+   "ruleW_primary": "#32d7b4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-cta",
+     "fill": "#32d7b4",
+     "textColor": "#07111f",
+     "text_hex": "#07111f",
+     "ratio": 10.383101944224236
+    }
+   ],
+   "ruleW_hue_deg": 167.27272727272728,
+   "ruleW_sat": 0.6734693877551021,
+   "ruleW_light": 0.5196078431372549,
+   "ruleW_white_text_contrast_hypothetical": 1.823731181783
   },
   {
    "id": "millie",
@@ -6222,7 +7823,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "miricanvas",
@@ -6296,7 +7902,31 @@
     -29.619040471822455,
     -18.3436959537435
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.6418506897584826
+   "ruleS_white_text_contrast_hypothetical": 2.6418506897584826,
+   "ruleW_primary": "#21afbf",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#21afbf",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.6418506897584826
+    },
+    {
+     "component": "hero-primary-cta",
+     "fill": "#21afbf",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.6418506897584826
+    }
+   ],
+   "ruleW_hue_deg": 186.07594936708858,
+   "ruleW_sat": 0.7053571428571429,
+   "ruleW_light": 0.4392156862745098,
+   "ruleW_white_text_contrast_hypothetical": 2.6418506897584826
   },
   {
    "id": "modetour",
@@ -6344,7 +7974,16 @@
     -44.44365116249621,
     10.781867250095223
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.4928642828494647
+   "ruleS_white_text_contrast_hypothetical": 3.4928642828494647,
+   "ruleW_primary": "#009c75",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 165.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3058823529411765,
+   "ruleW_white_text_contrast_hypothetical": 3.4928642828494647
   },
   {
    "id": "modusign",
@@ -6413,7 +8052,31 @@
     4.093068887686957,
     60.74569782410888
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.4581550257795872
+   "ruleS_white_text_contrast_hypothetical": 1.4581550257795872,
+   "ruleW_primary": "#fed05f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-cta",
+     "fill": "#fed05f",
+     "textColor": "#000000",
+     "text_hex": "#000000",
+     "ratio": 14.401760875029439
+    },
+    {
+     "component": "hero-cta",
+     "fill": "#fed05f",
+     "textColor": "#000000",
+     "text_hex": "#000000",
+     "ratio": 14.401760875029439
+    }
+   ],
+   "ruleW_hue_deg": 42.64150943396226,
+   "ruleW_sat": 0.9875776397515529,
+   "ruleW_light": 0.6843137254901961,
+   "ruleW_white_text_contrast_hypothetical": 1.4581550257795872
   },
   {
    "id": "moin",
@@ -6480,7 +8143,24 @@
     17.53159722169112,
     -70.03791642934996
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.725351014469383
+   "ruleS_white_text_contrast_hypothetical": 3.725351014469383,
+   "ruleW_primary": "#0082ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#0082ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.725351014469383
+    }
+   ],
+   "ruleW_hue_deg": 209.41176470588238,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.725351014469383
   },
   {
    "id": "moreh",
@@ -6547,7 +8227,24 @@
     61.264986401421304,
     70.10353763043429
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.174469764001277
+   "ruleS_white_text_contrast_hypothetical": 3.174469764001277,
+   "ruleW_primary": "#ff5700",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#ff5700",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.174469764001277
+    }
+   ],
+   "ruleW_hue_deg": 20.470588235294116,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.174469764001277
   },
   {
    "id": "munpia",
@@ -6614,7 +8311,24 @@
     15.403544506794987,
     -64.78185249119055
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7488014634756404
+   "ruleS_white_text_contrast_hypothetical": 3.7488014634756404,
+   "ruleW_primary": "#2882f5",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-primary",
+     "fill": "#2882f5",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.7488014634756404
+    }
+   ],
+   "ruleW_hue_deg": 213.65853658536582,
+   "ruleW_sat": 0.9111111111111113,
+   "ruleW_light": 0.5588235294117647,
+   "ruleW_white_text_contrast_hypothetical": 3.7488014634756404
   },
   {
    "id": "musinsa",
@@ -6662,7 +8376,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "myrealtrip",
@@ -6729,7 +8452,24 @@
     0.6231717241704793,
     -52.02626069401555
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.139885608977753
+   "ruleS_white_text_contrast_hypothetical": 3.139885608977753,
+   "ruleW_primary": "#2b96ed",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-header-action",
+     "fill": "#2b96ed",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.139885608977753
+    }
+   ],
+   "ruleW_hue_deg": 206.9072164948454,
+   "ruleW_sat": 0.8434782608695652,
+   "ruleW_light": 0.5490196078431373,
+   "ruleW_white_text_contrast_hypothetical": 3.139885608977753
   },
   {
    "id": "naver",
@@ -6774,7 +8514,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#03c75a",
+   "ruleW_step": "file-main-token:brand",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 146.63265306122452,
+   "ruleW_sat": 0.9702970297029704,
+   "ruleW_light": 0.396078431372549,
+   "ruleW_white_text_contrast_hypothetical": 2.2530065374207675
   },
   {
    "id": "naverpay",
@@ -6822,7 +8571,16 @@
     -54.68175701130756,
     30.038108679991304
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.036416658501426
+   "ruleS_white_text_contrast_hypothetical": 3.036416658501426,
+   "ruleW_primary": "#09aa5c",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 150.93167701863354,
+   "ruleW_sat": 0.8994413407821229,
+   "ruleW_light": 0.3509803921568627,
+   "ruleW_white_text_contrast_hypothetical": 3.036416658501426
   },
   {
    "id": "naverwebtoon",
@@ -6884,7 +8642,24 @@
     -70.07709719228549,
     46.043765318954556
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.838669879163407
+   "ruleS_white_text_contrast_hypothetical": 1.838669879163407,
+   "ruleW_primary": "#00dc64",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "creator-entry",
+     "fill": "#00dc64",
+     "textColor": "#000000",
+     "text_hex": "#000000",
+     "ratio": 11.421299841793774
+    }
+   ],
+   "ruleW_hue_deg": 147.27272727272728,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.43137254901960786,
+   "ruleW_white_text_contrast_hypothetical": 1.838669879163407
   },
   {
    "id": "ncsoft",
@@ -6940,7 +8715,24 @@
     -1.6666666158293708e-05,
     6.666666463317483e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.0
+   "ruleS_white_text_contrast_hypothetical": 1.0,
+   "ruleW_primary": "#ffffff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: white-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "portal-contained-button",
+     "fill": "#ffffff",
+     "textColor": "#252628",
+     "text_hex": "#252628",
+     "ratio": 15.145521654478703
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 1.0,
+   "ruleW_white_text_contrast_hypothetical": 1.0
   },
   {
    "id": "nexon",
@@ -6994,7 +8786,16 @@
     24.426968902081846,
     -74.83870080902287
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.131637657786873
+   "ruleS_white_text_contrast_hypothetical": 4.131637657786873,
+   "ruleW_primary": "#0077ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 212.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.131637657786873
   },
   {
    "id": "nhis",
@@ -7039,7 +8840,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#ee0000",
+   "ruleW_step": "file-main-token:nhis-primary",
+   "ruleW_basis": "identity+action+registry",
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "personal-login",
+     "fill": "#ee0000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.530325445433122
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 4.530325445433122
   },
   {
    "id": "nhn",
@@ -7093,7 +8911,16 @@
     1.3024676651234024,
     -3.3517082847600355
    ],
-   "ruleS_white_text_contrast_hypothetical": 16.028120065354454
+   "ruleS_white_text_contrast_hypothetical": 16.028120065354454,
+   "ruleW_primary": "#212126",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 240.0,
+   "ruleW_sat": 0.07042253521126755,
+   "ruleW_light": 0.1392156862745098,
+   "ruleW_white_text_contrast_hypothetical": 16.028120065354454
   },
   {
    "id": "nhncloud",
@@ -7169,7 +8996,38 @@
     31.904713959282628,
     -74.78769122670765
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.62385387641619
+   "ruleS_white_text_contrast_hypothetical": 5.62385387641619,
+   "ruleW_primary": "#125de6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "corporate-header-cta",
+     "fill": "#125de6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.62385387641619
+    },
+    {
+     "component": "corporate-section-cta",
+     "fill": "#125de6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.62385387641619
+    },
+    {
+     "component": "docs-header-cta",
+     "fill": "#125de6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.62385387641619
+    }
+   ],
+   "ruleW_hue_deg": 218.77358490566039,
+   "ruleW_sat": 0.8548387096774194,
+   "ruleW_light": 0.48627450980392156,
+   "ruleW_white_text_contrast_hypothetical": 5.62385387641619
   },
   {
    "id": "nota",
@@ -7217,7 +9075,16 @@
     33.20037744051252,
     -74.9509956619768
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.980145070243071
+   "ruleS_white_text_contrast_hypothetical": 4.980145070243071,
+   "ruleW_primary": "#3264f0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 224.21052631578945,
+   "ruleW_sat": 0.8636363636363636,
+   "ruleW_light": 0.5686274509803921,
+   "ruleW_white_text_contrast_hypothetical": 4.980145070243071
   },
   {
    "id": "ohouse",
@@ -7262,7 +9129,24 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#00a1ff",
+   "ruleW_step": "file-main-token:action",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "compact-blue-action",
+     "fill": "#00a1ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.7844266417000054
+    }
+   ],
+   "ruleW_hue_deg": 202.11764705882356,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 2.7844266417000054
   },
   {
    "id": "oliveyoung",
@@ -7292,7 +9176,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#82dc28",
+   "ruleW_step": "file-main-token:corporate-brand-green",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 90.0,
+   "ruleW_sat": 0.7200000000000001,
+   "ruleW_light": 0.5098039215686274,
+   "ruleW_white_text_contrast_hypothetical": 1.7189042547219977
   },
   {
    "id": "onestore",
@@ -7359,7 +9252,24 @@
     19.070332269544604,
     -32.582468774291506
    ],
-   "ruleS_white_text_contrast_hypothetical": 14.059613208522975
+   "ruleS_white_text_contrast_hypothetical": 14.059613208522975,
+   "ruleW_primary": "#28245b",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "game-primary-button",
+     "fill": "#28245b",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 14.059613208522975
+    }
+   ],
+   "ruleW_hue_deg": 244.36363636363635,
+   "ruleW_sat": 0.4330708661417323,
+   "ruleW_light": 0.24901960784313726,
+   "ruleW_white_text_contrast_hypothetical": 14.059613208522975
   },
   {
    "id": "payhere",
@@ -7428,7 +9338,31 @@
     24.042096115708233,
     -74.4024002600205
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.1421084430213515
+   "ruleS_white_text_contrast_hypothetical": 4.1421084430213515,
+   "ruleW_primary": "#0077fe",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "purchase-button",
+     "fill": "#0077fe",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.1421084430213515
+    },
+    {
+     "component": "detail-button",
+     "fill": "#0077fe",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.1421084430213515
+    }
+   ],
+   "ruleW_hue_deg": 211.88976377952756,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4980392156862745,
+   "ruleW_white_text_contrast_hypothetical": 4.1421084430213515
   },
   {
    "id": "peterpanz",
@@ -7476,7 +9410,16 @@
     -50.462708748400644,
     19.501210603047326
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.7604409470167135
+   "ruleS_white_text_contrast_hypothetical": 2.7604409470167135,
+   "ruleW_primary": "#1db177",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 156.48648648648646,
+   "ruleW_sat": 0.7184466019417475,
+   "ruleW_light": 0.403921568627451,
+   "ruleW_white_text_contrast_hypothetical": 2.7604409470167135
   },
   {
    "id": "petfriends",
@@ -7538,7 +9481,24 @@
     74.2681115041493,
     8.684459544163747
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.3320882086652337
+   "ruleS_white_text_contrast_hypothetical": 3.3320882086652337,
+   "ruleW_primary": "#ff4081",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "app-install-button",
+     "fill": "#ff4081",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.3320882086652337
+    }
+   ],
+   "ruleW_hue_deg": 339.5811518324607,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6254901960784314,
+   "ruleW_white_text_contrast_hypothetical": 3.3320882086652337
   },
   {
    "id": "pinkfong",
@@ -7612,7 +9572,31 @@
     64.92039259206334,
     -8.745798761721257
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.702154082440957
+   "ruleS_white_text_contrast_hypothetical": 2.702154082440957,
+   "ruleW_primary": "#ff66af",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "corporate-primary-action",
+     "fill": "#ff66af",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.702154082440957
+    },
+    {
+     "component": "business-primary-action",
+     "fill": "#ff66af",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.702154082440957
+    }
+   ],
+   "ruleW_hue_deg": 331.37254901960785,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.7,
+   "ruleW_white_text_contrast_hypothetical": 2.702154082440957
   },
   {
    "id": "portone",
@@ -7660,7 +9644,16 @@
     52.35706390356876,
     59.30153657548198
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.8845917217817805
+   "ruleS_white_text_contrast_hypothetical": 2.8845917217817805,
+   "ruleW_primary": "#fc6b2d",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 17.971014492753625,
+   "ruleW_sat": 0.9718309859154931,
+   "ruleW_light": 0.5823529411764706,
+   "ruleW_white_text_contrast_hypothetical": 2.8845917217817805
   },
   {
    "id": "postype",
@@ -7729,7 +9722,31 @@
     0.7311058772827839,
     -1.935324764759705
    ],
-   "ruleS_white_text_contrast_hypothetical": 13.921902135836932
+   "ruleS_white_text_contrast_hypothetical": 13.921902135836932,
+   "ruleW_primary": "#2c2c2f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "signup-button",
+     "fill": "#2c2c2f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 13.921902135836932
+    },
+    {
+     "component": "subscribe-button",
+     "fill": "#2c2c2f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 13.921902135836932
+    }
+   ],
+   "ruleW_hue_deg": 240.0,
+   "ruleW_sat": 0.032967032967033,
+   "ruleW_light": 0.1784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 13.921902135836932
   },
   {
    "id": "pozalabs",
@@ -7777,7 +9794,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "protopie",
@@ -7858,7 +9884,38 @@
     46.587392977208594,
     -71.81836398042148
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.890289740642125
+   "ruleS_white_text_contrast_hypothetical": 3.890289740642125,
+   "ruleW_primary": "#8169ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#8169ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.890289740642125
+    },
+    {
+     "component": "header-button",
+     "fill": "#8169ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.890289740642125
+    },
+    {
+     "component": "small-button",
+     "fill": "#8169ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.890289740642125
+    }
+   ],
+   "ruleW_hue_deg": 249.60000000000002,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.7058823529411764,
+   "ruleW_white_text_contrast_hypothetical": 3.890289740642125
   },
   {
    "id": "quotabook",
@@ -7927,7 +9984,31 @@
     -54.43157018496536,
     3.9287643146611817
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.5731646733725628
+   "ruleS_white_text_contrast_hypothetical": 1.5731646733725628,
+   "ruleW_primary": "#00e8c5",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "pay-button",
+     "fill": "#00e8c5",
+     "textColor": "#171b21",
+     "text_hex": "#171b21",
+     "ratio": 10.985239193435703
+    },
+    {
+     "component": "plan-button",
+     "fill": "#00e8c5",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 170.94827586206895,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4549019607843137,
+   "ruleW_white_text_contrast_hypothetical": 1.5731646733725628
   },
   {
    "id": "rebellions",
@@ -7994,7 +10075,24 @@
     -72.10439084090892,
     62.851909609602565
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.4191633878360022
+   "ruleS_white_text_contrast_hypothetical": 1.4191633878360022,
+   "ruleW_primary": "#52f756",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "cta-primary",
+     "fill": "#52f756",
+     "textColor": "#24292e",
+     "text_hex": "#24292e",
+     "ratio": 10.336012113259734
+    }
+   ],
+   "ruleW_hue_deg": 121.45454545454545,
+   "ruleW_sat": 0.9116022099447514,
+   "ruleW_light": 0.6450980392156863,
+   "ruleW_white_text_contrast_hypothetical": 1.4191633878360022
   },
   {
    "id": "remember",
@@ -8039,7 +10137,31 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#000000",
+   "ruleW_step": "file-main-token:action-black",
+   "ruleW_basis": "action+registry",
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "filled-auth-control",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    },
+    {
+     "component": "search-submit",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "returnzero",
@@ -8120,7 +10242,38 @@
     -4.199412345640141e-06,
     1.6797649382560564e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.909984431773273
+   "ruleS_white_text_contrast_hypothetical": 15.909984431773273,
+   "ruleW_primary": "#222222",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-cta",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    },
+    {
+     "component": "primary-cta",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    },
+    {
+     "component": "card-button",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 15.909984431773273
   },
   {
    "id": "ridi",
@@ -8150,7 +10303,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "ringle",
@@ -8212,7 +10370,24 @@
     71.11150975876568,
     -90.85031958109286
    ],
-   "ruleS_white_text_contrast_hypothetical": 9.516138696387799
+   "ruleS_white_text_contrast_hypothetical": 9.516138696387799,
+   "ruleW_primary": "#3e00d9",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "start-button",
+     "fill": "#3e00d9",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 9.516138696387799
+    }
+   ],
+   "ruleW_hue_deg": 257.14285714285717,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 9.516138696387799
   },
   {
    "id": "saltlux",
@@ -8260,7 +10435,16 @@
     1.3501799857764674,
     -56.52220560273877
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1077006180386912
+   "ruleS_white_text_contrast_hypothetical": 3.1077006180386912,
+   "ruleW_primary": "#0097f6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 203.17073170731706,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4823529411764706,
+   "ruleW_white_text_contrast_hypothetical": 3.1077006180386912
   },
   {
    "id": "samsung",
@@ -8322,7 +10506,24 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "contained-cta",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "samsungfire",
@@ -8384,7 +10585,24 @@
     33.93006218462863,
     -81.18295066017951
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.746700443804239
+   "ruleS_white_text_contrast_hypothetical": 4.746700443804239,
+   "ruleW_primary": "#0068ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login",
+     "fill": "#0068ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.746700443804239
+    }
+   ],
+   "ruleW_hue_deg": 215.52941176470588,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.746700443804239
   },
   {
    "id": "samsunghospital",
@@ -8446,7 +10664,24 @@
     12.7237635626426,
     -49.261270016196946
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.846549623378157
+   "ruleS_white_text_contrast_hypothetical": 7.846549623378157,
+   "ruleW_primary": "#0b50a1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "reserve-online",
+     "fill": "#0b50a1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.846549623378157
+    }
+   ],
+   "ruleW_hue_deg": 212.39999999999998,
+   "ruleW_sat": 0.8720930232558141,
+   "ruleW_light": 0.3372549019607843,
+   "ruleW_white_text_contrast_hypothetical": 7.846549623378157
   },
   {
    "id": "sandoll",
@@ -8500,7 +10735,16 @@
     79.68357592632447,
     67.251851454339
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.9787422245955146
+   "ruleS_white_text_contrast_hypothetical": 3.9787422245955146,
+   "ruleW_primary": "#ff0600",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 1.4117647058823546,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.9787422245955146
   },
   {
    "id": "saramin",
@@ -8548,7 +10792,16 @@
     36.38288468992273,
     -80.42572844265298
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.671154272722809
+   "ruleS_white_text_contrast_hypothetical": 4.671154272722809,
+   "ruleW_primary": "#2d67ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 223.42857142857144,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5882352941176471,
+   "ruleW_white_text_contrast_hypothetical": 4.671154272722809
   },
   {
    "id": "scatterlab",
@@ -8610,7 +10863,24 @@
     14.41526956485295,
     80.64001039878228
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.8055527202933457
+   "ruleS_white_text_contrast_hypothetical": 1.8055527202933457,
+   "ruleW_primary": "#fbb401",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "blog-header-cta",
+     "fill": "#fbb401",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 1.8055527202933457
+    }
+   ],
+   "ruleW_hue_deg": 42.96000000000001,
+   "ruleW_sat": 0.9920634920634921,
+   "ruleW_light": 0.4941176470588235,
+   "ruleW_white_text_contrast_hypothetical": 1.8055527202933457
   },
   {
    "id": "shiftee",
@@ -8691,7 +10961,38 @@
     27.381209433016558,
     -65.7465876585677
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.416296474412375
+   "ruleS_white_text_contrast_hypothetical": 7.416296474412375,
+   "ruleW_primary": "#004dc1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-button",
+     "fill": "#004dc1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.416296474412375
+    },
+    {
+     "component": "primary-button-lg",
+     "fill": "#004dc1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.416296474412375
+    },
+    {
+     "component": "square-button",
+     "fill": "#004dc1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.416296474412375
+    }
+   ],
+   "ruleW_hue_deg": 216.06217616580315,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 7.416296474412375
   },
   {
    "id": "shiftup",
@@ -8753,7 +11054,24 @@
     -38.64875345977398,
     38.53153925509517
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.4432005545949385
+   "ruleS_white_text_contrast_hypothetical": 3.4432005545949385,
+   "ruleW_primary": "#569a43",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "slider-arrow",
+     "fill": "#569a43",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.4432005545949385
+    }
+   ],
+   "ruleW_hue_deg": 106.89655172413794,
+   "ruleW_sat": 0.39366515837104066,
+   "ruleW_light": 0.43333333333333335,
+   "ruleW_white_text_contrast_hypothetical": 3.4432005545949385
   },
   {
    "id": "shinhanbank",
@@ -8798,7 +11116,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#0046ff",
+   "ruleW_step": "file-main-token:brand-primary",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 223.52941176470588,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 6.325180112429461
   },
   {
    "id": "shinhancard",
@@ -8865,7 +11192,24 @@
     38.63097918008601,
     -83.14581623563492
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.338551962755382
+   "ruleS_white_text_contrast_hypothetical": 5.338551962755382,
+   "ruleW_primary": "#005df9",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-action",
+     "fill": "#005df9",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 217.59036144578312,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.48823529411764705,
+   "ruleW_white_text_contrast_hypothetical": 5.338551962755382
   },
   {
    "id": "sktelecom",
@@ -8910,7 +11254,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "socar",
@@ -8977,7 +11326,24 @@
     23.796200095253404,
     -74.40665875884041
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.093097840170065
+   "ruleS_white_text_contrast_hypothetical": 4.093097840170065,
+   "ruleW_primary": "#0078ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-action",
+     "fill": "#0078ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.093097840170065
+    }
+   ],
+   "ruleW_hue_deg": 211.76470588235296,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.093097840170065
   },
   {
    "id": "soomgo",
@@ -9065,7 +11431,45 @@
     63.15607676418522,
     -84.17227409440822
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.985637284379697
+   "ruleS_white_text_contrast_hypothetical": 5.985637284379697,
+   "ruleW_primary": "#693bf2",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "indigo/violet",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-signup-button",
+     "fill": "#693bf2",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.985637284379697
+    },
+    {
+     "component": "search-header-signup-button",
+     "fill": "#693bf2",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.985637284379697
+    },
+    {
+     "component": "primary-cta",
+     "fill": "#693bf2",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.985637284379697
+    },
+    {
+     "component": "app-download-button",
+     "fill": "#693bf2",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.985637284379697
+    }
+   ],
+   "ruleW_hue_deg": 255.08196721311475,
+   "ruleW_sat": 0.8755980861244018,
+   "ruleW_light": 0.5901960784313726,
+   "ruleW_white_text_contrast_hypothetical": 5.985637284379697
   },
   {
    "id": "soop",
@@ -9119,7 +11523,16 @@
     17.555142149604684,
     -70.026899802465
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7244982948675087
+   "ruleS_white_text_contrast_hypothetical": 3.7244982948675087,
+   "ruleW_primary": "#0182ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 209.5275590551181,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5019607843137255,
+   "ruleW_white_text_contrast_hypothetical": 3.7244982948675087
   },
   {
    "id": "ssg",
@@ -9173,7 +11586,16 @@
     64.44002560821966,
     38.00717116775081
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1617131565055407
+   "ruleS_white_text_contrast_hypothetical": 3.1617131565055407,
+   "ruleW_primary": "#ff5452",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.6936416184971095,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6607843137254902,
+   "ruleW_white_text_contrast_hypothetical": 3.1617131565055407
   },
   {
    "id": "stayfolio",
@@ -9235,7 +11657,24 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "map-button",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "stibee",
@@ -9316,7 +11755,38 @@
     58.967962123737564,
     31.22468595564596
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.893004863663134
+   "ruleS_white_text_contrast_hypothetical": 2.893004863663134,
+   "ruleW_primary": "#ff6464",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#ff6464",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.893004863663134
+    },
+    {
+     "component": "button-primary-lg",
+     "fill": "#ff6464",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.893004863663134
+    },
+    {
+     "component": "button-plan",
+     "fill": "#ff6464",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.893004863663134
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.696078431372549,
+   "ruleW_white_text_contrast_hypothetical": 2.893004863663134
   },
   {
    "id": "tabling",
@@ -9370,7 +11840,16 @@
     69.4986891133818,
     64.99140594131264
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.6126372039199817
+   "ruleS_white_text_contrast_hypothetical": 3.6126372039199817,
+   "ruleW_primary": "#fc3d0e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 11.848739495798316,
+   "ruleW_sat": 0.9754098360655739,
+   "ruleW_light": 0.5215686274509804,
+   "ruleW_white_text_contrast_hypothetical": 3.6126372039199817
   },
   {
    "id": "teamsparta",
@@ -9432,7 +11911,24 @@
     79.54839502109046,
     48.06871579931787
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.111617680314791
+   "ruleS_white_text_contrast_hypothetical": 4.111617680314791,
+   "ruleW_primary": "#fa0030",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "enroll-cta",
+     "fill": "#fa0030",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.111617680314791
+    }
+   ],
+   "ruleW_hue_deg": 348.48,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.49019607843137253,
+   "ruleW_white_text_contrast_hypothetical": 4.111617680314791
   },
   {
    "id": "tellingme",
@@ -9486,7 +11982,16 @@
     -40.12505026284491,
     -8.256661321051295
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.316205046661972
+   "ruleS_white_text_contrast_hypothetical": 2.316205046661972,
+   "ruleW_primary": "#07beb8",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 178.0327868852459,
+   "ruleW_sat": 0.9289340101522843,
+   "ruleW_light": 0.3862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 2.316205046661972
   },
   {
    "id": "tmap",
@@ -9534,7 +12039,16 @@
     36.46165549240571,
     -82.82298171114006
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.9216420898805975
+   "ruleS_white_text_contrast_hypothetical": 4.9216420898805975,
+   "ruleW_primary": "#0064ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 216.47058823529412,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.9216420898805975
   },
   {
    "id": "toss",
@@ -9598,7 +12112,24 @@
     16.52961770207584,
     -64.8900406894223
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114
+   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114,
+   "ruleW_primary": "#3182f6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "tds-button",
+     "fill": "#3182f6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.7139150281338114
+    }
+   ],
+   "ruleW_hue_deg": 215.3299492385787,
+   "ruleW_sat": 0.916279069767442,
+   "ruleW_light": 0.5784313725490197,
+   "ruleW_white_text_contrast_hypothetical": 3.7139150281338114
   },
   {
    "id": "toss-securities",
@@ -9672,7 +12203,31 @@
     16.52961770207584,
     -64.8900406894223
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114
+   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114,
+   "ruleW_primary": "#3182f6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "wts-primary-entry",
+     "fill": "#3182f6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.7139150281338114
+    },
+    {
+     "component": "investment-primary",
+     "fill": "#3182f6",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.7139150281338114
+    }
+   ],
+   "ruleW_hue_deg": 215.3299492385787,
+   "ruleW_sat": 0.916279069767442,
+   "ruleW_light": 0.5784313725490197,
+   "ruleW_white_text_contrast_hypothetical": 3.7139150281338114
   },
   {
    "id": "tossbank",
@@ -9720,7 +12275,16 @@
     16.52961770207584,
     -64.8900406894223
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114
+   "ruleS_white_text_contrast_hypothetical": 3.7139150281338114,
+   "ruleW_primary": "#3182f6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 215.3299492385787,
+   "ruleW_sat": 0.916279069767442,
+   "ruleW_light": 0.5784313725490197,
+   "ruleW_white_text_contrast_hypothetical": 3.7139150281338114
   },
   {
    "id": "tving",
@@ -9765,7 +12329,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "upbit",
@@ -9795,7 +12364,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "upstage",
@@ -9876,7 +12450,38 @@
     53.50750628310963,
     -84.55770545685033
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.127270299389175
+   "ruleS_white_text_contrast_hypothetical": 5.127270299389175,
+   "ruleW_primary": "#5b52ff",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "public-primary-action",
+     "fill": "#5b52ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.127270299389175
+    },
+    {
+     "component": "hero-primary-action",
+     "fill": "#5b52ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.127270299389175
+    },
+    {
+     "component": "nav-contact-button",
+     "fill": "#5b52ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.127270299389175
+    }
+   ],
+   "ruleW_hue_deg": 243.121387283237,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6607843137254902,
+   "ruleW_white_text_contrast_hypothetical": 5.127270299389175
   },
   {
    "id": "visitkorea",
@@ -9938,7 +12543,24 @@
     29.23535222036516,
     -74.9137907298994
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.618171762616104
+   "ruleS_white_text_contrast_hypothetical": 4.618171762616104,
+   "ruleW_primary": "#236cf6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "search",
+     "fill": "#236cf6",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 219.24170616113744,
+   "ruleW_sat": 0.9213973799126638,
+   "ruleW_light": 0.5509803921568628,
+   "ruleW_white_text_contrast_hypothetical": 4.618171762616104
   },
   {
    "id": "vuno",
@@ -10000,7 +12622,24 @@
     -41.1581648651761,
     -10.008551189847292
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.5967972128192205
+   "ruleS_white_text_contrast_hypothetical": 1.5967972128192205,
+   "ruleW_primary": "#40e2de",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "filled-button",
+     "fill": "#40e2de",
+     "textColor": "#102135",
+     "text_hex": "#102135",
+     "ratio": 10.187065698799573
+    }
+   ],
+   "ruleW_hue_deg": 178.5185185185185,
+   "ruleW_sat": 0.7363636363636363,
+   "ruleW_light": 0.5686274509803921,
+   "ruleW_white_text_contrast_hypothetical": 1.5967972128192205
   },
   {
    "id": "wanted",
@@ -10062,7 +12701,24 @@
     35.196782352070024,
     -82.00610411070448
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.833643849926121
+   "ruleS_white_text_contrast_hypothetical": 4.833643849926121,
+   "ruleW_primary": "#0066ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "explore-cta",
+     "fill": "#0066ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.833643849926121
+    }
+   ],
+   "ruleW_hue_deg": 216.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 4.833643849926121
   },
   {
    "id": "watcha",
@@ -10129,7 +12785,24 @@
     74.84497419206542,
     21.954518110722532
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7673120274657927
+   "ruleS_white_text_contrast_hypothetical": 3.7673120274657927,
+   "ruleW_primary": "#f82f62",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#f82f62",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.7673120274657927
+    }
+   ],
+   "ruleW_hue_deg": 344.7761194029851,
+   "ruleW_sat": 0.9348837209302326,
+   "ruleW_light": 0.5784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 3.7673120274657927
   },
   {
    "id": "wavve",
@@ -10159,7 +12832,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "weverse",
@@ -10207,7 +12885,16 @@
     -37.45702282870717,
     -16.83974558282899
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.999391872684729
+   "ruleS_white_text_contrast_hypothetical": 1.999391872684729,
+   "ruleW_primary": "#00cbd5",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 182.81690140845072,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4176470588235294,
+   "ruleW_white_text_contrast_hypothetical": 1.999391872684729
   },
   {
    "id": "wooribank",
@@ -10252,7 +12939,16 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": "#0067ac",
+   "ruleW_step": "file-main-token:brand-deep-blue",
+   "ruleW_basis": "identity+registry",
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 204.06976744186048,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.33725490196078434,
+   "ruleW_white_text_contrast_hypothetical": 5.939232015816974
   },
   {
    "id": "wooricard",
@@ -10306,7 +13002,16 @@
     23.284575821054588,
     -70.3975558974941
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.846384091003432
+   "ruleS_white_text_contrast_hypothetical": 4.846384091003432,
+   "ruleW_primary": "#006cea",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 212.30769230769232,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4588235294117647,
+   "ruleW_white_text_contrast_hypothetical": 4.846384091003432
   },
   {
    "id": "wrtn",
@@ -10368,7 +13073,24 @@
     65.87074796911513,
     63.11556976089503
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.7037850124560294
+   "ruleS_white_text_contrast_hypothetical": 3.7037850124560294,
+   "ruleW_primary": "#f54211",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "recording-action",
+     "fill": "#f54211",
+     "textColor": null,
+     "text_hex": null,
+     "ratio": null
+    }
+   ],
+   "ruleW_hue_deg": 12.89473684210527,
+   "ruleW_sat": 0.9193548387096776,
+   "ruleW_light": 0.5137254901960785,
+   "ruleW_white_text_contrast_hypothetical": 3.7037850124560294
   },
   {
    "id": "yanolja",
@@ -10416,7 +13138,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "yeogiotte",
@@ -10492,7 +13223,38 @@
     12.938005849229494,
     -65.63127459999887
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.3929580124694807
+   "ruleS_white_text_contrast_hypothetical": 3.3929580124694807,
+   "ruleW_primary": "#1d8bff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button",
+     "fill": "#1d8bff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.3929580124694807
+    },
+    {
+     "component": "search-cta",
+     "fill": "#1d8bff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.3929580124694807
+    },
+    {
+     "component": "box-button",
+     "fill": "#1d8bff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.3929580124694807
+    }
+   ],
+   "ruleW_hue_deg": 210.7964601769912,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5568627450980392,
+   "ruleW_white_text_contrast_hypothetical": 3.3929580124694807
   },
   {
    "id": "yogiyo",
@@ -10540,7 +13302,16 @@
     80.64294397335465,
     30.091154286786093
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.053556265958595
+   "ruleS_white_text_contrast_hypothetical": 4.053556265958595,
+   "ruleW_primary": "#fa0050",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 340.8,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.49019607843137253,
+   "ruleW_white_text_contrast_hypothetical": 4.053556265958595
   },
   {
    "id": "zepeto",
@@ -10607,7 +13378,24 @@
     60.00743489393662,
     -88.22050922901153
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.562728541560745
+   "ruleS_white_text_contrast_hypothetical": 5.562728541560745,
+   "ruleW_primary": "#5c46ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "studio-primary-button",
+     "fill": "#5c46ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.562728541560745
+    }
+   ],
+   "ruleW_hue_deg": 247.13513513513513,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6372549019607843,
+   "ruleW_white_text_contrast_hypothetical": 5.562728541560745
   },
   {
    "id": "zigbang",
@@ -10655,7 +13443,16 @@
     54.3902414512078,
     65.93337322979053
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.897370102440912
+   "ruleS_white_text_contrast_hypothetical": 2.897370102440912,
+   "ruleW_primary": "#ff681b",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 20.263157894736846,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5529411764705883,
+   "ruleW_white_text_contrast_hypothetical": 2.897370102440912
   },
   {
    "id": "zigzag",
@@ -10700,7 +13497,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   }
  ],
  "JP": [
@@ -10732,7 +13534,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "ahamo",
@@ -10794,7 +13601,24 @@
     -28.535289820839637,
     -24.430529479204786
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.4643105333187543
+   "ruleS_white_text_contrast_hypothetical": 2.4643105333187543,
+   "ruleW_primary": "#01b5d0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-apply",
+     "fill": "#01b5d0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.4643105333187543
+    }
+   ],
+   "ruleW_hue_deg": 187.82608695652172,
+   "ruleW_sat": 0.9904306220095694,
+   "ruleW_light": 0.40980392156862744,
+   "ruleW_white_text_contrast_hypothetical": 2.4643105333187543
   },
   {
    "id": "andpad",
@@ -10863,7 +13687,31 @@
     69.76258010471147,
     39.182877692017115
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.024755581216497
+   "ruleS_white_text_contrast_hypothetical": 4.024755581216497,
+   "ruleW_primary": "#ef3340",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-download",
+     "fill": "#ef3340",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.024755581216497
+    },
+    {
+     "component": "header-contact",
+     "fill": "#ef3340",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.024755581216497
+    }
+   ],
+   "ruleW_hue_deg": 355.8510638297872,
+   "ruleW_sat": 0.8545454545454546,
+   "ruleW_light": 0.5686274509803921,
+   "ruleW_white_text_contrast_hypothetical": 4.024755581216497
   },
   {
    "id": "au",
@@ -10925,7 +13773,24 @@
     55.374482629410025,
     65.32648834798735
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.5995733059830775
+   "ruleS_white_text_contrast_hypothetical": 3.5995733059830775,
+   "ruleW_primary": "#eb5505",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "mobile-orange-action",
+     "fill": "#eb5505",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.5995733059830775
+    }
+   ],
+   "ruleW_hue_deg": 20.869565217391305,
+   "ruleW_sat": 0.9583333333333333,
+   "ruleW_light": 0.47058823529411764,
+   "ruleW_white_text_contrast_hypothetical": 3.5995733059830775
   },
   {
    "id": "base",
@@ -10970,7 +13835,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "booth",
@@ -11018,7 +13888,16 @@
     -26.480600575280288,
     -14.63766890116245
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.3090318025959538
+   "ruleS_white_text_contrast_hypothetical": 3.3090318025959538,
+   "ruleW_primary": "#2c9ba6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 185.40983606557376,
+   "ruleW_sat": 0.580952380952381,
+   "ruleW_light": 0.4117647058823529,
+   "ruleW_white_text_contrast_hypothetical": 3.3090318025959538
   },
   {
    "id": "caddi",
@@ -11077,7 +13956,16 @@
     36.76104001808309,
     -72.96808672553993
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.988176682906186
+   "ruleS_white_text_contrast_hypothetical": 6.988176682906186,
+   "ruleW_primary": "#224bd2",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 226.02272727272725,
+   "ruleW_sat": 0.7213114754098361,
+   "ruleW_light": 0.4784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 6.988176682906186
   },
   {
    "id": "chatwork",
@@ -11122,7 +14010,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "coconala",
@@ -11167,7 +14060,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "cookpad",
@@ -11234,7 +14132,24 @@
     31.026133524940434,
     65.72845943044861
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.1306177446025782
+   "ruleS_white_text_contrast_hypothetical": 2.1306177446025782,
+   "ruleW_primary": "#ff9933",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#ff9933",
+     "textColor": "#fcfcfb",
+     "text_hex": "#fcfcfb",
+     "ratio": 2.0754507500750714
+    }
+   ],
+   "ruleW_hue_deg": 30.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6,
+   "ruleW_white_text_contrast_hypothetical": 2.1306177446025782
   },
   {
    "id": "crowdworks",
@@ -11288,7 +14203,16 @@
     3.8283798260961843,
     -47.19546060733326
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.61934034779958
+   "ruleS_white_text_contrast_hypothetical": 5.61934034779958,
+   "ruleW_primary": "#006ab6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 205.05494505494508,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3568627450980392,
+   "ruleW_white_text_contrast_hypothetical": 5.61934034779958
   },
   {
    "id": "cybozu",
@@ -11342,7 +14266,16 @@
     -23.65490871159992,
     -23.44557226679349
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.2473277715418196
+   "ruleS_white_text_contrast_hypothetical": 3.2473277715418196,
+   "ruleW_primary": "#139cb7",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 189.87804878048777,
+   "ruleW_sat": 0.8118811881188119,
+   "ruleW_light": 0.396078431372549,
+   "ruleW_white_text_contrast_hypothetical": 3.2473277715418196
   },
   {
    "id": "cygames",
@@ -11404,7 +14337,24 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "company-cta",
+     "fill": "#000000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 21.0
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "daiwa",
@@ -11452,7 +14402,16 @@
     40.38321747683765,
     19.886387309141096
    ],
-   "ruleS_white_text_contrast_hypothetical": 12.872575627923696
+   "ruleS_white_text_contrast_hypothetical": 12.872575627923696,
+   "ruleW_primary": "#680717",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 350.10309278350513,
+   "ruleW_sat": 0.8738738738738738,
+   "ruleW_light": 0.21764705882352942,
+   "ruleW_white_text_contrast_hypothetical": 12.872575627923696
   },
   {
    "id": "demaecan",
@@ -11521,7 +14480,31 @@
     62.077236013099224,
     40.72268771995006
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.588010571139316
+   "ruleS_white_text_contrast_hypothetical": 4.588010571139316,
+   "ruleW_primary": "#da3734",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "main-login",
+     "fill": "#da3734",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.588010571139316
+    },
+    {
+     "component": "header-signup",
+     "fill": "#da3734",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.588010571139316
+    }
+   ],
+   "ruleW_hue_deg": 1.0843373493975839,
+   "ruleW_sat": 0.6916666666666665,
+   "ruleW_light": 0.5294117647058824,
+   "ruleW_white_text_contrast_hypothetical": 4.588010571139316
   },
   {
    "id": "digital-agency-jp",
@@ -11583,7 +14566,24 @@
     58.14187233849516,
     -84.16273957451537
    ],
-   "ruleS_white_text_contrast_hypothetical": 11.095790722930166
+   "ruleS_white_text_contrast_hypothetical": 11.095790722930166,
+   "ruleW_primary": "#0017c1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-filled",
+     "fill": "#0017c1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 11.095790722930166
+    }
+   ],
+   "ruleW_hue_deg": 232.84974093264248,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 11.095790722930166
   },
   {
    "id": "docomo-smtb-netbank",
@@ -11645,7 +14645,24 @@
     68.67880332327697,
     33.346319032004324
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.808683334082424
+   "ruleS_white_text_contrast_hypothetical": 5.808683334082424,
+   "ruleW_primary": "#cc0033",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "account-cta",
+     "fill": "#cc0033",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.808683334082424
+    }
+   ],
+   "ruleW_hue_deg": 345.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4,
+   "ruleW_white_text_contrast_hypothetical": 5.808683334082424
   },
   {
    "id": "doda",
@@ -11693,7 +14710,16 @@
     -3.931287211508594,
     -43.47762116924467
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.353436994605732
+   "ruleS_white_text_contrast_hypothetical": 4.353436994605732,
+   "ruleW_primary": "#007fc3",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 200.92307692307688,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.38235294117647056,
+   "ruleW_white_text_contrast_hypothetical": 4.353436994605732
   },
   {
    "id": "folio",
@@ -11760,7 +14786,24 @@
     55.745765902662725,
     29.16502459561061
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1541286308015204
+   "ruleS_white_text_contrast_hypothetical": 3.1541286308015204,
+   "ruleW_primary": "#f26161",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#f26161",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.1541286308015204
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.8479532163742689,
+   "ruleW_light": 0.6647058823529411,
+   "ruleW_white_text_contrast_hypothetical": 3.1541286308015204
   },
   {
    "id": "freee",
@@ -11834,7 +14877,31 @@
     32.39803633911442,
     -75.4503519754316
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.034346308440467
+   "ruleS_white_text_contrast_hypothetical": 5.034346308440467,
+   "ruleW_primary": "#2864f0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-primary",
+     "fill": "#2864f0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.034346308440467
+    },
+    {
+     "component": "primary-action",
+     "fill": "#2864f0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.034346308440467
+    }
+   ],
+   "ruleW_hue_deg": 222.0,
+   "ruleW_sat": 0.8695652173913043,
+   "ruleW_light": 0.5490196078431373,
+   "ruleW_white_text_contrast_hypothetical": 5.034346308440467
   },
   {
    "id": "fujitsu",
@@ -11879,7 +14946,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "hatena",
@@ -11941,7 +15013,24 @@
     -6.100997623853743,
     -49.60578221499159
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.882011905155651
+   "ruleS_white_text_contrast_hypothetical": 2.882011905155651,
+   "ruleW_primary": "#00a0f0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-signup",
+     "fill": "#00a0f0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.882011905155651
+    }
+   ],
+   "ruleW_hue_deg": 199.99999999999997,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.47058823529411764,
+   "ruleW_white_text_contrast_hypothetical": 2.882011905155651
   },
   {
    "id": "jal",
@@ -12008,7 +15097,24 @@
     67.69592937371604,
     56.80163735699535
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.886518279744077
+   "ruleS_white_text_contrast_hypothetical": 5.886518279744077,
+   "ruleW_primary": "#cc0000",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#cc0000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.886518279744077
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4,
+   "ruleW_white_text_contrast_hypothetical": 5.886518279744077
   },
   {
    "id": "japanpostbank",
@@ -12070,7 +15176,24 @@
     -58.858779313835875,
     56.80759985625832
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.779362192666118
+   "ruleS_white_text_contrast_hypothetical": 3.779362192666118,
+   "ruleW_primary": "#009900",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "nav-atm",
+     "fill": "#009900",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.779362192666118
+    }
+   ],
+   "ruleW_hue_deg": 120.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3,
+   "ruleW_white_text_contrast_hypothetical": 3.779362192666118
   },
   {
    "id": "kakuyomu",
@@ -12132,7 +15255,24 @@
     -11.290553643576507,
     -35.44845276406665
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.584480206535868
+   "ruleS_white_text_contrast_hypothetical": 2.584480206535868,
+   "ruleW_primary": "#4baae0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "signup",
+     "fill": "#4baae0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.584480206535868
+    }
+   ],
+   "ruleW_hue_deg": 201.74496644295303,
+   "ruleW_sat": 0.7061611374407583,
+   "ruleW_light": 0.5862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 2.584480206535868
   },
   {
    "id": "kaonavi",
@@ -12201,7 +15341,31 @@
     12.612698716901406,
     -55.08089015847624
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.9194452309988534
+   "ruleS_white_text_contrast_hypothetical": 3.9194452309988534,
+   "ruleW_primary": "#447fe0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "contact",
+     "fill": "#447fe0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.9194452309988534
+    },
+    {
+     "component": "trial",
+     "fill": "#447fe0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.9194452309988534
+    }
+   ],
+   "ruleW_hue_deg": 217.3076923076923,
+   "ruleW_sat": 0.7155963302752294,
+   "ruleW_light": 0.5725490196078431,
+   "ruleW_white_text_contrast_hypothetical": 3.9194452309988534
   },
   {
    "id": "kodansha",
@@ -12249,7 +15413,16 @@
     29.38842407593137,
     -51.03107093175324
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.19835803671368
+   "ruleS_white_text_contrast_hypothetical": 15.19835803671368,
+   "ruleW_primary": "#001a70",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 226.0714285714286,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.2196078431372549,
+   "ruleW_white_text_contrast_hypothetical": 15.19835803671368
   },
   {
    "id": "line",
@@ -12323,7 +15496,31 @@
     -65.43931821417121,
     44.92479813172934
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.256053821013603
+   "ruleS_white_text_contrast_hypothetical": 2.256053821013603,
+   "ruleW_primary": "#06c755",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "box-button-primary",
+     "fill": "#06c755",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.256053821013603
+    },
+    {
+     "component": "capsule-button",
+     "fill": "#06c755",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.256053821013603
+    }
+   ],
+   "ruleW_hue_deg": 144.55958549222797,
+   "ruleW_sat": 0.9414634146341463,
+   "ruleW_light": 0.4019607843137255,
+   "ruleW_white_text_contrast_hypothetical": 2.256053821013603
   },
   {
    "id": "loglass",
@@ -12390,7 +15587,24 @@
     28.55036611847042,
     -65.6357126520663
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.74718641640084
+   "ruleS_white_text_contrast_hypothetical": 6.74718641640084,
+   "ruleW_primary": "#2352c8",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#2352c8",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.74718641640084
+    }
+   ],
+   "ruleW_hue_deg": 222.9090909090909,
+   "ruleW_sat": 0.702127659574468,
+   "ruleW_light": 0.4607843137254902,
+   "ruleW_white_text_contrast_hypothetical": 6.74718641640084
   },
   {
    "id": "mercari",
@@ -12435,7 +15649,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "mixi",
@@ -12465,7 +15684,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "mizuho",
@@ -12527,7 +15751,24 @@
     33.186782042311904,
     -73.0687854411447
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.769329761997128
+   "ruleS_white_text_contrast_hypothetical": 5.769329761997128,
+   "ruleW_primary": "#285ae1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-lottery",
+     "fill": "#285ae1",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.769329761997128
+    }
+   ],
+   "ruleW_hue_deg": 223.78378378378378,
+   "ruleW_sat": 0.7551020408163265,
+   "ruleW_light": 0.5196078431372548,
+   "ruleW_white_text_contrast_hypothetical": 5.769329761997128
   },
   {
    "id": "muji",
@@ -12572,7 +15813,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "mynavi",
@@ -12602,7 +15848,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "nec",
@@ -12671,7 +15922,31 @@
     35.06182228887017,
     -79.66373557010907
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.593452501425386
+   "ruleS_white_text_contrast_hypothetical": 4.593452501425386,
+   "ruleW_primary": "#2c69ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "purpose",
+     "fill": "#2c69ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.593452501425386
+    },
+    {
+     "component": "about",
+     "fill": "#2c69ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.593452501425386
+    }
+   ],
+   "ruleW_hue_deg": 222.65402843601896,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 4.593452501425386
   },
   {
    "id": "newspicks",
@@ -12716,7 +15991,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "nintendo",
@@ -12790,7 +16070,31 @@
     74.23203498411767,
     56.84005977382881
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.8018292421102515
+   "ruleS_white_text_contrast_hypothetical": 4.8018292421102515,
+   "ruleW_primary": "#e60012",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#e60012",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.8018292421102515
+    },
+    {
+     "component": "pause-pill",
+     "fill": "#e60012",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.8018292421102515
+    }
+   ],
+   "ruleW_hue_deg": 355.30434782608694,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.45098039215686275,
+   "ruleW_white_text_contrast_hypothetical": 4.8018292421102515
   },
   {
    "id": "nissan",
@@ -12859,7 +16163,31 @@
     66.3543022720518,
     33.02037060180238
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.247271261097188
+   "ruleS_white_text_contrast_hypothetical": 6.247271261097188,
+   "ruleW_primary": "#c3002f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-catalog",
+     "fill": "#c3002f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.247271261097188
+    },
+    {
+     "component": "info-all",
+     "fill": "#c3002f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.247271261097188
+    }
+   ],
+   "ruleW_hue_deg": 345.53846153846155,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.38235294117647056,
+   "ruleW_white_text_contrast_hypothetical": 6.247271261097188
   },
   {
    "id": "nomura",
@@ -12921,7 +16249,24 @@
     62.26032439377993,
     45.16880590057506
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.548922187916431
+   "ruleS_white_text_contrast_hypothetical": 5.548922187916431,
+   "ruleW_primary": "#ca2420",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-action",
+     "fill": "#ca2420",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.548922187916431
+    }
+   ],
+   "ruleW_hue_deg": 1.4117647058823612,
+   "ruleW_sat": 0.7264957264957265,
+   "ruleW_light": 0.4588235294117647,
+   "ruleW_white_text_contrast_hypothetical": 5.548922187916431
   },
   {
    "id": "note",
@@ -12988,7 +16333,24 @@
     -1.7694244394235863,
     -5.953445165226567
    ],
-   "ruleS_white_text_contrast_hypothetical": 18.77699217732257
+   "ruleS_white_text_contrast_hypothetical": 18.77699217732257,
+   "ruleW_primary": "#08131a",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#08131a",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 18.77699217732257
+    }
+   ],
+   "ruleW_hue_deg": 203.33333333333337,
+   "ruleW_sat": 0.5294117647058824,
+   "ruleW_light": 0.06666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 18.77699217732257
   },
   {
    "id": "nulab",
@@ -13062,7 +16424,31 @@
     45.15146997746006,
     70.21749004500863
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.9422066519466115
+   "ruleS_white_text_contrast_hypothetical": 2.9422066519466115,
+   "ruleW_primary": "#f27100",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "backlog-button-primary",
+     "fill": "#f27100",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.9422066519466115
+    },
+    {
+     "component": "backlog-cta-primary",
+     "fill": "#f27100",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.9422066519466115
+    }
+   ],
+   "ruleW_hue_deg": 28.016528925619834,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4745098039215686,
+   "ruleW_white_text_contrast_hypothetical": 2.9422066519466115
   },
   {
    "id": "pairs",
@@ -13110,7 +16496,16 @@
     -33.085580436414745,
     -20.896119534840185
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.192369133293188
+   "ruleS_white_text_contrast_hypothetical": 2.192369133293188,
+   "ruleW_primary": "#00c1d4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 185.37735849056605,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.41568627450980394,
+   "ruleW_white_text_contrast_hypothetical": 2.192369133293188
   },
   {
    "id": "panasonic",
@@ -13140,7 +16535,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "paypay",
@@ -13194,7 +16594,16 @@
     80.79759066632076,
     47.82937510439085
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.9624112214966294
+   "ruleS_white_text_contrast_hypothetical": 3.9624112214966294,
+   "ruleW_primary": "#ff0033",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 348.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 3.9624112214966294
   },
   {
    "id": "pixiv",
@@ -13261,7 +16670,24 @@
     3.4531297113063464,
     -58.821467858017385
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1143573961249613
+   "ruleS_white_text_contrast_hypothetical": 3.1143573961249613,
+   "ruleW_primary": "#0096fa",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#0096fa",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 3.1143573961249613
+    }
+   ],
+   "ruleW_hue_deg": 204.00000000000003,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.49019607843137253,
+   "ruleW_white_text_contrast_hypothetical": 3.1143573961249613
   },
   {
    "id": "qiita",
@@ -13328,7 +16754,24 @@
     -40.775691372841706,
     49.506562476347604
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.33646373686417
+   "ruleS_white_text_contrast_hypothetical": 5.33646373686417,
+   "ruleW_primary": "#357a00",
+   "ruleW_step": "ruleS:primary-named-button",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#357a00",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.33646373686417
+    }
+   ],
+   "ruleW_hue_deg": 93.9344262295082,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.23921568627450981,
+   "ruleW_white_text_contrast_hypothetical": 5.33646373686417
   },
   {
    "id": "raksul",
@@ -13390,7 +16833,24 @@
     11.395648925865808,
     -54.33180236053205
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.869582272147954
+   "ruleS_white_text_contrast_hypothetical": 5.869582272147954,
+   "ruleW_primary": "#0264bf",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login-button",
+     "fill": "#0264bf",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.869582272147954
+    }
+   ],
+   "ruleW_hue_deg": 208.88888888888889,
+   "ruleW_sat": 0.9792746113989638,
+   "ruleW_light": 0.3784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 5.869582272147954
   },
   {
    "id": "rakus",
@@ -13452,7 +16912,24 @@
     35.384922131605876,
     72.04748254611403
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.640986935286275
+   "ruleS_white_text_contrast_hypothetical": 2.640986935286275,
+   "ruleW_primary": "#f08300",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "mission-cta",
+     "fill": "#f08300",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.640986935286275
+    }
+   ],
+   "ruleW_hue_deg": 32.75,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.47058823529411764,
+   "ruleW_white_text_contrast_hypothetical": 2.640986935286275
   },
   {
    "id": "rakutenbank",
@@ -13521,7 +16998,31 @@
     64.4470399796038,
     54.07559106610853
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.53132683981264
+   "ruleS_white_text_contrast_hypothetical": 6.53132683981264,
+   "ruleW_primary": "#bf0000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "header-open",
+     "fill": "#bf0000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.53132683981264
+    },
+    {
+     "component": "hero-open",
+     "fill": "#bf0000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.53132683981264
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.37450980392156863,
+   "ruleW_white_text_contrast_hypothetical": 6.53132683981264
   },
   {
    "id": "rakutensec",
@@ -13583,7 +17084,24 @@
     64.4470399796038,
     54.07559106610853
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.53132683981264
+   "ruleS_white_text_contrast_hypothetical": 6.53132683981264,
+   "ruleW_primary": "#bf0000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "account-open",
+     "fill": "#bf0000",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.53132683981264
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.37450980392156863,
+   "ruleW_white_text_contrast_hypothetical": 6.53132683981264
   },
   {
    "id": "recruit",
@@ -13613,7 +17131,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "sakura-internet",
@@ -13661,7 +17184,16 @@
     66.36347834035573,
     17.810632666271896
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.0801807443043243
+   "ruleS_white_text_contrast_hypothetical": 3.0801807443043243,
+   "ruleW_primary": "#ff5577",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 348.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6666666666666666,
+   "ruleW_white_text_contrast_hypothetical": 3.0801807443043243
   },
   {
    "id": "sbisec",
@@ -13723,7 +17255,24 @@
     28.885613316089437,
     -54.87121048345167
    ],
-   "ruleS_white_text_contrast_hypothetical": 12.510093265880668
+   "ruleS_white_text_contrast_hypothetical": 12.510093265880668,
+   "ruleW_primary": "#092987",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "login",
+     "fill": "#092987",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 12.510093265880668
+    }
+   ],
+   "ruleW_hue_deg": 224.76190476190476,
+   "ruleW_sat": 0.875,
+   "ruleW_light": 0.2823529411764706,
+   "ruleW_white_text_contrast_hypothetical": 12.510093265880668
   },
   {
    "id": "sega",
@@ -13785,7 +17334,24 @@
     -3.0132656114046363,
     -45.454880410548306
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.161789521885888
+   "ruleS_white_text_contrast_hypothetical": 4.161789521885888,
+   "ruleW_primary": "#0082ca",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "topics-cta",
+     "fill": "#0082ca",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.161789521885888
+    }
+   ],
+   "ruleW_hue_deg": 201.38613861386142,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.396078431372549,
+   "ruleW_white_text_contrast_hypothetical": 4.161789521885888
   },
   {
    "id": "serendie",
@@ -13839,7 +17405,16 @@
     14.85214993326256,
     -59.3788407201884
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.337352594491064
+   "ruleS_white_text_contrast_hypothetical": 5.337352594491064,
+   "ruleW_primary": "#0a69cf",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 211.06598984771574,
+   "ruleW_sat": 0.9078341013824885,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 5.337352594491064
   },
   {
    "id": "shueisha",
@@ -13893,7 +17468,16 @@
     -17.752099613455307,
     -26.027694115864787
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.2736664357786305
+   "ruleS_white_text_contrast_hypothetical": 3.2736664357786305,
+   "ruleW_primary": "#3399bb",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 195.0,
+   "ruleW_sat": 0.5714285714285713,
+   "ruleW_light": 0.4666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 3.2736664357786305
   },
   {
    "id": "smartbank",
@@ -13923,7 +17507,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "smarthr",
@@ -13990,7 +17579,24 @@
     2.485982142451826,
     -49.21754111938379
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.704897012995011
+   "ruleS_white_text_contrast_hypothetical": 4.704897012995011,
+   "ruleW_primary": "#0077c7",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#0077c7",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.704897012995011
+    }
+   ],
+   "ruleW_hue_deg": 204.12060301507537,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.39019607843137255,
+   "ruleW_white_text_contrast_hypothetical": 4.704897012995011
   },
   {
    "id": "smartnews",
@@ -14038,7 +17644,16 @@
     -3.9535545379760784,
     -50.46984187704986
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1082907096589154
+   "ruleS_white_text_contrast_hypothetical": 3.1082907096589154,
+   "ruleW_primary": "#0099eb",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 200.93617021276594,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.46078431372549017,
+   "ruleW_white_text_contrast_hypothetical": 3.1082907096589154
   },
   {
    "id": "softbank",
@@ -14068,7 +17683,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "sony",
@@ -14116,7 +17736,16 @@
     0.0,
     0.0
    ],
-   "ruleS_white_text_contrast_hypothetical": 21.0
+   "ruleS_white_text_contrast_hypothetical": 21.0,
+   "ruleW_primary": "#000000",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: black-ish",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.0,
+   "ruleW_white_text_contrast_hypothetical": 21.0
   },
   {
    "id": "studio",
@@ -14183,7 +17812,24 @@
     -4.199412345640141e-06,
     1.6797649382560564e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 15.909984431773273
+   "ruleS_white_text_contrast_hypothetical": 15.909984431773273,
+   "ruleW_primary": "#222222",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#222222",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 15.909984431773273
+    }
+   ],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.13333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 15.909984431773273
   },
   {
    "id": "studysapuri",
@@ -14237,7 +17883,16 @@
     22.57809350494985,
     -55.790430500230016
    ],
-   "ruleS_white_text_contrast_hypothetical": 9.218769679932377
+   "ruleS_white_text_contrast_hypothetical": 9.218769679932377,
+   "ruleW_primary": "#0b41a0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 218.25503355704697,
+   "ruleW_sat": 0.8713450292397662,
+   "ruleW_light": 0.3352941176470588,
+   "ruleW_white_text_contrast_hypothetical": 9.218769679932377
   },
   {
    "id": "subaru",
@@ -14285,7 +17940,16 @@
     9.825388215348424,
     -46.04939133238894
    ],
-   "ruleS_white_text_contrast_hypothetical": 8.253270077913825
+   "ruleS_white_text_contrast_hypothetical": 8.253270077913825,
+   "ruleW_primary": "#014e98",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 209.4039735099338,
+   "ruleW_sat": 0.9869281045751634,
+   "ruleW_light": 0.3,
+   "ruleW_white_text_contrast_hypothetical": 8.253270077913825
   },
   {
    "id": "syosetu",
@@ -14315,7 +17979,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "teamlab",
@@ -14345,7 +18014,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "tokyo",
@@ -14390,7 +18064,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "tokyo-metropolitan",
@@ -14444,7 +18123,16 @@
     -39.02760396915492,
     22.492182758774348
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.737368527912994
+   "ruleS_white_text_contrast_hypothetical": 5.737368527912994,
+   "ruleW_primary": "#1a753f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 144.39560439560438,
+   "ruleW_sat": 0.6363636363636362,
+   "ruleW_light": 0.2803921568627451,
+   "ruleW_white_text_contrast_hypothetical": 5.737368527912994
   },
   {
    "id": "toyokeizai",
@@ -14498,7 +18186,16 @@
     -19.360238197918488,
     -30.02349950355554
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.1949840109941183
+   "ruleS_white_text_contrast_hypothetical": 3.1949840109941183,
+   "ruleW_primary": "#0f9cc4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 193.2596685082873,
+   "ruleW_sat": 0.8578199052132701,
+   "ruleW_light": 0.41372549019607846,
+   "ruleW_white_text_contrast_hypothetical": 3.1949840109941183
   },
   {
    "id": "toyota",
@@ -14546,7 +18243,16 @@
     -8.750394174100034,
     -23.062853094133917
    ],
-   "ruleS_white_text_contrast_hypothetical": 8.962523712125812
+   "ruleS_white_text_contrast_hypothetical": 8.962523712125812,
+   "ruleW_primary": "#034f6d",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 196.9811320754717,
+   "ruleW_sat": 0.9464285714285714,
+   "ruleW_light": 0.2196078431372549,
+   "ruleW_white_text_contrast_hypothetical": 8.962523712125812
   },
   {
    "id": "tver",
@@ -14591,7 +18297,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "ubie",
@@ -14665,7 +18376,31 @@
     27.818469451762084,
     -63.07203091311402
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.043427198628799
+   "ruleS_white_text_contrast_hypothetical": 6.043427198628799,
+   "ruleW_primary": "#3959cc",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-news",
+     "fill": "#3959cc",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.043427198628799
+    },
+    {
+     "component": "header-contact",
+     "fill": "#3959cc",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.043427198628799
+    }
+   ],
+   "ruleW_hue_deg": 226.93877551020407,
+   "ruleW_sat": 0.5903614457831327,
+   "ruleW_light": 0.511764705882353,
+   "ruleW_white_text_contrast_hypothetical": 6.043427198628799
   },
   {
    "id": "unext",
@@ -14710,7 +18445,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "yomiuri",
@@ -14755,7 +18495,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "zenn",
@@ -14829,7 +18574,31 @@
     -1.4470851785619576,
     -51.67220914106665
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.545491781110486
+   "ruleS_white_text_contrast_hypothetical": 2.545491781110486,
+   "ruleW_primary": "#3ea8ff",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "button-primary",
+     "fill": "#3ea8ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.545491781110486
+    },
+    {
+     "component": "button-signin",
+     "fill": "#3ea8ff",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.545491781110486
+    }
+   ],
+   "ruleW_hue_deg": 207.0466321243523,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.6215686274509804,
+   "ruleW_white_text_contrast_hypothetical": 2.545491781110486
   },
   {
    "id": "zozotown",
@@ -14877,7 +18646,16 @@
     -4.952715931816343e-06,
     1.981086372726537e-06
    ],
-   "ruleS_white_text_contrast_hypothetical": 13.772077281869057
+   "ruleS_white_text_contrast_hypothetical": 13.772077281869057,
+   "ruleW_primary": "#2d2d2d",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "achromatic: grey",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.0,
+   "ruleW_light": 0.17647058823529413,
+   "ruleW_white_text_contrast_hypothetical": 13.772077281869057
   }
  ],
  "TW": [
@@ -14941,7 +18719,24 @@
     34.27963604096734,
     76.13818396507406
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.2575402853901245
+   "ruleS_white_text_contrast_hypothetical": 2.2575402853901245,
+   "ruleW_primary": "#ff9100",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "search-action",
+     "fill": "#ff9100",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 2.2575402853901245
+    }
+   ],
+   "ruleW_hue_deg": 34.11764705882353,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 2.2575402853901245
   },
   {
    "id": "1111",
@@ -14986,7 +18781,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "1111-jobbank",
@@ -15048,7 +18848,24 @@
     29.0980597963591,
     -73.19344933154393
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.032122352434773
+   "ruleS_white_text_contrast_hypothetical": 5.032122352434773,
+   "ruleW_primary": "#2066ec",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "search-button",
+     "fill": "#2066ec",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.032122352434773
+    }
+   ],
+   "ruleW_hue_deg": 219.41176470588238,
+   "ruleW_sat": 0.8429752066115703,
+   "ruleW_light": 0.5254901960784314,
+   "ruleW_white_text_contrast_hypothetical": 5.032122352434773
   },
   {
    "id": "acer",
@@ -15115,7 +18932,24 @@
     -42.10078086437258,
     55.579093481265815
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.1417794602865667
+   "ruleS_white_text_contrast_hypothetical": 2.1417794602865667,
+   "ruleW_primary": "#80c343",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-cta",
+     "fill": "#80c343",
+     "textColor": "#222222",
+     "text_hex": "#222222",
+     "ratio": 7.42839527915005
+    }
+   ],
+   "ruleW_hue_deg": 91.40625,
+   "ruleW_sat": 0.5161290322580645,
+   "ruleW_light": 0.5137254901960784,
+   "ruleW_white_text_contrast_hypothetical": 2.1417794602865667
   },
   {
    "id": "books",
@@ -15163,7 +18997,16 @@
     -56.42225045115312,
     34.26583936562857
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.9094881627718303
+   "ruleS_white_text_contrast_hypothetical": 2.9094881627718303,
+   "ruleW_primary": "#12ae57",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 146.53846153846155,
+   "ruleW_sat": 0.8125000000000001,
+   "ruleW_light": 0.3764705882352941,
+   "ruleW_white_text_contrast_hypothetical": 2.9094881627718303
   },
   {
    "id": "cgmh",
@@ -15217,7 +19060,16 @@
     35.75445285240075,
     65.95726468968178
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.4802336749790523
+   "ruleS_white_text_contrast_hypothetical": 2.4802336749790523,
+   "ruleW_primary": "#f68825",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 28.42105263157894,
+   "ruleW_sat": 0.9207048458149781,
+   "ruleW_light": 0.5549019607843138,
+   "ruleW_white_text_contrast_hypothetical": 2.4802336749790523
   },
   {
    "id": "china-airlines",
@@ -15284,7 +19136,24 @@
     9.149490800478526,
     -43.50503828357254
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.26783265136881
+   "ruleS_white_text_contrast_hypothetical": 7.26783265136881,
+   "ruleW_primary": "#23569d",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "action-primary-blue",
+     "fill": "#23569d",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.26783265136881
+    }
+   ],
+   "ruleW_hue_deg": 214.91803278688522,
+   "ruleW_sat": 0.6354166666666667,
+   "ruleW_light": 0.3764705882352941,
+   "ruleW_white_text_contrast_hypothetical": 7.26783265136881
   },
   {
    "id": "chinatimes",
@@ -15351,7 +19220,24 @@
     63.28493213711053,
     45.886498494987734
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.61537234698795
+   "ruleS_white_text_contrast_hypothetical": 6.61537234698795,
+   "ruleW_primary": "#bc0614",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "subscribe-primary",
+     "fill": "#bc0614",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 6.61537234698795
+    }
+   ],
+   "ruleW_hue_deg": 355.3846153846154,
+   "ruleW_sat": 0.9381443298969071,
+   "ruleW_light": 0.38039215686274513,
+   "ruleW_white_text_contrast_hypothetical": 6.61537234698795
   },
   {
    "id": "cw",
@@ -15399,7 +19285,16 @@
     69.35641000492876,
     50.81293379349401
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.350309413416047
+   "ruleS_white_text_contrast_hypothetical": 5.350309413416047,
+   "ruleW_primary": "#d60c18",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 356.43564356435644,
+   "ruleW_sat": 0.8938053097345134,
+   "ruleW_light": 0.44313725490196076,
+   "ruleW_white_text_contrast_hypothetical": 5.350309413416047
   },
   {
    "id": "ecpay",
@@ -15447,7 +19342,16 @@
     -43.363757586163565,
     24.9520845672077
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.597257782329852
+   "ruleS_white_text_contrast_hypothetical": 5.597257782329852,
+   "ruleW_primary": "#00783c",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "green",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 150.0,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.23529411764705882,
+   "ruleW_white_text_contrast_hypothetical": 5.597257782329852
   },
   {
    "id": "eslite",
@@ -15477,7 +19381,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "evaair",
@@ -15507,7 +19416,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "familymart-tw",
@@ -15537,7 +19451,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "fetnet",
@@ -15604,7 +19523,24 @@
     69.02273017417309,
     53.56641286864271
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.522356273146798
+   "ruleS_white_text_contrast_hypothetical": 5.522356273146798,
+   "ruleW_primary": "#d3060f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-cta",
+     "fill": "#d3060f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.522356273146798
+    }
+   ],
+   "ruleW_hue_deg": 357.3658536585366,
+   "ruleW_sat": 0.944700460829493,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 5.522356273146798
   },
   {
    "id": "firstbank",
@@ -15666,7 +19602,24 @@
     -29.636287940840887,
     2.484713790417059
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.952786996298644
+   "ruleS_white_text_contrast_hypothetical": 4.952786996298644,
+   "ruleW_primary": "#297d6b",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "more-products",
+     "fill": "#297d6b",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.952786996298644
+    }
+   ],
+   "ruleW_hue_deg": 167.14285714285714,
+   "ruleW_sat": 0.506024096385542,
+   "ruleW_light": 0.3254901960784314,
+   "ruleW_white_text_contrast_hypothetical": 4.952786996298644
   },
   {
    "id": "fubon",
@@ -15714,7 +19667,16 @@
     -16.10949034258319,
     -32.94985730766471
    ],
-   "ruleS_white_text_contrast_hypothetical": 3.5332487526726073
+   "ruleS_white_text_contrast_hypothetical": 3.5332487526726073,
+   "ruleW_primary": "#0093c1",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 194.30051813471502,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3784313725490196,
+   "ruleW_white_text_contrast_hypothetical": 3.5332487526726073
   },
   {
    "id": "hahow",
@@ -15768,7 +19730,16 @@
     -47.52564354347783,
     0.03621104734623515
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.039586673310773
+   "ruleS_white_text_contrast_hypothetical": 2.039586673310773,
+   "ruleW_primary": "#00ccb4",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 172.94117647058823,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.4,
+   "ruleW_white_text_contrast_hypothetical": 2.039586673310773
   },
   {
    "id": "hncb",
@@ -15837,7 +19808,31 @@
     61.57114097411146,
     46.05601571115295
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.184197087690588
+   "ruleS_white_text_contrast_hypothetical": 7.184197087690588,
+   "ruleW_primary": "#b3000e",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "online-login",
+     "fill": "#b3000e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.184197087690588
+    },
+    {
+     "component": "rates-more",
+     "fill": "#b3000e",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.184197087690588
+    }
+   ],
+   "ruleW_hue_deg": 355.3072625698324,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3509803921568627,
+   "ruleW_white_text_contrast_hypothetical": 7.184197087690588
   },
   {
    "id": "htc",
@@ -15885,7 +19880,16 @@
     -44.34586369289034,
     3.8829234444764937
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.8087954401663842
+   "ruleS_white_text_contrast_hypothetical": 1.8087954401663842,
+   "ruleW_primary": "#4bd6b8",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 167.0503597122302,
+   "ruleW_sat": 0.6289592760180998,
+   "ruleW_light": 0.5666666666666667,
+   "ruleW_white_text_contrast_hypothetical": 1.8087954401663842
   },
   {
    "id": "ikala",
@@ -15947,7 +19951,24 @@
     8.188997794096931,
     -22.60260721566447
    ],
-   "ruleS_white_text_contrast_hypothetical": 18.415819312560984
+   "ruleS_white_text_contrast_hypothetical": 18.415819312560984,
+   "ruleW_primary": "#061232",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "hero-cta",
+     "fill": "#061232",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 18.415819312560984
+    }
+   ],
+   "ruleW_hue_deg": 223.63636363636363,
+   "ruleW_sat": 0.7857142857142857,
+   "ruleW_light": 0.10980392156862745,
+   "ruleW_white_text_contrast_hypothetical": 18.415819312560984
   },
   {
    "id": "kkbox",
@@ -16006,7 +20027,16 @@
     -28.139227206283866,
     -31.436540840481065
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.8798839654107902
+   "ruleS_white_text_contrast_hypothetical": 1.8798839654107902,
+   "ruleW_primary": "#09cef6",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 190.12658227848098,
+   "ruleW_sat": 0.9294117647058824,
+   "ruleW_light": 0.5,
+   "ruleW_white_text_contrast_hypothetical": 1.8798839654107902
   },
   {
    "id": "kkday",
@@ -16060,7 +20090,16 @@
     -33.32213639674625,
     -16.361398864207022
    ],
-   "ruleS_white_text_contrast_hypothetical": 2.260201908929615
+   "ruleS_white_text_contrast_hypothetical": 2.260201908929615,
+   "ruleW_primary": "#26bec9",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "teal/cyan",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 184.04907975460122,
+   "ruleW_sat": 0.6820083682008368,
+   "ruleW_light": 0.46862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 2.260201908929615
   },
   {
    "id": "megabank",
@@ -16108,7 +20147,16 @@
     47.164216531659584,
     -33.56483161954089
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.268168678198799
+   "ruleS_white_text_contrast_hypothetical": 6.268168678198799,
+   "ruleW_primary": "#903f98",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 294.60674157303373,
+   "ruleW_sat": 0.413953488372093,
+   "ruleW_light": 0.4215686274509804,
+   "ruleW_white_text_contrast_hypothetical": 6.268168678198799
   },
   {
    "id": "metrotaipei",
@@ -16162,7 +20210,16 @@
     -3.5893501911570813,
     -37.763106154764124
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.928256064753535
+   "ruleS_white_text_contrast_hypothetical": 5.928256064753535,
+   "ruleW_primary": "#0069a2",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 201.11111111111111,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3176470588235294,
+   "ruleW_white_text_contrast_hypothetical": 5.928256064753535
   },
   {
    "id": "nanshanlife",
@@ -16231,7 +20288,31 @@
     3.089474990233043,
     -47.71427481469763
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.250073724016073
+   "ruleS_white_text_contrast_hypothetical": 5.250073724016073,
+   "ruleW_primary": "#006fbc",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "online-cta",
+     "fill": "#006fbc",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.250073724016073
+    },
+    {
+     "component": "news-cta",
+     "fill": "#006fbc",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.250073724016073
+    }
+   ],
+   "ruleW_hue_deg": 204.5744680851064,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3686274509803922,
+   "ruleW_white_text_contrast_hypothetical": 5.250073724016073
   },
   {
    "id": "pinkoi",
@@ -16293,7 +20374,24 @@
     -6.4523342066078735,
     -26.70744856717161
    ],
-   "ruleS_white_text_contrast_hypothetical": 7.957079329124869
+   "ruleS_white_text_contrast_hypothetical": 7.957079329124869,
+   "ruleW_primary": "#10567b",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "search-cta",
+     "fill": "#10567b",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 7.957079329124869
+    }
+   ],
+   "ruleW_hue_deg": 200.7476635514019,
+   "ruleW_sat": 0.7697841726618704,
+   "ruleW_light": 0.27254901960784317,
+   "ruleW_white_text_contrast_hypothetical": 7.957079329124869
   },
   {
    "id": "poya",
@@ -16360,7 +20458,24 @@
     75.94454978937881,
     3.1141398076630855
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.879216331049115
+   "ruleS_white_text_contrast_hypothetical": 4.879216331049115,
+   "ruleW_primary": "#dd006f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "magenta/pink",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "primary-pill-action",
+     "fill": "#dd006f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.879216331049115
+    }
+   ],
+   "ruleW_hue_deg": 329.86425339366514,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.43333333333333335,
+   "ruleW_white_text_contrast_hypothetical": 4.879216331049115
   },
   {
    "id": "railway",
@@ -16422,7 +20537,24 @@
     -5.237357432283929,
     -32.85839385232219
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.440341508007764
+   "ruleS_white_text_contrast_hypothetical": 5.440341508007764,
+   "ruleW_primary": "#256fa0",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "query",
+     "fill": "#256fa0",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 5.440341508007764
+    }
+   ],
+   "ruleW_hue_deg": 203.90243902439025,
+   "ruleW_sat": 0.6243654822335024,
+   "ruleW_light": 0.3862745098039216,
+   "ruleW_white_text_contrast_hypothetical": 5.440341508007764
   },
   {
    "id": "taishinbank",
@@ -16452,7 +20584,12 @@
    "ruleS_named_button": null,
    "ruleS_family": null,
    "ruleS_token_vs_button_differ": null,
-   "ruleS_buttons_on_primary": []
+   "ruleS_buttons_on_primary": [],
+   "ruleW_primary": null,
+   "ruleW_step": null,
+   "ruleW_basis": null,
+   "ruleW_family": null,
+   "ruleW_buttons_on_primary": []
   },
   {
    "id": "thsr",
@@ -16514,7 +20651,24 @@
     46.38005965106373,
     56.2593790735315
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.5291788003481175
+   "ruleS_white_text_contrast_hypothetical": 4.5291788003481175,
+   "ruleW_primary": "#ca4f0f",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "public-booking-action",
+     "fill": "#ca4f0f",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 4.5291788003481175
+    }
+   ],
+   "ruleW_hue_deg": 20.53475935828877,
+   "ruleW_sat": 0.8617511520737327,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 4.5291788003481175
   },
   {
    "id": "tigerair",
@@ -16576,7 +20730,24 @@
     21.250893171278985,
     66.94632005247027
    ],
-   "ruleS_white_text_contrast_hypothetical": 1.9591160859288497
+   "ruleS_white_text_contrast_hypothetical": 1.9591160859288497,
+   "ruleW_primary": "#faa836",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "orange",
+   "ruleW_buttons_on_primary": [
+    {
+     "component": "search-flights",
+     "fill": "#faa836",
+     "textColor": "#ffffff",
+     "text_hex": "#ffffff",
+     "ratio": 1.9591160859288497
+    }
+   ],
+   "ruleW_hue_deg": 34.89795918367347,
+   "ruleW_sat": 0.9514563106796117,
+   "ruleW_light": 0.596078431372549,
+   "ruleW_white_text_contrast_hypothetical": 1.9591160859288497
   },
   {
    "id": "tsmc",
@@ -16624,7 +20795,16 @@
     54.08245999489086,
     34.34827626115745
    ],
-   "ruleS_white_text_contrast_hypothetical": 6.399784754245453
+   "ruleS_white_text_contrast_hypothetical": 6.399784754245453,
+   "ruleW_primary": "#b32a2a",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "red",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 0.0,
+   "ruleW_sat": 0.6199095022624435,
+   "ruleW_light": 0.4333333333333333,
+   "ruleW_white_text_contrast_hypothetical": 6.399784754245453
   },
   {
    "id": "udn",
@@ -16678,7 +20858,16 @@
     -4.407077004902393,
     -34.12117140875819
    ],
-   "ruleS_white_text_contrast_hypothetical": 4.892029662856341
+   "ruleS_white_text_contrast_hypothetical": 4.892029662856341,
+   "ruleW_primary": "#2f76aa",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 205.3658536585366,
+   "ruleW_sat": 0.5668202764976958,
+   "ruleW_light": 0.42549019607843136,
+   "ruleW_white_text_contrast_hypothetical": 4.892029662856341
   },
   {
    "id": "yuanta",
@@ -16726,7 +20915,16 @@
     4.521377292225015,
     -47.176671760717625
    ],
-   "ruleS_white_text_contrast_hypothetical": 5.847898144503586
+   "ruleS_white_text_contrast_hypothetical": 5.847898144503586,
+   "ruleW_primary": "#0067b3",
+   "ruleW_step": "ruleS:primary-token",
+   "ruleW_basis": null,
+   "ruleW_family": "blue",
+   "ruleW_buttons_on_primary": [],
+   "ruleW_hue_deg": 205.47486033519556,
+   "ruleW_sat": 1.0,
+   "ruleW_light": 0.3509803921568627,
+   "ruleW_white_text_contrast_hypothetical": 5.847898144503586
   }
  ]
 }
