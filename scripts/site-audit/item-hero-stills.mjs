@@ -21,6 +21,10 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const args = process.argv.slice(2);
 const flag = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : null);
 const ID = flag('--id') ?? 'toss';
+// --check a,b,c [--widths 900,1024,...]: no stills page, only numbers for other references and widths (does a long
+// name collide with the actions? does anything overflow?), with a still of each case kept under <out>/check/.
+const CHECK = flag('--check')?.split(',');
+const WIDTHS = (flag('--widths') ?? '1440,390').split(',').map(Number);
 const BASE = (flag('--base') ?? 'https://oh-my-design.kr').replace(/\/$/, '');
 const OUT = path.resolve(flag('--out') ?? path.join(os.homedir(), 'Downloads/omd-design-system/item-hero'));
 fs.mkdirSync(OUT, { recursive: true });
@@ -75,6 +79,34 @@ const VARIANTS = [
 ];
 
 const browser = await chromium.launch({ headless: true });
+if (CHECK) {
+  fs.mkdirSync(path.join(OUT, 'check'), { recursive: true });
+  for (const id of CHECK) for (const [lang, p] of [['en', '/design-systems/' + id], ['ko', '/ko/design-systems/' + id]]) for (const width of WIDTHS) {
+    const ctx = await browser.newContext({ viewport: { width, height: 900 }, isMobile: width < 600, hasTouch: width < 600 });
+    for (const v of VARIANTS.filter((x) => x.css)) {
+      const page = await ctx.newPage();
+      const resp = await page.goto(BASE + p, { waitUntil: 'load', timeout: 45000 });
+      if (resp?.status() !== 200) { await page.close(); continue; }   // no Korean page for this reference
+      await page.waitForTimeout(700);
+      await page.addStyleTag({ content: v.css });
+      await page.waitForTimeout(250);
+      const m = await page.evaluate(() => {
+        const h1 = document.querySelector('.sq-ih h1'), acts = document.querySelector('.sq-ih-acts');
+        const a = h1.getBoundingClientRect(), b = acts.getBoundingClientRect(), cs = getComputedStyle(h1);
+        const hit = !(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top);
+        const btn = acts.querySelector('.sq-act').getBoundingClientRect();
+        return { h1: h1.innerText, lines: Math.round(a.height / parseFloat(cs.lineHeight)), collide: hit, actionsWrap: b.height > btn.height + 6, heroBottom: Math.round(document.querySelector('.sq-ih').getBoundingClientRect().bottom), overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth };
+      });
+      const flagged = m.collide || m.actionsWrap || m.overflowX > 0 || m.lines > 2;
+      console.log([v.key, id.padEnd(18), lang, String(width).padStart(4), 'lines ' + m.lines, m.collide ? 'COLLIDE' : '', m.actionsWrap ? 'ACTIONS-WRAP' : '', m.overflowX ? 'OVERFLOW ' + m.overflowX : '', 'hero ' + m.heroBottom, JSON.stringify(m.h1)].join('  '));
+      if (flagged || (v.key === 'b' && (width === 1024 || width === 900))) await page.screenshot({ path: path.join(OUT, 'check', [v.key, id, lang, width].join('-') + '.png') });
+      await page.close();
+    }
+    await ctx.close();
+  }
+  await browser.close();
+  process.exit(0);
+}
 const measures = {};
 for (const [lang, p] of [['en', '/design-systems/' + ID], ['ko', '/ko/design-systems/' + ID]]) {
   for (const width of [1440, 390]) {
