@@ -5,11 +5,11 @@ date: 2026-11-21
 tags: [data, brand-color, accessibility, korea]
 ---
 
-oh-my-design에 검증(verified) 레퍼런스로 올라 있는 한국 서비스는 185곳입니다. 이 가운데 각 레퍼런스 파일이 주 색(primary)으로 밝힌 색을 컬러 코드 하나로 정할 수 있었던 169곳을 색 계열별로 나눴더니, 가장 많은 색은 파랑이었습니다. 169곳 중 60곳, 35.5%입니다. 주 색을 정하는 방법을 일곱 가지로 바꿔 세어도 파랑은 늘 가장 많은 계열이었고, 비율은 29.5%에서 36.6% 사이였습니다. 두 번째로 많은 계열은 어느 방법에서도 13.2%를 넘지 않았습니다. 계산일은 2026년 11월 21일입니다.
+oh-my-design은 실제 서비스의 공개된 웹 화면과 자료에서 색·글꼴·버튼 값을 기록해, 서비스마다 레퍼런스 파일(DESIGN.md) 하나로 모아 둔 아카이브입니다. 여기에 검증(verified) 레퍼런스로 올라 있는 한국 서비스는 185곳입니다. 한국 서비스 전체에서 뽑은 표본이 아니라 이 아카이브에 올라 있는 곳들입니다. 이 가운데 각 레퍼런스 파일이 주 색(primary)으로 밝힌 색을 컬러 코드 하나로 정할 수 있었던 169곳을 색 계열별로 나눴더니, 가장 많은 색은 파랑이었습니다. 169곳 중 60곳, 35.5%입니다. 주 색을 정하는 방법을 일곱 가지로 바꿔 세어도 파랑은 늘 가장 많은 계열이었고, 비율은 29.5%에서 36.6% 사이였습니다. 두 번째로 많은 계열은 어느 방법에서도 13.2%를 넘지 않았습니다. 계산일은 2026년 11월 21일입니다.
 
 ![한국 서비스 169곳의 주 색을 색 계열별로 센 막대그래프. 파랑 60곳(35.5%), 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%), 주황 13곳(7.7%), 검정에 가까운 무채색 12곳(7.1%), 남색·보라 10곳(5.9%), 회색 10곳(5.9%), 노랑 7곳(4.1%), 자홍·분홍 6곳(3.6%), 흰색에 가까운 무채색 2곳(1.2%)](/blog-assets/korean-brand-colors-measured/figure-hues.svg)
 
-*그림: 주 색의 색 계열별 곳 수(규칙 W, 169곳). 아래 표와 같은 값이고, 저장소의 `docs/research/2026-11-14-kr-brand-colours/figure_hues.py`가 `rows.json`에서 그립니다.*
+그림: 주 색의 색 계열별 곳 수(규칙 W, 169곳). 아래 표와 같은 값이고, oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/figure_hues.py`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/figure_hues.py)가 `rows.json`에서 그립니다.
 
 | 색 계열 | 기준(HSL) | 곳 | 비율 |
 |---|---|---:|---:|
@@ -26,13 +26,13 @@ oh-my-design에 검증(verified) 레퍼런스로 올라 있는 한국 서비스�
 | 흰색에 가까운 무채색 | L 95% 초과 | 2 | 1.2% |
 | 합계 | | 169 | |
 
-H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포함합니다. 위 표는 저장소의 `docs/research/2026-11-14-kr-brand-colours/tables.md`에 있는 W1입니다. 이 글의 다른 표와 수치도 모두 이 파일에서 가져왔고(계산 2026-11-21), 괄호 안의 W1, W5 같은 이름은 이 파일의 절 이름입니다.
+H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포함합니다. 위 표는 oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/tables.md`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/tables.md)에 있는 W1입니다. 이 글의 다른 표와 수치도 모두 이 파일에서 가져왔고(계산 2026-11-21), 괄호 안의 W1, W5 같은 이름은 이 파일의 절 이름입니다.
 
 ## 어떤 색이 가장 많은가
 
-파랑 60곳 다음은 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%)입니다. 검정에 가까운 무채색은 12곳(7.1%)이었습니다.
+파랑 60곳 다음은 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%), 주황 13곳(7.7%) 순입니다. 무채색 가운데서는 검정에 가까운 색이 12곳(7.1%)으로 가장 많았습니다.
 
-여기서 파랑은 HSL 색상각 200~250° 구간입니다. 색상각이 200°에 못 미치는 하늘색은 청록으로 셉니다. [가우디오랩](https://oh-my-design.kr/ko/design-systems/gaudiolab)의 `#00b7ff`가 그런 예입니다. 반대로 어두운 색도 밝기가 8% 이상이고 채도가 10% 이상이면 파랑으로 셉니다. [토스](https://oh-my-design.kr/ko/design-systems/toss)의 `#3182f6`, [원티드](https://oh-my-design.kr/ko/design-systems/wanted)의 `#0066ff`, [신한은행](https://oh-my-design.kr/ko/design-systems/shinhanbank)의 `#0046ff`, [우리은행](https://oh-my-design.kr/ko/design-systems/wooribank)의 `#0067ac`가 모두 이 계열입니다.
+여기서 파랑은 HSL 색상각 200~250° 구간입니다. 색상각이 200°에 못 미치는 하늘색은 청록으로 셉니다. [가우디오랩](https://oh-my-design.kr/ko/design-systems/gaudiolab)의 `#00b7ff`가 그런 예입니다. 반대로 어두운 색도 밝기가 8% 이상이고 채도가 10% 이상이면 파랑으로 셉니다. [아임웹](https://oh-my-design.kr/ko/design-systems/imweb)의 `#15181e`, [Bithumb](https://oh-my-design.kr/ko/design-systems/bithumb)의 `#1c2028`, [현대자동차](https://oh-my-design.kr/ko/design-systems/hyundai)의 `#002c5f`처럼 검정에 가까운 어두운 색도 이 기준으로 파랑에 들어갑니다. [토스](https://oh-my-design.kr/ko/design-systems/toss)의 `#3182f6`, [원티드](https://oh-my-design.kr/ko/design-systems/wanted)의 `#0066ff`, [신한은행](https://oh-my-design.kr/ko/design-systems/shinhanbank)의 `#0046ff`, [우리은행](https://oh-my-design.kr/ko/design-systems/wooribank)의 `#0067ac`도 파랑 계열입니다.
 
 이 비율은 주 색을 어떻게 정하느냐에 따라 달라집니다. 그래서 같은 레퍼런스를 일곱 가지 방법으로 세어 봤습니다(W5).
 
@@ -41,7 +41,7 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | 이 글의 규칙 W | 169 | 60(35.5%) | 빨강 18(10.7%) |
 | 첫 초안의 규칙 S | 153 | 56(36.6%) | 빨강 15(9.8%) |
 | 처음 쓴 버튼 규칙 | 176 | 54(30.7%) | 검정에 가까운 무채색 22(12.5%) |
-| 카탈로그 데이터의 대표 색(`primaryColor`) | 185 | 63(34.1%) | 빨강 19(10.3%) |
+| 카탈로그 데이터의 대표 색(`primaryColor`) | 185 | 63(34.1%) | 빨강·검정에 가까운 무채색 각 19(10.3%) |
 | 흰색이 아닌 첫 버튼의 배경색 | 176 | 52(29.5%) | 검정에 가까운 무채색 22(12.5%) |
 | `primary` 토큰만 | 149 | 52(34.9%) | 빨강 15(10.1%) |
 | 흰색에 가까운 버튼을 거른 버튼 규칙 | 174 | 55(31.6%) | 검정에 가까운 무채색 23(13.2%) |
@@ -52,11 +52,11 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 
 카탈로그에 적힌 분야별로 나눠 봤습니다(W2). 레퍼런스가 8곳 이상인 분야만 싣습니다.
 
-| 분야 | 셈에 든 곳 | 파랑 | 파랑 다음으로 많은 계열 |
+| 분야 | 셈에 든 곳 | 파랑 | 파랑을 뺀 가장 많은 계열 |
 |---|---:|---:|---|
 | 컨슈머 테크 | 53 | 14 | 초록 9 |
 | 핀테크 | 29 | 14 | 노랑 5 |
-| 커머스 | 23 | 5 | 빨강 5, 검정에 가까운 무채색 4 |
+| 커머스 | 23 | 5 | 빨강 5 |
 | AI | 15 | 7 | 빨강 2, 초록 2 |
 | 교육 | 11 | 1 | 빨강 2, 주황 2, 청록 2, 남색·보라 2 |
 | SaaS | 9 | 4 | 회색 2 |
@@ -99,7 +99,7 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 |---:|---|---|---|
 | 2.28:1 | [가우디오랩](https://oh-my-design.kr/ko/design-systems/gaudiolab) | `#00b7ff` | 홈 첫 화면의 문의(Contact us) 버튼 |
 | 2.30:1 | [잔디](https://oh-my-design.kr/ko/design-systems/jandi) | `#00c473` | 상단 공통 내비게이션의 주 행동 버튼 |
-| 2.30:1 | [런드리고](https://oh-my-design.kr/ko/design-systems/laundrygo) | `#0ac290` | 기록한 세 페이지에 고정된 문의 버튼(「상담 문의하기」 등) |
+| 2.30:1 | [런드리고](https://oh-my-design.kr/ko/design-systems/laundrygo) | `#0ac290` | 기록한 세 페이지에 고정된 문의 버튼(「상담 문의하기」 등), 큰 글자 |
 | 2.64:1 | [미리캔버스](https://oh-my-design.kr/ko/design-systems/miricanvas) | `#21afbf` | 홈 첫 화면의 주 행동 버튼 |
 | 2.79:1 | [당근](https://oh-my-design.kr/ko/design-systems/karrot) | `#ff6f0f` | 디자인 시스템 SEED 버튼의 주(primary) 변형 |
 | 2.89:1 | [스티비](https://oh-my-design.kr/ko/design-systems/stibee) | `#ff6464` | 「무료로 시작하기」 |
@@ -118,12 +118,12 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | 3.89:1 | [프로토파이](https://oh-my-design.kr/ko/design-systems/protopie) | `#8169ff` | 상단의 데모 예약(Book a Demo) |
 | 4.09:1 | [쏘카](https://oh-my-design.kr/ko/design-systems/socar) | `#0078ff` | 「웹에서 예약하기」 |
 | 4.11:1 | [팀스파르타](https://oh-my-design.kr/ko/design-systems/teamsparta) | `#fa0030` | 강의 페이지의 「수강신청하기」 |
-| 4.14:1 | [페이히어](https://oh-my-design.kr/ko/design-systems/payhere) | `#0077fe` | 하드웨어 상품 카드의 「구입하기」 |
+| 4.14:1 | [페이히어](https://oh-my-design.kr/ko/design-systems/payhere) | `#0077fe` | 하드웨어 상품 카드의 「구입하기」, 큰 글자 |
 | 4.33:1 | [헤이딜러](https://oh-my-design.kr/ko/design-systems/heydealer) | `#396eff` | 홈의 차량 검색 버튼 |
 
 글자색은 23곳 모두 `#ffffff`라 칸을 따로 두지 않았습니다. 23곳 중 6곳은 3:1에도 못 미칩니다(W4a).
 
-이 수치만으로 접근성 기준에 맞는지 판단할 수는 없습니다. 4.5:1은 WCAG 2.x AA가 본문 크기 글자에 요구하는 값이고, 큰 글자에는 3:1을 요구합니다. 이번 집계에는 글자 크기와 굵기를 넣지 않았습니다. 그래서 3:1 이상 4.5:1 미만인 곳은 버튼 글자가 큰 글자인지에 따라 판단이 달라집니다.
+이 수치만으로 접근성 기준에 맞는지 판단할 수는 없습니다. 4.5:1은 WCAG 2.x AA가 본문 크기 글자에 요구하는 값이고, 큰 글자에는 3:1을 요구합니다. 이번 집계에는 글자 크기와 굵기를 넣지 않았습니다. 그래서 3:1 이상 4.5:1 미만인 곳은 버튼 글자가 큰 글자인지에 따라 판단이 달라집니다. 표의 23곳을 레퍼런스 파일에 적힌 버튼 글자 크기와 굵기로 다시 보면, 표에 「큰 글자」라고 적은 런드리고와 페이히어 두 곳이 WCAG의 큰 글자(18pt 이상, 굵은 글자는 14pt 이상)에 해당합니다. 이 두 곳에는 3:1 기준이 적용되고, 페이히어(4.14:1)는 이 기준을 넘고 런드리고(2.30:1)는 못 미칩니다. 당근 SEED 버튼은 파일에 글자 크기가 적혀 있지 않습니다.
 
 잰 것은 각 DESIGN.md가 공개된 화면과 자료에서 기록한 버튼의 배경색과 글자색, 두 값뿐입니다. 마우스를 올리거나 눌렀을 때의 색은 넣지 않았습니다.
 
@@ -149,7 +149,7 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 
 ## 어떻게 셌는가
 
-표본은 카탈로그에서 나라가 한국이고 품질 상태가 검증(`verified_v2`)인 레퍼런스 185곳입니다. oh-my-design 카탈로그에 올라 있는 곳들이고, 한국 서비스 전체에서 뽑은 표본은 아닙니다. 부분 검증(partial) 23곳과 예전 스냅숏(legacy_snapshot) 21곳은 넣지 않았습니다. 레퍼런스마다 `web/references/<id>/DESIGN.md` 머리말의 `colors`와 `components`를 읽었습니다.
+표본은 카탈로그에서 나라가 한국이고 품질 상태가 검증(`verified_v2`)인 레퍼런스 185곳입니다. 부분 검증(partial) 23곳과 예전 스냅숏(legacy_snapshot) 21곳은 넣지 않았습니다. 레퍼런스마다 `web/references/<id>/DESIGN.md` 머리말의 `colors`와 `components`를 읽었습니다.
 
 주 색은 규칙 W로 정했습니다.
 
@@ -203,6 +203,7 @@ W1 표 (계열별 곳, 비율): W1 Rule W n / share 열. 기준(HSL) 칸: tables
 어떤 색이 가장 많은가
 빨강 18(10.7%), 초록 17(10.1%), 청록 14(8.3%), 검정 쪽 12(7.1%): W1
 가우디오랩 #00b7ff 청록: W4a gaudiolab, rows.json ruleW_family teal/cyan
+아임웹 #15181e, Bithumb #1c2028, 현대자동차 #002c5f 파랑(어두운 예): rows.json ruleW_primary·ruleW_family blue·ruleW_light 0.100/0.133/0.186 (L 8% 이상, S 10% 이상)
 토스 #3182f6, 원티드 #0066ff: W3 / 신한은행 #0046ff, 우리은행 #0067ac 파랑: W1 Added references
 일곱 방법 표: W5 각 행 (규칙 이름은 W5 rule 열: Rule W, Rule S, original measured rule, registry primaryColor, alt 1, alt 2, alt 3)
 
@@ -221,6 +222,7 @@ W1 표 (계열별 곳, 비율): W1 Rule W n / share 열. 기준(HSL) 칸: tables
 23곳 유지, 11곳 제외와 이유, 판정 기준: W4 Of the 34 문장, Test 문장, W4a, W4b
 표 23행 (대비, 배경, 버튼): W4a 각 행; 「어떤 버튼인가」는 W4a 마지막 열(파일 인용은 compute.py CONTRAST_CHECK)
 3:1 미만 6곳, 글자색 #ffffff: W4a 아래 목록; 파랑 계열 9곳: W4a family 열
+큰 글자 2곳(런드리고 floating-cta 24px/700, 페이히어 purchase-button 32px/700): 각 web/references/<id>/DESIGN.md components.<component>.typography. 나머지 21곳은 WCAG 큰 글자 아래, karrot box-button은 크기를 적지 않음(gates.md revision round 1)
 브라우저 없이 파일 대조: method.md Rule W 절
 
 일본·대만

@@ -23,8 +23,10 @@ W, LEFT, RIGHT, TOP, ROW, BAR = 720, 180, 110, 92, 30, 18
 plot = W - LEFT - RIGHT
 H = TOP + ROW * len(bars) + 56
 vmax = max(c.values())
-INK, MUTED, BARC, RULE = '#1f2328', '#59636e', '#3b4654', '#d0d7de'
-FONT = "Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif"
+# Site tokens from web/src/styles/brand-a.css: --sq-ink (n900), --sq-ink-2 (n600), --sq-n700, --sq-guide (n300),
+# and the --sq-f-ko stack. An SVG shown through <img> cannot load web fonts, so it renders in the first installed face.
+INK, MUTED, BARC, RULE = '#13131a', '#5a5a63', '#3f3f48', '#d3d3db'
+FONT = "'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif"
 
 o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d" font-family="{escape(FONT)}">',
      f'<rect width="{W}" height="{H}" fill="#ffffff"/>',

@@ -17,8 +17,8 @@
 | 4 | ko/en 같은 thesis·수치 | 해당 없음 | 한국어만 있다. 로더는 한쪽만 있는 글을 허용한다(`web/src/lib/blog/posts.ts`). |
 | 5 | 실렌더 1440 / 390, 가로 스크롤 0, 발행할 바이트로 | 통과(로컬 dev 서버 기준) | 커밋하는 `ko.md`를 `next dev`로 띄워 헤드리스 Chromium으로 쟀다. 1440: `scrollWidth` 1440 = `innerWidth`, 표 5개 모두 넘침 없음, 그림 720px 그대로. 390: `scrollWidth` 390 = `innerWidth`, 표 5개 모두 356px 안에 들어감, 그림은 358px로 줄어 보임(아래 「사람이 정할 것」). `next build` 산출물이 아니라 dev 서버로 본 것이다. 프로덕션 배포본은 아직 없다. 스크린샷은 저장소 밖 세션 임시 폴더에만 있다. |
 | 6 | 제목·설명·첫 문단에 브리프의 검색어 | 실행 못 함 | 플레이북 §0의 브리프 7줄(검색어 포함)이 입력에 없다. 검색어를 고를 근거 자료(`pull-gsc`)는 이번 회차에서 열지 않았다. 참고로 제목에 「한국 서비스」「브랜드 컬러」, 설명에 「브랜드 컬러」「hex 컬러 코드」, 첫 문단에 「한국 서비스」「주 색」이 있다 — 이것이 브리프의 검색어인지는 확인하지 않았다. |
-| 7 | OmD가 잰 값의 표·그림 1개 이상, 원본 행이 저장소에 | 통과 | 표 5개와 막대 그림 1장. 원본 행 `rows.json`, 계산 `compute.py`, 그림 `figure_hues.py`가 이 폴더에 있다. 그림 sha256 `25ff3013…10bc`가 이 폴더의 `figure-hues.svg`와 `web/public/blog-assets/korean-brand-colors-measured/figure-hues.svg`에서 같다. |
-| 8 | 아이템 페이지 링크 10곳 이상, 전부 200, 한국어 글은 `/ko/design-systems/<id>` | 통과 | 링크 107개, 서로 다른 아이템 페이지 86곳, 전부 `https://oh-my-design.kr/ko/design-systems/<id>` 꼴. 86곳 모두 `web/references/<id>/DESIGN.md`가 있고 `data/reference-quality.json`에서 `verified_v2`, `rows.json`의 KR 행이다. 로컬 dev 서버에서 86곳 모두 200, 프로덕션 `oh-my-design.kr`에서도 86곳 + 목록 `/ko/design-systems?region=KR` 모두 200(2026-11-21). 목록 링크의 `region=KR`은 목록 화면이 읽는 값이다(`web/src/app/(en)/design-systems/catalog-view.tsx`의 `params.get("region")`, 키 `KR`). |
+| 7 | OmD가 잰 값의 표·그림 1개 이상, 원본 행이 저장소에 | 통과 | 표 5개와 막대 그림 1장. 원본 행 `rows.json`, 계산 `compute.py`, 그림 `figure_hues.py`가 이 폴더에 있다. 그림 sha256 `3de48d36…b956`(revision round 1에서 다시 그린 뒤)가 이 폴더의 `figure-hues.svg`와 `web/public/blog-assets/korean-brand-colors-measured/figure-hues.svg`에서 같다. |
+| 8 | 아이템 페이지 링크 10곳 이상, 전부 200, 한국어 글은 `/ko/design-systems/<id>` | 통과 | (revision round 1 뒤) 링크 110개, 서로 다른 아이템 페이지 89곳. 처음 기록: 링크 107개, 서로 다른 아이템 페이지 86곳, 전부 `https://oh-my-design.kr/ko/design-systems/<id>` 꼴. 86곳 모두 `web/references/<id>/DESIGN.md`가 있고 `data/reference-quality.json`에서 `verified_v2`, `rows.json`의 KR 행이다. 로컬 dev 서버에서 86곳 모두 200, 프로덕션 `oh-my-design.kr`에서도 86곳 + 목록 `/ko/design-systems?region=KR` 모두 200(2026-11-21). 목록 링크의 `region=KR`은 목록 화면이 읽는 값이다(`web/src/app/(en)/design-systems/catalog-view.tsx`의 `params.get("region")`, 키 `KR`). |
 
 ## final-qa 자가 점검 (게이트 1의 대체가 아니다)
 
@@ -26,13 +26,13 @@
 
 | # | 항목 | 결과 | 근거 |
 |---|---|---|---|
-| 1 | Brand consistency | 실행 못 함 | 기준이 될 oh-my-design 루트 `DESIGN.md`가 워크트리에 없다(gitignore). 글은 스타일을 더하지 않고 블로그 화면의 기존 컴포넌트로 그려진다. 그림 SVG의 색(`#1f2328` `#59636e` `#3b4654` `#d0d7de` `#ffffff`)은 대조하지 못했다. |
+| 1 | Brand consistency | 실행 못 함 → 독립 final-qa에서 FAIL, revision round 1에서 고침 | 처음에는 루트 `DESIGN.md`가 없어 대조하지 못했다. 독립 final-qa(`final-qa.md`)가 `web/src/styles/brand-a.css` 기준으로 그림의 색 4개와 글꼴을 FAIL로 판정했고, 아래 revision round 1에서 토큰 값으로 바꿨다. |
 | 2 | Typography hierarchy | 통과 | 렌더된 HTML에서 `<h1>` 1개(글 제목). 본문은 `##` 7개, `###` 이하 없음 — 단계 건너뜀 없음. |
 | 3 | Voice register | 통과(일관성) · 문체 선택은 오너 몫 | 본문 문장 끝 103개 중 102개가 합쇼체(-니다), 해요체 0개, 나머지 1개는 그림 alt의 명사 끝. `copy-check` HW-11(말투 섞임) 0건. 플레이북 기본 preset(toss-tech-design)의 말투와 같은지는 정하지 않았다 — 대기열의 「문체」 결정. |
 | 4 | Image / figure | 통과 | `ko.md`의 그림 1개에 alt(막대별 값 전부)와 캡션(무엇을 세었고 어느 스크립트가 그리는지)이 따로 있고, 경로가 200(본 호스트·블로그 호스트 모두 `image/svg+xml`). |
 | 5 | Cross-locale parity | 해당 없음 | 한국어만. |
 | 6 | Accessibility | 통과(글 범위) | `<article lang="ko">`, 본문은 기존 블로그 컴포넌트. 그림 글자 `#59636e`·`#1f2328` on `#ffffff`. 사이트 크롬은 바꾸지 않았다. |
-| 7 | Performance | 통과 | 그림 SVG 4,149바이트. 펜스 코드 블록 없음. |
+| 7 | Performance | 통과 | 그림 SVG 4,193바이트(revision round 1 뒤). 펜스 코드 블록 없음. |
 | 8 | Links | 통과 | 게이트 8과 같다. 바깥 링크는 렌더러가 `target="_blank" rel="noopener noreferrer"`를 붙인다(`web/src/components/markdown.tsx`). |
 
 ## 검수 (§4)
@@ -108,3 +108,62 @@
 - Government24·Watcha처럼 레지스트리에 한글 표시 이름이 없는 곳 — 레지스트리에 한글 이름을 넣을지(레지스트리 변경이라 이 회차 밖)
 - 그림이 390px 폭에서 절반 크기(글자 약 7px)로 보인다. 모바일용 세로 그림을 따로 둘지
 - 독립 검수(final-qa, slop-audit, designer-review)를 누가 돌릴지, 영어판을 낼지
+
+## Revision round 1 (2026-11-21) — 독립 final-qa(`final-qa.md`) 지적 반영
+
+리드가 넘긴 지적만 고쳤다. 표와 레퍼런스는 바꾸지 않았고, 수치는 `tables.md`·`rows.json`에서만 가져왔다. 다만 큰 글자 판정은 레퍼런스 파일의 글자 크기를 근거로 했다(아래 8).
+
+| # | 자리 | 전 | 후 | 근거 |
+|---|---|---|---|---|
+| 1 | `figure_hues.py` 26–27행 → `figure-hues.svg` 두 사본 | `#1f2328` `#59636e` `#3b4654` `#d0d7de`, `Pretendard, 'Noto Sans KR', …` | `#13131a`(`--sq-ink` = n900), `#5a5a63`(`--sq-ink-2` = n600), `#3f3f48`(`--sq-n700`, 막대), `#d3d3db`(`--sq-guide` = n300), `--sq-f-ko` 스택 그대로(`'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif`) | final-qa [1]. `python3 -I figure_hues.py`로 다시 그렸고 막대 값은 그대로다(색 hex와 font-family만 다르고 나머지 줄은 같음을 대조). sha256 두 사본 모두 `3de48d36a845bf01cfa3254b08813465b607883e75e86d9e15ebe147052eb956`. |
+| 2 | 첫 문단(8행) | 「oh-my-design에 검증(verified) 레퍼런스로 올라 있는 한국 서비스는 185곳입니다.」로 시작 | 앞에 「oh-my-design은 실제 서비스의 공개된 웹 화면과 자료에서 색·글꼴·버튼 값을 기록해, 서비스마다 레퍼런스 파일(DESIGN.md) 하나로 모아 둔 아카이브입니다.」를 넣고, 「한국 서비스 전체에서 뽑은 표본이 아니라 이 아카이브에 올라 있는 곳들입니다.」를 첫 문단으로 올림 | final-qa 점검 5. 「어떻게 셌는가」 첫 문단의 같은 말(「oh-my-design 카탈로그에 올라 있는 곳들이고, 한국 서비스 전체에서 뽑은 표본은 아닙니다.」)은 지웠다(옮김). |
+| 3 | 그림 캡션(12행) | `*그림: …*`(이탤릭), 「저장소의 `…/figure_hues.py`」 | 그냥 단락, 「oh-my-design 공개 저장소의 [`…/figure_hues.py`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/figure_hues.py)」 | final-qa 한국어 12행(HG-11 합성 이탤릭), 점검 5. 렌더 HTML의 `<em` 0건. |
+| 4 | W1 표 아래(29행) | 「저장소의 `…/tables.md`」 | 「oh-my-design 공개 저장소의 [`…/tables.md`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/tables.md)」 | final-qa 점검 5. **이 두 링크는 이 브랜치가 PR로 main에 머지된 뒤에야 열린다.** 2026-11-21 현재 두 주소 모두 404이고, 저장소 첫 화면 `https://github.com/kwakseongjae/oh-my-design`은 200이다. `docs/research/`는 `.gitignore`에 걸려 있지만 이 폴더의 파일은 강제로 추적되고 있어 머지에 함께 들어간다. |
+| 5 | 33행 | 「… 청록 14곳(8.3%)입니다. 검정에 가까운 무채색은 12곳(7.1%)이었습니다.」 | 「… 청록 14곳(8.3%), 주황 13곳(7.7%) 순입니다. 무채색 가운데서는 검정에 가까운 색이 12곳(7.1%)으로 가장 많았습니다.」 | W1(주황 13, 7.7%; 무채색 검정 12·회색 10·흰색 2). |
+| 6 | 35행 | 어두운 색의 예로 토스·원티드·신한은행·우리은행 | 어두운 예를 [아임웹](https://oh-my-design.kr/ko/design-systems/imweb) `#15181e`, [Bithumb](https://oh-my-design.kr/ko/design-systems/bithumb) `#1c2028`, [현대자동차](https://oh-my-design.kr/ko/design-systems/hyundai) `#002c5f`로 바꾸고, 토스 등 네 곳은 「도 파랑 계열입니다」로 따로 둠 | `rows.json`에서 직접 확인: 셋 다 `ruleW_family` blue, `ruleW_primary` 위와 같음, `ruleW_light` 0.100 / 0.133 / 0.186(8% 이상), `ruleW_sat` 0.176 / 0.176 / 1.000(10% 이상), 색상각 220.0 / 220.0 / 212.2°. 이름은 `rows.json` `display_name` 그대로(Bithumb은 한글 표시 이름이 없다). 세 곳 모두 `web/references/<id>/DESIGN.md`가 있고 `verified_v2`이며, 프로덕션에서 `200 0`(리다이렉트 없이 200). final-qa가 든 다섯 곳 중 마키나락스·한국도로공사는 쓰지 않았다. |
+| 7 | 7개 규칙 표(44행) | 「빨강 19(10.3%)」 | 「빨강·검정에 가까운 무채색 각 19(10.3%)」 | final-qa 점검 1의 13번(`tables.md` 1b에서 두 계열이 19로 같음). 리드의 목록에는 따로 적혀 있지 않았지만 같은 검수가 고칠 것으로 꼽았다. |
+| 8 | 분야 표(55·59행) | 열 제목 「파랑 다음으로 많은 계열」, 커머스 「빨강 5, 검정에 가까운 무채색 4」 | 「파랑을 뺀 가장 많은 계열」, 커머스 「빨강 5」 | final-qa 한국어 55행. 새 열 제목으로 일곱 행을 W2와 다시 맞췄다. 교육 칸(빨강·주황·청록·남색·보라 각 2)은 새 제목으로는 맞아서 그대로 두었다. |
+| 9 | 대비 표 런드리고(102행)·페이히어(121행), 표 뒤 단락(126행) | 큰 글자 표시 없음 | 두 칸 끝에 「, 큰 글자」. 단락에 「표의 23곳을 레퍼런스 파일에 적힌 버튼 글자 크기와 굵기로 다시 보면 … 런드리고와 페이히어 두 곳이 WCAG의 큰 글자(18pt 이상, 굵은 글자는 14pt 이상)에 해당합니다. 이 두 곳에는 3:1 기준이 적용되고, 페이히어(4.14:1)는 이 기준을 넘고 런드리고(2.30:1)는 못 미칩니다. 당근 SEED 버튼은 파일에 글자 크기가 적혀 있지 않습니다.」를 더함 | final-qa 지적 2-a. 23곳의 `components.<component>.typography`를 모두 읽었다(아래 표). 글에는 px 값을 쓰지 않았다. |
+| 10 | 글 끝 fact map 주석 | — | 6번과 9번의 출처 두 줄을 더함 | 렌더되지 않는다. |
+
+### 9번의 근거: W4a 23곳의 버튼 글자 (각 `web/references/<id>/DESIGN.md`)
+
+WCAG 2.x 큰 글자 = 18pt(24px) 이상, 또는 굵게(700) 14pt(약 18.66px) 이상.
+
+| 대비 | id | component | typography | 큰 글자 |
+|---:|---|---|---|---|
+| 2.28 | gaudiolab | cta-hero | 16px / 500 | 아님 |
+| 2.30 | jandi | header-primary-action | 14px / 500 | 아님 |
+| 2.30 | laundrygo | floating-cta | 24px / 700 | **맞음** |
+| 2.64 | miricanvas | hero-primary-cta | 18px / 500 | 아님 |
+| 2.79 | karrot | box-button | 적혀 있지 않음(「Size and type scale are not promoted」) | 알 수 없음 |
+| 2.89 | stibee | button-primary | 14px / 400 | 아님 |
+| 3.00 | idus | button-primary | 18px / 700 | 아님(18.66px 미만) |
+| 3.17 | moreh | primary-button | 14px / 500 | 아님 |
+| 3.18 | ably | seller-primary | 16px / 400 | 아님 |
+| 3.24 | greeting | header-demo-button | 16px / 400 | 아님 |
+| 3.33 | petfriends | app-install-button | 16px / 700 | 아님 |
+| 3.39 | yeogiotte | search-cta | 15px / 700 | 아님 |
+| 3.42 | classum | medium-primary-action | 16px / 600 | 아님 |
+| 3.68 | buzzvil | contact-button | 16px / 400 | 아님 |
+| 3.71 | toss | tds-button | 17px / 600 | 아님 |
+| 3.71 | toss-securities | wts-primary-entry | 14px / 600 | 아님 |
+| 3.73 | moin | button-primary | 16px / 400 | 아님 |
+| 3.77 | watcha | button-primary | 13px / 500 | 아님 |
+| 3.89 | protopie | header-button | 16px / 600 | 아님 |
+| 4.09 | socar | primary-action | 16px / 600 | 아님 |
+| 4.11 | teamsparta | enroll-cta | 15px / 700 | 아님 |
+| 4.14 | payhere | purchase-button | 32px / 700 | **맞음** |
+| 4.33 | heydealer | primary-button | 15px / 700 | 아님 |
+
+### 이번 회차에서 하지 않은 것
+
+- final-qa의 「다듬을 것」(29행 「아래 끝을 포함」, 「첫 초안의 규칙 S」 이름, 71·75·86·96·132·186행, 「곳 수」, 「주 색」 용어)은 리드 지시 범위 밖이라 그대로 두었다.
+- 지적 2-b(대기열 46행의 「다시 재기」), 제목 범위 표현은 오너가 정할 일로 남겼다.
+
+### 다시 돌린 확인
+
+- `node skills/hangul/scripts/copy-check.mjs --context=site ko.md` → `0 BLOCK · 0 WARN · 10 FYI · exit 0`(본문 FYI는 33행 HW-6 하나, 나머지는 fact map 주석)
+- `npx tsc --noEmit` → exit 0 · `npx vitest run src/lib/blog src/app/sitemap.test.ts` → 5 파일, 43 통과
+- 로컬 `next dev`(3345, 확인 뒤 종료) 헤드리스: 1440·390 모두 가로 스크롤 0, 넘치는 표 0, 그림 200(4,193바이트, 블로그 호스트), 렌더 HTML에 `<em` 0건·`fact map` 0건, GitHub 링크 두 개가 렌더됨
+- 링크: 110개, 아이템 페이지 89곳 모두 `verified_v2`·KR 행·DESIGN.md 있음, 새 3곳은 프로덕션 `200 0`
