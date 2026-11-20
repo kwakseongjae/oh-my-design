@@ -533,3 +533,39 @@ both. Which comes first is the owner's call.
 4. *On every sheet:* app name and version, capture date and device, a line that the screens belong to their
    companies and this is not affiliated, and where to ask for removal.
 5. *Size:* a JPEG about 400 points wide; the original PNGs and the element lists stay on this Mac.
+
+## Web screens: the shooter, and the first five services (2026-11-20)
+
+The owner widened the archive to the web (2026-11-20: mobile-only services on the phone, web-centred ones on the web,
+both where the two look alike), then asked for web first, in a 40-minute block. What was built and what it met:
+
+- **Tool** (`tools/screen-archive/`, branch `feat/screen-archive`). `web-shoot.mjs <routes/slug.json>` loads each
+  screen of a route file at 1440×900 and 390×844 (touch, DPR 2), signed out, in a fresh profile, scrolls once so lazy
+  content loads, and writes the first viewport, the whole page (capped at 12000 px), an element list (type, label,
+  href, rectangle) and one record per shot (final address, HTTP status, user agent, what covered the viewport).
+  `make-web-sheet.mjs` turns walks into one sheet per service and an index. `services.json` holds `platform` per
+  service and what the browser met. Stills go to `~/.omd-workers/screens/web/<slug>-<date>/`, sheets to
+  `~/Downloads/kr-screens/web/`; both tools refuse an output folder inside a git work tree.
+- **Screen types** are the words of `tools/phone-recorder/taxonomy.json`, so a web sheet and a phone sheet filter
+  the same way. No web-only type was added yet: a pricing page and a salary table went in as 이벤트 and 화면, which
+  is where the taxonomy is thin for the web.
+- **Headless is refused by most Korean sites.** Of twelve home pages tried with headless Chromium and its own user
+  agent, six answered 403 (오늘의집, 올리브영, NOL, 원티드, 인프런, 잡플래닛) and six opened (29CM, 무신사, 컬리,
+  당근, 클래스101, 교보문고). Nothing was done to get past a 403. The owner then allowed a window for such sites; in the
+  installed Chrome with a window and a fresh profile all six opened. `--browser headed` (or `"browser": "headed"`
+  in the route file) is that mode. It opens windows on the owner's screen, so a batch of headed services belongs in
+  a window the owner has agreed to.
+- **Shot:** 29CM (10 screens), 오늘의집 (11), 클래스101 (8), 원티드 (9), 인프런 (9): 47 screens, 94 stills, none
+  blocked. The last three are filed as web-centred although each has an app; that is the session's reading of the
+  route, not an owner decision.
+- **What signed-out reaches.** On all five services home, lists, search results and detail open without an account.
+  Cart, my page and the résumé builder lead to the sign-in screen (which is itself a core screen). Notifications,
+  my page and settings need an account: the owner offered to sign in for those.
+- **What viewing the stills caught** (exit codes did not): 29CM's search step timed out and shot the home screen
+  twice (the field is behind an icon; the route now uses the search addresses); an app-install sheet covered half
+  of a 390 still (closed by its own "오늘 하루 보지 않기"); 클래스101's detail raised a discount pop-up on four of seven
+  loads (kept as its own 팝업 screen); its video area is blank in headless (codec, unconfirmed); two headed runs
+  finished every shot and then hung closing the browser, losing their records (the walk is now written first and
+  closing is bounded).
+- **Not done:** linking a screen's elements to the service's measured tokens (the part Mobbin and Refero do not
+  have), re-shooting on a schedule and showing what changed, signed-in screens, and the three site mocks.
