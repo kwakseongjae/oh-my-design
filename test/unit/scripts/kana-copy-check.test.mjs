@@ -11,6 +11,8 @@ const ROOT = resolve(import.meta.dirname, '../../..');
 const SCRIPT = resolve(ROOT, 'scripts/lang/kana-copy-check.mjs');
 const FIXTURES = resolve(ROOT, 'scripts/lang/fixtures/kana-copy');
 const KANA = resolve(ROOT, 'docs/drafts/kana');
+// rules whose fixtures and rule text may also quote docs/drafts/kana/references/rules.md (JTF and KB examples)
+const ALSO_REFERENCES = new Set(['KW-39']);
 const run = (args) => spawnSync(process.execPath, [SCRIPT, ...args], { cwd: ROOT, encoding: 'utf8' });
 const scan = (dir, flags = []) => {
   const res = run(['--json', ...flags, resolve(FIXTURES, dir)]);
@@ -40,6 +42,7 @@ const RULES = {
   'KW-32': { FYI: 2 },
   'KW-33': { FYI: 4 },
   'KW-35': { FYI: 1 },
+  'KW-39': { FYI: 6 },
   'KW-46': { FYI: 5 },
   'KW-54': { FYI: 1 }, // two placeholders on one line with the same match are one finding
   'KW-55': { FYI: 1 },
@@ -79,15 +82,24 @@ function corpus() {
     if (block === 'UW-36' && /^- MZ \/ MZ-ed:/.test(l)) return false;
     return true;
   });
-  return [...spans(kept.join('\n')), ...spans(verdicts)].filter((s) => KANA_KANJI.test(s) || /[\u3000-\u303F\uFF00-\uFFEF]/.test(s));
+  return keepJapanese([...spans(kept.join('\n')), ...spans(verdicts)]);
+}
+const keepJapanese = (list) => list.filter((s) => KANA_KANJI.test(s) || /[\u3000-\u303F\uFF00-\uFFEF]/.test(s));
+// references/rules.md (JW, JT): quote lines only; composed and half-composed examples are left out
+function referenceCorpus() {
+  const text = readFileSync(resolve(KANA, 'references/rules.md'), 'utf8');
+  const kept = text.split('\n').filter((l) => !/^\s*#/.test(l) && !/^\s*- (Test|Kind|Strength|Standing)\b/i.test(l) && !/composed|half src|\(ours/i.test(l));
+  return keepJapanese(spans(kept.join('\n')));
 }
 const QUOTES = corpus();
+const WIDE = [...QUOTES, ...referenceCorpus()];
 const JOINED = QUOTES.join('\n');
-const inOneQuote = (s) => QUOTES.some((q) => q.includes(s));
+const WIDE_JOINED = WIDE.join('\n');
+const inOneQuote = (s, wide = false) => (wide ? WIDE : QUOTES).some((q) => q.includes(s));
 // every run of Japanese text, split at corner brackets, must sit inside the quotes
-const strayPieces = (text) => (text.match(JA_RUN) || []).flatMap((r) => r.split(/[\u300C\u300D\u300E\u300F]/)).filter((p) => KANA_KANJI.test(p) && !JOINED.includes(p));
+const strayPieces = (text, wide = false) => (text.match(JA_RUN) || []).flatMap((r) => r.split(/[\u300C\u300D\u300E\u300F]/)).filter((p) => KANA_KANJI.test(p) && !(wide ? WIDE_JOINED : JOINED).includes(p));
 // every outermost \u300C\u2026\u300D written must be inside one quote
-function strayQuotes(text) {
+function strayQuotes(text, wide = false) {
   const out = [];
   for (const line of text.split('\n')) {
     let depth = 0;
@@ -96,7 +108,7 @@ function strayQuotes(text) {
       if (line[i] === '\u300C') { if (depth++ === 0) start = i + 1; }
       else if (line[i] === '\u300D' && depth > 0 && --depth === 0) {
         const s = line.slice(start, i);
-        if (KANA_KANJI.test(s) && !inOneQuote(s)) out.push(s);
+        if (KANA_KANJI.test(s) && !inOneQuote(s, wide)) out.push(s);
       }
     }
   }
@@ -203,16 +215,21 @@ describe('kana-copy-check', () => {
         const raw = readFileSync(f, 'utf8');
         const text = raw.replace(/<!--[\s\S]*?-->/g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/\/\/[^\n]*/g, '');
         for (const s of text.match(/[^<>{}"\n]*[\u3040-\u30FF\u3400-\u9FFF\u3000-\u303F\uFF00-\uFFEF][^<>{}"\n]*/g) || []) {
-          expect(inOneQuote(s.trim()), f + ': ' + s.trim()).toBe(true);
+          const wide = [...ALSO_REFERENCES].some((r) => f.includes('/' + r.toLowerCase() + '/'));
+          expect(inOneQuote(s.trim(), wide), f + ': ' + s.trim()).toBe(true);
         }
         if (f.endsWith('.md')) for (const line of raw.split('\n')) if (KANA_KANJI.test(line.replace(/<!--[\s\S]*?-->/g, ''))) expect(line, f).toMatch(/<!-- \S.*-->\s*$/);
       }
     });
 
     it.each(['references/writing-rules.md', 'writing/coverage.md'])('%s writes no unquoted Japanese', (p) => {
-      const text = readFileSync(resolve(KANA, p), 'utf8');
-      expect(strayPieces(text)).toEqual([]);
-      expect(strayQuotes(text)).toEqual([]);
+      // each rule section is held to its own quote set: the writing research, plus references/rules.md for ALSO_REFERENCES
+      for (const section of readFileSync(resolve(KANA, p), 'utf8').split(/^(?=#### )/m)) {
+        const id = /^#### (KW-\d{2})/.exec(section)?.[1];
+        const wide = ALSO_REFERENCES.has(id);
+        expect(strayPieces(section, wide), id || p).toEqual([]);
+        expect(strayQuotes(section, wide), id || p).toEqual([]);
+      }
     });
 
     it('the SKILL.md section on the KW rules writes no unquoted Japanese', () => {

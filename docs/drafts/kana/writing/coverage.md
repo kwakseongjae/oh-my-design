@@ -42,7 +42,7 @@ Every candidate in [`rules.md`](./rules.md) (UW-01 … UW-57), its verdict in [`
 | UW-36 | supported | not a rule: "The project's DESIGN.md decides" | — |
 | UW-37 | supported | KW-37 | judgment only (compound vs list) |
 | UW-38 | weaker than stated | KW-38 (rewritten to the verdict) | judgment only |
-| UW-39 | supported | KW-39 | judgment only (no sourced firing string; asked team-lead about JTF quotes in references/rules.md) |
+| UW-39 | supported | KW-39 | KW-39 FYI (fixtures quote JTF and KB strings from references/rules.md) |
 | UW-40 | supported | not a rule: "The project's DESIGN.md decides" | — |
 | UW-41 | supported | not a rule: "The project's DESIGN.md decides" | — |
 | UW-42 | weaker than stated | not a rule: "The project's DESIGN.md decides" (rewritten to the verdict: Ubie's page contradicts itself on the question mark) | — |
@@ -51,15 +51,15 @@ Every candidate in [`rules.md`](./rules.md) (UW-01 … UW-57), its verdict in [`
 | UW-45 | not supported | left out: not supported (the one counted source prescribes three half-width dots) | — |
 | UW-46 | supported | KW-46 | KW-46 FYI |
 | UW-47 | supported | not a rule: "The project's DESIGN.md decides" | — |
-| UW-48 | supported | KW-48 | judgment only (no sourced firing string) |
+| UW-48 | supported | KW-48 | judgment only (no sourced firing string, here or in references/rules.md) |
 | UW-49 | supported | KW-49 | judgment only |
 | UW-50 | supported | not a rule: "The project's DESIGN.md decides" | — |
 | UW-51 | supported | not a rule: "The project's DESIGN.md decides" | — |
-| UW-52 | supported | KW-52 | judgment only (no sourced firing string) |
+| UW-52 | supported | KW-52 | judgment only (the only firing strings in references/rules.md are accepted forms, JW-51) |
 | UW-53 | supported | not a rule: "The project's DESIGN.md decides" | — |
 | UW-54 | supported | KW-54 | KW-54 FYI |
 | UW-55 | supported | KW-55 | KW-55 FYI |
 | UW-56 | supported | KW-56 | KW-56 FYI |
 | UW-57 | supported | KW-57 | KW-57 FYI |
 
-Counts: 43 rules (KW), 6 of them rewritten to the verdict (UW-07, 15, 19, 24, 28, 38; UW-30 and UW-42 were rewritten too but sit with the house choices); 12 candidates in "The project's DESIGN.md decides"; 2 left out (UW-10, UW-45). The checker tests 24 of the 43 rules: 2 with a WARN level (KW-09, and KW-26's first check), the rest FYI only. A test (`test/unit/scripts/kana-copy-check.test.mjs`) checks that this table has every candidate once.
+Counts: 43 rules (KW), 6 of them rewritten to the verdict (UW-07, 15, 19, 24, 28, 38; UW-30 and UW-42 were rewritten too but sit with the house choices); 12 candidates in "The project's DESIGN.md decides"; 2 left out (UW-10, UW-45). The checker tests 25 of the 43 rules: 2 with a WARN level (KW-09, and KW-26's first check), the rest FYI only. A test (`test/unit/scripts/kana-copy-check.test.mjs`) checks that this table has every candidate once.

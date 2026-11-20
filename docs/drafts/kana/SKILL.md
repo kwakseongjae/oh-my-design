@@ -1,6 +1,6 @@
 ---
 name: kana
-description: "Sets and writes Japanese in web UI and documents, and audits existing work, at the strength its sources give. Typography for web UI: lang, font stacks, line-height (行間), letter-spacing and palt, line breaking (禁則処理, keep-all, auto-phrase, BudouX), punctuation spacing (約物, text-spacing-trim), spacing between Japanese and Latin text (和欧間, text-autospace), italic and emphasis, ruby, truncation. Writing: one sentence-final style (です・ます or だ・である), keigo and its overuse (させていただく, 二重敬語), wordiness (することができる, を行う), kanji or kana, okurigana, katakana loanwords and the final long vowel (ユーザー), punctuation and brackets, full-width and half-width, numbers, dates and units, button and error text, やさしい日本語 for readers whose first language is not Japanese. Sources: デジタル庁 design system (DADS), 文化審議会 documents (公用文作成の考え方, 敬語の指針), the 外来語の表記 告示, the やさしい日本語 guideline, W3C JLREQ and CSS Text, browser vendors, the JTF and SmartHR guides, and OmD's measurement of 77 Japanese sites. Every rule is a recommendation with its scope; nothing is a hard error. APPLY while writing; AUDIT with a deterministic typography checker plus manual review. Triggers: '일본어 타이포', '일본어 UI 문구', '일본어 문체', '일본어 줄바꿈', 'Japanese typography', 'Japanese UX writing', 'Japanese UI copy', 'kinsoku', 'palt', 'auto-phrase', 'Noto Sans JP', '行間', '禁則処理', '約物', '和欧間', '文体', '敬体', '常体', '敬語', '送り仮名', '外来語', '長音', '句読点', 'やさしい日本語'. Korean → hangul; translation → omd-locale-adapter; other languages → omd-humanize; motion and contrast → omd-feel. A project's DESIGN.md type tokens, voice, register and house style win over these defaults."
+description: "Sets and writes Japanese in web UI and documents, and audits existing work, at the strength its sources give. Typography for web UI: lang, font stacks, line-height (行間), letter-spacing and palt, line breaking (禁則処理, keep-all, auto-phrase, BudouX), punctuation spacing (約物, text-spacing-trim), spacing between Japanese and Latin text (和欧間, text-autospace), italic and emphasis, ruby, truncation. Writing: one sentence-final style (です・ます or だ・である), keigo and its overuse (させていただく, 二重敬語), wordiness (することができる, を行う), kanji or kana, okurigana, katakana loanwords and the final long vowel (ユーザー), punctuation and brackets, full-width and half-width, numbers, dates and units, button and error text, やさしい日本語 for readers whose first language is not Japanese. Sources: デジタル庁 design system (DADS), 文化審議会 documents (公用文作成の考え方, 敬語の指針), the 外来語の表記 告示, the やさしい日本語 guideline, W3C JLREQ and CSS Text, browser vendors, the JTF and SmartHR guides, and OmD's measurement of 77 Japanese sites. Every rule is a recommendation with its scope; nothing is a hard error. APPLY while writing; AUDIT with two deterministic checkers, one for typography and one for the writing rules a pattern can decide, plus manual review. Triggers: '일본어 타이포', '일본어 UI 문구', '일본어 문체', '일본어 줄바꿈', 'Japanese typography', 'Japanese UX writing', 'Japanese UI copy', 'kinsoku', 'palt', 'auto-phrase', 'Noto Sans JP', '行間', '禁則処理', '約物', '和欧間', '文体', '敬体', '常体', '敬語', '送り仮名', '外来語', '長音', '句読点', 'やさしい日本語'. Korean → hangul; translation → omd-locale-adapter; other languages → omd-humanize; motion and contrast → omd-feel. A project's DESIGN.md type tokens, voice, register and house style win over these defaults."
 user-invocable: true
 ---
 
@@ -205,7 +205,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-42 · Full-width brackets, ？, ！ and ： in Japanese text as a principle:** *composed* 「設定(任意)」 → 「設定（任意）」. Both guides list half-width cases: period, comma and space (JTF); ¥ and ％ with digits, the digit-grouping comma, / and >, { } for variables (SmartHR). KB writes full-width brackets but states no width rule. `JTF` + `SmartHR`.
 - **JW-43 · ！ and ？ only where needed, full-width; after one that ends a sentence, a space before the next sentence** (full- or half-width: the sources differ). `公用文` + `JTF` + `SmartHR`.
 - **JW-44 · Ellipsis: house choice.** KB describes … or …… (KB: consistency only; the uses are described, not recommended); SmartHR uses one ….
-- **JW-45 · Ranges: 〜 for ranges (JTF: 「18〜22歳」, not the ASCII ~; SmartHR: 「2022/01/01〜2022/03/01」; KB: consistency only, the use is described, not recommended).** For foreign readers write から/まで and don't use 〜 (`やさしい`: 「午前９時から午後６時まで」). Which code point 〜 should be is not settled by any source. `JTF` + `SmartHR` vs `やさしい`.
+- **JW-45 · Ranges: 〜 for ranges (JTF: 「18〜22歳」, not the ASCII ~; SmartHR: 「2022/01/01〜2022/03/01」; KB: consistency only, the use is described, not recommended).** For foreign readers write から/まで and don't use 〜 (`やさしい`: 「午前９時から午後６時まで」). Only Mozilla names its code point: U+301C WAVE DASH, not U+FF5E (a translation guide; KW-46). `JTF` + `SmartHR` vs `やさしい`.
 - **JW-46 · Inline lists:** 、 when order matters and ・ when it doesn't (SmartHR); ・ for parallel words (KB, JTF). Judgment.
 - **JW-47 · Colon:** JTF avoids ： in Japanese sentences except between a heading word and its explanation, full-width; SmartHR writes 「例：」; KB describes ： between an item and its content (KB: consistency only). A half-width : after Japanese text is the checkable part. `JTF` + `SmartHR`.
 - **JT-30 + JW-48 · The repeat mark is only 々, for one kanji; repeat two or more characters in full (ますます, 一人一人).** `公用文` only; for product text an extension.
@@ -252,7 +252,7 @@ Twelve topics are house choices with sources on each side: action labels with or
 
 **Writing checker:** `node scripts/lang/kana-copy-check.mjs [--json|--format=github] [--strict] <files-or-dirs>` (in the OmD repository until the skill ships).
 - It reads text, Markdown, HTML, JSX/TSX, Vue, Svelte, Astro and JS/TS string literals.
-- It tests the 24 KW rules that a pattern, a code point or a count can decide.
+- It tests the 25 KW rules that a pattern, a code point or a count can decide.
 - WARN only for KW-09 and KW-26's first check: there two company guides, or DADS and two company guides, give that exact form as wrong. Everything else is FYI, and there is no BLOCK.
 - Every finding gives the matched text and the source key.
 - Chinese text shares the kanji range: only the kanji-share rule (KW-35) skips strings without kana, so on a Chinese string other rules can fire.
@@ -336,8 +336,8 @@ The first drafts of the rule files claimed these; the independent check found no
 - an `em`/`i` italic reset, or font weights not declared in `@font-face` (JT-26);
 - readings in parentheses, or ruby built from positioned spans, as defects (JT-28);
 - `unicode-range` slicing on a self-hosted Japanese font (JT-24); naming `Yu Gothic Medium` for weight 400 on Windows (JT-23); any per-OS Japanese font stack;
-- 。 or no 。 on buttons, labels and menus (JW-39); that a typed space between Japanese and Latin text is ever recommended (no source opened says so; JW-57);
-- rules on 「〜になります」, 「〜のほう」, あなた in UI text, or apology wording in errors: no source opened has one.
+- 。 or no 。 on buttons, labels and menus (JW-39); a typed space between Japanese and Latin text as right or wrong: Mozilla and WordPress type one, JTF and SmartHR don't, so it is a house choice (JW-57; `references/writing-rules.md`, UW-40);
+- rules on 「〜になります」 or 「〜のほう」: no source opened has one. あなた in UI text and an apology at the start of an error each have one source, WordPress, for text translated from English (KW-12, KW-11); no company or government page read states either.
 
 Also:
 - Don't carry Korean habits over. `keep-all` alone lets long Japanese text overflow (JT-13, the researcher's reading of CSS Text 3), and hangul's tracking floors and size rules have no Japanese source.
@@ -373,7 +373,7 @@ Every run ends with this table, in the user's language. One row per change; Why 
 - **Few guides were opened.** The JW rules rest on two company or industry guides (SmartHR and JTF); the KW rules add Ubie, Ameba Spindle, GMO Pepabo and two translation guides (Mozilla, WordPress). Nothing here can be called common practice across Japanese companies.
 - **A native reviewer has not read this skill.** Quotes came through text extraction or were transcribed from page images; three glyph-level doubts are flagged in `references/rules.md` (JW-32, JW-33, JW-70).
 - **The measurement** is 77 home pages at desktop width on one date; 11 of 88 sites were unreadable. It describes marketing surfaces, not product screens.
-- **The writing checker covers only the 24 KW rules a pattern can decide**, and both checkers read source, not rendered pages. A clean run is not proof, and a hit is not always a defect.
+- **The writing checker covers only the 25 KW rules a pattern can decide**, and both checkers read source, not rendered pages. A clean run is not proof, and a hit is not always a defect.
 - **The skill has not been evaluated.** The plan is `docs/research/2026-11-13-kana-eval-plan.md`.
 
 ## 11. References

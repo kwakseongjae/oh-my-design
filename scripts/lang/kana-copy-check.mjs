@@ -65,6 +65,7 @@ const SOURCE = {
   'KW-26': 'DADS-in, PB, SmartHR via JW-64 (government design system and 2 of 4 company guides)',
   'KW-32': 'UB (one company guide, Ubie)',
   'KW-33': 'WP 3-6, MZ, MZ-ed (translation guides only)',
+  'KW-39': 'MZ, WP, JTF via JW-36/50/59 (translation guides; SmartHR also for digits)',
   'KW-35': 'UB, MZ (one company guide, Ubie, gives the 3:7 aim; one translation guide, Mozilla, the direction only)',
   'KW-46': 'MZ-ed, MZ-ed21, SH-cnt, UB (code points: translation guide only, Mozilla; wave dash for ranges: 2 of 4 company guides)',
   'KW-54': 'WP 1-9 (translation guide only)',
@@ -104,6 +105,12 @@ const PATTERNS = [
   ['KW-46', 'FYI', /[\u2015\uFF5E]/g, 'U+FF5E or U+2015; Mozilla uses U+301C or U+2013 for ranges and neither of these', null],
   // SH-cnt NG 「2022/01/01 - 2022/03/01、2022/01/01−2022/03/01」 (U+002D and U+2212); OK uses the wave dash
   ['KW-46', 'FYI', /\d{4}\/\d{2}\/\d{2}\s*[\u002D\u2212]\s*\d{4}\/\d{2}\/\d{2}/g, 'a date range joined by a hyphen or minus sign; SmartHR and Ubie use the wave dash', null],
+  // KW-39. Firing strings for the fixtures are JTF's own wrong examples in references/rules.md (JW-36, JW-50, JW-59)
+  // and two strings there that hold U+3000; MZ 「全角空白および半角カナは使用しない。」
+  ['KW-39', 'FYI', /[\uFF10-\uFF19]+/g, 'full-width digits; Mozilla, WordPress, JTF and SmartHR write half-width digits (the government writing guide asks only for one choice per document)', null, 'MZ, WP 1-3, JTF via JW-50, SH-cnt (translation guides and one company guide)'],
+  ['KW-39', 'FYI', /[\uFF21-\uFF3A\uFF41-\uFF5A]+/g, 'full-width Latin letters; Mozilla, WordPress and JTF write them half-width (the government writing guide asks only for consistency)', null, 'MZ, WP 1-2, JTF via JW-59 (translation guides only)'],
+  ['KW-39', 'FYI', /\u3000+/g, 'a full-width space (U+3000); Mozilla uses none, while the government writing guide and JTF allow one after a sentence-ending exclamation or question mark (JW-43)', null, 'MZ (translation guide only)'],
+  ['KW-39', 'FYI', /[\uFF65-\uFF9F]+/g, 'half-width katakana; Mozilla and JTF write katakana full-width', null, 'MZ, JTF via JW-36 (translation guides only)'],
   // WP 1-9 誤 「%d 件の投稿、%d 個の文字列」
   ['KW-54', 'FYI', new RegExp('%(\\d+\\$)?d +(?=' + JA_CHAR + ')', 'g'), 'a space after a digit placeholder; WordPress writes none', null],
   // UB Don't 「当てはまるものを一つ選んでください。」
@@ -359,6 +366,7 @@ const EXPECTED = {
   'kw-32/hit': ['strings.md:2 FYI KW-32', 'strings.md:3 FYI KW-32'],
   'kw-33/hit': ['strings.md:2 FYI KW-33', 'strings.md:3 FYI KW-33', 'strings.md:4 FYI KW-33', 'strings.md:5 FYI KW-33'],
   'kw-35/hit': ['strings.md:2 FYI KW-35'],
+  'kw-39/hit': ['strings.md:2 FYI KW-39', 'strings.md:3 FYI KW-39', 'strings.md:4 FYI KW-39', 'strings.md:5 FYI KW-39', 'strings.md:6 FYI KW-39'],
   'kw-46/hit': ['strings.md:2 FYI KW-46', 'strings.md:3 FYI KW-46', 'strings.md:3 FYI KW-46', 'strings.md:4 FYI KW-46', 'strings.md:4 FYI KW-46'],
   'kw-54/hit': ['strings.md:2 FYI KW-54'],
   'kw-55/hit': ['strings.md:2 FYI KW-55'],

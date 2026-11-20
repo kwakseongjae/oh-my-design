@@ -4,6 +4,7 @@
 
 ## How this file was made
 
+- **Quotes from `rules.md`.** KW-39's examples and fixtures quote JTF and KB strings from [`rules.md`](./rules.md) (JW ids given), because the writing research quotes no string that breaks it. No other rule does.
 - **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. UW-45 (not supported) and UW-10 (states no rule) are left out. The twelve candidates recorded as a disagreement are not rules: they are listed under [The project's DESIGN.md decides](#the-projects-designmd-decides), each side with its source, and the checker tests none of them.
 - **Ids.** KW-nn carries the number of the candidate it came from (KW-09 is UW-09), so the numbering has gaps. Every candidate's fate is in [`../writing/coverage.md`](../writing/coverage.md).
 - **Relation to JW.** [`rules.md`](./rules.md) holds JW-01 … JW-70 (keys KB: the Agency for Cultural Affairs' guide for government writing; KG: its keigo guideline; GK: the cabinet notice on loanword spelling; YN: the plain-Japanese guideline for foreign residents; JTF; SmartHR). A KW rule that agrees with a JW rule says so and adds its sources; it does not restate the JW rule.
@@ -314,10 +315,10 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-39 (UW-39) · Latin letters and digits half-width; no full-width space (U+3000); no half-width katakana.
 - Kind: TYPO (code points).
-- Strength: translation guides only (both); with JW-36, JW-50 and JW-59 (JTF, SmartHR).
+- Strength: translation guides only (both); with JW-36, JW-50 and JW-59 (JTF, a translation-industry guide; SmartHR for digits). The government writing guide asks only for one choice per document (JW-50, JW-59), and it and JTF allow a full-width space after a sentence-ending exclamation or question mark (JW-43).
 - Quote: MZ 「英数字や記号を使用する場合は特別な理由のない限り半角を使用する。」 「全角空白および半角カナは使用しない。」; WP 1-2 「すべての英数字、符号、疑問符、感嘆符は半角文字を使う」
-- Example: no sourced example in the writing research.
-- Checker: judgment only for now. No string quoted in the writing research breaks it, so no fixture could be built. The SKILL.md §7 search patterns for JW-36, JW-50 and JW-59 cover the same code points.
+- Example (from [`rules.md`](./rules.md), JTF): JW-36 「ﾒｰﾙｱﾄﾞﾚｽ」 → 「メールアドレス」; JW-50 「１２３４５」 → 「12345」; JW-59 「ａｂｃ ＤＥＦ」 → 「abc DEF」.
+- Checker: **KW-39, FYI**: full-width digits (U+FF10–U+FF19), full-width Latin letters (U+FF21–U+FF3A, U+FF41–U+FF5A), U+3000, half-width katakana (U+FF65–U+FF9F). The fixtures quote JTF's examples above and two strings in `rules.md` that hold U+3000 (JW-43's JTF example, JT-29's KB list label); this is the one rule whose quotes may come from `rules.md` as well as the writing research.
 
 #### KW-46 (UW-46) · Ranges take 〜 U+301C WAVE DASH, not ～ U+FF5E; Mozilla also allows U+2013 and never uses U+2015.
 - Kind: TYPO (code points).
@@ -331,7 +332,7 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Strength: one company's guide (Ubie).
 - Quote: UB 「半角スラッシュは分数を示す。並記した言葉の区切りには全角スラッシュを使う。」
 - Example: no sourced example.
-- Checker: judgment only. No quoted string breaks it.
+- Checker: judgment only. No quoted string breaks it, in the writing research or in `rules.md`.
 
 #### KW-49 (UW-49) · Use emphasis brackets consistently.
 - Kind: WRITE.
@@ -347,7 +348,7 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Strength: one company's guide (SmartHR) and one translation guide (Mozilla). OPTiM heading only, not counted. With JW-51.
 - Quote: SH-cnt 「読みやすさの観点から、数値を表記するときには3桁ごとに「,」を入れます。」 「また、カンマは数字に合わせて半角を用います。」; MZ-ed 「半角英数字。3 ケタごとに区切り文字を挿入する。(例: 1,024)」
 - Example: SH-cnt 「1,000,000円、10,000人」 (the right form only).
-- Checker: judgment only. No quoted string breaks it.
+- Checker: judgment only. No string quoted in the writing research breaks it. In `rules.md` the only digit runs without a comma sit beside a kanji unit (JW-51: KB allows dropping the comma there, and JTF calls using both redundant), so a check that fired on them would flag accepted forms.
 
 #### KW-54 (UW-54) · No space between a digit placeholder and its counter (WordPress); SmartHR counts records with 「件」.
 - Kind: TYPO + WRITE.
