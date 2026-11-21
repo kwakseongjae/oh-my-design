@@ -4,19 +4,24 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-21 아침) — 스프린트 1회차 끝: 시안 네 묶음이 오너의 선택을 기다린다 · PR #132(블로그)·#133(디자인 시스템) 초안 · 재검증 시범 4곳은 착지 보류
+## 지금 (2026-11-21 오후) — 오너 「추천대로 진행」 · 승인은 아티팩트 한 곳에서 · #131 머지됨 · 상세 페이지 머리 구현(#133 승인 대기) · /kana 페이지와 「화면」 탭 구현 중
 
-**오너 11/21:** 「10개 기업 기준으로 … UI를 어떻게 효율적으로 보여주고 DESIGN.md 페이지랑 자유자재로 오가게 할지」 · 「디자인 시스템쪽 작업도 꽤 시급 … 상세 페이지 상단 버튼 크기가 너무 크고」 · 핵심 셋 = **일본어 스킬 페이지, refero 식 사이트 심층 분석, 블로그** · 「시간 날때 레퍼런스 확충」. 스프린트 구성은 `docs/ROADMAP.md` §5-0.
+**오너 11/21 오후:** 「일단 추천대로 진행하고, 다음부터는 별도의 html로 각각 정리하지말고, 스크린샷이나 화면 사진을 제공해서 before after나 new형태로 보여줘. 그래야 내가 아티팩트에서 벗어나지 않고 추천 승인 이런걸 얘기하지.」
+→ 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
+→ 보고 방식: **살아 있는 아티팩트 하나**(https://claude.ai/artifact/Nsib1djJMkU1AtC3au9hpd, 원본 `~/.omd-workers/reports/2026-11-21-sprint-report.html`, 그림은 세션 임시 폴더의 `report-img/`에서 같이 올림)에 전·후 또는 새 화면 그림을 넣고 거기서 승인받는다. 별도 HTML 묶음을 만들지 않는다.
 
-**오너가 볼 것(전부 이 Mac의 파일, 화면은 공개 보류 그대로):**
-- 화면 ↔ DESIGN.md 구조 시안 3장: `~/Downloads/kr-screens/mock/index.html` (A 한눈에 11곳×7종 / B 상세 페이지의 「화면」 탭 / C 화면 한 장과 DESIGN.md 값)
-- 11곳 시트: `~/Downloads/kr-screens/web/index.html`
-- 사이트 디자인 시스템 실측과 제안: `~/Downloads/omd-design-system/index.html` → 상세 페이지 머리 시안 A·B·C
-- `/kana` 페이지 시안 3안: `~/Downloads/omd-kana/index.html` (A 출처가 보이는 규칙 / B 같은 화면, 다른 일본어 / C 두 독자)
-- 블로그 첫 글 프리뷰: PR #132의 Vercel 프리뷰에서 `/blog/korean-brand-colors-measured`
-- 폰으로 찍었던 무신사·당근 시트(다시 만듦): `~/Downloads/kr-screens/app/{musinsa,karrot}/index.html`
+**승인 대기:** #133 머지(상세 페이지 첫 화면: 제목 66→40, 버튼 56→40, 900px부터 한 줄. 전·후 그림이 아티팩트에 있다. 머지는 운영 배포라 오너의 말이 필요하다).
 
-**오너 몫(고르면 바로 구현):** ① 상세 페이지 머리 A / B / C(추천 B, 화면 탭을 넣으면 C) ② 화면 아카이브를 어디부터(추천: B 탭 → C → A) ③ 컨트롤 규격 32·40·48 ④ `/kana` 시안(추천: 지금은 A, 원어민 검토 뒤 B의 첫 화면) ⑤ 블로그 글의 슬러그·발행일·문체, 게시 ⑥ 재검증 시범 4곳을 어떻게 넣을지(아래) ⑦ 화면 공개 기준(보류 중) ⑧ #129·#130·#131 머지(#132는 #131을 품고 있다) ⑨ 우리 `/design.md` 다시 쓰기 ⑩ 일본어 원어민 검토자 ⑪ 로그인 뒤 화면을 찍을지.
+**도는 것(끝나면 그림을 아티팩트에 올린다):**
+- 에이전트 `kana-page`: 워크트리 `kana-page`(`feat/kana-page`, main에서), `/ko/kana`. 색인 제외·내비 미연결로 만든다.
+- 에이전트 `screens-tab`: 워크트리 `screens-tab`(`feat/item-screens-tab`, #133 위에서), `OMD_SCREENS_DIR`이 있을 때만 보이는 로컬 전용 탭. 화면 그림은 저장소·배포에 넣지 않는다.
+- Codex 4개: `~/.omd-workers/reverify3/{spoqa,supertone,queenit,peoplefund}`, 고친 지시서(확인 못 한 이전 내용을 「Earlier record, not re-confirmed on <날짜>」 소제목 아래 그대로 둔다. `scripts/workers/make-reverify-order.py`, 가지 `chore/state-1121`). 끝나면 본문 길이·소제목을 이전과 비교하고 `remeasure.mjs`.
+
+**이번 오후에 끝난 것:** #131 머지(main `1761fc2d`) · 블로그 대비 표 재측정(`recheck_contrast.mjs`: 23곳 중 18곳 유지, 글의 표를 18곳으로, PR #132) · `diff-walks.mjs`(같은 서비스의 두 촬영을 조작부 스타일·제목 구조·주소로 비교. 같은 날 두 번 찍은 5곳은 비교 가능한 화면이 전부 「같음」) · kana 검사기에 폭 검사(25/43).
+
+**다음(에이전트 자리가 나면):** 우리 `/design.md` 초안 → 일본어 2차 조사(Microsoft 가이드) → 대만·중국 조사 → 시각 효과 스킬 후보.
+
+**오너만 할 수 있는 것:** #129·#130 머지 · #133 승인 · 일본어 원어민 검토자 · 폰 세션 · 화면 공개 기준.
 
 **레인별 지금:**
 - **화면(T3).** 가지 `feat/screen-archive`(올림). `tools/screen-archive/`: `web-shoot.mjs`(요소의 계산된 색·모서리·글자, `from` 링크 따라가기, 404와 거절 구분, 390은 휴대폰으로 식별), `link-tokens.mjs`(화면의 값 ↔ DESIGN.md, 정확히 같은 값만, 한 방향. 색은 검정·흰색을 빼고 세고, 컴포넌트는 종류가 같고 값 셋 이상이 같을 때만), `suggest-patterns.mjs`(패턴 제안), `make-web-sheet.mjs`, `make-ia-mocks.mjs`, `services.json`, `routes/` 11곳. 원본 `~/.omd-workers/screens/web/<slug>-20261121/`. 거절(403): 무신사 상품 상세, NOL 숙소 상세(창을 열어도). 창이 필요한 곳: 오늘의집·올리브영·NOL·원티드·인프런·잡플래닛. 안 한 것: 손으로 쓴 발견, 패턴 표시, 로그인 뒤 화면, 폰(앱) 화면과의 짝, 다시 찍어 바뀐 것 보이기.
