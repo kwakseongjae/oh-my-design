@@ -10065,28 +10065,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "queenit",
-    "status": "partial",
-    "verifiedAt": "2026-06-26",
-    "tokensExtractedAt": "2026-06-26",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-22",
+    "tokensExtractedAt": "2026-11-21",
+    "nextReverifyAt": "2027-05-20",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 94,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 106,
+    "evidenceClaimCount": 106,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 13,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "componentCount": 7,
-    "interactiveComponentCount": 3,
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -14759,8 +14755,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 454,
-  "partial": 87,
+  "verified_v2": 455,
+  "partial": 86,
   "legacy_snapshot": 81,
   "total": 622
 } as const;
