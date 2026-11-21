@@ -3,12 +3,15 @@ import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import data from "@/data/kana-rules.generated.json";
 import { AREA_KO, HOUSE_KO, KANA_COPY, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "./copy";
+import { KanaCompare } from "./compare";
+import { Mixed, SourceLink } from "./parts";
 import "./kana.css";
 
 /**
  * /ko/kana: the research behind the /kana skill (a draft), direction A of the owner's stills (2026-11-21). The rules
  * and the sources' own sentences are the content; none of the Japanese on the page is ours.
  *   1. first screen: what it is, the draft status, three numbers, two actions
+ *   1b. #compare: the sources' own wrong/right pairs set in the components their rules are about, toured (compare.tsx)
  *   2. #rules: the six lead rules as cards, then all the others by the file's areas
  *   3. #house: the house choices, every side with its source
  *   4. #fonts: the first Japanese face in 77 measured services
@@ -27,26 +30,6 @@ const SOURCE = new Map(data.sources.map((s) => [s.key, s]));
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
 const LEAD = new Set<string>(LEAD_RULES);
 
-/** kana, CJK ideographs and punctuation, full-width forms: a Japanese run inside Korean copy */
-const JA_RUN = /([\u3000-\u303f\u3040-\u30ff\u31f0-\u31ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]+)/;
-
-/** Korean copy with its Japanese words marked lang="ja" (they wrap and are set as Japanese). */
-function Mixed({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(JA_RUN).map((part, i) =>
-        i % 2 ? (
-          <span key={i} lang="ja">
-            {part}
-          </span>
-        ) : (
-          <Fragment key={i}>{part}</Fragment>
-        ),
-      )}
-    </>
-  );
-}
-
 /** A quoted string as the file gives it, in the page's own corner brackets (an English quote, Microsoft's, in curly
  *  quotes); its `code` marks (writing-rules.md's Markdown) set as code. */
 function Ja({ text, en = false }: { text: string; en?: boolean }) {
@@ -64,23 +47,6 @@ function Ja({ text, en = false }: { text: string; en?: boolean }) {
       )}
       <span className="kn-qm">{en ? "\u201D" : "」"}</span>
     </>
-  );
-}
-
-/** The source a quote or example comes from: the md's English page name, linked; a key with no URL (JTF) is named in Korean, not linked. */
-function SourceLink({ k }: { k: string }) {
-  const s = SOURCE.get(k);
-  return (
-    <span className="kn-src">
-      {s ? (
-        <a href={s.url} target="_blank" rel="noopener noreferrer" lang="en" aria-label={`${s.name} (${t.rules.newTab})`}>
-          {s.name}
-          <span aria-hidden="true"> ↗</span>
-        </a>
-      ) : (
-        <span>{SOURCE_ORGS.find((o) => o.prefix === k)?.name ?? k}</span>
-      )}
-    </span>
   );
 }
 
@@ -359,6 +325,8 @@ export function KanaPage() {
             </dl>
           </div>
         </section>
+
+        <KanaCompare />
 
         <Section id="rules" h2={t.rules.h2} intro={t.rules.intro} band>
           <div className="kn-grid">

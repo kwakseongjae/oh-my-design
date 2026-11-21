@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { metadata } from "@/app/(ko)/ko/kana/page";
 import { KanaPage } from "@/components/kana/kana-page";
-import { AREA_KO, HOUSE_KO, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
+import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
 import data from "@/data/kana-rules.generated.json";
 
 /**
@@ -94,7 +94,7 @@ describe("/ko/kana page", () => {
 
   it("one h1, the sections in order, all 51 rule cards once, the lead six first", () => {
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
-    const order = ['id="kn-h1"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
+    const order = ['id="kn-h1"', '<section id="compare"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
     expect(order.every((i) => i > -1)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
     const cards = [...html.matchAll(/<article id="(kw-\d+)"/g)].map((m) => m[1].toUpperCase());
@@ -122,7 +122,7 @@ describe("/ko/kana page", () => {
   });
 
   it("the actions: the rules, then the sources list on the page; no install command", () => {
-    const hero = main.slice(0, main.indexOf('<section id="rules"'));
+    const hero = main.slice(0, main.indexOf('<section id="compare"'));
     expect(hero).toContain('href="#rules"');
     expect(hero).toContain(`규칙 ${data.rules.length}개 보기`);
     expect(hero).toContain('href="#sources"');
@@ -139,6 +139,66 @@ describe("/ko/kana page", () => {
   it("the font bars add up to the services measured", () => {
     const bars = [...main.matchAll(/<span class="kn-bar-n">(\d+)/g)].map((m) => Number(m[1]));
     expect(bars.reduce((a, b) => a + b, 0)).toBe(data.fonts.services);
+  });
+});
+
+describe("/ko/kana comparison (#compare)", () => {
+  type Ex = { key: string; via?: string; sides: { role: string; label: string | null; texts: string[] }[] };
+  const pair = (s: (typeof COMPARE_STOPS)[number]) => (data.rules.find((r) => r.id === s.rule)?.examples as Ex[] | undefined)?.[s.example];
+  const section = main.slice(main.indexOf('<section id="compare"'), main.indexOf('<section id="rules"'));
+  const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+
+  it("8 to 10 stops, each a rule's example the source gives as a wrong and a right side, none of them left out on purpose", () => {
+    expect(COMPARE_STOPS.length).toBeGreaterThanOrEqual(8);
+    expect(COMPARE_STOPS.length).toBeLessThanOrEqual(10);
+    expect(new Set(COMPARE_STOPS.map((s) => `${s.rule}/${s.example}`)).size).toBe(COMPARE_STOPS.length);
+    for (const s of COMPARE_STOPS) {
+      const e = pair(s);
+      expect(e, `${s.rule} #${s.example}`).toBeTruthy();
+      const roles = e!.sides.map((x) => x.role);
+      expect(roles, s.rule).toContain("wrong");
+      expect(roles, s.rule).toContain("right");
+      // KW-39 and KW-10 were not checked against the source's bytes; KW-25 and KW-55 are house choices
+      expect(["KW-39", "KW-10", "KW-25", "KW-55"], s.rule).not.toContain(s.rule);
+      expect(e!.via, s.rule).toBeUndefined();
+      for (const x of e!.sides.flatMap((y) => y.texts)) {
+        // the source's own notes (※ちょっと堅い), Markdown code marks and placeholder templates stay out of a component
+        expect(x, s.rule).not.toMatch(/[※`◯～]|xxx/);
+      }
+    }
+  });
+
+  it("each stop renders exactly its pair's texts, in the source's order, on the right side", () => {
+    const shown = [...section.matchAll(/<span class="kc-ja" lang="ja" data-stop="(\d+)" data-role="(wrong|right)">([^<]*)<\/span>/g)];
+    COMPARE_STOPS.forEach((s, i) => {
+      const e = pair(s)!;
+      for (const role of ["wrong", "right"] as const) {
+        const want = e.sides.filter((x) => x.role === role).flatMap((x) => x.texts);
+        const got = shown.filter((m) => m[1] === String(i) && m[2] === role).map((m) => decode(m[3]));
+        expect(got, `${s.rule} ${role}`).toEqual(want);
+      }
+    });
+    expect(shown).toHaveLength(COMPARE_STOPS.reduce((n, s) => n + pair(s)!.sides.flatMap((x) => x.texts).length, 0));
+  });
+
+  it("outside the pairs' texts, the only Japanese in the section is inside the stops' Korean readings", () => {
+    const rest = text(section.replace(/<span class="kc-ja"[^>]*>[^<]*<\/span>/g, "\n"));
+    const readings = COMPARE_STOPS.map((s) => RULE_KO[s.rule]).join("\n");
+    const runs = [...new Set(rest.match(JA_RUNS) ?? [])];
+    expect(runs.filter((r) => !readings.includes(r))).toEqual([]);
+  });
+
+  it("every stop names its rule, links its card and its source, and the section says what is real", () => {
+    for (const s of COMPARE_STOPS) {
+      expect(section).toContain(`href="#${s.rule.toLowerCase()}"`);
+      expect(section).toContain(`href="${data.sources.find((x) => x.key === pair(s)!.key)!.url}"`);
+    }
+    expect(section).toContain("한 글자도 바꾸지 않고");
+    expect(section).toContain("회색 막대와 컴포넌트 모양은 우리가 그렸습니다");
+    // the specimens are pictures of controls, not controls: no focusable element inside a panel
+    const panels = section.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? [];
+    expect(panels.length).toBeGreaterThan(0);
+    for (const p of panels) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
   });
 });
 
