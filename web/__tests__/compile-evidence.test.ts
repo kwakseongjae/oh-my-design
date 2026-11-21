@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { brandChanges, candidatesMarkdown, compileControl, componentsYaml, declaredColor, describeChange, mergeControls, proofMarkdown, publishedNames, tokenCandidates } from "../scripts/compile-evidence.mjs";
+import { brandChanges, candidatesMarkdown, colourSpacesMarkdown, compileControl, componentsYaml, declaredColor, describeChange, mergeControls, okToSrgb, proofMarkdown, publishedNames, resolveColourSpaces, tokenCandidates } from "../scripts/compile-evidence.mjs";
 
 // Shapes follow probe-keyboard-states.mjs states.json: controls[key] = { found, identity, rest, hover, pressed, focus }.
 const identity = { tag: "a", role: null, text: "Contact Us", rect: { w: 194.8, h: 56 }, radius: "100px", padding: "0px 40px", font: "18px/700" };
@@ -257,5 +257,53 @@ describe("a control with no text", () => {
   });
   it("keeps fg for a button that has text", () => {
     expect(compile("cta", control({ identity: { ...identity, tag: "button", text: "Start" } })).fields.fg).toBe("#414aff");
+  });
+});
+
+describe("colours written in oklch or oklab", () => {
+  // queenit's storefront, 2026-11-21: the purchase button's fill and the white of its label, as the probe recorded them
+  const fill = "oklch(0.551898 0.214659 289.15)";
+
+  it("reads an in-gamut value as the 8-bit sRGB the browser paints", () => {
+    expect(okToSrgb("lch", "0.551898 0.214659 289.15")).toMatchObject({ r: 117, g: 78, b: 228, alpha: 1, inGamut: true });
+    expect(okToSrgb("lch", "1 0 0")).toMatchObject({ r: 255, g: 255, b: 255, inGamut: true });
+    expect(okToSrgb("lch", "0 0 0")).toMatchObject({ r: 0, g: 0, b: 0, inGamut: true });
+    expect(okToSrgb("lab", "1 0 0")).toMatchObject({ r: 255, g: 255, b: 255 });
+    expect(okToSrgb("lch", "55.1898% 0.214659 289.15deg")).toMatchObject({ r: 117, g: 78, b: 228 });
+    expect(okToSrgb("lch", "0.5 0.1")).toBeNull();
+  });
+
+  it("rewrites the value where it stands and keeps the notation it came from", () => {
+    const log = { resolved: {}, outOfGamut: {} };
+    const file = resolveColourSpaces({ rows: [{ bg: fill, fg: "oklch(1 0 0)", border: "1px solid oklch(0.228318 0.097639 260.661 / 0.1882)" }], [fill]: "a key stays" }, log);
+    expect(file.rows[0].bg).toBe("rgb(117, 78, 228)");
+    expect(file.rows[0].fg).toBe("rgb(255, 255, 255)");
+    expect(file.rows[0].border).toMatch(/^1px solid rgba\(\d+, \d+, \d+, 0\.1882\)$/);
+    expect(Object.keys(file)).toContain(fill);
+    expect(log.resolved["rgb(117, 78, 228)"]).toEqual({ [fill]: 1 });
+  });
+
+  it("leaves a value outside sRGB as written and counts it", () => {
+    const log = { resolved: {}, outOfGamut: {} };
+    const wide = "oklch(0.7 0.37 150)";
+    expect(okToSrgb("lch", "0.7 0.37 150")?.inGamut).toBe(false);
+    expect(resolveColourSpaces({ bg: wide }, log)).toEqual({ bg: wide });
+    expect(log).toEqual({ resolved: {}, outOfGamut: { [wide]: 1 } });
+    expect(colourSpacesMarkdown(log)).toContain("Outside sRGB, left as written (1)");
+  });
+
+  it("makes the fill a component field and a candidate, which a raw oklch string never was", () => {
+    const raw = control({ rest: { bg: fill, fg: "oklch(1 0 0)", border: "none" } });
+    expect(compile("buy", raw).fields.bg).toBeUndefined();
+    const c = compile("buy", resolveColourSpaces(raw));
+    expect(c.fields).toMatchObject({ bg: "#754ee4", fg: "#ffffff" });
+    const survey = resolveColourSpaces({ census: { census: { bg: [{ color: fill, count: 4 }], text: [], border: [], paragraphInk: [] } }, rows: [] });
+    expect(tokenCandidates(survey).colours.map((x: { value: string }) => x.value)).toContain("#754ee4");
+  });
+
+  it("says nothing when the capture holds no such value", () => {
+    expect(colourSpacesMarkdown({ resolved: {}, outOfGamut: {} })).toBe("");
+    const same = { bg: "rgb(1, 2, 3)", n: 4, list: ["oklchx"], nil: null };
+    expect(resolveColourSpaces(same)).toEqual(same);
   });
 });
