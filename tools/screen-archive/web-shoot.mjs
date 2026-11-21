@@ -140,7 +140,7 @@ function maskPage(mask) {
   const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
   const names = new Set();       // every name met on this page so far
   const resolved = new Set();    // profile links whose name is already known
-  const total = { names: 0, texts: 0, attrs: 0, images: 0 };
+  const total = { names: 0, texts: 0, partial: 0, partialTexts: [], attrs: 0, images: 0 };
   const apply = () => {
     const byTarget = new Map();
     for (const sel of mask.names || []) for (const el of document.querySelectorAll(sel)) {
@@ -157,10 +157,15 @@ function maskPage(mask) {
     for (const [k, s] of byTarget) { names.add(s); if (!k.startsWith('text:')) resolved.add(k); }
     total.names = names.size;
     const list = [...names].sort((x, y) => y.length - x.length);
-    const swap = (s) => { let out = s; for (const n of list) if (out.includes(n)) out = out.split(n).join(nameWith); return out; };
+    // A one-character name is replaced only where it is the whole text: inside a longer text it would eat ordinary words.
+    const swap = (s) => { let out = s; for (const n of list) if (n.length > 1 ? out.includes(n) : out.trim() === n) out = out.split(n).join(nameWith); return out; };
     if (list.length) {
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-      for (let n = walker.nextNode(); n; n = walker.nextNode()) { const v = swap(n.nodeValue); if (v !== n.nodeValue) { n.nodeValue = v; total.texts++; } }
+      // Text the page does not draw (inline data in a script, a style sheet) is left alone.
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: (n) => (/^(SCRIPT|STYLE|NOSCRIPT|TEMPLATE)$/.test(n.parentElement?.tagName ?? '') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT) });
+      // partial: the name stood inside a longer text ("milk의 판매 물품"). Right for a person's own line, wrong if the
+      // name happens to be an ordinary word, so a screen with partial > 0 is one to look at before it is shown.
+      // partialTexts keeps those texts as they read after the swap (the name is no longer in them).
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) { const v = swap(n.nodeValue); if (v !== n.nodeValue) { if (v.trim() !== nameWith) { total.partial++; if (total.partialTexts.length < 12) total.partialTexts.push(v.trim().slice(0, 60)); } n.nodeValue = v; total.texts++; } }
       for (const el of document.querySelectorAll('[alt],[aria-label],[title]')) for (const at of ['alt', 'aria-label', 'title']) {
         const v = el.getAttribute(at); if (v) { const w = swap(v); if (w !== v) { el.setAttribute(at, w); total.attrs++; } }
       }
@@ -187,7 +192,7 @@ function maskPage(mask) {
   window.__omdMaskObserver = new MutationObserver(apply);
   window.__omdMaskObserver.observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['src', 'srcset', 'href'] });
   window.__omdMask = total;
-  return { ...total };
+  return { ...total, partialTexts: [...total.partialTexts] };
 }
 
 async function runStep(page, step, never) {
