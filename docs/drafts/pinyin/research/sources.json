@@ -1,0 +1,542 @@
+{
+  "opened": "2026-11-21",
+  "note": "All web pages opened via WebFetch (extraction model; quotes limited to ~120 characters each, not verified at code-point level). MS read from a local pdftotext extract. Pages listed with use \"opened; ...\" were opened but not cited, or blocked.",
+  "sources": [
+    {
+      "key": "MS",
+      "title": "Microsoft — Chinese (Simplified) Localization Style Guide (PDF; read from local pdftotext extract /Users/kwakseongjae/.omd-workers/lang-sources/ms-chinese-simplified-2026-11-21.txt)",
+      "url": "https://download.microsoft.com/download/1/5/9/159cb91c-b61b-4385-97ca-80ccc7ff1fa0/zho-chn-StyleGuide.pdf",
+      "kind": "translation guide",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "AD-cw",
+      "title": "Ant Design — 文案 (copywriting.zh-CN.md)",
+      "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/docs/spec/copywriting.zh-CN.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "AD-df",
+      "title": "Ant Design — 数据格式 (data-format.zh-CN.md)",
+      "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/docs/spec/data-format.zh-CN.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-cw",
+      "title": "Teambition Clarity Design — 通用文案",
+      "url": "https://design.teambition.com/doc/copywriting",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-pu",
+      "title": "Teambition Clarity Design — 标点符号",
+      "url": "https://design.teambition.com/doc/punctuation",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-unit",
+      "title": "Teambition Clarity Design — 数字、时间及货币单位",
+      "url": "https://design.teambition.com/doc/unit",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-exp",
+      "title": "Teambition Clarity Design — 邮件/消息时间表达",
+      "url": "https://design.teambition.com/doc/expression",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-mix",
+      "title": "Teambition Clarity Design — 中西文混排",
+      "url": "https://design.teambition.com/doc/mixed",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-corp",
+      "title": "Teambition Clarity Design — 语料库",
+      "url": "https://design.teambition.com/doc/corpus",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-pr",
+      "title": "Zan Design (有赞) — 基础原则",
+      "url": "https://design.youzan.com/strategy/principle.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-se",
+      "title": "Zan Design — 语句表达",
+      "url": "https://design.youzan.com/strategy/sentence-expression.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-lib",
+      "title": "Zan Design — 标准词汇库",
+      "url": "https://design.youzan.com/strategy/standard-library.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-pu",
+      "title": "Zan Design — 标点符号",
+      "url": "https://design.youzan.com/strategy/punctuation.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-df",
+      "title": "Zan Design — 数据格式",
+      "url": "https://design.youzan.com/strategy/data-formats.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-sc",
+      "title": "Zan Design — 场景策略",
+      "url": "https://design.youzan.com/strategy/scenario-strategy.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-nm",
+      "title": "Zan Design — 命名策略",
+      "url": "https://design.youzan.com/strategy/naming-strategy.html",
+      "kind": "company design system",
+      "use": "opened; no rule taken (naming principles only; label order of example pairs unclear in extraction)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-de",
+      "title": "Zan Design — 数据录入 (navigation used to find the strategy pages)",
+      "url": "https://design.youzan.com/pattern/data-entry.html",
+      "kind": "company design system",
+      "use": "opened; navigation only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-cg",
+      "title": "Semi Design — Content Guidelines 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/experience/content-guidelines/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-btn",
+      "title": "Semi Design — Button 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/basic/button/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-toast",
+      "title": "Semi Design — Toast 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/feedback/toast/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-notif",
+      "title": "Semi Design — Notification 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/feedback/notification/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-banner",
+      "title": "Semi Design — Banner 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/feedback/banner/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-modal",
+      "title": "Semi Design — Modal 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/show/modal/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-empty",
+      "title": "Semi Design — Empty 文案规范",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/show/empty/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-popconfirm",
+      "title": "Semi Design — Popconfirm (no 文案规范 section)",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/feedback/popconfirm/index.md",
+      "kind": "company design system",
+      "use": "opened; nothing taken",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "WX",
+      "title": "微信小程序设计指南",
+      "url": "https://developers.weixin.qq.com/miniprogram/design/",
+      "kind": "platform design guide",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "EP",
+      "title": "Element Plus — 设计",
+      "url": "https://element-plus.org/zh-CN/guide/design.html",
+      "kind": "company design system",
+      "use": "used (principles only)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "WP",
+      "title": "WordPress China — 翻译风格指南",
+      "url": "https://cn.wordpress.org/team/handbook/translation-style-guide/",
+      "kind": "translation guide",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MDN",
+      "title": "MDN — 针对 MDN 文档的本地化指南 (zh-CN)",
+      "url": "https://raw.githubusercontent.com/mdn/translated-content/main/docs/zh-cn/translation-guide.md",
+      "kind": "translation guide",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-sumo",
+      "title": "Mozilla — SUMO Style Guide, 中文（简体）本地化翻译须知",
+      "url": "https://mozilla-l10n.github.io/styleguides/zh-CN/sumo.html",
+      "kind": "translation guide",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-zhCN-index",
+      "title": "Mozilla l10n style guides — zh-CN index",
+      "url": "https://mozilla-l10n.github.io/styleguides/zh-CN/",
+      "kind": "translation guide",
+      "use": "opened; index only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-zhTW",
+      "title": "Mozilla l10n style guides — zh-TW (checked for a Taiwan/Mainland term table; none)",
+      "url": "https://mozilla-l10n.github.io/styleguides/zh-TW/",
+      "kind": "translation guide (Taiwan)",
+      "use": "opened; nothing taken",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "CLREQ",
+      "title": "W3C — Requirements for Chinese Text Layout 中文排版需求, Group Note Draft 04 November 2026",
+      "url": "https://www.w3.org/TR/clreq/",
+      "kind": "W3C note",
+      "use": "used (sections up to about 8.3 only; fetch truncated)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "CLREQ-ED",
+      "title": "W3C — clreq editor's draft",
+      "url": "https://w3c.github.io/clreq/",
+      "kind": "W3C note",
+      "use": "opened; truncated at 8.3; status only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "CLREQ-2020",
+      "title": "W3C — clreq Working Draft 2020-11-01",
+      "url": "https://www.w3.org/TR/2020/WD-clreq-20201101/",
+      "kind": "W3C note (superseded draft)",
+      "use": "opened; truncated; not cited",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "CLREQ-raw",
+      "title": "w3c/clreq index.html (raw)",
+      "url": "https://raw.githubusercontent.com/w3c/clreq/gh-pages/index.html",
+      "kind": "W3C note source",
+      "use": "opened; truncated earlier than the rendered page",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MOE54",
+      "title": "教育部令第54号《信息技术产品国家通用语言文字使用管理规定》",
+      "url": "https://hudong.moe.gov.cn/srcsite/A02/s5911/moe_621/202301/t20230113_1039278.html",
+      "kind": "ministerial order",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "GOV-TY",
+      "title": "国务院关于公布《通用规范汉字表》的通知 国发〔2013〕23号",
+      "url": "https://www.gov.cn/zhengce/zhengceku/2013-08/19/content_1289.htm",
+      "kind": "State Council notice",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MIIT",
+      "title": "工信厅信管函〔2021〕67号 (with 适老化通用设计规范 annexes in the body)",
+      "url": "https://www.miit.gov.cn/jgsj/xgj/wjfb/art/2021/art_81e8b738d6b24ad6a04f7ecb3f4e0702.html",
+      "kind": "ministry document",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "GOV-MIIT",
+      "title": "Same MIIT notice on gov.cn",
+      "url": "https://www.gov.cn/zhengce/zhengceku/2021-04/13/content_5599225.htm",
+      "kind": "ministry document (copy)",
+      "use": "opened; not cited (MIIT page used)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "APPLE-CN",
+      "title": "Apple HIG 编写 (zh-CN)",
+      "url": "https://developer.apple.com/cn/design/human-interface-guidelines/writing",
+      "kind": "vendor guide",
+      "use": "opened; empty body (client-rendered)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ARCO",
+      "title": "Arco Design — Modal spec page",
+      "url": "https://arco.design/docs/spec/modal",
+      "kind": "company design system",
+      "use": "opened; title only (client-rendered)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TERMONLINE",
+      "title": "术语在线",
+      "url": "https://www.termonline.cn/",
+      "kind": "terminology authority",
+      "use": "opened; title only (client-rendered)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "AD-font",
+      "title": "Ant Design — 字体 (font.zh-CN.md)",
+      "url": "https://raw.githubusercontent.com/ant-design/ant-design/master/docs/spec/font.zh-CN.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "EP-ty",
+      "title": "Element Plus — Typography 排版",
+      "url": "https://element-plus.org/zh-CN/component/typography.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ZD-font",
+      "title": "Zan Design — 字体",
+      "url": "https://design.youzan.com/visual/font.html",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-ty",
+      "title": "Semi Design — Typography 版式",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/content/basic/typography/index.md",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-css",
+      "title": "Semi Design — semi-theme-default/scss/global.scss",
+      "url": "https://raw.githubusercontent.com/DouyinFE/semi-design/main/packages/semi-theme-default/scss/global.scss",
+      "kind": "design system code",
+      "use": "used (font stack)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ARCO-css",
+      "title": "Arco Design — components/style/theme/default.less",
+      "url": "https://raw.githubusercontent.com/arco-design/arco-design/main/components/style/theme/default.less",
+      "kind": "design system code",
+      "use": "used (font stack)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ARCO-global",
+      "title": "Arco Design — components/style/theme/global.less",
+      "url": "https://raw.githubusercontent.com/arco-design/arco-design/main/components/style/theme/global.less",
+      "kind": "design system code",
+      "use": "opened; no font-family",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TD-css",
+      "title": "TDesign — tdesign-common style/web/theme/_font.less",
+      "url": "https://raw.githubusercontent.com/Tencent/tdesign-common/develop/style/web/theme/_font.less",
+      "kind": "design system code",
+      "use": "used (font stack)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TD-vars",
+      "title": "TDesign — tdesign-common style/web/_variables.less",
+      "url": "https://raw.githubusercontent.com/Tencent/tdesign-common/develop/style/web/_variables.less",
+      "kind": "design system code",
+      "use": "opened; points to --td-font-family",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TD-fonts",
+      "title": "TDesign — design/fonts page",
+      "url": "https://tdesign.tencent.com/design/fonts",
+      "kind": "company design system",
+      "use": "opened; title only (client-rendered)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "ARCO-ty",
+      "title": "Arco Design — typography spec page",
+      "url": "https://arco.design/docs/spec/typography",
+      "kind": "company design system",
+      "use": "opened; title only (client-rendered)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MDN-tst",
+      "title": "MDN — text-spacing-trim",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-spacing-trim",
+      "kind": "spec summary",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MDN-tas",
+      "title": "MDN — text-autospace",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-autospace",
+      "kind": "spec summary",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MDN-tep",
+      "title": "MDN — text-emphasis-position",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-position",
+      "kind": "spec summary",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "W3C-lang",
+      "title": "W3C i18n — Why use the language attribute?",
+      "url": "https://www.w3.org/International/questions/qa-lang-why",
+      "kind": "W3C article",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "TB-intro",
+      "title": "Teambition Clarity Design — 介绍 (checked for a typography page; none linked)",
+      "url": "https://design.teambition.com/doc/introduction",
+      "kind": "company design system",
+      "use": "opened; nothing taken",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SM-dirs",
+      "title": "Semi Design repository content directories (navigation)",
+      "url": "https://github.com/DouyinFE/semi-design/tree/main/content",
+      "kind": "repository listing",
+      "use": "navigation only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "CLREQ-repo",
+      "title": "w3c/clreq repository root (navigation)",
+      "url": "https://github.com/w3c/clreq",
+      "kind": "repository listing",
+      "use": "navigation only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "GBT15834-W3C",
+      "title": "W3C 中文新闻 — GB/T 15834-2011 Part 5: Positioning of Punctuation Mark (English translation, 2013-12-02)",
+      "url": "https://www.w3.org/zh-hans/news/2013/translation-of-gb-t-15834-2011-part-5/",
+      "kind": "translation of national standard (unofficial)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "APPLE-SG",
+      "title": "Apple Style Guide (zh-cn URL)",
+      "url": "https://support.apple.com/zh-cn/guide/applestyleguide/welcome/web",
+      "kind": "vendor guide",
+      "use": "opened; English content, nothing taken",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "GBT7408",
+      "title": "openstd — GB/T 7408-2005 page",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=3CFD9AE8FEADB062B3BC53651930DED1",
+      "kind": "national standard listing",
+      "use": "opened; status 废止; no text",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MOE-15834",
+      "title": "教育部 — 标点符号用法 page",
+      "url": "http://www.moe.gov.cn/jyb_sjzl/ziliao/A19/201001/t20100115_75611.html",
+      "kind": "ministry page",
+      "use": "blocked (https→http redirect loop); hudong copy 404",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MOE-15835",
+      "title": "教育部 — 出版物上数字用法 page",
+      "url": "http://www.moe.gov.cn/jyb_sjzl/ziliao/A19/201001/t20100115_75603.html",
+      "kind": "ministry page",
+      "use": "blocked (https→http redirect loop); hudong copy 404",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "GOV-LAW",
+      "title": "gov.cn — 国家通用语言文字法 (guessed archive URL)",
+      "url": "https://www.gov.cn/ziliao/flfg/2005-08/31/content_27920.htm",
+      "kind": "law",
+      "use": "404",
+      "opened": "2026-11-21"
+    }
+  ]
+}
