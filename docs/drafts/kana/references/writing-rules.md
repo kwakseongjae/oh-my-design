@@ -146,7 +146,7 @@ No rule here is required by any source, except KW-68, which states a legal duty.
 - Kind: WRITE.
 - Strength: translation guides only (Microsoft, "In general", for explanatory text in windows, dialog boxes, message boxes and the status bar, and for the body of an error message). Every UI example of the first pass ends a request the same way (DADS, Pepabo, SmartHR, Ubie) without stating it. No source in either pass rules on ください against お願いします; Microsoft's guide does not mention お願い.
 - Quote: MS “In general, sentences should be translated in Desu-masu unless otherwise instructed. When the sentence prompts users to take an action, use "...してください。."”; MS “In Japanese, use Desu-masu (ですます調, polite style) when translating message body. When the message prompts users to take an action, use "...してください。."”
-- Example: no sourced example in this file (Microsoft's example is a table cell its text layer wraps; see writing2/rules.md).
+- Example: MS 「パスワードが正しくありません。もう一度入力してください。パスワードでは大文字と小文字が区別されます。」 (an error-message body; a table cell the text layer wraps, read by column in writing2/verdicts.md).
 - Checker: judgment only (the checker can't tell a sentence that asks the user to act).
 
 #### KW-12 (UW-12) · Don't add あなた or あなたの where English has "you" or "your" and it reads unnaturally.
@@ -459,7 +459,7 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 - Ubie allows either (UB-btn): 「そのボタンが担うアクションを「〜する」または体言止めのかたちで書きます」.
 - Spindle decides by the stem (SP-lab): 「漢語の名詞を語幹とした動作性名詞は活用する」 「外来語を語幹とした動詞は活用しない」, with two exceptions, and widely known function names 「活用しなくても問題ありません。」.
 - Mozilla (MZ): 「動作や目的などを簡潔な体言で表す。可能であれば語数を揃える。」. WordPress (WP 3-8): 「ボタンラベルでは語尾の「します (する)」を省略した形にする」.
-- Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way. So the three translation guides lean away from a する ending without one of them stating it.
+- Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way.
 
 #### UW-17 Joining a button label's object: を or の
 - SmartHR prescribes を on buttons (SH-app): 「動詞の終止形の前に、オブジェクトを明記する場合には、助詞は「を」が適切です。」 NG 「権限の追加、申請の取り消し」, OK 「権限を追加、申請を取り消す」.
@@ -482,7 +482,7 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 #### UW-37 Inside a katakana compound: a space, a 中黒, or nothing
 - Nothing (MZ): 「カタカナで構成された語句について、一般的な固有名詞を除き、間に中黒やスペースを挿入しない。」
 - No 中点 as a principle, and one allowed where the break would be unclear; WordPress speaks only of 中点 (WP 5): 「カタカナの複合語には、用語集などで特に指定しないかぎり、原則として中点「・」は使用しない。」 「例外として、カタカナが続いて区切りがわかりにくくなる場合は、中点を使ってもかまわない。」 正 「ライブラリ・リファレンスマニュアル」
-- A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier "web". The guide's own running text is not consistent: it also writes 「ダイアログボックスが表示されます。」.
+- A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier "web". The PDF's text layer is not consistent elsewhere: it also gives 「ダイアログボックスが表示されます。」 with no space, and whether the PDF itself shows a space there cannot be told from the text layer.
 - The three agree on no 中黒 in an ordinary compound (WordPress allows one where the break is unclear). With JW-35 (JTF: 中黒, space or nothing, chosen once per document).
 
 #### UW-40 A typed space between Japanese and Latin text
@@ -500,7 +500,7 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 
 #### UW-42 Exclamation and question marks: width
 - Full-width (MZ): 「日本語文中での句読点および疑問符や感嘆符については全角記号を使用する。」; (MZ-ed) 「感嘆符と疑問は全角「！」「？」。ただし、連続する場合は半角「!?」にする。」 (U+FF01, U+FF1F; then U+0021 U+003F). With JW-42 and JW-43.
-- Half-width with a space before (WP 1-2): 正 「準備をしましょう !」 (U+0020 U+0021); 誤 「準備をしましょう!」 and 「準備をしましょう！ (記号が全角)」.
+- Half-width with a space before (WP 1-2): 正 「準備をしましょう !」; 誤 「準備をしましょう! (記号が半角だが、その前に半角スペースがない)」 and 「準備をしましょう！ (記号が全角)」. The space rests on the page's words in the first 誤 line. In the 正 line the page's bytes have U+00A0 NO-BREAK SPACE before the mark, not U+0020 (checked against the page, 2026-11-21).
 - Ubie (UB) says 「感嘆符や疑問符、伸ばし棒は使いません。」, but its own Do examples end in ？ (U+FF1F) and ? (U+003F): for the question mark the page contradicts itself (verdict). For the exclamation mark, see KW-32.
 
 #### UW-43 Parentheses: width
@@ -533,11 +533,11 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 
 #### UW-58 Apology in an error translated from English (with UW-11)
 - WordPress drops it (WP 3-4): 「”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する」
-- Microsoft translates "Sorry", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal "申し訳ございません" to express sincere apology.”
+- Microsoft translates "Sorry", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal "申し訳ございません" to express sincere apology.”; MS “If "Sorry" is followed by some description in single English sentence, translate "Sorry" as one sentence and the description as another.”
 - Both reject すみません; Microsoft only through its minus example, not in words. Neither says when to apologise, and no company guide or government page read does (writing/gaps.md).
 
 #### UW-59 The polite お- and ご- forms of a few instructive verbs
-- Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive "...してください" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.
+- Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive "...してください" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” “Note: This is not applicable to other instructive "...してください" phrases” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.
 - SmartHR (SH-ws), under its rule against overusing keigo (KW-09), gives OK 「◯◯を確認してください。」 against NG 「◯◯をご確認いただけますようお願いいたします。」. That is an example, not a statement against Microsoft's plus form, and its OK form is Microsoft's minus form for this verb.
 - Ubie's example uses the お- form for one of the listed verbs (UB): 「お手数ですが、こちらからお問い合わせください。」
 

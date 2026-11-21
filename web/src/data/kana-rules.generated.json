@@ -3,7 +3,7 @@
   "input": {
     "rules": {
       "path": "docs/drafts/kana/references/writing-rules.md",
-      "sha256": "23e4c60753863af3ac3eb0f1b870d28a64e1a52603b3c4855b421c3ffe259de3"
+      "sha256": "f7d11e3438e948a91c8ea4da93c339221405c9e85acb00152ccce2a7c2deb9ce"
     },
     "sources": [
       {
@@ -715,8 +715,21 @@
           "text": "In Japanese, use Desu-masu (ですます調, polite style) when translating message body. When the message prompts users to take an action, use \"...してください。.\""
         }
       ],
-      "examples": [],
-      "exampleNote": "no sourced example in this file (Microsoft's example is a table cell its text layer wraps; see writing2/rules.md).",
+      "examples": [
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "パスワードが正しくありません。もう一度入力してください。パスワードでは大文字と小文字が区別されます。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
       "checker": "judgment only (the checker can't tell a sentence that asks the user to act)."
     },
     {
@@ -2745,7 +2758,7 @@
           ]
         },
         {
-          "text": "Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way. So the three translation guides lean away from a する ending without one of them stating it.",
+          "text": "Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way.",
           "quotes": [
             {
               "key": "MS",
@@ -2991,7 +3004,7 @@
           ]
         },
         {
-          "text": "A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier \"web\". The guide's own running text is not consistent: it also writes 「ダイアログボックスが表示されます。」.",
+          "text": "A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier \"web\". The PDF's text layer is not consistent elsewhere: it also gives 「ダイアログボックスが表示されます。」 with no space, and whether the PDF itself shows a space there cannot be told from the text layer.",
           "quotes": [
             {
               "key": "MS",
@@ -3154,7 +3167,7 @@
           ]
         },
         {
-          "text": "Half-width with a space before (WP 1-2): 正 「準備をしましょう !」 (U+0020 U+0021); 誤 「準備をしましょう!」 and 「準備をしましょう！ (記号が全角)」.",
+          "text": "Half-width with a space before (WP 1-2): 正 「準備をしましょう !」; 誤 「準備をしましょう! (記号が半角だが、その前に半角スペースがない)」 and 「準備をしましょう！ (記号が全角)」. The space rests on the page's words in the first 誤 line. In the 正 line the page's bytes have U+00A0 NO-BREAK SPACE before the mark, not U+0020 (checked against the page, 2026-11-21).",
           "quotes": [
             {
               "key": "WP",
@@ -3164,7 +3177,7 @@
             {
               "key": "WP",
               "label": "誤",
-              "text": "準備をしましょう!"
+              "text": "準備をしましょう! (記号が半角だが、その前に半角スペースがない)"
             },
             {
               "key": "WP",
@@ -3413,12 +3426,17 @@
           ]
         },
         {
-          "text": "Microsoft translates \"Sorry\", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal \"申し訳ございません\" to express sincere apology.”",
+          "text": "Microsoft translates \"Sorry\", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal \"申し訳ございません\" to express sincere apology.”; MS “If \"Sorry\" is followed by some description in single English sentence, translate \"Sorry\" as one sentence and the description as another.”",
           "quotes": [
             {
               "key": "MS",
               "lang": "en",
               "text": "This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal \"申し訳ございません\" to express sincere apology."
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "If \"Sorry\" is followed by some description in single English sentence, translate \"Sorry\" as one sentence and the description as another."
             }
           ]
         },
@@ -3434,12 +3452,17 @@
       "notADisagreement": false,
       "sides": [
         {
-          "text": "Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive \"...してください\" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.",
+          "text": "Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive \"...してください\" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” “Note: This is not applicable to other instructive \"...してください\" phrases” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.",
           "quotes": [
             {
               "key": "MS",
               "lang": "en",
               "text": "For following instructive \"...してください\" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical."
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "Note: This is not applicable to other instructive \"...してください\" phrases"
             },
             {
               "key": "MS",
