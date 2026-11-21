@@ -5,7 +5,7 @@
 #   scripts/workers/run-queue.sh <queue-file> [--cap N]
 #
 # Queue file, one item per line (# comments and blank lines ignored), in order:
-#   reverify <id>                                   re-verify an existing partial/legacy reference
+#   reverify <id>                                   re-verify an existing reference (partial, legacy, or verified but moved)
 #   new <id> <locale> <url> <name…>                 author a new reference (name may contain spaces)
 #   spawn <id> <workdir> <order>                     run a prepared order as-is (a follow-up, e.g. id duolingo-p2)
 #
