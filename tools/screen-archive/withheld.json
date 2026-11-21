@@ -8,18 +8,15 @@
    "jobs": "구인 글이 본문"
   },
   "ohouse": {
-   "home": "사용자 집 사진 줄",
-   "projects": "사용자 집들이 글",
-   "photos": "사용자 사진과 닉네임",
-   "app-sheet": "뒤에 사용자 사진 줄이 비침"
+   "photos": "사진마다 올린 사람의 설명 글과 소개 글이 붙음(사진을 가려도 남음)"
   },
   "inflearn": {
-   "community": "수강생 후기와 아이디",
-   "mentoring": "멘토링 후기"
+   "community": "수강생이 쓴 질문 글이 본문",
+   "mentoring": "첫 화면이 멘토링 후기 글과 멘토 실명"
   },
   "jobplanet": {
-   "review": "사용자 기업 리뷰",
-   "community": "사용자 글"
+   "review": "사용자가 쓴 기업 리뷰가 본문",
+   "community": "사용자 글이 본문"
   }
  }
 }

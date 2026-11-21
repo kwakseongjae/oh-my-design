@@ -75,7 +75,7 @@
    "type": "피드",
    "title": "집들이",
    "url": "https://contents.ohou.se/projects",
-   "note": "사용자들이 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+   "note": "사용자가 올린 글의 목록입니다. 닉네임과 사진을 가리고 찍습니다(mask)."
   },
   {
    "key": "photos",
@@ -108,5 +108,36 @@
    "title": "없는 주소",
    "url": "/zz-omd-not-here"
   }
- ]
+ ],
+ "mask": {
+  "about": "People's nicknames and pictures on 오늘의집 (owner 2026-11-22). A nickname is the span beside a profile picture (the cards are not profile links), plus the /users/ links on the photo feed. With --mask-photos the pictures people uploaded of their homes become flat blocks; shop product pictures stay. nameHref keeps what else lives under /users/ (sign-in, sign-up, an official account's shortcut) from being read as a person.",
+  "names": [
+   ":is(img[src*=\"profileImageUrl\"], img[srcset*=\"profileImageUrl\"], img[src*=\"/uploads/users/\"], img[srcset*=\"/uploads/users/\"]) + span",
+   ":is(div, span):has(> :is(img[src*=\"profileImageUrl\"], img[srcset*=\"profileImageUrl\"], img[src*=\"/uploads/users/\"], img[srcset*=\"/uploads/users/\"])) + span",
+   "div:has(> :is(img[src*=\"profileImageUrl\"], img[srcset*=\"profileImageUrl\"], img[src*=\"/uploads/users/\"], img[srcset*=\"/uploads/users/\"])) + div > span",
+   "a[href*=\"/users/\"]"
+  ],
+  "nameWith": "이웃",
+  "images": [
+   "img[src*=\"profileImageUrl\"]",
+   "img[srcset*=\"profileImageUrl\"]",
+   "img[src*=\"/uploads/users/\"]",
+   "img[srcset*=\"/uploads/users/\"]"
+  ],
+  "photos": [
+   "img[src*=\"/content/community/\"]",
+   "img[srcset*=\"/content/community/\"]",
+   "img[src*=\"/content/uploads/\"]",
+   "img[srcset*=\"/content/uploads/\"]",
+   "img[src*=\"/contents/uploads/\"]",
+   "img[srcset*=\"/contents/uploads/\"]",
+   "img[src*=\"/uploads/cards/\"]",
+   "img[srcset*=\"/uploads/cards/\"]",
+   "img[src*=\"/uploads/projects/\"]",
+   "img[srcset*=\"/uploads/projects/\"]",
+   "img[src*=\"/uploads/advices/\"]",
+   "img[srcset*=\"/uploads/advices/\"]"
+  ],
+  "nameHref": "/users/\\d+(?:$|[?#])"
+ }
 }

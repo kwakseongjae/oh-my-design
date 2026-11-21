@@ -130,43 +130,64 @@ function pageFacts() {
  *   images: selectors of people's profile pictures. Each becomes a flat block of the same size.
  *   photos: selectors of the pictures people uploaded in a post or a listing. Masked only with --mask-photos, so the
  *           two levels can be compared; the caller merges them into images.
- * It changes what is drawn, never the layout: no element is added or removed. Returns the counts for the walk record.
+ *   nameHref: a regular expression a profile link's href must match to count as a person (optional).
+ * It changes what is drawn, never the layout: no element is added or removed. It stays on the page as an observer until
+ * the next navigation; the walk record takes the counts as they stand after the stills.
  */
 function maskPage(mask) {
   const nameWith = mask.nameWith || '이웃';
-  const names = new Set();
-  const byTarget = new Map();
-  for (const sel of mask.names || []) for (const el of document.querySelectorAll(sel)) {
-    const s = (el.innerText || el.textContent || '').trim();
-    if (!s || s.length > 24 || /\n/.test(s)) continue;
-    // One person, several links ("milk", "milk의 판매 물품"): the shortest text of a target is the name itself.
-    const k = el.getAttribute('href') || sel;
-    if (!byTarget.has(k) || s.length < byTarget.get(k).length) byTarget.set(k, s);
-  }
-  for (const s of byTarget.values()) names.add(s);
-  const list = [...names].sort((a, b) => b.length - a.length);
-  const swap = (s) => { let out = s; for (const n of list) if (out.includes(n)) out = out.split(n).join(nameWith); return out; };
-  let texts = 0, attrs = 0, images = 0;
-  if (list.length) {
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    for (let n = walker.nextNode(); n; n = walker.nextNode()) { const v = swap(n.nodeValue); if (v !== n.nodeValue) { n.nodeValue = v; texts++; } }
-    for (const el of document.querySelectorAll('[alt],[aria-label],[title]')) for (const a of ['alt', 'aria-label', 'title']) {
-      const v = el.getAttribute(a); if (v) { const w = swap(v); if (w !== v) { el.setAttribute(a, w); attrs++; } }
-    }
-  }
+  const hrefOnly = mask.nameHref ? new RegExp(mask.nameHref) : null;   // which profile links are people, when the selector cannot say
   const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-  for (const sel of mask.images || []) for (const img of document.querySelectorAll(sel)) {
-    if (img.tagName !== 'IMG' || img.dataset.omdMasked) continue;
-    const r = img.getBoundingClientRect();
-    img.dataset.omdMasked = '1';
-    if (r.width && r.height) { img.style.width = r.width + 'px'; img.style.height = r.height + 'px'; }
-    img.removeAttribute('srcset'); img.removeAttribute('sizes');
-    for (const s of img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement.querySelectorAll('source') : []) s.removeAttribute('srcset');
-    img.src = BLANK; img.style.background = mask.imageFill || '#e5e6eb'; img.style.objectFit = 'cover';
-    img.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.75)';   // tiles that touched each other stay countable
-    images++;
-  }
-  return { names: list.length, texts, attrs, images };
+  const names = new Set();       // every name met on this page so far
+  const resolved = new Set();    // profile links whose name is already known
+  const total = { names: 0, texts: 0, attrs: 0, images: 0 };
+  const apply = () => {
+    const byTarget = new Map();
+    for (const sel of mask.names || []) for (const el of document.querySelectorAll(sel)) {
+      const s = (el.innerText || el.textContent || '').trim();
+      if (!s || s === nameWith || s.length > 24 || /\n/.test(s)) continue;
+      const href = el.getAttribute('href');
+      if (href && hrefOnly && !hrefOnly.test(href)) continue;   // "/users/sign_in" is not a person
+      if (href && resolved.has(href)) continue;                  // its other links ("이웃의 판매 물품") are not new names
+      // One person, several links ("milk", "milk의 판매 물품"): the shortest text of a target is the name itself.
+      // An element that is not a link is its own person: keyed by its text, or one selector would yield one name.
+      const k = href || 'text:' + s;
+      if (!byTarget.has(k) || s.length < byTarget.get(k).length) byTarget.set(k, s);
+    }
+    for (const [k, s] of byTarget) { names.add(s); if (!k.startsWith('text:')) resolved.add(k); }
+    total.names = names.size;
+    const list = [...names].sort((x, y) => y.length - x.length);
+    const swap = (s) => { let out = s; for (const n of list) if (out.includes(n)) out = out.split(n).join(nameWith); return out; };
+    if (list.length) {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) { const v = swap(n.nodeValue); if (v !== n.nodeValue) { n.nodeValue = v; total.texts++; } }
+      for (const el of document.querySelectorAll('[alt],[aria-label],[title]')) for (const at of ['alt', 'aria-label', 'title']) {
+        const v = el.getAttribute(at); if (v) { const w = swap(v); if (w !== v) { el.setAttribute(at, w); total.attrs++; } }
+      }
+    }
+    // A masked picture no longer matches its selector (the selectors read src), so one the page loads again is met again.
+    for (const sel of mask.images || []) for (const img of document.querySelectorAll(sel)) {
+      if (img.tagName !== 'IMG') continue;
+      if (!img.dataset.omdMasked) {
+        const r = img.getBoundingClientRect();
+        if (r.width && r.height) { img.style.width = r.width + 'px'; img.style.height = r.height + 'px'; }
+        img.dataset.omdMasked = '1';
+      }
+      img.removeAttribute('srcset'); img.removeAttribute('sizes');
+      for (const s of img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement.querySelectorAll('source') : []) s.removeAttribute('srcset');
+      img.src = BLANK; img.style.background = mask.imageFill || '#e5e6eb'; img.style.objectFit = 'cover';
+      img.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.75)';   // tiles that touched each other stay countable
+      total.images++;
+    }
+  };
+  apply();
+  // The page keeps drawing after this call (a carousel turns, a lazy picture arrives, the full-page still scrolls): the
+  // observer runs before the next paint, so nothing a later render brings is drawn unmasked.
+  if (window.__omdMaskObserver) window.__omdMaskObserver.disconnect();
+  window.__omdMaskObserver = new MutationObserver(apply);
+  window.__omdMaskObserver.observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['src', 'srcset', 'href'] });
+  window.__omdMask = total;
+  return { ...total };
 }
 
 async function runStep(page, step, never) {
@@ -249,6 +270,7 @@ for (const width of WIDTHS) {
         await page.screenshot({ path: base + '.full.png', fullPage: true, clip: { x: 0, y: 0, width, height: Math.min(facts.height, FULL_CAP) } }).catch((e) => rec.errors.push('full: ' + String(e.message).split('\n')[0]));
         fs.writeFileSync(base + '.elements.json', JSON.stringify({ url: rec.final, width, page: facts.page, elements: facts.elements }, null, 1));
       }
+      if (rec.masked) Object.assign(rec.masked, await page.evaluate(() => window.__omdMask ?? {}).catch(() => ({})));   // what later renders added
     } catch (e) {
       rec.errors.push(String(e.message).split('\n')[0]);
       await page.screenshot({ path: base + '.png' }).catch(() => {});
