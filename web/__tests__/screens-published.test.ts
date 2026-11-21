@@ -165,7 +165,7 @@ describe("the reader (public.server, source.server)", () => {
           .map((c) => ({ ...c, stills: c.stills.map((s) => ({ width: s.width, still: s.still.replace(/^.*\/(\d+-[^/]+\.jpg)$/, "$1") })) })),
       });
       expect(strip(b), slug).toEqual(strip(a));
-      expect(b.cards.every((c) => c.stills.every((s) => s.full === null && s.still.startsWith(`${STORE}/${slug}/`)))).toBe(true);
+      expect(b.cards.every((c) => c.stills.every((s) => s.full === null && s.still.startsWith(`/screens-img/${slug}/`)))).toBe(true);
       expect(b.published).toBe(true);
     }
     expect(screensOf("karrot", published)!.cards.find((c) => c.key === "home")!.masked).toBe(true);
@@ -190,7 +190,7 @@ describe("the reader (public.server, source.server)", () => {
 
   it("a manifest named to preview wins over the local folder; otherwise the folder wins over the manifest", () => {
     const both = { OMD_SCREENS_DIR: fx.root, NODE_ENV: "development", OMD_SCREENS_MANIFEST: manifestFile };
-    expect(allScreens(both)![0].cards[0].stills[0].still).toMatch(/^https:\/\/store\.example\//);
+    expect(allScreens(both)![0].cards[0].stills[0].still).toMatch(/^\/screens-img\//);
     const folder = allScreens({ OMD_SCREENS_DIR: fx.root, NODE_ENV: "development" })!;
     expect(folder[0].cards[0].stills[0].still).toMatch(/^\/screens-local\//);
     expect(folder[0].published).toBe(false);
@@ -199,10 +199,11 @@ describe("the reader (public.server, source.server)", () => {
 });
 
 describe("published: the pages", () => {
-  it("/ko/screens: stills from the store, the masked line, the rights and takedown lines, no e-mail while none is set", () => {
+  it("/ko/screens: stills from our own /screens-img path (never the store's host), the masked line, the rights and takedown lines, no e-mail while none is set", () => {
     publish();
     const html = renderToStaticMarkup(createElement(KoScreensPage));
-    expect(html).toContain(`src="${STORE}/karrot/390-home.jpg"`);
+    expect(html).toContain('src="/screens-img/karrot/390-home.jpg"');
+    expect(html).not.toContain("store.example");
     expect(html).not.toContain("/screens-local/");
     expect(html).toContain('<p class="sq-gal-masked">닉네임과 올린 사진을 가렸습니다</p>');
     expect(html.match(/sq-gal-masked/g)).toHaveLength(1);
@@ -251,10 +252,11 @@ describe("published: the pages", () => {
     for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale }))).not.toMatch(/\/screens/);
   });
 
-  it("the landing strip reads the store", async () => {
+  it("the landing strip prints /screens-img, never the store's host", async () => {
     publish();
     const ko = renderToStaticMarkup(await LandingA({ locale: "ko" }));
-    expect(ko).toContain(`src="${STORE}/karrot/390-home.jpg"`);
+    expect(ko).toContain('src="/screens-img/karrot/390-home.jpg"');
+    expect(ko).not.toContain("store.example");
     expect(ko).not.toContain("/screens-local/");
   });
 
@@ -265,11 +267,61 @@ describe("published: the pages", () => {
     expect(renderToStaticMarkup(await LandingA({ locale: "ko" }))).not.toMatch(/sq-gal|\/screens/);
   });
 
+  it("the Screens tab prints /screens-img; a preview manifest with a local base keeps its own path", () => {
+    const tab = screensOf("29cm", published)!;
+    expect(tab.cards.flatMap((c) => c.stills.map((s) => s.still)).every((u) => u.startsWith("/screens-img/29cm/"))).toBe(true);
+    const preview = screensOf("29cm", { OMD_SCREENS_MANIFEST: localManifestFile, NODE_ENV: "development" })!;
+    expect(preview.cards[0].stills[0].still).toMatch(/^\/screens-local\/29cm\//);
+  });
+
   it("the publishing script and the issue form are in the repository, and no image is", () => {
     expect(fs.existsSync(path.join(WEB, "scripts/publish-screens.mjs"))).toBe(true);
     const form = fs.readFileSync(path.join(WEB, "../.github/ISSUE_TEMPLATE/screen-removal.yml"), "utf8");
     expect(form).toMatch(/id: service/);
     // GitHub drops a form it cannot parse: no plain (unquoted) value may hold ": ", which YAML reads as a mapping.
     for (const line of form.split("\n")) expect(line, line).not.toMatch(/^\s*[\w-]+: (?!["'|>])[^#]*: /);
+  });
+});
+
+describe("our own image path: the rewrite, its header and robots.txt", () => {
+  const shutManifest = { generated: "", base: "", services: [] };
+  async function loadConfig(manifest: unknown) {
+    vi.resetModules();
+    vi.doMock("../src/data/screens-public.generated.json", () => ({ default: manifest }));
+    const config = (await import("../next.config")).default;
+    vi.doUnmock("../src/data/screens-public.generated.json");
+    return config;
+  }
+  afterEach(() => vi.resetModules());
+
+  it("shut: no /screens-img rewrite and no header, so the path 404s like any unknown one", async () => {
+    const config = await loadConfig(shutManifest);
+    const rewrites = (await config.rewrites!()) as { source: string }[];
+    expect(rewrites.some((r) => r.source.startsWith("/screens-img"))).toBe(false);
+    expect(await config.headers!()).toEqual([]);
+  });
+
+  it("published: /screens-img/* goes to the store's base, answered with noindex, noimageindex", async () => {
+    const config = await loadConfig({ ...result.manifest, base: STORE });
+    const rewrites = (await config.rewrites!()) as { source: string; destination: string }[];
+    expect(rewrites).toContainEqual({ source: "/screens-img/:path*", destination: `${STORE}/:path*` });
+    expect(rewrites).toContainEqual({ source: "/:id/design.md", destination: "/r/:id" });
+    expect(await config.headers!()).toEqual([
+      { source: "/screens-img/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, noimageindex" }] },
+    ]);
+  });
+
+  it("a manifest whose base is not https publishes nothing, even with services", async () => {
+    const config = await loadConfig({ ...result.manifest, base: "/screens-local" });
+    expect(((await config.rewrites!()) as { source: string }[]).some((r) => r.source.startsWith("/screens-img"))).toBe(false);
+  });
+
+  it("robots.txt disallows /screens-img/ for every agent only once published", async () => {
+    const robots = (await import("@/app/robots")).default;
+    const shut = [robots().rules].flat();
+    for (const rule of shut) expect(rule.disallow, String(rule.userAgent)).toEqual(["/api/", "/qa-references"]);
+    publish();
+    const open = [robots().rules].flat();
+    for (const rule of open) expect(rule.disallow, String(rule.userAgent)).toEqual(["/api/", "/qa-references", "/screens-img/"]);
   });
 });

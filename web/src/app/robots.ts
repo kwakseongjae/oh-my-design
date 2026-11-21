@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_ORIGIN as siteUrl } from "@/lib/site";
+import { SCREENS_IMG_PATH } from "@/lib/screens/published-base";
+import { screensPublished } from "@/lib/screens/source.server";
 
 /**
  * robots.txt — explicit allow for major crawlers including AI ones.
@@ -19,7 +21,7 @@ import { SITE_ORIGIN as siteUrl } from "@/lib/site";
  * 308 to /design-systems/<id>, and a crawler only sees a redirect on a URL it
  * is allowed to fetch.
  */
-const DISALLOW = ["/api/", "/qa-references"];
+const BASE_DISALLOW = ["/api/", "/qa-references"];
 
 const AI_CRAWLERS = [
   // Anthropic Claude (live fetch + training)
@@ -42,6 +44,9 @@ const AI_CRAWLERS = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
+  // Once screens are published, the stills' own path (src/lib/screens/published-base.ts) is kept from every crawler.
+  // Unpublished, the file is exactly what it was.
+  const DISALLOW = screensPublished() ? [...BASE_DISALLOW, `${SCREENS_IMG_PATH}/`] : BASE_DISALLOW;
   return {
     rules: [
       // Default — every crawler. Keep API and admin-only paths out.

@@ -16,8 +16,9 @@
  *       deletes stills of those services that are no longer listed, then writes the committed manifest with the
  *       store's base.
  *   BLOB_READ_WRITE_TOKEN=… node web/scripts/publish-screens.mjs --remove <slug>[/<key>]
- *       A takedown: deletes those stills from the store and drops them from the committed manifest. Mark the screen
- *       withheld in its sheet as well, or the next --upload lists it again.
+ *       A takedown: deletes those stills from the store and drops them from the committed manifest; commit and deploy
+ *       it (a new deployment starts with an empty CDN cache for /screens-img). Mark the screen withheld in its sheet as
+ *       well, or the next --upload lists it again.
  *
  * @vercel/blob (a devDependency of web/) is loaded only by --upload and --remove (API per vercel.com/docs/vercel-blob/
  * using-blob-sdk, read 2026-11-22: put(pathname, body, { access, addRandomSuffix, allowOverwrite, contentType,
@@ -36,9 +37,11 @@ const REFERENCES = path.join(WEB, "references");
 const DEFAULT_SHEETS = path.join(os.homedir(), "Downloads/kr-screens/web");
 /** The store's path prefix: a still is screens/<slug>/<width>-<key>.jpg. */
 export const STORE_PREFIX = "screens";
-/** Seconds a browser or the CDN may keep a still. A deleted blob leaves Vercel's CDN within about a minute (the docs);
- *  a day bounds how long an overwritten still (a re-shot or re-masked screen) can stay stale. The default is a month. */
-const CACHE_SECONDS = 86400;
+/** Seconds a browser or a CDN may keep a still (the store sends it as Cache-Control max-age; the default is a month).
+ *  The pages load stills through our own /screens-img rewrite, and Vercel's CDN honours the store's Cache-Control on
+ *  an external rewrite, so this is also how long a removed still can keep answering there without a new deployment,
+ *  and how long a browser that already loaded it keeps it. An hour. */
+const CACHE_SECONDS = 3600;
 
 // The same rules as web/src/lib/screens/walk.ts (the parity test in web/__tests__/screens-publish.test.ts holds them).
 const SLUG_RE = /^[a-z0-9][a-z0-9.-]{0,63}$/i;
@@ -311,7 +314,7 @@ async function remove(target) {
   for (const b of gone) console.log(`deleted ${b.pathname}`);
   const manifest = readJson(COMMITTED_MANIFEST) ?? { generated: "", base: "", services: [] };
   writeManifest(COMMITTED_MANIFEST, withoutScreens(manifest, slug, key));
-  console.log(`\nDropped ${key ? `${slug}/${key}` : slug} from the committed manifest; commit it. A deleted still can stay in Vercel's CDN for about a minute.`);
+  console.log(`\nDropped ${key ? `${slug}/${key}` : slug} from the committed manifest; commit and deploy it. Until that deployment, /screens-img can keep answering with the still for up to ${CACHE_SECONDS / 3600} h (the CDN keeps a rewrite's response for the store's max-age); the store itself stops within about a minute.`);
   console.log(`Mark it withheld in ${slug}/screens.json as well, or the next --upload publishes it again.`);
 }
 
