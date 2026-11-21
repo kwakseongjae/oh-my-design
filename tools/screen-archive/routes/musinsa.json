@@ -74,7 +74,14 @@
    "type": "피드",
    "title": "스냅",
    "url": "/snap",
-   "note": "사용자가 올린 글과 사진이 대부분입니다(공개 기준 초안 2항)."
+   "note": "사용자가 올린 사진이 대부분입니다. 사진을 가리고 찍습니다(mask).",
+   "mask": {
+    "about": "The feed is photos people posted of themselves. With --mask-photos each becomes a flat block; the grid, the tabs and the filters stay (owner 2026-11-22).",
+    "photos": [
+     "img[src*=\"/thumbnails/snap/\"]",
+     "img[srcset*=\"/thumbnails/snap/\"]"
+    ]
+   }
   },
   {
    "key": "cart",
