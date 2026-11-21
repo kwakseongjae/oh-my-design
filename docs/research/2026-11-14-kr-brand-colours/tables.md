@@ -498,6 +498,7 @@ Test: kept when the file calls the control the primary action (its use line, or 
 | 4.33 | heydealer | 헤이딜러 | blue | #396eff | #ffffff | primary-button | Car-search action under the brand/type/model selects; finding a car by brand, type and model is a listed primary task. |
 
 - Kept rows below 3:1: 6. Text colours of the kept rows: #ffffff.
+- **After the live recheck of 2026-11-21 the article names 18 of these 23 rows.** `contrast-recheck.md` lists which five were dropped and why (the recorded fill and text colour were not found together on the home page that day; that is a limit of opening only home pages, not a finding about the service). Of the 18 named rows, 5 are below 3:1 and 8 have a fill in the blue family (H 200–250°). This table is the list before that recheck and is kept as computed.
 
 ### W4b. Rows dropped from any named list, and why
 
