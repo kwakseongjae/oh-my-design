@@ -22,7 +22,7 @@ const koDate = (d: string) => {
 };
 
 /** "2026년 11월 21일~22일" within one month, the whole second date otherwise. */
-function koRange(from: string, to: string): string {
+export function koRange(from: string, to: string): string {
   const [fy, fm] = from.split("-");
   const [ty, tm, td] = to.split("-").map(Number);
   return fy === String(ty) && Number(fm) === tm ? `${koDate(from)}~${td}일` : `${koDate(from)}~${koDate(to)}`;

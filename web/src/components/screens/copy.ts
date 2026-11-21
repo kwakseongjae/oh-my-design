@@ -7,7 +7,7 @@
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
 import type { FixedShelfId } from "@/lib/screens/model";
 import type { ScreenDialogLabels } from "@/components/item/screen-dialog";
-import { SCREENS_NOTICE, type ScreensNoticeCopy } from "./notice-copy";
+import { SCREENS_NOTICE, koRange, type ScreensNoticeCopy } from "./notice-copy";
 
 export type ScreensLocale = "en" | "ko";
 
@@ -97,7 +97,7 @@ const KO: GalleryCopy = {
     [
       `${n}곳`,
       `화면 ${total}개`,
-      shot ? (shot.from === shot.to ? `${koDate(shot.from)} 촬영` : `${koDate(shot.from)}~${koDate(shot.to)} 촬영`) : null,
+      shot ? (shot.from === shot.to ? `${koDate(shot.from)} 촬영` : `${koRange(shot.from, shot.to)} 촬영`) : null,
       signedOut ? "로그아웃 상태" : null,
     ]
       .filter(Boolean)
