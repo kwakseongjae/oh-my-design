@@ -125,6 +125,8 @@ fonts:
 
 ## Overview
 
+> **Note, 2026-11-21.** `https://www.supertone.ai` now redirects to `https://antinodeaudio.com/` (page title "Antinode Audio | Clear, Air & Shift Audio Tools"), a site under another company name. Everything in this file describes the Supertone site as measured on 2026-06-26. None of it has been confirmed since, and no value here was taken from the site the address leads to today.
+
 ### Visual Theme & Atmosphere
 
 Supertone (수퍼톤) is a Seoul-based voice-AI company — now a HYBE subsidiary — and its site reads like a studio control room rather than a consumer app: a near-black canvas (`#090909`) that alternates with full-bleed light (`#f0f0f0`) sections, set entirely in **Euclid Circular B at weight 300**. The lightweight, geometric letterforms running at a generous 19px body size give the whole surface an airy, engineered calm — the opposite of the loud, gradient-heavy aesthetic most generative-AI startups reach for. Light text (`#f0f0f0`) on the dark canvas and near-black ink (`#090909`, `#000000`) on the light bands create a high-contrast, gallery-like cadence as you scroll.

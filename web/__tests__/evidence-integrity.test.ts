@@ -209,7 +209,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 149 -> 148 (2026-11-06): kkday.
     // 148 -> 147 (2026-11-06): cookpad.
     // 147 -> 146 (2026-11-14): jobplanet, re-verified.
-    expect(flagged.length).toBe(146);
+    // 146 -> 145 (2026-11-21): peoplefund, re-verified (its earlier motion table sits under "Earlier record").
+    expect(flagged.length).toBe(145);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
