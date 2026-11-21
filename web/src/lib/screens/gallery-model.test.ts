@@ -21,7 +21,7 @@ const both = (key: string) => [
   { width: 390, still: `/s/390-${key}.jpg`, full: null },
 ];
 const shot = (slug: string, key: string, type: string, extra: Partial<GalleryShot> = {}): GalleryShot => ({
-  slug, key, type, title: type, state: null, stills: both(key), dots: [], ...extra,
+  slug, key, type, title: type, state: null, stills: both(key), dots: [], masked: false, ...extra,
 });
 
 describe("dots", () => {

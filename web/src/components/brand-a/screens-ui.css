@@ -28,6 +28,17 @@
 .sq-scr-dlg-links a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-scr-dlg-links svg{width:16px;height:16px}
 
+/* once screens are published (components/screens/notice.tsx): the rights and takedown lines at the end of the gallery
+   and of the Screens tab, secondary text; the line under a tile or card, and under the dialog's bar, whose people
+   were hidden */
+.sq-scr-notice{margin-top:56px;padding-top:20px;box-shadow:inset 0 1px 0 var(--sq-guide-2);font-size:14px;line-height:1.6;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
+.sq-scr-notice p{margin:0}
+.sq-scr-notice p+p{margin-top:4px}
+.sq-scr-notice a{color:var(--sq-ink);text-decoration:underline;text-underline-offset:3px}
+.sq-scr-notice a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-scr-masked,.sq-gal-masked{margin:4px 0 0;font-size:13px;line-height:1.45;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
+.sq-scr-dlg-note{margin:0;padding:0 20px 12px;font-size:14px;line-height:1.5;color:var(--sq-ink-2)}
+
 @media (max-width:767px){
   .sq-scr-dlg{width:calc(100vw - 16px);height:calc(100dvh - 24px)}
   .sq-scr-dlg[data-lead="narrow"]{width:calc(100vw - 16px)}
@@ -35,4 +46,6 @@
   .sq-scr-ic{width:44px;height:44px}
   .sq-scr-dlg-links{padding:0 10px 10px 16px}
   .sq-scr-dlg-links a{min-height:44px}
+  .sq-scr-dlg-note{padding:0 16px 10px}
+  .sq-scr-notice{margin-top:40px}
 }

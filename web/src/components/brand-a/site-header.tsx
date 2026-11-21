@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { docsHref, type DocsLocale } from "@/lib/docs/locales";
+import { screensPublished } from "@/lib/screens/source.server";
+import { SCREENS_NAV_LABEL, SCREENS_PATH } from "@/components/screens/copy";
 import { getCopy } from "./copy";
 import { LocaleSwitch } from "./locale-switch";
 import { Logo } from "./logo";
@@ -82,9 +84,16 @@ export function SiteHeaderA({
   const t = getCopy(locale).nav;
   const meta = SITE_LOCALE_META[locale];
   const docs = docsLocale ?? DOCS_LOCALE_OF[locale];
+  // The screens gallery, once published: English and Korean only (it has no Japanese or Chinese page).
+  const screens = (locale === "en" || locale === "ko") && screensPublished() ? locale : null;
   const links = (
     <>
       <Link href={`${origin}${catalogPathFor(locale)}`} prefetch={false}>{t.archive}</Link>
+      {screens ? (
+        <Link href={`${origin}${SCREENS_PATH[screens]}`} prefetch={false}>
+          {SCREENS_NAV_LABEL[screens]}
+        </Link>
+      ) : null}
       <Link href={`${origin}${skillsHrefFor(locale, docs)}`} prefetch={false}>{t.skills}</Link>
       <Link href={`${origin}${docsHref(docs)}`} prefetch={false}>{t.docs}</Link>
     </>

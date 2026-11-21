@@ -83,8 +83,8 @@ export function DetailView({
   /** Genuine logo resolved by the server (archive-rows.server.ts), or null. */
   logo: BrandLogoData | null;
   /**
-   * This service's real screens from a local folder (lib/screens/local.server.ts), or null — always
-   * null in production. Null renders the page exactly as before: no tab row, no request, no markup.
+   * This service's real screens (lib/screens/source.server.ts: the published manifest, or a local folder), or
+   * null. Null renders the page exactly as before: no tab row, no request, no markup.
    */
   screens?: ScreensModel | null;
 }) {

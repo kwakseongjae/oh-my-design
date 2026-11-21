@@ -1,0 +1,41 @@
+name: Take down a screen · 화면 내리기
+description: Ask us to remove a screen of your company or service from oh-my-design. · 회사나 서비스의 화면을 oh-my-design에서 내려 달라고 요청합니다.
+title: "[screen-removal] "
+labels: ["screen-removal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us which screen and why. We take it off the site and out of the image store.
+        어떤 화면을 왜 내려야 하는지 알려 주세요. 사이트와 이미지 저장소에서 내립니다.
+  - type: input
+    id: service
+    attributes:
+      label: Service · 서비스
+      description: The id in the page address, as in oh-my-design.kr/design-systems/<id>. · 페이지 주소의 id.
+      placeholder: karrot
+    validations:
+      required: true
+  - type: input
+    id: screen
+    attributes:
+      label: Which screen · 어떤 화면
+      description: The screen's title as the page shows it, or "all" for every screen of the service. · 페이지에 적힌 화면 이름, 서비스의 화면 전부라면 "전부".
+      placeholder: "중고거래 상세"
+    validations:
+      required: true
+  - type: input
+    id: requester
+    attributes:
+      label: Who is asking · 요청하는 분
+      description: Your name or team, and your relation to the service. · 이름이나 팀, 그리고 서비스와의 관계.
+      placeholder: "Design team at the company · 회사 디자인팀"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why · 이유
+      description: For example, the screen shows a person, or the company does not want it shown. · 예: 화면에 사람이 보입니다, 회사가 공개를 원하지 않습니다.
+    validations:
+      required: true

@@ -3,8 +3,8 @@
 /**
  * The item page's Screens tab — a company's real screens beside its DESIGN.md.
  *
- * Rendered only when the server found a local screens folder for this reference
- * (lib/screens/local.server.ts), and loaded as its own chunk (detail-view.tsx
+ * Rendered only when the server found screens for this reference (lib/screens/source.server.ts: the
+ * published manifest, or a local folder), and loaded as its own chunk (detail-view.tsx
  * imports it with next/dynamic), so a page without screens neither renders nor
  * downloads any of it. Layout from the owner-approved still "b-item-screens":
  *   - the shooting date and "로그아웃 상태", and a control for which width leads;
@@ -14,12 +14,16 @@
  *     (black and white left out); a blocked screen says so and shows no image;
  *   - the panel "DESIGN.md와 대조": every comparable colour token with the number of
  *     screens it is drawn on, or "보이지 않음". A token filters the cards;
- *   - a card opens its full-page still in a dialog with previous / next.
+ *   - a card opens its full-page still in a dialog with previous / next (the first-viewport still where no full page
+ *     exists, as for every published screen);
+ *   - once screens are published: a line under a card whose people were hidden, and the rights and takedown lines
+ *     at the end (components/screens/notice.tsx).
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDownIcon, XIcon } from "lucide-react";
 import { ScreenDialog, isNarrowWidth as narrow } from "@/components/item/screen-dialog";
+import { ScreensNotice } from "@/components/screens/notice";
 import {
   cardChips,
   dialogSequence,
@@ -86,6 +90,8 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
   }
 
   const meta = [model.shot ? t.shot(model.shot) : null, model.signedOut ? t.signedOut : null].filter(Boolean).join(" · ");
+  // Once screens are published: who owns them and how to ask for a takedown, and which screens had people hidden.
+  const masked = (card: ScreenCard) => (model.published && card.masked ? t.notice.masked : null);
 
   return (
     <section id={panelId} className="sq-scr" role="tabpanel" aria-label={t.tab}>
@@ -121,7 +127,7 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
               </h2>
               <ul className="sq-scr-grid">
                 {g.cards.map((card) => (
-                  <Card key={card.key} card={card} lead={lead} colors={model.colors} t={t} onOpen={() => setOpenKey(card.key)} />
+                  <Card key={card.key} card={card} lead={lead} colors={model.colors} t={t} note={masked(card)} onOpen={() => setOpenKey(card.key)} />
                 ))}
               </ul>
             </section>
@@ -169,12 +175,32 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
         onStep={step}
         onClose={() => setOpenKey(null)}
         labels={t}
+        note={current ? masked(current) : null}
       />
+
+      {model.published ? (
+        <ScreensNotice t={t.notice} scope="service" shot={model.shot ? { from: model.shot, to: model.shot } : null} signedOut={model.signedOut} service={model.slug} />
+      ) : null}
     </section>
   );
 }
 
-function Card({ card, lead, colors, t, onOpen }: { card: ScreenCard; lead: number; colors: ScreenColor[]; t: ScreensLabels; onOpen: () => void }) {
+function Card({
+  card,
+  lead,
+  colors,
+  t,
+  note,
+  onOpen,
+}: {
+  card: ScreenCard;
+  lead: number;
+  colors: ScreenColor[];
+  t: ScreensLabels;
+  /** The masked line, or null. */
+  note: string | null;
+  onOpen: () => void;
+}) {
   const main = leadStill(card, lead);
   const inset = insetStill(card, lead);
   const chips = card.blocked ? [] : cardChips(card.key, colors);
@@ -186,7 +212,7 @@ function Card({ card, lead, colors, t, onOpen }: { card: ScreenCard; lead: numbe
           <span>{t.blocked}</span>
         </div>
       ) : (
-        <button type="button" className="sq-scr-frame" data-lead={shape} onClick={onOpen} aria-label={t.open(card.title)}>
+        <button type="button" className="sq-scr-frame" data-lead={shape} onClick={onOpen} aria-label={main.full ? t.open(card.title) : t.openStill(card.title)}>
           {/* eslint-disable-next-line @next/next/no-img-element -- a local-only still, served by our own route */}
           <img className="sq-scr-main-img" src={main.still} alt="" loading="lazy" decoding="async" />
           {inset ? (
@@ -199,6 +225,7 @@ function Card({ card, lead, colors, t, onOpen }: { card: ScreenCard; lead: numbe
         <b lang="ko">{card.title}</b>
         <TypeChip card={card} t={t} />
       </div>
+      {note ? <p className="sq-scr-masked">{note}</p> : null}
       {chips.length ? (
         <ul className="sq-scr-toks">
           {chips.map((c) => (

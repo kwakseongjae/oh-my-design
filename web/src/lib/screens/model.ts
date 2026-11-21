@@ -4,9 +4,8 @@
  * dialog's sequence). No fs here: the client imports this file, and the reader
  * that fills it (local.server.ts) stays on the server.
  *
- * The screens are other companies' screens whose publication is not decided, so
- * the data only ever comes from a local folder (OMD_SCREENS_DIR) and never from
- * the bundle. Groups, chips and the panel follow the owner-approved still
+ * The data comes from the published manifest (public.server.ts) or, to preview a
+ * walk, a local folder (local.server.ts); source.server.ts picks. Groups, chips and the panel follow the owner-approved still
  * "b-item-screens" (tools/screen-archive/make-ia-mocks.mjs on the screens branch).
  */
 
@@ -27,6 +26,8 @@ export interface ScreenCard {
   state: string | null;
   /** Every width answered with a block (403 and the like): the card shows no image. */
   blocked: boolean;
+  /** People's names or uploaded pictures were replaced before the still was taken. */
+  masked: boolean;
   /** Widest first. Empty when blocked. */
   stills: ScreenStill[];
 }
@@ -47,6 +48,8 @@ export interface ScreensModel {
   signedOut: boolean;
   /** The walk's platform ("both": the service also has an app; "web": web only), or null when it does not say. */
   platform: string | null;
+  /** The site publishes screens (source.server.ts screensPublished): the tab adds its rights and takedown lines. */
+  published: boolean;
   /** Widths present in the walk, widest first. */
   widths: number[];
   cards: ScreenCard[];
@@ -132,6 +135,8 @@ export interface GalleryShot {
   stills: ScreenStill[];
   /** Up to three, see shotDots. Empty when the service has no tokens.json. */
   dots: ShotDot[];
+  /** People's names or uploaded pictures were replaced before the still was taken. */
+  masked: boolean;
 }
 
 export interface GalleryService {
@@ -155,6 +160,8 @@ export interface GalleryModel {
   signedOut: boolean;
   /** Widths present, widest first. */
   widths: number[];
+  /** The site publishes screens: the page adds its rights and takedown lines. */
+  published: boolean;
 }
 
 /** max − min of the RGB channels of a #rrggbb value: 0 for greys, higher for a stronger hue; 0 when not a hex colour. */

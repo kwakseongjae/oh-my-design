@@ -4,8 +4,9 @@ import path from "node:path";
 
 /** One service's walk, written as the real folders are laid out: five keys at two widths (one blocked, one with no
  *  still on disk, one at one width only), a tokens.json unless `tokens: false`, the platform when given, and the
- *  keys in `withheld` marked withheld on every width (their stills stay on disk, as in the real folders). */
-function writeService(root: string, slug: string, opts: { platform?: string; tokens?: boolean; withheld?: string[] } = {}): void {
+ *  keys in `withheld` marked withheld on every width (their stills stay on disk, as in the real folders), and the keys
+ *  in `masked` with names and photos replaced. */
+function writeService(root: string, slug: string, opts: { platform?: string; tokens?: boolean; withheld?: string[]; masked?: string[] } = {}): void {
   const dir = path.join(root, slug);
   fs.mkdirSync(path.join(dir, "img"), { recursive: true });
   const rec = (key: string, type: string, width: number, extra: Record<string, unknown> = {}) => ({
@@ -20,7 +21,10 @@ function writeService(root: string, slug: string, opts: { platform?: string; tok
     rec("../evil", "홈", 1440),
   ];
   // Withheld as the sheets mark it: a reason on every width of the screen.
-  const marked = records.map((r) => (opts.withheld?.includes(r.key) ? { ...r, withheld: "users' posts and photos" } : r));
+  const marked = records
+    .map((r) => (opts.withheld?.includes(r.key) ? { ...r, withheld: "users' posts and photos" } : r))
+    // Masked as the sheets record it: what was replaced before the still was taken.
+    .map((r) => (opts.masked?.includes(r.key) ? { ...r, masked: { level: "names and photos", names: 1, texts: 0, attrs: 0, images: 3 } } : r));
   const walk: Record<string, unknown> = { slug, shot: "20261121", browser: "chromium headless, fresh profile, signed out", records: marked };
   if (opts.platform) walk.platform = opts.platform;
   fs.writeFileSync(path.join(dir, "screens.json"), JSON.stringify(walk));
@@ -52,7 +56,7 @@ export function makeScreensFixture(slug = "acme"): { root: string; cleanup: () =
 }
 
 /** A synthetic folder of several services for the gallery, plus a folder with no walk and a stray file at the top. */
-export function makeGalleryFixture(services: { slug: string; platform?: string; tokens?: boolean; withheld?: string[] }[]): { root: string; cleanup: () => void } {
+export function makeGalleryFixture(services: { slug: string; platform?: string; tokens?: boolean; withheld?: string[]; masked?: string[] }[]): { root: string; cleanup: () => void } {
   const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "omd-screens-")));
   for (const s of services) writeService(root, s.slug, s);
   fs.mkdirSync(path.join(root, "no-walk", "img"), { recursive: true });
