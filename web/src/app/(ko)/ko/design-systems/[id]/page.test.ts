@@ -201,7 +201,7 @@ describe("the Screens tab on the Korean page (local screens only)", () => {
       expect(html).toContain(">서비스 화면</button>");
       expect(html).not.toContain("<small>4</small>");
       const phone = (html.split('class="sq-root sq-wrap sq-panes-m"')[1] ?? "").split("</div>")[0];
-      expect([...phone.matchAll(/<button[^>]*>([^<]+)/g)].map((m) => m[1].trim())).toEqual(["미리보기", "DESIGN.md", "화면"]);
+      expect([...phone.matchAll(/<button[^>]*>([^<]+)/g)].map((m) => m[1].trim())).toEqual(["미리보기", "DESIGN.md", "서비스 화면"]);
     } finally {
       fx.cleanup();
     }
