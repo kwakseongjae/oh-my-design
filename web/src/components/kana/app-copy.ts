@@ -8,7 +8,8 @@
  * COMPOSED COPY. Composed by a model (Claude Opus 5.5) on 2026-11-22 for the /ko/kana demo screen. These are not source
  * quotes, except the strings marked `source` below, which are copied character for character from a quote in
  * writing-rules.md. No native Japanese reader has read them. The page says so beside the screen every time it renders
- * (KANA_COPY.app.composed). Review: none yet (the main session adds the independent check here).
+ * (KANA_COPY.app.composed). Review: read string by string on 2026-11-22 by Claude Fable 5.2 in the main session, a different model from the
+ * one that composed them; no string was changed. That is a model review, not a native one.
  *
  * This file is the only place on the page where Japanese of our own is allowed, and only the #app section renders it
  * (__tests__/kana-page.test.ts). The rule cards, quotes, #compare and the skill files stay source-only.
