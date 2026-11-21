@@ -48,7 +48,8 @@ export function screensRoot(env: Env = process.env): string | null {
 /**
  * The file on disk for /screens-local/<slug>/<file>, or null. Only
  * "<width>-<key>[.full].jpg" names, only inside <root>/<slug>/img after every
- * symlink is resolved, only regular files.
+ * symlink is resolved, only regular files, and never a still of a screen the
+ * walk marks withheld (asked for by URL, it is a 404 like any other).
  */
 export function resolveScreenImage(slug: string, file: string, env: Env = process.env): string | null {
   const root = screensRoot(env);
@@ -58,6 +59,8 @@ export function resolveScreenImage(slug: string, file: string, env: Env = proces
     if (!base.startsWith(root + path.sep)) return null;
     const target = fs.realpathSync(path.join(base, file));
     if (path.dirname(target) !== base) return null;
+    const key = FILE_RE.exec(file)?.[2];
+    if (!key || withheldKeys(readJson(path.join(root, slug, "screens.json"))).has(key)) return null;
     return fs.statSync(target).isFile() ? target : null;
   } catch {
     return null;
@@ -84,13 +87,29 @@ interface WalkRecord {
   blocked: boolean;
 }
 
-function records(walk: Record<string, unknown>): WalkRecord[] {
-  if (!Array.isArray(walk.records)) return [];
+/** A record the sheet marks `withheld` (a non-empty reason): a screen made mostly of users' posts, photos or reviews,
+ *  never shown outside the machine that shot it. */
+const isWithheld = (r: Record<string, unknown> | null | undefined) => typeof r?.withheld === "string" && r.withheld.trim() !== "";
+
+/** The keys of a walk's withheld screens. */
+function withheldKeys(walk: unknown): Set<unknown> {
+  const recs = walk && typeof walk === "object" ? (walk as Record<string, unknown>).records : null;
+  return new Set(Array.isArray(recs) ? (recs as Record<string, unknown>[]).filter(isWithheld).map((r) => r?.key) : []);
+}
+
+/**
+ * The walk's usable records. A withheld screen is left out whole: when any of its widths is withheld, every width of
+ * that key goes, so no tab, shelf, landing row or count ever includes it.
+ */
+function records(walk: Record<string, unknown>): { recs: WalkRecord[]; withheld: boolean } {
+  if (!Array.isArray(walk.records)) return { recs: [], withheld: false };
+  const all = walk.records as Record<string, unknown>[];
+  const held = withheldKeys(walk);
   const out: WalkRecord[] = [];
-  for (const r of walk.records as Record<string, unknown>[]) {
+  for (const r of all) {
     const key = str(r?.key);
     const width = num(r?.width);
-    if (!key || !KEY_RE.test(key) || !width) continue;
+    if (!key || !KEY_RE.test(key) || !width || held.has(key)) continue;
     out.push({
       key,
       width,
@@ -100,7 +119,7 @@ function records(walk: Record<string, unknown>): WalkRecord[] {
       blocked: r.blocked === true,
     });
   }
-  return out;
+  return { recs: out, withheld: held.size > 0 };
 }
 
 /** "20261121" or an ISO date → "2026-11-21". */
@@ -122,7 +141,7 @@ export function readScreens(id: string, env: Env = process.env): ScreensModel | 
   const walk = readJson(path.join(dir, "screens.json"));
   if (!walk || typeof walk !== "object") return null;
   const w = walk as Record<string, unknown>;
-  const recs = records(w);
+  const { recs, withheld } = records(w);
   if (recs.length === 0) return null;
 
   const imgDir = path.join(dir, "img");
@@ -173,8 +192,9 @@ export function readScreens(id: string, env: Env = process.env): ScreensModel | 
   const summary = (tokens?.summary as Record<string, Record<string, unknown>> | undefined)?.colors;
   const matched = num(summary?.matchedBeyondBlackWhite);
   const comparable = num(summary?.comparableBeyondBlackWhite);
+  // The sheet's summary counts every screen it matched, withheld ones too: with anything withheld, count again here.
   const colorCount =
-    matched !== null && comparable !== null
+    !withheld && matched !== null && comparable !== null
       ? { matched, comparable }
       : colors.length
         ? {

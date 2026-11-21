@@ -7,7 +7,7 @@ import { makeGalleryFixture } from "./test-fixture";
 /** The gallery's reader: the same gate as the Screens tab, every service with a walk, registry names and links. */
 
 const fx = makeGalleryFixture([
-  { slug: "karrot", platform: "both" },
+  { slug: "karrot", platform: "both", withheld: ["event"] },
   { slug: "wanted", platform: "web", tokens: false },
   { slug: "29cm", platform: "both" },
   { slug: "not-a-reference", platform: "both" },
@@ -63,8 +63,14 @@ describe("readGallery", () => {
   });
 
   it("keeps only screens with a still: blocked and still-less screens are not shelved", () => {
-    expect(ko.shots.filter((s) => s.slug === "karrot").map((s) => s.key)).toEqual(["home", "search-empty", "event"]);
-    expect(ko.services.find((s) => s.slug === "karrot")!.count).toBe(3);
+    expect(ko.shots.filter((s) => s.slug === "karrot").map((s) => s.key)).toEqual(["home", "search-empty"]);
+    expect(ko.services.find((s) => s.slug === "karrot")!.count).toBe(2);
+  });
+
+  it("leaves out withheld screens, and they are in no count (karrot's event is withheld)", () => {
+    expect(ko.shots.some((s) => s.slug === "karrot" && s.key === "event")).toBe(false);
+    expect(ko.shots.filter((s) => s.slug === "29cm").map((s) => s.key)).toEqual(["home", "search-empty", "event"]);
+    expect(ko.shots).toHaveLength(8);
   });
 
   it("dots only where the service has a token comparison (unknown means absent)", () => {

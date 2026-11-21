@@ -2,7 +2,7 @@ import { afterAll, describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { readScreens, resolveScreenImage, screensRoot } from "./local.server";
-import { makeScreensFixture } from "./test-fixture";
+import { makeGalleryFixture, makeScreensFixture } from "./test-fixture";
 
 const fx = makeScreensFixture();
 afterAll(fx.cleanup);
@@ -112,5 +112,44 @@ describe("resolveScreenImage (the traversal guard)", () => {
     } finally {
       fs.rmSync(outside, { recursive: true, force: true });
     }
+  });
+});
+
+describe("withheld screens (users' posts, photos or reviews: never shown off this machine)", () => {
+  const held = makeGalleryFixture([{ slug: "acme", withheld: ["home", "event"] }]);
+  afterAll(held.cleanup);
+  const env = { OMD_SCREENS_DIR: held.root, NODE_ENV: "development" };
+  const m = readScreens("acme", env)!;
+
+  it("leaves out every width of a withheld screen, though its stills are on disk", () => {
+    expect(m.cards.map((c) => c.key)).toEqual(["search-empty", "detail"]);
+    expect(JSON.stringify(m)).not.toMatch(/1440-home|390-home|1440-event/);
+  });
+
+  it("a colour seen only on withheld screens counts as not seen, and the count is taken again, not from the sheet's summary", () => {
+    expect(m.colors.find((c) => c.token === "primary")!.screens).toEqual([]);
+    expect(m.colors.find((c) => c.token === "ink")!.screens).toEqual(["search-empty"]);
+    // the sheet says 1 of 2; without home and event, primary is on no screen left
+    expect(m.colorCount).toEqual({ matched: 0, comparable: 2 });
+  });
+
+  it("the image route will not serve a withheld screen's stills by URL; the others still resolve", () => {
+    expect(resolveScreenImage("acme", "1440-home.jpg", env)).toBeNull();
+    expect(resolveScreenImage("acme", "1440-home.full.jpg", env)).toBeNull();
+    expect(resolveScreenImage("acme", "390-home.jpg", env)).toBeNull();
+    expect(resolveScreenImage("acme", "1440-event.jpg", env)).toBeNull();
+    expect(resolveScreenImage("acme", "390-search-empty.jpg", env)).toBe(path.join(held.root, "acme", "img", "390-search-empty.jpg"));
+  });
+
+  it("only a non-empty reason withholds; one withheld width takes the whole screen", () => {
+    const dir = path.join(held.root, "acme");
+    const walk = JSON.parse(fs.readFileSync(path.join(dir, "screens.json"), "utf8"));
+    for (const r of walk.records) {
+      if (r.key === "home" || r.key === "event") delete r.withheld;
+      if (r.key === "home") r.withheld = "  ";
+      if (r.key === "search-empty" && r.width === 390) r.withheld = "reviews";
+    }
+    fs.writeFileSync(path.join(dir, "screens.json"), JSON.stringify(walk));
+    expect(readScreens("acme", env)!.cards.map((c) => c.key)).toEqual(["home", "detail", "event"]);
   });
 });
