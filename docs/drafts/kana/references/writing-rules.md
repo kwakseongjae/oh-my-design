@@ -1,15 +1,18 @@
 # /kana — writing rules from company guides, translation guides and DADS components (KW)
 
-**Development draft, 2026-11-21. No native Japanese reader has reviewed this file.** It turns the 57 research candidates in [`../writing/rules.md`](../writing/rules.md) (UW-01 … UW-57) into rules for the skill, at the strength the second reader's verdicts in [`../writing/verdicts.md`](../writing/verdicts.md) allow. Region: Japan for every rule.
+**Development draft, 2026-11-21. No native Japanese reader has reviewed this file.** It turns the 57 research candidates in [`../writing/rules.md`](../writing/rules.md) (UW-01 … UW-57), and the 13 candidates and 8 additions of the second pass in [`../writing2/rules.md`](../writing2/rules.md) (UW-58 … UW-70), into rules for the skill, at the strength the second readers' verdicts in [`../writing/verdicts.md`](../writing/verdicts.md) and [`../writing2/verdicts.md`](../writing2/verdicts.md) allow, row by row and with their notes. Region: Japan for every rule.
 
 ## How this file was made
 
 - **Quotes from `rules.md`.** KW-39's examples and fixtures quote JTF and KB strings from [`rules.md`](./rules.md) (JW ids given), because the writing research quotes no string that breaks it. No other rule does.
-- **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. UW-45 (not supported) and UW-10 (states no rule) are left out. The twelve candidates recorded as a disagreement are not rules: they are listed under [The project's DESIGN.md decides](#the-projects-designmd-decides), each side with its source, and the checker tests none of them.
-- **Ids.** KW-nn carries the number of the candidate it came from (KW-09 is UW-09), so the numbering has gaps. Every candidate's fate is in [`../writing/coverage.md`](../writing/coverage.md).
+- **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. UW-45 (not supported) and UW-69 (one university website guide that says it is not binding) are left out. The sixteen candidates recorded as a disagreement are not rules: they are listed under [The project's DESIGN.md decides](#the-projects-designmd-decides), each side with its source, and the checker tests none of them. Four of them were rules or candidates of the first pass that the second pass split: UW-11 (with UW-58), UW-17 and UW-37, where Microsoft takes the other side, and UW-59.
+- **Ids.** KW-nn carries the number of the candidate it came from (KW-09 is UW-09), so the numbering has gaps. Every candidate's fate is in [`../writing/coverage.md`](../writing/coverage.md) (first pass) and [`../writing2/coverage.md`](../writing2/coverage.md) (second pass).
 - **Relation to JW.** [`rules.md`](./rules.md) holds JW-01 … JW-70 (keys KB: the Agency for Cultural Affairs' guide for government writing; KG: its keigo guideline; GK: the cabinet notice on loanword spelling; YN: the plain-Japanese guideline for foreign residents; JTF; SmartHR). A KW rule that agrees with a JW rule says so and adds its sources; it does not restate the JW rule.
-- **Japanese text.** Every Japanese string below is copied from a quote in `writing/rules.md` or `verdicts.md`, with its source key. Where the two files differ, the verdict's text is used (UW-19). No example was composed. A rule whose sources give no OK/NG pair says "no sourced example". A test (`test/unit/scripts/kana-copy-check.test.mjs`) fails if a fixture string or a corner-bracketed string in this file is not inside one quote. Japanese outside brackets (single words in the rule text) is held only to being a substring of some quote, which a short word can pass by coincidence; those words were read by hand.
-- **Quotes came through an extraction tool**, not from page source; widths and code points are as `verdicts.md` reports them. A native reader should check them on the pages before the skill ships.
+- **Japanese text.** Every Japanese string below is copied from a quote in `writing/rules.md`, `writing/verdicts.md`, `writing2/rules.md` or `writing2/verdicts.md`, with its source key. Where the two files differ, the verdict's text is used (UW-19). No example was composed. A rule whose sources give no OK/NG pair says "no sourced example". A test (`test/unit/scripts/kana-copy-check.test.mjs`) fails if a fixture string or a corner-bracketed string in this file is not inside one quote. Japanese outside brackets (single words in the rule text) is held only to being a substring of some quote, which a short word can pass by coincidence; those words were read by hand.
+- **English quotes.** Microsoft states its rules in English. They are quoted in “…” as its PDF's text layer gives them, with line breaks and indentation removed; the source's own straight quotes stay inside. Its + and − marks for recommended and avoided forms are written before the strings they mark.
+- **Quotes against the pages.** On 2026-11-21 the quotes of both research files were compared by script with the pages' served bytes, and Microsoft's with the text layer of its PDF ([`../writing/raw-check-2026-11-21.md`](../writing/raw-check-2026-11-21.md), [`../writing2/raw-check-2026-11-21.md`](../writing2/raw-check-2026-11-21.md); [`../review-2026-11-21.md`](../review-2026-11-21.md) says what was not found and why). The second-pass quotes this file takes from `writing2/verdicts.md` (SmartHR, Ubie, the NTA page, including its ※ on 飲食料品) were compared with the pages' bytes again in this fold, the same day. A Microsoft quote confirms characters, not spaces.
+- **Widths and spaces.** A rule or a side that turns on a width or a space rests only on quotes whose tier is "web" in the raw-check reports. One exception, stated where it is used (UW-37): Microsoft writes its half-width space as △ in examples, which is a statement in characters, not layout.
+- **No native reader.** No native Japanese reader has read these rules; the review was a model's ([`../review-2026-11-21.md`](../review-2026-11-21.md)).
 
 ## Strength, in words
 
@@ -18,10 +21,11 @@
 | government design system | The Digital Agency design system (DADS) component pages. Each states its own scope. |
 | N of 4 company guides | Stated in N of the four company design-system writing guides read: SmartHR, Ubie Vitals, Ameba Spindle, GMO Pepabo Inhouse (Pepabo: one component page). A guide that is silent is not counted against a rule. |
 | one company's guide | One of those four, named. |
-| translation guides only | Mozilla Japan (L10n Guideline, Editorial Guideline) and the WordPress Japanese translation style guide: Japanese translated from English, for open-source software. |
+| translation guides only | Three guides for Japanese translated from English: Mozilla Japan (L10n Guideline, Editorial Guideline) and the WordPress Japanese translation style guide, for open-source software, and Microsoft's Japanese localization style guide, for its own products. A rule names the ones that state it. Microsoft's guide was read for the second pass's topics only; where a rule names Mozilla or WordPress alone, Microsoft is not counted for or against. |
+| statutory duty | A duty under Japanese law, as the authority that administers it explains it. One rule: KW-68 (the National Tax Agency on the Consumption Tax Act). |
 | OPTiM heading only, not counted | OPTiM's blog post lists its rules as headings with no body. A pointer, never counted. |
 
-No rule here is required by any source. Words such as 原則, なるべく and できる限り in a quote stay in the rule.
+No rule here is required by any source, except KW-68, which states a legal duty. Words such as 原則, なるべく and できる限り in a quote, and "In general" or "try to use" in Microsoft's, stay in the rule.
 
 ## Source keys
 
@@ -49,6 +53,14 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 | MZ-ed21 | Mozilla, Editorial Guideline (2021 copy) | https://mozilla-l10n.github.io/styleguides/ja/editorialguideline.html |
 | WP | WordPress Japanese team, translation style guide | https://ja.wordpress.org/team/handbook/translation/translation-style-guide/ |
 | OPT | OPTiM TECH BLOG, UX writing rules (headings only) | https://tech-blog.optim.co.jp/entry/2025/01/16/100000 |
+| MS | Microsoft, Japanese Localization Style Guide (PDF; read from its text layer) | https://download.microsoft.com/download/bb82f407-78f4-4df4-accd-d63ceaadd24a/jpn-jpn-StyleGuide.pdf |
+| SH-dd | SmartHR, delete dialog | https://smarthr.design/products/design-patterns/delete-dialog/ |
+| SH-cs | SmartHR, operations that need a confirmation step | https://smarthr.design/products/design-patterns/confirmation-step/ |
+| SH-mu | SmartHR, modal UI | https://smarthr.design/products/design-patterns/modal-ui/ |
+| SH-tb | SmartHR, the common table | https://smarthr.design/products/design-patterns/smarthr-table/ |
+| SH-ed | SmartHR, items with no value | https://smarthr.design/products/design-patterns/empty-data/ |
+| UB-am | Ubie Vitals, ActionModal | https://vitals.ubie.life/components/action-modal/ |
+| NTA | National Tax Agency, Tax Answer No.6902 (total price display) | https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6902.htm |
 
 ## The checker
 
@@ -74,7 +86,7 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-02 (UW-02) · Screen titles, window titles and headings are nouns.
 - Kind: WRITE.
-- Strength: one company's guide (SmartHR) and both translation guides (Mozilla, as a principle; WordPress also allows the plain 「する」 form). OPTiM heading only, not counted.
+- Strength: one company's guide (SmartHR) and two translation guides (Mozilla, as a principle; WordPress also allows the plain 「する」 form); Microsoft's guide was not checked for this rule. OPTiM heading only, not counted.
 - Quote: SH-app 「画面タイトルや項目名は、名詞で表記します。」; MZ 「タイトル名は体言止めを原則とする。全体のバランスに注意する。」; WP 3-8 「見出しは体言止め、または「する」(常体) とする」
 - Example: no sourced example.
 - Checker: **KW-02, FYI**: a heading (h1–h6, `<title>`, a Markdown heading) that ends in です or ます, with or without 。.
@@ -102,9 +114,9 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-06 (UW-06) · Neither stiff nor over-friendly: in ordinary content, ordinary polite forms rather than extra-formal ones.
 - Kind: WRITE.
-- Strength: one company's guide (Ubie) and one translation guide (Mozilla, for content that is not formal). DADS's own sample notice body uses 「…期限までにご対応をお願いいたします。」: an authority's notice, given as an example, not a rule.
-- Quote: UB 「堅苦しい表現は避けるが、フレンドリーすぎないように。」; MZ-ed 「あまり丁寧すぎると浮いてしまうので、内容が改まったものでなければ、一般的な丁寧語で記述する。特にブログは多少カジュアルでも良い。」
-- Example: UB Don't 「お加減はいかがですか？ ※ちょっと堅い」 → Do 「体調はいかがですか？」. MZ-ed NG 「皆様」「公開いたしました」「よろしくお願いいたします」 → OK 「皆さん」「公開します」「よろしくお願いします」.
+- Strength: one company's guide (Ubie) and two translation guides (Mozilla, for content that is not formal; Microsoft, which says of its word table that the words are examples to be chosen by context, not adopted uniformly). DADS's own sample notice body uses 「…期限までにご対応をお願いいたします。」: an authority's notice, given as an example, not a rule.
+- Quote: UB 「堅苦しい表現は避けるが、フレンドリーすぎないように。」; MZ-ed 「あまり丁寧すぎると浮いてしまうので、内容が改まったものでなければ、一般的な丁寧語で記述する。特にブログは多少カジュアルでも良い。」; MS “Microsoft voice avoids an unnecessarily formal tone. Similarly, Japanese Microsoft voice should also avoid written words/very formal tone.”
+- Example: UB Don't 「お加減はいかがですか？ ※ちょっと堅い」 → Do 「体調はいかがですか？」. MZ-ed NG 「皆様」「公開いたしました」「よろしくお願いいたします」 → OK 「皆さん」「公開します」「よろしくお願いします」. MS − 「xxx が可能です」 → + 「xxx できます」.
 - Checker: **KW-06, FYI**: 皆様, いたしました, よろしくお願いいたします (Mozilla's NG list; いたしました also matches other verbs in that form).
 
 ### Keigo
@@ -125,17 +137,17 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-09 (UW-09) · Don't stack keigo; one polite request form is enough.
 - Kind: WRITE.
-- Strength: 2 of 4 company guides (SmartHR, Ubie). OPTiM heading only, not counted. Same direction as JW-07 and JW-08.
-- Quote: SH-ws 「敬語表現を多用して、情報が伝わりづらくならないように配慮しましょう。」
+- Strength: 2 of 4 company guides (SmartHR, Ubie) and one translation guide (Microsoft; its word is "excessively polite", and "stack" is ours). OPTiM heading only, not counted. Same direction as JW-07 and JW-08. Microsoft asks for the polite お- and ご- forms of a few listed verbs where SmartHR's example writes the plain one; that is a house choice (UW-59), and both reject stacked forms.
+- Quote: SH-ws 「敬語表現を多用して、情報が伝わりづらくならないように配慮しましょう。」; MS “Do not use excessively polite expression.”
 - Example: UB Don't 「お手数をおかけしますが、こちらからお問い合わせいただけますよう、お願い申し上げます。 ※過剰」 → Do 「お手数ですが、こちらからお問い合わせください。」. SH-ws NG 「◯◯をご確認いただけますようお願いいたします。」 → OK 「◯◯を確認してください。」; NG 「◯◯させていただきました。」 → OK 「◯◯しました。」.
 - Checker: **KW-09, WARN**: いただけますよう, お願い申し上げます, させていただきました. Only SmartHR's past form is matched: the KG keigo guideline says the humble-permission form can fit where the writer acts with the reader's permission and benefits from it (JW-09).
 
-#### KW-11 (UW-11) · When translating an English error that opens with "Sorry", drop the apology rather than write すみません.
+#### KW-10 (UW-10) · Microsoft: in general, text is in the polite style, and a sentence that asks the user to act ends "...してください。".
 - Kind: WRITE.
-- Strength: translation guides only (WordPress). No company guide and no government page read says when, or whether, to apologise in an error (writing/gaps.md).
-- Quote: WP 3-4 「”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する」
-- Example: no sourced example.
-- Checker: **KW-11, FYI**: a string that opens with すみません.
+- Strength: translation guides only (Microsoft, "In general", for explanatory text in windows, dialog boxes, message boxes and the status bar, and for the body of an error message). Every UI example of the first pass ends a request the same way (DADS, Pepabo, SmartHR, Ubie) without stating it. No source in either pass rules on ください against お願いします; Microsoft's guide does not mention お願い.
+- Quote: MS “In general, sentences should be translated in Desu-masu unless otherwise instructed. When the sentence prompts users to take an action, use "...してください。."”; MS “In Japanese, use Desu-masu (ですます調, polite style) when translating message body. When the message prompts users to take an action, use "...してください。."”
+- Example: no sourced example in this file (Microsoft's example is a table cell its text layer wraps; see writing2/rules.md).
+- Checker: judgment only (the checker can't tell a sentence that asks the user to act).
 
 #### KW-12 (UW-12) · Don't add あなた or あなたの where English has "you" or "your" and it reads unnaturally.
 - Kind: WRITE.
@@ -158,21 +170,21 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Example: SH-ws NG 「◯◯することができます。」 → OK 「◯◯できます。」.
 - Checker: **KW-14, FYI**: することができ. Don't report it on text written for readers of plain Japanese (JW-14, JW-65).
 
+#### KW-70 (UW-70) · Microsoft: in general, no honorific or humble forms; use them in material where a supplier–customer relationship has to be considered.
+- Kind: WRITE.
+- Strength: translation guides only (Microsoft, "In general"). For ordinary UI it points the same way as KW-07 (Ubie, components only). Ubie's own line for using keigo (KW-08) is a different one: Microsoft's trigger is the kind of material, Ubie's the kind of operation.
+- Quote: MS “In general, do not use honorific expression and humble expression.”; MS “In materials in which "supplier-customer" relationship should be considered, use those expressions.”
+- Example: MS − 「データ ファイルをアプリケーションに関連付けていただきますと、～」 → + 「データ ファイルをアプリケーションに関連付けると、～」. In supplier–customer material, MS − 「～を購入してください。」 → + 「～をお買い求めください。」.
+- Checker: judgment only (whether a screen is supplier–customer material is not in the text).
+
 ### Buttons, labels and links
 
 #### KW-15 (UW-15, rewritten to the verdict) · A button label lets the user predict what will happen; Ubie adds that 「OK」 alone does not.
 - Kind: WRITE.
-- Strength: predicting the action: 2 of 4 company guides (Ubie, Spindle). The 「OK」 half: one company's guide (Ubie). DADS-btn names 「OK」 as an ordinary primary label and gives no wording rule. SmartHR's dialog rule (JW-61) is about matching a dialog's title and its button.
-- Quote: UB-btn 「ボタンを押下した場合に、何が起こるのかをユーザーが推測できるべきです。」; SP-btn 「ボタン、リンクボタンのラベルは、操作やリンク先の内容が予測できるように明確にしましょう。…」
-- Example: UB-btn Bad 「OK」 → Good 「この内容で更新する」.
+- Strength: predicting the action: 2 of 4 company guides (Ubie, Spindle). The 「OK」 half: one company's guide (Ubie, on its Button and ActionModal pages). DADS-btn names 「OK」 as an ordinary primary label and gives no wording rule. SmartHR's dialog rule (JW-61) is about matching a dialog's title and its button.
+- Quote: UB-btn 「ボタンを押下した場合に、何が起こるのかをユーザーが推測できるべきです。」; SP-btn 「ボタン、リンクボタンのラベルは、操作やリンク先の内容が予測できるように明確にしましょう。…」; UB-am 「簡潔で、具体的なテキストをラベルとして用いてください。」
+- Example: UB-btn Bad 「OK」 → Good 「この内容で更新する」. UB-am 「OK」 → 「保存」 (the page marks them ❌ and ⭕️).
 - Checker: **KW-15, FYI**: a button whose whole text is OK.
-
-#### KW-17 (UW-17) · When a button label names its object, join it with を, not の.
-- Kind: WRITE.
-- Strength: one company's guide (SmartHR) and one translation guide (WordPress, for "View XX"). OPTiM heading only, not counted; it gives の for titles, as JW-61 does.
-- Quote: SH-app 「動詞の終止形の前に、オブジェクトを明記する場合には、助詞は「を」が適切です。」; WP 3-2 「“View XX” という表現は基本的に「～を表示 (する)」に統一する」
-- Example: SH-app NG 「権限の追加、申請の取り消し」 → OK 「権限を追加、申請を取り消す」.
-- Checker: **KW-17, FYI**: on a button, の before 追加, 取り消し or 表示 (the quoted nouns). Headings are not checked.
 
 #### KW-18 (UW-18) · Keep button labels short: Ubie aims at no wrap on mobile, about 15 characters; Mozilla matches word counts across a set where it can.
 - Kind: TYPO (length is countable).
@@ -206,7 +218,7 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-22 (UW-22) · A destructive action gets a confirmation dialog, but the dialog is not a safeguard by itself.
 - Kind: WRITE.
-- Strength: government design system (DADS-md). No source read gives wording for the destructive button itself.
+- Strength: government design system (DADS-md). The label SmartHR gives the destructive button is KW-61; how to word the confirmation is KW-63.
 - Quote: DADS-md 「削除などの破壊的な操作では、確認ダイアログを表示しても、利用者が内容を確認せずに操作を進めると安全対策として機能しません。」 「そもそも間違って削除しないようにする設計や、削除の取り消しや復元ができる設計を検討してください。」
 - Example: no sourced example. Spindle's Danger Button examples (SP-btn 「例: 投稿削除、退会、等。」) name the act; they carry no wording rule.
 - Checker: judgment only.
@@ -231,6 +243,20 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Quote: DADS-in 「「※必須」「※任意」の要否ラベルは「※（全角米印）」から書き始め、地の文章とは異なるテキストであることを明示します。」 「サポートテキストを企図して、プレースホルダーテキストを使用してはなりません。」; SH-oth 「入力が必要な場合は「入力必須」と表記します。「必須入力」は使用しません。」
 - Example: SH-oth NG 「必須入力」 → OK 「入力必須」.
 - Checker: **KW-25, FYI**: 必須入力. The ※ marker is not checked: no quoted label breaks it.
+
+#### KW-60 (UW-60, rewritten to the verdict) · SmartHR: the button that completes a modal task names the action with a verb, and the button that abandons it reads 「キャンセル」; Ubie keeps 「キャンセル」 for abandoning an action and 「閉じる」 for only closing.
+- Kind: WRITE.
+- Strength: one company's guide (SmartHR) for the labels; Ubie's line on the two words is one company's guide too. Placement is KW-19 (DADS: desktop, as a principle). Ubie's page also shows, with no caption, ❌「キャンセル」 / ⭕️「停止」 right after its pair for 「OK」 (KW-15). Whether that pair is about the abandon button, which would go against SmartHR, or about an action that happens to mean "cancel" is undetermined; this rule does not decide it.
+- Quote: SH-mu 「ボタンのラベルは、モードの目的であるタスクを完了するアクションであることがわかる動詞を用います。」 「タスクを中断するアクションのボタンラベルは`キャンセル`とします。」; SH-dd 「ダイアログを閉じて操作を中断するボタンは左に配置し、ラベルは`キャンセル`とします。」; UB-am 「「キャンセル」と「閉じる」は使い分けてください。前者はアクションを中断するニュアンスがあり、後者は単にダイアログを閉じる場合に使います。」
+- Example: no sourced example.
+- Checker: judgment only (the checker can't tell which button abandons the task).
+
+#### KW-61 (UW-61) · SmartHR labels the button that confirms a deletion with the act, 「削除」, and styles it as a Danger button.
+- Kind: WRITE + TYPO.
+- Strength: one company's guide (SmartHR). Spindle's Danger Button examples name the act without a wording rule (KW-22). 削除 against 削除する is a house choice (UW-16).
+- Quote: SH-dd 「操作を確定するボタンは右に配置し、ラベルは`削除`とします。」 「Dangerボタンを使い、破壊的な操作であることを示します。」
+- Example: no sourced example.
+- Checker: judgment only (the checker can't read a button's style).
 
 ### Errors, results and status
 
@@ -276,11 +302,55 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Example: UB Don't 「この中に該当なし」 → Do 「この中にはない」; Don't 「ありがとうございます！」 → Do 「ありがとうございます。」.
 - Checker: **KW-32, FYI**: ! or ！ (U+0021, U+FF01) right after Japanese text, with or without one space. Question marks are not checked: Ubie's own Do example is 「体調はいかがですか？」.
 
+### Dialogs and empty states
+
+#### KW-62 (UW-62) · Microsoft: a question that asks which action to take is "...しますか?", not "....してもよろしいですか?".
+- Kind: WRITE.
+- Strength: translation guides only (Microsoft, for translating "Do you want to …?" and "Would you like to …?"). No company guide states it; SmartHR's and Ubie's dialog examples use the same form (KW-63). The width of the question mark is not part of this rule (UW-42): Microsoft's quotes are characters from its PDF's text layer, which do not settle a width.
+- Quote: MS “For the sentences asking the customer which action to take, such as "Do you want to ...?" or "Would you like to ...?", translate to "...しますか?"”; MS “Avoid translating to "....してもよろしいですか?" because the agent of action is not the customer in this way.”
+- Example: MS − 「このまま続けてもよろしいですか?」 → + 「このまま続けますか?」.
+- Checker: **KW-62, FYI**: してもよろしいですか (the form Microsoft says to avoid).
+
+#### KW-63 (UW-63, rewritten to the verdict) · Before a destructive act, ask with a question; SmartHR also names the target, says that the act cannot be undone, and needs no confirmation when the act can be undone.
+- Kind: WRITE.
+- Strength: the question: 2 of 4 company guides (SmartHR, Ubie). The rest: one company's guide (SmartHR); for an act that can be undone its words are "not needed" (必要ありません), not "skip". Where the question sits differs: SmartHR puts it in the body under a noun-phrase title 「{オブジェクト名}の削除」, Ubie in the header. With KW-22 (DADS: the dialog is not a safeguard on its own).
+- Quote: SH-dd 「削除などの破壊的で不可逆な操作をする際は、アクションダイアログを用いて、ユーザーの確認を経てシステムが処理を実行するようにします。」 「破壊的な操作であっても、操作後に元に戻せる場合は、処理前の確認は必要ありません。」 「疑問文を使い確認を促します。」 「また、操作が不可逆である旨を明示します。」 「DefinitionListを使い、削除対象のオブジェクト名およびインスタンス名を提示します。」; UB-am 「データの削除、内容の破棄など破壊的なアクションの場合は疑問形を使用します。」
+- Example: SH-dd 例 「以下の{オブジェクト名}を削除しますか？　この操作は元に戻せません。」; UB-am 例 「この回答履歴を削除しますか？」.
+- Checker: judgment only.
+
+#### KW-64 (UW-64) · SmartHR: a confirmation dialog shows how many items the action touches and what it will do.
+- Kind: WRITE.
+- Strength: one company's guide (SmartHR). Its first sentence asks only to consider (検討します) telling the user beforehand what will happen; the second states what the dialog shows.
+- Quote: SH-cs 「ワンクッション必要な操作をユーザーが実行した際は、その操作によって何が起こるのかを事前に伝えることを検討します。」 「確認ダイアログでは、対象となる件数や操作の実行で何が起こるかを表示します。」
+- Example: no sourced example.
+- Checker: judgment only.
+
+#### KW-65 (UW-65) · Ubie: a dialog header states the user's action as a noun phrase or a question, joins the action noun and its object with 「の」, uses words specific to the case, and fits two lines on mobile and one on larger screens.
+- Kind: WRITE.
+- Strength: one company's guide (Ubie). The の form: 2 of 4 company guides (Ubie; SmartHR's dialog titles, JW-61, and its delete-dialog title in KW-63). Ubie's page writes 「体現止め」 and 「疑問系」; 体言止め and 疑問形 are meant.
+- Quote: UB-am 「ユーザーが求める操作を、体現止めまたは疑問系で表現します。」 「アクションを表す動名詞とその対象は連体助詞「の」を使って接続します。」 「汎用的な言葉ではなく、ユースケースに特化した具体的な言葉を使いましょう。」 「モバイル環境では2行、それより大きなデバイスでは1行に収まるようにします。」
+- Example: UB-am 「ユーザー情報を編集しましょう」 → 「ユーザー情報の編集」; 「変更をキャンセルする」 → 「変更を破棄する」 (the page marks them ❌ and ⭕️).
+- Checker: **KW-65, FYI**: a heading inside a dialog that ends in ましょう (Ubie's ❌ form). The line count is judgment only (it depends on the width).
+
+#### KW-66 (UW-66) · SmartHR: a table with no objects yet is not drawn; a message names the object, with a button to add one. A search that finds nothing keeps the table header and shows another message.
+- Kind: WRITE + TYPO.
+- Strength: one company's guide (SmartHR; one page's templates). In the zero-object state the page also hides the action buttons that need an object, the area for temporary operations and the pagination; "not drawn" is for that state only.
+- Quote: SH-tb 「テーブルは表示しません。」 「代わりに`Panel`内部に、`{オブジェクト名}はありません。`というメッセージと、オブジェクト追加を促すボタンを上下左右中央に表示します。」 「テーブルヘッダー（`thead`）は表示したままとします。」 「オブジェクトのエリアには、`該当する{オブジェクト名}はありません。<br />別の条件を試してください。`というメッセージを上下左右中央に表示します。」
+- Example: no sourced example (the message templates are in the quotes).
+- Checker: judgment only (an empty table is a state at run time).
+
+#### KW-67 (UW-67) · SmartHR: a missing value in a data table or definition list is left blank; a dash (`-`) in the disabled text colour only for an item the user cannot enter.
+- Kind: TYPO.
+- Strength: one company's guide (SmartHR).
+- Quote: SH-ed 「データテーブルや定義リストにおいて、値がない項目は空白表示とします。」 「以下の場合において、値がない項目は（空白表示ではなく）`-`を表示し、文字色は`TEXT_DISABLED`とします。」 「データテーブルや定義リスト上に、ユーザーが入力できない項目を表示する場合」
+- Example: no sourced example.
+- Checker: judgment only (whether an item can be entered is not in the text).
+
 ### Notation
 
 #### KW-33 (UW-33) · ください, すべて, すでに and いる in kana.
 - Kind: WRITE.
-- Strength: translation guides only (both); with JW-25 (KB, JTF). Mozilla keeps kanji for a main verb in context.
+- Strength: translation guides only (Mozilla and WordPress; Microsoft's guide was not checked for this rule); with JW-25 (KB, JTF). Mozilla keeps kanji for a main verb in context.
 - Quote: WP 3-6 「「下さい」 は「ください」、「全て」は「すべて」、「既に」は「すでに」に統一する」; MZ 「本動詞では文脈に応じて漢字、補助動詞についてはひらがなとする。」; MZ-ed 「「居る」ではなく「いる」。」
 - Example: the pairs in the WordPress quote.
 - Checker: **KW-33, FYI**: 下さい, 全て, 既に, 居る.
@@ -299,13 +369,6 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Example: no sourced example.
 - Checker: **KW-35, FYI**, once per file: kanji above 30% of kanji plus hiragana, when the file's strings hold at least 100 of them.
 
-#### KW-37 (UW-37) · No 中黒 and no space inside a katakana compound, except in proper nouns (Mozilla) or where the break would be unclear (WordPress).
-- Kind: WRITE.
-- Strength: translation guides only (both). Narrower than JW-35 (JTF: 中黒, space or nothing, chosen once per document), not contrary to it.
-- Quote: MZ 「カタカナで構成された語句について、一般的な固有名詞を除き、間に中黒やスペースを挿入しない。」; WP 5 「カタカナの複合語には、用語集などで特に指定しないかぎり、原則として中点「・」は使用しない。」 「例外として、カタカナが続いて区切りがわかりにくくなる場合は、中点を使ってもかまわない。」
-- Example: WordPress's exception, 正 「ライブラリ・リファレンスマニュアル」.
-- Checker: judgment only (a pattern can't tell a compound from a list of parallel words, JW-46).
-
 #### KW-38 (UW-38, rewritten to the verdict) · Replace English and katakana words with ordinary Japanese where one exists.
 - Kind: WRITE.
 - Strength: one company's guide (SmartHR) and one translation guide (Mozilla). Ubie's everyday-words rule replaces hard Sino-Japanese words, not loanwords: it is KW-56. ヴ is JW-32's; Ubie shows it only as a Don't example.
@@ -315,14 +378,14 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 
 #### KW-39 (UW-39) · Latin letters and digits half-width; no full-width space (U+3000); no half-width katakana.
 - Kind: TYPO (code points).
-- Strength: translation guides only (both); with JW-36, JW-50 and JW-59 (JTF, a translation-industry guide; SmartHR for digits). The government writing guide asks only for one choice per document (JW-50, JW-59), and it and JTF allow a full-width space after a sentence-ending exclamation or question mark (JW-43).
+- Strength: translation guides only (Mozilla and WordPress; Microsoft's guide was not checked for this rule); with JW-36, JW-50 and JW-59 (JTF, a translation-industry guide; SmartHR for digits). The government writing guide asks only for one choice per document (JW-50, JW-59), and it and JTF allow a full-width space after a sentence-ending exclamation or question mark (JW-43).
 - Quote: MZ 「英数字や記号を使用する場合は特別な理由のない限り半角を使用する。」 「全角空白および半角カナは使用しない。」; WP 1-2 「すべての英数字、符号、疑問符、感嘆符は半角文字を使う」
 - Example (from [`rules.md`](./rules.md), JTF): JW-36 「ﾒｰﾙｱﾄﾞﾚｽ」 → 「メールアドレス」; JW-50 「１２３４５」 → 「12345」; JW-59 「ａｂｃ ＤＥＦ」 → 「abc DEF」.
 - Checker: **KW-39, FYI**: full-width digits (U+FF10–U+FF19), full-width Latin letters (U+FF21–U+FF3A, U+FF41–U+FF5A), U+3000, half-width katakana (U+FF65–U+FF9F). The fixtures quote JTF's examples above and two strings in `rules.md` that hold U+3000 (JW-43's JTF example, JT-29's KB list label); this is the one rule whose quotes may come from `rules.md` as well as the writing research.
 
 #### KW-46 (UW-46) · Ranges take 〜 U+301C WAVE DASH, not ～ U+FF5E; Mozilla also allows U+2013 and never uses U+2015.
 - Kind: TYPO (code points).
-- Strength: the code points: translation guides only (Mozilla, the one source that names them). The wave dash for ranges: 2 of 4 company guides (SmartHR, Ubie); SmartHR names no code point, and its OK example came back as U+301C. With JW-45 (the guideline for foreign residents writes a range in words instead).
+- Strength: the code points: translation guides only (Mozilla, the one source read that names them; Microsoft's section on the wave dash was not checked for this rule). The wave dash for ranges: 2 of 4 company guides (SmartHR, Ubie); SmartHR names no code point, and its OK example came back as U+301C. With JW-45 (the guideline for foreign residents writes a range in words instead).
 - Quote: MZ-ed21 「「–」(U+2013 二分ダッシュ) または「〜」(U+301C 波ダッシュ) は数字の範囲等を表すのに用いる。」 「「―」(U+2015 水平線) と「～」 (U+FF5E 全角チルダ) は用いない。」 「Windows のキーボードから「～」を入力すると、通常は U+FF5E 全角チルダが入力されてしまうので注意すること。」; SH-cnt 「期間を表す場合には、`〜`（波線）を使います。」
 - Example: SH-cnt NG 「2022/01/01 - 2022/03/01、2022/01/01−2022/03/01」 → OK 「2022/01/01〜2022/03/01」.
 - Checker: **KW-46, FYI**: any U+FF5E or U+2015; a YYYY/MM/DD range joined by U+002D or U+2212 (not U+2013, which Mozilla allows).
@@ -364,6 +427,13 @@ No rule here is required by any source. Words such as 原則, なるべく and �
 - Example: UB Don't 「当てはまるものを一つ選んでください。」 → Do 「当てはまるものを1つ選んでください。」.
 - Checker: **KW-55, FYI**: 一つ (the quoted form only).
 
+#### KW-68 (UW-68) · A price a business shows consumers in advance must include the consumption tax (総額表示), as the National Tax Agency explains the duty.
+- Kind: WRITE (what a price must contain, not how it is set).
+- Strength: statutory duty (the Consumption Tax Act; the page's legal-basis line reads 「消法63」, and the page is dated 「[令和8年4月1日現在法令等]」). It covers prices shown to consumers in advance. The page also carries a ※ note: from 1 April 2027 to 31 March 2029 (令和9年4月1日 to 令和11年3月31日) the tax rate on the sale of 飲食料品 is reduced, with a special rule for showing their total price. This rule does not cover that special rule, and the page's examples assume the standard 10% rate.
+- Quote: NTA 「総額表示義務とは、事業者が消費者に対してあらかじめ価格を表示する場合に、消費税額（地方消費税額を含む。）を含めた価格（税込価格）を表示することを義務付けるものです。」 「総額表示の義務付けは、事業者が消費者に対してあらかじめ表示する価格が対象となります。」 「※ 令和9年4月1日から令和11年3月31日までの2年間、飲食料品の譲渡について、消費税率が引き下げられます。」 「この引下げに当たり、飲食料品の総額表示の特例が設けられます。」
+- Example: NTA 例 「11,000円」 「11,000円（税込）」 「11,000円（税抜価格10,000円）」 「11,000円（うち消費税額等1,000円）」 「11,000円（税抜価格10,000円、消費税額等1,000円）」 「11,000円（税抜価格10,000円、消費税率10パーセント）」 「10,000円（税込価格11,000円）」 (the forms the page accepts, at the standard 10% rate).
+- Checker: judgment only (no source quotes a wrong form).
+
 ### Plain and fair wording
 
 #### KW-56 (UW-56) · Ubie: everyday words over institutional ones, and readings for hard kanji.
@@ -389,6 +459,13 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 - Ubie allows either (UB-btn): 「そのボタンが担うアクションを「〜する」または体言止めのかたちで書きます」.
 - Spindle decides by the stem (SP-lab): 「漢語の名詞を語幹とした動作性名詞は活用する」 「外来語を語幹とした動詞は活用しない」, with two exceptions, and widely known function names 「活用しなくても問題ありません。」.
 - Mozilla (MZ): 「動作や目的などを簡潔な体言で表す。可能であれば語数を揃える。」. WordPress (WP 3-8): 「ボタンラベルでは語尾の「します (する)」を省略した形にする」.
+- Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way. So the three translation guides lean away from a する ending without one of them stating it.
+
+#### UW-17 Joining a button label's object: を or の
+- SmartHR prescribes を on buttons (SH-app): 「動詞の終止形の前に、オブジェクトを明記する場合には、助詞は「を」が適切です。」 NG 「権限の追加、申請の取り消し」, OK 「権限を追加、申請を取り消す」.
+- WordPress, for "View XX" (WP 3-2): 「“View XX” という表現は基本的に「～を表示 (する)」に統一する」
+- Microsoft takes the の form as the basic noun phrase, and its noun-phrase scope lists command buttons (MS): + 「変更箇所の表示」 − 「変更箇所を表示」; “Basic expression "～の～"”. Its minus form is the form WordPress prescribes.
+- Titles are not contested: SmartHR's same page gives the の particle for screen titles and item names (SH-app): 「名詞の前に、オブジェクトを明記する場合には、助詞は「の」が適切です。」 Ubie's dialog headers (KW-65) and SmartHR's dialog titles (JW-61) use it too.
 
 #### UW-30 Success wording (the verdict: not a real disagreement)
 - Mozilla gives one translation example for "Update Succeeded." with no general statement: 「不適切な訳: 更新に成功しました。」, 「適切な訳: 更新を正常に完了しました。」 (MZ).
@@ -399,7 +476,14 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 - Ubie keeps it (UB): 「カタカナの長音符号は省略しません。」 Do 「ユーザー, スキャナー, プリンター」, Don't 「ユーザ, スキャナ, プリンタ」.
 - Mozilla by ending (MZ): 「-er、-or、-ar、-cy、-ry、-gy、-xy で終わる単語はすべて長音とする。Microsoft のような例外はなし。」 「-ear、-eer、-re、-ty、-dy で終わる単語は長音としない。」
 - WordPress by length (WP 4-1): 「長音記号「−」は、長音を含めて4文字以下になる単語には付ける」 「5文字以上になる単語には付けない。」 (the mark came back as U+2212 on two fetches; the page likely prints it that way).
-- The sources agree on ユーザー (Ubie, Mozilla, WordPress) and サーバー (Mozilla, WordPress), and no guide read writes ユーザ. That agreement is not checked here; JW-33 (the GK notice allows dropping the mark by custom) and JW-34 still apply.
+- Microsoft by ending, then by length, with a long list of exceptions "in accordance with customary practice" (MS): “In principle, use a long vowel when a source English term has following suffixes: -er, -or, -ar.” + 「コンピューター」 − 「コンピュータ」; “In other cases, use a long vowel when a corresponding Katakana word has less than 4 characters.”; its exceptions include 「コンパイラ」, 「プロセッサ」 and 「レジスタ」 without the mark and 「ポリシー」 and 「サマリー」 with it, and it writes 「メモリ」. This is the list Mozilla's "no exceptions like Microsoft's" refers to.
+- The sources agree on ユーザー (Ubie, Mozilla, WordPress, Microsoft) and サーバー (Mozilla, WordPress), and no guide read writes ユーザ. That agreement is not checked here; JW-33 (the GK notice allows dropping the mark by custom) and JW-34 still apply.
+
+#### UW-37 Inside a katakana compound: a space, a 中黒, or nothing
+- Nothing (MZ): 「カタカナで構成された語句について、一般的な固有名詞を除き、間に中黒やスペースを挿入しない。」
+- No 中点 as a principle, and one allowed where the break would be unclear; WordPress speaks only of 中点 (WP 5): 「カタカナの複合語には、用語集などで特に指定しないかぎり、原則として中点「・」は使用しない。」 「例外として、カタカナが続いて区切りがわかりにくくなる場合は、中点を使ってもかまわない。」 正 「ライブラリ・リファレンスマニュアル」
+- A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier "web". The guide's own running text is not consistent: it also writes 「ダイアログボックスが表示されます。」.
+- The three agree on no 中黒 in an ordinary compound (WordPress allows one where the break is unclear). With JW-35 (JTF: 中黒, space or nothing, chosen once per document).
 
 #### UW-40 A typed space between Japanese and Latin text
 - Space by letters and digits (MZ): 「英数字と日本語との間には半角空白を入れることを原則とする。」
@@ -447,8 +531,18 @@ The sources below disagree, or the candidate recorded a disagreement. None is a 
 - Space (MZ-ed): 「「バイト」はカタカナ。それ以外の接頭辞付き単位は大文字英語表記。数字と単位の間に半角スペースを挿入する。(例: 5 MB、100 KB)」
 - No space (SH-cnt): 「数字と単位の間にはスペースを入れず、「5GB」のように表記します。」; (WP 1-9) 「半角数字の前後には半角スペースを入れない」. With JW-55.
 
+#### UW-58 Apology in an error translated from English (with UW-11)
+- WordPress drops it (WP 3-4): 「”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する」
+- Microsoft translates "Sorry", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal "申し訳ございません" to express sincere apology.”
+- Both reject すみません; Microsoft only through its minus example, not in words. Neither says when to apologise, and no company guide or government page read does (writing/gaps.md).
+
+#### UW-59 The polite お- and ご- forms of a few instructive verbs
+- Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive "...してください" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.
+- SmartHR (SH-ws), under its rule against overusing keigo (KW-09), gives OK 「◯◯を確認してください。」 against NG 「◯◯をご確認いただけますようお願いいたします。」. That is an example, not a statement against Microsoft's plus form, and its OK form is Microsoft's minus form for this verb.
+- Ubie's example uses the お- form for one of the listed verbs (UB): 「お手数ですが、こちらからお問い合わせください。」
+
 ## Left out
 
-- **UW-10**: it states no rule. Every UI example read ends a request in the same form (DADS-in 「＊氏名を入力してください。」, PB 「10 文字以内で入力してください」), and one DADS sample notice uses 「…期限までにご対応をお願いいたします。」. No source rules on one form over the other.
 - **UW-45** (ellipsis as one character): not supported. The one counted source, Mozilla, prescribes three half-width dots (「三点リーダーは半角ドット 3 つ「...」を採用する。」 on the wiki); "one" rests on an OPTiM heading. JW-44 stands.
-- The areas in [`../writing/gaps.md`](../writing/gaps.md) (apology wording, the choice between two polite request forms, button pairs, destructive-button wording, empty states, currency, Korean-to-Japanese faults) have no source and no rule.
+- **UW-69** (円 after the number or ¥ before it): one rule source, the Science Tokyo design system's writing guideline, for its own website, which says it is a reference for drafting and not a rule that must be followed (ISCT-scope 「ただし、本ガイドラインは絶対に守らなければならない規則ではありません。」). No company product guide and no government page read states 円 against ¥; the NTA's and SmartHR's examples write 円 after the amount (KW-68, KW-52). Not a rule, and not a house choice: nothing disagrees with it.
+- Still without a source after both passes ([`../writing/gaps.md`](../writing/gaps.md), [`../writing2/gaps.md`](../writing2/gaps.md)): the choice between ください and お願いします, which pair of button labels answers which question, 。 on a button label, and Korean-to-Japanese faults.
