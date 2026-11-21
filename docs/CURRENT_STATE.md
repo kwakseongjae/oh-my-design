@@ -10,15 +10,15 @@
 → 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
 → 보고 방식: **살아 있는 아티팩트 하나**(https://claude.ai/artifact/Nsib1djJMkU1AtC3au9hpd, 원본 `~/.omd-workers/reports/2026-11-21-sprint-report.html`, 그림은 세션 임시 폴더의 `report-img/`에서 같이 올림)에 전·후 또는 새 화면 그림을 넣고 거기서 승인받는다. 별도 HTML 묶음을 만들지 않는다.
 
-**승인 대기(아티팩트의 카드 순서, 전부 그림이 올라가 있다):**
+**승인 대기(아티팩트 카드 제목의 번호 그대로. 오너가 번호로 답하면 머지 전에 카드 이름으로 되짚는다):**
 1. 상세 페이지 첫 화면 → #133 머지.
-2. 우리 `DESIGN.md` 다시 쓰기(가지 `feat/site-design-md`, #133 위에 쌓음): `web/public/design.md`를 지금 코드와 11/21 실측으로 다시 씀. 값 40개 대조표 `docs/research/2026-11-21-site-design-system/diff.md`, 견본 생성기 `scripts/site-audit/designmd-specimen.mjs`. 승인되면 #133과 함께.
+2. 우리 `DESIGN.md` 다시 쓰기(가지 `feat/site-design-md`, #133 위에 쌓음): `web/public/design.md`를 지금 코드와 11/21 실측으로 다시 씀. 값 40개 대조표 `docs/research/2026-11-21-site-design-system/diff.md`, 견본 생성기 `scripts/site-audit/designmd-specimen.mjs`. 승인되면 #133과 함께 머지하고, **이 Mac의 루트 `DESIGN.md`(gitignore, 미러의 원본으로 취급됨)를 같은 내용으로 바꾼다.** 안 바꾸면 `scripts/check-mirror-drift.mjs --fix`가 공개 파일을 옛 내용으로 되돌린다. #133보다 먼저 나가면 안 된다.
 3. 상세 페이지 「화면」 탭(가지 `feat/item-screens-tab`, #133 위에 쌓음, PR 없음): 모양 승인과 **화면 공개 기준**. 공개 결정 전에는 운영에 못 나간다.
 4. `/ko/kana` 페이지 → #134 머지(색인 제외, 메뉴 미연결 그대로).
 5. 블로그 첫 글 → #132 머지 = 게시. 머지 직후 글 안의 저장소 링크 2개를 다시 연다.
-6. 재검증 4곳을 넣는 방식: 「이전 기록」 가운데 오늘 잰 값만 담은 문장(32~43%)은 본문으로 돌리고 나머지는 표시를 단 채 verified로 넣을지. 워커 폴더 `~/.omd-workers/reverify3/<id>`, 가려내기 `scripts/workers/sieve-earlier-record.mjs`, 재측정은 네 곳 모두 전부 일치.
+6. 재검증 4곳을 이 상태로 넣을지(넣으면 verified, 확인 못 한 이전 서술이 본문의 28~49%를 「Earlier record」 소제목 아래 차지). 추천은 넣기이지만 게이트의 뜻이라 승인 없이는 넣지 않는다. **스크립트로 문장을 본문에 돌려놓지 않는다**(`sieve-earlier-record.mjs`는 처음에 너무 느슨했고, 엄격히 세면 「오늘 잰 값만 담은」 문장은 5~20%뿐이며 값이 같다고 문장이 맞는 것도 아니다). 워커 폴더 `~/.omd-workers/reverify3/<id>`, 재측정은 네 곳 모두 전부 일치.
 
-**도는 것:** 검증 에이전트 `ja-check-2`(일본어 2차 후보 13개 + 출처 추가 12건 → `kana` 워크트리 `docs/drafts/kana/writing2/verdicts.md`) · `tw-check`(대만 55개 → 워크트리 `lang-zh`의 `docs/drafts/zhuyin/research/verdicts.md`). 다음: 중국 79개 검증(`docs/drafts/pinyin/research/`). `research/`라는 폴더 이름은 `.gitignore`에 걸리므로 `git add -f`.
+**도는 것:** 검증 에이전트 `tw-check`(대만 55개 → 워크트리 `lang-zh`의 `docs/drafts/zhuyin/research/verdicts.md`). `cn-check`(중국 79개 → `docs/drafts/pinyin/research/verdicts.md`). 일본어 2차 후보는 검증 끝(13개 중 통과 8, 약함 5: UW-58·59·60·63·69). 끝나면 verdicts 파일을 `git add -f`로 커밋. `research/`라는 폴더 이름은 `.gitignore`에 걸리므로 `git add -f`.
 
 **언어 스킬 조사 현황(11/21):** 일본어 글쓰기 규칙 43개 + 2차 후보 13개 · 대만 후보 55개 · 중국 후보 79개. 대만·중국은 검증 전이고 스킬 초안·검사기는 아직 없다. Microsoft 스타일 가이드 본문(일본어·번체·간체)은 `~/.omd-workers/lang-sources/`, `~/.omd-workers/kana/sources/`(저장소에 넣지 않는다).
 
