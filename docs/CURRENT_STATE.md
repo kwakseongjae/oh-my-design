@@ -22,6 +22,11 @@
 - **일본어 자체 검토(본 세션):** `docs/drafts/kana/review-2026-11-21.md`(`feat/kana-skill`). 인용 대조: 1차 323개 중 294개가 지금 페이지 그대로, 2차 224개 중 112개가 페이지·82개가 Microsoft PDF 본문. 실제 차이는 UW-19의 DADS 인용 한 문장(조사 파일만 틀림, 규칙 파일과 운영 페이지는 맞음). 검사기를 출처 페이지 15개에 돌리면 WARN 4건 전부 출처가 「틀린 예」로 든 문장. SKILL.md의 지어낸 일본어 예문 5개 삭제. `check-quotes-raw.mjs`는 그림 대체 텍스트도 읽게 고침.
 - **일본어 2차 반영 에이전트 `kana-fold` 도는 중**(브리핑에서는 본 세션이 한다고 했으나 규모가 커서 맡김): `feat/kana-skill`에 main을 병합해 둠. KW-17(の/を)과 KW-37(가타카나 복합어 공백)은 Microsoft와 갈려 「정하는 곳」으로 옮겨 가고, 새 규칙 8개 안팎이 들어온다. 앞에 내세운 여섯 규칙에서 KW-17이 빠진다. 끝나면 전·후 그림으로 카드를 만들고 `feat/kana-skill` 머지를 같은 카드에 넣는다.
 
+**18:15: #138 머지(main `1485d34d`)** = 피플펀드 verified(한글 이름 크플, 추가일 없음, hover unmeasured) + 수퍼톤 Overview 첫머리 기록(partial 유지) + `compile-evidence` 수정 + 모션 래칫 146 → 145 + 검색어 설명 18건 재작성(Sonnet, land-batch가 호출). 운영 확인: `/ko/design-systems/peoplefund` h1 「크플 DESIGN.md」, 수퍼톤 페이지에 antinodeaudio 기록. 카운트 454 verified / 87 partial / 81 legacy.
+- **퀸잇(결정 대기, 넣지 않음):** `~/.omd-workers/reverify4/queenit`. 상점 화면 홈 1장, 컨트롤 6개, 워커 Status partial. 워커가 primary_color로 캠페인 배지 #6038f2를 제안 → 쓰지 않는다. 상점 화면이 연결한 앱 아이콘(`static.queenit.kr/damoa-mobile-web/public/android-icon-192x192.png`)을 직접 재니 #642fe9가 불투명 픽셀 36,316개 중 28,825개. 추천: 폰 폭으로 홈·목록·상세를 한 번 더(Codex 1회, 오너 승인 필요). 넣게 되면 primary_color #642fe9와 기존 아이콘 로고를 유지.
+- **스포카:** 지역 기사 1건 부족 그대로.
+- landing 워크트리 `.claude/worktrees/land-1121`(가지 `feat/refs-reverify-1121`, 머지됨)은 퀸잇·스포카를 위해 남겨 둠. 다음 landing은 main에서 새 가지를 딸 것.
+
 **18:05 추가(같은 승인 아래):**
 - **카드 7 = PR #137(초안, `feat/site-ds-page-titles`, 워크트리 `.claude/worktrees/ds2`)**: FAQ·changelog·what-is-design-md·alternatives의 h1을 `.sq-page-title`(Wanted Sans 760, 28/32/40px)로. 화면 변화라 승인 대기. 「후」 그림은 개발 서버(3353, 내가 띄우고 끔). OG 이미지는 넣지 않음(시안이 필요).
 - **카드 8 = Threads 초안**(`claudedocs/share/2026-11-21-kr-brand-colours/`, gitignore). 숫자는 게시된 글과 대조, 「18곳 중 8곳 파랑」만 미대조.
