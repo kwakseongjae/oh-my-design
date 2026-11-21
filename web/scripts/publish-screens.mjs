@@ -333,7 +333,14 @@ async function main(argv) {
   print(result);
   const out = arg(argv, "--out");
   if (out) {
-    if (path.resolve(out) === COMMITTED_MANIFEST) {
+    const real = (p) => {
+      try {
+        return fs.realpathSync(p);
+      } catch {
+        return path.resolve(p);
+      }
+    };
+    if (real(out) === real(COMMITTED_MANIFEST)) {
       console.error("A dry run never writes the committed manifest; name another --out.");
       process.exit(1);
     }

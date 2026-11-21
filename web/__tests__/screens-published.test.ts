@@ -242,7 +242,7 @@ describe("published: the pages", () => {
     publish();
     const ko = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "ko" }));
     const menu = ko.slice(ko.indexOf('class="sq-menu"'), ko.indexOf("</nav>"));
-    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "화면", "스킬", "문서"].filter((x) => menu.includes(x)));
+    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "화면", "스킬", "문서"]);
     expect(menu).toContain('href="/ko/screens">화면</a>');
     expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale: "en" }))).toContain('href="/screens">Screens</a>');
     for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale }))).not.toMatch(/\/screens/);
@@ -264,6 +264,9 @@ describe("published: the pages", () => {
 
   it("the publishing script and the issue form are in the repository, and no image is", () => {
     expect(fs.existsSync(path.join(WEB, "scripts/publish-screens.mjs"))).toBe(true);
-    expect(fs.readFileSync(path.join(WEB, "../.github/ISSUE_TEMPLATE/screen-removal.yml"), "utf8")).toMatch(/id: service/);
+    const form = fs.readFileSync(path.join(WEB, "../.github/ISSUE_TEMPLATE/screen-removal.yml"), "utf8");
+    expect(form).toMatch(/id: service/);
+    // GitHub drops a form it cannot parse: no plain (unquoted) value may hold ": ", which YAML reads as a mapping.
+    for (const line of form.split("\n")) expect(line, line).not.toMatch(/^\s*[\w-]+: (?!["'|>])[^#]*: /);
   });
 });
