@@ -7,7 +7,102 @@ import yaml
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else str(__import__('pathlib').Path(__file__).resolve().parents[3])
 OUT = os.path.dirname(os.path.abspath(__file__))
-TODAY = '2026-11-14'
+TODAY = '2026-11-21'
+FIRST_RUN = '2026-11-14'
+
+# ---------- Rule W: the 32 KR verified references Rule S leaves out (judged 2026-11-21, by reading each file)
+# Each entry names the frontmatter colour token the file itself presents as the main colour, the kind of evidence,
+# and a quote that must appear verbatim in web/references/<id>/DESIGN.md (the script asserts it).
+# basis: 'identity'  = the file names the value as the official / brand / catalogue identity colour
+#        'action'    = the file's colour list gives the token an action role (it fills a recorded action control);
+#                      this alone does not say the control is the service's main action (that is W4's test)
+#        '+registry' = the registry primaryColor is the same hex (allowed only because that hex is this token)
+MAIN_TOKEN = {
+    '11st':        dict(token='brand-red', basis='identity+registry', quote='**Brand red — `#FF0038`:**'),
+    'brandi':      dict(token='action-direct', basis='action+registry', quote='**Direct purchase** (`#1e1e1e`): background of `.btn-buy` on both captured product pages.'),
+    'catchtable':  dict(token='brand-orange', basis='identity+registry', quote='`#FF3D00` — careers-marketing action background; this is verified public brand expression'),
+    'class101':    dict(token='brand', basis='identity+registry', quote='It is retained as the catalog primary color'),
+    'hwahae':      dict(token='label', basis='action+registry', quote="so the catalogue's primary is the home page's full-width dark action `#3d3d3d`"),
+    'kakao':       dict(token='login', basis='action+registry', quote='**Container** (`#fee500`): mandatory login-button background.'),
+    'kb-kookmin':  dict(token='header-accent', basis='identity+registry', quote='`#ffcc00` is a selector-backed public-home header accent and the catalog identity colour'),
+    'koexpressway': dict(token='service-fill', basis='action+registry', quote='| service-fill | `#063a74` | Four institutional service action links, including electronic procurement. |'),
+    'melon':       dict(token='signature-green', basis='identity+registry', quote='| Signature green | **#00cd3c** |'),
+    'naver':       dict(token='brand', basis='identity+registry', quote='**NAVER Green** (`#03C75A`): official logo and identity color.'),
+    'nhis':        dict(token='nhis-primary', basis='identity+action+registry', quote='Treat the NHIS red as the product accent'),
+    'ohouse':      dict(token='action', basis='action+registry', quote='**Action blue** (`#00a1ff`): Filled compact action background'),
+    'oliveyoung':  dict(token='corporate-brand-green', basis='identity+registry', quote='also named Olive Green in Olive Young'),
+    'remember':    dict(token='action-black', basis='action+registry', quote='**Action Black** (`#000000`): observed on the career header'),
+    'shinhanbank': dict(token='brand-primary', basis='identity+registry', quote='**Shinhan Blue** (`#0046ff`): official CI primary color.'),
+    'wooribank':   dict(token='brand-deep-blue', basis='identity+registry', quote='**Woori Deep Blue** (`#0067AC`): official logotype main color'),
+}
+CONTRAST_CHECK = {
+    # Is the measured control the service's main action? Judged 2026-11-21 from the reference file only (no browser).
+    # Kept ('main' / 'other-button-is-main') when the file calls the control the primary action (its use line, or the site's
+    # own class), or the control performs a task the file lists under "Primary tasks". Dropped: recruiting/careers controls,
+    # navigation controls (menus, dropdowns, slider arrows), icon-only controls, and controls whose purpose the file leaves unclear.
+    # 'other-button-is-main' = another qualifying button on the same fill passes, and is used instead of the most favourable one.
+    'scatterlab':  dict(verdict='dropped', component='blog-header-cta', note='Recruiting link (채용공고) in the blog header.', quote='채용공고 in the blog header'),
+    'gaudiolab':   dict(verdict='main', component='cta-hero', note='Hero Contact us; a listed primary task ends in contacting the team.', quote='then contact the team'),
+    'jandi':       dict(verdict='main', component='header-primary-action', note='The file calls it the global navigation primary action.', quote='Global navigation primary action'),
+    'inflearn':    dict(verdict='dropped', component='product-search-submit', note='Icon-only search submit: no text label to measure.', quote='icon-only (no text node)'),
+    'laundrygo':   dict(verdict='other-button-is-main', component='floating-cta', note='Fixed 상담 문의하기 / B2B·대량세탁 문의 action; requesting a consultation is a listed primary task (the most favourable button, a recruiting banner, is not used).', quote='Weigh a hotel laundry partner before requesting a consultation (상담 문의하기)'),
+    'banksalad':   dict(verdict='dropped', component='hero-pill-cta', note='Hero carousel pill that other slides recolour; the file gives its primary-action button another fill (#06a96c).', quote='other slides recolour the same pill'),
+    'douzone':     dict(verdict='dropped', component='solution-menu', note='Navigation dropdown (솔루션 바로가기).', quote='솔루션 바로가기 is a native button'),
+    'miricanvas':  dict(verdict='other-button-is-main', component='hero-primary-cta', note='The file calls it the home hero primary action.', quote='Use: home hero primary action'),
+    'pinkfong':    dict(verdict='dropped', component='corporate-primary-action', note='Corporate CTA whose purpose the file does not state.', quote='one public corporate CTA'),
+    'ohouse':      dict(verdict='dropped', component='compact-blue-action', note='Header 글쓰기 (write) button; no listed primary task names it.', quote='Header 글쓰기 action'),
+    'karrot':      dict(verdict='main', component='box-button', note='SEED design-system action button; this fill is its primary variant.', quote='primary, primary-low, secondary, danger, disabled'),
+    'stibee':      dict(verdict='main', component='button-primary', note='무료로 시작하기 in the header; starting a free account is a listed primary task.', quote='Start a free account from any page (무료로 시작하기)'),
+    'idus':        dict(verdict='main', component='button-primary', note='구매하기 on the product page; buying a piece is a listed primary task.', quote="구매하기, the product page's purchase action"),
+    'myrealtrip':  dict(verdict='dropped', component='primary-header-action', note='Header action whose purpose the file does not state.', quote='Public home and hotel-header action'),
+    'moreh':       dict(verdict='main', component='primary-button', note='Request Demo; requesting a demo is the first listed primary task.', quote='Request a demo of the inference software'),
+    'ably':        dict(verdict='other-button-is-main', component='seller-primary', note='Seller Square primary entry; running a market as a seller is a listed primary task (the most favourable button, the ABLY Team recruiting action, is not used).', quote='Start and run a market as a seller on the platform'),
+    'greeting':    dict(verdict='main', component='header-demo-button', note='도입 문의 in the header; requesting a demo or consultation is a listed primary task.', quote='Request a demo, a quote or a one-to-one consultation'),
+    'petfriends':  dict(verdict='main', component='app-install-button', note='APP 설치하기 in the sign-up coupon sheet; claiming the app sign-up coupon is a listed primary task.', quote='or the app sign-up coupon'),
+    'yeogiotte':   dict(verdict='other-button-is-main', component='search-cta', note='Home search submit; searching for a stay is the first listed primary task.', quote='Search for a stay after settling on a destination and dates'),
+    'classum':     dict(verdict='other-button-is-main', component='medium-primary-action', note='Home hero action whose own class is primary-button.', quote='Home hero primary action (a.primary-button.medium)'),
+    'shiftup':     dict(verdict='dropped', component='slider-arrow', note='Slider previous/next arrows.', quote='Previous and next arrows of the games slider'),
+    'catchtable':  dict(verdict='dropped', component='careers-orange-action', note='Careers-site actions, not the restaurant service.', quote='Careers-service marketing action'),
+    'buzzvil':     dict(verdict='main', component='contact-button', note='문의하기 in the header; contacting Buzzvil about a campaign is the first listed primary task.', quote='Contact Buzzvil about an advertising campaign'),
+    'toss':        dict(verdict='main', component='tds-button', note='The TDS design-system primary action button.', quote='TDS Mobile xlarge primary action'),
+    'toss-securities': dict(verdict='main', component='wts-primary-entry', note='The file calls it the public WTS primary link-action.', quote='Public WTS compact primary link-action'),
+    'moin':        dict(verdict='main', component='button-primary', note='송금 시작하기; starting a transfer is a listed primary task.', quote='Start a transfer and inspect its progress'),
+    'munpia':      dict(verdict='dropped', component='login-primary', note='Sign-in button; the file lists no primary tasks.', quote='로그인 button in the right account panel'),
+    'watcha':      dict(verdict='main', component='button-primary', note='Header 로그인; signing in through the header login link is a listed primary task.', quote='sign in through the header login link'),
+    'protopie':    dict(verdict='other-button-is-main', component='header-button', note='Book a Demo in the header; booking a demo is a listed primary task.', quote='Compare the plans before subscribing or booking a demo'),
+    'socar':       dict(verdict='main', component='primary-action', note='웹에서 예약하기; confirming a reservation is a listed primary task.', quote='on the /guide 웹에서 예약하기 link'),
+    'teamsparta':  dict(verdict='main', component='enroll-cta', note='수강신청하기; enrolling from the course page is a listed primary task.', quote='Enroll in a course from its course page'),
+    'payhere':     dict(verdict='main', component='purchase-button', note='구입하기 on the hardware cards; picking a store setup to buy is the first listed primary task.', quote='Pick which store setup to buy, from card terminal to kiosk'),
+    'heydealer':   dict(verdict='main', component='primary-button', note='Car-search action under the brand/type/model selects; finding a car by brand, type and model is a listed primary task.', quote='Find a certified used car by brand, type and model.'),
+    'goodoc':      dict(verdict='dropped', component='app-download', note='Header app-download button; the file lists no primary tasks.', quote='Header 앱 다운로드 button'),
+    # Named in the article for dark text on a light primary (not below 4.5:1); same test.
+    'kmong':       dict(verdict='dropped', component='home-primary-cta', note='Public home CTA whose purpose the file does not state.', quote='Public home CTA'),
+    'modusign':    dict(verdict='main', component='header-cta', note='무료 체험 시작; starting a free trial is a listed primary task.', quote='Start a free trial without booking a sales call first'),
+    '3o3':         dict(verdict='main', component='refund-cta', note='The file calls it the primary refund action (내 환급금 조회하기).', quote='Primary refund action'),
+    'kbpay':       dict(verdict='dropped', component='primary-button', note='Sign-in in the KB국민카드 home login panel; the listed task is the header sign-in, a different control.', quote='the only filled action on the four captured pages'),
+}
+
+# Left out: the file does not let one main colour be told. kind: 'ink-only' = the registry value is only a text/ink token;
+# 'not-a-token' = the registry value is not among the frontmatter colour tokens; 'declined' = the file declines to name one;
+# 'two-candidates' = the file gives two values without ranking them.
+LEFT_OUT = {
+    'cgv':          dict(kind='declined', note='Registry #121212 is the `foreground` text ink; the red #fc5555 is kept as a signal colour.', quote='it is preserved as a signal value, not promoted to a primary or state palette'),
+    'coupang':      dict(kind='ink-only', note='Registry #000000 is the `foreground` text ink; no brand fill was captured.', quote='No live computed Coupang-red fill, WOW color, or semantic status color was present in the supplied capture.'),
+    'datarize':     dict(kind='two-candidates', note='Two near-black CTA fills: `action` #111111 (home CTA, black-ish) and `ink` #191919 (shared CTA, grey; also the registry value). The file does not rank them and they fall in different buckets.', quote='**Action Ink** (`#111111`): Captured 50px home CTA fill'),
+    'flex':         dict(kind='two-candidates', note='The file calls #000000 the catalog primary (not a frontmatter token) and gives lime `action-lime` #00ff44 to the primary conversion action.', quote='`#000000` — public-surface black field and the catalog primary color'),
+    'gangnamunni':  dict(kind='not-a-token', note='Registry #d54300 is not a token; the file says no orange is offered.', quote='no orange value is offered as a reusable UI token'),
+    'hyundaicard':  dict(kind='declined', note='Registry #000000 is the `ink` token; the file declines a brand primary.', quote='neither is promoted as a universal brand primary'),
+    'kakaogames':   dict(kind='ink-only', note='Registry #000000 is the `ink` text token; no other colour role.', quote='**Ink** (`#000000`): dominant observed public text and border color'),
+    'kakaot':       dict(kind='not-a-token', note='Registry #ffe100 is the app-icon yellow, not a token.', quote='no yellow native call-button fill is established here'),
+    'megastudy':    dict(kind='declined', note='`action-blue` #057eff equals the registry but is hover text only; the corporate colour is given only as Pantone 285 C.', quote='No RGB conversion is inferred from that print specification.'),
+    'millie':       dict(kind='ink-only', note='Registry #242424 is the `ink` text token.', quote='**Primary ink** (`#242424`): high-confidence computed text and border colour'),
+    'ridi':         dict(kind='two-candidates', note='Two blues, token `blue` #1f9eff and rendered `selected-blue` #1e9eff (the registry value); the second is a selected-state fill, not a main action.', quote='Do not normalize the two blue values into one'),
+    'sktelecom':    dict(kind='declined', note='Registry #3a46cd is `brand-link`, a current-page link colour; the file declines a T Blue hex.', quote='This reference therefore does not manufacture a T Blue hex'),
+    'tving':        dict(kind='not-a-token', note='Registry #ff153c is not a token.', quote='does not provide computed selector evidence for a red CTA'),
+    'upbit':        dict(kind='declined', note='`accent` #0062df equals the registry but the file gives it no role.', quote='not assigned a universal semantic role'),
+    'wavve':        dict(kind='not-a-token', note='Registry #1351f9 appears in the prose table as a CSS primary-button declaration but is not a frontmatter colour token, and no such button was exercised.', quote='A matching primary CTA was not exercised in this capture.'),
+    'zigzag':       dict(kind='ink-only', note='Registry #121212 is the `strong` text token; the buy button is #121314, which is not a token.', quote='**Strong detail text** (`#121212`)'),
+}
 
 # ---------- inputs
 quality = json.load(open(f'{ROOT}/data/reference-quality.json'))
@@ -191,9 +286,42 @@ def strict_fields(i):
                  ruleS_white_text_contrast_hypothetical=contrast_white(rgb))
     return f
 
+
+def buttons_on(i, rgb):
+    fm = frontmatter(i); comps = fm.get('components') or {}; out = []
+    for c in candidates(fm):
+        if c['rgb'] == rgb:
+            tc = comps[c['name']].get('textColor'); trgb, _ = parse_color(tc)
+            out.append(dict(component=c['name'], fill=hexof(c['rgb']), textColor=tc, text_hex=hexof(trgb) if trgb else None,
+                            ratio=(lambda a, b: (max(a, b)+0.05)/(min(a, b)+0.05))(rel_lum(c['rgb']), rel_lum(trgb)) if trgb else None))
+    return out
+
+def design_text(i): return open(f'{ROOT}/web/references/{i}/DESIGN.md').read()
+
+def widened_fields(i, r):
+    """Rule W = Rule S, then (KR only) the token the file itself presents as the main colour (MAIN_TOKEN)."""
+    f = dict(ruleW_primary=None, ruleW_step=None, ruleW_basis=None, ruleW_family=None, ruleW_buttons_on_primary=[])
+    if r['ruleS_primary']:
+        rgb = parse_color(r['ruleS_primary'])[0]
+        f.update(ruleW_step='ruleS:' + r['ruleS_step'], ruleW_buttons_on_primary=r['ruleS_buttons_on_primary'])
+    elif r['country'] == 'KR' and i in MAIN_TOKEN:
+        e = MAIN_TOKEN[i]; v = (frontmatter(i).get('colors') or {}).get(e['token'])
+        rgb, why = parse_color(v)
+        assert rgb, (i, e['token'], v, why)
+        assert e['quote'] in design_text(i), ('quote not in file', i)
+        if 'registry' in e['basis']:
+            assert hexof(parse_color(r['registry_primary'])[0]) == hexof(rgb), ('registry differs', i)
+        f.update(ruleW_step='file-main-token:' + e['token'], ruleW_basis=e['basis'], ruleW_buttons_on_primary=buttons_on(i, rgb))
+    else:
+        return f
+    h_, s_, l_ = hsl(rgb)
+    f.update(ruleW_primary=hexof(rgb), ruleW_family=family(rgb), ruleW_hue_deg=h_, ruleW_sat=s_, ruleW_light=l_,
+             ruleW_white_text_contrast_hypothetical=contrast_white(rgb))
+    return f
+
 _b = build_row
 def build_row(i):
-    r = _b(i); r.update(strict_fields(i)); return r
+    r = _b(i); r.update(strict_fields(i)); r.update(widened_fields(i, r)); return r
 
 R = {cc: [build_row(i) for i in ids] for cc, ids in POP.items()}
 json.dump({cc: R[cc] for cc in R}, open(f'{OUT}/rows.json', 'w'), ensure_ascii=False, indent=1)
@@ -216,7 +344,7 @@ def quart(v):
 kr = R['KR']; md = []
 w = md.append
 w(f'# Colour map of Korean services: tables ({TODAY})\n')
-w('Generated by `compute.py` (same folder) from `data/reference-quality.json`, `web/src/data/registry.generated.ts` (country, category, displayName, primaryColor) and `web/references/<id>/DESIGN.md` frontmatter (`colors`, `components`). Rerun: `python3 ~/.omd-workers/blog/colour-map/compute.py`. See `method.md`.\n')
+w('Generated by `compute.py` (same folder) from `data/reference-quality.json`, `web/src/data/registry.generated.ts` (country, category, displayName, primaryColor) and `web/references/<id>/DESIGN.md` frontmatter (`colors`, `components`). Rerun: `python3 docs/research/2026-11-14-kr-brand-colours/compute.py` from the repository root. See `method.md`.\n')
 w('## Population\n')
 w(f'- KR verified_v2: **N = {len(kr)}** (tables below)')
 w(f'- Excluded: KR partial {EXCL["KR_partial"]}, KR legacy_snapshot {EXCL["KR_legacy_snapshot"]} (status value in the data is `legacy_snapshot`)')
@@ -390,6 +518,7 @@ b45 = [r for r in withb if r['_best']['ratio'] < 4.5]; b3 = [r for r in withb if
 anyb45 = [r for r in withb if r['_worst']['ratio'] < 4.5]
 w(f'- Below 4.5:1: **{len(b45)}** ({pct(len(b45), len(withb))}); below 3:1: **{len(b3)}** ({pct(len(b3), len(withb))}). References where at least one qualifying button is below 4.5:1: {len(anyb45)}.\n')
 w('### S4a. References below 4.5:1 (best button), ascending\n')
+w('**Not for naming (superseded 2026-11-21).** This first-draft list was not checked for whether each control is the main action; W4a is the checked list and W4b gives the reason each other row is dropped.\n')
 w('| ratio | id | name | fill | text | component |'); w('|---:|---|---|---|---|---|')
 for r in sorted(b45, key=lambda r: (r['_best']['ratio'], r['id'])):
     m = r['_best']; w(f'| {m["ratio"]:.2f} | {r["id"]} | {r["display_name"] or r["name"]} | {m["fill"]} | {m["text_hex"]} | {m["component"]} |')
@@ -433,4 +562,147 @@ mw('- Definition and tables: `tables.md` section "Rule S". Token step requires a
 mw('- S4 judgement calls: qualifying button = `type: button` with `backgroundColor` exactly equal (after normalising to lowercase 6-digit) to the Rule S primary and an opaque parseable `textColor`; reference-level ratio = the highest among its qualifying buttons (the other choice, the lowest, is counted as "any button below 4.5"). Text colours with alpha are skipped, not composited. The white-text figure is hypothetical and kept separate.')
 mw('- S5 uses the first Rule-S-filtered primary-named button in file order against the token.')
 mw('- Spot checks (Rule S): ' + '; '.join(f'`{r["id"]}` {r["ruleS_step"]} -> {r["ruleS_primary"]}' for r in [x for x in kS if x['ruleS_step'] == 'primary-named-button'][:2] + [x for x in kS if x['ruleS_step'] == 'primary-token'][:2] + [x for x in kS if x['ruleS_primary'] is None][:1]))
-open(f'{OUT}/tables.md', 'w').write('\n'.join(md)); open(f'{OUT}/method.md', 'w').write('\n'.join(mmx))
+
+# ================= Rule W section (widened Rule S; the article's rule from 2026-11-21)
+kW = R['KR']
+noS = {r['id'] for r in kW if not r['ruleS_primary']}
+assert noS == set(MAIN_TOKEN) | set(LEFT_OUT) and not (set(MAIN_TOKEN) & set(LEFT_OUT)), (sorted(noS ^ (set(MAIN_TOKEN) | set(LEFT_OUT))))
+for i, e in LEFT_OUT.items(): assert e['quote'] in design_text(i), ('quote not in file', i)
+cWc, nW = hue_n(kW, 'ruleW_family'); leftW = [r['id'] for r in kW if not r['ruleW_primary']]
+w('\n---\n\n# Rule W (Rule S widened; the article uses this rule from ' + TODAY + ')\n')
+w('Rule W: Rule S first. For a KR reference Rule S leaves out, the frontmatter colour token that the reference file itself presents as the main colour (official/brand/catalogue identity colour, or a colour its colour list names for the fill of an action control, always with the registry primaryColor equal to that token), listed by id in `MAIN_TOKEN` in compute.py with a quote the script finds verbatim in the file. The registry `primaryColor` is used only as corroboration and only where the same hex is that token. References whose file does not let one main colour be told stay out (`LEFT_OUT`, with the reason). Per-reference evidence: `missing-32.md`. Fields `ruleW_*` in rows.json. JP and TW are not widened.\n')
+w('## W1. Hue family, Rule W (KR verified_v2), with Rule S beside it\n')
+w(f'- N = {len(kW)}; counted {nW} (Rule S {nS}); added by the widening {nW-nS}; left out {len(leftW)}: ' + ', '.join(leftW))
+w('- Step that gave the value: ' + ', '.join(f'{k} {v}' for k, v in collections.Counter((r['ruleW_step'] or 'none').split(':')[0] for r in kW).most_common()) + '\n')
+added = [r for r in kW if r['ruleW_primary'] and not r['ruleS_primary']]
+cAdd = collections.Counter(r['ruleW_family'] for r in added)
+w('| family | Rule W n | Rule W share | Rule S n | Rule S share | added by widening |'); w('|---|---:|---:|---:|---:|---:|')
+for f in ORDER: w(f'| {f} | {cWc[f]} | {pct(cWc[f], nW)} | {cS[f]} | {pct(cS[f], nS)} | {cAdd[f]} |')
+w(f'| **total counted** | **{nW}** | | **{nS}** | | **{len(added)}** |\n')
+w('Added references (id, token, hex, family): ' + '; '.join(f'{r["id"]} {r["ruleW_step"].split(":")[1]} {r["ruleW_primary"]} {r["ruleW_family"]}' for r in added) + '\n')
+
+w('## W2. Hue family per category, Rule W (categories with >= 8 KR verified references)\n')
+w('| category | refs | counted | ' + ' | '.join(ORDER) + ' |'); w('|---|---:|---:|' + '---:|' * len(ORDER))
+for c in cats:
+    rs = [r for r in kW if r['category'] == c and r['ruleW_family']]; cc = collections.Counter(r['ruleW_family'] for r in rs)
+    w(f'| {c} | {catn[c]} | {len(rs)} | ' + ' | '.join(str(cc[f]) for f in ORDER) + ' |')
+w('')
+w('## W3. Exact hex shared by 2+ references, Rule W\n')
+dW = collections.defaultdict(list)
+for r in kW:
+    if r['ruleW_primary']: dW[r['ruleW_primary']].append(r)
+shW = sorted(((h, v) for h, v in dW.items() if len(v) >= 2), key=lambda x: (-len(x[1]), x[0]))
+w(f'{len(shW)} hex values shared; {sum(len(v) for _, v in shW)} references involved.\n')
+w('| hex | count | family | services (id) |'); w('|---|---:|---|---|')
+for h, v in shW: w(f'| {h} | {len(v)} | {family(parse_color(h)[0])} | ' + ', '.join(f'{x["display_name"] or x["name"]} ({x["id"]})' for x in v) + ' |')
+w('')
+
+w('## W4. Contrast of the text set on the Rule W primary, and which rows are the main action\n')
+w('Same method as S4 (every `type: button` whose fill equals the Rule W primary exactly and whose text colour is opaque; reference value = the most favourable such button). Then every reference below 4.5:1 was checked against its own DESIGN.md (' + TODAY + ', files only, no browser): is the measured control that service\'s main action? `CONTRAST_CHECK` in compute.py holds the verdict and a quote the script finds verbatim in the file. If the most favourable button is not the main action but another qualifying button is, that button is used.\n')
+withW = []
+for r in kW:
+    ms = [m for m in r['ruleW_buttons_on_primary'] if m['ratio'] is not None]
+    if ms: r['_bestW'] = max(ms, key=lambda m: m['ratio']); r['_worstW'] = min(ms, key=lambda m: m['ratio']); withW.append(r)
+qW = quart([r['_bestW']['ratio'] for r in withW])
+bW45 = [r for r in withW if r['_bestW']['ratio'] < 4.5]; bW3 = [r for r in withW if r['_bestW']['ratio'] < 3]
+w(f'- References with Rule W primary: {nW}; with at least one qualifying button: **{len(withW)}**; without: {nW-len(withW)}.')
+w('- Reference-level ratio: min {:.2f}, Q1 {:.2f}, median {:.2f}, Q3 {:.2f}, max {:.2f}.'.format(*qW))
+w(f'- Below 4.5:1: **{len(bW45)}** ({pct(len(bW45), len(withW))}); below 3:1: **{len(bW3)}** ({pct(len(bW3), len(withW))}); any qualifying button below 4.5:1: {sum(1 for r in withW if r["_worstW"]["ratio"] < 4.5)}.')
+def checked(r):
+    chk = CONTRAST_CHECK.get(r['id'])
+    assert chk, ('no main-action verdict for', r['id'])
+    assert chk['quote'] in design_text(r['id']), ('quote not in file', r['id'])
+    m = r['_bestW']
+    if chk['verdict'] == 'main':
+        assert chk['component'] == m['component'], (r['id'], chk['component'], m['component'])
+    elif chk['verdict'] == 'other-button-is-main':
+        m = next(x for x in r['ruleW_buttons_on_primary'] if x['component'] == chk['component'])
+    else:
+        assert chk['verdict'] == 'dropped' and chk['component'] == m['component'], (r['id'], chk)
+    return m, chk
+rowsW4 = [(r,) + checked(r) for r in sorted(bW45, key=lambda r: (r['_bestW']['ratio'], r['id']))]
+kept = [(r, m, c) for r, m, c in rowsW4 if c['verdict'] in ('main', 'other-button-is-main') and m['ratio'] < 4.5]
+w(f'- Of the {len(bW45)} below 4.5:1, the file makes clear that the measured control is the main action for **{len(kept)}**; {len(bW45)-len(kept)} are dropped from any named list (W4b).\n')
+w('Test: kept when the file calls the control the primary action (its use line, or the site\'s own class), or the control performs a task the file lists under "Primary tasks". Dropped: recruiting/careers controls, navigation controls (menus, dropdowns, slider arrows), icon-only controls, and controls whose purpose the file leaves unclear.\n')
+w('### W4a. Named rows kept: the main action, below 4.5:1, ascending\n')
+w('| ratio | id | name | family | fill | text | component | why this is the main action (from the file) |'); w('|---:|---|---|---|---|---|---|---|')
+for r, m, c in sorted(kept, key=lambda x: (x[1]['ratio'], x[0]['id'])):
+    w(f'| {m["ratio"]:.2f} | {r["id"]} | {r["display_name"] or r["name"]} | {r["ruleW_family"]} | {m["fill"]} | {m["text_hex"]} | {m["component"]} | {c["note"]} |')
+w(f'\n- Kept rows below 3:1: {sum(1 for _, m, _ in kept if m["ratio"] < 3)}. Text colours of the kept rows: ' + ', '.join(sorted({m["text_hex"] for _, m, _ in kept})) + '.\n')
+w('### W4b. Rows dropped from any named list, and why\n')
+w('| ratio | id | name | component measured | verdict | reason (from the file) |'); w('|---:|---|---|---|---|---|')
+keptids = {r['id'] for r, _, _ in kept}
+for r, m, c in rowsW4:
+    if r['id'] in keptids: continue
+    w(f'| {m["ratio"]:.2f} | {r["id"]} | {r["display_name"] or r["name"]} | {m["component"]} | {c["verdict"]} | {c["note"]} |')
+w('')
+w('### W4d. Other named rows: light primaries with dark text, same main-action test\n')
+w('| ratio | id | name | family | fill | text | component | verdict | from the file |'); w('|---:|---|---|---|---|---|---|---|---|')
+b45ids = {r['id'] for r in bW45}
+for i in sorted(set(CONTRAST_CHECK) - b45ids):
+    r = next(x for x in withW if x['id'] == i); m, c = checked(r)
+    w(f'| {m["ratio"]:.2f} | {i} | {r["display_name"] or r["name"]} | {r["ruleW_family"]} | {m["fill"]} | {m["text_hex"]} | {m["component"]} | {c["verdict"]} | {c["note"]} |')
+w('')
+hyW = [r for r in kW if r['ruleW_primary']]
+hqW = quart([r['ruleW_white_text_contrast_hypothetical'] for r in hyW])
+h45 = sum(1 for r in hyW if r['ruleW_white_text_contrast_hypothetical'] < 4.5); h3 = sum(1 for r in hyW if r['ruleW_white_text_contrast_hypothetical'] < 3)
+w(f'### W4c. HYPOTHETICAL: white text on every Rule W primary (not what the buttons state)\n\nn = {len(hyW)}; median {hqW[2]:.2f}; below 4.5:1: {h45} ({pct(h45, len(hyW))}); below 3:1: {h3} ({pct(h3, len(hyW))}).\n')
+
+w('## W5. Headline: what holds under every rule\n')
+rules = [('Rule W (article, widened)', 'ruleW_family'), ('Rule S (first draft)', 'ruleS_family'), ('original measured rule', 'measured_family'),
+         ('registry primaryColor', 'registry_family'), ('alt 1: first non-white button', 'alt_button_rule_family'),
+         ('alt 2: primary token only', None), ('alt 3: no near-white button', 'variant_no_nearwhite_family')]
+w('| rule | counted | blue n | blue share | runner-up | runner-up n | runner-up share |'); w('|---|---:|---:|---:|---|---:|---:|')
+shares = []
+for label, key in rules:
+    if key: c, n = hue_n(kW, key)
+    else: c = collections.Counter(tokfam); n = len(tokfam)
+    top = c.most_common()
+    assert top[0][0] == 'blue' and top[0][1] > top[1][1], (label, top[:3])
+    shares.append((100*c['blue']/n, label, c['blue'], n, top[1]))
+    w(f'| {label} | {n} | {c["blue"]} | {pct(c["blue"], n)} | {top[1][0]} | {top[1][1]} | {pct(top[1][1], n)} |')
+lo, hi = min(shares), max(shares); ru = max(s[4][1]/s[3] for s in shares)
+w(f'\nClaim that holds under all {len(rules)} rules: **blue is the largest hue family, at {lo[0]:.1f}% to {hi[0]:.1f}% of the references counted** (lowest: {lo[1]}, {lo[2]}/{lo[3]}; highest: {hi[1]}, {hi[2]}/{hi[3]}). The runner-up family never exceeds {100*ru:.1f}%. The six rules of the first draft are the last six rows; Rule W is the seventh and is the one the article uses.\n')
+
+w('## W6. JP and TW\n')
+w(f'S6 stays on unwidened Rule S for all three countries, so it compares like with like (KR {nS}, JP {c6["JP"][1]}, TW {c6["TW"][1]} counted). The widening was judged for KR files only. Under Rule W, KR blue is {cWc["blue"]}/{nW} = {pct(cWc["blue"], nW)}.\n')
+
+lo_reg = []
+for i in sorted(LEFT_OUT):
+    r = next(x for x in kW if x['id'] == i); rr = parse_color(r['registry_primary'])[0]
+    toks = {hexof(x) for x in (parse_color(v)[0] for v in (frontmatter(i).get('colors') or {}).values()) if x}
+    lo_reg.append((i, hexof(rr) if rr else None, (hexof(rr) in toks) if rr else False, family(rr) if rr else None, LEFT_OUT[i]['kind']))
+cSens = collections.Counter(cWc); nSens = nW
+for i, h, intok, fam, kind in lo_reg:
+    if intok: cSens[fam] += 1; nSens += 1
+w('## W7. Sensitivity: the references left out\n')
+w('| id | why left out | registry hex | registry hex is a token | registry family |'); w('|---|---|---|---|---|')
+for i, h, intok, fam, kind in lo_reg: w(f'| {i} | {kind} | {h} | {"yes" if intok else "no"} | {fam} |')
+w(f'\nIf the registry value were taken for every left-out reference whose registry hex is a frontmatter token (the ink-only and declined ones included), blue would be {cSens["blue"]}/{nSens} = {pct(cSens["blue"], nSens)}; achromatic (black-ish + grey + white-ish) {sum(cSens[f] for f in ORDER if not is_chromatic(f))}/{nSens} (Rule W: {sum(cWc[f] for f in ORDER if not is_chromatic(f))}/{nW}). Rule W keeps them out because their files do not present that value as the main colour.\n')
+
+mw('\n## Rule W (third pass, ' + TODAY + ')\n')
+mw(f'- Rule S left out {len(noS)} KR verified references, mostly because their main colour token is not named `primary` (e.g. naver `brand`, 11st `brand-red`, shinhanbank `brand-primary`). Each of the {len(noS)} files was read on {TODAY}; `missing-32.md` lists the token name each uses and the evidence. {len(MAIN_TOKEN)} are added under Rule W because the file itself presents one token as its main colour (identity colour, or a colour its colour list names for an action fill, in every case equal to the registry primaryColor), with a verbatim quote the script checks; {len(LEFT_OUT)} stay out because the file does not let one main colour be told.')
+mw('- The widening is a per-id list, not a name pattern: a pattern such as `brand*` or `*primary*` also matches `text-primary` (melon), `nhis-primary-60` (nhis) and three `brand-*` tokens (wooribank).')
+mw('- Registry `primaryColor` is used only to corroborate, and only where the same hex is a frontmatter colour token of that reference (asserted by the script). A registry value that is only a text-ink token, or no token at all, does not admit a reference (W7 shows the effect of admitting them).')
+mw(f'- Rule W counts {nW} of {len(kW)} (Rule S {nS}); left out {len(leftW)}. JP and TW are not widened; S6 compares the three countries on Rule S.')
+mw(f'- Contrast names (W4): every reference below 4.5:1 under Rule W was checked against its own DESIGN.md on {TODAY} for whether the measured control is the main action (`CONTRAST_CHECK`, quote checked verbatim). **This is a check against the reference files only; no browser was used and no page was re-measured.** Kept {len(kept)}, dropped {len(bW45)-len(kept)} (W4b).')
+mw(f'- Headline (W5): the script asserts that blue is the largest family under all {len(rules)} rules.')
+mw(f'- First computed {FIRST_RUN}; this run {TODAY}. Input as of this run: `data/reference-quality.json` generated_at {quality["generated_at"]}.')
+
+mm32 = [f'# The {len(noS)} KR verified references Rule S left out ({TODAY})\n',
+        f'Rule S (first draft) takes the frontmatter token named `primary`, else a `*primary*`-named button. These {len(noS)} references have neither. Each file was read for the token it uses for its main colour and for evidence, in the file, that it is the main colour. Quotes are verbatim from `web/references/<id>/DESIGN.md` and `compute.py` asserts each one is still there. The decisions live in `MAIN_TOKEN` and `LEFT_OUT` in `compute.py`; this file is generated from them.\n',
+        'Evidence kinds: **identity** = the file names the value as the official, brand or catalogue identity colour; **action** = the file\'s colour list names the token for the fill of an action control (a purchase, login, service or CTA fill); this does not by itself say the control is the service\'s main action, which W4 tests separately; **registry** = the registry `primaryColor` is the same hex and that hex is this token (never used alone).\n',
+        f'## Added under Rule W ({len(MAIN_TOKEN)})\n', '| id | name | main-colour token | hex | family | registry | evidence | quote from the file |', '|---|---|---|---|---|---|---|---|']
+for i in sorted(MAIN_TOKEN):
+    r = next(x for x in kW if x['id'] == i); e = MAIN_TOKEN[i]
+    mm32.append(f'| {i} | {r["display_name"] or r["name"]} | `{e["token"]}` | {r["ruleW_primary"]} | {r["ruleW_family"]} | {r["registry_primary"]} | {e["basis"]} | ' + e['quote'].replace('|', '\\|') + ' |')
+mm32 += ['', f'## Left out ({len(LEFT_OUT)}): the file does not let one main colour be told\n', '| id | name | registry | why | quote from the file | what would settle it |', '|---|---|---|---|---|---|']
+SETTLE = {'ink-only': 'a re-capture that records a brand fill or identity colour as a token', 'not-a-token': 'a reference revision that records the value as a token with its role (re-measurement)',
+          'declined': 'a first-party source giving the brand colour as a hex, recorded in the reference', 'two-candidates': 'the reference stating which of the two is the main colour'}
+for i in sorted(LEFT_OUT):
+    r = next(x for x in kW if x['id'] == i); e = LEFT_OUT[i]
+    mm32.append(f'| {i} | {r["display_name"] or r["name"]} | {r["registry_primary"]} | {e["kind"]}: {e["note"]} | ' + e['quote'].replace('|', '\\|') + f' | {SETTLE[e["kind"]]} |')
+open(f'{OUT}/missing-32.md', 'w').write('\n'.join(mm32) + '\n')
+print('ruleS', nS, 'ruleW', nW, 'left', len(leftW), 'blue S', f'{cS["blue"]}/{nS}', 'blue W', f'{cWc["blue"]}/{nW}', 'W4 below 4.5', len(bW45), 'checked', len(rowsW4), 'kept', len(kept), )
+
+open(f'{OUT}/tables.md', 'w').write('\n'.join(md)); open(f'{OUT}/method.md', 'w').write('\n'.join(mmx) + '\n')

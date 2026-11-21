@@ -1,4 +1,4 @@
-# Method (2026-11-14)
+# Method (2026-11-21)
 
 - Script: `compute.py` in this folder (run `python3 -I compute.py` from anywhere); the repository is read-only to it; no network, no browser. Inputs: `data/reference-quality.json` (generated_at 2026-11-13), `web/src/data/registry.generated.ts`, `web/references/<id>/DESIGN.md` frontmatter.
 - Population: registry `country == "KR"` and quality `status == "verified_v2"`: N = 185. KR partial 23, KR legacy_snapshot 21 excluded. (`reference.json` `catalog.country/category` was checked equal to the registry for all 622 references.) The 2026-11-06 note counted 167; the catalog has since grown.
@@ -26,3 +26,17 @@
 - S4 judgement calls: qualifying button = `type: button` with `backgroundColor` exactly equal (after normalising to lowercase 6-digit) to the Rule S primary and an opaque parseable `textColor`; reference-level ratio = the highest among its qualifying buttons (the other choice, the lowest, is counted as "any button below 4.5"). Text colours with alpha are skipped, not composited. The white-text figure is hypothetical and kept separate.
 - S5 uses the first Rule-S-filtered primary-named button in file order against the token.
 - Spot checks (Rule S): `coinone` primary-named-button -> #0b59d5; `dabang` primary-named-button -> #326cf9; `29cm` primary-token -> #000000; `3o3` primary-token -> #fbbd41; `11st` None -> None
+
+## Rule W (third pass, 2026-11-21)
+
+- Rule S left out 32 KR verified references, mostly because their main colour token is not named `primary` (e.g. naver `brand`, 11st `brand-red`, shinhanbank `brand-primary`). Each of the 32 files was read on 2026-11-21; `missing-32.md` lists the token name each uses and the evidence. 16 are added under Rule W because the file itself presents one token as its main colour (identity colour, or a colour its colour list names for an action fill, in every case equal to the registry primaryColor), with a verbatim quote the script checks; 16 stay out because the file does not let one main colour be told.
+- The widening is a per-id list, not a name pattern: a pattern such as `brand*` or `*primary*` also matches `text-primary` (melon), `nhis-primary-60` (nhis) and three `brand-*` tokens (wooribank).
+- Registry `primaryColor` is used only to corroborate, and only where the same hex is a frontmatter colour token of that reference (asserted by the script). A registry value that is only a text-ink token, or no token at all, does not admit a reference (W7 shows the effect of admitting them).
+- Rule W counts 169 of 185 (Rule S 153); left out 16. JP and TW are not widened; S6 compares the three countries on Rule S.
+- Contrast names (W4): every reference below 4.5:1 under Rule W was checked against its own DESIGN.md on 2026-11-21 for whether the measured control is the main action (`CONTRAST_CHECK`, quote checked verbatim). **This is a check against the reference files only; no browser was used and no page was re-measured.** Kept 23, dropped 11 (W4b).
+- Headline (W5): the script asserts that blue is the largest family under all 7 rules.
+- First computed 2026-11-14; this run 2026-11-21. Input as of this run: `data/reference-quality.json` generated_at 2026-11-13.
+
+## Live recheck of the named contrast rows (2026-11-21)
+
+The 23 rows of W4a were read from the reference files. `recheck_contrast.mjs` then loaded each service's home page at 1440 (headless; the installed Chrome with a window for the three that refused headless) and looked for elements drawn with the recorded fill and the recorded text colour. 18 rows still show the pair and are the ones the article names; for karrot, toss, teamsparta and idus the fill is not on the home page, and for ably it appears only with black text. The check opens no other page, so those five are unconfirmed, not wrong. It confirms that the colour pair is live, not which control it is: that reading still comes from the reference file. Results: `contrast-recheck.json`, `contrast-recheck.md`.
