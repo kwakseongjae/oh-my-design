@@ -7,9 +7,12 @@ tags: [data, brand-color, accessibility, korea]
 
 oh-my-design은 실제 서비스의 공개된 웹 화면과 자료에서 색·글꼴·버튼 값을 기록해, 서비스마다 레퍼런스 파일(DESIGN.md) 하나로 모아 둔 아카이브입니다. 여기에 검증(verified) 레퍼런스로 올라 있는 한국 서비스는 185곳입니다. 한국 서비스 전체에서 뽑은 표본이 아니라 이 아카이브에 올라 있는 곳들입니다. 이 가운데 각 레퍼런스 파일이 주 색(primary)으로 밝힌 색을 컬러 코드 하나로 정할 수 있었던 169곳을 색 계열별로 나눴더니, 가장 많은 색은 파랑이었습니다. 169곳 중 60곳, 35.5%입니다. 주 색을 정하는 방법을 일곱 가지로 바꿔 세어도 파랑은 늘 가장 많은 계열이었고, 비율은 29.5%에서 36.6% 사이였습니다. 두 번째로 많은 계열은 어느 방법에서도 13.2%를 넘지 않았습니다. 계산일은 2026년 11월 21일입니다.
 
-![한국 서비스 169곳의 주 색을 색 계열별로 센 막대그래프. 파랑 60곳(35.5%), 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%), 주황 13곳(7.7%), 검정에 가까운 무채색 12곳(7.1%), 남색·보라 10곳(5.9%), 회색 10곳(5.9%), 노랑 7곳(4.1%), 자홍·분홍 6곳(3.6%), 흰색에 가까운 무채색 2곳(1.2%)](/blog-assets/korean-brand-colors-measured/figure-hues.svg)
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-wall-narrow.svg" width="360" height="848">
+<img src="/blog-assets/korean-brand-colors-measured/figure-wall.svg" alt="한국 서비스 169곳의 주 색을 한 곳에 한 칸씩, 색 계열별로 늘어놓은 색 견본. 빨강 18곳, 주황 13곳, 노랑 7곳, 초록 17곳, 청록 14곳, 파랑 60곳, 남색·보라 10곳, 자홍·분홍 6곳, 검정에 가까운 무채색 12곳, 회색 10곳, 흰색에 가까운 무채색 2곳" width="720" height="769">
+</picture>
 
-그림: 주 색의 색 계열별 곳 수(규칙 W, 169곳). 아래 표와 같은 값이고, oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/figure_hues.py`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/figure_hues.py)가 `rows.json`에서 그립니다.
+그림: 규칙 W로 정한 169곳의 주 색입니다. 칸 하나가 한 곳이고, 색 계열별로 묶은 뒤 계열 안에서는 색상각 순으로 놓았습니다. 칸의 색은 `rows.json`에 적힌 주 색 값 그대로이고, 계열별 곳 수는 아래 표(W1)와 같습니다. 이 글의 그림은 모두 oh-my-design 공개 저장소의 [`docs/research/2026-11-14-kr-brand-colours/figures.py`](https://github.com/kwakseongjae/oh-my-design/blob/main/docs/research/2026-11-14-kr-brand-colours/figures.py)가 같은 폴더의 `rows.json`, `contrast-recheck.json`, `tables.md`에서 그립니다.
 
 | 색 계열 | 기준(HSL) | 곳 | 비율 |
 |---|---|---:|---:|
@@ -30,6 +33,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 
 ## 어떤 색이 가장 많은가
 
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-hues-narrow.svg" width="360" height="616">
+<img src="/blog-assets/korean-brand-colors-measured/figure-hues.svg" alt="한국 서비스 169곳의 주 색을 색 계열별로 센 막대그래프. 막대는 그 계열에 든 서비스의 주 색을 한 줄씩 이어 그린 것. 파랑 60곳(35.5%), 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%), 주황 13곳(7.7%), 검정에 가까운 무채색 12곳(7.1%), 남색·보라 10곳(5.9%), 회색 10곳(5.9%), 노랑 7곳(4.1%), 자홍·분홍 6곳(3.6%), 흰색에 가까운 무채색 2곳(1.2%)" width="720" height="497">
+</picture>
+
+그림: 주 색의 색 계열별 곳 수(규칙 W, 169곳)입니다. 막대 하나는 그 계열에 든 서비스의 주 색을 한 줄씩 이어 그린 것이고, 값은 위 표(W1)와 같습니다.
+
 파랑 60곳 다음은 빨강 18곳(10.7%), 초록 17곳(10.1%), 청록 14곳(8.3%), 주황 13곳(7.7%) 순입니다. 무채색 가운데서는 검정에 가까운 색이 12곳(7.1%)으로 가장 많았습니다.
 
 여기서 파랑은 HSL 색상각 200~250° 구간입니다. 색상각이 200°에 못 미치는 하늘색은 청록으로 셉니다. [가우디오랩](https://oh-my-design.kr/ko/design-systems/gaudiolab)의 `#00b7ff`가 그런 예입니다. 반대로 어두운 색도 밝기가 8% 이상이고 채도가 10% 이상이면 파랑으로 셉니다. [아임웹](https://oh-my-design.kr/ko/design-systems/imweb)의 `#15181e`, [Bithumb](https://oh-my-design.kr/ko/design-systems/bithumb)의 `#1c2028`, [현대자동차](https://oh-my-design.kr/ko/design-systems/hyundai)의 `#002c5f`처럼 검정에 가까운 어두운 색도 이 기준으로 파랑에 들어갑니다. [토스](https://oh-my-design.kr/ko/design-systems/toss)의 `#3182f6`, [원티드](https://oh-my-design.kr/ko/design-systems/wanted)의 `#0066ff`, [신한은행](https://oh-my-design.kr/ko/design-systems/shinhanbank)의 `#0046ff`, [우리은행](https://oh-my-design.kr/ko/design-systems/wooribank)의 `#0067ac`도 파랑 계열입니다.
@@ -46,6 +56,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | `primary` 토큰만 | 149 | 52(34.9%) | 빨강 15(10.1%) |
 | 흰색에 가까운 버튼을 거른 버튼 규칙 | 174 | 55(31.6%) | 검정에 가까운 무채색 23(13.2%) |
 
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-rules-narrow.svg" width="360" height="665">
+<img src="/blog-assets/korean-brand-colors-measured/figure-rules.svg" alt="주 색을 정하는 일곱 가지 방법마다 파랑과 두 번째로 많은 계열의 비율을 그린 막대그래프. 파랑은 규칙 W 35.5%, 규칙 S 36.6%, 처음 쓴 버튼 규칙 30.7%, 카탈로그 데이터의 대표 색 34.1%, 흰색이 아닌 첫 버튼의 배경색 29.5%, primary 토큰만 34.9%, 흰색에 가까운 버튼을 거른 버튼 규칙 31.6%. 두 번째로 많은 계열은 모두 13.2% 이하" width="720" height="679">
+</picture>
+
+그림: 일곱 가지 방법마다 파랑(진한 막대)과 두 번째로 많은 계열(옅은 막대)의 비율입니다. 옅은 보라색 띠가 29.5~36.6% 구간입니다. 값은 위 표(W5)와 같습니다.
+
 일곱 방법 모두에서 파랑이 가장 많았고, 비율은 29.5%에서 36.6% 사이입니다. 이 범위 안에서는 어느 한 값을 정답으로 고를 근거가 없어서, 제목에도 범위를 적었습니다.
 
 ## 분야마다 다른가
@@ -61,6 +78,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | 교육 | 11 | 1 | 빨강 2, 주황 2, 청록 2, 남색·보라 2 |
 | SaaS | 9 | 4 | 회색 2 |
 | 헬스케어 | 8 | 4 | 청록 2 |
+
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-sectors-narrow.svg" width="360" height="506">
+<img src="/blog-assets/korean-brand-colors-measured/figure-sectors.svg" alt="분야마다 셈에 든 서비스의 주 색을 한 칸씩 늘어놓은 띠 일곱 개. 컨슈머 테크 53곳 중 파랑 14곳, 핀테크 29곳 중 14곳, 커머스 23곳 중 5곳, AI 15곳 중 7곳, 교육 11곳 중 1곳, SaaS 9곳 중 4곳, 헬스케어 8곳 중 4곳" width="720" height="499">
+</picture>
+
+그림: 분야마다 셈에 든 곳의 주 색을 한 칸씩, 색 계열과 색상각 순으로 늘어놓았습니다. 띠의 길이가 셈에 든 곳 수이고, 곳 수는 위 표(W2)와 같습니다.
 
 컨슈머 테크, 핀테크, AI, SaaS, 헬스케어 다섯 분야에서는 파랑이 가장 많았습니다. 커머스는 파랑과 빨강이 5곳씩 같고, 교육은 11곳 중 파랑이 1곳입니다.
 
@@ -82,6 +106,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 - `#256ef4`, 2곳: [Government24](https://oh-my-design.kr/ko/design-systems/gov24), [KRDS](https://oh-my-design.kr/ko/design-systems/krds)
 - `#ffcc00`, 2곳: [KB국민은행](https://oh-my-design.kr/ko/design-systems/kb-kookmin), [KB페이](https://oh-my-design.kr/ko/design-systems/kbpay)
 - `#ffffff`, 2곳: [레몬베이스](https://oh-my-design.kr/ko/design-systems/lemonbase), [엔씨소프트](https://oh-my-design.kr/ko/design-systems/ncsoft)
+
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-shared-narrow.svg" width="360" height="541">
+<img src="/blog-assets/korean-brand-colors-measured/figure-shared.svg" alt="두 곳 이상이 함께 쓰는 주 색 컬러 코드 8개의 견본과 그 값을 쓰는 곳. #000000 9곳, #222222 4곳, #3182f6 3곳, #0066ff·#111111·#256ef4·#ffcc00·#ffffff 각 2곳" width="720" height="629">
+</picture>
+
+그림: 두 곳 이상이 함께 쓰는 주 색 컬러 코드 8개와 그 값을 쓰는 곳입니다(W3). 값 옆의 계열 이름은 첫 표의 기준으로 나눈 것입니다.
 
 `#222222`는 L이 8%를 넘어 검정이 아닌 회색으로 셉니다. 같은 어두운 색이라도 `#111111`은 검정 쪽, `#222222`는 회색 쪽에 들어갑니다.
 
@@ -116,6 +147,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | 4.14:1 | [페이히어](https://oh-my-design.kr/ko/design-systems/payhere) | `#0077fe` | 하드웨어 상품 카드의 「구입하기」, 큰 글자 |
 | 4.33:1 | [헤이딜러](https://oh-my-design.kr/ko/design-systems/heydealer) | `#396eff` | 홈의 차량 검색 버튼 |
 
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-contrast-narrow.svg" width="360" height="886">
+<img src="/blog-assets/korean-brand-colors-measured/figure-contrast.svg" alt="표의 18곳을 흰 글자 버튼 견본으로 다시 그려 명도 대비 순으로 놓은 그림. 가우디오랩 2.28:1, 잔디 2.30:1, 런드리고 2.30:1, 미리캔버스 2.64:1, 스티비 2.89:1, 모레 3.17:1, 그리팅 3.24:1, 펫프렌즈 3.33:1, 여기어때 3.39:1, 클라썸 3.42:1, 버즈빌 3.68:1, 토스증권 3.71:1, 모인 3.73:1, Watcha 3.77:1, 프로토파이 3.89:1, 쏘카 4.09:1, 페이히어 4.14:1, 헤이딜러 4.33:1. 3:1과 4.5:1에 점선" width="720" height="952">
+</picture>
+
+그림: 표의 18곳을 버튼 견본으로 다시 그렸습니다. 레퍼런스 파일에 기록된 배경색과 글자색만 가져왔고, 버튼의 모양·크기·글꼴과 버튼에 적은 서비스 이름은 그림에서 정한 것입니다. 화면을 캡처한 것이 아닙니다. 점의 위치가 명도 대비이고, 점선은 3:1과 4.5:1입니다(W4a, `contrast-recheck.md`).
+
 글자색은 18곳 모두 `#ffffff`라 칸을 따로 두지 않았습니다. 18곳 중 5곳은 3:1에도 못 미칩니다(W4a, `contrast-recheck.md`).
 
 이 수치만으로 접근성 기준에 맞는지 판단할 수는 없습니다. 4.5:1은 WCAG 2.x AA가 본문 크기 글자에 요구하는 값이고, 큰 글자에는 3:1을 요구합니다. 이번 집계에는 글자 크기와 굵기를 넣지 않았습니다. 그래서 3:1 이상 4.5:1 미만인 곳은 버튼 글자가 큰 글자인지에 따라 판단이 달라집니다. 표의 18곳을 레퍼런스 파일에 적힌 버튼 글자 크기와 굵기로 다시 보면, 표에 「큰 글자」라고 적은 런드리고와 페이히어 두 곳이 WCAG의 큰 글자(18pt 이상, 굵은 글자는 14pt 이상)에 해당합니다. 이 두 곳에는 3:1 기준이 적용되고, 페이히어(4.14:1)는 이 기준을 넘고 런드리고(2.30:1)는 못 미칩니다.
@@ -140,6 +178,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 | 노랑 | 5(3.3%) | 0(0.0%) | 0(0.0%) |
 | 흰색에 가까운 무채색 | 2(1.3%) | 0(0.0%) | 0(0.0%) |
 
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-countries-narrow.svg" width="360" height="368">
+<img src="/blog-assets/korean-brand-colors-measured/figure-countries.svg" alt="한국·일본·대만의 주 색을 나라마다 한 띠에 늘어놓은 그림(규칙 S). 파랑은 한국 153곳 중 36.6%, 일본 56곳 중 39.3%, 대만 29곳 중 31.0%. 두 번째로 많은 계열은 한국 빨강 9.8%, 일본 빨강 23.2%, 대만 청록 20.7%" width="720" height="456">
+</picture>
+
+그림: 나라마다 규칙 S로 셈에 든 곳의 주 색을 한 띠에 같은 너비로 나눠 늘어놓았습니다. 띠 아래 괄호는 파랑과 두 번째로 많은 계열이 차지하는 구간이고, 값은 위 표(S6)와 같습니다.
+
 세 나라 모두 파랑이 가장 많습니다. 두 번째는 한국과 일본이 빨강, 대만이 청록입니다. 한국을 규칙 W로 세면 파랑은 169곳 중 60곳(35.5%)입니다(W6).
 
 ## 어떻게 셌는가
@@ -154,6 +199,13 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 4. 그래도 정할 수 없으면 셈에서 뺍니다.
 
 1·2단계까지가 첫 초안의 규칙 S이고, 153곳이 여기서 정해졌습니다. 규칙 S는 이름이 `primary`인 토큰과 이름에 `primary`가 든 버튼만 봤기 때문에, 둘 다 없는 32곳이 빠졌습니다. 대부분 주 색 토큰의 이름이 `primary`가 아닌 곳입니다. 3단계는 이 32곳을 위해 더했습니다. 32곳의 파일을 하나씩 읽었고, 곳마다 쓴 토큰 이름과 근거 문장은 `missing-32.md`에 있습니다.
+
+<picture>
+<source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-method-narrow.svg" width="360" height="346">
+<img src="/blog-assets/korean-brand-colors-measured/figure-method.svg" alt="검증 한국 레퍼런스 185곳을 한 곳에 한 칸씩 그린 그림. 1·2단계(규칙 S)로 주 색을 정한 153곳, 3단계로 더한 16곳은 그 주 색으로, 정할 수 없어 뺀 16곳은 빈 칸으로 표시" width="720" height="383">
+</picture>
+
+그림: 검증 한국 레퍼런스 185곳을 한 칸씩 그렸습니다. 규칙 S로 주 색을 정한 153곳과 3단계로 더한 16곳은 그 주 색으로, 정할 수 없어 뺀 16곳은 빈 칸으로 그렸습니다(W1).
 
 - 더한 16곳: [네이버](https://oh-my-design.kr/ko/design-systems/naver)(`brand`), [11번가](https://oh-my-design.kr/ko/design-systems/11st)(`brand-red`), [신한은행](https://oh-my-design.kr/ko/design-systems/shinhanbank)(`brand-primary`), [우리은행](https://oh-my-design.kr/ko/design-systems/wooribank)(`brand-deep-blue`), [카카오](https://oh-my-design.kr/ko/design-systems/kakao)(`login`), [KB국민은행](https://oh-my-design.kr/ko/design-systems/kb-kookmin)(`header-accent`), [Melon](https://oh-my-design.kr/ko/design-systems/melon)(`signature-green`), [올리브영](https://oh-my-design.kr/ko/design-systems/oliveyoung)(`corporate-brand-green`), [국민건강보험공단](https://oh-my-design.kr/ko/design-systems/nhis)(`nhis-primary`), [오늘의집](https://oh-my-design.kr/ko/design-systems/ohouse)(`action`), [클래스101](https://oh-my-design.kr/ko/design-systems/class101)(`brand`), [캐치테이블](https://oh-my-design.kr/ko/design-systems/catchtable)(`brand-orange`), [화해](https://oh-my-design.kr/ko/design-systems/hwahae)(`label`), [브랜디](https://oh-my-design.kr/ko/design-systems/brandi)(`action-direct`), [한국도로공사](https://oh-my-design.kr/ko/design-systems/koexpressway)(`service-fill`), [리멤버](https://oh-my-design.kr/ko/design-systems/remember)(`action-black`)
 - 뺀 16곳: [쿠팡](https://oh-my-design.kr/ko/design-systems/coupang), [CGV](https://oh-my-design.kr/ko/design-systems/cgv), [지그재그](https://oh-my-design.kr/ko/design-systems/zigzag), [밀리의서재](https://oh-my-design.kr/ko/design-systems/millie), [카카오게임즈](https://oh-my-design.kr/ko/design-systems/kakaogames), [SK텔레콤](https://oh-my-design.kr/ko/design-systems/sktelecom), [Upbit](https://oh-my-design.kr/ko/design-systems/upbit), [RIDI](https://oh-my-design.kr/ko/design-systems/ridi), [TVING](https://oh-my-design.kr/ko/design-systems/tving), [Wavve](https://oh-my-design.kr/ko/design-systems/wavve), [Kakao T](https://oh-my-design.kr/ko/design-systems/kakaot), [강남언니](https://oh-my-design.kr/ko/design-systems/gangnamunni), [Hyundai Card](https://oh-my-design.kr/ko/design-systems/hyundaicard), [Megastudy](https://oh-my-design.kr/ko/design-systems/megastudy), [flex](https://oh-my-design.kr/ko/design-systems/flex), [데이터라이즈](https://oh-my-design.kr/ko/design-systems/datarize)
@@ -170,7 +222,7 @@ H는 색상각, S는 채도, L은 밝기이고 각 범위는 아래 끝을 포�
 
 경계값은 이 집계에서 정한 것이라, 경계 가까이 있는 색은 기준을 조금만 옮겨도 옆 계열로 넘어갑니다. 분야는 카탈로그의 `category` 값을 그대로 썼습니다.
 
-DESIGN.md는 각 서비스의 공개된 웹 화면과 자료를 기록한 문서이고, 레퍼런스마다 기록한 날짜가 다릅니다. 계산 스크립트와 원본 행은 `tables.md`와 같은 폴더 `docs/research/2026-11-14-kr-brand-colours/`에 있습니다. `compute.py`가 계산을, `rows.json`이 레퍼런스별 원본 행을, `method.md`가 판단 기준을, `missing-32.md`가 32곳의 판단 근거를 담고 있습니다. 위 막대 그림은 같은 폴더의 `figure_hues.py`가 `rows.json`에서 다시 그립니다.
+DESIGN.md는 각 서비스의 공개된 웹 화면과 자료를 기록한 문서이고, 레퍼런스마다 기록한 날짜가 다릅니다. 계산 스크립트와 원본 행은 `tables.md`와 같은 폴더 `docs/research/2026-11-14-kr-brand-colours/`에 있습니다. `compute.py`가 계산을, `rows.json`이 레퍼런스별 원본 행을, `method.md`가 판단 기준을, `missing-32.md`가 32곳의 판단 근거를 담고 있습니다. 이 글의 그림은 모두 같은 폴더의 `figures.py`가 `rows.json`, `contrast-recheck.json`, `tables.md`에서 다시 그리고, 그릴 때 그림에 들어가는 곳 수와 값을 `tables.md`와 대조합니다.
 
 ## 주 색을 정할 때 무엇을 같이 봐야 하는가
 
@@ -193,7 +245,15 @@ DESIGN.md는 각 서비스의 공개된 웹 화면과 자료를 기록한 문서
 일곱 가지, 29.5~36.6%, 13.2%: W5 표와 Claim 문장 (제목의 「일곱 가지 방법 모두」도 W5) (blue 최다는 compute.py가 assert)
 
 W1 표 (계열별 곳, 비율): W1 Rule W n / share 열. 기준(HSL) 칸: tables.md Bucket rule
-그림: figure-hues.svg (figure_hues.py, rows.json ruleW_family)
+그림(figures.py가 그림, 그림 속 수는 모두 본문 표에 있는 값)
+figure-wall: rows.json ruleW_primary·ruleW_family, 계열별 곳 수는 W1
+figure-hues: W1, 막대 줄은 rows.json ruleW_primary
+figure-rules: W5 blue share·runner-up share (빨강·검정 쪽 각 10.3%는 1b의 red 19·black-ish 19)
+figure-sectors: W2 counted·blue, 칸 색은 rows.json category·ruleW_primary
+figure-shared: W3 hex·count·family·services
+figure-contrast: W4a 가운데 contrast-recheck.json verdict가 same으로 시작하는 18행의 fill·text·ratio, 큰 글자 2곳은 위 「큰 글자」 줄
+figure-countries: S6 KR/JP/TW n·share, 칸 색은 rows.json ruleS_primary
+figure-method: Population 185, W1 Rule S 153·added 16·left out 16
 
 어떤 색이 가장 많은가
 빨강 18(10.7%), 초록 17(10.1%), 청록 14(8.3%), 검정 쪽 12(7.1%): W1

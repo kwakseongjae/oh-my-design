@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="541" viewBox="0 0 360 541" role="img" aria-label="두 곳 이상이 함께 쓰는 주 색 컬러 코드" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="ko">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="359" height="540" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">두 곳 이상이 함께 쓰는 주 색 컬러 코드</text>
+<text x="20" y="59.6" font-size="12" fill="#5a5a63">hex가 글자 하나까지 같은 값 8개, 서비스 26곳</text>
+<rect x="20" y="91" width="32" height="32" rx="8" fill="#000000"/>
+<text x="64" y="103.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">#000000</tspan><tspan fill="#5a5a63">  9곳 · 검정에 가까운 무채색</tspan></text>
+<text x="64" y="122.5" font-size="12" fill="#13131a">29CM · KRAFTON · 롯데ON · 무신사 · 포자랩스</text>
+<text x="64" y="140.5" font-size="12" fill="#13131a">리멤버 · 삼성전자 · 스테이폴리오 · 야놀자</text>
+<rect x="20" y="162.5" width="32" height="32" rx="8" fill="#222222"/>
+<text x="64" y="175" font-size="12.5"><tspan fill="#13131a" font-weight="600">#222222</tspan><tspan fill="#5a5a63">  4곳 · 회색</tspan></text>
+<text x="64" y="194" font-size="12" fill="#13131a">신상마켓 · 그린카 · KREAM · 리턴제로</text>
+<rect x="20" y="216" width="32" height="32" rx="8" fill="#3182f6"/>
+<text x="64" y="228.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">#3182f6</tspan><tspan fill="#5a5a63">  3곳 · 파랑</tspan></text>
+<text x="64" y="247.5" font-size="12" fill="#13131a">토스 · 토스증권 · 토스뱅크</text>
+<rect x="20" y="269.5" width="32" height="32" rx="8" fill="#0066ff"/>
+<text x="64" y="282" font-size="12.5"><tspan fill="#13131a" font-weight="600">#0066ff</tspan><tspan fill="#5a5a63">  2곳 · 파랑</tspan></text>
+<text x="64" y="301" font-size="12" fill="#13131a">메디블록 · 원티드</text>
+<rect x="20" y="323" width="32" height="32" rx="8" fill="#111111"/>
+<text x="64" y="335.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">#111111</tspan><tspan fill="#5a5a63">  2곳 · 검정에 가까운 무채색</tspan></text>
+<text x="64" y="354.5" font-size="12" fill="#13131a">제네시스 · 아이아이컴바인드</text>
+<rect x="20" y="376.5" width="32" height="32" rx="8" fill="#256ef4"/>
+<text x="64" y="389" font-size="12.5"><tspan fill="#13131a" font-weight="600">#256ef4</tspan><tspan fill="#5a5a63">  2곳 · 파랑</tspan></text>
+<text x="64" y="408" font-size="12" fill="#13131a">Government24 · KRDS</text>
+<rect x="20" y="430" width="32" height="32" rx="8" fill="#ffcc00"/>
+<text x="64" y="442.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffcc00</tspan><tspan fill="#5a5a63">  2곳 · 노랑</tspan></text>
+<text x="64" y="461.5" font-size="12" fill="#13131a">KB국민은행 · KB페이</text>
+<rect x="20.5" y="484" width="31" height="31" rx="8" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
+<text x="64" y="496" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffffff</tspan><tspan fill="#5a5a63">  2곳 · 흰색에 가까운 무채색</tspan></text>
+<text x="64" y="515" font-size="12" fill="#13131a">레몬베이스 · 엔씨소프트</text>
+</svg>

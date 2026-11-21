@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="664" viewBox="0 0 360 664" role="img" aria-label="Blue's share under seven ways of choosing the primary" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="359" height="663" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">Blue's share under seven ways of</text>
+<text x="20" y="57.6" font-size="16" fill="#13131a" font-weight="700">choosing the primary</text>
+<text x="20" y="81.2" font-size="12" fill="#5a5a63">Dark bar: blue. Light bar: the second-largest</text>
+<text x="20" y="98.6" font-size="12" fill="#5a5a63">family</text>
+<rect x="256" y="126" width="56.8" height="494.5" fill="#eaebfe"/>
+<line x1="256" y1="126" x2="256" y2="620.5" stroke="#d8d8ff" stroke-width="1"/>
+<line x1="312.8" y1="126" x2="312.8" y2="620.5" stroke="#d8d8ff" stroke-width="1"/>
+<line x1="100" y1="126" x2="100" y2="620.5" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="180" y1="126" x2="180" y2="620.5" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="260" y1="126" x2="260" y2="620.5" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="340" y1="126" x2="340" y2="620.5" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="20" y1="126" x2="20" y2="620.5" stroke="#d3d3db" stroke-width="1"/>
+<text x="26" y="142.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">Rule W (this article)</tspan><tspan fill="#5a5a63">  169</tspan></text>
+<rect x="20" y="151.5" width="284" height="18" fill="#3f3f48"/>
+<text x="297" y="165" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">60 · 35.5%</text>
+<rect x="20" y="173.5" width="85.6" height="9" fill="#d3d3db"/>
+<text x="111.6" y="182.5" font-size="12" fill="#5a5a63">Red 10.7%</text>
+<text x="26" y="214" font-size="12.5"><tspan fill="#13131a" font-weight="600">Rule S (first draft)</tspan><tspan fill="#5a5a63">  153</tspan></text>
+<rect x="20" y="223" width="292.8" height="18" fill="#3f3f48"/>
+<text x="305.8" y="236.5" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">56 · 36.6%</text>
+<rect x="20" y="245" width="78.4" height="9" fill="#d3d3db"/>
+<text x="104.4" y="254" font-size="12" fill="#5a5a63">Red 9.8%</text>
+<text x="26" y="285.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">Original button rule</tspan><tspan fill="#5a5a63">  176</tspan></text>
+<rect x="20" y="294.5" width="245.6" height="18" fill="#3f3f48"/>
+<text x="258.6" y="308" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">54 · 30.7%</text>
+<rect x="20" y="316.5" width="100" height="9" fill="#d3d3db"/>
+<text x="126" y="325.5" font-size="12" fill="#5a5a63">Black-ish 12.5%</text>
+<text x="26" y="357" font-size="12.5"><tspan fill="#13131a" font-weight="600">Catalog primaryColor</tspan><tspan fill="#5a5a63">  185</tspan></text>
+<rect x="20" y="366" width="272.8" height="18" fill="#3f3f48"/>
+<text x="285.8" y="379.5" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">63 · 34.1%</text>
+<rect x="20" y="388" width="82.4" height="9" fill="#d3d3db"/>
+<text x="108.4" y="397" font-size="12" fill="#5a5a63">Red and black-ish, 10.3% each</text>
+<text x="26" y="428.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">First non-white button</tspan><tspan fill="#5a5a63">  176</tspan></text>
+<rect x="20" y="437.5" width="236" height="18" fill="#3f3f48"/>
+<text x="249" y="451" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">52 · 29.5%</text>
+<rect x="20" y="459.5" width="100" height="9" fill="#d3d3db"/>
+<text x="126" y="468.5" font-size="12" fill="#5a5a63">Black-ish 12.5%</text>
+<text x="26" y="500" font-size="12.5"><tspan fill="#13131a" font-weight="600">primary token only</tspan><tspan fill="#5a5a63">  149</tspan></text>
+<rect x="20" y="509" width="279.2" height="18" fill="#3f3f48"/>
+<text x="292.2" y="522.5" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">52 · 34.9%</text>
+<rect x="20" y="531" width="80.8" height="9" fill="#d3d3db"/>
+<text x="106.8" y="540" font-size="12" fill="#5a5a63">Red 10.1%</text>
+<text x="26" y="571.5" font-size="12.5"><tspan fill="#13131a" font-weight="600">No near-white buttons</tspan><tspan fill="#5a5a63">  174</tspan></text>
+<rect x="20" y="580.5" width="252.8" height="18" fill="#3f3f48"/>
+<text x="265.8" y="594" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">55 · 31.6%</text>
+<rect x="20" y="602.5" width="105.6" height="9" fill="#d3d3db"/>
+<text x="131.6" y="611.5" font-size="12" fill="#5a5a63">Black-ish 13.2%</text>
+<text x="284.4" y="120" font-size="12" fill="#6749e2" font-weight="600" text-anchor="middle">29.5~36.6%</text>
+<text x="20" y="648.5" font-size="12" fill="#5a5a63">0%</text>
+<text x="100" y="648.5" font-size="12" fill="#5a5a63" text-anchor="middle">10%</text>
+<text x="180" y="648.5" font-size="12" fill="#5a5a63" text-anchor="middle">20%</text>
+<text x="260" y="648.5" font-size="12" fill="#5a5a63" text-anchor="middle">30%</text>
+<text x="340" y="648.5" font-size="12" fill="#5a5a63" text-anchor="end">40%</text>
+</svg>
