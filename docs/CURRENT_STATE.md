@@ -10,16 +10,16 @@
 → 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
 → 보고 방식: **살아 있는 아티팩트 하나**(https://claude.ai/artifact/Nsib1djJMkU1AtC3au9hpd, 원본 `~/.omd-workers/reports/2026-11-21-sprint-report.html`, 그림은 세션 임시 폴더의 `report-img/`에서 같이 올림)에 전·후 또는 새 화면 그림을 넣고 거기서 승인받는다. 별도 HTML 묶음을 만들지 않는다.
 
-**승인 대기:** #133 머지(상세 페이지 첫 화면: 제목 66→40, 버튼 56→40, 900px부터 한 줄. 전·후 그림이 아티팩트에 있다. 머지는 운영 배포라 오너의 말이 필요하다).
+**승인 대기(아티팩트의 카드 순서, 전부 그림이 올라가 있다):**
+1. 상세 페이지 첫 화면 → #133 머지.
+2. 상세 페이지 「화면」 탭(가지 `feat/item-screens-tab`, #133 위에 쌓음, PR 없음): 모양 승인과 **화면 공개 기준**. 공개 결정 전에는 운영에 못 나간다(`OMD_SCREENS_DIR`이 있을 때만 보이고 그림은 `/screens-local/…` 로컬 경로).
+3. `/ko/kana` 페이지 → #134 머지(색인 제외, 메뉴 미연결 그대로).
+4. 블로그 첫 글 → #132 머지 = 게시. 머지 직후 글 안의 저장소 링크 2개를 다시 연다.
+5. 재검증 4곳을 넣는 방식: 「이전 기록」 가운데 오늘 잰 값만 담은 문장(32~43%)은 본문으로 돌리고 나머지는 표시를 단 채 verified로 넣을지. 게이트의 뜻에 닿는 결정이다. 워커 폴더 `~/.omd-workers/reverify3/<id>`, 가려내기 `scripts/workers/sieve-earlier-record.mjs`, 재측정은 네 곳 모두 전부 일치.
 
-**도는 것(끝나면 그림을 아티팩트에 올린다):**
-- 에이전트 `kana-page`: 워크트리 `kana-page`(`feat/kana-page`, main에서), `/ko/kana`. 색인 제외·내비 미연결로 만든다.
-- 에이전트 `screens-tab`: 워크트리 `screens-tab`(`feat/item-screens-tab`, #133 위에서), `OMD_SCREENS_DIR`이 있을 때만 보이는 로컬 전용 탭. 화면 그림은 저장소·배포에 넣지 않는다.
-- Codex 4개: `~/.omd-workers/reverify3/{spoqa,supertone,queenit,peoplefund}`, 고친 지시서(확인 못 한 이전 내용을 「Earlier record, not re-confirmed on <날짜>」 소제목 아래 그대로 둔다. `scripts/workers/make-reverify-order.py`, 가지 `chore/state-1121`). 끝나면 본문 길이·소제목을 이전과 비교하고 `remeasure.mjs`.
+**도는 것:** 에이전트 `ja-writing-2`(일본어 2차 조사 → `kana` 워크트리의 `docs/drafts/kana/writing2/`) · `tw-research`(대만 → 워크트리 `lang-zh`, 가지 `feat/zh-skills`, `docs/drafts/zhuyin/research/`). 다음 차례: 중국 조사(`docs/drafts/pinyin/research/`), 우리 `/design.md` 초안. Microsoft 스타일 가이드 본문(일본어·번체·간체)은 `~/.omd-workers/lang-sources/`와 `~/.omd-workers/kana/sources/`에 뽑아 두었다(저장소에 넣지 않는다).
 
-**이번 오후에 끝난 것:** #131 머지(main `1761fc2d`) · 블로그 대비 표 재측정(`recheck_contrast.mjs`: 23곳 중 18곳 유지, 글의 표를 18곳으로, PR #132) · `diff-walks.mjs`(같은 서비스의 두 촬영을 조작부 스타일·제목 구조·주소로 비교. 같은 날 두 번 찍은 5곳은 비교 가능한 화면이 전부 「같음」) · kana 검사기에 폭 검사(25/43).
-
-**다음(에이전트 자리가 나면):** 우리 `/design.md` 초안 → 일본어 2차 조사(Microsoft 가이드) → 대만·중국 조사 → 시각 효과 스킬 후보.
+**이번 오후에 끝난 것:** #131 머지(main `1761fc2d`) · 상세 페이지 머리 구현 · `/ko/kana` 구현(#134) · 「화면」 탭 구현 · 블로그 대비 표 재측정(18/23, #132) · 재검증 지시서 수정과 재시험 · `diff-walks.mjs`(같은 날 두 번 찍은 5곳은 비교 가능한 화면이 전부 「같음」) · kana 검사기 폭 검사(25/43).
 
 **오너만 할 수 있는 것:** #129·#130 머지 · #133 승인 · 일본어 원어민 검토자 · 폰 세션 · 화면 공개 기준.
 
