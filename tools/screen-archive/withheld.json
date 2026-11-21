@@ -1,17 +1,11 @@
 {
- "about": "Screens of the web sheets that are NOT shown outside this machine: most of what they show was written or photographed by users (posts, listings, reviews, nicknames), or by small businesses and individuals. Judged screen by screen on the 390 and the 1440 first viewport, 2026-11-21, by the main session; the owner has been shown the list (report card 11) and has not yet decided on publication. mark-withheld.mjs writes these into each sheet's screens.json as `withheld: <reason>` on every width of the key; the site's reader and the mock generators leave such records out. A blocked screen (403) is not listed here: it has no image at all.",
- "judged": "2026-11-21",
+ "about": "Screens of the web sheets that are NOT shown outside this machine: most of what they show was written or photographed by users (posts, listings, reviews, nicknames), or by small businesses and individuals. Judged screen by screen on the 390 and the 1440 first viewport, 2026-11-21, by the main session; the owner has been shown the list (report card 11) and has not yet decided on publication. mark-withheld.mjs writes these into each sheet's screens.json as `withheld: <reason>` on every width of the key; the site's reader and the mock generators leave such records out. Since 2026-11-22 a screen whose only problem was people's names and pictures is shot with those masked (web-shoot.mjs, the route's \"mask\") and is not listed here; what stays listed is a screen whose body is people's own writing, which a mask does not remove, or a service whose mask has not been written yet. A blocked screen (403) is not listed here: it has no image at all.",
+ "judged": "2026-11-22",
  "services": {
   "karrot": {
-   "home": "사용자 글과 사진",
-   "buy-sell": "사용자 매물 사진",
-   "search-results": "사용자 매물 사진",
-   "detail": "판매자 닉네임·동네·사진",
-   "community": "사용자 글",
-   "group": "사용자 모임 글",
-   "cars": "사용자 매물 사진",
-   "local": "동네업체가 올린 사진과 후기",
-   "jobs": "구인 글과 올린 사람의 사진"
+   "community": "사용자 글이 본문(사진을 가려도 남음)",
+   "group": "사용자 모임 글이 본문",
+   "jobs": "구인 글이 본문"
   },
   "ohouse": {
    "home": "사용자 집 사진 줄",
