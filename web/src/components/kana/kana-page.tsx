@@ -3,14 +3,17 @@ import { SiteFooterA } from "@/components/brand-a/site-footer";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import data from "@/data/kana-rules.generated.json";
 import { AREA_KO, HOUSE_KO, KANA_COPY, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "./copy";
+import { KanaApp } from "./app";
 import { KanaCompare } from "./compare";
 import { Mixed, SourceLink } from "./parts";
 import "./kana.css";
 
 /**
  * /ko/kana: the research behind the /kana skill (a draft), direction A of the owner's stills (2026-11-21). The rules
- * and the sources' own sentences are the content; none of the Japanese on the page is ours.
+ * and the sources' own sentences are the content. The one exception is #app, a whole app screen whose Japanese is ours
+ * (app-copy.ts), labelled as ours where it renders (owner 2026-11-22); everything else in Japanese is a source quote.
  *   1. first screen: what it is, the draft status, three numbers, two actions
+ *   1a. #app: hangul's moa screen in Japanese, without the rules and with them, toured (app.tsx)
  *   1b. #compare: the sources' own wrong/right pairs set in the components their rules are about, toured (compare.tsx)
  *   2. #rules: the six lead rules as cards, then all the others by the file's areas
  *   3. #house: the house choices, every side with its source
@@ -325,6 +328,8 @@ export function KanaPage() {
             </dl>
           </div>
         </section>
+
+        <KanaApp />
 
         <KanaCompare />
 

@@ -1,0 +1,75 @@
+/* #app on /ko/kana (app.tsx, app-screen.tsx): hangul's moa screen in Japanese, set the same way on both sides, inside
+   hangul's SplitView on the kana page's light ground. moa.css and hangul.css draw the screen, the phones and the pair;
+   this sheet sets the Japanese, adds the sheet's amount field (moa's own error red, #b42318, and 14px radius), and turns the pair's night colours (hangul's hero) into
+   the kana page's own: status colours (err/ok) only on the side labels and the spotlights, Iris on the lit rule and the
+   pressed switch, as in #compare. */
+
+/* ---- the Japanese typesetting, both sides (docs/drafts/kana/references/rules.md, measured-jp.md):
+   the measured stack's first Japanese faces in order (Noto Sans JP 25, Hiragino Kaku Gothic 17, Hiragino Sans 10,
+   Yu Gothic 7, Meiryo 7 of 77; no webfont is added, so Noto Sans JP renders only where it is installed); letter-spacing
+   0 everywhere (JT-05: DADS has no negative token); body 1.6 (JT-01: at least 1.5; the measured body median),
+   headings 1.4 (JT-02; heading median 1.45); no palt (JT-07); normal breaking with line-break: strict (chrome.css on
+   :lang(ja)). Scoped at 0-3-0, over the kana page's ":lang(ja) *" and moa.css's ".moa[data-typo] *" (both 0-2-0). ---- */
+.kn-root .moa[data-typo="ja"]{
+  --moa-ff:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --moa-ls-h:0;--moa-ls:0;--moa-lh-h:1.4;--moa-lh:1.6;
+  --moa-cap:13px;--moa-tab:12px;--moa-wb:normal;--moa-ow:anywhere;
+}
+.kn-root .moa[data-typo="ja"],.kn-root .moa[data-typo="ja"] *{font-family:var(--moa-ff);word-break:normal;overflow-wrap:anywhere;font-feature-settings:normal}
+.kn-root .moa[data-typo="ja"] .moa-time{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+/* the two headings keep a phrase (文節) together where Chrome can (JT-14; elsewhere normal breaking stays) */
+.kn-root .moa[data-typo="ja"] :is(.moa-hello-t,.moa-sheet-t){word-break:auto-phrase}
+.kn-root .moa[data-typo="ja"] .moa-logo-t{font-family:var(--sq-f-latin),-apple-system,BlinkMacSystemFont,sans-serif}
+
+/* ---- what the Japanese screen has that moa does not ---- */
+.ka-recent-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.ka-link{flex:none;font-size:14px;font-weight:600;color:var(--moa-blue-ink)}
+.ka-field{display:flex;flex-direction:column;margin-top:16px}
+.ka-field-l{font-size:13px;font-weight:600;color:var(--moa-ink-3)}
+.ka-input{display:flex;align-items:center;min-height:48px;margin-top:6px!important;padding:0 14px;border-radius:14px;
+  border:1.5px solid #b42318;background:#fff;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--moa-ink)}
+.ka-err{margin-top:8px!important;font-size:14px;font-weight:600;color:#b42318}
+.ka-help{margin-top:4px!important;font-size:13px;color:var(--moa-ink-3)}
+
+/* ---- the line that says the Japanese is ours, always above the phones ---- */
+.ka-composed{max-width:48em;margin-top:16px!important;padding:12px 16px;border-radius:14px;border:1px solid var(--sq-guide-2);
+  background:var(--sq-paper);font-size:15px;line-height:1.65;color:var(--sq-ink)}
+
+/* ---- the pair on the kana page's light ground ---- */
+.ka-sec .hg-split{margin-top:40px}
+/* a wider middle column than hangul's 240px: it holds a reading, not a two-word tag */
+@media (min-width:1152px){.ka-sec .hg-split--hero .hg-split-stage{grid-template-columns:auto minmax(0,300px) auto}}
+.ka-sec .hg-side--before{--moa-focus:var(--sq-err)}
+.ka-sec .hg-side--after{--moa-focus:var(--sq-ok)}
+.ka-sec .hg-split--hero .hg-side--before .hg-side-l{color:var(--sq-err)}
+.ka-sec .hg-split--hero .hg-side--after .hg-side-l{color:var(--sq-ok)}
+
+/* the rules that differ: id (a link to its card) and the Korean reading, every one visible; the tour lights one */
+.ka-sec .ka-tags{gap:6px}
+.ka-sec .hg-split--hero .ka-tag{display:flex;flex-direction:column;gap:1px;padding:8px 12px;border:1px solid var(--sq-guide-2);border-radius:14px;
+  background:var(--sq-paper);color:var(--sq-ink-2);font-size:13px;line-height:1.5;text-align:left}
+.ka-sec .hg-split--hero .ka-tag[data-on]{border-color:var(--sq-primary);background:var(--sq-tint);color:var(--sq-ink)}
+.ka-tag-id{align-self:flex-start;font:650 13px/1.4 var(--sq-f-mono);color:var(--sq-ink);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:3px}
+.ka-tag-id:hover{text-decoration-color:currentColor}
+.ka-tag[data-on] .ka-tag-id{color:var(--sq-primary)}
+.ka-tag-id:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+
+/* the switch and its hint (narrow only, split-view.tsx) */
+.ka-sec .hg-split--hero .hg-switch{background:var(--sq-cell)}
+.ka-sec .hg-split--hero .hg-switch-btn{color:var(--sq-ink-2)}
+.ka-sec .hg-split--hero .hg-switch-btn[aria-pressed="true"]{background:var(--sq-primary);color:var(--sq-on-primary)}
+.ka-sec .hg-split--hero .hg-switch-btn:focus-visible{outline-color:var(--sq-focus)}
+.ka-sec .hg-split--hero .hg-switch-hint{max-width:400px;color:var(--sq-ink-2);text-align:center}
+
+@media (prefers-reduced-motion:reduce){
+  .ka-sec .ka-tag{transition:none}
+}
+/* hangul.css moves the middle column under the pair below 1152px; the readings go in two columns there, one on a phone */
+@media (max-width:1151px){
+  .ka-sec .hg-split--hero .ka-tags{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:760px;margin:0 auto}
+}
+@media (max-width:879px){
+  .ka-sec .hg-split{margin-top:28px}
+  .ka-sec .hg-split--hero .ka-tags{grid-template-columns:minmax(0,1fr);max-width:400px}
+  .ka-sec .hg-split--hero .ka-tag{padding:8px 12px}
+}

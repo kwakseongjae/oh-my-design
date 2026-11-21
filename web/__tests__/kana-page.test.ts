@@ -1,19 +1,23 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { metadata } from "@/app/(ko)/ko/kana/page";
 import { KanaPage } from "@/components/kana/kana-page";
-import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
+import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_COPY, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
+import { APP_CANCEL, APP_PAIRS, APP_SHARED, appStrings } from "@/components/kana/app-copy";
 import data from "@/data/kana-rules.generated.json";
 
 /**
  * /ko/kana (2026-11-21): the page is the research behind the draft /kana skill. Two promises are tested here:
- * every Japanese string on it is a copy out of writing-rules.md (none is ours), and it stays unreleased (noindex,
- * no sitemap, no header or footer link) until the owner says otherwise.
+ * every Japanese string on it is a copy out of writing-rules.md, except the #app screen's, which is ours (app-copy.ts,
+ * owner 2026-11-22), stays inside #app and is labelled as ours there; and the page stays unreleased (noindex, no
+ * sitemap, no header or footer link) until the owner says otherwise.
  */
 
 const WEB = path.resolve(__dirname, "..");
@@ -34,6 +38,9 @@ function dataStrings(): string[] {
 
 const html = renderToStaticMarkup(createElement(KanaPage));
 const main = html.slice(html.indexOf("<main"), html.indexOf("</main>"));
+/** #app, the one section with Japanese of our own, and the page without it */
+const appSection = main.slice(main.indexOf('<section id="app"'), main.indexOf('<section id="compare"'));
+const mainWithoutApp = main.replace(appSection, "");
 /** the page's text, one element's text per line: the page's own 「」 around a quote (kn-qm) and labels are not part of it */
 const text = (s: string) =>
   s
@@ -84,17 +91,24 @@ describe("/ko/kana data", () => {
 });
 
 describe("/ko/kana page", () => {
-  it("every Japanese run on the page, quotes and Korean copy alike, is inside a string of the generated data", () => {
+  it("every Japanese run outside #app, quotes and Korean copy alike, is inside a string of the generated data", () => {
     // the data's strings, and the same with writing-rules.md's \`code\` marks taken out (the page sets those as <code>)
     const hay = dataStrings().flatMap((s) => [s, s.replace(/`/g, "")]).join("\n");
-    const runs = [...new Set(text(main).match(JA_RUNS) ?? [])];
+    const runs = [...new Set(text(mainWithoutApp).match(JA_RUNS) ?? [])];
     expect(runs.length).toBeGreaterThan(100);
+    expect(runs.filter((r) => !hay.includes(r))).toEqual([]);
+  });
+
+  it("inside #app, every Japanese run is in the generated data or in app-copy.ts", () => {
+    const hay = [...dataStrings(), ...appStrings()].join("\n");
+    const runs = [...new Set(text(appSection).match(JA_RUNS) ?? [])];
+    expect(runs.length).toBeGreaterThan(10);
     expect(runs.filter((r) => !hay.includes(r))).toEqual([]);
   });
 
   it("one h1, the sections in order, all 51 rule cards once, the lead six first", () => {
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
-    const order = ['id="kn-h1"', '<section id="compare"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
+    const order = ['id="kn-h1"', '<section id="app"', '<section id="compare"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
     expect(order.every((i) => i > -1)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
     const cards = [...html.matchAll(/<article id="(kw-\d+)"/g)].map((m) => m[1].toUpperCase());
@@ -122,7 +136,7 @@ describe("/ko/kana page", () => {
   });
 
   it("the actions: the rules, then the sources list on the page; no install command", () => {
-    const hero = main.slice(0, main.indexOf('<section id="compare"'));
+    const hero = main.slice(0, main.indexOf('<section id="app"'));
     expect(hero).toContain('href="#rules"');
     expect(hero).toContain(`규칙 ${data.rules.length}개 보기`);
     expect(hero).toContain('href="#sources"');
@@ -199,6 +213,117 @@ describe("/ko/kana comparison (#compare)", () => {
     const panels = section.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? [];
     expect(panels.length).toBeGreaterThan(0);
     for (const p of panels) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
+  });
+});
+
+describe("/ko/kana app screen (#app): Japanese of our own, labelled and kept in its section", () => {
+  const RULE_IDS = new Set(data.rules.map((r) => r.id));
+  const HOUSE_IDS = new Set(data.houseChoices.map((c) => c.id));
+  const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+  /** a side's strings as the section renders them: data-k marks each string the tour stops on */
+  const phone = (side: "ai" | "fix") => {
+    const start = appSection.indexOf(`data-copy="${side}"`);
+    expect(start, side).toBeGreaterThan(-1);
+    return appSection.slice(start, appSection.indexOf('class="moa-focus"', start));
+  };
+  const sourceSides = (p: (typeof APP_PAIRS)[number]) => (p.source ? [p[p.source.side]] : []);
+  /** the composed strings: every app string that is not a source's own (those are checked against the data below) */
+  const composed = () => {
+    const src = new Set([...APP_PAIRS.flatMap(sourceSides), APP_CANCEL.text]);
+    return appStrings().filter((s) => !src.has(s));
+  };
+
+  it("sits between the first screen and #compare: two phones, one per side, each string with its side's text", () => {
+    expect(appSection.length).toBeGreaterThan(0);
+    expect(appSection.match(/class="hg-phone"/g)).toHaveLength(2);
+    for (const side of ["ai", "fix"] as const) {
+      const ph = phone(side);
+      for (const p of APP_PAIRS) {
+        // the first text after the marked element's opening tag (the toast and the banner mark their card, which opens with art)
+        const m = ph.match(new RegExp(`data-k="${p.key}"[^>]*>(?:<[^>]+>)*([^<]+)<`));
+        expect(m, `${side} ${p.key}`).toBeTruthy();
+        expect(decode(m![1]), `${side} ${p.key}`).toBe(p[side]);
+      }
+    }
+  });
+
+  it("the line that says the Japanese is ours renders in the section, above the phones, every time", () => {
+    const line = KANA_COPY.app.composed;
+    expect(line).toMatch(/우리가 지은/);
+    expect(line).toMatch(/인용한 것이 아닙니다/);
+    expect(line).toMatch(/원어민은 아직/);
+    expect(appSection.split(line)).toHaveLength(2);
+    expect(appSection.indexOf(line)).toBeLessThan(appSection.indexOf('class="hg-phone"'));
+  });
+
+  it("every pair names a real rule, not a house choice or an unchecked one, has a Korean reading, and differs", () => {
+    expect(APP_PAIRS.length).toBeGreaterThanOrEqual(6);
+    expect(new Set(APP_PAIRS.map((p) => p.key)).size).toBe(APP_PAIRS.length);
+    for (const p of APP_PAIRS) {
+      expect(RULE_IDS.has(p.rule), p.key).toBe(true);
+      expect(HOUSE_IDS.has(p.rule), p.key).toBe(false);
+      expect(["KW-39", "KW-10"], p.key).not.toContain(p.rule);
+      expect(RULE_KO[p.rule], p.key).toBeTruthy();
+      expect(p.ai, p.key).not.toBe(p.fix);
+      expect(p.basis.length, p.key).toBeGreaterThan(0);
+      // the tour lights the pair's rule, and the rule's tag links its card
+      expect(appSection, p.key).toContain(`data-rule="${p.rule}"`);
+      expect(appSection, p.key).toContain(`href="#${p.rule.toLowerCase()}"`);
+    }
+  });
+
+  it("a side marked as a source's own string is one, character for character, from the generated data", () => {
+    const hay = dataStrings().join("\n");
+    for (const s of [...APP_PAIRS.flatMap(sourceSides), APP_CANCEL.text]) expect(hay, s).toContain(s);
+    expect(data.sources.some((s) => s.key === APP_CANCEL.key)).toBe(true);
+    for (const p of APP_PAIRS) if (p.source) expect(data.sources.some((s) => s.key === p.source!.key), p.key).toBe(true);
+  });
+
+  it("no composed string appears outside #app: not in a rule card, a quote, #compare or anywhere else", () => {
+    const lines = text(mainWithoutApp)
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean);
+    const words = new Set<string>([...APP_SHARED.recent, ...APP_SHARED.tabs, APP_SHARED.deposit, APP_SHARED.transfer, APP_SHARED.amountLabel, APP_SHARED.deltaLead]);
+    for (const s of composed()) {
+      // a shared word (送金, ホーム …) may sit inside a quoted sentence; it must not stand alone as an element's text
+      if (words.has(s)) expect(lines, s).not.toContain(s);
+      else expect(lines.filter((l) => l.includes(s)), s).toEqual([]);
+    }
+  });
+
+  const checker = path.join(ROOT, "scripts", "lang", "kana-copy-check.mjs");
+  it.skipIf(!fs.existsSync(checker))("kana-copy-check: nothing on the fixed screen, findings on the other one", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kana-app-"));
+    const s = APP_SHARED;
+    const shared = [s.amount, `${s.deltaLead} ${s.delta}`, s.deposit, s.transfer, s.recentH, ...s.recent, s.amountLabel, s.amountValue, ...s.tabs];
+    // the send button in a <button> (KW-15 reads buttons only), every other string in a <p>
+    const check = (name: string, side: "ai" | "fix" | null) => {
+      const file = path.join(dir, `${name}.tsx`);
+      const ps = side ? APP_PAIRS.filter((p) => p.key !== "send").map((p) => p[side]) : shared;
+      const buttons = side ? [APP_CANCEL.text, APP_PAIRS.find((p) => p.key === "send")![side]] : [];
+      const body = [...ps.map((x) => `    <p>${x}</p>`), ...buttons.map((x) => `    <button>${x}</button>`)].join("\n");
+      fs.writeFileSync(file, `export function S() {\n  return (\n    <div>\n${body}\n    </div>\n  );\n}\n`);
+      let out = "";
+      try {
+        out = execFileSync(process.execPath, [checker, "--json", file], { encoding: "utf8" });
+      } catch (e) {
+        out = String((e as { stdout?: string }).stdout ?? "");
+      }
+      const j = JSON.parse(out) as { summary: { WARN: number; FYI: number }; findings: { rule: string }[] };
+      return { ...j.summary, rules: [...new Set(j.findings.map((f) => f.rule))].sort() };
+    };
+    try {
+      expect(check("fix", "fix")).toMatchObject({ WARN: 0, FYI: 0 });
+      expect(check("shared", null)).toMatchObject({ WARN: 0, FYI: 0 });
+      const ai = check("ai", "ai");
+      expect(ai.WARN).toBe(2);
+      // the rules app-copy.ts's header records: every pair's rule but KW-38, which the checker leaves to a reader.
+      // KW-35 (a kanji ratio over the whole fixture, on its threshold here) is not a pair's rule and is not held.
+      expect(ai.rules.filter((r) => r !== "KW-35")).toEqual(APP_PAIRS.map((p) => p.rule).filter((r) => r !== "KW-38").sort());
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 

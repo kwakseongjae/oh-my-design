@@ -2,8 +2,9 @@
  * /ko/kana — the Korean chrome around the kana writing rules. The rules, quotes, examples, sources and font counts
  * come from data/kana-rules.generated.json (scripts/lang/build-kana-page-data.mjs); everything here is page copy in
  * Korean. The one-line readings restate each English rule and are not quotes. The only Japanese allowed in this file is
- * a word that also appears in the generated data (__tests__/kana-page.test.ts checks it): nothing Japanese of our own
- * ships. No native Japanese reader has read the rules; a model reviewed them on 2026-11-21.
+ * a word that also appears in the generated data (__tests__/kana-page.test.ts checks it). The one place on the page with
+ * Japanese of our own is the #app screen, whose strings live in app-copy.ts and are labelled as ours wherever they
+ * render (app.composed below). No native Japanese reader has read the rules; a model reviewed them on 2026-11-21.
  */
 
 export const KANA_PATH = "/ko/kana";
@@ -275,6 +276,23 @@ export const KANA_COPY = {
     ctaSources: "출처 목록 보기",
     stats: { rules: "규칙", house: "출처가 갈려 고르지 않은 곳", services: "글꼴을 잰 일본 서비스" },
   },
+  app: {
+    h2: "앱 화면 하나를 일본어로 옮기면",
+    intro:
+      "한국 팀이 핀테크 앱의 홈 화면을 일본어로 낸다고 해 봅시다. 왼쪽은 규칙의 출처들이 피하라고 든 형태로 옮긴 문구, 오른쪽은 같은 화면을 이 페이지의 규칙대로 고친 문구입니다. 두 화면은 문구만 다르고, 다른 곳마다 멈춰 어느 규칙인지 짚습니다.",
+    composed:
+      "이 화면의 일본어는 양쪽 모두 우리가 지은 문장이고, 출처에서 인용한 것이 아닙니다. 일본어 원어민은 아직 이 문장을 읽지 않았습니다.",
+    sides: {
+      before: "규칙 없이 옮긴 화면",
+      after: "규칙대로 고친 화면",
+      group: "어느 쪽 화면을 볼지",
+      hintAuto: "다른 곳을 하나씩 짚어 갑니다. 누르면 멈춥니다.",
+      hintPaused: "멈췄습니다. 눌러서 두 화면을 번갈아 보세요.",
+    },
+    tagsLabel: "두 화면에서 다른 곳",
+    /** a tag's rule id links to its card below */
+    toCard: "규칙 카드로",
+  },
   compare: {
     h2: "출처의 예시를 화면에 놓아 보면",
     intro:
@@ -304,7 +322,7 @@ export const KANA_COPY = {
   rules: {
     h2: "규칙은 이렇게 생겼습니다",
     intro:
-      "규칙마다 출처의 문장을 원문 그대로 붙였습니다. 세기는 같은 말을 하는 출처가 어디인지로 적었습니다. 법이 정한 의무인 KW-68 말고는 어느 출처도 규칙을 강제하지 않습니다. 출처가 붙인 단서(원칙적으로, 되도록, In general)는 규칙에도 남겼습니다. 일본어는 모두 인용이고, Microsoft는 규칙을 영어로 적어서 그 문장을 영어 그대로 붙였습니다. Microsoft 예시 앞의 +는 권하는 형태, −는 피하는 형태입니다. 그 위의 한국어 한 줄은 영어로 적은 규칙을 우리가 옮긴 것입니다.",
+      "규칙마다 출처의 문장을 원문 그대로 붙였습니다. 세기는 같은 말을 하는 출처가 어디인지로 적었습니다. 법이 정한 의무인 KW-68 말고는 어느 출처도 규칙을 강제하지 않습니다. 출처가 붙인 단서(원칙적으로, 되도록, In general)는 규칙에도 남겼습니다. 규칙 카드의 일본어는 모두 인용이고, Microsoft는 규칙을 영어로 적어서 그 문장을 영어 그대로 붙였습니다. Microsoft 예시 앞의 +는 권하는 형태, −는 피하는 형태입니다. 그 위의 한국어 한 줄은 영어로 적은 규칙을 우리가 옮긴 것입니다.",
     allH2: "영역별 규칙",
     allIntro: (n: number, lead: number) => `규칙 ${n}개를 영역별로 모았습니다. 앞에서 본 ${lead}개는 각 영역 머리에 번호로만 적었습니다.`,
     seenAbove: "앞에서 본 규칙",
