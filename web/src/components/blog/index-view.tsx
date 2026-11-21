@@ -8,7 +8,6 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BlogFooter } from "./blog-footer";
 import { BlogHeader } from "./blog-header";
-import { BlogHtmlLang } from "./blog-lang";
 import { BLOG_CHROME, formatPostDate } from "@/lib/blog/i18n";
 import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import { listPosts } from "@/lib/blog/posts";
@@ -21,7 +20,6 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <BlogHtmlLang locale={locale} />
       <BlogHeader locale={locale} switchTo={blogIndexHref(other)} />
 
       <section id="main" className="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6">

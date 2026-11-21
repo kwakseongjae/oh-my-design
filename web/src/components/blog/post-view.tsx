@@ -7,11 +7,11 @@ import { ArrowLeft } from "lucide-react";
 import { Markdown } from "@/components/markdown";
 import { BlogFooter } from "./blog-footer";
 import { BlogHeader } from "./blog-header";
-import { BlogHtmlLang } from "./blog-lang";
 import { BLOG_CHROME, formatPostDate } from "@/lib/blog/i18n";
 import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import type { BlogPost } from "@/lib/blog/posts";
 import { blogIndexHref, blogPostHref, siteHref } from "@/lib/site";
+import { docsHref } from "@/lib/docs/locales";
 
 export function BlogPostView({
   post,
@@ -31,7 +31,6 @@ export function BlogPostView({
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <BlogHtmlLang locale={post.locale} />
       <BlogHeader locale={locale} switchTo={switchTo} />
 
       {/* Korean posts break between words, not syllables (/hangul HG-10: keep-all, paired with
@@ -87,7 +86,7 @@ export function BlogPostView({
             npx oh-my-design-cli@latest
           </pre>
           <Link
-            href={siteHref("/docs/en")}
+            href={siteHref(docsHref(locale))}
             className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
           >
             {chrome.ctaLink}
