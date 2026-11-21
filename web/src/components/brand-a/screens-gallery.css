@@ -2,7 +2,7 @@
    (components/screens/landing-row.tsx). Loaded only with those: the gallery is its own route, and the landing's row is
    its own chunk, rendered only where the local screens folder exists. Shared controls (the width switch, icon button,
    chip, dialog) are in screens-ui.css. Tokens: --sq-* (styles/brand-a.css); no new colours; Iris only on the
-   gallery button. Scale of 2026-11-21: page title .sq-page-title, controls 32/40 (44 on a phone), shelf heading 26/760.
+   landing section's small label. Scale of 2026-11-21: page title .sq-page-title, controls 32/40 (44 on a phone), shelf heading 26/760.
    Layout from the stills g-shelves, g-shelves-390 and g-landing. Prefix sq-gal- (the catalog showcase owns sq-sc-). */
 
 .sq-gal{padding-top:40px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
@@ -73,8 +73,9 @@ a.sq-gal-frame{cursor:pointer}
 .sq-gal-land-p{margin-top:12px;font-size:18px;color:var(--sq-ink-2);max-width:40em}
 .sq-gal-land-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:32px 0 20px}
 .sq-gal-land-chips{display:flex;flex-wrap:wrap;gap:8px}
-.sq-gal-land-cta{display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-left:auto;padding:0 22px;border-radius:var(--sq-r-pill);background:var(--sq-primary);color:var(--sq-on-primary);font-size:16px;font-weight:700;white-space:nowrap;text-decoration:none;transition:background-color .15s}
-.sq-gal-land-cta:hover{background:var(--sq-primary-hover)}
+/* outlined, as in the still: the catalog showcase's filled archive button sits just above */
+.sq-gal-land-cta{display:inline-flex;align-items:center;gap:8px;min-height:48px;margin-left:auto;padding:0 22px;border-radius:var(--sq-r-pill);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);color:var(--sq-ink);font-size:16px;font-weight:700;white-space:nowrap;text-decoration:none;transition:background-color .15s}
+.sq-gal-land-cta:hover{background:var(--sq-cell)}
 .sq-gal-land-cta:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
 .sq-gal-land-cta svg{width:18px;height:18px}
 .sq-gal-land-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:16px}
