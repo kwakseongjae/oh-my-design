@@ -1,7 +1,7 @@
 // Japanese writing checker (scripts/lang/kana-copy-check.mjs): every rule's hit and near-miss fixture, the
 // --json shape, exit codes, and provenance: every Japanese string in the fixtures, the KW rule file, the coverage
-// table, the SKILL.md section and the checker itself must come from a quote in docs/drafts/kana/writing/rules.md
-// or verdicts.md.
+// tables, the SKILL.md section and the checker itself must come from a quote in docs/drafts/kana/writing/rules.md,
+// writing/verdicts.md, writing2/rules.md or writing2/verdicts.md (the two research passes).
 import { execFileSync, spawnSync } from 'node:child_process';
 import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -27,12 +27,10 @@ const RULES = {
   'KW-06': { FYI: 3 },
   'KW-07': { FYI: 1 },
   'KW-09': { WARN: 4 },
-  'KW-11': { FYI: 1 },
   'KW-12': { FYI: 2 },
   'KW-13': { FYI: 1 },
   'KW-14': { FYI: 1 },
   'KW-15': { FYI: 1 },
-  'KW-17': { FYI: 2 },
   'KW-18': { FYI: 1 },
   'KW-20': { FYI: 1 },
   'KW-23': { FYI: 2 },
@@ -48,12 +46,15 @@ const RULES = {
   'KW-55': { FYI: 1 },
   'KW-56': { FYI: 3 },
   'KW-57': { FYI: 3 },
+  'KW-62': { FYI: 1 },
+  'KW-65': { FYI: 1 },
 };
 // a hit fixture whose quoted string also trips another rule: KW-07's label is Mozilla's NG string (KW-06);
 // WordPress's passive example is written with U+FF5E (KW-46)
 const ALSO = { 'KW-07': ['KW-06'], 'KW-13': ['KW-46'] };
 
-// ---- the quotes: corner-bracket spans (nested too) and backtick spans, from the quote lines of rules.md and all of verdicts.md
+// ---- the quotes: corner-bracket spans (nested too) and backtick spans, from the quote lines of each pass's rules.md and all
+// of its verdicts.md
 const JA_RUN = /[\u3000-\u30FF\u3400-\u9FFF\uFF00-\uFFEF\u25CB\u25EF\u203B\u2026\u2015\u2212]+/g;
 const KANA_KANJI = /[\u3040-\u30FF\u3400-\u9FFF]/;
 function spans(text) {
@@ -68,21 +69,29 @@ function spans(text) {
   }
   return out;
 }
-function corpus() {
-  const rules = readFileSync(resolve(KANA, 'writing/rules.md'), 'utf8');
-  const verdicts = readFileSync(resolve(KANA, 'writing/verdicts.md'), 'utf8');
+function quoteLines(path) {
+  const rules = readFileSync(resolve(KANA, path), 'utf8');
   let block = '';
-  const kept = rules.split('\n').filter((l) => {
+  return rules.split('\n').filter((l) => {
     const h = /^#### (UW-\d+)/.exec(l);
     if (h) block = h[1];
     if (/^\s*#/.test(l) || /^\s*- (Test|Illustration|Kind|Strength)\b/i.test(l) || /Illustration \(ours/.test(l)) return false;
     // verdicts.md: UW-19's first DADS quote is not verbatim in rules.md, and UW-36 joins Mozilla's example words
     // that the page prints one by one; the verdict carries the page's text for both
     if (block === 'UW-19' && /^- DADS-btn:/.test(l)) return false;
-    if (block === 'UW-36' && /^- MZ \/ MZ-ed:/.test(l)) return false;
+    if (path === 'writing/rules.md' && block === 'UW-36' && /^- MZ \/ MZ-ed:/.test(l)) return false;
     return true;
   });
-  return keepJapanese([...spans(kept.join('\n')), ...spans(verdicts)]);
+}
+// Microsoft states its rules in English and writes its Japanese forms inside them in straight double quotes
+// ("...しますか?"); in the second pass those count as quotes too
+const straight = (text) => [...text.matchAll(/"([^"\n]*?[\u3040-\u30FF\u3400-\u9FFF][^"\n]*?)"/g)].map((m) => m[1]);
+function corpus() {
+  const first = quoteLines('writing/rules.md').join('\n');
+  const second = quoteLines('writing2/rules.md').join('\n');
+  const v1 = readFileSync(resolve(KANA, 'writing/verdicts.md'), 'utf8');
+  const v2 = readFileSync(resolve(KANA, 'writing2/verdicts.md'), 'utf8');
+  return keepJapanese([...spans(first), ...spans(v1), ...spans(second), ...straight(second), ...spans(v2), ...straight(v2)]);
 }
 const keepJapanese = (list) => list.filter((s) => KANA_KANJI.test(s) || /[\u3000-\u303F\uFF00-\uFFEF]/.test(s));
 // references/rules.md (JW, JT): quote lines only; composed and half-composed examples are left out
@@ -150,7 +159,7 @@ describe('kana-copy-check', () => {
 
   it('reads roles from the element: a button, a heading, a dialog', () => {
     expect(scan('kw-15/miss').report.findings).toEqual([]); // OK in a paragraph
-    expect(scan('kw-17/miss').report.findings).toEqual([]); // the genitive form in a heading
+    expect(scan('kw-65/miss').report.findings).toEqual([]); // Ubie's ❌ header outside a dialog
     const dialog = scan('kw-20/hit').report.findings;
     expect(dialog.map((f) => f.file.split('/').pop() + ':' + f.line)).toEqual(['dialog.html:8']); // the aria-label
   });
@@ -171,7 +180,7 @@ describe('kana-copy-check', () => {
       expect(f.rule).toMatch(/^KW-\d{2}$/);
       expect(Number.isInteger(f.line) && f.line > 0).toBe(true);
       expect(f.match.length).toBeGreaterThan(0);
-      expect(f.source).toMatch(/^(DADS|SH|UB|SP|PB|MZ|WP)/);
+      expect(f.source).toMatch(/^(DADS|SH|UB|SP|PB|MZ|WP|MS)/);
       expect(f.source).toMatch(/(government design system|company guide|translation guide)/);
     }
   });
@@ -222,7 +231,7 @@ describe('kana-copy-check', () => {
       }
     });
 
-    it.each(['references/writing-rules.md', 'writing/coverage.md'])('%s writes no unquoted Japanese', (p) => {
+    it.each(['references/writing-rules.md', 'writing/coverage.md', 'writing2/coverage.md'])('%s writes no unquoted Japanese', (p) => {
       // each rule section is held to its own quote set: the writing research, plus references/rules.md for ALSO_REFERENCES
       for (const section of readFileSync(resolve(KANA, p), 'utf8').split(/^(?=#### )/m)) {
         const id = /^#### (KW-\d{2})/.exec(section)?.[1];
@@ -246,20 +255,27 @@ describe('kana-copy-check', () => {
   });
 
   describe('coverage', () => {
-    const cov = readFileSync(resolve(KANA, 'writing/coverage.md'), 'utf8');
-    const rows = [...cov.matchAll(/^\| (UW-\d{2}) \|/gm)].map((m) => m[1]);
+    const cov1 = readFileSync(resolve(KANA, 'writing/coverage.md'), 'utf8');
+    const cov2 = readFileSync(resolve(KANA, 'writing2/coverage.md'), 'utf8');
+    const cov = cov1 + '\n' + cov2;
+    const rowsOf = (text) => [...text.matchAll(/^\| (UW-\d{2}) \|/gm)].map((m) => m[1]);
+    const uw = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => 'UW-' + String(from + i).padStart(2, '0'));
     const kwRules = [...readFileSync(resolve(KANA, 'references/writing-rules.md'), 'utf8').matchAll(/^#### (KW-\d{2}) \((UW-\d{2})/gm)];
+    const sorted = (a) => [...a].sort();
 
-    it('lists all 57 candidates once, in order', () => {
-      expect(rows).toEqual(Array.from({ length: 57 }, (_, i) => 'UW-' + String(i + 1).padStart(2, '0')));
+    it('lists all 57 first-pass candidates once, in order, and the 13 second-pass candidates and 8 additions', () => {
+      expect(rowsOf(cov1)).toEqual(uw(1, 57));
+      expect(rowsOf(cov2)).toEqual(uw(58, 70));
+      const adds = [...cov2.matchAll(/^\| Adds to (UW-\d{2}) \|/gm)].map((m) => m[1]);
+      expect(adds).toEqual(['UW-06', 'UW-09', 'UW-10', 'UW-15', 'UW-16', 'UW-17', 'UW-36', 'UW-37']);
     });
 
     it('agrees with the rule file: each KW rule carries its candidate number, and the checked rules have a check', () => {
-      for (const [, kw, uw] of kwRules) expect(kw.slice(3)).toBe(uw.slice(3));
+      for (const [, kw, c] of kwRules) expect(kw.slice(3)).toBe(c.slice(3));
       const inCov = [...cov.matchAll(/^\| UW-\d{2} \| [^|]+ \| (KW-\d{2})/gm)].map((m) => m[1]);
-      expect(inCov).toEqual(kwRules.map((m) => m[1]));
+      expect(sorted(inCov)).toEqual(sorted(kwRules.map((m) => m[1])));
       const checked = [...cov.matchAll(/^\| UW-\d{2} \| [^|]+ \| [^|]+ \| (KW-\d{2}) (WARN|FYI)/gm)].map((m) => m[1]);
-      expect(checked).toEqual(Object.keys(RULES));
+      expect(sorted(checked)).toEqual(sorted(Object.keys(RULES)));
     });
   });
 });

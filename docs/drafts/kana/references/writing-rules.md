@@ -309,7 +309,7 @@ No rule here is required by any source, except KW-68, which states a legal duty.
 - Strength: translation guides only (Microsoft, for translating "Do you want to …?" and "Would you like to …?"). No company guide states it; SmartHR's and Ubie's dialog examples use the same form (KW-63). The width of the question mark is not part of this rule (UW-42): Microsoft's quotes are characters from its PDF's text layer, which do not settle a width.
 - Quote: MS “For the sentences asking the customer which action to take, such as "Do you want to ...?" or "Would you like to ...?", translate to "...しますか?"”; MS “Avoid translating to "....してもよろしいですか?" because the agent of action is not the customer in this way.”
 - Example: MS − 「このまま続けてもよろしいですか?」 → + 「このまま続けますか?」.
-- Checker: **KW-62, FYI**: してもよろしいですか (the form Microsoft says to avoid).
+- Checker: **KW-62, FYI**: てもよろしいですか, the frame of the form Microsoft says to avoid and of its minus example.
 
 #### KW-63 (UW-63, rewritten to the verdict) · Before a destructive act, ask with a question; SmartHR also names the target, says that the act cannot be undone, and needs no confirmation when the act can be undone.
 - Kind: WRITE.

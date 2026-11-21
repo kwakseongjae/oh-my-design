@@ -234,7 +234,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-61 · SmartHR: a dialog title is 「{対象}の{アクション}」, its confirm button 「{アクション}」; screen titles and field names are nouns.** `SmartHR` only.
 - **JW-62 · SmartHR: descriptions are full sentences, not 体言止め; audit-log entries are 体言止め** (「ユーザーを作成しました」 → 「ユーザーを作成」). `SmartHR`.
 - **JW-63 · A title names the subject and the document's nature; in public-facing text avoid a bare 「…について」; keep it to one line.** Worded as advice (「適当である」「とよい」). `公用文`.
-- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** No sourced example. Judgment only (a script can flag a message with no 対処 such as 〜してください). Apology wording has one source, WordPress, for text translated from English (KW-11); no company or government page read covers it. `SmartHR`.
+- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** No sourced example. Judgment only (a script can flag a message with no 対処 such as 〜してください). Apology wording: two translation guides disagree (WordPress drops it, Microsoft translates it in errors that cause serious problems; `references/writing-rules.md`, UW-58); no company or government page read covers it. `SmartHR`.
 
 ### Readers and fairness
 
@@ -246,13 +246,13 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 
 ## 4c. Writing rules from company guides, translation guides and DADS components (KW)
 
-The 2026-11-21 round read four company design-system writing guides (SmartHR, Ubie, Ameba Spindle, GMO Pepabo), DADS component pages and two guides for translating into Japanese (Mozilla, WordPress). What held up under an independent reader's check is in [`references/writing-rules.md`](./references/writing-rules.md): 43 rules, KW-nn, each numbered after its research candidate, with its strength in words ("one company's guide", "2 of 4 company guides", "government design system", "translation guides only") and a quoted example only where the source gives one. Apply them like the JW rules above, at that strength and scope. Where a KW rule and a JW rule cover the same point, the KW rule adds sources; it overrides nothing.
+The 2026-11-21 rounds read four company design-system writing guides (SmartHR, Ubie, Ameba Spindle, GMO Pepabo), DADS component pages, three guides for translating into Japanese (Mozilla, WordPress and, in the second pass, Microsoft's Japanese localization style guide) and the National Tax Agency's page on total price display. What held up under an independent reader's check is in [`references/writing-rules.md`](./references/writing-rules.md): 51 rules, KW-nn, each numbered after its research candidate, with its strength in words ("one company's guide", "2 of 4 company guides", "government design system", "translation guides only", and "statutory duty" for the one legal duty, KW-68) and a quoted example only where the source gives one. Apply them like the JW rules above, at that strength and scope. Where a KW rule and a JW rule cover the same point, the KW rule adds sources; it overrides nothing.
 
-Twelve topics are house choices with sources on each side: action labels with or without the する ending, success wording, the final long vowel, a typed space beside Latin text, 。 on a single sentence, the width of exclamation and question marks, the width of parentheses, how UI names are bracketed in running text, the width of the colon, dates, times, and the space between a number and its unit. They are under "The project's DESIGN.md decides" in that file. Don't flag either side.
+Sixteen topics are house choices with sources on each side: action labels with or without the する ending, joining a button's object with を or の, success wording, the final long vowel, a space or a 中黒 inside a katakana compound, a typed space beside Latin text, 。 on a single sentence, the width of exclamation and question marks, the width of parentheses, how UI names are bracketed in running text, the width of the colon, dates, times, the space between a number and its unit, the apology in an error translated from English, and the polite お- and ご- forms of a few instructive verbs. They are under "The project's DESIGN.md decides" in that file. Don't flag either side.
 
 **Writing checker:** `node scripts/lang/kana-copy-check.mjs [--json|--format=github] [--strict] <files-or-dirs>` (in the OmD repository until the skill ships).
 - It reads text, Markdown, HTML, JSX/TSX, Vue, Svelte, Astro and JS/TS string literals.
-- It tests the 25 KW rules that a pattern, a code point or a count can decide.
+- It tests the 25 of the 51 KW rules that a pattern, a code point or a count can decide.
 - WARN only for KW-09 and KW-26's first check: there two company guides, or DADS and two company guides, give that exact form as wrong. Everything else is FYI, and there is no BLOCK.
 - Every finding gives the matched text and the source key.
 - Chinese text shares the kanji range: only the kanji-share rule (KW-35) skips strings without kana, so on a Chinese string other rules can fire.
@@ -337,7 +337,7 @@ The first drafts of the rule files claimed these; the independent check found no
 - readings in parentheses, or ruby built from positioned spans, as defects (JT-28);
 - `unicode-range` slicing on a self-hosted Japanese font (JT-24); naming `Yu Gothic Medium` for weight 400 on Windows (JT-23); any per-OS Japanese font stack;
 - 。 or no 。 on buttons, labels and menus (JW-39); a typed space between Japanese and Latin text as right or wrong: Mozilla and WordPress type one, JTF and SmartHR don't, so it is a house choice (JW-57; `references/writing-rules.md`, UW-40);
-- rules on 「〜になります」 or 「〜のほう」: no source opened has one. あなた in UI text and an apology at the start of an error each have one source, WordPress, for text translated from English (KW-12, KW-11); no company or government page read states either.
+- rules on 「〜になります」 or 「〜のほう」: no source opened has one. あなた in UI text has one source, WordPress, for text translated from English (KW-12); for an apology in an error the two translation guides that cover it disagree (WordPress drops it, Microsoft translates it as a formal apology; `references/writing-rules.md`, UW-58); no company or government page read states either.
 
 Also:
 - Don't carry Korean habits over. `keep-all` alone lets long Japanese text overflow (JT-13, the researcher's reading of CSS Text 3), and hangul's tracking floors and size rules have no Japanese source.

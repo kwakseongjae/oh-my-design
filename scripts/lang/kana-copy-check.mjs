@@ -50,13 +50,11 @@ const SOURCE = {
   'KW-02': 'MZ, WP, SH-app (one company guide, SmartHR, and two translation guides)',
   'KW-06': 'MZ-ed (translation guide only, Mozilla; for ordinary content, not formal notices)',
   'KW-07': 'UB (one company guide, Ubie; "in principle")',
-  'KW-09': 'SH-ws, UB (2 of 4 company guides)',
-  'KW-11': 'WP 3-4 (translation guide only; for error strings translated from English)',
+  'KW-09': 'SH-ws, UB (2 of 4 company guides; Microsoft, a translation guide, agrees in words)',
   'KW-12': 'WP 3-5 (translation guide only; where English has you/your)',
   'KW-13': 'WP 3-1 (translation guide only; a preference)',
   'KW-14': 'MZ, SH-ws (one company guide and one translation guide; JW-14 keeps the long form for readers of plain Japanese)',
   'KW-15': 'UB-btn (one company guide, Ubie; DADS-btn names OK as an ordinary label)',
-  'KW-17': 'SH-app, WP 3-2 (one company guide and one translation guide)',
   'KW-18': 'UB-btn (one company guide, Ubie; about 15 characters, as far as possible)',
   'KW-20': 'DADS-md (government design system; modal dialogs)',
   'KW-23': 'WP 3-7, SH-act, MZ-ed (consistency: one company guide and one translation guide; the word pair is Mozilla\'s own choice)',
@@ -72,6 +70,8 @@ const SOURCE = {
   'KW-55': 'UB (one company guide, Ubie; the government writing guide in JW-49 writes the kanji form)',
   'KW-56': 'UB (one company guide, Ubie, a health service)',
   'KW-57': 'SH-oth (one company guide, SmartHR)',
+  'KW-62': 'MS (translation guide only, Microsoft; for a question asking which action to take)',
+  'KW-65': 'UB-am (one company guide, Ubie; dialog headers)',
 };
 
 // ---- rules on one string ------------------------------------------------------------------------
@@ -89,8 +89,6 @@ const PATTERNS = [
   ['KW-13', 'FYI', /されました/g, 'passive past; WordPress prefers the active form where possible', null],
   // MZ 「〜することができます」 / SH-ws NG 「◯◯することができます。」
   ['KW-14', 'FYI', /することができ/g, 'long form; Mozilla and SmartHR write the short potential form', null],
-  // SH-app NG 「権限の追加、申請の取り消し」; WP 3-2 「〜の表示」 is not used for View XX
-  ['KW-17', 'FYI', /の(追加|取り消し|表示)(?=$|、|\s)/g, 'a button joins its object with the genitive particle; SmartHR and WordPress use the object particle', ['button']],
   // UB Don't 「続けるには下のボタンを選んでください。」 and 「上に戻る」
   ['KW-24', 'FYI', /下のボタン|上に戻る/g, 'names a control by its position; Ubie names it by its label or order', null],
   // SH-oth 「「必須入力」は使用しません。」
@@ -100,7 +98,7 @@ const PATTERNS = [
   // UB 「煽り表現はNG。「!」「!?」などの感嘆符は使わない。」 Don't 「ありがとうございます！」
   ['KW-32', 'FYI', new RegExp('(?<=' + JA_CHAR + ')\\s?[\\u0021\\uFF01]', 'g'), 'exclamation mark; Ubie uses none (its width is a house choice, see writing-rules.md)', null],
   // WP 3-6 「「下さい」 は「ください」、「全て」は「すべて」、「既に」は「すでに」に統一する」; MZ-ed 「「居る」ではなく「いる」。」
-  ['KW-33', 'FYI', /下さい|全て|既に|居る/g, 'kanji where both translation guides write kana (Mozilla keeps kanji for a main verb in context)', null],
+  ['KW-33', 'FYI', /下さい|全て|既に|居る/g, 'kanji where Mozilla and WordPress write kana (Mozilla keeps kanji for a main verb in context)', null],
   // MZ-ed21 「「―」(U+2015 水平線) と「～」 (U+FF5E 全角チルダ) は用いない。」
   ['KW-46', 'FYI', /[\u2015\uFF5E]/g, 'U+FF5E or U+2015; Mozilla uses U+301C or U+2013 for ranges and neither of these', null],
   // SH-cnt NG 「2022/01/01 - 2022/03/01、2022/01/01−2022/03/01」 (U+002D and U+2212); OK uses the wave dash
@@ -119,14 +117,14 @@ const PATTERNS = [
   ['KW-56', 'FYI', /医療機関|疾患|近隣/g, 'an institutional word Ubie replaces with an everyday one', null],
   // SH-oth: 「ダミー」 is not used; 「母国語」「母語」 are avoided in text about multilingual support
   ['KW-57', 'FYI', /ダミー|母国語|母語/g, 'a word SmartHR avoids for its overtones', null],
+  // MS − 「このまま続けてもよろしいですか?」 → + 「このまま続けますか?」
+  ['KW-62', 'FYI', /てもよろしいですか/g, 'a question in the form Microsoft says to avoid when asking which action to take', null],
 ];
 
-// [id, test(trimmed text) → matched text or null, message, roles]
+// [id, test(trimmed text) → matched text or null, message, roles]; the role 'dialog-heading' is a heading inside a dialog
 const WHOLE = [
   // MZ 「タイトル名は体言止めを原則とする。」; SH-app 「画面タイトルや項目名は、名詞で表記します。」 (ですます調 endings)
   ['KW-02', 'FYI', (t) => (/(です|ます)。?$/.test(t) ? t : null), 'a heading ending as a sentence; SmartHR, Mozilla and WordPress write titles as nouns', ['heading']],
-  // WP 3-4 「”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する」
-  ['KW-11', 'FYI', (t) => (/^すみません/.test(t) ? 'すみません' : null), 'an error string that opens with an apology; WordPress drops it when translating', null],
   // WP 3-5 「「あなた」「あなたの」を入れない」 (where unnatural)
   ['KW-12', 'FYI', (t) => (/あなた/.test(t) ? 'あなた' : null), 'the second-person pronoun; WordPress leaves it out where English has you/your', null],
   // UB-btn Bad 「OK」 against Good 「この内容で更新する」
@@ -135,6 +133,8 @@ const WHOLE = [
   ['KW-18', 'FYI', (t) => ([...t].length > 15 && JA_COPY.test(t) ? t : null), 'a button label over 15 characters (Ubie\'s number)', ['button']],
   // DADS-in bad example 「＊入力に誤りがあります。」
   ['KW-26', 'WARN', (t) => (t.replace(/^[\u002A\uFF0A]/, '').replace(/。$/, '') === '入力に誤りがあります' ? t : null), 'an error that says only that the input is wrong; DADS, Pepabo and SmartHR ask for what is wrong and how to fix it', null],
+  // UB-am ❌「ユーザー情報を編集しましょう」 / ⭕️「ユーザー情報の編集」
+  ['KW-65', 'FYI', (t) => (/ましょう。?$/.test(t) ? t : null), 'a dialog header that ends as an invitation; Ubie states the action as a noun phrase or a question', ['dialog-heading']],
 ];
 
 // ---- findings -----------------------------------------------------------------------------------
@@ -282,7 +282,7 @@ function run(inputs, { base = process.cwd() } = {}) {
           for (const m of u.text.matchAll(re)) F.add(file, u.line(m.index), sev, id, m[0], msg, source);
         }
         for (const [id, sev, test, msg, roles] of WHOLE) {
-          if (roles && !roles.includes(u.role)) continue;
+          if (roles && !roles.includes(u.role) && !(roles.includes('dialog-heading') && u.role === 'heading' && u.dialog)) continue;
           const hit = test(t);
           if (hit != null) F.add(file, u.line(lead + Math.max(0, t.indexOf(hit))), sev, id, hit, msg);
         }
@@ -351,12 +351,10 @@ const EXPECTED = {
   'kw-06/hit': ['strings.md:2 FYI KW-06', 'strings.md:3 FYI KW-06', 'strings.md:4 FYI KW-06'],
   'kw-07/hit': ['Actions.tsx:3 FYI KW-06', 'Actions.tsx:3 FYI KW-07'],
   'kw-09/hit': ['strings.md:2 WARN KW-09', 'strings.md:3 WARN KW-09', 'strings.md:4 WARN KW-09', 'strings.md:4 WARN KW-09'],
-  'kw-11/hit': ['strings.md:2 FYI KW-11'],
   'kw-12/hit': ['strings.md:2 FYI KW-12', 'strings.md:3 FYI KW-12'],
   'kw-13/hit': ['strings.md:2 FYI KW-13', 'strings.md:2 FYI KW-46'],
   'kw-14/hit': ['strings.md:2 FYI KW-14'],
   'kw-15/hit': ['Confirm.tsx:5 FYI KW-15'],
-  'kw-17/hit': ['Actions.tsx:3 FYI KW-17', 'Actions.tsx:3 FYI KW-17'],
   'kw-18/hit': ['Actions.tsx:3 FYI KW-18'],
   'kw-20/hit': ['dialog.html:8 FYI KW-20'],
   'kw-23/hit': ['strings.md:2 FYI KW-23', 'strings.md:3 FYI KW-23'],
@@ -372,6 +370,8 @@ const EXPECTED = {
   'kw-55/hit': ['strings.md:2 FYI KW-55'],
   'kw-56/hit': ['strings.md:2 FYI KW-56', 'strings.md:3 FYI KW-56', 'strings.md:4 FYI KW-56'],
   'kw-57/hit': ['strings.md:2 FYI KW-57', 'strings.md:3 FYI KW-57', 'strings.md:4 FYI KW-57'],
+  'kw-62/hit': ['strings.md:2 FYI KW-62'],
+  'kw-65/hit': ['dialog.html:6 FYI KW-65'],
 };
 for (const k of Object.keys(EXPECTED)) if (k.endsWith('/hit')) EXPECTED[k.replace(/hit$/, 'miss')] = [];
 
