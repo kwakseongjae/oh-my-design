@@ -108,7 +108,7 @@ No rule here is required by any source read: no law or standard that applies to 
 - Strength: one translation guide (Microsoft).
 - Quote: MS 4.2.11 "In Traditional Chinese, passive voice is avoided." … "Avoid using 會...。pattern with 會 beginning a sentence."
 - Example: MS 4.2.11 「會自動儲存檔案。」 → 「系統會自動儲存檔案。」; 「檔案會自動被儲存。」 → 「檔案會自動儲存。」 (wrapped cells: tier "none"; read across lines by the second reader).
-- Checker: **ZW-09, FYI**: 被; a string or sentence that begins with 會.
+- Checker: **ZW-09, FYI**: 被; a sentence that begins with 會 and ends with 。 (the quoted 會...。 frame).
 
 #### ZW-10 (TW-10) · Ongoing operations: 正在… rather than …中.
 - Kind: WRITE.
@@ -185,7 +185,7 @@ No rule here is required by any source read: no law or standard that applies to 
 - Quote: MZ 「不要使用機器翻譯。亦請注意需符合台灣人常用的語法。（例：o網路 x互聯網）」; WP 「非台灣繁體中文的其他中文變體字彙」
 - The table: MOE-2A 「兩岸常用詞語對照表」, columns 「臺灣語詞」 and 「大陸語詞」. Rows confirmed in the bytes the page served (page 1): 部落格 / 博客; 埠 / 端口; 筆記型電腦 / 筆記本電腦. The other rows in research/rules.md (pages 2 to 7) came through the extraction tool and are not confirmed at character level; re-read them on the page before they join a word list.
 - Example: MZ 互聯網 → 網路.
-- Checker: **ZW-21, FYI**: 互聯網 (Mozilla's wrong example), 博客, 端口, 筆記本電腦 (the confirmed rows). The message names the Taiwan column's word and says the table is descriptive.
+- Checker: **ZW-21, FYI**: 互聯網 (Mozilla's wrong example), 博客, 端口, 筆記本電腦 (the confirmed rows). For 互聯網 the message cites Mozilla; for the three rows it names the Taiwan column's word and says the table is descriptive.
 
 #### ZW-22 (TW-22) · No internet slang in product text.
 - Kind: WRITE.

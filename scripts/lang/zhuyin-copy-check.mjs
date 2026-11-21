@@ -49,7 +49,7 @@ const SOURCE = {
   'ZW-09': 'MS 4.2.11 (one translation guide)',
   'ZW-10': 'MS 4.2.12 (one translation guide; the other form "could be used")',
   'ZW-18': 'MS 5.6.2 (one translation guide; a default it allows leaving)',
-  'ZW-21': 'MZ, WP for the principle (2 of 3 translation guides); MOE-2A, a descriptive dictionary table, for the word pairs',
+  'ZW-21': 'MZ, WP for the principle (2 of 3 translation guides); the 互聯網 example is MZ\'s; the other pairs are MOE-2A page-1 rows, a descriptive dictionary table',
   'ZW-22': 'MS 4.2.2 (one translation guide)',
   'ZW-23': 'MS 4.1.2 (one translation guide)',
   'ZW-32': 'WP, MS 4.1.7 (2 of 3 translation guides)',
@@ -73,7 +73,7 @@ const PATTERNS = [
   // MS 4.2.11 pair 「檔案會自動被儲存。」 → 「檔案會自動儲存。」
   ['ZW-09', 'FYI', /被/g, 'the passive marker; Microsoft avoids the passive'],
   // MS 4.2.11 "Avoid using 會...。pattern with 會 beginning a sentence." pair 「會自動儲存檔案。」 → 「系統會自動儲存檔案。」
-  ['ZW-09', 'FYI', /(?<=^\s*|[。！？!?]\s*)會/g, 'a sentence that opens with the future auxiliary; Microsoft names who acts'],
+  ['ZW-09', 'FYI', /(?<=^\s*|[。！？!?]\s*)會(?=[^。！？!?]*。)/g, 'a sentence that opens with the future auxiliary; Microsoft names who acts'],
   // MS 4.2.12 pairs 「儲存文字檔案中...」 → 「正在儲存文字檔案...」, 「完成安裝中...」 → 「正在完成安裝...」
   ['ZW-10', 'FYI', /中(?:\.{3}|…+)(?=\s*$)/g, 'an ongoing operation written with the trailing form; Microsoft writes the leading form'],
   // MS 5.6.2 "You might want to…" → 「建議您...」, "Please avoid 您可能想要..."
@@ -91,6 +91,9 @@ const PATTERNS = [
 // not confirmed at character level and are not used.
 const TAIWAN_WORD = { 互聯網: '網路', 博客: '部落格', 端口: '埠', 筆記本電腦: '筆記型電腦' };
 const OTHER_VARIANT = new RegExp(Object.keys(TAIWAN_WORD).join('|'), 'g');
+const variantMessage = (w) => (w === '互聯網'
+  ? 'Mozilla gives this as the wrong form, with ' + TAIWAN_WORD[w] + ' as the right one'
+  : 'the MOE comparison table lists this as the Mainland word, with ' + TAIWAN_WORD[w] + ' in its Taiwan column (the table is descriptive; read it in place)');
 
 // ZW-34: MZ 「中文字、標點符號與半形英數、符號字元間需用半形空格隔開，但與全形符號間則免。」; MS 4.2.10 Incorrect
 // 「序列化程式無法處理不明的xsi:type 資訊。」. A digit beside 年, 月 or 日 is TW-36 (a house choice), and
@@ -280,7 +283,7 @@ function run(inputs, { base = process.cwd() } = {}) {
         if (u.italic) F.add(file, at(lead), 'FYI', 'ZW-32', t, 'Chinese text in italics; Microsoft and WordPress use bold for emphasis and no italics');
         if (u.only) continue;
         for (const [id, sev, re, msg] of PATTERNS) for (const m of u.text.matchAll(re)) F.add(file, at(m.index), sev, id, m[0], msg);
-        for (const m of u.text.matchAll(OTHER_VARIANT)) F.add(file, at(m.index), 'FYI', 'ZW-21', m[0], 'the MOE comparison table lists this as the Mainland word, with ' + TAIWAN_WORD[m[0]] + ' in its Taiwan column (the table is descriptive; read it in place)');
+        for (const m of u.text.matchAll(OTHER_VARIANT)) F.add(file, at(m.index), 'FYI', 'ZW-21', m[0], variantMessage(m[0]));
         for (const h of hanLatin(u.text)) F.add(file, at(h.index), 'FYI', 'ZW-34', h.match, 'Han and a Latin letter or digit with no space between; the three translation guides put a half-width space there');
         // MS 2.2.1 "請輸入密碼" is much better than "輸入密碼"
         if (/^輸入/.test(t)) F.add(file, at(lead), 'FYI', 'ZW-04', '輸入', 'an instruction with no polite marker before the verb; Microsoft prefers one in most cases');
