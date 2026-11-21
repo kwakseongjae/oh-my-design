@@ -71,9 +71,9 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
         <JourneySection locale={locale} c={c} data={data} first={first} />
         <CliSection locale={locale} c={c} r={r} total={F.total} skills={F.skills} skillsHref={GH_SKILLS} />
         <FaqSection r={r} f={f} issuesHref={GH_ISSUES} />
-        <CloseSection r={r} f={f} archive={archive} />
-        {/* the way to /screens: renders nothing unless the local screens folder is configured (components/screens) */}
-        <ScreensLandingSection locale={locale} />
+        {/* the screens strip sits inside the showcase, before its archive button; it renders nothing unless the local
+            screens folder is configured (components/screens) */}
+        <CloseSection r={r} f={f} archive={archive} screens={<ScreensLandingSection locale={locale} />} />
       </main>
       <SiteFooterA locale={locale} current={locale} />
     </div>

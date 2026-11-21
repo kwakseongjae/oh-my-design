@@ -128,29 +128,15 @@ const KO: GalleryCopy = {
 
 export const GALLERY_COPY: Record<ScreensLocale, GalleryCopy> = { en: EN, ko: KO };
 
-/** The landing section. Strings only: they cross to the client row. */
+/** The landing's screens strip. Plain strings (and one formatter used on the server): they cross to the client row. */
 export interface LandingScreensCopy {
-  kicker: string;
-  h2: string;
-  lede: string;
-  chips: string;
-  cta: string;
+  label: string;
+  all: string;
+  tile: (name: string) => string;
 }
 
-export function landingScreensCopy(locale: ScreensLocale, services: number, screens: number): LandingScreensCopy {
+export function landingScreensCopy(locale: ScreensLocale): LandingScreensCopy {
   return locale === "ko"
-    ? {
-        kicker: "화면",
-        h2: `같은 화면, ${services}곳`,
-        lede: `한국 서비스 ${services}곳의 홈, 검색 결과, 상세, 로그인 화면을 나란히 놓았습니다. 화면마다 그 회사 DESIGN.md의 색이 그려진 곳이 붙어 있어, 값과 화면을 오가며 볼 수 있습니다.`,
-        chips: "화면 종류",
-        cta: `화면 ${screens}개 모두 보기`,
-      }
-    : {
-        kicker: "Screens",
-        h2: `The same screens, ${services} services`,
-        lede: `Home, search results, detail and sign-in screens of ${services} Korean services, side by side. Each screen carries the colors of that company's DESIGN.md drawn on it, so you can move between the values and the screens.`,
-        chips: "Screen type",
-        cta: `See all ${screens} screens`,
-      };
+    ? { label: "화면", all: "모두 보기", tile: (name) => `${name} 화면` }
+    : { label: "Screens", all: "See all", tile: (name) => `${name} screens` };
 }

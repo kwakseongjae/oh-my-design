@@ -13,6 +13,11 @@ import { makeGalleryFixture } from "@/lib/screens/test-fixture";
 vi.mock("next/font/google", () => ({
   Inter: () => ({ variable: "t-inter", className: "t-inter", style: { fontFamily: "Inter" } }),
 }));
+// The landing's strip is a next/dynamic chunk (its own stylesheet), which renderToStaticMarkup leaves as an empty
+// Suspense fallback; render the row itself so its markup can be checked. Next renders it on the server for real.
+vi.mock("@/components/screens/landing-row-slot", async () => ({
+  ScreensLandingRowSlot: (await import("@/components/screens/landing-row")).ScreensLandingRow,
+}));
 vi.mock("@/components/brand-a/journey/faces", () => ({
   pretendard: { variable: "t-pretendard", style: { fontFamily: "Pretendard" } },
   ibmPlexSans: { variable: "t-plex", style: { fontFamily: "IBM Plex Sans" } },
@@ -120,15 +125,26 @@ describe("gate open (a local folder in development)", () => {
     expect(html).not.toContain("당근");
   });
 
-  it("the landing gains one section after the catalog showcase, leading to the gallery (en and ko only)", async () => {
+  it("the landing gains one quiet strip inside the catalog showcase, before its archive button (en and ko only)", async () => {
     open();
     const ko = renderToStaticMarkup(await LandingA({ locale: "ko" }));
-    expect(ko).toContain('<section class="sq-gal-land" aria-labelledby="h-screens">');
-    expect(ko).toContain("같은 화면, 3곳");
-    expect(ko.indexOf("sq-gal-land")).toBeGreaterThan(ko.indexOf('aria-labelledby="h-close"'));
-    expect(ko.indexOf("sq-gal-land")).toBeLessThan(ko.indexOf("</main>"));
+    const at = ko.indexOf('<div class="sq-gal-strip">');
+    expect(at).toBeGreaterThan(ko.indexOf('class="sq-sc-groups"'));
+    expect(at).toBeLessThan(ko.indexOf('class="sq-sc-end"'));
+    const strip = ko.slice(at, ko.indexOf('class="sq-sc-end"'));
+    // a one-word label and a text link to the gallery; nothing else above the row
+    expect(strip).toContain('<h3 id="sc-screens">화면</h3>');
+    expect(strip).toMatch(/<a class="sq-gal-strip-all" href="\/ko\/screens">모두 보기/);
+    // one tile per service that has a phone home screen, in the gallery's order, named and leading to #screens
+    expect(strip.match(/class="sq-gal-strip-tile"/g)).toHaveLength(3);
+    expect(strip).toContain('href="/ko/design-systems/karrot#screens"');
+    expect(strip).toContain('aria-label="당근 화면"');
+    expect(strip).toContain('src="/screens-local/karrot/390-home.jpg"');
+    // no heading sentence, chips, colour dots, screen titles or button
+    expect(strip).not.toMatch(/<h2|<button|sq-gal-dots|sq-gal-title|sq-gal-chip|홈 화면</);
     const en = renderToStaticMarkup(await LandingA({ locale: "en" }));
-    expect(en).toContain("The same screens, 3 services");
+    expect(en).toContain('<h3 id="sc-screens">Screens</h3>');
+    expect(en).toContain('aria-label="Karrot screens"');
     for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(await LandingA({ locale }))).not.toContain("sq-gal");
   });
 });

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import logoManifest from "@/data/brand-logos.json";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getAllDesignSystems } from "@/lib/design-systems";
@@ -187,12 +187,16 @@ export function CatalogShowcase({
   p,
   cta,
   archive,
+  screens,
 }: {
   locale: SiteLocale;
   h2: string;
   p: string;
   cta: string;
   archive: string;
+  /** The screens strip (components/screens/landing-section.tsx), between the logo rows and the archive button; it
+   *  renders nothing unless the local screens folder is configured, and then adds no markup here. */
+  screens?: ReactNode;
 }) {
   const groups = showcaseFor(locale);
   return (
@@ -236,6 +240,7 @@ export function CatalogShowcase({
             </div>
           ))}
         </div>
+        {screens}
         <div className="sq-sc-end">
           <Link className="sq-sc-cta" href={archive} prefetch={false}>{cta}</Link>
         </div>
