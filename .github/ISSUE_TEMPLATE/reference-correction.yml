@@ -1,0 +1,39 @@
+name: Wrong value in a DESIGN.md · 값이 틀렸어요
+description: A colour, font, size or component state in a reference does not match the live product. · 레퍼런스의 색·글꼴·크기·상태가 실제와 다릅니다.
+title: "[ref-fix] "
+labels: ["reference-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every value in the catalog is a measurement, so a correction is a new measurement. Tell us where to look and we will measure it again.
+        카탈로그의 값은 전부 측정값입니다. 어디를 봐야 하는지 알려 주시면 다시 잽니다.
+  - type: input
+    id: reference
+    attributes:
+      label: Reference · 레퍼런스
+      description: The id in the page address, as in oh-my-design.kr/design-systems/<id>. · 페이지 주소의 id.
+      placeholder: toss
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong · 무엇이 틀렸나요
+      description: The value our page shows and the value you see. · 페이지에 적힌 값과 실제로 보이는 값.
+      placeholder: "Primary button hover is #1b64da on the page; the live button turns #1957c2."
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where to see it · 어디서 볼 수 있나요
+      description: A URL and the element (the button's label, the section). · 주소와 요소(버튼 이름, 구역).
+    validations:
+      required: true
+  - type: checkboxes
+    id: relation
+    attributes:
+      label: Your relation · 관계
+      options:
+        - label: I work at this company. · 이 회사에서 일합니다.

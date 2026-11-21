@@ -54,6 +54,7 @@ Claude Code, Codex, OpenCode, Cursor에서 씁니다. API 키도 MCP 서버도 �
 - [DESIGN.md](docs/guide/design-md.md) (영어): 두 가지 형식, 시스템을 유도하는 방식, `omd book`
 - [설치 상세](docs/guide/install.md) (영어): 에이전트별 설치 위치, `update`
 - [문서](https://oh-my-design.kr/docs/ko) · [변경 기록](CHANGELOG.md)
+- 없는 회사가 있거나 값이 틀렸나요? [이슈로 알려 주세요](https://github.com/kwakseongjae/oh-my-design/issues/new/choose). 회사 추가 요청, 틀린 값 제보, 회사 담당자의 확인을 받습니다
 
 ---
 

@@ -1,0 +1,11 @@
+# id  source-wave  source-run-prefix  locale  url  name…   (the max-effort Codex run whose evidence the arms reuse)
+yomiuri exp7a rv-xa ja-JP https://www.yomiuri.co.jp/ Yomiuri Shimbun
+nomura exp7a rv-xa ja-JP https://www.nomura.co.jp/ Nomura Securities
+kbinsurance exp7a rv-xa ko-KR https://www.kbinsure.co.kr/ KB Insurance
+samsunghospital exp7a rv-xa ko-KR https://www.samsunghospital.com/ Samsung Medical Center
+hkairport exp7a rv-xa zh-HK https://www.hongkongairport.com/tc/ Hong Kong International Airport
+railway exp7a rv-xa zh-TW https://www.railway.gov.tw/tra-tip-web/tip Taiwan Railway
+hmall exp8a rv-x8a ko-KR https://www.hmall.com/ Hyundai Hmall
+fujitsu exp8a rv-x8a ja-JP https://global.fujitsu/ja-jp Fujitsu
+megazone exp8a rv-x8a ko-KR https://www.megazone.com/ Megazone Cloud
+hk01 exp8a rv-x8a zh-HK https://www.hk01.com/ HK01

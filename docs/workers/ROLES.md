@@ -8,7 +8,10 @@
 | 역할 | 모델 · effort | 정의 | 동시 수 | 이 모델인 이유 |
 |---|---|---|---|---|
 | 지휘: 계획, 판정, 착지, 푸시, 오너 보고 | Fable 5.2 · high | 본 세션(`CLAUDE.md`) | 1 | 판단과 긴 맥락이 필요한 일. 가장 비싸므로 맡길 수 있는 일은 맡긴다 |
-| 레퍼런스 수집·작성 | Codex `gpt-6.1-sol` · max | `REFERENCE_ORDER_TEMPLATE.md` + `scripts/workers/run-queue.sh` | 4까지 | 수집 실험 1~3라운드: high로 낮추거나 작성을 Sonnet에 나누면 컴포넌트·근거가 18~31% 줄었다 |
+| 레퍼런스 수집·작성(새 레퍼런스) | Codex `gpt-6.1-sol` · **medium**, 창 없는 캡처, 측정값은 스크립트가 컴파일 | `REFERENCE_ORDER_TEMPLATE.md` + `COMPILED_PARTS.md` + `scripts/workers/run-queue.sh`(`new` 항목의 기본값) | 4까지 | 라운드 4와 9차(2026-11-12): 측정값을 `compile-evidence.mjs`가 내면 컴포넌트는 effort와 무관하게 같다. 9차 7곳 전부 verified, 한 곳 9~13분(max 21분). `gpt-6-luna`는 컴포넌트를 떨어뜨리고 `gpt-6.1-terra`는 개요가 1/3, sol low는 개요 −27%라 쓰지 않는다. 아직 안 재 본 것: low·terra의 서술 정확도, 캡처 단계만 low |
+| 재검증(기존 레퍼런스) | Codex `gpt-6.1-sol` · max, 창 있는 캡처 | `make-reverify-order.py` | 4까지 | 새 방식으로 아직 안 돌려 봤다. 돌려 보기 전까지 그대로 둔다 |
+| 착지 전 대조 | 모델 없음 | `scripts/t1/remeasure.mjs <id> --runs 1` | 사이트당 1 | 워커가 잰 컨트롤 전부를 창 없이 다시 잰다(9차: 778개 값 일치). 헤드라인 하나만 창 띄워 재던 일을 대신한다 |
+| 독립 검수 | Codex `gpt-6.1-sol` · high, 검수자 한 명에 3~4곳 | `make-review-order.py` + `FINAL_REVIEW_ORDER_TEMPLATE.md` | 2 | 9차: 각 7~8분, BLOCK 1 · WARN 7. 10월의 검수 3회는 max였고 high와 비교해 본 적은 없다 |
 | 재측정 | 모델 없음(스크립트) | `scripts/workers/remeasure.sh` | 사이트당 1 | 같은 것을 다시 재는 일에는 판단이 없어야 한다 |
 | 언어 스킬 출처 조사 | Opus 5.5 · high | `.claude/agents/ops/ops-source-researcher.md` | 언어당 1, 합쳐 2까지 | 원문을 읽고 규칙으로 옮기는 일. 인용이 틀리면 스킬 전체의 신뢰가 깨진다 |
 | 규칙 검증 | Fable 5.2 · medium | `ops-rule-checker.md` | 1 | 조사와 다른 모델로 한 번 더 읽는다. 다른 계열(Codex·Grok)을 쓸 수 있으면 그것도 한 번 돌린다(돌리기 전에 오너에게 채널을 묻는다) |

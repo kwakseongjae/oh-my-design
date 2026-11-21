@@ -1,0 +1,41 @@
+name: From the company · 회사 담당자입니다
+description: You work on this brand's design and want to confirm, correct or extend its DESIGN.md. · 브랜드 담당자로서 확인·정정·보강하고 싶습니다.
+title: "[brand] "
+labels: ["brand-owner"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A reference a company has checked is marked as confirmed by the company. You can also send tokens we cannot measure from outside, such as an app's colours and type.
+        고맙습니다. 회사가 확인한 레퍼런스는 "회사 확인"으로 표시합니다. 앱의 색과 글꼴처럼 밖에서 잴 수 없는 토큰도 보내 주실 수 있습니다.
+        Please do not paste anything confidential here: issues are public. · 이슈는 공개됩니다. 비공개 자료는 올리지 마세요.
+  - type: input
+    id: reference
+    attributes:
+      label: Reference or company · 레퍼런스 또는 회사
+      placeholder: toss
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What you want to do · 하려는 일
+      options:
+        - Confirm the current values · 지금 값이 맞다고 확인
+        - Correct values · 값 정정
+        - Provide tokens for an app or product surface · 앱·제품 화면의 토큰 제공
+        - Ask for removal or a change in how the brand is shown · 삭제 또는 표시 방식 변경 요청
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details · 내용
+      description: Values, a public link to your design system or token package, or what should change. · 값, 공개된 디자인 시스템이나 토큰 패키지 링크, 바꿀 내용.
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: How we can verify you speak for the company · 회사 소속 확인 방법
+      description: 'For example a company-domain address we can write to. Optional here; we will ask before marking a reference as confirmed. · 회사 도메인 메일 같은 것. 선택. 회사 확인 표시 전에 따로 여쭙니다.'

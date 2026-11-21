@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="478" viewBox="0 0 720 478" role="img" aria-labelledby="t d" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<rect width="720" height="478" fill="#ffffff"/>
+<text id="t" x="24" y="36" font-size="19" font-weight="700" fill="#13131a">한국 서비스 169곳의 주 색, 색 계열별 곳 수</text>
+<text id="d" x="24" y="62" font-size="13" fill="#5a5a63">oh-my-design 검증 한국 레퍼런스 185곳 중 주 색을 정할 수 있었던 169곳 · 계산 2026-11-21</text>
+<text x="168" y="106.0" font-size="14" fill="#13131a" text-anchor="end">파랑</text>
+<rect x="180" y="92" width="430.0" height="18" fill="#3f3f48"><title>파랑 60곳</title></rect>
+<text x="618.0" y="106.0" font-size="14" fill="#13131a">60곳 <tspan fill="#5a5a63">(35.5%)</tspan></text>
+<text x="168" y="136.0" font-size="14" fill="#13131a" text-anchor="end">빨강</text>
+<rect x="180" y="122" width="129.0" height="18" fill="#3f3f48"><title>빨강 18곳</title></rect>
+<text x="317.0" y="136.0" font-size="14" fill="#13131a">18곳 <tspan fill="#5a5a63">(10.7%)</tspan></text>
+<text x="168" y="166.0" font-size="14" fill="#13131a" text-anchor="end">초록</text>
+<rect x="180" y="152" width="121.8" height="18" fill="#3f3f48"><title>초록 17곳</title></rect>
+<text x="309.8" y="166.0" font-size="14" fill="#13131a">17곳 <tspan fill="#5a5a63">(10.1%)</tspan></text>
+<text x="168" y="196.0" font-size="14" fill="#13131a" text-anchor="end">청록</text>
+<rect x="180" y="182" width="100.3" height="18" fill="#3f3f48"><title>청록 14곳</title></rect>
+<text x="288.3" y="196.0" font-size="14" fill="#13131a">14곳 <tspan fill="#5a5a63">(8.3%)</tspan></text>
+<text x="168" y="226.0" font-size="14" fill="#13131a" text-anchor="end">주황</text>
+<rect x="180" y="212" width="93.2" height="18" fill="#3f3f48"><title>주황 13곳</title></rect>
+<text x="281.2" y="226.0" font-size="14" fill="#13131a">13곳 <tspan fill="#5a5a63">(7.7%)</tspan></text>
+<text x="168" y="256.0" font-size="14" fill="#13131a" text-anchor="end">검정에 가까운 무채색</text>
+<rect x="180" y="242" width="86.0" height="18" fill="#3f3f48"><title>검정에 가까운 무채색 12곳</title></rect>
+<text x="274.0" y="256.0" font-size="14" fill="#13131a">12곳 <tspan fill="#5a5a63">(7.1%)</tspan></text>
+<text x="168" y="286.0" font-size="14" fill="#13131a" text-anchor="end">남색·보라</text>
+<rect x="180" y="272" width="71.7" height="18" fill="#3f3f48"><title>남색·보라 10곳</title></rect>
+<text x="259.7" y="286.0" font-size="14" fill="#13131a">10곳 <tspan fill="#5a5a63">(5.9%)</tspan></text>
+<text x="168" y="316.0" font-size="14" fill="#13131a" text-anchor="end">회색</text>
+<rect x="180" y="302" width="71.7" height="18" fill="#3f3f48"><title>회색 10곳</title></rect>
+<text x="259.7" y="316.0" font-size="14" fill="#13131a">10곳 <tspan fill="#5a5a63">(5.9%)</tspan></text>
+<text x="168" y="346.0" font-size="14" fill="#13131a" text-anchor="end">노랑</text>
+<rect x="180" y="332" width="50.2" height="18" fill="#3f3f48"><title>노랑 7곳</title></rect>
+<text x="238.2" y="346.0" font-size="14" fill="#13131a">7곳 <tspan fill="#5a5a63">(4.1%)</tspan></text>
+<text x="168" y="376.0" font-size="14" fill="#13131a" text-anchor="end">자홍·분홍</text>
+<rect x="180" y="362" width="43.0" height="18" fill="#3f3f48"><title>자홍·분홍 6곳</title></rect>
+<text x="231.0" y="376.0" font-size="14" fill="#13131a">6곳 <tspan fill="#5a5a63">(3.6%)</tspan></text>
+<text x="168" y="406.0" font-size="14" fill="#13131a" text-anchor="end">흰색에 가까운 무채색</text>
+<rect x="180" y="392" width="14.3" height="18" fill="#3f3f48"><title>흰색에 가까운 무채색 2곳</title></rect>
+<text x="202.3" y="406.0" font-size="14" fill="#13131a">2곳 <tspan fill="#5a5a63">(1.2%)</tspan></text>
+<line x1="180" y1="86" x2="180" y2="416" stroke="#d3d3db" stroke-width="1"/>
+<text x="24" y="458" font-size="12" fill="#5a5a63">출처: docs/research/2026-11-14-kr-brand-colours/tables.md의 W1 (규칙 W). 색 계열은 HSL 색상각과 밝기·채도로 나눴습니다.</text>
+</svg>

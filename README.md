@@ -63,6 +63,7 @@ Not a Toss person? Swap in any company from the [archive](https://oh-my-design.k
 - [Install](docs/guide/install.md): each agent, global installs, Cursor, `doctor`, `update`
 - [DESIGN.md](docs/guide/design-md.md): both formats, how a system gets derived, `omd book`
 - [Docs](https://oh-my-design.kr/docs/en) · [Changelog](CHANGELOG.md)
+- Company missing, or a value wrong? [Open an issue](https://github.com/kwakseongjae/oh-my-design/issues/new/choose): ask for a company, report a value, or write to us as the company
 
 ---
 

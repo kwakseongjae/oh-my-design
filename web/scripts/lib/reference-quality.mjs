@@ -68,6 +68,25 @@ export const SOURCE_TTLS = {
   "brand-asset": 365,
   license: 365,
 };
+/**
+ * Whether a source's age alone takes a reference out of the verified tier.
+ *
+ * Owner decision 2026-11-13: off. 「유효기간이라는 개념 일단 날리자. 아니면 그 기간을 늘리든가.」
+ *
+ * What prompted it: on 2026-11-12 `figma` passed 180 days and every open branch's CI went red with nobody having
+ * changed anything, and 296 references were due to follow by March 2027. What the calendar was standing in for
+ * can now be measured instead: `scripts/t1/remeasure.mjs` re-reads a reference's pinned controls with no model
+ * (20 references, 60 runs, 2026-11-12: 99.5 % of 8,032 fields unchanged after 2 to 9 days; the September sweep
+ * found 93 % of surfaces unchanged after 69 days). A reference should leave the verified tier when a
+ * re-measurement shows its values moved, not when a date arrives.
+ *
+ * What this gives up until that sweep runs on a schedule: nothing demotes a reference whose site was redesigned
+ * and that nobody re-measured. The TTLs above still give every source a due date (`nextReverifyAt`), which is
+ * the order to re-measure in; they no longer decide the status. A cited URL that is gone (404/410) still does.
+ * Turning this back on is one constant; `evaluateReferenceQuality({ expireByDate: true })` is how the tests keep
+ * exercising the rule.
+ */
+export const EXPIRE_SOURCES_BY_DATE = false;
 const VERIFICATION_V2_KEYS = new Set(["schema", "checked", "surfaces", "sources", "claims", "conflicts"]);
 
 function addDays(date, days) {
@@ -385,14 +404,26 @@ function componentCoverage(tokens) {
   return { total, interactive, stated, proseStateOnly };
 }
 
-function componentStateGaps(tokens) {
+/**
+ * "no brand change" is a measurement: the state was exercised and the brand painted nothing different. It is also
+ * the cheapest string to type into a state key, so on its own it does not count. It counts when the verification
+ * record's Proof table has that control's row saying the same (the compile step writes both from one capture).
+ */
+const NO_BRAND_CHANGE = "no brand change";
+function proofSaysNoChange(verificationMarkdown, name) {
+  return verificationMarkdown.split("\n").some((line) => line.startsWith(`| \`${name}\` |`) && line.includes(NO_BRAND_CHANGE));
+}
+
+function componentStateGaps(tokens, verificationMarkdown = "") {
   const components = tokens?.components;
   if (!components || typeof components !== "object" || Array.isArray(components)) return [];
   const gaps = [];
   for (const [name, component] of Object.entries(components)) {
     if (!component || typeof component !== "object" || Array.isArray(component)) continue;
     if (!INTERACTIVE_COMPONENT_TYPES.has(component.type)) continue;
-    if (!Object.keys(component).some((key) => OBSERVED_STATE_KEYS.has(key))) gaps.push(name);
+    const backed = Object.keys(component).filter((key) => OBSERVED_STATE_KEYS.has(key)
+      && (String(component[key]).trim() !== NO_BRAND_CHANGE || proofSaysNoChange(verificationMarkdown, name)));
+    if (backed.length === 0) gaps.push(name);
   }
   return gaps;
 }
@@ -417,7 +448,7 @@ function componentStateGaps(tokens) {
  * captured. Produced by `scripts/measure-surface-drift.mjs`; absent by default,
  * and an absent confirmation changes nothing.
  */
-export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined, driftConfirmations = {}, driftDeadSources = {} }) {
+export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined, driftConfirmations = {}, driftDeadSources = {}, expireByDate = EXPIRE_SOURCES_BY_DATE }) {
   if (!isDate(asOf)) throw new Error(`invalid asOf date: ${asOf}`);
 
   const reasons = [];
@@ -512,7 +543,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
       const countFrom = isDate(confirmedOn) && confirmedOn > source.captured ? confirmedOn : source.captured;
       if (confirmedOn && countFrom === confirmedOn) renewedSources.push(source.id);
       if (!ttl) blockVerified("source_kind_invalid");
-      else if (ageInDays(countFrom, asOf) > ttl) blockVerified("source_expired");
+      else if (expireByDate && ageInDays(countFrom, asOf) > ttl) blockVerified("source_expired");
     }
 
     for (const surface of surfaces) {
@@ -530,7 +561,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     const unknownClaims = Object.keys(claimEvidence).filter((path) => !claims.includes(path));
     if (unknownClaims.length > 0) blockVerified("claim_path_unknown");
 
-    if (componentStateGaps(tokens).length > 0) blockVerified("interactive_state_missing");
+    if (componentStateGaps(tokens, verificationMarkdown).length > 0) blockVerified("interactive_state_missing");
   }
 
   // Advisory, never blocking — these name the two cheap exits from the blocking

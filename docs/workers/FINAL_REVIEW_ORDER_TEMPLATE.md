@@ -1,8 +1,8 @@
 # Work order: final pre-merge review of {{IDS}}
 
-You are a reviewer in a folder outside the oh-my-design repository: `{{WORKDIR}}`. You may read anything under `/Users/kwakseongjae/Desktop/projects/oh-my-design`, but you write only in `{{WORKDIR}}`.
+You are a reviewer in a folder outside the oh-my-design repository: `{{WORKDIR}}`. You may read anything under `{{REPO}}`, but you write only in `{{WORKDIR}}`.
 
-oh-my-design publishes DESIGN.md files that describe real companies' live design systems, measured from the live site and backed by first-party sources. The references below were drafted by another worker and then reviewed and edited by the orchestrator. They are about to go to production. **Your job is to find what is still wrong.** Assume nothing is right because it was reviewed. A finding you cannot back with a line number and the evidence you checked is not a finding; leave it out. Reporting nothing is a valid result when nothing is wrong.
+oh-my-design publishes DESIGN.md files that describe real companies' live design systems, measured from the live site and backed by first-party sources. The references below were drafted by another worker and then reviewed and edited by the orchestrator.{{NOTE}} They are about to go to production. **Your job is to find what is still wrong.** Assume nothing is right because it was reviewed. A finding you cannot back with a line number and the evidence you checked is not a finding; leave it out. Reporting nothing is a valid result when nothing is wrong.
 
 **Do not:**
 - write anywhere except `{{WORKDIR}}`; edit, commit or push anything in the repository;
@@ -15,14 +15,15 @@ Time box: about 30 minutes. A partial report is better than none.
 ## What to read
 
 For each id in {{IDS}}:
-- `/Users/kwakseongjae/Desktop/projects/oh-my-design/.claude/worktrees/eu-wave5/web/references/<id>/DESIGN.md`: the published reference. Frontmatter (tokens, components) plus the 15-section body.
-- `/Users/kwakseongjae/Desktop/projects/oh-my-design/.claude/worktrees/eu-wave5/web/references/<id>/.verification.md`: the evidence notes. The Proof block, the controls table, the narrative sources with quotes, and any "Orchestrator review" block.
-- `/Users/kwakseongjae/Desktop/projects/oh-my-design/artifacts/reference-evidence/visual/<id>/*/`: the raw capture output (`survey.json`, `states.json`, `*.txt` summaries, crops). A `review-20261029/` folder holds the orchestrator's re-measurements, which take precedence over the worker's run when they disagree.
-- `/Users/kwakseongjae/Desktop/projects/oh-my-design/AGENTS.md`, section "Hard rules".
+- `{{CATALOG}}/web/references/<id>/DESIGN.md`: the published reference. Frontmatter (tokens, components) plus the 15-section body.
+- `{{CATALOG}}/web/references/<id>/.verification.md`: the evidence notes. The Proof block, the controls table, the narrative sources with quotes, and any "Orchestrator review" block.
+- `{{REPO}}/artifacts/reference-evidence/visual/<id>/*/`: the raw capture output (`survey.json`, `states.json`, `*.txt` summaries, crops).
+- {{REMEASURE}}
+- `{{REPO}}/AGENTS.md`, section "Hard rules".
 
 ## Checks
 
-1. **Values against evidence.** Every hex, px, ms, `cubic-bezier(...)` and font family in the frontmatter `tokens` and `components`, and every measured value stated in the body, must appear in `.verification.md` or in the raw capture output. A component's rest values (bg, fg, border, radius, height, padding) must match what was measured for that control. A component may declare only the states that were measured, and a declared state must say what the measurement says. Report each mismatch with both values.
+1. **Values against evidence.** Every hex, px, ms, `cubic-bezier(...)` and font family in the frontmatter `tokens` and `components`, and every measured value stated in the body, must appear in `.verification.md` or in the raw capture output. A component's rest values (bg, fg, border, radius, height, padding) must match what was measured for that control. A component may declare only the states that were measured, and a declared state must say what the measurement says. A state that reads `no brand change` is such a statement: it is correct when the capture measured that state and shows nothing the brand painted (nothing, the browser's `auto` outline arriving or leaving, or a change that persists after blur), and wrong when the state was not measured or the capture shows a brand change. A component whose every state reads that way is allowed. Report each mismatch with both values.
 2. **Narrative against sources.** Every factual sentence about the company (founding, ownership, history, rebrand, product, brand story, design writing) must be backed by a quote in the narrative sources. Then re-check up to 5 of those quotes with `curl -sL` and a grep on the page text. If the page no longer contains the quote, that is a finding; if curl is blocked, write it in "could not re-check".
 3. **Hard rules.**
    - Unknown means absent: no plausible substitute value, generic component or adjacent marketing surface presented as the brand's.

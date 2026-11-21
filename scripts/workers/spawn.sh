@@ -9,6 +9,7 @@
 # codex: codex exec --ignore-user-config (no personal MCP servers, browsers or computer use), workspace-write sandbox
 #        with network, approvals off, JSON event log. `--mcp capture` adds the capture MCP server (scripts/workers/
 #        capture-mcp.mjs), whose fixed tools run outside the sandbox and are approved automatically.
+#        `--mcp capture-headless` is the same server with no browser window.
 # claude: claude -p --model sonnet --effort medium, acceptEdits, a narrow Bash allowlist, no skills or MCP.
 # Output: a run directory under $OMD_WORKER_RUNS (default ~/.omd-workers/runs) with order.md, worker.log,
 #         last-message.md, meta.json, pid, and exit-code when done. The last stdout line is RUN_DIR=<path>.
@@ -62,8 +63,9 @@ if [ "$ENGINE" = codex ]; then
 # script's expiry killed two reverify workers mid-draft. macOS has no setsid(1), so python3 does the setsid + exec.
 detach() { python3 -c 'import os, sys; os.setsid(); os.execvp(sys.argv[1], sys.argv[1:])' "$@" </dev/null >/dev/null 2>&1 & }
   MCP_ARGS=()
-  if [ "$MCP" = capture ]; then
-    MCP_ARGS=(-c 'mcp_servers.capture.command="node"' -c "mcp_servers.capture.args=[\"$REPO/scripts/workers/capture-mcp.mjs\"]" -c 'mcp_servers.capture.default_tools_approval_mode="approve"' -c 'mcp_servers.capture.tool_timeout_sec=900')
+  if [ "$MCP" = capture ] || [ "$MCP" = capture-headless ]; then
+    HEADLESS=""; [ "$MCP" = capture-headless ] && HEADLESS=', "--browser", "headless"'
+    MCP_ARGS=(-c 'mcp_servers.capture.command="node"' -c "mcp_servers.capture.args=[\"$REPO/scripts/workers/capture-mcp.mjs\"$HEADLESS]" -c 'mcp_servers.capture.default_tools_approval_mode="approve"' -c 'mcp_servers.capture.tool_timeout_sec=900')
   fi
   GIT_FLAGS=(); git -C "$WORKDIR" rev-parse --git-dir >/dev/null 2>&1 || GIT_FLAGS=(--skip-git-repo-check)
   CMD=(codex exec --ignore-user-config --json ${GIT_FLAGS[@]+"${GIT_FLAGS[@]}"} -C "$WORKDIR" -m "$MODEL" -c "model_reasoning_effort=\"$EFFORT\""
