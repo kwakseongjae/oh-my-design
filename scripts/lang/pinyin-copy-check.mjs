@@ -10,8 +10,8 @@
  *
  * Reads plain text and Markdown (one string per line; headings are headings, other lines are running text,
  * table cells are cells), HTML, JSX/TSX, Vue, Svelte and Astro (text nodes, quoted attribute values, string
- * literals inside {...}), and JS/TS string literals. Test and spec files are skipped. The scan runs only when
- * some file holds a Han character; it does not tell Chinese from Japanese.
+ * literals inside {...}), and JS/TS string literals. Test and spec files are skipped. A file is read only when
+ * one of its strings holds a Han character (comments do not count); it does not tell Chinese from Japanese.
  *
  * Exit code: 0 after a scan; 1 with --strict when any WARN exists, or when --self-test fails; 2 on a usage
  * error. There is no BLOCK level: no rule here is required by a source that was read in full. WARN is used
@@ -53,13 +53,13 @@ const SOURCE = {
   'PW-11': 'MS 3, SM-cg (translation guide only, Microsoft, for its table; one company guide, Semi, for the list words)',
   'PW-13': 'AD-cw, ZD-pu, SM-toast, SM-notif, SM-banner, TB-pu (4 of 4 company guides, each for its own list; no wrong string given)',
   'PW-16': 'AD-cw, TB-corp, ZD-pr, ZD-lib, SM-cg (4 of 4 company glossaries for one word, 3 of 4 for the other two)',
-  'PW-18': 'ZD-pr, TB-cw, TB-corp, SM-toast (3 of 4 company guides; the wrong form is Zan\'s and Teambition\'s)',
+  'PW-18': 'ZD-pr, TB-cw, TB-corp, SM-toast (3 of 4 company guides; the wrong form is Zan\'s, and Teambition\'s copywriting page shows the same form with labels the researcher could not confirm)',
   'PW-21': 'ZD-df (one company guide, Zan)',
   'PW-26': 'ZD-se, ZD-sc, TB-corp, AD-cw, SM-cg (4 of 4 company guides; the wrong form is Zan\'s)',
   'PW-28': 'ZD-sc, SM-cg (2 of 4 company guides; the wrong form is Zan\'s)',
   'PW-32': 'AD-cw, TB-pu, ZD-pu (3 of 4 company guides; Ant allows the mark in greetings and congratulations)',
   'PW-38': 'TB-pu (one company guide, Teambition)',
-  'PW-45': 'TB-pu, ZD-df (2 of 4 company guides; the wrong form is Zan\'s, the comma named by Teambition)',
+  'PW-45': 'TB-pu, ZD-df (2 of 4 company guides; the wrong form is Zan\'s)',
   'PW-47': 'MZ-sumo, MDN, WP with TB-mix (translation guides only; Teambition\'s mixed-text page shares WordPress\'s wording)',
   'PW-51': 'TB-unit (one company guide, Teambition, gives the wrong form; 3 of 4 use the larger units)',
   'PW-53': 'ZD-df, SM-cg, AD-df, TB-pu, TB-exp (4 of 4 company guides write hyphenated dates; the wrong forms are Zan\'s)',
@@ -93,7 +93,7 @@ const PATTERNS = [
   // SM-cg 「登录 | Log in | 登陆、Login（仅用作名词）」; 「账号 | Account | 帐号」; 「其他 | Other | 其它」; ZD-pr 错误 「登陆」
   ['PW-16', 'WARN', /登陆|帐号|其它/g, 'a spelling the company glossaries list as not to be used (one of these words also means "to land": read it in place)', null],
   // ZD-pr 错误 「商品已被成功发布」; TB-cw 「「设计系统」项目已被成功创建」
-  ['PW-18', 'WARN', /已被成功/g, 'a passive status sentence; Zan and Teambition give this form as wrong', null],
+  ['PW-18', 'WARN', /已被成功/g, 'a passive status sentence; Zan gives this form as wrong', null],
   // ZD-df 错误 「当前版本为 V4.43.0」
   ['PW-21', 'FYI', /(?<![A-Za-z])V\d+(?:\.\d+)+/g, 'a V before the version number; Zan writes digits only', null, null, true],
   // ZD-sc 错误 「请求失败，通用网络错误，错误编号 500。」
@@ -102,14 +102,14 @@ const PATTERNS = [
   ['PW-32', 'FYI', new RegExp('(?<=' + HAN_CHAR + ')\\uFF01', 'g'), 'an exclamation mark; three company guides ask to avoid it (Ant allows it in greetings and congratulations)', null],
   // TB-pu 不推荐 「《安全法》、《交通法》、《交通法》我们都要遵守」
   ['PW-38', 'FYI', /[\u300B\u201D]\u3001[\u300A\u201C]/g, 'a mark between consecutive title or quotation marks; Teambition gives this form as wrong', null],
-  // ZD-df 错误 「1：文本信息；」; TB-pu 「序列号后的标点要使用实心句号 "."，不要使用逗号“，”」
-  ['PW-45', 'WARN', /(?<=^\s*)\d{1,3}[\uFF1A\uFF0C]/g, 'a list number followed by a colon or comma; Zan and Teambition use a full stop', null],
+  // ZD-df 错误 「1：文本信息；」 (number, colon, then Han); TB-pu 「序列号后的标点要使用实心句号 "."，不要使用逗号“，”」 names the comma but gives no wrong string, so the comma is not matched
+  ['PW-45', 'WARN', new RegExp('(?<=^\\s*)\\d{1,3}\\uFF1A(?=' + HAN_CHAR + ')', 'g'), 'a list number followed by a colon; Zan gives this form as wrong, and Zan and Teambition use a full stop', null],
   // TB-mix 不推荐 「刚刚注册了 Teambition ，好开心！」 and 「刚刚注册了 Teambition， 好开心！」; MZ-sumo 「文字与标点符号之间不要留空格。」
   ['PW-47', 'FYI', new RegExp('(?<=\\S) +' + FW_MARK + '|' + FW_MARK + ' +(?=\\S)', 'g'), 'a space beside a full-width punctuation mark', null],
   // TB-unit wrong 「12 万 6 千个」
   ['PW-51', 'FYI', /\d+(?:\.\d+)?\s*万\s*\d+\s*千/g, 'a number split into two units; Teambition gives this form as wrong', null],
   // ZD-df 错误 「2018/12/12」; SM-cg 「使用短线–（Option和-）连接年月日，不使用 / ，如：en：03/01/2022；   zh：2022-03-01」
-  ['PW-53', 'WARN', /(?<!\d)\d{4}\/\d{1,2}\/\d{1,2}(?!\d)/g, 'a date with slashes; the company guides write hyphens, and Zan gives this form as wrong', null],
+  ['PW-53', 'WARN', /(?<![\w/.\-])\d{4}\/\d{1,2}\/\d{1,2}(?![\w/.\-])/g, 'a date with slashes; the company guides write hyphens, and Zan gives this form as wrong', null],
   // ZD-df 错误 「12:00:00 2018-12-12 周三」
   ['PW-54', 'FYI', /(?<![\d:])\d{1,2}:\d{2}(?::\d{2})?\s+\d{4}-\d{1,2}-\d{1,2}/g, 'a time before its date; Zan gives this order as wrong', null],
   // ZD-df 错误 「星期一」
@@ -127,7 +127,7 @@ const CUSTOM = [
   // ZD-df 错误 「2018-2-2」 and 「2018年02月02日」
   ['PW-53', 'FYI', (t) => {
     const out = [];
-    for (const m of t.matchAll(/(?<![\d/-])\d{4}-(\d{1,2})-(\d{1,2})(?![\d-])/g)) if (m[1].length === 1 || m[2].length === 1) out.push({ at: m.index, match: m[0] });
+    for (const m of t.matchAll(/(?<![\w/.\-])\d{4}-(\d{1,2})-(\d{1,2})(?![\w/.\-])/g)) if (m[1].length === 1 || m[2].length === 1) out.push({ at: m.index, match: m[0] });
     for (const m of t.matchAll(/(?<!\d)\d{4}年(\d{1,2})月(\d{1,2})日/g)) if (m[1][0] === '0' || m[2][0] === '0') out.push({ at: m.index, match: m[0] });
     return out;
   }, 'a date with the wrong zero padding; Zan pads hyphenated dates and leaves dates written with the year, month and day characters unpadded', null],
@@ -348,16 +348,18 @@ function markupUnits(ext, raw) {
 // ---- run ----------------------------------------------------------------------------------------
 function run(inputs, { base = process.cwd() } = {}) {
   const files = collect(inputs).map((abs) => ({ abs, ext: path.extname(abs).toLowerCase(), text: fs.readFileSync(abs, 'utf8') }));
-  const zh = files.some((f) => HAN.test(f.text));
+  // a file holds Chinese when one of its strings does (comments are masked before strings are read)
+  for (const f of files) f.units = PROSE_EXT.has(f.ext) ? proseUnits(f.text) : markupUnits(f.ext, f.text);
+  for (const f of files) f.zh = f.units.some((u) => HAN.test(u.text));
+  const zh = files.some((f) => f.zh);
   const F = new Findings();
   const notes = [];
   if (zh) {
     for (const f of files) {
-      if (!HAN.test(f.text)) continue;
+      if (!f.zh) continue;
       const rel = path.relative(base, f.abs);
       const file = (rel.startsWith('..') ? f.abs : rel).split(path.sep).join('/');
-      const units = PROSE_EXT.has(f.ext) ? proseUnits(f.text) : markupUnits(f.ext, f.text);
-      for (const u of units) {
+      for (const u of f.units) {
         for (const [id, sev, re, msg, roles, source, needHan] of PATTERNS) {
           if (roles && !roles.includes(u.role)) continue;
           if (needHan && !HAN.test(u.text)) continue;

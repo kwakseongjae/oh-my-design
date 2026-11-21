@@ -70,7 +70,7 @@ Every candidate in [`../research/rules.md`](../research/rules.md) (CN-01 … CN-
 | CN-62 | supported | PW-62 | judgment only |
 | CN-63 | supported | PW-63 | judgment only |
 | CN-64 | supported | PW-64 (typography, not a copy check) | — (render) |
-| CN-65 | supported | PW-65 (typography, not a copy check) | — (markup; not a copy rule) |
+| CN-65 | supported | left out: region (the W3C article names no region, and no other source or the verdict ties it to the Mainland) | — |
 | CN-66 | supported | PW-66 (typography; not confirmed against page bytes) | — (render) |
 | CN-67 | supported | PW-67 (typography, not a copy check) | — (CSS) |
 | CN-68 | supported | PW-68 (typography); bold goes to "The project's DESIGN.md decides" | — (CSS) |
@@ -86,4 +86,4 @@ Every candidate in [`../research/rules.md`](../research/rules.md) (CN-01 … CN-
 | CN-78 | supported | PW-78 (typography; secondary) | — (render) |
 | CN-79 | not supported | left out: not supported (states no rule, cites no opened source) | — |
 
-Counts: 60 rules (PW), 6 of them rewritten to the verdict (08, 12, 17, 29, 31, 71), 12 of them typography rules the copy checker does not read (CN-64 … CN-78 less those listed elsewhere); 14 candidates wholly in "The project's DESIGN.md decides" (03, 20, 22, 27, 37, 39, 41, 42, 43, 50, 52, 57, 60, 72), and the disputed side points of 10 more (01, 13, 17, 31, 44, 51, 53, 56, 59, 68); 5 left out (36, 61, 74, 75, 79). The checker tests 23 rules: 5 with a WARN level (PW-16, PW-18, PW-28, PW-45, PW-53), the rest FYI only. A test (`test/unit/scripts/pinyin-copy-check.test.mjs`) checks that this table has every candidate once and agrees with the rule file and the checker.
+Counts: 59 rules (PW), 6 of them rewritten to the verdict (08, 12, 17, 29, 31, 71), and 11 of them typography rules the copy checker does not read (64, 66, 67, 68, 69, 70, 71, 73, 76, 77, 78); 14 candidates wholly in "The project's DESIGN.md decides" (03, 20, 22, 27, 37, 39, 41, 42, 43, 50, 52, 57, 60, 72), and the disputed side points of 10 more (01, 13, 17, 31, 44, 51, 53, 56, 59, 68); 6 left out (36, 61, 65, 74, 75, 79). The checker tests 23 rules: 5 with a WARN level (PW-16, PW-18, PW-28, PW-45, PW-53), the rest FYI only. A test (`test/unit/scripts/pinyin-copy-check.test.mjs`) checks that this table has every candidate once and agrees with the rule file and the checker.

@@ -280,15 +280,24 @@ describe('pinyin-copy-check', () => {
     });
 
     it('width and spacing rules rest only on "web" quotes', () => {
+      // a quote is "web" when the byte check found it in a current page: not in either not-web table, and at
+      // least four characters long (shorter quotes were never tested); a span cited here must sit inside one
+      const kept = read('research/rules.md').split('\n').filter((l) => !/^\s*#/.test(l) && !/^\s*- (Test|Strength|Kind)\b/i.test(l));
       const verdictTier = new Map(VERDICT_NOT_WEB);
+      const web = [
+        ...spans(kept.join('\n')).filter((s) => !RAW_NOT_WEB.has(s)),
+        ...spans(read('research/verdicts.md')).filter((s) => !verdictTier.has(s)),
+      ].filter((s) => [...s].length >= 4);
+      let checked = 0;
       for (const section of read('references/writing-rules.md').split(/^(?=#### )/m)) {
         if (!/^- Bytes: every quote below is "web"/m.test(section)) continue;
         const id = /^#### (PW-\d{2})/.exec(section)[1];
         for (const s of outermost(section).filter((x) => HAN.test(x))) {
-          expect([...s].length, id + ': ' + s).toBeGreaterThanOrEqual(4); // shorter quotes were never tested
-          expect(RAW_NOT_WEB.get(s) ?? verdictTier.get(s) ?? 'web', id + ': ' + s).toBe('web');
+          expect(web.some((q) => q.includes(s)), id + ': ' + s).toBe(true);
+          checked++;
         }
       }
+      expect(checked).toBeGreaterThan(10);
     });
   });
 

@@ -4,7 +4,7 @@
 
 ## How this file was made
 
-- **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. CN-74 (quote not found), CN-79 (not supported) and the candidates that state no rule (CN-36, CN-75) are left out, and so is CN-61, whose two Microsoft sentences contradict each other. A candidate whose main point is a disagreement between sources is not a rule: it is listed under [The project's DESIGN.md decides](#the-projects-designmd-decides) with each side and its source, and the checker tests none of it. Where the main point is agreed and only a side point is disputed, the main point is a rule and the side point goes to that section. An agreement inside a disputed candidate is noted there and not checked.
+- **What gets in.** A candidate becomes a rule only if its verdict is "supported", or "weaker than stated" and rewritten to what the verdict says the source supports. CN-74 (quote not found), CN-79 (not supported) and the candidates that state no rule (CN-36, CN-75) are left out, and so is CN-61, whose two Microsoft sentences contradict each other, and CN-65, whose one source (a W3C i18n article) names no region and is tied to the Mainland by no other source or the verdict. A candidate whose main point is a disagreement between sources is not a rule: it is listed under [The project's DESIGN.md decides](#the-projects-designmd-decides) with each side and its source, and the checker tests none of it. Where the main point is agreed and only a side point is disputed, the main point is a rule and the side point goes to that section. An agreement inside a disputed candidate is noted there and not checked.
 - **Ids.** PW-nn carries the number of the candidate it came from (PW-09 is CN-09), so the numbering has gaps.
 - **Chinese text.** Every Chinese string in this file is copied from a quote in `research/rules.md` or `verdicts.md`, with its source key, by code rather than by hand. No example was composed. A rule whose sources give no wrong/right pair says "no sourced example". The test (`test/unit/scripts/pinyin-copy-check.test.mjs`) fails if a bracketed string here or a fixture string is not inside one quote, or if a Chinese word outside brackets is not part of some quote. Quotes the byte check found in no source ("none" in `raw-check-2026-11-21.md`), and verdict quotes elided with … or assembled with |, are not used. Microsoft's Chinese words are taken from its own lines in `rules.md` (inside English quotes or its tables), which were read from the PDF extract; the words used here were found in that extract again.
 - **Which quotes prove what.** `raw-check-2026-11-21.md` gives each quote a tier. Only "web" (a substring of the bytes a current page served) confirms characters and spaces. A Microsoft quote is "extract": characters confirmed, spaces not. "cells" marks a table row the researcher assembled; every cell of four or more characters is on the page. Quotes under four characters and English-language quotes were never tested. Quotes from `verdicts.md` were put through the same check for this file (2026-11-21, not committed). A non-web quote below says which tier it is.
@@ -205,7 +205,7 @@ No rule here is required by any source that was read in full. Hedges in a quote 
 - Strength: 3 of 4 company guides (Teambition, Zan, Semi; Semi's examples are English). Teambition's two pages agree only on avoiding 被: its copywriting page recommends a verb-first sentence (labels as extracted by the researcher), its glossary the noun-first one.
 - Quote: TB-corp 「语序保持一致，推荐句式：名词 + 动词 + 状语」, 「备注：需统一句式保证认知解读体验一致。」 and its row 「| 文件上传成功 | 上传文件成功成功上传文件 |」 (a table row assembled from cells, each on the page); ZD-se 「语序表达推荐使用“名词 + 动词 + 状语”，简化表达。」; ZD-pr 「统一句式，不使用被动语态，简化表达，便于用户理解语义。」; SM-toast 「使用 名词 + 动词 的格式进行说明」; TB-cw 「产品体验以用户为中心，UI 文案要始终以用户为主体」
 - Example: ZD-pr 正确 「商品发布成功」 / 错误 「商品已被成功发布」; TB-cw 「成功创建「设计系统」项目」 over 「「设计系统」项目已被成功创建」. (ZD-se's own pair is not cited: two fetches returned its labels in opposite order.)
-- Checker: **PW-18, WARN**: 已被成功, the form Zan and Teambition give as wrong. Other uses of 被 are not matched.
+- Checker: **PW-18, WARN**: 已被成功, Zan's 错误 form. Teambition's copywriting page shows the same form on its not-recommended side, with labels the researcher could not confirm. Other uses of 被 are not matched.
 
 #### PW-19 (CN-19) · Don't repeat what the user already knows.
 - Kind: WRITE.
@@ -337,7 +337,7 @@ No rule here is required by any source that was read in full. Hedges in a quote 
 - Strength: 2 of 4 company guides (Teambition, Zan). GB/T 15834 may govern this; not opened.
 - Quote: TB-pu 「序号如果加括号如（一），后面则不再加其他标点符号。」 and 「序列号后的标点要使用实心句号 "."，不要使用逗号“，”」; ZD-df 「序号使用“阿拉伯数字”加“.”表示，陈述点以分号结尾，最后一个陈述点以句号结尾。」
 - Example: ZD-df 正确 「1.文本信息；」 「2.文本信息；」 「3.文本信息。」 / 错误 「1：文本信息；」.
-- Checker: **PW-45, WARN**: a string that opens with a number followed by ：(Zan's 错误 form) or ，(the mark Teambition names). Both marks are full-width in the page bytes. 、 after a number is not matched: neither guide gives it as wrong.
+- Checker: **PW-45, WARN**: a string that opens with a number, then ：, then a Han character (Zan's 错误 form; the mark is full-width in the page bytes). The comma Teambition names is not matched, because no source gives a wrong string with it; nor is 、 after a number.
 
 #### PW-46 (CN-46) · WordPress: don't repeat a punctuation mark.
 - Kind: WRITE.
@@ -382,7 +382,7 @@ No rule here is required by any source that was read in full. Hedges in a quote 
 - Strength: 4 of 4 company guides write hyphenated dates (Ant as the default, Zan, Semi, Teambition); Zan states the padding rules and gives the wrong forms; Semi says not to use the slash. Microsoft lists dates among uses of the slash ("4. Indicates dates. For example, 1994/1/1"); the verdict reads that as one item in a list, not a date-format recommendation. Whether 年月日 dates take spaces is disputed ([decides](#cn-53-spaces-inside-年月日-dates)). GB/T 7408 and GB/T 15835 were not read.
 - Quote: AD-df 「中国默认使用 `yyyy-mm-dd` 格式。」; ZD-df 「日期使用分隔符时，需使用“-”作为分隔符；日和月计数在“10”以下时，需使用“0”补齐时间信息；」, 「日期不使用分隔符时，日和月计数在“10”以下时，不需使用“0”补齐日期时间信息；」 and 「年、月、日单独使用时，后面需带上中文单位。」; SM-cg 「使用短线–（Option和-）连接年月日，不使用 / ，如：en：03/01/2022；   zh：2022-03-01」; TB-exp 「在孤立的信息位置，需采用 03-18」 and 「例如 YYYY-MM-DD」; TB-pu 「表达年月日时，中间间隔用“-”」
 - Example: ZD-df 正确 「2018-02-02」 / 错误 「2018/12/12」, 「2018-2-2」; 正确 「2018年2月2日」 / 错误 「2018年02月02日」; 正确 「2018年」 / 错误 「2018Y」. TB-pu 推荐 「2019-01-02」.
-- Checker: **PW-53, WARN**: a date written year/month/day with slashes (Zan's 错误 form; Semi's rule). **FYI**: a hyphenated date whose month or day lacks its zero, and a 年月日 date with a zero-padded month or day (Zan's 错误 forms).
+- Checker: **PW-53, WARN**: a date written year/month/day with slashes (Zan's 错误 form; Semi's rule), unless it sits inside a path or URL. **FYI**: a hyphenated date whose month or day lacks its zero, and a 年月日 date with a zero-padded month or day (Zan's 错误 forms).
 
 #### PW-54 (CN-54) · Time: 24-hour clock; date before time, with a space between; Microsoft's mapping where a source string has AM/PM.
 - Kind: WRITE.
@@ -448,11 +448,6 @@ These rules are about rendering and CSS. The copy checker reads strings, so it t
 - Bytes: CLREQ's Chinese sentence below is "web" (checked against the current page for this file). Its English sentences and the Part 5 translation were not tested against page bytes. The verdict asks that the CLREQ section label (2.1.2) be checked again.
 - Quote: CLREQ 「港台的排版位于字面正中；中国大陆的排版则位于文字末端、字面始端偏顶端或底端一侧（横排时位于字面左下角，直排时位于字面右上角）。」; "In Mainland China, the punctuation marks are usually positioned following the characters they are supposed to mark;" GBT15834-W3C 5.1.1 "They should be placed in the lower left corner, and could not be the start of a line."
 - Do not apply the Mainland position to zh-TW or zh-HK pages.
-
-#### PW-65 (CN-65) · Mark Simplified Chinese pages with `lang="zh-CN"` or `zh-Hans` so that the browser can pick Simplified glyphs.
-- Kind: TYPO (markup).
-- Strength: a W3C i18n article; its wording is "some browsers". It names zh-Hans among the languages whose glyphs differ and names no region. That `lang` also switches the punctuation position of PW-64 is the researcher's inference, not the article's.
-- Quote: W3C-lang "In the absence of explicit styling applied by the content author, some browsers automatically assign appropriate fonts according to the language of the content."
 
 #### PW-66 (CN-66) · The interpunct takes half the width of a Han character in Mainland China.
 - Kind: TYPO (render).
@@ -624,6 +619,7 @@ The sources below disagree, or a candidate recorded a disagreement. None is a ru
 
 - **CN-36**: states no rule. It is the process note in "How this file was made": Semi's English-copy rules (「始终按句子大小写（Sentence case）原则书写」) are not Chinese rules.
 - **CN-61**: Microsoft's two sentences on abbreviations contradict each other and concern English abbreviations; the reading "if a space is unavoidable, make it non-breaking" is the researcher's.
+- **CN-65**: region. The one source, the W3C i18n article on the language attribute, names no region; it shows zh-Hans among languages whose glyphs differ and says "In the absence of explicit styling applied by the content author, some browsers automatically assign appropriate fonts according to the language of the content." No other source or the verdict ties it to the Mainland, so no Mainland rule rests on it. The candidate's link to the punctuation position of PW-64 was the researcher's inference.
 - **CN-74**: quote not found. The verdict gives MDN's actual wording for `insert`: "Adds the specified spacing only if there are no existing spaces between the ideographic and non-ideographic scripts." A later pass can cite it. That a typed space and `text-autospace` together double the gap is not stated by any source read.
 - **CN-75**: states no rule (`text-spacing-trim` is not Baseline; MDN).
 - **CN-79**: not supported: no opened source gives a line length. The verdict notes that the CLREQ dump (7.1.1) has "should not exceed 48 characters" for horizontal body copy in books; not used.
