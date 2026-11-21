@@ -13,8 +13,10 @@
  *   measured   it names at least one literal value and all of them are in today's measured set
  *   differs    it names a value that is not in today's set (stays under the heading)
  *   no-value   it names no literal value: prose a script cannot test (stays; a person or a source decides)
- * It changes nothing. It prints the share of each pile, so the orchestrator knows how much could return to the body
- * on measurement alone and how much needs reading.
+ * It changes nothing, and "measured" is not "confirmed": it says the value in the sentence is one this run measured,
+ * not that what the sentence says about the value is true. A sentence never returns to the body on this test alone
+ * (AGENTS.md: no promotion by heuristic). The piles tell the orchestrator how much of the earlier record a person or
+ * a source has to read.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -28,14 +30,11 @@ const front = text.slice(0, end), body = text.slice(end + 5);
 const HEX = /#[0-9a-fA-F]{3,8}\b/g, LEN = /(?<![\w.#-])\d+(?:\.\d+)?(?:px|rem|em|ms|%)(?![\w-])/g;
 const norm = (h) => { let s = h.toLowerCase(); if (s.length === 4) s = '#' + [...s.slice(1)].map((c) => c + c).join(''); return s; };
 const measured = new Set();
-const feed = (s) => { for (const m of s.match(HEX) ?? []) measured.add(norm(m)); for (const m of s.match(LEN) ?? []) measured.add(m.toLowerCase()); for (const m of s.matchAll(/(?:^|[\s:,(\[])(\d+(?:\.\d+)?)(?=[\s,)\]]|$)/gm)) measured.add(m[1] + 'px'); };
+// Only values the assembled frontmatter states, with their unit. An earlier version also took every bare number
+// (as px) and every colour anywhere under compiled/, so a sentence passed if its number appeared anywhere at all.
+const feed = (s) => { for (const m of s.match(HEX) ?? []) measured.add(norm(m)); for (const m of s.match(LEN) ?? []) measured.add(m.toLowerCase()); };
 feed(front);
-const compiled = path.join(dir, 'compiled');
-if (fs.existsSync(compiled)) for (const f of fs.readdirSync(compiled)) if (f.endsWith('.json') || f.endsWith('.yaml') || f.endsWith('.md')) feed(fs.readFileSync(path.join(compiled, f), 'utf8'));
-// the body outside the earlier-record subsections is what the worker confirmed: its values count as measured too
 const parts = body.split(/\n(?=### Earlier record)/);
-const confirmedText = parts.map((p, i) => (i === 0 ? p : p.slice(p.search(/\n#{2,3} (?!Earlier record)/) >= 0 ? p.search(/\n#{2,3} (?!Earlier record)/) : p.length))).join('\n');
-feed(confirmedText);
 const earlier = parts.slice(1).map((p) => { const stop = p.search(/\n#{2,3} (?!Earlier record)/); return stop >= 0 ? p.slice(0, stop) : p; });
 const piles = { measured: [], differs: [], 'no-value': [] };
 for (const block of earlier) {
