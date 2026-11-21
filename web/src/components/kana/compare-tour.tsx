@@ -133,7 +133,6 @@ export function CompareTour({
 
   return (
     <div ref={root} className="kc" data-side={side}>
-      {stack(captions, "kc-caps")}
       <div className="kc-switch" role="group" aria-label={labels.group}>
         {(["wrong", "right"] as const).map((s) => (
           <button key={s} type="button" className="kc-switch-btn" data-side={s} aria-pressed={side === s} onClick={() => pick(s)}>
@@ -149,6 +148,10 @@ export function CompareTour({
           </figure>
         ))}
       </div>
+      {/* After the screens in the document: on a phone the caption shows there, and its links come after the switch
+          in the tab order as they do on screen. Wide screens lift it above the stage with `order` (kana.css); the
+          stage holds nothing focusable, so the tab order still follows what is seen. */}
+      {stack(captions, "kc-caps")}
       <div className="kc-nav">
         <button type="button" className="kc-step" onClick={() => go(at - 1)} aria-label={`${ids[(at - 1 + n) % n]} ${kinds[(at - 1 + n) % n]}`}>
           <span aria-hidden="true">←</span>

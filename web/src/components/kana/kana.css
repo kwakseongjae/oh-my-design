@@ -130,7 +130,8 @@
    is as tall as its tallest stop and the page does not move during the tour. Status colours (err/ok) only on text and
    borders; the specimen buttons are ink, not Iris, which stays on the hero's main action and the selected stop. ---- */
 .kc-real{margin-top:10px!important;max-width:44em;font-size:15px;line-height:1.65;color:var(--sq-ink-2)}
-.kc{margin-top:32px}
+.kc{display:flex;flex-direction:column;margin-top:32px}
+.kc-caps{order:-1}
 .kc-stack{display:grid}
 .kc-stop{grid-area:1 / 1;min-width:0;visibility:hidden;opacity:0;transition:opacity .3s ease,visibility .3s}
 .kc-stop[data-on]{visibility:visible;opacity:1}
@@ -212,13 +213,8 @@
 @media (max-width:879px){
   /* the stop's caption goes under the screens: its height is the tallest reading's, and the space it leaves falls
      above the controls, not between the switch and the screens */
-  .kc{display:flex;flex-direction:column}
-  .kc-switch{order:1}
-  .kc-stage{order:2}
-  .kc-caps{order:3;margin-top:16px}
+  .kc-caps{order:0;margin-top:16px}
   .kn-main .kc-cap-rule{font-size:17px}
-  .kc-nav{order:4}
-  .kc-hint{order:5}
   .kc-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:360px;margin-top:0;padding:4px;border-radius:var(--sq-r-pill);background:var(--sq-cell)}
   .kc-switch-btn{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border-radius:var(--sq-r-pill);
     font-size:15px;line-height:1.3;font-weight:650;text-align:center;color:var(--sq-ink-2);cursor:pointer;transition:background-color .25s,color .25s}
