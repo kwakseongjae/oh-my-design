@@ -14,6 +14,8 @@
  *   g-wall.html           every screen in one filtered wall
  *   g-landing.html        the landing section
  * The frames are other companies' screens: the mocks stay on this machine (output inside a git work tree is refused).
+ * A record marked `withheld` (mark-withheld.mjs, from withheld.json) is left out, so a still shows only screens
+ * that are candidates for publication.
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -32,7 +34,7 @@ const services = fs.readdirSync(SHEETS, { withFileTypes: true }).filter((d) => d
   const w = JSON.parse(fs.readFileSync(path.join(SHEETS, d.name, 'screens.json'), 'utf8'));
   const tf = path.join(SHEETS, d.name, 'tokens.json');
   const byKey = new Map();
-  for (const r of w.records) { const cur = byKey.get(r.key); if (!cur) byKey.set(r.key, { ...r }); else if (r.state && !cur.state) cur.state = r.state; }
+  for (const r of w.records) { if (r.withheld) continue; const cur = byKey.get(r.key); if (!cur) byKey.set(r.key, { ...r }); else if (r.state && !cur.state) cur.state = r.state; }
   return { slug: w.slug, name: w.name, platform: w.platform, reference: w.reference, shot: w.shot, screens: [...byKey.values()], tokens: fs.existsSync(tf) ? JSON.parse(fs.readFileSync(tf, 'utf8')) : null, rel: path.relative(OUT, path.join(SHEETS, d.name)) };
 }).sort((a, b) => (a.platform === b.platform ? a.name.localeCompare(b.name, 'ko') : a.platform === 'both' ? -1 : 1));
 if (!services.length) { console.error('no sheets under ' + SHEETS); process.exit(1); }

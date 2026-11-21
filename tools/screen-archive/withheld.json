@@ -1,0 +1,34 @@
+{
+ "about": "Screens of the web sheets that are NOT shown outside this machine: most of what they show was written or photographed by users (posts, listings, reviews, nicknames), or by small businesses and individuals. Judged screen by screen on the 390 and the 1440 first viewport, 2026-11-21, by the main session; the owner has been shown the list (report card 11) and has not yet decided on publication. mark-withheld.mjs writes these into each sheet's screens.json as `withheld: <reason>` on every width of the key; the site's reader and the mock generators leave such records out. A blocked screen (403) is not listed here: it has no image at all.",
+ "judged": "2026-11-21",
+ "services": {
+  "karrot": {
+   "home": "사용자 글과 사진",
+   "buy-sell": "사용자 매물 사진",
+   "search-results": "사용자 매물 사진",
+   "detail": "판매자 닉네임·동네·사진",
+   "community": "사용자 글",
+   "group": "사용자 모임 글",
+   "cars": "사용자 매물 사진",
+   "local": "동네업체가 올린 사진과 후기",
+   "jobs": "구인 글과 올린 사람의 사진"
+  },
+  "ohouse": {
+   "home": "사용자 집 사진 줄",
+   "projects": "사용자 집들이 글",
+   "photos": "사용자 사진과 닉네임",
+   "app-sheet": "뒤에 사용자 사진 줄이 비침"
+  },
+  "musinsa": {
+   "snap": "사람 사진(스냅)"
+  },
+  "inflearn": {
+   "community": "수강생 후기와 아이디",
+   "mentoring": "멘토링 후기"
+  },
+  "jobplanet": {
+   "review": "사용자 기업 리뷰",
+   "community": "사용자 글"
+  }
+ }
+}
