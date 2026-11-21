@@ -11,7 +11,6 @@ import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { screensMetadata } from "@/components/screens/metadata";
 import { ScreensNotice } from "@/components/screens/notice";
 import { SCREENS_NOTICE } from "@/components/screens/notice-copy";
-import committed from "@/data/screens-public.generated.json";
 import { readScreens } from "@/lib/screens/local.server";
 import { publicManifest, screensPublished, validManifest } from "@/lib/screens/public.server";
 import { allScreens, screensOf } from "@/lib/screens/source.server";
@@ -24,6 +23,9 @@ type Loose = any;
 const collect = publisher.collect as (dir: string, opts: Record<string, unknown>) => Loose;
 const withoutScreens = publisher.withoutScreens as (manifest: Loose, slug: string, key?: string | null) => Loose;
 
+// Every published state here comes from a fixture manifest; pin the committed one to the shut state so these tests
+// keep meaning the same once the real manifest is committed. The committed file itself is read from disk below.
+vi.mock("@/data/screens-public.generated.json", () => ({ default: { generated: "", base: "", services: [] } }));
 vi.mock("next/font/google", () => ({
   Inter: () => ({ variable: "t-inter", className: "t-inter", style: { fontFamily: "Inter" } }),
 }));
@@ -125,7 +127,8 @@ describe("the publishing script (collect)", () => {
     expect(withoutScreens(result.manifest, "karrot").services.map((s: { slug: string }) => s.slug)).toEqual(["29cm", "wanted"]);
   });
 
-  it("the committed manifest is the shut state: no services, no base", () => {
+  it("the committed manifest is the shut state: no services, no base (change this test when publishing)", () => {
+    const committed = JSON.parse(fs.readFileSync(path.join(WEB, "src/data/screens-public.generated.json"), "utf8"));
     expect(committed).toEqual({ generated: "", base: "", services: [] });
     expect(screensPublished({ NODE_ENV: "production" })).toBe(false);
   });
