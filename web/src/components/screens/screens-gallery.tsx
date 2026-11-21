@@ -10,7 +10,9 @@
  *   - a tile: the still at the chosen width, the service, up to three DESIGN.md colours drawn on it, the screen's title.
  *     It opens the Screens tab's dialog; previous / next walk the shelf, and two links lead to the service's
  *     DESIGN.md and to all of its screens (its item page's #screens).
- * Rendered only when the server found the local folder (lib/screens/gallery.server.ts); the switches are plain state.
+ *   - once screens are published: a line under a tile whose people were hidden (and in its large view), and the
+ *     rights and takedown lines at the end (./notice.tsx).
+ * Rendered only when the server found screens (lib/screens/gallery.server.ts); the switches are plain state.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -19,6 +21,7 @@ import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { ScreenDialog, isNarrowWidth } from "@/components/item/screen-dialog";
 import { serviceShelves, stillAt, typeShelves, type GalleryModel, type GalleryService, type GalleryShot } from "@/lib/screens/model";
 import { GALLERY_COPY, type GalleryCopy, type ScreensLocale } from "./copy";
+import { ScreensNotice } from "./notice";
 import "@/components/brand-a/screens-ui.css";
 import "@/components/brand-a/screens-gallery.css";
 
@@ -127,6 +130,7 @@ export function ScreensGallery({ model, locale }: { model: GalleryModel; locale:
           onOpen={(index) => setOpen({ shelf: s.id, index })}
           services={services}
           byService={mode === "service"}
+          showMasked={model.published}
           t={t}
         />
       ))}
@@ -150,6 +154,7 @@ export function ScreensGallery({ model, locale }: { model: GalleryModel; locale:
         onStep={step}
         onClose={() => setOpen(null)}
         labels={t.dialog}
+        note={model.published && current?.masked ? t.notice.masked : null}
         links={
           currentService ? (
             <>
@@ -165,6 +170,8 @@ export function ScreensGallery({ model, locale }: { model: GalleryModel; locale:
           ) : null
         }
       />
+
+      {model.published ? <ScreensNotice t={t.notice} scope="gallery" shot={model.shot} signedOut={model.signedOut} /> : null}
     </div>
   );
 }
@@ -177,6 +184,7 @@ function ShelfRow({
   onOpen,
   services,
   byService,
+  showMasked,
   t,
 }: {
   shelf: ShelfView;
@@ -187,6 +195,8 @@ function ShelfRow({
   services: Map<string, GalleryService>;
   /** A service's own shelf: its name is the shelf's heading, so a tile leads with the screen's title instead. */
   byService: boolean;
+  /** Screens are published: a tile whose people were hidden says so under its title. */
+  showMasked: boolean;
   t: GalleryCopy;
 }) {
   const row = useRef<HTMLUListElement>(null);
@@ -284,6 +294,7 @@ function ShelfRow({
                   {shot.title}
                 </p>
               )}
+              {showMasked && shot.masked ? <p className="sq-gal-masked">{t.notice.masked}</p> : null}
             </li>
           );
         })}

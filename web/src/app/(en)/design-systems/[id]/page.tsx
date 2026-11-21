@@ -24,7 +24,7 @@ import { koDetailPath } from "@/lib/i18n/ko-detail";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { ITEM_EN } from "@/components/brand-a/copy/item";
 import { RelatedReferences } from "../related-references";
-import { readScreens } from "@/lib/screens/local.server";
+import { screensOf } from "@/lib/screens/source.server";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -216,7 +216,7 @@ export default async function DesignSystemDetailPage({
         preview={preview}
         official={getDesignSystem(detail.id)?.url ?? null}
         logo={logoFor(detail.id)}
-        screens={readScreens(detail.id)}
+        screens={screensOf(detail.id)}
       />
       <RelatedReferences
         locale="en"

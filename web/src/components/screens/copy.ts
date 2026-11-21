@@ -7,10 +7,14 @@
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
 import type { FixedShelfId } from "@/lib/screens/model";
 import type { ScreenDialogLabels } from "@/components/item/screen-dialog";
+import { SCREENS_NOTICE, koRange, type ScreensNoticeCopy } from "./notice-copy";
 
 export type ScreensLocale = "en" | "ko";
 
 export const SCREENS_PATH: Record<ScreensLocale, string> = { en: "/screens", ko: "/ko/screens" };
+
+/** The site header's link to the gallery, shown once screens are published (brand-a/site-header.tsx). */
+export const SCREENS_NAV_LABEL: Record<ScreensLocale, string> = { en: "Screens", ko: "화면" };
 
 export interface GalleryCopy {
   meta: { title: string; description: string };
@@ -36,6 +40,8 @@ export interface GalleryCopy {
   designMd: (name: string) => string;
   allOfService: (name: string) => string;
   dialog: ScreenDialogLabels;
+  /** The rights, takedown and masked lines, shown once screens are published. */
+  notice: ScreensNoticeCopy;
 }
 
 const koDate = (d: string) => {
@@ -77,7 +83,8 @@ const EN: GalleryCopy = {
   dots: (tokens) => `DESIGN.md colors on this screen: ${tokens.join(", ")}`,
   designMd: (name) => `${name} DESIGN.md`,
   allOfService: (name) => `All ${name} screens`,
-  dialog: { counter: ITEM_EN.screens.counter, prev: ITEM_EN.screens.prev, next: ITEM_EN.screens.next, close: ITEM_EN.screens.close, fullAlt: ITEM_EN.screens.fullAlt },
+  dialog: { counter: ITEM_EN.screens.counter, prev: ITEM_EN.screens.prev, next: ITEM_EN.screens.next, close: ITEM_EN.screens.close, fullAlt: ITEM_EN.screens.fullAlt, stillAlt: ITEM_EN.screens.stillAlt },
+  notice: SCREENS_NOTICE.en,
 };
 
 const KO: GalleryCopy = {
@@ -90,7 +97,7 @@ const KO: GalleryCopy = {
     [
       `${n}곳`,
       `화면 ${total}개`,
-      shot ? (shot.from === shot.to ? `${koDate(shot.from)} 촬영` : `${koDate(shot.from)}~${koDate(shot.to)} 촬영`) : null,
+      shot ? (shot.from === shot.to ? `${koDate(shot.from)} 촬영` : `${koRange(shot.from, shot.to)} 촬영`) : null,
       signedOut ? "로그아웃 상태" : null,
     ]
       .filter(Boolean)
@@ -114,7 +121,8 @@ const KO: GalleryCopy = {
   dots: (tokens) => `이 화면에 그려진 DESIGN.md 색: ${tokens.join(", ")}`,
   designMd: (name) => `${name} DESIGN.md`,
   allOfService: (name) => `${name} 화면 모두`,
-  dialog: { counter: ITEM_KO.screens.counter, prev: ITEM_KO.screens.prev, next: ITEM_KO.screens.next, close: ITEM_KO.screens.close, fullAlt: ITEM_KO.screens.fullAlt },
+  dialog: { counter: ITEM_KO.screens.counter, prev: ITEM_KO.screens.prev, next: ITEM_KO.screens.next, close: ITEM_KO.screens.close, fullAlt: ITEM_KO.screens.fullAlt, stillAlt: ITEM_KO.screens.stillAlt },
+  notice: SCREENS_NOTICE.ko,
 };
 
 export const GALLERY_COPY: Record<ScreensLocale, GalleryCopy> = { en: EN, ko: KO };

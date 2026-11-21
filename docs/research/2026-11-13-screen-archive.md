@@ -569,3 +569,16 @@ both where the two look alike), then asked for web first, in a 40-minute block. 
   closing is bounded).
 - **Not done:** linking a screen's elements to the service's measured tokens (the part Mobbin and Refero do not
   have), re-shooting on a schedule and showing what changed, signed-in screens, and the three site mocks.
+
+## Publishing (2026-11-22)
+
+The owner approved publishing the candidates' first-viewport stills, kept out of the repository, on Vercel Blob.
+`web/scripts/publish-screens.mjs` reads the sheets folder, lists only what may be shown (never a withheld or blocked
+screen, a full page, or a file outside a sheet's img folder), uploads to the store and writes the committed manifest
+`web/src/data/screens-public.generated.json`; an empty manifest is the shut state. Pages print `/screens-img/…`, which
+next.config.ts rewrites to the store (with `X-Robots-Tag: noindex, noimageindex`; robots.txt disallows the path).
+
+- Check: `node web/scripts/publish-screens.mjs --dry-run --base https://example.invalid/screens --out <tmp>/manifest.json`
+- Publish: `cd web && npm install`, then `BLOB_READ_WRITE_TOKEN=… node scripts/publish-screens.mjs --upload --sheets ~/Downloads/kr-screens/web`, and commit the manifest
+- Take down: `BLOB_READ_WRITE_TOKEN=… node scripts/publish-screens.mjs --remove <slug>[/<key>]`, commit the manifest and
+  deploy, and mark the screen withheld in its sheet so the next upload leaves it out

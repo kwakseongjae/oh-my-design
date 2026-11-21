@@ -6,8 +6,8 @@ import { SCREENS_PATH, type ScreensLocale } from "./copy";
 import { ScreensGallery } from "./screens-gallery";
 
 /**
- * The page behind /screens and /ko/screens. Not found whenever the local screens folder is not configured (unset, or a
- * production build without OMD_SCREENS_ALLOW=1): lib/screens/local.server.ts screensRoot() is the one gate.
+ * The page behind /screens and /ko/screens. Not found while there are no screens to read: nothing published
+ * (lib/screens/public.server.ts) and no local folder configured. lib/screens/source.server.ts decides.
  */
 export function ScreensPage({ locale }: { locale: ScreensLocale }) {
   const model = readGallery(locale);

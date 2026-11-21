@@ -13,8 +13,8 @@ const STRIP_WIDTH = 390;
  * Owner, 2026-11-22: "그냥 화면들도 캐러셀이나 그리드 형태로 … 심플하게": a one-word label, a "see all" text link to the
  * gallery, and one sideways row of every service's home screen at phone width, each named and opening that service's
  * item page at #screens. No heading sentence, chips, colour dots or button.
- * English and Korean landings only. Renders nothing at all, and reads nothing from disk, while the local screens
- * folder is not configured (lib/screens/local.server.ts screensRoot()), so the landing is then exactly as before.
+ * English and Korean landings only. Renders nothing at all while there are no screens to read (nothing published and
+ * no local folder: lib/screens/source.server.ts), so the landing is then exactly as before.
  * Synchronous on purpose: the landing's tests render it with renderToStaticMarkup.
  */
 export function ScreensLandingSection({ locale }: { locale: SiteLocale }) {
