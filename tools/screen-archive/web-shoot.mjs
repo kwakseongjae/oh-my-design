@@ -163,6 +163,7 @@ function maskPage(mask) {
     img.removeAttribute('srcset'); img.removeAttribute('sizes');
     for (const s of img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement.querySelectorAll('source') : []) s.removeAttribute('srcset');
     img.src = BLANK; img.style.background = mask.imageFill || '#e5e6eb'; img.style.objectFit = 'cover';
+    img.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,.75)';   // tiles that touched each other stay countable
     images++;
   }
   return { names: list.length, texts, attrs, images };
