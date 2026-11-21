@@ -2,17 +2,22 @@
 /**
  * Builds the data behind /ko/kana from the kana skill's writing rules. Nothing in the output is typed here: every
  * rule, quote and example string is cut out of writing-rules.md, the URLs come from its own source table and are
- * checked against sources.json, and the font counts are read from measured-jp.md.
+ * checked against the research passes' sources.json files, and the font counts are read from measured-jp.md.
  *
- *   node scripts/lang/build-kana-page-data.mjs <writing-rules.md> <sources.json> [--fonts <measured-jp.md>] [--out <file>]
+ *   node scripts/lang/build-kana-page-data.mjs <writing-rules.md> <sources.json>... [--fonts <measured-jp.md>] [--out <file>]
  *
- * The /ko/kana page reads the font counts, so build it with --fonts. From the kana skill's draft:
+ * The /ko/kana page reads the font counts, so build it with --fonts. From the kana skill's draft (both research passes):
  *   node scripts/lang/build-kana-page-data.mjs docs/drafts/kana/references/writing-rules.md \
- *     docs/drafts/kana/writing/sources.json --fonts docs/drafts/kana/references/measured-jp.md
+ *     docs/drafts/kana/writing/sources.json docs/drafts/kana/writing2/sources.json \
+ *     --fonts docs/drafts/kana/references/measured-jp.md
+ *
+ * Quotes are the md's 「…」 spans (Japanese) and “…” spans (English: Microsoft states its rules in English). The
+ * md writes Microsoft's + and − marks, and the OK/NG-style labels of the other sources, before the strings they mark.
  *
  * Default out: web/src/data/kana-rules.generated.json. The script fails, and writes nothing, when a quoted string
- * cannot be given a source key, when a key in the rules has no URL in both files, or when any Japanese string it is
- * about to write is not a character-for-character substring of writing-rules.md.
+ * cannot be given a source key, when a key in the rules has no URL in the source files (or two files give it different
+ * URLs), when a quote is not a substring of writing-rules.md, or when any Japanese string it is about to write is not a
+ * character-for-character substring of writing-rules.md.
  */
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -23,9 +28,9 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..")
 const argv = process.argv.slice(2);
 const flag = (name) => (argv.includes(name) ? argv[argv.indexOf(name) + 1] : null);
 const positional = argv.filter((a, i) => !a.startsWith("--") && !argv[i - 1]?.startsWith("--"));
-const [rulesPath, sourcesPath] = positional;
-if (!rulesPath || !sourcesPath) {
-  console.error("usage: build-kana-page-data.mjs <writing-rules.md> <sources.json> [--fonts <measured-jp.md>] [--out <file>]");
+const [rulesPath, ...sourcesPaths] = positional;
+if (!rulesPath || !sourcesPaths.length) {
+  console.error("usage: build-kana-page-data.mjs <writing-rules.md> <sources.json>... [--fonts <measured-jp.md>] [--out <file>]");
   process.exit(2);
 }
 const fontsPath = flag("--fonts");
@@ -33,7 +38,6 @@ const outPath = path.resolve(flag("--out") ?? path.join(REPO, "web/src/data/kana
 
 const read = (p) => fs.readFileSync(p, "utf8");
 const md = read(rulesPath);
-const sourcesJson = JSON.parse(read(sourcesPath));
 const sha256 = (s) => crypto.createHash("sha256").update(s).digest("hex");
 /** where the file lives in the repository once the kana branch is in (docs/drafts/kana/...), else its base name */
 const repoPath = (p) => {
@@ -59,8 +63,15 @@ const sectionLines = (heading) => {
 const tableRows = (block) =>
   block.filter((l) => /^\|/.test(l) && !/^\|\s*-/.test(l)).slice(1).map((l) => l.split("|").slice(1, -1).map((c) => c.trim()));
 
-// ---- sources: the md's own table (English names), each URL checked against sources.json ----
-const fromJson = new Map(sourcesJson.sources.map((s) => [s.key, s]));
+// ---- sources: the md's own table (English names), each URL checked against the sources.json files ----
+const fromJson = new Map();
+for (const p of sourcesPaths) {
+  for (const s of JSON.parse(read(p)).sources) {
+    const had = fromJson.get(s.key);
+    if (had && had.url !== s.url) fail(s.key + ": two sources.json files give different URLs (" + had.url + ", " + s.url + ")");
+    if (!had) fromJson.set(s.key, s);
+  }
+}
 const sources = tableRows(sectionLines("## Source keys")).map(([key, name, url]) => {
   const j = fromJson.get(key);
   if (j?.url !== url) fail(key + ": the URL in writing-rules.md (" + url + ") is not the one in sources.json (" + j?.url + ")");
@@ -75,9 +86,10 @@ const KEYS = [...sources.map((s) => s.key), ...OUTSIDE_TABLE].sort((a, b) => b.l
 const ALIASES = { WordPress: "WP", OPTiM: "OPT" };
 
 // ---- the scanner: balanced 「…」, source keys, OK/NG-style labels, arrows and separators ----
-const LABELS = ["Don't", "Do", "NG", "OK", "Bad", "Good", "誤", "正", "例"];
-const WRONG = new Set(["Don't", "NG", "Bad", "誤"]);
-const RIGHT = new Set(["Do", "OK", "Good", "正"]);
+// + and − (U+2212) are Microsoft's marks for its recommended and avoided forms
+const LABELS = ["Don't", "Do", "NG", "OK", "Bad", "Good", "誤", "正", "例", "+", "\u2212"];
+const WRONG = new Set(["Don't", "NG", "Bad", "誤", "\u2212"]);
+const RIGHT = new Set(["Do", "OK", "Good", "正", "+"]);
 const isWordChar = (c) => !!c && /[A-Za-z0-9'-]/.test(c);
 
 function scan(text) {
@@ -97,6 +109,14 @@ function scan(text) {
       if (end < 0) fail("unbalanced 「 in: " + text);
       // an empty pair names the brackets themselves (UW-44's 「」 side), it quotes nothing
       if (end > i + 1) out.push({ t: "q", text: text.slice(i + 1, end) });
+      i = end + 1;
+      continue;
+    }
+    if (c === "\u201C") {
+      // an English quote (Microsoft states its rules in English); the source's own straight quotes stay inside
+      const end = text.indexOf("\u201D", i + 1);
+      if (end < 0) fail("unbalanced \u201C in: " + text);
+      out.push({ t: "q", lang: "en", text: text.slice(i + 1, end) });
       i = end + 1;
       continue;
     }
@@ -168,7 +188,7 @@ function quotesOf(text, where, carried = null, overrides = {}) {
     } else if (tok.t === "via") via = tok.via;
     else if (tok.t === "label") label = tok.label;
     else if (tok.t === "q") {
-      const q = { key: overrides[tok.text] ?? key, ...(via ? { via } : {}), ...(label ? { label } : {}), text: tok.text };
+      const q = { key: overrides[tok.text] ?? key, ...(via ? { via } : {}), ...(label ? { label } : {}), ...(tok.lang ? { lang: tok.lang } : {}), text: tok.text };
       if (!q.key) waiting.push(q);
       quotes.push(q);
     } else if (tok.t === "sep" || tok.t === "stop") label = null;
@@ -213,6 +233,7 @@ function examplesOf(text, where) {
       if (side && side.role === "given") side.role = "wrong";
       arrow = true;
     } else if (tok.t === "q") {
+      if (tok.lang) fail(where + ": an English quote on an Example line (put it on the Quote line): " + tok.text);
       if (!key) fail(where + ": no source key before 「" + tok.text + "」");
       if (arrow) open("right", null), (arrow = false);
       else if (!side) open("given", null);
@@ -227,6 +248,7 @@ function examplesOf(text, where) {
 const STRENGTH_TABLE = tableRows(sectionLines("## Strength, in words")).map(([w]) => w);
 function tiersOf(line, where) {
   const tiers = [];
+  if (/statutory duty/.test(line)) tiers.push({ tier: "law" });
   if (/government design system/.test(line)) tiers.push({ tier: "government" });
   const n = [...line.matchAll(/(\d) of 4 company guides/g)].map((m) => Number(m[1]));
   if (n.length) tiers.push({ tier: "company", of4: Math.max(...n) });
@@ -334,7 +356,7 @@ const data = {
   generatedBy: "scripts/lang/build-kana-page-data.mjs",
   input: {
     rules: { path: repoPath(rulesPath), sha256: sha256(md) },
-    sources: { path: repoPath(sourcesPath), sha256: sha256(read(sourcesPath)) },
+    sources: sourcesPaths.map((p) => ({ path: repoPath(p), sha256: sha256(read(p)) })),
   },
   draft: (md.match(/\*\*Development draft, (\d{4}-\d{2}-\d{2})\./) ?? [])[1] ?? null,
   sources: sources.filter((s) => usedKeys.has(s.key)),
@@ -354,6 +376,10 @@ const strings = [];
 })({ ...data, input: null, fonts: null });
 const stray = strings.filter((s) => JA.test(s) && !md.includes(s));
 if (stray.length) fail("Japanese not found in writing-rules.md: " + stray.map((s) => JSON.stringify(s)).join(", "));
+// every quote, English ones too, is cut out of the md as it stands
+const allQuotes = [...rules.flatMap((r) => r.quotes), ...houseChoices.flatMap((c) => c.sides.flatMap((s) => s.quotes))];
+const loose = allQuotes.filter((q) => !md.includes(q.text));
+if (loose.length) fail("quotes not found in writing-rules.md: " + loose.map((q) => JSON.stringify(q.text)).join(", "));
 
 fs.writeFileSync(outPath, JSON.stringify(data, null, 2) + "\n");
 console.log(

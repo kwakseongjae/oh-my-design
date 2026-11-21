@@ -18,7 +18,7 @@ import "./kana.css";
 
 type KanaData = typeof data;
 type Rule = KanaData["rules"][number];
-type Quote = { key: string; text: string; via?: string; label?: string };
+type Quote = { key: string; text: string; via?: string; label?: string; lang?: string };
 type Example = { key: string; via?: string; sides: { role: string; label: string | null; texts: string[] }[] };
 type Tier = { tier: string; of4?: number };
 
@@ -47,12 +47,12 @@ function Mixed({ text }: { text: string }) {
   );
 }
 
-/** A quoted string as the file gives it, in the page's own corner brackets; its `code` marks (writing-rules.md's
- *  Markdown) set as code. */
-function Ja({ text }: { text: string }) {
+/** A quoted string as the file gives it, in the page's own corner brackets (an English quote, Microsoft's, in curly
+ *  quotes); its `code` marks (writing-rules.md's Markdown) set as code. */
+function Ja({ text, en = false }: { text: string; en?: boolean }) {
   return (
     <>
-      <span className="kn-qm">「</span>
+      <span className="kn-qm">{en ? "\u201C" : "「"}</span>
       {text.split("`").map((part, i) =>
         i % 2 ? (
           <code key={i} className="kn-code">
@@ -62,7 +62,7 @@ function Ja({ text }: { text: string }) {
           <Fragment key={i}>{part}</Fragment>
         ),
       )}
-      <span className="kn-qm">」</span>
+      <span className="kn-qm">{en ? "\u201D" : "」"}</span>
     </>
   );
 }
@@ -110,8 +110,8 @@ function QuoteBlock({ quotes }: { quotes: readonly Quote[] }) {
           <p key={i} className="kn-qline">
             {line[0].label ? <span className="kn-qlabel">{line[0].label}</span> : null}
             {line.map((q, j) => (
-              <span key={j} className="kn-qtext">
-                <Ja text={q.text} />
+              <span key={j} className="kn-qtext" lang={q.lang}>
+                <Ja text={q.text} en={q.lang === "en"} />
               </span>
             ))}
           </p>
@@ -129,13 +129,15 @@ function Tiers({ tiers }: { tiers: readonly Tier[] }) {
     <ul className="kn-tiers" aria-label={t.tiers.label}>
       {tiers.map((x, i) => (
         <li key={i} className={x.tier === "optim-not-counted" ? "kn-tier kn-tier--muted" : "kn-tier"}>
-          {x.tier === "government"
-            ? t.tiers.government
-            : x.tier === "company"
-              ? t.tiers.company(x.of4 ?? 1)
-              : x.tier === "translation"
-                ? t.tiers.translation
-                : t.tiers.optim}
+          {x.tier === "law"
+            ? t.tiers.law
+            : x.tier === "government"
+              ? t.tiers.government
+              : x.tier === "company"
+                ? t.tiers.company(x.of4 ?? 1)
+                : x.tier === "translation"
+                  ? t.tiers.translation
+                  : t.tiers.optim}
         </li>
       ))}
     </ul>
