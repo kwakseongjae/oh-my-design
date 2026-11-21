@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="665" viewBox="0 0 360 665" role="img" aria-label="주 색을 정하는 일곱 가지 방법과 파랑의 비율" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="ko">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="359" height="664" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">주 색을 정하는 일곱 가지 방법과 파랑의</text>
+<text x="20" y="57.6" font-size="16" fill="#13131a" font-weight="700">비율</text>
+<text x="20" y="81.2" font-size="12" fill="#5a5a63">진한 막대는 파랑, 옅은 막대는 두 번째로 많은 계열</text>
+<rect x="256" y="108.6" width="56.8" height="512" fill="#eaebfe"/>
+<line x1="256" y1="108.6" x2="256" y2="620.6" stroke="#d8d8ff" stroke-width="1"/>
+<line x1="312.8" y1="108.6" x2="312.8" y2="620.6" stroke="#d8d8ff" stroke-width="1"/>
+<line x1="100" y1="108.6" x2="100" y2="620.6" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="180" y1="108.6" x2="180" y2="620.6" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="260" y1="108.6" x2="260" y2="620.6" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="340" y1="108.6" x2="340" y2="620.6" stroke="#f3f3f8" stroke-width="1"/>
+<line x1="20" y1="108.6" x2="20" y2="620.6" stroke="#d3d3db" stroke-width="1"/>
+<text x="26" y="125.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">이 글의 규칙 W</tspan><tspan fill="#5a5a63">  169곳</tspan></text>
+<rect x="20" y="134.1" width="284" height="18" fill="#3f3f48"/>
+<text x="297" y="147.6" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">60곳 · 35.5%</text>
+<rect x="20" y="156.1" width="85.6" height="9" fill="#d3d3db"/>
+<text x="111.6" y="165.1" font-size="12" fill="#5a5a63">빨강 10.7%</text>
+<text x="26" y="196.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">첫 초안의 규칙 S</tspan><tspan fill="#5a5a63">  153곳</tspan></text>
+<rect x="20" y="205.6" width="292.8" height="18" fill="#3f3f48"/>
+<text x="305.8" y="219.1" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">56곳 · 36.6%</text>
+<rect x="20" y="227.6" width="78.4" height="9" fill="#d3d3db"/>
+<text x="104.4" y="236.6" font-size="12" fill="#5a5a63">빨강 9.8%</text>
+<text x="26" y="268.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">처음 쓴 버튼 규칙</tspan><tspan fill="#5a5a63">  176곳</tspan></text>
+<rect x="20" y="277.1" width="245.6" height="18" fill="#3f3f48"/>
+<text x="258.6" y="290.6" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">54곳 · 30.7%</text>
+<rect x="20" y="299.1" width="100" height="9" fill="#d3d3db"/>
+<text x="126" y="308.1" font-size="12" fill="#5a5a63">검정에 가까운 무채색 12.5%</text>
+<text x="26" y="339.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">카탈로그 데이터의 대표</tspan></text>
+<text x="26" y="357.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">색(primaryColor)</tspan><tspan fill="#5a5a63">  185곳</tspan></text>
+<rect x="20" y="366.1" width="272.8" height="18" fill="#3f3f48"/>
+<text x="285.8" y="379.6" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">63곳 · 34.1%</text>
+<rect x="20" y="388.1" width="82.4" height="9" fill="#d3d3db"/>
+<text x="108.4" y="397.1" font-size="12" fill="#5a5a63">빨강·검정에 가까운 무채색 각 10.3%</text>
+<text x="26" y="428.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">흰색이 아닌 첫 버튼의 배경색</tspan><tspan fill="#5a5a63">  176곳</tspan></text>
+<rect x="20" y="437.6" width="236" height="18" fill="#3f3f48"/>
+<text x="249" y="451.1" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">52곳 · 29.5%</text>
+<rect x="20" y="459.6" width="100" height="9" fill="#d3d3db"/>
+<text x="126" y="468.6" font-size="12" fill="#5a5a63">검정에 가까운 무채색 12.5%</text>
+<text x="26" y="500.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">primary 토큰만</tspan><tspan fill="#5a5a63">  149곳</tspan></text>
+<rect x="20" y="509.1" width="279.2" height="18" fill="#3f3f48"/>
+<text x="292.2" y="522.6" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">52곳 · 34.9%</text>
+<rect x="20" y="531.1" width="80.8" height="9" fill="#d3d3db"/>
+<text x="106.8" y="540.1" font-size="12" fill="#5a5a63">빨강 10.1%</text>
+<text x="26" y="571.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">흰색에 가까운 버튼을 거른 버튼 규칙</tspan><tspan fill="#5a5a63">  174곳</tspan></text>
+<rect x="20" y="580.6" width="252.8" height="18" fill="#3f3f48"/>
+<text x="265.8" y="594.1" font-size="12" fill="#ffffff" font-weight="600" text-anchor="end">55곳 · 31.6%</text>
+<rect x="20" y="602.6" width="105.6" height="9" fill="#d3d3db"/>
+<text x="131.6" y="611.6" font-size="12" fill="#5a5a63">검정에 가까운 무채색 13.2%</text>
+<text x="284.4" y="102.6" font-size="12" fill="#6749e2" font-weight="600" text-anchor="middle">29.5~36.6%</text>
+<text x="20" y="648.6" font-size="12" fill="#5a5a63">0%</text>
+<text x="100" y="648.6" font-size="12" fill="#5a5a63" text-anchor="middle">10%</text>
+<text x="180" y="648.6" font-size="12" fill="#5a5a63" text-anchor="middle">20%</text>
+<text x="260" y="648.6" font-size="12" fill="#5a5a63" text-anchor="middle">30%</text>
+<text x="340" y="648.6" font-size="12" fill="#5a5a63" text-anchor="end">40%</text>
+</svg>

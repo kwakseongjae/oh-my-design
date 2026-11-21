@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="645" viewBox="0 0 720 645" role="img" aria-label="Primary hex values shared by two or more services" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="719" height="644" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Primary hex values shared by two or more services</text>
+<text x="32" y="78.65" font-size="14" fill="#5a5a63">8 exact values, 26 services</text>
+<rect x="32" y="116.95" width="44" height="44" rx="8" fill="#000000"/>
+<text x="92" y="130.95" font-size="14"><tspan fill="#13131a" font-weight="600">#000000</tspan><tspan fill="#5a5a63">  9 · Near-black</tspan></text>
+<text x="92" y="151.95" font-size="13" fill="#13131a">29CM · KRAFTON · Lotte ON · Musinsa · POZAlabs · Remember · Samsung · Stayfolio</text>
+<text x="92" y="171.45" font-size="13" fill="#13131a">Yanolja</text>
+<rect x="32" y="195.45" width="44" height="44" rx="8" fill="#222222"/>
+<text x="92" y="209.45" font-size="14"><tspan fill="#13131a" font-weight="600">#222222</tspan><tspan fill="#5a5a63">  4 · Grey</tspan></text>
+<text x="92" y="230.45" font-size="13" fill="#13131a">Sinsang Market · Greencar · KREAM · Return Zero</text>
+<rect x="32" y="257.45" width="44" height="44" rx="8" fill="#3182f6"/>
+<text x="92" y="271.45" font-size="14"><tspan fill="#13131a" font-weight="600">#3182f6</tspan><tspan fill="#5a5a63">  3 · Blue</tspan></text>
+<text x="92" y="292.45" font-size="13" fill="#13131a">Toss · Toss Securities · Toss Bank</text>
+<rect x="32" y="319.45" width="44" height="44" rx="8" fill="#0066ff"/>
+<text x="92" y="333.45" font-size="14"><tspan fill="#13131a" font-weight="600">#0066ff</tspan><tspan fill="#5a5a63">  2 · Blue</tspan></text>
+<text x="92" y="354.45" font-size="13" fill="#13131a">MediBloc · Wanted</text>
+<rect x="32" y="381.45" width="44" height="44" rx="8" fill="#111111"/>
+<text x="92" y="395.45" font-size="14"><tspan fill="#13131a" font-weight="600">#111111</tspan><tspan fill="#5a5a63">  2 · Near-black</tspan></text>
+<text x="92" y="416.45" font-size="13" fill="#13131a">Genesis · IICOMBINED</text>
+<rect x="32" y="443.45" width="44" height="44" rx="8" fill="#256ef4"/>
+<text x="92" y="457.45" font-size="14"><tspan fill="#13131a" font-weight="600">#256ef4</tspan><tspan fill="#5a5a63">  2 · Blue</tspan></text>
+<text x="92" y="478.45" font-size="13" fill="#13131a">Government24 · KRDS</text>
+<rect x="32" y="505.45" width="44" height="44" rx="8" fill="#ffcc00"/>
+<text x="92" y="519.45" font-size="14"><tspan fill="#13131a" font-weight="600">#ffcc00</tspan><tspan fill="#5a5a63">  2 · Yellow</tspan></text>
+<text x="92" y="540.45" font-size="13" fill="#13131a">KB Kookmin Bank · KB Pay</text>
+<rect x="32.5" y="567.95" width="43" height="43" rx="8" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
+<text x="92" y="581.45" font-size="14"><tspan fill="#13131a" font-weight="600">#ffffff</tspan><tspan fill="#5a5a63">  2 · Near-white</tspan></text>
+<text x="92" y="602.45" font-size="13" fill="#13131a">Lemonbase · NCSOFT</text>
+</svg>
