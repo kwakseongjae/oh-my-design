@@ -4,7 +4,19 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-21 오후) — 오너 「추천대로 진행」 · 승인은 아티팩트 한 곳에서 · #131 머지됨 · 상세 페이지 머리 구현(#133 승인 대기) · /kana 페이지와 「화면」 탭 구현 중
+## 지금 (2026-11-21 밤) — 오너 「나머진 추천대로」 + 새 일 넷(블로그 그림·영어판, /kana 비교 화면, 화면 모음 페이지와 랜딩 구역) · 승인은 아티팩트 한 곳에서
+
+**오너 11/21 22:30 「블로그 첫글에 이미지도 막 포함해서 고퀄리티 큐레이션 느낌으로 구성해줘. 다국어 처리도 했지 ? kana도 hangul처럼 별도 화면을 만들어서 실제 비교하면서 보여주면 좋을 듯. 그리고 화면 탭을 두는것도 좋은데, 저 레퍼런스들만 모아놓은 mobbin같은 페이지도 있으면 좋을 거 같아. 그 부분도 작업해줘 랜딩페이지에 포함도 해주고, 어떤 형태로 보여줄지는 조금 더 고민해봐. 나머진 추천대로할게 작업 잘 진행하고 있어.」**
+- **「나머진 추천대로」가 덮는 것(본 세션의 해석, 카드 그림을 본 뒤의 말):** 카드 7 = #137 머지(뒤이어 루트 `DESIGN.md` 교체) · 카드 9 = #139 머지 · #141 · #140 · 퀸잇(partial 유지, 측정 도구에 폰 폭 옵션, Codex 1회). 하나씩 머지하고 운영 확인.
+- **덮지 않는 것:** 남의 화면 그림을 운영에 내보내는 일. 카드 3의 추천(로그아웃 화면 중 사용자 글·사진 위주 화면을 뺀 나머지를 축소해 공개, 출처와 삭제 창구)은 방향으로 받았지만, **실제로 나갈 화면 목록과 그림을 둘 곳을 보여 준 적이 없다.** 모음 페이지와 랜딩 구역은 로컬 문(`OMD_SCREENS_DIR`) 뒤에서 만들고, 공개 대상 목록 카드에 go가 나온 뒤에만 내보낸다.
+- **새 일 넷:** ① 블로그 첫 글에 그림(전부 `rows.json`에서 스크립트로 그림, 남의 화면 스크린샷 없음)과 영어판. **다국어는 안 돼 있었다:** 이 글은 `ko.md`뿐이고 블로그 로케일은 ko·en 둘. ② `/kana` 비교 화면: 우리가 지은 일본어는 싣지 않는 규칙이 그대로라, 출처가 직접 준 틀린 예/맞는 예 짝으로 만든다(짝 수를 먼저 센다). ③ 화면 모음 페이지(Mobbin 같은)와 랜딩 구역: 형태 시안 2~3개를 아티팩트에 올리고 추천안은 같이 만든다. ④ 위 머지들.
+
+**23:00 진행(오너 22:30 뒤):**
+- **머지 셋, 하나씩 운영 확인:** #141(main `faa2231d`, 블로그 글 200) → #139(`e5c8a1919`, `/ko/kana`에 KW-62·KW-70, 「모델이 검토했습니다」, noindex, 카드 67 = 규칙 51 + 갈리는 곳 16) → #137(`0fdc5092`, 네 페이지에 `sq-page-title`, `/design.md` 갱신). 루트 `DESIGN.md`를 main의 `web/public/design.md`로 교체(sha256 `61d0dac8…`). 워크트리 `ds2`·`kana`·`blogfix`와 로컬 가지 삭제.
+- **측정 도구 폰 폭 옵션 = PR #142**(`feat/probe-phone-viewport`, 워크트리 `probe-phone`): `probe-keyboard-states.mjs --viewport phone`(390x844, 터치, 폰 UA, DPR 2), `text-census.mjs` 같은 옵션, `capture-mcp.mjs`의 `probe_page`에 `viewport`. 기본값(1440x1000)은 그대로. 우리 사이트로 survey·census·states를 폰으로, survey를 기본으로 돌려 확인. 머지 뒤 퀸잇 Codex 1회(`web.queenit.kr`, viewport phone).
+- **도는 에이전트 2개(Claude 백그라운드):** `blog-figures`(워크트리 `blog-figs`, 가지 `feat/blog-colour-figures`: 글의 그림 전부를 `rows.json`에서 그리는 스크립트, ko·en 그림, 전·후 스크린샷은 세션 임시 폴더 `blog-figs/`) · `blog-en`(워크트리 `blog-en`, 가지 `feat/blog-colour-en`: `en.md`). 열린 #130이 `post-view.tsx`를 고치므로 그쪽 수정은 작게 하라고 지시함.
+- **화면 모음 페이지 시안(본 세션):** `tools/screen-archive/make-gallery-mocks.mjs`(`feat/screen-archive`) → `~/Downloads/kr-screens/mock/g-{shelves,shelves-390,matrix,wall,landing}.html`, 그림은 세션 임시 폴더 `gallery/`. 재료: 시트 11곳·화면 136개(웹 1440·390). 추천은 종류별 선반(홈 12 · 검색 결과 10 · 목록 32 · 상세 9 · 로그인 9 · 빈 상태 9 · 없는 주소 11). 아티팩트 카드로 올릴 것. 구현은 로컬 문 뒤에서, 공개 대상 목록 카드는 따로.
+- **다음 에이전트(자리 나면):** `/kana` 비교 화면. 출처가 준 틀린 예/맞는 예 짝은 27개 규칙에 42묶음(둘 다 있는 짝은 30개쯤). KW-39(JTF)와 KW-10(Microsoft 표 문장)은 대조하지 못해 뺀다. 우리가 지은 일본어 없이, 뼈대 UI(회색 막대) 안에 출처의 문자열만 실물로 넣는 방식.
 
 **오너 11/21 오후:** 「일단 추천대로 진행하고, 다음부터는 별도의 html로 각각 정리하지말고, 스크린샷이나 화면 사진을 제공해서 before after나 new형태로 보여줘. 그래야 내가 아티팩트에서 벗어나지 않고 추천 승인 이런걸 얘기하지.」
 → 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
@@ -13,6 +25,40 @@
 **오너 11/21 17:30 「검토자는 없어 자체 검토해. fable이 그런 용도잖아. 진행시켜.」** (다음 작업 브리핑과 「정하실 것」 표를 본 뒤).
 - **원어민 검토 문턱 → 모델 자체 검토로 바뀜.** 문장에 언어가 없어 일본어·대만·중국 세 스킬 모두에 적용하는 것으로 읽음(본 세션의 해석). 바뀌지 않는 것: 스킬 파일의 일본어·중국어는 출처 인용 그대로(자체 검토가 예문을 지어도 된다는 뜻이 아님) · 파일과 페이지는 「원어민이 읽지 않음」을 계속 적고 「모델이 검토함, 날짜」를 덧붙임 · 스킬 배포는 여전히 출시 GO(검토 결과와 나갈 것을 카드로 가져감).
 - **「진행시켜」가 덮는 것:** 브리핑의 1~5번, 수퍼톤 기록(partial 유지, 넘어간 사실만), 퀸잇 재검증(Codex 1회), #135 머지, 공유 묶음 에이전트 1회. **덮지 않는 것:** 화면 공개(어떤 화면이 나가는지 보여 준 적이 없음 → 공개 대상 카드를 먼저 만든다, 아무것도 공개하지 않는다).
+
+**17:55 진행(오너 17:30 승인 뒤):**
+- #135 머지됨(main `10a5d222`, 화면 변화 없음). 마지막 푸시(상태 문서 한 줄)의 CI가 끝나기 전에 머지됐다: 대기 함수가 빈 결과를 통과로 읽었다(고침). main의 Quality 실행 결과를 확인할 것. 상태 문서 가지는 이제 `chore/state-1121b`. **#129와 충돌:** `make-reverify-order.py`를 둘 다 고쳤고 main에는 #135 쪽(확인 못 한 이전 내용을 「Earlier record」로 남기는 문단)이 들어갔다. #129를 머지하려면 그 가지에서 이 문단을 다시 얹어야 한다.
+- **퀸잇 재검증 도는 중**(Codex, `~/.omd-workers/reverify4/queenit`, 실행 폴더 `~/.omd-workers/runs/reverify4-queenit-20261121T174954`). 원인: 주문 생성기가 `catalog.homepage`(= rapportlabs.kr, 회사 사이트)를 재는 주소로 썼다. 이번에는 `https://web.queenit.kr`을 인자로 주고 주문 끝에 「상점 화면만 잰다, 회사 사이트 값은 토큰에 넣지 않는다, 막히면 멈춘다」를 덧붙임. 대기 중인 4곳(typed, dable, barogo, fitpet)의 homepage는 제품 주소라 같은 문제는 없어 보임.
+- **수퍼톤:** 내 curl로도 supertone.ai → antinodeaudio.com(제목 「Antinode Audio | Clear, Air & Shift Audio Tools」) 확인. 본문 기록은 다음 landing 때 토큰을 건드리지 않는 한 줄로 넣는다.
+- **공유 묶음 에이전트 `share-colours` 도는 중** → `claudedocs/share/2026-11-21-kr-brand-colours/`(비공개 폴더, 초안만).
+- **일본어 자체 검토(본 세션):** `docs/drafts/kana/review-2026-11-21.md`(`feat/kana-skill`). 인용 대조: 1차 323개 중 294개가 지금 페이지 그대로, 2차 224개 중 112개가 페이지·82개가 Microsoft PDF 본문. 실제 차이는 UW-19의 DADS 인용 한 문장(조사 파일만 틀림, 규칙 파일과 운영 페이지는 맞음). 검사기를 출처 페이지 15개에 돌리면 WARN 4건 전부 출처가 「틀린 예」로 든 문장. SKILL.md의 지어낸 일본어 예문 5개 삭제. `check-quotes-raw.mjs`는 그림 대체 텍스트도 읽게 고침.
+- **일본어 2차 반영 에이전트 `kana-fold` 도는 중**(브리핑에서는 본 세션이 한다고 했으나 규모가 커서 맡김): `feat/kana-skill`에 main을 병합해 둠. KW-17(の/を)과 KW-37(가타카나 복합어 공백)은 Microsoft와 갈려 「정하는 곳」으로 옮겨 가고, 새 규칙 8개 안팎이 들어온다. 앞에 내세운 여섯 규칙에서 KW-17이 빠진다. 끝나면 전·후 그림으로 카드를 만들고 `feat/kana-skill` 머지를 같은 카드에 넣는다.
+
+**18:40 에이전트 보고 셋 읽음(`share-colours`, `zhuyin-build` 재전송, `kana-fold`):**
+- 대만 addendum의 교육부 수첩 인용을 NFC로 통일(PDF 텍스트 층의 호환용 한자 U+FA08 등이 섞여 있었음)하고 TW-26에 수첩의 예문(「…『…』…」)을 근거로 보탬(`feat/zh-skills` `2ecf33a4`). 에이전트가 되돌려도 된다고 한 판단: TW-17은 통과 판정인데 뺌(키 이름 표), TW-16은 예시 하나로 유지, ZW-30·31은 수첩과 반대 꼴의 가이드 규칙으로 남김. 원어민(또는 통독)이 먼저 볼 것: ZW-26의 겹침 해석, ZW-22에서 釀·童鞋를 뺀 이유, 평범한 글에도 걸릴 FYI 검사들(它, 他的, 被, 輸入로 시작, 한자 옆 숫자).
+- **PR #141(초안, `fix/blog-colour-factmap`, 워크트리 `.claude/worktrees/blogfix`)**: 블로그 글이 링크하는 `tables.md` W4a와 `ko.md` 끝의 주석에 남은 다시 재기 전 숫자(23·6·9)를 18·5·8 기준으로 설명. 화면 변화 없음. main 머지는 오너 승인.
+- 공유 초안에서 오너가 정할 것: 이 글로 가는 `/go/` 링크가 없음(단축 링크는 같은 사이트 경로만 받음) · 이미지 2장 새로 만들어야 함 · 대비 낮은 서비스 이름을 스레드에 넣을지. `go-links.ts`의 `color-map-ko` 메모는 167곳이라고 적혀 있음(글은 169곳, 고치지 않음).
+- `kana-fold`의 보고는 본 세션이 확인한 것과 같음(새 카드 11, 빠진 카드 KW-11·17·37, 새 갈리는 곳 4).
+
+**18:30 마감 점검:** `/ko/kana`에 실리는 인용 307개를 다시 대조(257 web · 19 Microsoft 추출본 · 나머지는 표기 차이). 끝내 대조 못 한 것은 KW-39의 JTF 예시 세 쌍과 KW-10의 Microsoft 표 문장 → 페이지 상태 문구에 그대로 적음(`383b700d`). KW-60의 Ubie ❌/⭕️ 짝, KW-68의 ※는 들어 있음. `kana-page.tsx` 변경은 영어 인용의 따옴표와 「법」 등급 칩. #137에 `web/public/design.md` 수정 포함(머지 때 루트 `DESIGN.md`도 교체). 상태 가지는 PR #140(초안). `land-1121` 워크트리와 가지 삭제. **측정 도구(`capture-mcp.mjs`)에는 뷰포트 옵션이 없다**: 퀸잇을 폰 폭으로 재려면 그것부터 넣어야 한다. 읽지 못한 에이전트 보고: `kana-fold`, `share-colours`, `zhuyin-build` 재전송.
+
+**18:25: 카드 9 = PR #139(초안, `feat/kana-skill` → main)**: `kana-fold` 에이전트가 2차 조사를 규칙·검사기·페이지에 반영(커밋 `51c803fa`…`501f64a2`), 본 세션이 main을 병합하고(`2a672e9b`) 검사를 다시 돌림: 검사기 테스트 101, 자체 시험 PASS(50묶음), 페이지 테스트 45, tsc 통과. `/ko/kana`는 규칙 43 → 51, 갈리는 곳 12 → 16, 앞의 여섯 규칙에서 KW-17이 빠지고 KW-62가 들어감, 상태 문구가 「11/21 원문 대조, 원어민은 읽지 않음, 모델이 검토」로 바뀜. 전·후 그림은 운영 대 개발 서버(3354, 띄우고 끔). 화면 변화라 승인 대기. 머지하면 일본어 스킬 초안 전체가 main에 들어온다. 에이전트의 최종 보고(가장 자신 없는 것 등)는 아직 읽지 못함: 도착하면 카드에 덧붙일 것.
+- **지금 도는 것 없음**(에이전트·Codex·서버 모두). 열려 있는 승인: 카드 7(#137), 카드 9(#139), 카드 6의 퀸잇, 카드 3의 화면 공개 기준.
+- ROADMAP T2의 「원어민 검토」 문구를 오너 결정에 맞춰 고침.
+
+**18:15: #138 머지(main `1485d34d`)** = 피플펀드 verified(한글 이름 크플, 추가일 없음, hover unmeasured) + 수퍼톤 Overview 첫머리 기록(partial 유지) + `compile-evidence` 수정 + 모션 래칫 146 → 145 + 검색어 설명 18건 재작성(Sonnet, land-batch가 호출). 운영 확인: `/ko/design-systems/peoplefund` h1 「크플 DESIGN.md」, 수퍼톤 페이지에 antinodeaudio 기록. 카운트 454 verified / 87 partial / 81 legacy.
+- **퀸잇(결정 대기, 넣지 않음):** `~/.omd-workers/reverify4/queenit`. 상점 화면 홈 1장, 컨트롤 6개, 워커 Status partial. 워커가 primary_color로 캠페인 배지 #6038f2를 제안 → 쓰지 않는다. 상점 화면이 연결한 앱 아이콘(`static.queenit.kr/damoa-mobile-web/public/android-icon-192x192.png`)을 직접 재니 #642fe9가 불투명 픽셀 36,316개 중 28,825개. 추천: 폰 폭으로 홈·목록·상세를 한 번 더(Codex 1회, 오너 승인 필요). 넣게 되면 primary_color #642fe9와 기존 아이콘 로고를 유지.
+- **스포카:** 지역 기사 1건 부족 그대로.
+- landing 워크트리 `.claude/worktrees/land-1121`(가지 `feat/refs-reverify-1121`, 머지됨)은 퀸잇·스포카를 위해 남겨 둠. 다음 landing은 main에서 새 가지를 딸 것.
+
+**18:05 추가(같은 승인 아래):**
+- **카드 7 = PR #137(초안, `feat/site-ds-page-titles`, 워크트리 `.claude/worktrees/ds2`)**: FAQ·changelog·what-is-design-md·alternatives의 h1을 `.sq-page-title`(Wanted Sans 760, 28/32/40px)로. 화면 변화라 승인 대기. 「후」 그림은 개발 서버(3353, 내가 띄우고 끔). OG 이미지는 넣지 않음(시안이 필요).
+- **카드 8 = Threads 초안**(`claudedocs/share/2026-11-21-kr-brand-colours/`, gitignore). 숫자는 게시된 글과 대조, 「18곳 중 8곳 파랑」만 미대조.
+- **컴파일러 수정**(`feat/refs-reverify-1121`, 워크트리 `.claude/worktrees/land-1121`, 커밋만): `compile-evidence.mjs`의 `brandChanges`가 「정착한 변화 없음 + 아직 움직이는 속성 있음」을 unmeasured로 돌려준다(테스트 1개 추가, 24개 통과).
+- **피플펀드 재조립 끝**: `~/.omd-workers/reverify3b/peoplefund`(워커 폴더 복사본). 다시 컴파일하니 `product-tab` hover만 UNMEASURED로 바뀜. front.yaml에서 그 hover 줄과 `added`를 빼고 본문 두 문장과 verification 한 줄을 사실에 맞게 고쳐 다시 조립(claims 122). 카탈로그 차이는 한글 이름 피플펀드 → 크플, verified 날짜뿐.
+- **수퍼톤 기록**: `land-1121` 워크트리의 `web/references/supertone/DESIGN.md` Overview 첫머리에 날짜 달린 인용 블록 한 줄(토큰 변경 없음, 미커밋). 다음 landing 때 같이 들어간다.
+- **landing 차례**: 퀸잇이 끝나면 보고서의 Status·Doubts부터 읽고, `scripts/workers/land-batch.sh .claude/worktrees/land-1121 ~/.omd-workers/reverify3b/peoplefund ~/.omd-workers/reverify4/queenit` 한 번. verified_v2가 안 나오면 그 레퍼런스는 빼고 보고. 모션 래칫(`evidence-integrity.test.ts`)이 움직이면 날짜 줄과 함께 내림.
+- **대만·중국 자체 검토(부분)**: `docs/drafts/{zhuyin,pinyin}/review-2026-11-21.md`. 제목 전부와 대만 5개·중국 8개 규칙만 끝까지 읽음. 나머지 통독이 남음.
 
 **오너 11/21 16:35 「괜찮아보이네. ㄱㄱ」** (새 아티팩트의 카드 여섯 장과 승인 표를 본 뒤). 여섯 카드를 추천대로 승인한 것으로 읽고 하나씩 머지, 운영 확인 뒤 다음으로 넘어감:
 - [x] 1 → #133 머지(16:36, main `11d20001`). 운영에서 Home → 브랜드 줄 → 상세 → `#use`를 `/`·`/ko`, 1440·390으로 확인(제목 40/28px, 버튼 40/44px, 겹침·넘침 없음)
