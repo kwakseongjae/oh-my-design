@@ -19,6 +19,7 @@
  *   cells        the quote is a table row written with | between cells, and every cell of 4+ characters is in
  *                one source: the cells are confirmed, the row as a whole is the researcher's assembly
  *   pieces       matches only when cut at … or ... (the middle was elided); every piece is in one source
+ *   (HTML text includes alt, title and aria-label attribute values)
  *   none         in no source text: a wrapped PDF table cell, a client-rendered page, a refused fetch, or a
  *                quote that differs from the page
  * Limits. It reads only 「…」 quotes of four or more characters, so single marks and English-language quotes
@@ -54,6 +55,9 @@ const decodeEntities = (s) => s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) 
 const BLOCK = 'address|article|aside|blockquote|br|dd|details|div|dl|dt|figcaption|figure|footer|h[1-6]|header|hr|li|main|nav|ol|p|pre|section|summary|table|tbody|td|tfoot|th|thead|tr|ul';
 function htmlToText(html) {
   let s = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, '\n');
+  // Text a page carries in attributes is on the page too: a screenshot's alt text often holds the example strings.
+  const attrs = [...s.matchAll(/\s(?:alt|title|aria-label)="([^"]{4,})"/gi)].map((m) => m[1]).join('\n');
+  s = s + '\n' + attrs;
   s = s.replace(new RegExp('</?(?:' + BLOCK + ')\\b[^>]*>', 'gi'), '\n').replace(/<[^>]+>/g, '');
   return decodeEntities(s);
 }
