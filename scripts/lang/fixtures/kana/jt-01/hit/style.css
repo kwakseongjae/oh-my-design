@@ -1,0 +1,4 @@
+/* 本文の行間 */
+p { line-height: 1.4; }
+.lead { font-size: 16px; line-height: 20px; }
+article { font: 16px/1.3 "Noto Sans JP", sans-serif; }

@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { metadata } from "@/app/(ko)/ko/kana/page";
 import { KanaPage } from "@/components/kana/kana-page";
-import { HOUSE_KO, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
+import { AREA_KO, HOUSE_KO, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
 import data from "@/data/kana-rules.generated.json";
 
 /**
@@ -46,11 +46,17 @@ const text = (s: string) =>
     .replace(/&amp;/g, "&");
 
 describe("/ko/kana data", () => {
-  it("43 rules in the file's seven areas, each area listing only its own rules, and the twelve house choices", () => {
-    expect(data.rules).toHaveLength(43);
+  it("51 rules in the file's eight areas, each area listing only its own rules, and the sixteen house choices", () => {
+    expect(data.rules).toHaveLength(51);
+    expect(data.areas).toHaveLength(8);
     expect(data.areas.flatMap((a) => a.rules)).toEqual(data.rules.map((r) => r.id));
     for (const r of data.rules) expect(data.areas.find((a) => a.name === r.area)?.rules).toContain(r.id);
-    expect(data.houseChoices).toHaveLength(12);
+    expect(data.houseChoices).toHaveLength(16);
+  });
+
+  it("every area has a Korean heading, and the one legal duty is the only rule with the law tier", () => {
+    for (const a of data.areas) expect(AREA_KO[a.name], a.name).toBeTruthy();
+    expect(data.rules.filter((r) => r.tiers.some((x) => x.tier === "law")).map((r) => r.id)).toEqual(["KW-68"]);
   });
 
   it("every rule has a strength from the file's wording table and at least one quote, and every quote or example a source", () => {
@@ -66,10 +72,10 @@ describe("/ko/kana data", () => {
     for (const s of data.sources) expect(s.url).toMatch(/^https:\/\//);
   });
 
-  // The source comparison needs writing-rules.md, which lives on the kana skill's branch until it merges
-  // (docs/drafts/kana/references/). KANA_RULES_MD points the test at another copy.
+  // writing-rules.md is in the repository (docs/drafts/kana/references/); KANA_RULES_MD points the test at another copy.
   const rulesMd = process.env.KANA_RULES_MD ?? path.join(ROOT, data.input.rules.path);
-  it.skipIf(!fs.existsSync(rulesMd))("every Japanese string is a character-for-character copy from writing-rules.md, the one it was built from", () => {
+  it("every Japanese string is a character-for-character copy from writing-rules.md, the one it was built from", () => {
+    expect(fs.existsSync(rulesMd), rulesMd).toBe(true);
     const md = fs.readFileSync(rulesMd, "utf8");
     const stray = dataStrings().filter((s) => JA.test(s) && !md.includes(s));
     expect(stray).toEqual([]);
@@ -86,16 +92,16 @@ describe("/ko/kana page", () => {
     expect(runs.filter((r) => !hay.includes(r))).toEqual([]);
   });
 
-  it("one h1, the sections in order, all 43 rule cards once, the lead six first", () => {
+  it("one h1, the sections in order, all 51 rule cards once, the lead six first", () => {
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     const order = ['id="kn-h1"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
     expect(order.every((i) => i > -1)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
     const cards = [...html.matchAll(/<article id="(kw-\d+)"/g)].map((m) => m[1].toUpperCase());
-    expect(cards).toHaveLength(43);
-    expect(new Set(cards).size).toBe(43);
+    expect(cards).toHaveLength(51);
+    expect(new Set(cards).size).toBe(51);
     expect(cards.slice(0, 6)).toEqual([...LEAD_RULES]);
-    expect([...html.matchAll(/<article id="(uw-\d+)"/g)]).toHaveLength(12);
+    expect([...html.matchAll(/<article id="(uw-\d+)"/g)]).toHaveLength(16);
   });
 
   it("a Korean reading for every rule and a Korean line for every side of every house choice, and no reading without a rule", () => {

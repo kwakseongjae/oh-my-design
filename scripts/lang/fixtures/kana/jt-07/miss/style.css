@@ -1,0 +1,6 @@
+/* 約物の詰め */
+.a { font-feature-settings: "palt"; }
+.b { font-feature-settings: "palt", "halt" 0; }
+.c { font-feature-settings: "palt" 1, "kern"; }
+.d { font-feature-settings: "halt"; }
+.e { font-feature-settings: "palt" off, "halt"; }
