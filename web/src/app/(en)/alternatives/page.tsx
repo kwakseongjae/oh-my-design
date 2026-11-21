@@ -244,10 +244,7 @@ export default function AlternativesPage() {
         <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-3">
           Alternatives
         </div>
-        <h1
-          className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05]"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
-        >
+        <h1 className="sq-page-title">
           oh-my-design <span className="text-muted-foreground">compared</span>
         </h1>
         <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">

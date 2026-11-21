@@ -127,6 +127,11 @@
 }
 
 /* Small chips shared by non-brand-a components (StatusBadge, FontCard licence). */
+/* page title for plain content pages (FAQ, changelog, what-is, alternatives): the site scale approved 2026-11-21,
+   in the same three steps as the item page's h1 (item.css): 28px on a phone, 32px from 900px, 40px from 1280px */
+.sq-page-title{font-family:var(--sq-f-en);font-weight:var(--sq-fw-heading);font-size:28px;line-height:1.15;letter-spacing:-0.02em;overflow-wrap:anywhere}
+@media (min-width:900px){.sq-page-title{font-size:32px}}
+@media (min-width:1280px){.sq-page-title{font-size:40px}}
 .sq-chip{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:var(--sq-r-pill);font:700 10.5px/1 var(--sq-f-latin),sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .sq-chip-hot{background:var(--sq-ink);color:var(--sq-paper)}
 .sq-chip-new{background:var(--sq-cell);color:var(--sq-ink)}
