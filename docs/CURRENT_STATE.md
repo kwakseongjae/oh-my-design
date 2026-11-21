@@ -11,6 +11,13 @@
 - **덮지 않는 것:** 남의 화면 그림을 운영에 내보내는 일. 카드 3의 추천(로그아웃 화면 중 사용자 글·사진 위주 화면을 뺀 나머지를 축소해 공개, 출처와 삭제 창구)은 방향으로 받았지만, **실제로 나갈 화면 목록과 그림을 둘 곳을 보여 준 적이 없다.** 모음 페이지와 랜딩 구역은 로컬 문(`OMD_SCREENS_DIR`) 뒤에서 만들고, 공개 대상 목록 카드에 go가 나온 뒤에만 내보낸다.
 - **새 일 넷:** ① 블로그 첫 글에 그림(전부 `rows.json`에서 스크립트로 그림, 남의 화면 스크린샷 없음)과 영어판. **다국어는 안 돼 있었다:** 이 글은 `ko.md`뿐이고 블로그 로케일은 ko·en 둘. ② `/kana` 비교 화면: 우리가 지은 일본어는 싣지 않는 규칙이 그대로라, 출처가 직접 준 틀린 예/맞는 예 짝으로 만든다(짝 수를 먼저 센다). ③ 화면 모음 페이지(Mobbin 같은)와 랜딩 구역: 형태 시안 2~3개를 아티팩트에 올리고 추천안은 같이 만든다. ④ 위 머지들.
 
+**23:00 진행(오너 22:30 뒤):**
+- **머지 셋, 하나씩 운영 확인:** #141(main `faa2231d`, 블로그 글 200) → #139(`e5c8a1919`, `/ko/kana`에 KW-62·KW-70, 「모델이 검토했습니다」, noindex, 카드 67 = 규칙 51 + 갈리는 곳 16) → #137(`0fdc5092`, 네 페이지에 `sq-page-title`, `/design.md` 갱신). 루트 `DESIGN.md`를 main의 `web/public/design.md`로 교체(sha256 `61d0dac8…`). 워크트리 `ds2`·`kana`·`blogfix`와 로컬 가지 삭제.
+- **측정 도구 폰 폭 옵션 = PR #142**(`feat/probe-phone-viewport`, 워크트리 `probe-phone`): `probe-keyboard-states.mjs --viewport phone`(390x844, 터치, 폰 UA, DPR 2), `text-census.mjs` 같은 옵션, `capture-mcp.mjs`의 `probe_page`에 `viewport`. 기본값(1440x1000)은 그대로. 우리 사이트로 survey·census·states를 폰으로, survey를 기본으로 돌려 확인. 머지 뒤 퀸잇 Codex 1회(`web.queenit.kr`, viewport phone).
+- **도는 에이전트 2개(Claude 백그라운드):** `blog-figures`(워크트리 `blog-figs`, 가지 `feat/blog-colour-figures`: 글의 그림 전부를 `rows.json`에서 그리는 스크립트, ko·en 그림, 전·후 스크린샷은 세션 임시 폴더 `blog-figs/`) · `blog-en`(워크트리 `blog-en`, 가지 `feat/blog-colour-en`: `en.md`). 열린 #130이 `post-view.tsx`를 고치므로 그쪽 수정은 작게 하라고 지시함.
+- **화면 모음 페이지 시안(본 세션):** `tools/screen-archive/make-gallery-mocks.mjs`(`feat/screen-archive`) → `~/Downloads/kr-screens/mock/g-{shelves,shelves-390,matrix,wall,landing}.html`, 그림은 세션 임시 폴더 `gallery/`. 재료: 시트 11곳·화면 136개(웹 1440·390). 추천은 종류별 선반(홈 12 · 검색 결과 10 · 목록 32 · 상세 9 · 로그인 9 · 빈 상태 9 · 없는 주소 11). 아티팩트 카드로 올릴 것. 구현은 로컬 문 뒤에서, 공개 대상 목록 카드는 따로.
+- **다음 에이전트(자리 나면):** `/kana` 비교 화면. 출처가 준 틀린 예/맞는 예 짝은 27개 규칙에 42묶음(둘 다 있는 짝은 30개쯤). KW-39(JTF)와 KW-10(Microsoft 표 문장)은 대조하지 못해 뺀다. 우리가 지은 일본어 없이, 뼈대 UI(회색 막대) 안에 출처의 문자열만 실물로 넣는 방식.
+
 **오너 11/21 오후:** 「일단 추천대로 진행하고, 다음부터는 별도의 html로 각각 정리하지말고, 스크린샷이나 화면 사진을 제공해서 before after나 new형태로 보여줘. 그래야 내가 아티팩트에서 벗어나지 않고 추천 승인 이런걸 얘기하지.」
 → 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
 → 보고 방식: **살아 있는 아티팩트 하나**(https://claude.ai/artifact/KbqQF8nXerNFHVnfGpw884, 원본 `~/.omd-workers/reports/2026-11-21-sprint-report.html`, 그림은 세션 임시 폴더의 `report-img/`에서 같이 올림)에 전·후 또는 새 화면 그림을 넣고 거기서 승인받는다. 별도 HTML 묶음을 만들지 않는다.
