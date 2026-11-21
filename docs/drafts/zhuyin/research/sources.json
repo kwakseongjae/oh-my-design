@@ -1,0 +1,314 @@
+{
+  "opened": "2026-11-21",
+  "note": "Web pages opened via WebFetch (extraction model; ~125-character quote cap). Glyph widths in web quotes not verified at code-point level unless the page names the code point. MS read from a local pdftotext extract supplied by the orchestrator; pages 29, 36, 37 checked as rendered PDF images. Search-result snippets were used only to find pages and are not listed as sources.",
+  "sources": [
+    {
+      "key": "MS",
+      "title": "Microsoft — Chinese (Traditional) Localization Style Guide (zho-twn-StyleGuide.pdf, 62 pp.)",
+      "url": "https://download.microsoft.com/download/2/9/3/293e6d41-ba40-451b-a41e-94bdb6242ae3/zho-twn-StyleGuide.pdf",
+      "via": "local pdftotext extract ~/.omd-workers/lang-sources/ms-chinese-traditional-2026-11-21.txt; pages 29, 36, 37 checked as rendered images of ~/.omd-workers/lang-sources/ms-chinese-traditional.pdf",
+      "region": "Taiwan",
+      "kind": "vendor localization guide",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "MS-S",
+      "title": "Microsoft — Chinese (Simplified) Localization Style Guide (58 pp.)",
+      "url": "local extract ~/.omd-workers/lang-sources/ms-chinese-simplified-2026-11-21.txt",
+      "region": "Mainland (contrast only)",
+      "kind": "vendor localization guide",
+      "opened": "2026-11-21",
+      "use": "contrast"
+    },
+    {
+      "key": "MZ",
+      "title": "Mozilla — Chinese, Traditional (zh-TW) style guide",
+      "url": "https://mozilla-l10n.github.io/styleguides/zh-TW/",
+      "region": "Taiwan",
+      "kind": "localization guide",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "MZ-mkt",
+      "title": "Mozilla — Firefox 文案本地化指南 (zh-TW)",
+      "url": "https://mozilla-l10n.github.io/styleguides/zh-TW/firefox_marketing.html",
+      "region": "Taiwan",
+      "kind": "localization guide (marketing)",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "MZ-dir",
+      "title": "GitHub API listing of mozilla-l10n/styleguides docs/zh-TW (README.md, firefox_marketing.md)",
+      "url": "https://api.github.com/repos/mozilla-l10n/styleguides/contents/docs/zh-TW",
+      "opened": "2026-11-21",
+      "use": "navigation"
+    },
+    {
+      "key": "WP",
+      "title": "WordPress 台灣正體中文 — 台灣正體中文資訊本地化譯文樣式指南 (last modified 2025-10-13 per extraction)",
+      "url": "https://tw.wordpress.org/team/handbook/localization/zh-tw-localization-style-guide/",
+      "region": "Taiwan",
+      "kind": "localization guide",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "L10NTW",
+      "title": "自由軟體正體中文化翻譯風格指引 (HackMD, l10n-tw)",
+      "url": "https://hackmd.io/@l10n-tw/translation_style_guide",
+      "region": "Taiwan",
+      "kind": "community guide",
+      "opened": "2026-11-21",
+      "use": "pointer (not counted)"
+    },
+    {
+      "key": "MOE-2A",
+      "title": "教育部《國語辭典簡編本》2021 附錄 — 兩岸常用詞語對照表, pages 1-7",
+      "url": "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54",
+      "pages": [
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=1&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=2&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=3&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=4&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=5&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=6&la=0&powerMode=0",
+        "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54&page=7&la=0&powerMode=0"
+      ],
+      "region": "Taiwan vs Mainland",
+      "kind": "national language authority (dictionary appendix)",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "MOE-appx",
+      "title": "教育部《國語辭典簡編本》附錄 index; 《重編國語辭典修訂本》附錄 index",
+      "url": "https://dict.concised.moe.edu.tw/appendix.jsp",
+      "url2": "https://dict.revised.moe.edu.tw/appendix.jsp",
+      "opened": "2026-11-21",
+      "use": "navigation (no punctuation appendix)"
+    },
+    {
+      "key": "CLDR-G",
+      "title": "Unicode CLDR — zh-Hant ca-gregorian.json (cldr-json main)",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-dates-full/main/zh-Hant/ca-gregorian.json",
+      "region": "Taiwan by inheritance",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "CLDR-ROC",
+      "title": "Unicode CLDR — zh-Hant ca-roc.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-cal-roc-full/main/zh-Hant/ca-roc.json",
+      "region": "Taiwan",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "CLDR-N",
+      "title": "Unicode CLDR — zh-Hant numbers.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-numbers-full/main/zh-Hant/numbers.json",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "CLDR-C",
+      "title": "Unicode CLDR — zh-Hant currencies.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-numbers-full/main/zh-Hant/currencies.json",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "CLDR-TW",
+      "title": "Unicode CLDR — common/main/zh_Hant_TW.xml (identity only)",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr/main/common/main/zh_Hant_TW.xml",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "used (shows TW inherits zh-Hant)"
+    },
+    {
+      "key": "CLDR-HK",
+      "title": "Unicode CLDR — zh-Hant-HK ca-gregorian.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-dates-full/main/zh-Hant-HK/ca-gregorian.json",
+      "region": "Hong Kong (contrast only)",
+      "kind": "locale data",
+      "opened": "2026-11-21",
+      "use": "contrast"
+    },
+    {
+      "key": "EY-NUM",
+      "title": "行政院 — 公文書橫式書寫數字使用原則(院臺秘字第0930089122號函), page dated 94-12-22",
+      "url": "https://www.ey.gov.tw/Page/8F768BC511A94C5D/1f6e18b4-7f15-4c4f-b65f-3f22fce91d4f",
+      "region": "Taiwan (official documents)",
+      "kind": "government",
+      "opened": "2026-11-21",
+      "use": "title only; PDF unreadable"
+    },
+    {
+      "key": "MODA-380",
+      "title": "數位發展部 — 數位服務指引與網站服務管理 (更新日期 2025-01-07)",
+      "url": "https://moda.gov.tw/digital-affairs/digital-service/guide/380",
+      "opened": "2026-11-21",
+      "use": "navigation"
+    },
+    {
+      "key": "MODA-382",
+      "title": "數位發展部 — 政府數位服務指引 (更新日期 2025-03-04)",
+      "url": "https://moda.gov.tw/digital-affairs/digital-service/guide/382",
+      "opened": "2026-11-21",
+      "use": "opened; no wording rules on page"
+    },
+    {
+      "key": "TIPO",
+      "title": "智慧財產局 智慧財產權e網通 — 設計規範書 Design Guideline (2019.09.01)",
+      "url": "https://tiponet.tipo.gov.tw/TIPO_UIUX/",
+      "region": "Taiwan (one agency)",
+      "kind": "agency design guideline",
+      "opened": "2026-11-21",
+      "use": "opened; index has no wording, font or size values"
+    },
+    {
+      "key": "CLREQ",
+      "title": "W3C — Requirements for Chinese Text Layout 中文排版需求, Group Note Draft 04 November 2026",
+      "url": "https://www.w3.org/TR/clreq/",
+      "region": "per clause (Taiwan/Hong Kong/Mainland named where stated)",
+      "kind": "W3C Note draft",
+      "opened": "2026-11-21",
+      "use": "used; fetch copy truncated inside §5.5"
+    },
+    {
+      "key": "CLREQ-2017",
+      "title": "W3C — Requirements for Chinese Text Layout, Working Draft 29 December 2017 (superseded)",
+      "url": "https://www.w3.org/TR/2017/WD-clreq-20171229/",
+      "kind": "W3C draft (superseded)",
+      "opened": "2026-11-21",
+      "use": "used for §3.1.4, §3.1.6 only; truncated in §3.1.6.1"
+    },
+    {
+      "key": "CLREQ-2020",
+      "title": "W3C — Requirements for Chinese Text Layout, Working Draft 01 November 2020 (superseded)",
+      "url": "https://www.w3.org/TR/2020/WD-clreq-20201101/",
+      "kind": "W3C draft (superseded)",
+      "opened": "2026-11-21",
+      "use": "used for §2.1.3.2, §2.3.5; truncated in §3.1.3.4"
+    },
+    {
+      "key": "CLREQ-gh",
+      "title": "GitHub API listing of w3c/clreq (to look for split sources; none: single index.html)",
+      "url": "https://api.github.com/repos/w3c/clreq/contents/",
+      "url2": "https://api.github.com/repos/w3c/clreq/contents/src",
+      "opened": "2026-11-21",
+      "use": "navigation"
+    },
+    {
+      "key": "TIPO-font",
+      "title": "智慧財產局 設計規範書 — 文字 Font",
+      "url": "https://tiponet.tipo.gov.tw/TIPO_UIUX/feng-ge-style/wen-zi-font.html",
+      "region": "Taiwan (one agency)",
+      "kind": "agency design guideline",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "TIPO-btn",
+      "title": "智慧財產局 設計規範書 — 按鈕 Button",
+      "url": "https://tiponet.tipo.gov.tw/TIPO_UIUX/yuan-jian-component/an-niu.html",
+      "region": "Taiwan (one agency)",
+      "kind": "agency design guideline",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "TIPO-content",
+      "title": "智慧財產局 設計規範書 — 內容 Content",
+      "url": "https://tiponet.tipo.gov.tw/TIPO_UIUX/nei-rong/nei-rong-content.html",
+      "opened": "2026-11-21",
+      "use": "opened; no text rules"
+    },
+    {
+      "key": "MOE-hau",
+      "title": "教育部《重訂標點符號手冊》修訂版 — index and 句號 page (Big5, unreadable via fetch); PDF (unreadable)",
+      "url": "https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/haushou.htm",
+      "url2": "https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/h1.htm",
+      "url3": "https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/Revised_Handbook_of_Punctuation.pdf",
+      "opened": "2026-11-21",
+      "use": "blocked (encoding / PDF)"
+    },
+    {
+      "key": "WEBGUIDE",
+      "title": "政府網站營運交流平台 cp.aspx?n=554 (returned 404 page)",
+      "url": "https://www.webguide.nat.gov.tw/cp.aspx?n=554",
+      "opened": "2026-11-21",
+      "use": "blocked (404)"
+    },
+    {
+      "key": "APPLE-tw",
+      "title": "Apple HIG writing (tw)",
+      "url": "https://developer.apple.com/tw/design/human-interface-guidelines/writing",
+      "opened": "2026-11-21",
+      "use": "blocked (404)"
+    },
+    {
+      "key": "LINE-DS",
+      "title": "LINE Design System",
+      "url": "https://designsystem.line.me/",
+      "opened": "2026-11-21",
+      "use": "blocked (client-rendered)"
+    },
+    {
+      "key": "NAER",
+      "title": "國家教育研究院 樂詞網 home",
+      "url": "https://terms.naer.edu.tw/",
+      "opened": "2026-11-21",
+      "use": "opened; no 兩岸對照 search on the page; not used"
+    },
+    {
+      "key": "CLDR-chart",
+      "title": "CLDR summary chart zh_Hant (truncated by fetch)",
+      "url": "https://www.unicode.org/cldr/charts/latest/summary/zh_Hant.html",
+      "opened": "2026-11-21",
+      "use": "blocked (size); cldr-json used instead"
+    },
+    {
+      "key": "CLREQ-zhED",
+      "title": "W3C clreq repository — zh/index.html, 中文排版需求 Traditional-Chinese editor's draft (undated; superseded, merged into the bilingual document)",
+      "url": "https://raw.githubusercontent.com/w3c/clreq/gh-pages/zh/index.html",
+      "region": "繁體中文 / 港台 where stated",
+      "kind": "W3C draft (superseded)",
+      "opened": "2026-11-21",
+      "use": "used for line breaking, compression, hanging, mixed spacing, 行距"
+    },
+    {
+      "key": "CLREQ-fonts",
+      "title": "W3C clreq repository — others/system-font-mappings.md, Recommended System Font Mappings for Generic Chinese Font Families (last verified 2026-09-03)",
+      "url": "https://raw.githubusercontent.com/w3c/clreq/gh-pages/others/system-font-mappings.md",
+      "kind": "implementer reference",
+      "opened": "2026-11-21",
+      "use": "used"
+    },
+    {
+      "key": "CLREQ-gh-dirs",
+      "title": "GitHub API listings of w3c/clreq zh/, others/, others/TCLREQ",
+      "url": "https://api.github.com/repos/w3c/clreq/contents/zh",
+      "url2": "https://api.github.com/repos/w3c/clreq/contents/others",
+      "url3": "https://api.github.com/repos/w3c/clreq/contents/others/TCLREQ",
+      "opened": "2026-11-21",
+      "use": "navigation"
+    },
+    {
+      "key": "EY-DOC",
+      "title": "行政院 — 修正文書處理手冊 (日期：112-09-20), page with two PDF attachments",
+      "url": "https://www.ey.gov.tw/Page/F0CD366C64B5A15C/ecb75289-a85d-45be-9fb0-0fa64c302b54",
+      "region": "Taiwan (official documents)",
+      "kind": "government",
+      "opened": "2026-11-21",
+      "use": "title only; PDFs unreadable"
+    }
+  ]
+}
