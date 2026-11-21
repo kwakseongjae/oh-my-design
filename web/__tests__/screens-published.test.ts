@@ -289,7 +289,8 @@ describe("our own image path: the rewrite, its header and robots.txt", () => {
     vi.resetModules();
     vi.doMock("../src/data/screens-public.generated.json", () => ({ default: manifest }));
     const config = (await import("../next.config")).default;
-    vi.doUnmock("../src/data/screens-public.generated.json");
+    // back to the shut pin the whole file runs under, whatever the committed file holds
+    vi.doMock("../src/data/screens-public.generated.json", () => ({ default: shutManifest }));
     return config;
   }
   afterEach(() => vi.resetModules());
@@ -317,6 +318,8 @@ describe("our own image path: the rewrite, its header and robots.txt", () => {
   });
 
   it("robots.txt disallows /screens-img/ for every agent only once published", async () => {
+    vi.resetModules();
+    vi.doMock("../src/data/screens-public.generated.json", () => ({ default: shutManifest }));
     const robots = (await import("@/app/robots")).default;
     const shut = [robots().rules].flat();
     for (const rule of shut) expect(rule.disallow, String(rule.userAgent)).toEqual(["/api/", "/qa-references"]);
