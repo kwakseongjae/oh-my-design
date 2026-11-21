@@ -1,7 +1,9 @@
 /**
  * The Japanese app screen on /ko/kana (#app): hangul's moa home screen, shown twice in Japanese. A Korean team ships
- * its fintech app in Japan; "ai" is the screen as an agent tends to write it when it carries a Korean screen into
- * Japanese without the rules, "fix" is the same screen following docs/drafts/kana/references/writing-rules.md.
+ * its fintech app in Japan; "ai" is the screen written in forms the rules' own sources give as wrong (the kind of
+ * Japanese an agent can write when it carries a Korean screen over without the rules; how often was not measured),
+ * "fix" is the same screen following docs/drafts/kana/references/writing-rules.md. The page describes "ai" only as
+ * the former.
  *
  * COMPOSED COPY. Composed by a model (Claude Opus 5.5) on 2026-11-22 for the /ko/kana demo screen. These are not source
  * quotes, except the strings marked `source` below, which are copied character for character from a quote in

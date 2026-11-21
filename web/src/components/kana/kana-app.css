@@ -63,6 +63,8 @@
 
 @media (prefers-reduced-motion:reduce){
   .ka-sec .ka-tag{transition:none}
+  /* no tour walks the phones here, so each phone scrolls on its own and every string can be read */
+  .ka-sec .moa--fixed .moa-view{overflow-y:auto;overscroll-behavior:contain}
 }
 /* hangul.css moves the middle column under the pair below 1152px; the readings go in two columns there, one on a phone */
 @media (max-width:1151px){
