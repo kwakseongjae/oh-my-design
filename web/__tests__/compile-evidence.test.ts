@@ -46,6 +46,16 @@ describe("compile-evidence", () => {
     expect(componentsYaml([tile])).toContain("# tile: prose only");
   });
 
+  it("reads a state where nothing settled and something was still moving as unmeasured", () => {
+    // peoplefund's product tab, 2026-11-21: the carousel was sliding, the probe said NO SETTLED CHANGE (up1.tf)
+    expect(brandChanges({ measured: true, changed: [], unstableProps: ["up1.tf"] }, "hover")).toBeNull();
+    // a settled change beside a moving property is still a change
+    const settled = { set: "self", prop: "bg", from: "rgb(255, 255, 255)", to: "rgb(246, 246, 246)" };
+    expect(brandChanges({ measured: true, changed: [settled], unstableProps: ["up1.tf"] }, "hover")).toEqual([settled]);
+    // nothing moving and nothing changed stays a measured "no change"
+    expect(brandChanges({ measured: true, changed: [] }, "hover")).toEqual([]);
+  });
+
   it("ignores browser defaults and changes that persist after blur", () => {
     const uaActive = { set: "self", prop: "fg", from: "rgb(0, 0, 238)", to: "rgb(255, 0, 0)" };
     const widened = { set: "self", prop: "size", from: "110x38", to: "276x38", alsoPersists: true };
