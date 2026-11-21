@@ -274,7 +274,7 @@ describe("colours written in oklch or oklab", () => {
   });
 
   it("rewrites the value where it stands and keeps the notation it came from", () => {
-    const log = { resolved: {}, outOfGamut: {} };
+    const log: { resolved: Record<string, Record<string, number>>; outOfGamut: Record<string, number> } = { resolved: {}, outOfGamut: {} };
     const file = resolveColourSpaces({ rows: [{ bg: fill, fg: "oklch(1 0 0)", border: "1px solid oklch(0.228318 0.097639 260.661 / 0.1882)" }], [fill]: "a key stays" }, log);
     expect(file.rows[0].bg).toBe("rgb(117, 78, 228)");
     expect(file.rows[0].fg).toBe("rgb(255, 255, 255)");
@@ -284,7 +284,7 @@ describe("colours written in oklch or oklab", () => {
   });
 
   it("leaves a value outside sRGB as written and counts it", () => {
-    const log = { resolved: {}, outOfGamut: {} };
+    const log: { resolved: Record<string, Record<string, number>>; outOfGamut: Record<string, number> } = { resolved: {}, outOfGamut: {} };
     const wide = "oklch(0.7 0.37 150)";
     expect(okToSrgb("lch", "0.7 0.37 150")?.inGamut).toBe(false);
     expect(resolveColourSpaces({ bg: wide }, log)).toEqual({ bg: wide });
@@ -299,6 +299,14 @@ describe("colours written in oklch or oklab", () => {
     expect(c.fields).toMatchObject({ bg: "#754ee4", fg: "#ffffff" });
     const survey = resolveColourSpaces({ census: { census: { bg: [{ color: fill, count: 4 }], text: [], border: [], paragraphInk: [] } }, rows: [] });
     expect(tokenCandidates(survey).colours.map((x: { value: string }) => x.value)).toContain("#754ee4");
+  });
+
+  it("does not call the same colour in two notations a change", async () => {
+    const { diffValues } = await import("../scripts/diff-values.mjs");
+    const v = (bg: string) => ({ buy: { identity: {}, rest: { bg }, states: { hover: [{ set: "self", prop: "bg", from: bg, to: "oklch(1 0 0)" }], pressed: "unmeasured", focus: [] } } });
+    const d = diffValues(v(fill), v("rgb(117, 78, 228)"));
+    expect(d.changed).toEqual([]);
+    expect(diffValues(v(fill), v("rgb(117, 78, 229)")).changed.map((c: { field: string }) => c.field)).toEqual(["rest.bg", "states.hover"]);
   });
 
   it("says nothing when the capture holds no such value", () => {

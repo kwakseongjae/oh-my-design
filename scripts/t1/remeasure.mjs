@@ -28,7 +28,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { compileControl, measureSpec, mergeControls, valuesOf } from "../../web/scripts/compile-evidence.mjs";
+import { compileControl, measureSpec, mergeControls, resolveColourSpaces, valuesOf } from "../../web/scripts/compile-evidence.mjs";
 import { diffValues } from "../../web/scripts/diff-values.mjs";
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -42,7 +42,9 @@ const evRoot = opt("--evidence", path.join(MAIN, "artifacts/reference-evidence/v
 const id = args[0];
 if (!id) { console.error("usage: remeasure.mjs <id> [--runs 3] [--out <dir>] [--evidence <root>] [--prior <dir>]"); process.exit(2); }
 
-const read = (f) => JSON.parse(readFileSync(f, "utf8"));
+// Read as compile-evidence.mjs reads: an oklch()/oklab() value inside sRGB as the rgb() the browser paints, so a run
+// before that change and a run after it compare equal where nothing on the page changed.
+const read = (f) => resolveColourSpaces(JSON.parse(readFileSync(f, "utf8")));
 const stampMs = (s) => Date.UTC(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8), +s.slice(9, 11), +s.slice(11, 13), +s.slice(13, 15));
 /** Survey, states and cfg files of the given capture folders, compiled. */
 function compile(folders) {
