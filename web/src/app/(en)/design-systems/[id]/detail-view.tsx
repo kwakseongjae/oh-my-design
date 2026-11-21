@@ -152,7 +152,7 @@ export function DetailView({
               </svg>
               {copied ? t.copied : t.copyMd}
             </button>
-            <button type="button" onClick={downloadMd} className="sq-act sq-act-ink">
+            <button type="button" onClick={downloadMd} className="sq-act sq-act-line">
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M10 3.5v9m0 0-3.6-3.6M10 12.5l3.6-3.6M4 15.5h12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

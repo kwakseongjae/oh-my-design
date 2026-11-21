@@ -1,42 +1,55 @@
 /* Item page (/design-systems/[id], /ko/design-systems/[id]), round 11 (W7), round 13. Tokens: --sq-* (styles/brand-a.css).
    First screen: crumb row · logo + h1 "{Name} DESIGN.md" · #use (Copy DESIGN.md, Download). The summary line left in round 13.
-   Type in the first screen (RESTRAINT.md R3, ≤4): h1 · 26 section heading · 17 lede and actions · 15 small.
-   Iris only on the main action; the second action is ink. Radius 14 controls, pill actions, 20 cards.
+   Type in the first screen (RESTRAINT.md R3, ≤4): 40 page title (28 on a phone) · 26 section heading · 15 actions and small.
+   Sizes follow the site scale measured on 2026-11-21 (scripts/site-audit): controls 40 tall, 44 on a phone.
+   Iris only on the main action; the second action is an outline. Radius 14 controls, pill actions, 20 cards.
+   From 900px the title and the two actions share one row (owner 2026-11-21, still B).
    Separation by space and tone, not lines (RESTRAINT.md). */
 
 /* ---- first screen ---- */
-.sq-ih-in{padding-top:28px;padding-bottom:72px}
-.sq-ih-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;min-height:44px}
-.sq-crumb{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
+.sq-ih-in{padding-top:16px;padding-bottom:36px}
+.sq-ih-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;min-height:40px}
+.sq-crumb{display:inline-flex;align-items:center;gap:6px;min-height:40px;font-size:15px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
 .sq-crumb:hover{color:var(--sq-ink)}
 .sq-crumb:focus-visible,.sq-ih-ext:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:6px}
 .sq-ih-tools{display:flex;align-items:center;gap:8px;margin-left:auto}
-.sq-ih-ext{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 10px;font-size:15px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
+.sq-ih-ext{display:inline-flex;align-items:center;gap:4px;min-height:40px;padding:0 10px;font-size:15px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
 .sq-ih-ext:hover{color:var(--sq-ink)}
-.sq-share{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-cell);color:var(--sq-ink);font-size:15px;font-weight:600;white-space:nowrap;transition:background-color .15s}
+.sq-share{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:var(--sq-r-ctl);background:var(--sq-cell);color:var(--sq-ink);font-size:15px;font-weight:600;white-space:nowrap;transition:background-color .15s}
 .sq-share:hover{background:var(--sq-guide-2)}
 .sq-share:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 
-.sq-ih-head{display:flex;align-items:center;gap:24px;margin-top:44px;min-width:0}
+.sq-ih-head{display:flex;align-items:center;gap:14px;margin-top:20px;min-width:0}
 /* the genuine logo (archive.css .sq-logo), larger here; white plate on the white page reads as clear space */
-.sq-ih-logo{height:72px;padding:14px 16px;border-radius:16px}
-.sq-ih-logo img{height:44px;max-width:200px}
-.sq-ih-logo.sq-logo-fav{padding:14px}
-.sq-ih-logo.sq-logo-fav img{width:44px}
-.sq-ih h1{min-width:0;font-family:var(--sq-f-latin),sans-serif;font-weight:var(--sq-fw-display);font-size:clamp(36px,4.6vw,66px);line-height:1.04;letter-spacing:-0.03em;overflow-wrap:anywhere}
+.sq-ih-logo{height:48px;padding:8px 10px;border-radius:12px}
+.sq-ih-logo img{height:30px;max-width:150px}
+.sq-ih-logo.sq-logo-fav{padding:8px}
+.sq-ih-logo.sq-logo-fav img{width:30px}
+.sq-ih h1{min-width:0;font-family:var(--sq-f-latin),sans-serif;font-weight:var(--sq-fw-heading);font-size:28px;line-height:1.15;letter-spacing:-0.02em;overflow-wrap:anywhere}
 
 /* #use: two equal actions. Old /builder?ref=<id> links land here (lib/legacy-builder/redirect.ts).
    The group sits in the first screen, so a wide scroll margin means arriving on #use does not scroll
    at all on 1440×900 or 390×844: the logo and h1 stay in view above the actions. */
-.sq-ih-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:36px;scroll-margin-top:min(70vh,640px)}
-.sq-act{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:var(--sq-r-pill);font-size:17px;font-weight:700;white-space:nowrap;transition:background-color .15s}
-.sq-act svg{flex-shrink:0}
+.sq-ih-acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px;scroll-margin-top:min(70vh,640px)}
+.sq-act{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 18px;border-radius:var(--sq-r-pill);font-size:15px;font-weight:var(--sq-fw-strong);white-space:nowrap;transition:background-color .15s}
+.sq-act svg{flex-shrink:0;width:18px;height:18px}
 .sq-act-primary{background:var(--sq-primary);color:var(--sq-on-primary)}
 .sq-act-primary:hover{background:var(--sq-primary-hover)}
 .sq-act-primary:active{background:var(--sq-primary-press)}
-.sq-act-ink{background:var(--sq-ink);color:var(--sq-paper)}
-.sq-act-ink:hover{background:var(--sq-n800)}
-.sq-act-ink:active{background:var(--sq-n700)}
+.sq-act-line{background:var(--sq-paper);color:var(--sq-ink);box-shadow:inset 0 0 0 1px var(--sq-guide)}
+.sq-act-line:hover{background:var(--sq-cell)}
+.sq-act-line:active{background:var(--sq-guide-2)}
+/* whole-pixel steps, not a vw clamp: a clamp gave 28.672px at 1024 */
+@media (min-width:900px){
+  .sq-ih h1{font-size:32px}
+  .sq-ih-in{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:center}
+  .sq-ih-bar{grid-column:1 / -1}
+  .sq-ih-head{grid-column:1}
+  .sq-ih-acts{grid-column:2}
+}
+@media (min-width:1280px){
+  .sq-ih h1{font-size:40px}
+}
 .sq-act:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
 
 /* ---- body: the canonical DESIGN.md beside the preview ---- */
@@ -173,17 +186,17 @@
   .sq-item-pv-in{position:static;max-height:none;overflow:visible;padding-right:0}
 }
 @media (max-width:767px){
-  .sq-ih-in{padding-top:16px;padding-bottom:40px}
-  .sq-ih-head{flex-direction:column;align-items:flex-start;gap:16px;margin-top:24px}
-  .sq-ih-logo{height:56px;padding:10px 12px;border-radius:14px}
-  .sq-ih-logo img{height:36px;max-width:160px}
-  .sq-ih-logo.sq-logo-fav{padding:10px}
-  .sq-ih-logo.sq-logo-fav img{width:36px}
-  .sq-ih h1{font-size:clamp(30px,9vw,40px)}
-  .sq-ih-acts{margin-top:24px;gap:10px}
-  .sq-act{flex:1 1 0;min-width:0;padding:0 16px;font-size:16px}
+  .sq-ih-in{padding-top:12px;padding-bottom:32px}
+  .sq-ih-bar,.sq-crumb,.sq-ih-ext{min-height:44px}
+  .sq-ih-head{gap:10px;margin-top:12px}
+  .sq-ih-logo{height:40px;padding:6px 8px;border-radius:10px}
+  .sq-ih-logo img{height:26px;max-width:96px}
+  .sq-ih-logo.sq-logo-fav{padding:6px}
+  .sq-ih-logo.sq-logo-fav img{width:26px}
+  .sq-ih-acts{margin-top:16px}
+  .sq-act{flex:1 1 0;min-width:0;min-height:44px;padding:0 16px}
   .sq-share span{display:none}
-  .sq-share{width:44px;padding:0;justify-content:center}
+  .sq-share{width:44px;height:44px;padding:0;justify-content:center}
   .sq-md-h,.sq-pv-sec h2,.sq-rel h2,.sq-md-body h2{font-size:23px}
   .sq-panes-m{display:flex;gap:24px;padding-top:8px}
   .sq-panes-m button{all:unset;cursor:pointer;min-height:44px;font-size:17px;font-weight:650;color:var(--sq-ink-2);border-bottom:2px solid transparent}
