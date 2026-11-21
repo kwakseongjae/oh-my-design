@@ -42,7 +42,7 @@ The first time this skill runs in a conversation, open with this line, verbatim.
   - Facts, amounts, dates, conditions, product names and legal terms stay as they are.
 - **Restraint.** Change only what a rule below covers, inside its scope. Zero changes is a successful run.
 - **No invented facts, and no invented Japanese norms.** Every value comes from this file or `references/`. If a case isn't covered (§8 lists common ones that aren't), say so instead of supplying a rule.
-- Japanese examples in this file are from the sources unless marked *composed*. Composed examples were written by the researcher and are not native-reviewed.
+- Every Japanese example in this file is from a source. Five examples the researcher had composed (under JW-01, JW-42, JW-56, JW-58 and JW-64) were removed on 2026-11-21: no native reader is available to check composed Japanese, so the file carries none.
 - Explanations and the Before/After/Why table are in the user's language.
 
 ## 2. When to use / when not
@@ -148,7 +148,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 
 ### Sentence endings (文体)
 
-- **JW-01 · One text, one sentence-final style: です・ます (敬体) or だ・である (常体), not both.** Quotations, subordinate clauses and list items are exempt. *Composed:* 「設定を保存しました。次に通知を確認する。」 → 「設定を保存しました。次に通知を確認します。」 `公用文` + `JTF`.
+- **JW-01 · One text, one sentence-final style: です・ます (敬体) or だ・である (常体), not both.** Quotations, subordinate clauses and list items are exempt. No sourced example. `公用文` + `JTF`.
 - **JW-02 · Reader-facing text uses です・ます as the base (基本として, 目安, 基本的に), not as a fixed rule.** KB uses 常体 for 法令・告示・訓令 and allows だ forms in 解説・広報; JTF uses 敬体 「基本的に」 for manuals and web body text. Applying it to app UI is an extension of both. Judgment only: it depends on audience and surface. `公用文` + `JTF`.
 - **JW-06 · Headings, lists and table text may use 常体 or 体言止め under a です・ます body;** keep one style across a set of headings or one list, and one choice of 。 per list. `JTF`, consistent with KB's exemption of lists from JW-01 (`公用文`).
 - **JW-03 · In a formal 常体 text, write である・であろう・であった, not だ・だろう・だった.** KB itself allows だ in 解説・広報. `公用文`.
@@ -202,7 +202,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-39 · No 。 on headings, single-word list items or short figure and table text; 。 on sentences, including a single-sentence tooltip.** No source covers buttons, labels or menus: don't extend it there. `SmartHR` + `JTF`.
 - **JW-40 · 。 before a closing bracket: house choice.** 公用文 puts it inside when a sentence ends there (「「決める。」と発言した。」) and allows dropping it in 解説・広報; JTF writes 「A氏は「5月に新製品を発売します」と述べました。」.
 - **JW-41 · Brackets: （） and 「」 as the base; 『』 for titles or nesting; ［］ for UI element names (「［ファイル］メニュー」); 【】 for labels or emphasis; avoid others.** Sources differ on 『』 and “ ” (SmartHR uses neither). `公用文` + `JTF` + `SmartHR`.
-- **JW-42 · Full-width brackets, ？, ！ and ： in Japanese text as a principle:** *composed* 「設定(任意)」 → 「設定（任意）」. Both guides list half-width cases: period, comma and space (JTF); ¥ and ％ with digits, the digit-grouping comma, / and >, { } for variables (SmartHR). KB writes full-width brackets but states no width rule. `JTF` + `SmartHR`.
+- **JW-42 · Full-width brackets, ？, ！ and ： in Japanese text as a principle:** No sourced example. Both guides list half-width cases: period, comma and space (JTF); ¥ and ％ with digits, the digit-grouping comma, / and >, { } for variables (SmartHR). KB writes full-width brackets but states no width rule. `JTF` + `SmartHR`.
 - **JW-43 · ！ and ？ only where needed, full-width; after one that ends a sentence, a space before the next sentence** (full- or half-width: the sources differ). `公用文` + `JTF` + `SmartHR`.
 - **JW-44 · Ellipsis: house choice.** KB describes … or …… (KB: consistency only; the uses are described, not recommended); SmartHR uses one ….
 - **JW-45 · Ranges: 〜 for ranges (JTF: 「18〜22歳」, not the ASCII ~; SmartHR: 「2022/01/01〜2022/03/01」; KB: consistency only, the use is described, not recommended).** For foreign readers write から/まで and don't use 〜 (`やさしい`: 「午前９時から午後６時まで」). Only Mozilla names its code point: U+301C WAVE DASH, not U+FF5E (a translation guide; KW-46). `JTF` + `SmartHR` vs `やさしい`.
@@ -219,12 +219,12 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-53 · Dates: house choice.** SmartHR: 「2025/01/01」 in UI (zero-padded; 「2022/1/1」 is NG), 「2025年1月1日」 on explanatory pages. やさしい日本語: the Western year and no ／ (「2020年６月４日」). No source opened recommends the era-name form.
 - **JW-54 · Times: house choice.** SmartHR UI: 24-hour hh:mm:ss (「PM11:00:05」 → 「23:00:05」). やさしい日本語 prefers 12-hour with 午前/午後 and allows 24-hour.
 - **JW-55 · Number and unit: keep one notation per document.** SmartHR writes file sizes with no space (「5 GB」 → 「5GB」); JTF generally writes no space in translation but accepts 2 kg. Don't flag a spaced form such as 2 kg as an error. KB: consistency only, unit symbols used one way per document. `JTF` + `SmartHR` + `公用文`.
-- **JW-56 · 以上・以下・以前・以後 include the base value; 超える・未満 exclude it.** For UI validation text an extension of `公用文`: *composed* 「8文字以上で入力してください」 allows 8. Judgment only, unless a house rule adopts KB and the copy can be checked against the validator's >= or >.
+- **JW-56 · 以上・以下・以前・以後 include the base value; 超える・未満 exclude it.** For UI validation text this is an extension of `公用文`; no sourced example. Judgment only, unless a house rule adopts KB and the copy can be checked against the validator's >= or >.
 
 ### Japanese and Latin text
 
 - **JW-57 · No typed space between Japanese and half-width Latin letters or digits:** 「PDF ファイルをアップロード」 → 「PDFファイルをアップロード」. Optical spacing is JT-21's, not a typed space. `JTF` + `SmartHR`.
-- **JW-58 · No space inside or outside brackets:** *composed* 「設定 （任意）」 → 「設定（任意）」. `JTF` + `SmartHR`.
+- **JW-58 · No space inside or outside brackets:** No sourced example. `JTF` + `SmartHR`.
 - **JW-59 · Latin letters half-width (JTF: 「ａｂｃ ＤＥＦ」 → 「abc DEF」);** KB asks only for consistency. `JTF` + `公用文`.
 - **JW-70 · Japanese names in romaji: family name first, the family name capitalised when the order must be clear (YAMADA Haruo).** Judgment only: it needs to know which part is the family name. `公用文`.
 
@@ -234,7 +234,7 @@ p { line-height: 1.7; }                                   /* DADS 16–17px body
 - **JW-61 · SmartHR: a dialog title is 「{対象}の{アクション}」, its confirm button 「{アクション}」; screen titles and field names are nouns.** `SmartHR` only.
 - **JW-62 · SmartHR: descriptions are full sentences, not 体言止め; audit-log entries are 体言止め** (「ユーザーを作成しました」 → 「ユーザーを作成」). `SmartHR`.
 - **JW-63 · A title names the subject and the document's nature; in public-facing text avoid a bare 「…について」; keep it to one line.** Worded as advice (「適当である」「とよい」). `公用文`.
-- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** *Composed:* 「エラーが発生しました。」 → 「ファイルをアップロードできませんでした。ファイルサイズが10MBを超えています。10MB以下のファイルを選択してください。」 Judgment only (a script can flag a message with no 対処 such as 〜してください). Apology wording has one source, WordPress, for text translated from English (KW-11); no company or government page read covers it. `SmartHR`.
+- **JW-64 · SmartHR: an error message carries 事象・原因・対処; when space is short, show 原因, then 対処, then 事象.** No sourced example. Judgment only (a script can flag a message with no 対処 such as 〜してください). Apology wording has one source, WordPress, for text translated from English (KW-11); no company or government page read covers it. `SmartHR`.
 
 ### Readers and fairness
 
