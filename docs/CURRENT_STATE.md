@@ -22,6 +22,15 @@
 - **일본어 자체 검토(본 세션):** `docs/drafts/kana/review-2026-11-21.md`(`feat/kana-skill`). 인용 대조: 1차 323개 중 294개가 지금 페이지 그대로, 2차 224개 중 112개가 페이지·82개가 Microsoft PDF 본문. 실제 차이는 UW-19의 DADS 인용 한 문장(조사 파일만 틀림, 규칙 파일과 운영 페이지는 맞음). 검사기를 출처 페이지 15개에 돌리면 WARN 4건 전부 출처가 「틀린 예」로 든 문장. SKILL.md의 지어낸 일본어 예문 5개 삭제. `check-quotes-raw.mjs`는 그림 대체 텍스트도 읽게 고침.
 - **일본어 2차 반영 에이전트 `kana-fold` 도는 중**(브리핑에서는 본 세션이 한다고 했으나 규모가 커서 맡김): `feat/kana-skill`에 main을 병합해 둠. KW-17(の/を)과 KW-37(가타카나 복합어 공백)은 Microsoft와 갈려 「정하는 곳」으로 옮겨 가고, 새 규칙 8개 안팎이 들어온다. 앞에 내세운 여섯 규칙에서 KW-17이 빠진다. 끝나면 전·후 그림으로 카드를 만들고 `feat/kana-skill` 머지를 같은 카드에 넣는다.
 
+**18:05 추가(같은 승인 아래):**
+- **카드 7 = PR #137(초안, `feat/site-ds-page-titles`, 워크트리 `.claude/worktrees/ds2`)**: FAQ·changelog·what-is-design-md·alternatives의 h1을 `.sq-page-title`(Wanted Sans 760, 28/32/40px)로. 화면 변화라 승인 대기. 「후」 그림은 개발 서버(3353, 내가 띄우고 끔). OG 이미지는 넣지 않음(시안이 필요).
+- **카드 8 = Threads 초안**(`claudedocs/share/2026-11-21-kr-brand-colours/`, gitignore). 숫자는 게시된 글과 대조, 「18곳 중 8곳 파랑」만 미대조.
+- **컴파일러 수정**(`feat/refs-reverify-1121`, 워크트리 `.claude/worktrees/land-1121`, 커밋만): `compile-evidence.mjs`의 `brandChanges`가 「정착한 변화 없음 + 아직 움직이는 속성 있음」을 unmeasured로 돌려준다(테스트 1개 추가, 24개 통과).
+- **피플펀드 재조립 끝**: `~/.omd-workers/reverify3b/peoplefund`(워커 폴더 복사본). 다시 컴파일하니 `product-tab` hover만 UNMEASURED로 바뀜. front.yaml에서 그 hover 줄과 `added`를 빼고 본문 두 문장과 verification 한 줄을 사실에 맞게 고쳐 다시 조립(claims 122). 카탈로그 차이는 한글 이름 피플펀드 → 크플, verified 날짜뿐.
+- **수퍼톤 기록**: `land-1121` 워크트리의 `web/references/supertone/DESIGN.md` Overview 첫머리에 날짜 달린 인용 블록 한 줄(토큰 변경 없음, 미커밋). 다음 landing 때 같이 들어간다.
+- **landing 차례**: 퀸잇이 끝나면 보고서의 Status·Doubts부터 읽고, `scripts/workers/land-batch.sh .claude/worktrees/land-1121 ~/.omd-workers/reverify3b/peoplefund ~/.omd-workers/reverify4/queenit` 한 번. verified_v2가 안 나오면 그 레퍼런스는 빼고 보고. 모션 래칫(`evidence-integrity.test.ts`)이 움직이면 날짜 줄과 함께 내림.
+- **대만·중국 자체 검토(부분)**: `docs/drafts/{zhuyin,pinyin}/review-2026-11-21.md`. 제목 전부와 대만 5개·중국 8개 규칙만 끝까지 읽음. 나머지 통독이 남음.
+
 **오너 11/21 16:35 「괜찮아보이네. ㄱㄱ」** (새 아티팩트의 카드 여섯 장과 승인 표를 본 뒤). 여섯 카드를 추천대로 승인한 것으로 읽고 하나씩 머지, 운영 확인 뒤 다음으로 넘어감:
 - [x] 1 → #133 머지(16:36, main `11d20001`). 운영에서 Home → 브랜드 줄 → 상세 → `#use`를 `/`·`/ko`, 1440·390으로 확인(제목 40/28px, 버튼 40/44px, 겹침·넘침 없음)
 - [x] 2 → #136 머지(16:51, `e7b901a7`). `/design.md`가 새 내용, 루트 `DESIGN.md` 교체(옛 파일 `~/.omd-workers/backups/root-DESIGN.md.2026-10-13`). `check-mirror-drift.mjs`: 파일 쌍 차이 0, 종료 코드 1은 스킬 트리 21건(이번에 건드리지 않음)
