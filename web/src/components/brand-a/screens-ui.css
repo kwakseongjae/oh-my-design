@@ -1,0 +1,38 @@
+/* Shared by the item page's Screens tab (item-screens.css) and the /screens gallery (screens-gallery.css): the
+   width switch, the swatch, the type chip, the round icon button and the full-page dialog (components/item/screen-dialog.tsx).
+   Tokens: --sq-* (styles/brand-a.css); no new colours. Prefix sq-scr- (the landing's catalog showcase owns sq-sc-). */
+
+/* which width leads: a tab group (14) holding two 32-tall segments, 40 in all */
+.sq-scr-seg{display:inline-flex;gap:4px;padding:4px;border-radius:var(--sq-r-ctl);background:var(--sq-cell)}
+.sq-scr-seg button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:10px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink-2);white-space:nowrap}
+.sq-scr-seg button:hover{color:var(--sq-ink)}
+.sq-scr-seg button[aria-pressed="true"]{background:var(--sq-paper);color:var(--sq-ink);box-shadow:inset 0 0 0 1px var(--sq-guide-2)}
+.sq-scr-chip{display:inline-flex;align-items:center;flex-shrink:0;min-height:32px;padding:0 12px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:14px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
+.sq-scr-sw{flex-shrink:0;display:inline-block;width:16px;height:16px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 14%,transparent)}
+/* the full page: the popup of components/ui/dialog, sized here (unlayered rules win over its utilities) */
+.sq-scr-dlg{display:flex;flex-direction:column;width:min(992px,calc(100vw - 32px));max-width:none;height:calc(100dvh - 48px);padding:0;gap:0;border-radius:var(--sq-r-card);background:var(--sq-paper);color:var(--sq-ink);overflow:hidden;font-family:var(--sq-f-ko);font-size:15px}
+.sq-scr-dlg[data-lead="narrow"]{width:min(430px,calc(100vw - 32px))}
+.sq-scr-dlg-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 12px 12px 20px}
+.sq-scr-dlg-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0;margin-right:auto;font-size:17px;font-weight:700;line-height:1.4}
+.sq-scr-dlg-n{font-size:15px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;padding:0 4px}
+.sq-scr-ic{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--sq-r-pill);background:var(--sq-cell);color:var(--sq-ink)}
+.sq-scr-ic:hover{background:var(--sq-guide-2)}
+.sq-scr-ic:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-scr-ic svg{width:20px;height:20px}
+.sq-scr-dlg-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;background:var(--sq-band)}
+/* never wider than the file (full stills are 960 and 390 wide): an upscaled still blurs */
+.sq-scr-dlg-body img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto}
+.sq-scr-dlg-links{display:flex;flex-wrap:wrap;gap:8px;padding:0 12px 12px 20px}
+.sq-scr-dlg-links a{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);text-decoration:none}
+.sq-scr-dlg-links a:hover{background:var(--sq-guide-2)}
+.sq-scr-dlg-links a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-scr-dlg-links svg{width:16px;height:16px}
+
+@media (max-width:767px){
+  .sq-scr-dlg{width:calc(100vw - 16px);height:calc(100dvh - 24px)}
+  .sq-scr-dlg[data-lead="narrow"]{width:calc(100vw - 16px)}
+  .sq-scr-dlg-bar{padding:10px 10px 10px 16px}
+  .sq-scr-ic{width:44px;height:44px}
+  .sq-scr-dlg-links{padding:0 10px 10px 16px}
+  .sq-scr-dlg-links a{min-height:44px}
+}

@@ -29,6 +29,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ReferencePreview } from "@/components/reference-preview";
 import { hasPreviewContent, type PreviewModel } from "@/components/item/preview-model";
 import { BrandLogo, type BrandLogoData } from "@/components/brand-logo";
@@ -42,6 +43,7 @@ import {
   trackMdViewToggle,
 } from "@/lib/design-systems/analytics";
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
+import type { ScreensModel } from "@/lib/screens/model";
 import "@/components/brand-a/archive.css";
 import "@/components/brand-a/item.css";
 
@@ -50,7 +52,12 @@ interface Detail {
   designMd: string;
 }
 
-type MobileView = "preview" | "markdown";
+type View = "preview" | "markdown" | "screens";
+
+// Its own chunk: a page without local screens never renders it, so never downloads it.
+const ScreensTab = dynamic(() => import("@/components/item/screens-tab").then((m) => m.ScreensTab));
+
+const SCREENS_HASH = "#screens";
 
 export function DetailView({
   name,
@@ -58,6 +65,7 @@ export function DetailView({
   preview,
   official,
   logo,
+  screens = null,
   locale = "en",
   sharePath,
 }: {
@@ -74,10 +82,18 @@ export function DetailView({
   official: string | null;
   /** Genuine logo resolved by the server (archive-rows.server.ts), or null. */
   logo: BrandLogoData | null;
+  /**
+   * This service's real screens from a local folder (lib/screens/local.server.ts), or null — always
+   * null in production. Null renders the page exactly as before: no tab row, no request, no markup.
+   */
+  screens?: ScreensModel | null;
 }) {
   const t = locale === "ko" ? ITEM_KO : ITEM_EN;
   const withPreview = hasPreviewContent(preview);
-  const [mobileView, setMobileView] = useState<MobileView>(withPreview ? "preview" : "markdown");
+  const defaultView: View = withPreview ? "preview" : "markdown";
+  // One view for both layouts. Desktop shows the two panes for "preview" and "markdown" alike and
+  // the Screens tab for "screens"; phones show one pane at a time.
+  const [view, setView] = useState<View>(defaultView);
   const [copied, setCopied] = useState(false);
   const [hasLogo, setHasLogo] = useState(!!logo);
 
@@ -110,8 +126,30 @@ export function DetailView({
     trackDsExport({ reference: detail.id, channel: "download" });
   }
 
-  function toggleMobileView(next: MobileView) {
-    setMobileView(next);
+  // #screens opens the Screens tab, so a link can land on it. Read after mount: the server
+  // always renders the DESIGN.md view, and #use and the bare URL keep working as before.
+  useEffect(() => {
+    if (!screens) return;
+    const sync = () =>
+      setView((v) => (window.location.hash === SCREENS_HASH ? "screens" : v === "screens" ? defaultView : v));
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, [screens, defaultView]);
+
+  function selectView(next: View) {
+    setView(next);
+    if (!screens) return;
+    const { pathname, search, hash } = window.location;
+    if (next === "screens" && hash !== SCREENS_HASH) {
+      window.history.replaceState(window.history.state, "", `${pathname}${search}${SCREENS_HASH}`);
+    } else if (next !== "screens" && hash === SCREENS_HASH) {
+      window.history.replaceState(window.history.state, "", `${pathname}${search}`);
+    }
+  }
+
+  function toggleMobileView(next: "preview" | "markdown") {
+    selectView(next);
     trackMdViewToggle({ reference: detail.id, view: next });
   }
 
@@ -165,20 +203,47 @@ export function DetailView({
         </div>
       </section>
 
-      {/* Phones: one pane at a time, the preview first (recognition before reading). */}
-      {withPreview ? (
-        <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label={t.show}>
-          <button type="button" onClick={() => toggleMobileView("preview")} aria-pressed={mobileView === "preview"}>
-            {t.preview}
-          </button>
-          <button type="button" onClick={() => toggleMobileView("markdown")} aria-pressed={mobileView === "markdown"}>
-            DESIGN.md
-          </button>
+      {/* Desktop: DESIGN.md (the two panes) or the service's screens. Only where screens exist. */}
+      {screens ? (
+        <div className="sq-root sq-wrap sq-tabs-d">
+          <div className="sq-tabs-g" role="tablist" aria-label={t.screens.tabsLabel}>
+            <button type="button" role="tab" aria-selected={view !== "screens"} onClick={() => selectView(view === "screens" ? defaultView : view)}>
+              DESIGN.md
+            </button>
+            <button type="button" role="tab" aria-selected={view === "screens"} onClick={() => selectView("screens")}>
+              {t.screens.tab} <small>{screens.cards.length}</small>
+            </button>
+          </div>
         </div>
       ) : null}
 
-      <div className={`sq-wrap sq-item-body${withPreview ? "" : " sq-item-solo"}`}>
-        <section className={`sq-item-md ${mobileView === "markdown" ? "" : "sq-m-hide"}`} aria-labelledby="md-heading">
+      {/* Phones: one pane at a time, the preview first (recognition before reading); the screens third. */}
+      {withPreview || screens ? (
+        <div className="sq-root sq-wrap sq-panes-m" role="group" aria-label={t.show}>
+          {withPreview ? (
+            <button type="button" onClick={() => toggleMobileView("preview")} aria-pressed={view === "preview"}>
+              {t.preview}
+            </button>
+          ) : null}
+          <button type="button" onClick={() => toggleMobileView("markdown")} aria-pressed={view === "markdown"}>
+            DESIGN.md
+          </button>
+          {screens ? (
+            <button type="button" onClick={() => selectView("screens")} aria-pressed={view === "screens"}>
+              {t.screens.tab} <small>{screens.cards.length}</small>
+            </button>
+          ) : null}
+        </div>
+      ) : null}
+
+      {screens && view === "screens" ? (
+        <div className="sq-wrap">
+          <ScreensTab model={screens} labels={t.screens} panelId="screens-panel" />
+        </div>
+      ) : null}
+
+      <div className={`sq-wrap sq-item-body${withPreview ? "" : " sq-item-solo"}${view === "screens" ? " sq-v-hide" : ""}`}>
+        <section className={`sq-item-md ${view === "markdown" ? "" : "sq-m-hide"}`} aria-labelledby="md-heading">
           <h2 id="md-heading" className="sq-md-h">
             DESIGN.md
           </h2>
@@ -189,7 +254,7 @@ export function DetailView({
         </section>
 
         {withPreview ? (
-          <section className={`sq-item-pv ${mobileView === "preview" ? "" : "sq-m-hide"}`} aria-label={t.preview}>
+          <section className={`sq-item-pv ${view === "preview" ? "" : "sq-m-hide"}`} aria-label={t.preview}>
             <div className="sq-item-pv-in">
               <ReferencePreview model={preview} labels={t.pv} />
             </div>

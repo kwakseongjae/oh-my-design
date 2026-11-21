@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import Page, { generateMetadata, generateStaticParams } from "./page";
 import { generateMetadata as generateEnMetadata } from "@/app/(en)/design-systems/[id]/page";
@@ -11,9 +11,14 @@ import { detailHrefFor, hasKoDetailShort } from "@/lib/i18n/ko-detail";
 import { loadDetail } from "@/lib/references/detail-loader.server";
 import { koSummary } from "./ko-summary";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
+import { makeScreensFixture } from "@/lib/screens/test-fixture";
 
 const HANGUL = /[가-힣]/;
 const params = (id: string) => ({ params: Promise.resolve({ id }) });
+
+// Hermetic: a local screens folder exported in the shell must not change what these assertions see.
+beforeEach(() => vi.stubEnv("OMD_SCREENS_DIR", ""));
+afterEach(() => vi.unstubAllEnvs());
 
 async function render(id: string): Promise<string> {
   return renderToStaticMarkup(await Page(params(id)));
@@ -176,5 +181,28 @@ describe("Korean item page body", () => {
     for (const t of tags) expect(Object.values(ARCHIVE_COPY.ko.domains)).toContain(t);
     expect(related.match(/<i style="background:#[0-9a-f]{6}"/g)?.length).toBeGreaterThanOrEqual(6);
     expect(related).not.toContain("sq-rel-sw");
+  });
+});
+
+describe("the Screens tab on the Korean page (local screens only)", () => {
+
+  it("renders nothing of it without a local screens folder", async () => {
+    vi.stubEnv("OMD_SCREENS_DIR", "");
+    const html = await render("toss");
+    expect(html).not.toMatch(/sq-tabs-d|sq-v-hide|screens-local|role="tablist"/);
+  });
+
+  it("with a folder, adds 화면 as a desktop tab and as the third phone tab", async () => {
+    const fx = makeScreensFixture("toss");
+    try {
+      vi.stubEnv("OMD_SCREENS_DIR", fx.root);
+      vi.stubEnv("NODE_ENV", "development");
+      const html = await render("toss");
+      expect(html).toContain("화면 <small>4</small>");
+      const phone = (html.split('class="sq-root sq-wrap sq-panes-m"')[1] ?? "").split("</div>")[0];
+      expect([...phone.matchAll(/<button[^>]*>([^<]+)/g)].map((m) => m[1].trim())).toEqual(["미리보기", "DESIGN.md", "화면"]);
+    } finally {
+      fx.cleanup();
+    }
   });
 });

@@ -52,6 +52,17 @@
 }
 .sq-act:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
 
+/* ---- DESIGN.md or the service's screens (only where a local screens folder exists; item-screens.css) ----
+   A tab group (14) of two 32-tall tabs, 40 in all. Phones use the pane row below instead. */
+.sq-tabs-d{padding-top:4px}
+.sq-tabs-g{display:inline-flex;gap:4px;padding:4px;border-radius:var(--sq-r-ctl);background:var(--sq-cell)}
+.sq-tabs-g button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 16px;border-radius:10px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink-2);white-space:nowrap}
+.sq-tabs-g button:hover{color:var(--sq-ink)}
+.sq-tabs-g button[aria-selected="true"]{background:var(--sq-paper);color:var(--sq-ink);box-shadow:inset 0 0 0 1px var(--sq-guide-2)}
+.sq-tabs-g button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-tabs-g small,.sq-panes-m small{font-size:14px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+.sq-item-body.sq-v-hide{display:none}
+
 /* ---- body: the canonical DESIGN.md beside the preview ---- */
 .sq-panes-m{display:none}
 .sq-item-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 64px;padding-top:24px;padding-bottom:64px}
@@ -198,6 +209,7 @@
   .sq-share span{display:none}
   .sq-share{width:44px;height:44px;padding:0;justify-content:center}
   .sq-md-h,.sq-pv-sec h2,.sq-rel h2,.sq-md-body h2{font-size:23px}
+  .sq-tabs-d{display:none}
   .sq-panes-m{display:flex;gap:24px;padding-top:8px}
   .sq-panes-m button{all:unset;cursor:pointer;min-height:44px;font-size:17px;font-weight:650;color:var(--sq-ink-2);border-bottom:2px solid transparent}
   .sq-panes-m button[aria-pressed="true"]{color:var(--sq-ink);border-bottom-color:var(--sq-ink)}
