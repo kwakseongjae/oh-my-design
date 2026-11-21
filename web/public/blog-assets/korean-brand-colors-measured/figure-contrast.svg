@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="952" viewBox="0 0 720 952" role="img" aria-label="주 행동 버튼의 흰 글자 명도 대비, 18곳" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="ko">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="719" height="951" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">주 행동 버튼의 흰 글자 명도 대비, 18곳</text>
+<text x="32" y="78.65" font-size="14" fill="#5a5a63">기록된 배경색과 글자색으로 다시 그린 견본입니다. 화면 캡처가 아닙니다.</text>
+<line x1="465" y1="133.95" x2="465" y2="923.95" stroke="#a4a4ab" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="465" y="129.95" font-size="13" fill="#5a5a63" font-weight="600" text-anchor="middle">3:1</text>
+<line x1="578.25" y1="133.95" x2="578.25" y2="923.95" stroke="#a4a4ab" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="578.25" y="129.95" font-size="13" fill="#5a5a63" font-weight="600" text-anchor="middle">4.5:1</text>
+<rect x="32" y="137.95" width="132" height="34" rx="8" fill="#00b7ff"/>
+<text x="98" y="159.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">가우디오랩</text>
+<text x="178" y="159.63" font-size="13" fill="#5a5a63">#00b7ff</text>
+<line x1="314" y1="154.95" x2="410.64" y2="154.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="410.64" cy="154.95" r="4.5" fill="#13131a"/>
+<text x="688" y="159.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">2.28:1</text>
+<rect x="32" y="181.95" width="132" height="34" rx="8" fill="#00c473"/>
+<text x="98" y="203.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">잔디</text>
+<text x="178" y="203.63" font-size="13" fill="#5a5a63">#00c473</text>
+<line x1="314" y1="198.95" x2="412.15" y2="198.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="412.15" cy="198.95" r="4.5" fill="#13131a"/>
+<text x="688" y="203.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">2.30:1</text>
+<rect x="32" y="225.95" width="132" height="34" rx="8" fill="#0ac290"/>
+<text x="98" y="247.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">런드리고</text>
+<text x="178" y="239.95" font-size="13" fill="#5a5a63">#0ac290</text>
+<text x="178" y="255.95" font-size="13" fill="#5a5a63">큰 글자</text>
+<line x1="314" y1="242.95" x2="412.15" y2="242.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="412.15" cy="242.95" r="4.5" fill="#13131a"/>
+<text x="688" y="247.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">2.30:1</text>
+<rect x="32" y="269.95" width="132" height="34" rx="8" fill="#21afbf"/>
+<text x="98" y="291.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">미리캔버스</text>
+<text x="178" y="291.63" font-size="13" fill="#5a5a63">#21afbf</text>
+<line x1="314" y1="286.95" x2="437.82" y2="286.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="437.82" cy="286.95" r="4.5" fill="#13131a"/>
+<text x="688" y="291.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">2.64:1</text>
+<rect x="32" y="313.95" width="132" height="34" rx="8" fill="#ff6464"/>
+<text x="98" y="335.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">스티비</text>
+<text x="178" y="335.63" font-size="13" fill="#5a5a63">#ff6464</text>
+<line x1="314" y1="330.95" x2="456.7" y2="330.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="456.7" cy="330.95" r="4.5" fill="#13131a"/>
+<text x="688" y="335.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">2.89:1</text>
+<rect x="32" y="357.95" width="132" height="34" rx="8" fill="#ff5700"/>
+<text x="98" y="379.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">모레</text>
+<text x="178" y="379.63" font-size="13" fill="#5a5a63">#ff5700</text>
+<line x1="314" y1="374.95" x2="477.84" y2="374.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="477.84" cy="374.95" r="4.5" fill="#13131a"/>
+<text x="688" y="379.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.17:1</text>
+<rect x="32" y="401.95" width="132" height="34" rx="8" fill="#1890ff"/>
+<text x="98" y="423.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">그리팅</text>
+<text x="178" y="423.63" font-size="13" fill="#5a5a63">#1890ff</text>
+<line x1="314" y1="418.95" x2="483.12" y2="418.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="483.12" cy="418.95" r="4.5" fill="#13131a"/>
+<text x="688" y="423.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.24:1</text>
+<rect x="32" y="445.95" width="132" height="34" rx="8" fill="#ff4081"/>
+<text x="98" y="467.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">펫프렌즈</text>
+<text x="178" y="467.63" font-size="13" fill="#5a5a63">#ff4081</text>
+<line x1="314" y1="462.95" x2="489.91" y2="462.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="489.91" cy="462.95" r="4.5" fill="#13131a"/>
+<text x="688" y="467.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.33:1</text>
+<rect x="32" y="489.95" width="132" height="34" rx="8" fill="#1d8bff"/>
+<text x="98" y="511.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">여기어때</text>
+<text x="178" y="511.63" font-size="13" fill="#5a5a63">#1d8bff</text>
+<line x1="314" y1="506.95" x2="494.45" y2="506.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="494.45" cy="506.95" r="4.5" fill="#13131a"/>
+<text x="688" y="511.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.39:1</text>
+<rect x="32" y="533.95" width="132" height="34" rx="8" fill="#ff4438"/>
+<text x="98" y="555.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">클라썸</text>
+<text x="178" y="555.63" font-size="13" fill="#5a5a63">#ff4438</text>
+<line x1="314" y1="550.95" x2="496.71" y2="550.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="496.71" cy="550.95" r="4.5" fill="#13131a"/>
+<text x="688" y="555.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.42:1</text>
+<rect x="32" y="577.95" width="132" height="34" rx="8" fill="#f44336"/>
+<text x="98" y="599.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">버즈빌</text>
+<text x="178" y="599.63" font-size="13" fill="#5a5a63">#f44336</text>
+<line x1="314" y1="594.95" x2="516.34" y2="594.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="516.34" cy="594.95" r="4.5" fill="#13131a"/>
+<text x="688" y="599.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.68:1</text>
+<rect x="32" y="621.95" width="132" height="34" rx="8" fill="#3182f6"/>
+<text x="98" y="643.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">토스증권</text>
+<text x="178" y="643.63" font-size="13" fill="#5a5a63">#3182f6</text>
+<line x1="314" y1="638.95" x2="518.61" y2="638.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="518.61" cy="638.95" r="4.5" fill="#13131a"/>
+<text x="688" y="643.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.71:1</text>
+<rect x="32" y="665.95" width="132" height="34" rx="8" fill="#0082ff"/>
+<text x="98" y="687.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">모인</text>
+<text x="178" y="687.63" font-size="13" fill="#5a5a63">#0082ff</text>
+<line x1="314" y1="682.95" x2="520.12" y2="682.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="520.12" cy="682.95" r="4.5" fill="#13131a"/>
+<text x="688" y="687.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.73:1</text>
+<rect x="32" y="709.95" width="132" height="34" rx="8" fill="#f82f62"/>
+<text x="98" y="731.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">Watcha</text>
+<text x="178" y="731.63" font-size="13" fill="#5a5a63">#f82f62</text>
+<line x1="314" y1="726.95" x2="523.13" y2="726.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="523.13" cy="726.95" r="4.5" fill="#13131a"/>
+<text x="688" y="731.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.77:1</text>
+<rect x="32" y="753.95" width="132" height="34" rx="8" fill="#8169ff"/>
+<text x="98" y="775.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">프로토파이</text>
+<text x="178" y="775.63" font-size="13" fill="#5a5a63">#8169ff</text>
+<line x1="314" y1="770.95" x2="532.2" y2="770.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="532.2" cy="770.95" r="4.5" fill="#13131a"/>
+<text x="688" y="775.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">3.89:1</text>
+<rect x="32" y="797.95" width="132" height="34" rx="8" fill="#0078ff"/>
+<text x="98" y="819.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">쏘카</text>
+<text x="178" y="819.63" font-size="13" fill="#5a5a63">#0078ff</text>
+<line x1="314" y1="814.95" x2="547.29" y2="814.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="547.29" cy="814.95" r="4.5" fill="#13131a"/>
+<text x="688" y="819.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">4.09:1</text>
+<rect x="32" y="841.95" width="132" height="34" rx="8" fill="#0077fe"/>
+<text x="98" y="863.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">페이히어</text>
+<text x="178" y="855.95" font-size="13" fill="#5a5a63">#0077fe</text>
+<text x="178" y="871.95" font-size="13" fill="#5a5a63">큰 글자</text>
+<line x1="314" y1="858.95" x2="551.07" y2="858.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="551.07" cy="858.95" r="4.5" fill="#13131a"/>
+<text x="688" y="863.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">4.14:1</text>
+<rect x="32" y="885.95" width="132" height="34" rx="8" fill="#396eff"/>
+<text x="98" y="907.99" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">헤이딜러</text>
+<text x="178" y="907.63" font-size="13" fill="#5a5a63">#396eff</text>
+<line x1="314" y1="902.95" x2="565.41" y2="902.95" stroke="#797981" stroke-width="1.5"/>
+<circle cx="565.41" cy="902.95" r="4.5" fill="#13131a"/>
+<text x="688" y="907.63" font-size="14" fill="#13131a" font-weight="600" text-anchor="end">4.33:1</text>
+<line x1="314" y1="133.95" x2="314" y2="923.95" stroke="#d3d3db" stroke-width="1"/>
+</svg>

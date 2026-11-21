@@ -13,6 +13,7 @@
 
 import type { FontLicense } from "@/lib/font-registry";
 import type { ColorGroupKey, StateKey } from "@/components/item/preview-model";
+import type { ScreenGroupId } from "@/lib/screens/model";
 
 export interface InstallLabels {
   install: string;
@@ -65,6 +66,67 @@ export interface PreviewLabels {
   inventory: string;
 }
 
+/**
+ * The Screens tab (components/item/screens-tab.tsx), shown only where a local
+ * screens folder is configured (lib/screens/local.server.ts). Screen titles,
+ * types and states are the walk's own Korean vocabulary: the Korean page shows
+ * them as written, the English page names the type and state through
+ * `typeName` / `stateName` and keeps the recorded title.
+ */
+export interface ScreensLabels {
+  /** The tab: "화면" + the count beside it. */
+  tab: string;
+  /** Accessible name of the desktop tab row. */
+  tabsLabel: string;
+  shot: (date: string) => string;
+  signedOut: string;
+  groups: Record<ScreenGroupId, string>;
+  lead: string;
+  widthName: (width: number) => string;
+  blocked: string;
+  open: (title: string) => string;
+  typeName: (type: string) => string;
+  stateName: (state: string) => string;
+  panel: string;
+  panelLead: string;
+  /** The rule of the count, verbatim from the brief. */
+  exactOnly: string;
+  colorCount: (matched: number, comparable: number) => string;
+  onScreens: (n: number) => string;
+  notSeen: string;
+  filtered: (token: string, n: number) => string;
+  clear: string;
+  counter: (i: number, n: number) => string;
+  prev: string;
+  next: string;
+  close: string;
+  fullAlt: (title: string) => string;
+}
+
+/** English names of the walk's screen types; an unlisted type is shown as written. */
+const SCREEN_TYPE_EN: Record<string, string> = {
+  홈: "Home",
+  검색: "Search",
+  "검색 결과": "Search results",
+  목록: "List",
+  상세: "Detail",
+  콘텐츠: "Content",
+  이벤트: "Event",
+  로그인: "Sign-in",
+  회원가입: "Sign-up",
+  고객센터: "Help",
+  오류: "Error",
+  피드: "Feed",
+  장바구니: "Cart",
+  팝업: "Pop-up",
+  카테고리: "Category",
+  커뮤니티: "Community",
+  지도: "Map",
+  화면: "Screen",
+  좋아요: "Likes",
+  프로필: "Profile",
+};
+
 export interface ItemLabels {
   crumb: string;
   crumbHref: string;
@@ -83,6 +145,7 @@ export interface ItemLabels {
   install: InstallLabels;
   shareLabels: ShareLabels;
   pv: PreviewLabels;
+  screens: ScreensLabels;
 }
 
 export const ITEM_EN: ItemLabels = {
@@ -109,6 +172,32 @@ export const ITEM_EN: ItemLabels = {
     promptFor: (b) => `Set up our design system — ${b}-style.`,
   },
   shareLabels: { share: "Share", copied: "Copied", aria: "Copy share link", ariaCopied: "Share link copied" },
+  screens: {
+    tab: "Screens",
+    tabsLabel: "DESIGN.md or screens",
+    shot: (d) => `Shot on ${d}`,
+    signedOut: "signed out",
+    groups: { core: "Core screens", states: "States", more: "More from this service" },
+    lead: "Width in front",
+    widthName: (w) => (w >= 1024 ? `Desktop ${w}` : `Mobile ${w}`),
+    blocked: "Blocked",
+    open: (title) => `Open the full page of ${title}`,
+    typeName: (type) => SCREEN_TYPE_EN[type] ?? type,
+    stateName: (state) => (state === "빈 상태" ? "Empty state" : state),
+    panel: "Compared with DESIGN.md",
+    panelLead: "Where this company's DESIGN.md colors are drawn on its screens with the same value. Select a value to keep only the screens that show it.",
+    exactOnly: "Only exact matches count. A value that does not appear is not a wrong value.",
+    colorCount: (m, c) => `Black and white aside, ${m} of ${c} colors appear on screen.`,
+    onScreens: (n) => (n === 1 ? "1 screen" : `${n} screens`),
+    notSeen: "Not seen",
+    filtered: (token, n) => `Showing the ${n === 1 ? "screen" : `${n} screens`} with ${token}`,
+    clear: "Clear",
+    counter: (i, n) => `${i} / ${n}`,
+    prev: "Previous screen",
+    next: "Next screen",
+    close: "Close",
+    fullAlt: (title) => `Full page of ${title}`,
+  },
   pv: {
     colors: "Colors",
     type: "Typography",
@@ -194,6 +283,35 @@ export const ITEM_KO: ItemLabels = {
     promptFor: (b) => `우리 디자인 시스템을 ${b} 스타일로 세팅해 줘.`,
   },
   shareLabels: { share: "공유", copied: "복사했어요", aria: "공유 링크 복사", ariaCopied: "공유 링크를 복사했어요" },
+  screens: {
+    tab: "화면",
+    tabsLabel: "DESIGN.md와 화면",
+    shot: (d) => {
+      const [y, m, day] = d.split("-").map(Number);
+      return `${y}년 ${m}월 ${day}일에 찍은 화면`;
+    },
+    signedOut: "로그아웃 상태",
+    groups: { core: "핵심 화면", states: "상태", more: "이 서비스의 화면" },
+    lead: "앞에 둘 폭",
+    widthName: (w) => (w >= 1024 ? `데스크톱 ${w}` : `모바일 ${w}`),
+    blocked: "막힘",
+    open: (title) => `${title} 전체 화면 보기`,
+    typeName: (type) => type,
+    stateName: (state) => state,
+    panel: "DESIGN.md와 대조",
+    panelLead: "이 회사 DESIGN.md의 색이 화면에 같은 값으로 그려진 곳입니다. 값을 누르면 그 값이 보이는 화면만 남습니다.",
+    exactOnly: "정확히 같은 값만 셉니다. 보이지 않는 값이 틀린 값이라는 뜻은 아닙니다.",
+    colorCount: (m, c) => `검정과 흰색을 뺀 색 ${c}개 중 ${m}개가 화면에 보입니다.`,
+    onScreens: (n) => `화면 ${n}개`,
+    notSeen: "보이지 않음",
+    filtered: (token, n) => `${token} 값이 보이는 화면 ${n}개`,
+    clear: "필터 지우기",
+    counter: (i, n) => `${i} / ${n}`,
+    prev: "이전 화면",
+    next: "다음 화면",
+    close: "닫기",
+    fullAlt: (title) => `${title} 전체 화면`,
+  },
   pv: {
     colors: "색상",
     type: "타이포그래피",

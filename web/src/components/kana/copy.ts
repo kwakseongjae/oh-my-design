@@ -2,8 +2,9 @@
  * /ko/kana — the Korean chrome around the kana writing rules. The rules, quotes, examples, sources and font counts
  * come from data/kana-rules.generated.json (scripts/lang/build-kana-page-data.mjs); everything here is page copy in
  * Korean. The one-line readings restate each English rule and are not quotes. The only Japanese allowed in this file is
- * a word that also appears in the generated data (__tests__/kana-page.test.ts checks it): nothing Japanese of our own
- * ships. No native Japanese reader has read the rules; a model reviewed them on 2026-11-21.
+ * a word that also appears in the generated data (__tests__/kana-page.test.ts checks it). The one place on the page with
+ * Japanese of our own is the #app screen, whose strings live in app-copy.ts and are labelled as ours wherever they
+ * render (app.composed below). No native Japanese reader has read the rules; a model reviewed them on 2026-11-21.
  */
 
 export const KANA_PATH = "/ko/kana";
@@ -11,6 +12,37 @@ export const KANA_PATH = "/ko/kana";
 /** The rules shown first, in this order (owner's still A, 2026-11-21). KW-62 took KW-17's place when KW-17 became a
  *  house choice (the second research pass). */
 export const LEAD_RULES = ["KW-26", "KW-62", "KW-02", "KW-09", "KW-14", "KW-33"] as const;
+
+/** The component a comparison stop sets its pair in (compare.tsx draws each one). */
+export type CompareKind =
+  | "button"
+  | "dialog-button"
+  | "instruction"
+  | "field-error"
+  | "notification-bar"
+  | "count-line"
+  | "dialog-title"
+  | "dialog-question";
+
+/**
+ * The comparison's tour (#compare): a rule, one of its examples, and the component the rule is about. The Japanese is
+ * read from the generated data at render; nothing here is a string. Only examples the source gives as a wrong/right
+ * pair, set in the component the source page describes. Left out: KW-39 and KW-10 (not checked against the source's
+ * bytes), KW-25 and KW-55 (house choices), KW-06 and KW-09's Ubie pairs (the source's ※ note on the wrong side),
+ * KW-09's SmartHR request pair (its right side is UW-59's contested form), placeholder templates (KW-06's Microsoft pair, KW-09's
+ * SmartHR pairs, KW-13, KW-14, KW-70), word lists (KW-56, KW-57), two examples in one string (KW-46, KW-54's WordPress pair), KW-29 (its page names no
+ * component) and pairs whose component the source does not say (KW-32, KW-38, KW-13, KW-70).
+ */
+export const COMPARE_STOPS: readonly { readonly rule: string; readonly example: number; readonly kind: CompareKind }[] = [
+  { rule: "KW-15", example: 0, kind: "button" },
+  { rule: "KW-24", example: 0, kind: "instruction" },
+  { rule: "KW-26", example: 0, kind: "field-error" },
+  { rule: "KW-28", example: 0, kind: "notification-bar" },
+  { rule: "KW-54", example: 1, kind: "count-line" },
+  { rule: "KW-65", example: 0, kind: "dialog-title" },
+  { rule: "KW-15", example: 1, kind: "dialog-button" },
+  { rule: "KW-62", example: 0, kind: "dialog-question" },
+];
 
 /** writing-rules.md's area headings, in Korean */
 export const AREA_KO: Readonly<Record<string, string>> = {
@@ -244,10 +276,53 @@ export const KANA_COPY = {
     ctaSources: "출처 목록 보기",
     stats: { rules: "규칙", house: "출처가 갈려 고르지 않은 곳", services: "글꼴을 잰 일본 서비스" },
   },
+  app: {
+    h2: "앱 화면 하나를 일본어로 옮기면",
+    intro:
+      "한국 팀이 핀테크 앱의 홈 화면을 일본어로 낸다고 해 봅시다. 「규칙 없이 옮긴 화면」은 규칙의 출처들이 피하라고 든 형태로 옮긴 문구, 「규칙대로 고친 화면」은 같은 화면을 이 페이지의 규칙대로 고친 문구입니다. 두 화면은 문구만 다르고, 다른 곳마다 멈춰 어느 규칙인지 짚습니다.",
+    composed:
+      "이 화면의 일본어는 양쪽 모두 우리가 지은 문장이고, 출처에서 인용한 것이 아닙니다. 일본어 원어민은 아직 이 문장을 읽지 않았습니다.",
+    sides: {
+      before: "규칙 없이 옮긴 화면",
+      after: "규칙대로 고친 화면",
+      group: "어느 쪽 화면을 볼지",
+      hintAuto: "다른 곳을 하나씩 짚어 갑니다. 누르면 멈춥니다.",
+      hintPaused: "멈췄습니다. 눌러서 두 화면을 번갈아 보세요.",
+    },
+    tagsLabel: "두 화면에서 다른 곳",
+    /** a tag's rule id links to its card below */
+    toCard: "규칙 카드로",
+  },
+  compare: {
+    h2: "출처의 예시를 화면에 놓아 보면",
+    intro:
+      "출처가 피하라고 든 문구와 권한 문구를, 그 규칙이 다루는 컴포넌트에 넣어 나란히 놓았습니다. 버튼 규칙은 버튼에, 입력란 오류 규칙은 입력란 아래에 넣었습니다.",
+    real: "일본어 문구는 출처의 예시를 한 글자도 바꾸지 않고 옮긴 것입니다. 회색 막대와 컴포넌트 모양은 우리가 그렸습니다.",
+    wrong: "출처가 피하는 문구",
+    right: "출처가 권하는 문구",
+    switchGroup: "어느 쪽 문구를 볼지",
+    stopsLabel: "비교할 규칙",
+    hintAuto: "규칙이 차례로 넘어갑니다. 화살표나 규칙 번호를 누르면 멈춥니다.",
+    hintPaused: "멈췄습니다. 화살표나 규칙 번호로 넘겨 보세요.",
+    play: "자동 넘김 켜기",
+    pause: "자동 넘김 멈추기",
+    kind: {
+      button: "버튼",
+      "dialog-button": "대화상자의 버튼",
+      instruction: "안내 문구",
+      "field-error": "입력란 오류 문구",
+      "notification-bar": "알림 막대",
+      "count-line": "건수 표시",
+      "dialog-title": "대화상자 머리글",
+      "dialog-question": "확인 대화상자의 질문",
+    },
+    /** the stop's rule id links to its card below */
+    toCard: "규칙 카드로",
+  },
   rules: {
     h2: "규칙은 이렇게 생겼습니다",
     intro:
-      "규칙마다 출처의 문장을 원문 그대로 붙였습니다. 세기는 같은 말을 하는 출처가 어디인지로 적었습니다. 법이 정한 의무인 KW-68 말고는 어느 출처도 규칙을 강제하지 않습니다. 출처가 붙인 단서(원칙적으로, 되도록, In general)는 규칙에도 남겼습니다. 일본어는 모두 인용이고, Microsoft는 규칙을 영어로 적어서 그 문장을 영어 그대로 붙였습니다. Microsoft 예시 앞의 +는 권하는 형태, −는 피하는 형태입니다. 그 위의 한국어 한 줄은 영어로 적은 규칙을 우리가 옮긴 것입니다.",
+      "규칙마다 출처의 문장을 원문 그대로 붙였습니다. 세기는 같은 말을 하는 출처가 어디인지로 적었습니다. 법이 정한 의무인 KW-68 말고는 어느 출처도 규칙을 강제하지 않습니다. 출처가 붙인 단서(원칙적으로, 되도록, In general)는 규칙에도 남겼습니다. 규칙 카드의 일본어는 모두 인용이고, Microsoft는 규칙을 영어로 적어서 그 문장을 영어 그대로 붙였습니다. Microsoft 예시 앞의 +는 권하는 형태, −는 피하는 형태입니다. 그 위의 한국어 한 줄은 영어로 적은 규칙을 우리가 옮긴 것입니다.",
     allH2: "영역별 규칙",
     allIntro: (n: number, lead: number) => `규칙 ${n}개를 영역별로 모았습니다. 앞에서 본 ${lead}개는 각 영역 머리에 번호로만 적었습니다.`,
     seenAbove: "앞에서 본 규칙",

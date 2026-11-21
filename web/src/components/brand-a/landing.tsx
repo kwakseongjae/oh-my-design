@@ -13,6 +13,7 @@ import { HeroSection } from "./hero-section";
 import { JourneySection } from "./journey-section";
 import { ibmPlexSans, pretendard } from "./journey/faces";
 import { SiteFooterA } from "./site-footer";
+import { ScreensLandingSection } from "@/components/screens/landing-section";
 import { GITHUB_URL, SiteHeaderA } from "./site-header";
 // section styles in the original cascade order (split out of landing.css before round 11)
 import "./landing.css";
@@ -70,7 +71,9 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
         <JourneySection locale={locale} c={c} data={data} first={first} />
         <CliSection locale={locale} c={c} r={r} total={F.total} skills={F.skills} skillsHref={GH_SKILLS} />
         <FaqSection r={r} f={f} issuesHref={GH_ISSUES} />
-        <CloseSection r={r} f={f} archive={archive} />
+        {/* the screens strip sits inside the showcase, before its archive button; it renders nothing unless the local
+            screens folder is configured (components/screens) */}
+        <CloseSection r={r} f={f} archive={archive} screens={<ScreensLandingSection locale={locale} />} />
       </main>
       <SiteFooterA locale={locale} current={locale} />
     </div>

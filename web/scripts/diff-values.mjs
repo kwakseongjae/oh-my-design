@@ -8,15 +8,20 @@
  * Per control it compares identity (size, radius, padding, font, transition), rest colours, and each state.
  * A state that one side could not measure is reported as "unmeasured on one side", never as a change:
  * a missing measurement is not a different value. Exit code 0 when every compared field agrees, 1 otherwise.
+ *
+ * Both files are read through resolveColourSpaces(): a values.json written before the compiler read oklch() holds
+ * the page's notation, one written after holds rgb(), and the same colour in two notations is not a change.
  */
 import { readFileSync } from "node:fs";
+import { resolveColourSpaces } from "./compile-evidence.mjs";
 
 const FIELDS = { identity: ["tag", "text", "href", "w", "h", "radius", "padding", "font", "family", "letterSpacing", "transition"],
   rest: ["bg", "fg", "border", "shadow", "opacity"] };
 const STATES = ["hover", "pressed", "focus"];
 const canon = (changes) => JSON.stringify([...changes].map((c) => `${c.set}|${c.prop}|${c.from}|${c.to}`).sort());
 
-export function diffValues(before, after) {
+export function diffValues(beforeRaw, afterRaw) {
+  const before = resolveColourSpaces(beforeRaw), after = resolveColourSpaces(afterRaw);
   const out = { controls: 0, compared: 0, same: 0, changed: [], unmeasured: [], missing: [] };
   for (const key of new Set([...Object.keys(before), ...Object.keys(after)])) {
     const a = before[key], b = after[key];

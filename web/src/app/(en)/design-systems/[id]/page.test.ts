@@ -1,10 +1,15 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import Page, { generateMetadata } from "./page";
 import { REGISTRY } from "@/data/registry.generated";
 import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
+import { makeScreensFixture } from "@/lib/screens/test-fixture";
 
 const params = (id: string) => ({ params: Promise.resolve({ id }) });
+
+// Hermetic: a local screens folder exported in the shell must not change what these assertions see.
+beforeEach(() => vi.stubEnv("OMD_SCREENS_DIR", ""));
+afterEach(() => vi.unstubAllEnvs());
 
 describe("English canonical reference metadata", () => {
   it("publishes the reviewed Toss summary, hreflang, and verified OG card", async () => {
@@ -119,5 +124,48 @@ describe("English item page body", () => {
     for (const h of hrefs) expect(h).toMatch(/^\/design-systems\/[a-z0-9.-]+$/);
     expect(related).toContain('class="sq-card-tag">Fintech<');
     expect(related).toContain('class="sq-card-sum"');
+  });
+});
+
+describe("the Screens tab (local screens only)", () => {
+
+  it("renders nothing of it without a local screens folder", async () => {
+    vi.stubEnv("OMD_SCREENS_DIR", "");
+    const html = renderToStaticMarkup(await Page(params("toss")));
+    expect(html).not.toMatch(/sq-tabs-d|sq-v-hide|screens-local|role="tablist"/);
+    expect(html).not.toContain(">Screens");
+  });
+
+  it("renders nothing of it in production even with a folder", async () => {
+    const fx = makeScreensFixture("toss");
+    try {
+      vi.stubEnv("OMD_SCREENS_DIR", fx.root);
+      vi.stubEnv("NODE_ENV", "production");
+      expect(renderToStaticMarkup(await Page(params("toss")))).not.toContain("sq-tabs-d");
+    } finally {
+      fx.cleanup();
+    }
+  });
+
+  it("with a folder, adds the tab with the screen count; the DESIGN.md view stays the default and the h1 and #use stay", async () => {
+    const fx = makeScreensFixture("discord");
+    try {
+      vi.stubEnv("OMD_SCREENS_DIR", fx.root);
+      vi.stubEnv("NODE_ENV", "development");
+      const html = renderToStaticMarkup(await Page(params("discord")));
+      expect(html).toContain('class="sq-root sq-wrap sq-tabs-d"');
+      expect(html).toContain("Screens <small>4</small>");
+      // discord has no preview pane: the phone row is DESIGN.md and Screens.
+      expect(html).toContain("sq-panes-m");
+      expect(html).not.toContain(">Preview<");
+      expect(html).toContain('id="md-heading"');
+      expect(html).not.toContain("sq-v-hide");
+      expect(html.match(/<h1[ >]/g)).toHaveLength(1);
+      expect(html).toContain('id="use"');
+      // Stills load only when the tab opens.
+      expect(html).not.toContain("/screens-local/");
+    } finally {
+      fx.cleanup();
+    }
   });
 });

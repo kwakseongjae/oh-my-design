@@ -39,10 +39,12 @@ export function BlogPostView({
           Table cells take break-word instead of anywhere (HG-9: "break-word where min-content must
           stay intact"), so a column grows to its longest word and the table's own overflow-x
           wrapper scrolls, rather than splitting 프로|젝트. Scoped to Korean: keep-all would make
-          Chinese or Japanese runs unbreakable. */}
+          Chinese or Japanese runs unbreakable.
+          A <picture> written into a post is a figure; the paragraph right after it is its caption.
+          The space before ${ matters: Tailwind reads a class that touches ${ as one unknown token and writes no rule for it. */}
       <article
         id="main"
-        className={`mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6${post.locale === "ko" ? " [word-break:keep-all] [&_td]:[overflow-wrap:break-word] [&_th]:[overflow-wrap:break-word]" : ""}`}
+        className={`mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6 [&_picture]:mt-8 [&_picture]:block [&_picture+p]:mt-3 [&_picture+p]:mb-8 [&_picture+p]:text-[13px] [&_picture+p]:text-muted-foreground ${post.locale === "ko" ? "[word-break:keep-all] [&_td]:[overflow-wrap:break-word] [&_th]:[overflow-wrap:break-word]" : ""}`}
         lang={post.locale}
       >
         <Link

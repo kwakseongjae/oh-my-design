@@ -8,7 +8,7 @@ type TypeKey = keyof typeof MOA_TYPE_MARKS;
 /** The four illustrations, shared by both sides (moa.css sizes the slots; public/hangul/moa/ has the art). */
 export type MoaArtKind = "sent" | "gift" | "chart" | "offline";
 
-function Art({ kind }: { kind: MoaArtKind }) {
+export function MoaArt({ kind }: { kind: MoaArtKind }) {
   return <span className={`moa-art moa-art--${kind}`} aria-hidden="true" />;
 }
 
@@ -39,6 +39,50 @@ function Icon({ name }: { name: keyof typeof ICONS }) {
     <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {ICONS[name]}
     </svg>
+  );
+}
+
+/** The phone's status bar and the app bar, the same on every moa screen (the /kana page's Japanese one too). */
+export function MoaTop({ app }: { app: string }) {
+  return (
+    <div className="moa-top">
+      <div className="moa-status" aria-hidden="true">
+        <span className="moa-time">9:41</span>
+        <span className="moa-status-i">
+          <svg viewBox="0 0 18 12" width="18" height="12"><path d="M1 9h2v2H1zM5 7h2v4H5zM9 4.5h2V11H9zM13 2h2v9h-2z" fill="currentColor" /></svg>
+          <svg viewBox="0 0 16 12" width="16" height="12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M1.5 4.3a9.4 9.4 0 0 1 13 0M3.9 6.9a6 6 0 0 1 8.2 0M6.3 9.4a2.6 2.6 0 0 1 3.4 0" /></svg>
+          <svg viewBox="0 0 26 12" width="26" height="12"><rect x=".6" y=".6" width="21.8" height="10.8" rx="3.2" fill="none" stroke="currentColor" strokeOpacity=".4" strokeWidth="1.2" /><rect x="2.4" y="2.4" width="16.4" height="7.2" rx="1.8" fill="currentColor" /><path d="M24 4v4c.9-.3 1.4-1.1 1.4-2s-.5-1.7-1.4-2z" fill="currentColor" fillOpacity=".45" /></svg>
+        </span>
+      </div>
+      <div className="moa-bar">
+        <span className="moa-logo">
+          <svg viewBox="0 0 28 28" width="26" height="26" aria-hidden="true">
+            <rect width="28" height="28" rx="8" fill="#3478F6" />
+            <circle cx="11" cy="14.5" r="5.2" fill="#fff" />
+            <circle cx="17.5" cy="14.5" r="5.2" fill="#fff" fillOpacity=".55" />
+          </svg>
+          <span className="moa-logo-t">{app}</span>
+        </span>
+        <span className="moa-bell" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 6.5 2.5 8 2.5 8h-17S6 15.5 6 9" /><path d="M10.3 20.5a2 2 0 0 0 3.4 0" /></svg>
+          <span className="moa-dot" />
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/** The tab bar: four drawn tabs, the first one on. */
+export function MoaTabs({ tabs }: { tabs: readonly string[] }) {
+  return (
+    <ul className="moa-tabs" aria-hidden="true">
+      {(["home", "gift", "send", "menu"] as const).map((icon, i) => (
+        <li key={icon} className={i === 0 ? "is-on" : undefined}>
+          <Icon name={icon} />
+          <span>{tabs[i]}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -76,30 +120,7 @@ export function MoaScreen({
 
   return (
     <div className={`moa moa--${chrome}`} data-typo={typo} lang="ko">
-      <div className="moa-top">
-        <div className="moa-status" aria-hidden="true">
-          <span className="moa-time">9:41</span>
-          <span className="moa-status-i">
-            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M1 9h2v2H1zM5 7h2v4H5zM9 4.5h2V11H9zM13 2h2v9h-2z" fill="currentColor" /></svg>
-            <svg viewBox="0 0 16 12" width="16" height="12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M1.5 4.3a9.4 9.4 0 0 1 13 0M3.9 6.9a6 6 0 0 1 8.2 0M6.3 9.4a2.6 2.6 0 0 1 3.4 0" /></svg>
-            <svg viewBox="0 0 26 12" width="26" height="12"><rect x=".6" y=".6" width="21.8" height="10.8" rx="3.2" fill="none" stroke="currentColor" strokeOpacity=".4" strokeWidth="1.2" /><rect x="2.4" y="2.4" width="16.4" height="7.2" rx="1.8" fill="currentColor" /><path d="M24 4v4c.9-.3 1.4-1.1 1.4-2s-.5-1.7-1.4-2z" fill="currentColor" fillOpacity=".45" /></svg>
-          </span>
-        </div>
-        <div className="moa-bar">
-          <span className="moa-logo">
-            <svg viewBox="0 0 28 28" width="26" height="26" aria-hidden="true">
-              <rect width="28" height="28" rx="8" fill="#3478F6" />
-              <circle cx="11" cy="14.5" r="5.2" fill="#fff" />
-              <circle cx="17.5" cy="14.5" r="5.2" fill="#fff" fillOpacity=".55" />
-            </svg>
-            <span className="moa-logo-t">{s.app}</span>
-          </span>
-          <span className="moa-bell" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 6.5 2.5 8 2.5 8h-17S6 15.5 6 9" /><path d="M10.3 20.5a2 2 0 0 0 3.4 0" /></svg>
-            <span className="moa-dot" />
-          </span>
-        </div>
-      </div>
+      <MoaTop app={s.app} />
 
       <div className="moa-view">
         <div className="moa-scroll">
@@ -134,7 +155,7 @@ export function MoaScreen({
           </div>
 
           <div className="moa-toast">
-            <Art kind="sent" />
+            <MoaArt kind="sent" />
             <div className="moa-toast-in">
               <p className="moa-toast-t">{w("toast", c.toast)}</p>
               <p className="moa-toast-s">{c.toastSub}</p>
@@ -147,13 +168,13 @@ export function MoaScreen({
               <p className="moa-banner-t">{w("banner", c.banner)}</p>
               <Chip text={cm("banner")} tone={tone} />
             </div>
-            <Art kind="gift" />
+            <MoaArt kind="gift" />
           </div>
 
           <div className="moa-card moa-stats">
             <div className="moa-stats-top">
               <p className="moa-cap">{s.statsCap}</p>
-              <Art kind="chart" />
+              <MoaArt kind="chart" />
             </div>
             <p className="moa-stats-h">{s.statsH}</p>
             <Chip text={tm("statsH")} tone={tone} />
@@ -186,7 +207,7 @@ export function MoaScreen({
           </div>
 
           <div className="moa-error">
-            <Art kind="offline" />
+            <MoaArt kind="offline" />
             <div className="moa-error-in">
               <p className="moa-error-t">{w("error", c.error)}</p>
               <Chip text={cm("error")} tone={tone} />
@@ -200,14 +221,7 @@ export function MoaScreen({
         </div>
       </div>
 
-      <ul className="moa-tabs" aria-hidden="true">
-        {(["home", "gift", "send", "menu"] as const).map((icon, i) => (
-          <li key={icon} className={i === 0 ? "is-on" : undefined}>
-            <Icon name={icon} />
-            <span>{s.tabs[i]}</span>
-          </li>
-        ))}
-      </ul>
+      <MoaTabs tabs={s.tabs} />
       {chrome === "fixed" ? <span className="moa-focus" aria-hidden="true" /> : null}
     </div>
   );

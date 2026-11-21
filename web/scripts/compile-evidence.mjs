@@ -30,6 +30,13 @@
  * count, a change that persists after blur, and the browser's `auto` focus ring arriving or leaving. An
  * unmeasured state is reported as unmeasured, never as "no change", and so is a state in which nothing settled
  * while something was still moving between the probe's reads.
+ *
+ * Colours in another colour space (2026-11-21, queenit): a page that declares its colours as oklch() or oklab() has
+ * computed styles in that notation, and everything below reads rgb() only, so the page's real fills never became
+ * candidates. Each file is read through resolveColourSpaces(): an oklch()/oklab() value that lies inside sRGB is
+ * replaced by the rgb()/rgba() the browser paints for it (CSS Color 4 conversion, rounded to 8 bits), and
+ * colour-spaces.json keeps the notation each value came from. A value outside sRGB is left as written: its sRGB
+ * hex would be a clip, not the colour a wide-gamut screen shows, so it stays out of the token candidates.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -44,6 +51,73 @@ export function parseColor(v) {
   const alpha = m[4] === undefined ? 1 : Number(m[4]);
   const hex = "#" + [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join("");
   return { hex, alpha };
+}
+
+const OK_RE = /\bok(lch|lab)\(\s*([^()]*?)\s*\)/gi;
+const okNumber = (t, whole) => (t === "none" ? 0 : t.endsWith("%") ? (parseFloat(t) / 100) * whole : parseFloat(t));
+
+/**
+ * An oklch() or oklab() body as 8-bit sRGB: { r, g, b, alpha, inGamut }, or null when it does not parse.
+ * inGamut is false when a linear-light component leaves 0–1 by more than rounding: the r, g, b given are then a clip.
+ */
+export function okToSrgb(kind, body) {
+  const [main, alphaText] = String(body).split("/").map((s) => s.trim());
+  const parts = main.split(/\s+/);
+  if (parts.length !== 3) return null;
+  const L = okNumber(parts[0], 1);
+  let a, b;
+  if (kind.toLowerCase() === "lch") {
+    const C = okNumber(parts[1], 0.4);
+    const hText = parts[2];
+    const h = hText === "none" ? 0 : hText.endsWith("turn") ? parseFloat(hText) * 360 : hText.endsWith("rad") ? (parseFloat(hText) * 180) / Math.PI : hText.endsWith("grad") ? parseFloat(hText) * 0.9 : parseFloat(hText);
+    a = C * Math.cos((h * Math.PI) / 180); b = C * Math.sin((h * Math.PI) / 180);
+  } else { a = okNumber(parts[1], 0.4); b = okNumber(parts[2], 0.4); }
+  const alpha = alphaText === undefined ? 1 : Math.min(1, Math.max(0, okNumber(alphaText, 1)));
+  if (![L, a, b, alpha].every(Number.isFinite)) return null;
+  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3, m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3, s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+  const linear = [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s];
+  const inGamut = linear.every((x) => x >= -0.0005 && x <= 1.0005);
+  const [r, g, bl] = linear.map((x) => { const c = Math.min(1, Math.max(0, x)); return Math.round(255 * (c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055)); });
+  return { r, g, b: bl, alpha, inGamut };
+}
+
+/**
+ * A capture file with every in-gamut oklch()/oklab() value rewritten as the rgb()/rgba() the browser paints, inside
+ * whatever string holds it (a border, a shadow, a state's from/to). `log.resolved` maps each written value to the
+ * notations it replaced; `log.outOfGamut` counts the values left as they were. Keys are never rewritten.
+ */
+export function resolveColourSpaces(value, log = { resolved: {}, outOfGamut: {} }) {
+  if (typeof value === "string") {
+    if (!/ok(lch|lab)\(/i.test(value)) return value;
+    return value.replace(OK_RE, (raw, kind, body) => {
+      const c = okToSrgb(kind, body);
+      if (!c) return raw;
+      if (!c.inGamut) { log.outOfGamut[raw] = (log.outOfGamut[raw] ?? 0) + 1; return raw; }
+      const out = c.alpha === 1 ? `rgb(${c.r}, ${c.g}, ${c.b})` : `rgba(${c.r}, ${c.g}, ${c.b}, ${Number(c.alpha.toFixed(4))})`;
+      (log.resolved[out] ??= {})[raw] = (log.resolved[out][raw] ?? 0) + 1;
+      return out;
+    });
+  }
+  if (Array.isArray(value)) return value.map((v) => resolveColourSpaces(v, log));
+  if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, resolveColourSpaces(v, log)]));
+  return value;
+}
+
+/** candidates.md's last section: which colours were written in another notation, and which were left alone. */
+export function colourSpacesMarkdown(log) {
+  const resolved = Object.entries(log.resolved), out = Object.entries(log.outOfGamut);
+  if (!resolved.length && !out.length) return "";
+  const hexOf = (v) => colorToken(v) ?? v;
+  return ["", "## Colours the page wrote in another colour space", "",
+    "The page's computed styles give these as oklch() or oklab(). The value on the left is what the browser paints",
+    "for it in sRGB, and is the value the lists above use. When you name one as a token, say in the body which",
+    "notation the page declares.", "",
+    ...(resolved.length ? ["| painted (sRGB) | written as | times in the capture files |", "|---|---|---|",
+      ...resolved.map(([v, raws]) => [v, raws, Object.values(raws).reduce((n, x) => n + x, 0)]).sort((a, z) => z[2] - a[2] || a[0].localeCompare(z[0])).map(([v, raws]) => `| \`${hexOf(v)}\` | ${Object.keys(raws).map((r) => `\`${r}\``).join(", ")} | ${Object.values(raws).reduce((n, x) => n + x, 0)} |`)] : ["- none"]),
+    "", `### Outside sRGB, left as written (${out.length})`, "",
+    "An sRGB hex for these would be a clip, not the colour a wide-gamut screen shows. They are not candidates; if",
+    "one matters, describe it in the body in the page's own notation.", "",
+    ...(out.length ? out.sort((a, z) => z[1] - a[1]).map(([raw, n]) => `- \`${raw}\` ×${n}`) : ["- none"]), ""].join("\n");
 }
 
 /** A token value for a colour: 6-digit hex when opaque, the rgba() string when translucent, null when clear. */
@@ -520,7 +594,8 @@ function main() {
   const id = opt("--id");
   const publishedFile = opt("--published");
   if (!args.length) { console.error("usage: compile-evidence.mjs <capture-folder>... [--out <dir>] [--id <id>]"); process.exit(2); }
-  const read = (f) => JSON.parse(readFileSync(f, "utf8"));
+  const spaces = { resolved: {}, outOfGamut: {} };
+  const read = (f) => resolveColourSpaces(JSON.parse(readFileSync(f, "utf8")), spaces);
   const folders = [...args].sort();
   let survey = null, text = null; const statesFiles = [], cfgs = [];
   for (const f of folders) {
@@ -547,7 +622,8 @@ function main() {
     writeFileSync(path.join(out, "names.json"), JSON.stringify(published, null, 1) + "\n");
   }
   const candidates = tokenCandidates(survey, controls, compiled, published, text);
-  writeFileSync(path.join(out, "candidates.md"), candidatesMarkdown(candidates));
+  writeFileSync(path.join(out, "candidates.md"), candidatesMarkdown(candidates) + colourSpacesMarkdown(spaces));
+  if (Object.keys(spaces.resolved).length || Object.keys(spaces.outOfGamut).length) writeFileSync(path.join(out, "colour-spaces.json"), JSON.stringify(spaces, null, 1) + "\n");
   writeFileSync(path.join(out, "candidates.json"), JSON.stringify(candidates, null, 1) + "\n");
   const n = compiled.filter((c) => c.emitted).length;
   console.log(`compiled ${n} component(s) of ${controls.length} measured control(s), ${candidates.colours.length} + ${candidates.declaredOnly.length} colour, ${candidates.type.length} type and ${candidates.radii.length} radius candidate(s) → ${out}`);
