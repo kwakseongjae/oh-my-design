@@ -10,6 +10,14 @@
 → 승인된 추천: 상세 페이지 머리 B · 화면 아카이브는 상세 페이지의 「화면」 탭부터 · `/kana`는 A안(한국어 페이지 먼저) · 블로그 슬러그 `korean-brand-colors-measured`와 합니다체 · 재검증은 지시서를 고쳐 4곳 재시험 · #131 머지.
 → 보고 방식: **살아 있는 아티팩트 하나**(https://claude.ai/artifact/KbqQF8nXerNFHVnfGpw884, 원본 `~/.omd-workers/reports/2026-11-21-sprint-report.html`, 그림은 세션 임시 폴더의 `report-img/`에서 같이 올림)에 전·후 또는 새 화면 그림을 넣고 거기서 승인받는다. 별도 HTML 묶음을 만들지 않는다.
 
+**오너 11/21 16:35 「괜찮아보이네. ㄱㄱ」** (새 아티팩트의 카드 여섯 장과 승인 표를 본 뒤). 여섯 카드를 추천대로 승인한 것으로 읽음. 머지 계획(하나씩, 운영 확인 뒤 다음):
+- [ ] 1 → #133 머지, 운영에서 Home → 브랜드 줄 → 상세 → `#use`를 `/`와 `/ko`, 1440·390으로 확인
+- [ ] 2 → `feat/site-design-md`를 main에 다시 맞춰 PR, 머지, 루트 `DESIGN.md` 교체, `check-mirror-drift.mjs`(`--fix` 없이)
+- [ ] 3 → 모양만 승인. 머지 없음. 화면 공개 기준은 열려 있음
+- [ ] 4 → #134 머지, `/ko/kana` 200 · noindex · 사이트맵에 없음 확인
+- [ ] 5 → #132 머지(=게시), 글 200과 저장소 링크 2개 확인
+- [ ] 6 → 스포카·수퍼톤·퀸잇·피플펀드 **이 네 문서만 지금 상태로**(「Earlier record」 28~49%) 넣음. 별도 PR. 나머지 4곳이나 verified의 뜻 전반에 대한 승인이 아니다. 게이트가 막으면 본문을 고치지 않고 보고
+
 **승인 대기(아티팩트 카드 제목의 번호 그대로. 오너가 번호로 답하면 머지 전에 카드 이름으로 되짚는다):**
 1. 상세 페이지 첫 화면 → #133 머지.
 2. 우리 `DESIGN.md` 다시 쓰기(가지 `feat/site-design-md`, #133 위에 쌓음): `web/public/design.md`를 지금 코드와 11/21 실측으로 다시 씀. 값 40개 대조표 `docs/research/2026-11-21-site-design-system/diff.md`, 견본 생성기 `scripts/site-audit/designmd-specimen.mjs`. 승인되면 #133과 함께 머지하고, **이 Mac의 루트 `DESIGN.md`(gitignore, 미러의 원본으로 취급됨)를 같은 내용으로 바꾼다.** 안 바꾸면 `scripts/check-mirror-drift.mjs --fix`가 공개 파일을 옛 내용으로 되돌린다. #133보다 먼저 나가면 안 된다.
