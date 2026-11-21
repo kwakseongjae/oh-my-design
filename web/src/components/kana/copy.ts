@@ -28,7 +28,7 @@ export const RULE_KO: Readonly<Record<string, string>> = {
   "KW-02": "화면 제목, 창 제목, 표제는 명사로 끝냅니다.",
   "KW-03": "메뉴 항목은 짧은 명사로 씁니다. OS에 굳은 표현이 있으면 그것을 따릅니다.",
   "KW-04": "체크박스 라벨은 원칙적으로 동사로 끝내고, 라디오 버튼 라벨은 끝을 가리지 않습니다. 라벨이 여러 문장이 아니면 둘 다 。를 찍지 않습니다.",
-  "KW-05": "번역한 소프트웨어에서 목록 항목은 する로 끝나는 평서형으로 씁니다.",
+  "KW-05": "번역한 소프트웨어에서 목록 항목은 する로 끝나는 보통체로 씁니다.",
   "KW-06": "딱딱하지도 지나치게 친근하지도 않게 씁니다. 격식을 갖출 내용이 아니면 보통의 정중한 표현을 씁니다.",
   "KW-07": "Ubie는 버튼, 표제 같은 UI 요소에 원칙적으로 경어를 쓰지 않습니다.",
   "KW-08": "Ubie는 사용자가 하고 싶지 않은데 해야 하는 조작에는 경어를 씁니다.",
@@ -65,7 +65,7 @@ export const RULE_KO: Readonly<Record<string, string>> = {
   "KW-52": "숫자는 세 자리마다 반각 쉼표로 끊습니다.",
   "KW-54": "숫자 자리표시자와 조수사 사이를 띄우지 않습니다(WordPress). SmartHR은 건수를 件으로 셉니다.",
   "KW-55": "Ubie는 가로쓰기에서 아라비아 숫자를 씁니다. 1つ도 마찬가지입니다.",
-  "KW-56": "Ubie는 제도권의 말보다 일상어를 쓰고, 어려운 한자에는 읽는 법을 붙입니다.",
+  "KW-56": "Ubie는 기관이 쓰는 말 대신 일상어를 쓰고, 어려운 한자에는 읽는 법을 붙입니다.",
   "KW-57": "SmartHR은 부정적이거나 누군가를 배제하는 느낌의 낱말을 피합니다.",
 };
 
@@ -102,7 +102,7 @@ export const HOUSE_KO: Readonly<Record<string, { readonly title: string; readonl
     sides: [
       "Mozilla: 로마자와 숫자 앞뒤를 모두 원칙적으로 띄웁니다.",
       "WordPress: 로마자 앞뒤는 띄우고 숫자 앞뒤는 띄우지 않습니다.",
-      "띄우지 않음: JTF와 SmartHR(JW-57), OPTiM의 제목(세지 않음).",
+      "띄우지 않음: JTF 스타일 가이드와 SmartHR, 그리고 OPTiM의 규칙 제목(세지 않음).",
       "손으로 친 공백과 CSS text-autospace를 함께 쓰면 간격이 두 배가 됩니다.",
     ],
   },
@@ -113,7 +113,7 @@ export const HOUSE_KO: Readonly<Record<string, { readonly title: string; readonl
       "Spindle: 문장 안에 、가 있을 때만 찍습니다.",
       "SmartHR(툴팁)과 Mozilla: 찍습니다.",
       "WordPress: 원문을 따릅니다.",
-      "표제는 Spindle이 찍지 않는다고 하고 JW-39(KB, JTF)도 같습니다. 버튼을 다루는 출처는 없습니다.",
+      "표제에는 찍지 않는다고 Spindle이 적었고, 문화청의 공문서 작성 지침과 JTF 스타일 가이드도 같습니다. 버튼을 다루는 출처는 없습니다.",
     ],
   },
   "UW-42": {
@@ -128,7 +128,7 @@ export const HOUSE_KO: Readonly<Record<string, { readonly title: string; readonl
     title: "괄호의 폭",
     sides: [
       "WordPress와 Mozilla: 반각으로 쓰고 바깥쪽을 띄웁니다.",
-      "전각: KB, JTF, SmartHR(JW-42). DADS의 예시 문장도 전각입니다(규칙이 아니라 예시).",
+      "전각: 문화청의 공문서 작성 지침, JTF 스타일 가이드, SmartHR. DADS의 예시 문장도 전각입니다(규칙이 아니라 예시).",
       "Ubie: 요일은 날짜 뒤에 띄우지 않고 반각 ()로 씁니다.",
     ],
   },
@@ -143,7 +143,7 @@ export const HOUSE_KO: Readonly<Record<string, { readonly title: string; readonl
   },
   "UW-47": {
     title: "쌍점의 폭",
-    sides: ["WordPress와 Mozilla 위키: 반각으로 쓰고 앞은 띄우지 않습니다.", "Ubie의 표 예시와 SmartHR(JW-47): 전각입니다."],
+    sides: ["WordPress와 Mozilla 위키: 반각으로 쓰고 앞은 띄우지 않습니다.", "Ubie의 표 예시와 SmartHR: 전각입니다."],
   },
   "UW-50": {
     title: "날짜",
@@ -210,8 +210,6 @@ export const KANA_COPY = {
     after: "바꾼 뒤",
     noExample: "출처에 든 예시가 없습니다.",
     pairsInQuote: "인용문 안의 짝이 예시입니다.",
-    moreQuotes: (n: number) => `인용 ${n}개 더 보기`,
-    via: (ref: string) => `${ref}에서 재인용`,
     noUrl: "주소 없음",
     newTab: "새 탭에서 열림",
   },
@@ -231,16 +229,19 @@ export const KANA_COPY = {
   fonts: {
     h2: (n: number) => `일본 서비스 ${n}곳의 첫 일본어 글꼴`,
     intro:
-      "글꼴 목록에서 처음 나오는 일본어 글꼴을 셌습니다. 한 글꼴로 모이지 않고, OS 글꼴(Apple의 Hiragino, Windows의 Yu Gothic과 Meiryo)을 이름으로 적는 곳과 웹 글꼴 Noto Sans JP를 쓰는 곳으로 나뉩니다.",
+      "각 서비스의 글꼴 목록에서 처음 나오는 일본어 글꼴을 셌습니다. 한 글꼴로 모이지 않습니다. Apple 기기에 들어 있는 Hiragino와 Noto Sans JP가 비슷하게 많고, Windows에 들어 있는 Yu Gothic과 Meiryo가 그 뒤입니다.",
     none: "알아본 일본어 글꼴 없음",
     unit: "곳",
-    caption: (date: string) => `${date}에 각 서비스의 첫 화면을 잰 값입니다. 사이트는 바뀌므로 한 곳을 인용하려면 다시 재야 합니다.`,
+    /** after the measurement date, which the page sets unbroken */
+    caption: "에 각 서비스의 첫 화면을 잰 값입니다. 사이트는 바뀌므로 한 곳을 인용하려면 다시 재야 합니다.",
     label: "첫 일본어 글꼴별 서비스 수",
   },
   sources: {
     h2: "출처",
-    intro: (date: string | null) =>
-      `규칙과 인용이 나온 페이지입니다.${date ? ` 모두 ${date}에 열었습니다.` : ""} 번역 가이드는 영어에서 옮긴 오픈소스 소프트웨어의 일본어를 위한 것이고, 회사 가이드는 그 회사 제품을 위한 것입니다.`,
+    intro: "규칙과 인용이 나온 페이지입니다.",
+    /** around the date every page was opened, which the page sets unbroken */
+    opened: ["모두 ", "에 열었습니다."],
+    scope: "번역 가이드는 영어에서 옮긴 오픈소스 소프트웨어의 일본어를 위한 것이고, 회사 가이드는 그 회사 제품을 위한 것입니다.",
     cited: (rules: number, house: number) =>
       [rules ? `규칙 ${rules}개` : "", house ? `갈리는 곳 ${house}곳` : ""].filter(Boolean).join(", ") + "에 인용",
     noUrl: "이번 조사의 출처 목록에는 주소가 없어 링크를 달지 않았습니다.",

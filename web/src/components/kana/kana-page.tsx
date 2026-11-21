@@ -26,7 +26,6 @@ const t = KANA_COPY;
 const SOURCE = new Map(data.sources.map((s) => [s.key, s]));
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
 const LEAD = new Set<string>(LEAD_RULES);
-const QUOTES_SHOWN = 3;
 
 /** kana, CJK ideographs and punctuation, full-width forms: a Japanese run inside Korean copy */
 const JA_RUN = /([\u3000-\u303f\u3040-\u30ff\u31f0-\u31ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]+)/;
@@ -68,20 +67,19 @@ function Ja({ text }: { text: string }) {
   );
 }
 
-function SourceLink({ k, via }: { k: string; via?: string }) {
+/** The source a quote or example comes from: the md's English page name, linked; a key with no URL (JTF) is named in Korean, not linked. */
+function SourceLink({ k }: { k: string }) {
   const s = SOURCE.get(k);
-  const name = s?.name ?? SOURCE_ORGS.find((o) => o.prefix === k)?.name ?? k;
   return (
     <span className="kn-src">
       {s ? (
-        <a href={s.url} target="_blank" rel="noopener noreferrer" lang="en" aria-label={`${name} (${t.rules.newTab})`}>
-          {name}
+        <a href={s.url} target="_blank" rel="noopener noreferrer" lang="en" aria-label={`${s.name} (${t.rules.newTab})`}>
+          {s.name}
           <span aria-hidden="true"> ↗</span>
         </a>
       ) : (
-        <span lang="en">{name}</span>
+        <span>{SOURCE_ORGS.find((o) => o.prefix === k)?.name ?? k}</span>
       )}
-      {via ? <span className="kn-src-via">{t.rules.via(via)}</span> : null}
     </span>
   );
 }
@@ -120,7 +118,7 @@ function QuoteBlock({ quotes }: { quotes: readonly Quote[] }) {
         ))}
       </blockquote>
       <figcaption>
-        <SourceLink k={quotes[0].key} via={quotes[0].via} />
+        <SourceLink k={quotes[0].key} />
       </figcaption>
     </figure>
   );
@@ -170,7 +168,7 @@ function ExampleBlock({ e }: { e: Example }) {
         ))}
       </div>
       <p className="kn-ex-src">
-        <SourceLink k={e.key} via={e.via} />
+        <SourceLink k={e.key} />
       </p>
     </div>
   );
@@ -178,11 +176,7 @@ function ExampleBlock({ e }: { e: Example }) {
 
 function RuleCard({ r, level }: { r: Rule; level: "h3" | "h5" }) {
   const H = level;
-  const groups = groupByKey(r.quotes as Quote[]);
   const examples = r.examples as Example[];
-  const shown = groups.slice(0, QUOTES_SHOWN);
-  const more = groups.slice(QUOTES_SHOWN);
-  const moreCount = more.reduce((n, g) => n + g.length, 0);
   return (
     <article id={r.id.toLowerCase()} className="kn-card" aria-labelledby={`${r.id}-h`}>
       <div className="kn-card-top">
@@ -199,17 +193,9 @@ function RuleCard({ r, level }: { r: Rule; level: "h3" | "h5" }) {
         <Mixed text={r.rule} />
       </p>
       <div className="kn-quotes">
-        {shown.map((g, i) => (
+        {groupByKey(r.quotes as Quote[]).map((g, i) => (
           <QuoteBlock key={i} quotes={g} />
         ))}
-        {more.length ? (
-          <details className="kn-more">
-            <summary>{t.rules.moreQuotes(moreCount)}</summary>
-            {more.map((g, i) => (
-              <QuoteBlock key={i} quotes={g} />
-            ))}
-          </details>
-        ) : null}
       </div>
       <div className="kn-exs">
         <p className="kn-exs-h">{t.rules.examples}</p>
@@ -270,7 +256,10 @@ function FontBars() {
           </li>
         ))}
       </ul>
-      <p className="kn-caption">{t.fonts.caption(f.measuredOn)}</p>
+      <p className="kn-caption">
+        <span className="kn-nowrap">{f.measuredOn}</span>
+        {t.fonts.caption}
+      </p>
     </>
   );
 }
@@ -443,7 +432,23 @@ export function KanaPage() {
           <FontBars />
         </Section>
 
-        <Section id="sources" h2={t.sources.h2} intro={t.sources.intro(opened.length === 1 ? opened[0] : null)}>
+        <Section
+          id="sources"
+          h2={t.sources.h2}
+          intro={
+            <>
+              {t.sources.intro}{" "}
+              {opened.length === 1 && opened[0] ? (
+                <>
+                  {t.sources.opened[0]}
+                  <span className="kn-nowrap">{opened[0]}</span>
+                  {t.sources.opened[1]}{" "}
+                </>
+              ) : null}
+              {t.sources.scope}
+            </>
+          }
+        >
           <Sources />
         </Section>
 

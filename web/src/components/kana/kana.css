@@ -11,6 +11,7 @@
 .kn-root :lang(ja),.kn-root :lang(ja) *{word-break:normal;overflow-wrap:anywhere}
 .kn-main p,.kn-main h1,.kn-main h2,.kn-main h3,.kn-main h4,.kn-main h5,.kn-main ul,.kn-main dl,.kn-main dd,.kn-main figure,.kn-main blockquote{margin:0}
 .kn-main ul{list-style:none;padding:0}
+.kn-nowrap{white-space:nowrap}
 .kn-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 
 /* ---- type ---- */
@@ -69,11 +70,6 @@
 .kn-src{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:13.5px;line-height:1.5;color:var(--sq-ink-2)}
 .kn-src a{color:var(--sq-ink-2);text-decoration:underline;text-decoration-color:var(--sq-guide);text-underline-offset:3px}
 .kn-src a:hover{color:var(--sq-ink);text-decoration-color:currentColor}
-.kn-more summary{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:var(--sq-r-pill);border:1px solid var(--sq-guide);
-  font-size:14px;font-weight:600;color:var(--sq-ink);cursor:pointer;list-style:none}
-.kn-more summary::-webkit-details-marker{display:none}
-.kn-more[open] summary{margin-bottom:10px}
-.kn-more .kn-quote+.kn-quote{margin-top:10px}
 
 /* examples: the source's own sides, its own labels (NG/OK, Don't/Do, 誤/正 …) */
 .kn-exs{display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid var(--sq-guide-2)}
