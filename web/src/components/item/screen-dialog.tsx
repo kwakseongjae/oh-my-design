@@ -3,8 +3,8 @@
 /**
  * The full-page view of one screen, shared by the item page's Screens tab and the /screens gallery: the
  * components/ui/dialog popup (it traps focus and returns it on close), a bar with the title, the position in the
- * sequence, previous / next (the arrow keys as well) and close, optional links under the bar, and the full-page
- * still (or the first-viewport still when no full page was shot). Styles: brand-a/screens-ui.css.
+ * sequence, previous / next (the arrow keys as well) and close, optional links and a note under the bar, and the
+ * full-page still (or the first-viewport still when no full page was shot, as for every published screen). Styles: brand-a/screens-ui.css.
  */
 
 import type { ReactNode } from "react";
@@ -19,6 +19,8 @@ export interface ScreenDialogLabels {
   next: string;
   close: string;
   fullAlt: (title: string) => string;
+  /** The image's alt when there is no full page and the first-viewport still is shown. */
+  stillAlt: (title: string) => string;
 }
 
 /** Narrower than a desktop: the dialog is phone-shaped. */
@@ -35,6 +37,7 @@ export function ScreenDialog({
   onClose,
   labels: t,
   links,
+  note,
 }: {
   open: boolean;
   /** The still to show; null renders nothing inside the (closed) dialog. */
@@ -51,6 +54,8 @@ export function ScreenDialog({
   labels: ScreenDialogLabels;
   /** Links under the bar (the gallery's way to the service's DESIGN.md and its screens). */
   links?: ReactNode;
+  /** A line under the bar (people hidden on this screen). */
+  note?: ReactNode;
 }) {
   return (
     <Dialog open={open && still !== null} onOpenChange={(next) => (next ? null : onClose())}>
@@ -78,9 +83,10 @@ export function ScreenDialog({
             </DialogClose>
           </div>
           {links ? <div className="sq-scr-dlg-links">{links}</div> : null}
+          {note ? <p className="sq-scr-dlg-note">{note}</p> : null}
           <div className="sq-scr-dlg-body">
             {/* eslint-disable-next-line @next/next/no-img-element -- a local-only still, served by our own route */}
-            <img key={still.full ?? still.still} src={still.full ?? still.still} alt={t.fullAlt(title)} />
+            <img key={still.full ?? still.still} src={still.full ?? still.still} alt={still.full ? t.fullAlt(title) : t.stillAlt(title)} />
           </div>
         </DialogContent>
       ) : null}

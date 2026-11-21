@@ -22,6 +22,17 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 
+/**
+ * react-markdown hands every component the hast `node` it came from. Spread onto a DOM element it became the
+ * attribute node="[object Object]" on every heading, paragraph, link and cell of the page (seen 2026-11-21 on the
+ * item pages and the blog). The node is for components that need it; none here does.
+ */
+function drop<P extends { node?: unknown }>(props: P): Omit<P, "node"> {
+  const { node, ...rest } = props;
+  void node;
+  return rest;
+}
+
 const schema = {
   ...defaultSchema,
   tagNames: [
@@ -62,53 +73,53 @@ export function Markdown({ content, demoteH1 = false }: { content: string; demot
             return (
               <Tag
                 className="mt-8 mb-3 text-3xl font-bold tracking-tight text-foreground first:mt-0"
-                {...props}
+                {...drop(props)}
               />
             );
           },
           h2: (props) => (
             <h2
               className="mt-10 mb-3 border-b border-border/40 pb-2 text-2xl font-semibold tracking-tight text-foreground"
-              {...props}
+              {...drop(props)}
             />
           ),
           h3: (props) => (
             <h3
               className="mt-6 mb-2 text-lg font-semibold text-foreground"
-              {...props}
+              {...drop(props)}
             />
           ),
           h4: (props) => (
             <h4
               className="mt-5 mb-2 text-base font-semibold text-foreground"
-              {...props}
+              {...drop(props)}
             />
           ),
-          p: (props) => <p className="my-3 leading-relaxed" {...props} />,
+          p: (props) => <p className="my-3 leading-relaxed" {...drop(props)} />,
           a: ({ href, ...props }) => (
             <a
               href={href}
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
               className="text-primary underline-offset-2 hover:underline"
-              {...props}
+              {...drop(props)}
             />
           ),
           strong: (props) => (
-            <strong className="font-semibold text-foreground" {...props} />
+            <strong className="font-semibold text-foreground" {...drop(props)} />
           ),
-          em: (props) => <em className="italic" {...props} />,
+          em: (props) => <em className="italic" {...drop(props)} />,
           ul: (props) => (
-            <ul className="my-3 list-disc space-y-1 pl-6" {...props} />
+            <ul className="my-3 list-disc space-y-1 pl-6" {...drop(props)} />
           ),
           ol: (props) => (
-            <ol className="my-3 list-decimal space-y-1 pl-6" {...props} />
+            <ol className="my-3 list-decimal space-y-1 pl-6" {...drop(props)} />
           ),
-          li: (props) => <li className="leading-relaxed" {...props} />,
+          li: (props) => <li className="leading-relaxed" {...drop(props)} />,
           blockquote: (props) => (
             <blockquote
               className="my-4 border-l-2 border-primary/40 pl-4 italic text-muted-foreground"
-              {...props}
+              {...drop(props)}
             />
           ),
           code: ({ className, children, ...props }) => {
@@ -118,7 +129,7 @@ export function Markdown({ content, demoteH1 = false }: { content: string; demot
               return (
                 <code
                   className={`block ${className ?? ""}`}
-                  {...props}
+                  {...drop(props)}
                 >
                   {children}
                 </code>
@@ -127,7 +138,7 @@ export function Markdown({ content, demoteH1 = false }: { content: string; demot
             return (
               <code
                 className="rounded bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-foreground"
-                {...props}
+                {...drop(props)}
               >
                 {children}
               </code>
@@ -136,7 +147,7 @@ export function Markdown({ content, demoteH1 = false }: { content: string; demot
           pre: (props) => (
             <pre
               className="my-4 overflow-x-auto rounded-lg bg-muted/50 p-4 text-xs leading-relaxed dark:bg-muted/30"
-              {...props}
+              {...drop(props)}
             />
           ),
           hr: () => <hr className="my-6 border-border/40" />,
@@ -144,27 +155,27 @@ export function Markdown({ content, demoteH1 = false }: { content: string; demot
             <div className="my-4 overflow-x-auto rounded-lg border border-border/50">
               <table
                 className="min-w-full border-collapse text-sm"
-                {...props}
+                {...drop(props)}
               />
             </div>
           ),
           thead: (props) => (
-            <thead className="bg-muted/40 dark:bg-muted/20" {...props} />
+            <thead className="bg-muted/40 dark:bg-muted/20" {...drop(props)} />
           ),
           th: (props) => (
             <th
               className="border-b border-border/50 px-3 py-2 text-left font-semibold"
-              {...props}
+              {...drop(props)}
             />
           ),
           tbody: (props) => (
-            <tbody className="divide-y divide-border/40" {...props} />
+            <tbody className="divide-y divide-border/40" {...drop(props)} />
           ),
-          tr: (props) => <tr {...props} />,
+          tr: (props) => <tr {...drop(props)} />,
           td: (props) => (
             <td
               className="px-3 py-2 align-top text-foreground/80"
-              {...props}
+              {...drop(props)}
             />
           ),
         }}

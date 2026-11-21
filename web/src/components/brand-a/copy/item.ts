@@ -14,6 +14,7 @@
 import type { FontLicense } from "@/lib/font-registry";
 import type { ColorGroupKey, StateKey } from "@/components/item/preview-model";
 import type { ScreenGroupId } from "@/lib/screens/model";
+import { SCREENS_NOTICE, type ScreensNoticeCopy } from "@/components/screens/notice-copy";
 
 export interface InstallLabels {
   install: string;
@@ -84,7 +85,10 @@ export interface ScreensLabels {
   lead: string;
   widthName: (width: number) => string;
   blocked: string;
+  /** A card's button when the large view shows the full page … */
   open: (title: string) => string;
+  /** … and when it shows the first-viewport still (published screens have no full page). */
+  openStill: (title: string) => string;
   typeName: (type: string) => string;
   stateName: (state: string) => string;
   panel: string;
@@ -101,6 +105,9 @@ export interface ScreensLabels {
   next: string;
   close: string;
   fullAlt: (title: string) => string;
+  stillAlt: (title: string) => string;
+  /** The rights, takedown and masked lines, shown once screens are published. */
+  notice: ScreensNoticeCopy;
 }
 
 /** English names of the walk's screen types; an unlisted type is shown as written. */
@@ -182,6 +189,7 @@ export const ITEM_EN: ItemLabels = {
     widthName: (w) => (w >= 1024 ? `Desktop ${w}` : `Mobile ${w}`),
     blocked: "Blocked",
     open: (title) => `Open the full page of ${title}`,
+    openStill: (title) => `Open ${title}`,
     typeName: (type) => SCREEN_TYPE_EN[type] ?? type,
     stateName: (state) => (state === "빈 상태" ? "Empty state" : state),
     panel: "Compared with DESIGN.md",
@@ -197,6 +205,8 @@ export const ITEM_EN: ItemLabels = {
     next: "Next screen",
     close: "Close",
     fullAlt: (title) => `Full page of ${title}`,
+    stillAlt: (title) => `${title}, as it first opens`,
+    notice: SCREENS_NOTICE.en,
   },
   pv: {
     colors: "Colors",
@@ -296,6 +306,7 @@ export const ITEM_KO: ItemLabels = {
     widthName: (w) => (w >= 1024 ? `데스크톱 ${w}` : `모바일 ${w}`),
     blocked: "막힘",
     open: (title) => `${title} 전체 화면 보기`,
+    openStill: (title) => `${title} 크게 보기`,
     typeName: (type) => type,
     stateName: (state) => state,
     panel: "DESIGN.md와 대조",
@@ -311,6 +322,8 @@ export const ITEM_KO: ItemLabels = {
     next: "다음 화면",
     close: "닫기",
     fullAlt: (title) => `${title} 전체 화면`,
+    stillAlt: (title) => `${title} 첫 화면`,
+    notice: SCREENS_NOTICE.ko,
   },
   pv: {
     colors: "색상",

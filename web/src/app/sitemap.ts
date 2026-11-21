@@ -10,6 +10,8 @@ import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { KO_CATALOG_PATH, koDetailPath } from "@/lib/i18n/ko-detail";
 import { HANGUL_PATH } from "@/components/hangul/copy";
 import { HANGUL_LANGUAGES } from "@/components/hangul/metadata";
+import { SCREENS_PATH } from "@/components/screens/copy";
+import { screensPublished } from "@/lib/screens/source.server";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -155,8 +157,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
+  // The screens gallery pair, only once screens are published (lib/screens/public.server.ts); until then the pages
+  // are noindex and listed nowhere.
+  const screensAlternates = { languages: { en: `${siteUrl}${SCREENS_PATH.en}`, ko: `${siteUrl}${SCREENS_PATH.ko}`, "x-default": `${siteUrl}${SCREENS_PATH.en}` } };
+  const screensRoutes: MetadataRoute.Sitemap = screensPublished()
+    ? [SCREENS_PATH.en, SCREENS_PATH.ko].map((path) => ({
+        url: `${siteUrl}${path}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates: screensAlternates,
+      }))
+    : [];
+
   return [
     ...staticRoutes,
+    ...screensRoutes,
     ...cliDocsRoutes,
     ...referenceRoutes,
     ...evolutionRoutes,

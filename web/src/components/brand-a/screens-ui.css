@@ -13,7 +13,7 @@
 .sq-scr-dlg{display:flex;flex-direction:column;width:min(992px,calc(100vw - 32px));max-width:none;height:calc(100dvh - 48px);padding:0;gap:0;border-radius:var(--sq-r-card);background:var(--sq-paper);color:var(--sq-ink);overflow:hidden;font-family:var(--sq-f-ko);font-size:15px}
 .sq-scr-dlg[data-lead="narrow"]{width:min(430px,calc(100vw - 32px))}
 .sq-scr-dlg-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 12px 12px 20px}
-.sq-scr-dlg-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0;margin-right:auto;font-size:17px;font-weight:700;line-height:1.4}
+.sq-scr-dlg-t{display:flex;flex:1 1 0;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0;margin-right:auto;font-size:17px;font-weight:700;line-height:1.4}
 .sq-scr-dlg-n{font-size:15px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;padding:0 4px}
 .sq-scr-ic{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--sq-r-pill);background:var(--sq-cell);color:var(--sq-ink)}
 .sq-scr-ic:hover{background:var(--sq-guide-2)}
@@ -28,6 +28,17 @@
 .sq-scr-dlg-links a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-scr-dlg-links svg{width:16px;height:16px}
 
+/* once screens are published (components/screens/notice.tsx): the rights and takedown lines at the end of the gallery
+   and of the Screens tab, secondary text; the line under a tile or card, and under the dialog's bar, whose people
+   were hidden */
+.sq-scr-notice{margin-top:56px;padding-top:20px;box-shadow:inset 0 1px 0 var(--sq-guide-2);font-size:14px;line-height:1.6;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
+.sq-scr-notice p{margin:0}
+.sq-scr-notice p+p{margin-top:4px}
+.sq-scr-notice a{color:var(--sq-ink);text-decoration:underline;text-underline-offset:3px}
+.sq-scr-notice a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-scr-masked,.sq-gal-masked{margin:4px 0 0;font-size:13px;line-height:1.45;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
+.sq-scr-dlg-note{margin:0;padding:0 20px 12px;font-size:14px;line-height:1.5;color:var(--sq-ink-2)}
+
 @media (max-width:767px){
   .sq-scr-dlg{width:calc(100vw - 16px);height:calc(100dvh - 24px)}
   .sq-scr-dlg[data-lead="narrow"]{width:calc(100vw - 16px)}
@@ -35,4 +46,6 @@
   .sq-scr-ic{width:44px;height:44px}
   .sq-scr-dlg-links{padding:0 10px 10px 16px}
   .sq-scr-dlg-links a{min-height:44px}
+  .sq-scr-dlg-note{padding:0 16px 10px}
+  .sq-scr-notice{margin-top:40px}
 }

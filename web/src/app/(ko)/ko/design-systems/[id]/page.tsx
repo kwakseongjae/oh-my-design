@@ -30,7 +30,7 @@ import { KO_CATALOG_PATH, enDetailPath, koDetailPath } from "@/lib/i18n/ko-detai
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { koDescription, koDetailTitle, koSummary } from "./ko-summary";
 import { RelatedReferences } from "@/app/(en)/design-systems/related-references";
-import { readScreens } from "@/lib/screens/local.server";
+import { screensOf } from "@/lib/screens/source.server";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -153,7 +153,7 @@ export default async function KoreanDesignSystemPage({
           preview={preview}
           official={getDesignSystem(detail.id)?.url ?? null}
           logo={logoFor(detail.id)}
-          screens={readScreens(detail.id)}
+          screens={screensOf(detail.id)}
         />
         <RelatedReferences
           locale="ko"

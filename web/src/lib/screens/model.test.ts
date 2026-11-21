@@ -18,6 +18,7 @@ const card = (key: string, type: string, extra: Partial<ScreenCard> = {}): Scree
   title: key,
   state: null,
   blocked: false,
+  masked: false,
   stills: [
     { width: 1440, still: `/s/1440-${key}.jpg`, full: null },
     { width: 390, still: `/s/390-${key}.jpg`, full: null },
