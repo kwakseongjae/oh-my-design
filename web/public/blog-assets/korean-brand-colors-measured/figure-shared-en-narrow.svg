@@ -6,13 +6,13 @@
 <text x="20" y="81.2" font-size="12" fill="#5a5a63">8 exact values, 26 services</text>
 <rect x="20" y="112.6" width="32" height="32" rx="8" fill="#000000"/>
 <text x="64" y="125.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#000000</tspan><tspan fill="#5a5a63">  9 · Near-black</tspan></text>
-<text x="64" y="144.1" font-size="12" fill="#13131a">29CM · KRAFTON · Lotte ON · Musinsa</text>
+<text x="64" y="144.1" font-size="12" fill="#13131a">29CM · KRAFTON · 롯데ON · Musinsa</text>
 <text x="64" y="162.1" font-size="12" fill="#13131a">POZAlabs · Remember · Samsung</text>
 <text x="64" y="180.1" font-size="12" fill="#13131a">Stayfolio · Yanolja</text>
 <rect x="20" y="202.1" width="32" height="32" rx="8" fill="#222222"/>
 <text x="64" y="214.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#222222</tspan><tspan fill="#5a5a63">  4 · Grey</tspan></text>
-<text x="64" y="233.6" font-size="12" fill="#13131a">Sinsang Market · Greencar · KREAM</text>
-<text x="64" y="251.6" font-size="12" fill="#13131a">Return Zero</text>
+<text x="64" y="233.6" font-size="12" fill="#13131a">Sinsang Market (Dealicious) · Greencar</text>
+<text x="64" y="251.6" font-size="12" fill="#13131a">KREAM · Return Zero</text>
 <rect x="20" y="273.6" width="32" height="32" rx="8" fill="#3182f6"/>
 <text x="64" y="286.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#3182f6</tspan><tspan fill="#5a5a63">  3 · Blue</tspan></text>
 <text x="64" y="305.1" font-size="12" fill="#13131a">Toss · Toss Securities · Toss Bank</text>
@@ -27,7 +27,7 @@
 <text x="64" y="465.6" font-size="12" fill="#13131a">Government24 · KRDS</text>
 <rect x="20" y="487.6" width="32" height="32" rx="8" fill="#ffcc00"/>
 <text x="64" y="500.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffcc00</tspan><tspan fill="#5a5a63">  2 · Yellow</tspan></text>
-<text x="64" y="519.1" font-size="12" fill="#13131a">KB Kookmin Bank · KB Pay</text>
+<text x="64" y="519.1" font-size="12" fill="#13131a">KB국민은행 · KB Pay</text>
 <rect x="20.5" y="541.6" width="31" height="31" rx="8" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
 <text x="64" y="553.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffffff</tspan><tspan fill="#5a5a63">  2 · Near-white</tspan></text>
 <text x="64" y="572.6" font-size="12" fill="#13131a">Lemonbase · NCSOFT</text>

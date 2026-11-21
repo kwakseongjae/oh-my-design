@@ -191,15 +191,13 @@ check(tuple(len(COUNTRY[c]) for c in ('KR', 'JP', 'TW')) == (153, 56, 29), 'S6 c
 # ---------------------------------------------------------------- words
 
 KO_NAME_OVERRIDE = {'dealicious': '신상마켓', 'toss-securities': '토스증권', 'yeogiotte': '여기어때', 'classum': '클라썸'}
-EN_NAME_OVERRIDE = {'dealicious': 'Sinsang Market', 'yeogiotte': 'Yeogi Eottae', 'kb-kookmin': 'KB Kookmin Bank',
-                    'lotteon': 'Lotte ON'}
 
 
 def name(ident, lang):
     r = BY_ID[ident]
     if lang == 'ko':
         return KO_NAME_OVERRIDE.get(ident, r['display_name'])
-    return EN_NAME_OVERRIDE.get(ident, r['name'])
+    return r['name']  # the registry name as recorded, never a transliteration
 
 
 ARTICLE_NAMES = dict((i, t) for t, i in re.findall(r'\[([^\]]+)\]\(https://oh-my-design\.kr/ko/design-systems/([a-z0-9-]+)\)',
@@ -607,7 +605,12 @@ def fig_countries(lang, g):
     t = T[lang]
     svg = Svg(g.W)
     y = header(svg, g, *t['countries'])
-    second = {'KR': 'red', 'JP': 'red', 'TW': 'teal/cyan'}
+    second = {}
+    for c_ in ('KR', 'JP', 'TW'):
+        ranked = sorted((f for f in FAMILIES if f != 'blue'), key=lambda f: (-int(s6[f][c_ + ' n']), FAMILIES.index(f)))
+        check(int(s6['blue'][c_ + ' n']) > int(s6[ranked[0]][c_ + ' n']) > int(s6[ranked[1]][c_ + ' n']), 'S6 order ' + c_)
+        second[c_] = ranked[0]
+    check(second == {'KR': 'red', 'JP': 'red', 'TW': 'teal/cyan'}, 'S6 runner-up families as the article states')
     sh = 28 if g.narrow else 36
     for cc_ in ('KR', 'JP', 'TW'):
         rs = COUNTRY[cc_]

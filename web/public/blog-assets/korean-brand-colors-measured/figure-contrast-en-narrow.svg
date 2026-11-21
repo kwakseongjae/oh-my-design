@@ -52,7 +52,7 @@
 <circle cx="237.05" cy="480.6" r="4.5" fill="#13131a"/>
 <text x="340" y="484.92" font-size="12" fill="#13131a" font-weight="600" text-anchor="end">3.33:1</text>
 <rect x="20" y="505.6" width="136.76" height="30" rx="8" fill="#1d8bff"/>
-<text x="88.38" y="525.1" font-size="12.5" fill="#ffffff" font-weight="600" text-anchor="middle">Yeogi Eottae</text>
+<text x="88.38" y="525.1" font-size="12.5" fill="#ffffff" font-weight="600" text-anchor="middle">여기어때</text>
 <line x1="168.76" y1="520.6" x2="238.81" y2="520.6" stroke="#797981" stroke-width="1.5"/>
 <circle cx="238.81" cy="520.6" r="4.5" fill="#13131a"/>
 <text x="340" y="524.92" font-size="12" fill="#13131a" font-weight="600" text-anchor="end">3.39:1</text>
