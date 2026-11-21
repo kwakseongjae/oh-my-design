@@ -3,7 +3,7 @@
    32 for chips), control type 15/650, section heading 26/760, pill actions and chips, 14 tab groups, 20 cards.
    Separation by tone and space, not lines (RESTRAINT.md). Layout from the still "b-item-screens". */
 
-.sq-sc{padding-top:24px;padding-bottom:64px;word-break:keep-all}
+.sq-sc{padding-top:24px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
 .sq-sc-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:32px;scroll-margin-top:calc(var(--sq-header-h) + 16px)}
 .sq-sc-meta{margin:0 auto 0 0;font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
 
@@ -39,7 +39,7 @@
 .sq-sc-inset[data-shape="wide"]{bottom:12px;width:60%;aspect-ratio:16/10;border-radius:10px}
 .sq-sc-blocked{display:flex;align-items:center;justify-content:center;cursor:default;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink-2)}
 
-.sq-sc-cap{display:flex;align-items:flex-start;gap:8px;margin-top:12px}
+.sq-sc-cap{display:flex;align-items:flex-start;gap:8px;min-height:32px;margin-top:12px}
 .sq-sc-cap b{min-width:0;margin-right:auto;padding-top:5px;font-size:15px;font-weight:var(--sq-fw-strong);line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
 .sq-sc-chip{display:inline-flex;align-items:center;flex-shrink:0;min-height:32px;padding:0 12px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:14px;font-weight:600;color:var(--sq-ink-2);white-space:nowrap}
 .sq-sc-toks{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
@@ -55,7 +55,7 @@
 .sq-sc-side-chev{display:none;width:20px;height:20px;color:var(--sq-ink-2);transition:transform .15s}
 .sq-sc-side details[open] .sq-sc-side-chev{transform:rotate(180deg)}
 .sq-sc-side-n{display:block;margin-top:6px;font-size:15px;font-weight:600;line-height:1.5;color:var(--sq-ink)}
-.sq-sc-side-p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--sq-ink-2);word-break:keep-all}
+.sq-sc-side-p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--sq-ink-2)}
 .sq-sc-rows{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px}
 .sq-sc-row{all:unset;box-sizing:border-box;display:grid;grid-template-columns:16px minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;min-height:40px;padding:8px 12px;border-radius:10px;background:var(--sq-paper);font-size:14px;line-height:1.35}
 button.sq-sc-row{cursor:pointer}
@@ -70,8 +70,8 @@ button.sq-sc-row:focus-visible{outline:2px solid var(--sq-focus);outline-offset:
 .sq-sc-row-none .sq-sc-row-k{color:var(--sq-ink-2);font-weight:500}
 
 /* the full page: the popup of components/ui/dialog, sized here (unlayered rules win over its utilities) */
-.sq-sc-dlg{display:flex;flex-direction:column;width:min(1200px,calc(100vw - 32px));max-width:none;height:calc(100dvh - 48px);padding:0;gap:0;border-radius:var(--sq-r-card);background:var(--sq-paper);color:var(--sq-ink);overflow:hidden;font-family:var(--sq-f-ko);font-size:15px}
-.sq-sc-dlg[data-lead="narrow"]{width:min(460px,calc(100vw - 32px))}
+.sq-sc-dlg{display:flex;flex-direction:column;width:min(992px,calc(100vw - 32px));max-width:none;height:calc(100dvh - 48px);padding:0;gap:0;border-radius:var(--sq-r-card);background:var(--sq-paper);color:var(--sq-ink);overflow:hidden;font-family:var(--sq-f-ko);font-size:15px}
+.sq-sc-dlg[data-lead="narrow"]{width:min(430px,calc(100vw - 32px))}
 .sq-sc-dlg-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 12px 12px 20px}
 .sq-sc-dlg-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;min-width:0;margin-right:auto;font-size:17px;font-weight:700;line-height:1.4}
 .sq-sc-dlg-n{font-size:15px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums;padding:0 4px}
@@ -80,7 +80,8 @@ button.sq-sc-row:focus-visible{outline:2px solid var(--sq-focus);outline-offset:
 .sq-sc-ic:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-sc-ic svg{width:20px;height:20px}
 .sq-sc-dlg-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;background:var(--sq-band)}
-.sq-sc-dlg-body img{display:block;width:100%;height:auto}
+/* never wider than the file (full stills are 960 and 390 wide): an upscaled still blurs */
+.sq-sc-dlg-body img{display:block;width:auto;max-width:100%;height:auto;margin:0 auto}
 
 @media (max-width:1279px){
   .sq-sc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}

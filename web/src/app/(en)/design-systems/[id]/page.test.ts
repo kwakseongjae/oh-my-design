@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import Page, { generateMetadata } from "./page";
 import { REGISTRY } from "@/data/registry.generated";
@@ -6,6 +6,10 @@ import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { makeScreensFixture } from "@/lib/screens/test-fixture";
 
 const params = (id: string) => ({ params: Promise.resolve({ id }) });
+
+// Hermetic: a local screens folder exported in the shell must not change what these assertions see.
+beforeEach(() => vi.stubEnv("OMD_SCREENS_DIR", ""));
+afterEach(() => vi.unstubAllEnvs());
 
 describe("English canonical reference metadata", () => {
   it("publishes the reviewed Toss summary, hreflang, and verified OG card", async () => {
@@ -124,7 +128,6 @@ describe("English item page body", () => {
 });
 
 describe("the Screens tab (local screens only)", () => {
-  afterEach(() => vi.unstubAllEnvs());
 
   it("renders nothing of it without a local screens folder", async () => {
     vi.stubEnv("OMD_SCREENS_DIR", "");

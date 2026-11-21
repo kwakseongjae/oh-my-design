@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import Page, { generateMetadata, generateStaticParams } from "./page";
 import { generateMetadata as generateEnMetadata } from "@/app/(en)/design-systems/[id]/page";
@@ -15,6 +15,10 @@ import { makeScreensFixture } from "@/lib/screens/test-fixture";
 
 const HANGUL = /[가-힣]/;
 const params = (id: string) => ({ params: Promise.resolve({ id }) });
+
+// Hermetic: a local screens folder exported in the shell must not change what these assertions see.
+beforeEach(() => vi.stubEnv("OMD_SCREENS_DIR", ""));
+afterEach(() => vi.unstubAllEnvs());
 
 async function render(id: string): Promise<string> {
   return renderToStaticMarkup(await Page(params(id)));
@@ -181,7 +185,6 @@ describe("Korean item page body", () => {
 });
 
 describe("the Screens tab on the Korean page (local screens only)", () => {
-  afterEach(() => vi.unstubAllEnvs());
 
   it("renders nothing of it without a local screens folder", async () => {
     vi.stubEnv("OMD_SCREENS_DIR", "");
