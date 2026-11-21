@@ -12,14 +12,17 @@
 
 **승인 대기(아티팩트의 카드 순서, 전부 그림이 올라가 있다):**
 1. 상세 페이지 첫 화면 → #133 머지.
-2. 상세 페이지 「화면」 탭(가지 `feat/item-screens-tab`, #133 위에 쌓음, PR 없음): 모양 승인과 **화면 공개 기준**. 공개 결정 전에는 운영에 못 나간다(`OMD_SCREENS_DIR`이 있을 때만 보이고 그림은 `/screens-local/…` 로컬 경로).
-3. `/ko/kana` 페이지 → #134 머지(색인 제외, 메뉴 미연결 그대로).
-4. 블로그 첫 글 → #132 머지 = 게시. 머지 직후 글 안의 저장소 링크 2개를 다시 연다.
-5. 재검증 4곳을 넣는 방식: 「이전 기록」 가운데 오늘 잰 값만 담은 문장(32~43%)은 본문으로 돌리고 나머지는 표시를 단 채 verified로 넣을지. 게이트의 뜻에 닿는 결정이다. 워커 폴더 `~/.omd-workers/reverify3/<id>`, 가려내기 `scripts/workers/sieve-earlier-record.mjs`, 재측정은 네 곳 모두 전부 일치.
+2. 우리 `DESIGN.md` 다시 쓰기(가지 `feat/site-design-md`, #133 위에 쌓음): `web/public/design.md`를 지금 코드와 11/21 실측으로 다시 씀. 값 40개 대조표 `docs/research/2026-11-21-site-design-system/diff.md`, 견본 생성기 `scripts/site-audit/designmd-specimen.mjs`. 승인되면 #133과 함께.
+3. 상세 페이지 「화면」 탭(가지 `feat/item-screens-tab`, #133 위에 쌓음, PR 없음): 모양 승인과 **화면 공개 기준**. 공개 결정 전에는 운영에 못 나간다.
+4. `/ko/kana` 페이지 → #134 머지(색인 제외, 메뉴 미연결 그대로).
+5. 블로그 첫 글 → #132 머지 = 게시. 머지 직후 글 안의 저장소 링크 2개를 다시 연다.
+6. 재검증 4곳을 넣는 방식: 「이전 기록」 가운데 오늘 잰 값만 담은 문장(32~43%)은 본문으로 돌리고 나머지는 표시를 단 채 verified로 넣을지. 워커 폴더 `~/.omd-workers/reverify3/<id>`, 가려내기 `scripts/workers/sieve-earlier-record.mjs`, 재측정은 네 곳 모두 전부 일치.
 
-**도는 것:** 에이전트 `ja-writing-2`(일본어 2차 조사 → `kana` 워크트리의 `docs/drafts/kana/writing2/`) · `tw-research`(대만 → 워크트리 `lang-zh`, 가지 `feat/zh-skills`, `docs/drafts/zhuyin/research/`). 다음 차례: 중국 조사(`docs/drafts/pinyin/research/`), 우리 `/design.md` 초안. Microsoft 스타일 가이드 본문(일본어·번체·간체)은 `~/.omd-workers/lang-sources/`와 `~/.omd-workers/kana/sources/`에 뽑아 두었다(저장소에 넣지 않는다).
+**도는 것:** 검증 에이전트 `ja-check-2`(일본어 2차 후보 13개 + 출처 추가 12건 → `kana` 워크트리 `docs/drafts/kana/writing2/verdicts.md`) · `tw-check`(대만 55개 → 워크트리 `lang-zh`의 `docs/drafts/zhuyin/research/verdicts.md`). 다음: 중국 79개 검증(`docs/drafts/pinyin/research/`). `research/`라는 폴더 이름은 `.gitignore`에 걸리므로 `git add -f`.
 
-**이번 오후에 끝난 것:** #131 머지(main `1761fc2d`) · 상세 페이지 머리 구현 · `/ko/kana` 구현(#134) · 「화면」 탭 구현 · 블로그 대비 표 재측정(18/23, #132) · 재검증 지시서 수정과 재시험 · `diff-walks.mjs`(같은 날 두 번 찍은 5곳은 비교 가능한 화면이 전부 「같음」) · kana 검사기 폭 검사(25/43).
+**언어 스킬 조사 현황(11/21):** 일본어 글쓰기 규칙 43개 + 2차 후보 13개 · 대만 후보 55개 · 중국 후보 79개. 대만·중국은 검증 전이고 스킬 초안·검사기는 아직 없다. Microsoft 스타일 가이드 본문(일본어·번체·간체)은 `~/.omd-workers/lang-sources/`, `~/.omd-workers/kana/sources/`(저장소에 넣지 않는다).
+
+**이번 오후에 끝난 것:** #131 머지(main `1761fc2d`) · 상세 페이지 머리 구현 · 우리 DESIGN.md 초안 · `/ko/kana` 구현(#134) · 「화면」 탭 구현 · 블로그 대비 표 재측정(18/23, #132) · 재검증 지시서 수정과 재시험 · `diff-walks.mjs` · 일본어 2차 조사 · 대만·중국 1차 조사.
 
 **오너만 할 수 있는 것:** #129·#130 머지 · #133 승인 · 일본어 원어민 검토자 · 폰 세션 · 화면 공개 기준.
 
