@@ -3,10 +3,10 @@
 /**
  * The /screens gallery (and /ko/screens): every service's screens in shelves, from the still the owner was shown on
  * 2026-11-21 (g-shelves, tools/screen-archive/make-gallery-mocks.mjs on the screens branch).
- *   - the title, one line of facts and two switches: by screen type or by service, phone 390 or web 1440;
- *   - a rail of the shelves with their counts (anchors);
- *   - each shelf a row that scrolls sideways (snap, keyboard reachable, arrow buttons for a mouse), or a wrapping grid
- *     after "show all";
+ *   - the title, one line of facts and two small switches: by screen type or by service, phone 390 or web 1440;
+ *   - each shelf a row that scrolls sideways (snap, keyboard reachable; for a mouse, arrow buttons that show while the
+ *     shelf is hovered or focused, none on touch), or a wrapping grid after the "show all" text at the heading's end;
+ *     (2026-11-22, "simple": the rail of type chips and the line explaining the dots went; the dots keep their title)
  *   - a tile: the still at the chosen width, the service, up to three DESIGN.md colours drawn on it, the screen's title.
  *     It opens the Screens tab's dialog; previous / next walk the shelf, and two links lead to the service's
  *     DESIGN.md and to all of its screens (its item page's #screens).
@@ -94,11 +94,7 @@ export function ScreensGallery({ model, locale }: { model: GalleryModel; locale:
       <div className="sq-gal-top">
         <div className="sq-gal-intro">
           <h1 className="sq-page-title">{t.h1}</h1>
-          <p className="sq-gal-facts">
-            {facts}
-            <br />
-            {t.dotsNote}
-          </p>
+          <p className="sq-gal-facts">{facts}</p>
         </div>
         <div className="sq-gal-switches">
           <div className="sq-scr-seg" role="group" aria-label={t.modeLabel}>
@@ -120,18 +116,6 @@ export function ScreensGallery({ model, locale }: { model: GalleryModel; locale:
           ) : null}
         </div>
       </div>
-
-      <nav className="sq-gal-rail" aria-label={mode === "type" ? t.railTypes : t.railServices}>
-        <ul>
-          {shelves.map((s) => (
-            <li key={s.id}>
-              <a className="sq-gal-chip" href={`#shelf-${s.id}`}>
-                {s.title} <small>{s.shots.length}</small>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       {shelves.map((s) => (
         <ShelfRow

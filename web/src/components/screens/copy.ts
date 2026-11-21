@@ -16,14 +16,11 @@ export interface GalleryCopy {
   meta: { title: string; description: string };
   h1: string;
   facts: (services: number, screens: number, shot: { from: string; to: string } | null, signedOut: boolean) => string;
-  dotsNote: string;
   modeLabel: string;
   byType: string;
   byService: string;
   widthLabel: string;
   widthName: (w: number) => string;
-  railTypes: string;
-  railServices: string;
   shelfName: Record<FixedShelfId, string>;
   more: string;
   typeName: (type: string) => string;
@@ -61,14 +58,11 @@ const EN: GalleryCopy = {
     ]
       .filter(Boolean)
       .join(" · "),
-  dotsNote: "The dots on each screen are the colors of that company's DESIGN.md drawn on it.",
   modeLabel: "Group screens",
   byType: "By screen type",
   byService: "By service",
   widthLabel: "Width",
   widthName: (w) => (w >= 1024 ? `Web ${w}` : `Phone ${w}`),
-  railTypes: "Screen types",
-  railServices: "Services",
   shelfName: { home: "Home", results: "Search results", list: "List", detail: "Detail", login: "Sign-in", empty: "Empty state", notfound: "Not found" },
   more: "Other screens",
   typeName: ITEM_EN.screens.typeName,
@@ -101,14 +95,11 @@ const KO: GalleryCopy = {
     ]
       .filter(Boolean)
       .join(" · "),
-  dotsNote: "화면마다 붙은 점은 그 회사 DESIGN.md의 색 가운데 그 화면에 그려진 색입니다.",
   modeLabel: "묶는 방법",
   byType: "화면 종류별",
   byService: "서비스별",
   widthLabel: "폭",
   widthName: (w) => (w >= 1024 ? `웹 ${w}` : `폰 ${w}`),
-  railTypes: "화면 종류",
-  railServices: "서비스",
   shelfName: { home: "홈", results: "검색 결과", list: "목록", detail: "상세", login: "로그인", empty: "빈 상태", notfound: "없는 주소" },
   more: "그 밖의 화면",
   typeName: ITEM_KO.screens.typeName,

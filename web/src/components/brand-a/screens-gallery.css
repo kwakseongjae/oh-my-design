@@ -9,17 +9,11 @@
 .sq-gal-top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px;padding-bottom:24px}
 .sq-gal-intro{min-width:0;flex:1 1 520px}
 .sq-gal-facts{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
-.sq-gal-switches{display:flex;flex-wrap:wrap;gap:12px}
-
-/* the rail: the shelves as chips with their counts, anchors to the shelves */
-.sq-gal-rail{padding:12px 0;box-shadow:inset 0 1px 0 var(--sq-guide-2),inset 0 -1px 0 var(--sq-guide-2)}
-.sq-gal-rail ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.sq-gal-chip{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px var(--sq-guide-2);font-size:14px;font-weight:600;color:var(--sq-ink);white-space:nowrap;text-decoration:none}
-.sq-gal-chip small{font-size:13px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
-.sq-gal-chip:hover{background:var(--sq-cell)}
-.sq-gal-chip:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-gal-chip[aria-pressed="true"]{background:var(--sq-ink);color:var(--sq-paper);box-shadow:none}
-.sq-gal-chip[aria-pressed="true"] small{color:inherit}
+/* the two switches, quieter than the item page's (screens-ui.css .sq-scr-seg, 40 tall): one row, 32 tall, at the right
+   of the title on a wide screen and under the facts on a phone. Scoped here so the Screens tab keeps its size. */
+.sq-gal-switches{display:flex;flex-wrap:nowrap;gap:8px;margin-left:auto}
+.sq-gal-switches .sq-scr-seg{gap:2px;padding:2px;border-radius:var(--sq-r-pill)}
+.sq-gal-switches .sq-scr-seg button{height:28px;padding:0 10px;border-radius:var(--sq-r-pill);font-size:13px}
 
 /* a shelf: heading, counts, the row's arrows and "show all" */
 .sq-gal-shelf{padding-top:40px;scroll-margin-top:calc(var(--sq-header-h) + 8px)}
@@ -32,9 +26,18 @@
 .sq-gal-md:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 .sq-gal-md svg{width:14px;height:14px}
 .sq-gal-nav{display:flex;align-items:center;gap:8px;margin-left:auto}
-.sq-gal-nav .sq-scr-ic:disabled{cursor:default;opacity:.4}
-.sq-gal-all{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px var(--sq-guide);font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);white-space:nowrap}
-.sq-gal-all:hover{background:var(--sq-cell)}
+.sq-gal-nav .sq-scr-ic:disabled{cursor:default}
+/* the arrows: none on touch (a swipe scrolls); with a mouse they keep their place but show only while the shelf is
+   hovered or something in it has focus, so the heading line does not jump */
+@media (hover:none),(pointer:coarse){.sq-gal-nav .sq-scr-ic{display:none}}
+@media (hover:hover) and (pointer:fine){
+  .sq-gal-nav .sq-scr-ic{opacity:0;transition:opacity .15s}
+  .sq-gal-shelf:hover .sq-gal-nav .sq-scr-ic,.sq-gal-shelf:focus-within .sq-gal-nav .sq-scr-ic{opacity:1}
+  .sq-gal-shelf:hover .sq-gal-nav .sq-scr-ic:disabled,.sq-gal-shelf:focus-within .sq-gal-nav .sq-scr-ic:disabled{opacity:.4}
+}
+/* "show all": a toggle (aria-expanded) set as a plain text link at the end of the heading line */
+.sq-gal-all{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:32px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);white-space:nowrap}
+.sq-gal-all:hover{text-decoration:underline;text-underline-offset:3px}
 .sq-gal-all:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
 
 /* the row scrolls sideways and snaps; "show all" turns it into a wrapping grid */
@@ -87,7 +90,7 @@ a.sq-gal-frame{cursor:pointer}
 .sq-gal-strip-name{display:block;margin-top:8px;font-size:14px;font-weight:var(--sq-fw-strong);line-height:1.4;word-break:keep-all;overflow-wrap:anywhere}
 
 @media (prefers-reduced-motion:reduce){
-  .sq-gal-frame img{transition:none}
+  .sq-gal-frame img,.sq-gal-nav .sq-scr-ic{transition:none}
   .sq-gal-frame:hover img,.sq-gal-strip-tile:hover img{transform:none}
 }
 
@@ -99,15 +102,11 @@ a.sq-gal-frame{cursor:pointer}
   .sq-gal{padding-top:20px}
   .sq-gal-top{padding-bottom:16px;gap:14px}
   .sq-gal-intro{flex-basis:100%}
-  /* both switches on one row at 390 (g-shelves-390) */
-  .sq-gal-switches{width:100%;flex-wrap:nowrap;gap:8px}
-  .sq-gal-switches .sq-scr-seg{flex:1 1 auto}
-  .sq-gal-switches .sq-scr-seg button{flex:1 1 auto;justify-content:center;height:36px;padding:0 10px;font-size:14px}
-  .sq-gal-rail ul{flex-wrap:nowrap;overflow-x:auto;padding:2px;scrollbar-width:none}
+  /* under the facts, left, still one row */
+  .sq-gal-switches{margin-left:0}
   .sq-gal-shelf{padding-top:28px;scroll-margin-top:114px}
   .sq-gal-shh h2{font-size:23px}
   .sq-gal-meta{display:none}
-  .sq-gal-chip{min-height:40px}
   .sq-gal-all{min-height:44px}
   .sq-gal-row{grid-auto-columns:150px;gap:12px}
   .sq-gal-row[data-shape="wide"]{grid-auto-columns:280px;gap:12px}
