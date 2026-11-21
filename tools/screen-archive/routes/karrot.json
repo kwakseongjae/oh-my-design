@@ -96,5 +96,32 @@
    "title": "없는 주소",
    "url": "/zz-omd-not-here"
   }
- ]
+ ],
+ "mask": {
+  "about": "People's names and pictures leave the stills (web-shoot.mjs maskPage; owner 2026-11-22). names: profile links. images: profile pictures. photos (only with --mask-photos): what people and shops uploaded: listing photos, community and group photos, car photos, shop photos.",
+  "names": [
+   "a[href*=\"/kr/users/\"]"
+  ],
+  "nameWith": "이웃",
+  "images": [
+   "img[alt$=\"프로필\"]",
+   "img[alt$=\"프로필 이미지\"]",
+   "img[src*=\"/origin/profile/\"]"
+  ],
+  "photos": [
+   "img[src*=\"/origin/article/\"]",
+   "img[srcset*=\"/origin/article/\"]",
+   "img[alt=\"thumbnail\"]",
+   "img[src*=\"karroter.net/community/\"]",
+   "img[src*=\"cloudfront.net/community/\"]",
+   "img[src*=\"/car/article\"]",
+   "img[src*=\"/local_business_ugc/\"]",
+   "img[src*=\"/business-profile/\"]",
+   "img[src*=\"/business/\"]",
+   "img[src*=\"/businessPlatform/\"]",
+   "img[src*=\"/daangn-business/\"]",
+   "img[src*=\"/capri/\"]",
+   "img[src*=\"/shortform/\"]"
+  ]
+ }
 }

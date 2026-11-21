@@ -2,7 +2,7 @@
 /**
  * Shoot a service's web screens for the screen archive: one route file in, stills and element lists out.
  *
- *   node tools/screen-archive/web-shoot.mjs tools/screen-archive/routes/<slug>.json [--out DIR] [--only key,key] [--widths 1440,390] [--browser headless|headed]
+ *   node tools/screen-archive/web-shoot.mjs tools/screen-archive/routes/<slug>.json [--out DIR] [--only key,key] [--widths 1440,390] [--browser headless|headed] [--mask-photos]
  *
  * For every screen of the route file and every width it loads the page with no window (headless Chromium, a fresh
  * profile, signed out; the browser's own user agent at 1440 and a phone's at 390, see PHONE_UA), scrolls once so lazy content loads, and writes
@@ -120,6 +120,54 @@ function pageFacts() {
   return { page, title: document.title, textLength: text.length, textHead: text.replace(/\s+/g, ' ').slice(0, 160), height: document.documentElement.scrollHeight, images: document.images.length, lang: document.documentElement.lang || null, elements, overlays: overlays.slice(0, 6) };
 }
 
+
+/**
+ * Runs in the page, after the page's facts were read and before the stills are taken: people's names and their own
+ * pictures leave the screen. The owner asked for this on 2026-11-22 ("닉네임같은건 js로 바꿔서 보여줘도"), so that a
+ * screen full of users' posts can be shown without showing who posted.
+ *   names:  selectors of elements whose whole text is a person's name (a profile link). Every such text is collected,
+ *           then replaced wherever it stands on the page (text nodes, alt, aria-label, title) with nameWith.
+ *   images: selectors of people's profile pictures. Each becomes a flat block of the same size.
+ *   photos: selectors of the pictures people uploaded in a post or a listing. Masked only with --mask-photos, so the
+ *           two levels can be compared; the caller merges them into images.
+ * It changes what is drawn, never the layout: no element is added or removed. Returns the counts for the walk record.
+ */
+function maskPage(mask) {
+  const nameWith = mask.nameWith || '이웃';
+  const names = new Set();
+  const byTarget = new Map();
+  for (const sel of mask.names || []) for (const el of document.querySelectorAll(sel)) {
+    const s = (el.innerText || el.textContent || '').trim();
+    if (!s || s.length > 24 || /\n/.test(s)) continue;
+    // One person, several links ("milk", "milk의 판매 물품"): the shortest text of a target is the name itself.
+    const k = el.getAttribute('href') || sel;
+    if (!byTarget.has(k) || s.length < byTarget.get(k).length) byTarget.set(k, s);
+  }
+  for (const s of byTarget.values()) names.add(s);
+  const list = [...names].sort((a, b) => b.length - a.length);
+  const swap = (s) => { let out = s; for (const n of list) if (out.includes(n)) out = out.split(n).join(nameWith); return out; };
+  let texts = 0, attrs = 0, images = 0;
+  if (list.length) {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) { const v = swap(n.nodeValue); if (v !== n.nodeValue) { n.nodeValue = v; texts++; } }
+    for (const el of document.querySelectorAll('[alt],[aria-label],[title]')) for (const a of ['alt', 'aria-label', 'title']) {
+      const v = el.getAttribute(a); if (v) { const w = swap(v); if (w !== v) { el.setAttribute(a, w); attrs++; } }
+    }
+  }
+  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+  for (const sel of mask.images || []) for (const img of document.querySelectorAll(sel)) {
+    if (img.tagName !== 'IMG' || img.dataset.omdMasked) continue;
+    const r = img.getBoundingClientRect();
+    img.dataset.omdMasked = '1';
+    if (r.width && r.height) { img.style.width = r.width + 'px'; img.style.height = r.height + 'px'; }
+    img.removeAttribute('srcset'); img.removeAttribute('sizes');
+    for (const s of img.parentElement && img.parentElement.tagName === 'PICTURE' ? img.parentElement.querySelectorAll('source') : []) s.removeAttribute('srcset');
+    img.src = BLANK; img.style.background = mask.imageFill || '#e5e6eb'; img.style.objectFit = 'cover';
+    images++;
+  }
+  return { names: list.length, texts, attrs, images };
+}
+
 async function runStep(page, step, never) {
   if (step.wait) { await page.waitForTimeout(step.wait); return 'wait ' + step.wait; }
   if (step.press) { await page.keyboard.press(step.press); await page.waitForTimeout(600); return 'press ' + step.press; }
@@ -188,6 +236,13 @@ for (const width of WIDTHS) {
       rec.missing = rec.status === 404 || rec.status === 410;
       rec.blocked = (rec.status !== null && rec.status >= 400 && !rec.missing) || (!rec.missing && facts.textLength < 900 && BLOCK_TEXT.test(facts.title + ' ' + facts.textHead));
       rec.redirected = new URL(rec.final).pathname !== new URL(url).pathname || new URL(rec.final).host !== new URL(url).host;
+      // "mask" on the route or on a screen: names and people's own pictures leave the stills (the facts above are the page as served).
+      const mask = s.mask === false ? null : (s.mask ?? route.mask ?? null);
+      if (mask && !rec.blocked) {
+        const level = args.includes('--mask-photos') ? 'names, profile pictures and uploaded photos' : 'names and profile pictures';
+        rec.masked = { level, ...(await page.evaluate(maskPage, { ...mask, images: [...(mask.images ?? []), ...(args.includes('--mask-photos') ? mask.photos ?? [] : [])] })) };
+        await page.waitForTimeout(250);
+      }
       await page.screenshot({ path: base + '.png' });
       if (!rec.blocked) {
         await page.screenshot({ path: base + '.full.png', fullPage: true, clip: { x: 0, y: 0, width, height: Math.min(facts.height, FULL_CAP) } }).catch((e) => rec.errors.push('full: ' + String(e.message).split('\n')[0]));
