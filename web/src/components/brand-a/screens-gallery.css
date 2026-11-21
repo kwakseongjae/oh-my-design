@@ -30,6 +30,8 @@
 /* the arrows: none on touch (a swipe scrolls); with a mouse they keep their place but show only while the shelf is
    hovered or something in it has focus, so the heading line does not jump */
 @media (hover:none),(pointer:coarse){.sq-gal-nav .sq-scr-ic{display:none}}
+/* touch: the two switches keep a 40px target (a 28px button is too small for a finger); they wrap if a narrow phone needs it */
+@media (hover:none),(pointer:coarse){.sq-gal-switches{flex-wrap:wrap}.sq-gal-switches .sq-scr-seg button{height:40px;padding:0 14px;font-size:14px}}
 @media (hover:hover) and (pointer:fine){
   .sq-gal-nav .sq-scr-ic{opacity:0;transition:opacity .15s}
   .sq-gal-shelf:hover .sq-gal-nav .sq-scr-ic,.sq-gal-shelf:focus-within .sq-gal-nav .sq-scr-ic{opacity:1}
