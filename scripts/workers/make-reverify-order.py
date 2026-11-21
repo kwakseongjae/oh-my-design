@@ -72,11 +72,19 @@ Every prior value and sentence must end up in exactly one of three places:
 1. **Confirmed**: your new measurement or a first-party source you opened says the same. Keep it.
 2. **Corrected**: the live site or a source contradicts it. Write the new value with its evidence, and list
    `old → new` with the evidence in `verification.md` under "Changes since prior".
-3. **Unconfirmed**: you could neither confirm nor refute it (no source, element not found, blocked). Keep it out of
-   `body.md` and list it in `report.md` under "Unconfirmed prior content", one line each with the reason. The
-   orchestrator decides what returns.
+3. **Unconfirmed**: you could neither confirm nor refute it (no source, element not found, blocked). Do not delete
+   it and do not present it as measured. Keep it in `body.md`, in its original words, moved under a subsection
+   `### Earlier record, not re-confirmed on <today's date>` at the end of the `##` section it came from: prose as
+   the sentences were, a value as `name: value`. Nothing under that heading may feed `front.yaml`: an unconfirmed
+   value is not a token and not a component value. Also list each item in `report.md` under "Unconfirmed prior
+   content", one line each with the reason. If the assembler or a check rejects the subsection, paste its exact
+   message in `report.md` and leave the content in place: do not remove it to make the check pass.
 Do not drop a prior sentence for any other reason, and do not shorten the reference to make a check pass. A
-partial or legacy status is not evidence that the prior content is wrong.
+partial or legacy status is not evidence that the prior content is wrong. Keep every prior `##` and `###` heading
+whose content you confirmed or corrected, under its own name. At the end, compare your `body.md` with the body of
+`prior-v3-DESIGN.md`: write both lengths in characters and the list of prior headings that are gone in
+`report.md`, each with where its content went (2026-11-21: four re-verifications came back 19 to 43 percent
+shorter with twenty headings gone, and could not be landed).
 """
 # With the compiled method (OMD_ORDER_COMPILED=1) the published token names are pinned: a value that has not
 # changed keeps the name the reference already carries (2026-11-13: 59 of 59 colours, against 19 % without).

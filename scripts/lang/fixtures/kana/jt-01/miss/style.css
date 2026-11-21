@@ -1,0 +1,6 @@
+/* 本文の行間 */
+p { line-height: 1.5; }
+h1 { line-height: 1.2; }
+button { line-height: 1; }
+.lead { font-size: 16px; line-height: 28px; }
+body { line-height: normal; }

@@ -1,0 +1,326 @@
+{
+ "runs": [
+  {
+   "rid": "p1-A-r1",
+   "prompt": "p1",
+   "arm": "A",
+   "rep": "r1",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 0,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {},
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1.65",
+     "2.05",
+     "1.15",
+     "1.9",
+     "2",
+     "1.7",
+     "1.8",
+     "2.1"
+    ]
+   }
+  },
+  {
+   "rid": "p1-A-r2",
+   "prompt": "p1",
+   "arm": "A",
+   "rep": "r2",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 0,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {},
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1",
+     "1.48",
+     "2.1",
+     "1.4",
+     "1.6",
+     "2",
+     "1.8",
+     "1.5"
+    ]
+   }
+  },
+  {
+   "rid": "p1-A-r3",
+   "prompt": "p1",
+   "arm": "A",
+   "rep": "r3",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 1,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {
+    "JT-22": {
+     "level": "FYI",
+     "n": 1
+    }
+   },
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1.55",
+     "2.1",
+     "1.9",
+     "1.4",
+     "1.6",
+     "1.8",
+     "1.5",
+     "2"
+    ]
+   }
+  },
+  {
+   "rid": "p2-A-r1",
+   "prompt": "p2",
+   "arm": "A",
+   "rep": "r1",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 1,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {
+    "JT-22": {
+     "level": "FYI",
+     "n": 1
+    }
+   },
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Noto Sans JP",
+    "leading": [
+     "2.1",
+     "1.5",
+     "1.8",
+     "1.9"
+    ]
+   }
+  },
+  {
+   "rid": "p2-A-r2",
+   "prompt": "p2",
+   "arm": "A",
+   "rep": "r2",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 0,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {},
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1",
+     "1.4",
+     "21px",
+     "1.8",
+     "1.7",
+     "1.6",
+     "2",
+     "1.85"
+    ]
+   }
+  },
+  {
+   "rid": "p2-A-r3",
+   "prompt": "p2",
+   "arm": "A",
+   "rep": "r3",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 1,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {
+    "JT-22": {
+     "level": "FYI",
+     "n": 1
+    }
+   },
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1.4",
+     "1.7",
+     "1.8",
+     "1.6",
+     "1.9"
+    ]
+   }
+  },
+  {
+   "rid": "p3-A-r1",
+   "prompt": "p3",
+   "arm": "A",
+   "rep": "r1",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 0,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {},
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1.55",
+     "1.95",
+     "1.15",
+     "1.7",
+     "1.9",
+     "1.8",
+     "1.6"
+    ]
+   }
+  },
+  {
+   "rid": "p3-A-r2",
+   "prompt": "p3",
+   "arm": "A",
+   "rep": "r2",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 1,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {
+    "JT-22": {
+     "level": "FYI",
+     "n": 1
+    }
+   },
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Hiragino",
+    "leading": [
+     "1.7",
+     "2.05",
+     "1.2",
+     "1.6",
+     "1",
+     "1.9",
+     "2",
+     "1.75"
+    ]
+   }
+  },
+  {
+   "rid": "p3-A-r3",
+   "prompt": "p3",
+   "arm": "A",
+   "rep": "r3",
+   "kept": true,
+   "finished": true,
+   "leaked": false,
+   "ja": true,
+   "WARN": 0,
+   "FYI": 1,
+   "WARN_withoutTemplateRules": 0,
+   "rules": {
+    "JT-22": {
+     "level": "FYI",
+     "n": 1
+    }
+   },
+   "facts": {
+    "lang": "ja",
+    "japaneseFace": "Noto Sans JP",
+    "leading": [
+     "1.6",
+     "2",
+     "1",
+     "1.9",
+     "1.8"
+    ]
+   }
+  }
+ ],
+ "table": [
+  {
+   "cell": "p1-A",
+   "runs": 3,
+   "WARN": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "WARN_withoutTemplateRules": {
+    "median": 0
+   },
+   "FYI": {
+    "median": 0
+   },
+   "ruleHits": {
+    "JT-22": "1/3"
+   }
+  },
+  {
+   "cell": "p2-A",
+   "runs": 3,
+   "WARN": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "WARN_withoutTemplateRules": {
+    "median": 0
+   },
+   "FYI": {
+    "median": 1
+   },
+   "ruleHits": {
+    "JT-22": "2/3"
+   }
+  },
+  {
+   "cell": "p3-A",
+   "runs": 3,
+   "WARN": {
+    "median": 0,
+    "min": 0,
+    "max": 0
+   },
+   "WARN_withoutTemplateRules": {
+    "median": 0
+   },
+   "FYI": {
+    "median": 1
+   },
+   "ruleHits": {
+    "JT-22": "2/3"
+   }
+  }
+ ]
+}

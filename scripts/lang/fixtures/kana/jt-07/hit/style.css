@@ -1,0 +1,3 @@
+/* 約物の詰め */
+.a { font-feature-settings: "palt", "halt"; }
+.b { font-feature-settings: 'palt' 1, 'pwid' on; }

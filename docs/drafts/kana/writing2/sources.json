@@ -1,0 +1,178 @@
+{
+  "generated": "2026-11-21",
+  "note": "Every source opened and used in the second writing pass. 'passes' counts WebFetch extractions of that page; quotes were taken from narrow passes asking only for exact Japanese. The Microsoft guide was read from a local text extraction; this pass did not fetch the PDF.",
+  "sources": [
+    {
+      "key": "MS",
+      "title": "Microsoft Localization Style Guide: Japanese (Japanese Localization Style Guide, 71 pp.)",
+      "url": "https://download.microsoft.com/download/bb82f407-78f4-4df4-accd-d63ceaadd24a/jpn-jpn-StyleGuide.pdf",
+      "reached_from": "https://aka.ms/japanese-styleguide",
+      "read_from": "/Users/kwakseongjae/.omd-workers/kana/sources/ms-ja-style-2026-11-21.txt (pdftotext -layout, 3309 lines, read in full)",
+      "opened": "2026-11-21",
+      "fetched_this_pass": false,
+      "used_for": [
+        "UW-58",
+        "UW-59",
+        "UW-62",
+        "UW-70",
+        "adds to UW-06, 09, 10, 16, 17, 36, 37"
+      ]
+    },
+    {
+      "key": "SH-dd",
+      "title": "SmartHR Design System — 削除ダイアログ",
+      "url": "https://smarthr.design/products/design-patterns/delete-dialog/",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-60",
+        "UW-61",
+        "UW-62",
+        "UW-63"
+      ]
+    },
+    {
+      "key": "SH-cs",
+      "title": "SmartHR Design System — ワンクッション必要な操作",
+      "url": "https://smarthr.design/products/design-patterns/confirmation-step/",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-64"
+      ]
+    },
+    {
+      "key": "SH-mu",
+      "title": "SmartHR Design System — モーダルなUI",
+      "url": "https://smarthr.design/products/design-patterns/modal-ui/",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-60",
+        "adds to UW-15"
+      ]
+    },
+    {
+      "key": "SH-tb",
+      "title": "SmartHR Design System — よくあるテーブル",
+      "url": "https://smarthr.design/products/design-patterns/smarthr-table/",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-66"
+      ]
+    },
+    {
+      "key": "SH-ed",
+      "title": "SmartHR Design System — 値がない項目の表示",
+      "url": "https://smarthr.design/products/design-patterns/empty-data/",
+      "opened": "2026-11-21",
+      "passes": 1,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-67"
+      ]
+    },
+    {
+      "key": "UB-am",
+      "title": "Ubie Vitals — ActionModal",
+      "url": "https://vitals.ubie.life/components/action-modal/",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-60",
+        "UW-63",
+        "UW-65",
+        "adds to UW-15"
+      ]
+    },
+    {
+      "key": "NTA",
+      "title": "国税庁 No.6902 「総額表示」の義務付け",
+      "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6902.htm",
+      "opened": "2026-11-21",
+      "passes": 2,
+      "date_line_on_page": "[令和8年4月1日現在法令等]",
+      "used_for": [
+        "UW-68",
+        "UW-69 (examples)"
+      ]
+    },
+    {
+      "key": "ISCT",
+      "title": "Science Tokyo デザインシステム — 日本語ページの表記",
+      "url": "https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese",
+      "opened": "2026-11-21",
+      "passes": 1,
+      "last_updated_on_page": "not shown",
+      "used_for": [
+        "UW-69"
+      ]
+    },
+    {
+      "key": "ISCT-scope",
+      "title": "Science Tokyo デザインシステム — 位置付けと適用範囲",
+      "url": "https://design-system.isct.ac.jp/ja/documents/writing-guidelines/introduction/scope/",
+      "opened": "2026-11-21",
+      "passes": 1,
+      "used_for": [
+        "scope of ISCT (WEB label)"
+      ]
+    },
+    {
+      "key": "ISCT-index",
+      "title": "Science Tokyo デザインシステム — ライティングガイドライン (index)",
+      "url": "https://design-system.isct.ac.jp/ja/documents/writing-guidelines/",
+      "opened": "2026-11-21",
+      "passes": 1,
+      "used_for": [
+        "finding the scope page; confirmed no apology / error / dialog / empty-state / ください text in the index"
+      ]
+    }
+  ],
+  "opened_not_used": [
+    {
+      "title": "SmartHR Design System — ActionDialog",
+      "url": "https://smarthr.design/products/components/dialog/action-dialog/",
+      "opened": "2026-11-21",
+      "why": "no wording rule beyond what SH-dd and SH-mu give"
+    },
+    {
+      "title": "Ubie Vitals — MessageModal",
+      "url": "https://vitals.ubie.life/components/message-modal/",
+      "opened": "2026-11-21",
+      "why": "header-text guidance duplicates UB-am; no button-pair or apology text"
+    },
+    {
+      "title": "Apple Developer — Human Interface Guidelines (ja) 表現",
+      "url": "https://developer.apple.com/jp/design/human-interface-guidelines/writing",
+      "opened": "2026-11-21",
+      "why": "retry: HTTP 200, title 「表現」 only, body empty (client-rendered), same as first pass"
+    },
+    {
+      "title": "freee vibes",
+      "url": "https://vibes.freee.co.jp/",
+      "opened": "2026-11-21",
+      "why": "retry: HTTP 200, Storybook shell only (page text '@storybook/cli - Storybook'), same as first pass"
+    }
+  ],
+  "searches": [
+    "site:smarthr.design ダイアログ 削除 確認 ライティング",
+    "site:smarthr.design 空の状態 OR エンプティステート OR \"データがありません\"",
+    "site:vitals.ubie.life Dialog OR ダイアログ OR エラー",
+    "site:spindle.ameba.design ダイアログ OR エンプティ OR エラーメッセージ",
+    "site:design.digital.go.jp/dads エラー 空 データなし OR 該当なし OR 削除",
+    "smarthr.design EmptyTableBody OR \"該当する\" OR \"まだ\" 空 テーブル ライティング",
+    "エラーメッセージ 謝罪 \"申し訳ありません\" 使わない UXライティング ガイドライン デザインシステム",
+    "\"ください\" \"お願いします\" 使い分け UIテキスト ライティング ガイドライン",
+    "デザインシステム 金額 表記 \"円\" \"¥\" ライティング ガイドライン",
+    "国税庁 総額表示 義務 表示例 税込",
+    "空の状態 エンプティステート 文言 デザインシステム ガイドライン 日本語",
+    "削除 ボタン ラベル 確認ダイアログ 文言 ガイドライン \"はい\" \"いいえ\" デザインシステム"
+  ]
+}

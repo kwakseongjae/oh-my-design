@@ -1,0 +1,3572 @@
+{
+  "generatedBy": "scripts/lang/build-kana-page-data.mjs",
+  "input": {
+    "rules": {
+      "path": "docs/drafts/kana/references/writing-rules.md",
+      "sha256": "f7d11e3438e948a91c8ea4da93c339221405c9e85acb00152ccce2a7c2deb9ce"
+    },
+    "sources": [
+      {
+        "path": "docs/drafts/kana/writing/sources.json",
+        "sha256": "367efaf7ad767fab4edaee2b267d4d611083f36c9fd703c048540d79493c2136"
+      },
+      {
+        "path": "docs/drafts/kana/writing2/sources.json",
+        "sha256": "04e1d7596202c9c73476e8547a29336a20de7e63a418377af7e6a2d45ddc8871"
+      }
+    ]
+  },
+  "draft": "2026-11-21",
+  "sources": [
+    {
+      "key": "SH-app",
+      "name": "SmartHR, other UI text",
+      "url": "https://smarthr.design/products/contents/ui-text/app-writing/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-ws",
+      "name": "SmartHR, basic writing style",
+      "url": "https://smarthr.design/products/contents/writing-style/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-act",
+      "name": "SmartHR, words for operations",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/action/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-nb",
+      "name": "SmartHR, NotificationBar patterns",
+      "url": "https://smarthr.design/products/contents/error-messages/notificationbar/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-bg",
+      "name": "SmartHR, background-process patterns",
+      "url": "https://smarthr.design/products/contents/error-messages/background-process/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-st",
+      "name": "SmartHR, status labels",
+      "url": "https://smarthr.design/products/contents/ui-text/statuslabel/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-oth",
+      "name": "SmartHR, other similar terms",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/other/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-cnt",
+      "name": "SmartHR, numbers and counters",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/count/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "UB",
+      "name": "Ubie Vitals, UX writing guideline",
+      "url": "https://vitals.ubie.life/ux-writing/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "UB-btn",
+      "name": "Ubie Vitals, Button",
+      "url": "https://vitals.ubie.life/components/button",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-lab",
+      "name": "Ameba Spindle, UI labeling",
+      "url": "https://spindle.ameba.design/principles/contents/ui-labeling/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-btn",
+      "name": "Ameba Spindle, Button",
+      "url": "https://spindle.ameba.design/components/button/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "PB",
+      "name": "GMO Pepabo Inhouse, Validation Message",
+      "url": "https://design.pepabo.com/inhouse/components/validation-message/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-btn",
+      "name": "DADS, Button (usage)",
+      "url": "https://design.digital.go.jp/dads/components/button/usage/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-in",
+      "name": "DADS, Input text (usage)",
+      "url": "https://design.digital.go.jp/dads/components/input-text/usage/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-md",
+      "name": "DADS, Modal dialog (overview)",
+      "url": "https://design.digital.go.jp/dads/components/modal-dialog/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ",
+      "name": "Mozilla Japan, L10n Guideline",
+      "url": "https://mozilla-l10n.github.io/styleguides/ja/l10nguideline.html",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-ed",
+      "name": "Mozilla Japan, Editorial Guideline (wiki)",
+      "url": "https://github.com/mozilla-japan/translation/wiki/Editorial-Guideline",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-ed21",
+      "name": "Mozilla, Editorial Guideline (2021 copy)",
+      "url": "https://mozilla-l10n.github.io/styleguides/ja/editorialguideline.html",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "WP",
+      "name": "WordPress Japanese team, translation style guide",
+      "url": "https://ja.wordpress.org/team/handbook/translation/translation-style-guide/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "OPT",
+      "name": "OPTiM TECH BLOG, UX writing rules (headings only)",
+      "url": "https://tech-blog.optim.co.jp/entry/2025/01/16/100000",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MS",
+      "name": "Microsoft, Japanese Localization Style Guide (PDF; read from its text layer)",
+      "url": "https://download.microsoft.com/download/bb82f407-78f4-4df4-accd-d63ceaadd24a/jpn-jpn-StyleGuide.pdf",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-dd",
+      "name": "SmartHR, delete dialog",
+      "url": "https://smarthr.design/products/design-patterns/delete-dialog/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-cs",
+      "name": "SmartHR, operations that need a confirmation step",
+      "url": "https://smarthr.design/products/design-patterns/confirmation-step/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-mu",
+      "name": "SmartHR, modal UI",
+      "url": "https://smarthr.design/products/design-patterns/modal-ui/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-tb",
+      "name": "SmartHR, the common table",
+      "url": "https://smarthr.design/products/design-patterns/smarthr-table/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-ed",
+      "name": "SmartHR, items with no value",
+      "url": "https://smarthr.design/products/design-patterns/empty-data/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "UB-am",
+      "name": "Ubie Vitals, ActionModal",
+      "url": "https://vitals.ubie.life/components/action-modal/",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "NTA",
+      "name": "National Tax Agency, Tax Answer No.6902 (total price display)",
+      "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6902.htm",
+      "opened": "2026-11-21"
+    }
+  ],
+  "keysWithoutUrl": [
+    "JTF"
+  ],
+  "areas": [
+    {
+      "name": "Register",
+      "rules": [
+        "KW-01",
+        "KW-02",
+        "KW-03",
+        "KW-04",
+        "KW-05",
+        "KW-06"
+      ]
+    },
+    {
+      "name": "Keigo",
+      "rules": [
+        "KW-07",
+        "KW-08",
+        "KW-09",
+        "KW-10",
+        "KW-12",
+        "KW-13",
+        "KW-14",
+        "KW-70"
+      ]
+    },
+    {
+      "name": "Buttons, labels and links",
+      "rules": [
+        "KW-15",
+        "KW-18",
+        "KW-19",
+        "KW-20",
+        "KW-21",
+        "KW-22",
+        "KW-23",
+        "KW-24",
+        "KW-25",
+        "KW-60",
+        "KW-61"
+      ]
+    },
+    {
+      "name": "Errors, results and status",
+      "rules": [
+        "KW-26",
+        "KW-27",
+        "KW-28",
+        "KW-29",
+        "KW-31",
+        "KW-32"
+      ]
+    },
+    {
+      "name": "Dialogs and empty states",
+      "rules": [
+        "KW-62",
+        "KW-63",
+        "KW-64",
+        "KW-65",
+        "KW-66",
+        "KW-67"
+      ]
+    },
+    {
+      "name": "Notation",
+      "rules": [
+        "KW-33",
+        "KW-34",
+        "KW-35",
+        "KW-38",
+        "KW-39",
+        "KW-46",
+        "KW-48",
+        "KW-49"
+      ]
+    },
+    {
+      "name": "Numbers and counters",
+      "rules": [
+        "KW-52",
+        "KW-54",
+        "KW-55",
+        "KW-68"
+      ]
+    },
+    {
+      "name": "Plain and fair wording",
+      "rules": [
+        "KW-56",
+        "KW-57"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "KW-01",
+      "candidate": "UW-01",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "Running text and descriptions are written in the polite style (敬体).",
+      "kind": "WRITE",
+      "strength": "translation guides only (Mozilla; the wiki says 原則). OPTiM heading only, not counted. No company guide read states it; SmartHR, Pepabo and DADS write their examples this way without a rule. JW-02 carries the government and JTF sources.",
+      "tiers": [
+        {
+          "tier": "translation"
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "文体は敬体 (ですます調) で統一する。"
+        },
+        {
+          "key": "MZ-ed",
+          "text": "語尾は原則として「ですます調」を採用する。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (one style per text is JW-01's, and the checker can't tell a quotation or a list item)."
+    },
+    {
+      "id": "KW-02",
+      "candidate": "UW-02",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "Screen titles, window titles and headings are nouns.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR) and two translation guides (Mozilla, as a principle; WordPress also allows the plain 「する」 form); Microsoft's guide was not checked for this rule. OPTiM heading only, not counted.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-app",
+          "text": "画面タイトルや項目名は、名詞で表記します。"
+        },
+        {
+          "key": "MZ",
+          "text": "タイトル名は体言止めを原則とする。全体のバランスに注意する。"
+        },
+        {
+          "key": "WP",
+          "text": "見出しは体言止め、または「する」(常体) とする"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "**KW-02, FYI**: a heading (h1–h6, `<title>`, a Markdown heading) that ends in です or ます, with or without 。."
+    },
+    {
+      "id": "KW-03",
+      "candidate": "UW-03",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "Menu items are short nouns, except where the OS has its own idiom.",
+      "kind": "WRITE",
+      "strength": "translation guides only (Mozilla). No company guide read covers menu items.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "OS の慣用表現に従う他は簡潔な体言を基本とする"
+        },
+        {
+          "key": "MZ",
+          "text": "体言止めを原則とし、コロンをつけたり設定項目の説明と続けて文にしたりはしない。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (the checker can't tell a menu item)."
+    },
+    {
+      "id": "KW-04",
+      "candidate": "UW-04",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "Checkbox labels end in a verb as a principle; radio labels may end in anything; neither takes 。 unless the label has to be several sentences.",
+      "kind": "WRITE",
+      "strength": "translation guides only (Mozilla).",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "末尾では体言ではなく動詞を原則とする。コロンと入力欄が続くはこの限りではない。"
+        },
+        {
+          "key": "MZ",
+          "text": "やむを得ずラベルが複数の文になる場合を除き、句点は使用しない。"
+        },
+        {
+          "key": "MZ",
+          "text": "…末尾の品詞は問わない。 止む終えずラベルが複数の文になる場合を除き、句点は使用しない。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (the checker can't tell a checkbox label)."
+    },
+    {
+      "id": "KW-05",
+      "candidate": "UW-05",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "In translated software, list items take the plain 「する」 form.",
+      "kind": "WRITE",
+      "strength": "translation guides only (WordPress). Compare JW-06 (lists may use 常体; one style per list).",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "WP",
+          "text": "箇条書きの項目では「する」(常体) とする"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-06",
+      "candidate": "UW-06",
+      "rewrittenToVerdict": false,
+      "area": "Register",
+      "rule": "Neither stiff nor over-friendly: in ordinary content, ordinary polite forms rather than extra-formal ones.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie) and two translation guides (Mozilla, for content that is not formal; Microsoft, which says of its word table that the words are examples to be chosen by context, not adopted uniformly). DADS's own sample notice body uses 「…期限までにご対応をお願いいたします。」: an authority's notice, given as an example, not a rule.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "堅苦しい表現は避けるが、フレンドリーすぎないように。"
+        },
+        {
+          "key": "MZ-ed",
+          "text": "あまり丁寧すぎると浮いてしまうので、内容が改まったものでなければ、一般的な丁寧語で記述する。特にブログは多少カジュアルでも良い。"
+        },
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "Microsoft voice avoids an unnecessarily formal tone. Similarly, Japanese Microsoft voice should also avoid written words/very formal tone."
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "お加減はいかがですか？ ※ちょっと堅い"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "体調はいかがですか？"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "MZ-ed",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "皆様",
+                "公開いたしました",
+                "よろしくお願いいたします"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "皆さん",
+                "公開します",
+                "よろしくお願いします"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "−",
+              "texts": [
+                "xxx が可能です"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "+",
+              "texts": [
+                "xxx できます"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-06, FYI**: 皆様, いたしました, よろしくお願いいたします (Mozilla's NG list; いたしました also matches other verbs in that form)."
+    },
+    {
+      "id": "KW-07",
+      "candidate": "UW-07",
+      "rewrittenToVerdict": true,
+      "area": "Keigo",
+      "rule": "Ubie uses no keigo on buttons, headings and other UI components, in principle.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie). The source hedges twice (基本的に, 原則として), under a heading about cases where keigo is deliberately not used. SmartHR's button rule (JW-60) uses plain verbs without stating a keigo rule.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "基本的にボタン、見出しなどのUIコンポーネントでは原則として敬語を使いません。ユーザーの操作対象のラベルの発言者をユーザーに寄せると、読解がスムーズになります。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "**KW-07, FYI**: いただ, いたし or 申し上げ in a button or heading (forms taken from the quoted NG strings under KW-06 and KW-09)."
+    },
+    {
+      "id": "KW-08",
+      "candidate": "UW-08",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Ubie uses keigo where the user is made to do something they would rather not.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie). No other source read draws this line.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "ユーザーが本来やりたくないのに、やらざるをえない操作が発生するときは敬語を使います。"
+        },
+        {
+          "key": "UB",
+          "text": "新規ユーザー登録"
+        },
+        {
+          "key": "UB",
+          "text": "ヘルプセンター、問い合わせ"
+        },
+        {
+          "key": "UB",
+          "text": "アンケートなど"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-09",
+      "candidate": "UW-09",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Don't stack keigo; one polite request form is enough.",
+      "kind": "WRITE",
+      "strength": "2 of 4 company guides (SmartHR, Ubie) and one translation guide (Microsoft; its word is \"excessively polite\", and \"stack\" is ours). OPTiM heading only, not counted. Same direction as JW-07 and JW-08. Microsoft asks for the polite お- and ご- forms of a few listed verbs where SmartHR's example writes the plain one; that is a house choice (UW-59), and both reject stacked forms.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "translation"
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-ws",
+          "text": "敬語表現を多用して、情報が伝わりづらくならないように配慮しましょう。"
+        },
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "Do not use excessively polite expression."
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "お手数をおかけしますが、こちらからお問い合わせいただけますよう、お願い申し上げます。 ※過剰"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "お手数ですが、こちらからお問い合わせください。"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "SH-ws",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "◯◯をご確認いただけますようお願いいたします。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "◯◯を確認してください。"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "SH-ws",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "◯◯させていただきました。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "◯◯しました。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-09, WARN**: いただけますよう, お願い申し上げます, させていただきました. Only SmartHR's past form is matched: the KG keigo guideline says the humble-permission form can fit where the writer acts with the reader's permission and benefits from it (JW-09)."
+    },
+    {
+      "id": "KW-10",
+      "candidate": "UW-10",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Microsoft: in general, text is in the polite style, and a sentence that asks the user to act ends \"...してください。\".",
+      "kind": "WRITE",
+      "strength": "translation guides only (Microsoft, \"In general\", for explanatory text in windows, dialog boxes, message boxes and the status bar, and for the body of an error message). Every UI example of the first pass ends a request the same way (DADS, Pepabo, SmartHR, Ubie) without stating it. No source in either pass rules on ください against お願いします; Microsoft's guide does not mention お願い.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "In general, sentences should be translated in Desu-masu unless otherwise instructed. When the sentence prompts users to take an action, use \"...してください。.\""
+        },
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "In Japanese, use Desu-masu (ですます調, polite style) when translating message body. When the message prompts users to take an action, use \"...してください。.\""
+        }
+      ],
+      "examples": [
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "パスワードが正しくありません。もう一度入力してください。パスワードでは大文字と小文字が区別されます。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only (the checker can't tell a sentence that asks the user to act)."
+    },
+    {
+      "id": "KW-12",
+      "candidate": "UW-12",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Don't add あなた or あなたの where English has \"you\" or \"your\" and it reads unnaturally.",
+      "kind": "WRITE",
+      "strength": "translation guides only (WordPress).",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "WP",
+          "text": "英語で “You” や “Your” とあっても、日本語にしたときに不自然な場合は「あなた」「あなたの」を入れない"
+        },
+        {
+          "key": "WP",
+          "text": "できる限り「自分の」「お使いの」「独自の」などの、より自然な言い回しを使うか、省略する。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "WP",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "自分の",
+                "お使いの",
+                "独自の"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": "no sourced pair; WordPress names 「自分の」「お使いの」「独自の」 as alternatives.",
+      "checker": "**KW-12, FYI**: あなた."
+    },
+    {
+      "id": "KW-13",
+      "candidate": "UW-13",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Prefer the active past to the passive where possible.",
+      "kind": "WRITE",
+      "strength": "translation guides only (WordPress, なるべく). Same direction as JW-19.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "WP",
+          "text": "自然な日本語になるよう、受動態はなるべく避ける"
+        }
+      ],
+      "examples": [
+        {
+          "key": "WP",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "～されました。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "～しました。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-13, FYI**: されました. It also matches the honorific use; read it in place."
+    },
+    {
+      "id": "KW-14",
+      "candidate": "UW-14",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Write the short potential form rather than 「することができる」.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR, 極力) and one translation guide (Mozilla, なるべく). Adds to JW-14, whose disagreement stands: the plain-Japanese guideline for foreign residents gives the long form for its readers.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "「〜することができます」はなるべく「〜できます」と簡潔にする。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-ws",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "◯◯することができます。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "◯◯できます。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-14, FYI**: することができ. Don't report it on text written for readers of plain Japanese (JW-14, JW-65)."
+    },
+    {
+      "id": "KW-70",
+      "candidate": "UW-70",
+      "rewrittenToVerdict": false,
+      "area": "Keigo",
+      "rule": "Microsoft: in general, no honorific or humble forms; use them in material where a supplier–customer relationship has to be considered.",
+      "kind": "WRITE",
+      "strength": "translation guides only (Microsoft, \"In general\"). For ordinary UI it points the same way as KW-07 (Ubie, components only). Ubie's own line for using keigo (KW-08) is a different one: Microsoft's trigger is the kind of material, Ubie's the kind of operation.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "In general, do not use honorific expression and humble expression."
+        },
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "In materials in which \"supplier-customer\" relationship should be considered, use those expressions."
+        }
+      ],
+      "examples": [
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "−",
+              "texts": [
+                "データ ファイルをアプリケーションに関連付けていただきますと、～"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "+",
+              "texts": [
+                "データ ファイルをアプリケーションに関連付けると、～"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "−",
+              "texts": [
+                "～を購入してください。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "+",
+              "texts": [
+                "～をお買い求めください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only (whether a screen is supplier–customer material is not in the text)."
+    },
+    {
+      "id": "KW-15",
+      "candidate": "UW-15",
+      "rewrittenToVerdict": true,
+      "area": "Buttons, labels and links",
+      "rule": "A button label lets the user predict what will happen; Ubie adds that 「OK」 alone does not.",
+      "kind": "WRITE",
+      "strength": "predicting the action: 2 of 4 company guides (Ubie, Spindle). The 「OK」 half: one company's guide (Ubie, on its Button and ActionModal pages). DADS-btn names 「OK」 as an ordinary primary label and gives no wording rule. SmartHR's dialog rule (JW-61) is about matching a dialog's title and its button.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB-btn",
+          "text": "ボタンを押下した場合に、何が起こるのかをユーザーが推測できるべきです。"
+        },
+        {
+          "key": "SP-btn",
+          "text": "ボタン、リンクボタンのラベルは、操作やリンク先の内容が予測できるように明確にしましょう。…"
+        },
+        {
+          "key": "UB-am",
+          "text": "簡潔で、具体的なテキストをラベルとして用いてください。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB-btn",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Bad",
+              "texts": [
+                "OK"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Good",
+              "texts": [
+                "この内容で更新する"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "UB-am",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "OK"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "保存"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-15, FYI**: a button whose whole text is OK."
+    },
+    {
+      "id": "KW-18",
+      "candidate": "UW-18",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "Keep button labels short: Ubie aims at no wrap on mobile, about 15 characters; Mozilla matches word counts across a set where it can.",
+      "kind": "TYPO (length is countable)",
+      "strength": "the number: one company's guide (Ubie, できる限り). Matching length: translation guides only (Mozilla).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB-btn",
+          "text": "できる限りモバイルで改行しない文字数におさめましょう（15文字程度）"
+        },
+        {
+          "key": "MZ",
+          "text": "可能であれば語数を揃える。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "**KW-18, FYI**: Japanese button text longer than 15 characters."
+    },
+    {
+      "id": "KW-19",
+      "candidate": "UW-19",
+      "rewrittenToVerdict": true,
+      "area": "Buttons, labels and links",
+      "rule": "DADS, for desktop and as a principle: forward actions on the right, cancel-type actions on the left; at most one tertiary (cancel-type) button per screen, as a principle.",
+      "kind": "TYPO (layout)",
+      "strength": "government design system (DADS).",
+      "tiers": [
+        {
+          "tier": "government"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-btn",
+          "text": "…デスクトップデバイスにおけるボタン配置を、「OK」または「完了」「次へ」などのボタンを右寄せ、「キャンセル」または「中止」「戻る」などのボタンを左寄せで配置することを原則としています。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "ターシャリー（重要度：低）のボタンは、フローやアクションの実行を中断・中止するような、キャンセル行為のために使用します。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "ひとつの画面につき、原則1つまで使用できます。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "モバイルデバイスでは、セカンダリーからプライマリーにかけて縦積みで配置します。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "ただし、いずれにおいてもターシャリーのみ、デスクトップデバイスとは順序が変わって一番下となります。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "この場合では上にプライマリーのボタン、下にセカンダリーのボタンを配置します。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (screen order depends on CSS the checker can't apply)."
+    },
+    {
+      "id": "KW-20",
+      "candidate": "UW-20",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "Don't put a close button on a modal dialog that has action buttons.",
+      "kind": "TYPO (structure)",
+      "strength": "government design system (DADS-md). The DADS-nb line is about notification banners, not dialogs.",
+      "tiers": [
+        {
+          "tier": "government"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-md",
+          "text": "「OK」「はい」「いいえ」「キャンセル」などのアクションボタンを伴うモーダルダイアログに閉じるボタンがあると、…判断できなくなります。"
+        },
+        {
+          "key": "DADS-md",
+          "text": "閉じるボタンはアクションボタンがないときだけ使用できます。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "**KW-20, FYI**: inside one `<dialog>`, `role=\"dialog\"` or Dialog/Modal component, a button labelled 閉じる (text or `aria-label`) beside one labelled OK, はい, いいえ or キャンセル."
+    },
+    {
+      "id": "KW-21",
+      "candidate": "UW-21",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "Instead of silently disabling a submit button, say what is still to do; if it must be disabled, say why right next to it.",
+      "kind": "WRITE + TYPO",
+      "strength": "government design system (DADS-btn).",
+      "tiers": [
+        {
+          "tier": "government"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-btn",
+          "text": "ユーザーの作業が終わるまでボタンを無効にするのではなく、何をすべきかを提示することで操作や入力を促してください。"
+        },
+        {
+          "key": "DADS-btn",
+          "text": "どうしてもボタンを無効化しなければならない場合は、無効ボタンのすぐ近くに、なぜ無効なのかあるいはどうすれば有効化できるのかを具体的に表示しましょう。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example (DADS's examples are screenshots).",
+      "checker": "judgment only (nearness on screen can't be read from source)."
+    },
+    {
+      "id": "KW-22",
+      "candidate": "UW-22",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "A destructive action gets a confirmation dialog, but the dialog is not a safeguard by itself.",
+      "kind": "WRITE",
+      "strength": "government design system (DADS-md). The label SmartHR gives the destructive button is KW-61; how to word the confirmation is KW-63.",
+      "tiers": [
+        {
+          "tier": "government"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-md",
+          "text": "削除などの破壊的な操作では、確認ダイアログを表示しても、利用者が内容を確認せずに操作を進めると安全対策として機能しません。"
+        },
+        {
+          "key": "DADS-md",
+          "text": "そもそも間違って削除しないようにする設計や、削除の取り消しや復元ができる設計を検討してください。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SP-btn",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "例: 投稿削除、退会、等。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": "no sourced example. Spindle's Danger Button examples (SP-btn 「例: 投稿削除、退会、等。」) name the act; they carry no wording rule.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-23",
+      "candidate": "UW-23",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "One word per operation across the product.",
+      "kind": "WRITE",
+      "strength": "consistency: one company's guide (SmartHR) and one translation guide (WordPress). The particular words are each house's own: SmartHR's tied to its product, Mozilla's to its translations.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "WP",
+          "text": "メニュー項目やボタンラベルの訳語に一貫性を持たせる"
+        },
+        {
+          "key": "SH-act",
+          "text": "キャンセルとは、まだ実行していない操作を止めること"
+        },
+        {
+          "key": "SH-act",
+          "text": "取り消しとは、すでに実行した操作を止めること"
+        },
+        {
+          "key": "SH-act",
+          "text": "中断とは、実行中の操作を止めること"
+        },
+        {
+          "key": "SH-act",
+          "text": "「つくる」操作を表す文言は、基本的に「追加」とします。"
+        },
+        {
+          "key": "SH-act",
+          "text": "PCでもスマートフォンでも違和感のない言葉として、「押す」が適切だと判断しました。"
+        },
+        {
+          "key": "SH-act",
+          "text": "画面を最新の状態にする操作は、「再読み込み」と表記します。"
+        },
+        {
+          "key": "MZ-ed",
+          "text": "「サインイン」「サインアウト」ではなく「ログイン」「ログアウト」と表記する。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced pair beyond Mozilla's choice above.",
+      "checker": "**KW-23, FYI**: サインイン and ログイン, or サインアウト and ログアウト, both in one scan. It reports both places and does not say which to keep."
+    },
+    {
+      "id": "KW-24",
+      "candidate": "UW-24",
+      "rewrittenToVerdict": true,
+      "area": "Buttons, labels and links",
+      "rule": "Instruction text names a control by its label or by order, not by where it sits on screen.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie, written with screen readers in mind). The 「こちら」 half of the candidate has no counted source (an OPTiM heading only, and Ubie's own keigo example reads 「お手数ですが、こちらからお問い合わせください。」), so it is not part of this rule and is not checked.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "…場所ではなく、時系列や順序を意識した記述になるように気をつけます。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "続けるには下のボタンを選んでください。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "続けるには「次へ」を選んでください。"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "上に戻る"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "はじめに戻る"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-24, FYI**: 下のボタン, 上に戻る (the quoted Don't forms only)."
+    },
+    {
+      "id": "KW-25",
+      "candidate": "UW-25",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "DADS: required and optional labels read 「※必須」 and 「※任意」, starting with ※ (U+203B); placeholder text never stands in for support text. SmartHR writes 入力必須.",
+      "kind": "TYPO + WRITE",
+      "strength": "the marker: government design system (one system's convention). The term: one company's guide (SmartHR).",
+      "tiers": [
+        {
+          "tier": "government"
+        },
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-in",
+          "text": "「※必須」「※任意」の要否ラベルは「※（全角米印）」から書き始め、地の文章とは異なるテキストであることを明示します。"
+        },
+        {
+          "key": "DADS-in",
+          "text": "サポートテキストを企図して、プレースホルダーテキストを使用してはなりません。"
+        },
+        {
+          "key": "SH-oth",
+          "text": "入力が必要な場合は「入力必須」と表記します。「必須入力」は使用しません。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-oth",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "必須入力"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "入力必須"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-25, FYI**: 必須入力. The ※ marker is not checked: no quoted label breaks it."
+    },
+    {
+      "id": "KW-60",
+      "candidate": "UW-60",
+      "rewrittenToVerdict": true,
+      "area": "Buttons, labels and links",
+      "rule": "SmartHR: the button that completes a modal task names the action with a verb, and the button that abandons it reads 「キャンセル」; Ubie keeps 「キャンセル」 for abandoning an action and 「閉じる」 for only closing.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR) for the labels; Ubie's line on the two words is one company's guide too. Placement is KW-19 (DADS: desktop, as a principle). Ubie's page also shows, with no caption, ❌「キャンセル」 / ⭕️「停止」 right after its pair for 「OK」 (KW-15). Whether that pair is about the abandon button, which would go against SmartHR, or about an action that happens to mean \"cancel\" is undetermined; this rule does not decide it.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-mu",
+          "text": "ボタンのラベルは、モードの目的であるタスクを完了するアクションであることがわかる動詞を用います。"
+        },
+        {
+          "key": "SH-mu",
+          "text": "タスクを中断するアクションのボタンラベルは`キャンセル`とします。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "ダイアログを閉じて操作を中断するボタンは左に配置し、ラベルは`キャンセル`とします。"
+        },
+        {
+          "key": "UB-am",
+          "text": "「キャンセル」と「閉じる」は使い分けてください。前者はアクションを中断するニュアンスがあり、後者は単にダイアログを閉じる場合に使います。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (the checker can't tell which button abandons the task)."
+    },
+    {
+      "id": "KW-61",
+      "candidate": "UW-61",
+      "rewrittenToVerdict": false,
+      "area": "Buttons, labels and links",
+      "rule": "SmartHR labels the button that confirms a deletion with the act, 「削除」, and styles it as a Danger button.",
+      "kind": "WRITE + TYPO",
+      "strength": "one company's guide (SmartHR). Spindle's Danger Button examples name the act without a wording rule (KW-22). 削除 against 削除する is a house choice (UW-16).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-dd",
+          "text": "操作を確定するボタンは右に配置し、ラベルは`削除`とします。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "Dangerボタンを使い、破壊的な操作であることを示します。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (the checker can't read a button's style)."
+    },
+    {
+      "id": "KW-26",
+      "candidate": "UW-26",
+      "rewrittenToVerdict": false,
+      "area": "Errors, results and status",
+      "rule": "An error says what is wrong and how to fix it.",
+      "kind": "WRITE",
+      "strength": "government design system (DADS-in) and 2 of 4 company guides (Pepabo; SmartHR through JW-64). OPTiM heading only, not counted.",
+      "tiers": [
+        {
+          "tier": "government"
+        },
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-in",
+          "text": "入力内容にエラーがある場合に、具体的なエラー内容および訂正方法を記述します。"
+        },
+        {
+          "key": "PB",
+          "text": "エラーメッセージには、何が受け入れられなかったかに加えて、それを修正する方法の指示を書く"
+        }
+      ],
+      "examples": [
+        {
+          "key": "DADS-in",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Bad",
+              "texts": [
+                "＊入力に誤りがあります。",
+                "＊正しい氏名（カタカナ）を入力してください。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Good",
+              "texts": [
+                "＊氏名をカタカナで入力してください。",
+                "＊氏（カタカナ）と名（カタカナ）を空白で区切ってください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-26, WARN** when the whole string is 入力に誤りがあります (with or without the leading asterisk and 。); **FYI** on 正しい followed by を入力してください, the frame of the second bad example."
+    },
+    {
+      "id": "KW-27",
+      "candidate": "UW-27",
+      "rewrittenToVerdict": false,
+      "area": "Errors, results and status",
+      "rule": "DADS: field error text starts with ＊ (U+FF0A).",
+      "kind": "TYPO",
+      "strength": "government design system (one system's convention; no company guide read uses it).",
+      "tiers": [
+        {
+          "tier": "government"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "DADS-in",
+          "text": "エラーテキストの冒頭に「＊（全角アスタリスク）」を付与し、地の文章とは異なるテキストであることを明示します。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example of the wrong form.",
+      "checker": "judgment only. No quoted string breaks it, so no fixture could be built, and the checker can't tell field error text."
+    },
+    {
+      "id": "KW-28",
+      "candidate": "UW-28",
+      "rewrittenToVerdict": true,
+      "area": "Errors, results and status",
+      "rule": "SmartHR: a one-line notification bar carries the cause, or the cause and the remedy, and gives the cause briefly, in one sentence where it can.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR). \"One sentence\" is a preference (なるべく), and two of its own templates are two sentences with a remedy.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-nb",
+          "text": "NotificationBarで伝える要素は、原因または原因・対処です。"
+        },
+        {
+          "key": "SH-nb",
+          "text": "…原因を端的に、なるべく一文で伝えます。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-nb",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "対象のカスタムマスター項目の削除に失敗しました。対象のカスタムマスター項目は、存在しません。対象のカスタムマスター項目を確認してください。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "対象のカスタムマスター項目は、すでに削除済みです。"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "SH-nb",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "予期しないエラーが発生しました。時間をおいて、やり直してください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-29",
+      "candidate": "UW-29",
+      "rewrittenToVerdict": false,
+      "area": "Errors, results and status",
+      "rule": "SmartHR confirms a background job with 「{処理名}を受け付けました」.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-act",
+          "text": "バックグラウンド処理をリクエストしたときに表示する文言は、「{処理名}を受け付けました」とします。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-act",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "従業員情報のダウンロードを予約しました。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "従業員情報のダウンロードを受け付けました。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only (a booking product uses the NG verb for real reservations)."
+    },
+    {
+      "id": "KW-31",
+      "candidate": "UW-31",
+      "rewrittenToVerdict": false,
+      "area": "Errors, results and status",
+      "rule": "SmartHR's status labels use a fixed set of suffixes.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR). Status labels are nouns, as KW-02.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-st",
+          "text": "`○○中`：アクションが進行している途中の状態（例：依頼準備中、入力中、回答中）"
+        },
+        {
+          "key": "SH-st",
+          "text": "`完了`、`○○完了`：すべてのタスクが終わっている状態。なお、`○○済み`と併用する場合は「完了」を使うこと"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced pair.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-32",
+      "candidate": "UW-32",
+      "rewrittenToVerdict": false,
+      "area": "Errors, results and status",
+      "rule": "Ubie writes positively and uses no exclamation marks.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie). OPTiM heading only, not counted (double negatives are JW-20). Which width an exclamation mark takes, where one is used, is a house choice ([UW-42](#uw-42-exclamation-and-question-marks-width)).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "否定的な表現を使わず、肯定文で書きましょう。"
+        },
+        {
+          "key": "UB",
+          "text": "煽り表現はNG。「!」「!?」などの感嘆符は使わない。（textlint対応）"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "この中に該当なし"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "この中にはない"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "ありがとうございます！"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "ありがとうございます。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-32, FYI**: ! or ！ (U+0021, U+FF01) right after Japanese text, with or without one space. Question marks are not checked: Ubie's own Do example is 「体調はいかがですか？」."
+    },
+    {
+      "id": "KW-62",
+      "candidate": "UW-62",
+      "rewrittenToVerdict": false,
+      "area": "Dialogs and empty states",
+      "rule": "Microsoft: a question that asks which action to take is \"...しますか?\", not \"....してもよろしいですか?\".",
+      "kind": "WRITE",
+      "strength": "translation guides only (Microsoft, for translating \"Do you want to …?\" and \"Would you like to …?\"). No company guide states it; SmartHR's and Ubie's dialog examples use the same form (KW-63). The width of the question mark is not part of this rule (UW-42): Microsoft's quotes are characters from its PDF's text layer, which do not settle a width.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "For the sentences asking the customer which action to take, such as \"Do you want to ...?\" or \"Would you like to ...?\", translate to \"...しますか?\""
+        },
+        {
+          "key": "MS",
+          "lang": "en",
+          "text": "Avoid translating to \"....してもよろしいですか?\" because the agent of action is not the customer in this way."
+        }
+      ],
+      "examples": [
+        {
+          "key": "MS",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "−",
+              "texts": [
+                "このまま続けてもよろしいですか?"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "+",
+              "texts": [
+                "このまま続けますか?"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-62, FYI**: てもよろしいですか, the frame of the form Microsoft says to avoid and of its minus example."
+    },
+    {
+      "id": "KW-63",
+      "candidate": "UW-63",
+      "rewrittenToVerdict": true,
+      "area": "Dialogs and empty states",
+      "rule": "Before a destructive act, ask with a question; SmartHR also names the target, says that the act cannot be undone, and needs no confirmation when the act can be undone.",
+      "kind": "WRITE",
+      "strength": "the question: 2 of 4 company guides (SmartHR, Ubie). The rest: one company's guide (SmartHR); for an act that can be undone its words are \"not needed\" (必要ありません), not \"skip\". Where the question sits differs: SmartHR puts it in the body under a noun-phrase title 「{オブジェクト名}の削除」, Ubie in the header. With KW-22 (DADS: the dialog is not a safeguard on its own).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-dd",
+          "text": "削除などの破壊的で不可逆な操作をする際は、アクションダイアログを用いて、ユーザーの確認を経てシステムが処理を実行するようにします。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "破壊的な操作であっても、操作後に元に戻せる場合は、処理前の確認は必要ありません。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "疑問文を使い確認を促します。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "また、操作が不可逆である旨を明示します。"
+        },
+        {
+          "key": "SH-dd",
+          "text": "DefinitionListを使い、削除対象のオブジェクト名およびインスタンス名を提示します。"
+        },
+        {
+          "key": "UB-am",
+          "text": "データの削除、内容の破棄など破壊的なアクションの場合は疑問形を使用します。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-dd",
+          "sides": [
+            {
+              "role": "given",
+              "label": "例",
+              "texts": [
+                "以下の{オブジェクト名}を削除しますか？　この操作は元に戻せません。"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "UB-am",
+          "sides": [
+            {
+              "role": "given",
+              "label": "例",
+              "texts": [
+                "この回答履歴を削除しますか？"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-64",
+      "candidate": "UW-64",
+      "rewrittenToVerdict": false,
+      "area": "Dialogs and empty states",
+      "rule": "SmartHR: a confirmation dialog shows how many items the action touches and what it will do.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR). Its first sentence asks only to consider (検討します) telling the user beforehand what will happen; the second states what the dialog shows.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-cs",
+          "text": "ワンクッション必要な操作をユーザーが実行した際は、その操作によって何が起こるのかを事前に伝えることを検討します。"
+        },
+        {
+          "key": "SH-cs",
+          "text": "確認ダイアログでは、対象となる件数や操作の実行で何が起こるかを表示します。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-65",
+      "candidate": "UW-65",
+      "rewrittenToVerdict": false,
+      "area": "Dialogs and empty states",
+      "rule": "Ubie: a dialog header states the user's action as a noun phrase or a question, joins the action noun and its object with 「の」, uses words specific to the case, and fits two lines on mobile and one on larger screens.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie). The の form: 2 of 4 company guides (Ubie; SmartHR's dialog titles, JW-61, and its delete-dialog title in KW-63). Ubie's page writes 「体現止め」 and 「疑問系」; 体言止め and 疑問形 are meant.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB-am",
+          "text": "ユーザーが求める操作を、体現止めまたは疑問系で表現します。"
+        },
+        {
+          "key": "UB-am",
+          "text": "アクションを表す動名詞とその対象は連体助詞「の」を使って接続します。"
+        },
+        {
+          "key": "UB-am",
+          "text": "汎用的な言葉ではなく、ユースケースに特化した具体的な言葉を使いましょう。"
+        },
+        {
+          "key": "UB-am",
+          "text": "モバイル環境では2行、それより大きなデバイスでは1行に収まるようにします。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB-am",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "ユーザー情報を編集しましょう"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "ユーザー情報の編集"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "UB-am",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "変更をキャンセルする"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "変更を破棄する"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-65, FYI**: a heading inside a dialog that ends in ましょう (Ubie's ❌ form). The line count is judgment only (it depends on the width)."
+    },
+    {
+      "id": "KW-66",
+      "candidate": "UW-66",
+      "rewrittenToVerdict": false,
+      "area": "Dialogs and empty states",
+      "rule": "SmartHR: a table with no objects yet is not drawn; a message names the object, with a button to add one. A search that finds nothing keeps the table header and shows another message.",
+      "kind": "WRITE + TYPO",
+      "strength": "one company's guide (SmartHR; one page's templates). In the zero-object state the page also hides the action buttons that need an object, the area for temporary operations and the pagination; \"not drawn\" is for that state only.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-tb",
+          "text": "テーブルは表示しません。"
+        },
+        {
+          "key": "SH-tb",
+          "text": "代わりに`Panel`内部に、`{オブジェクト名}はありません。`というメッセージと、オブジェクト追加を促すボタンを上下左右中央に表示します。"
+        },
+        {
+          "key": "SH-tb",
+          "text": "テーブルヘッダー（`thead`）は表示したままとします。"
+        },
+        {
+          "key": "SH-tb",
+          "text": "オブジェクトのエリアには、`該当する{オブジェクト名}はありません。<br />別の条件を試してください。`というメッセージを上下左右中央に表示します。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example (the message templates are in the quotes).",
+      "checker": "judgment only (an empty table is a state at run time)."
+    },
+    {
+      "id": "KW-67",
+      "candidate": "UW-67",
+      "rewrittenToVerdict": false,
+      "area": "Dialogs and empty states",
+      "rule": "SmartHR: a missing value in a data table or definition list is left blank; a dash (`-`) in the disabled text colour only for an item the user cannot enter.",
+      "kind": "TYPO",
+      "strength": "one company's guide (SmartHR).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-ed",
+          "text": "データテーブルや定義リストにおいて、値がない項目は空白表示とします。"
+        },
+        {
+          "key": "SH-ed",
+          "text": "以下の場合において、値がない項目は（空白表示ではなく）`-`を表示し、文字色は`TEXT_DISABLED`とします。"
+        },
+        {
+          "key": "SH-ed",
+          "text": "データテーブルや定義リスト上に、ユーザーが入力できない項目を表示する場合"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (whether an item can be entered is not in the text)."
+    },
+    {
+      "id": "KW-33",
+      "candidate": "UW-33",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "ください, すべて, すでに and いる in kana.",
+      "kind": "WRITE",
+      "strength": "translation guides only (Mozilla and WordPress; Microsoft's guide was not checked for this rule); with JW-25 (KB, JTF). Mozilla keeps kanji for a main verb in context.",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "WP",
+          "text": "「下さい」 は「ください」、「全て」は「すべて」、「既に」は「すでに」に統一する"
+        },
+        {
+          "key": "MZ",
+          "text": "本動詞では文脈に応じて漢字、補助動詞についてはひらがなとする。"
+        },
+        {
+          "key": "MZ-ed",
+          "text": "「居る」ではなく「いる」。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "the pairs in the WordPress quote.",
+      "checker": "**KW-33, FYI**: 下さい, 全て, 既に, 居る."
+    },
+    {
+      "id": "KW-34",
+      "candidate": "UW-34",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Mozilla writes the conditional 「とき」 in kana and 「場合」 in kanji; SmartHR treats the two as close in meaning.",
+      "kind": "WRITE",
+      "strength": "the spelling: translation guides only (Mozilla). The meaning: one company's guide (SmartHR, which uses 場合 for the larger condition and とき for the smaller).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "条件節で用いる「〜するとき」はひらがな、「〜する場合」は漢字とする。"
+        },
+        {
+          "key": "SH-oth",
+          "text": "「場合」と「とき」に大きな違いはありません。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only (the kanji has other readings)."
+    },
+    {
+      "id": "KW-35",
+      "candidate": "UW-35",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Ubie aims at about 3:7 kanji to hiragana; Mozilla uses no more kanji than needed.",
+      "kind": "WRITE (the ratio is countable)",
+      "strength": "the number: one company's guide (Ubie, a health-information service, as its own aim). The direction: translation guides only (Mozilla).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "漢字とひらがなのバランスを、3:7くらいになるようにしましょう。"
+        },
+        {
+          "key": "MZ",
+          "text": "日本語が堅くならないよう必要以上の漢字は使用しない。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "**KW-35, FYI**, once per file: kanji above 30% of kanji plus hiragana, when the file's strings hold at least 100 of them."
+    },
+    {
+      "id": "KW-38",
+      "candidate": "UW-38",
+      "rewrittenToVerdict": true,
+      "area": "Notation",
+      "rule": "Replace English and katakana words with ordinary Japanese where one exists.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR) and one translation guide (Mozilla). Ubie's everyday-words rule replaces hard Sino-Japanese words, not loanwords: it is KW-56. ヴ is JW-32's; Ubie shows it only as a Don't example.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "固有名詞や専門用語あるいは慣例的なものを除き英語表記は使用しない。"
+        },
+        {
+          "key": "MZ",
+          "text": "カタカナ語についても同様に、自然な日本語に可能な限り置き換える。"
+        },
+        {
+          "key": "SH-oth",
+          "text": "「カタカナ語を用いるときには、まず漢字語での言い換えを検討する」に則って、フリーテキストは「自由記述」と表記します。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "MZ",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Bad",
+              "texts": [
+                "Plug-in が Install されているかチェックして下さい。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Good",
+              "texts": [
+                "プラグインがインストールされているか確認してください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-39",
+      "candidate": "UW-39",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Latin letters and digits half-width; no full-width space (U+3000); no half-width katakana.",
+      "kind": "TYPO (code points)",
+      "strength": "translation guides only (Mozilla and WordPress; Microsoft's guide was not checked for this rule); with JW-36, JW-50 and JW-59 (JTF, a translation-industry guide; SmartHR for digits). The government writing guide asks only for one choice per document (JW-50, JW-59), and it and JTF allow a full-width space after a sentence-ending exclamation or question mark (JW-43).",
+      "tiers": [
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ",
+          "text": "英数字や記号を使用する場合は特別な理由のない限り半角を使用する。"
+        },
+        {
+          "key": "MZ",
+          "text": "全角空白および半角カナは使用しない。"
+        },
+        {
+          "key": "WP",
+          "text": "すべての英数字、符号、疑問符、感嘆符は半角文字を使う"
+        }
+      ],
+      "examples": [
+        {
+          "key": "JTF",
+          "via": "JW-36",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "ﾒｰﾙｱﾄﾞﾚｽ"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "メールアドレス"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "JTF",
+          "via": "JW-50",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "１２３４５"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "12345"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "JTF",
+          "via": "JW-59",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "ａｂｃ ＤＥＦ"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "abc DEF"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-39, FYI**: full-width digits (U+FF10–U+FF19), full-width Latin letters (U+FF21–U+FF3A, U+FF41–U+FF5A), U+3000, half-width katakana (U+FF65–U+FF9F). The fixtures quote JTF's examples above and two strings in `rules.md` that hold U+3000 (JW-43's JTF example, JT-29's KB list label); this is the one rule whose quotes may come from `rules.md` as well as the writing research."
+    },
+    {
+      "id": "KW-46",
+      "candidate": "UW-46",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Ranges take 〜 U+301C WAVE DASH, not ～ U+FF5E; Mozilla also allows U+2013 and never uses U+2015.",
+      "kind": "TYPO (code points)",
+      "strength": "the code points: translation guides only (Mozilla, the one source read that names them; Microsoft's section on the wave dash was not checked for this rule). The wave dash for ranges: 2 of 4 company guides (SmartHR, Ubie); SmartHR names no code point, and its OK example came back as U+301C. With JW-45 (the guideline for foreign residents writes a range in words instead).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 2
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "MZ-ed21",
+          "text": "「–」(U+2013 二分ダッシュ) または「〜」(U+301C 波ダッシュ) は数字の範囲等を表すのに用いる。"
+        },
+        {
+          "key": "MZ-ed21",
+          "text": "「―」(U+2015 水平線) と「～」 (U+FF5E 全角チルダ) は用いない。"
+        },
+        {
+          "key": "MZ-ed21",
+          "text": "Windows のキーボードから「～」を入力すると、通常は U+FF5E 全角チルダが入力されてしまうので注意すること。"
+        },
+        {
+          "key": "SH-cnt",
+          "text": "期間を表す場合には、`〜`（波線）を使います。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-cnt",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "2022/01/01 - 2022/03/01、2022/01/01−2022/03/01"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "2022/01/01〜2022/03/01"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-46, FYI**: any U+FF5E or U+2015; a YYYY/MM/DD range joined by U+002D or U+2212 (not U+2013, which Mozilla allows)."
+    },
+    {
+      "id": "KW-48",
+      "candidate": "UW-48",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Ubie: a half-width slash for fractions, a full-width slash between listed words.",
+      "kind": "TYPO",
+      "strength": "one company's guide (Ubie).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "半角スラッシュは分数を示す。並記した言葉の区切りには全角スラッシュを使う。"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only. No quoted string breaks it, in the writing research or in `rules.md`."
+    },
+    {
+      "id": "KW-49",
+      "candidate": "UW-49",
+      "rewrittenToVerdict": false,
+      "area": "Notation",
+      "rule": "Use emphasis brackets consistently.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie). OPTiM heading only, not counted. With JW-41.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "【】「」『』など、強調表現の使い方に一貫性を持たせましょう。（textlint対応）"
+        }
+      ],
+      "examples": [],
+      "exampleNote": "no sourced example.",
+      "checker": "judgment only."
+    },
+    {
+      "id": "KW-52",
+      "candidate": "UW-52",
+      "rewrittenToVerdict": false,
+      "area": "Numbers and counters",
+      "rule": "Group digits by three with a half-width comma.",
+      "kind": "TYPO",
+      "strength": "one company's guide (SmartHR) and one translation guide (Mozilla). OPTiM heading only, not counted. With JW-51.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        },
+        {
+          "tier": "optim-not-counted"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-cnt",
+          "text": "読みやすさの観点から、数値を表記するときには3桁ごとに「,」を入れます。"
+        },
+        {
+          "key": "SH-cnt",
+          "text": "また、カンマは数字に合わせて半角を用います。"
+        },
+        {
+          "key": "MZ-ed",
+          "text": "半角英数字。3 ケタごとに区切り文字を挿入する。(例: 1,024)"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-cnt",
+          "sides": [
+            {
+              "role": "given",
+              "label": null,
+              "texts": [
+                "1,000,000円、10,000人"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only. No string quoted in the writing research breaks it. In `rules.md` the only digit runs without a comma sit beside a kanji unit (JW-51: KB allows dropping the comma there, and JTF calls using both redundant), so a check that fired on them would flag accepted forms."
+    },
+    {
+      "id": "KW-54",
+      "candidate": "UW-54",
+      "rewrittenToVerdict": false,
+      "area": "Numbers and counters",
+      "rule": "No space between a digit placeholder and its counter (WordPress); SmartHR counts records with 「件」.",
+      "kind": "TYPO + WRITE",
+      "strength": "the placeholder: translation guides only (WordPress). 件: one company's guide (SmartHR). Mozilla writes か in kana in counters, with a space before (MZ-ed 「「2 か月」「5 か所」「10 か国語」。」), adding to JW-52.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        },
+        {
+          "tier": "translation"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-cnt",
+          "text": "従業員に紐づくアカウントや、書類・依頼・申請などを数えるときの表記は「件」とします。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "WP",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "誤",
+              "texts": [
+                "%d 件の投稿、%d 個の文字列"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "正",
+              "texts": [
+                "%d件の投稿、%d個の文字列"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "SH-cnt",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "NG",
+              "texts": [
+                "22名の社員番号アカウントを表示中"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "OK",
+              "texts": [
+                "22件の社員番号アカウントを表示中"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-54, FYI**: `%d` (or `%1$d`) followed by a space and Japanese text. Which counter fits is judgment only."
+    },
+    {
+      "id": "KW-55",
+      "candidate": "UW-55",
+      "rewrittenToVerdict": false,
+      "area": "Numbers and counters",
+      "rule": "Ubie writes Arabic numerals in horizontal text, 1つ included.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie); WordPress writes Arabic numerals except where custom keeps kanji (正 「二次元コード」). The government writing guide (JW-49) writes the kanji form, so for this form it is a house choice.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "横書きでは算用数字を使う。漢数字を使いません。（textlint対応）"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "当てはまるものを一つ選んでください。"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "当てはまるものを1つ選んでください。"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-55, FYI**: 一つ (the quoted form only)."
+    },
+    {
+      "id": "KW-68",
+      "candidate": "UW-68",
+      "rewrittenToVerdict": false,
+      "area": "Numbers and counters",
+      "rule": "A price a business shows consumers in advance must include the consumption tax (総額表示), as the National Tax Agency explains the duty.",
+      "kind": "WRITE (what a price must contain, not how it is set)",
+      "strength": "statutory duty (the Consumption Tax Act; the page's legal-basis line reads 「消法63」, and the page is dated 「[令和8年4月1日現在法令等]」). It covers prices shown to consumers in advance. The page also carries a ※ note: from 1 April 2027 to 31 March 2029 (令和9年4月1日 to 令和11年3月31日) the tax rate on the sale of 飲食料品 is reduced, with a special rule for showing their total price. This rule does not cover that special rule, and the page's examples assume the standard 10% rate.",
+      "tiers": [
+        {
+          "tier": "law"
+        }
+      ],
+      "quotes": [
+        {
+          "key": "NTA",
+          "text": "総額表示義務とは、事業者が消費者に対してあらかじめ価格を表示する場合に、消費税額（地方消費税額を含む。）を含めた価格（税込価格）を表示することを義務付けるものです。"
+        },
+        {
+          "key": "NTA",
+          "text": "総額表示の義務付けは、事業者が消費者に対してあらかじめ表示する価格が対象となります。"
+        },
+        {
+          "key": "NTA",
+          "text": "※ 令和9年4月1日から令和11年3月31日までの2年間、飲食料品の譲渡について、消費税率が引き下げられます。"
+        },
+        {
+          "key": "NTA",
+          "text": "この引下げに当たり、飲食料品の総額表示の特例が設けられます。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "NTA",
+          "sides": [
+            {
+              "role": "given",
+              "label": "例",
+              "texts": [
+                "11,000円",
+                "11,000円（税込）",
+                "11,000円（税抜価格10,000円）",
+                "11,000円（うち消費税額等1,000円）",
+                "11,000円（税抜価格10,000円、消費税額等1,000円）",
+                "11,000円（税抜価格10,000円、消費税率10パーセント）",
+                "10,000円（税込価格11,000円）"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "judgment only (no source quotes a wrong form)."
+    },
+    {
+      "id": "KW-56",
+      "candidate": "UW-56",
+      "rewrittenToVerdict": false,
+      "area": "Plain and fair wording",
+      "rule": "Ubie: everyday words over institutional ones, and readings for hard kanji.",
+      "kind": "WRITE",
+      "strength": "one company's guide (Ubie, a health-information service). With JW-23, JW-24 and JW-68.",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "UB",
+          "text": "同じ意味でも日常で使う単語を使いましょう。（textlint対応）"
+        },
+        {
+          "key": "UB",
+          "text": "読みづらい漢字の病名や専門用語には、できるだけ読み仮名をつけましょう。"
+        }
+      ],
+      "examples": [
+        {
+          "key": "UB",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": "Don't",
+              "texts": [
+                "医療機関",
+                "疾患",
+                "近隣"
+              ]
+            },
+            {
+              "role": "right",
+              "label": "Do",
+              "texts": [
+                "病院",
+                "病気",
+                "近く, 近所"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-56, FYI**: 医療機関, 疾患, 近隣. Readings: judgment only."
+    },
+    {
+      "id": "KW-57",
+      "candidate": "UW-57",
+      "rewrittenToVerdict": false,
+      "area": "Plain and fair wording",
+      "rule": "SmartHR avoids words with negative or exclusionary overtones.",
+      "kind": "WRITE",
+      "strength": "one company's guide (SmartHR). The 得意な言語 rule is scoped to text about multilingual support. With JW-69 (no mechanical bans).",
+      "tiers": [
+        {
+          "tier": "company",
+          "of4": 1
+        }
+      ],
+      "quotes": [
+        {
+          "key": "SH-oth",
+          "text": "英単語の「dummy」はネガティブな意味を持つため、「ダミー」は使用しません。代わりに「サンプル」を使用します。"
+        },
+        {
+          "key": "SH-oth",
+          "text": "多言語対応に関する記載において、「その人が十分に理解できる言語」は「得意な言語」と表記します。"
+        },
+        {
+          "key": "SH-oth",
+          "text": "「得意な言語」と表記し、「母国語」「母語」の使用は控える"
+        }
+      ],
+      "examples": [
+        {
+          "key": "SH-oth",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "ダミー"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "サンプル"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "SH-oth",
+          "sides": [
+            {
+              "role": "wrong",
+              "label": null,
+              "texts": [
+                "母国語",
+                "母語"
+              ]
+            },
+            {
+              "role": "right",
+              "label": null,
+              "texts": [
+                "得意な言語"
+              ]
+            }
+          ]
+        }
+      ],
+      "exampleNote": null,
+      "checker": "**KW-57, FYI**: ダミー, 母国語, 母語."
+    }
+  ],
+  "houseChoices": [
+    {
+      "id": "UW-16",
+      "title": "Action labels: with or without 「する」",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "SmartHR drops it (SH-app): 「ただし、名詞に「する」をつけたサ行変格活用動詞の場合の「する」は省略します。」 OK 「追加」「削除」, NG 「追加する」「削除する」.",
+          "quotes": [
+            {
+              "key": "SH-app",
+              "text": "ただし、名詞に「する」をつけたサ行変格活用動詞の場合の「する」は省略します。"
+            },
+            {
+              "key": "SH-app",
+              "label": "OK",
+              "text": "追加"
+            },
+            {
+              "key": "SH-app",
+              "label": "OK",
+              "text": "削除"
+            },
+            {
+              "key": "SH-app",
+              "label": "NG",
+              "text": "追加する"
+            },
+            {
+              "key": "SH-app",
+              "label": "NG",
+              "text": "削除する"
+            }
+          ]
+        },
+        {
+          "text": "Ubie allows either (UB-btn): 「そのボタンが担うアクションを「〜する」または体言止めのかたちで書きます」.",
+          "quotes": [
+            {
+              "key": "UB-btn",
+              "text": "そのボタンが担うアクションを「〜する」または体言止めのかたちで書きます"
+            }
+          ]
+        },
+        {
+          "text": "Spindle decides by the stem (SP-lab): 「漢語の名詞を語幹とした動作性名詞は活用する」 「外来語を語幹とした動詞は活用しない」, with two exceptions, and widely known function names 「活用しなくても問題ありません。」.",
+          "quotes": [
+            {
+              "key": "SP-lab",
+              "text": "漢語の名詞を語幹とした動作性名詞は活用する"
+            },
+            {
+              "key": "SP-lab",
+              "text": "外来語を語幹とした動詞は活用しない"
+            },
+            {
+              "key": "SP-lab",
+              "text": "活用しなくても問題ありません。"
+            }
+          ]
+        },
+        {
+          "text": "Mozilla (MZ): 「動作や目的などを簡潔な体言で表す。可能であれば語数を揃える。」. WordPress (WP 3-8): 「ボタンラベルでは語尾の「します (する)」を省略した形にする」.",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "動作や目的などを簡潔な体言で表す。可能であれば語数を揃える。"
+            },
+            {
+              "key": "WP",
+              "text": "ボタンラベルでは語尾の「します (する)」を省略した形にする"
+            }
+          ]
+        },
+        {
+          "text": "Microsoft takes command buttons as noun phrases by default, with a plain verb allowed for clarity, and says nothing about a する ending on buttons (MS): “Use noun phrase (体言止め) when translating a title of the box and command buttons.” Its word-choice section keeps the old する form for button names, in words that can be read either way.",
+          "quotes": [
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "Use noun phrase (体言止め) when translating a title of the box and command buttons."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-17",
+      "title": "Joining a button label's object: を or の",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "SmartHR prescribes を on buttons (SH-app): 「動詞の終止形の前に、オブジェクトを明記する場合には、助詞は「を」が適切です。」 NG 「権限の追加、申請の取り消し」, OK 「権限を追加、申請を取り消す」.",
+          "quotes": [
+            {
+              "key": "SH-app",
+              "text": "動詞の終止形の前に、オブジェクトを明記する場合には、助詞は「を」が適切です。"
+            },
+            {
+              "key": "SH-app",
+              "label": "NG",
+              "text": "権限の追加、申請の取り消し"
+            },
+            {
+              "key": "SH-app",
+              "label": "OK",
+              "text": "権限を追加、申請を取り消す"
+            }
+          ]
+        },
+        {
+          "text": "WordPress, for \"View XX\" (WP 3-2): 「“View XX” という表現は基本的に「～を表示 (する)」に統一する」",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "“View XX” という表現は基本的に「～を表示 (する)」に統一する"
+            }
+          ]
+        },
+        {
+          "text": "Microsoft takes the の form as the basic noun phrase, and its noun-phrase scope lists command buttons (MS): + 「変更箇所の表示」 − 「変更箇所を表示」; “Basic expression \"～の～\"”. Its minus form is the form WordPress prescribes.",
+          "quotes": [
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "変更箇所の表示"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "変更箇所を表示"
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "Basic expression \"～の～\""
+            }
+          ]
+        },
+        {
+          "text": "Titles are not contested: SmartHR's same page gives the の particle for screen titles and item names (SH-app): 「名詞の前に、オブジェクトを明記する場合には、助詞は「の」が適切です。」 Ubie's dialog headers (KW-65) and SmartHR's dialog titles (JW-61) use it too.",
+          "quotes": [
+            {
+              "key": "SH-app",
+              "text": "名詞の前に、オブジェクトを明記する場合には、助詞は「の」が適切です。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-30",
+      "title": "Success wording (the verdict: not a real disagreement)",
+      "notADisagreement": true,
+      "sides": [
+        {
+          "text": "Mozilla gives one translation example for \"Update Succeeded.\" with no general statement: 「不適切な訳: 更新に成功しました。」, 「適切な訳: 更新を正常に完了しました。」 (MZ).",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "不適切な訳: 更新に成功しました。"
+            },
+            {
+              "key": "MZ",
+              "text": "適切な訳: 更新を正常に完了しました。"
+            }
+          ]
+        },
+        {
+          "text": "SmartHR prescribes its form only for the count summary of a bulk job (SH-bg): 「エラーが発生しない場合は、結果概要に「◯件の{{操作目的を表す名詞}}に成功しました。」と表示します。」",
+          "quotes": [
+            {
+              "key": "SH-bg",
+              "text": "エラーが発生しない場合は、結果概要に「◯件の{{操作目的を表す名詞}}に成功しました。」と表示します。"
+            }
+          ]
+        },
+        {
+          "text": "Neither is a general rule on success messages.",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-36",
+      "title": "The long vowel at the end of English -er, -or, -ar words",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Ubie keeps it (UB): 「カタカナの長音符号は省略しません。」 Do 「ユーザー, スキャナー, プリンター」, Don't 「ユーザ, スキャナ, プリンタ」.",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "カタカナの長音符号は省略しません。"
+            },
+            {
+              "key": "UB",
+              "label": "Do",
+              "text": "ユーザー, スキャナー, プリンター"
+            },
+            {
+              "key": "UB",
+              "label": "Don't",
+              "text": "ユーザ, スキャナ, プリンタ"
+            }
+          ]
+        },
+        {
+          "text": "Mozilla by ending (MZ): 「-er、-or、-ar、-cy、-ry、-gy、-xy で終わる単語はすべて長音とする。Microsoft のような例外はなし。」 「-ear、-eer、-re、-ty、-dy で終わる単語は長音としない。」",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "-er、-or、-ar、-cy、-ry、-gy、-xy で終わる単語はすべて長音とする。Microsoft のような例外はなし。"
+            },
+            {
+              "key": "MZ",
+              "text": "-ear、-eer、-re、-ty、-dy で終わる単語は長音としない。"
+            }
+          ]
+        },
+        {
+          "text": "WordPress by length (WP 4-1): 「長音記号「−」は、長音を含めて4文字以下になる単語には付ける」 「5文字以上になる単語には付けない。」 (the mark came back as U+2212 on two fetches; the page likely prints it that way).",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "長音記号「−」は、長音を含めて4文字以下になる単語には付ける"
+            },
+            {
+              "key": "WP",
+              "text": "5文字以上になる単語には付けない。"
+            }
+          ]
+        },
+        {
+          "text": "Microsoft by ending, then by length, with a long list of exceptions \"in accordance with customary practice\" (MS): “In principle, use a long vowel when a source English term has following suffixes: -er, -or, -ar.” + 「コンピューター」 − 「コンピュータ」; “In other cases, use a long vowel when a corresponding Katakana word has less than 4 characters.”; its exceptions include 「コンパイラ」, 「プロセッサ」 and 「レジスタ」 without the mark and 「ポリシー」 and 「サマリー」 with it, and it writes 「メモリ」. This is the list Mozilla's \"no exceptions like Microsoft's\" refers to.",
+          "quotes": [
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "In principle, use a long vowel when a source English term has following suffixes: -er, -or, -ar."
+            },
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "コンピューター"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "コンピュータ"
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "In other cases, use a long vowel when a corresponding Katakana word has less than 4 characters."
+            },
+            {
+              "key": "MS",
+              "text": "コンパイラ"
+            },
+            {
+              "key": "MS",
+              "text": "プロセッサ"
+            },
+            {
+              "key": "MS",
+              "text": "レジスタ"
+            },
+            {
+              "key": "MS",
+              "text": "ポリシー"
+            },
+            {
+              "key": "MS",
+              "text": "サマリー"
+            },
+            {
+              "key": "MS",
+              "text": "メモリ"
+            }
+          ]
+        },
+        {
+          "text": "The sources agree on ユーザー (Ubie, Mozilla, WordPress, Microsoft) and サーバー (Mozilla, WordPress), and no guide read writes ユーザ. That agreement is not checked here; JW-33 (the GK notice allows dropping the mark by custom) and JW-34 still apply.",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-37",
+      "title": "Inside a katakana compound: a space, a 中黒, or nothing",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Nothing (MZ): 「カタカナで構成された語句について、一般的な固有名詞を除き、間に中黒やスペースを挿入しない。」",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "カタカナで構成された語句について、一般的な固有名詞を除き、間に中黒やスペースを挿入しない。"
+            }
+          ]
+        },
+        {
+          "text": "No 中点 as a principle, and one allowed where the break would be unclear; WordPress speaks only of 中点 (WP 5): 「カタカナの複合語には、用語集などで特に指定しないかぎり、原則として中点「・」は使用しない。」 「例外として、カタカナが続いて区切りがわかりにくくなる場合は、中点を使ってもかまわない。」 正 「ライブラリ・リファレンスマニュアル」",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "カタカナの複合語には、用語集などで特に指定しないかぎり、原則として中点「・」は使用しない。"
+            },
+            {
+              "key": "WP",
+              "text": "例外として、カタカナが続いて区切りがわかりにくくなる場合は、中点を使ってもかまわない。"
+            },
+            {
+              "key": "WP",
+              "label": "正",
+              "text": "ライブラリ・リファレンスマニュアル"
+            }
+          ]
+        },
+        {
+          "text": "A half-width space where the English words have a space, none where they have a hyphen (MS): “When there is a space between English words, insert a half-width space accordingly.” 「ダイアログ△ボックス」 「メニュー△コマンド」; + 「ページ△レイアウト」 − 「ページレイアウト」. The space may be dropped where room is short, if the screen stays consistent; 中黒 only in names such as 「トリニダード・トバゴ」. △ is the guide's own mark (MS): “A triangle (△) in an example means a half-width space.” These are statements in characters, not layout, and this side is the one place in the file where a spacing rule rests on quotes that are not of tier \"web\". The PDF's text layer is not consistent elsewhere: it also gives 「ダイアログボックスが表示されます。」 with no space, and whether the PDF itself shows a space there cannot be told from the text layer.",
+          "quotes": [
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "When there is a space between English words, insert a half-width space accordingly."
+            },
+            {
+              "key": "MS",
+              "text": "ダイアログ△ボックス"
+            },
+            {
+              "key": "MS",
+              "text": "メニュー△コマンド"
+            },
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "ページ△レイアウト"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "ページレイアウト"
+            },
+            {
+              "key": "MS",
+              "text": "トリニダード・トバゴ"
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "A triangle (△) in an example means a half-width space."
+            },
+            {
+              "key": "MS",
+              "text": "ダイアログボックスが表示されます。"
+            }
+          ]
+        },
+        {
+          "text": "The three agree on no 中黒 in an ordinary compound (WordPress allows one where the break is unclear). With JW-35 (JTF: 中黒, space or nothing, chosen once per document).",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-40",
+      "title": "A typed space between Japanese and Latin text",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Space by letters and digits (MZ): 「英数字と日本語との間には半角空白を入れることを原則とする。」",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "英数字と日本語との間には半角空白を入れることを原則とする。"
+            }
+          ]
+        },
+        {
+          "text": "Space by letters, none by digits (WP): 「数字を除く半角文字と全角文字の間には、半角文字1字分のスペースを入れる」; 「半角数字の前後には半角スペースを入れない」.",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "数字を除く半角文字と全角文字の間には、半角文字1字分のスペースを入れる"
+            },
+            {
+              "key": "WP",
+              "text": "半角数字の前後には半角スペースを入れない"
+            }
+          ]
+        },
+        {
+          "text": "No space: JW-57 (JTF, SmartHR); OPTiM heading 「数字と英単語の前後に半角スペースを挿入しない」 (not counted).",
+          "quotes": [
+            {
+              "key": "OPT",
+              "text": "数字と英単語の前後に半角スペースを挿入しない"
+            }
+          ]
+        },
+        {
+          "text": "A typed space and CSS `text-autospace` together double the gap (JT-20, JT-21).",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-41",
+      "title": "。 on a single sentence of UI text",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "None (UB): 「1文で終わっているテキストは区切りが明確なため、基本的に句点はつけません。」",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "1文で終わっているテキストは区切りが明確なため、基本的に句点はつけません。"
+            }
+          ]
+        },
+        {
+          "text": "None unless the sentence has 、 (SP-lab): 「読点、句点は基本的に必要ありませんが、文中に読点が入る場合は句点を入れましょう。」",
+          "quotes": [
+            {
+              "key": "SP-lab",
+              "text": "読点、句点は基本的に必要ありませんが、文中に読点が入る場合は句点を入れましょう。"
+            }
+          ]
+        },
+        {
+          "text": "。 (SH-app, tooltips): 「1文のみの場合でも、文章には句点をつけます。」; (MZ) 「…文になるところでは句点を使用する。」",
+          "quotes": [
+            {
+              "key": "SH-app",
+              "text": "1文のみの場合でも、文章には句点をつけます。"
+            },
+            {
+              "key": "MZ",
+              "text": "…文になるところでは句点を使用する。"
+            }
+          ]
+        },
+        {
+          "text": "Follow the source string (WP 3-8): 「句読点の有無は原文に合わせる。…」",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "句読点の有無は原文に合わせる。…"
+            }
+          ]
+        },
+        {
+          "text": "Headings: Spindle 「読点、句点は必要ありません。」, with JW-39 (KB, JTF). Buttons: no source states it.",
+          "quotes": [
+            {
+              "key": "SP-lab",
+              "text": "読点、句点は必要ありません。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-42",
+      "title": "Exclamation and question marks: width",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Full-width (MZ): 「日本語文中での句読点および疑問符や感嘆符については全角記号を使用する。」; (MZ-ed) 「感嘆符と疑問は全角「！」「？」。ただし、連続する場合は半角「!?」にする。」 (U+FF01, U+FF1F; then U+0021 U+003F). With JW-42 and JW-43.",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "日本語文中での句読点および疑問符や感嘆符については全角記号を使用する。"
+            },
+            {
+              "key": "MZ-ed",
+              "text": "感嘆符と疑問は全角「！」「？」。ただし、連続する場合は半角「!?」にする。"
+            }
+          ]
+        },
+        {
+          "text": "Half-width with a space before (WP 1-2): 正 「準備をしましょう !」; 誤 「準備をしましょう! (記号が半角だが、その前に半角スペースがない)」 and 「準備をしましょう！ (記号が全角)」. The space rests on the page's words in the first 誤 line. In the 正 line the page's bytes have U+00A0 NO-BREAK SPACE before the mark, not U+0020 (checked against the page, 2026-11-21).",
+          "quotes": [
+            {
+              "key": "WP",
+              "label": "正",
+              "text": "準備をしましょう !"
+            },
+            {
+              "key": "WP",
+              "label": "誤",
+              "text": "準備をしましょう! (記号が半角だが、その前に半角スペースがない)"
+            },
+            {
+              "key": "WP",
+              "label": "誤",
+              "text": "準備をしましょう！ (記号が全角)"
+            }
+          ]
+        },
+        {
+          "text": "Ubie (UB) says 「感嘆符や疑問符、伸ばし棒は使いません。」, but its own Do examples end in ？ (U+FF1F) and ? (U+003F): for the question mark the page contradicts itself (verdict). For the exclamation mark, see KW-32.",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "感嘆符や疑問符、伸ばし棒は使いません。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-43",
+      "title": "Parentheses: width",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Half-width with spaces outside (WP 1-5, 1-6): 「丸括弧 ( ) は半角にし、前後には、半角文字1文字分のスペースを入れる」; 「丸括弧「(」の次、「)」の前にスペースを入れない」. Mozilla (MZ) spaces them the same way: 「例えば “(” の前は半角空白だが後は詰める、“)” や “:” の前は詰めるが後は半角空白」.",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "丸括弧 ( ) は半角にし、前後には、半角文字1文字分のスペースを入れる"
+            },
+            {
+              "key": "WP",
+              "text": "丸括弧「(」の次、「)」の前にスペースを入れない"
+            },
+            {
+              "key": "MZ",
+              "text": "例えば “(” の前は半角空白だが後は詰める、“)” や “:” の前は詰めるが後は半角空白"
+            }
+          ]
+        },
+        {
+          "text": "Full-width: JW-42 (KB, JTF, SmartHR); DADS sample text 「＊氏（カタカナ）と名（カタカナ）を空白で区切ってください。」 (an example, not a rule); Ubie's symbol table (U+FF08, U+FF09).",
+          "quotes": [
+            {
+              "key": "DADS-in",
+              "text": "＊氏（カタカナ）と名（カタカナ）を空白で区切ってください。"
+            }
+          ]
+        },
+        {
+          "text": "Ubie's weekdays (UB): 「曜日の表記をする場合は、日付の後にスペースを空けずに半角()で表示しましょう。」",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "曜日の表記をする場合は、日付の後にスペースを空けずに半角()で表示しましょう。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-44",
+      "title": "Names of UI elements inside running text",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "「」 (WP 2-2): 「メニュー項目やボタンラベルは「」で囲む」.",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "メニュー項目やボタンラベルは「」で囲む"
+            }
+          ]
+        },
+        {
+          "text": "Half-width [ ] with spaces (MZ-ed): 「Microsoft の表記に準拠。半角大括弧を用いて前後に半角スペースを挿入する。」 例 「さらに、[検索バーの管理] をクリックすれば、…」.",
+          "quotes": [
+            {
+              "key": "MZ-ed",
+              "text": "Microsoft の表記に準拠。半角大括弧を用いて前後に半角スペースを挿入する。"
+            },
+            {
+              "key": "MZ-ed",
+              "label": "例",
+              "text": "さらに、[検索バーの管理] をクリックすれば、…"
+            }
+          ]
+        },
+        {
+          "text": "Double quotation marks (MZ): 「メニュー項目やボタンラベルなどを表すときは二重引用符を使用する。」",
+          "quotes": [
+            {
+              "key": "MZ",
+              "text": "メニュー項目やボタンラベルなどを表すときは二重引用符を使用する。"
+            }
+          ]
+        },
+        {
+          "text": "Full-width ［］ (SH-act example): 「…育児休業等給付金申請の［育児休業給付］タブで［終了した申請を表示］を有効にします。」; with JW-41.",
+          "quotes": [
+            {
+              "key": "SH-act",
+              "text": "…育児休業等給付金申請の［育児休業給付］タブで［終了した申請を表示］を有効にします。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-47",
+      "title": "Colon: width",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Half-width, no space before (WP 1-4): 「コロン記号 (:)の前には入れず、後には半角・全角を問わず入れる。」; (MZ-ed) 「コロン「:」やセミコロン「;」は半角にする (必要なら直後にスペースを挿入する)。」",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "コロン記号 (:)の前には入れず、後には半角・全角を問わず入れる。"
+            },
+            {
+              "key": "MZ-ed",
+              "text": "コロン「:」やセミコロン「;」は半角にする (必要なら直後にスペースを挿入する)。"
+            }
+          ]
+        },
+        {
+          "text": "Full-width in Ubie's table examples (U+FF1A) and in SmartHR (JW-47).",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-50",
+      "title": "Dates",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Slashes in SmartHR's UI (SH-cnt), with 年月日 allowed where slashes don't suit: 「*：ヘルプページなど、…「2025/01/01」がそぐわない場合には「2025年1月1日」のような表記も可能です。」 (NG: 2022/1/1).",
+          "quotes": [
+            {
+              "key": "SH-cnt",
+              "text": "*：ヘルプページなど、…「2025/01/01」がそぐわない場合には「2025年1月1日」のような表記も可能です。"
+            }
+          ]
+        },
+        {
+          "text": "年月日 (UB): 「年月日は漢字表記を使いましょう。」; WordPress 「2014年1月1日 (水)」; Mozilla (MZ-ed) 「西暦表記。文書内では YYYY 年 MM 月 DD 日」. They differ on spaces. With JW-53.",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "年月日は漢字表記を使いましょう。"
+            },
+            {
+              "key": "WP",
+              "text": "2014年1月1日 (水)"
+            },
+            {
+              "key": "MZ-ed",
+              "text": "西暦表記。文書内では YYYY 年 MM 月 DD 日"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-51",
+      "title": "Times",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "24-hour (SH-cnt): 「表示言語の選択にかかわらず、時刻は`hh:mm:ss`で表記します*。状況に応じて、`ss`は省略しても構いません。」 「hh：24時間制の2桁の時」.",
+          "quotes": [
+            {
+              "key": "SH-cnt",
+              "text": "表示言語の選択にかかわらず、時刻は`hh:mm:ss`で表記します*。状況に応じて、`ss`は省略しても構いません。"
+            },
+            {
+              "key": "SH-cnt",
+              "text": "hh：24時間制の2桁の時"
+            }
+          ]
+        },
+        {
+          "text": "HH:MM, 24-hour not stated (UB): 「時間の表記は半角スペースをあけてHH:MM表記しましょう。」",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "時間の表記は半角スペースをあけてHH:MM表記しましょう。"
+            }
+          ]
+        },
+        {
+          "text": "AM/PM (WP 7): 「2014年1月1日2:00 AM」. The 12-hour form for foreign readers: JW-54.",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "2014年1月1日2:00 AM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-53",
+      "title": "A space between a number and its unit",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Space (MZ-ed): 「「バイト」はカタカナ。それ以外の接頭辞付き単位は大文字英語表記。数字と単位の間に半角スペースを挿入する。(例: 5 MB、100 KB)」",
+          "quotes": [
+            {
+              "key": "MZ-ed",
+              "text": "「バイト」はカタカナ。それ以外の接頭辞付き単位は大文字英語表記。数字と単位の間に半角スペースを挿入する。(例: 5 MB、100 KB)"
+            }
+          ]
+        },
+        {
+          "text": "No space (SH-cnt): 「数字と単位の間にはスペースを入れず、「5GB」のように表記します。」; (WP 1-9) 「半角数字の前後には半角スペースを入れない」. With JW-55.",
+          "quotes": [
+            {
+              "key": "SH-cnt",
+              "text": "数字と単位の間にはスペースを入れず、「5GB」のように表記します。"
+            },
+            {
+              "key": "WP",
+              "text": "半角数字の前後には半角スペースを入れない"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UW-58",
+      "title": "Apology in an error translated from English (with UW-11)",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "WordPress drops it (WP 3-4): 「”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する」",
+          "quotes": [
+            {
+              "key": "WP",
+              "text": "”Sorry, …” で始まるエラーメッセージは「すみません」とは訳さず、その部分を削除する"
+            }
+          ]
+        },
+        {
+          "text": "Microsoft translates \"Sorry\", which it says is used in errors that cause serious problems for the customer or when a product or service fails, as a formal apology in a sentence of its own (MS): “This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal \"申し訳ございません\" to express sincere apology.”; MS “If \"Sorry\" is followed by some description in single English sentence, translate \"Sorry\" as one sentence and the description as another.”",
+          "quotes": [
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "This is used in error messages that result in serious problems for the customer, or when a product or service fails. Translate to formal \"申し訳ございません\" to express sincere apology."
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "If \"Sorry\" is followed by some description in single English sentence, translate \"Sorry\" as one sentence and the description as another."
+            }
+          ]
+        },
+        {
+          "text": "Both reject すみません; Microsoft only through its minus example, not in words. Neither says when to apologise, and no company guide or government page read does (writing/gaps.md).",
+          "quotes": []
+        }
+      ]
+    },
+    {
+      "id": "UW-59",
+      "title": "The polite お- and ご- forms of a few instructive verbs",
+      "notADisagreement": false,
+      "sides": [
+        {
+          "text": "Microsoft recommends them for eight listed verbs, and says the note does not apply to other instructive verbs (MS): “For following instructive \"...してください\" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical.” “Note: This is not applicable to other instructive \"...してください\" phrases” + 「ご確認ください」 − 「確認してください」; + 「お問い合わせください」 − 「問い合わせてください」. One listed pair is a different verb, not the polite form of the same one: + 「ご覧ください」 − 「参照してください」.",
+          "quotes": [
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "For following instructive \"...してください\" phrases, try to use more polite expression than normal to be more empathetic and avoid sounding mechanical."
+            },
+            {
+              "key": "MS",
+              "lang": "en",
+              "text": "Note: This is not applicable to other instructive \"...してください\" phrases"
+            },
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "ご確認ください"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "確認してください"
+            },
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "お問い合わせください"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "問い合わせてください"
+            },
+            {
+              "key": "MS",
+              "label": "+",
+              "text": "ご覧ください"
+            },
+            {
+              "key": "MS",
+              "label": "−",
+              "text": "参照してください"
+            }
+          ]
+        },
+        {
+          "text": "SmartHR (SH-ws), under its rule against overusing keigo (KW-09), gives OK 「◯◯を確認してください。」 against NG 「◯◯をご確認いただけますようお願いいたします。」. That is an example, not a statement against Microsoft's plus form, and its OK form is Microsoft's minus form for this verb.",
+          "quotes": [
+            {
+              "key": "SH-ws",
+              "label": "OK",
+              "text": "◯◯を確認してください。"
+            },
+            {
+              "key": "SH-ws",
+              "label": "NG",
+              "text": "◯◯をご確認いただけますようお願いいたします。"
+            }
+          ]
+        },
+        {
+          "text": "Ubie's example uses the お- form for one of the listed verbs (UB): 「お手数ですが、こちらからお問い合わせください。」",
+          "quotes": [
+            {
+              "key": "UB",
+              "text": "お手数ですが、こちらからお問い合わせください。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fonts": {
+    "input": {
+      "path": "docs/drafts/kana/references/measured-jp.md",
+      "sha256": "47114bef5c61298d4cce26a5307787eb7eead29865fe6a5b3059c7d698a6ef25"
+    },
+    "measuredOn": "2026-11-12",
+    "services": 77,
+    "firstFace": [
+      {
+        "face": "Noto Sans JP",
+        "services": 25
+      },
+      {
+        "face": "Hiragino Kaku Gothic",
+        "services": 17
+      },
+      {
+        "face": "Hiragino Sans",
+        "services": 10
+      },
+      {
+        "face": null,
+        "services": 7
+      },
+      {
+        "face": "Yu Gothic",
+        "services": 7
+      },
+      {
+        "face": "Meiryo",
+        "services": 7
+      },
+      {
+        "face": "Tazugane Gothic",
+        "services": 2
+      },
+      {
+        "face": "LINE Seed JP",
+        "services": 1
+      },
+      {
+        "face": "Shin Go",
+        "services": 1
+      }
+    ]
+  }
+}

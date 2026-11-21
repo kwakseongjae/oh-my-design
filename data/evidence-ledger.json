@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 453,
-  "sources": 4051,
+  "references_with_verification_v2": 454,
+  "sources": 4059,
   "sources_by_kind": {
-    "brand-asset": 281,
+    "brand-asset": 282,
     "license": 141,
-    "official-doc": 1966,
-    "product-surface": 1663
+    "official-doc": 1970,
+    "product-surface": 1666
   },
   "references": {
     "104": {
@@ -18338,6 +18338,60 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "www.pennylane.com"
+        }
+      ]
+    },
+    "peoplefund": {
+      "checked": "2026-11-21",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "blog-control",
+          "kind": "product-surface",
+          "captured": "2026-11-21",
+          "host": "blog.pfct.co.kr"
+        },
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-11-21",
+          "host": "blog.pfct.co.kr"
+        },
+        {
+          "id": "company-index",
+          "kind": "official-doc",
+          "captured": "2026-11-21",
+          "host": "blog.pfct.co.kr"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-11-21",
+          "host": "peoplefund.co.kr"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-11-21",
+          "host": "peoplefund.co.kr"
+        },
+        {
+          "id": "live-css",
+          "kind": "brand-asset",
+          "captured": "2026-11-21",
+          "host": "www.cple.co.kr"
+        },
+        {
+          "id": "service-intro",
+          "kind": "official-doc",
+          "captured": "2026-11-21",
+          "host": "blog.pfct.co.kr"
+        },
+        {
+          "id": "service-rebrand",
+          "kind": "official-doc",
+          "captured": "2026-11-21",
+          "host": "blog.pfct.co.kr"
         }
       ]
     },

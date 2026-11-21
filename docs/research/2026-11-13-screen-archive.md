@@ -492,3 +492,80 @@ Simulator: `look` with its wait 1.4 s (settled in 1.0 s, the first time the wait
 action and frame, `pages` three overlapping stills of the Settings list in 10.6 s, stopping by itself at
 the end of the list and with no fling. The Simulator answers on 127.0.0.1, so none of this says how fast the
 phone will be; the first thing to time in the next session is still one tap.
+
+## Before the next phone session: the first ten apps, replay, and three stills of where it could live (2026-11-14)
+
+- **Apps.** `tools/phone-recorder/apps.json` lists the first ten in walking order: Musinsa and Karrot (walked),
+  then 오늘의집, 29CM, 올리브영, 배달의민족, NOL(야놀자), 컬리, 쿠팡, 토스. All ten have a DESIGN.md in the catalog,
+  so a sheet and an item page can point at each other. Bundle ids are from the App Store's public lookup; whether
+  each is installed on the phone is not known. Toss is last and only with the owner at the phone: it opens on
+  balances, and a demo account cannot pass identity verification. The file also holds where each of the eleven
+  core screens is expected; those routes are guesses until a first walk confirms them.
+- **Replay.** `phone.mjs replay <flow.json> --walk NEW` runs a recorded walk's actions and takes its stills again
+  into NEW with the same notes and the same `--private` / `--cover`; `--plain` drops the cover rectangles. A tap
+  recorded by label that finds no such element stops the replay with the step number instead of tapping the old
+  point. Checked on the Simulator (five steps replayed, stopped at the sixth as built to).
+- **Not done:** noticing a notification banner inside `look`. It cannot be exercised on the Simulator as set up,
+  so it waits for the phone; until then Focus mode and viewing each frame stay the guard.
+
+**Three stills of where the archive could live on the site** (local files, `~/Downloads/kr-screens/mock/`; the
+frames are not uploaded anywhere):
+
+| still | what it is | what it is good for | what it costs |
+|---|---|---|---|
+| `a-gallery.html` | its own gallery at `/screens`: filters by app, screen type and pattern over one grid | the Mobbin shape people already know; one URL to share | a new section to keep alive; thin with two apps |
+| `b-item-page.html` | a Screens tab on `/design-systems/<id>`, flows in rows, the reference's tokens beside them | nobody else has screens next to measured values; the pages that already get the visits | only apps that are in the catalog; no cross-app view |
+| `c-compare.html` | one page per screen type (`/screens/home`): the same screen across apps, and a pattern table | a page per search intent ("앱 홈 화면 비교"); the form articles can quote | needs several apps per type before a page says anything |
+
+They are not exclusive: B can ship with the first apps, C once five or six apps share a type, A as the index over
+both. Which comes first is the owner's call.
+
+**Publication rules, a draft for the owner to change** (publication is still on hold):
+
+1. *Published:* the app's own interface on screens anyone signed in sees the same way (home, search, results,
+   lists, details, settings, sign-in, onboarding, pop-ups), shot with a demo account.
+2. *Not published:* a still where more than a small strip had to be painted grey; any screen whose content is
+   mostly other people's writing or photos (a Karrot post, a chat, a community thread); anything with money, an
+   account number or an address; checkout.
+3. *Open, the owner's decision:* product photos and brand imagery inside commerce screens belong to sellers and
+   brands. Choices: publish as shot, publish at thumbnail size only, or blur image areas. This note takes no legal
+   position.
+4. *On every sheet:* app name and version, capture date and device, a line that the screens belong to their
+   companies and this is not affiliated, and where to ask for removal.
+5. *Size:* a JPEG about 400 points wide; the original PNGs and the element lists stay on this Mac.
+
+## Web screens: the shooter, and the first five services (2026-11-20)
+
+The owner widened the archive to the web (2026-11-20: mobile-only services on the phone, web-centred ones on the web,
+both where the two look alike), then asked for web first, in a 40-minute block. What was built and what it met:
+
+- **Tool** (`tools/screen-archive/`, branch `feat/screen-archive`). `web-shoot.mjs <routes/slug.json>` loads each
+  screen of a route file at 1440×900 and 390×844 (touch, DPR 2), signed out, in a fresh profile, scrolls once so lazy
+  content loads, and writes the first viewport, the whole page (capped at 12000 px), an element list (type, label,
+  href, rectangle) and one record per shot (final address, HTTP status, user agent, what covered the viewport).
+  `make-web-sheet.mjs` turns walks into one sheet per service and an index. `services.json` holds `platform` per
+  service and what the browser met. Stills go to `~/.omd-workers/screens/web/<slug>-<date>/`, sheets to
+  `~/Downloads/kr-screens/web/`; both tools refuse an output folder inside a git work tree.
+- **Screen types** are the words of `tools/phone-recorder/taxonomy.json`, so a web sheet and a phone sheet filter
+  the same way. No web-only type was added yet: a pricing page and a salary table went in as 이벤트 and 화면, which
+  is where the taxonomy is thin for the web.
+- **Headless is refused by most Korean sites.** Of twelve home pages tried with headless Chromium and its own user
+  agent, six answered 403 (오늘의집, 올리브영, NOL, 원티드, 인프런, 잡플래닛) and six opened (29CM, 무신사, 컬리,
+  당근, 클래스101, 교보문고). Nothing was done to get past a 403. The owner then allowed a window for such sites; in the
+  installed Chrome with a window and a fresh profile all six opened. `--browser headed` (or `"browser": "headed"`
+  in the route file) is that mode. It opens windows on the owner's screen, so a batch of headed services belongs in
+  a window the owner has agreed to.
+- **Shot:** 29CM (9 screens), 오늘의집 (11), 클래스101 (8), 원티드 (9), 인프런 (9): 46 screens, 92 stills, none
+  blocked. The last three are filed as web-centred although each has an app; that is the session's reading of the
+  route, not an owner decision.
+- **What signed-out reaches.** On all five services home, lists, search results and detail open without an account.
+  Cart, my page and the résumé builder lead to the sign-in screen (which is itself a core screen). Notifications,
+  my page and settings need an account: the owner offered to sign in for those.
+- **What viewing the stills caught** (exit codes did not): 29CM's search step timed out and shot the home screen
+  twice (the field is behind an icon; the route now uses the search addresses); an app-install sheet covered half
+  of a 390 still (closed by its own "오늘 하루 보지 않기"); 클래스101's detail raised a discount pop-up on four of seven
+  loads (kept as its own 팝업 screen); its video area is blank in headless (codec, unconfirmed); two headed runs
+  finished every shot and then hung closing the browser, losing their records (the walk is now written first and
+  closing is bounded).
+- **Not done:** linking a screen's elements to the service's measured tokens (the part Mobbin and Refero do not
+  have), re-shooting on a schedule and showing what changed, signed-in screens, and the three site mocks.

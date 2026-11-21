@@ -9460,28 +9460,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "peoplefund",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-11-21",
+    "tokensExtractedAt": "2026-11-21",
+    "nextReverifyAt": "2027-05-20",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
     "claimCount": 122,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "evidenceClaimCount": 122,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "componentCount": 9,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
-    "advisoryCodes": [
-      "motion_value_unsourced"
-    ],
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
     "paletteGrounding": null
   },
   {
@@ -14763,8 +14759,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 453,
-  "partial": 88,
+  "verified_v2": 454,
+  "partial": 87,
   "legacy_snapshot": 81,
   "total": 622
 } as const;

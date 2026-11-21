@@ -1,0 +1,494 @@
+{
+  "opened": "2026-11-21",
+  "note": "All pages opened via WebFetch (extraction model). Quotes requested character-for-character; glyph widths not verified at code-point level unless the page names the code point. Sources listed in ../references/sources.md (KB, KG, GK, YN, JTF and other SmartHR pages) were not reopened this round and are not listed here, except DADS typography and Microsoft Yu Gothic which were reopened for fonts.md.",
+  "sources": [
+    {
+      "key": "SH-app",
+      "title": "SmartHR Design System — その他のUIテキスト",
+      "url": "https://smarthr.design/products/contents/ui-text/app-writing/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-ws",
+      "title": "SmartHR Design System — 基本的な考え方",
+      "url": "https://smarthr.design/products/contents/writing-style/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-act",
+      "title": "SmartHR Design System — 操作を表す用語",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/action/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-nb",
+      "title": "SmartHR Design System — NotificationBarのライティングパターン",
+      "url": "https://smarthr.design/products/contents/error-messages/notificationbar/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-bg",
+      "title": "SmartHR Design System — バックグラウンド処理のライティングパターン",
+      "url": "https://smarthr.design/products/contents/error-messages/background-process/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-err",
+      "title": "SmartHR Design System — エラーメッセージの基本的な考え方",
+      "url": "https://smarthr.design/products/contents/error-messages/overview/",
+      "kind": "company design system",
+      "use": "used (negative finding: no apology passage)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-st",
+      "title": "SmartHR Design System — ステータス",
+      "url": "https://smarthr.design/products/contents/ui-text/statuslabel/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-oth",
+      "title": "SmartHR Design System — その他類似する用語の使い分け",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/other/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-cnt",
+      "title": "SmartHR Design System — 数字・数えの表記",
+      "url": "https://smarthr.design/products/contents/idiomatic-usage/count/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SH-idx",
+      "title": "SmartHR Design System — ライティング (index)",
+      "url": "https://smarthr.design/products/contents/",
+      "kind": "company design system",
+      "use": "index only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "UB",
+      "title": "Ubie Vitals — UXライティング ガイドライン",
+      "url": "https://vitals.ubie.life/ux-writing/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "UB-btn",
+      "title": "Ubie Vitals — Button",
+      "url": "https://vitals.ubie.life/components/button",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-top",
+      "title": "Ameba Spindle — top",
+      "url": "https://spindle.ameba.design/",
+      "kind": "company design system",
+      "use": "index only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-con",
+      "title": "Ameba Spindle — コンテンツ (原則)",
+      "url": "https://spindle.ameba.design/principles/contents/",
+      "kind": "company design system",
+      "use": "index only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-lab",
+      "title": "Ameba Spindle — UIラベリング",
+      "url": "https://spindle.ameba.design/principles/contents/ui-labeling/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-voc",
+      "title": "Ameba Spindle — 用語・表記ルール",
+      "url": "https://spindle.ameba.design/principles/contents/vocabulary/",
+      "kind": "company design system",
+      "use": "opened; brand-name table only, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-voice",
+      "title": "Ameba Spindle — ブランドボイス",
+      "url": "https://spindle.ameba.design/principles/contents/brand-voice/",
+      "kind": "company design system",
+      "use": "opened; no rules, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "SP-btn",
+      "title": "Ameba Spindle — ボタン",
+      "url": "https://spindle.ameba.design/components/button/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "PB",
+      "title": "GMO Pepabo Inhouse — Validation Message",
+      "url": "https://design.pepabo.com/inhouse/components/validation-message/",
+      "kind": "company design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "PB-blog",
+      "title": "Pepabo Tech Portal — 「ライティングガイドライン」の作成から、活用される仕組み化までのお話 (2023-04-05)",
+      "url": "https://tech.pepabo.com/2023/04/05/writing-guideline-for-colorme/",
+      "kind": "company tech blog",
+      "use": "pointer only, not counted",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "OPT",
+      "title": "OPTiM TECH BLOG — 製品共通のUXライティングのルールを作ってみた (2025-01-16)",
+      "url": "https://tech-blog.optim.co.jp/entry/2025/01/16/100000",
+      "kind": "company tech blog (rule headings only)",
+      "use": "pointer only, not counted",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-btn",
+      "title": "デジタル庁デザインシステムβ版 — ボタン（使い方）(2026年10月21日更新)",
+      "url": "https://design.digital.go.jp/dads/components/button/usage/",
+      "kind": "government design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-in",
+      "title": "デジタル庁デザインシステムβ版 — インプットテキスト（使い方）(2025年8月20日更新)",
+      "url": "https://design.digital.go.jp/dads/components/input-text/usage/",
+      "kind": "government design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-md",
+      "title": "デジタル庁デザインシステムβ版 — モーダルダイアログ（概要）(2026年9月9日更新)",
+      "url": "https://design.digital.go.jp/dads/components/modal-dialog/",
+      "kind": "government design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-nb",
+      "title": "デジタル庁デザインシステムβ版 — ノティフィケーションバナー（使い方）(2026年10月21日更新)",
+      "url": "https://design.digital.go.jp/dads/components/notification-banner/usage/",
+      "kind": "government design system",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "DADS-md-usage",
+      "title": "デジタル庁デザインシステムβ版 — モーダルダイアログ（使い方）",
+      "url": "https://design.digital.go.jp/dads/components/modal-dialog/usage/",
+      "kind": "government design system",
+      "use": "HTTP 404, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ",
+      "title": "Mozilla localizers — L10n Guideline (ja)",
+      "url": "https://mozilla-l10n.github.io/styleguides/ja/l10nguideline.html",
+      "kind": "localization guide (translated OSS)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-ed",
+      "title": "mozilla-japan/translation wiki — Editorial Guideline",
+      "url": "https://github.com/mozilla-japan/translation/wiki/Editorial-Guideline",
+      "kind": "localization guide (translated OSS)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MZ-ed21",
+      "title": "Mozilla localizers — Editorial Guideline (ja), last updated 2021-04-04",
+      "url": "https://mozilla-l10n.github.io/styleguides/ja/editorialguideline.html",
+      "kind": "localization guide (translated OSS)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "WP",
+      "title": "WordPress 日本語 — 翻訳スタイルガイド",
+      "url": "https://ja.wordpress.org/team/handbook/translation/translation-style-guide/",
+      "kind": "localization guide (translated OSS)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MS-idx",
+      "title": "Microsoft Learn — Microsoft Localization Style Guides",
+      "url": "https://learn.microsoft.com/ja-jp/globalization/reference/microsoft-style-guides",
+      "kind": "vendor index page",
+      "use": "index only",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MS-ja",
+      "title": "Microsoft Localization Style Guide, Japanese (PDF, via https://aka.ms/japanese-styleguide)",
+      "url": "https://download.microsoft.com/download/bb82f407-78f4-4df4-accd-d63ceaadd24a/jpn-jpn-StyleGuide.pdf",
+      "kind": "vendor localization guide",
+      "use": "opened; text not extractable (compressed PDF streams), not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "APPLE-jp",
+      "title": "Apple Developer — Human Interface Guidelines (ja) 表現/Writing",
+      "url": "https://developer.apple.com/jp/design/human-interface-guidelines/writing",
+      "kind": "vendor guideline",
+      "use": "opened; page body empty to the fetcher (title 「表現」 only), not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "FREEE-vibes",
+      "title": "freee vibes",
+      "url": "https://vibes.freee.co.jp/",
+      "kind": "company design system",
+      "use": "opened; Storybook shell with no text, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "KAONAVI",
+      "title": "kaonavi Brand Deck — プロダクトデザインシステム sugao",
+      "url": "https://brand.kaonavi.jp/sugao",
+      "kind": "company design system",
+      "use": "opened; title only, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "MNTSQ",
+      "title": "MNTSQ note — 見出しやラベル、ボタンの動詞｜UIデザインポリシー整理",
+      "url": "https://note.mntsq.co.jp/n/n7eb6c0abc3b2",
+      "kind": "company blog",
+      "use": "redirected to a note.com session URL; not followed, not used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-noto-meta",
+      "title": "Google Fonts METADATA — Noto Sans JP",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-lineseed-meta",
+      "title": "Google Fonts METADATA — LINE Seed JP",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/lineseedjp/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-mplus1p-meta",
+      "title": "Google Fonts METADATA — M PLUS 1p",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/mplus1p/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-mplus2-meta",
+      "title": "Google Fonts METADATA — M PLUS 2",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/mplus2/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-bizud-meta",
+      "title": "Google Fonts METADATA — BIZ UDPGothic",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bizudpgothic/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-plexjp-meta",
+      "title": "Google Fonts METADATA — IBM Plex Sans JP",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsansjp/METADATA.pb",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-bizud-repo",
+      "title": "googlefonts/morisawa-biz-ud-gothic",
+      "url": "https://github.com/googlefonts/morisawa-biz-ud-gothic",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-plex-repo",
+      "title": "IBM/plex",
+      "url": "https://github.com/IBM/plex",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-mplus-site",
+      "title": "M+ FONTS",
+      "url": "https://mplusfonts.github.io/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-lineseed-site",
+      "title": "LINE Seed",
+      "url": "https://seed.line.me/index_jp.html",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-ly-press",
+      "title": "LINEヤフー プレスリリース 2026年1月23日 — LINE Seed JP を Google Fonts で提供開始",
+      "url": "https://www.lycorp.co.jp/ja/news/release/020040/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-pretendard",
+      "title": "orioncactus/pretendard README",
+      "url": "https://github.com/orioncactus/pretendard",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-pretendard-ja",
+      "title": "orioncactus/pretendard docs/ja README",
+      "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/ja/README.md",
+      "kind": "font source (fonts.md)",
+      "use": "blocked (503/404)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-ohouse",
+      "title": "오늘의집 블로그 — 멀티 국가 앱에서 Pretendard JP 도입하기 (2026-04-17)",
+      "url": "https://www.bucketplace.com/post/2026-04-17-%EB%A9%80%ED%8B%B0-%EA%B5%AD%EA%B0%80-%EC%95%B1%EC%97%90%EC%84%9C-pretendard-jp-%EB%8F%84%EC%9E%85%ED%95%98%EA%B8%B0/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-hiragino",
+      "title": "SCREEN — macOS バンドル版の履歴 (2024年10月1日更新)",
+      "url": "https://hiragino.screen.co.jp/support/support-os/macos",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-yugothic",
+      "title": "Microsoft Learn — Yu Gothic font family",
+      "url": "https://learn.microsoft.com/en-us/typography/font-list/yu-gothic",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-meiryo",
+      "title": "Microsoft Learn — Meiryo font family",
+      "url": "https://learn.microsoft.com/en-us/typography/font-list/meiryo",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-dads-typo",
+      "title": "DADS — タイポグラフィ（概要）(2026年8月5日更新)",
+      "url": "https://design.digital.go.jp/dads/foundations/typography/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-spindle-typo",
+      "title": "Ameba Spindle — UIタイポグラフィ",
+      "url": "https://spindle.ameba.design/styles/typography/ui/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-smarthr-typo",
+      "title": "SmartHR — タイポグラフィ (design tokens)",
+      "url": "https://smarthr.design/products/design-tokens/typography/",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-ubie-typo",
+      "title": "Ubie Vitals — Typography",
+      "url": "https://vitals.ubie.life/tokens/typography",
+      "kind": "font source (fonts.md)",
+      "use": "used",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-pepabo-typo",
+      "title": "Pepabo Inhouse — typography (guessed URL)",
+      "url": "https://design.pepabo.com/inhouse/foundation/typography/",
+      "kind": "font source (fonts.md)",
+      "use": "blocked (503/404)",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-noto-cjk",
+      "title": "notofonts/noto-cjk",
+      "url": "https://github.com/notofonts/noto-cjk",
+      "kind": "font source (fonts.md)",
+      "use": "opened, not useful",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-gf-noto",
+      "title": "Google Fonts — Noto Sans JP about",
+      "url": "https://fonts.google.com/specimen/Noto+Sans+JP/about",
+      "kind": "font source (fonts.md)",
+      "use": "opened, not useful",
+      "opened": "2026-11-21"
+    },
+    {
+      "key": "F-apple-fonts",
+      "title": "Apple Support — fonts included with macOS (120414)",
+      "url": "https://support.apple.com/en-us/120414",
+      "kind": "font source (fonts.md)",
+      "use": "opened, not useful",
+      "opened": "2026-11-21"
+    }
+  ]
+}

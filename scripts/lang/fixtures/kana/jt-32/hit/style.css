@@ -1,0 +1,3 @@
+/* 省略表示 */
+.cut { text-overflow: ellipsis; overflow: hidden; }
+.cut2 { text-overflow: ellipsis; white-space: nowrap; }

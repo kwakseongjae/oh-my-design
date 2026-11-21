@@ -57,6 +57,8 @@ server.registerTool('probe_page', {
     id: z.string().regex(/^[a-z0-9][a-z0-9-]{0,39}$/).describe('reference id, e.g. sbb'),
     locale: z.string().regex(/^[a-z]{2}(-[A-Z]{2})?$/).default('en-US'),
     mode: z.enum(['survey', 'states']).default('states'),
+    viewport: z.enum(['desktop', 'phone']).default('desktop')
+      .describe('desktop = 1440x1000 (the default every reference was measured at). phone = 390x844 with touch and a phone user agent: only for a product that is a mobile web, and only when the order says so. Use the same viewport for the survey and the states call, and say in your report which one each value came from.'),
     controls: z.array(z.object({
       key: z.string().regex(/^[a-z0-9-]{1,30}$/),
       label: z.string().max(80).optional(),
@@ -71,18 +73,19 @@ server.registerTool('probe_page', {
     hideOverlays: z.boolean().optional()
       .describe('states mode: hide a fixed/sticky layer that still covers a control during the pointer pass only. Say so in your report.'),
   },
-}, async ({ url, id, locale, mode, controls, close, hideOverlays }) => {
+}, async ({ url, id, locale, mode, viewport, controls, close, hideOverlays }) => {
   const dir = path.join(ROOT, id, stamp());
   fs.mkdirSync(dir, { recursive: true });
   const args = [url, '--browser', BROWSER, '--locale', locale, '--out', path.join(dir, mode === 'survey' ? 'survey.json' : 'states.json'), '--quiet', '--summary'];
   if (close?.length) args.push('--close', close.join(','));
+  if (viewport === 'phone') args.push('--viewport', 'phone');
   if (mode === 'survey') args.push('--survey', '--census', '--visual', dir);
   else {
     if (!controls?.length) return { content: [{ type: 'text', text: 'mode "states" needs controls (run mode "survey" first)' }], isError: true };
     const cfg = path.join(dir, 'cfg.json');
     // close / hideOverlays are recorded beside the controls so the orchestrator's re-measurement can repeat the
     // exact call (2026-11-06: four batch-6 headlines needed a second run because these flags weren't saved).
-    fs.writeFileSync(cfg, JSON.stringify({ controls, ...(close?.length ? { close } : {}), ...(hideOverlays ? { hideOverlays: true } : {}) }, null, 2));
+    fs.writeFileSync(cfg, JSON.stringify({ controls, ...(close?.length ? { close } : {}), ...(hideOverlays ? { hideOverlays: true } : {}), ...(viewport === 'phone' ? { viewport } : {}) }, null, 2));
     args.push('--cfg', cfg, '--shots', path.join(dir, 'shots'), '--visual', dir);
     if (hideOverlays) args.push('--hide-overlays');
   }
@@ -92,7 +95,7 @@ server.registerTool('probe_page', {
   // leaves the survey as it is.
   let census = '';
   if (mode === 'survey' && r.code === 0) {
-    const t = await run([url, '--locale', locale, '--out', path.join(dir, 'text-census.json')], 2 * 60 * 1000, TEXT_CENSUS);
+    const t = await run([url, '--locale', locale, '--out', path.join(dir, 'text-census.json'), ...(viewport === 'phone' ? ['--viewport', 'phone'] : [])], 2 * 60 * 1000, TEXT_CENSUS);
     census = `\n${(t.out + t.err).trim().split('\n').pop()}`;
   }
   fs.writeFileSync(path.join(dir, 'summary.txt'), r.out + r.err + census);
