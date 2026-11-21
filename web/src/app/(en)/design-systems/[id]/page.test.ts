@@ -133,7 +133,7 @@ describe("the Screens tab (local screens only)", () => {
     vi.stubEnv("OMD_SCREENS_DIR", "");
     const html = renderToStaticMarkup(await Page(params("toss")));
     expect(html).not.toMatch(/sq-tabs-d|sq-v-hide|screens-local|role="tablist"/);
-    expect(html).not.toContain(">Screens");
+    expect(html).not.toContain(">Product screens");
   });
 
   it("renders nothing of it in production even with a folder", async () => {
@@ -147,15 +147,17 @@ describe("the Screens tab (local screens only)", () => {
     }
   });
 
-  it("with a folder, adds the tab with the screen count; the DESIGN.md view stays the default and the h1 and #use stay", async () => {
+  it("with a folder, adds the Product screens tab, with no count; the DESIGN.md view stays the default and the h1 and #use stay", async () => {
     const fx = makeScreensFixture("discord");
     try {
       vi.stubEnv("OMD_SCREENS_DIR", fx.root);
       vi.stubEnv("NODE_ENV", "development");
       const html = renderToStaticMarkup(await Page(params("discord")));
       expect(html).toContain('class="sq-root sq-wrap sq-tabs-d"');
-      expect(html).toContain("Screens <small>4</small>");
-      // discord has no preview pane: the phone row is DESIGN.md and Screens.
+      // The tab is named, not counted (owner 2026-11-22: "화면 00 대신 서비스 화면").
+      expect(html).toContain(">Product screens</button>");
+      expect(html).not.toContain("<small>4</small>");
+      // discord has no preview pane: the phone row is DESIGN.md and Product screens.
       expect(html).toContain("sq-panes-m");
       expect(html).not.toContain(">Preview<");
       expect(html).toContain('id="md-heading"');

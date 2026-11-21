@@ -75,7 +75,7 @@ export interface PreviewLabels {
  * `typeName` / `stateName` and keeps the recorded title.
  */
 export interface ScreensLabels {
-  /** The tab: "화면" + the count beside it. */
+  /** The tab's name: "서비스 화면", with no count (owner 2026-11-22). */
   tab: string;
   /** Accessible name of the desktop tab row. */
   tabsLabel: string;
@@ -91,15 +91,6 @@ export interface ScreensLabels {
   openStill: (title: string) => string;
   typeName: (type: string) => string;
   stateName: (state: string) => string;
-  panel: string;
-  panelLead: string;
-  /** The rule of the count, verbatim from the brief. */
-  exactOnly: string;
-  colorCount: (matched: number, comparable: number) => string;
-  onScreens: (n: number) => string;
-  notSeen: string;
-  filtered: (token: string, n: number) => string;
-  clear: string;
   counter: (i: number, n: number) => string;
   prev: string;
   next: string;
@@ -180,8 +171,8 @@ export const ITEM_EN: ItemLabels = {
   },
   shareLabels: { share: "Share", copied: "Copied", aria: "Copy share link", ariaCopied: "Share link copied" },
   screens: {
-    tab: "Screens",
-    tabsLabel: "DESIGN.md or screens",
+    tab: "Product screens",
+    tabsLabel: "DESIGN.md or product screens",
     shot: (d) => `Shot on ${d}`,
     signedOut: "signed out",
     groups: { core: "Core screens", states: "States", more: "More from this service" },
@@ -192,14 +183,6 @@ export const ITEM_EN: ItemLabels = {
     openStill: (title) => `Open ${title}`,
     typeName: (type) => SCREEN_TYPE_EN[type] ?? type,
     stateName: (state) => (state === "빈 상태" ? "Empty state" : state),
-    panel: "Compared with DESIGN.md",
-    panelLead: "Where this company's DESIGN.md colors are drawn on its screens with the same value. Select a value to keep only the screens that show it.",
-    exactOnly: "Only exact matches count. A value that does not appear is not a wrong value.",
-    colorCount: (m, c) => `Black and white aside, ${m} of ${c} colors appear on screen.`,
-    onScreens: (n) => (n === 1 ? "1 screen" : `${n} screens`),
-    notSeen: "Not seen",
-    filtered: (token, n) => `Showing the ${n === 1 ? "screen" : `${n} screens`} with ${token}`,
-    clear: "Clear",
     counter: (i, n) => `${i} / ${n}`,
     prev: "Previous screen",
     next: "Next screen",
@@ -294,8 +277,8 @@ export const ITEM_KO: ItemLabels = {
   },
   shareLabels: { share: "공유", copied: "복사했어요", aria: "공유 링크 복사", ariaCopied: "공유 링크를 복사했어요" },
   screens: {
-    tab: "화면",
-    tabsLabel: "DESIGN.md와 화면",
+    tab: "서비스 화면",
+    tabsLabel: "DESIGN.md와 서비스 화면",
     shot: (d) => {
       const [y, m, day] = d.split("-").map(Number);
       return `${y}년 ${m}월 ${day}일에 찍은 화면`;
@@ -309,14 +292,6 @@ export const ITEM_KO: ItemLabels = {
     openStill: (title) => `${title} 크게 보기`,
     typeName: (type) => type,
     stateName: (state) => state,
-    panel: "DESIGN.md와 대조",
-    panelLead: "이 회사 DESIGN.md의 색이 화면에 같은 값으로 그려진 곳입니다. 값을 누르면 그 값이 보이는 화면만 남습니다.",
-    exactOnly: "정확히 같은 값만 셉니다. 보이지 않는 값이 틀린 값이라는 뜻은 아닙니다.",
-    colorCount: (m, c) => `검정과 흰색을 뺀 색 ${c}개 중 ${m}개가 화면에 보입니다.`,
-    onScreens: (n) => `화면 ${n}개`,
-    notSeen: "보이지 않음",
-    filtered: (token, n) => `${token} 값이 보이는 화면 ${n}개`,
-    clear: "필터 지우기",
     counter: (i, n) => `${i} / ${n}`,
     prev: "이전 화면",
     next: "다음 화면",

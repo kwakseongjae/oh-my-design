@@ -12,22 +12,20 @@
  *     one at 390, each the leading still with the other width laid over it, the
  *     title, the type and state chip and up to four colour tokens drawn on it
  *     (black and white left out); a blocked screen says so and shows no image;
- *   - the panel "DESIGN.md와 대조": every comparable colour token with the number of
- *     screens it is drawn on, or "보이지 않음". A token filters the cards;
+ *   - no comparison panel: the owner took "DESIGN.md와 대조" out on 2026-11-22 after seeing the tab in a preview
+ *     ("좋은데 … DESIGNmd와 대조 부분은 빼도 좋을 거 같아"). The chips under a card stay;
  *   - a card opens its full-page still in a dialog with previous / next (the first-viewport still where no full page
  *     exists, as for every published screen);
  *   - once screens are published: a line under a card whose people were hidden, and the rights and takedown lines
  *     at the end (components/screens/notice.tsx).
  */
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDownIcon, XIcon } from "lucide-react";
+import { useMemo, useState } from "react";
 import { ScreenDialog, isNarrowWidth as narrow } from "@/components/item/screen-dialog";
 import { ScreensNotice } from "@/components/screens/notice";
 import {
   cardChips,
   dialogSequence,
-  filterCards,
   groupCards,
   insetStill,
   leadStill,
@@ -55,34 +53,12 @@ function Swatch({ value }: { value: string }) {
 
 export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel; labels: ScreensLabels; panelId: string }) {
   const [lead, setLead] = useState(model.widths[0]);
-  const [token, setToken] = useState<string | null>(null);
   const [openKey, setOpenKey] = useState<string | null>(null);
-  // The panel is a list the phone and the stacked tablet layout fold away; side by side it stays open.
-  const [panelOpen, setPanelOpen] = useState(() => typeof window === "undefined" || !window.matchMedia("(max-width:1023px)").matches);
-
-  const cards = useMemo(() => filterCards(model.cards, model.colors, token), [model, token]);
-  const groups = useMemo(() => groupCards(cards), [cards]);
-  const sequence = useMemo(() => dialogSequence(cards), [cards]);
+  const groups = useMemo(() => groupCards(model.cards), [model]);
+  const sequence = useMemo(() => dialogSequence(model.cards), [model]);
   const index = openKey ? sequence.findIndex((c) => c.key === openKey) : -1;
   const current = index >= 0 ? sequence[index] : null;
   const currentStill = current ? leadStill(current, lead) : null;
-
-  // A token picked low in the sticky panel changes the cards above the fold: bring the tab's top
-  // (the filter line) back into view so the change is seen.
-  const topRef = useRef<HTMLDivElement>(null);
-  const picked = useRef(false);
-  useEffect(() => {
-    if (!picked.current) return;
-    picked.current = false;
-    const top = topRef.current;
-    if (top && top.getBoundingClientRect().top < 0) top.scrollIntoView({ block: "start" });
-  }, [token]);
-  function pick(next: string | null) {
-    picked.current = true;
-    setToken(next);
-    // Stacked above the cards, the open list would hide what the pick changed: fold it.
-    if (next && window.matchMedia("(max-width:1023px)").matches) setPanelOpen(false);
-  }
 
   function step(by: number) {
     if (!sequence.length || index < 0) return;
@@ -95,7 +71,7 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
 
   return (
     <section id={panelId} className="sq-scr" role="tabpanel" aria-label={t.tab}>
-      <div className="sq-scr-top" ref={topRef}>
+      <div className="sq-scr-top">
         {meta ? <p className="sq-scr-meta">{meta}</p> : null}
         {model.widths.length > 1 ? (
           <div className="sq-scr-seg" role="group" aria-label={t.lead}>
@@ -108,17 +84,7 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
         ) : null}
       </div>
 
-      {token ? (
-        <div className="sq-scr-filter">
-          <p role="status">{t.filtered(token, cards.length)}</p>
-          <button type="button" className="sq-scr-clear" onClick={() => pick(null)}>
-            <XIcon aria-hidden="true" />
-            {t.clear}
-          </button>
-        </div>
-      ) : null}
-
-      <div className={`sq-scr-body${model.colors.length ? "" : " sq-scr-solo"}`}>
+      <div className="sq-scr-body">
         <div className="sq-scr-main">
           {groups.map((g) => (
             <section key={g.id} className="sq-scr-group" aria-labelledby={`sc-${g.id}`}>
@@ -134,28 +100,6 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
           ))}
         </div>
 
-        {model.colors.length ? (
-          <aside className="sq-scr-side" aria-labelledby="sc-panel">
-            <details open={panelOpen} onToggle={(e) => setPanelOpen(e.currentTarget.open)}>
-              <summary>
-                <span className="sq-scr-side-h">
-                  <h2 id="sc-panel">{t.panel}</h2>
-                  <ChevronDownIcon className="sq-scr-side-chev" aria-hidden="true" />
-                </span>
-                {model.colorCount ? <span className="sq-scr-side-n">{t.colorCount(model.colorCount.matched, model.colorCount.comparable)}</span> : null}
-              </summary>
-              <p className="sq-scr-side-p">{t.panelLead}</p>
-              <ul className="sq-scr-rows">
-                {model.colors.map((c) => (
-                  <li key={c.token}>
-                    <TokenRow color={c} on={token === c.token} t={t} onPick={() => pick(token === c.token ? null : c.token)} />
-                  </li>
-                ))}
-              </ul>
-              <p className="sq-scr-side-p">{t.exactOnly}</p>
-            </details>
-          </aside>
-        ) : null}
       </div>
 
       <ScreenDialog
@@ -237,26 +181,5 @@ function Card({
         </ul>
       ) : null}
     </li>
-  );
-}
-
-function TokenRow({ color, on, t, onPick }: { color: ScreenColor; on: boolean; t: ScreensLabels; onPick: () => void }) {
-  const seen = color.screens.length > 0;
-  const body = (
-    <>
-      <Swatch value={color.value} />
-      <span className="sq-scr-row-n">
-        <b>{color.token}</b>
-        <span>{color.value}</span>
-      </span>
-      <span className="sq-scr-row-k">{seen ? t.onScreens(color.screens.length) : t.notSeen}</span>
-    </>
-  );
-  return seen ? (
-    <button type="button" className="sq-scr-row" aria-pressed={on} onClick={onPick}>
-      {body}
-    </button>
-  ) : (
-    <div className="sq-scr-row sq-scr-row-none">{body}</div>
   );
 }
