@@ -18,7 +18,7 @@
 5. 블로그 첫 글 → #132 머지 = 게시. 머지 직후 글 안의 저장소 링크 2개를 다시 연다.
 6. 재검증 4곳을 이 상태로 넣을지(넣으면 verified, 확인 못 한 이전 서술이 본문의 28~49%를 「Earlier record」 소제목 아래 차지). 추천은 넣기이지만 게이트의 뜻이라 승인 없이는 넣지 않는다. **스크립트로 문장을 본문에 돌려놓지 않는다**(`sieve-earlier-record.mjs`는 처음에 너무 느슨했고, 엄격히 세면 「오늘 잰 값만 담은」 문장은 5~20%뿐이며 값이 같다고 문장이 맞는 것도 아니다). 워커 폴더 `~/.omd-workers/reverify3/<id>`, 재측정은 네 곳 모두 전부 일치.
 
-**도는 것:** 검증 에이전트 `tw-check`(대만 55개 → 워크트리 `lang-zh`의 `docs/drafts/zhuyin/research/verdicts.md`). `cn-check`(중국 79개 → `docs/drafts/pinyin/research/verdicts.md`). 일본어 2차 후보는 검증 끝(13개 중 통과 8, 약함 5: UW-58·59·60·63·69). 끝나면 verdicts 파일을 `git add -f`로 커밋. `research/`라는 폴더 이름은 `.gitignore`에 걸리므로 `git add -f`.
+**대만 검증 끝(11/21 15:50):** 55개 중 통과 41 · 출처보다 세게 적힘 14(TW-04·06·19·21·26·35·42·46·47·48·49·51·54·55), 커밋 `598b6ea9`(`feat/zh-skills`). 통과 41 중 7개(TW-03·25·27·28·29·33·36)는 출처가 갈린다는 기록이라 규칙 하나가 되지 않는다. CLREQ 전체 본문은 `~/.omd-workers/lang-sources/clreq-2026-11-21.txt`에 받아 둠(6장은 아직 아무도 안 읽음). GB/T 15834·15835는 moe.gov.cn이 404라 못 받음. **도는 것:** `cn-check`(중국 79개 → `docs/drafts/pinyin/research/verdicts.md`). 일본어 2차 후보는 검증 끝(13개 중 통과 8, 약함 5: UW-58·59·60·63·69). 끝나면 verdicts 파일을 `git add -f`로 커밋. `research/`라는 폴더 이름은 `.gitignore`에 걸리므로 `git add -f`.
 
 **언어 스킬 조사 현황(11/21):** 일본어 글쓰기 규칙 43개 + 2차 후보 13개 · 대만 후보 55개 · 중국 후보 79개. 대만·중국은 검증 전이고 스킬 초안·검사기는 아직 없다. Microsoft 스타일 가이드 본문(일본어·번체·간체)은 `~/.omd-workers/lang-sources/`, `~/.omd-workers/kana/sources/`(저장소에 넣지 않는다).
 
