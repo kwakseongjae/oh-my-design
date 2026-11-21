@@ -8,8 +8,8 @@
  *
  * Everything drawn comes from the file's text, parsed the same way for any Core v2 file (the format has no frontmatter,
  * so the tokens are read from the body):
- *   colours   lines "**name** ... `#hex`" or "**name** `oklch(...)`"; an oklch value is shown with its sRGB hex
- *             converted by the browser and marked "converted"
+ *   colours   lines "**name** ... `#hex`" or "**name** `oklch(...)`"; an oklch swatch is painted from the oklch, and its
+ *             sRGB hex (converted by the browser) is printed beside any hex the file states, so a mismatch shows
  *   type      Markdown tables with a Size and a Weight column; the family is the first Family cell of a table that has one
  *   controls  tables with a Height column, and prose of the form `name` 32px (`h-8` …)
  *   radii     tables with a Value column whose first cell names a radius
@@ -150,7 +150,7 @@ const CSS = [
 ].join('\n');
 const html = '<!doctype html><html><head><meta charset="utf-8"><style>' + faces.join('') + CSS + '</style></head><body>' +
   '<header><div><b>' + esc(LABEL) + '</b><h1>' + esc(title) + '</h1></div><p>' + esc(shownPath) + ' · ' + esc(famNote) + '</p></header>' +
-  '<h2>Colours (' + colors.length + ')</h2>' + (colors.length ? '<div class="sw">' + colors.map((c) => '<div><i style="background:' + esc(c.value) + '"></i><span>' + esc(c.name) + '</span><small data-v="' + esc(c.value) + '">' + esc(c.hex ?? c.value) + (c.value.startsWith('oklch') ? (c.hex ? ' (in file)' : '') : '') + '</small>' + (c.value.startsWith('oklch') ? '<small>' + esc(c.value) + '</small>' : '') + '</div>').join('') + '</div>' : none) +
+  '<h2>Colours (' + colors.length + ')</h2>' + (colors.length ? '<div class="sw">' + colors.map((c) => '<div><i style="background:' + esc(c.value) + '"></i><span>' + esc(c.name) + '</span><small data-v="' + esc(c.value) + '">' + esc(c.hex ?? c.value) + (c.value.startsWith('oklch') ? (c.hex ? ' (in file)' : '') : '') + '</small>' + (c.value.startsWith('oklch') ? '<small>' + esc(c.value) + '</small>' + (c.hex ? '<small data-v="' + esc(c.value) + '" data-drawn="1"></small>' : '') : '') + '</div>').join('') + '</div>' : none) +
   '<h2>Type scale, real size (' + type.length + ')</h2>' + (type.length ? '<div class="ty">' + type.map((t) => '<div><small>' + esc(t.role) + '<br>' + esc(t.sizeText) + ' / ' + t.weight + (t.note ? '<br>' + esc(t.note) : '') + '</small><p style="font-size:' + t.size + 'px;font-weight:' + t.weight + ';line-height:1.2">Copy DESIGN.md · Toss 0123</p></div>').join('') + '</div>' : none) +
   '<h2>Control heights, real size (' + controls.length + ')</h2>' + (controls.length ? '<div class="ct">' + controls.map((c) => '<div><i style="height:' + c.height + 'px">' + c.height + 'px</i><small>' + esc(c.name) + (c.label ? '<br>' + esc(c.label) : '') + '</small></div>').join('') + '</div>' : none) +
   '<h2>Radii (' + radii.length + ')</h2>' + (radii.length ? '<div class="rd">' + radii.map((r) => '<div><i style="border-radius:' + Math.min(r.value, 40) + 'px"></i><small>' + esc(r.name) + '<br>' + r.value + 'px</small></div>').join('') + '</div>' : none) +
@@ -171,9 +171,10 @@ try {
     const cv = document.createElement('canvas'); cv.width = cv.height = 1; const g = cv.getContext('2d', { willReadFrequently: true });
     for (const s of document.querySelectorAll('small[data-v^="oklch"]')) {
       if (s.textContent.includes('(in file)')) continue;
+      const drawn = s.dataset.drawn === '1';
       g.clearRect(0, 0, 1, 1); g.fillStyle = s.dataset.v; g.fillRect(0, 0, 1, 1);
       const [r, gg, b] = g.getImageData(0, 0, 1, 1).data;
-      s.textContent = '#' + [r, gg, b].map((v) => v.toString(16).padStart(2, '0')).join('') + ' (converted)';
+      s.textContent = '#' + [r, gg, b].map((v) => v.toString(16).padStart(2, '0')).join('') + (drawn ? ' (drawn from the oklch)' : ' (converted)');
     }
   });
   fs.mkdirSync(path.dirname(path.resolve(OUT)), { recursive: true });

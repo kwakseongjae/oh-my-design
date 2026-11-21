@@ -28,7 +28,7 @@ Line numbers are in this branch. Production measurements come from `node scripts
 | 18 | Selection | not stated | `#d8d8ff` (Iris 200) | web/src/app/globals.css:263 |
 | 19 | Colour modes | light and dark with parity; dark primary `oklch(0.7 0.2 275)` | light only, `color-scheme: light`; nothing sets `.dark` | web/src/styles/brand-a.css:22, web/src/app/globals.css:199, web/src/app/globals.css:119 |
 | 20 | v2 landing system | electric indigo `#5546ff` on `#0a0a0f`, glow `#8b7dff`, accent `#a89cff` (landing-v2/tokens.ts) | dropped: the file and route are gone | no counterpart (see list below) |
-| 21 | Contrast pairs | one pair: v2 text on v2 bg ≥ 4.5:1 | 10 pairs computed from hex (e.g. white on Iris 5.79, ink on paper 18.49) | web/src/styles/brand-a.css:7 (comment lists the pairs; ratios recomputed for this draft) |
+| 21 | Contrast pairs | one pair: v2 text on v2 bg ≥ 4.5:1 | 12 pairs computed from hex (e.g. white on Iris 5.79, ink on paper 18.49) | web/src/styles/brand-a.css:12-17 (comment lists the pairs); every ratio recomputed from the hex values for this draft |
 | 22 | Elevation | `ring-1 ring-foreground/10`, no shadows | panels: one shadow `0 1px 2px rgba(20,20,60,.04), 0 16px 40px -16px rgba(40,30,120,.16)`, no outline | web/src/styles/brand-a.css:71 |
 | 23 | Motion | 0.6–0.7s easeOut, fade-up / fade-blur-up | fade-up / fade-blur-up 0.6s ease-out; hover fills 0.15s | web/src/app/globals.css:232, web/src/app/globals.css:248, web/src/components/brand-a/item.css:18 |
 | 24 | Reduced motion | required; global CSS + MotionConfig | unchanged: required, global CSS rule | web/src/app/globals.css:217 |
@@ -36,11 +36,11 @@ Line numbers are in this branch. Production measurements come from `node scripts
 | 26 | Radius scale | 6 / 8 / 10 / 14 / 18 / 22 / 26 (× multiples of 10) | inner 6 · control 14 · pill 999 · card 20 · bubble 22 · panel 28 | web/src/styles/brand-a.css:107–112 |
 | 27 | Action radius | `rounded-lg` 10px on buttons | pill | web/src/styles/brand-a.css:109, web/src/components/brand-a/item.css:34 |
 | 28 | Card radius | 14px (`rounded-xl`) | 20px | web/src/styles/brand-a.css:110 |
-| 29 | Control heights | default 32 · xs 24 · sm 28 · lg 36 · icon 32 (ui/button.tsx) | 32 / 40 / 48; 40 default, 44 on a phone (approved 2026-11-21; 40/44 applied on the item page) | web/src/components/brand-a/item.css:34, web/src/components/brand-a/item.css:197 |
-| 30 | Control label type | `text-sm` 14 / 500 | 14/600 · 15/650 · 16/650 (15/650 applied on the item page actions) | web/src/components/brand-a/item.css:34 (15px, `--sq-fw-strong` 650 at web/src/styles/brand-a.css:104) |
-| 31 | Page title | no ramp; Tailwind scale per component | 40/760; 32 at 900–1279, 28 below 900 (item page) | web/src/components/brand-a/item.css:28, web/src/components/brand-a/item.css:44, web/src/components/brand-a/item.css:51, web/src/styles/brand-a.css:103 |
-| 32 | Landing title | not stated | 60/760, home and skill landing only (approved, not applied in code) | owner approval 2026-11-21 (brief); no code line |
-| 33 | Section heading | not stated | 26/760; 22 on a phone approved, item page uses 23 | web/src/components/brand-a/item.css:61, web/src/components/brand-a/item.css:200 |
+| 29 | Control heights | default 32 · xs 24 · sm 28 · lg 36 · icon 32 (ui/button.tsx) | 32 / 40 / 48; 40 default, 44 on a phone | 40 and 44: web/src/components/brand-a/item.css:34, web/src/components/brand-a/item.css:197. 32 and 48: owner approval 2026-11-21 as given in the brief; proposal text at scripts/site-audit/report.mjs:38; no code yet |
+| 30 | Control label type | `text-sm` 14 / 500 | 14/600 · 15/650 · 16/650 | 15/650: web/src/components/brand-a/item.css:34 (15px, `--sq-fw-strong` 650 at web/src/styles/brand-a.css:104). 14/600 and 16/650: owner approval 2026-11-21 (brief); scripts/site-audit/report.mjs:39; no code yet |
+| 31 | Page title | no ramp; Tailwind scale per component | 40/760; 32 at 900–1279, 28 below 900 (item page) | web/src/components/brand-a/item.css:28, web/src/components/brand-a/item.css:44, web/src/components/brand-a/item.css:51; weight `--sq-fw-heading` web/src/styles/brand-a.css:103 |
+| 32 | Landing title | not stated | 60/760, home and skill landing only (approved, not applied in code) | owner approval 2026-11-21 (brief); scripts/site-audit/report.mjs:41; no code yet |
+| 33 | Section heading | not stated | 26/760; 22 on a phone approved, item page uses 23 | 26/760: web/src/components/brand-a/item.css:61; 23: web/src/components/brand-a/item.css:200; 22: owner approval 2026-11-21 (brief), scripts/site-audit/report.mjs:42, no code yet |
 | 34 | Body / reading | 14px `text-sm` body, 16px card title, 12px small label | 17px reading body on the item page (16 on a phone) | web/src/components/brand-a/item.css:68, web/src/components/brand-a/item.css:208 |
 | 35 | Older type tokens still in code | not stated | h1 clamp(44px,5.4vw,82px), h2 clamp(28px,3.2vw,44px), small 13.5px, weights 780/760/650 | web/src/styles/brand-a.css:95–104 |
 | 36 | Layout | not stated | max 1360, gutter 40 (16 ≤900), header 68 (58 ≤900) | web/src/styles/brand-a.css:116, web/src/styles/brand-a.css:117, web/src/styles/brand-a.css:118, web/src/styles/brand-a.css:124, web/src/styles/brand-a.css:125 |
@@ -55,9 +55,9 @@ Line numbers are in this branch. Production measurements come from `node scripts
 2. The ten `color.v2-*` semantic tokens and the contrast pair "v2-text-on-light on v2-bg-light".
 3. `color.dark-marquee-fade` `#0f0e15`: not in `web/src`. (`--marquee-fade: #faf9ff` still exists, `globals.css:253`.)
 4. The header comment quoted as `globals.css`'s design intent ("Radius: 0.625rem (10px) — friendly but professional / Philosophy: …"): not in the file.
-5. `--primary` / `--ring` = `oklch(0.55 0.22 275)`: `--primary` is now ink and `--ring` Iris (`globals.css:78,99`). `#7c5cfc` remains only in a comment (`globals.css:65`) and in the reference social image (`web/src/app/og/reference/route.tsx:60,82,84`).
+5. `--primary` / `--ring` = `oklch(0.55 0.22 275)` "code-stated `#7c5cfc`": the two never matched — `oklch(0.55 0.22 275)` draws `#5358ee` (Chromium, sRGB; see before.png). Today `--primary` is now ink and `--ring` Iris (`globals.css:78,99`). `#7c5cfc` remains only in a comment (`globals.css:65`) and in the reference social image (`web/src/app/og/reference/route.tsx:60,82,84`).
 6. The whole OKLCH surface and neutral palette (background, foreground, card, secondary, muted, accent, border and input values tinted to hue 275), and every dark-mode value (dark primary `oklch(0.7 0.2 275)`, dark background, card, border, input, muted foreground, dark scrollbar `oklch(0.4 0 0 / 0.3)`). Nothing sets `.dark` (`globals.css:119`).
-7. "Geist … is the UI and heading face": `--font-sans` is `--sq-f-en` (Wanted Sans) (`globals.css:19`). Geist sans is still loaded by the (en) and (ko) root layouts with `preload: false` and used inline once (`what-is-design-md/page.tsx:128`).
+7. "Geist … is the UI and heading face": `--font-sans` is `--sq-f-en` (Wanted Sans) (`globals.css:19`). Geist sans is still loaded by the (en) and (ko) root layouts with `preload: false` and set inline on four page titles: `what-is-design-md/page.tsx:128`, `changelog/page.tsx:88`, `faq/page.tsx:204`, `alternatives/page.tsx:249` (all under `web/src/app/(en)/`).
 8. `--radius: 0.625rem` and the 6–26px scale: `--radius` is `var(--sq-radius)` = 14px (`globals.css:107`), so the same multipliers now give 8.4 / 11.2 / 14 / 19.6 / 25.2 / 30.8 / 36.4px.
 9. Primary task "hand DESIGN.md and the first prompt to the intended project terminal and coding-agent chat": the first prompt left the item page on 2026-10-20 (AGENTS.md, product surface ownership).
 10. "0.6–0.7s easeOut entrances": the entrance animations are 0.6s (`globals.css:232,248`); 0.7s appears only as an animation *delay* (`globals.css:240`).
@@ -70,6 +70,14 @@ Still true but left out of the draft because they describe the shadcn layer rath
 - `brand-a.css:73` says the status colours are "≥5.4:1 on paper and cell"; ok `#14733f` on cell `#f3f3f8` is 5.34:1. The draft states 5.34.
 - The approved phone section heading is 22px; the item page uses 23px (`item.css:200`). The draft states both.
 - The approved control label at 40px is 15/650; the item page's crumb, external link and Share are 15/600 (`item.css:12,16,18`). The draft names only the two actions as applied.
+
+## Regenerating the images
+
+```
+git show 9c8aae83:web/public/design.md > /tmp/before.md
+node scripts/site-audit/designmd-specimen.mjs --in /tmp/before.md --out before.png --label "before — live" --source "web/public/design.md at 9c8aae83"
+node scripts/site-audit/designmd-specimen.mjs --in web/public/design.md --out after.png --label "after — draft"
+```
 
 ## Production vs this branch
 

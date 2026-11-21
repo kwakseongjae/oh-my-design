@@ -211,7 +211,7 @@ The shadcn `--radius` points at radius.control, so `rounded-lg` is 14px.
 
 ### Locale: en (supported)
 
-- Concise; command and file names stay exact.
+- Concise; command names stay exact.
 
 ### Locale: ko (supported)
 
@@ -261,7 +261,7 @@ Production at 1440px, measured 2026-11-21:
 
 - Page titles: home (60/760) and docs (40/760) match. Korean home 56/760, archive 64/780 and `/hangul` 64/760 do not; blog, FAQ, changelog, `/what-is-design-md` and alternatives keep the pre-rebrand 48/700.
 - Eight section-heading sizes (18–44px), twelve button heights (28–56px), five button radii (8, 10, 12, 14px, pill) and four fractional type sizes (14.45, 12.75, 12.5, 40.8px).
-- In code: `components/ui/button.tsx` keeps 24–36px sizes; `/what-is-design-md` sets its title in Geist inline; status chips have a 10.5px label; the social images (`/og/reference`, `/og/blog`) still draw the pre-rebrand `#7c5cfc` and `#0a0a0f`.
+- In code: `components/ui/button.tsx` keeps 24–36px sizes; FAQ, changelog, `/what-is-design-md` and alternatives set their titles in Geist inline; status chips have a 10.5px label; the social images (`/og/reference`, `/og/blog`) still draw the pre-rebrand `#7c5cfc` and `#0a0a0f`.
 
 ### Legacy in code
 
