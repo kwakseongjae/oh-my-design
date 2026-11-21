@@ -129,6 +129,65 @@
     ]
    }
   },
+  "1111": {
+   "hash": "66281025b08166b8",
+   "terms": {
+    "en": [
+     "job matching platform",
+     "job search website",
+     "recruitment portal",
+     "jobseekers and employers",
+     "blue search interface",
+     "dense job listing grid",
+     "rounded service cards",
+     "white search surfaces",
+     "red and blue accents",
+     "ai resume assistant",
+     "desktop web",
+     "illustrated campaign banner"
+    ],
+    "ko": [
+     "구직 매칭 서비스",
+     "채용 포털",
+     "구직자와 기업",
+     "파란색 검색 화면",
+     "빽빽한 공고 목록",
+     "둥근 서비스 카드",
+     "흰색 검색창",
+     "빨강 파랑 포인트",
+     "AI 이력서 도우미",
+     "일러스트 배너",
+     "데스크톱 웹"
+    ],
+    "ja": [
+     "求人マッチングサービス",
+     "求人検索サイト",
+     "求職者と企業",
+     "青い検索画面",
+     "高密度な求人一覧",
+     "丸みのあるカード",
+     "白い検索欄",
+     "赤と青のアクセント",
+     "AI履歴書サポート",
+     "イラストバナー",
+     "デスクトップウェブ"
+    ],
+    "zh": [
+     "人力銀行",
+     "求職網站",
+     "求職者與企業",
+     "藍色搜尋介面",
+     "高密度職缺列表",
+     "圓角服務卡片",
+     "白色搜尋欄",
+     "紅藍配色",
+     "AI 履歷檢查",
+     "插畫活動橫幅",
+     "桌面網頁",
+     "職缺媒合"
+    ]
+   }
+  },
   "1111-jobbank": {
    "hash": "20f31339cf0a014b",
    "terms": {
@@ -500,6 +559,69 @@
      "扁平無陰影",
      "白底極簡",
      "部落格與新聞"
+    ]
+   }
+  },
+  "42maru": {
+   "hash": "682794f8b08f36d7",
+   "terms": {
+    "en": [
+     "ai question answering platform",
+     "enterprise search",
+     "chatbot and conversational ai",
+     "unstructured data analysis",
+     "dark navy header",
+     "star-field hero",
+     "compact blue buttons",
+     "white case-study cards",
+     "partner logo grid",
+     "uppercase heavy headings",
+     "light body text",
+     "navy and blue palette",
+     "b2b marketing site"
+    ],
+    "ko": [
+     "인공지능 질의응답 플랫폼",
+     "기업용 검색",
+     "챗봇 대화형 AI",
+     "비정형 데이터 분석",
+     "어두운 남색 헤더",
+     "별이 빛나는 히어로",
+     "파란색 작은 버튼",
+     "흰색 사례 카드",
+     "파트너 로고 나열",
+     "굵은 대문자 제목",
+     "남색과 파랑 색상",
+     "B2B 기업 홈페이지",
+     "AI 솔루션 소개"
+    ],
+    "ja": [
+     "AI質問応答プラットフォーム",
+     "企業向け検索",
+     "チャットボット",
+     "非構造化データ解析",
+     "濃紺のヘッダー",
+     "星空のヒーロー",
+     "小さめの青いボタン",
+     "白い事例カード",
+     "パートナーロゴ一覧",
+     "太い大文字見出し",
+     "紺と青の配色",
+     "BtoBコーポレートサイト"
+    ],
+    "zh": [
+     "人工智慧問答平台",
+     "企業搜尋",
+     "聊天機器人",
+     "非結構化資料分析",
+     "深藍色頁首",
+     "星空主視覺",
+     "藍色小型按鈕",
+     "白色案例卡片",
+     "合作夥伴標誌牆",
+     "粗體大寫標題",
+     "藍色與深藍配色",
+     "B2B 企業官網"
     ]
    }
   },
@@ -1006,6 +1128,64 @@
      "細白色外框",
      "覆蓋層懸停效果",
      "聯絡銷售與登入"
+    ]
+   }
+  },
+  "aeon": {
+   "hash": "a941bed63cf5c9e4",
+   "terms": {
+    "en": [
+     "retail group portal",
+     "corporate information site",
+     "japanese retail",
+     "magenta accent",
+     "white rounded header",
+     "large photographs",
+     "rounded news cards",
+     "light airy layout",
+     "friendly corporate tone",
+     "black and white with magenta",
+     "shopping and finance group",
+     "community oriented"
+    ],
+    "ko": [
+     "유통 그룹 포털",
+     "기업 정보 사이트",
+     "일본 소매업",
+     "마젠타 포인트",
+     "둥근 흰색 헤더",
+     "큰 사진",
+     "둥근 뉴스 카드",
+     "밝고 여유로운 레이아웃",
+     "친근한 기업 톤",
+     "흰색 검정 마젠타",
+     "쇼핑 금융 그룹"
+    ],
+    "ja": [
+     "小売グループ",
+     "企業情報サイト",
+     "マゼンタのアクセント",
+     "丸みのある白いヘッダー",
+     "大きな写真",
+     "角丸のニュースカード",
+     "明るくゆとりのある",
+     "親しみやすい企業",
+     "白黒とマゼンタ",
+     "流通 金融 不動産",
+     "地域に根ざした"
+    ],
+    "zh": [
+     "零售集團入口",
+     "企業資訊網站",
+     "日本零售",
+     "洋紅色點綴",
+     "圓角白色頁首",
+     "大幅照片",
+     "圓角新聞卡片",
+     "明亮寬鬆版面",
+     "親切企業風格",
+     "黑白搭配洋紅",
+     "購物與金融集團"
     ]
    }
   },
@@ -10829,6 +11009,71 @@
     ]
    }
   },
+  "genesis": {
+   "hash": "2efd1ddd1a65a8ba",
+   "terms": {
+    "en": [
+     "luxury car brand",
+     "automotive website",
+     "car showroom",
+     "test drive booking",
+     "quote request",
+     "photo-led layout",
+     "full-bleed car film",
+     "restrained interface",
+     "black and white palette",
+     "grey text tones",
+     "large image cards",
+     "copper accent",
+     "elegant and athletic"
+    ],
+    "ko": [
+     "럭셔리 자동차",
+     "자동차 브랜드 사이트",
+     "시승 신청",
+     "견적 문의",
+     "차량 이미지 중심",
+     "풀스크린 영상",
+     "절제된 인터페이스",
+     "블랙 앤 화이트",
+     "회색 텍스트",
+     "큰 사진 카드",
+     "세련된 프리미엄",
+     "구리빛 포인트",
+     "모델 탐색"
+    ],
+    "ja": [
+     "高級車ブランド",
+     "自動車サイト",
+     "試乗予約",
+     "見積もり依頼",
+     "写真主体のレイアウト",
+     "全面動画",
+     "控えめなUI",
+     "モノトーン配色",
+     "グレーの文字色",
+     "大きな画像カード",
+     "上質で洗練",
+     "銅色のアクセント",
+     "車種探索"
+    ],
+    "zh": [
+     "豪華汽車品牌",
+     "汽車官網",
+     "預約試駕",
+     "索取報價",
+     "圖像主導版面",
+     "全幅影片",
+     "簡約介面",
+     "黑白配色",
+     "灰色文字",
+     "大型圖片卡片",
+     "優雅運動感",
+     "銅色點綴",
+     "車型瀏覽"
+    ]
+   }
+  },
   "genie": {
    "hash": "d5666c91de1c56f2",
    "terms": {
@@ -12284,6 +12529,67 @@
      "開立帳戶",
      "傳承與信賴感",
      "親切友善"
+    ]
+   }
+  },
+  "hankyung": {
+   "hash": "1f2605e25331ac90",
+   "terms": {
+    "en": [
+     "economic news portal",
+     "korean news website",
+     "finance news",
+     "stock market news",
+     "paid investment info",
+     "subscription news",
+     "dense navigation",
+     "centered masthead",
+     "neutral editorial layout",
+     "fine dividers",
+     "red and blue market colors",
+     "indigo navy accents",
+     "white background"
+    ],
+    "ko": [
+     "경제 뉴스 포털",
+     "경제 신문 사이트",
+     "증권 시장 뉴스",
+     "투자 정보 구독",
+     "유료 구독 서비스",
+     "촘촘한 메뉴",
+     "중앙 정렬 로고",
+     "차분한 편집 레이아웃",
+     "가는 구분선",
+     "빨강 파랑 등락 색상",
+     "남색 포인트",
+     "흰색 배경"
+    ],
+    "ja": [
+     "経済ニュースサイト",
+     "韓国のニュース媒体",
+     "株式市況ニュース",
+     "投資情報の有料購読",
+     "高密度ナビゲーション",
+     "中央配置のロゴ",
+     "中立的な紙面レイアウト",
+     "細い区切り線",
+     "赤と青の騰落色",
+     "インディゴ紺のアクセント",
+     "白背景"
+    ],
+    "zh": [
+     "經濟新聞入口",
+     "韓國新聞網站",
+     "股市財經新聞",
+     "付費投資資訊",
+     "訂閱服務",
+     "高密度導覽",
+     "置中報頭",
+     "中性編輯版面",
+     "細分隔線",
+     "紅藍漲跌色",
+     "靛藍深藍點綴",
+     "白色背景"
     ]
    }
   },
@@ -14907,67 +15213,63 @@
    }
   },
   "jobplanet": {
-   "hash": "3bfb527d7d783f8d",
+   "hash": "f29cad811e76573a",
    "terms": {
     "en": [
      "company review platform",
+     "career platform",
      "job search",
-     "recruitment platform",
-     "salary comparison",
-     "employer ratings",
-     "data-dense interface",
-     "flat design",
-     "no shadows",
-     "light grey background",
-     "spring green accent",
-     "green call to action",
-     "small rounded corners",
-     "compact typography"
+     "employer reviews",
+     "job listing cards",
+     "employee rating chips",
+     "search-focused hero",
+     "white background",
+     "green accent",
+     "dense information",
+     "flat bordered cards",
+     "korean job seekers"
     ],
     "ko": [
      "기업 리뷰 플랫폼",
-     "채용 사이트",
-     "연봉 정보",
-     "기업 평가",
-     "정보 밀도 높은",
-     "플랫폼",
-     "그림자 없는 플랫",
-     "연한 회색 배경",
-     "초록색 포인트",
-     "초록 버튼",
-     "둥근 모서리",
-     "촘촘한 타이포",
-     "구직자"
+     "커리어 플랫폼",
+     "채용 정보",
+     "취업 준비",
+     "연봉 협상",
+     "면접 준비",
+     "검색 중심 히어로",
+     "흰색 배경",
+     "초록 포인트",
+     "정보 밀도 높음",
+     "플랫 카드",
+     "평점 칩"
     ],
     "ja": [
-     "企業口コミサイト",
-     "求人プラットフォーム",
-     "年収比較",
-     "企業評価",
+     "企業レビュー",
+     "キャリアプラットフォーム",
+     "求人検索",
+     "求人カード",
+     "評価チップ",
+     "検索重視のヒーロー",
+     "白背景",
+     "グリーンのアクセント",
      "情報密度が高い",
-     "フラットデザイン",
-     "影なし",
-     "薄いグレー背景",
-     "グリーンアクセント",
-     "緑のボタン",
-     "控えめな角丸",
-     "小さめの文字",
-     "転職活動"
+     "フラットなカード",
+     "転職活動",
+     "韓国の求職者"
     ],
     "zh": [
      "企業評價平台",
-     "求職網站",
-     "薪資比較",
-     "雇主評分",
-     "資訊密集",
-     "扁平設計",
-     "無陰影",
-     "淺灰背景",
-     "綠色強調色",
-     "綠色按鈕",
-     "小圓角",
-     "緊湊字體",
-     "求職者"
+     "職涯平台",
+     "求職搜尋",
+     "職缺卡片",
+     "評分標籤",
+     "搜尋為主的首頁",
+     "白色背景",
+     "綠色強調",
+     "資訊密度高",
+     "扁平邊框卡片",
+     "面試準備",
+     "薪資談判"
     ]
    }
   },
@@ -16704,6 +17006,75 @@
      "大型輪播",
      "日本出版社",
      "公告與推薦"
+    ]
+   }
+  },
+  "koexpressway": {
+   "hash": "5afb160368b495bc",
+   "terms": {
+    "en": [
+     "public service portal",
+     "highway information",
+     "toll payment services",
+     "government corporate homepage",
+     "image-led hero",
+     "photographic sections",
+     "outlined service tiles",
+     "dark blue action links",
+     "white background",
+     "navy blue",
+     "red accent",
+     "notice board",
+     "institutional look",
+     "quick service shortcuts"
+    ],
+    "ko": [
+     "공공기관 포털",
+     "고속도로 정보",
+     "통행료 서비스",
+     "기업 홈페이지",
+     "이미지 중심 히어로",
+     "사진 위주 화면",
+     "외곽선 서비스 타일",
+     "진한 파랑 버튼",
+     "흰색 배경",
+     "네이비",
+     "빨강 포인트",
+     "공지사항 게시",
+     "바로가기 메뉴",
+     "신뢰감 있는 공공 디자인"
+    ],
+    "ja": [
+     "公共サービスポータル",
+     "高速道路情報",
+     "料金所サービス",
+     "企業ホームページ",
+     "画像主体のヒーロー",
+     "写真中心",
+     "枠線付きサービスタイル",
+     "濃い青のリンク",
+     "白背景",
+     "ネイビー",
+     "赤のアクセント",
+     "お知らせ欄",
+     "クイックリンク",
+     "公的機関らしい印象"
+    ],
+    "zh": [
+     "公共服務入口網站",
+     "高速公路資訊",
+     "通行費服務",
+     "企業官方首頁",
+     "大圖主視覺",
+     "照片為主",
+     "外框服務磚",
+     "深藍色按鈕",
+     "白色背景",
+     "海軍藍",
+     "紅色點綴",
+     "公告欄",
+     "快速入口",
+     "公部門機構風格"
     ]
    }
   },
@@ -20221,6 +20592,72 @@
     ]
    }
   },
+  "modetour": {
+   "hash": "c9a71f48b6ea2c95",
+   "terms": {
+    "en": [
+     "travel booking",
+     "overseas package tours",
+     "flight and hotel booking",
+     "travel shopping site",
+     "white canvas",
+     "green accents",
+     "large destination photos",
+     "promotional carousels",
+     "compact navigation",
+     "image-led campaigns",
+     "restrained controls",
+     "visible prices",
+     "teal hero arrows",
+     "korean travel agency"
+    ],
+    "ko": [
+     "여행 예약",
+     "해외 패키지 여행",
+     "항공 호텔 예약",
+     "여행 쇼핑몰",
+     "흰색 배경",
+     "초록 포인트",
+     "대형 여행지 사진",
+     "프로모션 캐러셀",
+     "간결한 내비게이션",
+     "이미지 중심 기획전",
+     "절제된 버튼",
+     "가격 노출",
+     "여행사 홈페이지"
+    ],
+    "ja": [
+     "旅行予約",
+     "海外パッケージツアー",
+     "航空券とホテル",
+     "旅行ショッピング",
+     "白背景",
+     "グリーンのアクセント",
+     "大きな観光地写真",
+     "プロモカルーセル",
+     "コンパクトなナビ",
+     "画像中心のキャンペーン",
+     "控えめなボタン",
+     "価格表示",
+     "韓国の旅行会社"
+    ],
+    "zh": [
+     "旅遊預訂",
+     "海外套裝行程",
+     "機票與飯店預訂",
+     "旅遊購物網站",
+     "白色背景",
+     "綠色點綴",
+     "大幅目的地照片",
+     "促銷輪播",
+     "精簡導覽列",
+     "圖像導向活動",
+     "克制的按鈕",
+     "價格清楚顯示",
+     "韓國旅行社"
+    ]
+   }
+  },
   "modusign": {
    "hash": "3e45c23527090f4b",
    "terms": {
@@ -21524,6 +21961,67 @@
     ]
    }
   },
+  "nec": {
+   "hash": "94dc1f0bccf7324a",
+   "terms": {
+    "en": [
+     "corporate it services",
+     "social infrastructure",
+     "ai and security",
+     "japanese corporate site",
+     "light headline",
+     "generous white space",
+     "human video imagery",
+     "blue action links",
+     "dark grey text",
+     "story cards",
+     "blue and grey palette",
+     "enterprise technology"
+    ],
+    "ko": [
+     "기업 IT 서비스",
+     "사회 인프라",
+     "AI 보안",
+     "일본 기업 사이트",
+     "가벼운 헤드라인",
+     "넉넉한 여백",
+     "인물 영상 이미지",
+     "파란색 링크",
+     "짙은 회색 텍스트",
+     "스토리 카드",
+     "파랑 회색 팔레트",
+     "기업용 기술"
+    ],
+    "ja": [
+     "ITサービス",
+     "社会インフラ",
+     "AIとセキュリティ",
+     "日本の企業サイト",
+     "細い見出し",
+     "広い余白",
+     "人物の映像",
+     "青いリンク",
+     "濃いグレーの文字",
+     "ストーリーカード",
+     "青とグレーの配色",
+     "法人向けテクノロジー"
+    ],
+    "zh": [
+     "企業資訊服務",
+     "社會基礎建設",
+     "AI與資安",
+     "日本企業網站",
+     "輕細標題",
+     "大量留白",
+     "人物影片視覺",
+     "藍色連結",
+     "深灰文字",
+     "故事卡片",
+     "藍灰配色",
+     "企業科技"
+    ]
+   }
+  },
   "neosapience": {
    "hash": "8da47dfb8e67c87f",
    "terms": {
@@ -21777,6 +22275,67 @@
      "活動與更新查看",
      "遊戲列表網格",
      "簡約中性介面"
+    ]
+   }
+  },
+  "nhis": {
+   "hash": "a8b6413c02cc45d9",
+   "terms": {
+    "en": [
+     "public health insurance",
+     "government service portal",
+     "korean public institution",
+     "long-term care service",
+     "health check eligibility",
+     "refund and login services",
+     "red accent on white",
+     "clean practical layout",
+     "pale gray service cards",
+     "prominent red login buttons",
+     "warm trustworthy tone",
+     "blue keyboard focus ring"
+    ],
+    "ko": [
+     "건강보험",
+     "공공기관 홈페이지",
+     "정부 서비스 포털",
+     "노인장기요양",
+     "건강검진 조회",
+     "환급금 조회",
+     "개인 사업장 로그인",
+     "빨간색 포인트",
+     "흰색 배경",
+     "옅은 회색 카드",
+     "따뜻하고 신뢰감 있는",
+     "파란 포커스 링"
+    ],
+    "ja": [
+     "健康保険",
+     "公共機関サイト",
+     "政府系ポータル",
+     "介護保険サービス",
+     "健診の確認",
+     "還付金案内",
+     "個人・事業所ログイン",
+     "赤いアクセント",
+     "白基調",
+     "淡いグレーのカード",
+     "温かく信頼感のある",
+     "青いフォーカスリング"
+    ],
+    "zh": [
+     "健康保險",
+     "公共機構網站",
+     "政府服務入口",
+     "長期照護服務",
+     "健檢資格查詢",
+     "退款查詢",
+     "個人與事業單位登入",
+     "紅色強調色",
+     "白色背景",
+     "淺灰色卡片",
+     "溫暖可信賴",
+     "藍色鍵盤焦點框"
     ]
    }
   },
@@ -24443,64 +25002,63 @@
    }
   },
   "peoplefund": {
-   "hash": "92677ff6c84f9cde",
+   "hash": "5c48775af276ff2d",
    "terms": {
     "en": [
-     "p2p real estate lending",
      "online investment platform",
-     "property-backed loans",
-     "retail investors",
-     "minimal flat design",
-     "amber accent on white",
-     "grey and white cards",
-     "data-dense listing board",
-     "no shadows",
-     "pure black text",
-     "status badges",
-     "dark blue-grey footer",
-     "progress bars"
+     "real estate investment",
+     "fintech",
+     "korean finance app",
+     "loans and investing",
+     "amber accent",
+     "white and grey",
+     "flat no shadows",
+     "data-dense listings",
+     "dark contact band",
+     "square white button",
+     "hero image carousel"
     ],
     "ko": [
-     "부동산 p2p 대출",
      "온라인 투자 플랫폼",
-     "부동산 담보 대출",
-     "개인 투자자",
-     "미니멀 플랫 디자인",
-     "앰버 포인트 컬러",
-     "흰색 회색 카드",
-     "정보 밀도 높은 상품 목록",
-     "그림자 없음",
-     "상태 배지",
-     "진행률 막대",
-     "핀테크"
+     "부동산 투자",
+     "핀테크",
+     "온투금융",
+     "대출 투자 서비스",
+     "앰버 포인트",
+     "화이트 그레이",
+     "그림자 없는 플랫",
+     "수익률 상품 목록",
+     "어두운 푸터",
+     "각진 흰색 버튼",
+     "이미지 캐러셀"
     ],
     "ja": [
-     "不動産p2pレンディング",
-     "オンライン投資プラットフォーム",
-     "不動産担保ローン",
-     "個人投資家",
-     "ミニマルでフラット",
+     "オンライン投資",
+     "不動産投資",
+     "フィンテック",
+     "韓国の金融サービス",
+     "融資と投資",
      "アンバーのアクセント",
-     "白とグレーのカード",
-     "情報密度の高い一覧",
-     "影なし",
-     "ステータスバッジ",
-     "ダークブルーグレーのフッター",
-     "フィンテック"
+     "白とグレー",
+     "影のないフラット",
+     "データ重視の一覧",
+     "暗いお問い合わせ帯",
+     "角ばった白ボタン",
+     "ヒーロー画像カルーセル"
     ],
     "zh": [
-     "不動產p2p借貸",
      "線上投資平台",
-     "不動產抵押貸款",
-     "個人投資者",
-     "極簡扁平設計",
-     "琥珀色強調色",
-     "白色與灰色卡片",
-     "高資訊密度列表",
-     "無陰影",
-     "狀態徽章",
-     "進度條",
-     "金融科技"
+     "不動產投資",
+     "金融科技",
+     "韓國金融服務",
+     "貸款與投資",
+     "琥珀色點綴",
+     "白色與灰色",
+     "無陰影扁平",
+     "數據密集清單",
+     "深色聯絡區塊",
+     "方形白色按鈕",
+     "主視覺輪播"
     ]
    }
   },
@@ -26314,6 +26872,67 @@
     ]
    }
   },
+  "rakus": {
+   "hash": "13f7a03083217ced",
+   "terms": {
+    "en": [
+     "business cloud services",
+     "b2b saas",
+     "corporate website",
+     "japanese company site",
+     "white background",
+     "orange accent",
+     "warm and rational",
+     "geometric shapes",
+     "generous white space",
+     "dark grey text",
+     "orange hover feedback",
+     "light grey sections"
+    ],
+    "ko": [
+     "업무 지원 클라우드",
+     "기업용 saas",
+     "기업 홈페이지",
+     "일본 기업 사이트",
+     "흰색 배경",
+     "오렌지 포인트",
+     "따뜻하고 합리적인",
+     "기하학적 도형",
+     "여백이 넉넉한",
+     "짙은 회색 텍스트",
+     "오렌지 호버 효과",
+     "연한 회색 섹션"
+    ],
+    "ja": [
+     "業務支援クラウド",
+     "法人向けsaas",
+     "コーポレートサイト",
+     "日本企業サイト",
+     "白背景",
+     "オレンジのアクセント",
+     "合理性と温かさ",
+     "幾何学的な図形",
+     "余白が広い",
+     "ダークグレーの文字",
+     "オレンジのホバー",
+     "薄いグレーの区切り"
+    ],
+    "zh": [
+     "企業雲端服務",
+     "b2b saas",
+     "企業官網",
+     "日本企業網站",
+     "白色背景",
+     "橘色重點色",
+     "理性又溫暖",
+     "幾何圖形",
+     "大量留白",
+     "深灰色文字",
+     "橘色懸停回饋",
+     "淺灰色區塊"
+    ]
+   }
+  },
   "rakuten": {
    "hash": "8165c60d78d58da2",
    "terms": {
@@ -27976,6 +28595,72 @@
     ]
    }
   },
+  "saltlux": {
+   "hash": "051311bb1a46ade1",
+   "terms": {
+    "en": [
+     "enterprise ai platform",
+     "ai agents",
+     "llm solutions",
+     "ontology knowledge",
+     "b2b software company",
+     "corporate website",
+     "spacious white layout",
+     "rounded panels",
+     "black pill buttons",
+     "blue accents",
+     "cyan green gradient",
+     "dark footer",
+     "technical look",
+     "korean headlines"
+    ],
+    "ko": [
+     "기업용 AI 플랫폼",
+     "AI 에이전트",
+     "거대언어모델 솔루션",
+     "온톨로지 지식",
+     "B2B 소프트웨어",
+     "기업 홈페이지",
+     "여백 넓은 화이트",
+     "둥근 패널",
+     "검정 필 버튼",
+     "파란색 포인트",
+     "청록 초록 그라데이션",
+     "어두운 푸터",
+     "기술적인 분위기"
+    ],
+    "ja": [
+     "企業向けAIプラットフォーム",
+     "AIエージェント",
+     "LLMソリューション",
+     "オントロジー",
+     "BtoBソフトウェア",
+     "企業サイト",
+     "余白の広い白背景",
+     "角丸パネル",
+     "黒いピル型ボタン",
+     "青のアクセント",
+     "シアングリーングラデーション",
+     "ダークなフッター",
+     "テクニカルな印象"
+    ],
+    "zh": [
+     "企業級AI平台",
+     "AI代理",
+     "大型語言模型方案",
+     "本體知識",
+     "B2B軟體公司",
+     "企業官網",
+     "寬鬆留白",
+     "圓角面板",
+     "黑色膠囊按鈕",
+     "藍色點綴",
+     "青綠漸層",
+     "深色頁尾",
+     "科技感"
+    ]
+   }
+  },
   "samsung": {
    "hash": "2cef47f3cc0dfbbd",
    "terms": {
@@ -28034,6 +28719,75 @@
      "產品卡片",
      "分頁標籤瀏覽",
      "黑白配色"
+    ]
+   }
+  },
+  "samsungfire": {
+   "hash": "b982feea313e10e4",
+   "terms": {
+    "en": [
+     "insurance company",
+     "insurance services",
+     "individual and business customers",
+     "white canvas",
+     "blue actions",
+     "rounded product cards",
+     "pastel promotional panels",
+     "illustrated topics",
+     "service shortcuts",
+     "login rail",
+     "campaign banners",
+     "simple orderly layout",
+     "blue and white",
+     "green and yellow accents"
+    ],
+    "ko": [
+     "보험사",
+     "보험 서비스",
+     "개인 및 기업 고객",
+     "흰색 배경",
+     "파란색 버튼",
+     "둥근 상품 카드",
+     "파스텔 프로모션",
+     "일러스트",
+     "빠른 서비스 메뉴",
+     "로그인 영역",
+     "캠페인 배너",
+     "단정한 레이아웃",
+     "파랑 흰색",
+     "노랑 초록 포인트"
+    ],
+    "ja": [
+     "保険会社",
+     "保険サービス",
+     "個人と法人向け",
+     "白い背景",
+     "青のボタン",
+     "角丸の商品カード",
+     "パステルのプロモーション",
+     "イラスト",
+     "サービスショートカット",
+     "ログイン欄",
+     "キャンペーンバナー",
+     "シンプルで整然",
+     "青と白",
+     "黄色と緑のアクセント"
+    ],
+    "zh": [
+     "保險公司",
+     "保險服務",
+     "個人與企業客戶",
+     "白色背景",
+     "藍色按鈕",
+     "圓角商品卡片",
+     "粉彩促銷區塊",
+     "插畫風格",
+     "快速服務入口",
+     "登入區",
+     "活動橫幅",
+     "簡潔有序版面",
+     "藍白配色",
+     "黃綠點綴"
     ]
    }
   },
@@ -31802,71 +32556,71 @@
    }
   },
   "supertone": {
-   "hash": "2f44a84860243bbf",
+   "hash": "a4801520bbd20105",
    "terms": {
     "en": [
      "voice ai",
-     "speech synthesis",
-     "dubbing and voice restoration",
-     "game character voices",
-     "developer api",
-     "near-black dark theme",
-     "alternating dark and light sections",
+     "text to speech",
+     "ai dubbing",
+     "voice synthesis api",
+     "audio tool",
+     "dark near-black theme",
+     "dark and light sections",
      "electric blue accent",
-     "lime accent button",
-     "pill buttons",
+     "lime accent",
      "flat no shadows",
-     "light weight geometric type",
-     "studio control room feel",
-     "responsible ai consent"
+     "pill buttons",
+     "light weight type",
+     "studio control room",
+     "game character voices"
     ],
     "ko": [
-     "음성 AI",
+     "음성 ai",
      "음성 합성",
-     "더빙 서비스",
-     "게임 캐릭터 음성",
-     "개발자 API",
+     "텍스트 음성 변환",
+     "ai 더빙",
+     "오디오 도구",
      "다크 테마",
-     "어두운 배경과 밝은 섹션",
-     "파란색 포인트",
-     "라임색 버튼",
+     "블랙 배경",
+     "파란색 강조",
+     "라임 포인트",
+     "플랫 디자인",
      "알약형 버튼",
-     "그림자 없는 플랫",
-     "얇은 기하학 서체",
+     "얇은 글씨",
      "스튜디오 느낌",
-     "책임 있는 AI"
+     "게임 캐릭터 음성"
     ],
     "ja": [
-     "音声AI",
+     "音声ai",
      "音声合成",
-     "吹き替え",
-     "ゲームキャラクターボイス",
-     "開発者向けAPI",
+     "テキスト読み上げ",
+     "ai吹き替え",
+     "オーディオツール",
      "ダークテーマ",
-     "暗色と明色の交互セクション",
-     "鮮やかな青のアクセント",
-     "ライムグリーンのボタン",
+     "黒背景",
+     "ブルーアクセント",
+     "ライムグリーン",
+     "フラットデザイン",
      "ピル型ボタン",
-     "フラットで影なし",
-     "細身の幾何学書体",
-     "スタジオのような雰囲気",
-     "責任あるAI"
+     "細字フォント",
+     "スタジオ風",
+     "ゲーム音声api"
     ],
     "zh": [
-     "語音AI",
+     "語音ai",
      "語音合成",
-     "配音與聲音修復",
-     "遊戲角色聲音",
-     "開發者API",
+     "文字轉語音",
+     "ai配音",
+     "音訊工具",
      "深色主題",
-     "深淺區塊交替",
-     "電光藍強調色",
-     "萊姆綠按鈕",
-     "膠囊按鈕",
+     "黑色背景",
+     "亮藍色強調",
+     "萊姆綠點綴",
      "扁平無陰影",
-     "細體幾何字型",
-     "錄音室氛圍",
-     "負責任的AI"
+     "膠囊按鈕",
+     "細字體",
+     "錄音室風格",
+     "遊戲角色語音"
     ]
    }
   },
@@ -33125,6 +33879,72 @@
     ]
    }
   },
+  "tokyo": {
+   "hash": "29570013008f8582",
+   "terms": {
+    "en": [
+     "government portal",
+     "local government website",
+     "public sector",
+     "citizen information",
+     "green navigation band",
+     "white surfaces",
+     "pale green panels",
+     "green palette",
+     "keyword search",
+     "multilingual site",
+     "announcements and news",
+     "image-led cards",
+     "accessible public service",
+     "compact announcements"
+    ],
+    "ko": [
+     "지방정부 포털",
+     "공공기관 사이트",
+     "행정 정보",
+     "시민 안내",
+     "녹색 내비게이션",
+     "흰색 바탕",
+     "연한 녹색 패널",
+     "녹색 계열",
+     "키워드 검색",
+     "다국어 지원",
+     "공지사항",
+     "이미지 카드",
+     "접근성 준수"
+    ],
+    "ja": [
+     "自治体ポータル",
+     "行政サイト",
+     "公共機関",
+     "都民向け情報",
+     "緑のナビゲーション",
+     "白い背景",
+     "淡い緑のパネル",
+     "緑系配色",
+     "キーワード検索",
+     "多言語対応",
+     "お知らせ一覧",
+     "画像付きカード",
+     "アクセシビリティ重視"
+    ],
+    "zh": [
+     "地方政府入口網站",
+     "政府網站",
+     "公共服務",
+     "市民資訊",
+     "綠色導覽列",
+     "白色背景",
+     "淺綠色面板",
+     "綠色系配色",
+     "關鍵字搜尋",
+     "多語言支援",
+     "公告資訊",
+     "圖片卡片",
+     "無障礙設計"
+    ]
+   }
+  },
   "tokyo-metropolitan": {
    "hash": "672ae287f9881ffe",
    "terms": {
@@ -33941,6 +34761,67 @@
      "回饋方案",
      "白色背景",
      "文化藝術專案"
+    ]
+   }
+  },
+  "tver": {
+   "hash": "ed4872efebc5feaa",
+   "terms": {
+    "en": [
+     "free tv streaming",
+     "japanese broadcast catch-up",
+     "live and simultaneous viewing",
+     "programme-led layout",
+     "large programme images",
+     "pale background",
+     "navy login button",
+     "pill navigation",
+     "restrained interface colours",
+     "cyan blue focus outline",
+     "compact dark labels",
+     "general audience video app"
+    ],
+    "ko": [
+     "무료 tv 스트리밍",
+     "일본 방송 다시보기",
+     "실시간 방송 시청",
+     "프로그램 중심 레이아웃",
+     "큰 프로그램 이미지",
+     "옅은 배경",
+     "네이비 로그인 버튼",
+     "알약형 내비게이션",
+     "절제된 인터페이스 색상",
+     "파란색 포커스 테두리",
+     "영상 시청 앱",
+     "누구나 쓰기 쉬운"
+    ],
+    "ja": [
+     "無料テレビ配信",
+     "民放ストリーミング",
+     "見逃し配信",
+     "同時配信",
+     "番組が主役",
+     "大きな番組画像",
+     "淡い背景",
+     "ネイビーのログインボタン",
+     "ピル型ナビゲーション",
+     "控えめな配色",
+     "誰でも使える",
+     "動画視聴アプリ"
+    ],
+    "zh": [
+     "免費電視串流",
+     "日本電視台重播",
+     "直播同步收看",
+     "節目為主的版面",
+     "大型節目圖片",
+     "淺色背景",
+     "深藍登入按鈕",
+     "膠囊型導覽",
+     "克制的介面配色",
+     "藍色焦點外框",
+     "影音收看應用",
+     "大眾易用"
     ]
    }
   },
@@ -34985,6 +35866,67 @@
      "暖色中性色",
      "明顯焦點外框",
      "語意化色彩變數"
+    ]
+   }
+  },
+  "visitkorea": {
+   "hash": "15645eb7f1c2814d",
+   "terms": {
+    "en": [
+     "domestic travel guide",
+     "tourism information portal",
+     "destination recommendations",
+     "festival calendar",
+     "travel courses",
+     "ai article summaries",
+     "white background",
+     "large travel photography",
+     "blue search button",
+     "photo card layout",
+     "korean travel service",
+     "light and airy"
+    ],
+    "ko": [
+     "국내 여행 정보",
+     "관광 안내 포털",
+     "여행지 추천",
+     "축제 일정",
+     "여행 코스",
+     "AI 요약",
+     "흰색 배경",
+     "큰 여행 사진",
+     "파란 검색 버튼",
+     "사진 카드형",
+     "깔끔한 여행 서비스",
+     "관광 공공 서비스"
+    ],
+    "ja": [
+     "国内旅行ガイド",
+     "観光情報ポータル",
+     "おすすめ観光地",
+     "祭りカレンダー",
+     "旅行コース",
+     "AI要約",
+     "白背景",
+     "大きな旅行写真",
+     "青い検索ボタン",
+     "写真カード",
+     "韓国の旅行サービス",
+     "すっきりした観光サイト"
+    ],
+    "zh": [
+     "國內旅遊指南",
+     "觀光資訊入口",
+     "景點推薦",
+     "節慶日曆",
+     "旅遊路線",
+     "AI 摘要",
+     "白色背景",
+     "大幅旅遊照片",
+     "藍色搜尋按鈕",
+     "照片卡片",
+     "韓國旅遊服務",
+     "簡潔觀光網站"
     ]
    }
   },

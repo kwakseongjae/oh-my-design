@@ -28,7 +28,8 @@
  * A control becomes a component when hover, pressed or focus was measured. A measured state that changed
  * nothing the brand painted is written as `no brand change`. Not counted as a change: a change in descendant
  * count, a change that persists after blur, and the browser's `auto` focus ring arriving or leaving. An
- * unmeasured state is reported as unmeasured, never as "no change".
+ * unmeasured state is reported as unmeasured, never as "no change", and so is a state in which nothing settled
+ * while something was still moving between the probe's reads.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -69,7 +70,7 @@ export function brandChanges(state, name) {
   // persist after blur, its comparison against the after-blur rest is the focus change. `alsoPersists` alone
   // misses a pseudo-element whose one descriptor string holds both a focus colour and a persisting opacity.
   const list = name === "focus" && state.persistsAfterBlur?.length && Array.isArray(state.changedVsAfterBlur) ? state.changedVsAfterBlur : state.changed ?? [];
-  return list.filter((c) => {
+  const brand = list.filter((c) => {
     // `alsoPersists` is the probe's per-change mark for a focus change that stays after blur (a search field
     // that stays widened): that is a toggled layout, not a focus style.
     if (c.prop === "dom" || c.alsoPersists) return false;
@@ -84,6 +85,12 @@ export function brandChanges(state, name) {
     if (/shadow$/.test(c.prop ?? "") && paintsNoShadow(c.from) && paintsNoShadow(c.to)) return false;
     return true;
   });
+  // The probe's verdict for a state where nothing settled but something was still moving between its reads is
+  // "NO SETTLED CHANGE", and it lists the moving properties in `unstableProps`. That is not a measured "no change":
+  // a carousel was sliding under the pointer (peoplefund's product tab, 2026-11-21, `up1.tf`). With no settled
+  // change to report, the state counts as unmeasured. A settled change beside a moving property is still reported.
+  if (!brand.length && state.unstableProps?.length) return null;
+  return brand;
 }
 
 /**
