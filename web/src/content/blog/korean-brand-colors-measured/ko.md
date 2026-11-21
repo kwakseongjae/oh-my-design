@@ -214,9 +214,9 @@ W1 표 (계열별 곳, 비율): W1 Rule W n / share 열. 기준(HSL) 칸: tables
 
 주 행동 버튼 위의 글자
 95곳, 74곳, 중앙값 5.03, 34곳(35.8%), 12곳(12.6%): W4 머리 목록
-23곳 유지, 11곳 제외와 이유, 판정 기준: W4 Of the 34 문장, Test 문장, W4a, W4b
-표 23행 (대비, 배경, 버튼): W4a 각 행; 「어떤 버튼인가」는 W4a 마지막 열(파일 인용은 compute.py CONTRAST_CHECK)
-3:1 미만 6곳, 글자색 #ffffff: W4a 아래 목록; 파랑 계열 9곳: W4a family 열
+23곳 유지(다시 재기 전), 11곳 제외와 이유, 판정 기준: W4 Of the 34 문장, Test 문장, W4a, W4b. 11월 21일 홈 화면에서 다시 재서 남긴 18곳과 뺀 5곳: contrast-recheck.md
+표 18행 (대비, 배경, 버튼): W4a의 23행 가운데 contrast-recheck.md에서 kept = yes인 행; 「어떤 버튼인가」는 W4a 마지막 열(파일 인용은 compute.py CONTRAST_CHECK)
+3:1 미만 5곳(18행 중), 글자색 #ffffff: W4a 아래 목록의 다시 잰 뒤 줄; 파랑 계열 8곳: W4a family 열에서 남은 18행
 큰 글자 2곳(런드리고 floating-cta 24px/700, 페이히어 purchase-button 32px/700): 각 web/references/<id>/DESIGN.md components.<component>.typography. 나머지 21곳은 WCAG 큰 글자 아래, karrot box-button은 크기를 적지 않음(gates.md revision round 1)
 브라우저 없이 파일 대조: method.md Rule W 절
 
