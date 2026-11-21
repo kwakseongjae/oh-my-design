@@ -21,9 +21,14 @@ import { chromium } from "playwright-core";
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => { const i = args.indexOf(name); return i === -1 ? fallback : args.splice(i, 2)[1]; };
-const out = opt("--out"), locale = opt("--locale", "ko-KR");
+const out = opt("--out"), locale = opt("--locale", "ko-KR"), viewportName = opt("--viewport", "desktop");
+if (viewportName !== "desktop" && viewportName !== "phone") { console.error('--viewport must be "desktop" or "phone"'); process.exit(2); }
+// The same two contexts as probe-keyboard-states.mjs --viewport, so a survey and its text census describe one surface.
+const PHONE = viewportName === "phone";
+const VIEWPORT = PHONE ? { width: 390, height: 844 } : { width: 1440, height: 1000 };
+const PHONE_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
 const url = args[0];
-if (!url || !out) { console.error("usage: text-census.mjs <url> --out <file.json> [--locale ko-KR]"); process.exit(2); }
+if (!url || !out) { console.error("usage: text-census.mjs <url> --out <file.json> [--locale ko-KR] [--viewport desktop|phone]"); process.exit(2); }
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
 
 /** Runs in the page: one record per element that directly holds visible text. */
@@ -68,9 +73,9 @@ export function foldText(rows, limit = 12) {
 
 async function main() {
   const browser = await chromium.launch({ headless: true, ...(process.env.OMD_CHROME_PATH ? { executablePath: process.env.OMD_CHROME_PATH } : { channel: "chrome" }), args: ["--disable-blink-features=AutomationControlled"] });
-  const rec = { tool: "text-census.mjs", url, locale, viewport: "1440x1000", measuredAt: new Date().toISOString() };
+  const rec = { tool: "text-census.mjs", url, locale, viewport: `${VIEWPORT.width}x${VIEWPORT.height}`, ...(PHONE ? { device: "phone: touch, mobile viewport, DPR 2, user agent " + PHONE_UA } : {}), measuredAt: new Date().toISOString() };
   try {
-    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, userAgent: UA, locale, extraHTTPHeaders: { "Accept-Language": `${locale},${locale.split("-")[0]};q=0.9,en;q=0.8` } });
+    const context = await browser.newContext({ viewport: VIEWPORT, ...(PHONE ? { deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: PHONE_UA } : { userAgent: UA }), locale, extraHTTPHeaders: { "Accept-Language": `${locale},${locale.split("-")[0]};q=0.9,en;q=0.8` } });
     const page = await context.newPage();
     const res = await page.goto(url, { waitUntil: "load", timeout: 45000 });
     rec.status = res?.status() ?? null; rec.finalUrl = page.url();

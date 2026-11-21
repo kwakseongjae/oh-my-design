@@ -31,6 +31,10 @@
  *            Recorded in boot.closed; the scroll video page does not repeat it.)
  *            --browser headless|worker (default headless; worker opens headed Chrome with its own UA and a fresh temporary
  *            profile, never the owner's profile; locale, viewport, Accept-Language and launch args stay the same)
+ *            --viewport desktop|phone (default desktop, 1440x1000. phone is 390x844 with touch, a phone user agent and
+ *            DPR 2: for a product that is a mobile web. Hover is still read with a mouse pointer; rules behind
+ *            @media (hover: hover) do not apply on a touch context, and the note in `notes` says so. Recorded in
+ *            boot.viewport and boot.device.)
  *            --shots dir (opt-in PNG crops: <key>-rest/hover/pressed/focus.png, 12px padding clamped to the viewport;
  *            no scrolling for a crop; each read state gets shot or shotError, unmeasured states have no crop. For hover/
  *            pressed the pointer is put back on its point before the crop, and a crop whose state stopped matching is
@@ -130,7 +134,7 @@ import { chromium } from "playwright-core";
 // ───────────────────────────── arguments ─────────────────────────────
 const argv = process.argv.slice(2);
 const url = argv.find((a) => /^https?:\/\//.test(a));
-const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close", "dpr"]);
+const VALUE_FLAGS = new Set(["text", "selector", "cfg", "config", "locale", "wait", "settle", "max-tabs", "out", "retries", "retry-wait", "close-timeout", "budget", "survey-limit", "up", "nth", "tag", "landmark", "min-height", "key", "label", "href", "tab-settle", "cycle-after", "max-kids", "browser", "shots", "visual", "close", "dpr", "viewport"]);
 const PER_CONTROL = new Set(["nth", "tag", "landmark", "min-height", "exact", "key", "label", "href"]);
 const g = {};
 const cli = [];
@@ -198,7 +202,19 @@ const SUMMARY = !!g.summary;
 const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
 const DPR = g.dpr === undefined ? null : Number(g.dpr);
 if (DPR !== null && !(DPR >= 1 && DPR <= 4)) { console.error("--dpr must be a number from 1 to 4"); process.exit(2); }
-const CONTEXT = { viewport: { width: 1440, height: 1000 }, ...(DPR ? { deviceScaleFactor: DPR } : {}), ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
+// --viewport phone (2026-11-21): a service whose product is a mobile web (queenit's storefront) shows its buttons and
+// prices only at phone width, and many Korean services pick the mobile site by user agent, not by width. The phone
+// context is 390x844 with touch, a phone user agent and DPR 2 (unless --dpr says otherwise). The default stays the
+// 1440x1000 desktop every earlier measurement used; boot.viewport and boot.device record which one a file holds.
+const VIEWPORT_NAME = g.viewport ?? "desktop";
+if (VIEWPORT_NAME !== "desktop" && VIEWPORT_NAME !== "phone") { console.error('--viewport must be "desktop" or "phone"'); process.exit(2); }
+const PHONE = VIEWPORT_NAME === "phone";
+const PHONE_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1";
+const VIEWPORT = PHONE ? { width: 390, height: 844 } : { width: 1440, height: 1000 };
+const VIEWPORT_LABEL = `${VIEWPORT.width}x${VIEWPORT.height}`;
+const CONTEXT = PHONE
+  ? { viewport: VIEWPORT, deviceScaleFactor: DPR ?? 2, isMobile: true, hasTouch: true, userAgent: PHONE_UA, locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } }
+  : { viewport: VIEWPORT, ...(DPR ? { deviceScaleFactor: DPR } : {}), ...(BROWSER === "headless" ? { userAgent: REAL_UA } : {}), locale: LOCALE, extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
 
 // --census (2026-10-29): PROBE_BRIEF items 1–3 in one evaluation, so a sandboxed worker gets them through the capture
 // MCP tool instead of writing its own browser script. Open shadow roots are walked (SBB's Lyne renders in them).
@@ -258,8 +274,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const raceClose = (p) => Promise.race([Promise.resolve(p).catch(() => {}), sleep(CLOSE_TIMEOUT)]);
 const result = {
   tool: "probe-keyboard-states.mjs",
-  boot: { url, locale: LOCALE, viewport: "1440x1000", loads: 0, startedAt: new Date(T0).toISOString(), settleMinMs: SETTLE_MIN, settleCapMs: SETTLE_CAP, maxTabs: MAX_TABS, tabSettleMs: TAB_SETTLE, cycleAfter: CYCLE_AFTER, maxKids: MAX_KIDS, upDefault: g.up ? Number(g.up) : UP_DEFAULT },
-  controls: {}, walk: [], notes: [],
+  boot: { url, locale: LOCALE, viewport: VIEWPORT_LABEL, ...(PHONE ? { device: "phone: touch, mobile viewport, DPR " + (DPR ?? 2) + ", user agent " + PHONE_UA } : {}), loads: 0, startedAt: new Date(T0).toISOString(), settleMinMs: SETTLE_MIN, settleCapMs: SETTLE_CAP, maxTabs: MAX_TABS, tabSettleMs: TAB_SETTLE, cycleAfter: CYCLE_AFTER, maxKids: MAX_KIDS, upDefault: g.up ? Number(g.up) : UP_DEFAULT },
+  controls: {}, walk: [], notes: PHONE ? ["phone viewport: the page was loaded with touch and a phone user agent; hover was read with a mouse pointer, and rules behind @media (hover: hover) do not apply on this context"] : [],
 };
 if (EVIDENCE) result.boot.browser = BROWSER;
 if (DPR) result.boot.deviceScaleFactor = DPR;
@@ -882,7 +898,7 @@ async function scrollVideo(dir, visual) {
   }
   let context = null, video = null, scroll = null;
   try {
-    context = await evidenceStep("scroll context", () => browser.newContext({ ...CONTEXT, recordVideo: { dir, size: { width: 1440, height: 900 } } }), 5000, loadReserve);
+    context = await evidenceStep("scroll context", () => browser.newContext({ ...CONTEXT, recordVideo: { dir, size: PHONE ? { width: 390, height: 844 } : { width: 1440, height: 900 } } }), 5000, loadReserve);
     const pg = await evidenceStep("scroll page", () => context.newPage(), 5000, loadReserve);
     context.on("page", (p) => { if (p !== pg) p.close().catch(() => {}); });
     video = pg.video();
