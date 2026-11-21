@@ -83,10 +83,7 @@ export default function ChangelogIndexPage() {
         <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-3">
           Changelog · {entries.length} releases
         </div>
-        <h1
-          className="text-4xl sm:text-5xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
-        >
+        <h1 className="sq-page-title">
           Release history
         </h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed [overflow-wrap:anywhere]">
