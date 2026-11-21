@@ -18,8 +18,8 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from "lucide-react";
-import { Dialog, DialogClose, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { ChevronDownIcon, XIcon } from "lucide-react";
+import { ScreenDialog, isNarrowWidth as narrow } from "@/components/item/screen-dialog";
 import {
   cardChips,
   dialogSequence,
@@ -32,9 +32,8 @@ import {
   type ScreensModel,
 } from "@/lib/screens/model";
 import type { ScreensLabels } from "@/components/brand-a/copy/item";
+import "@/components/brand-a/screens-ui.css";
 import "@/components/brand-a/item-screens.css";
-
-const narrow = (width: number) => width < 1024;
 
 function chipText(card: ScreenCard, t: ScreensLabels): string {
   return [t.typeName(card.type), card.state ? t.stateName(card.state) : null].filter(Boolean).join(" · ");
@@ -43,11 +42,11 @@ function chipText(card: ScreenCard, t: ScreensLabels): string {
 /** The type and state chip, left out where it would only repeat the title ("홈" titled "홈"). */
 function TypeChip({ card, t }: { card: ScreenCard; t: ScreensLabels }) {
   const text = chipText(card, t);
-  return text && text !== card.title ? <span className="sq-sc-chip">{text}</span> : null;
+  return text && text !== card.title ? <span className="sq-scr-chip">{text}</span> : null;
 }
 
 function Swatch({ value }: { value: string }) {
-  return <i className="sq-sc-sw" style={{ background: value }} aria-hidden="true" />;
+  return <i className="sq-scr-sw" style={{ background: value }} aria-hidden="true" />;
 }
 
 export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel; labels: ScreensLabels; panelId: string }) {
@@ -89,11 +88,11 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
   const meta = [model.shot ? t.shot(model.shot) : null, model.signedOut ? t.signedOut : null].filter(Boolean).join(" · ");
 
   return (
-    <section id={panelId} className="sq-sc" role="tabpanel" aria-label={t.tab}>
-      <div className="sq-sc-top" ref={topRef}>
-        {meta ? <p className="sq-sc-meta">{meta}</p> : null}
+    <section id={panelId} className="sq-scr" role="tabpanel" aria-label={t.tab}>
+      <div className="sq-scr-top" ref={topRef}>
+        {meta ? <p className="sq-scr-meta">{meta}</p> : null}
         {model.widths.length > 1 ? (
-          <div className="sq-sc-seg" role="group" aria-label={t.lead}>
+          <div className="sq-scr-seg" role="group" aria-label={t.lead}>
             {model.widths.map((w) => (
               <button key={w} type="button" aria-pressed={lead === w} onClick={() => setLead(w)}>
                 {t.widthName(w)}
@@ -104,23 +103,23 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
       </div>
 
       {token ? (
-        <div className="sq-sc-filter">
+        <div className="sq-scr-filter">
           <p role="status">{t.filtered(token, cards.length)}</p>
-          <button type="button" className="sq-sc-clear" onClick={() => pick(null)}>
+          <button type="button" className="sq-scr-clear" onClick={() => pick(null)}>
             <XIcon aria-hidden="true" />
             {t.clear}
           </button>
         </div>
       ) : null}
 
-      <div className={`sq-sc-body${model.colors.length ? "" : " sq-sc-solo"}`}>
-        <div className="sq-sc-main">
+      <div className={`sq-scr-body${model.colors.length ? "" : " sq-scr-solo"}`}>
+        <div className="sq-scr-main">
           {groups.map((g) => (
-            <section key={g.id} className="sq-sc-group" aria-labelledby={`sc-${g.id}`}>
+            <section key={g.id} className="sq-scr-group" aria-labelledby={`sc-${g.id}`}>
               <h2 id={`sc-${g.id}`}>
                 {t.groups[g.id]} <span>{g.cards.length}</span>
               </h2>
-              <ul className="sq-sc-grid">
+              <ul className="sq-scr-grid">
                 {g.cards.map((card) => (
                   <Card key={card.key} card={card} lead={lead} colors={model.colors} t={t} onOpen={() => setOpenKey(card.key)} />
                 ))}
@@ -130,63 +129,47 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
         </div>
 
         {model.colors.length ? (
-          <aside className="sq-sc-side" aria-labelledby="sc-panel">
+          <aside className="sq-scr-side" aria-labelledby="sc-panel">
             <details open={panelOpen} onToggle={(e) => setPanelOpen(e.currentTarget.open)}>
               <summary>
-                <span className="sq-sc-side-h">
+                <span className="sq-scr-side-h">
                   <h2 id="sc-panel">{t.panel}</h2>
-                  <ChevronDownIcon className="sq-sc-side-chev" aria-hidden="true" />
+                  <ChevronDownIcon className="sq-scr-side-chev" aria-hidden="true" />
                 </span>
-                {model.colorCount ? <span className="sq-sc-side-n">{t.colorCount(model.colorCount.matched, model.colorCount.comparable)}</span> : null}
+                {model.colorCount ? <span className="sq-scr-side-n">{t.colorCount(model.colorCount.matched, model.colorCount.comparable)}</span> : null}
               </summary>
-              <p className="sq-sc-side-p">{t.panelLead}</p>
-              <ul className="sq-sc-rows">
+              <p className="sq-scr-side-p">{t.panelLead}</p>
+              <ul className="sq-scr-rows">
                 {model.colors.map((c) => (
                   <li key={c.token}>
                     <TokenRow color={c} on={token === c.token} t={t} onPick={() => pick(token === c.token ? null : c.token)} />
                   </li>
                 ))}
               </ul>
-              <p className="sq-sc-side-p">{t.exactOnly}</p>
+              <p className="sq-scr-side-p">{t.exactOnly}</p>
             </details>
           </aside>
         ) : null}
       </div>
 
-      <Dialog open={current !== null} onOpenChange={(open) => (open ? null : setOpenKey(null))}>
-        {current && currentStill ? (
-          <DialogContent
-            showCloseButton={false}
-            className="sq-sc-dlg"
-            data-lead={narrow(currentStill.width) ? "narrow" : "wide"}
-            onKeyDown={(e) => {
-              if (e.key === "ArrowLeft") step(-1);
-              if (e.key === "ArrowRight") step(1);
-            }}
-          >
-            <div className="sq-sc-dlg-bar">
-              <DialogTitle className="sq-sc-dlg-t">
-                <span lang="ko">{current.title}</span>
-                <TypeChip card={current} t={t} />
-              </DialogTitle>
-              <span className="sq-sc-dlg-n">{t.counter(index + 1, sequence.length)}</span>
-              <button type="button" className="sq-sc-ic" onClick={() => step(-1)} aria-label={t.prev}>
-                <ChevronLeftIcon aria-hidden="true" />
-              </button>
-              <button type="button" className="sq-sc-ic" onClick={() => step(1)} aria-label={t.next}>
-                <ChevronRightIcon aria-hidden="true" />
-              </button>
-              <DialogClose className="sq-sc-ic" aria-label={t.close}>
-                <XIcon aria-hidden="true" />
-              </DialogClose>
-            </div>
-            <div className="sq-sc-dlg-body">
-              {/* eslint-disable-next-line @next/next/no-img-element -- a local-only still, served by our own route */}
-              <img key={current.key + currentStill.width} src={currentStill.full ?? currentStill.still} alt={t.fullAlt(current.title)} />
-            </div>
-          </DialogContent>
-        ) : null}
-      </Dialog>
+      <ScreenDialog
+        open={current !== null}
+        still={currentStill}
+        title={current?.title ?? ""}
+        heading={
+          current ? (
+            <>
+              <span lang="ko">{current.title}</span>
+              <TypeChip card={current} t={t} />
+            </>
+          ) : null
+        }
+        index={index}
+        total={sequence.length}
+        onStep={step}
+        onClose={() => setOpenKey(null)}
+        labels={t}
+      />
     </section>
   );
 }
@@ -197,27 +180,27 @@ function Card({ card, lead, colors, t, onOpen }: { card: ScreenCard; lead: numbe
   const chips = card.blocked ? [] : cardChips(card.key, colors);
   const shape = narrow(main?.width ?? lead) ? "narrow" : "wide";
   return (
-    <li className="sq-sc-card">
+    <li className="sq-scr-card">
       {card.blocked || !main ? (
-        <div className="sq-sc-frame sq-sc-blocked" data-lead={narrow(lead) ? "narrow" : "wide"}>
+        <div className="sq-scr-frame sq-scr-blocked" data-lead={narrow(lead) ? "narrow" : "wide"}>
           <span>{t.blocked}</span>
         </div>
       ) : (
-        <button type="button" className="sq-sc-frame" data-lead={shape} onClick={onOpen} aria-label={t.open(card.title)}>
+        <button type="button" className="sq-scr-frame" data-lead={shape} onClick={onOpen} aria-label={t.open(card.title)}>
           {/* eslint-disable-next-line @next/next/no-img-element -- a local-only still, served by our own route */}
-          <img className="sq-sc-main-img" src={main.still} alt="" loading="lazy" decoding="async" />
+          <img className="sq-scr-main-img" src={main.still} alt="" loading="lazy" decoding="async" />
           {inset ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="sq-sc-inset" data-shape={narrow(inset.width) ? "narrow" : "wide"} src={inset.still} alt="" loading="lazy" decoding="async" />
+            <img className="sq-scr-inset" data-shape={narrow(inset.width) ? "narrow" : "wide"} src={inset.still} alt="" loading="lazy" decoding="async" />
           ) : null}
         </button>
       )}
-      <div className="sq-sc-cap">
+      <div className="sq-scr-cap">
         <b lang="ko">{card.title}</b>
         <TypeChip card={card} t={t} />
       </div>
       {chips.length ? (
-        <ul className="sq-sc-toks">
+        <ul className="sq-scr-toks">
           {chips.map((c) => (
             <li key={c.token}>
               <Swatch value={c.value} />
@@ -235,18 +218,18 @@ function TokenRow({ color, on, t, onPick }: { color: ScreenColor; on: boolean; t
   const body = (
     <>
       <Swatch value={color.value} />
-      <span className="sq-sc-row-n">
+      <span className="sq-scr-row-n">
         <b>{color.token}</b>
         <span>{color.value}</span>
       </span>
-      <span className="sq-sc-row-k">{seen ? t.onScreens(color.screens.length) : t.notSeen}</span>
+      <span className="sq-scr-row-k">{seen ? t.onScreens(color.screens.length) : t.notSeen}</span>
     </>
   );
   return seen ? (
-    <button type="button" className="sq-sc-row" aria-pressed={on} onClick={onPick}>
+    <button type="button" className="sq-scr-row" aria-pressed={on} onClick={onPick}>
       {body}
     </button>
   ) : (
-    <div className="sq-sc-row sq-sc-row-none">{body}</div>
+    <div className="sq-scr-row sq-scr-row-none">{body}</div>
   );
 }

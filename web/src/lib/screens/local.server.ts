@@ -188,9 +188,32 @@ export function readScreens(id: string, env: Env = process.env): ScreensModel | 
     slug: id,
     shot: shotDate(w.shot),
     signedOut: /signed out/i.test(str(w.browser) ?? ""),
+    platform: str(w.platform),
     widths,
     cards,
     colors,
     colorCount,
   };
+}
+
+/**
+ * Every service with a walk in the local screens folder, by folder name, each read as readScreens reads it — or null
+ * when the gate is shut (checked before anything touches the disk) or no folder holds a walk. For the /screens
+ * gallery and the landing section that leads to it.
+ */
+export function listScreens(env: Env = process.env): ScreensModel[] | null {
+  const root = screensRoot(env);
+  if (!root) return null;
+  let names: string[];
+  try {
+    names = fs
+      .readdirSync(root, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && validSlug(d.name))
+      .map((d) => d.name)
+      .sort();
+  } catch {
+    return null;
+  }
+  const out = names.map((n) => readScreens(n, env)).filter((m): m is ScreensModel => m !== null);
+  return out.length ? out : null;
 }
