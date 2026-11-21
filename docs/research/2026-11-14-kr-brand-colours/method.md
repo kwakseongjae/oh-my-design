@@ -36,3 +36,7 @@
 - Contrast names (W4): every reference below 4.5:1 under Rule W was checked against its own DESIGN.md on 2026-11-21 for whether the measured control is the main action (`CONTRAST_CHECK`, quote checked verbatim). **This is a check against the reference files only; no browser was used and no page was re-measured.** Kept 23, dropped 11 (W4b).
 - Headline (W5): the script asserts that blue is the largest family under all 7 rules.
 - First computed 2026-11-14; this run 2026-11-21. Input as of this run: `data/reference-quality.json` generated_at 2026-11-13.
+
+## Live recheck of the named contrast rows (2026-11-21)
+
+The 23 rows of W4a were read from the reference files. `recheck_contrast.mjs` then loaded each service's home page at 1440 (headless; the installed Chrome with a window for the three that refused headless) and looked for elements drawn with the recorded fill and the recorded text colour. 18 rows still show the pair and are the ones the article names; for karrot, toss, teamsparta and idus the fill is not on the home page, and for ably it appears only with black text. The check opens no other page, so those five are unconfirmed, not wrong. It confirms that the colour pair is live, not which control it is: that reading still comes from the reference file. Results: `contrast-recheck.json`, `contrast-recheck.md`.

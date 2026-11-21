@@ -1,0 +1,529 @@
+{
+ "measured": "2026-11-21",
+ "method": "home page at 1440, exact fill match, computed text colour, WCAG ratio; no other page searched",
+ "rows": [
+  {
+   "id": "ably",
+   "name": "Ably (에이블리)",
+   "url": "https://m.a-bly.com",
+   "recorded": {
+    "component": "corporate-primary",
+    "fill": "#ff5160",
+    "text": "#ffffff",
+    "ratio": 3.18
+   },
+   "status": 200,
+   "final": "https://mobile.a-bly.com/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#000000",
+     "ratio": 6.6,
+     "count": 1,
+     "sample": "앱에서 더 많은 상품을 볼 수 있어요! 앱에서 보기",
+     "size": "16px / 400"
+    }
+   ],
+   "verdict": "text colour differs"
+  },
+  {
+   "id": "buzzvil",
+   "name": "버즈빌",
+   "url": "https://www.buzzvil.com",
+   "recorded": {
+    "component": "contact-button",
+    "fill": "#f44336",
+    "text": "#ffffff",
+    "ratio": 3.68
+   },
+   "status": 200,
+   "final": "https://www.buzzvil.com/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.68,
+     "count": 1,
+     "sample": "문의하기",
+     "size": "16px / 400"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "classum",
+   "name": "Classum (클라썸)",
+   "url": "https://www.classum.com",
+   "recorded": {
+    "component": "nav-primary-action",
+    "fill": "#ff4438",
+    "text": "#ffffff",
+    "ratio": 3.42
+   },
+   "status": 200,
+   "final": "https://business.classum.com/",
+   "found": 4,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.42,
+     "count": 4,
+     "sample": "도입 문의",
+     "size": "15px / 600"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "gaudiolab",
+   "name": "가우디오랩",
+   "url": "https://www.gaudiolab.com/",
+   "recorded": {
+    "component": "cta-hero",
+    "fill": "#00b7ff",
+    "text": "#ffffff",
+    "ratio": 2.28
+   },
+   "status": 200,
+   "final": "https://www.gaudiolab.com/",
+   "found": 8,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 2.28,
+     "count": 8,
+     "sample": "Contact us",
+     "size": "16px / 500"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "greeting",
+   "name": "그리팅",
+   "url": "https://www.greetinghr.com",
+   "recorded": {
+    "component": "header-demo-button",
+    "fill": "#1890ff",
+    "text": "#ffffff",
+    "ratio": 3.24
+   },
+   "status": 200,
+   "final": "https://www.greetinghr.com/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.24,
+     "count": 1,
+     "sample": "도입 문의",
+     "size": "16px / 400"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "heydealer",
+   "name": "헤이딜러",
+   "url": "https://www.heydealer.com/",
+   "recorded": {
+    "component": "primary-button",
+    "fill": "#396eff",
+    "text": "#ffffff",
+    "ratio": 4.33
+   },
+   "status": 200,
+   "final": "https://www.heydealer.com/",
+   "found": 11,
+   "live": [
+    {
+     "text": "#f7f8fb",
+     "ratio": 4.08,
+     "count": 10,
+     "sample": "520만원↓",
+     "size": "11px / 700"
+    },
+    {
+     "text": "#ffffff",
+     "ratio": 4.33,
+     "count": 1,
+     "sample": "대 보기",
+     "size": "15px / 700"
+    }
+   ],
+   "verdict": "same pair present, another pair more common"
+  },
+  {
+   "id": "idus",
+   "name": "아이디어스 (백패커)",
+   "url": "https://www.idus.com",
+   "recorded": {
+    "component": "button-primary",
+    "fill": "#ef7014",
+    "text": "#ffffff",
+    "ratio": 3
+   },
+   "status": 200,
+   "final": "https://www.idus.com/v2/",
+   "found": 0,
+   "verdict": "fill not on the home page"
+  },
+  {
+   "id": "jandi",
+   "name": "잔디",
+   "url": "https://www.jandi.com",
+   "recorded": {
+    "component": "header-primary-action",
+    "fill": "#00c473",
+    "text": "#ffffff",
+    "ratio": 2.3
+   },
+   "status": 200,
+   "final": "https://www.jandi.com/landing/kr",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 2.3,
+     "count": 1,
+     "sample": "로그인",
+     "size": "14px / 500"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "karrot",
+   "name": "당근",
+   "url": "https://www.karrotmarket.com",
+   "recorded": {
+    "component": "box-button",
+    "fill": "#ff6f0f",
+    "text": "#ffffff",
+    "ratio": 2.79
+   },
+   "status": 200,
+   "final": "https://www.karrotmarket.com/",
+   "found": 0,
+   "verdict": "fill not on the home page"
+  },
+  {
+   "id": "laundrygo",
+   "name": "런드리고",
+   "url": "https://www.laundrygo.com",
+   "recorded": {
+    "component": "recruit-button",
+    "fill": "#0ac290",
+    "text": "#ffffff",
+    "ratio": 2.3
+   },
+   "status": 200,
+   "final": "https://www.laundrygo.com/",
+   "found": 2,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 2.3,
+     "count": 2,
+     "sample": "채용공고 보러가기",
+     "size": "17px / 700"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "miricanvas",
+   "name": "미리캔버스",
+   "url": "https://www.miricanvas.com",
+   "recorded": {
+    "component": "primary-button",
+    "fill": "#21afbf",
+    "text": "#ffffff",
+    "ratio": 2.64
+   },
+   "status": 200,
+   "final": "https://www.miricanvas.com/ko",
+   "found": 6,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 2.64,
+     "count": 6,
+     "sample": "회원가입",
+     "size": "14px / 500"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "moin",
+   "name": "모인",
+   "url": "https://www.themoin.com/ko",
+   "recorded": {
+    "component": "button-primary",
+    "fill": "#0082ff",
+    "text": "#ffffff",
+    "ratio": 3.73
+   },
+   "status": 200,
+   "final": "https://www.themoin.com/",
+   "found": 2,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.73,
+     "count": 2,
+     "sample": "송금 시작하기",
+     "size": "16px / 400"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "moreh",
+   "name": "모레",
+   "url": "https://moreh.io",
+   "recorded": {
+    "component": "primary-button",
+    "fill": "#ff5700",
+    "text": "#ffffff",
+    "ratio": 3.17
+   },
+   "status": 200,
+   "final": "https://moreh.io/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.17,
+     "count": 1,
+     "sample": "Request Demo →",
+     "size": "14px / 500"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "payhere",
+   "name": "페이히어",
+   "url": "https://payhere.in/",
+   "recorded": {
+    "component": "purchase-button",
+    "fill": "#0077fe",
+    "text": "#ffffff",
+    "ratio": 4.14
+   },
+   "status": 200,
+   "final": "https://payhere.in/",
+   "found": 9,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 4.14,
+     "count": 9,
+     "sample": "BEST",
+     "size": "16px / 700"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "petfriends",
+   "name": "펫프렌즈",
+   "url": "https://www.pet-friends.co.kr/",
+   "recorded": {
+    "component": "app-install-button",
+    "fill": "#ff4081",
+    "text": "#ffffff",
+    "ratio": 3.33
+   },
+   "status": 200,
+   "final": "https://m.pet-friends.co.kr/main/tab/2",
+   "found": 5,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.33,
+     "count": 5,
+     "sample": "사료",
+     "size": "14px / 700"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "protopie",
+   "name": "프로토파이",
+   "url": "https://www.protopie.io/",
+   "recorded": {
+    "component": "primary-button",
+    "fill": "#8169ff",
+    "text": "#ffffff",
+    "ratio": 3.89
+   },
+   "status": 200,
+   "final": "https://www.protopie.io/",
+   "found": 8,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.89,
+     "count": 8,
+     "sample": "Book a Demo",
+     "size": "16px / 600"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "socar",
+   "name": "쏘카",
+   "url": "https://www.socar.kr",
+   "recorded": {
+    "component": "primary-action",
+    "fill": "#0078ff",
+    "text": "#ffffff",
+    "ratio": 4.09
+   },
+   "status": 200,
+   "final": "https://www.socar.kr/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 4.09,
+     "count": 1,
+     "sample": "첫이용 혜택받기",
+     "size": "12px / 600"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "stibee",
+   "name": "스티비",
+   "url": "https://stibee.com",
+   "recorded": {
+    "component": "button-primary",
+    "fill": "#ff6464",
+    "text": "#ffffff",
+    "ratio": 2.89
+   },
+   "status": 200,
+   "final": "https://stibee.com/",
+   "found": 4,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 2.89,
+     "count": 4,
+     "sample": "무료로 시작하기",
+     "size": "14px / 400"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "teamsparta",
+   "name": "팀스파르타 (스파르타코딩클럽)",
+   "url": "https://spartaclub.kr/",
+   "recorded": {
+    "component": "enroll-cta",
+    "fill": "#fa0030",
+    "text": "#ffffff",
+    "ratio": 4.11
+   },
+   "status": 200,
+   "final": "https://spartaclub.kr/",
+   "found": 0,
+   "verdict": "fill not on the home page"
+  },
+  {
+   "id": "toss",
+   "name": "토스",
+   "url": "https://toss.im",
+   "recorded": {
+    "component": "tds-button",
+    "fill": "#3182f6",
+    "text": "#ffffff",
+    "ratio": 3.71
+   },
+   "status": 200,
+   "final": "https://toss.im/",
+   "found": 0,
+   "verdict": "fill not on the home page"
+  },
+  {
+   "id": "toss-securities",
+   "name": "Toss Securities (토스증권)",
+   "url": "https://tossinvest.com",
+   "recorded": {
+    "component": "wts-primary-entry",
+    "fill": "#3182f6",
+    "text": "#ffffff",
+    "ratio": 3.71
+   },
+   "status": 200,
+   "final": "https://www.tossinvest.com/",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.71,
+     "count": 1,
+     "sample": "로그인",
+     "size": "14px / 600"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "watcha",
+   "name": "Watcha",
+   "url": "https://watcha.com",
+   "recorded": {
+    "component": "button-primary",
+    "fill": "#f82f62",
+    "text": "#ffffff",
+    "ratio": 3.77
+   },
+   "status": 200,
+   "final": "https://watcha.com/ko/browse/all",
+   "found": 1,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.77,
+     "count": 1,
+     "sample": "로그인",
+     "size": "13px / 500"
+    }
+   ],
+   "verdict": "same"
+  },
+  {
+   "id": "yeogiotte",
+   "name": "여기어때 (GoodChoice)",
+   "url": "https://www.yeogi.com",
+   "recorded": {
+    "component": "button",
+    "fill": "#1d8bff",
+    "text": "#ffffff",
+    "ratio": 3.39
+   },
+   "status": 200,
+   "final": "https://www.yeogi.com/",
+   "found": 2,
+   "live": [
+    {
+     "text": "#ffffff",
+     "ratio": 3.39,
+     "count": 2,
+     "sample": "검색",
+     "size": "15px / 700"
+    }
+   ],
+   "verdict": "same"
+  }
+ ]
+}
