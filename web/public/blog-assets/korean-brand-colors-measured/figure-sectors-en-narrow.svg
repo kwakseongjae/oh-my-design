@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="506" viewBox="0 0 360 506" role="img" aria-label="Primary colours by sector" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="506" viewBox="0 0 360 506" role="img" aria-label="Primary colors by sector" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
 <style>text{font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="359" height="505" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
-<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">Primary colours by sector</text>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">Primary colors by sector</text>
 <text x="20" y="59.6" font-size="12" fill="#5a5a63">One tile per counted service · Rule W, sectors</text>
 <text x="20" y="77" font-size="12" fill="#5a5a63">with 8 or more references</text>
 <text x="20" y="120.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">Consumer tech</tspan><tspan fill="#5a5a63">  14 of 53 blue</tspan></text>

@@ -5,7 +5,7 @@
 <text x="20" y="57.6" font-size="16" fill="#13131a" font-weight="700">or more services</text>
 <text x="20" y="81.2" font-size="12" fill="#5a5a63">8 exact values, 26 services</text>
 <rect x="20" y="112.6" width="32" height="32" rx="8" fill="#000000"/>
-<text x="64" y="125.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#000000</tspan><tspan fill="#5a5a63">  9 · Near-black</tspan></text>
+<text x="64" y="125.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#000000</tspan><tspan fill="#5a5a63">  9 · Black-ish</tspan></text>
 <text x="64" y="144.1" font-size="12" fill="#13131a">29CM · KRAFTON · 롯데ON · Musinsa</text>
 <text x="64" y="162.1" font-size="12" fill="#13131a">POZAlabs · Remember · Samsung</text>
 <text x="64" y="180.1" font-size="12" fill="#13131a">Stayfolio · Yanolja</text>
@@ -20,7 +20,7 @@
 <text x="64" y="339.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#0066ff</tspan><tspan fill="#5a5a63">  2 · Blue</tspan></text>
 <text x="64" y="358.6" font-size="12" fill="#13131a">MediBloc · Wanted</text>
 <rect x="20" y="380.6" width="32" height="32" rx="8" fill="#111111"/>
-<text x="64" y="393.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#111111</tspan><tspan fill="#5a5a63">  2 · Near-black</tspan></text>
+<text x="64" y="393.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#111111</tspan><tspan fill="#5a5a63">  2 · Black-ish</tspan></text>
 <text x="64" y="412.1" font-size="12" fill="#13131a">Genesis · IICOMBINED</text>
 <rect x="20" y="434.1" width="32" height="32" rx="8" fill="#256ef4"/>
 <text x="64" y="446.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#256ef4</tspan><tspan fill="#5a5a63">  2 · Blue</tspan></text>
@@ -29,6 +29,6 @@
 <text x="64" y="500.1" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffcc00</tspan><tspan fill="#5a5a63">  2 · Yellow</tspan></text>
 <text x="64" y="519.1" font-size="12" fill="#13131a">KB국민은행 · KB Pay</text>
 <rect x="20.5" y="541.6" width="31" height="31" rx="8" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
-<text x="64" y="553.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffffff</tspan><tspan fill="#5a5a63">  2 · Near-white</tspan></text>
+<text x="64" y="553.6" font-size="12.5"><tspan fill="#13131a" font-weight="600">#ffffff</tspan><tspan fill="#5a5a63">  2 · White-ish</tspan></text>
 <text x="64" y="572.6" font-size="12" fill="#13131a">Lemonbase · NCSOFT</text>
 </svg>

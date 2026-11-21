@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="497" viewBox="0 0 720 497" role="img" aria-label="Primary colours by hue family" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="497" viewBox="0 0 720 497" role="img" aria-label="Primary colors by hue family" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
 <style>text{font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="719" height="496" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
-<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Primary colours by hue family</text>
+<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Primary colors by hue family</text>
 <text x="32" y="78.65" font-size="14" fill="#5a5a63">Each stripe is one service's primary · Rule W, 169 services</text>
 <text x="196" y="131.95" font-size="14" fill="#13131a" text-anchor="end">Blue</text>
 <text x="584" y="132.95" font-size="14"><tspan fill="#13131a">60 </tspan><tspan fill="#5a5a63">(35.5%)</tspan></text>
@@ -135,7 +135,7 @@
 <rect x="269.33" y="245.95" width="6.15" height="20" fill="#fbbd41"/>
 <rect x="275.47" y="245.95" width="6.15" height="20" fill="#fed05f"/>
 <rect x="281.6" y="245.95" width="6.15" height="20" fill="#fbb401"/>
-<text x="196" y="291.95" font-size="14" fill="#13131a" text-anchor="end">Near-black</text>
+<text x="196" y="291.95" font-size="14" fill="#13131a" text-anchor="end">Black-ish</text>
 <text x="289.6" y="292.95" font-size="14"><tspan fill="#13131a">12 </tspan><tspan fill="#5a5a63">(7.1%)</tspan></text>
 <rect x="208" y="277.95" width="6.15" height="20" fill="#000000"/>
 <rect x="214.13" y="277.95" width="6.15" height="20" fill="#000000"/>
@@ -190,7 +190,7 @@
 <rect x="226.4" y="405.95" width="6.15" height="20" fill="#ff4081"/>
 <rect x="232.53" y="405.95" width="6.15" height="20" fill="#fa0050"/>
 <rect x="238.67" y="405.95" width="6.15" height="20" fill="#f82f62"/>
-<text x="196" y="451.95" font-size="14" fill="#13131a" text-anchor="end">Near-white</text>
+<text x="196" y="451.95" font-size="14" fill="#13131a" text-anchor="end">White-ish</text>
 <text x="228.27" y="452.95" font-size="14"><tspan fill="#13131a">2 </tspan><tspan fill="#5a5a63">(1.2%)</tspan></text>
 <rect x="208.5" y="438.45" width="5.13" height="19" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
 <rect x="214.63" y="438.45" width="5.13" height="19" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>

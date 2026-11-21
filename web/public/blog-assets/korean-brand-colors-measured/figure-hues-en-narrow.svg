@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="633" viewBox="0 0 360 633" role="img" aria-label="Primary colours by hue family" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="633" viewBox="0 0 360 633" role="img" aria-label="Primary colors by hue family" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
 <style>text{font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="359" height="632" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
-<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">Primary colours by hue family</text>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">Primary colors by hue family</text>
 <text x="20" y="59.6" font-size="12" fill="#5a5a63">Each stripe is one service's primary · Rule W,</text>
 <text x="20" y="77" font-size="12" fill="#5a5a63">169 services</text>
 <text x="20" y="120.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">Blue</tspan><tspan fill="#13131a">  60 </tspan><tspan fill="#5a5a63">(35.5%)</tspan></text>
@@ -131,7 +131,7 @@
 <rect x="73.33" y="315.4" width="5.35" height="14" fill="#fbbd41"/>
 <rect x="78.67" y="315.4" width="5.35" height="14" fill="#fed05f"/>
 <rect x="84" y="315.4" width="5.35" height="14" fill="#fbb401"/>
-<text x="20" y="355.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">Near-black</tspan><tspan fill="#13131a">  12 </tspan><tspan fill="#5a5a63">(7.1%)</tspan></text>
+<text x="20" y="355.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">Black-ish</tspan><tspan fill="#13131a">  12 </tspan><tspan fill="#5a5a63">(7.1%)</tspan></text>
 <rect x="20" y="362.4" width="5.35" height="14" fill="#000000"/>
 <rect x="25.33" y="362.4" width="5.35" height="14" fill="#000000"/>
 <rect x="30.67" y="362.4" width="5.35" height="14" fill="#000000"/>
@@ -181,7 +181,7 @@
 <rect x="36" y="550.4" width="5.35" height="14" fill="#ff4081"/>
 <rect x="41.33" y="550.4" width="5.35" height="14" fill="#fa0050"/>
 <rect x="46.67" y="550.4" width="5.35" height="14" fill="#f82f62"/>
-<text x="20" y="590.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">Near-white</tspan><tspan fill="#13131a">  2 </tspan><tspan fill="#5a5a63">(1.2%)</tspan></text>
+<text x="20" y="590.4" font-size="12.5"><tspan fill="#13131a" font-weight="600">White-ish</tspan><tspan fill="#13131a">  2 </tspan><tspan fill="#5a5a63">(1.2%)</tspan></text>
 <rect x="20.5" y="597.9" width="4.33" height="13" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
 <rect x="25.83" y="597.9" width="4.33" height="13" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
 </svg>

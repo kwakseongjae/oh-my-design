@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="769" viewBox="0 0 720 769" role="img" aria-label="Primary colours of 169 Korean services" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="769" viewBox="0 0 720 769" role="img" aria-label="Primary colors of 169 Korean services" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
 <style>text{font-variant-numeric:tabular-nums}</style>
 <rect x="0.5" y="0.5" width="719" height="768" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
-<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Primary colours of 169 Korean services</text>
+<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Primary colors of 169 Korean services</text>
 <text x="32" y="78.65" font-size="14" fill="#5a5a63">One tile per service · grouped by hue family, by hue within each</text>
 <text x="32" y="131.95" font-size="14" fill="#13131a" font-weight="600">Red</text>
 <text x="32" y="149.95" font-size="13" fill="#5a5a63">18</text>
@@ -164,7 +164,7 @@
 <rect x="294" y="540.95" width="22" height="22" rx="3" fill="#ff4081"/>
 <rect x="320" y="540.95" width="22" height="22" rx="3" fill="#fa0050"/>
 <rect x="346" y="540.95" width="22" height="22" rx="3" fill="#f82f62"/>
-<text x="32" y="607.95" font-size="14" fill="#13131a" font-weight="600">Near-black</text>
+<text x="32" y="607.95" font-size="14" fill="#13131a" font-weight="600">Black-ish</text>
 <text x="32" y="625.95" font-size="13" fill="#5a5a63">12</text>
 <rect x="216" y="592.95" width="22" height="22" rx="3" fill="#000000"/>
 <rect x="242" y="592.95" width="22" height="22" rx="3" fill="#000000"/>
@@ -190,7 +190,7 @@
 <rect x="398" y="644.95" width="22" height="22" rx="3" fill="#242428"/>
 <rect x="424" y="644.95" width="22" height="22" rx="3" fill="#2c2c2f"/>
 <rect x="450" y="644.95" width="22" height="22" rx="3" fill="#3d3d3d"/>
-<text x="32" y="711.95" font-size="14" fill="#13131a" font-weight="600">Near-white</text>
+<text x="32" y="711.95" font-size="14" fill="#13131a" font-weight="600">White-ish</text>
 <text x="32" y="729.95" font-size="13" fill="#5a5a63">2</text>
 <rect x="216.5" y="697.45" width="21" height="21" rx="3" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
 <rect x="242.5" y="697.45" width="21" height="21" rx="3" fill="#ffffff" stroke="#d3d3db" stroke-width="1"/>
