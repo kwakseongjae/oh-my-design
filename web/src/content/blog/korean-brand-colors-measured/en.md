@@ -251,7 +251,7 @@ figure-hues: W1; the stripes are rows.json ruleW_primary
 figure-rules: W5 blue share and runner-up share (red and black-ish at 10.3% each are red 19 and black-ish 19 in 1b)
 figure-sectors: W2 counted and blue; cell colors are rows.json category and ruleW_primary
 figure-shared: W3 hex, count, family, services
-figure-contrast: the fill, text and ratio of the 18 rows of W4a whose contrast-recheck.json verdict starts with same; the two large-text services are on the "large text" line above
+figure-contrast: the fill, text and ratio of the 18 rows of W4a whose contrast-recheck.json verdict starts with same; the 2 large-text services are on the "large text" line above
 figure-countries: S6 KR/JP/TW n and share; cell colors are rows.json ruleS_primary
 figure-method: Population 185, W1 Rule S 153, added 16, left out 16
 
