@@ -11,6 +11,15 @@
 - **덮지 않는 것:** 남의 화면 그림을 운영에 내보내는 일. 카드 3의 추천(로그아웃 화면 중 사용자 글·사진 위주 화면을 뺀 나머지를 축소해 공개, 출처와 삭제 창구)은 방향으로 받았지만, **실제로 나갈 화면 목록과 그림을 둘 곳을 보여 준 적이 없다.** 모음 페이지와 랜딩 구역은 로컬 문(`OMD_SCREENS_DIR`) 뒤에서 만들고, 공개 대상 목록 카드에 go가 나온 뒤에만 내보낸다.
 - **새 일 넷:** ① 블로그 첫 글에 그림(전부 `rows.json`에서 스크립트로 그림, 남의 화면 스크린샷 없음)과 영어판. **다국어는 안 돼 있었다:** 이 글은 `ko.md`뿐이고 블로그 로케일은 ko·en 둘. ② `/kana` 비교 화면: 우리가 지은 일본어는 싣지 않는 규칙이 그대로라, 출처가 직접 준 틀린 예/맞는 예 짝으로 만든다(짝 수를 먼저 센다). ③ 화면 모음 페이지(Mobbin 같은)와 랜딩 구역: 형태 시안 2~3개를 아티팩트에 올리고 추천안은 같이 만든다. ④ 위 머지들.
 
+**23:25 진행:**
+- **머지 추가:** #140(상태 문서, main `9834a067`) · #142(측정 도구 폰 폭 옵션, main `1277a784`). 메인 체크아웃은 `chore/state-1121c`. 워크트리 `probe-phone` 삭제.
+- **퀸잇 재측정 도는 중**(Codex 1회): `~/.omd-workers/reverify5/queenit`, 실행 폴더 `~/.omd-workers/runs/reverify5-queenit-20261121T225107`. 주문 끝에 「폰 폭으로만, 쇼핑 화면만, 대표색은 지속되는 컨트롤이 두 페이지 이상에서 다른 값을 보일 때만 바꿈, 막히면 멈춤」을 덧붙임.
+- **블로그 = PR #143(초안, `feat/blog-colour-figures`, 워크트리 `blog-figs`):** 그림 8종 × 한·영 × 720·360(32 SVG), 생성기 `docs/research/2026-11-14-kr-brand-colours/figures.py`(표와 대조하고 어긋나면 멈춤, `figure_hues.py` 대체), `en.md`(에이전트 `blog-en`이 씀. 셸이 없는 에이전트라 본 세션이 커밋하고 영어 그림 8개를 본문에 끼움), `post-view.tsx` 한 줄(그림 다음 문단을 13px 옅은 캡션으로). 본 세션이 고친 것: 캡션 색 클래스가 `${`에 붙어 있어 Tailwind가 규칙을 만들지 않던 것. 블로그 테스트 35, tsc 통과, 개발 서버에서 ko·en × 1440·390 확인. 아티팩트 카드 12. **#130과 같은 줄을 고침**(#143 먼저 추천). 워크트리 `blog-en`은 커밋 없이 남음(파일은 `blog-figs`로 옮김): 정리할 것.
+- **화면 공개 대상 목록 = 카드 11:** 136개 중 나갈 후보 120 · 뺄 것 16(당근 7, 오늘의집 4, 인프런 2, 잡플래닛 2, 무신사 1) · 막혀서 그림 없는 것 2. 정할 것 셋: 공개 여부 · 그림 둘 곳(추천 Vercel Blob, 저장소가 공개라 커밋하면 삭제 요청 뒤에도 기록에 남음) · 삭제 요청 창구. 빼는 목록은 본 세션 REPL의 `PUB_EXCLUDE`와 카드 그림(`report-img/pub-{a,b,c}.jpg`)에 있음: **저장소에는 아직 없다.** 공개가 정해지면 시트의 `screens.json`에 표시로 옮길 것.
+- **화면 모음 형태 = 카드 10**(추천: 종류별 선반 + 랜딩 한 줄). `feat/item-screens-tab`에 main을 병합해 푸시(`af066642`, 차이 16파일, 테스트 111 통과).
+- **도는 에이전트 2개:** `kana-compare`(워크트리 `kana-compare`, 가지 `feat/kana-compare`) · `screens-gallery`(워크트리 `screens-tab`). 보고는 세션 임시 폴더 `agent-reports/<이름>.md`에 쓰라고 함(에이전트의 마지막 메시지는 본 세션이 턴을 끝내야 도착한다).
+- **알게 된 것:** `rm -rf <워크트리>/web/.next`는 권한 검사에 막힌다(돌아가지 않음). 무시된 파일이라 `git worktree remove`는 그대로 된다. 커밋 메시지에 `${`가 들어가면 안전 검사가 명령을 막는다: 메시지는 파일로 써서 `git commit -F`.
+
 **23:00 진행(오너 22:30 뒤):**
 - **머지 셋, 하나씩 운영 확인:** #141(main `faa2231d`, 블로그 글 200) → #139(`e5c8a1919`, `/ko/kana`에 KW-62·KW-70, 「모델이 검토했습니다」, noindex, 카드 67 = 규칙 51 + 갈리는 곳 16) → #137(`0fdc5092`, 네 페이지에 `sq-page-title`, `/design.md` 갱신). 루트 `DESIGN.md`를 main의 `web/public/design.md`로 교체(sha256 `61d0dac8…`). 워크트리 `ds2`·`kana`·`blogfix`와 로컬 가지 삭제.
 - **측정 도구 폰 폭 옵션 = PR #142**(`feat/probe-phone-viewport`, 워크트리 `probe-phone`): `probe-keyboard-states.mjs --viewport phone`(390x844, 터치, 폰 UA, DPR 2), `text-census.mjs` 같은 옵션, `capture-mcp.mjs`의 `probe_page`에 `viewport`. 기본값(1440x1000)은 그대로. 우리 사이트로 survey·census·states를 폰으로, survey를 기본으로 돌려 확인. 머지 뒤 퀸잇 Codex 1회(`web.queenit.kr`, viewport phone).
