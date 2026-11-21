@@ -155,7 +155,7 @@ const blank = (s) => s.replace(/[^\n]/g, ' ');
 
 // Markdown and text: one unit per line (per cell in a table row); headings, list markers and quote markers
 // are stripped; front matter, fenced code and inline code are skipped. Emphasis is read per line.
-// MS 4.1.7 "Bold and Italic style should be avoided for Traditional Chinese characters."; WP 「…請改用 strong 標籤以粗體強調。」
+// MS 4.1.7 "Bold and Italic style should be avoided for Traditional Chinese characters."; WP 「台灣中文譯文不可以使用「斜體」樣式，如果在原文中遇到以 i 或 em 標籤強調的內容或單字，請改用 strong 標籤以粗體強調。」
 const MD_ITALIC = /(?<![*\\\w])\*(?![\s*])([^*\n]+?)(?<![\s*\\])\*(?![*\w])|(?<![_\\\w])_(?![\s_])([^_\n]+?)(?<![\s_\\])_(?![_\w])/g;
 function proseUnits(raw) {
   const text = raw.replace(/<!--[\s\S]*?-->/g, blank);
