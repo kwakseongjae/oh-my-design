@@ -6,109 +6,93 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-### Visual Theme & Atmosphere
-
-The header comment in `globals.css` states the design intent directly: *"Radius: 0.625rem (10px) — friendly but professional / Philosophy: We build design tools, so our own site must be impeccable."* That 10px base radius is the tactile signature — softer than a utilitarian 4px, tighter than a playful 16px.
-
-There is a second, louder identity used only on the `/v2` landing variant (`web/src/components/landing-v2/tokens.ts`): an **electric-indigo** (`#5546ff`) system on a near-black canvas (`#0a0a0f`), with an indigo glow (`#8b7dff`) and a light-indigo accent (`#a89cff`). These are scoped inline tokens — intentionally kept separate from the global `--primary` so the marketing hero can go high-contrast dark without touching the app-wide theme.
-
-**Key Characteristics:**
-- Violet-blue primary (`oklch(0.55 0.22 275)` ≈ `#7c5cfc`) as the single interactive accent
-- Full OKLCH palette with light and dark parity, every neutral tinted toward hue 275
-- Geist + Geist Mono (via `next/font/google`), with `cv01` / `cv11` OpenType features on for cleaner glyphs
-- 10px base radius (`--radius: 0.625rem`) driving a multiplied scale (6 → 26px)
-- Restrained elevation: `ring-1 ring-foreground/10` on cards/dialogs instead of drop shadows
-- Calm, short motion — 0.6–0.7s `easeOut` entrances, `fade-up` / `fade-blur-up`, all gated by `prefers-reduced-motion`
-- A distinct electric-indigo-on-black system scoped to the `/v2` landing hero
-
-### Product Truth Principle
-
-- Render only canonical, high-confidence values for the exact target surface.
-- Never use system fonts,…
+The site oh-my-design.kr: an archive of measured DESIGN.md files for real companies, plus skills for coding agents. In scope: Home (`/`, `/ko`), the archive (`/design-systems`), the item page (`/design-systems/[id]`, `/ko/design-systems/[id]`), docs, blog, the `/hangul` skill landing, `/what-is-design-md`, FAQ, alternatives and changelog, plus the Japanese and Traditional Chinese roots. Light only: one palette, `color-scheme: light`. This file describes the site itself, not any reference in the archive.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=2 lang=en -->
 ### Primary tasks
 
-- Install or update oh-my-design for a supported coding agent, establish a reviewed project design system, and apply it without inventing facts that evidence has not established.
-
-- Move from Home to a reference page, inspect the reference, and hand DESIGN.md and the first prompt to the intended project terminal and coding-agent chat.
+- Find a company from Home or the archive and open its item page.
+- On the item page, read the reference beside its preview and take it with the `#use` actions: Copy DESIGN.md and Download.
 <!-- design-md:claim-end -->
 
 ### Design direction
 
-- Use violet-blue as the single interactive accent over violet-tinted neutral surfaces.
-
-- Use a 10px control radius, restrained ring-based elevation, and short motion with a reduced-motion equivalent.
-
-- Keep the high-contrast electric-indigo dark treatment scoped to the v2 landing surface.
+- One accent. Iris (`#6749e2`) only on the main action, the user's chat bubble, the active step and selected states; the rest of the chrome stays neutral.
+- Home's keycaps are the one multi-hue object; nothing violet sits behind them.
+- Separate by space and tone, not by lines. Resting panels carry one soft violet-grey shadow and no outline.
+- Nested radii shrink inward.
 
 ### Principles
 
-- Treat the reference detail page as the user-facing preview and hand-off surface.
-
-- Omit a value not established by evidence only at its smallest field or item boundary while preserving every verified sibling and the canonical source.
-
-- Keep references deep enough to explain the product, distinctive brand expression, current evolution, font evidence domains, and application limits.
-
-- Treat AI slop as a cluster of context-free defaults and evaluate the whole product judgment system rather than isolated visual motifs.
-
-- Make documentation and handoff actions compact, destination-specific, localized, and visibly tied to the user outcome.
+- The item page is the preview and the hand-off; changes to how a reference reads are checked there.
+- Unknown means absent at the smallest unresolved field; verified siblings stay.
 
 ### Avoid
 
-- Do not substitute system fonts, generic components, inferred motion, or adjacent marketing and corporate observations for product facts not established by evidence.
-
-- Do not collapse useful reference content into Partial or warning chrome when evidence is missing for only one field.
-
-- Do not accept site work on a redirect-only route such as /builder or /reference/[id]; verify it on the reference detail page.
-
-- Do not auto-promote ambient or inferred preference-log observations into the project design system.
+- A second accent colour, or Iris on chrome that is not the main action or a selected state.
+- Fractional type sizes and viewport-width type clamps on new work.
+- Checking site work on a redirect-only route (`/builder`, `/reference/[id]`).
 
 <!-- design-md:section foundations -->
 ## 2. Foundations
 
 <!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
-### Semantic tokens
+### Colour tokens
 
-- **color.dark-marquee-fade**: `#0f0e15`
-- **color.marquee-fade**: `#faf9ff`
-- **color.v2-accent**: `#a89cff`
-- **color.v2-bg-dark**: `#0a0a0f`
-- **color.v2-bg-light**: `#fafafa`
-- **color.v2-primary**: `#5546ff`
-- **color.v2-primary-deep**: `#3a2dd6`
-- **color.v2-primary-glow**: `#8b7dff`
-- **color.v2-text-on-dark**: `#fafafa`
-- **color.v2-text-on-light**: `#0a0a0f`
+One token set, `--sq-*` in `web/src/styles/brand-a.css`: the Iris ramp (primary at step 600) and violet-leaning neutrals.
+
+- **color.primary**: `#6749e2` — main action fill, focus ring, selected state (`--sq-p600`)
+- **color.primary-hover**: `#5437c1` (`--sq-p700`)
+- **color.primary-press**: `#402697` (`--sq-p800`)
+- **color.on-primary**: `#ffffff`
+- **color.tint**: `#f6f6fe` — highlighted line (`--sq-p50`)
+- **color.selection**: `#d8d8ff` — text selection (`--sq-p200`)
+- **color.paper**: `#ffffff` — page and card ground
+- **color.band**: `#f9faff` — band ground (`--sq-n50`)
+- **color.cell**: `#f3f3f8` — neutral fills, secondary buttons (`--sq-n100`)
+- **color.guide-2**: `#e5e6eb` — pressed neutral fill (`--sq-n200`)
+- **color.guide**: `#d3d3db` — borders and inputs (`--sq-n300`)
+- **color.icon**: `#797981` — icons only, never text (`--sq-n500`)
+- **color.ink-2**: `#5a5a63` — secondary text (`--sq-n600`)
+- **color.ink**: `#13131a` — text (`--sq-n900`)
+- **color.term**: `#1d1a2e` — the terminal's dark field
+- **color.term-ink**: `#ecebf5`
+- **color.term-dim**: `#a9a6bd`
+- **color.ok**: `#14733f`
+- **color.warn**: `#8f5200`
+- **color.err**: `#b3261e`
+
+ok, warn and err colour status text and icons, never fills.
+
+The shadcn names in `globals.css` are aliases onto these. `--primary` is **ink**, so `text-primary` stays ink and Iris reaches only components that set `--sq-primary`. `--ring` is Iris. The one shadcn value outside the set is `--destructive: oklch(0.58 0.22 25)`.
 
 ### Contrast pairs
 
-- color.v2-text-on-light on color.v2-bg-light: minimum 4.5:1
+WCAG 2.x, computed from the hex values:
+
+- color.on-primary on color.primary: 5.79:1
+- color.on-primary on color.primary-hover: 7.80:1
+- color.primary on color.tint: 5.38:1
+- color.ink on color.paper: 18.49:1
+- color.ink-2 on color.paper: 6.82:1; on color.cell: 6.17:1
+- color.icon on color.paper: 4.32:1 (icons only)
+- color.ok / color.warn / color.err on color.cell: 5.34 / 5.63 / 5.91:1
+- color.term-ink on color.term: 14.34:1; color.term-dim on color.term: 7.16:1
+
+Focus is a 2px outline in color.primary. Iris 400 (`#9c95ff`, 2.57:1 on paper) is too light for focus.
+
+### Elevation
+
+- **shadow.panel**: `0 1px 2px rgba(20, 20, 60, .04), 0 16px 40px -16px rgba(40, 30, 120, .16)` — resting panels.
+
+### Motion
+
+Entrances: `fade-up`, `fade-blur-up`, 0.6s ease-out. Hover fills: 0.15s.
 
 ### Reduced motion
 
-Required.
-
-### Color Palette & Roles
-
-All values below are verbatim from `web/src/app/globals.css`. Hex in parentheses is either code-stated or an approximate conversion (marked *approx*) — OKLCH is authoritative.
-
-#### Primary
-- **Violet-Blue** `oklch(0.55 0.22 275)` (code-stated `#7c5cfc`): `--primary` / `--ring`. All interactive elements — buttons, links, focus rings, active states, charts (`--chart-1`), selection highlight.
-- **Primary Foreground** `oklch(0.99 0 0)`: text/icon on primary fills (near-white).
-- Dark mode: `--primary` lifts to `oklch(0.7 0.2 275)` (~*approx* `#a48bff`) so it stays vibrant on a dark canvas; its foreground flips to `oklch(0.1 0.02 275)`.
-
-#### Surfaces
-- **Background** `oklch(0.99 0.002 275)` (*approx* `#fdfcff`): page canvas, warm white with a trace of violet. Dark: `oklch(0.1 0.015 275)`.
-- **Foreground** `oklch(0.13 0.02 275)` (*approx* `#16161d`): primary text, violet-tinted near-black. Dark: `oklch(0.95 0.005 275)`.
-- **Card / Popover** `oklch(1 0 0)` (pure white): raised surfaces. Dark card: `oklch(0.14 0.015 275)`.
-
-#### Neutrals (violet-tinted)
-- **Secondary** `oklch(0.965 0.005 275)` — low-emphasis fills. Foreground `oklch(0.2 0.02 275)`.
-- **Muted** `oklch(0.96 0.005 275)` — hover fills, footer bg (`bg-muted/50`). Muted foreground `oklch(0.5 0.015 275)` (dark: `oklch(0.6 0.015 275)`).
-- **Accent** `oklch(0.955 0.01 275)` — subtle emphasis surface.
-- **Border / Input** `oklch(0.91 0.008 275)` (*approx* `#e5e3ea`): default borders and input outlines (dark: `oklch(0.22 0.015 275)` border, `oklch(0.25 0.015 275)` input).
+Required. Under `prefers-reduced-motion: reduce` animations and transitions snap to their end state and smooth scroll is off.
 <!-- design-md:claim-end -->
 
 <!-- design-md:section typography-assets -->
@@ -118,34 +102,42 @@ All values below are verbatim from `web/src/app/globals.css`. Hex in parentheses
 
 | Role | Usage | Family | Weight |
 |---|---|---|---|
-| ui-sans | Primary interface, navigation, controls, and headings | Geist | 500 |
-| ui-mono | Code, version strings, and tabular technical values | Geist Mono | 400 |
+| ui-sans | Interface, headings and body on Latin and Korean pages | Wanted Sans Variable | 400–1000 axis |
+| ui-mono | Code and version strings | Geist Mono | 400 |
 
-### Font Family
-- **Sans**: **Geist** — loaded via `next/font/google` as `--font-geist-sans`, applied with fallback `system-ui, sans-serif`. This is the UI and heading face (`--font-heading` maps to the sans in the `@theme`).
-- **Mono**: **Geist Mono** — `next/font/google` as `--font-geist-mono`, bound to `--font-mono`. Code, version strings, tabular contexts.
-- **OpenType features**: `html` sets `font-feature-settings: "cv01", "cv11"` (Geist stylistic alternates) and `-webkit-font-smoothing: antialiased`.
+### Font families
 
-### Hierarchy
-The site does not define a bespoke type ramp; it uses the Tailwind scale directly at the component level. Observed roles:
+- **Wanted Sans Variable** v1.0.3 (SIL OFL 1.1, Wanted Lab), self-hosted unicode-range slices. Latin slices load everywhere; Hangul slices only under the `/ko` root. Elsewhere Hangul falls to the platform Korean face, which is not the brand face.
+- **Noto Sans JP** and **Noto Sans TC** are the faces of the Japanese and Traditional Chinese roots.
+- **Geist Mono** is the Tailwind `font-mono` face. The brand components use the platform monospace stack (`--sq-f-mono`).
+- OpenType features `cv01` and `cv11` are on for the whole document.
 
-| Role | Class | Size | Weight | Notes |
-|------|-------|------|--------|-------|
-| Card title | `font-heading text-base leading-snug font-medium` | 16px | 500 | `CardTitle` |
-| Body / labels | `text-sm` | 14px | 400 | Card body, button & tab labels |
-| Input text | `text-base md:text-sm` | 16px → 14px | 400 | 16px on mobile prevents iOS zoom (`@supports` rule forces ≥16px on inputs) |
-| Small label | `text-xs font-medium` | 12px | 500 | Badge, button `xs` |
+### Type scale
+
+Approved by the owner on 2026-11-21. Whole pixels only.
+
+| Role | Size | Weight | Where | Status |
+|---|---|---|---|---|
+| Landing title | 60px | 760 | Home and skill-landing first screens | Approved, not yet applied |
+| Page title | 40px | 760 | Other pages; 32px at 900–1279px, 28px below | Applied on the item page |
+| Section heading | 26px | 760 | Sections; 22px on a phone | Item page: 26px, but 23px on a phone |
+| Control, large | 16px | 650 | Labels of 48px controls | Approved, not yet applied |
+| Control | 15px | 650 | Labels of 40px controls | Applied on the item page's two actions |
+| Control, small | 14px | 600 | Labels of 32px controls | Approved, not yet applied |
+| Reading body | 17px | 400 | Item page DESIGN.md text; 16px on a phone | In code, outside the approval |
+
+Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 82px)`, `--sq-fs-h2: clamp(28px, 3.2vw, 44px)`, `--sq-fs-h3` and `--sq-fs-lede` 19px, `--sq-fs-body` 16px, `--sq-fs-small` 13.5px, `--sq-fs-micro` 12px; weights 780 display, 760 heading, 650 strong.
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
 
-### Component: button
+### Component: action button
 
-**Semantics:** Triggers a named action or navigation outcome with visible focus and disabled behavior.
+**Semantics:** Triggers a named action such as Copy DESIGN.md or Download.
 
-- Anatomy: label, optional-leading-icon, optional-trailing-icon
-- Variants: default, outline, secondary, ghost, destructive, link
-- States: default, hover, focus-visible, disabled
+- Anatomy: label, optional-leading-icon
+- Variants: primary, line
+- States: default, hover, pressed, focus-visible
 
 - Interaction kind: interactive
 
@@ -156,76 +148,75 @@ The site does not define a bespoke type ramp; it uses the Tailwind scale directl
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | applicable |  |
-| loading | not-applicable | Loading ownership belongs to the action workflow rather than the base button primitive. |
-| error | not-applicable | Error feedback belongs to the action result or field context rather than the base button primitive. |
-| success | not-applicable | Success feedback belongs to the action result rather than the base button primitive. |
+| disabled | not-applicable | The actions are always available; no disabled style exists. |
+| loading | not-applicable | Copy and Download have no waiting state. |
+| error | not-applicable | No error style exists. |
+| success | not-applicable | No success style exists. |
 
-### Component Stylings
+- **primary**: color.primary fill, color.on-primary label; hover primary-hover, pressed primary-press. One per screen.
+- **line**: color.paper with a 1px inset color.guide edge; hover cell, pressed guide-2.
+- Pill radius, 18px side padding (16px on a phone), 18px icon, focus outline offset 3px.
 
-Components live in `web/src/components/ui/`, built on **`@base-ui/react`** primitives with **`class-variance-authority` (CVA)** variant maps and a `cn()` class merger. They are not raw shadcn — the primitive layer is Base UI.
+### Control sizes
 
-#### Buttons (`ui/button.tsx`)
-`@base-ui/react/button` + CVA. Base: `inline-flex … rounded-lg border border-transparent text-sm font-medium transition-all`, `focus-visible:ring-3 focus-visible:ring-ring/50`, `active:not-aria-[haspopup]:translate-y-px` (a 1px press nudge), `disabled:opacity-50`.
+| Size | Height | Label | Use | Status |
+|---|---|---|---|---|
+| sm | 32px | 14/600 | Inside tables and chips | Approved, not yet applied |
+| md | 40px | 15/650 | Default; 44px on a phone | Applied on the item page's first screen |
+| lg | 48px | 16/650 | The one main action of a landing first screen | Approved, not yet applied |
 
-**Variants:** `default` (bg-primary / text-primary-foreground, hover `bg-primary/80`) · `outline` (border-border, bg-background, hover bg-muted) · `secondary` (bg-secondary, hover `/80`) · `ghost` (transparent, hover bg-muted) · `destructive` (`bg-destructive/10 text-destructive`, hover `/20` — tinted, never solid) · `link` (text-primary, underline on hover).
-
-**Sizes (height · radius):** `default` 32px (`h-8`, `px-2.5`) · `xs` 24px (`h-6`, radius `min(--radius-md,10px)`) · `sm` 28px (`h-7`, radius `min(--radius-md,12px)`) · `lg` 36px (`h-9`) · `icon` 32px square (`size-8`) · `icon-xs`/`icon-sm`/`icon-lg` 24/28/36px. Default variant/size: `default`/`default`.
-
-#### Badges (`ui/badge.tsx`)
-`@base-ui` `useRender` + CVA. Base: `h-5` (20px), `rounded-4xl` (26px → pill), `px-2 py-0.5 text-xs font-medium`. Variants mirror buttons: `default` (bg-primary) · `secondary` · `destructive` (tinted) · `outline` (border-border) · `ghost` · `link`.
+The item page's Share is a neutral control: 40px, 14px radius, color.cell; a 44px square icon on a phone.
 
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
+
+### Radius scale
+
+| Token | Value | Use |
+|---|---|---|
+| radius.inner | 6px | Inline code, small rows, focus outlines |
+| radius.control | 14px | Inputs, tab groups, copy fields, secondary controls |
+| radius.pill | 999px | Actions and chips |
+| radius.card | 20px | Cards |
+| radius.bubble | 22px | Chat bubbles |
+| radius.panel | 28px | Panels |
+
+The shadcn `--radius` points at radius.control, so `rounded-lg` is 14px.
+
+### Page
+
+- Content width at most 1360px; side gutter 40px, 16px at 900px and below.
+- Header 68px tall, 58px at 900px and below.
+- The item page puts title and actions on one row from 900px, and the reference beside its preview from 1024px.
 
 ### Responsive constraints
 
 - Minimum supported width: 320px
 - Reflow target: 200% zoom
-
-### Radius Scale (from `--radius: 0.625rem` = 10px)
-Defined in `globals.css` `@theme inline` as multiples of a single base:
-
-| Token | Multiplier | Value |
-|-------|-----------|-------|
-| `--radius-sm` | × 0.6 | 6px |
-| `--radius-md` | × 0.8 | 8px |
-| `--radius-lg` | × 1.0 | 10px (base) |
-| `--radius-xl` | × 1.4 | 14px |
-| `--radius-2xl` | × 1.8 | 18px |
-| `--radius-3xl` | × 2.2 | 22px |
-| `--radius-4xl` | × 2.6 | 26px |
-
-In practice: inputs/buttons/tab-lists use `rounded-lg` (10px); cards/dialogs use `rounded-xl` (14px); badges use `rounded-4xl` (26px, effectively a pill at `h-5`); tab triggers use `rounded-md` (8px).
-
-### Spacing
-No bespoke spacing tokens — the standard Tailwind 4px base (`var(--spacing)`) is used directly. Recurring rhythm: card `gap-4` / `py-4`, dialog/card padding `p-4`, button `px-2.5`, input `px-2.5 py-1`.
-
-### Safe areas
-Utility classes for notched devices: `.safe-top` / `.safe-bottom` (`max(1rem, env(safe-area-inset-bottom))`) / `.safe-x`.
-
-### Scrollbars
-Thin custom scrollbar: 6px wide, transparent track, thumb `oklch(0.7 0 0 / 0.2)` (dark: `oklch(0.4 0 0 / 0.3)`), fully rounded.
+- Touch targets on a phone: 44px
 
 ### Platform: web
 
-- Preserve task order and all primary actions at 320px without horizontal page scrolling.
-- Reflow text and controls at 200% zoom without clipping or overlapping interactive content.
+- Keep task order and both `#use` actions at 320px without sideways scrolling.
+- Inputs are 16px on iOS so focus does not zoom.
 
 <!-- design-md:section content-locales -->
 ## 6. Content & Locales
 
 ### Voice
 
-- State what the user can do and where each output goes; prefer direct, concrete labels over abstract product praise.
-
-- Preserve native labels for every supported locale and show the selected language as a fully localized label rather than a locale code.
-
-- Explain evidence and unknown boundaries plainly without turning the product into an audit disclaimer.
+- Say what the user can do and where each output goes, in concrete labels.
+- Show the selected language by its own name, not a locale code.
+- State what is measured and what is unknown plainly.
 
 ### Locale: en (supported)
 
-- Use concise product language and preserve exact command, file, and destination names.
+- Concise; command and file names stay exact.
+
+### Locale: ko (supported)
+
+- Korean item pages show the English DESIGN.md byte for byte under Korean chrome, and name the brand by its registry Hangul name or else its English name.
+- Korean headings that wrap get more leading (1.3 on the item title).
 
 <!-- design-md:section governance -->
 ## 7. Governance
@@ -257,32 +248,21 @@ Omit only the smallest unresolved value or group. Do not replace it with a plaus
 Record, review, and validate changes before adoption.
 <!-- design-md:claim-end -->
 
-### Project priority details
+<!-- design-md:claim omitted count=2 lang=en -->
+### Omitted
 
-1. Explicit current user instructions and pending explicit user corrections
+- `foundations.color-modes.dark` — `verified-absent`: light only; nothing sets a dark theme
+- `foundations.spacing` — `verified-absent`: no spacing scale; components set spacing directly
+<!-- design-md:claim-end -->
 
-2. Verified repository and target-surface facts
+### Where the approved scale is not yet applied
 
-3. Reviewed project-owner decisions recorded through the Core v2 checkpoints
+Production at 1440px, measured 2026-11-21:
 
-4. Verified reference inspiration that has not been promoted to a project fact
+- Page titles: home (60/760) and docs (40/760) match. Korean home 56/760, archive 64/780 and `/hangul` 64/760 do not; blog, FAQ, changelog, `/what-is-design-md` and alternatives keep the pre-rebrand 48/700.
+- Eight section-heading sizes (18–44px), twelve button heights (28–56px), five button radii (8, 10, 12, 14px, pill) and four fractional type sizes (14.45, 12.75, 12.5, 40.8px).
+- In code: `components/ui/button.tsx` keeps 24–36px sizes; `/what-is-design-md` sets its title in Geist inline; status chips have a 10.5px label; the social images (`/og/reference`, `/og/blog`) still draw the pre-rebrand `#7c5cfc` and `#0a0a0f`.
 
-### Do
-- Use the violet-blue primary (`oklch(0.55 0.22 275)` / `#7c5cfc`) for every interactive element — it is `--primary` and `--ring` both.
-- Keep neutrals tinted toward hue 275; don't drop in pure grays.
-- Use `rounded-lg` (10px) for controls and `rounded-xl` (14px) for cards/dialogs.
-- Elevate with `ring-1 ring-foreground/10`, not drop shadows.
-- Use `font-medium` (500) for interactive labels and card titles; 400 for body.
-- Give every interactive element the standard `ring-3 ring-ring/50` focus treatment.
-- Load Geist / Geist Mono; keep `cv01` / `cv11` features on.
-- Respect `prefers-reduced-motion` — it is already enforced globally and via `MotionConfig`.
+### Legacy in code
 
-### Quick token reference
-- Primary / focus ring: `oklch(0.55 0.22 275)` (`#7c5cfc`)
-- Background: `oklch(0.99 0.002 275)` · Foreground: `oklch(0.13 0.02 275)`
-- Card: `oklch(1 0 0)` with `ring-1 ring-foreground/10`
-- Border/input: `oklch(0.91 0.008 275)`
-- Destructive: `oklch(0.58 0.22 25)` (render tinted)
-- Radius: control = 10px (`rounded-lg`), card/dialog = 14px (`rounded-xl`), badge = pill (`rounded-4xl`)
-- Type: Geist (sans) / Geist Mono; emphasis weight `font-medium` (500)
-- Motion: 0.6–0.7s `easeOut` entrances;…
+`globals.css` still defines the `--omd-*` proof-sheet tokens of the 2026-10-01 landing, which no component reads, and names `--font-schibsted` and `--font-pretendard`, which nothing defines. Neither is part of this system.
