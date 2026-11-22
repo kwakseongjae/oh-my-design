@@ -8,6 +8,8 @@ import EnScreensPage, { metadata as enMetadata } from "@/app/(en)/screens/page";
 import KoScreensPage, { metadata as koMetadata } from "@/app/(ko)/ko/screens/page";
 import { LandingA } from "@/components/brand-a/landing";
 import { makeGalleryFixture } from "@/lib/screens/test-fixture";
+import { ScreensGallery } from "@/components/screens/screens-gallery";
+import type { GalleryModel } from "@/lib/screens/gallery";
 
 // next/font/local only works inside the Next compiler; the landing needs nothing from it but the class.
 vi.mock("next/font/google", () => ({
@@ -124,6 +126,25 @@ describe("gate open (a local folder in development)", () => {
     expect(html).not.toContain("/screens-local/not-a-reference");
     // nothing published: no rights lines
     expect(html).not.toContain("sq-scr-notice");
+  });
+
+  it("a view with no service says so and offers to clear the filters", () => {
+    // phone stills are the default view; this service has a web still only
+    const model: GalleryModel = {
+      services: [{ slug: "karrot", name: "당근", href: "/ko/design-systems/karrot", country: "KR", category: null, categoryName: null, logo: null, count: 1 }],
+      shots: [{ slug: "karrot", key: "home", type: "홈", title: "홈", state: null, stills: [{ width: 1440, still: "/s/1440-home.jpg", thumb: null, full: null }] }],
+      shot: null,
+      signedOut: true,
+      devices: ["phone", "web"],
+      countries: [{ value: "KR", label: "한국" }],
+      categories: [],
+      published: false,
+    };
+    const html = renderToStaticMarkup(createElement(ScreensGallery, { model, locale: "ko" }));
+    expect(html).toContain('<p class="sq-gal-count" role="status">화면 0개 · 서비스 0곳</p>');
+    expect(html).toContain('<div class="sq-gal-empty"><p>이 조건에 맞는 서비스가 없습니다.</p><button type="button">필터 지우기</button></div>');
+    expect(html).not.toContain("sq-gal-grid");
+    expect(renderToStaticMarkup(createElement(ScreensGallery, { model, locale: "en" }))).toContain("<p>No service matches these filters.</p><button type=\"button\">Clear filters</button>");
   });
 
   it("/screens: English chrome, registry names and the archive's category names", () => {

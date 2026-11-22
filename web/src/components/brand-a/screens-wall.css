@@ -14,12 +14,13 @@
 .sq-wall-row{list-style:none;margin:0;padding:6px;display:flex;gap:20px;width:max-content;animation:sq-wall-drift 90s ease-in-out infinite alternate}
 .sq-wall-row + .sq-wall-row{animation-direction:alternate-reverse}
 @keyframes sq-wall-drift{from{transform:translateX(0)}to{transform:translateX(min(0px,calc(100cqw - 100%)))}}
-/* pointer over the wall: the drift stops. Focus in it: the rows go back to their start and stand still, so the wall's
-   own scroll can bring the focused still into view (a still moved past the edge by the drift cannot be scrolled to),
-   and the fade lifts so a still at an edge shows its ring. landing-wall.tsx scrolls the wall back when focus leaves. */
-.sq-wall:hover .sq-wall-row{animation-play-state:paused}
-.sq-wall:focus-within .sq-wall-row{animation:none;transform:none}
-.sq-wall:focus-within{-webkit-mask-image:none;mask-image:none}
+/* pointer over the wall, or focus in it: the drift stops where it is (a press or a tap lands on the still under it).
+   Keyboard focus (:focus-visible) also sends the rows back to their start, so the wall's own scroll can bring the
+   focused still into view (a still moved past the edge by the drift cannot be scrolled to), and lifts the fade so a
+   still at an edge shows its ring. landing-wall.tsx does that scroll, and undoes it when focus leaves. */
+.sq-wall:hover .sq-wall-row,.sq-wall:focus-within .sq-wall-row{animation-play-state:paused}
+.sq-wall:has(:focus-visible) .sq-wall-row{animation:none;transform:none}
+.sq-wall:has(:focus-visible){-webkit-mask-image:none;mask-image:none}
 
 .sq-wall-row > li{flex:none}
 .sq-wall-tile{position:relative;display:block;width:216px;height:300px;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-cell)}

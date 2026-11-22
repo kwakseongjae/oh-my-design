@@ -70,6 +70,7 @@
 .sq-gal-empty button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:40px;margin-top:12px;padding:0 16px;border-radius:var(--sq-r-pill);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);font-size:15px;font-weight:650;color:var(--sq-ink)}
 .sq-gal-empty button:hover{background:var(--sq-cell)}
 .sq-gal-empty button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+@media (hover:none),(pointer:coarse){.sq-gal-empty button{min-height:44px}}
 
 @media (prefers-reduced-motion:reduce){
   .sq-gal-f,.sq-gal-f-i,.sq-gal-menu,.sq-gal-shot,.sq-gal-shot img{transition:none}
