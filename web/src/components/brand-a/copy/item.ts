@@ -13,8 +13,9 @@
 
 import type { FontLicense } from "@/lib/font-registry";
 import type { ColorGroupKey, StateKey } from "@/components/item/preview-model";
-import type { ScreenGroupId } from "@/lib/screens/model";
+import type { Device, ScreenGroupId } from "@/lib/screens/model";
 import { SCREENS_NOTICE, type ScreensNoticeCopy } from "@/components/screens/notice-copy";
+import { DEVICE_NAME, screenTypeName } from "@/components/screens/copy";
 
 export interface InstallLabels {
   install: string;
@@ -82,8 +83,11 @@ export interface ScreensLabels {
   shot: (date: string) => string;
   signedOut: string;
   groups: Record<ScreenGroupId, string>;
-  lead: string;
-  widthName: (width: number) => string;
+  /** The device control's accessible name and the two devices' names (no widths: owner, round 2). */
+  device: string;
+  deviceName: Record<Device, string>;
+  /** The link from the tab to the service's own screens page (/screens/<id>). */
+  page: string;
   blocked: string;
   /** A card's button when the large view shows the full page … */
   open: (title: string) => string;
@@ -100,30 +104,6 @@ export interface ScreensLabels {
   /** The rights, takedown and masked lines, shown once screens are published. */
   notice: ScreensNoticeCopy;
 }
-
-/** English names of the walk's screen types; an unlisted type is shown as written. */
-const SCREEN_TYPE_EN: Record<string, string> = {
-  홈: "Home",
-  검색: "Search",
-  "검색 결과": "Search results",
-  목록: "List",
-  상세: "Detail",
-  콘텐츠: "Content",
-  이벤트: "Event",
-  로그인: "Sign-in",
-  회원가입: "Sign-up",
-  고객센터: "Help",
-  오류: "Error",
-  피드: "Feed",
-  장바구니: "Cart",
-  팝업: "Pop-up",
-  카테고리: "Category",
-  커뮤니티: "Community",
-  지도: "Map",
-  화면: "Screen",
-  좋아요: "Likes",
-  프로필: "Profile",
-};
 
 export interface ItemLabels {
   crumb: string;
@@ -176,12 +156,13 @@ export const ITEM_EN: ItemLabels = {
     shot: (d) => `Shot on ${d}`,
     signedOut: "signed out",
     groups: { core: "Core screens", states: "States", more: "More from this service" },
-    lead: "Width in front",
-    widthName: (w) => (w >= 1024 ? `Desktop ${w}` : `Mobile ${w}`),
+    device: "Device",
+    deviceName: DEVICE_NAME.en,
+    page: "Open the screens page",
     blocked: "Blocked",
     open: (title) => `Open the full page of ${title}`,
     openStill: (title) => `Open ${title}`,
-    typeName: (type) => SCREEN_TYPE_EN[type] ?? type,
+    typeName: (type) => screenTypeName("en", type),
     stateName: (state) => (state === "빈 상태" ? "Empty state" : state),
     counter: (i, n) => `${i} / ${n}`,
     prev: "Previous screen",
@@ -285,12 +266,13 @@ export const ITEM_KO: ItemLabels = {
     },
     signedOut: "로그아웃 상태",
     groups: { core: "핵심 화면", states: "상태", more: "이 서비스의 화면" },
-    lead: "앞에 둘 폭",
-    widthName: (w) => (w >= 1024 ? `데스크톱 ${w}` : `모바일 ${w}`),
+    device: "기기",
+    deviceName: DEVICE_NAME.ko,
+    page: "화면 페이지에서 보기",
     blocked: "막힘",
     open: (title) => `${title} 전체 화면 보기`,
     openStill: (title) => `${title} 크게 보기`,
-    typeName: (type) => type,
+    typeName: (type) => screenTypeName("ko", type),
     stateName: (state) => state,
     counter: (i, n) => `${i} / ${n}`,
     prev: "이전 화면",

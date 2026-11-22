@@ -45,6 +45,7 @@ import {
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
 import type { ScreensModel } from "@/lib/screens/model";
 import { urlForView, viewForHash } from "@/components/item/screens-hash";
+import { screensServicePath } from "@/components/screens/copy";
 import "@/components/brand-a/archive.css";
 import "@/components/brand-a/item.css";
 
@@ -233,7 +234,12 @@ export function DetailView({
 
       {screens && view === "screens" ? (
         <div className="sq-wrap">
-          <ScreensTab model={screens} labels={t.screens} panelId="screens-panel" />
+          <ScreensTab
+            model={screens}
+            labels={t.screens}
+            panelId="screens-panel"
+            pageHref={screens.cards.some((c) => !c.blocked && c.stills.length > 0) ? screensServicePath(locale, detail.id) : null}
+          />
         </div>
       ) : null}
 

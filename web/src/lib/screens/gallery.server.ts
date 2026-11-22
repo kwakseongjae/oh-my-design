@@ -14,8 +14,10 @@ import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { markFor } from "@/app/(en)/design-systems/archive-rows.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { detailHrefFor, hasKoDetail } from "@/lib/i18n/ko-detail";
-import { allScreens } from "./source.server";
-import { DEVICES, byCount, deviceOf, orderServices, type GalleryModel, type GalleryShot } from "./gallery";
+import { screensServicePath } from "@/components/screens/copy";
+import { allScreens, screensOf } from "./source.server";
+import { byCount, orderServices, similarServices, type GalleryModel, type GalleryShot, type ServiceScreensModel } from "./gallery";
+import { devicesOf } from "./model";
 
 type Env = Record<string, string | undefined>;
 export type GalleryLocale = "en" | "ko";
@@ -54,12 +56,14 @@ export function readGallery(locale: GalleryLocale, env: Env = process.env): Gall
               slug: m.slug,
               name,
               href,
+              screensHref: screensServicePath(locale, m.slug),
               country: ref.country || null,
               category,
               // unknown means absent: a category the archive has no name for is not shown
               categoryName: category ? (domains[category] ?? null) : null,
               logo: markFor(m.slug),
               count: shots.length,
+              devices: devicesOf(shots),
             },
             shots,
           },
@@ -71,15 +75,42 @@ export function readGallery(locale: GalleryLocale, env: Env = process.env): Gall
   const services = ordered.map((s) => s.service);
   const shots = ordered.flatMap((s) => s.shots);
   const dates = ordered.map((s) => s.model.shot).filter((d): d is string => d !== null).sort();
-  const present = new Set(shots.flatMap((s) => s.stills.map((st) => deviceOf(st.width))));
   return {
     services,
     shots,
     shot: dates.length ? { from: dates[0], to: dates[dates.length - 1] } : null,
     signedOut: ordered.every((s) => s.model.signedOut),
-    devices: DEVICES.filter((d) => present.has(d)),
+    devices: devicesOf(shots),
     countries: byCount(services.map((s) => s.country)).map((value) => ({ value, label: countryName(value, locale) })),
     categories: byCount(services.filter((s) => s.categoryName).map((s) => s.category)).map((value) => ({ value, label: domains[value] })),
     published: ordered.some((s) => s.model.published),
+  };
+}
+
+/** The ids that have a screens page (/screens/<id>, /ko/screens/<id>): the gallery's services. Empty in the shut
+ *  state, so the pages' generateStaticParams list nothing and every id is a 404. */
+export function screenServiceIds(env: Env = process.env): string[] {
+  return readGallery("en", env)?.services.map((s) => s.slug) ?? [];
+}
+
+/** How many suggestions the server hands over: enough that the page can still show three on either device. */
+const SIMILAR_CANDIDATES = 8;
+
+export function readServiceScreens(locale: GalleryLocale, id: string, env: Env = process.env): ServiceScreensModel | null {
+  const gallery = readGallery(locale, env);
+  const service = gallery?.services.find((s) => s.slug === id);
+  const model = service ? screensOf(id, env) : null;
+  if (!gallery || !service || !model) return null;
+  const ref = REGISTRY_BY_ID[id];
+  return {
+    service,
+    names: { en: ref.name, ko: ref.displayName || ref.name },
+    cards: model.cards,
+    shot: model.shot,
+    signedOut: model.signedOut,
+    published: model.published,
+    similar: similarServices(gallery, id)
+      .slice(0, SIMILAR_CANDIDATES)
+      .map((s) => ({ service: s, shots: gallery.shots.filter((x) => x.slug === s.slug) })),
   };
 }

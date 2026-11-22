@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
+  cardsOn,
+  deviceOf,
+  devicesOf,
   dialogSequence,
   groupCards,
   groupOf,
-  insetStill,
   isBlackOrWhite,
-  leadStill,
+  stillOn,
   type ScreenCard,
 } from "./model";
 
@@ -58,20 +60,26 @@ describe("black and white", () => {
   });
 });
 
-describe("stills and the dialog", () => {
-  it("leads with the chosen width and lays the other over it", () => {
+describe("one device at a time", () => {
+  it("names a width by its device: under 1024 is mobile", () => {
+    expect([deviceOf(390), deviceOf(1023), deviceOf(1024), deviceOf(1440)]).toEqual(["mobile", "mobile", "desktop", "desktop"]);
+  });
+  it("takes the still of the chosen device and never the other's", () => {
     const c = cards[0];
-    expect(leadStill(c, 1440)?.width).toBe(1440);
-    expect(insetStill(c, 1440)?.width).toBe(390);
-    expect(leadStill(c, 390)?.width).toBe(390);
-    expect(insetStill(c, 390)?.width).toBe(1440);
-  });
-  it("falls back to the one width a screen has, with no inset", () => {
+    expect(stillOn(c, "desktop")?.width).toBe(1440);
+    expect(stillOn(c, "mobile")?.width).toBe(390);
     const one = card("x", "홈", { stills: [{ width: 1440, still: "/s/x.jpg", thumb: null, full: null }] });
-    expect(leadStill(one, 390)?.width).toBe(1440);
-    expect(insetStill(one, 390)).toBeNull();
+    expect(stillOn(one, "mobile")).toBeNull();
   });
-  it("walks the shown cards in display order and skips a blocked one", () => {
+  it("a device shows the screens with a still on it, and the blocked ones, which say so on either device", () => {
+    const one = card("x", "홈", { stills: [{ width: 1440, still: "/s/x.jpg", thumb: null, full: null }] });
+    const list = [...cards, one];
+    expect(cardsOn(list, "mobile").map((c) => c.key)).toEqual(["home", "event", "not-found", "search-empty", "detail", "search"]);
+    expect(cardsOn(list, "desktop").map((c) => c.key)).toContain("x");
+    expect(devicesOf(list)).toEqual(["mobile", "desktop"]);
+    expect(devicesOf([one])).toEqual(["desktop"]);
+  });
+  it("the dialog walks the shown cards in display order and skips a blocked one", () => {
     expect(dialogSequence(cards).map((c) => c.key)).toEqual(["home", "search", "not-found", "search-empty", "event"]);
   });
 });

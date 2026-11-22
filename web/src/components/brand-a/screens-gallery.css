@@ -1,13 +1,13 @@
 /* The /screens gallery (components/screens/screens-gallery.tsx, filter-select.tsx), from the still the owner chose on
-   2026-11-22 (b1-services, tools/screen-archive/make-browse-mocks.mjs on the screens branch: its .m-top, .m-bar,
-   .m-f and .m-svc rules, ported). Loaded only by that route. The rights and takedown lines are in screens-ui.css.
+   2026-11-22 (b1-services, tools/screen-archive/make-browse-mocks.mjs on the screens branch: its .m-top, .m-bar and
+   .m-f rules, ported); the service cards are in screens-card.css. Loaded only by that route. The rights and takedown lines are in screens-ui.css.
    Tokens: --sq-* (styles/brand-a.css); no new colours. Scale of 2026-11-21: page title .sq-page-title, controls md
    (40px, 15/650; 44px on touch), card name 17/650. Prefix sq-gal- (the catalog showcase owns sq-sc-). */
 
 .sq-gal{padding-top:56px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
 .sq-gal-lede{margin:14px 0 0;max-width:640px;font-size:18px;line-height:1.6;color:var(--sq-ink-2)}
 
-/* the filter row: three filters on the left, the count on the right; it wraps on a phone */
+/* the filter row: four filters on the left, the count on the right; it wraps on a phone */
 .sq-gal-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:36px}
 .sq-gal-filters{display:flex;flex-wrap:wrap;gap:8px}
 .sq-gal-count{margin:0;font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
@@ -32,37 +32,32 @@
 .sq-gal-opt{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:40px;padding:0 10px 0 12px;border-radius:var(--sq-r-inner);cursor:pointer;outline:0;user-select:none}
 .sq-gal-opt[data-highlighted]{background:var(--sq-cell)}
 .sq-gal-opt[data-selected]{font-weight:650}
+.sq-gal-opt-n{margin-left:auto;font-size:14px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
 .sq-gal-opt-i{display:inline-flex;color:var(--sq-primary)}
 .sq-gal-opt-i svg{width:16px;height:16px}
 @media (hover:none),(pointer:coarse){.sq-gal-opt{min-height:44px}}
 
-/* the grid of service cards: 3 / 2 / 1 across */
-.sq-gal-grid{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 24px}
-.sq-gal-card{min-width:0}
-.sq-gal-link{display:block;color:var(--sq-ink);text-decoration:none;border-radius:var(--sq-r-card)}
-.sq-gal-link:focus-visible{outline:none}
-.sq-gal-link:focus-visible .sq-gal-shot{outline:2px solid var(--sq-focus);outline-offset:3px}
-
-/* the panel: phone stills side by side, top aligned; one web still that rests on the panel's lower edge */
-.sq-gal-shot{position:relative;display:flex;justify-content:center;gap:3.5%;padding:7% 7% 0;aspect-ratio:410/300;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band);box-shadow:inset 0 0 0 1px var(--sq-guide-2);transition:box-shadow .2s}
-.sq-gal-shot img{display:block;width:31%;height:auto;align-self:flex-start;border-radius:var(--sq-r-inner);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
-.sq-gal-shot[data-device="web"]{aspect-ratio:auto}
-.sq-gal-shot[data-device="web"] img{width:100%;border-radius:var(--sq-r-inner) var(--sq-r-inner) 0 0}
-@media (hover:hover){
-  .sq-gal-link:hover .sq-gal-shot{box-shadow:inset 0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
-  .sq-gal-link:hover .sq-gal-shot img{transform:translateY(-4px)}
-}
-
-/* under the panel: the logo, the name, and "분야 · 화면 N개" at the end */
-.sq-gal-cap{display:flex;align-items:center;gap:10px;margin-top:14px;min-width:0}
-.sq-gal-name{min-width:0;font-size:17px;font-weight:650;line-height:1.35}
-.sq-gal-meta{margin-left:auto;flex-shrink:0;font-size:14px;line-height:1.35;color:var(--sq-ink-2);white-space:nowrap}
-/* the archive's logo tile (components/brand-logo.tsx), at 28px; archive.css is not loaded here */
-.sq-gal-logo.sq-logo{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;height:28px;min-width:28px;border-radius:var(--sq-r-inner);overflow:hidden}
-.sq-gal-logo.sq-logo img{display:block;height:28px;width:auto;max-width:84px;object-fit:contain}
-.sq-gal-logo.sq-logo-fav img{width:28px}
-.sq-gal-logo.sq-logo-dark{padding:0 6px;background:var(--sq-ink)}
-.sq-gal-logo.sq-logo-dark img{height:20px}
+/* the type view: one tile per screen of the chosen type, mobile stills six across (four on a tablet, two on a
+   phone), desktop stills three across (two, one); under each, the service's logo and name. The cards' grid and the
+   logo tile are in screens-card.css. */
+.sq-gal-tiles{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px 20px}
+.sq-gal-tiles[data-device="desktop"]{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px}
+.sq-gal-tile{min-width:0}
+.sq-gal-tile a{display:block;color:var(--sq-ink);text-decoration:none}
+.sq-gal-tile-shot{position:relative;display:block;aspect-ratio:390/720;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band)}
+.sq-gal-tiles[data-device="desktop"] .sq-gal-tile-shot{aspect-ratio:1440/900}
+.sq-gal-tile-shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
+.sq-gal-tile-shot img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.sq-gal-tile a:focus-visible{outline:none}
+.sq-gal-tile a:focus-visible .sq-gal-tile-shot{outline:2px solid var(--sq-focus);outline-offset:3px}
+@media (hover:hover){.sq-gal-tile a:hover .sq-gal-tile-shot img{transform:scale(1.02)}}
+.sq-gal-tile .sq-gal-cap{gap:8px;margin-top:10px}
+.sq-gal-tile .sq-gal-name{font-size:15px}
+.sq-gal-tile .sq-gal-logo.sq-logo{height:22px;min-width:22px}
+.sq-gal-tile .sq-gal-logo.sq-logo img{height:22px;max-width:66px}
+.sq-gal-tile .sq-gal-logo.sq-logo-fav img{width:22px}
+.sq-gal-tile .sq-gal-logo.sq-logo-dark img{height:16px}
+.sq-gal-tile-t{display:block;margin-top:2px;font-size:14px;line-height:1.4;color:var(--sq-ink-2)}
 
 /* no service matches */
 .sq-gal-empty{margin-top:48px;padding:48px 24px;border-radius:var(--sq-r-card);background:var(--sq-band);text-align:center;color:var(--sq-ink-2)}
@@ -73,23 +68,25 @@
 @media (hover:none),(pointer:coarse){.sq-gal-empty button{min-height:44px}}
 
 @media (prefers-reduced-motion:reduce){
-  .sq-gal-f,.sq-gal-f-i,.sq-gal-menu,.sq-gal-shot,.sq-gal-shot img{transition:none}
-  .sq-gal-link:hover .sq-gal-shot img{transform:none}
+  .sq-gal-f,.sq-gal-f-i,.sq-gal-menu,.sq-gal-tile-shot img{transition:none}
+  .sq-gal-tile a:hover .sq-gal-tile-shot img{transform:none}
 }
 
 @media (max-width:1023px){
-  .sq-gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}
+  .sq-gal-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .sq-gal-tiles[data-device="desktop"]{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:767px){
   .sq-gal{padding-top:32px}
   .sq-gal-lede{font-size:16px}
   .sq-gal-bar{margin-top:24px}
   .sq-gal-f{padding:0 10px 0 14px}
-  .sq-gal-grid{margin-top:24px}
+  .sq-gal-tiles{margin-top:24px}
 }
 @media (max-width:599px){
-  .sq-gal-grid{grid-template-columns:minmax(0,1fr);gap:32px}
-  /* the three filters stay on one row at 360px and up */
+  .sq-gal-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .sq-gal-tiles[data-device="desktop"]{grid-template-columns:minmax(0,1fr);gap:28px}
+  /* two filters a row at 390 */
   .sq-gal-filters{gap:6px}
   .sq-gal-f{gap:6px;padding:0 8px 0 12px}
 }

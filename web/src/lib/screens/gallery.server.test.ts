@@ -1,7 +1,7 @@
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
 import fs from "node:fs";
 import { listScreens } from "./local.server";
-import { readGallery } from "./gallery.server";
+import { readGallery, readServiceScreens, screenServiceIds } from "./gallery.server";
 import { makeGalleryFixture } from "./test-fixture";
 import { logoFor } from "@/app/(en)/design-systems/archive-rows.server";
 
@@ -58,9 +58,12 @@ describe("readGallery", () => {
     expect(ko.shots.some((s) => s.slug === "not-a-reference")).toBe(false);
   });
 
-  it("links each service to its DESIGN.md page in the page's language", () => {
+  it("links each service to its DESIGN.md page and to its screens page in the page's language", () => {
     expect(ko.services.find((s) => s.slug === "karrot")!.href).toBe("/ko/design-systems/karrot");
     expect(en.services.find((s) => s.slug === "karrot")!.href).toBe("/design-systems/karrot");
+    expect(ko.services.find((s) => s.slug === "karrot")!.screensHref).toBe("/ko/screens/karrot");
+    expect(en.services.find((s) => s.slug === "karrot")!.screensHref).toBe("/screens/karrot");
+    expect(ko.services.find((s) => s.slug === "karrot")!.devices).toEqual(["mobile", "desktop"]);
   });
 
   it("keeps only screens with a still: blocked and still-less screens are not shown or counted", () => {
@@ -89,10 +92,32 @@ describe("readGallery", () => {
   it("carries the dates for the rights line, signed out, and the devices with stills", () => {
     expect(ko.shot).toEqual({ from: "2026-11-21", to: "2026-11-21" });
     expect(ko.signedOut).toBe(true);
-    expect(ko.devices).toEqual(["phone", "web"]);
+    expect(ko.devices).toEqual(["mobile", "desktop"]);
   });
 
   it("sends the client no walk text", () => {
     expect(JSON.stringify(ko)).not.toContain("long text that must not reach the client");
+  });
+});
+
+describe("a service's screens page", () => {
+  it("exists for every service of the gallery and no other id; none with the gate shut", () => {
+    expect(screenServiceIds(on)).toEqual(["29cm", "karrot", "wanted"]);
+    expect(screenServiceIds({ OMD_SCREENS_DIR: fx.root, NODE_ENV: "production" })).toEqual([]);
+    expect(readServiceScreens("ko", "not-a-reference", on)).toBeNull();
+    expect(readServiceScreens("ko", "nope", on)).toBeNull();
+  });
+  it("carries every card of the walk but the withheld ones (blocked ones say so), both names, and similar services", () => {
+    const m = readServiceScreens("ko", "karrot", on)!;
+    expect(m.cards.map((c) => [c.key, c.blocked])).toEqual([
+      ["home", false],
+      ["search-empty", false],
+      ["detail", true],
+    ]);
+    expect(m.names).toEqual({ en: "Karrot", ko: "당근" });
+    expect(m.service.screensHref).toBe("/ko/screens/karrot");
+    expect(m.similar.map((s) => s.service.slug)).toEqual(["29cm", "wanted"]);
+    expect(m.similar[0].shots.every((s) => s.slug === "29cm")).toBe(true);
+    expect(JSON.stringify(m)).not.toContain("long text that must not reach the client");
   });
 });

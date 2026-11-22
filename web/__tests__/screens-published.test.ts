@@ -6,6 +6,9 @@ import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vites
 import sitemap from "@/app/sitemap";
 import EnScreensPage from "@/app/(en)/screens/page";
 import KoScreensPage from "@/app/(ko)/ko/screens/page";
+import EnServicePage, { generateStaticParams as serviceParams } from "@/app/(en)/screens/[id]/page";
+import KoServicePage from "@/app/(ko)/ko/screens/[id]/page";
+import { serviceScreensMetadata } from "@/components/screens/metadata";
 import { LandingA } from "@/components/brand-a/landing";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { screensMetadata } from "@/components/screens/metadata";
@@ -333,6 +336,47 @@ describe("published: the pages", () => {
     expect(form).toMatch(/id: service/);
     // GitHub drops a form it cannot parse: no plain (unquoted) value may hold ": ", which YAML reads as a mapping.
     for (const line of form.split("\n")) expect(line, line).not.toMatch(/^\s*[\w-]+: (?!["'|>])[^#]*: /);
+  });
+});
+
+describe("published: a service's screens page", () => {
+  it("/ko/screens/karrot: small renditions on the tiles from /screens-img, the masked line under the screen, the rights and takedown lines", async () => {
+    publish();
+    const html = renderToStaticMarkup(await KoServicePage({ params: Promise.resolve({ id: "karrot" }) }));
+    expect(html).toContain('src="/screens-img/karrot/390-home.thumb.jpg"');
+    expect(html).not.toContain("store.example");
+    expect(html).not.toContain("/screens-local/");
+    const home = html.slice(html.indexOf('id="screen-home"'), html.indexOf("</li>", html.indexOf('id="screen-home"')));
+    expect(home).toContain('<p class="sq-scr-masked">닉네임과 올린 사진을 가렸습니다</p>');
+    expect(html.match(/sq-scr-masked/g)).toHaveLength(1);
+    expect(html).toContain("<p>이 화면들의 권리는 이 회사에 있습니다. 로그아웃 상태로 2026년 11월 21일에 찍었습니다.</p>");
+    expect(html).toContain("template=screen-removal.yml&amp;service=karrot");
+    // the withheld event screen is nowhere, not even by name
+    expect(html).not.toMatch(/-event|이벤트 화면/);
+  });
+
+  it("is a page per service in both languages: indexable without image indexing, each other's alternates, in the sitemap", () => {
+    publish();
+    expect(serviceParams()).toEqual([{ id: "29cm" }, { id: "karrot" }, { id: "wanted" }]);
+    const ko = serviceScreensMetadata("ko", "karrot", published);
+    expect(ko.title).toBe("당근 서비스 화면 — oh-my-design");
+    expect(ko.description).toBe("당근의 실제 화면 2개를 종류별로 모았습니다. 화면과 함께 당근 DESIGN.md를 볼 수 있습니다.");
+    expect(ko.robots).toEqual({ index: true, follow: true, noimageindex: true });
+    expect(ko.alternates).toEqual({ canonical: "/ko/screens/karrot", languages: { en: "/screens/karrot", ko: "/ko/screens/karrot", "x-default": "/screens/karrot" } });
+    expect(serviceScreensMetadata("en", "karrot", published).title).toBe("Karrot product screens — oh-my-design");
+    const urls = sitemap().map((r) => r.url);
+    expect(urls).toContain("https://oh-my-design.kr/screens/karrot");
+    expect(urls).toContain("https://oh-my-design.kr/ko/screens/karrot");
+    expect(urls.some((u) => u.includes("/screens/not-a-reference"))).toBe(false);
+  });
+
+  it("production never reads a manifest path: no service has a page", async () => {
+    vi.stubEnv("OMD_SCREENS_MANIFEST", manifestFile);
+    vi.stubEnv("NODE_ENV", "production");
+    expect(serviceParams()).toEqual([]);
+    const el = await EnServicePage({ params: Promise.resolve({ id: "karrot" }) });
+    expect(() => renderToStaticMarkup(el)).toThrow(/NEXT_HTTP_ERROR_FALLBACK;404/);
+    expect(sitemap().some((r) => r.url.includes("/screens"))).toBe(false);
   });
 });
 

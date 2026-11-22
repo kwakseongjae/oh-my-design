@@ -85,15 +85,26 @@ export function isBlackOrWhite(value: string): boolean {
   return ["#000", "#000000", "#000000ff", "#fff", "#ffffff", "#ffffffff"].includes(v);
 }
 
-/** The still at the leading width, else the first one there is. */
-export function leadStill(card: ScreenCard, lead: number): ScreenStill | null {
-  return card.stills.find((s) => s.width === lead) ?? card.stills[0] ?? null;
+/** Mobile stills are shot at a 390 viewport, desktop stills at 1440; anything under 1024 is a mobile width. Every page
+ *  names the two by these words only (모바일 / 데스크톱, Mobile / Desktop), never by a number; URLs say `device=desktop`. */
+export type Device = "mobile" | "desktop";
+export const DEVICES: readonly Device[] = ["mobile", "desktop"];
+export const deviceOf = (width: number): Device => (width < 1024 ? "mobile" : "desktop");
+
+/** The still on this device, or null: a mobile view never borrows a desktop still, nor the other way round. */
+export function stillOn(card: Pick<ScreenCard, "stills">, device: Device): ScreenStill | null {
+  return card.stills.find((s) => deviceOf(s.width) === device) ?? null;
 }
 
-/** The still the other width shows beside the lead, or null when the screen has one width. */
-export function insetStill(card: ScreenCard, lead: number): ScreenStill | null {
-  const main = leadStill(card, lead);
-  return card.stills.find((s) => s !== main) ?? null;
+/** The devices a set of screens has stills on, mobile first. */
+export function devicesOf(cards: Pick<ScreenCard, "stills">[]): Device[] {
+  const present = new Set(cards.flatMap((c) => c.stills.map((s) => deviceOf(s.width))));
+  return DEVICES.filter((d) => present.has(d));
+}
+
+/** What one device shows: every screen with a still on it, and the blocked ones (which say so on either device). */
+export function cardsOn<T extends Pick<ScreenCard, "stills" | "blocked">>(cards: T[], device: Device): T[] {
+  return cards.filter((c) => c.blocked || stillOn(c, device) !== null);
 }
 
 /** The cards the dialog walks with previous / next: on screen now, in display order, not blocked. */

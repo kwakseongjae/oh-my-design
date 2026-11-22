@@ -62,6 +62,11 @@ export function FilterSelect({
             {options.map((o) => (
               <Select.Item key={o.value} value={o.value} className="sq-gal-opt">
                 <Select.ItemText>{o.label}</Select.ItemText>
+                {o.count !== undefined ? (
+                  <span className="sq-gal-opt-n" aria-hidden="true">
+                    {o.count}
+                  </span>
+                ) : null}
                 <Select.ItemIndicator className="sq-gal-opt-i">
                   <CheckIcon aria-hidden="true" />
                 </Select.ItemIndicator>
