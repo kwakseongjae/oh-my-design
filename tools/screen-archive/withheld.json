@@ -1,5 +1,5 @@
 {
- "about": "Screens of the web sheets that are NOT shown outside this machine: most of what they show was written or photographed by users (posts, listings, reviews, nicknames), or by small businesses and individuals. Judged screen by screen on the 390 and the 1440 first viewport, 2026-11-21, by the main session; the owner has been shown the list (report card 11) and has not yet decided on publication. mark-withheld.mjs writes these into each sheet's screens.json as `withheld: <reason>` on every width of the key; the site's reader and the mock generators leave such records out. Since 2026-11-22 a screen whose only problem was people's names and pictures is shot with those masked (web-shoot.mjs, the route's \"mask\") and is not listed here; what stays listed is a screen whose body is people's own writing, which a mask does not remove, or a service whose mask has not been written yet. A blocked screen (403) is not listed here: it has no image at all.",
+ "about": "Screens of the web sheets that are NOT shown outside this machine: most of what they show was written or photographed by users (posts, listings, reviews, nicknames), or by small businesses and individuals. Judged screen by screen on the 390 and the 1440 first viewport, 2026-11-21, by the main session; the owner has been shown the list (report card 11) and has not yet decided on publication. mark-withheld.mjs writes these into each sheet's screens.json as `withheld: <reason>` on every width of the key; the site's reader and the mock generators leave such records out. Since 2026-11-22 a screen whose only problem was people's names and pictures is shot with those masked (web-shoot.mjs, the route's \"mask\") and is not listed here; what stays listed is a screen whose body is people's own writing, which a mask does not remove, or a service whose mask has not been written yet. A blocked screen (403) is not listed here: it has no image at all. `excluded` names whole services the owner took out of the publication set (2026-11-22: \"컬리랑 오늘의집은 빼고 다른거 해도 좋을 거 같아\"); every record of such a service is withheld with that reason, whatever `services` says about its screens. No reason was given, and none is recorded.",
  "judged": "2026-11-22",
  "services": {
   "karrot": {
@@ -18,5 +18,9 @@
    "review": "사용자가 쓴 기업 리뷰가 본문",
    "community": "사용자 글이 본문"
   }
+ },
+ "excluded": {
+  "kurly": "오너가 공개 대상에서 뺌(2026-11-22)",
+  "ohouse": "오너가 공개 대상에서 뺌(2026-11-22)"
  }
 }
