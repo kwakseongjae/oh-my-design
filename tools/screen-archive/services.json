@@ -1,6 +1,6 @@
 {
  "about": "Which surface of each service the screen archive shoots. `platform` answers one question: can the service's core route (tools/phone-recorder/apps.json, core_route) be walked to the end on the web? mobile = the core route is only in the app (the site introduces the product); web = the product is used in the browser; both = web and app do the same job with similar screens, so the same screen type is shown side by side. `confirmed` is true only where a web walk was shot; the rest are guesses to be replaced by a walk. `web` records what the browser met on the date given: headless = Chromium with no window (its own user agent at 1440, a phone's at 390), headed = the installed Chrome with a window (allowed by the owner for sites that refuse headless, 2026-11-20). A 403 is recorded, never worked around. `reference` is the catalog id of the same service's DESIGN.md.",
- "checked": "2026-11-21",
+ "checked": "2026-11-22",
  "services": [
   {
    "slug": "29cm",
@@ -50,7 +50,8 @@
      "font_sizes": "4/5",
      "components": "6/8"
     }
-   }
+   },
+   "publication": "excluded by the owner, 2026-11-22 (withheld.json excluded)"
   },
   {
    "slug": "musinsa",
@@ -125,7 +126,8 @@
      "font_sizes": "3/3",
      "components": "4/5"
     }
-   }
+   },
+   "publication": "excluded by the owner, 2026-11-22 (withheld.json excluded)"
   },
   {
    "slug": "oliveyoung",
@@ -305,6 +307,76 @@
    "web": {
     "headless": "not tried"
    }
+  },
+  {
+   "slug": "kyobobook",
+   "name": "교보문고",
+   "reference": "kyobobook",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-22",
+    "browser": "headless",
+    "route": "routes/kyobobook.json",
+    "screens": 12,
+    "stills": 23,
+    "phone_hosts": [],
+    "refused": [
+     "login at 1440 (400 Bad Request)"
+    ]
+   }
+  },
+  {
+   "slug": "myrealtrip",
+   "name": "마이리얼트립",
+   "reference": "myrealtrip",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-22",
+    "browser": "headless",
+    "route": "routes/myrealtrip.json",
+    "screens": 11,
+    "stills": 22,
+    "phone_hosts": []
+   }
+  },
+  {
+   "slug": "megabox",
+   "name": "메가박스",
+   "reference": "megabox",
+   "platform": "both",
+   "confirmed": true,
+   "web": {
+    "shot": "2026-11-22",
+    "browser": "headless",
+    "route": "routes/megabox.json",
+    "screens": 12,
+    "stills": 24,
+    "phone_hosts": []
+   }
   }
- ]
+ ],
+ "probed": {
+  "date": "2026-11-22",
+  "browser": "headless",
+  "note": "Home page only, both widths, when choosing services to add. A refusal is recorded, never worked around; these may open in headed Chrome.",
+  "refused": {
+   "11st": "1440: 403",
+   "ably": "1440: 403",
+   "gmarket": "390 and 1440: 403",
+   "idus": "1440: 403",
+   "kream": "1440: 500 with an empty body",
+   "ssg": "390 and 1440: 403"
+  },
+  "opened_not_walked": [
+   "fastcampus",
+   "frip",
+   "hanatour",
+   "millie",
+   "catchtable (1440 nearly empty)",
+   "wconcept (390 nearly empty)",
+   "zigzag (1440 empty)"
+  ]
+ }
 }

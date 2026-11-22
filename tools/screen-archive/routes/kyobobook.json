@@ -1,0 +1,103 @@
+{
+ "slug": "kyobobook",
+ "name": "교보문고",
+ "reference": "kyobobook",
+ "platform": "both",
+ "origin": "https://www.kyobobook.co.kr",
+ "never": [
+  "구매하기",
+  "결제",
+  "바로구매",
+  "바로드림",
+  "주문하기",
+  "장바구니 담기",
+  "쿠폰 받기"
+ ],
+ "close": [
+  "text=오늘은 그만보기",
+  "text=오늘 하루 보지 않기"
+ ],
+ "screens": [
+  {
+   "key": "popup",
+   "type": "팝업",
+   "title": "첫 방문 · 아래에서 올라오는 광고 시트",
+   "url": "/",
+   "noClose": true,
+   "note": "휴대폰으로 처음 들어서면 화면 아래를 덮는 층입니다. 1440 폭에서는 아래 띠 배너로 나옵니다."
+  },
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "search-results",
+   "type": "검색 결과",
+   "title": "검색 결과 · 여행",
+   "url": "https://search.kyobobook.co.kr/search?keyword=여행"
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "https://search.kyobobook.co.kr/search?keyword=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "best",
+   "type": "목록",
+   "title": "베스트셀러 · 온라인 일간",
+   "url": "https://store.kyobobook.co.kr/bestseller/online/daily"
+  },
+  {
+   "key": "new",
+   "type": "목록",
+   "title": "신상품 · MD의 선택",
+   "url": "https://store.kyobobook.co.kr/new/md/domestic"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "도서 상세",
+   "from": {
+    "screen": "best",
+    "href": "product\\.kyobobook\\.co\\.kr/detail/S\\d+"
+   }
+  },
+  {
+   "key": "event",
+   "type": "이벤트",
+   "title": "이벤트 목록",
+   "url": "https://event.kyobobook.co.kr/event-list"
+  },
+  {
+   "key": "cart",
+   "type": "장바구니",
+   "title": "장바구니 (로그아웃)",
+   "url": "https://order.kyobobook.co.kr/cart"
+  },
+  {
+   "key": "login",
+   "type": "로그인",
+   "title": "로그인",
+   "url": "https://mmbr.kyobobook.co.kr/login?continue=https%3A%2F%2Fwww.kyobobook.co.kr%2F"
+  },
+  {
+   "key": "help",
+   "type": "고객센터",
+   "title": "고객센터",
+   "url": "/cscenter"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ],
+ "dropped": {
+  "store": "390 폭에서 주소가 열리지 않음(ERR_ABORTED, 2026-11-22). 한쪽 폭만 있는 화면은 싣지 않음."
+ }
+}

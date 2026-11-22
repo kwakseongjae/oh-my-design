@@ -1,0 +1,100 @@
+{
+ "slug": "megabox",
+ "name": "메가박스",
+ "reference": "megabox",
+ "platform": "both",
+ "origin": "https://www.megabox.co.kr",
+ "never": [
+  "예매하기",
+  "결제",
+  "구매하기",
+  "바로예매",
+  "선물하기",
+  "쿠폰 받기"
+ ],
+ "close": [
+  "#mainAppInsPop button.close",
+  "button.btn-close-main-notice",
+  "text=하루동안 보지않기"
+ ],
+ "screens": [
+  {
+   "key": "popup",
+   "type": "팝업",
+   "title": "첫 방문 · 앱 안내와 광고 시트",
+   "url": "/",
+   "noClose": true,
+   "note": "휴대폰으로 처음 들어서면 화면을 덮는 층입니다. 1440 폭에서는 뜨지 않습니다."
+  },
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "movies",
+   "type": "목록",
+   "title": "영화 · 박스오피스",
+   "url": "/movie"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "영화 상세",
+   "url": "/movie-detail?rpstMovieNo=26059100",
+   "note": "2026-11-22에 상영시간표 맨 위에 있던 영화의 주소입니다. 상영이 끝나면 주소를 바꿔야 합니다."
+  },
+  {
+   "key": "theaters",
+   "type": "목록",
+   "title": "전체 극장",
+   "url": "/theater/list"
+  },
+  {
+   "key": "store",
+   "type": "목록",
+   "title": "스토어",
+   "url": "/store"
+  },
+  {
+   "key": "event",
+   "type": "이벤트",
+   "title": "이벤트",
+   "url": "/event"
+  },
+  {
+   "key": "membership",
+   "type": "콘텐츠",
+   "title": "멤버십 안내",
+   "url": "/benefit/membership"
+  },
+  {
+   "key": "join",
+   "type": "회원가입",
+   "title": "회원가입",
+   "url": "/join"
+  },
+  {
+   "key": "help",
+   "type": "고객센터",
+   "title": "고객센터",
+   "url": "/support"
+  },
+  {
+   "key": "faq",
+   "type": "고객센터",
+   "title": "자주 묻는 질문",
+   "url": "/support/faq"
+  },
+  {
+   "key": "not-found",
+   "type": "오류",
+   "title": "없는 주소",
+   "url": "/zz-omd-not-here"
+  }
+ ],
+ "dropped": {
+  "timetable": "390 폭에서 내용이 그려지지 않음(본문 0자)."
+ }
+}

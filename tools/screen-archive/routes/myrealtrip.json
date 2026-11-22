@@ -1,0 +1,99 @@
+{
+ "slug": "myrealtrip",
+ "name": "마이리얼트립",
+ "reference": "myrealtrip",
+ "platform": "both",
+ "origin": "https://www.myrealtrip.com",
+ "never": [
+  "예약하기",
+  "결제",
+  "구매하기",
+  "바로 예약",
+  "쿠폰 받기",
+  "문의하기"
+ ],
+ "close": [
+  "text=1일간 보지 않기",
+  "text=오늘 하루 보지 않기"
+ ],
+ "screens": [
+  {
+   "key": "popup",
+   "type": "팝업",
+   "title": "첫 방문 · 광고 시트",
+   "url": "/",
+   "noClose": true,
+   "note": "처음 들어서면 화면을 덮는 광고 층입니다."
+  },
+  {
+   "key": "home",
+   "type": "홈",
+   "title": "홈",
+   "url": "/"
+  },
+  {
+   "key": "search-results",
+   "type": "이벤트",
+   "title": "유니버설 스튜디오 재팬 기획 페이지 (검색어에서 연결)",
+   "url": "/search?q=유니버설 스튜디오 재팬",
+   "note": "이 검색어는 검색 결과 목록이 아니라 기획 페이지로 열립니다."
+  },
+  {
+   "key": "search-empty",
+   "type": "검색 결과",
+   "title": "검색 결과 없음",
+   "url": "/search?q=zzqxvk",
+   "state": "빈 상태"
+  },
+  {
+   "key": "experiences",
+   "type": "카테고리",
+   "title": "투어·티켓",
+   "url": "/main/experiences"
+  },
+  {
+   "key": "stay",
+   "type": "카테고리",
+   "title": "해외숙소",
+   "url": "/main/unionstay"
+  },
+  {
+   "key": "flights",
+   "type": "검색",
+   "title": "항공권 검색",
+   "url": "/main/flights"
+  },
+  {
+   "key": "packages",
+   "type": "목록",
+   "title": "해외 패키지 여행",
+   "url": "/pkc?tab=popular"
+  },
+  {
+   "key": "detail",
+   "type": "상세",
+   "title": "투어·티켓 상품 상세",
+   "from": {
+    "screen": "search-results",
+    "href": "experiences\\.myrealtrip\\.com/products/\\d+"
+   }
+  },
+  {
+   "key": "deals",
+   "type": "이벤트",
+   "title": "지금 특가",
+   "url": "/promotions/now"
+  },
+  {
+   "key": "notice",
+   "type": "고객센터",
+   "title": "공고",
+   "url": "/main/announcement"
+  }
+ ],
+ "dropped": {
+  "rentalcars": "1440 폭 첫 화면에 고객 후기 글이 보임.",
+  "not-found": "없는 주소가 빈 화면으로 응답함(본문 0자).",
+  "search-results (오사카)": "첫 상품 사진에 사람 얼굴이 크게 나와 검색어를 바꿈."
+ }
+}
