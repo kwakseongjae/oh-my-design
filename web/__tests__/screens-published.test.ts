@@ -6,6 +6,9 @@ import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from "vites
 import sitemap from "@/app/sitemap";
 import EnScreensPage from "@/app/(en)/screens/page";
 import KoScreensPage from "@/app/(ko)/ko/screens/page";
+import EnServicePage, { generateStaticParams as serviceParams } from "@/app/(en)/screens/[id]/page";
+import KoServicePage from "@/app/(ko)/ko/screens/[id]/page";
+import { serviceScreensMetadata } from "@/components/screens/metadata";
 import { LandingA } from "@/components/brand-a/landing";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { screensMetadata } from "@/components/screens/metadata";
@@ -22,6 +25,9 @@ import * as publisher from "../scripts/publish-screens.mjs";
 type Loose = any;
 const collect = publisher.collect as (dir: string, opts: Record<string, unknown>) => Loose;
 const withoutScreens = publisher.withoutScreens as (manifest: Loose, slug: string, key?: string | null) => Loose;
+const storeKeep = publisher.storeKeep as (stills: Loose) => Set<string>;
+const removalPattern = publisher.removalPattern as (slug: string, key?: string | null) => RegExp;
+const writeThumbs = publisher.writeThumbs as (stills: Loose) => Promise<number>;
 
 // Every published state here comes from a fixture manifest; pin the committed one to the shut state so these tests
 // keep meaning the same once the real manifest is committed. The committed file itself is read from disk below.
@@ -29,8 +35,8 @@ vi.mock("@/data/screens-public.generated.json", () => ({ default: { generated: "
 vi.mock("next/font/google", () => ({
   Inter: () => ({ variable: "t-inter", className: "t-inter", style: { fontFamily: "Inter" } }),
 }));
-vi.mock("@/components/screens/landing-row-slot", async () => ({
-  ScreensLandingRowSlot: (await import("@/components/screens/landing-row")).ScreensLandingRow,
+vi.mock("@/components/screens/landing-wall-slot", async () => ({
+  ScreensWallSlot: (await import("@/components/screens/landing-wall")).ScreensWall,
 }));
 vi.mock("@/components/brand-a/journey/faces", () => ({
   pretendard: { variable: "t-pretendard", style: { fontFamily: "Pretendard" } },
@@ -61,6 +67,12 @@ fs.symlinkSync(path.join(fx.root, "secret.jpg"), path.join(fx.root, "29cm", "img
   walk.records.push({ key: "outside", type: "홈", title: "outside", state: null, width: 1440, blocked: false });
   fs.writeFileSync(file, JSON.stringify(walk));
 }
+// Small renditions as the script leaves them next to the stills: karrot's phone home has a fresh one; 29cm's phone
+// home has one older than its still, which does not count; karrot's withheld event has one, which is never listed.
+fs.writeFileSync(path.join(fx.root, "karrot", "img", "390-home.thumb.jpg"), "thumb");
+fs.writeFileSync(path.join(fx.root, "karrot", "img", "1440-event.thumb.jpg"), "thumb");
+fs.writeFileSync(path.join(fx.root, "29cm", "img", "390-home.thumb.jpg"), "stale");
+fs.utimesSync(path.join(fx.root, "29cm", "img", "390-home.thumb.jpg"), new Date(2020, 0, 1), new Date(2020, 0, 1));
 const result = collect(fx.root, { base: STORE, generated: "2026-11-22" });
 const manifestFile = path.join(fx.root, "manifest.json");
 fs.writeFileSync(manifestFile, JSON.stringify(result.manifest));
@@ -116,7 +128,48 @@ describe("the publishing script (collect)", () => {
 
   it("carries nothing but what the pages draw: no walk text, no notes, no local path", () => {
     expect(all).not.toMatch(/textHead|must not reach|withheld|blocked|full\.jpg|\/tmp\/|omd-screens-/);
-    for (const s of result.manifest.services) for (const r of s.records) expect(Object.keys(r).sort()).toEqual(["key", "masked", "state", "title", "type", "width"]);
+    for (const s of result.manifest.services) for (const r of s.records) expect(Object.keys(r).sort()).toEqual(["key", "masked", "state", "thumb", "title", "type", "width"]);
+  });
+
+  it("says which records have a small rendition: a regular file beside the still, no older than it", () => {
+    const rec = (slug: string, key: string, width: number) =>
+      result.manifest.services.find((s: { slug: string }) => s.slug === slug).records.find((r: { key: string; width: number }) => r.key === key && r.width === width);
+    expect(rec("karrot", "home", 390).thumb).toBe(true);
+    expect(rec("karrot", "home", 1440).thumb).toBe(false);
+    expect(rec("29cm", "home", 390).thumb).toBe(false);
+    // never a rendition as a still of its own, and a withheld screen's rendition is not even named
+    expect(listed.some((p: string) => /\.thumb\.jpg$/.test(p))).toBe(false);
+    expect(result.refused.some((r: { file?: string }) => /thumb/.test(r.file ?? ""))).toBe(false);
+  });
+
+  it("the store keeps each listed still and its rendition; a takedown deletes both, at every width", () => {
+    const keep = storeKeep(result.stills);
+    expect(keep.has("screens/karrot/390-home.jpg")).toBe(true);
+    expect(keep.has("screens/karrot/390-home.thumb.jpg")).toBe(true);
+    expect(keep.has("screens/karrot/1440-event.thumb.jpg")).toBe(false);
+    expect(keep.has("screens/29cm/390-home.thumb.jpg")).toBe(false);
+    const one = removalPattern("karrot", "home");
+    for (const p of ["screens/karrot/390-home.jpg", "screens/karrot/1440-home.jpg", "screens/karrot/390-home.thumb.jpg"]) expect(one.test(p), p).toBe(true);
+    for (const p of ["screens/karrot/390-home-2.jpg", "screens/karrot/390-home.full.jpg", "screens/wanted/390-home.jpg"]) expect(one.test(p), p).toBe(false);
+    expect(removalPattern("karrot").test("screens/karrot/1440-event.thumb.jpg")).toBe(true);
+  });
+
+  it("draws a rendition no wider than its target and never wider than the still, as JPEG", async () => {
+    const sharp = (await import("sharp")).default;
+    const dir = fs.mkdtempSync(path.join(fx.root, "thumbs-"));
+    const make = (file: string, width: number, height: number) =>
+      sharp({ create: { width, height, channels: 3, background: { r: 250, g: 120, b: 30 } } }).jpeg().toFile(path.join(dir, file));
+    await make("390-a.jpg", 520, 1126);
+    await make("1440-a.jpg", 1280, 800);
+    await make("390-small.jpg", 300, 650);
+    const stills = ["390-a.jpg", "1440-a.jpg", "390-small.jpg"].map((file) => ({ file, abs: path.join(dir, file), width: Number(file.split("-")[0]) }));
+    expect(await writeThumbs(stills)).toBe(3);
+    const meta = async (f: string) => sharp(path.join(dir, f)).metadata();
+    expect(await meta("390-a.thumb.jpg")).toMatchObject({ format: "jpeg", width: 480 });
+    expect(await meta("1440-a.thumb.jpg")).toMatchObject({ format: "jpeg", width: 960 });
+    expect(await meta("390-small.thumb.jpg")).toMatchObject({ width: 300 });
+    // fresh renditions are left alone
+    expect(await writeThumbs(stills)).toBe(0);
   });
 
   it("a takedown drops one screen (and its colour matches) or a whole service from the manifest", () => {
@@ -199,14 +252,15 @@ describe("the reader (public.server, source.server)", () => {
 });
 
 describe("published: the pages", () => {
-  it("/ko/screens: stills from our own /screens-img path (never the store's host), the masked line, the rights and takedown lines, no e-mail while none is set", () => {
+  it("/ko/screens: small renditions (else stills) from our own /screens-img path (never the store's host), the rights and takedown lines, no e-mail while none is set", () => {
     publish();
     const html = renderToStaticMarkup(createElement(KoScreensPage));
-    expect(html).toContain('src="/screens-img/karrot/390-home.jpg"');
+    expect(html).toContain('src="/screens-img/karrot/390-home.thumb.jpg"');
+    expect(html).toContain('src="/screens-img/29cm/390-home.jpg"');
     expect(html).not.toContain("store.example");
     expect(html).not.toContain("/screens-local/");
-    expect(html).toContain('<p class="sq-gal-masked">닉네임과 올린 사진을 가렸습니다</p>');
-    expect(html.match(/sq-gal-masked/g)).toHaveLength(1);
+    // a card names no screen, so the masked line stays with the item page's tab
+    expect(html).not.toContain("닉네임과 올린 사진을 가렸습니다");
     expect(html).toContain("<p>화면의 권리는 각 회사에 있습니다. 모두 로그아웃 상태로 2026년 11월 21일에 찍었습니다.</p>");
     expect(html).toContain(
       '<p>화면을 내려 달라는 요청은 <a href="https://github.com/kwakseongjae/oh-my-design/issues/new?template=screen-removal.yml" target="_blank" rel="noopener noreferrer">GitHub 요청 양식</a>으로 받습니다.</p>',
@@ -219,7 +273,6 @@ describe("published: the pages", () => {
     const html = renderToStaticMarkup(createElement(EnScreensPage));
     expect(html).toContain("<p>Each screen belongs to its company. All were shot signed out on 2026-11-21.</p>");
     expect(html).toContain(">request form on GitHub</a>.</p>");
-    expect(html).toContain('<p class="sq-gal-masked">Nicknames and uploaded photos are hidden</p>');
   });
 
   it("the e-mail part renders only once an address is set", () => {
@@ -246,16 +299,17 @@ describe("published: the pages", () => {
     publish();
     const ko = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "ko" }));
     const menu = ko.slice(ko.indexOf('class="sq-menu"'), ko.indexOf("</nav>"));
-    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "화면", "스킬", "문서"]);
-    expect(menu).toContain('href="/ko/screens">화면</a>');
+    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "서비스 화면", "스킬", "문서"]);
+    expect(menu).toContain('href="/ko/screens">서비스 화면</a>');
     expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale: "en" }))).toContain('href="/screens">Screens</a>');
     for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale }))).not.toMatch(/\/screens/);
   });
 
-  it("the landing strip prints /screens-img, never the store's host", async () => {
+  it("the landing wall prints /screens-img and the small rendition where there is one, never the store's host", async () => {
     publish();
     const ko = renderToStaticMarkup(await LandingA({ locale: "ko" }));
-    expect(ko).toContain('src="/screens-img/karrot/390-home.jpg"');
+    expect(ko).toContain('src="/screens-img/karrot/390-home.thumb.jpg"');
+    expect(ko).toContain('src="/screens-img/29cm/390-home.jpg"');
     expect(ko).not.toContain("store.example");
     expect(ko).not.toContain("/screens-local/");
   });
@@ -264,12 +318,14 @@ describe("published: the pages", () => {
     vi.stubEnv("OMD_SCREENS_MANIFEST", manifestFile);
     vi.stubEnv("NODE_ENV", "production");
     expect(() => renderToStaticMarkup(createElement(KoScreensPage))).toThrow(/NEXT_HTTP_ERROR_FALLBACK;404/);
-    expect(renderToStaticMarkup(await LandingA({ locale: "ko" }))).not.toMatch(/sq-gal|\/screens/);
+    expect(renderToStaticMarkup(await LandingA({ locale: "ko" }))).not.toMatch(/sq-gal|sq-wall|\/screens/);
   });
 
-  it("the Screens tab prints /screens-img; a preview manifest with a local base keeps its own path", () => {
+  it("the Screens tab prints /screens-img and keeps the full still for its large view; a preview manifest with a local base keeps its own path", () => {
     const tab = screensOf("29cm", published)!;
     expect(tab.cards.flatMap((c) => c.stills.map((s) => s.still)).every((u) => u.startsWith("/screens-img/29cm/"))).toBe(true);
+    const home = screensOf("karrot", published)!.cards.find((c) => c.key === "home")!.stills.find((s) => s.width === 390)!;
+    expect(home).toEqual({ width: 390, still: "/screens-img/karrot/390-home.jpg", thumb: "/screens-img/karrot/390-home.thumb.jpg", full: null });
     const preview = screensOf("29cm", { OMD_SCREENS_MANIFEST: localManifestFile, NODE_ENV: "development" })!;
     expect(preview.cards[0].stills[0].still).toMatch(/^\/screens-local\/29cm\//);
   });
@@ -280,6 +336,47 @@ describe("published: the pages", () => {
     expect(form).toMatch(/id: service/);
     // GitHub drops a form it cannot parse: no plain (unquoted) value may hold ": ", which YAML reads as a mapping.
     for (const line of form.split("\n")) expect(line, line).not.toMatch(/^\s*[\w-]+: (?!["'|>])[^#]*: /);
+  });
+});
+
+describe("published: a service's screens page", () => {
+  it("/ko/screens/karrot: small renditions on the tiles from /screens-img, the masked line under the screen, the rights and takedown lines", async () => {
+    publish();
+    const html = renderToStaticMarkup(await KoServicePage({ params: Promise.resolve({ id: "karrot" }) }));
+    expect(html).toContain('src="/screens-img/karrot/390-home.thumb.jpg"');
+    expect(html).not.toContain("store.example");
+    expect(html).not.toContain("/screens-local/");
+    const home = html.slice(html.indexOf('id="screen-home"'), html.indexOf("</li>", html.indexOf('id="screen-home"')));
+    expect(home).toContain('<p class="sq-scr-masked">닉네임과 올린 사진을 가렸습니다</p>');
+    expect(html.match(/sq-scr-masked/g)).toHaveLength(1);
+    expect(html).toContain("<p>이 화면들의 권리는 이 회사에 있습니다. 로그아웃 상태로 2026년 11월 21일에 찍었습니다.</p>");
+    expect(html).toContain("template=screen-removal.yml&amp;service=karrot");
+    // the withheld event screen is nowhere, not even by name
+    expect(html).not.toMatch(/-event|이벤트 화면/);
+  });
+
+  it("is a page per service in both languages: indexable without image indexing, each other's alternates, in the sitemap", () => {
+    publish();
+    expect(serviceParams()).toEqual([{ id: "29cm" }, { id: "karrot" }, { id: "wanted" }]);
+    const ko = serviceScreensMetadata("ko", "karrot", published);
+    expect(ko.title).toBe("당근 서비스 화면 — oh-my-design");
+    expect(ko.description).toBe("당근의 실제 화면 2개를 종류별로 모았습니다. 화면과 함께 당근 DESIGN.md를 볼 수 있습니다.");
+    expect(ko.robots).toEqual({ index: true, follow: true, noimageindex: true });
+    expect(ko.alternates).toEqual({ canonical: "/ko/screens/karrot", languages: { en: "/screens/karrot", ko: "/ko/screens/karrot", "x-default": "/screens/karrot" } });
+    expect(serviceScreensMetadata("en", "karrot", published).title).toBe("Karrot product screens — oh-my-design");
+    const urls = sitemap().map((r) => r.url);
+    expect(urls).toContain("https://oh-my-design.kr/screens/karrot");
+    expect(urls).toContain("https://oh-my-design.kr/ko/screens/karrot");
+    expect(urls.some((u) => u.includes("/screens/not-a-reference"))).toBe(false);
+  });
+
+  it("production never reads a manifest path: no service has a page", async () => {
+    vi.stubEnv("OMD_SCREENS_MANIFEST", manifestFile);
+    vi.stubEnv("NODE_ENV", "production");
+    expect(serviceParams()).toEqual([]);
+    const el = await EnServicePage({ params: Promise.resolve({ id: "karrot" }) });
+    expect(() => renderToStaticMarkup(el)).toThrow(/NEXT_HTTP_ERROR_FALLBACK;404/);
+    expect(sitemap().some((r) => r.url.includes("/screens"))).toBe(false);
   });
 });
 

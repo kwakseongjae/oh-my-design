@@ -5,18 +5,26 @@
  *
  * What is published: every record of a sheet that is not withheld (a key withheld on any width goes whole) and not
  * blocked, whose first-viewport still <width>-<key>.jpg is a regular file inside <sheets>/<slug>/img, for folders
- * whose name is a reference id (web/references/<id>). Never a full-page still (.full.jpg), never a file outside the
- * img folder (a symlink is resolved first), never a sheet or walk file. What it refuses, it prints.
+ * whose name is a reference id (web/references/<id>), and beside each such still its small rendition
+ * <width>-<key>.thumb.jpg (the gallery cards and the landing wall load that one; the large view keeps the still).
+ * Never a full-page still (.full.jpg), never a file outside the img folder (a symlink is resolved first), never a
+ * sheet or walk file. What it refuses, it prints.
+ *
+ * Small renditions: JPEG, about 480px wide for a phone still (390 viewport, 520px files) and 960px for a web still
+ * (1440 viewport, 1280px files), never wider than the still. They are written into the sheet's img folder, next to the
+ * still, whenever a manifest is written (--out or --upload) and one is missing or older than its still; with `sharp`
+ * when it resolves from web/node_modules, otherwise with macOS `sips`. A dry run without --out writes nothing.
  *
  *   node web/scripts/publish-screens.mjs [--dry-run] [--sheets <dir>] --base <url> [--out <file>]
  *       The default. Lists what would be published (service, key, widths, bytes, masked), the totals and what was
- *       refused; with --out, writes the manifest there using --base (never over the committed manifest).
+ *       refused; with --out, writes the small renditions and then the manifest there using --base (never over the
+ *       committed manifest).
  *   BLOB_READ_WRITE_TOKEN=… node web/scripts/publish-screens.mjs --upload [--sheets <dir>]
- *       Uploads each still as public to screens/<slug>/<width>-<key>.jpg (no random suffix, overwrite allowed),
- *       deletes stills of those services that are no longer listed, then writes the committed manifest with the
- *       store's base.
+ *       Writes the small renditions, uploads each still and rendition as public to screens/<slug>/<file> (no random
+ *       suffix, overwrite allowed), deletes files of those services that are no longer listed, then writes the
+ *       committed manifest with the store's base.
  *   BLOB_READ_WRITE_TOKEN=… node web/scripts/publish-screens.mjs --remove <slug>[/<key>]
- *       A takedown: deletes those stills from the store and drops them from the committed manifest; commit and deploy
+ *       A takedown: deletes those stills and their small renditions from the store and drops them from the committed manifest; commit and deploy
  *       it (a new deployment starts with an empty CDN cache for /screens-img). Mark the screen withheld in its sheet as
  *       well, or the next --upload lists it again.
  *
@@ -28,6 +36,8 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
+import { createRequire } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -48,6 +58,12 @@ const SLUG_RE = /^[a-z0-9][a-z0-9.-]{0,63}$/i;
 const KEY_RE = /^[a-z0-9][a-z0-9-]{0,63}$/i;
 const HTTPS_BASE = /^https:\/\/[a-z0-9.-]+(?::\d+)?(?:\/[A-Za-z0-9._~-]+)*$/i;
 const LOCAL_BASE = /^(?:\/[A-Za-z0-9._~-]+)+$/;
+
+/** The small rendition's file name beside a still's. */
+export const thumbFile = (file) => file.replace(/\.jpg$/i, ".thumb.jpg");
+/** How wide a still's small rendition is drawn: about 480px for a phone still, 960px for a web one. */
+export const thumbWidth = (viewport) => (viewport < 1024 ? 480 : 960);
+const THUMB_QUALITY = 72;
 
 const str = (v) => (typeof v === "string" && v.trim() ? v : null);
 const isWithheld = (r) => typeof r?.withheld === "string" && r.withheld.trim() !== "";
@@ -137,8 +153,21 @@ export function collect(sheetsDir, { base = "", generated = new Date().toISOStri
       taken.add(file);
       listed.add(key);
       const masked = isMasked(r);
-      records.push({ key, type: str(r.type) ?? "", title: str(r.title) ?? str(r.type) ?? key, state: str(r.state), width, masked });
-      stills.push({ slug, key, width, file, abs: found.abs, bytes: found.bytes, masked, pathname: `${STORE_PREFIX}/${slug}/${file}` });
+      // the small rendition counts only when it is a regular file in the img folder and no older than the still
+      const small = stillIn(imgDir, thumbFile(file), { thumb: true });
+      const thumb = small.ok && fs.statSync(small.abs).mtimeMs >= fs.statSync(found.abs).mtimeMs ? small : null;
+      records.push({ key, type: str(r.type) ?? "", title: str(r.title) ?? str(r.type) ?? key, state: str(r.state), width, masked, thumb: thumb !== null });
+      stills.push({
+        slug,
+        key,
+        width,
+        file,
+        abs: found.abs,
+        bytes: found.bytes,
+        masked,
+        pathname: `${STORE_PREFIX}/${slug}/${file}`,
+        thumb: thumb ? { file: thumbFile(file), abs: thumb.abs, bytes: thumb.bytes, pathname: `${STORE_PREFIX}/${slug}/${thumbFile(file)}` } : null,
+      });
     }
     // Every other file in the img folder stays here. Withheld and blocked screens were named above; the full pages
     // are counted, and a still the walk has no record of is named.
@@ -146,7 +175,8 @@ export function collect(sheetsDir, { base = "", generated = new Date().toISOStri
       const known = new Set(walk.records.map((r) => r?.key));
       let fulls = 0;
       for (const f of fs.readdirSync(imgDir).sort()) {
-        if (taken.has(f)) continue;
+        // a listed still's small rendition goes with it; any other one (a screen withheld since) stays here
+        if (taken.has(f) || /\.thumb\.jpg$/i.test(f)) continue;
         if (/\.full\.jpg$/i.test(f)) fulls++;
         else if (!known.has(/^\d+-(.+)\.jpg$/i.exec(f)?.[1])) refused.push({ slug, key: null, width: null, file: f, reason: "no record in the walk" });
       }
@@ -177,9 +207,10 @@ export function collect(sheetsDir, { base = "", generated = new Date().toISOStri
 }
 
 /** The still as a regular file directly inside the sheet's img folder after every symlink is resolved, or why not. */
-function stillIn(imgDir, file) {
+function stillIn(imgDir, file, { thumb = false } = {}) {
   if (!imgDir) return { ok: false, reason: "no img folder" };
   if (/\.full\.jpg$/i.test(file)) return { ok: false, reason: "full-page still (never published)" };
+  if (!thumb && /\.thumb\.jpg$/i.test(file)) return { ok: false, reason: "a small rendition, not a still" };
   let abs;
   try {
     abs = fs.realpathSync(path.join(imgDir, file));
@@ -190,6 +221,56 @@ function stillIn(imgDir, file) {
   const st = fs.statSync(abs);
   if (!st.isFile()) return { ok: false, reason: "not a regular file" };
   return { ok: true, abs, bytes: st.size };
+}
+
+/** sharp from web/node_modules, or null (then macOS sips draws the renditions). */
+function loadSharp() {
+  try {
+    return createRequire(path.join(WEB, "package.json"))("sharp");
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Writes each listed still's small rendition next to it when it is missing or older than the still. Never wider than
+ * the still; JPEG. Returns how many were written. Run before collect() is read for a manifest, so the manifest says
+ * which records have one.
+ */
+export async function writeThumbs(stills, { sharp = loadSharp() } = {}) {
+  let written = 0;
+  for (const s of stills) {
+    const out = path.join(path.dirname(s.abs), thumbFile(s.file));
+    let fresh = false;
+    try {
+      fresh = fs.statSync(out).mtimeMs >= fs.statSync(s.abs).mtimeMs;
+    } catch {
+      fresh = false;
+    }
+    if (fresh) continue;
+    const width = thumbWidth(s.width);
+    if (sharp) {
+      await sharp(s.abs).resize({ width, withoutEnlargement: true }).jpeg({ quality: THUMB_QUALITY, mozjpeg: true }).toFile(out);
+    } else if (process.platform === "darwin") {
+      const px = Number(/pixelWidth: (\d+)/.exec(execFileSync("sips", ["-g", "pixelWidth", s.abs], { encoding: "utf8" }))?.[1]) || width;
+      execFileSync("sips", ["-s", "format", "jpeg", "-s", "formatOptions", String(THUMB_QUALITY), "--resampleWidth", String(Math.min(width, px)), s.abs, "--out", out], { stdio: "ignore" });
+    } else {
+      throw new Error("Neither sharp nor sips is available to draw the small renditions.");
+    }
+    written++;
+  }
+  return written;
+}
+
+/** Every store path the publish keeps: each listed still and its small rendition. */
+export function storeKeep(stills) {
+  return new Set(stills.flatMap((s) => [s.pathname, ...(s.thumb ? [s.thumb.pathname] : [])]));
+}
+
+/** The store paths a takedown deletes: a screen's stills at every width and their small renditions, or a whole
+ *  service's. */
+export function removalPattern(slug, key = null) {
+  return new RegExp(`^${STORE_PREFIX}/${slug.replace(/\./g, "\\.")}/\\d+-${key ?? "[a-z0-9][a-z0-9-]*"}(?:\\.thumb)?\\.jpg$`, "i");
 }
 
 function summarize({ manifest, stills, refused }) {
@@ -210,6 +291,8 @@ function summarize({ manifest, stills, refused }) {
       screens: screens.length,
       stills: stills.length,
       bytes: stills.reduce((n, s) => n + s.bytes, 0),
+      thumbs: stills.filter((s) => s.thumb).length,
+      thumbBytes: stills.reduce((n, s) => n + (s.thumb?.bytes ?? 0), 0),
       masked: screens.filter((s) => s.masked).length,
       refused: refused.length,
       fullPages: refused.filter((r) => /^full-page/.test(r.reason)).reduce((n, r) => n + Number.parseInt(r.file, 10), 0),
@@ -227,7 +310,7 @@ function print(result) {
   console.log("\nRefused:");
   for (const r of result.refused) console.log(`  ${r.slug.padEnd(12)} ${(r.key ?? r.file ?? "").padEnd(24)} ${String(r.width ?? "").padEnd(5)} ${r.reason}`);
   console.log(
-    `\nTotals: ${totals.services} services, ${totals.screens} screens, ${totals.stills} stills, ${totals.bytes} bytes (${(totals.bytes / 1048576).toFixed(1)} MB), ${totals.masked} masked screens; refused: ${totals.refused} entries (${totals.fullPages} full-page stills among them)`,
+    `\nTotals: ${totals.services} services, ${totals.screens} screens, ${totals.stills} stills, ${totals.bytes} bytes (${(totals.bytes / 1048576).toFixed(1)} MB), ${totals.thumbs} small renditions, ${totals.thumbBytes} bytes (${(totals.thumbBytes / 1048576).toFixed(1)} MB), ${totals.masked} masked screens; refused: ${totals.refused} entries (${totals.fullPages} full-page stills among them)`,
   );
   return totals;
 }
@@ -255,11 +338,16 @@ async function listAll(list, prefix) {
 
 async function upload(sheets) {
   needToken();
+  await writeThumbs(collect(sheets).stills);
   const result = collect(sheets);
   print(result);
   const { put, list, del } = await import("@vercel/blob");
   let base = null;
-  for (const s of result.stills) {
+  const files = result.stills.flatMap((s) => [
+    { slug: s.slug, file: s.file, abs: s.abs, pathname: s.pathname },
+    ...(s.thumb ? [{ slug: s.slug, file: s.thumb.file, abs: s.thumb.abs, pathname: s.thumb.pathname }] : []),
+  ]);
+  for (const s of files) {
     const blob = await put(s.pathname, fs.readFileSync(s.abs), {
       access: "public",
       addRandomSuffix: false,
@@ -276,7 +364,7 @@ async function upload(sheets) {
   }
   if (!base || !HTTPS_BASE.test(base)) throw new Error(`no usable base from the store: ${base}`);
   // A screen withheld (or blocked, or gone) since the last upload must not stay reachable at its old address.
-  const keep = new Set(result.stills.map((s) => s.pathname));
+  const keep = storeKeep(result.stills);
   for (const slug of result.slugs) {
     const stale = (await listAll(list, `${STORE_PREFIX}/${slug}/`)).filter((b) => !keep.has(b.pathname));
     if (stale.length) {
@@ -308,7 +396,7 @@ async function remove(target) {
   }
   needToken();
   const { list, del } = await import("@vercel/blob");
-  const match = new RegExp(`^${STORE_PREFIX}/${slug.replace(/\./g, "\\.")}/\\d+-${key ?? "[a-z0-9][a-z0-9-]*"}\\.jpg$`, "i");
+  const match = removalPattern(slug, key);
   const gone = (await listAll(list, `${STORE_PREFIX}/${slug}/`)).filter((b) => match.test(b.pathname));
   if (gone.length) await del(gone.map((b) => b.url));
   for (const b of gone) console.log(`deleted ${b.pathname}`);
@@ -332,9 +420,10 @@ async function main(argv) {
     console.error("--base must be an https URL (the store's origin and prefix) or a path on this host, as /screens-local.");
     process.exit(1);
   }
+  const out = arg(argv, "--out");
+  if (out) await writeThumbs(collect(sheets).stills);
   const result = collect(sheets, { base });
   print(result);
-  const out = arg(argv, "--out");
   if (out) {
     const real = (p) => {
       try {

@@ -2,13 +2,17 @@
    Tokens: --sq-* (styles/brand-a.css); no new colours. Scale of 2026-11-21: controls 40 tall (44 on a phone,
    32 for chips), control type 15/650, section heading 26/760, pill actions and chips, 14 tab groups, 20 cards.
    Separation by tone and space, not lines (RESTRAINT.md). Layout from the still "b-item-screens".
-   The pieces the /screens gallery shares (width switch, swatch, chip, icon button, the dialog) are in screens-ui.css. */
+   Its shared pieces (device switch, chip, icon button, the dialog, the rights lines) are in screens-ui.css. */
 
 .sq-scr{padding-top:24px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
 .sq-scr-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:32px;scroll-margin-top:calc(var(--sq-header-h) + 16px)}
-.sq-scr-meta{margin:0 auto 0 0;font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
-
-
+.sq-scr-meta{margin:0;font-size:15px;line-height:1.5;color:var(--sq-ink-2)}
+/* the link to the service's own screens page, a text link after the facts; the device control keeps the right end */
+.sq-scr-page{display:inline-flex;align-items:center;gap:4px;min-height:32px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);text-decoration:none}
+.sq-scr-page:hover{text-decoration:underline;text-underline-offset:3px}
+.sq-scr-page:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-scr-page svg{width:16px;height:16px}
+.sq-scr-top .sq-scr-seg{margin-left:auto}
 
 .sq-scr-body{display:grid;grid-template-columns:minmax(0,1fr)}
 .sq-scr-main{min-width:0}
@@ -18,31 +22,23 @@
 .sq-scr-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 20px}
 .sq-scr-card{min-width:0}
 
-/* the stills: the leading width fills a 20-radius card; the other width sits over its lower right */
+/* the still of the chosen device fills a 20-radius card */
 .sq-scr-frame{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band);cursor:zoom-in}
 .sq-scr-frame[data-lead="narrow"]{aspect-ratio:4/5}
 .sq-scr-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
 .sq-scr-frame:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
 .sq-scr-main-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s}
 .sq-scr-frame:hover .sq-scr-main-img{transform:scale(1.015)}
-.sq-scr-inset{position:absolute;right:12px;bottom:0;object-fit:cover;object-position:top;background:var(--sq-paper);box-shadow:var(--sq-shadow-panel)}
-.sq-scr-inset[data-shape="narrow"]{width:24%;height:86%;border-radius:10px 10px 0 0}
-.sq-scr-inset[data-shape="wide"]{bottom:12px;width:60%;aspect-ratio:16/10;border-radius:10px}
 .sq-scr-blocked{display:flex;align-items:center;justify-content:center;cursor:default;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink-2)}
 
 .sq-scr-cap{display:flex;align-items:flex-start;gap:8px;min-height:32px;margin-top:12px}
 .sq-scr-cap b{min-width:0;margin-right:auto;padding-top:5px;font-size:15px;font-weight:var(--sq-fw-strong);line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
 
-/* the panel: grey band, white rows (the preview's pattern) */
-
-
 @media (max-width:1279px){
   .sq-scr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-/* stacked: the panel above the cards, folded to its heading and count */
-@media (max-width:1023px){
-}
 @media (max-width:767px){
+  .sq-scr-page{min-height:44px}
   .sq-scr{padding-top:16px}
   /* the phone header is two rows (98px measured at 390), taller than --sq-header-h */
   .sq-scr-top{scroll-margin-top:114px}

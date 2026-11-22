@@ -29,6 +29,13 @@ describe("/screens-local/[slug]/[file]", () => {
     expect(res.headers.get("x-robots-tag")).toContain("noindex");
     expect(await res.text()).toBe("jpg:1440-home.jpg");
   });
+  it("answers a small rendition that was never made with the still itself", async () => {
+    vi.stubEnv("OMD_SCREENS_DIR", fx.root);
+    vi.stubEnv("NODE_ENV", "development");
+    const res = await get("acme", "1440-home.thumb.jpg");
+    expect(res.status).toBe(200);
+    expect(await res.text()).toBe("jpg:1440-home.jpg");
+  });
   it.each([
     ["acme", "../screens.json"],
     ["acme", "../../secret.jpg"],

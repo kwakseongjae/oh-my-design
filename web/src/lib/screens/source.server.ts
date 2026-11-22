@@ -4,7 +4,7 @@
  *   2. the local sheets folder (OMD_SCREENS_DIR; in a production build only with OMD_SCREENS_ALLOW=1), so a new walk
  *      can be previewed even when screens are published;
  *   3. the committed public manifest, when it lists services;
- *   4. nothing: the tab, the gallery and the landing strip render exactly as they do without this feature.
+ *   4. nothing: the tab, the gallery and the landing section render exactly as they do without this feature.
  * The models carry screensPublished() as `published`, which turns on the rights and takedown lines.
  */
 
