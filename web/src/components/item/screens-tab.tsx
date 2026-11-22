@@ -10,10 +10,10 @@
  *   - the shooting date and "로그아웃 상태", and a control for which width leads;
  *   - three groups (핵심 화면 · 상태 · 이 서비스의 화면), cards three across at 1440 and
  *     one at 390, each the leading still with the other width laid over it, the
- *     title, the type and state chip and up to four colour tokens drawn on it
- *     (black and white left out); a blocked screen says so and shows no image;
+ *     title and the type and state chip; a blocked screen says so and shows no image;
  *   - no comparison panel: the owner took "DESIGN.md와 대조" out on 2026-11-22 after seeing the tab in a preview
- *     ("좋은데 … DESIGNmd와 대조 부분은 빼도 좋을 거 같아"). The chips under a card stay;
+ *     ("좋은데 … DESIGNmd와 대조 부분은 빼도 좋을 거 같아"), and the colour chips under a card went with it
+ *     the same day: without the panel nothing said what they were;
  *   - a card opens its full-page still in a dialog with previous / next (the first-viewport still where no full page
  *     exists, as for every published screen);
  *   - once screens are published: a line under a card whose people were hidden, and the rights and takedown lines
@@ -24,13 +24,11 @@ import { useMemo, useState } from "react";
 import { ScreenDialog, isNarrowWidth as narrow } from "@/components/item/screen-dialog";
 import { ScreensNotice } from "@/components/screens/notice";
 import {
-  cardChips,
   dialogSequence,
   groupCards,
   insetStill,
   leadStill,
   type ScreenCard,
-  type ScreenColor,
   type ScreensModel,
 } from "@/lib/screens/model";
 import type { ScreensLabels } from "@/components/brand-a/copy/item";
@@ -47,9 +45,6 @@ function TypeChip({ card, t }: { card: ScreenCard; t: ScreensLabels }) {
   return text && text !== card.title ? <span className="sq-scr-chip">{text}</span> : null;
 }
 
-function Swatch({ value }: { value: string }) {
-  return <i className="sq-scr-sw" style={{ background: value }} aria-hidden="true" />;
-}
 
 export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel; labels: ScreensLabels; panelId: string }) {
   const [lead, setLead] = useState(model.widths[0]);
@@ -93,7 +88,7 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
               </h2>
               <ul className="sq-scr-grid">
                 {g.cards.map((card) => (
-                  <Card key={card.key} card={card} lead={lead} colors={model.colors} t={t} note={masked(card)} onOpen={() => setOpenKey(card.key)} />
+                  <Card key={card.key} card={card} lead={lead} t={t} note={masked(card)} onOpen={() => setOpenKey(card.key)} />
                 ))}
               </ul>
             </section>
@@ -132,14 +127,12 @@ export function ScreensTab({ model, labels: t, panelId }: { model: ScreensModel;
 function Card({
   card,
   lead,
-  colors,
   t,
   note,
   onOpen,
 }: {
   card: ScreenCard;
   lead: number;
-  colors: ScreenColor[];
   t: ScreensLabels;
   /** The masked line, or null. */
   note: string | null;
@@ -147,7 +140,6 @@ function Card({
 }) {
   const main = leadStill(card, lead);
   const inset = insetStill(card, lead);
-  const chips = card.blocked ? [] : cardChips(card.key, colors);
   const shape = narrow(main?.width ?? lead) ? "narrow" : "wide";
   return (
     <li className="sq-scr-card">
@@ -170,16 +162,6 @@ function Card({
         <TypeChip card={card} t={t} />
       </div>
       {note ? <p className="sq-scr-masked">{note}</p> : null}
-      {chips.length ? (
-        <ul className="sq-scr-toks">
-          {chips.map((c) => (
-            <li key={c.token}>
-              <Swatch value={c.value} />
-              {c.token}
-            </li>
-          ))}
-        </ul>
-      ) : null}
     </li>
   );
 }

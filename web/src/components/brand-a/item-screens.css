@@ -32,8 +32,6 @@
 
 .sq-scr-cap{display:flex;align-items:flex-start;gap:8px;min-height:32px;margin-top:12px}
 .sq-scr-cap b{min-width:0;margin-right:auto;padding-top:5px;font-size:15px;font-weight:var(--sq-fw-strong);line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
-.sq-scr-toks{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.sq-scr-toks li{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px 0 8px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px var(--sq-guide-2);font-size:14px;font-weight:600;color:var(--sq-ink);overflow-wrap:anywhere}
 
 /* the panel: grey band, white rows (the preview's pattern) */
 
