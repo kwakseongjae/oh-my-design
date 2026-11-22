@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { readGallery } from "@/lib/screens/gallery.server";
 import { wallRows } from "@/lib/screens/gallery";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
@@ -12,9 +13,11 @@ import { ScreensWallSlot } from "./landing-wall-slot";
  * Renders nothing at all while there are no screens to read (nothing published and no local folder:
  * lib/screens/source.server.ts), so the landing is then exactly as before. The section's markup and stylesheet are
  * their own chunk (./landing-wall-slot.tsx), so a landing without screens never downloads either.
- * Synchronous on purpose: the landing's tests render it with renderToStaticMarkup.
+ * A plain function, not a component, so the landing can leave the slot out of <main> entirely when it is null: an
+ * empty slot still shifts React's useId values for every section, and the shut landing must stay byte for byte what it
+ * was. Synchronous on purpose: the landing's tests render it with renderToStaticMarkup.
  */
-export function ScreensLandingSection({ locale }: { locale: SiteLocale }) {
+export function screensLandingSection(locale: SiteLocale): ReactElement | null {
   if (locale !== "en" && locale !== "ko") return null;
   const model = readGallery(locale);
   if (!model) return null;
