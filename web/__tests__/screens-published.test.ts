@@ -286,12 +286,13 @@ describe("published: the pages", () => {
 describe("our own image path: the rewrite, its header and robots.txt", () => {
   const shutManifest = { generated: "", base: "", services: [] };
   async function loadConfig(manifest: unknown) {
+    // One doMock per import, and nothing registered after it. A mock registered here and left waiting (the earlier
+    // "back to the shut pin") was resolved together with the next test's mock, in no fixed order, so about one run
+    // in six loaded the config with the wrong manifest (CI, 2026-11-22). Every later import in this file registers
+    // its own manifest first.
     vi.resetModules();
     vi.doMock("../src/data/screens-public.generated.json", () => ({ default: manifest }));
-    const config = (await import("../next.config")).default;
-    // back to the shut pin the whole file runs under, whatever the committed file holds
-    vi.doMock("../src/data/screens-public.generated.json", () => ({ default: shutManifest }));
-    return config;
+    return (await import("../next.config")).default;
   }
   afterEach(() => vi.resetModules());
 
