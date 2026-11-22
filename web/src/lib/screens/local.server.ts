@@ -26,7 +26,8 @@ type Env = Record<string, string | undefined>;
 /** Where the image route answers. Relative, so it follows whichever host serves the page. */
 export const SCREENS_ROUTE = "/screens-local";
 
-const FILE_RE = /^([0-9]{2,4})-([a-z0-9][a-z0-9-]{0,63})(\.full)?\.jpg$/i;
+/** A still, its full page or its small rendition (web/scripts/publish-screens.mjs writes those next to the still). */
+const FILE_RE = /^([0-9]{2,4})-([a-z0-9][a-z0-9-]{0,63})(\.full|\.thumb)?\.jpg$/i;
 
 /** The local screens folder, or null: unset, missing, or a production build without OMD_SCREENS_ALLOW=1. */
 export function screensRoot(env: Env = process.env): string | null {
@@ -43,9 +44,11 @@ export function screensRoot(env: Env = process.env): string | null {
 
 /**
  * The file on disk for /screens-local/<slug>/<file>, or null. Only
- * "<width>-<key>[.full].jpg" names, only inside <root>/<slug>/img after every
+ * "<width>-<key>[.full|.thumb].jpg" names, only inside <root>/<slug>/img after every
  * symlink is resolved, only regular files, and never a still of a screen the
- * walk marks withheld (asked for by URL, it is a 404 like any other).
+ * walk marks withheld (asked for by URL, it is a 404 like any other). A small
+ * rendition that was never made is answered with the still itself, so a page that
+ * asks for one previews either way.
  */
 export function resolveScreenImage(slug: string, file: string, env: Env = process.env): string | null {
   const root = screensRoot(env);
@@ -53,12 +56,18 @@ export function resolveScreenImage(slug: string, file: string, env: Env = proces
   try {
     const base = fs.realpathSync(path.join(root, slug, "img"));
     if (!base.startsWith(root + path.sep)) return null;
-    const target = fs.realpathSync(path.join(base, file));
-    if (path.dirname(target) !== base) return null;
-    const key = FILE_RE.exec(file)?.[2];
+    const [, width, key, kind] = FILE_RE.exec(file) ?? [];
     const walk = readJson(path.join(root, slug, "screens.json")) as Record<string, unknown> | null;
     if (!key || withheldKeys(walk?.records).has(key)) return null;
-    return fs.statSync(target).isFile() ? target : null;
+    const inside = (name: string): string | null => {
+      try {
+        const target = fs.realpathSync(path.join(base, name));
+        return path.dirname(target) === base && fs.statSync(target).isFile() ? target : null;
+      } catch {
+        return null;
+      }
+    };
+    return inside(file) ?? (kind === ".thumb" ? inside(`${width}-${key}.jpg`) : null);
   } catch {
     return null;
   }
@@ -98,8 +107,9 @@ export function readScreens(id: string, env: Env = process.env): ScreensModel | 
     { shot: shotDate(w.shot), signedOut: signedOutOf(w.browser), platform: str(w.platform), records: w.records, tokens: readJson(path.join(dir, "tokens.json")) },
     (width, key) => {
       const still = `${width}-${key}.jpg`;
+      const thumb = `${width}-${key}.thumb.jpg`;
       const full = `${width}-${key}.full.jpg`;
-      return files.has(still) ? { still: url(still), full: files.has(full) ? url(full) : null } : null;
+      return files.has(still) ? { still: url(still), thumb: files.has(thumb) ? url(thumb) : null, full: files.has(full) ? url(full) : null } : null;
     },
   );
 }

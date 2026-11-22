@@ -1,0 +1,119 @@
+/* One service's screens page (components/screens/service-screens.tsx): /screens/<id>, /ko/screens/<id>. Loaded only by
+   that route. Shared pieces: screens-ui.css (the device switch .sq-scr-seg, the chip, the dialog, the rights lines),
+   screens-card.css (the similar services' cards). Tokens: --sq-* (styles/brand-a.css); no new colours. Scale of
+   2026-11-21: page title .sq-page-title, section heading 26/760 (22 on a phone), controls md 40 (44 on touch), lg 48
+   for the one main action. Prefix sq-svc-. */
+
+.sq-svc{padding-top:28px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
+.sq-svc-back{display:inline-flex;align-items:center;gap:6px;min-height:32px;font-size:15px;font-weight:600;color:var(--sq-ink-2);text-decoration:none}
+.sq-svc-back:hover{color:var(--sq-ink)}
+.sq-svc-back:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:var(--sq-r-inner)}
+.sq-svc-back svg{width:16px;height:16px}
+
+.sq-svc-head{margin-top:20px}
+.sq-svc-title{display:flex;align-items:center;gap:14px}
+.sq-svc-logo.sq-logo{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;height:40px;min-width:40px;border-radius:var(--sq-r-inner);overflow:hidden}
+.sq-svc-logo.sq-logo img{display:block;height:40px;width:auto;max-width:120px;object-fit:contain}
+.sq-svc-logo.sq-logo-fav img{width:40px}
+.sq-svc-logo.sq-logo-dark{padding:0 8px;background:var(--sq-ink)}
+.sq-svc-logo.sq-logo-dark img{height:28px}
+.sq-svc-facts{margin:12px 0 0;font-size:16px;line-height:1.6;color:var(--sq-ink-2)}
+.sq-svc-acts{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px 12px;margin-top:24px}
+.sq-svc-note{margin:12px 0 0;max-width:640px;font-size:14px;line-height:1.6;color:var(--sq-ink-2)}
+
+/* the actions: the DESIGN.md link is the one main action (primary pill), the download a line pill beside it */
+.sq-svc-btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--sq-r-pill);font-size:16px;font-weight:650;white-space:nowrap;text-decoration:none;transition:background-color .15s}
+.sq-svc-btn svg{width:18px;height:18px}
+.sq-svc-btn:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+.sq-svc-btn-primary{background:var(--sq-primary);color:var(--sq-on-primary)}
+.sq-svc-btn-primary:hover{background:var(--sq-primary-hover)}
+.sq-svc-btn-primary:active{background:var(--sq-primary-press)}
+.sq-svc-btn-line{background:var(--sq-paper);color:var(--sq-ink);box-shadow:inset 0 0 0 1px var(--sq-guide)}
+.sq-svc-btn-line:hover{background:var(--sq-cell)}
+.sq-svc-btn-line:active{background:var(--sq-guide-2)}
+.sq-svc-btn[aria-disabled="true"]{cursor:progress}
+
+/* a zip's progress and outcome, beside the button that started it */
+.sq-svc-zip{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 12px;max-width:100%}
+.sq-svc-zip-msg{font-size:14px;line-height:1.5;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+/* beside a type's heading the outcome would squeeze the title: it goes under the type's tiles' row instead */
+.sq-svc-gh .sq-svc-zip{position:relative}
+.sq-svc-gh .sq-svc-zip-msg{position:absolute;top:100%;right:0;z-index:1;width:max-content;max-width:min(320px,80vw);margin-top:6px;padding:8px 12px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel);font-size:13px}
+.sq-svc-zip-msg:empty{display:none}
+.sq-svc-zip-msg[data-kind="partial"],.sq-svc-zip-msg[data-kind="failed"]{color:var(--sq-err)}
+
+/* the device switch: one row under the head */
+.sq-svc-bar{display:flex;margin-top:36px}
+
+/* the types flow side by side: a walk holds one to six screens of a type, so a row per type would leave most of
+   the page empty. Each type is as wide as its tiles (wrapping inside itself past the page width), with its heading,
+   count and download over them. Tiles keep one width on a device: mobile 220px (five fit across 1280), desktop
+   396px (three); on a phone two mobile tiles or one desktop tile across, each type on its own row. */
+.sq-svc-groups{display:flex;flex-wrap:wrap;align-items:flex-start;gap:48px 40px;margin-top:40px}
+.sq-svc-bar + .sq-svc-groups{margin-top:32px}
+.sq-svc-group{flex:0 1 auto;min-width:0;max-width:100%;scroll-margin-top:calc(var(--sq-header-h) + 16px)}
+.sq-svc-gh{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;min-height:36px;margin-bottom:16px}
+.sq-svc-gh h2{display:flex;align-items:baseline;gap:8px;min-width:0;font-family:var(--sq-f-latin),sans-serif;font-size:22px;font-weight:var(--sq-fw-heading);line-height:1.3;letter-spacing:-0.01em}
+:lang(ko) .sq-svc-gh h2{line-height:1.36}
+.sq-svc-gh h2 span{font-size:15px;font-weight:600;letter-spacing:0;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+/* a type's download: a round icon button (its name is the accessible name and the tooltip); n/m while it works */
+.sq-svc-gzip{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:36px;height:36px;padding:0 10px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:13px;font-weight:600;color:var(--sq-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sq-svc-gzip:hover{background:var(--sq-guide-2)}
+.sq-svc-gzip:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-svc-gzip svg{width:16px;height:16px}
+.sq-svc-gzip[aria-disabled="true"]{cursor:progress}
+.sq-svc-gh .sq-svc-zip{flex-shrink:0;justify-content:flex-end}
+
+.sq-svc-grid{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:24px 20px}
+.sq-svc-tile{flex:0 0 220px;min-width:0;scroll-margin-top:calc(var(--sq-header-h) + 24px)}
+.sq-svc-grid[data-device="desktop"] .sq-svc-tile{flex-basis:396px}
+.sq-svc-frame{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:390/844;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band);cursor:zoom-in}
+.sq-svc-frame[data-device="desktop"]{aspect-ratio:1440/900}
+.sq-svc-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
+.sq-svc-frame:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+.sq-svc-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.sq-svc-frame:hover img{transform:scale(1.02)}}
+.sq-svc-blocked{display:flex;align-items:center;justify-content:center;padding:16px;cursor:default;font-size:14px;font-weight:600;line-height:1.5;text-align:center;color:var(--sq-ink-2)}
+.sq-svc-cap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0 0}
+.sq-svc-cap b{min-width:0;font-size:15px;font-weight:var(--sq-fw-strong);line-height:1.45}
+.sq-svc-none{margin-top:48px;color:var(--sq-ink-2)}
+
+/* the foot: similar services */
+.sq-svc-similar{margin-top:88px}
+.sq-svc-similar h2{font-family:var(--sq-f-latin),sans-serif;font-size:26px;font-weight:var(--sq-fw-heading);line-height:1.25;letter-spacing:-0.015em}
+:lang(ko) .sq-svc-similar h2{line-height:1.32}
+.sq-svc-similar .sq-gal-grid{margin-top:24px}
+
+@media (prefers-reduced-motion:reduce){
+  .sq-svc-btn,.sq-svc-frame img{transition:none}
+  .sq-svc-frame:hover img{transform:none}
+}
+@media (hover:none),(pointer:coarse){
+  .sq-svc-back{min-height:44px}
+  .sq-svc-gzip{min-width:44px;height:44px}
+}
+@media (max-width:1023px){
+  .sq-svc-tile{flex-basis:200px}
+  .sq-svc-grid[data-device="desktop"] .sq-svc-tile{flex-basis:340px}
+}
+@media (max-width:767px){
+  .sq-svc{padding-top:16px}
+  .sq-svc-title{gap:10px}
+  .sq-svc-logo.sq-logo{height:32px;min-width:32px}
+  .sq-svc-logo.sq-logo img{height:32px}
+  .sq-svc-logo.sq-logo-fav img{width:32px}
+  .sq-svc-facts{font-size:15px}
+  .sq-svc-acts{flex-direction:column;align-items:stretch}
+  .sq-svc-acts .sq-svc-zip{flex-direction:column;align-items:stretch}
+  .sq-svc-bar{margin-top:28px}
+  .sq-svc-bar .sq-scr-seg{width:100%}
+  .sq-svc-bar .sq-scr-seg button{flex:1 1 0;justify-content:center;height:36px}
+  .sq-svc-groups{gap:36px}
+  .sq-svc-group{flex-basis:100%}
+  .sq-svc-gh h2{font-size:20px}
+  .sq-svc-grid{gap:20px 12px}
+  .sq-svc-tile{flex:0 0 calc(50% - 6px)}
+  .sq-svc-grid[data-device="desktop"] .sq-svc-tile{flex-basis:100%}
+  .sq-svc-similar{margin-top:64px}
+  .sq-svc-similar h2{font-size:22px}
+}

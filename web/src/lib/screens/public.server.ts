@@ -29,6 +29,8 @@ export interface PublicRecord {
   width: number;
   /** People's names or uploaded pictures were replaced before the still was taken. */
   masked: boolean;
+  /** The store also holds the small rendition, `<width>-<key>.thumb.jpg` (absent in a manifest written before them). */
+  thumb?: boolean;
 }
 
 export interface PublicService {
@@ -44,7 +46,8 @@ export interface PublicService {
 
 export interface PublicManifest {
   generated: string;
-  /** The image store's origin and path prefix; a still is `${base}/<slug>/<width>-<key>.jpg`. */
+  /** The image store's origin and path prefix; a still is `${base}/<slug>/<width>-<key>.jpg`, its small rendition
+   *  `<width>-<key>.thumb.jpg` beside it. */
   base: string;
   services: PublicService[];
 }
@@ -96,6 +99,7 @@ export function validManifest(raw: unknown, allowLocalBase: boolean): PublicMani
 export function publicModel(service: PublicService, base: string): ScreensModel | null {
   const prefix = HTTPS_BASE.test(base) ? SCREENS_IMG_PATH : base;
   const records = service.records.filter((r) => r && !("withheld" in r) && (r as { blocked?: unknown }).blocked !== true);
+  const thumbs = new Set(records.filter((r) => r.thumb === true).map((r) => `${r.width}-${r.key}`));
   return buildScreensModel(
     service.slug,
     {
@@ -105,6 +109,10 @@ export function publicModel(service: PublicService, base: string): ScreensModel 
       records,
       tokens: { colors: (Array.isArray(service.colors) ? service.colors : []).map((c) => ({ ...c, comparable: true })) },
     },
-    (width, key) => (Number.isInteger(width) && width > 0 && width < 10000 ? { still: `${prefix}/${service.slug}/${width}-${key}.jpg`, full: null } : null),
+    (width, key) => {
+      if (!Number.isInteger(width) || width <= 0 || width >= 10000) return null;
+      const at = `${prefix}/${service.slug}/${width}-${key}`;
+      return { still: `${at}.jpg`, thumb: thumbs.has(`${width}-${key}`) ? `${at}.thumb.jpg` : null, full: null };
+    },
   );
 }

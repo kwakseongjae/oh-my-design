@@ -1,0 +1,46 @@
+/* A service card (components/screens/service-card.tsx) and the grid it sits in: the /screens gallery's grid and a
+   screens page's "similar services". From the still b1-services (tools/screen-archive/make-browse-mocks.mjs on the
+   screens branch, .m-svc). Tokens: --sq-* (styles/brand-a.css). Card name 17/650. */
+
+/* the grid of service cards: 3 / 2 / 1 across */
+.sq-gal-grid{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 24px}
+.sq-gal-card{min-width:0}
+.sq-gal-link{display:block;color:var(--sq-ink);text-decoration:none;border-radius:var(--sq-r-card)}
+.sq-gal-link:focus-visible{outline:none}
+.sq-gal-link:focus-visible .sq-gal-shot{outline:2px solid var(--sq-focus);outline-offset:3px}
+
+/* the panel: mobile stills side by side, top aligned; one desktop still that rests on the panel's lower edge */
+.sq-gal-shot{position:relative;display:flex;justify-content:center;gap:3.5%;padding:7% 7% 0;aspect-ratio:410/300;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band);box-shadow:inset 0 0 0 1px var(--sq-guide-2);transition:box-shadow .2s}
+.sq-gal-shot img{display:block;width:31%;height:auto;align-self:flex-start;border-radius:var(--sq-r-inner);background:var(--sq-paper);box-shadow:var(--sq-shadow-panel);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.sq-gal-shot[data-device="desktop"]{aspect-ratio:auto}
+.sq-gal-shot[data-device="desktop"] img{width:100%;border-radius:var(--sq-r-inner) var(--sq-r-inner) 0 0}
+@media (hover:hover){
+  .sq-gal-link:hover .sq-gal-shot{box-shadow:inset 0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel)}
+  .sq-gal-link:hover .sq-gal-shot img{transform:translateY(-4px)}
+}
+
+/* under the panel: the logo, the name, and "분야 · 화면 N개" at the end */
+.sq-gal-cap{display:flex;align-items:center;gap:10px;margin-top:14px;min-width:0}
+.sq-gal-name{min-width:0;font-size:17px;font-weight:650;line-height:1.35}
+.sq-gal-meta{margin-left:auto;flex-shrink:0;font-size:14px;line-height:1.35;color:var(--sq-ink-2);white-space:nowrap}
+/* the archive's logo tile (components/brand-logo.tsx), at 28px; archive.css is not loaded here */
+.sq-gal-logo.sq-logo{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;height:28px;min-width:28px;border-radius:var(--sq-r-inner);overflow:hidden}
+.sq-gal-logo.sq-logo img{display:block;height:28px;width:auto;max-width:84px;object-fit:contain}
+.sq-gal-logo.sq-logo-fav img{width:28px}
+.sq-gal-logo.sq-logo-dark{padding:0 6px;background:var(--sq-ink)}
+.sq-gal-logo.sq-logo-dark img{height:20px}
+
+
+@media (prefers-reduced-motion:reduce){
+  .sq-gal-shot,.sq-gal-shot img{transition:none}
+  .sq-gal-link:hover .sq-gal-shot img{transform:none}
+}
+@media (max-width:1023px){
+  .sq-gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}
+}
+@media (max-width:767px){
+  .sq-gal-grid{margin-top:24px}
+}
+@media (max-width:599px){
+  .sq-gal-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+}

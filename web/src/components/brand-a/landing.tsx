@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { preload } from "react-dom";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { getRepoStars } from "@/lib/github-stars.server";
@@ -13,7 +14,7 @@ import { HeroSection } from "./hero-section";
 import { JourneySection } from "./journey-section";
 import { ibmPlexSans, pretendard } from "./journey/faces";
 import { SiteFooterA } from "./site-footer";
-import { ScreensLandingSection } from "@/components/screens/landing-section";
+import { screensLandingSection } from "@/components/screens/landing-section";
 import { GITHUB_URL, SiteHeaderA } from "./site-header";
 // section styles in the original cascade order (split out of landing.css before round 11)
 import "./landing.css";
@@ -60,21 +61,25 @@ export async function LandingA({ locale }: { locale: SiteLocale }) {
   const htmlLang = SITE_LOCALE_META[locale].htmlLang;
   const first = REGION_ORDER[locale][0] as "KR" | "JP" | "TW";
   const archive = catalogPathFor(locale);
+  // real screens, after the journey from DESIGN.md to a screen; null unless there are screens to read
+  // (components/screens/landing-section.tsx). Left out of <main>'s children when null, not passed as an empty slot.
+  const screens = screensLandingSection(locale);
 
   // the root carries the self-hosted substitute faces' variables for the hero card and the CLI
   // screen (journey/face.ts SUB_FACES); their files load only where text is set in them
   return (
     <div className={`sq-root sq-root-page ${pretendard.variable} ${ibmPlexSans.variable}`} lang={htmlLang}>
       <SiteHeaderA locale={locale} current={locale} onLanding stars={stars} />
-      <main id="main">
-        <HeroSection locale={locale} c={c} r={r} data={data} f={f} archive={archive} />
-        <JourneySection locale={locale} c={c} data={data} first={first} />
-        <CliSection locale={locale} c={c} r={r} total={F.total} skills={F.skills} skillsHref={GH_SKILLS} />
-        <FaqSection r={r} f={f} issuesHref={GH_ISSUES} />
-        {/* the screens strip sits inside the showcase, before its archive button; it renders nothing unless the local
-            screens folder is configured (components/screens) */}
-        <CloseSection r={r} f={f} archive={archive} screens={<ScreensLandingSection locale={locale} />} />
-      </main>
+      {createElement(
+        "main",
+        { id: "main" },
+        <HeroSection locale={locale} c={c} r={r} data={data} f={f} archive={archive} />,
+        <JourneySection locale={locale} c={c} data={data} first={first} />,
+        ...(screens ? [screens] : []),
+        <CliSection locale={locale} c={c} r={r} total={F.total} skills={F.skills} skillsHref={GH_SKILLS} />,
+        <FaqSection r={r} f={f} issuesHref={GH_ISSUES} />,
+        <CloseSection r={r} f={f} archive={archive} />,
+      )}
       <SiteFooterA locale={locale} current={locale} />
     </div>
   );

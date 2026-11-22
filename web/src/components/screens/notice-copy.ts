@@ -16,7 +16,8 @@ export interface ScreensNoticeCopy {
   masked: string;
 }
 
-const koDate = (d: string) => {
+/** "2026-11-21" → "2026년 11월 21일". */
+export const koDate = (d: string) => {
   const [y, m, day] = d.split("-").map(Number);
   return `${y}년 ${m}월 ${day}일`;
 };

@@ -1,117 +1,92 @@
-/* The /screens gallery (components/screens/screens-gallery.tsx) and the landing's screens strip
-   (components/screens/landing-row.tsx). Loaded only with those: the gallery is its own route, and the landing's row is
-   its own chunk, rendered only where the local screens folder exists. Shared controls (the width switch, icon button,
-   chip, dialog) are in screens-ui.css. Tokens: --sq-* (styles/brand-a.css); no new colours, no Iris (the
-   showcase's archive button is the landing's accent). Scale of 2026-11-21: page title .sq-page-title, controls 32/40 (44 on a phone), shelf heading 26/760.
-   Layout from the stills g-shelves and g-shelves-390. Prefix sq-gal- (the catalog showcase owns sq-sc-). */
+/* The /screens gallery (components/screens/screens-gallery.tsx, filter-select.tsx), from the still the owner chose on
+   2026-11-22 (b1-services, tools/screen-archive/make-browse-mocks.mjs on the screens branch: its .m-top, .m-bar and
+   .m-f rules, ported); the service cards are in screens-card.css. Loaded only by that route. The rights and takedown lines are in screens-ui.css.
+   Tokens: --sq-* (styles/brand-a.css); no new colours. Scale of 2026-11-21: page title .sq-page-title, controls md
+   (40px, 15/650; 44px on touch), card name 17/650. Prefix sq-gal- (the catalog showcase owns sq-sc-). */
 
-.sq-gal{padding-top:40px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
-.sq-gal-top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px;padding-bottom:24px}
-.sq-gal-intro{min-width:0;flex:1 1 520px}
-.sq-gal-facts{margin:12px 0 0;font-size:15px;line-height:1.6;color:var(--sq-ink-2)}
-/* the two switches, quieter than the item page's (screens-ui.css .sq-scr-seg, 40 tall): one row, 32 tall, at the right
-   of the title on a wide screen and under the facts on a phone. Scoped here so the Screens tab keeps its size. */
-.sq-gal-switches{display:flex;flex-wrap:nowrap;gap:8px;margin-left:auto}
-.sq-gal-switches .sq-scr-seg{gap:2px;padding:2px;border-radius:var(--sq-r-pill)}
-.sq-gal-switches .sq-scr-seg button{height:28px;padding:0 10px;border-radius:var(--sq-r-pill);font-size:13px}
+.sq-gal{padding-top:56px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
+.sq-gal-lede{margin:14px 0 0;max-width:640px;font-size:18px;line-height:1.6;color:var(--sq-ink-2)}
 
-/* a shelf: heading, counts, the row's arrows and "show all" */
-.sq-gal-shelf{padding-top:40px;scroll-margin-top:calc(var(--sq-header-h) + 8px)}
-.sq-gal-shh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:16px}
-.sq-gal-shh h2{font-family:var(--sq-f-latin),sans-serif;font-size:26px;font-weight:var(--sq-fw-heading);line-height:1.25;letter-spacing:-0.015em}
-:lang(ko) .sq-gal-shh h2{line-height:1.32}
-.sq-gal-meta{font-size:15px;font-weight:600;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
-.sq-gal-md{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:0 12px;border-radius:var(--sq-r-pill);background:var(--sq-cell);font-size:14px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);text-decoration:none}
-.sq-gal-md:hover{background:var(--sq-guide-2)}
-.sq-gal-md:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-gal-md svg{width:14px;height:14px}
-.sq-gal-nav{display:flex;align-items:center;gap:8px;margin-left:auto}
-.sq-gal-nav .sq-scr-ic:disabled{cursor:default}
-/* the arrows: none on touch (a swipe scrolls); with a mouse they keep their place but show only while the shelf is
-   hovered or something in it has focus, so the heading line does not jump */
-@media (hover:none),(pointer:coarse){.sq-gal-nav .sq-scr-ic{display:none}}
-/* touch: the two switches keep a 40px target (a 28px button is too small for a finger); they wrap if a narrow phone needs it */
-@media (hover:none),(pointer:coarse){.sq-gal-switches{flex-wrap:wrap}.sq-gal-switches .sq-scr-seg button{height:40px;padding:0 14px;font-size:14px}}
-@media (hover:hover) and (pointer:fine){
-  .sq-gal-nav .sq-scr-ic{opacity:0;transition:opacity .15s}
-  .sq-gal-shelf:hover .sq-gal-nav .sq-scr-ic,.sq-gal-shelf:focus-within .sq-gal-nav .sq-scr-ic{opacity:1}
-  .sq-gal-shelf:hover .sq-gal-nav .sq-scr-ic:disabled,.sq-gal-shelf:focus-within .sq-gal-nav .sq-scr-ic:disabled{opacity:.4}
-}
-/* "show all": a toggle (aria-expanded) set as a plain text link at the end of the heading line */
-.sq-gal-all{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:32px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);white-space:nowrap}
-.sq-gal-all:hover{text-decoration:underline;text-underline-offset:3px}
-.sq-gal-all:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+/* the filter row: four filters on the left, the count on the right; it wraps on a phone */
+.sq-gal-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:36px}
+.sq-gal-filters{display:flex;flex-wrap:wrap;gap:8px}
+.sq-gal-count{margin:0;font-size:15px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
 
-/* the row scrolls sideways and snaps; "show all" turns it into a wrapping grid */
-.sq-gal-row{list-style:none;margin:0;padding:2px 2px 12px;display:grid;grid-auto-flow:column;grid-auto-columns:196px;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;scrollbar-width:thin}
-.sq-gal-row[data-shape="wide"]{grid-auto-columns:360px;gap:20px}
-.sq-gal-row:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:var(--sq-r-card)}
-.sq-gal-row > li{scroll-snap-align:start}
-.sq-gal-grid{list-style:none;margin:0;padding:2px;display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:28px 16px}
-.sq-gal-grid[data-shape="wide"]{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px 20px}
+/* a filter: "나라 전체 ⌄". The value's cell stacks every option's label, hidden, so the control keeps one width */
+.sq-gal-f{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 16px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);font-size:15px;line-height:1;color:var(--sq-ink-2);white-space:nowrap;transition:background-color .15s}
+.sq-gal-f:hover{background:var(--sq-cell)}
+.sq-gal-f:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+.sq-gal-f[data-popup-open]{background:var(--sq-cell)}
+.sq-gal-f-v{display:inline-grid;font-weight:650;color:var(--sq-ink)}
+.sq-gal-f-v > span{grid-area:1/1}
+.sq-gal-f-w{visibility:hidden}
+.sq-gal-f-i{width:16px;height:16px;color:var(--sq-icon);flex-shrink:0;transition:transform .15s}
+.sq-gal-f[data-popup-open] .sq-gal-f-i{transform:rotate(180deg)}
+@media (hover:none),(pointer:coarse){.sq-gal-f{height:44px}}
 
-/* a tile: the still in a frame of the shot's viewport, cut at 390 × 720 on a phone width */
+/* the list a filter opens (portalled to the body: it sets its own face) */
+.sq-gal-pos{z-index:40;outline:0}
+.sq-gal-menu{box-sizing:border-box;min-width:max(var(--anchor-width),160px);max-height:min(var(--available-height),360px);overflow-y:auto;padding:6px;border-radius:var(--sq-r-ctl);background:var(--sq-paper);box-shadow:0 0 0 1px var(--sq-guide-2),var(--sq-shadow-panel);font-family:var(--sq-f-en);font-size:15px;line-height:1.4;color:var(--sq-ink);outline:0;transform-origin:var(--transform-origin);transition:opacity .15s,transform .15s}
+.sq-gal-menu:lang(ko){font-family:var(--sq-f-ko)}
+.sq-gal-menu[data-starting-style],.sq-gal-menu[data-ending-style]{opacity:0;transform:translateY(-4px)}
+.sq-gal-opt{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:40px;padding:0 10px 0 12px;border-radius:var(--sq-r-inner);cursor:pointer;outline:0;user-select:none}
+.sq-gal-opt[data-highlighted]{background:var(--sq-cell)}
+.sq-gal-opt[data-selected]{font-weight:650}
+.sq-gal-opt-n{margin-left:auto;font-size:14px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+.sq-gal-opt-i{display:inline-flex;color:var(--sq-primary)}
+.sq-gal-opt-i svg{width:16px;height:16px}
+@media (hover:none),(pointer:coarse){.sq-gal-opt{min-height:44px}}
+
+/* the type view: one tile per screen of the chosen type, mobile stills six across (four on a tablet, two on a
+   phone), desktop stills three across (two, one); under each, the service's logo and name. The cards' grid and the
+   logo tile are in screens-card.css. */
+.sq-gal-tiles{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px 20px}
+.sq-gal-tiles[data-device="desktop"]{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 24px}
 .sq-gal-tile{min-width:0}
-.sq-gal-frame{all:unset;box-sizing:border-box;position:relative;display:block;width:100%;aspect-ratio:390/720;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band);cursor:zoom-in}
-.sq-gal-frame[data-shape="wide"]{aspect-ratio:16/10}
-.sq-gal-frame::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
-.sq-gal-frame:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
-.sq-gal-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s}
-.sq-gal-frame:hover img{transform:scale(1.015)}
-a.sq-gal-frame{cursor:pointer}
-.sq-gal-cap{display:flex;align-items:flex-start;gap:6px;margin-top:10px}
-/* names wrap, never cut: "Olive Young (올리브영)" is two lines on a 150-wide tile */
-.sq-gal-cap b{min-width:0;margin-right:auto;font-size:15px;font-weight:var(--sq-fw-strong);line-height:1.35;word-break:keep-all;overflow-wrap:anywhere}
-.sq-gal-dots{display:inline-flex;gap:4px;flex-shrink:0;padding-top:3px}
-.sq-gal-dots i{display:block;width:14px;height:14px;border-radius:var(--sq-r-pill);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sq-ink) 14%,transparent)}
-.sq-gal-title{margin:2px 0 0;font-size:14px;line-height:1.45;color:var(--sq-ink-2)}
+.sq-gal-tile a{display:block;color:var(--sq-ink);text-decoration:none}
+.sq-gal-tile-shot{position:relative;display:block;aspect-ratio:390/720;overflow:hidden;border-radius:var(--sq-r-card);background:var(--sq-band)}
+.sq-gal-tiles[data-device="desktop"] .sq-gal-tile-shot{aspect-ratio:1440/900}
+.sq-gal-tile-shot::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
+.sq-gal-tile-shot img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.sq-gal-tile a:focus-visible{outline:none}
+.sq-gal-tile a:focus-visible .sq-gal-tile-shot{outline:2px solid var(--sq-focus);outline-offset:3px}
+@media (hover:hover){.sq-gal-tile a:hover .sq-gal-tile-shot img{transform:scale(1.02)}}
+.sq-gal-tile .sq-gal-cap{gap:8px;margin-top:10px}
+.sq-gal-tile .sq-gal-name{font-size:15px}
+.sq-gal-tile .sq-gal-logo.sq-logo{height:22px;min-width:22px}
+.sq-gal-tile .sq-gal-logo.sq-logo img{height:22px;max-width:66px}
+.sq-gal-tile .sq-gal-logo.sq-logo-fav img{width:22px}
+.sq-gal-tile .sq-gal-logo.sq-logo-dark img{height:16px}
+.sq-gal-tile-t{display:block;margin-top:2px;font-size:14px;line-height:1.4;color:var(--sq-ink-2)}
 
-/* ---- the landing's screens strip, inside the catalog showcase (brand-a/catalog-showcase.tsx) ----
-   Between the logo rows (.sq-sc-groups) and the archive button (.sq-sc-end): 48 above, as .sq-sc-groups has below
-   its head, and .sq-sc-end's own 48 below (36 / 36 at 900 and under). The label is set as the showcase's region labels;
-   the link is ink (the archive button stays the one accent). The row bleeds to the right edge of the page
-   (.sq-root clips the page's x overflow) and pads its end by the same amount, so the last tile can rest at the
-   content edge. */
-.sq-gal-strip{margin-top:48px}
-.sq-gal-strip-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
-.sq-gal-strip-head h3{font-size:16px;font-weight:650;line-height:1.4;color:var(--sq-ink-2)}
-.sq-gal-strip-all{display:inline-flex;align-items:center;gap:4px;min-height:32px;font-size:15px;font-weight:var(--sq-fw-strong);color:var(--sq-ink);white-space:nowrap;text-decoration:none}
-.sq-gal-strip-all:hover{text-decoration:underline;text-underline-offset:3px}
-.sq-gal-strip-all:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-gal-strip-all svg{width:16px;height:16px}
-.sq-gal-strip-row{list-style:none;margin:0 calc((100% - 100vw) / 2) 0 0;padding:2px calc((100vw - 100%) / 2) 4px 2px;display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:2px;scrollbar-width:none}
-.sq-gal-strip-row::-webkit-scrollbar{display:none}
-.sq-gal-strip-row > li{scroll-snap-align:start;min-width:0}
-.sq-gal-strip-row:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:var(--sq-r-card)}
-.sq-gal-strip-row[data-dragging]{scroll-snap-type:none;cursor:grabbing;user-select:none}
-.sq-gal-strip-tile{display:block;color:var(--sq-ink);text-decoration:none}
-.sq-gal-strip-tile .sq-gal-frame{cursor:inherit}
-.sq-gal-strip-tile:hover img{transform:scale(1.015)}
-.sq-gal-strip-tile:focus-visible{outline:none}
-.sq-gal-strip-tile:focus-visible .sq-gal-frame{outline:2px solid var(--sq-focus);outline-offset:3px}
-.sq-gal-strip-name{display:block;margin-top:8px;font-size:14px;font-weight:var(--sq-fw-strong);line-height:1.4;word-break:keep-all;overflow-wrap:anywhere}
+/* no service matches */
+.sq-gal-empty{margin-top:48px;padding:48px 24px;border-radius:var(--sq-r-card);background:var(--sq-band);text-align:center;color:var(--sq-ink-2)}
+.sq-gal-empty p{margin:0;font-size:16px}
+.sq-gal-empty button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;min-height:40px;margin-top:12px;padding:0 16px;border-radius:var(--sq-r-pill);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);font-size:15px;font-weight:650;color:var(--sq-ink)}
+.sq-gal-empty button:hover{background:var(--sq-cell)}
+.sq-gal-empty button:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
+@media (hover:none),(pointer:coarse){.sq-gal-empty button{min-height:44px}}
 
 @media (prefers-reduced-motion:reduce){
-  .sq-gal-frame img,.sq-gal-nav .sq-scr-ic{transition:none}
-  .sq-gal-frame:hover img,.sq-gal-strip-tile:hover img{transform:none}
+  .sq-gal-f,.sq-gal-f-i,.sq-gal-menu,.sq-gal-tile-shot img{transition:none}
+  .sq-gal-tile a:hover .sq-gal-tile-shot img{transform:none}
 }
 
-@media (max-width:900px){
-  .sq-gal-strip{margin-top:36px}
-  .sq-gal-strip-row{grid-auto-columns:128px;gap:12px}
+@media (max-width:1023px){
+  .sq-gal-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .sq-gal-tiles[data-device="desktop"]{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:767px){
-  .sq-gal{padding-top:20px}
-  .sq-gal-top{padding-bottom:16px;gap:14px}
-  .sq-gal-intro{flex-basis:100%}
-  /* under the facts, left, still one row */
-  .sq-gal-switches{margin-left:0}
-  .sq-gal-shelf{padding-top:28px;scroll-margin-top:114px}
-  .sq-gal-shh h2{font-size:23px}
-  .sq-gal-meta{display:none}
-  .sq-gal-all{min-height:44px}
-  .sq-gal-row{grid-auto-columns:150px;gap:12px}
-  .sq-gal-row[data-shape="wide"]{grid-auto-columns:280px;gap:12px}
-  .sq-gal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
-  .sq-gal-grid[data-shape="wide"]{grid-template-columns:minmax(0,1fr)}
+  .sq-gal{padding-top:32px}
+  .sq-gal-lede{font-size:16px}
+  .sq-gal-bar{margin-top:24px}
+  .sq-gal-f{padding:0 10px 0 14px}
+  .sq-gal-tiles{margin-top:24px}
+}
+@media (max-width:599px){
+  .sq-gal-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .sq-gal-tiles[data-device="desktop"]{grid-template-columns:minmax(0,1fr);gap:28px}
+  /* two filters a row at 390 */
+  .sq-gal-filters{gap:6px}
+  .sq-gal-f{gap:6px;padding:0 8px 0 12px}
 }
