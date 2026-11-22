@@ -44,6 +44,7 @@ import {
 } from "@/lib/design-systems/analytics";
 import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
 import type { ScreensModel } from "@/lib/screens/model";
+import { urlForView, viewForHash } from "@/components/item/screens-hash";
 import "@/components/brand-a/archive.css";
 import "@/components/brand-a/item.css";
 
@@ -57,7 +58,6 @@ type View = "preview" | "markdown" | "screens";
 // Its own chunk: a page without local screens never renders it, so never downloads it.
 const ScreensTab = dynamic(() => import("@/components/item/screens-tab").then((m) => m.ScreensTab));
 
-const SCREENS_HASH = "#screens";
 
 export function DetailView({
   name,
@@ -126,12 +126,11 @@ export function DetailView({
     trackDsExport({ reference: detail.id, channel: "download" });
   }
 
-  // #screens opens the Screens tab, so a link can land on it. Read after mount: the server
-  // always renders the DESIGN.md view, and #use and the bare URL keep working as before.
+  // #screens opens the Screens tab, so a link can land on it (components/item/screens-hash.ts). Read after
+  // mount: the server always renders the DESIGN.md view, and #use and the bare URL keep working as before.
   useEffect(() => {
     if (!screens) return;
-    const sync = () =>
-      setView((v) => (window.location.hash === SCREENS_HASH ? "screens" : v === "screens" ? defaultView : v));
+    const sync = () => setView((v) => viewForHash<View>(window.location.hash, v, "screens", defaultView));
     sync();
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
@@ -140,12 +139,8 @@ export function DetailView({
   function selectView(next: View) {
     setView(next);
     if (!screens) return;
-    const { pathname, search, hash } = window.location;
-    if (next === "screens" && hash !== SCREENS_HASH) {
-      window.history.replaceState(window.history.state, "", `${pathname}${search}${SCREENS_HASH}`);
-    } else if (next !== "screens" && hash === SCREENS_HASH) {
-      window.history.replaceState(window.history.state, "", `${pathname}${search}`);
-    }
+    const url = urlForView(next === "screens", window.location);
+    if (url) window.history.replaceState(window.history.state, "", url);
   }
 
   function toggleMobileView(next: "preview" | "markdown") {

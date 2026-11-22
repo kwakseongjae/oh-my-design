@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { listScreens } from "./local.server";
 import { readGallery } from "./gallery.server";
 import { makeGalleryFixture } from "./test-fixture";
+import { logoFor } from "@/app/(en)/design-systems/archive-rows.server";
 
 /** The gallery's reader: the same gate as the Screens tab, every service with a walk, registry names and links. */
 
@@ -62,7 +63,7 @@ describe("readGallery", () => {
     expect(en.services.find((s) => s.slug === "karrot")!.href).toBe("/design-systems/karrot");
   });
 
-  it("keeps only screens with a still: blocked and still-less screens are not shelved", () => {
+  it("keeps only screens with a still: blocked and still-less screens are not shown or counted", () => {
     expect(ko.shots.filter((s) => s.slug === "karrot").map((s) => s.key)).toEqual(["home", "search-empty"]);
     expect(ko.services.find((s) => s.slug === "karrot")!.count).toBe(2);
   });
@@ -73,15 +74,22 @@ describe("readGallery", () => {
     expect(ko.shots).toHaveLength(8);
   });
 
-  it("dots only where the service has a token comparison (unknown means absent)", () => {
-    expect(ko.shots.find((s) => s.slug === "karrot" && s.key === "home")!.dots).toEqual([{ token: "primary", value: "#ff4800" }]);
-    expect(ko.shots.filter((s) => s.slug === "wanted").every((s) => s.dots.length === 0)).toBe(true);
+  it("country and category from the registry, named as the archive names them; the logo is the archive's", () => {
+    const karrot = ko.services.find((s) => s.slug === "karrot")!;
+    expect(karrot).toMatchObject({ country: "KR", category: "consumer-tech", categoryName: "컨슈머 테크" });
+    expect(en.services.find((s) => s.slug === "karrot")!.categoryName).toBe("Consumer tech");
+    expect(ko.services.find((s) => s.slug === "29cm")!.categoryName).toBe("커머스");
+    expect(karrot.logo).toEqual(logoFor("karrot"));
+    // only values that have screens, the most common first
+    expect(ko.countries).toEqual([{ value: "KR", label: "한국" }]);
+    expect(en.countries).toEqual([{ value: "KR", label: "Korea" }]);
+    expect(ko.categories.map((c) => c.value).sort()).toEqual(["consumer-tech", "ecommerce", "productivity"]);
   });
 
-  it("carries the facts line: shooting dates, signed out, widths", () => {
+  it("carries the dates for the rights line, signed out, and the devices with stills", () => {
     expect(ko.shot).toEqual({ from: "2026-11-21", to: "2026-11-21" });
     expect(ko.signedOut).toBe(true);
-    expect(ko.widths).toEqual([1440, 390]);
+    expect(ko.devices).toEqual(["phone", "web"]);
   });
 
   it("sends the client no walk text", () => {

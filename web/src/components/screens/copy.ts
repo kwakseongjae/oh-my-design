@@ -1,141 +1,103 @@
 /**
- * Words of the /screens gallery and the landing section that leads to it, in English and Korean (합니다체, plain).
- * The screens' own titles stay as shot (Korean, lang="ko"); the walk's screen types are Korean vocabulary, named in
- * English on the English page through the Screens tab's table (ITEM_EN.screens.typeName).
+ * Words of the /screens gallery and of the landing section that leads to it, in English and Korean (합니다체, plain).
+ * The screens' own titles stay as shot (Korean). No country in a title or description: the country is a filter.
+ * Plain strings and formatters only: the gallery and the wall are client components.
  */
 
-import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
-import type { FixedShelfId } from "@/lib/screens/model";
-import type { ScreenDialogLabels } from "@/components/item/screen-dialog";
-import { SCREENS_NOTICE, koRange, type ScreensNoticeCopy } from "./notice-copy";
+import type { Device } from "@/lib/screens/gallery";
+import { SCREENS_NOTICE, type ScreensNoticeCopy } from "./notice-copy";
 
 export type ScreensLocale = "en" | "ko";
 
 export const SCREENS_PATH: Record<ScreensLocale, string> = { en: "/screens", ko: "/ko/screens" };
 
 /** The site header's link to the gallery, shown once screens are published (brand-a/site-header.tsx). */
-export const SCREENS_NAV_LABEL: Record<ScreensLocale, string> = { en: "Screens", ko: "화면" };
+export const SCREENS_NAV_LABEL: Record<ScreensLocale, string> = { en: "Screens", ko: "서비스 화면" };
 
 export interface GalleryCopy {
   meta: { title: string; description: string };
   h1: string;
-  facts: (services: number, screens: number, shot: { from: string; to: string } | null, signedOut: boolean) => string;
-  modeLabel: string;
-  byType: string;
-  byService: string;
-  widthLabel: string;
-  widthName: (w: number) => string;
-  shelfName: Record<FixedShelfId, string>;
-  more: string;
-  typeName: (type: string) => string;
-  shelfMeta: (screens: number, services: number) => string;
-  serviceMeta: (screens: number) => string;
+  lede: string;
+  /** The filter row's accessible name. */
+  filters: string;
+  country: string;
+  device: string;
+  category: string;
   all: string;
-  fold: string;
-  scrollPrev: (shelf: string) => string;
-  scrollNext: (shelf: string) => string;
-  rowLabel: (shelf: string) => string;
-  tile: (name: string, title: string) => string;
-  dots: (tokens: string[]) => string;
-  designMd: (name: string) => string;
-  allOfService: (name: string) => string;
-  dialog: ScreenDialogLabels;
-  /** The rights, takedown and masked lines, shown once screens are published. */
+  deviceName: Record<Device, string>;
+  /** The count at the right of the filter row. */
+  count: (screens: number, services: number) => string;
+  /** Under a card: the category, when the registry has one, and the service's screens. */
+  cardMeta: (category: string | null, screens: number) => string;
+  /** No service matches the filters. */
+  empty: string;
+  clear: string;
+  /** The rights and takedown lines, shown once screens are published. */
   notice: ScreensNoticeCopy;
 }
 
-const koDate = (d: string) => {
-  const [y, m, day] = d.split("-").map(Number);
-  return `${y}년 ${m}월 ${day}일`;
-};
-
 const EN: GalleryCopy = {
   meta: {
-    title: "Korean product screens",
-    description: "Screens of Korean services side by side by screen type, each with the colors of that company's DESIGN.md drawn on it.",
+    title: "Product screens",
+    description: "Screens of real products, gathered by service. Each service's screens sit beside its DESIGN.md.",
   },
-  h1: "Korean product screens",
-  facts: (n, total, shot, signedOut) =>
-    [
-      `${n} services`,
-      `${total} screens`,
-      shot ? (shot.from === shot.to ? `shot on ${shot.from}` : `shot ${shot.from} to ${shot.to}`) : null,
-      signedOut ? "signed out" : null,
-    ]
-      .filter(Boolean)
-      .join(" · "),
-  modeLabel: "Group screens",
-  byType: "By screen type",
-  byService: "By service",
-  widthLabel: "Width",
-  widthName: (w) => (w >= 1024 ? `Web ${w}` : `Phone ${w}`),
-  shelfName: { home: "Home", results: "Search results", list: "List", detail: "Detail", login: "Sign-in", empty: "Empty state", notfound: "Not found" },
-  more: "Other screens",
-  typeName: ITEM_EN.screens.typeName,
-  shelfMeta: (s, n) => `${s === 1 ? "1 screen" : `${s} screens`} · ${n === 1 ? "1 service" : `${n} services`}`,
-  serviceMeta: (s) => (s === 1 ? "1 screen" : `${s} screens`),
-  all: "Show all",
-  fold: "Show fewer",
-  scrollPrev: (shelf) => `Scroll ${shelf} back`,
-  scrollNext: (shelf) => `Scroll ${shelf} forward`,
-  rowLabel: (shelf) => `${shelf} screens`,
-  tile: (name, title) => `${name}, ${title}`,
-  dots: (tokens) => `DESIGN.md colors on this screen: ${tokens.join(", ")}`,
-  designMd: (name) => `${name} DESIGN.md`,
-  allOfService: (name) => `All ${name} screens`,
-  dialog: { counter: ITEM_EN.screens.counter, prev: ITEM_EN.screens.prev, next: ITEM_EN.screens.next, close: ITEM_EN.screens.close, fullAlt: ITEM_EN.screens.fullAlt, stillAlt: ITEM_EN.screens.stillAlt },
+  h1: "Product screens",
+  lede: "Screens of real products, gathered by service. Open a service to see its screens together with its DESIGN.md.",
+  filters: "Filters",
+  country: "Country",
+  device: "Device",
+  category: "Category",
+  all: "All",
+  deviceName: { phone: "Phone", web: "Web" },
+  count: (s, n) => `${s === 1 ? "1 screen" : `${s} screens`} · ${n === 1 ? "1 service" : `${n} services`}`,
+  cardMeta: (category, s) => [category, s === 1 ? "1 screen" : `${s} screens`].filter(Boolean).join(" · "),
+  empty: "No service matches these filters.",
+  clear: "Clear filters",
   notice: SCREENS_NOTICE.en,
 };
 
 const KO: GalleryCopy = {
   meta: {
-    title: "한국 서비스 화면",
-    description: "한국 서비스의 화면을 종류별로 나란히 놓았습니다. 화면마다 그 회사 DESIGN.md의 색이 그려진 곳이 붙어 있습니다.",
+    title: "서비스 화면",
+    description: "실제 서비스의 화면을 서비스별로 모았습니다. 서비스마다 화면과 DESIGN.md를 함께 볼 수 있습니다.",
   },
-  h1: "한국 서비스 화면",
-  facts: (n, total, shot, signedOut) =>
-    [
-      `${n}곳`,
-      `화면 ${total}개`,
-      shot ? (shot.from === shot.to ? `${koDate(shot.from)} 촬영` : `${koRange(shot.from, shot.to)} 촬영`) : null,
-      signedOut ? "로그아웃 상태" : null,
-    ]
-      .filter(Boolean)
-      .join(" · "),
-  modeLabel: "묶는 방법",
-  byType: "화면 종류별",
-  byService: "서비스별",
-  widthLabel: "폭",
-  widthName: (w) => (w >= 1024 ? `웹 ${w}` : `폰 ${w}`),
-  shelfName: { home: "홈", results: "검색 결과", list: "목록", detail: "상세", login: "로그인", empty: "빈 상태", notfound: "없는 주소" },
-  more: "그 밖의 화면",
-  typeName: ITEM_KO.screens.typeName,
-  shelfMeta: (s, n) => `화면 ${s}개 · ${n}곳`,
-  serviceMeta: (s) => `화면 ${s}개`,
-  all: "모두 보기",
-  fold: "접기",
-  scrollPrev: (shelf) => `${shelf} 앞으로 넘기기`,
-  scrollNext: (shelf) => `${shelf} 뒤로 넘기기`,
-  rowLabel: (shelf) => `${shelf} 화면`,
-  tile: (name, title) => `${name}, ${title}`,
-  dots: (tokens) => `이 화면에 그려진 DESIGN.md 색: ${tokens.join(", ")}`,
-  designMd: (name) => `${name} DESIGN.md`,
-  allOfService: (name) => `${name} 화면 모두`,
-  dialog: { counter: ITEM_KO.screens.counter, prev: ITEM_KO.screens.prev, next: ITEM_KO.screens.next, close: ITEM_KO.screens.close, fullAlt: ITEM_KO.screens.fullAlt, stillAlt: ITEM_KO.screens.stillAlt },
+  h1: "서비스 화면",
+  lede: "실제 서비스의 화면을 서비스별로 모았습니다. 서비스를 누르면 그 서비스의 화면과 DESIGN.md를 함께 봅니다.",
+  filters: "필터",
+  country: "나라",
+  device: "기기",
+  category: "분야",
+  all: "전체",
+  deviceName: { phone: "폰", web: "웹" },
+  count: (s, n) => `화면 ${s}개 · 서비스 ${n}곳`,
+  cardMeta: (category, s) => [category, `화면 ${s}개`].filter(Boolean).join(" · "),
+  empty: "이 조건에 맞는 서비스가 없습니다.",
+  clear: "필터 지우기",
   notice: SCREENS_NOTICE.ko,
 };
 
 export const GALLERY_COPY: Record<ScreensLocale, GalleryCopy> = { en: EN, ko: KO };
 
-/** The landing's screens strip. Plain strings (and one formatter used on the server): they cross to the client row. */
+/** The landing's screens section (components/screens/landing-section.tsx). */
 export interface LandingScreensCopy {
-  label: string;
-  all: string;
-  tile: (name: string) => string;
+  h2: string;
+  intro: (services: number, screens: number) => string;
+  cta: string;
+  /** A wall still's accessible name: the service, then the screen's title as shot. */
+  tile: (name: string, title: string) => string;
 }
 
-export function landingScreensCopy(locale: ScreensLocale): LandingScreensCopy {
-  return locale === "ko"
-    ? { label: "화면", all: "모두 보기", tile: (name) => `${name} 화면` }
-    : { label: "Screens", all: "See all", tile: (name) => `${name} screens` };
-}
+export const LANDING_SCREENS_COPY: Record<ScreensLocale, LandingScreensCopy> = {
+  en: {
+    h2: "See the real screens too",
+    intro: (n, s) => `${s === 1 ? "1 screen" : `${s} screens`} from ${n === 1 ? "1 service" : `${n} services`}. Each screen leads straight to that company's DESIGN.md.`,
+    cta: "See product screens",
+    tile: (name, title) => `${name}, ${title}`,
+  },
+  ko: {
+    h2: "실제 화면도 함께 봅니다",
+    intro: (n, s) => `서비스 ${n}곳의 화면 ${s}개를 모았습니다. 화면에서 그 회사의 DESIGN.md로 바로 이어집니다.`,
+    cta: "서비스 화면 보기",
+    tile: (name, title) => `${name}, ${title}`,
+  },
+};

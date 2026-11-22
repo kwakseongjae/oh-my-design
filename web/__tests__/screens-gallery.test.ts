@@ -13,10 +13,10 @@ import { makeGalleryFixture } from "@/lib/screens/test-fixture";
 vi.mock("next/font/google", () => ({
   Inter: () => ({ variable: "t-inter", className: "t-inter", style: { fontFamily: "Inter" } }),
 }));
-// The landing's strip is a next/dynamic chunk (its own stylesheet), which renderToStaticMarkup leaves as an empty
-// Suspense fallback; render the row itself so its markup can be checked. Next renders it on the server for real.
-vi.mock("@/components/screens/landing-row-slot", async () => ({
-  ScreensLandingRowSlot: (await import("@/components/screens/landing-row")).ScreensLandingRow,
+// The landing's screens section is a next/dynamic chunk (its own stylesheet), which renderToStaticMarkup leaves as an
+// empty Suspense fallback; render the section itself so its markup can be checked. Next renders it on the server for real.
+vi.mock("@/components/screens/landing-wall-slot", async () => ({
+  ScreensWallSlot: (await import("@/components/screens/landing-wall")).ScreensWall,
 }));
 vi.mock("@/components/brand-a/journey/faces", () => ({
   pretendard: { variable: "t-pretendard", style: { fontFamily: "Pretendard" } },
@@ -79,7 +79,7 @@ describe("gate shut", () => {
       const withFolder = renderToStaticMarkup(await LandingA({ locale }));
       vi.stubEnv("OMD_SCREENS_DIR", "");
       expect(withFolder, locale).toBe(without);
-      expect(without, locale).not.toMatch(/sq-gal|screens-local|\/screens|#screens/);
+      expect(without, locale).not.toMatch(/sq-gal|sq-wall|screens-local|\/screens|#screens|h-screens/);
     }
   });
 
@@ -96,55 +96,72 @@ describe("gate shut", () => {
 });
 
 describe("gate open (a local folder in development)", () => {
-  it("/ko/screens: Korean chrome, registry names, shelves by type, tiles named and linked to nothing but the dialog", () => {
+  it("/ko/screens: the generic title and sentence, three filters with their values, the count, one card per service", () => {
     open();
     const html = renderToStaticMarkup(createElement(KoScreensPage));
-    expect(html).toContain('<h1 class="sq-page-title">한국 서비스 화면</h1>');
-    expect(html).toContain("3곳 · 화면 9개 · 2026년 11월 21일 촬영 · 로그아웃 상태");
-    expect(html).toContain('aria-pressed="true">화면 종류별</button>');
-    expect(html).toContain('aria-pressed="true">폰 390</button>');
-    // shelves: 홈, then the empty state; the event screen exists only at 1440, so not on a phone shelf
-    expect(html.match(/<section id="shelf-[^"]+"/g)).toEqual(['<section id="shelf-home"', '<section id="shelf-empty"']);
-    expect(html).toContain('aria-label="당근, 홈 화면"');
-    expect(html).toContain('src="/screens-local/karrot/390-home.jpg"');
-    expect(html).not.toContain("1440-home.jpg");
-    expect(html).toContain('<p class="sq-gal-title" lang="ko">홈 화면</p>');
-    // dots only where tokens.json exists: karrot and 29cm have one on home, wanted none
-    expect(html.match(/class="sq-gal-dots"/g)).toHaveLength(2);
+    expect(html).toContain('<h1 class="sq-page-title">서비스 화면</h1>');
+    expect(html).toContain('<p class="sq-gal-lede">실제 서비스의 화면을 서비스별로 모았습니다. 서비스를 누르면 그 서비스의 화면과 DESIGN.md를 함께 봅니다.</p>');
+    expect(html).not.toContain("한국 서비스");
+    // filters, not toggles: three comboboxes, each naming the filter and its value, and no pressed buttons
+    const filters = html.slice(html.indexOf('class="sq-gal-filters"'), html.indexOf('class="sq-gal-count"'));
+    expect(filters.match(/role="combobox"/g)).toHaveLength(3);
+    expect(filters.match(/class="sq-gal-f-k">[^<]+</g)!.map((s) => s.replace(/.*>|</g, ""))).toEqual(["나라", "기기", "분야"]);
+    expect(filters.match(/class="sq-gal-f-c">[^<]+</g)!.map((s) => s.replace(/.*>|</g, ""))).toEqual(["전체", "폰", "전체"]);
+    expect(html).not.toMatch(/aria-pressed|aria-expanded="true"|모두 보기|접기|sq-scr-dlg|sq-gal-dots/);
+    expect(html).toContain('<p class="sq-gal-count" role="status">화면 9개 · 서비스 3곳</p>');
+    // a card is one link to the service's item page with its 서비스 화면 tab open
+    expect(html.match(/<a class="sq-gal-link" href="[^"]+"/g)).toEqual([
+      '<a class="sq-gal-link" href="/ko/design-systems/29cm#screens"',
+      '<a class="sq-gal-link" href="/ko/design-systems/karrot#screens"',
+      '<a class="sq-gal-link" href="/ko/design-systems/wanted#screens"',
+    ]);
+    // phone stills only (the event screen exists at 1440 only), home first, the empty search as the last resort
+    const karrot = html.slice(html.indexOf('href="/ko/design-systems/karrot#screens"'), html.indexOf('href="/ko/design-systems/wanted#screens"'));
+    expect(karrot.match(/src="\/screens-local[^"]+"/g)).toEqual(['src="/screens-local/karrot/390-home.jpg"', 'src="/screens-local/karrot/390-search-empty.jpg"']);
+    expect(karrot).toContain('width="390" height="844" loading="eager"');
+    expect(karrot).toContain('<span class="sq-gal-name">당근</span><span class="sq-gal-meta">컨슈머 테크 · 화면 3개</span>');
+    expect(html).not.toContain("1440-");
     expect(html).not.toContain("/screens-local/not-a-reference");
+    // nothing published: no rights lines
+    expect(html).not.toContain("sq-scr-notice");
   });
 
-  it("/screens: English chrome and type names, English registry names, screen titles as shot", () => {
+  it("/screens: English chrome, registry names and the archive's category names", () => {
     open();
     const html = renderToStaticMarkup(createElement(EnScreensPage));
-    expect(html).toContain('<h1 class="sq-page-title">Korean product screens</h1>');
-    expect(html).toContain("3 services · 9 screens · shot on 2026-11-21 · signed out");
-    expect(html).toContain('id="shelf-home-h">Home</h2>');
-    expect(html).toContain('id="shelf-empty-h">Empty state</h2>');
-    expect(html).toContain('aria-label="Karrot, 홈 화면"');
+    expect(html).toContain('<h1 class="sq-page-title">Product screens</h1>');
+    expect(html).toContain("Screens of real products, gathered by service.");
+    expect(html).toContain('<p class="sq-gal-count" role="status">9 screens · 3 services</p>');
+    expect(html).toContain('<span class="sq-gal-name">Karrot</span><span class="sq-gal-meta">Consumer tech · 3 screens</span>');
+    expect(html).toContain('href="/design-systems/karrot#screens"');
     expect(html).not.toContain("당근");
   });
 
-  it("the landing gains one quiet strip inside the catalog showcase, before its archive button (en and ko only)", async () => {
+  it("the landing gains a section of its own right after the journey, before the CLI section (en and ko only)", async () => {
     open();
     const ko = renderToStaticMarkup(await LandingA({ locale: "ko" }));
-    const at = ko.indexOf('<div class="sq-gal-strip">');
-    expect(at).toBeGreaterThan(ko.indexOf('class="sq-sc-groups"'));
-    expect(at).toBeLessThan(ko.indexOf('class="sq-sc-end"'));
-    const strip = ko.slice(at, ko.indexOf('class="sq-sc-end"'));
-    // a one-word label and a text link to the gallery; nothing else above the row
-    expect(strip).toContain('<h3 id="sc-screens">화면</h3>');
-    expect(strip).toMatch(/<a class="sq-gal-strip-all" href="\/ko\/screens">모두 보기/);
-    // one tile per service that has a phone home screen, in the gallery's order, named and leading to #screens
-    expect(strip.match(/class="sq-gal-strip-tile"/g)).toHaveLength(3);
-    expect(strip).toContain('href="/ko/design-systems/karrot#screens"');
-    expect(strip).toContain('aria-label="당근 화면"');
-    expect(strip).toContain('src="/screens-local/karrot/390-home.jpg"');
-    // no heading sentence, chips, colour dots, screen titles or button
-    expect(strip).not.toMatch(/<h2|<button|sq-gal-dots|sq-gal-title|sq-gal-chip|홈 화면</);
+    const at = ko.indexOf('<section class="sq-sec sq-wall-sec"');
+    expect(at).toBeGreaterThan(ko.indexOf('id="reference"'));
+    expect(at).toBeLessThan(ko.indexOf('id="use"'));
+    expect(ko.indexOf("sq-wall")).toBe(ko.indexOf("sq-wall-sec"));
+    const section = ko.slice(at, ko.indexOf('id="use"'));
+    expect(section).toContain('<h2 id="h-screens">실제 화면도 함께 봅니다</h2>');
+    expect(section).toContain('<p class="sq-intro">서비스 3곳의 화면 9개를 모았습니다. 화면에서 그 회사의 DESIGN.md로 바로 이어집니다.</p>');
+    // two rows; each service once per row; every still named and leading to its service's tab
+    expect(section.match(/<ul class="sq-wall-row">/g)).toHaveLength(2);
+    expect(section.match(/class="sq-wall-tile"/g)).toHaveLength(6);
+    expect(section).toContain('<a class="sq-wall-tile" aria-label="당근, 홈 화면" href="/ko/design-systems/karrot#screens">');
+    expect(section).toContain('src="/screens-local/karrot/390-home.jpg"');
+    // one web still in each row (three services), drawn wide
+    expect(section.match(/<li class="sq-wall-wide">/g)).toHaveLength(2);
+    // one action, to the gallery; the strip in the showcase is gone
+    expect(section).toMatch(/<a class="sq-sc-cta" href="\/ko\/screens">서비스 화면 보기<\/a>/);
+    expect(ko).not.toMatch(/sq-gal-strip|sc-screens/);
     const en = renderToStaticMarkup(await LandingA({ locale: "en" }));
-    expect(en).toContain('<h3 id="sc-screens">Screens</h3>');
-    expect(en).toContain('aria-label="Karrot screens"');
-    for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(await LandingA({ locale }))).not.toContain("sq-gal");
+    expect(en).toContain('<h2 id="h-screens">See the real screens too</h2>');
+    expect(en).toContain("9 screens from 3 services.");
+    expect(en).toContain('aria-label="Karrot, 홈 화면"');
+    expect(en).toMatch(/<a class="sq-sc-cta" href="\/screens">See product screens<\/a>/);
+    for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(await LandingA({ locale }))).not.toMatch(/sq-wall|sq-gal/);
   });
 });

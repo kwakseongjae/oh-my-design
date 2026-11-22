@@ -1,5 +1,6 @@
-/* Shared by the item page's Screens tab (item-screens.css) and the /screens gallery (screens-gallery.css): the
-   width switch, the swatch, the type chip, the round icon button and the full-page dialog (components/item/screen-dialog.tsx).
+/* The item page's Screens tab's shared pieces (item-screens.css): the width switch, the swatch, the type chip, the
+   round icon button and the full-page dialog (components/item/screen-dialog.tsx); and the rights and takedown lines
+   that the /screens gallery (screens-gallery.css) shows as well.
    Tokens: --sq-* (styles/brand-a.css); no new colours. Prefix sq-scr- (the landing's catalog showcase owns sq-sc-). */
 
 /* which width leads: a tab group (14) holding two 32-tall segments, 40 in all */
@@ -29,14 +30,14 @@
 .sq-scr-dlg-links svg{width:16px;height:16px}
 
 /* once screens are published (components/screens/notice.tsx): the rights and takedown lines at the end of the gallery
-   and of the Screens tab, secondary text; the line under a tile or card, and under the dialog's bar, whose people
+   and of the Screens tab, secondary text; the line under a card of the tab, and under the dialog's bar, whose people
    were hidden */
 .sq-scr-notice{margin-top:56px;padding-top:20px;box-shadow:inset 0 1px 0 var(--sq-guide-2);font-size:14px;line-height:1.6;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
 .sq-scr-notice p{margin:0}
 .sq-scr-notice p+p{margin-top:4px}
 .sq-scr-notice a{color:var(--sq-ink);text-decoration:underline;text-underline-offset:3px}
 .sq-scr-notice a:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px}
-.sq-scr-masked,.sq-gal-masked{margin:4px 0 0;font-size:13px;line-height:1.45;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
+.sq-scr-masked{margin:4px 0 0;font-size:13px;line-height:1.45;color:var(--sq-ink-2);word-break:keep-all;overflow-wrap:anywhere}
 .sq-scr-dlg-note{margin:0;padding:0 20px 12px;font-size:14px;line-height:1.5;color:var(--sq-ink-2)}
 
 @media (max-width:767px){

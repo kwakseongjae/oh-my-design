@@ -1,7 +1,8 @@
 /**
  * /screens-local/<slug>/<file> — the Screens tab's stills, streamed from the
  * local folder OMD_SCREENS_DIR (lib/screens/local.server.ts). Only
- * "<width>-<key>[.full].jpg" inside <dir>/<slug>/img; everything else, and every
+ * "<width>-<key>[.full|.thumb].jpg" inside <dir>/<slug>/img (a small rendition
+ * that was never made is answered with the still); everything else, and every
  * request while the gate is shut (unset, or a production build without
  * OMD_SCREENS_ALLOW=1), is a 404. These are other companies' screens whose
  * publication is not decided: nothing here is cached or indexed.

@@ -120,12 +120,30 @@ export function logoFor(id: string): ArchiveLogo | null {
     const svg = svgLogo(rec);
     if (svg) return svg;
   }
+  return squareLogo(id);
+}
+
+/** Rules 2 and 3: the brand's own icon, else its own favicon, or null. */
+function squareLogo(id: string): ArchiveLogo | null {
   const icon = ICON_BY_ID.get(id);
   if (icon) return { src: "/" + icon.file, kind: "icon" };
   const entry = REGISTRY_BY_ID[id];
   if (!entry || entry.logo.type !== "favicon") return null;
   if (!/^https:\/\//.test(entry.logo.slug) || FAVICON_UNUSABLE.has(id)) return null;
   return { src: entry.logo.slug, kind: "favicon" };
+}
+
+/**
+ * The logo for a small square tile set beside the printed name (the /screens gallery's cards): logoFor's choice when
+ * it is the collection's symbol or a square icon, else the brand's own icon or favicon (rules 2 and 3), else nothing.
+ * A wordmark is left out there: at 28px it is unreadable, and it repeats the name printed next to it.
+ */
+export function markFor(id: string): ArchiveLogo | null {
+  const logo = logoFor(id);
+  if (!logo || logo.kind !== "svg") return logo;
+  const symbol = LOGO_BY_ID.get(id)?.variants.symbol;
+  if (symbol && logo.src === "/" + symbol.ref) return logo;
+  return squareLogo(id);
 }
 
 /** Which bucket a reference's logo falls in — the coverage line in reports and tests. */

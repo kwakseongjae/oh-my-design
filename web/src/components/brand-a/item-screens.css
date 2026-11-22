@@ -2,7 +2,7 @@
    Tokens: --sq-* (styles/brand-a.css); no new colours. Scale of 2026-11-21: controls 40 tall (44 on a phone,
    32 for chips), control type 15/650, section heading 26/760, pill actions and chips, 14 tab groups, 20 cards.
    Separation by tone and space, not lines (RESTRAINT.md). Layout from the still "b-item-screens".
-   The pieces the /screens gallery shares (width switch, swatch, chip, icon button, the dialog) are in screens-ui.css. */
+   Its shared pieces (width switch, swatch, chip, icon button, the dialog, the rights lines) are in screens-ui.css. */
 
 .sq-scr{padding-top:24px;padding-bottom:64px;word-break:keep-all;overflow-wrap:anywhere}
 .sq-scr-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:32px;scroll-margin-top:calc(var(--sq-header-h) + 16px)}

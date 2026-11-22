@@ -1,0 +1,52 @@
+/* The landing's screens section (components/screens/landing-wall.tsx), from the still the owner chose on 2026-11-22
+   (la-wall, tools/screen-archive/make-browse-mocks.mjs on the screens branch: its .m-land and .m-wall rules, ported).
+   Loaded only with that section's chunk, so a landing without screens never downloads it. The heading and sentence
+   are the landing's own (.sq-sec h2, .sq-intro, landing.css) and the action is the showcase's primary pill
+   (.sq-sc-cta, catalog-showcase.css). Tokens: --sq-* (styles/brand-a.css). Prefix sq-wall-.
+
+   Between the journey (a band) and the CLI section (paper), on paper. */
+
+.sq-wall-sec{overflow:hidden}
+
+/* The wall: full bleed, both rows faded at the edges. Each row is as wide as its stills and drifts back and forth by
+   exactly as far as it runs past the wall (100cqw is the wall's width), the second the other way. */
+.sq-wall{container-type:inline-size;margin-top:56px;display:grid;gap:14px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.sq-wall-row{list-style:none;margin:0;padding:6px;display:flex;gap:20px;width:max-content;animation:sq-wall-drift 90s ease-in-out infinite alternate}
+.sq-wall-row + .sq-wall-row{animation-direction:alternate-reverse}
+@keyframes sq-wall-drift{from{transform:translateX(0)}to{transform:translateX(min(0px,calc(100cqw - 100%)))}}
+/* pointer over the wall: the drift stops. Focus in it: the rows go back to their start and stand still, so the wall's
+   own scroll can bring the focused still into view (a still moved past the edge by the drift cannot be scrolled to),
+   and the fade lifts so a still at an edge shows its ring. landing-wall.tsx scrolls the wall back when focus leaves. */
+.sq-wall:hover .sq-wall-row{animation-play-state:paused}
+.sq-wall:focus-within .sq-wall-row{animation:none;transform:none}
+.sq-wall:focus-within{-webkit-mask-image:none;mask-image:none}
+
+.sq-wall-row > li{flex:none}
+.sq-wall-tile{position:relative;display:block;width:216px;height:300px;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-cell)}
+.sq-wall-wide .sq-wall-tile{width:452px}
+.sq-wall-tile::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
+.sq-wall-tile img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.sq-wall-tile:focus-visible{outline:2px solid var(--sq-focus);outline-offset:3px}
+@media (hover:hover){.sq-wall-tile:hover img{transform:scale(1.02)}}
+
+.sq-wall-end{margin-top:48px}
+
+/* no motion: the rows stand still, the first centred and the second set off to the left, as in the still */
+@media (prefers-reduced-motion:reduce){
+  .sq-wall-row{animation:none;transform:translateX(min(0px,calc((100cqw - 100%) / 2)))}
+  .sq-wall-row + .sq-wall-row{transform:translateX(min(0px,calc((100cqw - 100%) / 2 - 118px)))}
+  .sq-wall-tile img{transition:none}
+  .sq-wall-tile:hover img{transform:none}
+}
+
+@media (max-width:900px){
+  .sq-wall{margin-top:40px;gap:8px}
+  .sq-wall-row{gap:12px}
+  .sq-wall-tile{width:150px;height:210px}
+  /* a web still at a phone's width would be too small to read: the phone stills carry the wall there */
+  .sq-wall-wide{display:none}
+  .sq-wall-end{margin-top:36px}
+}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){
+  .sq-wall-row + .sq-wall-row{transform:translateX(min(0px,calc((100cqw - 100%) / 2 - 80px)))}
+}

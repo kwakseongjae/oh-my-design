@@ -1,304 +1,143 @@
 "use client";
 
 /**
- * The /screens gallery (and /ko/screens): every service's screens in shelves, from the still the owner was shown on
- * 2026-11-21 (g-shelves, tools/screen-archive/make-gallery-mocks.mjs on the screens branch).
- *   - the title, one line of facts and two small switches: by screen type or by service, phone 390 or web 1440;
- *   - each shelf a row that scrolls sideways (snap, keyboard reachable; for a mouse, arrow buttons that show while the
- *     shelf is hovered or focused, none on touch), or a wrapping grid after the "show all" text at the heading's end;
- *     (2026-11-22, "simple": the rail of type chips and the line explaining the dots went; the dots keep their title)
- *   - a tile: the still at the chosen width, the service, up to three DESIGN.md colours drawn on it, the screen's title.
- *     It opens the Screens tab's dialog; previous / next walk the shelf, and two links lead to the service's
- *     DESIGN.md and to all of its screens (its item page's #screens).
- *   - once screens are published: a line under a tile whose people were hidden (and in its large view), and the
- *     rights and takedown lines at the end (./notice.tsx).
- * Rendered only when the server found screens (lib/screens/gallery.server.ts); the switches are plain state.
+ * The /screens gallery (and /ko/screens), from the still the owner chose on 2026-11-22 (b1-services,
+ * tools/screen-archive/make-browse-mocks.mjs on the screens branch): the title and one sentence, a row of three filters
+ * (country, device, category) with the count at its right, and a grid of service cards, three across on a desktop,
+ * two on a tablet, one on a phone. A card is one link to that service's item page with its 서비스 화면 tab open
+ * (detail-view.tsx opens the tab on #screens); it shows three phone stills of the service (one web still on the web
+ * view), the service's logo and name, its category and its count of screens.
+ *
+ * Filters live in the URL query (?country=kr&device=web&category=education) so a filtered view can be linked; the bare
+ * URL is the unfiltered, canonical page and is what the server renders. The query is read after mount (a prerendered
+ * page has none on the server), and a change replaces the URL in place.
+ * Once screens are published: the rights and takedown lines at the end (./notice.tsx).
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { ScreenDialog, isNarrowWidth } from "@/components/item/screen-dialog";
-import { serviceShelves, stillAt, typeShelves, type GalleryModel, type GalleryService, type GalleryShot } from "@/lib/screens/model";
-import { GALLERY_COPY, type GalleryCopy, type ScreensLocale } from "./copy";
+import { BrandLogo } from "@/components/brand-logo";
+import {
+  browse,
+  defaultFilter,
+  filterQuery,
+  parseFilter,
+  smallSrc,
+  type Device,
+  type Filter,
+  type GalleryModel,
+} from "@/lib/screens/gallery";
+import { GALLERY_COPY, type ScreensLocale } from "./copy";
+import { FilterSelect } from "./filter-select";
 import { ScreensNotice } from "./notice";
 import "@/components/brand-a/screens-ui.css";
 import "@/components/brand-a/screens-gallery.css";
 
-type Mode = "type" | "service";
-
-interface ShelfView {
-  id: string;
-  title: string;
-  meta: string;
-  /** The service's DESIGN.md page, on a service shelf. */
-  href: string | null;
-  shots: GalleryShot[];
-}
-
-/** One tile's frame size: the viewport the still was shot at (390 × 844 or 1440 × 900), so nothing shifts. */
-const frameOf = (width: number) => (isNarrowWidth(width) ? { w: 390, h: 844, shape: "narrow" } : { w: 1440, h: 900, shape: "wide" });
+const ALL = "all";
+/** The cards of the first row (three on a desktop) load at once; the rest when they come near. */
+const FIRST_ROW = 3;
+/** Each image's box is the viewport it was shot at, so nothing shifts while it loads. */
+const FRAME: Record<Device, { w: number; h: number }> = { phone: { w: 390, h: 844 }, web: { w: 1440, h: 900 } };
 
 export function ScreensGallery({ model, locale }: { model: GalleryModel; locale: ScreensLocale }) {
   const t = GALLERY_COPY[locale];
-  const [mode, setMode] = useState<Mode>("type");
-  const [width, setWidth] = useState(() => (model.widths.includes(390) ? 390 : model.widths[0]));
-  const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
-  const [open, setOpen] = useState<{ shelf: string; index: number } | null>(null);
+  const [filter, setFilter] = useState<Filter>(() => defaultFilter(model));
 
-  const services = useMemo(() => new Map(model.services.map((s) => [s.slug, s])), [model]);
-  const order = useMemo(() => model.services.map((s) => s.slug), [model]);
+  // The URL's query is the filter. Read after mount (the server renders the bare page) and on back / forward.
+  useEffect(() => {
+    const sync = () => setFilter(parseFilter(window.location.search, model));
+    sync();
+    window.addEventListener("popstate", sync);
+    return () => window.removeEventListener("popstate", sync);
+  }, [model]);
 
-  const shelves: ShelfView[] = useMemo(() => {
-    if (mode === "service") {
-      return serviceShelves(model.shots, order, width).map((x) => {
-        const s = services.get(x.slug)!;
-        return { id: `svc-${x.slug}`, title: s.name, meta: t.serviceMeta(x.shots.length), href: s.href, shots: x.shots };
-      });
-    }
-    return typeShelves(model.shots, order, width).map((x) => ({
-      id: x.id,
-      title: x.fixed ? t.shelfName[x.fixed] : x.type ? t.typeName(x.type) : t.more,
-      meta: t.shelfMeta(x.shots.length, new Set(x.shots.map((s) => s.slug)).size),
-      href: null,
-      shots: x.shots,
-    }));
-  }, [mode, width, model, order, services, t]);
-
-  const openShelf = open ? shelves.find((s) => s.id === open.shelf) ?? null : null;
-  const current = openShelf && open ? openShelf.shots[open.index] ?? null : null;
-  const currentService = current ? services.get(current.slug) ?? null : null;
-
-  // A switch reshapes the shelves: whatever was open belongs to the old ones.
-  function switchTo(change: () => void) {
-    setOpen(null);
-    change();
+  function change(next: Filter) {
+    setFilter(next);
+    const q = filterQuery(next, model);
+    const { pathname, hash } = window.location;
+    window.history.replaceState(window.history.state, "", `${pathname}${q ? `?${q}` : ""}${hash}`);
   }
 
-  function step(by: number) {
-    if (!open || !openShelf) return;
-    const n = openShelf.shots.length;
-    setOpen({ shelf: open.shelf, index: (open.index + by + n) % n });
-  }
-
-  function toggle(id: string) {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  }
-
-  const facts = t.facts(model.services.length, model.shots.length, model.shot, model.signedOut);
+  const view = useMemo(() => browse(model, filter), [model, filter]);
+  const frame = FRAME[filter.device];
+  const withAll = (options: { value: string; label: string }[]) => [{ value: ALL, label: t.all }, ...options];
 
   return (
     <div className="sq-gal">
       <div className="sq-gal-top">
-        <div className="sq-gal-intro">
-          <h1 className="sq-page-title">{t.h1}</h1>
-          <p className="sq-gal-facts">{facts}</p>
-        </div>
-        <div className="sq-gal-switches">
-          <div className="sq-scr-seg" role="group" aria-label={t.modeLabel}>
-            <button type="button" aria-pressed={mode === "type"} onClick={() => switchTo(() => setMode("type"))}>
-              {t.byType}
-            </button>
-            <button type="button" aria-pressed={mode === "service"} onClick={() => switchTo(() => setMode("service"))}>
-              {t.byService}
-            </button>
-          </div>
-          {model.widths.length > 1 ? (
-            <div className="sq-scr-seg" role="group" aria-label={t.widthLabel}>
-              {[...model.widths].sort((a, b) => a - b).map((w) => (
-                <button key={w} type="button" aria-pressed={width === w} onClick={() => switchTo(() => setWidth(w))}>
-                  {t.widthName(w)}
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
+        <h1 className="sq-page-title">{t.h1}</h1>
+        <p className="sq-gal-lede">{t.lede}</p>
       </div>
 
-      {shelves.map((s) => (
-        <ShelfRow
-          key={`${mode}-${width}-${s.id}`}
-          shelf={s}
-          width={width}
-          expanded={expanded.has(s.id)}
-          onToggle={() => toggle(s.id)}
-          onOpen={(index) => setOpen({ shelf: s.id, index })}
-          services={services}
-          byService={mode === "service"}
-          showMasked={model.published}
-          t={t}
-        />
-      ))}
+      <div className="sq-gal-bar">
+        <div className="sq-gal-filters" role="group" aria-label={t.filters}>
+          <FilterSelect
+            label={t.country}
+            value={filter.country ?? ALL}
+            options={withAll(model.countries)}
+            onChange={(v) => change({ ...filter, country: v === ALL ? null : v })}
+            lang={locale}
+          />
+          {model.devices.length > 0 ? (
+            <FilterSelect
+              label={t.device}
+              value={filter.device}
+              options={model.devices.map((d) => ({ value: d, label: t.deviceName[d] }))}
+              onChange={(v) => change({ ...filter, device: v as Device })}
+              lang={locale}
+            />
+          ) : null}
+          <FilterSelect
+            label={t.category}
+            value={filter.category ?? ALL}
+            options={withAll(model.categories)}
+            onChange={(v) => change({ ...filter, category: v === ALL ? null : v })}
+            lang={locale}
+          />
+        </div>
+        <p className="sq-gal-count" role="status">
+          {t.count(view.screens, view.services)}
+        </p>
+      </div>
 
-      <ScreenDialog
-        open={current !== null}
-        still={current ? stillAt(current, width) : null}
-        title={current?.title ?? ""}
-        heading={
-          current && currentService ? (
-            <>
-              <span>{currentService.name}</span>
-              <span className="sq-scr-chip" lang="ko">
-                {current.title}
-              </span>
-            </>
-          ) : null
-        }
-        index={open?.index ?? 0}
-        total={openShelf?.shots.length ?? 0}
-        onStep={step}
-        onClose={() => setOpen(null)}
-        labels={t.dialog}
-        note={model.published && current?.masked ? t.notice.masked : null}
-        links={
-          currentService ? (
-            <>
-              <Link href={currentService.href} prefetch={false}>
-                {t.designMd(currentService.name)}
-                <ArrowRightIcon aria-hidden="true" />
+      {view.cards.length ? (
+        <ul className="sq-gal-grid">
+          {view.cards.map(({ service, picks }, i) => (
+            <li key={service.slug} className="sq-gal-card">
+              <Link className="sq-gal-link" href={`${service.href}#screens`} prefetch={false}>
+                <span className="sq-gal-shot" data-device={filter.device}>
+                  {picks.map(({ shot, still }) => (
+                    // eslint-disable-next-line @next/next/no-img-element -- a still from the image store, through our own path
+                    <img
+                      key={shot.key}
+                      src={smallSrc(still)}
+                      alt=""
+                      width={frame.w}
+                      height={frame.h}
+                      loading={i < FIRST_ROW ? "eager" : "lazy"}
+                      decoding={i < FIRST_ROW ? undefined : "async"}
+                    />
+                  ))}
+                </span>
+                <span className="sq-gal-cap">
+                  <BrandLogo logo={service.logo} className="sq-gal-logo" />
+                  <span className="sq-gal-name">{service.name}</span>
+                  <span className="sq-gal-meta">{t.cardMeta(service.categoryName, service.count)}</span>
+                </span>
               </Link>
-              <Link href={`${currentService.href}#screens`} prefetch={false}>
-                {t.allOfService(currentService.name)}
-                <ArrowRightIcon aria-hidden="true" />
-              </Link>
-            </>
-          ) : null
-        }
-      />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="sq-gal-empty">
+          <p>{t.empty}</p>
+          <button type="button" onClick={() => change(defaultFilter(model))}>
+            {t.clear}
+          </button>
+        </div>
+      )}
 
       {model.published ? <ScreensNotice t={t.notice} scope="gallery" shot={model.shot} signedOut={model.signedOut} /> : null}
     </div>
-  );
-}
-
-function ShelfRow({
-  shelf,
-  width,
-  expanded,
-  onToggle,
-  onOpen,
-  services,
-  byService,
-  showMasked,
-  t,
-}: {
-  shelf: ShelfView;
-  width: number;
-  expanded: boolean;
-  onToggle: () => void;
-  onOpen: (index: number) => void;
-  services: Map<string, GalleryService>;
-  /** A service's own shelf: its name is the shelf's heading, so a tile leads with the screen's title instead. */
-  byService: boolean;
-  /** Screens are published: a tile whose people were hidden says so under its title. */
-  showMasked: boolean;
-  t: GalleryCopy;
-}) {
-  const row = useRef<HTMLUListElement>(null);
-  const [ends, setEnds] = useState({ start: true, end: true });
-  const headId = `shelf-${shelf.id}-h`;
-
-  const measure = useCallback(() => {
-    const el = row.current;
-    if (!el || expanded) return;
-    setEnds({ start: el.scrollLeft <= 1, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 1 });
-  }, [expanded]);
-
-  useEffect(() => {
-    const el = row.current;
-    if (!el || expanded) return;
-    measure();
-    el.addEventListener("scroll", measure, { passive: true });
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => {
-      el.removeEventListener("scroll", measure);
-      ro.disconnect();
-    };
-  }, [measure, expanded]);
-
-  function scroll(dir: number) {
-    const el = row.current;
-    if (!el) return;
-    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: still ? "auto" : "smooth" });
-  }
-
-  const scrolls = !(ends.start && ends.end);
-  const frame = frameOf(width);
-
-  return (
-    <section id={`shelf-${shelf.id}`} className="sq-gal-shelf" aria-labelledby={headId}>
-      <div className="sq-gal-shh">
-        <h2 id={headId}>{shelf.title}</h2>
-        <span className="sq-gal-meta">{shelf.meta}</span>
-        {shelf.href ? (
-          <Link className="sq-gal-md" href={shelf.href} prefetch={false}>
-            DESIGN.md
-            <ArrowRightIcon aria-hidden="true" />
-          </Link>
-        ) : null}
-        <div className="sq-gal-nav">
-          {!expanded && scrolls ? (
-            <>
-              <button type="button" className="sq-scr-ic" onClick={() => scroll(-1)} disabled={ends.start} aria-label={t.scrollPrev(shelf.title)}>
-                <ChevronLeftIcon aria-hidden="true" />
-              </button>
-              <button type="button" className="sq-scr-ic" onClick={() => scroll(1)} disabled={ends.end} aria-label={t.scrollNext(shelf.title)}>
-                <ChevronRightIcon aria-hidden="true" />
-              </button>
-            </>
-          ) : null}
-          {scrolls || expanded ? (
-            <button type="button" className="sq-gal-all" aria-expanded={expanded} aria-controls={`shelf-${shelf.id}-list`} onClick={onToggle}>
-              {expanded ? t.fold : t.all}
-            </button>
-          ) : null}
-        </div>
-      </div>
-      <ul
-        id={`shelf-${shelf.id}-list`}
-        ref={row}
-        className={expanded ? "sq-gal-grid" : "sq-gal-row"}
-        data-shape={frame.shape}
-        tabIndex={expanded ? undefined : 0}
-        aria-label={t.rowLabel(shelf.title)}
-      >
-        {shelf.shots.map((shot, i) => {
-          const still = stillAt(shot, width);
-          const svc = services.get(shot.slug);
-          if (!still || !svc) return null;
-          return (
-            <li key={`${shot.slug}/${shot.key}`} className="sq-gal-tile">
-              <button type="button" className="sq-gal-frame" data-shape={frame.shape} onClick={() => onOpen(i)} aria-label={t.tile(svc.name, shot.title)}>
-                {/* eslint-disable-next-line @next/next/no-img-element -- a local-only still, served by our own route */}
-                <img src={still.still} alt="" width={frame.w} height={frame.h} loading="lazy" decoding="async" />
-              </button>
-              <div className="sq-gal-cap">
-                {byService ? <b lang="ko">{shot.title}</b> : <b>{svc.name}</b>}
-                {shot.dots.length ? (
-                  <span className="sq-gal-dots" role="img" aria-label={t.dots(shot.dots.map((d) => d.token))}>
-                    {shot.dots.map((d) => (
-                      <i key={d.token} style={{ background: d.value }} title={`${d.token} ${d.value}`} />
-                    ))}
-                  </span>
-                ) : null}
-              </div>
-              {byService ? null : (
-                <p className="sq-gal-title" lang="ko">
-                  {shot.title}
-                </p>
-              )}
-              {showMasked && shot.masked ? <p className="sq-gal-masked">{t.notice.masked}</p> : null}
-            </li>
-          );
-        })}
-      </ul>
-    </section>
   );
 }

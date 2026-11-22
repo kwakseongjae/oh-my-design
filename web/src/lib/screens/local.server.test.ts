@@ -46,8 +46,8 @@ describe("readScreens", () => {
   it("serves stills through the local route and names a full page only where one exists", () => {
     const home = model.cards.find((c) => c.key === "home")!;
     expect(home.stills).toEqual([
-      { width: 1440, still: "/screens-local/acme/1440-home.jpg", full: "/screens-local/acme/1440-home.full.jpg" },
-      { width: 390, still: "/screens-local/acme/390-home.jpg", full: null },
+      { width: 1440, still: "/screens-local/acme/1440-home.jpg", thumb: null, full: "/screens-local/acme/1440-home.full.jpg" },
+      { width: 390, still: "/screens-local/acme/390-home.jpg", thumb: null, full: null },
     ]);
     expect(model.cards.find((c) => c.key === "search-empty")!.state).toBe("빈 상태");
   });
@@ -151,5 +151,28 @@ describe("withheld screens (users' posts, photos or reviews: never shown off thi
     }
     fs.writeFileSync(path.join(dir, "screens.json"), JSON.stringify(walk));
     expect(readScreens("acme", env)!.cards.map((c) => c.key)).toEqual(["home", "detail", "event"]);
+  });
+});
+
+describe("small renditions (web/scripts/publish-screens.mjs writes them next to the stills)", () => {
+  const sm = makeGalleryFixture([{ slug: "karrot", withheld: ["event"] }]);
+  afterAll(sm.cleanup);
+  const env = { OMD_SCREENS_DIR: sm.root, NODE_ENV: "development" };
+  const img = path.join(sm.root, "karrot", "img");
+  fs.writeFileSync(path.join(img, "390-home.thumb.jpg"), "thumb:390-home");
+  fs.writeFileSync(path.join(img, "1440-event.thumb.jpg"), "thumb:1440-event");
+
+  it("the reader names one only where it exists", () => {
+    const home = readScreens("karrot", env)!.cards.find((c) => c.key === "home")!;
+    expect(home.stills.map((s) => s.thumb)).toEqual([null, "/screens-local/karrot/390-home.thumb.jpg"]);
+  });
+  it("the image route answers with the rendition, or with the still when none was made", () => {
+    expect(resolveScreenImage("karrot", "390-home.thumb.jpg", env)).toBe(path.join(img, "390-home.thumb.jpg"));
+    expect(resolveScreenImage("karrot", "1440-home.thumb.jpg", env)).toBe(path.join(img, "1440-home.jpg"));
+    expect(resolveScreenImage("karrot", "390-ghost.thumb.jpg", env)).toBeNull();
+  });
+  it("never a withheld screen's rendition, even when one is on disk", () => {
+    expect(resolveScreenImage("karrot", "1440-event.thumb.jpg", env)).toBeNull();
+    expect(resolveScreenImage("karrot", "1440-event.jpg", env)).toBeNull();
   });
 });
