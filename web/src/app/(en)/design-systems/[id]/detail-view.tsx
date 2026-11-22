@@ -211,7 +211,7 @@ export function DetailView({
               DESIGN.md
             </button>
             <button type="button" role="tab" aria-selected={view === "screens"} onClick={() => selectView("screens")}>
-              {t.screens.tab} <small>{screens.cards.length}</small>
+              {t.screens.tab}
             </button>
           </div>
         </div>
@@ -230,7 +230,7 @@ export function DetailView({
           </button>
           {screens ? (
             <button type="button" onClick={() => selectView("screens")} aria-pressed={view === "screens"}>
-              {t.screens.tab} <small>{screens.cards.length}</small>
+              {t.screens.tab}
             </button>
           ) : null}
         </div>
