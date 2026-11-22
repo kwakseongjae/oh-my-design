@@ -9,11 +9,11 @@
 
 | 경로 | git | 성격 |
 |---|---|---|
-| `reference-evidence/` | **올리지 않음** | 브라우저 캡쳐 번들 177개, 145MB. 레퍼런스 집필의 1차 근거 |
+| `reference-evidence/` | **올리지 않음** | 브라우저 캡쳐 번들과 측정 원본. 2026-11-22 기준 7,051파일, 2.3GB(2026-09에는 177개, 145MB). 레퍼런스 집필의 1차 근거 |
 | `reference-evidence-2026-07/` | **올리지 않음** | 위 트리의 2026-09-17 동결본 177개, 145MB. 읽기 전용 |
 | `reverify/` | **올리지 않음** | 재검증 큐·태스크 패킷 333개. 재생성 가능 |
 | `reference-create/` | 커밋됨 | CREATE 실행 기록(packet/run). 영구 학습 산출물이라 남긴다 |
-| `local-store.manifest.json` | 커밋됨 | 위 세 로컬 트리의 **보관 증명**(687파일 / 291.0MB) |
+| `local-store.manifest.json` | 커밋됨 | 위 세 로컬 트리의 **보관 증명**(2026-11-22 기록: 7,561파일 / 2,525MB) |
 | `README.md` | 커밋됨 | 이 문서 |
 
 `.gitignore`는 경로별로 명시한다. 새 로컬 트리를 만들면 `.gitignore`,
@@ -64,7 +64,7 @@ critical 트리에 누락이 있으면 exit 1.
 
 **매니페스트는 손실을 알려줄 뿐 막지 못한다.** 실제 사본은 이 디스크 밖에 있어야 한다.
 
-현재 백업 위치: **iCloud Drive `~/Library/Mobile Documents/com~apple~CloudDocs/omd-evidence-backup/`** (오너 결정 2026-09-29). 첫 복사 때 파일별 SHA-256 일치를 확인했다: reference-evidence 177개, reverify 333개. 새로 캡쳐한 뒤에는 `rsync -a artifacts/reference-evidence artifacts/reverify artifacts/local-store.manifest.json <백업>/`로 갱신하고 해시를 대조한다.
+현재 백업 위치: **iCloud Drive `~/Library/Mobile Documents/com~apple~CloudDocs/omd-evidence-backup/`** (오너 결정 2026-09-29). 첫 복사 때 파일별 SHA-256 일치를 확인했다: reference-evidence 177개, reverify 333개. **2026-11-22에 다시 복사했다**(reference-evidence 7,051개, reference-evidence-2026-07 177개, reverify 333개; `diff -rq`로 원본과 차이 없음을 확인). iCloud가 로컬에서 내려 둔(0B로 보이는) 기존 파일 때문에 `rsync`는 `mmap: Resource deadlock avoided`로 실패한다: 그럴 때는 `ditto <트리> <백업>/<트리>`로 덮어쓴다. 백업 안의 옛 `local-store.manifest.json`도 같은 이유로 덮어쓸 수 없어 새 기록은 `local-store.manifest.2026-11-22.json`으로 두었다. 새로 캡쳐한 뒤에는 `rsync -a artifacts/reference-evidence artifacts/reverify artifacts/local-store.manifest.json <백업>/`로 갱신하고 해시를 대조한다.
 
 - 외장 디스크 / Time Machine에 포함되는 경로
 - 개인 클라우드 드라이브의 동기화 폴더
