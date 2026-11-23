@@ -57,6 +57,7 @@ The current taxonomy conflates intents that must be measured apart:
 - `col_` — collection discovery
 - `ref_` — cross-surface reference sharing
 - `bm_` — versioned internal-benchmark inspection and handoff
+- `screens_` — the screens pages (`/screens/<id>`, `/ko/screens/<id>`)
 
 ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
@@ -137,6 +138,7 @@ no dimension added:
 | `bm_inspect` | add | — | target, experiment_version | bounded method/source inspected |
 | `bm_handoff_view` | add | — | experiment_version | benchmark-end module reached |
 | `bm_handoff` | add | — | destination, outcome, experiment_version | benchmark-end copy/navigation outcome |
+| `screens_download` | add | — | reference, scope, device | a screens page download: one still from the large view (on the link press), or a type's or the whole set's zip once saved (a partial zip counts, a failed one does not). Not a DESIGN.md hand-off: no `act_handoff`, no Upstash counter (`lib/screens/analytics.ts`) |
 | — | **remove** | `curation_*` (10), `shared_view_*` (3) | — | curation surfaces deleted |
 | — | **remove** | `builder_export` | — | redundant with `bld_generate` (1:1 auto-fire) |
 
@@ -172,6 +174,8 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `experiment_version` | frozen patch id | 1 per experiment | isolates benchmark activation cohorts |
 | `target` | bounded benchmark source enum | 7 | method or canonical evidence inspected |
 | `outcome` | enum `navigate\|copied\|failed` | 3 | benchmark-end action result |
+| `scope` | enum `screen\|type\|all` | 3 | on `screens_download`: one still, one type's zip on one device, or every still on every device |
+| `device` | enum `mobile\|desktop\|both` | 3 | on `screens_download`: the device shown; `all` sends `both` when the service has stills on both |
 
 **Banned:** raw `query`, `referrer`/`url`, `brand_name`, array `.join(",")` of free text, and GA acquisition-reserved event keys (`source`, `medium`, `campaign`, etc.). The shared emitter remaps legacy reserved keys under `event_*` during the cutover.
 
