@@ -5,9 +5,120 @@
  * a word that also appears in the generated data (__tests__/kana-page.test.ts checks it). The one place on the page with
  * Japanese of our own is the #app screen, whose strings live in app-copy.ts and are labelled as ours wherever they
  * render (app.composed below). No native Japanese reader has read the rules; a model reviewed them on 2026-11-21.
+ * The Japanese edition's chrome is copy-ja.ts; the two share the KanaChrome shape below.
  */
 
 export const KANA_PATH = "/ko/kana";
+
+/** The page has a Korean edition (this file) and a Japanese one (copy-ja.ts); kana-page.tsx takes the locale as a prop. */
+export type KanaLocale = "ko" | "ja";
+
+/** An organisation on the sources list, by key prefix, with what kind of source it is. */
+export interface SourceOrg {
+  readonly prefix: string;
+  readonly name: string;
+  readonly kind: string;
+}
+
+/**
+ * The page chrome, the shape both editions fill. The Japanese edition leaves out the prose the Korean one has (the
+ * section intros, #use): it holds short functional strings only (copy-ja.ts says why). The punctuation members are
+ * the glue the page puts between its own strings, so each edition spaces and brackets in its own script.
+ */
+export interface KanaChrome {
+  readonly meta: { readonly title: string; readonly description: (rules: number, house: number) => string };
+  readonly hero: {
+    readonly kicker: string;
+    readonly h1: string;
+    readonly lede: string;
+    readonly statusTag: string;
+    readonly status: string;
+    /** Japanese only: the line that says who wrote the page's Japanese and where to report a mistake */
+    readonly notice?: { readonly text: string; readonly report: string; readonly href: string };
+    readonly cta: (n: number) => string;
+    readonly ctaSources: string;
+    readonly stats: { readonly rules: string; readonly house: string; readonly services: string };
+  };
+  readonly app: {
+    readonly h2: string;
+    readonly intro?: string;
+    readonly composed: string;
+    readonly sides: {
+      readonly before: string;
+      readonly after: string;
+      readonly group: string;
+      readonly hintAuto: string;
+      readonly hintPaused: string;
+    };
+    readonly tagsLabel: string;
+    readonly toCard: string;
+  };
+  readonly compare: {
+    readonly h2: string;
+    readonly intro?: string;
+    readonly real: string;
+    readonly wrong: string;
+    readonly right: string;
+    readonly switchGroup: string;
+    readonly stopsLabel: string;
+    readonly hintAuto: string;
+    readonly hintPaused: string;
+    readonly play: string;
+    readonly pause: string;
+    readonly kind: Readonly<Record<CompareKind, string>>;
+    readonly toCard: string;
+  };
+  readonly rules: {
+    readonly h2: string;
+    readonly intro: string;
+    readonly allH2: string;
+    readonly allIntro?: (n: number, lead: number) => string;
+    readonly seenAbove: string;
+    readonly english: string;
+    readonly examples: string;
+    readonly given: string;
+    readonly before: string;
+    readonly after: string;
+    readonly noExample: string;
+    readonly pairsInQuote: string;
+    readonly noUrl?: string;
+    readonly newTab: string;
+  };
+  readonly tiers: {
+    readonly label: string;
+    readonly government: string;
+    readonly company: (n: number) => string;
+    readonly translation: string;
+    readonly optim: string;
+    readonly law: string;
+  };
+  readonly house: { readonly h2: string; readonly intro: string; readonly notReal: string };
+  readonly fonts: {
+    readonly h2: (n: number) => string;
+    readonly intro?: string;
+    readonly none: string;
+    readonly unit: string;
+    readonly caption: string;
+    readonly label: string;
+  };
+  readonly sources: {
+    readonly h2: string;
+    readonly intro: string;
+    readonly opened: readonly [string, string];
+    readonly scope?: string;
+    readonly cited: (rules: number, house: number) => string;
+    readonly noUrl: string;
+  };
+  readonly use?: { readonly h2: string; readonly items: readonly string[] };
+  /** between two sentences or before a list (a space in Korean, nothing in Japanese) */
+  readonly sep: string;
+  /** between the ids of a list */
+  readonly list: string;
+  /** after a label, before what it labels */
+  readonly colon: string;
+  /** around an aside: the opening (with the space before it, in Korean) and the closing bracket */
+  readonly paren: readonly [string, string];
+}
 
 /** The rules shown first, in this order (owner's still A, 2026-11-21). KW-62 took KW-17's place when KW-17 became a
  *  house choice (the second research pass). */
@@ -245,7 +356,7 @@ export const HOUSE_KO: Readonly<Record<string, { readonly title: string; readonl
 };
 
 /** The source organisations, by key prefix, with what kind of source each is. */
-export const SOURCE_ORGS: readonly { readonly prefix: string; readonly name: string; readonly kind: string }[] = [
+export const SOURCE_ORGS: readonly SourceOrg[] = [
   { prefix: "DADS", name: "DADS (일본 디지털청 디자인 시스템)", kind: "정부 디자인 시스템" },
   { prefix: "NTA", name: "일본 국세청", kind: "법을 집행하는 기관의 설명" },
   { prefix: "SH", name: "SmartHR Design System", kind: "회사 디자인 시스템" },
@@ -260,6 +371,10 @@ export const SOURCE_ORGS: readonly { readonly prefix: string; readonly name: str
 ];
 
 export const KANA_COPY = {
+  sep: " ",
+  list: ", ",
+  colon: ": ",
+  paren: [" (", ")"],
   meta: {
     title: "/kana — 일본어 UI 문구 규칙과 그 출처 (초안)",
     description: (rules: number, house: number) =>
@@ -379,4 +494,4 @@ export const KANA_COPY = {
       "/kana 스킬은 아직 배포하지 않았습니다. 지금은 이 페이지의 규칙과 출처를 직접 읽고 쓰는 단계입니다.",
     ],
   },
-} as const;
+} as const satisfies KanaChrome;

@@ -1,22 +1,22 @@
 import type { ReactNode } from "react";
 import data from "@/data/kana-rules.generated.json";
-import { COMPARE_STOPS, KANA_COPY, RULE_KO, type CompareKind } from "./copy";
+import { COMPARE_STOPS, type CompareKind, type KanaLocale } from "./copy";
 import { CompareTour } from "./compare-tour";
-import { Mixed, SourceLink } from "./parts";
+import { KANA_KIT } from "./locale";
+import { RuleLine, SourceLink } from "./parts";
 
 /**
  * #compare on /ko/kana (owner 2026-11-21: "kana도 hangul처럼 … 실제 비교하면서"). Each stop sets one of a source's
  * wrong/right pairs in the component its rule is about, the wrong side and the right side next to each other. The
  * Japanese is the pair's own text from the generated data, character for character; around it the component is a
  * skeleton: grey bars wherever the source gives no string. Every stop is rendered here, on the server; compare-tour.tsx
- * only picks which one shows.
+ * only picks which one shows. The Japanese edition names each stop's rule by the quote that leads its card (RuleLine).
  */
 
 type Side = { role: string; label: string | null; texts: string[] };
 type Example = { key: string; via?: string; sides: Side[] };
 export type Role = "wrong" | "right";
 
-const t = KANA_COPY;
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
 
 /** The stop's example and its two sides, or throws: a stop that names no pair is a data error, not an empty panel. */
@@ -151,7 +151,8 @@ function Specimen({ kind, texts, stop, role }: { kind: CompareKind; texts: strin
 }
 
 /** One side of one stop: the source's own label for that side, then the screen. */
-function Panel({ side, role, kind, stop }: { side: Side; role: Role; kind: CompareKind; stop: number }) {
+function Panel({ side, role, kind, stop, locale }: { side: Side; role: Role; kind: CompareKind; stop: number; locale: KanaLocale }) {
+  const { t } = KANA_KIT[locale];
   return (
     <div className="kc-panel">
       <p className={`kc-label kc-label--${role}`}>
@@ -164,7 +165,8 @@ function Panel({ side, role, kind, stop }: { side: Side; role: Role; kind: Compa
   );
 }
 
-export function KanaCompare() {
+export function KanaCompare({ locale = "ko" }: { locale?: KanaLocale }) {
+  const { t } = KANA_KIT[locale];
   const stops = COMPARE_STOPS.map((s, i) => {
     const { example, wrong, right } = comparePair(s);
     return {
@@ -172,21 +174,21 @@ export function KanaCompare() {
       caption: (
         <div key={i} className="kc-cap">
           <p className="kc-cap-top">
-            <a className="kc-cap-id" href={`#${s.rule.toLowerCase()}`} lang="en" aria-label={`${s.rule} (${t.compare.toCard})`}>
+            <a className="kc-cap-id" href={`#${s.rule.toLowerCase()}`} lang="en" aria-label={`${s.rule}${t.paren[0]}${t.compare.toCard}${t.paren[1]}`}>
               {s.rule}
             </a>
             <span className="kc-cap-kind">{t.compare.kind[s.kind]}</span>
           </p>
           <p className="kc-cap-rule">
-            <Mixed text={RULE_KO[s.rule]} />
+            <RuleLine id={s.rule} locale={locale} prefer={example.key} />
           </p>
           <p className="kc-cap-src">
-            <SourceLink k={example.key} />
+            <SourceLink k={example.key} locale={locale} />
           </p>
         </div>
       ),
-      wrong: <Panel key={i} side={wrong} role="wrong" kind={s.kind} stop={i} />,
-      right: <Panel key={i} side={right} role="right" kind={s.kind} stop={i} />,
+      wrong: <Panel key={i} side={wrong} role="wrong" kind={s.kind} stop={i} locale={locale} />,
+      right: <Panel key={i} side={right} role="right" kind={s.kind} stop={i} locale={locale} />,
     };
   });
   return (
@@ -195,7 +197,7 @@ export function KanaCompare() {
         <h2 id="kn-compare-h" className="kn-h2">
           {t.compare.h2}
         </h2>
-        <p className="kn-intro">{t.compare.intro}</p>
+        {t.compare.intro ? <p className="kn-intro">{t.compare.intro}</p> : null}
         <p className="kc-real">{t.compare.real}</p>
         <CompareTour
           labels={{

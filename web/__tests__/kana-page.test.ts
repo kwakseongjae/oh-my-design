@@ -339,6 +339,6 @@ describe("/ko/kana stays unreleased", () => {
     const chrome = ["site-header.tsx", "site-footer.tsx", ...fs.readdirSync(path.join(WEB, "src/components/brand-a/copy")).map((f) => `copy/${f}`)];
     for (const f of chrome) expect(fs.readFileSync(path.join(WEB, "src/components/brand-a", f), "utf8"), f).not.toContain("/kana");
     expect(fs.existsSync(path.join(WEB, "src/app/(en)/kana"))).toBe(false);
-    expect(fs.existsSync(path.join(WEB, "src/app/(ja)/ja/kana"))).toBe(false);
+    // the Japanese edition (/ja/kana, 2026-11-23) is tested in kana-page-ja.test.ts; the Korean page still names no twin
   });
 });

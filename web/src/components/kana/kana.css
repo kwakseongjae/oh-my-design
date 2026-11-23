@@ -30,6 +30,10 @@
   background:var(--sq-cell);font-size:15px;line-height:1.65;color:var(--sq-ink)}
 .kn-status-tag{flex:none;display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--sq-r-pill);
   border:1px solid currentColor;color:var(--sq-warn);font-size:13px;font-weight:650;line-height:1.3;margin-top:1px}
+/* /ja/kana only: the line that says who wrote the page's Japanese (copy-ja.ts), first after the lede */
+.kn-notice{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;margin-top:20px!important;max-width:48em;padding:14px 16px;border-radius:14px;
+  border:1px solid var(--sq-guide);font-size:15px;line-height:1.7;color:var(--sq-ink)}
+.kn-notice-link{color:var(--sq-primary);font-weight:650;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .kn-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:28px}
 .kn-btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 20px;border-radius:var(--sq-r-pill);
   font-size:15px;line-height:1.3;font-weight:650;white-space:nowrap;transition:background-color .15s,border-color .15s,transform .12s}
@@ -60,6 +64,10 @@
 .kn-tier--muted{background:transparent;border:1px solid var(--sq-guide);color:var(--sq-ink-2)}
 .kn-main .kn-card-h{font-size:18px;line-height:1.5;font-weight:700;color:var(--sq-ink)}
 .kn-en{font-size:14px;line-height:1.6;color:var(--sq-ink-2)}
+/* /ja/kana only: a card led by the source's own sentence, its source right under it; or by our English rule */
+.kn-lead{display:flex;flex-direction:column;gap:6px}
+.kn-main .kn-card-h--quote{line-height:1.7}
+.kn-main .kn-card-h--en{font-size:17px;font-weight:650}
 .kn-quotes{display:flex;flex-direction:column;gap:10px}
 .kn-quote{display:flex;flex-direction:column;gap:6px}
 .kn-quote blockquote{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:14px;background:var(--sq-cell);font-size:15px;line-height:1.8;color:var(--sq-ink)}
