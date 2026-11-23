@@ -1,11 +1,11 @@
 ---
 title: "한국 서비스 185곳의 브랜드 컬러를 재 보니, 셋 중 하나쯤은 파랑이었습니다"
-description: "oh-my-design에 검증 레퍼런스로 올라 있는 한국 서비스 185곳의 브랜드 컬러를 hex 컬러 코드로 모아 색 계열별로 셌습니다. 주 색을 정하는 일곱 가지 방법 모두에서 파랑이 가장 많았고(29.5~36.6%), 주 행동 버튼 위 글자의 명도 대비도 계산했습니다."
+description: "oh-my-design에 검증 레퍼런스로 올라 있는 한국 서비스 185곳의 브랜드 컬러를 hex 컬러 코드로 모아 세었더니, 주 색을 정하는 일곱 가지 방법 모두에서 파랑이 가장 많았습니다(29.5~36.6%)."
 date: 2026-11-21
 tags: [data, brand-color, accessibility, korea]
 ---
 
-한국 서비스의 브랜드 컬러 가운데 가장 많은 색은 파랑입니다. 서비스마다 레퍼런스 파일이 주 색(primary)으로 적은 색을 하나씩 골라 셌더니, 주 색을 하나로 정할 수 있었던 169곳 가운데 60곳(35.5%)이 파랑이었습니다. 셋 중 하나쯤입니다.
+oh-my-design에 올라 있는 한국 서비스 185곳의 브랜드 컬러 가운데 가장 많은 색은 파랑입니다. 서비스마다 레퍼런스 파일이 주 색(primary)으로 적은 색을 하나씩 골라 셌더니, 주 색을 하나로 정할 수 있었던 169곳 가운데 60곳(35.5%)이 파랑이었습니다. 셋 중 하나쯤입니다.
 
 <picture>
 <source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-wall-narrow.svg" width="360" height="848">
@@ -85,7 +85,7 @@ tags: [data, brand-color, accessibility, korea]
 
 핀테크는 29곳 중 14곳이 파랑이고, 무채색 주 색은 한 곳도 없습니다. 노랑도 핀테크에 몰려 있습니다. 노랑 7곳 가운데 5곳이 핀테크인 [카카오뱅크](https://oh-my-design.kr/ko/design-systems/kakaobank), [카카오페이](https://oh-my-design.kr/ko/design-systems/kakaopay), [KB국민은행](https://oh-my-design.kr/ko/design-systems/kb-kookmin), [KB손해보험](https://oh-my-design.kr/ko/design-systems/kbinsurance), [KB페이](https://oh-my-design.kr/ko/design-systems/kbpay)입니다. 나머지 두 곳은 [카카오](https://oh-my-design.kr/ko/design-systems/kakao)와 [카카오페이지](https://oh-my-design.kr/ko/design-systems/kakaopage)입니다.
 
-커머스는 검정과 회색이 많습니다. 23곳 가운데 검정에 가까운 무채색이 4곳, 회색이 3곳입니다. 둘을 합친 7곳은 파랑이나 빨강보다 많습니다.
+커머스 23곳 가운데 7곳은 주 색이 검정에 가까운 무채색(4곳)이나 회색(3곳)입니다. 둘을 합친 7곳은 파랑이나 빨강(각 5곳)보다 많습니다.
 
 - 검정에 가까운 무채색 4곳: [29CM](https://oh-my-design.kr/ko/design-systems/29cm), [무신사](https://oh-my-design.kr/ko/design-systems/musinsa), [롯데ON](https://oh-my-design.kr/ko/design-systems/lotteon), [아이아이컴바인드](https://oh-my-design.kr/ko/design-systems/iicombined)
 - 회색 3곳: [브랜디](https://oh-my-design.kr/ko/design-systems/brandi), [신상마켓](https://oh-my-design.kr/ko/design-systems/dealicious), [KREAM](https://oh-my-design.kr/ko/design-systems/kream)
@@ -107,9 +107,9 @@ tags: [data, brand-color, accessibility, korea]
 
 ## 주 행동 버튼 위의 흰 글자는 잘 읽히나
 
-주 행동 버튼의 흰 글자 대비가 4.5:1에 못 미치는 곳을 18곳 확인했습니다. 그중 5곳은 3:1에도 못 미칩니다. 4.5:1은 WCAG 2.x AA가 본문 크기 글자에 요구하는 값이고, 큰 글자에는 3:1을 요구합니다.
+주 행동 버튼의 흰 글자 대비가 4.5:1에 못 미치는 서비스를 18곳 찾았습니다. 그중 5곳은 3:1에도 못 미칩니다. 4.5:1은 WCAG 2.x AA가 본문 크기 글자에 요구하는 값이고, 큰 글자에는 3:1을 요구합니다.
 
-주 행동 버튼은 그 서비스의 DESIGN.md가 주 행동(primary action)이라고 적었거나, 파일이 꼽은 주요 작업(Primary tasks)을 하는 버튼입니다. 18곳 모두 2026년 11월 21일에 홈 화면에서 다시 재서, 같은 배경색에 흰 글자가 지금도 그려져 있는 것을 확인했습니다.
+주 행동 버튼은 그 서비스의 DESIGN.md가 주 행동(primary action)이라고 적었거나, 파일이 꼽은 주요 작업(Primary tasks)을 하는 버튼입니다. 18곳 모두 2026년 11월 21일에 홈 화면을 다시 열어, 기록된 배경색에 흰 글자를 올린 요소가 그날도 그려져 있는 것을 확인했습니다.
 
 <picture>
 <source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-contrast-narrow.svg" width="360" height="886">

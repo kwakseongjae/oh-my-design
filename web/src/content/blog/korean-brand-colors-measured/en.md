@@ -1,11 +1,11 @@
 ---
 title: "We measured the brand colors of 185 Korean services. About a third are blue"
-description: "We collected the brand colors of the 185 Korean services listed as verified references on oh-my-design as hex codes and counted them by hue family. Blue was the largest family under all seven ways of choosing the primary color (29.5–36.6%). We also calculated the contrast of the text on each primary action button."
+description: "We collected the brand colors of the 185 Korean services listed as verified references on oh-my-design as hex codes, and blue was the largest hue family under all seven ways of choosing the primary color (29.5–36.6%)."
 date: 2026-11-21
 tags: [data, brand-color, accessibility, korea]
 ---
 
-Blue is the most common brand color among Korean services. We took the one color each service's reference file names as its primary and sorted those colors by hue family. Of the 169 services whose primary could be pinned to a single color, 60 (35.5%) are blue: about a third.
+Among the 185 Korean services archived on oh-my-design, blue is the most common brand color. We took the one color each service's reference file names as its primary and sorted those colors by hue family. Of the 169 services whose primary could be pinned to a single color, 60 (35.5%) are blue: about a third.
 
 <picture>
 <source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-wall-en-narrow.svg" width="360" height="870">
@@ -85,7 +85,7 @@ Figure: one strip per sector, one cell per service with a primary color in that 
 
 In fintech, 14 of 29 services are blue and not one has an achromatic primary. Yellow clusters there too: 5 of the 7 yellow services overall are fintech, namely [KakaoBank](https://oh-my-design.kr/design-systems/kakaobank), [KakaoPay](https://oh-my-design.kr/design-systems/kakaopay), [KB국민은행](https://oh-my-design.kr/design-systems/kb-kookmin) (KB Kookmin Bank), [KB Insurance](https://oh-my-design.kr/design-systems/kbinsurance) and [KB Pay](https://oh-my-design.kr/design-systems/kbpay). The other two are [Kakao](https://oh-my-design.kr/design-systems/kakao), a mobile-life platform, and [KakaoPage](https://oh-my-design.kr/design-systems/kakaopage), Kakao Entertainment's webtoon and web-novel service.
 
-Commerce leans black and grey. Of its 23 services, 4 are black-ish and 3 grey, 7 together, which is more than either blue or red.
+In commerce, 7 of the 23 services have a black-ish (4) or grey (3) primary, more than either blue or red (5 each).
 
 - Black-ish, 4: [29CM](https://oh-my-design.kr/design-systems/29cm), [Musinsa](https://oh-my-design.kr/design-systems/musinsa), [롯데ON](https://oh-my-design.kr/design-systems/lotteon) (Lotte ON), [IICOMBINED](https://oh-my-design.kr/design-systems/iicombined)
 - Grey, 3: [Brandi](https://oh-my-design.kr/design-systems/brandi), [Sinsang Market (Dealicious)](https://oh-my-design.kr/design-systems/dealicious), [KREAM](https://oh-my-design.kr/design-systems/kream)
@@ -107,9 +107,9 @@ This table counts how often a sector and a color occur together. The data cannot
 
 ## Is the white text on primary action buttons easy to read?
 
-We confirmed 18 services whose primary action button has white text below 4.5:1 contrast. Five of them are below even 3:1. WCAG 2.x AA asks for 4.5:1 for body-size text and 3:1 for large text.
+We found 18 services whose primary action button has white text below 4.5:1 contrast. Five of them are below even 3:1. WCAG 2.x AA asks for 4.5:1 for body-size text and 3:1 for large text.
 
-A primary action button here is one the service's DESIGN.md calls the primary action, or one that performs a task the file lists under Primary tasks. We re-measured all 18 on each service's home page on November 21, 2026, and the white text is still drawn on the same background color.
+A primary action button here is one the service's DESIGN.md calls the primary action, or one that performs a task the file lists under Primary tasks. On November 21, 2026 we reopened each service's home page and found, for all 18, an element drawn in the recorded background color with white text.
 
 <picture>
 <source media="(max-width: 639px)" srcset="/blog-assets/korean-brand-colors-measured/figure-contrast-en-narrow.svg" width="360" height="930">
