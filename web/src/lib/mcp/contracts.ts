@@ -190,6 +190,7 @@ const screenOutputs = {
       typography: z.array(valueSchema).optional(), fonts: fontsSchema.optional(),
       rounded: z.array(valueSchema).optional(), spacing: z.array(valueSchema).optional(),
       components: z.array(componentSchema).optional(),
+      omitted_for_size: z.array(z.enum(["components", "fonts", "typography", "spacing", "rounded"])).optional(),
     }).optional(),
     not_known_for_this_screen: z.array(z.string()).optional(),
     next: nextSchema.optional(),

@@ -25,6 +25,7 @@ import {
   CONTEXT_GROUPS, DEVICES, FROM_CAPTURE, FROM_DESIGN_MD, SCREEN_USE, SEEN_ON_SCREEN, CatalogError, envelope,
   type SourcedValue, type Summary, type ToolInput,
 } from "./contracts";
+import { fitsResponseBudget, MAX_RESPONSE_BYTES } from "./response";
 
 const SITE = "https://oh-my-design.kr";
 
@@ -295,9 +296,9 @@ function typeMatching(types: string[], wanted: string): string | null {
 }
 
 export function searchScreens(args: ToolInput<"search_screens">, manifest: PublicManifest | null = COMMITTED_MANIFEST) {
-  if (args.service) summaryFor(args.service); // unknown ids are errors, before anything else
   const services = servicesOf(manifest);
   if (!services.length) return screensEnvelope(manifest, { total: 0, results: [] });
+  if (args.service) summaryFor(args.service); // an id outside the catalog is an error, as in every reference tool
   let type: string | null = null;
   if (args.type) {
     const types = [...new Set(services.flatMap((s) => s.cards.map((card) => card.type)))];
@@ -390,6 +391,7 @@ export function getScreenContext(
   { id, key, include = [...CONTEXT_GROUPS] }: ToolInput<"get_screen_context">,
   manifest: PublicManifest | null = COMMITTED_MANIFEST,
   outlines: Outlines = COMMITTED_OUTLINES,
+  budget: number = MAX_RESPONSE_BYTES,
 ) {
   if (!servicesOf(manifest).length) return screensEnvelope(manifest, {});
   const reference = summaryFor(id);
@@ -427,13 +429,15 @@ export function getScreenContext(
     else absent.push("from_design_md.components");
   }
 
-  return screensEnvelope(manifest, {
+  // A component-rich DESIGN.md can outgrow one response. Rather than fail, leave the largest DESIGN.md groups out, in
+  // this order, name them, and let next point to the tool that gives them whole.
+  const answer = () => screensEnvelope(manifest, {
     reference,
     screen: screenOf(s, card),
     ...(outline ? { outline } : {}),
     seen_on_this_screen: {
       label: SEEN_ON_SCREEN,
-      basis: `Exact value (#rrggbb, opaque) found among the computed colours of this screen's captured elements, compared with this service's DESIGN.md colour tokens on the walk's day${s.model.shot ? ` (${s.model.shot})` : ""}, at one or more of its widths.`,
+      basis: `Exact value (#rrggbb, opaque) found among the computed colours of this screen's captured elements, compared with this service's DESIGN.md colour tokens on the walk's day${s.model.shot ? ` (${s.model.shot})` : ""}, at one or more of its widths. A design_md entry's evidence is where the DESIGN.md measured that token (its own surface and date), not this screen.`,
       colors,
     },
     compared_not_seen: s.model.colors.filter((c) => !seenPaths.has(`colors.${c.token}`)).map((c) => ({ path: `colors.${c.token}`, token: c.token, value: c.value })),
@@ -441,4 +445,16 @@ export function getScreenContext(
     not_known_for_this_screen: NOT_KNOWN,
     next: nextFor(id, key),
   }, absent);
+  let data = answer();
+  const omitted: string[] = [];
+  for (const group of ["components", "fonts", "typography", "spacing", "rounded"]) {
+    if (fitsResponseBudget(data, budget)) break;
+    if (!(group in from)) continue;
+    delete from[group];
+    omitted.push(group);
+    absent.push(`from_design_md.${group}`);
+    from.omitted_for_size = omitted;
+    data = answer();
+  }
+  return data;
 }

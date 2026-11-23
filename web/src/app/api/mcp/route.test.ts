@@ -6,6 +6,8 @@ import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import { inputs, outputs, annotations, CATALOG, NOTICE, SCREEN_USE, type ToolName } from "@/lib/mcp/contracts";
 import { MAX_RESPONSE_BYTES } from "@/lib/mcp/response";
 import { mcpRateLimit } from "@/lib/mcp/operations";
+import { COMMITTED_MANIFEST, servicesOf } from "@/lib/mcp/screens";
+import { typeParam } from "@/lib/screens/screen-types";
 import { REGISTRY } from "@/data/registry.generated";
 import { REFERENCE_QUALITY } from "@/data/reference-quality.generated";
 
@@ -303,16 +305,24 @@ it("rejects invalid inputs and accepts notifications without retaining sessions"
   expect(await response.text()).toBe("");
 });
 
+// The committed manifest changes with every publish and takedown: the screen tools' behaviour is tested on a synthetic
+// manifest in lib/mcp/screens.test.ts; here only the route's contract, with whatever screen is published first.
+const PUBLISHED = servicesOf(COMMITTED_MANIFEST)[0];
+const FIRST = PUBLISHED ? { id: PUBLISHED.summary.id, key: PUBLISHED.cards[0].key, type: typeParam(PUBLISHED.cards[0].type) } : null;
+
 describe("screen tools", () => {
-  it("answer through MCP on the same contract, with the use sentence in every description", async () => {
+  it("carry the use sentence in every description", async () => {
     const { body } = await rpc("tools/list");
     for (const name of ["list_screen_types", "search_screens", "get_service_screens", "get_screen_context"]) {
       const item = body.result.tools.find((t: { name: string }) => t.name === name);
       expect(item.description).toContain(SCREEN_USE);
     }
+  });
+
+  it.skipIf(!FIRST)("answer through MCP on the same contract, never naming the image store", async () => {
     const calls: [ToolName, object][] = [
-      ["list_screen_types", {}], ["search_screens", { type: "sign-in", device: "mobile" }],
-      ["get_service_screens", { id: "karrot" }], ["get_screen_context", { id: "karrot", key: "home" }],
+      ["list_screen_types", {}], ["search_screens", { type: FIRST!.type }],
+      ["get_service_screens", { id: FIRST!.id }], ["get_screen_context", { id: FIRST!.id, key: FIRST!.key }],
     ];
     for (const [name, args] of calls) {
       const result = await tool(name, args);
@@ -320,15 +330,15 @@ describe("screen tools", () => {
       const data = outputs[name].parse(result.structuredContent) as { screens: { published: boolean; use: string } };
       noNulls(data);
       expect(data.screens).toMatchObject({ published: true, use: SCREEN_USE });
-      expect(JSON.stringify(data)).not.toContain("blob.vercel-storage.com");
+      expect(JSON.stringify(data)).not.toContain(new URL(COMMITTED_MANIFEST!.base).host);
     }
     expect(fetch).not.toHaveBeenCalled();
   });
 
-  it("count the service id only, never the query text, and keep unknown ids out of the counters", async () => {
+  it.skipIf(!FIRST)("count the service id only, never the query text, and keep unknown ids out of the counters", async () => {
     const query = "private-person@example.test 당근 로그인";
-    await tool("search_screens", { query, service: "karrot" });
-    await tool("get_screen_context", { id: "karrot", key: "home" });
+    await tool("search_screens", { query, service: FIRST!.id });
+    await tool("get_screen_context", { id: FIRST!.id, key: FIRST!.key });
     const unknown = await tool("get_service_screens", { id: "toss-bank" });
     expect(unknown.isError).toBe(true);
     expect(unknown.structuredContent).toMatchObject({ error: { code: "unknown_reference" } });
@@ -337,12 +347,13 @@ describe("screen tools", () => {
     expect(telemetry).not.toContain("private-person");
     expect(telemetry).not.toContain("로그인");
     expect(telemetry).not.toContain("toss-bank");
+    expect(telemetry).not.toContain(`"${FIRST!.key}"`);
     const fields = mocks.counters.filter(([method]) => method === "hincrby").map(([, , field]) => field);
-    expect(fields).toEqual(["search_screens", "karrot", "get_screen_context", "karrot", "get_service_screens"]);
+    expect(fields).toEqual(["search_screens", FIRST!.id, "get_screen_context", FIRST!.id, "get_service_screens"]);
   });
 
   it("reject invalid screen inputs on the same error contract", async () => {
-    for (const [name, args] of [["search_screens", { limit: 31 }], ["search_screens", { device: "tablet" }], ["get_screen_context", { id: "karrot" }], ["get_screen_context", { id: "karrot", key: "home", include: ["colors"] }]] as const) {
+    for (const [name, args] of [["search_screens", { limit: 31 }], ["search_screens", { device: "tablet" }], ["get_screen_context", { id: "toss" }], ["get_screen_context", { id: "toss", key: "home", include: ["colors"] }]] as const) {
       const { body } = await rpc("tools/call", { name, arguments: args });
       expect(body.result.isError).toBe(true);
       expect(body.result.structuredContent).toMatchObject({ catalog: CATALOG, notice: NOTICE, error: { code: "invalid_tool_input" } });

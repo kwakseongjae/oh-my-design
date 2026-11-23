@@ -10,7 +10,7 @@
 
 ## 1. §3·D6과의 관계
 
-v2 명세 §3과 §10 D6은 "시각 근거(스크린샷·영상)는 게재 정책 결정 뒤"로 미뤄 두었습니다. 그 정책은 2026-11-22 오너가 정했고(공개 범위: Blob 저장, 첫 화면, 닉네임·올린 사진 가림, 권리·삭제 요청 문구), 화면은 2026-11-23 공개되었습니다(#157). 2026-11-23 오너 방향(「모빈과 refero mcp를 능가하는 형태를 무료로」)에 따라 MCP도 같은 공개 범위 안에서 화면을 줍니다. 공개 페이지에 없는 것은 MCP도 주지 않습니다.
+v2 명세 §3과 §10 D6은 "시각 근거(스크린샷·영상)는 게재 정책 결정 뒤"로 미뤄 두었습니다. 화면 공개는 2026-11-22 오너가 정했고(`docs/CURRENT_STATE.md`의 11/22 항목, 카드 11), 화면은 2026-11-23 공개되었습니다(#157). 2026-11-23 오너 방향(「모빈과 refero mcp를 능가하는 형태를 무료로」)에 따라 MCP도 같은 공개 범위 안에서 화면을 줍니다. 공개 페이지에 없는 것은 MCP도 주지 않습니다.
 
 ## 2. 데이터 출처와 규칙
 
@@ -23,11 +23,12 @@ v2 명세 §3과 §10 D6은 "시각 근거(스크린샷·영상)는 게재 정�
 - **"화면에서 봄"과 "DESIGN.md에서 옴"을 섞지 않습니다.**
   - `tokens_seen` / `seen_on_this_screen` (`label: "seen on this screen"`): 그 서비스 DESIGN.md의 색 토큰 중, 같은 값(#rrggbb, 불투명)이 그 화면의 캡처된 요소 계산 색에 있었던 것. 화면 키 단위이며 어느 폭·요소·속성인지, 몇 번인지는 매니페스트에 없습니다(`not_known_for_this_screen`).
   - DESIGN.md의 근거(`design_md`)는 지금 DESIGN.md의 값이 촬영일에 비교한 값과 **같을 때만** 붙입니다. 다르면 `design_md_value_now`만 주고 `absent`에 적습니다.
+  - 붙은 근거는 **DESIGN.md가 그 토큰을 잰 곳과 날짜**이지 이 화면이 아닙니다. 예: 당근 화면은 daangn.com에서 찍었고, `colors.marketing`의 근거는 karrotmarket.com(2026-07-11)입니다. 두 도메인은 다른 근거 영역이라(AGENTS.md), "화면에서 같은 값을 봤다"와 "DESIGN.md는 저기서 쟀다"를 따로 적습니다.
   - `compared_not_seen`: 비교했지만 그 화면에 없던 색. 매니페스트에 없는 토큰은 "비교하지 않음"이라 여기에도 넣지 않습니다.
   - `from_design_md` (`label: "from this service's DESIGN.md, not claimed to be on this screen"`): 타입 스케일·서체·반경·간격·컴포넌트와 측정된 상태. 값과 근거는 `get_tokens`·`get_component_states`와 같은 것입니다.
   - `not_known_for_this_screen`: 화면의 어느 요소가 어느 컴포넌트인지, 레이아웃 치수, 화면별 글자 크기·반경·간격, 색이 나온 요소·폭, 상호작용 상태, 그림 밖의 글과 이미지.
 - **집계**: 기존과 같이 도구별 호출 수와, 서비스 id(레퍼런스 id)만 셉니다. 질의 원문·화면 키·유형은 세지 않습니다. 개인정보 페이지의 "도구별·레퍼런스별 호출 수" 문장이 그대로 맞습니다.
-- **응답 상한·속도 제한**: 256KB, IP당 60회/60초 그대로입니다. 2026-11-23 공개분에서 가장 큰 `get_screen_context`는 약 205KB(구조화 + 텍스트 두 벌 합)입니다. 넘치면 `response_too_large` 오류가 나며, `include`로 DESIGN.md 묶음을 줄여 다시 부릅니다.
+- **응답 상한·속도 제한**: 256KB, IP당 60회/60초 그대로입니다. 2026-11-23 공개분에서 가장 큰 `get_screen_context`는 약 205KB(구조화 + 텍스트 두 벌 합)입니다. 컴포넌트가 많은 서비스가 늘어 상한을 넘으면, 오류 대신 DESIGN.md 묶음을 components → fonts → typography → spacing → rounded 순으로 빼고 `from_design_md.omitted_for_size`와 `absent`에 적습니다. 뺀 것은 `next`의 `get_component_states`·`get_tokens`로 따로 받습니다.
 
 ## 3. 도구
 
