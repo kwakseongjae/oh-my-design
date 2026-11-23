@@ -4,7 +4,7 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 22:46) — 오너 결정 대기: 26번(런칭 영상 v2, 방향 A·B·C) · 29번(블로그 글 수정안 PR #161, 제목) · 30번(MCP 화면 도구 PR #162) · 27번(PR #159) · 도는 에이전트 2: `kana-showcase`(시안 2안), `blog-home-b`(이름·썸네일·B안) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+## 지금 (2026-11-23 22:46) — 오너 결정 대기: 26번(런칭 영상 v2, 방향 A·B·C) · 29번(블로그 글 수정안 PR #161, 제목) · 30번(MCP 화면 도구 PR #162) · 27번(PR #159) · 31번(블로그 B안: 이름·썸네일) · 도는 에이전트 1: `kana-showcase`(시안 2안) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
 
 **11/23 22:46 한도 풀린 뒤**
 - **영상 v2:** `~/Downloads/omd-screens-launch/omd-screens-launch-v2.mp4`(39.0초, 음악만). 이야기 A(스크린샷 폴더)로 만듦(오너가 고르기 전이지만 「해봐」와 추천안으로 진행, 카드 26에서 A·B·C를 물음). 구조: `index.html`(호스트 7개 + `bgm`) + `compositions/sc1..7.html`(더미 → 격자 → 종류 필터와 로그인 8곳 → 모바일/데스크톱 → 교보문고 바로구매 버튼의 잰 값 → 주장 셋 → 끝 화면). 박자: 150BPM, 영상 시간의 박 = 0.105 + 0.4n, 장면 경계는 마디(0 · 6.5 · 11.3 · 17.7 · 22.5 · 30.5 · 35.3 · 39.0). 음악: ElevenLabs `eleven_music_v2_5` 두 가지(flow `1r4yczvGSy00hBBrXzHF`, 약 1,200크레딧), `assets/bgm-2.mp3` 사용(`data-media-start=0.3`), `bgm-1.mp3`는 예비. `check`가 잡은 것: 겹침(더미는 `data-layout-allow-overlap`), 28px 미만 글자. 장면 파일은 REPL의 생성 코드로 썼다(코드는 세션에만 있음: 고칠 때는 장면 파일을 직접 고친다). v1은 `v1/index.html`에 보관. 부족한 것: 효과음 없음, 장면 사이 연결 컷이 한 곳, 끝 화면 조각이 작음. 소리는 듣지 못함.
@@ -12,6 +12,7 @@
 - **MCP에서 나온 것(오너에게 알림):** `llms.txt`·`llms.ko.txt`·`llms-full.txt`와 `/terms`가 아직 「커넥터 종료」라고 말한다(실제로는 운영 중) → 수정 PR을 따로(약관 문구라 오너 go).
 - **새 에이전트 2개 도는 중(유료):** `kana-showcase`(워크트리 `kana-redesign`, 가지 `feat/kana-showcase`: /hangul 분석 → 정지 시안 2안 `<scratchpad>/kana-mocks/`, 앱 코드 변경 없음) · `blog-home-b`(워크트리 `blog-b`, 가지 `feat/blog-home-b` = feat/blog-renewal 위: 업계 블로그 이름 조사 → 이름 3개·태그, 전용 썸네일 2방식 × 3편(og 겸용), B안 시안 3편·12편). 지시서 `<scratchpad>/agent-reports/{kana-showcase,blog-home-b}-brief.md`.
 - 카드: 26(영상 v2) · 29(글) · 30(MCP) 추가.
+- **23:0x `blog-home-b` 끝(커밋 없음, 정지 시안과 조사만) → 카드 31.** 업계 15곳 조사: 14곳 중 9곳이 「브랜드 + 기술 블로그/Blog」. 이름 3안(추천 「oh-my-design 블로그」), 태그(디자인 시스템·컬러·타이포그래피·데이터·AI·릴리스), 썸네일 = og 이미지 두 방식 × 3편(`<scratchpad>/blog-mocks/covers/out/final/`, 추천 B 숫자형, 발행 때 파일로 굽고 입력 해시를 커밋하는 방식 추천: Satori og 라우트는 WebGL·woff2를 못 쓰고 한글 Wanted Sans TTF가 저장소에 없음, 필요한 frontmatter `cover_phrase`·`cover_figure`·`cover_figure_label`·`cover_topic`), B안 시안 `<scratchpad>/blog-mocks/b2-grid-b.html`(3편)·`b2-grid-b-12.html`. 오너 컨펌 대기: 이름·썸네일 방식·구현 여부. 구현 때: 기준 문서에 태그 칩 줄과 셰이더 면 먼저, #159·#161과 순서 맞추기(제목이 바뀌면 `cover_phrase`도).
 - **22:5x 에이전트 최종 보고 둘 도착(`mcp-screens`, `blog-article`. 내용은 파일 보고와 같고 이미 #162·#161과 카드 30·29에 반영).** 카드 29에 덧붙임: 상세 페이지 링크 86곳 유지(지시서의 46은 옛 초안 수), 한글 검사기 본문 0건, 검색어 게이트 미확인. 두 워크트리의 `web/.next`는 지우지 못함.
 
 **11/23 18:36 한도로 멈춘 자리(다음 세션이 이어서 할 것)**
