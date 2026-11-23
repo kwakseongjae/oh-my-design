@@ -7,19 +7,25 @@
  *     applied by `next start`, checked 2026-11-23, and could not be checked on a protected Vercel preview);
  *   - only a file the committed manifest lists is answered: `<width>-<key>.jpg` of a listed record, and its
  *     `.thumb.jpg` when the manifest says the store holds one. Anything else in the store, and every request while
- *     the manifest is empty (the shut state) or names a local preview base, is a 404, and the store is not asked.
+ *     the manifest is empty (the shut state), is a 404, and the store is not asked.
+ *
+ * It reads the committed manifest only (never a preview's OMD_SCREENS_MANIFEST, whose stills come from /screens-local),
+ * through lib/screens/manifest.ts, which touches no file: the function bundles the manifest and nothing else.
  *
  * A still may be kept for an hour by a browser and by the CDN (the same hour the store sends); a new deployment
  * starts with an empty CDN cache, so a takedown (scripts/publish-screens.mjs --remove, then deploy) stops here at once.
  */
-import { publicManifest } from "@/lib/screens/public.server";
-import { HTTPS_BASE } from "@/lib/screens/published-base";
+import committed from "@/data/screens-public.generated.json";
+import { validManifest } from "@/lib/screens/manifest";
 
 export const runtime = "nodejs";
 
 /** Seconds a browser and the CDN may keep a still; the publishing script sets the same on the store. */
 const CACHE_SECONDS = 3600;
 const ROBOTS = "noindex, noimageindex";
+
+/** The committed manifest when it names an https store and lists a service, else null. */
+const manifest = validManifest(committed, false);
 
 const notFound = () =>
   new Response("Not found", { status: 404, headers: { "Cache-Control": "no-store", "X-Robots-Tag": ROBOTS } });
@@ -37,8 +43,7 @@ function listedFiles(records: { key: string; width: number; thumb?: boolean }[])
 
 export async function GET(_request: Request, { params }: { params: Promise<{ slug: string; file: string }> }) {
   const { slug, file } = await params;
-  const manifest = publicManifest();
-  if (!manifest || !HTTPS_BASE.test(manifest.base)) return notFound();
+  if (!manifest) return notFound();
   const service = manifest.services.find((s) => s.slug === slug);
   if (!service || !listedFiles(service.records).has(file)) return notFound();
 
