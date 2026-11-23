@@ -4,7 +4,13 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 17:59) — **서비스 화면 공개됨(#157, 운영 확인)** · 오너 결정 대기: 아티팩트 27번(블로그: PR #159 머지, 홈 리뉴얼 A·B·C, 이름) · 28번(일본어 kana, PR #160) · 본 세션이 만드는 중: 런칭 영상, MCP 화면 도구 설계 · **아티팩트 주소 바뀜: https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm** · 도는 에이전트 없음 · 서버 없음
+## 지금 (2026-11-23 18:12) — 서비스 화면 공개됨(#157) · **오너 결정 대기: 아티팩트 27번(블로그 PR #159, 홈 리뉴얼 A·B·C, 이름) · 28번(일본어 kana PR #160) · 26번(런칭 영상 첫 편집본)** · 도는 에이전트 2: `mcp-screens`, `blog-article` · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+
+**11/23 18:12 영상 첫 편집본, 에이전트 둘 시작**
+- **런칭 영상:** `~/Downloads/omd-screens-launch/omd-screens-launch.mp4`(33.0초, 1920×1080, 30fps, 32MB, 나레이션만). 소스 `~/.omd-workers/video/screens-launch/`(`index.html` = HyperFrames 구성 하나, `assets/` = 운영에서 찍은 장면 8장 + `vo-1..6.mp3` + Wanted Sans). 렌더: `cd <소스> && npx -y hyperframes@0.9.84 render . --output <mp4> --fps 30`(약 3분), 프레임 확인 `snapshot . --at …`, 검사 `lint .`(오류 0, 구조 경고 7은 장면을 하위 구성으로 나누라는 권고). ElevenLabs: 음성 `KNy9usSxeZXzNA3l10Jy`(Jian), 모델 `eleven_v4`, 여섯 문장 각 1회, 약 181크레딧, flow `9x0ohBaFbsPoFhIgMGQD`. 「DESIGN.md」는 「디자인 엠디」로 읽힘. 본 세션은 소리를 듣지 못함: 구간(silencedetect)과 음량만 확인. 배경음악·세로·영어 버전 없음. 오너가 말한 「openmotion」 = Open Design 앱의 hyperframes 템플릿 + motion-design 스킬(본 세션의 판단).
+- **에이전트 2개 도는 중(유료):** `mcp-screens`(워크트리 `mcp-screens`, 가지 `feat/mcp-screens`: MCP에 list_screen_types · search_screens · get_service_screens · get_screen_context, 화면 + 그 화면에서 확인된 토큰 + 실측값. 그림 주소는 우리 `/screens-img`. 화면 구성 정보(outline)는 평가와 제안만, 새 데이터 공개 없음. 스킬 연동은 제안서) · `blog-article`(워크트리 `blog-article`, 가지 `feat/blog-article-readable`: 첫 글 재구성, 제목 후보 5개, 숫자 대조 스크립트, 영어판). 지시서·보고서 `<scratchpad>/agent-reports/{mcp-screens,blog-article-readable}{-brief,}.md`. 커밋만.
+- **오너에게 말한 해석:** MCP의 그림 범위 = 「작은 그림과 큰 그림 주소까지」(「무료로 풀고자 해」에서 읽음). 초안 PR로만 올리고, 다르면 머지 전에 바꾼다.
+- 카드: 25(방향 받음) · 26(영상) · 27(블로그) · 28(kana).
 
 **11/23 17:59 공개 완료와 그 과정**
 - **오너 11/23 16:4x:** 「지금은 어차피 레퍼런스 확충 단계니까 서비스는 점차 확충할거야. 그 부분 감안해서 작업해보고, 모빈과 refero mcp를 능가하는(왜냐면 우린 DESIGN.md랑 스킬도 있으니까) 형태를 무료로 풀고자 해. 이 부분에 맞게 잘 구성해봐. 그리고 연결 바꿨어. 영상 까지만 만들고, elevenlabs도 해봐. openmotion은 설치해뒀어. opendesign 안에서 ㅡotion을 쓰는 거 같더라고. opendesign으로 설치해뒀으니까 참고해서 작업해봐.」 → 본 세션의 해석: 업로드 진행 · 영상 제작과 ElevenLabs 사용 go · MCP는 화면 도구를 무료로, 그림 범위는 「작은 그림까지」(「무료로 풀고자 해」에서 읽음, 오너에게 말할 것).

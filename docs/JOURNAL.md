@@ -1,3 +1,8 @@
+## 2026-11-23 18:12 · 런칭 영상 첫 편집본, MCP와 블로그 글 에이전트 시작
+- 한 일: HyperFrames(Open Design의 영상 방식)와 ElevenLabs 나레이션으로 33초 영상. 에이전트 둘 시작(MCP 화면 도구, 블로그 첫 글 다듬기).
+- 찾은 것: 오너의 「openmotion」은 Open Design 앱이었다. npx hyperframes는 앱 밖에서도 렌더한다(33초에 3분).
+- 열린 것(오너): 27 · 28 · 26번. 11/28 전 품질 데이터 갱신 PR.
+
 ## 2026-11-23 17:59 · 서비스 화면 공개(#157)
 - 한 일: 그림 540장 업로드 → 머지 전 운영용 빌드 확인 → 그림 주소를 route handler로 고침 → 머지 → 운영 확인. 블로그 PR #159와 시안 3안, 일본어 kana PR #160을 카드로.
 - 찾은 것: next.config의 header 규칙은 외부 rewrite 응답에 붙지 않았다(next start). Vercel 프리뷰는 SSO 보호라 curl로 못 본다: 운영용 빌드를 로컬에서 돌려 확인한다. fs를 쓰는 모듈을 route가 import하면 함수에 프로젝트 전체가 묶인다.
