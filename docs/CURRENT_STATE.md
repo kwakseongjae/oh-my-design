@@ -4,7 +4,19 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 15:18) — **오너 결정 대기: 아티팩트 24번(최종 검수, 「공개 go」 / 「올리기만」)과 Blob 저장소 연결에 Development 추가(11번, 「연결 바꿨어」)** · #156 머지됨 · 프리뷰 http://localhost:3371 떠 있음(메인 체크아웃 `web/`, 오너가 다 보면 끈다) · 도는 에이전트 없음
+## 지금 (2026-11-23 16:29) — **「공개 go」 받음, 업로드는 Blob 저장소 연결에 Development 추가만 남음(11번, 「연결 바꿨어」)** · 도는 에이전트 2: `blog-renewal`, `kana-ja` · 오너 결정 대기: 25번(MCP에 화면 도구, 그림 범위) · 26번(런칭 영상 대본, openmotion 위치) · 프리뷰 서버 없음
+
+**11/23 16:29 새 스프린트(오너 16:1x 메시지)**
+- **오너 말 그대로:** 「고고 괜찮은거 같아. 그리고 홈 헤더에 블로그가 없어서 블로그로 이동이 어려워. 추가해줘. 지금 글 일단 느낌은 괜찮은데, 조금 너무 학술적인 느낌도 있고, 그림이 적절하게 포함이 안돼서 읽기 난해한 부분도 있어. 글 제목에서 후킹이 아쉬운 부분도 있어. 이 부분도 감안해줘. 그리고 블로그 홈 화면 리뉴얼도 필요할 거 같아. 셰이더 느낌도 조금 넣어거나 썸네일 같은거 태그 디자인같은것도 포함되면 좋을 거 같아. 리뉴얼 시안 나오면 나한테 컨펌 받아줘. <- oh-my-design 이 부분은 빼도 좋을 거 같아. 블로그는 서브도메인으로 뺀 단독 사이트 느낌이니까. 스레드에는 이번에 사이트 레퍼런스 수집한거 관련해서 해주면 될 거 같고, 우리 mcp나 skill 관련해서 해당 레퍼런스를 쓰는 구조도 있어 ? 우리 mcp가 있긴 해 ? mobbin이나 refero처럼 mcp로 레퍼런스 연동해서 실제 시안이나 사이트 레퍼런스 기반으로 하는 기능도 포함하고 스킬로 더 잘 조작하게 하려 하는데. 그 부분도 한번 봐줘. 그리고 우리 elevenlabs있으니까 이번 어찌보면 꽤 큰 런칭 기능 관련해서 openmotion이란걸 이용해서 한번 런칭 영상화 해주면 좋을 거 같아. openmotion은 깔아뒀어. 일본어 kana 페이지도 만들고, 다 만들면 시안 공개도 해줘.」
+- **본 세션의 해석(오너에게 말함):** 「고고 괜찮은거 같아」 = 24번 「공개 go」(올리기 → 초안 PR → 기술 확인 넷 → 머지, 어긋나면 멈춤) · 「시안 공개」 = 시안을 아티팩트에 올려 보여 줌(머지 아님).
+- **업로드는 아직 못 함:** `vercel env ls`로 보니 연결은 여전히 Production·Preview. `vercel blob list-stores`(읽기 전용) = 저장소 `oh-my-design-blob` `store_AwMBlo41eqzg8jRW`, 파일 0. `vercel blob list`는 「No Vercel Blob credentials found」로 거절 → 이 길은 닫음, 다른 자격 증명은 시도하지 않음. 오너의 연결 변경(Development 추가)이 여전히 필요. 신호가 오면: `vercel env pull <scratch 파일> --environment=development`(파일 이름 필수) → 받은 값 확인(토큰이 `vercel_blob_rw_`로 시작하거나 `VERCEL_OIDC_TOKEN`+`BLOB_STORE_ID`) → 워크트리 스크립트로 dry-run 대조 다시 → 한 장 시험(비인증 GET, 헤더, 주소가 테스트의 정규식에 맞는지, `vercel ls`에 새 배포 없음) → 전체 → 저장소 목록 = 540 → 파일 삭제.
+- **3371 프리뷰:** 다른 세션(business_plan_k 리드)이 오너 요청으로 내렸다고 알려 옴(CPU 100~700%). 다시 띄울 때는 짧게만.
+- **에이전트 2개 도는 중(유료, 오너에게 이름 말함):** `blog-renewal`(워크트리 `.claude/worktrees/blog-renewal`, 가지 `feat/blog-renewal` = main + #130 병합: 상단 메뉴에 블로그 링크, 블로그의 「← oh-my-design」 제거, 블로그 홈 리뉴얼 **정지 시안 3안만**(코드 변경 없음), 시안은 `<scratchpad>/blog-mocks/`) · `kana-ja`(워크트리 `kana-ja`, 가지 `feat/kana-ja`: `/ja/kana`, 일본어 출처 인용 중심, 우리가 쓴 일본어는 한 파일의 메뉴·안내 문구뿐, 일본어 표시, noindex). 지시서와 보고서: `<scratchpad>/agent-reports/{blog-renewal,kana-ja}{-brief,}.md`. 커밋만, 푸시·PR·카드는 본 세션.
+- **다음 에이전트(자리 나면):** 블로그 첫 글 다듬기(제목 후보 여러 개 · 덜 학술적 · 그림 배치, 슬러그 유지, 숫자는 `rows.json`과 다시 대조, 영어판 같이).
+- **MCP 조사(카드 25):** 운영 `/api/mcp`의 `tools/list` = 6개(search_references, get_reference, get_design_md, get_tokens, get_component_states, compare_references), 화면 도구 없음, 스킬은 MCP를 안 씀. Mobbin MCP(원격·OAuth·Pro 이상: search_screens/flows/sections + 컬렉션), Refero MCP(Pro 포함, 화면 145,000+·흐름 12,000+, 화면마다 글 메타데이터, 스킬 배포, DESIGN.md 2,000+도 제공)는 각 회사 페이지를 11/23에 읽음. 제안 = 화면 도구 둘 → 화면의 글 구성 정보 → 스킬의 레퍼런스 조사 단계. **그림을 에이전트에게 주는 범위는 새 배포 경로라 오너 결정(추천: 작은 그림까지).**
+- **런칭 영상(카드 26):** 40초 대본·콘티. ElevenLabs는 대본 go 뒤. **openmotion은 이 Mac에서 못 찾음**(전역·이 저장소·`~/projects` 두 단계). npm의 openmotion 0.1.1은 Next.js 앱에 모션 런타임과 `/studio`를 다는 도구(영상 렌더러 아님) → 운영 코드에 넣지 않기를 추천, 위치를 오너에게 물음. 제작은 `product-demo-video` 스킬 방식으로 계획.
+- **스레드 초안(화면 수집 건):** `~/Downloads/threads-screens/thread.md`. 공개 뒤 실제 주소에서 그림 3장을 찍어 같은 폴더에. 브랜드 컬러 건은 `~/Downloads/threads-kr-brand-colours/`.
+- **11/28 전에 할 것:** 레퍼런스 품질 데이터 갱신 PR(sendbird 180일 기한, 11/12 기록 기준).
 
 **11/23 15:18 최종 검수 카드 올림**
 - **오너 11/23 14:1x:** 「ㄱㄱㄱ 검수 먼저 해봐. 그리고 블로그는 어떻게 하고 있어 ? 스레드에 업로드는 내가 직접할 건데 어떤 컨텐츠로 업로드할 건지도 브리핑해줘. 다음 작업은 뭘로 할거야 ? Kana같은건 끝났어 ? 700개랑.」 → 본 세션의 해석: 「ㄱㄱㄱ」 = #156 머지 go, 「검수 먼저」 = 올리기 전에 이 Mac 프리뷰로 최종 검수(카드 11의 선택지). 그 앞 턴의 「셋다 고쳐.」로 기준 문서의 낡은 문장 셋(+같은 이유의 글자 크기 행 하나)을 #156에 넣음.
