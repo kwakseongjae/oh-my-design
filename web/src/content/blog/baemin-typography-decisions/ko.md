@@ -2,6 +2,7 @@
 title: "배민의 글자를 DESIGN.md에 옮길 때 구분해야 할 세 가지"
 description: "브랜드 서체, 행사 웹의 본문 서체, 앱 리브랜딩을 나누어 읽고 프로젝트의 디자인 판단으로 옮기는 방법을 살펴봅니다."
 date: "2026-09-29"
+updated: "2026-10-21"
 tags: ["curation", "baemin", "typography", "DESIGN.md"]
 ---
 
