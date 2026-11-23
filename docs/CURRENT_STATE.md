@@ -4,7 +4,16 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-22 20:08) — #155 머지됨(운영 변화 없음) · 화면 구성 바뀜: 컬리·오늘의집 제외, 교보문고·마이리얼트립·메가박스 추가 → 서비스 12 · 화면 137 · 오너 확인 대기: 아티팩트 23번(새 세 곳) · Blob 토큰 · **프리뷰 http://localhost:3371 떠 있음(메인 체크아웃에서, 오너가 다 보면 끈다)**
+## 지금 (2026-11-23 12:57) — 오너가 새 구성(12곳 · 137화면)을 프리뷰에서 확인 · **업로드는 토큰 대기: Blob 토큰이 운영·프리뷰에만 「비밀 값」이라 이 Mac에서 못 읽음 → 오너에게 저장소 연결에 Development 추가를 요청함(「연결 바꿨어」가 신호)** · 공개용 브랜치 `feat/screens-publish` 준비됨 · 에이전트 design-md-screens 진행 중 · 프리뷰 서버 없음
+
+**11/23 12:57 공개 직전 상태**
+- **오너 11/23 12:4x:** 「blob은 production에는 넣었어. env local에는 굳이 안넣었어. 프리뷰 서버 다 확인은 했어. 괜찮은 거 같아. 다음 작업 뭐야 ?」 → 아티팩트 23번(새 세 곳) 확인으로 읽음. 3371 프리뷰는 이미 내려가 있었다(내가 끈 것이 아님, 고아 프로세스 없음).
+- **토큰:** `vercel env ls`로 이름만 확인: `BLOB_READ_WRITE_TOKEN`(Secret, Production·Preview), `BLOB_STORE_ID`, `BLOB_WEBHOOK_PUBLIC_KEY`. Vercel 문서: Secret 값은 저장 뒤 쓰기 전용(대시보드에서도 다시 못 봄), 받아 오기는 Development 연결이 있어야 함(저장소 Projects 탭 → ⋯ → Update Project Connection → Development). **오너에게 이 한 가지를 요청했다.** 신호가 오면: `vercel env pull <scratch 파일> --environment=development` → `node --env-file=<그 파일> <worktree>/web/scripts/publish-screens.mjs --upload --sheets ~/Downloads/kr-screens/web`(반드시 `feat/screens-publish` 워크트리의 스크립트로: 매니페스트가 그 워크트리에 쓰인다) → 파일 삭제. 값은 출력하지 않는다. 사이트는 토큰을 읽지 않는다(매니페스트의 base로 rewrite만).
+- **`vercel env run`은 쓰지 않는다:** `vercel env run -e production -- node -e …`가 CLI 65.9.0에서 명령을 그대로 돌리지 않고 `vercel`을 다시 불러 배포를 시도했다(`deploy_failed: Request body too large`로 실패, `vercel ls`에 새 배포 없음 확인). 오너에게 보고함.
+- **대조:** `publish-screens.mjs --dry-run`의 목록 = 오너가 본 `manifest-local.json`과 270행 전부 같음(slug·key·width·type·title·masked·thumb, 색 매칭도 같음). 12곳 · 137화면 · 그림 270(21.6MB) + 작은 그림 270(9.2MB) · 가린 화면 7 · kurly/ohouse 0.
+- **`feat/screens-publish`**(워크트리 `.claude/worktrees/screens-publish`, `9f94153c`, 푸시 안 함): 닫힌 상태 테스트 3파일이 커밋된 매니페스트를 빈 것으로 고정(mock)하게 하고, 「커밋된 매니페스트는 닫힌 상태」 테스트를 「닫힌 상태이거나 운영 리더가 받는 매니페스트(https Blob base), kurly·ohouse 없음」으로 바꿈. 빈 매니페스트·채운 매니페스트 양쪽에서 전체 1,594개 통과, tsc 통과. 업로드 뒤 여기에 매니페스트를 커밋해 초안 PR → 프리뷰에서 `curl -sI <preview>/screens-img/29cm/390-home.jpg`의 `X-Robots-Tag` 확인 → 오너 최종 검수(페이지별 그림 + 프리뷰 주소) → go 뒤 머지. `screen-removal` 라벨 만들기, 첫 업로드 뒤 저장소 파일 수 = 540 확인, 비인증 GET 한 번.
+- **에이전트 1개 도는 중:** `design-md-screens`(ops-builder, 워크트리 `.claude/worktrees/design-md-screens`, 브랜치 `docs/design-md-screens`): `web/public/design.md`에 필터 · 서비스 카드 · 격자 정의(값은 머지된 코드에서 읽음) + GA4 `screens_download` 문서화. 보고서 `<scratchpad>/agent-reports/design-md-screens.md`. 커밋만, 푸시와 초안 PR은 본 세션.
+- `web/node_modules`에 `@vercel/blob`이 없어서 메인 체크아웃 `web/`에서 `npm install`을 돌렸다(25개 추가, lock 변화 없음).
 
 **오너 11/21 22:30 「블로그 첫글에 이미지도 막 포함해서 고퀄리티 큐레이션 느낌으로 구성해줘. 다국어 처리도 했지 ? kana도 hangul처럼 별도 화면을 만들어서 실제 비교하면서 보여주면 좋을 듯. 그리고 화면 탭을 두는것도 좋은데, 저 레퍼런스들만 모아놓은 mobbin같은 페이지도 있으면 좋을 거 같아. 그 부분도 작업해줘 랜딩페이지에 포함도 해주고, 어떤 형태로 보여줄지는 조금 더 고민해봐. 나머진 추천대로할게 작업 잘 진행하고 있어.」**
 - **「나머진 추천대로」가 덮는 것(본 세션의 해석, 카드 그림을 본 뒤의 말):** 카드 7 = #137 머지(뒤이어 루트 `DESIGN.md` 교체) · 카드 9 = #139 머지 · #141 · #140 · 퀸잇(partial 유지, 측정 도구에 폰 폭 옵션, Codex 1회). 하나씩 머지하고 운영 확인.
