@@ -12,6 +12,7 @@
 - **MCP에서 나온 것(오너에게 알림):** `llms.txt`·`llms.ko.txt`·`llms-full.txt`와 `/terms`가 아직 「커넥터 종료」라고 말한다(실제로는 운영 중) → 수정 PR을 따로(약관 문구라 오너 go).
 - **새 에이전트 2개 도는 중(유료):** `kana-showcase`(워크트리 `kana-redesign`, 가지 `feat/kana-showcase`: /hangul 분석 → 정지 시안 2안 `<scratchpad>/kana-mocks/`, 앱 코드 변경 없음) · `blog-home-b`(워크트리 `blog-b`, 가지 `feat/blog-home-b` = feat/blog-renewal 위: 업계 블로그 이름 조사 → 이름 3개·태그, 전용 썸네일 2방식 × 3편(og 겸용), B안 시안 3편·12편). 지시서 `<scratchpad>/agent-reports/{kana-showcase,blog-home-b}-brief.md`.
 - 카드: 26(영상 v2) · 29(글) · 30(MCP) 추가.
+- **22:5x 에이전트 최종 보고 둘 도착(`mcp-screens`, `blog-article`. 내용은 파일 보고와 같고 이미 #162·#161과 카드 30·29에 반영).** 카드 29에 덧붙임: 상세 페이지 링크 86곳 유지(지시서의 46은 옛 초안 수), 한글 검사기 본문 0건, 검색어 게이트 미확인. 두 워크트리의 `web/.next`는 지우지 못함.
 
 **11/23 18:36 한도로 멈춘 자리(다음 세션이 이어서 할 것)**
 - **영상 v2:** HyperFrames 스킬(`~/.claude/skills/hyperframes`, `references/types/launch.md`·`story.md`)의 절차대로 세 이야기를 글로만 씀(STORYLINES.md: A 스크린샷 폴더 / B 로그인 화면 여덟 개 / C 연습곡). **오너가 고르기 전에는 만들지 않는다.** 고르면 `SPEC.md` → 장면별 하위 구성 → `check` → `snapshot --review` → 렌더. v1이 틀린 곳(스킬의 말로): 전체 화면 스크린샷에 제목을 얹은 나열, 제품이 일하는 모습 없음. 지킬 것: 실제 화면만, 동작을 1.6~2배로 떼어 보여 주고 제자리로 돌려놓기, 큰 커서, 끝 화면의 로고는 연출해서. 음악: ElevenLabs에 `eleven_music_v2_5`가 있음(크레딧, 오너에게 말하고 사용) 또는 공개 클래식 피아노 녹음(Wikimedia의 Musopen 녹음은 공개 표시가 붙은 것만). 오너 요구: 빠르고 화끈한 템포, 나레이션보다 컨셉과 문구.
