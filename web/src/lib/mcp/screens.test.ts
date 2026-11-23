@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import committed from "@/data/screens-public.generated.json";
 import { validManifest, type PublicManifest } from "@/lib/screens/manifest";
-import { CatalogError, FROM_DESIGN_MD, SCREEN_USE, SEEN_ON_SCREEN, outputs } from "./contracts";
+import { CatalogError, FROM_CAPTURE, FROM_DESIGN_MD, SCREEN_USE, SEEN_ON_SCREEN, outputs } from "./contracts";
 import { toolResult } from "./response";
-import { COMMITTED_MANIFEST, getScreenContext, getServiceScreens, listScreenTypes, searchScreens, servicesOf } from "./screens";
+import { COMMITTED_MANIFEST, COMMITTED_OUTLINES, getScreenContext, getServiceScreens, listScreenTypes, searchScreens, servicesOf, validOutlines } from "./screens";
 
 const manifest = COMMITTED_MANIFEST!;
 const SERVICES = servicesOf(manifest);
@@ -162,5 +162,34 @@ describe("get_screen_context", () => {
     const data = outputs.get_screen_context.parse(getScreenContext({ id: "karrot", key: "home", include: ["rounded"] }));
     expect(Object.keys(data.from_design_md!).sort()).toEqual(["label", "rounded"]);
     expect(data.seen_on_this_screen).toBeDefined();
+  });
+});
+
+describe("outline (reader only; nothing is published)", () => {
+  const entry = (width: number) => ({
+    viewport: { width, height: 844 }, page_height: 3690, elements_capped: false,
+    first_viewport: { counts: { link: 10, button: 4, field: 1 }, controls: [{ role: "field", box: { x: 36, y: 96, w: 284, h: 24 }, radius: 9999, fill: "#ffffff" }] },
+    whole_page: { counts: { link: 64, button: 8 } },
+  });
+
+  it("is absent for every screen while the committed file is empty", () => {
+    expect(COMMITTED_OUTLINES.size).toBe(0);
+    const data = outputs.get_screen_context.parse(getScreenContext({ id: "karrot", key: "home", include: ["rounded"] }));
+    expect(data).not.toHaveProperty("outline");
+    expect(data.absent).toContain("outline");
+  });
+
+  it("travels on the published widths only, labelled, with no text, and an entry of the wrong shape is left out", () => {
+    const outlines = validOutlines({ screens: {
+      "karrot/home": { 390: { ...entry(390), labels: ["a person's name"] }, 800: entry(800) },
+      "karrot/detail": { 390: { ...entry(390), elements_capped: "no" } },
+      "karrot/search-results": { 390: { ...entry(390), first_viewport: { counts: { link: 1 }, controls: [{ role: "field", box: { x: 0, y: 0, w: 1, h: 1 }, fill: "white" }] } } },
+    } });
+    expect([...outlines.keys()]).toEqual(["karrot/home"]);
+    const data = outputs.get_screen_context.parse(getScreenContext({ id: "karrot", key: "home", include: ["rounded"] }, manifest, outlines));
+    expect(data.outline).toMatchObject({ label: FROM_CAPTURE, mobile: { width: 390, first_viewport: { counts: { field: 1 } } } });
+    expect(data.outline).not.toHaveProperty("desktop");
+    expect(JSON.stringify(data.outline)).not.toContain("name");
+    expect(data.absent).not.toContain("outline");
   });
 });

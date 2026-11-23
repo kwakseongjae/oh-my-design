@@ -14,6 +14,7 @@
  */
 
 import committed from "@/data/screens-public.generated.json";
+import committedOutlines from "@/data/screens-outline.generated.json";
 import { SCREENS_NOTICE } from "@/components/screens/notice-copy";
 import { SCREENS_CONTACT_EMAIL, screenRemovalHref } from "@/lib/screens/contact";
 import { publicModel, validManifest, type PublicManifest } from "@/lib/screens/manifest";
@@ -21,7 +22,7 @@ import { deviceOf, type Device, type ScreenCard, type ScreensModel } from "@/lib
 import { compareTypes, groupByType, typeName, typeParam } from "@/lib/screens/screen-types";
 import { getComponentStates, getTokens, knownReference, summaryFor } from "./catalog";
 import {
-  CONTEXT_GROUPS, DEVICES, FROM_DESIGN_MD, SCREEN_USE, SEEN_ON_SCREEN, CatalogError, envelope,
+  CONTEXT_GROUPS, DEVICES, FROM_CAPTURE, FROM_DESIGN_MD, SCREEN_USE, SEEN_ON_SCREEN, CatalogError, envelope,
   type SourcedValue, type Summary, type ToolInput,
 } from "./contracts";
 
@@ -57,6 +58,101 @@ export function servicesOf(manifest: PublicManifest | null): Service[] {
   services.sort((a, b) => Number(b.platform === "both") - Number(a.platform === "both") || a.summary.id.localeCompare(b.summary.id));
   servicesCache.set(manifest, services);
   return services;
+}
+
+// ---- outlines (reader only) ----------------------------------------------------------------------------------------
+
+/**
+ * A screen's structural outline, per width: element counts by role in the first viewport and on the whole page, and
+ * the boxes of the form controls and filled controls in the first viewport. Counted by script from the walk's element
+ * lists (tools/screen-archive/web-shoot.mjs); no text travels, since those lists are the page as served, before people
+ * were hidden. web/scripts/publish-screens.mjs does not write the file yet: the committed file is empty, and every
+ * screen's outline is absent until the owner approves publishing it (docs/MCP_SCREENS_2026-11-23.md).
+ *
+ * The file: { generated, screens: { "<slug>/<key>": { "<width>": OutlineEntry } } }. Read strictly: only these fields
+ * are read, an entry with one of the wrong type is left out, and nothing else in the file can reach an answer.
+ */
+interface OutlineEntry {
+  viewport: { width: number; height: number };
+  page_height?: number;
+  elements_capped: boolean;
+  first_viewport: { counts: Record<string, number>; controls: { role: string; box: { x: number; y: number; w: number; h: number }; radius?: number; fill?: string }[] };
+  whole_page: { counts: Record<string, number> };
+}
+export type Outlines = Map<string, Map<number, OutlineEntry>>;
+
+const ROLE = /^[a-z][a-z0-9]{0,23}$/;
+const int = (v: unknown): v is number => Number.isInteger(v) && (v as number) >= 0 && (v as number) < 100000;
+const box = (v: unknown) => !!v && typeof v === "object" && ["x", "y", "w", "h"].every((k) => Number.isInteger((v as Record<string, unknown>)[k]));
+function countsOf(v: unknown): Record<string, number> | null {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  const entries = Object.entries(v as Record<string, unknown>);
+  return entries.every(([k, n]) => ROLE.test(k) && int(n)) ? Object.fromEntries(entries) as Record<string, number> : null;
+}
+function entryOf(v: unknown): OutlineEntry | null {
+  if (!v || typeof v !== "object") return null;
+  const e = v as Record<string, unknown>;
+  const vp = e.viewport as Record<string, unknown> | undefined;
+  const fv = e.first_viewport as Record<string, unknown> | undefined;
+  const wp = e.whole_page as Record<string, unknown> | undefined;
+  const fvCounts = countsOf(fv?.counts);
+  const wpCounts = countsOf(wp?.counts);
+  if (!vp || !int(vp.width) || !int(vp.height) || typeof e.elements_capped !== "boolean" || !fvCounts || !wpCounts || !Array.isArray(fv?.controls)) return null;
+  if (e.page_height !== undefined && !int(e.page_height)) return null;
+  const controls = (fv.controls as Record<string, unknown>[]).filter((c) => c && typeof c.role === "string" && ROLE.test(c.role) && box(c.box)
+    && (c.radius === undefined || (typeof c.radius === "number" && c.radius >= 0)) && (c.fill === undefined || (typeof c.fill === "string" && /^#[0-9a-f]{6}$/.test(c.fill))));
+  if (controls.length !== fv.controls.length) return null;
+  return {
+    viewport: { width: vp.width as number, height: vp.height as number },
+    ...(e.page_height !== undefined ? { page_height: e.page_height as number } : {}),
+    elements_capped: e.elements_capped,
+    first_viewport: {
+      counts: fvCounts,
+      controls: controls.map((c) => {
+        const b = c.box as Record<string, number>;
+        return { role: c.role as string, box: { x: b.x, y: b.y, w: b.w, h: b.h }, ...(c.radius !== undefined ? { radius: c.radius as number } : {}), ...(c.fill !== undefined ? { fill: c.fill as string } : {}) };
+      }),
+    },
+    whole_page: { counts: wpCounts },
+  };
+}
+
+/** The outline file, read strictly; an unreadable file is the same as an empty one. */
+export function validOutlines(raw: unknown): Outlines {
+  const out: Outlines = new Map();
+  const screens = raw && typeof raw === "object" ? (raw as Record<string, unknown>).screens : null;
+  if (!screens || typeof screens !== "object") return out;
+  for (const [id, widths] of Object.entries(screens as Record<string, unknown>)) {
+    if (!widths || typeof widths !== "object") continue;
+    const byWidth = new Map<number, OutlineEntry>();
+    for (const [w, entry] of Object.entries(widths as Record<string, unknown>)) {
+      const width = Number(w);
+      const valid = entryOf(entry);
+      if (Number.isInteger(width) && valid && valid.viewport.width === width) byWidth.set(width, valid);
+    }
+    if (byWidth.size) out.set(id, byWidth);
+  }
+  return out;
+}
+
+export const COMMITTED_OUTLINES: Outlines = validOutlines(committedOutlines);
+
+/** One screen's outline on the widths it is published at, or null when the file has no entry for any of them. */
+function outlineOf(outlines: Outlines, s: Service, card: ScreenCard) {
+  const byWidth = outlines.get(`${s.summary.id}/${card.key}`);
+  if (!byWidth) return null;
+  const devices: Partial<Record<Device, OutlineEntry & { width: number }>> = {};
+  for (const still of card.stills) {
+    const entry = byWidth.get(still.width);
+    const d = deviceOf(still.width);
+    if (entry && !devices[d]) devices[d] = { width: still.width, ...entry };
+  }
+  if (!Object.keys(devices).length) return null;
+  return {
+    label: FROM_CAPTURE,
+    basis: "Counted by script from the elements the capture recorded on the page as served (links, buttons, form fields, headings, images, landmarks), by their boxes: an element counts in the first viewport when its box meets it. Visibility was not checked, and the capture keeps at most 500 elements (elements_capped). No text is included.",
+    ...devices,
+  };
 }
 
 // ---- the pieces every answer is made of ----------------------------------------------------------------------------
@@ -283,14 +379,18 @@ export function getServiceScreens({ id, device }: ToolInput<"get_service_screens
 /** What the published data cannot say about one screen, so an agent does not fill it in. */
 const NOT_KNOWN = [
   "Which DESIGN.md component each element on this screen is: the published data does not link screen elements to catalog components.",
-  "Layout measurements of this screen (grid, columns, element positions and sizes).",
+  "Layout measurements of this screen (grid, columns, element positions and sizes), beyond what outline gives when it is present.",
   "Type sizes, radii and spacing on this screen: only colours were compared screen by screen.",
   "For a colour seen on this screen: which element, property or width it was found on, and how often.",
   "Interaction states on this screen: the stills are at rest.",
   "Any text or image on the screen beyond what the still shows.",
 ];
 
-export function getScreenContext({ id, key, include = [...CONTEXT_GROUPS] }: ToolInput<"get_screen_context">, manifest: PublicManifest | null = COMMITTED_MANIFEST) {
+export function getScreenContext(
+  { id, key, include = [...CONTEXT_GROUPS] }: ToolInput<"get_screen_context">,
+  manifest: PublicManifest | null = COMMITTED_MANIFEST,
+  outlines: Outlines = COMMITTED_OUTLINES,
+) {
   if (!servicesOf(manifest).length) return screensEnvelope(manifest, {});
   const reference = summaryFor(id);
   const s = serviceFor(manifest, id);
@@ -298,6 +398,8 @@ export function getScreenContext({ id, key, include = [...CONTEXT_GROUPS] }: Too
   if (!s || !card) throw new CatalogError("unknown_screen", `No published screen '${key}' for '${id}'. Use get_service_screens or search_screens for the keys there are.`);
   const absent = [...reference.absent];
   const groups = [...new Set(include)];
+  const outline = outlineOf(outlines, s, card);
+  if (!outline) absent.push("outline");
 
   // The colour group is read whole, to join the manifest's colours to their evidence.
   const tokens = getTokens({ id, groups: ["colors", ...groups.filter((g): g is "typography" | "rounded" | "spacing" => g !== "components")] });
@@ -328,6 +430,7 @@ export function getScreenContext({ id, key, include = [...CONTEXT_GROUPS] }: Too
   return screensEnvelope(manifest, {
     reference,
     screen: screenOf(s, card),
+    ...(outline ? { outline } : {}),
     seen_on_this_screen: {
       label: SEEN_ON_SCREEN,
       basis: `Exact value (#rrggbb, opaque) found among the computed colours of this screen's captured elements, compared with this service's DESIGN.md colour tokens on the walk's day${s.model.shot ? ` (${s.model.shot})` : ""}, at one or more of its widths.`,

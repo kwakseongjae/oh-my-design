@@ -14,6 +14,7 @@ export const CONTEXT_GROUPS = ["typography", "rounded", "spacing", "components"]
 export const SCREEN_USE = "Study layout and patterns; do not copy a company's branding, text or images verbatim.";
 export const SEEN_ON_SCREEN = "seen on this screen" as const;
 export const FROM_DESIGN_MD = "from this service's DESIGN.md, not claimed to be on this screen" as const;
+export const FROM_CAPTURE = "counted from the captured page's element boxes, not checked by eye" as const;
 
 export const annotations = { readOnlyHint: true, idempotentHint: true, openWorldHint: false } as const;
 const id = z.string().min(1).max(80).describe("Exact catalog id; use search_references to discover it. Names are never substituted.");
@@ -141,6 +142,16 @@ export const screenSchema = z.object({
   tokens_seen: z.array(seenColorSchema),
   absent: z.array(z.string()),
 });
+const outlineWidthSchema = z.object({
+  width: z.number().int(), viewport: z.object({ width: z.number().int(), height: z.number().int() }),
+  page_height: z.number().int().optional(), elements_capped: z.boolean(),
+  first_viewport: z.object({
+    counts: z.record(z.string(), z.number().int()),
+    controls: z.array(z.object({ role: z.string(), box: z.object({ x: z.number().int(), y: z.number().int(), w: z.number().int(), h: z.number().int() }), radius: z.number().optional(), fill: z.string().optional() })),
+  }),
+  whole_page: z.object({ counts: z.record(z.string(), z.number().int()) }),
+});
+export const outlineSchema = z.object({ label: z.literal(FROM_CAPTURE), basis: z.string(), mobile: outlineWidthSchema.optional(), desktop: outlineWidthSchema.optional() });
 const nextSchema = z.object({ design_md: z.string(), tools: z.array(z.object({ name: z.string(), arguments: record, gives: z.string() })) });
 const screensCommon = { ...common, screens: screensBlockSchema };
 const screenOutputs = {
@@ -168,6 +179,7 @@ const screenOutputs = {
     ...screensCommon,
     reference: summarySchema.optional(),
     screen: screenSchema.optional(),
+    outline: outlineSchema.optional(),
     seen_on_this_screen: z.object({
       label: z.literal(SEEN_ON_SCREEN), basis: z.string(),
       colors: z.array(seenColorSchema.extend({ design_md: valueSchema.optional(), design_md_value_now: z.string().optional() })),
