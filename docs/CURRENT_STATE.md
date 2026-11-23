@@ -4,7 +4,7 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 12:57) — 오너가 새 구성(12곳 · 137화면)을 프리뷰에서 확인 · **업로드는 토큰 대기: Blob 토큰이 운영·프리뷰에만 「비밀 값」이라 이 Mac에서 못 읽음 → 오너에게 저장소 연결에 Development 추가를 요청함(「연결 바꿨어」가 신호)** · 공개용 브랜치 `feat/screens-publish` 준비됨 · 에이전트 design-md-screens 진행 중 · 프리뷰 서버 없음
+## 지금 (2026-11-23 12:57) — 오너가 새 구성(12곳 · 137화면)을 프리뷰에서 확인 · **업로드는 토큰 대기: Blob 토큰이 운영·프리뷰에만 「비밀 값」이라 이 Mac에서 못 읽음 → 오너에게 저장소 연결에 Development 추가를 요청함(「연결 바꿨어」가 신호)** · 공개용 브랜치 `feat/screens-publish` 준비됨 · 기준 문서 보강은 초안 PR #156(go 대기) · 도는 에이전트 없음 · 프리뷰 서버 없음
 
 **11/23 12:57 공개 직전 상태**
 - **오너 11/23 12:4x:** 「blob은 production에는 넣었어. env local에는 굳이 안넣었어. 프리뷰 서버 다 확인은 했어. 괜찮은 거 같아. 다음 작업 뭐야 ?」 → 아티팩트 23번(새 세 곳) 확인으로 읽음. 3371 프리뷰는 이미 내려가 있었다(내가 끈 것이 아님, 고아 프로세스 없음).
@@ -13,7 +13,7 @@
 - **오너에게 물은 순서(카드 11):** 추천 = 먼저 올리고 Vercel 프리뷰로 최종 검수. 업로드 시점부터 그림이 Blob 공개 주소로 열린다(주소 규칙이 단순하고 매니페스트가 공개 저장소의 초안 PR에 올라감)고 알렸고, 걸리면 「검수 먼저」(이 Mac 프리뷰로 검수 → go 뒤 업로드)를 고를 수 있다고 했다. 「연결 바꿨어」 = 추천대로. 연결 뒤 토큰이 읽히는지는 미확인: 받은 값이 `vercel_blob_rw_`로 시작하는지로 확인(자리표시 값일 수 있음). 업로드 직전에 워크트리 스크립트로 dry-run 대조를 다시 한다. 올린 뒤 Blob 주소의 응답 헤더를 읽어 보고한다.
 - **대조:** `publish-screens.mjs --dry-run`의 목록 = 오너가 본 `manifest-local.json`과 270행 전부 같음(slug·key·width·type·title·masked·thumb, 색 매칭도 같음). 12곳 · 137화면 · 그림 270(21.6MB) + 작은 그림 270(9.2MB) · 가린 화면 7 · kurly/ohouse 0.
 - **`feat/screens-publish`**(워크트리 `.claude/worktrees/screens-publish`, `f9eebb7e`, 푸시 안 함; 둘째 커밋은 `needToken()`이 `VERCEL_OIDC_TOKEN`+`BLOB_STORE_ID`도 받게 함: 연결을 바꿔도 토큰이 안 읽힐 때의 길, @vercel/blob 2.9가 지원): 닫힌 상태 테스트 3파일이 커밋된 매니페스트를 빈 것으로 고정(mock)하게 하고, 「커밋된 매니페스트는 닫힌 상태」 테스트를 「닫힌 상태이거나 운영 리더가 받는 매니페스트(https Blob base), kurly·ohouse 없음」으로 바꿈. 빈 매니페스트·채운 매니페스트 양쪽에서 전체 1,594개 통과, tsc 통과. 업로드 뒤 여기에 매니페스트를 커밋해 초안 PR → 프리뷰에서 `curl -sI <preview>/screens-img/29cm/390-home.jpg`의 `X-Robots-Tag` 확인 → 오너 최종 검수(페이지별 그림 + 프리뷰 주소) → go 뒤 머지. `screen-removal` 라벨 만들기, 첫 업로드 뒤 저장소 파일 수 = 540 확인, 비인증 GET 한 번.
-- **에이전트 1개 도는 중:** `design-md-screens`(ops-builder, 워크트리 `.claude/worktrees/design-md-screens`, 브랜치 `docs/design-md-screens`): `web/public/design.md`에 필터 · 서비스 카드 · 격자 정의(값은 머지된 코드에서 읽음) + GA4 `screens_download` 문서화. 보고서 `<scratchpad>/agent-reports/design-md-screens.md`. 커밋만, 푸시와 초안 PR은 본 세션.
+- **끝남 → 초안 PR #156**(`docs/design-md-screens`, 워크트리 유지): 에이전트 커밋 `90f4ed0b` + 본 세션 커밋(기기 전환 버튼 초점 외곽선 한 줄, 문서 맞춤). 오너 go 뒤 머지, 머지 뒤 메인 체크아웃의 루트 `DESIGN.md`(gitignore된 로컬 사본)를 새 파일로 바꿀 것. 기존 문장 셋(Scope에 /screens 없음 · lg 48px 「미적용」 · 액션 버튼의 loading/error)은 승인된 문장이라 손대지 않고 PR 본문에 적음. 원래 줄: `design-md-screens`(ops-builder, 워크트리 `.claude/worktrees/design-md-screens`, 브랜치 `docs/design-md-screens`): `web/public/design.md`에 필터 · 서비스 카드 · 격자 정의(값은 머지된 코드에서 읽음) + GA4 `screens_download` 문서화. 보고서 `<scratchpad>/agent-reports/design-md-screens.md`. 커밋만, 푸시와 초안 PR은 본 세션.
 - `web/node_modules`에 `@vercel/blob`이 없어서 메인 체크아웃 `web/`에서 `npm install`을 돌렸다(25개 추가, lock 변화 없음).
 
 **오너 11/21 22:30 「블로그 첫글에 이미지도 막 포함해서 고퀄리티 큐레이션 느낌으로 구성해줘. 다국어 처리도 했지 ? kana도 hangul처럼 별도 화면을 만들어서 실제 비교하면서 보여주면 좋을 듯. 그리고 화면 탭을 두는것도 좋은데, 저 레퍼런스들만 모아놓은 mobbin같은 페이지도 있으면 좋을 거 같아. 그 부분도 작업해줘 랜딩페이지에 포함도 해주고, 어떤 형태로 보여줄지는 조금 더 고민해봐. 나머진 추천대로할게 작업 잘 진행하고 있어.」**
