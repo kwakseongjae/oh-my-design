@@ -4,7 +4,20 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 16:29) — **「공개 go」 받음, 업로드는 Blob 저장소 연결에 Development 추가만 남음(11번, 「연결 바꿨어」)** · 도는 에이전트 2: `blog-renewal`, `kana-ja` · 오너 결정 대기: 25번(MCP에 화면 도구, 그림 범위) · 26번(런칭 영상 대본, openmotion 위치) · 프리뷰 서버 없음
+## 지금 (2026-11-23 17:59) — **서비스 화면 공개됨(#157, 운영 확인)** · 오너 결정 대기: 아티팩트 27번(블로그: PR #159 머지, 홈 리뉴얼 A·B·C, 이름) · 28번(일본어 kana, PR #160) · 본 세션이 만드는 중: 런칭 영상, MCP 화면 도구 설계 · **아티팩트 주소 바뀜: https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm** · 도는 에이전트 없음 · 서버 없음
+
+**11/23 17:59 공개 완료와 그 과정**
+- **오너 11/23 16:4x:** 「지금은 어차피 레퍼런스 확충 단계니까 서비스는 점차 확충할거야. 그 부분 감안해서 작업해보고, 모빈과 refero mcp를 능가하는(왜냐면 우린 DESIGN.md랑 스킬도 있으니까) 형태를 무료로 풀고자 해. 이 부분에 맞게 잘 구성해봐. 그리고 연결 바꿨어. 영상 까지만 만들고, elevenlabs도 해봐. openmotion은 설치해뒀어. opendesign 안에서 ㅡotion을 쓰는 거 같더라고. opendesign으로 설치해뒀으니까 참고해서 작업해봐.」 → 본 세션의 해석: 업로드 진행 · 영상 제작과 ElevenLabs 사용 go · MCP는 화면 도구를 무료로, 그림 범위는 「작은 그림까지」(「무료로 풀고자 해」에서 읽음, 오너에게 말할 것).
+- **업로드:** 연결에 Development가 붙자 `BLOB_READ_WRITE_TOKEN`이 Config(읽을 수 있는 값)가 됨. `vercel env pull <scratch> --environment=development --yes` → 값의 꼴만 확인 → 한 장 시험(공개 주소 200, 크기 일치, Blob 주소에는 X-Robots-Tag 없음) → `--upload` 전체. 저장소 목록 540 = 매니페스트 540(빠짐 0, 남음 0, 30.7MB). 받은 파일은 삭제. base `https://awmblo41eqzg8jrw.public.blob.vercel-storage.com/screens`.
+- **머지 전에 멈춘 일:** Vercel 프리뷰는 SSO 보호(`all_except_custom_domains`)라 curl로 못 읽음. `vercel curl`은 프로젝트에 보호 우회 비밀값을 만들 수 있어(지금 없음) 쓰지 않음. 대신 운영용 빌드를 이 Mac에서 돌려 확인(`next build` + `next start -p 3390`, 워크트리는 node_modules가 링크라 메인 체크아웃에 브랜치의 web/를 잠깐 꺼내 빌드하고 되돌림). **거기서 `/screens-img` 응답에 X-Robots-Tag가 없음을 발견**(next.config의 header 규칙이 외부 rewrite 응답에 안 붙음). Vercel 문서는 어느 쪽인지 말하지 않음.
+- **고친 것(#157에 포함):** `/screens-img/[slug]/[file]`을 rewrite에서 **route handler**로. 저장소에서 받아 직접 답함: 모든 응답에 `X-Robots-Tag: noindex, noimageindex`, 브라우저·CDN 1시간, **매니페스트에 있는 파일만**(뺀 화면·전체 페이지·없는 서비스는 저장소에 묻지도 않고 404). next.config의 rewrite·headers 삭제. 매니페스트 타입과 `validManifest`를 fs 없는 `lib/screens/manifest.ts`로 옮김(route가 `public.server.ts`를 import하면 번들러가 프로젝트 전체를 묶음: 2,932파일 80.6MB → 96파일 1.5MB).
+- **#157 머지**(main `10be2098`) → 운영 확인(`<scratchpad>/prod-check.mjs https://oh-my-design.kr`): 그림 200 + 표시 + jpeg, 당근 페이지의 그림 주소 422개 전부 200 + 표시, 뺀 것 404, `/ko/screens` 「화면 137개 · 서비스 12곳」, HTML에 Blob 호스트 0, 랜딩 ko·en에 화면 벽과 메뉴 링크, robots.txt `Disallow: /screens-img/`, 사이트맵 26. CDN 두 번째 요청 HIT. `screen-removal` 라벨 만듦. 워크트리 `screens-publish`와 가지 삭제.
+- **오너에게 바로잡은 것:** 카드 24에 「일본어·번체 랜딩에도 화면 벽」이라 적었으나 실제로는 ko·en만(`/ja`에는 벽도 메뉴 링크도 없음).
+- **에이전트 둘 끝남(5시간 한도로 한 번 멈췄다가 깨움):** `blog-renewal` → **PR #159**(초안, #130 포함: 상단 메뉴 블로그 링크, 블로그의 되돌아가기 링크·검은 알약 제거) + 리뉴얼 정지 시안 3안(`<scratchpad>/blog-mocks/{a-editorial,b-grid,c-index}.html`, 에이전트 추천 A + C의 숫자, 이름 제안 「실측 노트」) · `kana-ja` → **PR #160**(초안: `/ja/kana`, 51개 중 43개가 일본어 인용 머리, 지은 일본어는 `copy-ja.ts`만, 일본어 고지문, noindex). 둘 다 main 병합 뒤 전체 테스트 통과(1,618 / 1,625). 워크트리 `blog-renewal`·`kana-ja` 유지(PR 열림). `blog-renewal/web/.next`는 지우지 못함(tsc가 그 생성 파일 하나에서만 실패, CI와 무관).
+- **아티팩트:** 기존 KJMmoqr2…가 「삭제됨/내 것이 아님」으로 거절 → 현 계정에 새로 게시(`<scratchpad>/omd-review-3.html`, `publishReport` 다시 묶음). 카드 27·28 추가, 24·11 끝 처리.
+- **Open Design(「openmotion」의 정체):** `/Applications/Open Design.app`(0.27.2). 영상은 `Resources/open-design/design-templates/hyperframes`(HTML + GSAP 타임라인을 MP4로, npm `hyperframes` 0.9.84)와 `skills/motion-design`(비트 맵, 대표 프레임 먼저)이 담당. 앱 밖에서는 `npx hyperframes`로 렌더.
+- **스레드(화면 건):** `~/Downloads/threads-screens/`에 초안과 운영에서 찍은 그림 4장.
+- **남은 것:** 런칭 영상 · MCP 화면 도구(설계 → 빌드 에이전트) · 블로그 첫 글 다듬기 에이전트 · 11/28 전 품질 데이터 갱신 PR.
 
 **11/23 16:29 새 스프린트(오너 16:1x 메시지)**
 - **오너 말 그대로:** 「고고 괜찮은거 같아. 그리고 홈 헤더에 블로그가 없어서 블로그로 이동이 어려워. 추가해줘. 지금 글 일단 느낌은 괜찮은데, 조금 너무 학술적인 느낌도 있고, 그림이 적절하게 포함이 안돼서 읽기 난해한 부분도 있어. 글 제목에서 후킹이 아쉬운 부분도 있어. 이 부분도 감안해줘. 그리고 블로그 홈 화면 리뉴얼도 필요할 거 같아. 셰이더 느낌도 조금 넣어거나 썸네일 같은거 태그 디자인같은것도 포함되면 좋을 거 같아. 리뉴얼 시안 나오면 나한테 컨펌 받아줘. <- oh-my-design 이 부분은 빼도 좋을 거 같아. 블로그는 서브도메인으로 뺀 단독 사이트 느낌이니까. 스레드에는 이번에 사이트 레퍼런스 수집한거 관련해서 해주면 될 거 같고, 우리 mcp나 skill 관련해서 해당 레퍼런스를 쓰는 구조도 있어 ? 우리 mcp가 있긴 해 ? mobbin이나 refero처럼 mcp로 레퍼런스 연동해서 실제 시안이나 사이트 레퍼런스 기반으로 하는 기능도 포함하고 스킬로 더 잘 조작하게 하려 하는데. 그 부분도 한번 봐줘. 그리고 우리 elevenlabs있으니까 이번 어찌보면 꽤 큰 런칭 기능 관련해서 openmotion이란걸 이용해서 한번 런칭 영상화 해주면 좋을 거 같아. openmotion은 깔아뒀어. 일본어 kana 페이지도 만들고, 다 만들면 시안 공개도 해줘.」
