@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import logoManifest from "@/data/brand-logos.json";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
@@ -183,6 +183,27 @@ describe("header: Blog is the last nav link (owner, 2026-11-23)", () => {
     expect(ko).toContain('href="/blog/en"'); // the ko/en switch stays
     const en = renderToStaticMarkup(createElement(BlogHeader, { locale: "en" }));
     expect(en).toMatch(/<a href="\/blog\/en" aria-current="page">Blog<\/a>/);
+  });
+
+  it("with the blog on its own host: absolute from the site, relative on the blog itself", async () => {
+    vi.resetModules();
+    vi.stubEnv("NEXT_PUBLIC_BLOG_SUBDOMAIN", "1");
+    try {
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const { createElement } = await import("react");
+      const { SiteHeaderA, blogHrefFor } = await import("@/components/brand-a/site-header");
+      const { BlogHeader } = await import("@/components/blog/blog-header");
+      expect(blogHrefFor("ko")).toBe("https://blog.oh-my-design.kr");
+      expect(blogHrefFor("ja")).toBe("https://blog.oh-my-design.kr/en");
+      const site = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "en" }));
+      expect(anchors(menuOf(site, "sq-menu")).at(-1)).toEqual(["https://blog.oh-my-design.kr/en", "Blog"]);
+      const blog = renderToStaticMarkup(createElement(BlogHeader, { locale: "ko" }));
+      expect(blog).toMatch(/<a href="\/" aria-current="page">블로그<\/a>/);
+      expect(blog).toContain('href="https://oh-my-design.kr/ko/design-systems"'); // the rest of the nav goes back to the site
+    } finally {
+      vi.unstubAllEnvs();
+      vi.resetModules();
+    }
   });
 
   it("the blog index has no back link to the main site above its title", () => {

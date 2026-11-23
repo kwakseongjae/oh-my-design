@@ -121,7 +121,12 @@ export function SiteHeaderA({
       ) : null}
       <Link href={`${origin}${skillsHrefFor(locale, docs)}`} prefetch={false}>{t.skills}</Link>
       <Link href={`${origin}${docsHref(docs)}`} prefetch={false}>{t.docs}</Link>
-      <a href={blogHrefFor(locale)} aria-current={section === "blog" ? "page" : undefined}>{blogLabel}</a>
+      {section === "blog" ? (
+        // on the blog itself the link stays relative, so it never leaves the host the blog is served from
+        <a href={blogIndexHref(blogLocaleOf(locale))} aria-current="page">{blogLabel}</a>
+      ) : (
+        <a href={blogHrefFor(locale)}>{blogLabel}</a>
+      )}
     </>
   );
   return (
