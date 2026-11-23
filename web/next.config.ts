@@ -1,6 +1,4 @@
 import type { NextConfig } from "next";
-import screensManifest from "./src/data/screens-public.generated.json";
-import { SCREENS_IMG_PATH, storeBase } from "./src/lib/screens/published-base";
 
 // Mirrors src/lib/site.ts. next.config is loaded outside the tsconfig path
 // aliases, so it cannot import that module; __tests__/blog-redirects.test.ts
@@ -11,12 +9,6 @@ const BLOG_ON_SUBDOMAIN = process.env.NEXT_PUBLIC_BLOG_SUBDOMAIN === "1";
 // Docs locales, mirrored from src/lib/docs/locales.ts (DOC_LOCALES) for the same
 // reason; __tests__/docs-redirects.test.ts asserts they agree.
 const DOCS_LOCALE_PATTERN = "en|ko|ja|zh-cn|zh-tw";
-
-// The published screen stills (src/lib/screens/published-base.ts): the pages print /screens-img/<slug>/<file>, and
-// this rewrite sends that path to the image store named by the committed manifest. With the manifest empty (the shut
-// state) there is no rule, so the path 404s like any unknown one. The header keeps every still out of search, and
-// robots.txt disallows the path (src/app/robots.ts).
-const SCREENS_STORE = storeBase(screensManifest);
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
@@ -44,15 +36,7 @@ const nextConfig: NextConfig = {
   // `/design.md` suffix means top-level static routes (/docs, /faq, …) are never
   // shadowed (an unknown id 404s in the handler).
   async rewrites() {
-    return [
-      { source: "/:id/design.md", destination: "/r/:id" },
-      ...(SCREENS_STORE ? [{ source: `${SCREENS_IMG_PATH}/:path*`, destination: `${SCREENS_STORE}/:path*` }] : []),
-    ];
-  },
-  async headers() {
-    return SCREENS_STORE
-      ? [{ source: `${SCREENS_IMG_PATH}/:path*`, headers: [{ key: "X-Robots-Tag", value: "noindex, noimageindex" }] }]
-      : [];
+    return [{ source: "/:id/design.md", destination: "/r/:id" }];
   },
   // Permanent redirect from the previous .md shape so already-published links
   // (llms.txt, npm launch copy, agent caches) keep resolving. Redirects run

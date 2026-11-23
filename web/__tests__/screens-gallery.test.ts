@@ -13,6 +13,9 @@ import { makeGalleryFixture } from "@/lib/screens/test-fixture";
 import { ScreensGallery } from "@/components/screens/screens-gallery";
 import type { GalleryModel } from "@/lib/screens/gallery";
 
+// The shut state is what this file proves, whatever the committed manifest holds: pin it to empty here (the published
+// state has its own file, screens-published.test.ts, and the committed manifest is checked there).
+vi.mock("@/data/screens-public.generated.json", () => ({ default: { generated: "", base: "", services: [] } }));
 // next/font/local only works inside the Next compiler; the landing needs nothing from it but the class.
 vi.mock("next/font/google", () => ({
   Inter: () => ({ variable: "t-inter", className: "t-inter", style: { fontFamily: "Inter" } }),

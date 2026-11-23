@@ -48,9 +48,9 @@ const DEFAULT_SHEETS = path.join(os.homedir(), "Downloads/kr-screens/web");
 /** The store's path prefix: a still is screens/<slug>/<width>-<key>.jpg. */
 export const STORE_PREFIX = "screens";
 /** Seconds a browser or a CDN may keep a still (the store sends it as Cache-Control max-age; the default is a month).
- *  The pages load stills through our own /screens-img rewrite, and Vercel's CDN honours the store's Cache-Control on
- *  an external rewrite, so this is also how long a removed still can keep answering there without a new deployment,
- *  and how long a browser that already loaded it keeps it. An hour. */
+ *  The pages load stills through our own /screens-img route (web/src/app/screens-img), which sends the same hour for
+ *  the browser and the CDN, so this is also how long a removed still can keep answering there without a new
+ *  deployment, and how long a browser that already loaded it keeps it. An hour. */
 const CACHE_SECONDS = 3600;
 
 // The same rules as web/src/lib/screens/walk.ts (the parity test in web/__tests__/screens-publish.test.ts holds them).
@@ -317,9 +317,12 @@ function print(result) {
 
 const writeManifest = (file, manifest) => fs.writeFileSync(file, JSON.stringify(manifest, null, 2) + "\n");
 
+/** The store's credentials as @vercel/blob 2.9 reads them from the environment: the read-write token, or the store id
+ *  with a Vercel OIDC token (what `vercel env pull` writes for a connection that includes Development). */
 function needToken() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.error("BLOB_READ_WRITE_TOKEN is not set: nothing was uploaded or removed.");
+  const oidc = process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID;
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !oidc) {
+    console.error("Neither BLOB_READ_WRITE_TOKEN nor VERCEL_OIDC_TOKEN with BLOB_STORE_ID is set: nothing was uploaded or removed.");
     process.exit(1);
   }
 }
@@ -402,7 +405,7 @@ async function remove(target) {
   for (const b of gone) console.log(`deleted ${b.pathname}`);
   const manifest = readJson(COMMITTED_MANIFEST) ?? { generated: "", base: "", services: [] };
   writeManifest(COMMITTED_MANIFEST, withoutScreens(manifest, slug, key));
-  console.log(`\nDropped ${key ? `${slug}/${key}` : slug} from the committed manifest; commit and deploy it. Until that deployment, /screens-img can keep answering with the still for up to ${CACHE_SECONDS / 3600} h (the CDN keeps a rewrite's response for the store's max-age); the store itself stops within about a minute.`);
+  console.log(`\nDropped ${key ? `${slug}/${key}` : slug} from the committed manifest; commit and deploy it. Until that deployment, /screens-img can keep answering with the still for up to ${CACHE_SECONDS / 3600} h (the CDN keeps the route's response for that long); the store itself stops within about a minute.`);
   console.log(`Mark it withheld in ${slug}/screens.json as well, or the next --upload publishes it again.`);
 }
 
