@@ -317,9 +317,12 @@ function print(result) {
 
 const writeManifest = (file, manifest) => fs.writeFileSync(file, JSON.stringify(manifest, null, 2) + "\n");
 
+/** The store's credentials as @vercel/blob 2.9 reads them from the environment: the read-write token, or the store id
+ *  with a Vercel OIDC token (what `vercel env pull` writes for a connection that includes Development). */
 function needToken() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.error("BLOB_READ_WRITE_TOKEN is not set: nothing was uploaded or removed.");
+  const oidc = process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID;
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !oidc) {
+    console.error("Neither BLOB_READ_WRITE_TOKEN nor VERCEL_OIDC_TOKEN with BLOB_STORE_ID is set: nothing was uploaded or removed.");
     process.exit(1);
   }
 }
