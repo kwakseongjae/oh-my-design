@@ -1,5 +1,4046 @@
 {
-  "generated": "",
-  "base": "",
-  "services": []
+  "generated": "2026-11-23",
+  "base": "https://awmblo41eqzg8jrw.public.blob.vercel-storage.com/screens",
+  "services": [
+    {
+      "slug": "29cm",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search",
+          "type": "검색",
+          "title": "검색 시작",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 니트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "best",
+          "type": "목록",
+          "title": "BEST (랭킹)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "상품 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "magazine",
+          "type": "콘텐츠",
+          "title": "29Magazine",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "Event 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "my",
+          "type": "로그인",
+          "title": "로그인 (마이페이지·장바구니에서 넘어옴)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notice",
+          "type": "고객센터",
+          "title": "공지사항",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search",
+          "type": "검색",
+          "title": "검색 시작",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 니트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "best",
+          "type": "목록",
+          "title": "BEST (랭킹)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "상품 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "magazine",
+          "type": "콘텐츠",
+          "title": "29Magazine",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "Event 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "my",
+          "type": "로그인",
+          "title": "로그인 (마이페이지·장바구니에서 넘어옴)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notice",
+          "type": "고객센터",
+          "title": "공지사항",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "search",
+            "search-results",
+            "search-empty",
+            "best",
+            "detail",
+            "magazine",
+            "event",
+            "my",
+            "notice",
+            "not-found"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "search",
+            "search-results",
+            "search-empty",
+            "best",
+            "detail",
+            "magazine",
+            "event",
+            "my",
+            "notice",
+            "not-found"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "search",
+            "search-results",
+            "search-empty",
+            "best",
+            "detail",
+            "magazine",
+            "event",
+            "my",
+            "notice",
+            "not-found"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#5d5d5d",
+          "screens": [
+            "notice"
+          ]
+        },
+        {
+          "token": "ink-secondary",
+          "value": "#303033",
+          "screens": [
+            "notice"
+          ]
+        },
+        {
+          "token": "ink-tertiary",
+          "value": "#474747",
+          "screens": []
+        },
+        {
+          "token": "accent",
+          "value": "#ff4800",
+          "screens": [
+            "home",
+            "best",
+            "detail",
+            "not-found"
+          ]
+        },
+        {
+          "token": "border",
+          "value": "#dddddd",
+          "screens": [
+            "home",
+            "search",
+            "search-results",
+            "search-empty",
+            "best",
+            "detail",
+            "magazine",
+            "event",
+            "my",
+            "notice",
+            "not-found"
+          ]
+        },
+        {
+          "token": "focus-outline",
+          "value": "#375fff",
+          "screens": []
+        }
+      ]
+    },
+    {
+      "slug": "class101",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "web",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈 (구독)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "category",
+          "type": "목록",
+          "title": "카테고리 · 디지털 드로잉",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "catalog",
+          "type": "목록",
+          "title": "구독에 포함된 클래스 전체",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 드로잉",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "클래스 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail-popup",
+          "type": "팝업",
+          "title": "클래스 상세 위의 프로모션 창",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "intro",
+          "type": "이벤트",
+          "title": "구독 소개",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "login",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈 (구독)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "category",
+          "type": "목록",
+          "title": "카테고리 · 디지털 드로잉",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "catalog",
+          "type": "목록",
+          "title": "구독에 포함된 클래스 전체",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 드로잉",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "클래스 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail-popup",
+          "type": "팝업",
+          "title": "클래스 상세 위의 프로모션 창",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "intro",
+          "type": "이벤트",
+          "title": "구독 소개",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "login",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "brand",
+          "value": "#FF5D00",
+          "screens": []
+        },
+        {
+          "token": "canvas",
+          "value": "#FFFFFF",
+          "screens": [
+            "home",
+            "category",
+            "catalog",
+            "search-results",
+            "detail",
+            "detail-popup",
+            "intro",
+            "login",
+            "not-found"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#0C0C0C",
+          "screens": [
+            "intro"
+          ]
+        },
+        {
+          "token": "foreground-strong",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "category",
+            "catalog",
+            "search-results",
+            "detail",
+            "detail-popup",
+            "login",
+            "not-found"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#373737",
+          "screens": []
+        }
+      ]
+    },
+    {
+      "slug": "inflearn",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "web",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "courses",
+          "type": "목록",
+          "title": "강의 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 피그마",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "강의 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "challenges",
+          "type": "목록",
+          "title": "챌린지 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "careers",
+          "type": "목록",
+          "title": "커리어(채용) 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "signin",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "courses",
+          "type": "목록",
+          "title": "강의 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 피그마",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "강의 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "challenges",
+          "type": "목록",
+          "title": "챌린지 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "careers",
+          "type": "목록",
+          "title": "커리어(채용) 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "signin",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers",
+            "signin",
+            "not-found"
+          ]
+        },
+        {
+          "token": "ink",
+          "value": "#212529",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers",
+            "signin",
+            "not-found"
+          ]
+        },
+        {
+          "token": "text",
+          "value": "#495057",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers",
+            "signin"
+          ]
+        },
+        {
+          "token": "neutral",
+          "value": "#f8f9fa",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers"
+          ]
+        },
+        {
+          "token": "subtle",
+          "value": "#f1f3f5",
+          "screens": [
+            "home",
+            "search-results",
+            "search-empty",
+            "challenges",
+            "signin"
+          ]
+        },
+        {
+          "token": "hairline",
+          "value": "#dee2e6",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers"
+          ]
+        },
+        {
+          "token": "primary",
+          "value": "#00c471",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers",
+            "signin"
+          ]
+        },
+        {
+          "token": "primary-hover",
+          "value": "#00a760",
+          "screens": [
+            "home",
+            "courses",
+            "search-results",
+            "search-empty",
+            "detail",
+            "challenges",
+            "careers"
+          ]
+        },
+        {
+          "token": "info-surface",
+          "value": "#e7f5ff",
+          "screens": []
+        },
+        {
+          "token": "info",
+          "value": "#228be6",
+          "screens": [
+            "challenges"
+          ]
+        },
+        {
+          "token": "cyan-tag-surface",
+          "value": "#e3fafc",
+          "screens": []
+        },
+        {
+          "token": "cyan-tag",
+          "value": "#1098ad",
+          "screens": []
+        }
+      ]
+    },
+    {
+      "slug": "jobplanet",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "web",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "job",
+          "type": "목록",
+          "title": "채용 공고",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "salary",
+          "type": "화면",
+          "title": "연봉",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "contents",
+          "type": "목록",
+          "title": "잡플위키",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "company",
+          "type": "프로필",
+          "title": "기업 정보",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 카카오",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "이벤트",
+          "title": "멤버십",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sign-in",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sign-up",
+          "type": "회원가입",
+          "title": "회원가입",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notices",
+          "type": "고객센터",
+          "title": "공지사항",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "job",
+          "type": "목록",
+          "title": "채용 공고",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "salary",
+          "type": "화면",
+          "title": "연봉",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "contents",
+          "type": "목록",
+          "title": "잡플위키",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "company",
+          "type": "프로필",
+          "title": "기업 정보",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 카카오",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "이벤트",
+          "title": "멤버십",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sign-in",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sign-up",
+          "type": "회원가입",
+          "title": "회원가입",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notices",
+          "type": "고객센터",
+          "title": "공지사항",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "faint",
+          "value": "#a4a6ad",
+          "screens": [
+            "home",
+            "contents",
+            "company"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "hairline",
+          "value": "#e5e6e9",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "contents"
+          ]
+        },
+        {
+          "token": "gray-900",
+          "value": "#242628",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "ink-strong",
+          "value": "#323438",
+          "screens": [
+            "home",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found",
+            "job"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#323438",
+          "screens": [
+            "home",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found",
+            "job"
+          ]
+        },
+        {
+          "token": "gray-400",
+          "value": "#85878c",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-up",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#686a6d",
+          "screens": [
+            "salary",
+            "company",
+            "search-results",
+            "sign-in",
+            "home",
+            "job",
+            "contents",
+            "search-empty",
+            "membership"
+          ]
+        },
+        {
+          "token": "footer-ink",
+          "value": "#444444",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "surface",
+          "value": "#f3f3f4",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "sign-in",
+            "sign-up",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "color-green-600",
+          "value": "#00a866",
+          "screens": []
+        },
+        {
+          "token": "color-green-50",
+          "value": "#e3f8ed",
+          "screens": []
+        },
+        {
+          "token": "color-jobkorea-text",
+          "value": "#083ccc",
+          "screens": []
+        },
+        {
+          "token": "color-jobkorea-border",
+          "value": "#96b1fd",
+          "screens": []
+        },
+        {
+          "token": "gray-600",
+          "value": "#57595b",
+          "screens": [
+            "home",
+            "job",
+            "company"
+          ]
+        },
+        {
+          "token": "red-50",
+          "value": "#fff0f2",
+          "screens": [
+            "home"
+          ]
+        },
+        {
+          "token": "primary",
+          "value": "#00c362",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "notices",
+            "not-found"
+          ]
+        },
+        {
+          "token": "nav",
+          "value": "#4b4c50",
+          "screens": [
+            "home",
+            "job",
+            "salary",
+            "contents",
+            "company",
+            "search-results",
+            "search-empty",
+            "membership",
+            "notices",
+            "not-found"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "karrot",
+      "shot": "2026-11-22",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "buy-sell",
+          "type": "목록",
+          "title": "중고거래 목록",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 자전거",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "중고거래 글 상세",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "local",
+          "type": "목록",
+          "title": "동네업체 목록",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "cars",
+          "type": "목록",
+          "title": "중고차 목록",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "realty",
+          "type": "지도",
+          "title": "부동산",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "buy-sell",
+          "type": "목록",
+          "title": "중고거래 목록",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 자전거",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "중고거래 글 상세",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "local",
+          "type": "목록",
+          "title": "동네업체 목록",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "cars",
+          "type": "목록",
+          "title": "중고차 목록",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "realty",
+          "type": "지도",
+          "title": "부동산",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#ff6f0f",
+          "screens": []
+        },
+        {
+          "token": "primary-hover",
+          "value": "#ff9e66",
+          "screens": []
+        },
+        {
+          "token": "primary-pressed",
+          "value": "#ff9e66",
+          "screens": []
+        },
+        {
+          "token": "marketing",
+          "value": "#ff6600",
+          "screens": [
+            "detail",
+            "realty",
+            "home",
+            "buy-sell",
+            "search-results",
+            "search-empty",
+            "cars"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "buy-sell",
+            "search-results",
+            "search-empty",
+            "detail",
+            "local",
+            "cars",
+            "realty",
+            "help",
+            "not-found"
+          ]
+        },
+        {
+          "token": "background",
+          "value": "#f2f3f6",
+          "screens": [
+            "help"
+          ]
+        },
+        {
+          "token": "surface",
+          "value": "#f7f8fa",
+          "screens": []
+        },
+        {
+          "token": "foreground",
+          "value": "#212124",
+          "screens": [
+            "help"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#868b94",
+          "screens": [
+            "home",
+            "buy-sell",
+            "search-results",
+            "detail",
+            "local",
+            "cars",
+            "realty",
+            "not-found"
+          ]
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "buy-sell",
+            "search-results",
+            "search-empty",
+            "detail",
+            "local",
+            "cars",
+            "realty",
+            "help",
+            "not-found"
+          ]
+        },
+        {
+          "token": "hairline",
+          "value": "#eaebee",
+          "screens": [
+            "help"
+          ]
+        },
+        {
+          "token": "brand-tint",
+          "value": "#fff5f0",
+          "screens": []
+        },
+        {
+          "token": "error",
+          "value": "#fa2314",
+          "screens": []
+        },
+        {
+          "token": "info",
+          "value": "#009ceb",
+          "screens": []
+        },
+        {
+          "token": "success",
+          "value": "#1aa174",
+          "screens": []
+        }
+      ]
+    },
+    {
+      "slug": "kyobobook",
+      "shot": "2026-11-22",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 아래에서 올라오는 광고 시트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 여행",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "best",
+          "type": "목록",
+          "title": "베스트셀러 · 온라인 일간",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "new",
+          "type": "목록",
+          "title": "신상품 · MD의 선택",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "도서 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "cart",
+          "type": "장바구니",
+          "title": "장바구니 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 아래에서 올라오는 광고 시트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 여행",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "best",
+          "type": "목록",
+          "title": "베스트셀러 · 온라인 일간",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "new",
+          "type": "목록",
+          "title": "신상품 · MD의 선택",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "도서 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "cart",
+          "type": "장바구니",
+          "title": "장바구니 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "login",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#5055b1",
+          "screens": [
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "not-found"
+          ]
+        },
+        {
+          "token": "primary-hover",
+          "value": "#2c307c",
+          "screens": []
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help",
+            "not-found",
+            "login"
+          ]
+        },
+        {
+          "token": "secondary",
+          "value": "#767676",
+          "screens": [
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help"
+          ]
+        },
+        {
+          "token": "secondary-hover",
+          "value": "#595959",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help"
+          ]
+        },
+        {
+          "token": "secondary-pressed",
+          "value": "#292929",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "new",
+            "event",
+            "cart",
+            "detail",
+            "help"
+          ]
+        },
+        {
+          "token": "ink",
+          "value": "#000000",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help",
+            "not-found",
+            "login"
+          ]
+        },
+        {
+          "token": "body",
+          "value": "#595959",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#767676",
+          "screens": [
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help"
+          ]
+        },
+        {
+          "token": "accent",
+          "value": "#474c98",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "cart",
+            "help",
+            "best",
+            "event"
+          ]
+        },
+        {
+          "token": "promo-green",
+          "value": "#2a760c",
+          "screens": [
+            "popup",
+            "home"
+          ]
+        },
+        {
+          "token": "promo-green-dark",
+          "value": "#195800",
+          "screens": [
+            "best",
+            "new",
+            "detail"
+          ]
+        },
+        {
+          "token": "hairline",
+          "value": "#eaeaea",
+          "screens": [
+            "popup",
+            "home",
+            "best",
+            "event",
+            "cart",
+            "detail"
+          ]
+        },
+        {
+          "token": "border",
+          "value": "#d5d5d5",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help",
+            "login"
+          ]
+        },
+        {
+          "token": "border-strong",
+          "value": "#cccccc",
+          "screens": [
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help",
+            "login"
+          ]
+        },
+        {
+          "token": "surface",
+          "value": "#f2f2f2",
+          "screens": [
+            "popup",
+            "home",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help"
+          ]
+        },
+        {
+          "token": "white",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "best",
+            "new",
+            "detail",
+            "event",
+            "cart",
+            "help",
+            "not-found",
+            "login"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "megabox",
+      "shot": "2026-11-22",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 앱 안내와 광고 시트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "movies",
+          "type": "목록",
+          "title": "영화 · 박스오피스",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "영화 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "theaters",
+          "type": "목록",
+          "title": "전체 극장",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "store",
+          "type": "목록",
+          "title": "스토어",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "콘텐츠",
+          "title": "멤버십 안내",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "join",
+          "type": "회원가입",
+          "title": "회원가입",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "faq",
+          "type": "고객센터",
+          "title": "자주 묻는 질문",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 앱 안내와 광고 시트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "movies",
+          "type": "목록",
+          "title": "영화 · 박스오피스",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "영화 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "theaters",
+          "type": "목록",
+          "title": "전체 극장",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "store",
+          "type": "목록",
+          "title": "스토어",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "콘텐츠",
+          "title": "멤버십 안내",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "join",
+          "type": "회원가입",
+          "title": "회원가입",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "faq",
+          "type": "고객센터",
+          "title": "자주 묻는 질문",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#503396",
+          "screens": [
+            "movies",
+            "detail",
+            "theaters",
+            "store",
+            "event",
+            "membership",
+            "help",
+            "faq",
+            "not-found"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "movies",
+            "detail",
+            "theaters",
+            "store",
+            "event",
+            "membership",
+            "help",
+            "faq",
+            "not-found",
+            "join"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#444444",
+          "screens": [
+            "popup",
+            "home",
+            "movies",
+            "detail",
+            "theaters",
+            "store",
+            "event",
+            "membership",
+            "join",
+            "help",
+            "faq",
+            "not-found"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#666666",
+          "screens": [
+            "popup",
+            "home",
+            "movies",
+            "detail",
+            "theaters",
+            "store",
+            "event",
+            "membership",
+            "help",
+            "faq",
+            "not-found",
+            "join"
+          ]
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "movies",
+            "detail",
+            "theaters",
+            "store",
+            "event",
+            "membership",
+            "help",
+            "faq",
+            "not-found",
+            "join"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "musinsa",
+      "shot": "2026-11-22",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈 · 추천",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ranking",
+          "type": "목록",
+          "title": "랭킹",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sale",
+          "type": "목록",
+          "title": "세일",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "release",
+          "type": "목록",
+          "title": "발매",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "category",
+          "type": "카테고리",
+          "title": "카테고리 메뉴",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 니트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "magazine",
+          "type": "목록",
+          "title": "콘텐츠 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "snap",
+          "type": "피드",
+          "title": "스냅",
+          "state": null,
+          "width": 1440,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "cart",
+          "type": "장바구니",
+          "title": "장바구니 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "login",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈 · 추천",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ranking",
+          "type": "목록",
+          "title": "랭킹",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sale",
+          "type": "목록",
+          "title": "세일",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "release",
+          "type": "목록",
+          "title": "발매",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "category",
+          "type": "카테고리",
+          "title": "카테고리 메뉴",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 니트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "magazine",
+          "type": "목록",
+          "title": "콘텐츠 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "snap",
+          "type": "피드",
+          "title": "스냅",
+          "state": null,
+          "width": 390,
+          "masked": true,
+          "thumb": true
+        },
+        {
+          "key": "cart",
+          "type": "장바구니",
+          "title": "장바구니 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "login",
+          "type": "로그인",
+          "title": "로그인",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "ranking",
+            "sale",
+            "release",
+            "category",
+            "search-results",
+            "search-empty",
+            "magazine",
+            "snap",
+            "cart",
+            "login",
+            "not-found"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "ranking",
+            "sale",
+            "release",
+            "category",
+            "search-results",
+            "search-empty",
+            "magazine",
+            "snap",
+            "login",
+            "not-found"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "ranking",
+            "sale",
+            "release",
+            "category",
+            "search-results",
+            "search-empty",
+            "magazine",
+            "snap",
+            "cart",
+            "login",
+            "not-found"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#666666",
+          "screens": [
+            "home",
+            "ranking",
+            "sale",
+            "release",
+            "category",
+            "search-results",
+            "search-empty",
+            "magazine",
+            "snap",
+            "login",
+            "cart"
+          ]
+        },
+        {
+          "token": "line",
+          "value": "#ebebeb",
+          "screens": [
+            "home",
+            "ranking",
+            "release",
+            "search-results",
+            "search-empty",
+            "magazine"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "myrealtrip",
+      "shot": "2026-11-22",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 광고 시트",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "이벤트",
+          "title": "유니버설 스튜디오 재팬 기획 페이지 (검색어에서 연결)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "experiences",
+          "type": "카테고리",
+          "title": "투어·티켓",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "stay",
+          "type": "카테고리",
+          "title": "해외숙소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "flights",
+          "type": "검색",
+          "title": "항공권 검색",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "packages",
+          "type": "목록",
+          "title": "해외 패키지 여행",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "투어·티켓 상품 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "deals",
+          "type": "이벤트",
+          "title": "지금 특가",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notice",
+          "type": "고객센터",
+          "title": "공고",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "popup",
+          "type": "팝업",
+          "title": "첫 방문 · 광고 시트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "이벤트",
+          "title": "유니버설 스튜디오 재팬 기획 페이지 (검색어에서 연결)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "experiences",
+          "type": "카테고리",
+          "title": "투어·티켓",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "stay",
+          "type": "카테고리",
+          "title": "해외숙소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "flights",
+          "type": "검색",
+          "title": "항공권 검색",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "packages",
+          "type": "목록",
+          "title": "해외 패키지 여행",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "투어·티켓 상품 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "deals",
+          "type": "이벤트",
+          "title": "지금 특가",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "notice",
+          "type": "고객센터",
+          "title": "공고",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#2b96ed",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "ink",
+          "value": "#495056",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#666d75",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "search-fill",
+          "value": "#f5f6f7",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "control-border",
+          "value": "#ced4da",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "selected-fill",
+          "value": "#101418",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "popup",
+            "home",
+            "search-results",
+            "search-empty",
+            "experiences",
+            "stay",
+            "flights",
+            "packages",
+            "detail",
+            "deals",
+            "notice"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "oliveyoung",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ranking",
+          "type": "목록",
+          "title": "랭킹",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "hotdeal",
+          "type": "목록",
+          "title": "오특",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sale",
+          "type": "목록",
+          "title": "세일",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 선크림",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "상품 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "planshop",
+          "type": "이벤트",
+          "title": "기획전 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "화면",
+          "title": "멤버십/쿠폰",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "stores",
+          "type": "지도",
+          "title": "매장 찾기",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터 FAQ",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "orders",
+          "type": "로그인",
+          "title": "주문배송 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "app-sheet",
+          "type": "팝업",
+          "title": "첫 방문 · 테마 서랍",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ranking",
+          "type": "목록",
+          "title": "랭킹",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "hotdeal",
+          "type": "목록",
+          "title": "오특",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "sale",
+          "type": "목록",
+          "title": "세일",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 선크림",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "상품 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "planshop",
+          "type": "이벤트",
+          "title": "기획전 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "event",
+          "type": "이벤트",
+          "title": "이벤트 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "membership",
+          "type": "화면",
+          "title": "멤버십/쿠폰",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "stores",
+          "type": "지도",
+          "title": "매장 찾기",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "help",
+          "type": "고객센터",
+          "title": "고객센터 FAQ",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "orders",
+          "type": "로그인",
+          "title": "주문배송 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "storefront-canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "ranking",
+            "hotdeal",
+            "sale",
+            "search-results",
+            "search-empty",
+            "detail",
+            "planshop",
+            "event",
+            "membership",
+            "stores",
+            "help",
+            "orders",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "storefront-ink",
+          "value": "#131518",
+          "screens": [
+            "home",
+            "ranking",
+            "hotdeal",
+            "sale",
+            "search-results",
+            "search-empty",
+            "detail",
+            "planshop",
+            "event",
+            "membership",
+            "stores",
+            "help",
+            "orders",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "storefront-body",
+          "value": "#666666",
+          "screens": [
+            "home",
+            "ranking",
+            "hotdeal",
+            "sale",
+            "search-results",
+            "search-empty",
+            "planshop",
+            "event",
+            "membership",
+            "stores",
+            "help",
+            "orders",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "storefront-muted",
+          "value": "#888888",
+          "screens": [
+            "home",
+            "ranking",
+            "sale",
+            "search-results",
+            "planshop",
+            "stores",
+            "help",
+            "orders"
+          ]
+        },
+        {
+          "token": "storefront-line",
+          "value": "#ebebeb",
+          "screens": [
+            "home",
+            "ranking",
+            "hotdeal",
+            "sale",
+            "search-results"
+          ]
+        },
+        {
+          "token": "storefront-current",
+          "value": "#2f3030",
+          "screens": [
+            "home"
+          ]
+        },
+        {
+          "token": "corporate-brand-green",
+          "value": "#82dc28",
+          "screens": [
+            "app-sheet"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wanted",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "web",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "jobs",
+          "type": "목록",
+          "title": "채용 공고 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 디자이너",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "채용 공고 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "company",
+          "type": "프로필",
+          "title": "기업 정보",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "salary",
+          "type": "화면",
+          "title": "직군별 연봉",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "map",
+          "type": "지도",
+          "title": "지도로 공고 찾기 · 진입 안내 창",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "contents",
+          "type": "목록",
+          "title": "콘텐츠 목록",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "cv",
+          "type": "화면",
+          "title": "이력서 소개 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "app-sheet",
+          "type": "팝업",
+          "title": "첫 방문 · 앱에서 보기 시트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "jobs",
+          "type": "목록",
+          "title": "채용 공고 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-results",
+          "type": "검색 결과",
+          "title": "검색 결과 · 디자이너",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "search-empty",
+          "type": "검색 결과",
+          "title": "검색 결과 없음",
+          "state": "빈 상태",
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "detail",
+          "type": "상세",
+          "title": "채용 공고 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "company",
+          "type": "프로필",
+          "title": "기업 정보",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "salary",
+          "type": "화면",
+          "title": "직군별 연봉",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "map",
+          "type": "지도",
+          "title": "지도로 공고 찾기 · 진입 안내 창",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "contents",
+          "type": "목록",
+          "title": "콘텐츠 목록",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "cv",
+          "type": "화면",
+          "title": "이력서 소개 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#0066ff",
+          "screens": [
+            "home",
+            "jobs",
+            "search-results",
+            "search-empty",
+            "detail",
+            "company",
+            "salary",
+            "map",
+            "contents",
+            "cv",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "jobs",
+            "search-results",
+            "search-empty",
+            "detail",
+            "company",
+            "salary",
+            "map",
+            "contents",
+            "cv",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "heading",
+          "value": "#171719",
+          "screens": [
+            "home",
+            "jobs",
+            "search-results",
+            "search-empty",
+            "detail",
+            "company",
+            "salary",
+            "map",
+            "contents",
+            "cv",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "body",
+          "value": "#333333",
+          "screens": []
+        },
+        {
+          "token": "secondary",
+          "value": "#858688",
+          "screens": []
+        },
+        {
+          "token": "subtle-surface",
+          "value": "#f8f8f8",
+          "screens": []
+        },
+        {
+          "token": "hairline",
+          "value": "#e8e9ea",
+          "screens": []
+        },
+        {
+          "token": "on-primary",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "jobs",
+            "search-results",
+            "search-empty",
+            "detail",
+            "company",
+            "salary",
+            "map",
+            "contents",
+            "cv",
+            "not-found",
+            "app-sheet"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "yanolja",
+      "shot": "2026-11-21",
+      "signedOut": true,
+      "platform": "both",
+      "records": [
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "hotel",
+          "type": "목록",
+          "title": "호텔/리조트 홈",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ticket",
+          "type": "목록",
+          "title": "티켓",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "promotion",
+          "type": "이벤트",
+          "title": "특가",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "benefit",
+          "type": "이벤트",
+          "title": "쿠폰·혜택",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ticket-detail",
+          "type": "상세",
+          "title": "공연 상세",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "transport",
+          "type": "화면",
+          "title": "국내교통",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "feed",
+          "type": "피드",
+          "title": "요즘놀거리",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "wishlist",
+          "type": "좋아요",
+          "title": "찜 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "mypage",
+          "type": "로그인",
+          "title": "마이 (로그아웃)",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 1440,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "app-sheet",
+          "type": "팝업",
+          "title": "첫 방문 · 앱에서 보기 시트",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "home",
+          "type": "홈",
+          "title": "홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "hotel",
+          "type": "목록",
+          "title": "호텔/리조트 홈",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ticket",
+          "type": "목록",
+          "title": "티켓",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "promotion",
+          "type": "이벤트",
+          "title": "특가",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "benefit",
+          "type": "이벤트",
+          "title": "쿠폰·혜택",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "ticket-detail",
+          "type": "상세",
+          "title": "공연 상세",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "transport",
+          "type": "화면",
+          "title": "국내교통",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "feed",
+          "type": "피드",
+          "title": "요즘놀거리",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "wishlist",
+          "type": "좋아요",
+          "title": "찜 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "mypage",
+          "type": "로그인",
+          "title": "마이 (로그아웃)",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        },
+        {
+          "key": "not-found",
+          "type": "오류",
+          "title": "없는 주소",
+          "state": null,
+          "width": 390,
+          "masked": false,
+          "thumb": true
+        }
+      ],
+      "colors": [
+        {
+          "token": "primary",
+          "value": "#000000",
+          "screens": [
+            "home",
+            "hotel",
+            "ticket",
+            "promotion",
+            "benefit",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "wishlist",
+            "mypage",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "foreground",
+          "value": "#1b1c1f",
+          "screens": [
+            "home",
+            "hotel",
+            "ticket",
+            "promotion",
+            "benefit",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "wishlist",
+            "mypage",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "canvas",
+          "value": "#ffffff",
+          "screens": [
+            "home",
+            "hotel",
+            "ticket",
+            "promotion",
+            "benefit",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "wishlist",
+            "mypage",
+            "not-found",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "surface-muted",
+          "value": "#f7f8fb",
+          "screens": [
+            "home",
+            "ticket",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "surface-hover",
+          "value": "#f2f3f7",
+          "screens": [
+            "home",
+            "hotel",
+            "ticket",
+            "promotion",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "muted",
+          "value": "#6e6f73",
+          "screens": [
+            "home",
+            "ticket-detail",
+            "feed",
+            "app-sheet"
+          ]
+        },
+        {
+          "token": "hairline",
+          "value": "#dadbdf",
+          "screens": [
+            "home",
+            "ticket-detail",
+            "transport",
+            "feed",
+            "wishlist",
+            "app-sheet",
+            "hotel",
+            "ticket",
+            "benefit"
+          ]
+        },
+        {
+          "token": "brand-yanolja-orange",
+          "value": "#f54b1e",
+          "screens": []
+        }
+      ]
+    }
+  ]
 }

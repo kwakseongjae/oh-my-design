@@ -576,7 +576,9 @@ The owner approved publishing the candidates' first-viewport stills, kept out of
 `web/scripts/publish-screens.mjs` reads the sheets folder, lists only what may be shown (never a withheld or blocked
 screen, a full page, or a file outside a sheet's img folder), uploads to the store and writes the committed manifest
 `web/src/data/screens-public.generated.json`; an empty manifest is the shut state. Pages print `/screens-img/…`, which
-next.config.ts rewrites to the store (with `X-Robots-Tag: noindex, noimageindex`; robots.txt disallows the path).
+the route `web/src/app/screens-img/[slug]/[file]/route.ts` answers by fetching from the store: only files the
+manifest lists, each with `X-Robots-Tag: noindex, noimageindex`; robots.txt disallows the path. (Until 2026-11-23 this
+was a next.config rewrite with a header rule; `next start` did not apply the header to the rewritten response.)
 
 - Check: `node web/scripts/publish-screens.mjs --dry-run --base https://example.invalid/screens --out <tmp>/manifest.json`
 - Publish: `cd web && npm install`, then `BLOB_READ_WRITE_TOKEN=… node scripts/publish-screens.mjs --upload --sheets ~/Downloads/kr-screens/web`, and commit the manifest
