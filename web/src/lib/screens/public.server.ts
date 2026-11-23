@@ -94,7 +94,7 @@ export function validManifest(raw: unknown, allowLocalBase: boolean): PublicMani
 
 /** One published service as the Screens tab's model. Stills only, no full page; a record that says withheld or
  *  blocked (the script never writes one) is dropped all the same. With the store's https base the pages print our own
- *  path (published-base.ts SCREENS_IMG_PATH, rewritten to the store by next.config.ts), never the store's address; a
+ *  path (published-base.ts SCREENS_IMG_PATH, answered by app/screens-img, which fetches from the store), never the store's address; a
  *  preview's local base (/screens-local) is printed as it is. */
 export function publicModel(service: PublicService, base: string): ScreensModel | null {
   const prefix = HTTPS_BASE.test(base) ? SCREENS_IMG_PATH : base;

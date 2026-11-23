@@ -8,6 +8,7 @@ import EnScreensPage from "@/app/(en)/screens/page";
 import KoScreensPage from "@/app/(ko)/ko/screens/page";
 import EnServicePage, { generateStaticParams as serviceParams } from "@/app/(en)/screens/[id]/page";
 import KoServicePage from "@/app/(ko)/ko/screens/[id]/page";
+import { GET as imgGET } from "@/app/screens-img/[slug]/[file]/route";
 import { serviceScreensMetadata } from "@/components/screens/metadata";
 import { LandingA } from "@/components/brand-a/landing";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
@@ -386,39 +387,90 @@ describe("published: a service's screens page", () => {
   });
 });
 
-describe("our own image path: the rewrite, its header and robots.txt", () => {
+describe("our own image path: the route that answers it, and robots.txt", () => {
   const shutManifest = { generated: "", base: "", services: [] };
-  async function loadConfig(manifest: unknown) {
-    // One doMock per import, and nothing registered after it. A mock registered here and left waiting (the earlier
-    // "back to the shut pin") was resolved together with the next test's mock, in no fixed order, so about one run
-    // in six loaded the config with the wrong manifest (CI, 2026-11-22). Every later import in this file registers
-    // its own manifest first.
-    vi.resetModules();
-    vi.doMock("../src/data/screens-public.generated.json", () => ({ default: manifest }));
-    return (await import("../next.config")).default;
-  }
   afterEach(() => vi.resetModules());
 
-  it("shut: no /screens-img rewrite and no header, so the path 404s like any unknown one", async () => {
-    const config = await loadConfig(shutManifest);
-    const rewrites = (await config.rewrites!()) as { source: string }[];
-    expect(rewrites.some((r) => r.source.startsWith("/screens-img"))).toBe(false);
-    expect(await config.headers!()).toEqual([]);
+  const img = (slug: string, file: string) =>
+    imgGET(new Request(`http://localhost/screens-img/${slug}/${file}`), { params: Promise.resolve({ slug, file }) });
+  /** A store that holds everything asked of it, and remembers what it was asked. */
+  function store() {
+    const asked: string[] = [];
+    vi.stubGlobal("fetch", (url: string) => {
+      asked.push(String(url));
+      return Promise.resolve(new Response(`store:${String(url).split("/").pop()}`, { status: 200, headers: { "content-type": "application/octet-stream" } }));
+    });
+    return asked;
+  }
+
+  it("shut: every /screens-img path is a 404 and the store is never asked", async () => {
+    const asked = store();
+    const res = await img("karrot", "390-home.jpg");
+    expect(res.status).toBe(404);
+    expect(res.headers.get("x-robots-tag")).toBe("noindex, noimageindex");
+    expect(asked).toEqual([]);
   });
 
-  it("published: /screens-img/* goes to the store's base, answered with noindex, noimageindex", async () => {
-    const config = await loadConfig({ ...result.manifest, base: STORE });
-    const rewrites = (await config.rewrites!()) as { source: string; destination: string }[];
-    expect(rewrites).toContainEqual({ source: "/screens-img/:path*", destination: `${STORE}/:path*` });
-    expect(rewrites).toContainEqual({ source: "/:id/design.md", destination: "/r/:id" });
-    expect(await config.headers!()).toEqual([
-      { source: "/screens-img/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, noimageindex" }] },
-    ]);
+  it("published: a listed still is fetched from the store and answered as a jpeg with noindex, noimageindex", async () => {
+    publish();
+    const asked = store();
+    const res = await img("karrot", "390-home.jpg");
+    expect(res.status).toBe(200);
+    expect(asked).toEqual([`${STORE}/karrot/390-home.jpg`]);
+    expect(res.headers.get("content-type")).toBe("image/jpeg");
+    expect(res.headers.get("x-robots-tag")).toBe("noindex, noimageindex");
+    expect(res.headers.get("cache-control")).toBe("public, max-age=3600, s-maxage=3600");
+    expect(res.headers.get("x-content-type-options")).toBe("nosniff");
+    expect(await res.text()).toBe("store:390-home.jpg");
   });
 
-  it("a manifest whose base is not https publishes nothing, even with services", async () => {
-    const config = await loadConfig({ ...result.manifest, base: "/screens-local" });
-    expect(((await config.rewrites!()) as { source: string }[]).some((r) => r.source.startsWith("/screens-img"))).toBe(false);
+  it("published: a small rendition is answered only where the manifest says the store holds one", async () => {
+    publish();
+    const asked = store();
+    expect((await img("karrot", "390-home.thumb.jpg")).status).toBe(200);
+    // 29cm's phone home has no fresh rendition, so the manifest does not list one
+    expect((await img("29cm", "390-home.thumb.jpg")).status).toBe(404);
+    expect(asked).toEqual([`${STORE}/karrot/390-home.thumb.jpg`]);
+  });
+
+  it.each([
+    ["karrot", "1440-event.jpg", "a withheld screen"],
+    ["karrot", "1440-event.thumb.jpg", "a withheld screen's small rendition"],
+    ["karrot", "390-home.full.jpg", "a full page"],
+    ["29cm", "1440-outside.jpg", "a still the script refused"],
+    ["not-a-reference", "390-home.jpg", "a folder that is not a reference"],
+    ["kurly", "390-home.jpg", "a service the manifest does not list"],
+    ["karrot", "../wanted/1440-home.jpg", "a path out of the service"],
+    ["karrot", "390-home.jpg?x", "anything but a listed file name"],
+  ])("published: %s/%s (%s) is a 404 and the store is never asked", async (slug, file) => {
+    publish();
+    const asked = store();
+    const res = await img(slug, file);
+    expect(res.status).toBe(404);
+    expect(res.headers.get("cache-control")).toBe("no-store");
+    expect(asked).toEqual([]);
+  });
+
+  it("published: a still the store does not hold, or a store that does not answer, is a 404", async () => {
+    publish();
+    vi.stubGlobal("fetch", () => Promise.resolve(new Response("gone", { status: 404 })));
+    expect((await img("karrot", "390-home.jpg")).status).toBe(404);
+    vi.stubGlobal("fetch", () => Promise.reject(new Error("offline")));
+    expect((await img("karrot", "390-home.jpg")).status).toBe(404);
+  });
+
+  it("a preview manifest with a local base is not answered here (its stills come from /screens-local)", async () => {
+    vi.stubEnv("OMD_SCREENS_MANIFEST", localManifestFile);
+    vi.stubEnv("NODE_ENV", "development");
+    const asked = store();
+    expect((await img("karrot", "390-home.jpg")).status).toBe(404);
+    expect(asked).toEqual([]);
+  });
+
+  it("next.config holds no rule for the path: no rewrite to the store and no header rule", async () => {
+    const config = (await import("../next.config")).default;
+    expect((await config.rewrites!()) as { source: string }[]).toEqual([{ source: "/:id/design.md", destination: "/r/:id" }]);
+    expect(config.headers).toBeUndefined();
   });
 
   it("robots.txt disallows /screens-img/ for every agent only once published", async () => {
