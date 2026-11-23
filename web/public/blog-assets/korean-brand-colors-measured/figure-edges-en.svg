@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="559" viewBox="0 0 720 559" role="img" aria-label="Counted as blue, and not" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="en">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="719" height="558" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="32" y="51" font-size="19" fill="#13131a" font-weight="700">Counted as blue, and not</text>
+<text x="32" y="78.65" font-size="14" fill="#5a5a63">The achromatic tests come first; everything else is split by hue angle</text>
+<text x="32" y="130.95" font-size="14" fill="#13131a" font-weight="600">Hue 200–250°: blue</text>
+<rect x="32" y="145.25" width="152" height="44" rx="8" fill="#3182f6"/>
+<text x="32" y="209.25" font-size="14" fill="#13131a" font-weight="600">Toss</text>
+<text x="32" y="228.75" font-size="13" fill="#5a5a63">#3182f6</text>
+<rect x="200" y="145.25" width="152" height="44" rx="8" fill="#0066ff"/>
+<text x="200" y="209.25" font-size="14" fill="#13131a" font-weight="600">Wanted</text>
+<text x="200" y="228.75" font-size="13" fill="#5a5a63">#0066ff</text>
+<rect x="368" y="145.25" width="152" height="44" rx="8" fill="#0046ff"/>
+<text x="368" y="209.25" font-size="14" fill="#13131a" font-weight="600">Shinhan Bank</text>
+<text x="368" y="228.75" font-size="13" fill="#5a5a63">#0046ff</text>
+<rect x="536" y="145.25" width="152" height="44" rx="8" fill="#0067ac"/>
+<text x="536" y="209.25" font-size="14" fill="#13131a" font-weight="600">Woori Bank</text>
+<text x="536" y="228.75" font-size="13" fill="#5a5a63">#0067ac</text>
+<text x="32" y="267.25" font-size="14" fill="#13131a" font-weight="600">Dark, but lightness 8%+ and saturation 10%+: still blue</text>
+<rect x="32" y="281.55" width="152" height="44" rx="8" fill="#002c5f"/>
+<text x="32" y="345.55" font-size="14" fill="#13131a" font-weight="600">Hyundai</text>
+<text x="32" y="365.05" font-size="13" fill="#5a5a63">#002c5f</text>
+<rect x="200" y="281.55" width="152" height="44" rx="8" fill="#1c2028"/>
+<text x="200" y="345.55" font-size="14" fill="#13131a" font-weight="600">Bithumb</text>
+<text x="200" y="365.05" font-size="13" fill="#5a5a63">#1c2028</text>
+<rect x="368" y="281.55" width="152" height="44" rx="8" fill="#15181e"/>
+<text x="368" y="345.55" font-size="14" fill="#13131a" font-weight="600">Imweb</text>
+<text x="368" y="365.05" font-size="13" fill="#5a5a63">#15181e</text>
+<text x="32" y="403.55" font-size="14" fill="#13131a" font-weight="600">Not counted as blue</text>
+<rect x="32" y="417.85" width="152" height="44" rx="8" fill="#00b7ff"/>
+<text x="32" y="481.85" font-size="14" fill="#13131a" font-weight="600">Gaudio Lab</text>
+<text x="32" y="501.35" font-size="13" fill="#5a5a63">#00b7ff</text>
+<text x="32" y="520.85" font-size="13" fill="#13131a">→ Teal/cyan</text>
+<rect x="200" y="417.85" width="152" height="44" rx="8" fill="#111111"/>
+<text x="200" y="481.85" font-size="14" fill="#13131a" font-weight="600">Genesis</text>
+<text x="200" y="501.35" font-size="13" fill="#5a5a63">#111111</text>
+<text x="200" y="520.85" font-size="13" fill="#13131a">→ Black-ish</text>
+<rect x="368" y="417.85" width="152" height="44" rx="8" fill="#222222"/>
+<text x="368" y="481.85" font-size="14" fill="#13131a" font-weight="600">KREAM</text>
+<text x="368" y="501.35" font-size="13" fill="#5a5a63">#222222</text>
+<text x="368" y="520.85" font-size="13" fill="#13131a">→ Grey</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="759" viewBox="0 0 360 759" role="img" aria-label="파랑으로 센 색, 세지 않은 색" font-family="'Wanted Sans Variable', 'Wanted Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" lang="ko">
+<style>text{font-variant-numeric:tabular-nums}</style>
+<rect x="0.5" y="0.5" width="359" height="758" rx="16" fill="#ffffff" stroke="#e5e6eb"/>
+<text x="20" y="36" font-size="16" fill="#13131a" font-weight="700">파랑으로 센 색, 세지 않은 색</text>
+<text x="20" y="59.6" font-size="12" fill="#5a5a63">무채색 기준을 먼저 보고, 나머지는 색상각으로 나눴습니다</text>
+<text x="20" y="103.5" font-size="12.5" fill="#13131a" font-weight="600">색상각 200~250°: 파랑</text>
+<rect x="20" y="117.12" width="154" height="36" rx="8" fill="#3182f6"/>
+<text x="20" y="171.62" font-size="12.5" fill="#13131a" font-weight="600">토스</text>
+<text x="20" y="189.62" font-size="12" fill="#5a5a63">#3182f6</text>
+<rect x="186" y="117.12" width="154" height="36" rx="8" fill="#0066ff"/>
+<text x="186" y="171.62" font-size="12.5" fill="#13131a" font-weight="600">원티드</text>
+<text x="186" y="189.62" font-size="12" fill="#5a5a63">#0066ff</text>
+<rect x="20" y="205.12" width="154" height="36" rx="8" fill="#0046ff"/>
+<text x="20" y="259.62" font-size="12.5" fill="#13131a" font-weight="600">신한은행</text>
+<text x="20" y="277.62" font-size="12" fill="#5a5a63">#0046ff</text>
+<rect x="186" y="205.12" width="154" height="36" rx="8" fill="#0067ac"/>
+<text x="186" y="259.62" font-size="12.5" fill="#13131a" font-weight="600">우리은행</text>
+<text x="186" y="277.62" font-size="12" fill="#5a5a63">#0067ac</text>
+<text x="20" y="313.62" font-size="12.5" fill="#13131a" font-weight="600">어두워도 밝기 8% 이상, 채도 10% 이상이면 파랑</text>
+<rect x="20" y="327.25" width="154" height="36" rx="8" fill="#002c5f"/>
+<text x="20" y="381.75" font-size="12.5" fill="#13131a" font-weight="600">현대자동차</text>
+<text x="20" y="399.75" font-size="12" fill="#5a5a63">#002c5f</text>
+<rect x="186" y="327.25" width="154" height="36" rx="8" fill="#1c2028"/>
+<text x="186" y="381.75" font-size="12.5" fill="#13131a" font-weight="600">Bithumb</text>
+<text x="186" y="399.75" font-size="12" fill="#5a5a63">#1c2028</text>
+<rect x="20" y="415.25" width="154" height="36" rx="8" fill="#15181e"/>
+<text x="20" y="469.75" font-size="12.5" fill="#13131a" font-weight="600">아임웹</text>
+<text x="20" y="487.75" font-size="12" fill="#5a5a63">#15181e</text>
+<text x="20" y="523.75" font-size="12.5" fill="#13131a" font-weight="600">파랑으로 세지 않은 색</text>
+<rect x="20" y="537.38" width="154" height="36" rx="8" fill="#00b7ff"/>
+<text x="20" y="591.88" font-size="12.5" fill="#13131a" font-weight="600">가우디오랩</text>
+<text x="20" y="609.88" font-size="12" fill="#5a5a63">#00b7ff</text>
+<text x="20" y="627.88" font-size="12" fill="#13131a">→ 청록</text>
+<rect x="186" y="537.38" width="154" height="36" rx="8" fill="#111111"/>
+<text x="186" y="591.88" font-size="12.5" fill="#13131a" font-weight="600">제네시스</text>
+<text x="186" y="609.88" font-size="12" fill="#5a5a63">#111111</text>
+<text x="186" y="627.88" font-size="12" fill="#13131a">→ 검정에 가까운 무채색</text>
+<rect x="20" y="643.38" width="154" height="36" rx="8" fill="#222222"/>
+<text x="20" y="697.88" font-size="12.5" fill="#13131a" font-weight="600">KREAM</text>
+<text x="20" y="715.88" font-size="12" fill="#5a5a63">#222222</text>
+<text x="20" y="733.88" font-size="12" fill="#13131a">→ 회색</text>
+</svg>
