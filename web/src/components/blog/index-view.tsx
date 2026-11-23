@@ -2,16 +2,19 @@
  * Blog index, rendered once per locale. A post that has no version in this
  * locale still gets a card — carrying a badge and linking to the locale it does
  * exist in — rather than disappearing from the list.
+ *
+ * No back link to the main site above the title (owner, 2026-11-23): the blog reads as a site of
+ * its own. The way back is the shared header's logo and nav and the footer's links.
  */
 
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { BlogFooter } from "./blog-footer";
 import { BlogHeader } from "./blog-header";
 import { BLOG_CHROME, formatPostDate } from "@/lib/blog/i18n";
 import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import { listPosts } from "@/lib/blog/posts";
-import { blogIndexHref, blogPostHref, siteHref } from "@/lib/site";
+import { blogIndexHref, blogPostHref } from "@/lib/site";
 
 export function BlogIndexView({ locale }: { locale: PostLocale }) {
   const posts = listPosts(locale);
@@ -23,12 +26,6 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
       <BlogHeader locale={locale} switchTo={blogIndexHref(other)} />
 
       <section id="main" className="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6">
-        <Link
-          href={siteHref("/")}
-          className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" /> {chrome.mainSite}
-        </Link>
         <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
           {chrome.postCount(posts.length)}
         </div>

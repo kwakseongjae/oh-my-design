@@ -5,7 +5,10 @@ import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { docsHref, type DocsLocale } from "@/lib/docs/locales";
 import { screensPublished } from "@/lib/screens/source.server";
 import { SCREENS_NAV_LABEL, SCREENS_PATH } from "@/components/screens/copy";
+import { BLOG_ON_SUBDOMAIN, blogIndexHref, blogIndexUrl } from "@/lib/site";
+import type { PostLocale } from "@/lib/blog/locales";
 import { getCopy } from "./copy";
+import { getChromeCopy } from "./copy/r11-chrome";
 import { LocaleSwitch } from "./locale-switch";
 import { Logo } from "./logo";
 import { StarPill } from "./star-pill";
@@ -29,6 +32,20 @@ export function skillsHrefFor(locale: SiteLocale, docsLocale?: DocsLocale): stri
   return docsHref(docsLocale ?? DOCS_LOCALE_OF[locale], "skills");
 }
 
+/** The blog's language for a site locale: the blog is ko + en, so Korean pages read the Korean blog and the others the English one. */
+export function blogLocaleOf(locale: SiteLocale): PostLocale {
+  return locale === "ko" ? "ko" : "en";
+}
+
+/**
+ * Where the header's and footer's "Blog" link goes: the blog's home in that language. Absolute once the
+ * blog has its own host, so the link works from the main site; a path on this host until then.
+ */
+export function blogHrefFor(locale: SiteLocale): string {
+  const l = blogLocaleOf(locale);
+  return BLOG_ON_SUBDOMAIN ? blogIndexUrl(l) : blogIndexHref(l);
+}
+
 /**
  * Site-wide header (concept A). `locale` picks the nav copy and docs link;
  * `current` marks the active language in the switcher and is null on pages
@@ -48,6 +65,10 @@ export function skillsHrefFor(locale: SiteLocale, docsLocale?: DocsLocale): stri
  * the site origin once it serves from its own host (lib/site.ts siteHref).
  * `extra` sits before the language switcher (the blog's own ko/en switch, the
  * docs' 5-locale switch, with `locales={false}`).
+ *
+ * The last link is the blog (owner, 2026-11-23: the blog was hard to reach from the site), labelled
+ * with the footer's word for it in each locale. `section="blog"` marks it as the current section
+ * (the blog's own header).
  */
 export function SiteHeaderA({
   locale = "en",
@@ -60,7 +81,10 @@ export function SiteHeaderA({
   localeHrefs,
   twins = false,
   docsLocale,
+  section,
 }: {
+  /** The site section this page belongs to, marked in the nav (the blog's pages). */
+  section?: "blog";
   /** Language-switch targets read from the page's hreflang alternates (a shared layout's header). */
   twins?: boolean;
   /** Language-switch targets when this page has translated twins (the item page). */
@@ -82,6 +106,7 @@ export function SiteHeaderA({
   docsLocale?: DocsLocale;
 }) {
   const t = getCopy(locale).nav;
+  const blogLabel = getChromeCopy(locale).foot.blog;
   const meta = SITE_LOCALE_META[locale];
   const docs = docsLocale ?? DOCS_LOCALE_OF[locale];
   // The screens gallery, once published: English and Korean only (it has no Japanese or Chinese page).
@@ -96,6 +121,7 @@ export function SiteHeaderA({
       ) : null}
       <Link href={`${origin}${skillsHrefFor(locale, docs)}`} prefetch={false}>{t.skills}</Link>
       <Link href={`${origin}${docsHref(docs)}`} prefetch={false}>{t.docs}</Link>
+      <a href={blogHrefFor(locale)} aria-current={section === "blog" ? "page" : undefined}>{blogLabel}</a>
     </>
   );
   return (
