@@ -36,12 +36,16 @@ export const NO_LEAD: Readonly<Record<string, string>> = {
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
 
 /** The quote that leads the rule's card on the Japanese page and its index in the rule's quotes, or null. With
- *  `prefer`, the first unlabelled quote from that source key leads instead, when the rule has one. */
+ *  `prefer`, the first unlabelled quote from that source key leads instead, when the rule has one (NO_LEAD or not). */
 export function jaLead(r: Rule | string, prefer?: string): { quote: Quote; index: number } | null {
   const rule = typeof r === "string" ? RULE.get(r) : r;
-  if (!rule || rule.id in NO_LEAD) return null;
+  if (!rule) return null;
+  // a #compare caption names its example's source: that source's own sentence leads, even on a NO_LEAD rule (KW-54's
+  // SmartHR stop shows SmartHR's 「件」 sentence, which is what the stop is about)
   const preferred = prefer ? (rule.quotes as Quote[]).findIndex((q) => q.key === prefer && !q.label) : -1;
-  const index = preferred > -1 ? preferred : (LEAD_INDEX[rule.id] ?? 0);
+  if (preferred > -1) return { quote: (rule.quotes as Quote[])[preferred], index: preferred };
+  if (rule.id in NO_LEAD) return null;
+  const index = LEAD_INDEX[rule.id] ?? 0;
   const quote = (rule.quotes as Quote[])[index];
   return quote && !quote.label ? { quote, index } : null;
 }

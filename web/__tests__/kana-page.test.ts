@@ -328,7 +328,7 @@ describe("/ko/kana app screen (#app): Japanese of our own, labelled and kept in 
 });
 
 describe("/ko/kana stays unreleased", () => {
-  it("noindex, canonical to itself, no twin", () => {
+  it("noindex, canonical to itself, its only hreflang alternate itself (the switch links /ja/kana; hreflang does not)", () => {
     expect(metadata.robots).toMatchObject({ index: false });
     expect(metadata.alternates?.canonical).toBe(KANA_PATH);
     expect(metadata.alternates?.languages).toEqual({ ko: KANA_PATH });

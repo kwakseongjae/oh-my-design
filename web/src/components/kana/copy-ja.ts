@@ -23,7 +23,7 @@ import type { KanaChrome, SourceOrg } from "./copy";
  *
  * kana-copy-check (scripts/lang/kana-copy-check.mjs, 2026-11-23), over a TSX fixture that sets each string in the element
  * it is on the page (buttons and links in <button>, headings in <h2>, the rest in <p>; the page test builds the same):
- *   0 WARN, 1 FYI: KW-35, "51% kanji of 893 kanji and hiragana", a ratio over the whole fixture. Most strings here are
+ *   0 WARN, 1 FYI: KW-35, "52% kanji of 891 kanji and hiragana", a ratio over the whole fixture. Most strings here are
  *   headings and labels, which the rules want as nouns (KW-02), so the ratio runs high; the test does not hold it.
  *
  * Organisation names: in Latin letters as each source writes itself, except the two government bodies, whose names
@@ -98,7 +98,7 @@ export const KANA_COPY_JA = {
   },
   rules: {
     h2: "主な規則",
-    intro: "日本語の文はすべて出典からの引用です。英文は当サイトが書いた規則の要約で、引用ではありません。",
+    intro: "日本語の文と、引用符と出典の付いた英文は、出典からの引用です。引用符のない英文は当サイトが書いた規則の要約です。",
     allH2: "分野別の規則",
     seenAbove: "上で紹介した規則",
     english: "英文（引用ではありません）",
@@ -120,7 +120,7 @@ export const KANA_COPY_JA = {
   },
   house: {
     h2: "出典で分かれる点",
-    intro: "見出しと英文は当サイトが書いたもので、引用ではありません。",
+    intro: "見出しと、引用符のない英文は当サイトが書いたものです。",
     notReal: "確認の結果、実際には分かれていない",
   },
   fonts: {

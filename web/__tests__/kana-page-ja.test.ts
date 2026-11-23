@@ -210,6 +210,17 @@ describe("/ja/kana: the page", () => {
     expect(appSection.indexOf(KANA_COPY_JA.app.composed)).toBeLessThan(appSection.indexOf('class="hg-phone"'));
   });
 
+  it("#app's tags and #compare's captions name each rule by a quoted source sentence, never by our English", () => {
+    const lines = [...(main.match(/<span class="ka-tag-t">[\s\S]*?<\/span><\/span><\/li>/g) ?? []), ...(main.match(/<p class="kc-cap-rule">[\s\S]*?<\/p>/g) ?? [])];
+    expect(lines.length).toBeGreaterThan(15);
+    for (const l of lines) expect(l, l.slice(0, 120)).toContain('class="kn-qm"');
+  });
+
+  it("the intros that call the English ours say it is the English without quote marks", () => {
+    expect(KANA_COPY_JA.rules.intro).toMatch(/引用符のない英文は当サイト/);
+    expect(KANA_COPY_JA.house.intro).toMatch(/引用符のない英文は当サイト/);
+  });
+
   it("the header's language switch points the Korean row at /ko/kana", () => {
     expect(html).toMatch(/href="\/ko\/kana" hrefLang="ko"/);
     expect(html).toMatch(/href="\/ja\/kana" hrefLang="ja"/);
