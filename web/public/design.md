@@ -220,7 +220,7 @@ The item page's Share is a neutral control: 40px, 14px radius, color.cell; a 44p
 - The caption sits 14px under the panel, 10px gaps: logo 28px with radius.inner, name 17/650, and "category · N screens" in 14px color.ink-2 at the end.
 - Hover, on pointer devices only: the panel adds shadow.panel and the stills rise 4px; neither moves under reduced motion. Focus: 2px outline on the panel, offset 3px.
 
-The screens pages' device switch, on `/screens/<id>` and the item page's screens tab, is a tab group of two buttons, one per device: color.cell, radius.control, 4px padding and gap, 40px in all. Each segment is 32px tall with 14px side padding, a 10px radius and a 15/650 color.ink-2 label; hover color.ink; the pressed one is color.paper with a 1px inset color.guide-2 edge and a color.ink label. At 767px and below the group spans the row, the segments share it equally and grow to 36px. It shows only when there are stills on both devices.
+The screens pages' device switch, on `/screens/<id>` and the item page's screens tab, is a tab group of two buttons, one per device: color.cell, radius.control, 4px padding and gap, 40px in all. Each segment is 32px tall with 14px side padding, a 10px radius and a 15/650 color.ink-2 label; hover color.ink; the pressed one is color.paper with a 1px inset color.guide-2 edge and a color.ink label; focus outline offset 2px. At 767px and below the group spans the row, the segments share it equally and grow to 36px. It shows only when there are stills on both devices.
 
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
@@ -323,7 +323,7 @@ Production at 1440px, measured 2026-11-21:
 - Page titles: home (60/760) and docs (40/760) match. Korean home 56/760, archive 64/780 and `/hangul` 64/760 do not; blog, FAQ, changelog, `/what-is-design-md` and alternatives keep the pre-rebrand 48/700.
 - Eight section-heading sizes (18–44px), twelve button heights (28–56px), five button radii (8, 10, 12, 14px, pill) and four fractional type sizes (14.45, 12.75, 12.5, 40.8px).
 - In code: `components/ui/button.tsx` keeps 24–36px sizes; status chips have a 10.5px label; the social images (`/og/reference`, `/og/blog`) still draw the pre-rebrand `#7c5cfc` and `#0a0a0f`.
-- In code, screens pages (read 2026-11-23): the device switch's 32px segments carry 15/650 where the scale pairs 32px with 14/600, grow only to 36px at 767px and below (under the 44px touch target), have a 10px radius that is not on the radius scale, and draw no focus outline (their `all: unset` outranks the site-wide `:focus-visible` rule). On `/screens/<id>` a type's download is a 36px round button (44px on touch) and a type's heading is 22px (20px at 767px and below). Service cards and screen tiles move over 0.2s, not the 0.15s under Motion, and the screens CSS breaks at 1023, 767 and 599px rather than the 900px under Page.
+- In code, screens pages (read 2026-11-23): the device switch's 32px segments carry 15/650 where the scale pairs 32px with 14/600, grow only to 36px at 767px and below (under the 44px touch target), and have a 10px radius that is not on the radius scale. On `/screens/<id>` a type's download is a 36px round button (44px on touch) and a type's heading is 22px (20px at 767px and below). Service cards and screen tiles move over 0.2s, not the 0.15s under Motion, and the screens CSS breaks at 1023, 767 and 599px rather than the 900px under Page.
 
 ### Legacy in code
 
