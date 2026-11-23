@@ -1,12 +1,13 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { after } from "next/server";
 import { compareReferences, getComponentStates, getDesignMd, getReference, getTokens, searchReferences } from "./catalog";
-import { annotations, CatalogError, errorEnvelope, inputs, outputs, type ToolName } from "./contracts";
+import { annotations, CatalogError, errorEnvelope, inputs, outputs, SCREEN_USE, type ToolName } from "./contracts";
+import { getScreenContext, getServiceScreens, listScreenTypes, searchScreens } from "./screens";
 import { countToolCall } from "./operations";
 import { toolResult } from "./response";
 
 export function createMcpServer(): McpServer {
-  const server = new McpServer({ name: "oh-my-design", version: "2.0.0" }, { capabilities: { tools: {} } });
+  const server = new McpServer({ name: "oh-my-design", version: "2.1.0" }, { capabilities: { tools: {} } });
   async function call(tool: ToolName, run: () => Record<string, unknown> | Promise<Record<string, unknown>>, ids: readonly string[] = []) {
     after(() => countToolCall(tool, ids));
     try { return toolResult(await run()); }
@@ -40,5 +41,25 @@ export function createMcpServer(): McpServer {
     description: "Lay 2–4 exact references' measured values side by side by claim path. Missing cells are absent. No score, recommendation or generated values.",
     inputSchema: inputs.compare_references, outputSchema: outputs.compare_references, annotations,
   }, (args) => call("compare_references", () => compareReferences(args), args.ids));
+
+  // Screens: real product screens, each beside its service's measured DESIGN.md. Every result names whose the screen
+  // is, when and how it was shot, and how to ask for it to be taken down.
+  const screens = "Screens of real products, shot signed out, each belonging to a service whose DESIGN.md is in this catalog. Each result carries the service, shot date, whether people were hidden, the rights line, the takedown route, image URLs on oh-my-design.kr and the page that opens the screen. " + SCREEN_USE + " When nothing is published the tools answer with an empty result and say so.";
+  server.registerTool("list_screen_types", {
+    description: `${screens} Lists the screen types (slug, English and Korean name) with how many screens and services each has per device, and the services that have screens.`,
+    inputSchema: inputs.list_screen_types, outputSchema: outputs.list_screen_types, annotations,
+  }, (args) => call("list_screen_types", () => listScreenTypes(args)));
+  server.registerTool("search_screens", {
+    description: `${screens} Finds screens by type (sign-in, search-results, detail…), service id, country, category, device and words over service names (English and Korean), screen titles and types. Each result lists tokens_seen: the service's DESIGN.md colour tokens found with exactly that value on that screen.`,
+    inputSchema: inputs.search_screens, outputSchema: outputs.search_screens, annotations,
+  }, (args) => call("search_screens", () => searchScreens(args), args.service ? [args.service] : []));
+  server.registerTool("get_service_screens", {
+    description: `${screens} One service's screens grouped by type, with devices, images, the colours seen on each screen, and the tools to call next for its tokens and component states.`,
+    inputSchema: inputs.get_service_screens, outputSchema: outputs.get_service_screens, annotations,
+  }, (args) => call("get_service_screens", () => getServiceScreens(args), [args.id]));
+  server.registerTool("get_screen_context", {
+    description: `${screens} One screen together with the measured values to build something like it: the DESIGN.md colours seen on that screen with their evidence, and, labelled as coming from the service's DESIGN.md rather than from the screen, its type scale, fonts, radii, spacing and components with measured states. not_known_for_this_screen lists what the data cannot say.`,
+    inputSchema: inputs.get_screen_context, outputSchema: outputs.get_screen_context, annotations,
+  }, (args) => call("get_screen_context", () => getScreenContext(args), [args.id]));
   return server;
 }

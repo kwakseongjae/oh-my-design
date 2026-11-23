@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { inputs, outputs, annotations, CATALOG, NOTICE, type ToolName } from "@/lib/mcp/contracts";
+import { inputs, outputs, annotations, CATALOG, NOTICE, SCREEN_USE, type ToolName } from "@/lib/mcp/contracts";
 import { MAX_RESPONSE_BYTES } from "@/lib/mcp/response";
 import { mcpRateLimit } from "@/lib/mcp/operations";
 import { REGISTRY } from "@/data/registry.generated";
@@ -70,15 +70,17 @@ function noNulls(value: unknown): void {
   if (Array.isArray(value)) value.forEach(noNulls);
   else if (value && typeof value === "object") Object.values(value).forEach(noNulls);
 }
+type ReferenceTool = "search_references" | "get_reference" | "get_design_md" | "get_tokens" | "get_component_states" | "compare_references";
 async function flushCounters() { await Promise.all(mocks.scheduled.splice(0).map((callback) => callback())); }
 
-it("initializes statelessly and lists exactly six read-only tools with input and output schemas", async () => {
+it("initializes statelessly and lists exactly the ten read-only tools with input and output schemas", async () => {
   const init = await rpc("initialize", { protocolVersion: "2025-11-25", capabilities: {}, clientInfo: { name: "contract-test", version: "1" } });
   expect(init.response.status).toBe(200);
   expect(init.response.headers.has("mcp-session-id")).toBe(false);
-  expect(init.body.result.serverInfo).toEqual({ name: "oh-my-design", version: "2.0.0" });
+  expect(init.body.result.serverInfo).toEqual({ name: "oh-my-design", version: "2.1.0" });
   const { body } = await rpc("tools/list");
   expect(body.result.tools.map((item: { name: string }) => item.name)).toEqual(Object.keys(inputs));
+  expect(body.result.tools).toHaveLength(10);
   for (const item of body.result.tools) {
     expect(item.annotations).toEqual(annotations);
     expect(item.inputSchema.type).toBe("object");
@@ -97,7 +99,7 @@ describe.each([
   ["toss", "verified_v2"], ["sixt", "verified_v2"], [PARTIAL, "partial"], [LEGACY, "legacy"],
 ] as const)("real %s (%s)", (id, status) => {
   it("satisfies every tool's output contract and preserves trust", async () => {
-    const calls: [ToolName, object][] = [
+    const calls: [ReferenceTool, object][] = [
       ["search_references", { query: id }], ["get_reference", { id }], ["get_design_md", { id }],
       ["get_tokens", { id, groups: ["colors", "rounded"] }], ["get_component_states", { id }],
       ["compare_references", { ids: [id, id === "sixt" ? "toss" : "sixt"], aspects: ["colors", "radius"] }],
@@ -299,4 +301,51 @@ it("rejects invalid inputs and accepts notifications without retaining sessions"
   }));
   expect(response.status).toBe(202);
   expect(await response.text()).toBe("");
+});
+
+describe("screen tools", () => {
+  it("answer through MCP on the same contract, with the use sentence in every description", async () => {
+    const { body } = await rpc("tools/list");
+    for (const name of ["list_screen_types", "search_screens", "get_service_screens", "get_screen_context"]) {
+      const item = body.result.tools.find((t: { name: string }) => t.name === name);
+      expect(item.description).toContain(SCREEN_USE);
+    }
+    const calls: [ToolName, object][] = [
+      ["list_screen_types", {}], ["search_screens", { type: "sign-in", device: "mobile" }],
+      ["get_service_screens", { id: "karrot" }], ["get_screen_context", { id: "karrot", key: "home" }],
+    ];
+    for (const [name, args] of calls) {
+      const result = await tool(name, args);
+      expect(result.isError, `${name} returned ${JSON.stringify(result.structuredContent).slice(0, 400)}`).not.toBe(true);
+      const data = outputs[name].parse(result.structuredContent) as { screens: { published: boolean; use: string } };
+      noNulls(data);
+      expect(data.screens).toMatchObject({ published: true, use: SCREEN_USE });
+      expect(JSON.stringify(data)).not.toContain("blob.vercel-storage.com");
+    }
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("count the service id only, never the query text, and keep unknown ids out of the counters", async () => {
+    const query = "private-person@example.test 당근 로그인";
+    await tool("search_screens", { query, service: "karrot" });
+    await tool("get_screen_context", { id: "karrot", key: "home" });
+    const unknown = await tool("get_service_screens", { id: "toss-bank" });
+    expect(unknown.isError).toBe(true);
+    expect(unknown.structuredContent).toMatchObject({ error: { code: "unknown_reference" } });
+    await flushCounters();
+    const telemetry = JSON.stringify(mocks.counters);
+    expect(telemetry).not.toContain("private-person");
+    expect(telemetry).not.toContain("로그인");
+    expect(telemetry).not.toContain("toss-bank");
+    const fields = mocks.counters.filter(([method]) => method === "hincrby").map(([, , field]) => field);
+    expect(fields).toEqual(["search_screens", "karrot", "get_screen_context", "karrot", "get_service_screens"]);
+  });
+
+  it("reject invalid screen inputs on the same error contract", async () => {
+    for (const [name, args] of [["search_screens", { limit: 31 }], ["search_screens", { device: "tablet" }], ["get_screen_context", { id: "karrot" }], ["get_screen_context", { id: "karrot", key: "home", include: ["colors"] }]] as const) {
+      const { body } = await rpc("tools/call", { name, arguments: args });
+      expect(body.result.isError).toBe(true);
+      expect(body.result.structuredContent).toMatchObject({ catalog: CATALOG, notice: NOTICE, error: { code: "invalid_tool_input" } });
+    }
+  });
 });
