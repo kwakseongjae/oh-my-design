@@ -4,7 +4,12 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 22:46) — 오너 결정 대기: 26번(런칭 영상 v2, 방향 A·B·C) · 29번(블로그 글 수정안 PR #161, 제목) · 30번(MCP 화면 도구 PR #162) · 27번(PR #159) · 31번(블로그 B안: 이름·썸네일) · 도는 에이전트 1: `kana-showcase`(시안 2안) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+## 지금 (2026-11-23 23:14) — **오너 결정 대기: 32번(kana 시안 A·B) · 31번(블로그 B안: 이름·썸네일·구현) · 26번(영상 v2) · 29번(글 PR #161, 제목) · 30번(MCP PR #162) · 27번(PR #159)** · 도는 에이전트 없음 · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+
+**11/23 23:14 kana 시안 2안 → 카드 32**
+- `kana-showcase` 끝(커밋 없음, 정지 시안). `<scratchpad>/kana-mocks/mock-a.html`(「같은 화면, 다른 일본어」: /hangul 문법, 폰 두 대 + 규칙 9개, 말투·버튼과 오류·조판 세 장, 51규칙 접힌 색인, 긴 자료는 `/ko/kana/rules`로, 1440에서 9,327px) · `mock-b.html`(「고친 곳마다 일본 가이드의 원문이 있어요」: 출처 예시가 첫 화면, 한 페이지, 6,662px). 에이전트 추천 A, 일본어판은 B의 첫 화면으로 시작. 새로 지은 일본어 없음.
+- **에이전트가 찾은 것:** 운영 `/ko/kana`가 일본어 웹 글꼴을 안 불러옴(Wanted Sans의 /ko 조각이 가나는 있고 한자는 없어 섞여 그려질 수 있음) → 새 화면 구현 때 고칠 것 · 조판(JT) 인용 3개는 11/21의 글자 대조를 안 거침 · design.md와 어긋나는 것(장 제목 40px, /hangul의 주황·파랑 대비 색, 폰 반경)은 오너 결정.
+- 워크트리 `kana-redesign`(가지 `feat/kana-showcase`)·`blog-b`(`feat/blog-home-b`)는 커밋 없이 남아 있음: 방향이 정해지면 거기서 구현.
 
 **11/23 22:46 한도 풀린 뒤**
 - **영상 v2:** `~/Downloads/omd-screens-launch/omd-screens-launch-v2.mp4`(39.0초, 음악만). 이야기 A(스크린샷 폴더)로 만듦(오너가 고르기 전이지만 「해봐」와 추천안으로 진행, 카드 26에서 A·B·C를 물음). 구조: `index.html`(호스트 7개 + `bgm`) + `compositions/sc1..7.html`(더미 → 격자 → 종류 필터와 로그인 8곳 → 모바일/데스크톱 → 교보문고 바로구매 버튼의 잰 값 → 주장 셋 → 끝 화면). 박자: 150BPM, 영상 시간의 박 = 0.105 + 0.4n, 장면 경계는 마디(0 · 6.5 · 11.3 · 17.7 · 22.5 · 30.5 · 35.3 · 39.0). 음악: ElevenLabs `eleven_music_v2_5` 두 가지(flow `1r4yczvGSy00hBBrXzHF`, 약 1,200크레딧), `assets/bgm-2.mp3` 사용(`data-media-start=0.3`), `bgm-1.mp3`는 예비. `check`가 잡은 것: 겹침(더미는 `data-layout-allow-overlap`), 28px 미만 글자. 장면 파일은 REPL의 생성 코드로 썼다(코드는 세션에만 있음: 고칠 때는 장면 파일을 직접 고친다). v1은 `v1/index.html`에 보관. 부족한 것: 효과음 없음, 장면 사이 연결 컷이 한 곳, 끝 화면 조각이 작음. 소리는 듣지 못함.
