@@ -11,6 +11,7 @@
 - **에이전트 2개 도는 중(유료):** `mcp-screens`(워크트리 `mcp-screens`, 가지 `feat/mcp-screens`: MCP에 list_screen_types · search_screens · get_service_screens · get_screen_context, 화면 + 그 화면에서 확인된 토큰 + 실측값. 그림 주소는 우리 `/screens-img`. 화면 구성 정보(outline)는 평가와 제안만, 새 데이터 공개 없음. 스킬 연동은 제안서) · `blog-article`(워크트리 `blog-article`, 가지 `feat/blog-article-readable`: 첫 글 재구성, 제목 후보 5개, 숫자 대조 스크립트, 영어판). 지시서·보고서 `<scratchpad>/agent-reports/{mcp-screens,blog-article-readable}{-brief,}.md`. 커밋만.
 - **오너에게 말한 해석:** MCP의 그림 범위 = 「작은 그림과 큰 그림 주소까지」(「무료로 풀고자 해」에서 읽음). 초안 PR로만 올리고, 다르면 머지 전에 바꾼다.
 - 카드: 25(방향 받음) · 26(영상) · 27(블로그) · 28(kana).
+- **18:2x 에이전트 최종 보고 둘 도착(`kana-ja`, `blog-renewal`. 내용은 파일 보고와 같음, 이미 PR #160·#159와 카드 28·27에 반영).** 카드에 덧붙인 것: 블로그 시안의 태그 칩 줄과 Iris 셰이더 면은 `web/public/design.md`에 없는 요소(구현 전에 기준 문서에 추가) · 일본어판은 「이 페이지를 쓰는 법」 구역을 뺌. 오너 몫으로 남은 것: kana의 커밋 `17c18036`(한국어판 언어 메뉴가 일본어판을 가리킴, 추천 유지) · 맨주소 `/kana` · 일본어 메뉴 링크. `blog-renewal/web/.next`는 여전히 못 지움.
 
 **11/23 17:59 공개 완료와 그 과정**
 - **오너 11/23 16:4x:** 「지금은 어차피 레퍼런스 확충 단계니까 서비스는 점차 확충할거야. 그 부분 감안해서 작업해보고, 모빈과 refero mcp를 능가하는(왜냐면 우린 DESIGN.md랑 스킬도 있으니까) 형태를 무료로 풀고자 해. 이 부분에 맞게 잘 구성해봐. 그리고 연결 바꿨어. 영상 까지만 만들고, elevenlabs도 해봐. openmotion은 설치해뒀어. opendesign 안에서 ㅡotion을 쓰는 거 같더라고. opendesign으로 설치해뒀으니까 참고해서 작업해봐.」 → 본 세션의 해석: 업로드 진행 · 영상 제작과 ElevenLabs 사용 go · MCP는 화면 도구를 무료로, 그림 범위는 「작은 그림까지」(「무료로 풀고자 해」에서 읽음, 오너에게 말할 것).
