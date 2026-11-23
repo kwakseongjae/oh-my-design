@@ -4,7 +4,14 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-23 18:36) — **사용 한도로 멈춤.** 오너 결정 대기: 런칭 영상 v2의 이야기 A·B·C(추천 A, `~/.omd-workers/video/screens-launch/STORYLINES.md`) · PR #159(메뉴의 블로그 링크) · 도는 에이전트 2(`mcp-screens`, `blog-article`: 한도로 멈출 수 있음, 깨우면 이어감) · **아직 시작 못 한 것: kana 전용 화면 재기획, 블로그 B안 다듬기(이름·전용 썸네일)** · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+## 지금 (2026-11-23 22:46) — 오너 결정 대기: 26번(런칭 영상 v2, 방향 A·B·C) · 29번(블로그 글 수정안 PR #161, 제목) · 30번(MCP 화면 도구 PR #162) · 27번(PR #159) · 도는 에이전트 2: `kana-showcase`(시안 2안), `blog-home-b`(이름·썸네일·B안) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+
+**11/23 22:46 한도 풀린 뒤**
+- **영상 v2:** `~/Downloads/omd-screens-launch/omd-screens-launch-v2.mp4`(39.0초, 음악만). 이야기 A(스크린샷 폴더)로 만듦(오너가 고르기 전이지만 「해봐」와 추천안으로 진행, 카드 26에서 A·B·C를 물음). 구조: `index.html`(호스트 7개 + `bgm`) + `compositions/sc1..7.html`(더미 → 격자 → 종류 필터와 로그인 8곳 → 모바일/데스크톱 → 교보문고 바로구매 버튼의 잰 값 → 주장 셋 → 끝 화면). 박자: 150BPM, 영상 시간의 박 = 0.105 + 0.4n, 장면 경계는 마디(0 · 6.5 · 11.3 · 17.7 · 22.5 · 30.5 · 35.3 · 39.0). 음악: ElevenLabs `eleven_music_v2_5` 두 가지(flow `1r4yczvGSy00hBBrXzHF`, 약 1,200크레딧), `assets/bgm-2.mp3` 사용(`data-media-start=0.3`), `bgm-1.mp3`는 예비. `check`가 잡은 것: 겹침(더미는 `data-layout-allow-overlap`), 28px 미만 글자. 장면 파일은 REPL의 생성 코드로 썼다(코드는 세션에만 있음: 고칠 때는 장면 파일을 직접 고친다). v1은 `v1/index.html`에 보관. 부족한 것: 효과음 없음, 장면 사이 연결 컷이 한 곳, 끝 화면 조각이 작음. 소리는 듣지 못함.
+- **끝난 에이전트 둘 → 초안 PR:** `blog-article` → **#161**(글 재구성, 제목 후보 5개 중 2번을 프런트매터에, 그림 2장 추가, 숫자 대조 스크립트 `<scratchpad>/blog-readable/numdiff.mjs`, 전체 테스트 1,605 통과) · `mcp-screens` → **#162**(list_screen_types · search_screens · get_service_screens · get_screen_context, 서버 2.1.0, 전체 1,627 통과, outline은 빈 파일 뒤의 리더만). 워크트리 `blog-article`·`mcp-screens` 유지.
+- **MCP에서 나온 것(오너에게 알림):** `llms.txt`·`llms.ko.txt`·`llms-full.txt`와 `/terms`가 아직 「커넥터 종료」라고 말한다(실제로는 운영 중) → 수정 PR을 따로(약관 문구라 오너 go).
+- **새 에이전트 2개 도는 중(유료):** `kana-showcase`(워크트리 `kana-redesign`, 가지 `feat/kana-showcase`: /hangul 분석 → 정지 시안 2안 `<scratchpad>/kana-mocks/`, 앱 코드 변경 없음) · `blog-home-b`(워크트리 `blog-b`, 가지 `feat/blog-home-b` = feat/blog-renewal 위: 업계 블로그 이름 조사 → 이름 3개·태그, 전용 썸네일 2방식 × 3편(og 겸용), B안 시안 3편·12편). 지시서 `<scratchpad>/agent-reports/{kana-showcase,blog-home-b}-brief.md`.
+- 카드: 26(영상 v2) · 29(글) · 30(MCP) 추가.
 
 **11/23 18:36 한도로 멈춘 자리(다음 세션이 이어서 할 것)**
 - **영상 v2:** HyperFrames 스킬(`~/.claude/skills/hyperframes`, `references/types/launch.md`·`story.md`)의 절차대로 세 이야기를 글로만 씀(STORYLINES.md: A 스크린샷 폴더 / B 로그인 화면 여덟 개 / C 연습곡). **오너가 고르기 전에는 만들지 않는다.** 고르면 `SPEC.md` → 장면별 하위 구성 → `check` → `snapshot --review` → 렌더. v1이 틀린 곳(스킬의 말로): 전체 화면 스크린샷에 제목을 얹은 나열, 제품이 일하는 모습 없음. 지킬 것: 실제 화면만, 동작을 1.6~2배로 떼어 보여 주고 제자리로 돌려놓기, 큰 커서, 끝 화면의 로고는 연출해서. 음악: ElevenLabs에 `eleven_music_v2_5`가 있음(크레딧, 오너에게 말하고 사용) 또는 공개 클래식 피아노 녹음(Wikimedia의 Musopen 녹음은 공개 표시가 붙은 것만). 오너 요구: 빠르고 화끈한 템포, 나레이션보다 컨셉과 문구.
