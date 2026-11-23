@@ -6,7 +6,7 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-The site oh-my-design.kr: an archive of measured DESIGN.md files for real companies, plus skills for coding agents. In scope: Home (`/`, `/ko`), the archive (`/design-systems`), the item page (`/design-systems/[id]`, `/ko/design-systems/[id]`), docs, blog, the `/hangul` skill landing, `/what-is-design-md`, FAQ, alternatives and changelog, plus the Japanese and Traditional Chinese roots. Light only: one palette, `color-scheme: light`. This file describes the site itself, not any reference in the archive.
+The site oh-my-design.kr: an archive of measured DESIGN.md files for real companies, plus skills for coding agents. In scope: Home (`/`, `/ko`), the archive (`/design-systems`), the item page (`/design-systems/[id]`, `/ko/design-systems/[id]`), the screens gallery (`/screens`, `/ko/screens`) and its page per service (`/screens/[id]`, `/ko/screens/[id]`), docs, blog, the `/hangul` skill landing, `/what-is-design-md`, FAQ, alternatives and changelog, plus the Japanese and Traditional Chinese roots. Light only: one palette, `color-scheme: light`. This file describes the site itself, not any reference in the archive.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=2 lang=en -->
@@ -121,7 +121,7 @@ Approved by the owner on 2026-11-21. Whole pixels only.
 | Landing title | 60px | 760 | Home and skill-landing first screens | Approved, not yet applied |
 | Page title | 40px | 760 | Other pages; 32px at 900–1279px, 28px below | Applied on the item page and on FAQ, changelog, `/what-is-design-md` and alternatives |
 | Section heading | 26px | 760 | Sections; 22px on a phone | Item page: 26px, but 23px on a phone |
-| Control, large | 16px | 650 | Labels of 48px controls | Approved, not yet applied |
+| Control, large | 16px | 650 | Labels of 48px controls | Applied on `/screens/[id]` |
 | Control | 15px | 650 | Labels of 40px controls | Applied on the item page's two actions |
 | Control, small | 14px | 600 | Labels of 32px controls | Approved, not yet applied |
 | Reading body | 17px | 400 | Item page DESIGN.md text; 16px on a phone | In code, outside the approval |
@@ -133,11 +133,11 @@ Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 8
 
 ### Component: action button
 
-**Semantics:** Triggers a named action such as Copy DESIGN.md or Download.
+**Semantics:** Triggers a named action such as Copy DESIGN.md or Download, or Download all on a service's screens page.
 
 - Anatomy: label, optional-leading-icon
 - Variants: primary, line
-- States: default, hover, pressed, focus-visible
+- States: default, hover, pressed, focus-visible, loading, error
 
 - Interaction kind: interactive
 
@@ -149,13 +149,14 @@ Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 8
 | hover | applicable |  |
 | focus-visible | applicable |  |
 | disabled | not-applicable | The actions are always available; no disabled style exists. |
-| loading | not-applicable | Copy and Download have no waiting state. |
-| error | not-applicable | No error style exists. |
+| loading | applicable |  |
+| error | applicable |  |
 | success | not-applicable | No success style exists. |
 
 - **primary**: color.primary fill, color.on-primary label; hover primary-hover, pressed primary-press. One per screen.
 - **line**: color.paper with a 1px inset color.guide edge; hover cell, pressed guide-2.
 - Pill radius, 18px side padding (16px on a phone), 18px icon, focus outline offset 3px.
+- Loading and error belong to the zip downloads on `/screens/[id]` only; Copy and Download on the item page do not wait. While a zip is built the button keeps its look, carries `aria-disabled` and a progress cursor, and a 14px color.ink-2 status line beside it counts the files in tabular figures. A zip that is missing files, or that failed, says so in that line in color.err; the button itself has no error style.
 
 ### Control sizes
 
@@ -163,7 +164,7 @@ Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 8
 |---|---|---|---|---|
 | sm | 32px | 14/600 | Inside tables and chips | Approved, not yet applied |
 | md | 40px | 15/650 | Default; 44px on a phone | Applied on the item page's first screen |
-| lg | 48px | 16/650 | The one main action of a landing first screen | Approved, not yet applied |
+| lg | 48px | 16/650 | The one main action of a landing first screen; the two actions of a service's screens page | Applied on `/screens/[id]` (22px side padding) |
 
 The item page's Share is a neutral control: 40px, 14px radius, color.cell; a 44px square icon on a phone.
 
