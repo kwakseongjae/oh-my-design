@@ -180,10 +180,16 @@ describe("the publishing script (collect)", () => {
     expect(withoutScreens(result.manifest, "karrot").services.map((s: { slug: string }) => s.slug)).toEqual(["29cm", "wanted"]);
   });
 
-  it("the committed manifest is the shut state: no services, no base (change this test when publishing)", () => {
+  it("the committed manifest is the shut state, or one the production reader accepts: an https image store and safe names", () => {
     const committed = JSON.parse(fs.readFileSync(path.join(WEB, "src/data/screens-public.generated.json"), "utf8"));
-    expect(committed).toEqual({ generated: "", base: "", services: [] });
-    expect(screensPublished({ NODE_ENV: "production" })).toBe(false);
+    if (committed.services.length === 0) {
+      expect(committed).toEqual({ generated: "", base: "", services: [] });
+      return;
+    }
+    expect(validManifest(committed, false)).not.toBeNull();
+    expect(committed.base).toMatch(/^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/screens$/);
+    // taken out whole by the owner on 2026-11-22: a later upload must not bring them back unnoticed
+    for (const s of committed.services) expect(["kurly", "ohouse"], s.slug).not.toContain(s.slug);
   });
 });
 

@@ -7,6 +7,9 @@ import { logoFor } from "@/app/(en)/design-systems/archive-rows.server";
 
 /** The gallery's reader: the same gate as the Screens tab, every service with a walk, registry names and links. */
 
+// These read a local folder or nothing: pin the committed manifest to the shut state so a published one changes nothing here.
+vi.mock("@/data/screens-public.generated.json", () => ({ default: { generated: "", base: "", services: [] } }));
+
 const fx = makeGalleryFixture([
   { slug: "karrot", platform: "both", withheld: ["event"] },
   { slug: "wanted", platform: "web", tokens: false },
