@@ -167,6 +167,61 @@ Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 8
 
 The item page's Share is a neutral control: 40px, 14px radius, color.cell; a 44px square icon on a phone.
 
+### Component: filter control
+
+**Semantics:** Narrows the `/screens` gallery by one property (country, device, category, screen type). Names the property, shows its current value and opens a short single-choice list.
+
+- Anatomy: label, value, chevron; a list of options, each with an optional count and a check on the selected one
+- States: default, hover, open, focus-visible
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | Every filter is always available; no disabled style exists. |
+| loading | not-applicable | The options are known when the page renders. |
+| error | not-applicable | No error style exists. |
+| success | not-applicable | No success style exists. |
+
+- Control md: 40px, 44px on touch (`hover: none` or `pointer: coarse`); radius.control; 16px leading and 12px trailing padding (14/10 at 767px and below, 12/8 below 600px).
+- color.paper with a 1px inset color.guide edge; hover and open color.cell. Label 15px color.ink-2, value 15/650 color.ink, chevron 16px color.icon, turned over while open. Focus outline offset 2px.
+- The control is as wide as its longest value, so changing it never moves its neighbours.
+- The list: color.paper, radius.control, 6px padding, a 1px color.guide-2 ring outside plus shadow.panel; at least the control's width or 160px, at most 360px tall. Options 40px (44px on touch), radius.inner; highlighted color.cell; selected 650 with a 16px color.primary check; a count in 14px color.ink-2, tabular figures.
+- "All" is the first option of every filter that can be left open; device always has a value. The filters live in the query string, and the default view keeps the bare URL.
+
+### Component: service card
+
+**Semantics:** One service in a grid of services. The whole card is one link, to that service's screens page (`/screens/<id>`).
+
+- Anatomy: panel of stills; caption with logo, name and "category · N screens"
+- States: default, hover, focus-visible
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | A card is always a working link; no disabled style exists. |
+| loading | not-applicable | No loading style; each image box is sized to its shot, so nothing shifts while a still loads. |
+| error | not-applicable | No error style exists. |
+| success | not-applicable | No success style exists. |
+
+- Panel: color.band, a 1px inset color.guide-2 edge, radius.card, 7% padding at the top and sides. Mobile: three stills side by side, each 31% wide and 3.5% apart, top-aligned, in a 410:300 panel. Desktop: one still across the panel, resting on its lower edge.
+- Stills: color.paper ground, radius.inner (top corners only on desktop), shadow.panel; images have empty alt and the card's text names it.
+- The caption sits 14px under the panel, 10px gaps: logo 28px with radius.inner, name 17/650, and "category · N screens" in 14px color.ink-2 at the end.
+- Hover, on pointer devices only: the panel adds shadow.panel and the stills rise 4px; neither moves under reduced motion. Focus: 2px outline on the panel, offset 3px.
+
+The screens pages' device switch, on `/screens/<id>` and the item page's screens tab, is a tab group of two buttons, one per device: color.cell, radius.control, 4px padding and gap, 40px in all. Each segment is 32px tall with 14px side padding, a 10px radius and a 15/650 color.ink-2 label; hover color.ink; the pressed one is color.paper with a 1px inset color.guide-2 edge and a color.ink label. At 767px and below the group spans the row, the segments share it equally and grow to 36px. It shows only when there are stills on both devices.
+
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
 
@@ -188,6 +243,12 @@ The shadcn `--radius` points at radius.control, so `rounded-lg` is 14px.
 - Content width at most 1360px; side gutter 40px, 16px at 900px and below.
 - Header 68px tall, 58px at 900px and below.
 - The item page puts title and actions on one row from 900px, and the reference beside its preview from 1024px.
+
+### Card grid
+
+- Service cards: three columns from 1024px, two from 600px, one below. Gaps 40px between rows and 24px between columns; 36px and 20px below 1024px; 32px below 600px.
+- The `/screens` gallery puts its filter row above the grid: filters on the left, 8px apart (6px below 600px), the count on the right in 15px color.ink-2 with tabular figures, wrapping when narrow. The row sits 36px under the lede and the grid 32px under the row (24px each at 767px and below).
+- The same grid holds a screens page's similar services.
 
 ### Responsive constraints
 
@@ -262,6 +323,7 @@ Production at 1440px, measured 2026-11-21:
 - Page titles: home (60/760) and docs (40/760) match. Korean home 56/760, archive 64/780 and `/hangul` 64/760 do not; blog, FAQ, changelog, `/what-is-design-md` and alternatives keep the pre-rebrand 48/700.
 - Eight section-heading sizes (18–44px), twelve button heights (28–56px), five button radii (8, 10, 12, 14px, pill) and four fractional type sizes (14.45, 12.75, 12.5, 40.8px).
 - In code: `components/ui/button.tsx` keeps 24–36px sizes; status chips have a 10.5px label; the social images (`/og/reference`, `/og/blog`) still draw the pre-rebrand `#7c5cfc` and `#0a0a0f`.
+- In code, screens pages (read 2026-11-23): the device switch's 32px segments carry 15/650 where the scale pairs 32px with 14/600, grow only to 36px at 767px and below (under the 44px touch target), have a 10px radius that is not on the radius scale, and draw no focus outline (their `all: unset` outranks the site-wide `:focus-visible` rule). On `/screens/<id>` a type's download is a 36px round button (44px on touch) and a type's heading is 22px (20px at 767px and below). Service cards and screen tiles move over 0.2s, not the 0.15s under Motion, and the screens CSS breaks at 1023, 767 and 599px rather than the 900px under Page.
 
 ### Legacy in code
 
