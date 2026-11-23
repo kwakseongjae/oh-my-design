@@ -334,6 +334,11 @@ describe("/ko/kana stays unreleased", () => {
     expect(metadata.alternates?.languages).toEqual({ ko: KANA_PATH });
   });
 
+  it("the language switch points the Japanese row at /ja/kana, the Japanese edition; hreflang does not pair them", () => {
+    expect(html).toMatch(/href="\/ja\/kana" hrefLang="ja"/);
+    expect(html).toMatch(/href="\/ko\/kana" hrefLang="ko"/);
+  });
+
   it("in no sitemap and linked from no shared header or footer", () => {
     expect(sitemap().some((r) => r.url.includes("/kana"))).toBe(false);
     const chrome = ["site-header.tsx", "site-footer.tsx", ...fs.readdirSync(path.join(WEB, "src/components/brand-a/copy")).map((f) => `copy/${f}`)];

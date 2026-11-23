@@ -333,11 +333,11 @@ export function KanaPage({ locale = "ko" }: { locale?: KanaLocale }) {
   const { t, area } = KANA_KIT[locale];
   const rest = data.areas.map((a) => ({ ...a, others: a.rules.filter((id) => !LEAD.has(id)), lead: a.rules.filter((id) => LEAD.has(id)) }));
   const opened = [...new Set(data.sources.map((s) => s.opened))];
-  // the Korean page's switch keeps the landings (the page has no twin it names in hreflang); the Japanese page's goes to its Korean edition
-  const localeHrefs = locale === "ja" ? KANA_PATHS : undefined;
   return (
     <div className="sq-root sq-root-page kn-root" lang={locale}>
-      <SiteHeaderA locale={locale} current={locale} localeHrefs={localeHrefs} />
+      {/* the two editions point at each other in the language switch (English and Chinese rows keep the landings);
+          hreflang does not pair them while both are unreleased (metadata.ts) */}
+      <SiteHeaderA locale={locale} current={locale} localeHrefs={KANA_PATHS} />
       <main id="main" className="kn-main">
         <section className="kn-hero" aria-labelledby="kn-h1">
           <div className="sq-wrap">
