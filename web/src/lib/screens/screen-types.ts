@@ -95,3 +95,33 @@ export function groupByType<T extends { type: string; state: string | null }>(ca
     return { type, cards: [...of.filter((c) => !c.state), ...of.filter((c) => c.state)] };
   });
 }
+
+/** English names of the walk's screen types; an unlisted type is shown as written. */
+const NAME_EN: Record<string, string> = {
+  홈: "Home",
+  검색: "Search",
+  "검색 결과": "Search results",
+  목록: "List",
+  상세: "Detail",
+  콘텐츠: "Content",
+  이벤트: "Event",
+  로그인: "Sign-in",
+  회원가입: "Sign-up",
+  고객센터: "Help",
+  오류: "Error",
+  피드: "Feed",
+  장바구니: "Cart",
+  팝업: "Pop-up",
+  카테고리: "Category",
+  커뮤니티: "Community",
+  지도: "Map",
+  좋아요: "Likes",
+  프로필: "Profile",
+};
+
+/** A screen type's name: the walk's word in Korean, its English name in English; the walk's catch-all 「화면」 is
+ *  기타 / Other. The pages (components/screens/copy.ts) and the MCP screen tools both name types by this. */
+export function typeName(locale: "en" | "ko", type: string): string {
+  if (type === OTHER_TYPE) return locale === "ko" ? "기타" : "Other";
+  return locale === "ko" ? type : (NAME_EN[type] ?? type);
+}

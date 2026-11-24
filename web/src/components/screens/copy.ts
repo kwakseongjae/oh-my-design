@@ -5,7 +5,7 @@
  */
 
 import type { Device } from "@/lib/screens/model";
-import { OTHER_TYPE } from "@/lib/screens/screen-types";
+import { typeName } from "@/lib/screens/screen-types";
 import { SCREENS_NOTICE, koDate, type ScreensNoticeCopy } from "./notice-copy";
 
 export type ScreensLocale = "en" | "ko";
@@ -24,35 +24,8 @@ export const DEVICE_NAME: Record<ScreensLocale, Record<Device, string>> = {
   ko: { mobile: "모바일", desktop: "데스크톱" },
 };
 
-/** English names of the walk's screen types; an unlisted type is shown as written. */
-const SCREEN_TYPE_EN: Record<string, string> = {
-  홈: "Home",
-  검색: "Search",
-  "검색 결과": "Search results",
-  목록: "List",
-  상세: "Detail",
-  콘텐츠: "Content",
-  이벤트: "Event",
-  로그인: "Sign-in",
-  회원가입: "Sign-up",
-  고객센터: "Help",
-  오류: "Error",
-  피드: "Feed",
-  장바구니: "Cart",
-  팝업: "Pop-up",
-  카테고리: "Category",
-  커뮤니티: "Community",
-  지도: "Map",
-  좋아요: "Likes",
-  프로필: "Profile",
-};
-
-/** A screen type's name on a page: the walk's word on Korean pages, its English name on English ones; the walk's
- *  catch-all 「화면」 is 기타 / Other (lib/screens/screen-types.ts). */
-export function screenTypeName(locale: ScreensLocale, type: string): string {
-  if (type === OTHER_TYPE) return locale === "ko" ? "기타" : "Other";
-  return locale === "ko" ? type : (SCREEN_TYPE_EN[type] ?? type);
-}
+/** A screen type's name on a page (lib/screens/screen-types.ts typeName). */
+export const screenTypeName = (locale: ScreensLocale, type: string): string => typeName(locale, type);
 
 export interface GalleryCopy {
   meta: { title: string; description: string };
