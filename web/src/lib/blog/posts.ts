@@ -18,7 +18,7 @@
  * written.
  */
 
-import { readdirSync, readFileSync, statSync } from "fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "fs";
 import { join } from "path";
 import { parseFrontmatter } from "./frontmatter";
 import { CANONICAL_LOCALE, POST_LOCALES, isPostLocale, type PostLocale } from "./locales";
@@ -37,9 +37,21 @@ export interface BlogPost {
   tags: string[];
   /** Markdown body, frontmatter removed. */
   body: string;
+  /**
+   * Public path of the post's cover (1200x630 PNG, scripts/blog-covers), when one has been made for
+   * this locale. The card image on the blog home and the post's og:image / twitter:image.
+   */
+  cover?: string;
 }
 
 const CONTENT_DIR = join(process.cwd(), "src", "content", "blog");
+const PUBLIC_DIR = join(process.cwd(), "public");
+
+/** Where scripts/blog-covers writes a post's cover; the public path, or undefined when there is none. */
+function coverOf(slug: string, locale: PostLocale): string | undefined {
+  const path = `/blog-assets/${slug}/cover-${locale}.png`;
+  return existsSync(join(PUBLIC_DIR, path)) ? path : undefined;
+}
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 type PostsBySlug = Map<string, Partial<Record<PostLocale, BlogPost>>>;
@@ -70,7 +82,8 @@ function loadPosts(): PostsBySlug {
       const source = `blog/${slug}/${file}`;
       const { data, body } = parseFrontmatter(readFileSync(join(dir, file), "utf-8"), source);
       if (!body) throw new Error(`${source}: post has no body`);
-      byLocale[locale] = { slug, locale, ...data, body };
+      const cover = coverOf(slug, locale);
+      byLocale[locale] = { slug, locale, ...data, body, ...(cover && { cover }) };
     }
 
     if (Object.keys(byLocale).length === 0) {

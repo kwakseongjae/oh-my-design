@@ -13,9 +13,9 @@ export interface BlogChrome {
   dateLocale: string;
   indexTitle: string;
   indexIntro: string;
-  /** e.g. "Blog · 3 posts" */
-  postCount: (count: number) => string;
-  read: string;
+  /** aria-label of the home's topic chips, and their first chip. */
+  topicsLabel: string;
+  allTopics: string;
   allPosts: string;
   /** Label on a card whose body is not in the reader's locale. */
   otherLanguageBadge: string;
@@ -31,11 +31,11 @@ export interface BlogChrome {
 export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
   ko: {
     dateLocale: "ko-KR",
-    indexTitle: "하네스에서 나온 기록",
+    indexTitle: "oh-my-design 블로그",
     indexIntro:
-      "코딩 에이전트가 내놔도 부끄럽지 않은 UI를 만들게 하면서 알게 된 것들. 유도 사슬, 프리셋 바닥, 게이트, 그리고 실제로 버틴 수치와 버티지 못한 수치.",
-    postCount: (count) => `블로그 · ${count}편`,
-    read: "읽기",
+      "실제 서비스의 컬러, 타이포그래피, 디자인 시스템을 살펴보고, AI로 화면을 만드는 이야기를 씁니다.",
+    topicsLabel: "주제",
+    allTopics: "전체",
     allPosts: "글 목록",
     otherLanguageBadge: "EN",
     switchLocale: "Read in English",
@@ -46,11 +46,11 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
   },
   en: {
     dateLocale: "en-US",
-    indexTitle: "Notes from the harness",
+    indexTitle: "oh-my-design Blog",
     indexIntro:
-      "What we learned making a coding agent produce UI someone can defend — the derivation chain, the preset floor, the gates, and the measurements that did and did not hold up.",
-    postCount: (count) => `Blog · ${count} ${count === 1 ? "post" : "posts"}`,
-    read: "Read",
+      "We look at the color, typography and design systems of real products, and write about building interfaces with AI.",
+    topicsLabel: "Topics",
+    allTopics: "All",
     allPosts: "All posts",
     otherLanguageBadge: "KO",
     switchLocale: "한국어로 읽기",
