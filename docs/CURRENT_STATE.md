@@ -4,7 +4,7 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-24 14:32) — **오너 대기: 블로그 홈 프리뷰(카드 31, 초안 PR #163) · 영상 v4(카드 26)** · 도는 에이전트 1(유료): `kana-showcase`(kana A안 구현, 일본어판 1급, 워크트리 kana-redesign) · 머지 끝: #159 · #161 · #162 · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+## 지금 (2026-11-24 14:38) — **오너 대기: kana 프리뷰(카드 32, 초안 PR #164: 머지 + 일본어판 공개 시점) · 블로그 홈 프리뷰(카드 31, 초안 PR #163) · 영상 v4(카드 26)** · 도는 에이전트 없음 · 머지 끝: #159 · #161 · #162 · #160은 닫음(#164가 대체) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
 
 **11/24 14:10 한 일**
 - **머지 3건, 하나씩, 운영 확인:** #159(a63edae3: 네 언어 첫 화면에 블로그 링크, #130도 같이 닫힘) → #161(903529f9: 새 main을 가지에 합쳐 CI 다시 본 뒤 머지, 운영 글 제목·그림 11·항목 링크 86) → #162(677edeea: 머지 전 로컬 운영 빌드에서 initialize · tools/list 10개 · 새 도구 4개 + 옛 도구 1개 호출, 머지 뒤 운영에서 같은 호출. kurly는 unknown_screen, get_screen_context 201KB). 워크트리 blog-renewal · blog-basics · blog-article · mcp-screens와 로컬 가지 정리함.
@@ -12,6 +12,7 @@
 - **영상 v3:** `~/Downloads/omd-screens-launch/omd-screens-launch-v3.mp4`(40.0초). 음악 = 베토벤 「월광」 3악장, Paul Pitman(Musopen) 녹음, 위키미디어 공용 파일 페이지에 곡·녹음 모두 PD(출처 `assets/music/SOURCE.md`, 편집 `EDIT.md`). 편집 두 군데(쉼 1초 줄임, 끝 화음으로 건너뜀). 타격 지점을 실제 파일에서 재서(`<scratchpad>/onsets.mjs`) 장면 시간을 다시 짬: 만드는 스크립트 `~/.omd-workers/video/screens-launch/build-v3.mjs`(v2 장면을 읽어 다시 씀). 검증: 소리 타격 25곳 8ms 안, 화면 변화는 타격 한 프레임 앞, check 오류 0. 듣지는 못함. 효과음 없음.
 - **영상 v4(14:20, 오너 피드백 「땅땅이 너무 자주, 초반에만 · bgm 조금 큼」):** `omd-screens-launch-v4.mp4`. 효과(punch · flash)는 3.0 · 6.3 · 9.5초만, 장면 3부터는 no-op과 부드러운 등장(`build-v4.mjs`). 음량 −4.5dB: 렌더러가 믹스를 약 −14 LUFS로 맞추므로 렌더한 mp4에 `-c:v copy -af volume=-4.5dB`로 적용(전달 파일 −18.7 LUFS).
 - **블로그 홈 → 초안 PR #163(14:30):** `blog-home-b` 끝(커밋 e8fd182b · 12798866 · 8b0391af, 전체 1,648 통과, CI 통과). 프리뷰 https://oh-my-design-bw7ik55y1-kwakseongjaes-projects.vercel.app/blog (SSO 보호: 나는 못 엶, 로컬 화면으로 확인). 요청에 없던 보이는 변경: 한국어 블로그 페이지에 Wanted Sans, 글의 태그가 주제 말로, 홈 제목과 RSS 채널 이름. 카드 31 = 프리뷰 요청, 오너 go 뒤 머지. 워크트리 blog-b 유지.
+- **kana → 초안 PR #164(14:36):** `kana-showcase` 끝(커밋 7bdea655 · e718bef0 · c5355ed4, 전체 1,656 통과, CI 통과). /ko/kana 쇼케이스 + /ko/kana/rules, /ja/kana(출처 먼저) + /ja/kana/rules. 일본어판은 noindex · 사이트맵 밖 · 메뉴 링크 없음(공개 스위치 넷은 `<scratchpad>/agent-reports/kana-build.md`의 「What flips」). 프리뷰 https://oh-my-design-nszrteki0-kwakseongjaes-projects.vercel.app/ko/kana · /ja/kana (SSO: 로컬 화면으로 확인). 내가 본 다듬을 곳: 조판 장 왼쪽 빈 공간, 일본어판 예시 칸의 빈 공간, 일본어판 길이 10,121px. 워크트리 kana-redesign 유지, kana-ja 워크트리와 가지는 남김(PR #160 닫음).
 - **에이전트 지시서:** `<scratchpad>/agent-reports/kana-build-brief.md` · `blog-home-build-brief.md`. 보고는 `kana-build.md` · `blog-home-build.md`. 14:04 기준 kana WIP 커밋 7bdea655, 블로그 design.md e8fd182b · 썸네일 12798866.
 - **남은 오너 몫:** 영상 듣기(26) · kana와 블로그 홈은 구현 뒤 프리뷰 · 일본어판을 원어민 검수 전에 공개할지 · llms.txt와 /terms의 「커넥터 종료」 수정(아직 안 건드림).
 
