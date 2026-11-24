@@ -4,7 +4,24 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-24 16:05) — **오너 대기: kana 히어로 A·B·C 고르기(`~/Downloads/kana-hero/`) · 일본 SEO 순서 · 리뷰 아티팩트 계정 · 영상 v5 확인(`~/Downloads/omd-screens-launch/omd-screens-launch-v5.mp4`)** · 도는 에이전트 없음 · 머지 끝: #163 · 서버 없음 · 옛 아티팩트 1TGcLCvG…는 이 세션 계정에서 열리지 않음(다른 조직): 새로 게시하지 않고 오너에게 물음
+## 지금 (2026-11-25 00:42) — **오너 대기: kana 프리뷰 보고 머지 go(PR #164, https://oh-my-design-knkglguok-kwakseongjaes-projects.vercel.app/ja/kana · /ko/kana) · 일본어판 공개 시점 · 일본 SEO 순서 · 영상 v5 확인(`~/Downloads/omd-screens-launch/omd-screens-launch-v5.mp4`) · 옛 보고를 이 계정으로 옮길지** · 검토 아티팩트(kana만) https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH · 도는 에이전트 없음 · 서버 없음(3417 끔)
+
+**11/25 00:29 오너: 「카나도 앱 화면을 만들어서 한글처럼 하라고 몇번을 말해.」 → 일본어판 첫 화면을 앱 화면으로(구현, 푸시)**
+- 히어로 시안 A·B·C(앱 화면 없음)는 접음. `/ja/kana`의 첫 화면 = 한글 · 한국어판과 같은 폰 두 대(`AppPair locale="ja" tone="night"`). AI 안내문은 버튼 아래(첫 화면), 「이 화면의 일본어는 우리 예문」 줄은 폰 아래. 새 일본어 없음: h1 = 원래 폰 구역 제목(`app.h2`), 설명 = `app.intro`, 옛 h1 · 설명은 둘째 구역 `#compare`(출처 예문 넘겨 보기)의 제목으로.
+- 커밋(가지 `feat/kana-showcase`, 푸시함): `a4245e8d`(11/24 14:34에 남아 있던 미커밋 변경을 그대로: 언어 메뉴 · 데이터 개수 · 꼬리표로 출처 카드 켜기) · `c5cabf6d`(일본어판 히어로, 페이지 테스트, tsc 오류 하나). 전체 테스트 1,659 통과, tsc 통과, Vercel 프리뷰 성공. CI 넷 모두 통과(00:40 확인).
+- 내가 본 것(1440 · 390, 로컬 dev): 겹침 · 가로 스크롤 없음. 손볼 곳: h1이 「ガイドに」에서 줄바꿈(쉼표 뒤가 낫다) · 390px 첫 화면에 폰이 전환 버튼까지만 보임 · 쓰지 않게 된 스타일(`.km-pair--day`, kana-app.css의 `.ka-sec` · `.ka-composed`) 정리 안 함. 워크트리의 `web/.next`는 남아 있음(지우기는 권한에서 막힘).
+- 아티팩트를 같은 주소에 다시 게시: 전후 그림(일본어판 이전 · 이후 1440/390, 위쪽 2,700px, 한국어판 · 한글 나란히), 정하실 것 둘(머지 go · 일본어판 공개 시점), 접은 시안. 그림 `~/.omd-workers/reports/img/kh-*.jpg` · `kh2-*.jpg`.
+- 메모 추가: `feedback_kana_app_screen_like_hangul.md`(언어 스킬 페이지는 모든 판이 앱 화면으로 연다).
+- 바로잡음: 아래 00:30 절의 「A의 큰 세 줄」 결정과 「답 없이 할 것」의 A·C 항목은 시안을 접으면서 없어짐. KW-12는 출처에 고친 전후 예문이 없다(확인함). PR #164의 일본어판에는 원래도 앱 화면이 둘째 구역에 있었다(지은 일본어가 일본어판에 이미 표시와 함께 있었음).
+
+**11/25 00:30 브리핑 세션(오너 「작업상황 브리핑, 카나 아티팩트로, 다음작업 브리핑」)**
+- **아티팩트 새로 게시(이 계정, kana만):** 「kana 첫 화면 검토」 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH. 소스 `~/.omd-workers/reports/kana-review.html` + `img/kh-*.jpg`(12장: 한글 기준 · 지금 ja/ko · A · B · C, 각 1440과 390). 게시는 세션 scratchpad `kana-review/`에서만 된다(Artifact의 files는 작업 폴더나 scratchpad 아래여야 함): 다음 세션은 `~/.omd-workers/reports/`에서 scratchpad로 복사해 같은 url로 다시 게시. 옛 보고(카드 32장, 그림 224장)는 옮기지 않았다: 오너에게 물음(추천: 옮기지 않음).
+- **시안에서 내가 확인한 것:** A의 큰 세 줄은 `web/src/components/kana/app-copy.ts`의 지은 예문(11/22 모델 작성, 원어민 미검수)이다. 아래 16:05 절의 「새로 지은 일본어 없음」은 「새로」만 맞고, 일본어판 첫 화면에 지은 일본어가 가장 크게 올라간다 → 오너 결정으로 올림(추천: 큰 줄도 출처의 NG→OK 예문 그대로, SH-ws와 MS는 전후가 다 있음, WP 3-5는 예문이 없어 다른 규칙으로). A 390px: 넣는 글자 표시가 「5,000」 위에 겹침, 셋째 줄 숨김. B 390px: 「規則」 혼자 한 줄. C: 76(verified)이라 쓰고 타일에는 partial · legacy가 섞임(켜진 Pepabo · Spindle도 partial).
+- **찾은 것: kana-redesign 워크트리에 커밋 안 된 변경**(11/24 14:34~14:35, PR #164 푸시 직후): 수정 8(`kana-page.test.ts` · `app.tsx` · `copy-ja.ts` · `copy.ts` · `metadata.ts` · `rules-page.tsx` · `showcase.css` · `showcase.tsx`) + 새 파일 `pair-mid.tsx`, +117 −47. 내용: 한국어판 언어 메뉴가 미공개 일본어판을 가리키지 않음 · 규칙 수를 데이터에서 읽음 · 꼬리표를 눌러 출처 카드 켜기 · 일본어판 행 제목을 h3 대신 p로. `npx vitest run __tests__/kana-page.test.ts` 43 통과(00:23). 건드리지 않음. 다음: 전체 테스트 뒤 PR #164에 커밋.
+- **지난 세션의 시안 원본 위치 바로잡음:** 아래 절의 `<scratchpad>`는 이 프로젝트 폴더가 아니라 `/private/tmp/claude-501/-Users-kwakseongjae--claude-spares-spare-JPRDYv/2930f3c1-…/scratchpad`다. 사본을 `~/.omd-workers/reports/kana-hero-src/`에 둠(a-akaji · b-kumihan · c-shuten.html, jp.json, ja-demand.md, film-v5.md). 아래 두 절의 시각(15:40 · 16:05)은 실제로는 11/24 23:44~23:58 KST다(파일 시각).
+- **답 없이 할 것:** 워크트리 변경 커밋 · A의 390px 수정과 출처 예문만 쓴 A 한 장 · C 숫자 다시 세기와 tokyo 중복 확인 · `/ja/design-systems/[id]` 설계 준비(공개는 답 뒤) · 영상 남은 세 곳 · 이 파일(134KB) 오래된 절 보관.
+
+**(이전 「지금」 줄, 11/24 23:58 기준)** **오너 대기: kana 히어로 A·B·C 고르기(`~/Downloads/kana-hero/`) · 일본 SEO 순서 · 리뷰 아티팩트 계정 · 영상 v5 확인(`~/Downloads/omd-screens-launch/omd-screens-launch-v5.mp4`)** · 도는 에이전트 없음 · 머지 끝: #163 · 서버 없음 · 옛 아티팩트 1TGcLCvG…는 이 세션 계정에서 열리지 않음(다른 조직): 새로 게시하지 않고 오너에게 물음
 
 
 **11/24 16:05 영상 v5(에이전트 `film-v5`, 보고 `<scratchpad>/agent-reports/film-v5.md`)**
