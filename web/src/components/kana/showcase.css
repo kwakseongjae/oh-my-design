@@ -1,0 +1,249 @@
+/* /ko/kana and /ja/kana (showcase.tsx): the /kana showcase, built to /hangul's standard (owner 2026-11-24, direction A).
+   It borrows hangul.css (.hg-main palette, the ink hero, the phones, the chapters, the rule list, the install band's
+   links) and moa.css; this sheet adds what kana has that hangul does not. Sizes: the landing title 60px and a
+   40px chapter heading (design.md "Skill landing"), the night/day comparison pair (design.md "Comparison pair").
+
+   Japanese on both editions (JT rules, docs/drafts/kana/references/rules.md): drawn by the Noto Sans JP this page
+   loads (faces.ts, swap), never by a Korean face; normal breaking with line-break: strict (chrome.css), phrases kept
+   whole in headings where Chrome can (auto-phrase, else normal); letter-spacing 0 (no negative tracking, JT-05); body
+   1.8 on the Japanese edition (chrome.css), at least 1.5 everywhere (JT-01). */
+
+/* ---- the page's Japanese face: the loaded Noto Sans JP first, then the faces Japanese devices carry; no Korean face
+   (the /ko root's Wanted Sans slices carry kana but not kanji, so they would split a line between two faces) ---- */
+.kn-root{
+  --sq-f-ja:var(--font-r11-noto-jp),"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  font-synthesis:none;
+}
+.kn-root:lang(ja){font-family:var(--sq-f-ja)}
+.kn-root :lang(ja),.kn-root:lang(ja) *{letter-spacing:0}
+.km-root code,.km-root code span{font-family:var(--sq-f-mono)}
+
+/* the header sits on the first screen's ink (hangul.css does the same for .hg-root) */
+.km-root .sq-top{
+  --sq-paper:#0e0f11;--sq-ink:#f2f2ef;--sq-ink-2:#a3a4aa;--sq-icon:#8b8c93;
+  --sq-cell:#1c1e22;--sq-band:#16171a;--sq-guide:#2b2d32;--sq-guide-2:#2b2d32;
+  --sq-focus:#f2f2ef;
+  color:var(--sq-ink);
+}
+.km-root .sq-foot{margin-top:0}
+
+/* ---- type: hangul.css's 64/44 brought to the approved landing title (60) and the skill-landing chapter head (40) ---- */
+.km-main .hg-h1{font-size:60px;line-height:1.2;letter-spacing:-0.02em}
+.km-main .hg-h2{font-size:40px;line-height:1.3;letter-spacing:-0.02em}
+@media (max-width:1023px){.km-main .hg-h1{font-size:48px}.km-main .hg-h2{font-size:32px}}
+@media (max-width:639px){.km-main .hg-h1{font-size:36px;line-height:1.3}.km-main .hg-h2{font-size:28px;line-height:1.35}}
+/* Japanese headings: no negative tracking, a looser line, phrases kept whole where supported */
+.km-main:lang(ja) :is(.hg-h1,.hg-h2,.km-row-h,.km-note-t,.km-li-t){letter-spacing:0;word-break:auto-phrase}
+.km-main:lang(ja) .hg-h1{line-height:1.35}
+.km-main:lang(ja) .hg-h2{line-height:1.4}
+.km-main:lang(ja) :is(.hg-intro,.hg-lede,.km-row-b,.km-note-mine,.km-status-list dd){line-height:1.8}
+
+.km-chip{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--sq-r-pill);border:1px solid #4a4c52;
+  font-size:13px;line-height:1;font-weight:650;color:var(--hg-night-ink)}
+.km-composed{max-width:760px;margin:40px auto 0!important;font-size:14px;line-height:1.6;color:var(--hg-night-ink-2);text-align:center}
+
+/* ---- the source's own words, set the same way everywhere on the page ---- */
+.km-q{font-size:15px;line-height:1.75;color:var(--hg-ink)}
+.km-pl{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-size:15px;line-height:1.7}
+.km-pl-l{flex:none;min-width:2.6em;font:650 12px/1.7 var(--sq-f-mono);color:var(--hg-ink-2)}
+.km-pl--wrong .km-pl-l{color:var(--hg-before)}
+.km-pl--right .km-pl-l{color:var(--hg-after)}
+.km-pl-t{display:flex;flex-direction:column;min-width:0}
+.km-main .kn-src a{font-size:13px;line-height:1.5;color:var(--hg-ink-2);text-decoration:underline;text-decoration-color:var(--hg-line);text-underline-offset:3px}
+.km-main .kn-src a:hover{text-decoration-color:currentColor}
+.km-tier{font-size:13px;line-height:1.5;color:var(--hg-ink-3)}
+
+/* ---- the moa pair (app.tsx): the tags, and one source card per tag that the tour lights ---- */
+.km-mid{display:flex;flex-direction:column;gap:14px;text-align:left}
+.km-tag a.km-tag-id{font:600 13px/1.45 var(--sq-f-mono);color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px}
+.km-tag a.km-tag-id:hover{text-decoration-color:currentColor}
+.km-tagqs{display:grid}
+.km-tagq{grid-area:1 / 1;display:flex;flex-direction:column;gap:6px;min-width:0;padding:12px 14px;border-radius:14px;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s}
+.km-tagq[data-on],.km-mid:not(:has([data-tour-card][data-on])) .km-tagq:first-child{visibility:visible;opacity:1}
+.km-tagq-h{font-size:13px;line-height:1.5;font-weight:650}
+.km-tagq .km-pl,.km-tagq .km-q{font-size:14px;line-height:1.65}
+@media (min-width:1152px){.km-pair .hg-split--hero .hg-split-stage{grid-template-columns:auto minmax(0,264px) auto}}
+/* night: /ko/kana's first screen */
+.km-pair--night .km-tagq{background:var(--hg-night-2);box-shadow:inset 0 0 0 1px var(--hg-night-line)}
+.km-pair--night .km-tagq-h{color:var(--hg-night-ink-2)}
+.km-pair--night :is(.km-q,.km-pl){color:var(--hg-night-ink)}
+.km-pair--night .km-pl--wrong .km-pl-l{color:var(--hg-night-before)}
+.km-pair--night .km-pl--right .km-pl-l{color:var(--hg-night-after)}
+.km-pair--night .kn-src a{color:var(--hg-night-ink-2);text-decoration-color:#4a4c52}
+/* day: /ja/kana's second section, on the band */
+.km-app{padding:104px 0 112px;background:var(--hg-band)}
+.km-app .ka-composed{margin-top:16px!important}
+.km-pair--day .hg-split--hero .hg-side--before .hg-side-l{color:var(--hg-before)}
+.km-pair--day .hg-split--hero .hg-side--after .hg-side-l{color:var(--hg-after)}
+.km-pair--day .hg-tag{border-color:var(--hg-line);background:var(--hg-paper);color:var(--hg-ink-2)}
+.km-pair--day .hg-tag b,.km-pair--day .hg-tag a{color:var(--hg-ink)}
+.km-pair--day .hg-tag[data-on]{border-color:var(--hg-after);background:#eff4ff;color:var(--hg-ink)}
+.km-pair--day .km-tagq{background:var(--hg-paper);box-shadow:inset 0 0 0 1px var(--hg-line)}
+.km-pair--day .km-tagq-h{color:var(--hg-ink-2)}
+.km-pair--day .hg-switch{background:#e9e9ee}
+.km-pair--day .hg-switch-btn{color:var(--hg-ink-2)}
+.km-pair--day .hg-switch-btn[data-side="before"][aria-pressed="true"]{background:var(--hg-before);color:#fff}
+.km-pair--day .hg-switch-btn[data-side="after"][aria-pressed="true"]{background:var(--hg-after);color:#fff}
+.km-pair--day .hg-switch-hint{color:var(--hg-ink-2)}
+
+/* ---- chapter rows (말투): the rule, its two strings cut out of the screen, the source's words under them ---- */
+.km-rows{display:grid;margin-top:48px}
+.km-row{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:24px 56px;align-items:start;padding:28px 0;border-top:1px solid var(--hg-line)}
+.km-row:first-child{border-top:0;padding-top:0}
+.km-meta{display:flex;flex-direction:column;gap:6px;min-width:0}
+.km-id{font:600 13px/1.5 var(--sq-f-mono);color:var(--hg-after)}
+.km-row-h{font-size:22px;line-height:1.4;font-weight:700}
+.km-row-b{font-size:16px;line-height:1.65;color:var(--hg-ink-2)}
+.km-crops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:24px;border-radius:var(--sq-r-panel,28px);background:var(--hg-band)}
+.km-crop-box{min-width:0}
+.km-side-l{display:flex;align-items:center;gap:8px;margin-bottom:10px!important;font-size:14px;line-height:1.5;font-weight:650}
+.km-side-l i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.km-side-l--before{color:var(--hg-before)}
+.km-side-l--after{color:var(--hg-after)}
+.km-main .km-crop{max-width:none;background:transparent;padding:0;zoom:1.2}
+.km-main .km-crop .moa-hello{padding:4px 0}
+.km-main .km-crop .moa-card{box-shadow:0 0 0 1px var(--hg-line)}
+.km-crops-src{grid-column:1 / -1;display:flex;flex-direction:column;gap:6px;margin-top:8px;padding-top:18px;border-top:1px solid var(--hg-line)}
+.km-crops-src-h{font-size:13px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
+.km-crops-src .km-pl{font-size:16px}
+.km-srcs{display:flex;flex-wrap:wrap;gap:4px 16px}
+
+/* ---- the sheet chapter: two sheets and the notes between them ---- */
+.km-sheet-stage{display:grid;grid-template-columns:360px minmax(0,1fr) 360px;gap:40px;align-items:start;margin-top:56px}
+.km-sheetwrap{display:flex;flex-direction:column;gap:12px;padding-top:24px;border-radius:var(--sq-r-panel,28px);background:var(--hg-band);overflow:hidden}
+.km-sheetwrap .km-side-l{padding:0 20px;margin:0!important}
+.km-main .km-sheetwrap .moa{max-width:none;background:transparent}
+.km-main .km-sheetwrap .moa-sheet{border-radius:24px 24px 0 0}
+.km-main .moa[data-typo] .moa-chip{margin-top:6px}
+.km-notes{list-style:none;display:grid;gap:12px;margin:0;padding:0}
+.km-note{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px;border-radius:14px;background:var(--hg-well)}
+.km-note-t{font-size:16px;line-height:1.45;font-weight:700}
+.km-note-mine{font-size:14px;line-height:1.6;color:var(--hg-ink-2)}
+
+/* ---- the typesetting chapter: one sentence set two ways ---- */
+.km-type{display:grid;grid-template-columns:repeat(2,minmax(0,380px)) minmax(0,1fr);gap:24px 32px;align-items:start;margin-top:56px}
+.km-spec{padding:24px 24px 28px;border-radius:var(--sq-r-card,20px);background:var(--hg-paper);box-shadow:0 0 0 1px var(--hg-line),0 28px 56px -36px rgba(18,18,20,.4)}
+.km-spec-h{font-size:28px;font-weight:700}
+.km-spec-p{margin-top:12px!important;font-size:17px;color:var(--hg-ink)}
+/* the Korean settings, carried over on purpose: these must win over the page's own Japanese rules above */
+.km-main .km-spec--kr :is(.km-spec-h,.km-spec-p){word-break:keep-all;overflow-wrap:anywhere}
+.km-main .km-spec--kr .km-spec-h{letter-spacing:-0.02em;line-height:1.35}
+.km-main .km-spec--kr .km-spec-p{line-height:1.5}
+.km-main .km-spec--ja .km-spec-h{word-break:auto-phrase;line-height:1.4}
+.km-main .km-spec--ja .km-spec-p{word-break:normal;line-height:1.7}
+.km-spec-set{margin-top:14px!important;font:500 12px/1.6 var(--sq-f-mono);color:var(--hg-ink-3)}
+.km-bars{list-style:none;display:grid;gap:8px;margin:4px 0;padding:0}
+.km-bar{display:grid;grid-template-columns:10em minmax(0,1fr) 3em;gap:10px;align-items:center;font-size:14px;line-height:1.4}
+.km-bar-t{height:8px;border-radius:var(--sq-r-pill);background:var(--hg-line);overflow:hidden}
+.km-bar-t i{display:block;height:100%;background:var(--hg-ink-2)}
+.km-bar-n{text-align:right;font-variant-numeric:tabular-nums;color:var(--hg-ink-2)}
+
+/* ---- the rule index: every rule in one line, opened in place ---- */
+.km-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 64px;margin-top:48px}
+.km-area+.km-area{margin-top:28px}
+.km-area-h{display:flex;align-items:baseline;gap:8px;font-size:19px;line-height:1.4;font-weight:700}
+.km-area-n{font-size:14px;font-weight:600;color:var(--hg-ink-3);font-variant-numeric:tabular-nums}
+.km-list{list-style:none;margin:12px 0 0;padding:0;border-top:1.5px solid var(--hg-ink)}
+.km-li{border-bottom:1px solid var(--hg-line);scroll-margin-top:96px}
+.km-li-b{display:flex;align-items:baseline;gap:16px;min-width:0;padding:10px 0;font-size:15px;line-height:1.55;cursor:pointer;list-style:none}
+.km-li-b::-webkit-details-marker{display:none}
+.km-li-b:focus-visible{outline:2px solid var(--sq-focus);outline-offset:2px;border-radius:6px}
+.km-li-b .hg-rule-tag{flex:none;width:52px;font:600 14px/1.55 var(--sq-f-mono);color:var(--hg-ink-2)}
+.km-li-t{flex:1;min-width:0}
+.km-index--ja .km-li-t{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.km-index--ja details[open] .km-li-t{display:block;-webkit-line-clamp:unset}
+.km-li-x{flex:none;position:relative;width:12px;height:12px;align-self:center}
+.km-li-x::before,.km-li-x::after{content:"";position:absolute;left:0;top:5px;width:12px;height:2px;border-radius:1px;background:var(--hg-ink-3);transition:transform .15s}
+.km-li-x::after{transform:rotate(90deg)}
+details[open] .km-li-x::after{transform:rotate(0deg)}
+.km-li-open{display:flex;flex-direction:column;gap:10px;padding:2px 0 18px 68px}
+.km-srcbox{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:14px;background:var(--hg-paper)}
+.km-li-more{align-self:flex-start;font-size:14px;font-weight:600;color:var(--hg-ink);text-decoration:underline;text-decoration-color:var(--hg-line);text-underline-offset:4px}
+.km-li-more:hover{text-decoration-color:currentColor}
+.km-more{margin-top:56px}
+.km-more-h{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-ink-2)}
+.km-more ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px;margin:12px 0 0;padding:0}
+.km-more a{display:flex;flex-direction:column;gap:4px;padding:16px 4px;border-top:1px solid var(--hg-line);color:inherit;text-decoration:none}
+.km-more-k{font-size:17px;line-height:1.5;font-weight:650;text-decoration:underline;text-decoration-color:var(--hg-line);text-underline-offset:4px;text-decoration-thickness:2px}
+.km-more a:hover .km-more-k{text-decoration-color:currentColor}
+.km-more-t{font-size:15px;line-height:1.5;color:var(--hg-ink-2)}
+
+/* ---- the draft's status, where /hangul has its install box ---- */
+.km-status{padding:104px 0 112px;background:var(--hg-night);color:var(--hg-night-ink)}
+.km-status-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;margin-top:32px}
+.km-status-list{display:grid;gap:18px;margin:0}
+.km-status-list dt{font-size:15px;line-height:1.5;font-weight:650;color:var(--hg-night-ink-2)}
+.km-status-list dd{margin:2px 0 0;font-size:17px;line-height:1.65;color:var(--hg-night-ink)}
+.km-status .hg-more{margin-top:0}
+
+/* ---- /ja/kana's first screen: the claim, and the sources' own pairs beside it (compare.tsx on ink) ---- */
+.kb-hero{padding:48px 0 72px;background:var(--hg-night);color:var(--hg-night-ink)}
+.kb-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:48px 72px;align-items:center}
+.kb-hero .hg-kicker{justify-content:flex-start}
+.kb-hero .hg-h1{margin-top:16px!important;text-wrap:balance}
+.kb-hero .hg-lede{margin-top:20px!important;text-wrap:pretty}
+.kb-notice{margin-top:16px!important;max-width:40em;padding:12px 16px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--hg-night-line);font-size:14px;line-height:1.75;color:var(--hg-night-ink-2)}
+.kb-notice a{color:var(--hg-night-ink);font-weight:650;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.kb-hero .hg-ctas{justify-content:flex-start;margin-top:28px}
+.kc-hero{display:flex;flex-direction:column;padding:20px;border-radius:var(--sq-r-panel,28px);background:var(--hg-night-2);box-shadow:inset 0 0 0 1px var(--hg-night-line)}
+.kc-hero .kc{margin-top:0}
+.kc-hero :is(.kc-cap-id,.kc-count){color:var(--hg-night-ink)}
+.kc-hero .kc-cap-kind{background:#2b2d32;color:var(--hg-night-ink-2)}
+.kn-main .kc-hero .kc-cap-rule{font-size:16px;font-weight:600;line-height:1.7;color:var(--hg-night-ink)}
+.kc-hero .kn-src a{color:var(--hg-night-ink-2);text-decoration-color:#4a4c52}
+.kc-hero .kc-stage{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px;padding:0;background:none}
+.kc-hero .kc-switch{display:none}
+.kc-hero .kc-side{grid-area:auto;opacity:1;pointer-events:auto}
+.kc-hero .kc-side-l{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;color:var(--hg-night-ink-2)}
+.kc-hero .kc-side--wrong .kc-side-l{color:var(--hg-night-before)}
+.kc-hero .kc-side--right .kc-side-l{color:var(--hg-night-after)}
+.kc-hero .kc-screen{min-height:0}
+.kc-hero .kc-page{padding:16px 18px}
+.kc-hero .kc-label{display:none}
+.kc-hero .kc-step{box-shadow:inset 0 0 0 1px #3a3c42;color:var(--hg-night-ink)}
+.kc-hero .kc-step:hover,.kc-hero .kc-play:hover{background:#2b2d32}
+.kc-hero .kc-stops{display:none}
+.kc-hero .kc-count{display:block;min-width:52px;text-align:center}
+.kc-hero .kc-play{box-shadow:inset 0 0 0 1px #3a3c42;color:var(--hg-night-ink)}
+.kc-hero :is(.kc-hint,.kc-real){color:var(--hg-night-ink-2)}
+.kc-hero .kc-real{margin-top:12px!important;font-size:13px;line-height:1.7}
+.kc-hero .kc-step:focus-visible,.kc-hero .kc-play:focus-visible{outline-color:var(--hg-night-ink)}
+
+@media (prefers-reduced-motion:reduce){.km-tagq,.km-li-x::before,.km-li-x::after{transition:none}}
+
+@media (max-width:1199px){
+  .km-sheet-stage{grid-template-columns:360px 360px;justify-content:center}
+  .km-sheet-stage .km-notes{grid-column:1 / -1;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .km-type{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .km-type .km-notes{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .km-more ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1151px){.km-mid{max-width:760px;margin:0 auto}}
+@media (max-width:1023px){
+  .kb-hero-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:879px){
+  .km-composed{text-align:left;margin-top:28px!important}
+  .km-row{grid-template-columns:minmax(0,1fr);gap:20px;padding:28px 0}
+  .km-crops{grid-template-columns:minmax(0,1fr);padding:16px;border-radius:var(--sq-r-card,20px)}
+  .km-main .km-crop{zoom:1.1}
+  .km-row-h{font-size:20px}
+  .km-sheet-stage{grid-template-columns:minmax(0,1fr);gap:20px}
+  .km-sheet-stage .km-notes{grid-row:auto;grid-template-columns:minmax(0,1fr)}
+  .km-type,.km-type .km-notes{grid-template-columns:minmax(0,1fr)}
+  .km-index{grid-template-columns:minmax(0,1fr);gap:28px}
+  .km-li-open{padding-left:0}
+  .km-more ul{grid-template-columns:minmax(0,1fr)}
+  .km-status,.km-app{padding:64px 0 72px}
+  .km-status-grid{grid-template-columns:minmax(0,1fr)}
+  .km-status-list dd{font-size:16px}
+  .kb-hero{padding:32px 0 56px}
+  .kb-hero-grid{gap:0}
+  .kb-hero-left{display:contents}
+  .kb-hero-grid>.kb-hero-left>*{order:1}
+  .kb-hero .hg-lede{font-size:16px;margin-top:14px!important}
+  .kc-hero{order:2;margin-top:24px;padding:14px;border-radius:var(--sq-r-card,20px)}
+  .kb-hero .hg-ctas{order:3;margin-top:24px}
+  .kc-hero .kc-step,.kc-hero .kc-play{height:44px}
+  .kc-hero .kc-step{width:44px}
+}

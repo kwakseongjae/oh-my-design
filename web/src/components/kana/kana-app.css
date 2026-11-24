@@ -6,12 +6,12 @@
 
 /* ---- the Japanese typesetting, both sides (docs/drafts/kana/references/rules.md, measured-jp.md):
    the measured stack's first Japanese faces in order (Noto Sans JP 25, Hiragino Kaku Gothic 17, Hiragino Sans 10,
-   Yu Gothic 7, Meiryo 7 of 77; no webfont is added, so Noto Sans JP renders only where it is installed); letter-spacing
+   Yu Gothic 7, Meiryo 7 of 77; the page loads Noto Sans JP itself, faces.ts, so it renders everywhere); letter-spacing
    0 everywhere (JT-05: DADS has no negative token); body 1.6 (JT-01: at least 1.5; the measured body median),
    headings 1.4 (JT-02; heading median 1.45); no palt (JT-07); normal breaking with line-break: strict (chrome.css on
    :lang(ja)). Scoped at 0-3-0, over the kana page's ":lang(ja) *" and moa.css's ".moa[data-typo] *" (both 0-2-0). ---- */
 .kn-root .moa[data-typo="ja"]{
-  --moa-ff:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --moa-ff:var(--font-r11-noto-jp),"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
   --moa-ls-h:0;--moa-ls:0;--moa-lh-h:1.4;--moa-lh:1.6;
   --moa-cap:13px;--moa-tab:12px;--moa-wb:normal;--moa-ow:anywhere;
 }
