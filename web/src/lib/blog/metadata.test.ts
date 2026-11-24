@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { blogIndexMetadata, blogPostJsonLd, blogPostMetadata } from "./metadata";
-import { getAllPosts, getPost, lastModified } from "./posts";
+import { getAllPosts, getPost, getPostLocales, lastModified } from "./posts";
 import { POST_LOCALES } from "./locales";
-import { DEFAULT_OG_IMAGE, blogFeedUrl } from "@/lib/site";
+import { readFileSync } from "fs";
+import { join } from "path";
+import { DEFAULT_OG_IMAGE, SITE_ORIGIN, blogFeedUrl } from "@/lib/site";
 
 /**
  * Runs against the real src/content/blog tree. baemin-typography-decisions is
@@ -60,8 +62,10 @@ describe("blog metadata", () => {
       const meta = blogIndexMetadata(locale);
       const og = meta.openGraph as Record<string, unknown>;
       const twitter = meta.twitter as Record<string, unknown>;
-      expect(og.images).toEqual([DEFAULT_OG_IMAGE]);
-      expect(twitter.images).toEqual([DEFAULT_OG_IMAGE.url]);
+      const image = { url: `${SITE_ORIGIN}/blog-assets/cover-home-${locale}.png`, width: 1200, height: 630 };
+      expect(og.images).toEqual([expect.objectContaining(image)]);
+      expect(og.images).not.toEqual([DEFAULT_OG_IMAGE]);
+      expect(twitter.images).toEqual([image.url]);
       expect(twitter.card).toBe("summary_large_image");
       expect(twitter.title).toBe(og.title);
       expect(twitter.description).toBe(meta.description);
@@ -75,5 +79,37 @@ describe("blog metadata", () => {
   it("reads the correction from each locale file on its own", () => {
     expect(getPost(CORRECTED, "ko")?.updated).toBe("2026-10-21");
     expect(getPost(CORRECTED, "en")?.updated).toBe("2026-10-21");
+  });
+});
+
+/** Width and height from a PNG's IHDR chunk. */
+function pngSize(publicPath: string): [number, number] {
+  const bytes = readFileSync(join(process.cwd(), "public", publicPath));
+  expect(bytes.subarray(1, 4).toString("latin1"), publicPath).toBe("PNG");
+  return [bytes.readUInt32BE(16), bytes.readUInt32BE(20)];
+}
+
+describe("blog covers (scripts/blog-covers)", () => {
+  it("gives every post a 1200x630 cover in every locale it exists in", () => {
+    for (const { slug } of getAllPosts()) {
+      for (const locale of getPostLocales(slug)) {
+        const post = blogPostJsonLd(slug, locale);
+        expect(post?.image, `${slug}/${locale}`).toBe(`${SITE_ORIGIN}/blog-assets/${slug}/cover-${locale}.png`);
+        expect(pngSize(`/blog-assets/${slug}/cover-${locale}.png`)).toEqual([1200, 630]);
+      }
+    }
+    for (const locale of POST_LOCALES) expect(pngSize(`/blog-assets/cover-home-${locale}.png`)).toEqual([1200, 630]);
+  });
+
+  it("shares the cover, not the drawn card, as og:image and twitter:image", () => {
+    for (const { slug } of getAllPosts()) {
+      for (const locale of getPostLocales(slug)) {
+        const meta = blogPostMetadata(slug, locale);
+        const cover = `${SITE_ORIGIN}/blog-assets/${slug}/cover-${locale}.png`;
+        expect((meta.openGraph as { images: { url: string }[] }).images.map((i) => i.url)).toEqual([cover]);
+        expect((meta.twitter as { images: string[] }).images).toEqual([cover]);
+        expect(JSON.stringify(meta)).not.toContain("/og/blog");
+      }
+    }
   });
 });
