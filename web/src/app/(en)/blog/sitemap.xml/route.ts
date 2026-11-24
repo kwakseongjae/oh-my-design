@@ -9,7 +9,7 @@
 
 import { blogIndexUrl, blogPostUrl } from "@/lib/site";
 import { HTML_LANG, POST_LOCALES, type PostLocale } from "@/lib/blog/locales";
-import { getAllPosts, getPostLocales } from "@/lib/blog/posts";
+import { getAllPosts, getPost, getPostLocales, lastModified } from "@/lib/blog/posts";
 
 interface Entry {
   url: string;
@@ -52,9 +52,12 @@ export function GET() {
       url: blogPostUrl(post.slug, locale),
     }));
     for (const locale of locales) {
+      // Each locale file carries its own dates: a correction to one translation
+      // does not touch the other's lastmod.
+      const version = getPost(post.slug, locale) ?? post;
       entries.push({
         url: blogPostUrl(post.slug, locale),
-        lastModified: post.date,
+        lastModified: lastModified(version),
         alternates,
       });
     }

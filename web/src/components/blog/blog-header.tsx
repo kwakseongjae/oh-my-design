@@ -5,14 +5,17 @@
  * host — a bare "/design-systems" there would resolve against
  * blog.oh-my-design.kr and 404.
  *
+ * The site header's own Blog link (the last nav item) is marked as the current
+ * section here (`section="blog"`), so the blog needs no Blog link of its own.
+ *
  * Language: the blog has its own ko/en pair, so the landing-locale switch is
  * off here (`locales={false}`) and this page's other-language link takes its
- * place. The site header's theme control is the only one on the page.
+ * place.
  */
 
 import Link from "next/link";
 import { SiteHeaderA } from "@/components/brand-a/site-header";
-import { blogIndexHref, siteHref } from "@/lib/site";
+import { siteHref } from "@/lib/site";
 import { BLOG_CHROME } from "@/lib/blog/i18n";
 import type { PostLocale } from "@/lib/blog/locales";
 
@@ -30,22 +33,18 @@ export function BlogHeader({
       locale={locale}
       origin={siteHref("")}
       locales={false}
+      section="blog"
       extra={
-        <>
-          <Link href={blogIndexHref(locale)} className="sq-xlink sq-xlink-on">
-            Blog
+        switchTo ? (
+          <Link
+            href={switchTo}
+            className="sq-xlink"
+            hrefLang={locale === "ko" ? "en" : "ko"}
+            aria-label={chrome.switchLocale}
+          >
+            {chrome.switchLocaleShort}
           </Link>
-          {switchTo ? (
-            <Link
-              href={switchTo}
-              className="sq-xlink"
-              hrefLang={locale === "ko" ? "en" : "ko"}
-              aria-label={chrome.switchLocale}
-            >
-              {chrome.switchLocaleShort}
-            </Link>
-          ) : null}
-        </>
+        ) : null
       }
     />
   );

@@ -32,6 +32,8 @@
 .sq-menu{display:flex;align-items:center;gap:28px;margin-left:auto;font-size:15px;font-weight:550}
 .sq-menu a,.sq-menu-m a{display:inline-flex;align-items:center;min-height:36px;color:var(--sq-ink-2);transition:color .15s}
 .sq-menu a:hover,.sq-menu-m a:hover{color:var(--sq-ink)}
+/* the section this page belongs to (the blog's own header marks Blog) */
+.sq-menu a[aria-current="page"],.sq-menu-m a[aria-current="page"]{color:var(--sq-ink)}
 .sq-tools{display:flex;align-items:center;gap:12px;margin-left:20px}
 .sq-menu-m{display:none}
 /* GitHub star button: Taste Skill's dark nav pill. Round 11 (#4/#15): white mark, a small grey

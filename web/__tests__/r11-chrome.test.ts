@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import logoManifest from "@/data/brand-logos.json";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
@@ -138,6 +138,78 @@ describe("header: Skills opens the docs skills page (#29)", () => {
   });
   it("no landing anchor is left in the header", () => {
     expect(read("src/components/brand-a/site-header.tsx")).not.toMatch(/#skills/);
+  });
+});
+
+describe("header: Blog is the last nav link (owner, 2026-11-23)", () => {
+  const menuOf = (html: string, cls: string) => {
+    const start = html.indexOf(`class="${cls}"`);
+    return html.slice(start, html.indexOf("</nav>", start));
+  };
+  const anchors = (menu: string) => [...menu.matchAll(/<a [^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2]]);
+
+  it("every locale: after Docs, the footer's own label and link, on desktop and phone rows", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { SiteHeaderA, blogHrefFor } = await import("@/components/brand-a/site-header");
+    const { SiteFooterA } = await import("@/components/brand-a/site-footer");
+    const { getChromeCopy } = await import("@/components/brand-a/copy/r11-chrome");
+    const { getCopy } = await import("@/components/brand-a/copy");
+    expect(blogHrefFor("ko")).toBe("/blog");
+    for (const l of SITE_LOCALES) {
+      const label = getChromeCopy(l).foot.blog;
+      const html = renderToStaticMarkup(createElement(SiteHeaderA, { locale: l }));
+      for (const cls of ["sq-menu", "sq-wrap sq-menu-m"]) {
+        const links = anchors(menuOf(html, cls));
+        expect(links.at(-1), `${l} ${cls}`).toEqual([blogHrefFor(l), label]);
+        expect(links.at(-2)?.[1], `${l} ${cls}`).toBe(getCopy(l).nav.docs);
+      }
+      if (l !== "ko") expect(blogHrefFor(l), l).toBe("/blog/en");
+      const foot = renderToStaticMarkup(createElement(SiteFooterA, { locale: l }));
+      expect(foot, l).toContain(`<a href="${blogHrefFor(l)}">${label}</a>`);
+      expect(html, l).not.toContain('aria-current="page"');
+    }
+  });
+
+  it("the blog's header marks Blog as the current section and has no Blog pill of its own", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { BlogHeader } = await import("@/components/blog/blog-header");
+    const ko = renderToStaticMarkup(createElement(BlogHeader, { locale: "ko", switchTo: "/blog/en" }));
+    expect(anchors(menuOf(ko, "sq-menu")).at(-1)).toEqual(["/blog", "블로그"]);
+    expect(ko).toMatch(/<a href="\/blog" aria-current="page">블로그<\/a>/);
+    expect(ko).not.toContain("sq-xlink-on");
+    expect(ko.split('href="/blog"').length - 1).toBe(2); // the desktop and phone nav rows, nothing else
+    expect(ko).toContain('href="/blog/en"'); // the ko/en switch stays
+    const en = renderToStaticMarkup(createElement(BlogHeader, { locale: "en" }));
+    expect(en).toMatch(/<a href="\/blog\/en" aria-current="page">Blog<\/a>/);
+  });
+
+  it("with the blog on its own host: absolute from the site, relative on the blog itself", async () => {
+    vi.resetModules();
+    vi.stubEnv("NEXT_PUBLIC_BLOG_SUBDOMAIN", "1");
+    try {
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const { createElement } = await import("react");
+      const { SiteHeaderA, blogHrefFor } = await import("@/components/brand-a/site-header");
+      const { BlogHeader } = await import("@/components/blog/blog-header");
+      expect(blogHrefFor("ko")).toBe("https://blog.oh-my-design.kr");
+      expect(blogHrefFor("ja")).toBe("https://blog.oh-my-design.kr/en");
+      const site = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "en" }));
+      expect(anchors(menuOf(site, "sq-menu")).at(-1)).toEqual(["https://blog.oh-my-design.kr/en", "Blog"]);
+      const blog = renderToStaticMarkup(createElement(BlogHeader, { locale: "ko" }));
+      expect(blog).toMatch(/<a href="\/" aria-current="page">블로그<\/a>/);
+      expect(blog).toContain('href="https://oh-my-design.kr/ko/design-systems"'); // the rest of the nav goes back to the site
+    } finally {
+      vi.unstubAllEnvs();
+      vi.resetModules();
+    }
+  });
+
+  it("the blog index has no back link to the main site above its title", () => {
+    const src = read("src/components/blog/index-view.tsx");
+    expect(src).not.toMatch(/siteHref\(|ArrowLeft|mainSite/);
+    expect(read("src/lib/blog/i18n.ts")).not.toMatch(/mainSite/);
   });
 });
 

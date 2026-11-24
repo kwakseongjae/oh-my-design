@@ -12,9 +12,9 @@ import pkg from "../../../package.json" with { type: "json" };
 
 /**
  * The <html> document every root layout renders. The site has one root layout
- * per language — app/(en), (ko), (ja), (zh-tw) — because a root layout is the one place that
- * can set <html lang>. Theme, analytics, consent and the site JSON-LD live
- * here so the two cannot drift.
+ * per language — app/(en), (ko), (ja), (zh-tw), plus (blog-ko) for the Korean
+ * blog — because a root layout is the one place that can set <html lang>.
+ * Theme, analytics, consent and the site JSON-LD live here so they cannot drift.
  */
 
 // Single source of truth for displayed CLI version. Pulled from the root

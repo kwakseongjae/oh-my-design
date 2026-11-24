@@ -2,12 +2,12 @@ import Link from "next/link";
 import { SITE_LOCALES, SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
 import { docsHref, type DocsLocale } from "@/lib/docs/locales";
-import { BLOG_ON_SUBDOMAIN, blogIndexHref, blogIndexUrl } from "@/lib/site";
+import { blogIndexHref } from "@/lib/site";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 import { fmt, getCopy } from "./copy";
 import { GITHUB_MARK, NPM_URL, THREADS_MARK, THREADS_URL, getChromeCopy, type Mark } from "./copy/r11-chrome";
 import { Logo } from "./logo";
-import { DOCS_LOCALE_OF, GITHUB_URL, skillsHrefFor } from "./site-header";
+import { DOCS_LOCALE_OF, GITHUB_URL, blogHrefFor, blogLocaleOf, skillsHrefFor } from "./site-header";
 import "./chrome.css";
 
 const LICENSE_URL = `${GITHUB_URL}/blob/main/LICENSE`;
@@ -52,9 +52,8 @@ export function SiteFooterA({
   const meta = SITE_LOCALE_META[locale];
   const o = (path: string) => `${origin}${path}`;
   const docs = docsLocale ?? DOCS_LOCALE_OF[locale];
-  // the blog is ko + en: Korean pages read the Korean blog, the others the English one
-  const blogLocale = locale === "ko" ? "ko" : "en";
-  const blogHref = BLOG_ON_SUBDOMAIN ? blogIndexUrl(blogLocale) : blogIndexHref(blogLocale);
+  const blogLocale = blogLocaleOf(locale);
+  const blogHref = blogHrefFor(locale);
   // the blog's own footer passes its index again; the Product column already has it
   const extras = extraLinks.filter((l) => l.href !== blogIndexHref(blogLocale));
   const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
