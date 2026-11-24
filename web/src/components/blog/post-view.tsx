@@ -12,6 +12,7 @@ import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import type { BlogPost } from "@/lib/blog/posts";
 import { blogIndexHref, blogPostHref, siteHref } from "@/lib/site";
 import { docsHref } from "@/lib/docs/locales";
+import { topicsOf } from "@/lib/blog/topics";
 
 export function BlogPostView({
   post,
@@ -60,12 +61,12 @@ export function BlogPostView({
           >
             {formatPostDate(post.date, locale)}
           </time>
-          {post.tags.map((tag) => (
+          {topicsOf(post.tags).map((topic) => (
             <span
-              key={tag}
+              key={topic.id}
               className="rounded-full border border-border/60 px-2 py-0.5 text-[10px] text-muted-foreground"
             >
-              {tag}
+              {topic.label[locale]}
             </span>
           ))}
         </div>

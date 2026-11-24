@@ -46,7 +46,7 @@ ${post.tags.map((tag) => `      <category>${escapeXml(tag)}</category>`).join("\
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${escapeXml(chrome.indexTitle)} — oh-my-design</title>
+    <title>${escapeXml(chrome.indexTitle)}</title>
     <link>${blogIndexUrl(locale)}</link>
     <description>${escapeXml(chrome.indexIntro)}</description>
     <language>${HTML_LANG[locale]}</language>

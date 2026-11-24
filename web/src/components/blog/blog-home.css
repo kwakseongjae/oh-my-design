@@ -1,0 +1,67 @@
+/* Blog home (direction B). Every value is a web/public/design.md token through the --sq-* set in
+   styles/brand-a.css: Asset: the blog field, Component: topic chips, Component: post card, Card grid. */
+
+.bh{width:100%;max-width:var(--sq-max);margin:0 auto;padding:8px var(--sq-gut) 96px;font-family:var(--sq-f-ko)}
+.bh:lang(ko){word-break:keep-all;overflow-wrap:anywhere}
+
+/* the field banner; the poster's masks use #fff only for its alpha. Sizes: radius.panel 168px; radius.card 128px at 900px and below */
+.bh-banner{position:relative;height:168px;border-radius:var(--sq-r-panel);overflow:hidden;transform:translateZ(0)}
+.bh-field{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:var(--sq-paper)}
+.bh-field-scene,.bh-field-poster{position:absolute;inset:0}
+.bh-field-scene{z-index:1;opacity:0;transition:opacity .6s ease-out}
+.bh-field[data-live] .bh-field-scene{opacity:1}
+.bh-field[data-live] .bh-field-poster{visibility:hidden}
+.bh-field-poster{z-index:0}
+.bh-field-poster::before,.bh-field-poster::after{content:"";position:absolute;inset:0}
+.bh-field-poster::before{background:conic-gradient(at 3px 3px,transparent 75%,var(--sq-primary) 0) 0 0/6px 6px;
+  -webkit-mask:radial-gradient(60% 120% at 10% 100%,#fff 0 30%,transparent 0),radial-gradient(50% 110% at 88% 0%,#fff 0 26%,transparent 0);
+          mask:radial-gradient(60% 120% at 10% 100%,#fff 0 30%,transparent 0),radial-gradient(50% 110% at 88% 0%,#fff 0 26%,transparent 0)}
+.bh-field-poster::after{background:conic-gradient(at 1.5px 1.5px,transparent 75%,var(--sq-primary) 0) 0 0/6px 6px;
+  -webkit-mask:radial-gradient(60% 120% at 10% 100%,transparent 0 30%,#fff 0 58%,transparent 0),radial-gradient(50% 110% at 88% 0%,transparent 0 26%,#fff 0 52%,transparent 0);
+          mask:radial-gradient(60% 120% at 10% 100%,transparent 0 30%,#fff 0 58%,transparent 0),radial-gradient(50% 110% at 88% 0%,transparent 0 26%,#fff 0 52%,transparent 0)}
+@media (max-width:900px){.bh-banner{height:128px;border-radius:var(--sq-r-card)}}
+@media (prefers-reduced-motion:reduce){.bh-field-scene{transition:none}}
+
+/* name and one line: page title 40/760 (32 at 900-1279, 28 below); lede = reading body 17 (16 on a phone) */
+.bh-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,34em);gap:12px 48px;align-items:end;padding-top:32px}
+.bh-title{margin:0;font-size:40px;font-weight:760;line-height:1.2;letter-spacing:-0.02em;color:var(--sq-ink);text-wrap:balance}
+.bh-lede{margin:0;font-size:17px;line-height:1.65;color:var(--sq-ink-2)}
+@media (max-width:1279px){.bh-title{font-size:32px}}
+@media (max-width:900px){.bh-head{grid-template-columns:1fr;padding-top:24px}}
+@media (max-width:899px){.bh-title{font-size:28px;line-height:1.3}}
+@media (max-width:640px){.bh-lede{font-size:16px}}
+
+/* topic chips: control sm, radius.pill; selected color.primary on color.tint */
+.bh-chips{display:flex;flex-wrap:wrap;gap:8px;margin:36px 0 32px}
+.bh-chip{appearance:none;border:0;margin:0;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:var(--sq-r-pill);background:var(--sq-paper);box-shadow:inset 0 0 0 1px var(--sq-guide);font-size:14px;font-weight:600;color:var(--sq-ink);white-space:nowrap;transition:background-color .15s}
+.bh-chip:hover{background:var(--sq-cell)}
+.bh-chip-n{font-weight:400;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
+.bh-chip[aria-pressed="true"]{background:var(--sq-tint);box-shadow:inset 0 0 0 1px var(--sq-p200);color:var(--sq-primary);font-weight:650}
+.bh-chip[aria-pressed="true"] .bh-chip-n{color:var(--sq-primary);font-weight:650}
+.bh-chip:focus-visible{outline:2px solid var(--sq-primary);outline-offset:2px}
+@media (hover:none),(pointer:coarse){.bh-chip{height:36px}}
+@media (max-width:767px){.bh-chips{margin:24px 0}}
+@media (max-width:599px){.bh-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:calc(-1 * var(--sq-gut));margin-right:calc(-1 * var(--sq-gut));padding:2px var(--sq-gut)}.bh-chips::-webkit-scrollbar{display:none}}
+@media (prefers-reduced-motion:reduce){.bh-chip{transition:none}}
+
+/* card grid: 3 / 2 / 1 columns, 40/24, 36/20, 32 */
+.bh-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 24px;margin:0;padding:0;list-style:none}
+@media (max-width:1023px){.bh-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}}
+@media (max-width:599px){.bh-grid{grid-template-columns:1fr;gap:32px}}
+
+/* post card: cover 1200:630, radius.card, inset guide-2 ring; caption 14px under it */
+.bh-card{display:block;color:inherit;text-decoration:none;outline:none}
+.bh-cover{position:relative;aspect-ratio:1200/630;border-radius:var(--sq-r-card);overflow:hidden;background:var(--sq-band);transition:box-shadow .15s}
+.bh-cover::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--sq-guide-2);pointer-events:none}
+.bh-cover img{display:block;width:100%;height:100%;object-fit:cover}
+@media (hover:hover) and (pointer:fine){.bh-card:hover .bh-cover{box-shadow:var(--sq-shadow-panel)}}
+.bh-card:focus-visible .bh-cover{outline:2px solid var(--sq-primary);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.bh-cover{transition:none}}
+.bh-cap{padding-top:14px}
+.bh-topics{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px;font-weight:600;line-height:1.4;color:var(--sq-ink-2)}
+.bh-topics span{display:inline-flex;align-items:center;gap:6px}
+.bh-topics span::before{content:"";width:6px;height:6px;border-radius:1px;background:currentColor;opacity:.55}
+.bh-topics .bh-badge::before{display:none}
+.bh-cap h2{margin:8px 0;font-size:22px;font-weight:760;line-height:1.35;letter-spacing:-0.015em;color:var(--sq-ink);text-wrap:pretty}
+.bh-cap p{margin:0;font-size:16px;line-height:1.6;color:var(--sq-ink-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bh-cap time{display:block;margin-top:10px;font-size:14px;color:var(--sq-ink-2);font-variant-numeric:tabular-nums}
