@@ -45,7 +45,7 @@ export function Ja({ text, en = false }: { text: string; en?: boolean }) {
             {part}
           </code>
         ) : (
-          <Fragment key={i}>{part}</Fragment>
+          <Fragment key={i}>{en ? <Mixed text={part} /> : part}</Fragment>
         ),
       )}
       <span className="kn-qm">{en ? "\u201D" : "\u300D"}</span>

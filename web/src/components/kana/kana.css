@@ -257,3 +257,7 @@
   .kn-bar-name{grid-column:1 / -1}
   .kn-bar-track{grid-column:1}
 }
+
+/* Japanese headings on the rules page (the Japanese edition's cards lead with a quote): phrases kept whole where the
+   browser can (auto-phrase, JT-14), and no one-character last line where it can avoid one (text-wrap: pretty) */
+.kn-root:lang(ja) :is(.kn-h1,.kn-h2,.kn-card-h,.kn-area-h){word-break:auto-phrase;text-wrap:pretty}

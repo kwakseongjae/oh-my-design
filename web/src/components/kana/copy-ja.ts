@@ -87,8 +87,8 @@ export const KANA_COPY_JA = {
     right: "出典が勧める文言",
     switchGroup: "表示する文言",
     stopsLabel: "比べる規則",
-    hintAuto: "規則が順に切り替わります。矢印か規則の番号を押すと止まります。",
-    hintPaused: "矢印か規則の番号で切り替えます。",
+    hintAuto: "規則が順に切り替わります。矢印を押すと止まります。",
+    hintPaused: "矢印で切り替えます。",
     play: "自動切り替えの開始",
     pause: "自動切り替えの停止",
     kind: {

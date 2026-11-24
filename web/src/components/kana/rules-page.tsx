@@ -109,7 +109,7 @@ function RuleCard({ r, level, locale }: { r: Rule; level: "h3" | "h4" | "h5"; lo
   const quotes = (r.quotes as Quote[]).filter((_, i) => i !== lead?.index);
   const english = (
     <>
-      <span className="kn-visually-hidden">
+      <span className="kn-visually-hidden" lang={locale}>
         {t.rules.english}
         {t.colon}
       </span>
@@ -250,7 +250,7 @@ function Sources({ locale }: { locale: KanaLocale }) {
                       <a href={s.url} target="_blank" rel="noopener noreferrer" lang="en">
                         {s.name}
                         <span aria-hidden="true"> ↗</span>
-                        <span className="kn-visually-hidden">
+                        <span className="kn-visually-hidden" lang={locale}>
                           {t.paren[0]}
                           {t.rules.newTab}
                           {t.paren[1]}
@@ -283,7 +283,7 @@ function HouseSide({ text, quotes, ko, locale }: { text: string; quotes: Quote[]
         </p>
       ) : quotes.length ? null : (
         <p className="kn-en" lang="en">
-          <span className="kn-visually-hidden">
+          <span className="kn-visually-hidden" lang={locale}>
             {t.rules.english}
             {t.colon}
           </span>

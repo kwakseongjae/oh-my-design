@@ -16,7 +16,7 @@
 }
 .kn-root:lang(ja){font-family:var(--sq-f-ja)}
 .kn-root :lang(ja),.kn-root:lang(ja) *{letter-spacing:0}
-.km-root code,.km-root code span{font-family:var(--sq-f-mono)}
+.km-root code:not(.kn-code){font-family:var(--sq-f-mono)}
 
 /* the header sits on the first screen's ink (hangul.css does the same for .hg-root) */
 .km-root .sq-top{
@@ -55,6 +55,8 @@
 
 /* ---- the moa pair (app.tsx): the tags, and one source card per tag that the tour lights ---- */
 .km-mid{display:flex;flex-direction:column;gap:14px;text-align:left}
+.km-main .km-tags{gap:6px}
+.km-main .km-tag{padding:6px 12px;border-radius:12px;font-size:14px;line-height:1.5}
 .km-tag a.km-tag-id{font:600 13px/1.45 var(--sq-f-mono);color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px}
 .km-tag a.km-tag-id:hover{text-decoration-color:currentColor}
 .km-tagqs{display:grid}
@@ -121,7 +123,8 @@
 .km-note-mine{font-size:14px;line-height:1.6;color:var(--hg-ink-2)}
 
 /* ---- the typesetting chapter: one sentence set two ways ---- */
-.km-type{display:grid;grid-template-columns:repeat(2,minmax(0,380px)) minmax(0,1fr);gap:24px 32px;align-items:start;margin-top:56px}
+.km-type{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;align-items:start;margin-top:56px}
+.km-type .km-notes{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
 .km-spec{padding:24px 24px 28px;border-radius:var(--sq-r-card,20px);background:var(--hg-paper);box-shadow:0 0 0 1px var(--hg-line),0 28px 56px -36px rgba(18,18,20,.4)}
 .km-spec-h{font-size:28px;font-weight:700}
 .km-spec-p{margin-top:12px!important;font-size:17px;color:var(--hg-ink)}
@@ -191,14 +194,24 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
 .kc-hero .kc-cap-kind{background:#2b2d32;color:var(--hg-night-ink-2)}
 .kn-main .kc-hero .kc-cap-rule{font-size:16px;font-weight:600;line-height:1.7;color:var(--hg-night-ink)}
 .kc-hero .kn-src a{color:var(--hg-night-ink-2);text-decoration-color:#4a4c52}
-.kc-hero .kc-stage{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px;padding:0;background:none}
+.kc-hero .kc-stage{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:12px;padding:0;background:none}
+@media (min-width:1024px){.kc-hero .kc-panels{zoom:.88}}
 .kc-hero .kc-switch{display:none}
 .kc-hero .kc-side{grid-area:auto;opacity:1;pointer-events:auto}
 .kc-hero .kc-side-l{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;color:var(--hg-night-ink-2)}
 .kc-hero .kc-side--wrong .kc-side-l{color:var(--hg-night-before)}
 .kc-hero .kc-side--right .kc-side-l{color:var(--hg-night-after)}
 .kc-hero .kc-screen{min-height:0}
-.kc-hero .kc-page{padding:16px 18px}
+.kc-hero .kc-page{gap:8px;padding:14px 16px}
+/* the skeleton stays a hint: no spacer, one grey line under a title, three table rows */
+.kc-hero .kc-push{display:none}
+.kc-hero .kc-page>.kc-bar:not(.kc-bar--title)~.kc-bar:not(.kc-bar--title):not(.kc-bar--btn):not(.kc-bar--wide){display:none}
+.kc-hero .kc-row:nth-child(n+4){display:none}
+.kc-hero .kc-scrim{padding:12px}
+.kc-hero .kc-dialog{padding:14px;gap:8px}
+.kc-hero .kc-dialog>.kc-bar:not(.kc-bar--title)~.kc-bar:not(.kc-bar--field){display:none}
+.kc-hero .kc-btn{min-height:44px;padding:8px 18px;font-size:15px}
+.kc-hero .kc-bar--wide{height:44px}
 .kc-hero .kc-label{display:none}
 .kc-hero .kc-step{box-shadow:inset 0 0 0 1px #3a3c42;color:var(--hg-night-ink)}
 .kc-hero .kc-step:hover,.kc-hero .kc-play:hover{background:#2b2d32}
@@ -214,8 +227,6 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
 @media (max-width:1199px){
   .km-sheet-stage{grid-template-columns:360px 360px;justify-content:center}
   .km-sheet-stage .km-notes{grid-column:1 / -1;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr))}
-  .km-type{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .km-type .km-notes{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
   .km-more ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:1151px){.km-mid{max-width:760px;margin:0 auto}}
