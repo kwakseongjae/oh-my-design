@@ -29,6 +29,14 @@ import "./showcase.css";
  */
 
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
+const COUNTS = {
+  rules: data.rules.length,
+  house: data.houseChoices.length,
+  sources: data.sources.length,
+  services: data.fonts.services,
+  opened: data.sources[0].opened,
+  measured: data.fonts.measuredOn,
+};
 
 /** The 말투 chapter's rows: the part of the screen, and which of the rule's examples and quotes sit under it. */
 const REGISTER_ROWS = [
@@ -195,9 +203,16 @@ function Register({ locale }: { locale: KanaLocale }) {
                   <p className="km-id" lang="en">
                     {row.rule}
                   </p>
-                  <h3 id={`km-${row.rule}-h`} className="km-row-h">
-                    <Mixed text={c.rows[row.rule].h} />
-                  </h3>
+                  {/* the Japanese edition's line restates the rule as the sources do, with a verb; a heading would be a noun (KW-02) */}
+                  {locale === "ko" ? (
+                    <h3 id={`km-${row.rule}-h`} className="km-row-h">
+                      <Mixed text={c.rows[row.rule].h} />
+                    </h3>
+                  ) : (
+                    <p id={`km-${row.rule}-h`} className="km-row-h">
+                      {c.rows[row.rule].h}
+                    </p>
+                  )}
                   <p className="km-row-b">{body ? <Mixed text={body} /> : <RuleLine id={row.rule} locale={locale} />}</p>
                   <p className="km-tier">{r.tiers.filter((x) => x.tier !== "optim-not-counted").map((x) => tierText(x, locale)).join(" · ")}</p>
                 </div>
@@ -453,7 +468,7 @@ function RuleIndex({ locale }: { locale: KanaLocale }) {
         <nav className="km-more" aria-label={t.index.moreH}>
           <p className="km-more-h">{t.index.moreH}</p>
           <ul>
-            {t.index.more.map((x) => (
+            {t.index.more(COUNTS).map((x) => (
               <li key={x.hash}>
                 <a href={`${rulesPath}${x.hash}`}>
                   <span className="km-more-k">{x.k}</span>
@@ -512,9 +527,9 @@ function Status({ locale }: { locale: KanaLocale }) {
 export function KanaShowcase({ locale }: { locale: KanaLocale }) {
   return (
     <div className={`sq-root sq-root-page kn-root km-root ${notoSansJP.variable}`} lang={locale}>
-      {/* the two editions point at each other in the language switch (English and Chinese rows keep the landings);
-          hreflang does not pair them while both are unreleased (metadata.ts) */}
-      <SiteHeaderA locale={locale} current={locale} localeHrefs={KANA_PATHS} />
+      {/* the Japanese edition's language switch points at the Korean one; the Korean edition's does not point at the
+          Japanese one until the owner releases it (the switch is navigation from a live page). Release list: metadata.ts */}
+      <SiteHeaderA locale={locale} current={locale} localeHrefs={locale === "ja" ? KANA_PATHS : { ko: KANA_PATHS.ko }} />
       <main id="main" className="hg-main kn-main km-main">
         {locale === "ko" ? <HeroKo /> : <HeroJa />}
         {locale === "ja" ? <AppSectionJa /> : null}

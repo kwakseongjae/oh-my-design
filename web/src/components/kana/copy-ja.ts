@@ -1,4 +1,7 @@
-import type { KanaChrome, SourceOrg } from "./copy";
+import type { KanaChrome, KanaCounts, SourceOrg } from "./copy";
+
+/** 2026-11-21 as 2026年11月21日 */
+const jaDate = (d: string) => d.replace(/^(\d{4})-(\d{2})-(\d{2})$/, (_, y, m, day) => `${y}年${Number(m)}月${Number(day)}日`);
 
 /**
  * /ja/kana and /ja/kana/rules: the Japanese edition's chrome. The rules, quotes, examples and sources come from
@@ -46,7 +49,7 @@ export const KANA_COPY_JA = {
   hero: {
     kicker: "日本語UIテキストのスキル",
     statusTag: "下書き",
-    h1: "規則はすべて、出典の原文とともに",
+    h1: "出典の原文を添えた、日本語UIの規則",
     lede: "/kanaは、コーディングエージェントが日本語のUIテキストを書くときの規則をまとめたスキルの下書きです。規則ごとに、デジタル庁デザインシステム、企業のデザインシステム、翻訳ガイドの原文を引用しています。",
     cta: () => "規則の一覧",
     ctaSecond: "現在の状況",
@@ -57,7 +60,7 @@ export const KANA_COPY_JA = {
   },
   app: {
     eyebrow: "アプリの画面",
-    h2: "同じ画面を、ガイドに沿って直すと",
+    h2: "同じ画面の、ガイドに沿った書き直し",
     intro: "ガイドが避ける表現で書いた画面と、同じ画面をガイドに沿って直した画面です。違う箇所を順に示し、その規則の出典の例を添えています。",
     composed: "この2つの画面の日本語は、規則を示すために当サイトが書いた例文です。日本語ネイティブの確認は受けていません。",
     sides: {
@@ -105,7 +108,7 @@ export const KANA_COPY_JA = {
   },
   register: {
     eyebrow: "敬語と言い回し",
-    h2: "丁寧さは一度で",
+    h2: "一度で足りる丁寧さ",
     intro: "画面の日本語は当サイトの例文です。その下の例と文は、出典からの引用です。",
     srcHead: "出典の例と文",
     rows: {
@@ -116,7 +119,7 @@ export const KANA_COPY_JA = {
   },
   sheet: {
     eyebrow: "ボタンとエラー",
-    h2: "押すと何が起こるかを書く",
+    h2: "操作の結果がわかるボタンとエラー",
     intro: "送金を確かめるシートで、4か所が違います。シートの日本語は当サイトの例文で、中央の例は出典からの引用です。",
     notesLabel: "2つのシートで違う箇所",
     notes: {
@@ -131,7 +134,7 @@ export const KANA_COPY_JA = {
   },
   type: {
     eyebrow: "組版",
-    h2: "韓国語向けの組版のままだと",
+    h2: "韓国語向けの組版と日本語向けの組版",
     intro: "/hangul（韓国語のスキル）の設定と日本語向けの設定で、同じ文を組みました。本文はDADSの行高の規則の文、見出しは当サイトの例文です。どちらもNoto Sans JPです。",
     before: "/hangulの韓国語向けの設定",
     after: "日本語向けの設定",
@@ -161,15 +164,15 @@ export const KANA_COPY_JA = {
     intro: "引用符の中の日本語と英文は、出典からの引用です。規則を押すと、出典の文と例がその場で開きます。プロジェクトのDESIGN.mdに文体や表記の決まりがあれば、そちらを優先します。",
     open: "規則のページで原文をすべて見る",
     moreH: "規則のページ",
-    more: [
-      { k: "規則51件の原文", t: "規則ごとの出典の文、例、同じことを述べる出典", hash: "#rules" },
-      { k: "出典で分かれる16点", t: "どちらかを選ばず、両方を載せています", hash: "#house" },
-      { k: "出典ページ29件", t: "すべて2026年11月21日に閲覧", hash: "#sources" },
-      { k: "日本の77サービスの日本語フォント", t: "2026年11月12日に測定", hash: "#fonts" },
+    more: (n: KanaCounts) => [
+      { k: `規則${n.rules}件の原文`, t: "規則ごとの出典の文、例、同じことを述べる出典", hash: "#rules" },
+      { k: `出典で分かれる${n.house}点`, t: "どちらかを選ばず、両方を載せています", hash: "#house" },
+      { k: `出典ページ${n.sources}件`, t: `すべて${jaDate(n.opened)}に閲覧`, hash: "#sources" },
+      { k: "日本語フォントの測定", t: `日本の${n.services}サービス、${jaDate(n.measured)}に測定`, hash: "#fonts" },
     ],
   },
   status: {
-    h2: "現在は下書きです",
+    h2: "現在の状況",
     items: [
       { k: "公開", t: "/kanaスキルはまだ公開していません。規則と例文は、まだ日本語ネイティブの確認を受けていません。" },
       {
@@ -264,7 +267,15 @@ export function composedJa(): string[] {
   const out: string[] = [];
   const walk = (v: unknown): void => {
     if (typeof v === "string") out.push(v);
-    else if (typeof v === "function") walk((v as (...a: unknown[]) => unknown)(3, 1, 65, 23));
+    else if (typeof v === "function") {
+      const f = v as (...a: unknown[]) => unknown;
+      // the count functions take numbers; the index's links take the counts object
+      try {
+        walk(f(3, 1, 65, 23));
+      } catch {
+        walk(f({ rules: 51, house: 16, sources: 29, services: 77, opened: "2026-11-21", measured: "2026-11-12" }));
+      }
+    }
     else if (Array.isArray(v)) v.forEach(walk);
     else if (v && typeof v === "object") Object.values(v).forEach(walk);
   };

@@ -217,6 +217,11 @@ describe.each(LOCALES)("/%s/kana (the showcase)", (locale) => {
     for (const id of rows) expect(main, id).toContain(`href="${rulesPath}#${id}"`);
   });
 
+  it("the index's links to the rules page state the data's own counts", () => {
+    const more = text(main.slice(main.indexOf('class="km-more"'))).replace(/\n/g, " ");
+    for (const n of [data.rules.length, data.houseChoices.length, data.sources.length, data.fonts.services]) expect(more).toContain(String(n));
+  });
+
   it("no install command: the status band says what is not done yet", () => {
     expect(html).not.toMatch(/npx |omd install|install-skills/);
     const status = main.slice(main.indexOf('<section id="status"'));
@@ -324,16 +329,28 @@ describe("the moa screens' Japanese (app-copy.ts)", () => {
     }
   });
 
-  it.skipIf(!fs.existsSync(checker))("kana-copy-check: no WARN on the Japanese edition's composed chrome (copy-ja.ts)", () => {
+  it.skipIf(!fs.existsSync(checker))("kana-copy-check on the Japanese edition's composed chrome, each string in the element it is on the page", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kana-ja-"));
+    const t = KANA_COPY_JA;
+    const n = { rules: 51, house: 16, sources: 29, services: 77, opened: "2026-11-21", measured: "2026-11-12" };
+    // the page's headings (h1, h2, h3) and its buttons and link labels; the rest is running text
+    const headings = [t.hero.h1, t.app.h2, t.register.h2, t.sheet.h2, t.type.h2, t.index.h2(51), t.status.h2, t.rulesPage.h1(51), t.rules.h2, t.house.h2, t.fonts.h2(77), t.sources.h2, ...Object.values(AREA_JA)];
+    const buttons = [t.hero.cta(51), t.hero.ctaSecond, t.hero.notice.report, t.index.open, ...t.index.more(n).map((x) => x.k), ...t.status.links.map((x) => x.k), t.compare.play, t.compare.pause, t.app.sides.before, t.app.sides.after, t.rulesPage.back];
+    const roles = new Set([...headings, ...buttons]);
+    const clean = (x: string) => x.replace(/[{}<>]/g, "");
     try {
-      const body = composedJa()
-        .map((x) => `    <p>${x.replace(/[{}<>]/g, "")}</p>`)
-        .join("\n");
+      const body = [
+        ...headings.map((x) => `    <h2>${clean(x)}</h2>`),
+        ...buttons.map((x) => `    <button>${clean(x)}</button>`),
+        ...composedJa()
+          .filter((x) => !roles.has(x))
+          .map((x) => `    <p>${clean(x)}</p>`),
+      ].join("\n");
       const r = check(dir, "ja", body);
       expect(r.WARN).toBe(0);
       // FYI allowed: KW-35's kanji ratio over the whole fixture (headings and labels are nouns, KW-02), and KW-12 on
-      // the two labels that name 「あなたの」 as the form to leave out
+      // the two labels that name 「あなたの」 as the form to leave out. Nothing else: no heading ends as a sentence
+      // (KW-02), no button over 15 characters (KW-18).
       expect(r.rules.filter((x) => !["KW-35", "KW-12"].includes(x))).toEqual([]);
     } finally {
       fs.rmSync(dir, { recursive: true, force: true });
@@ -349,11 +366,16 @@ describe("the kana pages stay unreleased", () => {
     ["/ja/kana/rules", jaRulesMeta, "ja"],
   ];
 
-  it.each(pages)("%s: noindex, canonical to itself, no twin", (p, meta, lang) => {
+  it.each(pages)("%s: noindex, canonical to itself, no hreflang alternates", (p, meta, lang) => {
     expect(meta.robots).toMatchObject({ index: false });
     expect(meta.alternates?.canonical).toBe(p);
-    expect(meta.alternates?.languages).toEqual({ [lang]: p });
+    expect(meta.alternates?.languages).toBeUndefined();
     expect((meta.openGraph as { locale?: string })?.locale).toBe(lang === "ko" ? "ko_KR" : "ja_JP");
+  });
+
+  it("the Korean pages link no Japanese kana page (the language switch included); the Japanese ones may link the Korean", () => {
+    for (const html of [showcase.ko, rules.ko]) expect(html).not.toMatch(/href="\/ja\/kana/);
+    expect(showcase.ja).toContain('href="/ko/kana"');
   });
 
   it("in no sitemap and linked from no shared header or footer", () => {

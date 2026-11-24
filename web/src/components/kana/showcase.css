@@ -51,12 +51,12 @@
 .km-pl-t{display:flex;flex-direction:column;min-width:0}
 .km-main .kn-src a{font-size:13px;line-height:1.5;color:var(--hg-ink-2);text-decoration:underline;text-decoration-color:var(--hg-line);text-underline-offset:3px}
 .km-main .kn-src a:hover{text-decoration-color:currentColor}
-.km-tier{font-size:13px;line-height:1.5;color:var(--hg-ink-3)}
+.km-tier{font-size:13px;line-height:1.5;color:var(--hg-ink-2)}
 
 /* ---- the moa pair (app.tsx): the tags, and one source card per tag that the tour lights ---- */
 .km-mid{display:flex;flex-direction:column;gap:14px;text-align:left}
 .km-main .km-tags{gap:6px}
-.km-main .km-tag{padding:6px 12px;border-radius:12px;font-size:14px;line-height:1.5}
+.km-main .km-tag{padding:6px 12px;border-radius:12px;font-size:14px;line-height:1.5;cursor:pointer}
 .km-tag a.km-tag-id{font:600 13px/1.45 var(--sq-f-mono);color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px}
 .km-tag a.km-tag-id:hover{text-decoration-color:currentColor}
 .km-tagqs{display:grid}
@@ -123,7 +123,8 @@
 .km-note-mine{font-size:14px;line-height:1.6;color:var(--hg-ink-2)}
 
 /* ---- the typesetting chapter: one sentence set two ways ---- */
-.km-type{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;align-items:start;margin-top:56px}
+/* the specimens keep a phone-like measure (380px) so the two settings break differently, as they would in a UI column */
+.km-type{display:grid;grid-template-columns:repeat(2,minmax(0,380px));gap:24px 32px;align-items:start;margin-top:56px}
 .km-type .km-notes{grid-column:1 / -1;grid-template-columns:repeat(2,minmax(0,1fr))}
 .km-spec{padding:24px 24px 28px;border-radius:var(--sq-r-card,20px);background:var(--hg-paper);box-shadow:0 0 0 1px var(--hg-line),0 28px 56px -36px rgba(18,18,20,.4)}
 .km-spec-h{font-size:28px;font-weight:700}
@@ -145,7 +146,7 @@
 .km-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 64px;margin-top:48px}
 .km-area+.km-area{margin-top:28px}
 .km-area-h{display:flex;align-items:baseline;gap:8px;font-size:19px;line-height:1.4;font-weight:700}
-.km-area-n{font-size:14px;font-weight:600;color:var(--hg-ink-3);font-variant-numeric:tabular-nums}
+.km-area-n{font-size:14px;font-weight:600;color:var(--hg-ink-2);font-variant-numeric:tabular-nums}
 .km-list{list-style:none;margin:12px 0 0;padding:0;border-top:1.5px solid var(--hg-ink)}
 .km-li{border-bottom:1px solid var(--hg-line);scroll-margin-top:96px}
 .km-li-b{display:flex;align-items:baseline;gap:16px;min-width:0;padding:10px 0;font-size:15px;line-height:1.55;cursor:pointer;list-style:none}
@@ -222,7 +223,11 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
 .kc-hero .kc-real{margin-top:12px!important;font-size:13px;line-height:1.7}
 .kc-hero .kc-step:focus-visible,.kc-hero .kc-play:focus-visible{outline-color:var(--hg-night-ink)}
 
-@media (prefers-reduced-motion:reduce){.km-tagq,.km-li-x::before,.km-li-x::after{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  .km-tagq,.km-li-x::before,.km-li-x::after{transition:none}
+  /* no tour walks the phones, so each phone scrolls on its own and every string can be read */
+  .km-pair .moa--fixed .moa-view{overflow-y:auto;overscroll-behavior:contain}
+}
 
 @media (max-width:1199px){
   .km-sheet-stage{grid-template-columns:360px 360px;justify-content:center}

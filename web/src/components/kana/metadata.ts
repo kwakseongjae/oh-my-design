@@ -7,12 +7,13 @@ import { KANA_KIT } from "./locale";
 
 /**
  * The four kana pages (/ko/kana, /ko/kana/rules, /ja/kana, /ja/kana/rules) are unreleased: noindex until the owner
- * releases them, in no sitemap, and linked from no shared header or footer. Neither edition names the other as an
- * hreflang alternate: an unreleased page declares no twin, so each page's only alternate is itself. The header's
- * language switch still links the two editions to each other (showcase.tsx, rules-page.tsx).
+ * releases them, in no sitemap, and linked from no shared header or footer. They declare no hreflang alternates at all
+ * (an unreleased page names no twin). The Japanese edition's language switch links the Korean one; the Korean
+ * edition's does not link the Japanese one (showcase.tsx, rules-page.tsx).
  *
- * Release, when the owner says go (docs in the agent report of 2026-11-24): robots index; the four paths in
- * app/sitemap.ts; languages { ko, ja } on both editions of each page; a link from the /ja and /ko landings.
+ * Release, when the owner says go (the agent report of 2026-11-24): robots index; the four paths in app/sitemap.ts;
+ * languages { ko, ja } on both editions of each page; the Korean pages' language switch to the Japanese ones; a link
+ * from the /ja and /ko landings.
  */
 export function kanaMetadata(locale: KanaLocale, page: "showcase" | "rules" = "showcase"): Metadata {
   const { t, path: showcase, rulesPath } = KANA_KIT[locale];
@@ -23,7 +24,7 @@ export function kanaMetadata(locale: KanaLocale, page: "showcase" | "rules" = "s
     title,
     description,
     robots: { index: false, follow: true },
-    alternates: { canonical: path, languages: { [SITE_LOCALE_META[locale].hreflang]: path } },
+    alternates: { canonical: path },
     openGraph: {
       type: "website",
       locale: SITE_LOCALE_META[locale].ogLocale,

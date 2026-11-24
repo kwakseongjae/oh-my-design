@@ -5,6 +5,7 @@ import { AppScreen } from "./app-screen";
 import type { KanaLocale } from "./copy";
 import { KANA_KIT } from "./locale";
 import { Mixed, PairLines, QuoteLine, SourceLink, type Example } from "./parts";
+import { PairMid } from "./pair-mid";
 import { jaLead } from "./rule-lead";
 import "@/components/hangul/hangul.css";
 import "./kana-app.css";
@@ -63,7 +64,7 @@ export function AppPair({ locale, tone }: { locale: KanaLocale; tone: "night" | 
         after={<Phone side="fix" />}
         tour={APP_PAIRS.map((p) => ({ target: `[data-k="${p.key}"]`, rule: p.rule, label: `${p.rule} ${t.app.tags[p.rule]}` }))}
         between={
-          <div className="km-mid">
+          <PairMid>
             <ol className="hg-tags km-tags" aria-label={t.app.tagsLabel}>
               {APP_PAIRS.map((p) => (
                 <li key={p.key} className="hg-tag km-tag" data-rule={p.rule}>
@@ -84,7 +85,7 @@ export function AppPair({ locale, tone }: { locale: KanaLocale; tone: "night" | 
                 </div>
               ))}
             </div>
-          </div>
+          </PairMid>
         }
       />
     </div>

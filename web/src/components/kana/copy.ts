@@ -22,6 +22,21 @@ export interface SourceOrg {
   readonly kind: string;
 }
 
+/** The counts and dates the pages state, read from the generated data where they render. */
+export interface KanaCounts {
+  readonly rules: number;
+  readonly house: number;
+  readonly sources: number;
+  readonly services: number;
+  /** the date every source page was opened, YYYY-MM-DD */
+  readonly opened: string;
+  /** the date the 77 services were measured, YYYY-MM-DD */
+  readonly measured: string;
+}
+
+/** 2026-11-21 as 2026년 11월 21일 */
+const koDate = (d: string) => d.replace(/^(\d{4})-(\d{2})-(\d{2})$/, (_, y, m, day) => `${y}년 ${Number(m)}월 ${Number(day)}일`);
+
 /** A link in a list of links: its label, a line on what it holds, and where it goes. */
 export interface KanaLink {
   readonly k: string;
@@ -120,7 +135,7 @@ export interface KanaChrome {
     readonly intro: string;
     readonly open: string;
     readonly moreH: string;
-    readonly more: readonly { readonly k: string; readonly t: string; readonly hash: string }[];
+    readonly more: (n: KanaCounts) => readonly { readonly k: string; readonly t: string; readonly hash: string }[];
   };
   readonly status: {
     readonly h2: string;
@@ -588,11 +603,11 @@ export const KANA_COPY = {
       "일본 디지털청 디자인 시스템(DADS), SmartHR·Ubie·Ameba·GMO 페파보의 디자인 시스템, Mozilla·WordPress·Microsoft의 번역 가이드, 일본 국세청의 설명에서 가져왔어요. 규칙을 누르면 출처의 원문이 그 자리에서 열려요. 프로젝트의 DESIGN.md에 말투나 표기가 정해져 있으면 그것을 먼저 따라요.",
     open: "규칙 페이지에서 원문 전부 보기",
     moreH: "규칙 페이지에서 더 보기",
-    more: [
-      { k: "규칙 51가지의 원문", t: "규칙마다 출처의 문장, 예시, 같은 말을 하는 출처", hash: "#rules" },
-      { k: "출처가 갈려 고르지 않은 16곳", t: "고르지 않고 양쪽을 다 실었어요", hash: "#house" },
-      { k: "출처 페이지 29곳", t: "모두 2026년 11월 21일에 열어 본 페이지", hash: "#sources" },
-      { k: "일본 서비스 77곳의 첫 일본어 글꼴", t: "2026년 11월 12일에 잰 값", hash: "#fonts" },
+    more: (n: KanaCounts) => [
+      { k: `규칙 ${n.rules}가지의 원문`, t: "규칙마다 출처의 문장, 예시, 같은 말을 하는 출처", hash: "#rules" },
+      { k: `출처가 갈려 고르지 않은 ${n.house}곳`, t: "고르지 않고 양쪽을 다 실었어요", hash: "#house" },
+      { k: `출처 페이지 ${n.sources}곳`, t: `모두 ${koDate(n.opened)}에 열어 본 페이지`, hash: "#sources" },
+      { k: `일본 서비스 ${n.services}곳의 첫 일본어 글꼴`, t: `${koDate(n.measured)}에 잰 값`, hash: "#fonts" },
     ],
   },
   status: {
