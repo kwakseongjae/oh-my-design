@@ -18,7 +18,7 @@ The site oh-my-design.kr: an archive of measured DESIGN.md files for real compan
 
 ### Design direction
 
-- One accent. Iris (`#6749e2`) only on the main action, the user's chat bubble, the active step and selected states; the rest of the chrome stays neutral.
+- One accent. Iris (`#6749e2`) only on the main action, the user's chat bubble, the active step and selected states, and as the ink of the blog's dithered field (Typography & Assets); the rest of the chrome stays neutral.
 - Home's keycaps are the one multi-hue object; nothing violet sits behind them.
 - Separate by space and tone, not by lines. Resting panels carry one soft violet-grey shadow and no outline.
 - Nested radii shrink inward.
@@ -128,6 +128,16 @@ Approved by the owner on 2026-11-21. Whole pixels only.
 
 Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 82px)`, `--sq-fs-h2: clamp(28px, 3.2vw, 44px)`, `--sq-fs-h3` and `--sq-fs-lede` 19px, `--sq-fs-body` 16px, `--sq-fs-small` 13.5px, `--sq-fs-micro` 12px; weights 780 display, 760 heading, 650 strong.
 
+### Asset: the blog field
+
+A moving two-ink dither in Iris, the blog home's banner. Added 2026-11-24 with the blog home (direction B, owner 2026-11-23/24).
+
+- Method: Paper Shaders `dithering` (Apache-2.0, vendored at v0.0.82 in `web/src/vendor/paper-shaders`), 4x4 Bayer ordered dither, two flat inks: color.paper and color.primary. Nothing blends, so no third colour appears.
+- Shape `warp`, 3px cells, speed 0.1. The composition is a 1280×168 world fitted by cover, so a phone sees the same picture at its own width; at 900px and below it shifts left by 0.2 so the diagonal stroke crosses the banner.
+- Banner: radius.panel, 168px tall; radius.card and 128px at 900px and below. One per page, and nothing to read sits on it (`aria-hidden`).
+- Poster: a CSS dot pattern in the same two inks shows while WebGL loads or where it is missing, and hides once the canvas draws, so its dots never show through the rounded corner.
+- Reduced motion: the field holds a still frame. The shader pauses itself off screen and in a hidden tab.
+
 <!-- design-md:section components-states -->
 ## 4. Components & States
 
@@ -195,6 +205,58 @@ The item page's Share is a neutral control: 40px, 14px radius, color.cell; a 44p
 - The list: color.paper, radius.control, 6px padding, a 1px color.guide-2 ring outside plus shadow.panel; at least the control's width or 160px, at most 360px tall. Options 40px (44px on touch), radius.inner; highlighted color.cell; selected 650 with a 16px color.primary check; a count in 14px color.ink-2, tabular figures.
 - "All" is the first option of every filter that can be left open; device always has a value. The filters live in the query string, and the default view keeps the bare URL.
 
+### Component: topic chips
+
+**Semantics:** Narrows the blog home's post grid to one topic. A row of toggle buttons; exactly one is pressed, "전체" / "All" by default.
+
+- Anatomy: label, count
+- States: default, hover, selected, focus-visible
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | A topic shows only when a post carries it, so no chip is ever empty. |
+| loading | not-applicable | The posts are known when the page renders. |
+| error | not-applicable | No error style exists. |
+| success | not-applicable | No success style exists. |
+
+- Control sm: 32px, 36px on touch (`hover: none` or `pointer: coarse`); radius.pill; 14px side padding; label 14/600 color.ink, count 14px color.ink-2 in tabular figures, 6px apart.
+- color.paper with a 1px inset color.guide edge; hover color.cell. Selected: color.tint fill, a 1px inset color.selection edge, label and count color.primary at 650 (5.38:1). Focus outline 2px color.primary, offset 2px.
+- 8px apart. Below 600px the row does not wrap: it scrolls sideways, edge to edge inside the page gutter.
+- Topics are plain field nouns (디자인 시스템, 컬러, 타이포그래피, 데이터, AI, 릴리스; Design systems, Color, Typography, Data, AI, Releases), mapped from the posts' tag slugs; slugs with no topic stay metadata only. The choice is page state, not in the URL.
+- The row sits 36px under the lede and the grid 32px under the row (24px each at 767px and below), as the `/screens` filter row does. No post count beside it: the "전체" chip carries the number.
+
+### Component: post card
+
+**Semantics:** One post in the blog home's grid. The whole card is one link, to the post.
+
+- Anatomy: cover; topics; title; description; date
+- States: default, hover, focus-visible
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | A card is always a working link. |
+| loading | not-applicable | The cover box keeps its 1200:630 ratio, so nothing shifts while it loads. |
+| error | not-applicable | No error style exists. |
+| success | not-applicable | No success style exists. |
+
+- Cover: the post's own cover image (Asset: blog covers) at 1200:630, radius.card, a 1px inset color.guide-2 ring; the first row loads eagerly, the rest lazily, all decoded asynchronously; empty alt, the card's text names it.
+- Caption 14px under the cover: topics as words, 14/600 color.ink-2, each after a 6px square mark; title 22/760 color.ink, 8px above and below; description 16px color.ink-2, line-height 1.6, at most three lines; date 14px color.ink-2, 10px under it.
+- Hover, on pointer devices only: the cover adds shadow.panel over 0.15s; nothing moves. Focus: 2px outline on the cover, offset 3px.
+
 ### Component: service card
 
 **Semantics:** One service in a grid of services. The whole card is one link, to that service's screens page (`/screens/<id>`).
@@ -249,7 +311,7 @@ The shadcn `--radius` points at radius.control, so `rounded-lg` is 14px.
 
 - Service cards: three columns from 1024px, two from 600px, one below. Gaps 40px between rows and 24px between columns; 36px and 20px below 1024px; 32px below 600px.
 - The `/screens` gallery puts its filter row above the grid: filters on the left, 8px apart (6px below 600px), the count on the right in 15px color.ink-2 with tabular figures, wrapping when narrow. The row sits 36px under the lede and the grid 32px under the row (24px each at 767px and below).
-- The same grid holds a screens page's similar services.
+- The same grid holds a screens page's similar services and the blog home's post cards, under its topic chips.
 
 ### Responsive constraints
 
