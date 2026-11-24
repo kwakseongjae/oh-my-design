@@ -6,7 +6,7 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-The site oh-my-design.kr: an archive of measured DESIGN.md files for real companies, plus skills for coding agents. In scope: Home (`/`, `/ko`), the archive (`/design-systems`), the item page (`/design-systems/[id]`, `/ko/design-systems/[id]`), the screens gallery (`/screens`, `/ko/screens`) and its page per service (`/screens/[id]`, `/ko/screens/[id]`), docs, blog, the `/hangul` skill landing, `/what-is-design-md`, FAQ, alternatives and changelog, plus the Japanese and Traditional Chinese roots. Light only: one palette, `color-scheme: light`. This file describes the site itself, not any reference in the archive.
+The site oh-my-design.kr: an archive of measured DESIGN.md files for real companies, plus skills for coding agents. In scope: Home (`/`, `/ko`), the archive (`/design-systems`), the item page (`/design-systems/[id]`, `/ko/design-systems/[id]`), the screens gallery (`/screens`, `/ko/screens`) and its page per service (`/screens/[id]`, `/ko/screens/[id]`), docs, blog, the `/hangul` skill landing, the `/kana` skill pages (`/ko/kana`, `/ja/kana` and their `/rules` pages; unreleased, noindex), `/what-is-design-md`, FAQ, alternatives and changelog, plus the Japanese and Traditional Chinese roots. Light only: one palette, `color-scheme: light`. This file describes the site itself, not any reference in the archive.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=2 lang=en -->
@@ -121,6 +121,7 @@ Approved by the owner on 2026-11-21. Whole pixels only.
 | Landing title | 60px | 760 | Home and skill-landing first screens | Approved, not yet applied |
 | Page title | 40px | 760 | Other pages; 32px at 900–1279px, 28px below | Applied on the item page and on FAQ, changelog, `/what-is-design-md` and alternatives |
 | Section heading | 26px | 760 | Sections; 22px on a phone | Item page: 26px, but 23px on a phone |
+| Skill-landing chapter heading | 40px | 760 | A skill landing's chapters, under the 60px landing title; 32px at 1023px and below, 28px below 640px | New 2026-11-24 on `/kana`, awaiting the owner's approval; `/hangul` sets 44px |
 | Control, large | 16px | 650 | Labels of 48px controls | Applied on `/screens/[id]` |
 | Control | 15px | 650 | Labels of 40px controls | Applied on the item page's two actions |
 | Control, small | 14px | 600 | Labels of 32px controls | Approved, not yet applied |
@@ -130,6 +131,16 @@ Still in `brand-a.css`, older than this scale: `--sq-fs-h1: clamp(44px, 5.4vw, 8
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
+
+### Pattern: skill-landing comparison (/hangul, /kana)
+
+**Semantics:** One app screen shown twice, before and after a skill's rules, so the difference is the content. Used only on the skill landings; the rest of the site keeps one accent.
+
+- **Ink ground** for the first screen and the closing band: `#0e0f11`, raised `#1c1e22`, lines `#2b2d32`, text `#f2f2ef` / `#a3a4aa` (17.4:1 and 7.9:1). The header takes the same ink on these pages.
+- **The pair colours** name the two sides and nothing else: before `#c2410c` (dot `#ea580c`, on ink `#fdba74`), after `#1d4ed8` (dot `#2563eb`, on ink `#93c5fd`); a lit rule tag on ink `#7cb8ff`. On white the before and after text colours are 5.2:1 and 6.7:1; on ink 11.2:1 and 10.6:1.
+- **Phone frame:** 376px wide, height `clamp(536px, 100svh − 168px, 720px)` (340 × up to 640 on a phone), 8px bezel, 48px outer and 40px screen radius, an island over the status bar. The radii are the frame's own, outside the radius scale.
+- **Rule tags** between the phones (mono id, short line); on `/kana` each tag also has a source card that shows while the tour lights the tag.
+- These values were `/hangul`'s since 2026-10-24 (`components/hangul/hangul.css`); recorded here 2026-11-24 when `/kana` reused them. Not yet approved as tokens.
 
 ### Component: action button
 

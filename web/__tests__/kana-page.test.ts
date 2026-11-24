@@ -5,25 +5,42 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import type { Metadata } from "next";
 import sitemap from "@/app/sitemap";
-import { metadata } from "@/app/(ko)/ko/kana/page";
-import { KanaPage } from "@/components/kana/kana-page";
-import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_COPY, KANA_PATH, LEAD_RULES, RULE_KO, SOURCE_ORGS } from "@/components/kana/copy";
+import { metadata as koShowcaseMeta } from "@/app/(ko)/ko/kana/page";
+import { metadata as koRulesMeta } from "@/app/(ko)/ko/kana/rules/page";
+import { metadata as jaShowcaseMeta } from "@/app/(ja)/ja/kana/page";
+import { metadata as jaRulesMeta } from "@/app/(ja)/ja/kana/rules/page";
+import { KanaShowcase } from "@/components/kana/showcase";
+import { KanaRulesPage } from "@/components/kana/rules-page";
+import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_COPY, RULE_KO, RULE_LABEL_KO, SOURCE_ORGS, type KanaLocale } from "@/components/kana/copy";
+import { AREA_JA, KANA_COPY_JA, SOURCE_ORGS_JA, composedJa } from "@/components/kana/copy-ja";
 import { APP_CANCEL, APP_PAIRS, APP_SHARED, appStrings } from "@/components/kana/app-copy";
+import { TYPE_MEASURED, TYPE_QUOTES } from "@/components/kana/type-quotes";
+import { jaLead } from "@/components/kana/rule-lead";
 import data from "@/data/kana-rules.generated.json";
 
+// next/font only works inside the Next compiler; the pages need nothing from it but the class.
+vi.mock("@/components/brand-a/journey/faces", () => ({
+  notoSansJP: { variable: "kn-test-noto-jp", style: { fontFamily: "Noto Sans JP" } },
+}));
+
 /**
- * /ko/kana (2026-11-21): the page is the research behind the draft /kana skill. Two promises are tested here:
- * every Japanese string on it is a copy out of writing-rules.md, except the #app screen's, which is ours (app-copy.ts,
- * owner 2026-11-22), stays inside #app and is labelled as ours there; and the page stays unreleased (noindex, no
- * sitemap, no header or footer link) until the owner says otherwise.
+ * The kana pages (2026-11-24): /ko/kana and /ja/kana (the showcase, direction A) and /ko/kana/rules and /ja/kana/rules
+ * (the reference). What is held here:
+ *  - every Japanese string is a quote out of writing-rules.md or rules.md, or one of three files of our own: the moa
+ *    screens (app-copy.ts), the typography quotes' file (type-quotes.ts, quotes only) and the Japanese edition's chrome
+ *    (copy-ja.ts); the composed ones are labelled as ours where they render;
+ *  - quotes are verbatim; the measured values match their files;
+ *  - the pages stay unreleased (noindex, self-only hreflang, no sitemap, no shared navigation link) until the owner says go.
  */
 
 const WEB = path.resolve(__dirname, "..");
 const ROOT = path.resolve(WEB, "..");
 const JA = /[\u3000-\u303f\u3040-\u30ff\u31f0-\u31ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff00-\uffef]/;
 const JA_RUNS = new RegExp(`${JA.source}+`, "g");
+const LOCALES: KanaLocale[] = ["ko", "ja"];
 
 /** every string in the generated data except the input bookkeeping */
 function dataStrings(): string[] {
@@ -35,24 +52,26 @@ function dataStrings(): string[] {
   })({ ...data, input: null, fonts: null });
   return out;
 }
+const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+/** the page's text, one element's text per line; the page's own 「」 and “” around a quote (kn-qm) are not part of it */
+const text = (s: string) => decode(s.replace(/<span class="kn-qm"[^>]*>[^<]*<\/span>/g, "\n").replace(/<[^>]+>/g, "\n"));
+const mainOf = (html: string) => html.slice(html.indexOf("<main"), html.indexOf("</main>"));
 
-const html = renderToStaticMarkup(createElement(KanaPage));
-const main = html.slice(html.indexOf("<main"), html.indexOf("</main>"));
-/** #app, the one section with Japanese of our own, and the page without it */
-const appSection = main.slice(main.indexOf('<section id="app"'), main.indexOf('<section id="compare"'));
-const mainWithoutApp = main.replace(appSection, "");
-/** the page's text, one element's text per line: the page's own 「」 around a quote (kn-qm) and labels are not part of it */
-const text = (s: string) =>
-  s
-    .replace(/<span class="kn-qm"[^>]*>[^<]*<\/span>/g, "\n")
-    .replace(/<[^>]+>/g, "\n")
-    .replace(/&quot;/g, '"')
-    .replace(/&#x27;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&amp;/g, "&");
+const showcase = Object.fromEntries(LOCALES.map((l) => [l, renderToStaticMarkup(createElement(KanaShowcase, { locale: l }))])) as Record<KanaLocale, string>;
+const rules = Object.fromEntries(LOCALES.map((l) => [l, renderToStaticMarkup(createElement(KanaRulesPage, { locale: l }))])) as Record<KanaLocale, string>;
+/** copy-ja.ts strings the pages glue together with the edition's own punctuation (copy-ja.ts sep, colon, paren) */
+const gluedJa = () => {
+  const t = KANA_COPY_JA;
+  return [
+    `${t.paren[0]}${t.rules.newTab}${t.paren[1]}`,
+    `${t.rules.english}${t.colon}`,
+    `${t.sources.intro}${t.sources.opened[0]}`,
+    ...[0, 1, 2].flatMap((r) => [0, 1, 2].map((h) => t.sources.cited(r, h))),
+  ];
+};
+const hay = (extra: string[] = []) => [...dataStrings(), ...dataStrings().map((s) => s.replace(/`/g, "")), ...TYPE_QUOTES.map((q) => q.text), ...extra].join("\n");
 
-describe("/ko/kana data", () => {
+describe("kana data", () => {
   it("51 rules in the file's eight areas, each area listing only its own rules, and the sixteen house choices", () => {
     expect(data.rules).toHaveLength(51);
     expect(data.areas).toHaveLength(8);
@@ -61,12 +80,15 @@ describe("/ko/kana data", () => {
     expect(data.houseChoices).toHaveLength(16);
   });
 
-  it("every area has a Korean heading, and the one legal duty is the only rule with the law tier", () => {
-    for (const a of data.areas) expect(AREA_KO[a.name], a.name).toBeTruthy();
+  it("every area has a heading in both editions, and the one legal duty is the only rule with the law tier", () => {
+    for (const a of data.areas) {
+      expect(AREA_KO[a.name], a.name).toBeTruthy();
+      expect(AREA_JA[a.name], a.name).toBeTruthy();
+    }
     expect(data.rules.filter((r) => r.tiers.some((x) => x.tier === "law")).map((r) => r.id)).toEqual(["KW-68"]);
   });
 
-  it("every rule has a strength from the file's wording table and at least one quote, and every quote or example a source", () => {
+  it("every rule has a strength and at least one quote, and every quote or example a source", () => {
     const keys = new Set([...data.sources.map((s) => s.key), ...data.keysWithoutUrl]);
     for (const r of data.rules) {
       expect(r.tiers.length, r.id).toBeGreaterThan(0);
@@ -84,70 +106,164 @@ describe("/ko/kana data", () => {
   it("every Japanese string is a character-for-character copy from writing-rules.md, the one it was built from", () => {
     expect(fs.existsSync(rulesMd), rulesMd).toBe(true);
     const md = fs.readFileSync(rulesMd, "utf8");
-    const stray = dataStrings().filter((s) => JA.test(s) && !md.includes(s));
-    expect(stray).toEqual([]);
+    expect(dataStrings().filter((s) => JA.test(s) && !md.includes(s))).toEqual([]);
     expect(crypto.createHash("sha256").update(md).digest("hex")).toBe(data.input.rules.sha256);
+  });
+
+  it("the typography quotes are in rules.md, checked on a date, and the measured values are their files' own", () => {
+    const md = fs.readFileSync(path.join(ROOT, "docs/drafts/kana/references/rules.md"), "utf8");
+    for (const q of TYPE_QUOTES) {
+      expect(md, q.id).toContain(q.text);
+      expect(q.checked, q.id).toMatch(/^2026-\d\d-\d\d$/);
+      expect(q.source.url, q.id).toMatch(/^https:\/\//);
+    }
+    const ja = fs.readFileSync(path.join(ROOT, TYPE_MEASURED.ja.file), "utf8");
+    expect(ja).toContain(`measured on ${TYPE_MEASURED.ja.measuredOn}`);
+    expect(ja).toContain(`heading letter-spacing is negative: ${TYPE_MEASURED.ja.headingNegative} / ${TYPE_MEASURED.ja.services}`);
+    expect(ja).toContain(`word-break: keep-all on 10% of the text or more: ${TYPE_MEASURED.ja.keepAll} / ${TYPE_MEASURED.ja.services}`);
+    expect(ja).toMatch(new RegExp(`paragraph line-height[^\\n]*n ${TYPE_MEASURED.ja.paragraphServices},[^\\n]*median ${TYPE_MEASURED.ja.paragraphMedian},`));
+    const ko = fs.readFileSync(path.join(ROOT, TYPE_MEASURED.ko.file), "utf8");
+    expect(ko).toContain(`${TYPE_MEASURED.ko.headingNegative}/${TYPE_MEASURED.ko.headings} negative`);
   });
 });
 
-describe("/ko/kana page", () => {
-  it("every Japanese run outside #app, quotes and Korean copy alike, is inside a string of the generated data", () => {
-    // the data's strings, and the same with writing-rules.md's \`code\` marks taken out (the page sets those as <code>)
-    const hay = dataStrings().flatMap((s) => [s, s.replace(/`/g, "")]).join("\n");
-    const runs = [...new Set(text(mainWithoutApp).match(JA_RUNS) ?? [])];
-    expect(runs.length).toBeGreaterThan(100);
-    expect(runs.filter((r) => !hay.includes(r))).toEqual([]);
-  });
-
-  it("inside #app, every Japanese run is in the generated data or in app-copy.ts", () => {
-    const hay = [...dataStrings(), ...appStrings()].join("\n");
-    const runs = [...new Set(text(appSection).match(JA_RUNS) ?? [])];
-    expect(runs.length).toBeGreaterThan(10);
-    expect(runs.filter((r) => !hay.includes(r))).toEqual([]);
-  });
-
-  it("one h1, the sections in order, all 51 rule cards once, the lead six first", () => {
-    expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
-    const order = ['id="kn-h1"', '<section id="app"', '<section id="compare"', '<section id="rules"', '<section id="house"', '<section id="fonts"', '<section id="sources"', '<section id="use"'].map((s) => html.indexOf(s));
-    expect(order.every((i) => i > -1)).toBe(true);
-    expect([...order].sort((a, b) => a - b)).toEqual(order);
-    const cards = [...html.matchAll(/<article id="(kw-\d+)"/g)].map((m) => m[1].toUpperCase());
-    expect(cards).toHaveLength(51);
-    expect(new Set(cards).size).toBe(51);
-    expect(cards.slice(0, 6)).toEqual([...LEAD_RULES]);
-    expect([...html.matchAll(/<article id="(uw-\d+)"/g)]).toHaveLength(16);
-  });
-
-  it("a Korean reading for every rule and a Korean line for every side of every house choice, and no reading without a rule", () => {
-    expect(Object.keys(RULE_KO).sort()).toEqual(data.rules.map((r) => r.id).sort());
+describe("kana copy", () => {
+  it("a Korean reading and a Korean index line for every rule, a Korean line for every side of every house choice", () => {
+    const ids = data.rules.map((r) => r.id).sort();
+    expect(Object.keys(RULE_KO).sort()).toEqual(ids);
+    expect(Object.keys(RULE_LABEL_KO).sort()).toEqual(ids);
     expect(Object.keys(HOUSE_KO).sort()).toEqual(data.houseChoices.map((c) => c.id).sort());
     for (const c of data.houseChoices) expect(HOUSE_KO[c.id].sides, c.id).toHaveLength(c.sides.length);
   });
 
-  it("every quote is shown, in a block that names its source, linked to the source URL in a new tab", () => {
-    const total = data.rules.reduce((n, r) => n + r.quotes.length, 0) + data.houseChoices.reduce((n, c) => n + c.sides.reduce((m, s) => m + s.quotes.length, 0), 0);
-    expect(main.match(/class="kn-qtext"/g)).toHaveLength(total);
-    const blocks = main.match(/<figure class="kn-quote">[\s\S]*?<\/figure>/g) ?? [];
-    for (const b of blocks) {
-      if (/<span lang="en">(JTF|KB)/.test(b)) continue; // keys with no URL in the inputs: named, not linked
-      expect(b).toMatch(/<figcaption><span class="kn-src"><a href="https:\/\/[^"]+" target="_blank" rel="noopener noreferrer"/);
+  it("the Korean pages are in 해요체: no 합니다체 ending in any rendered Korean line", () => {
+    for (const html of [showcase.ko, rules.ko]) {
+      const lines = text(mainOf(html)).split("\n").filter((l) => /[가-힣]/.test(l));
+      expect(lines.filter((l) => /[가-힣](습니다|ㅂ니다|니다)[.\s]?$/.test(l.trim()) || /습니다[. ]/.test(l))).toEqual([]);
     }
+  });
+
+  it("the Japanese wording in the Korean copy is all words that occur in the generated data", () => {
+    const src = fs.readFileSync(path.join(WEB, "src/components/kana/copy.ts"), "utf8");
+    const runs = [...new Set(src.replace(/^\s*(\/\/|\*).*$/gm, "").match(JA_RUNS) ?? [])];
+    const h = hay();
+    expect(runs.filter((r) => !h.includes(r))).toEqual([]);
+  });
+
+  it("the two editions' tag lines and chapter keys cover the same rules", () => {
+    expect(Object.keys(KANA_COPY_JA.app.tags).sort()).toEqual(Object.keys(KANA_COPY.app.tags).sort());
+    expect(Object.keys(KANA_COPY.app.tags).sort()).toEqual(APP_PAIRS.map((p) => p.rule).sort());
+    expect(Object.keys(KANA_COPY_JA.sheet.notes)).toEqual(Object.keys(KANA_COPY.sheet.notes));
+    expect(Object.keys(KANA_COPY_JA.register.rows)).toEqual(Object.keys(KANA_COPY.register.rows));
+  });
+
+  it("every source key belongs to one organisation on both sources lists", () => {
+    for (const k of [...data.sources.map((s) => s.key), ...data.keysWithoutUrl]) {
+      expect(SOURCE_ORGS.filter((o) => k === o.prefix || k.startsWith(`${o.prefix}-`)), k).toHaveLength(1);
+      expect(SOURCE_ORGS_JA.filter((o) => k === o.prefix || k.startsWith(`${o.prefix}-`)), k).toHaveLength(1);
+    }
+  });
+});
+
+describe.each(LOCALES)("/%s/kana (the showcase)", (locale) => {
+  const html = showcase[locale];
+  const main = mainOf(html);
+
+  it("one h1, the sections in order, and the root in the page's language", () => {
+    expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
+    expect(html.match(/<div class="sq-root[^"]*" lang="(\w+)"/)?.[1]).toBe(locale);
+    const order = ['id="km-h1"', ...(locale === "ja" ? ['<section id="app"'] : []), '<section id="register"', '<section id="sheet"', '<section id="type"', '<section id="rules"', '<section id="status"'].map((s) => html.indexOf(s));
+    expect(order.every((i) => i > -1)).toBe(true);
+    expect([...order].sort((a, b) => a - b)).toEqual(order);
+  });
+
+  it("every Japanese run is a quote, a moa string, or (Japanese edition) copy-ja.ts", () => {
+    const h = hay([...appStrings(), ...(locale === "ja" ? [...composedJa(), ...gluedJa()] : [])]);
+    const runs = [...new Set(text(main).match(JA_RUNS) ?? [])];
+    expect(runs.length).toBeGreaterThan(50);
+    expect(runs.filter((r) => !h.includes(r))).toEqual([]);
+  });
+
+  it("every quoted span is verbatim from the data or the typography quotes, never a moa string or our chrome", () => {
+    const quotes = [...main.matchAll(/<span class="kn-qtext"[^>]*>(?:<span[^>]*>)?<span class="kn-qm">[「“]<\/span>([\s\S]*?)<span class="kn-qm">[」”]<\/span>/g)].map((m) => text(m[1]).replace(/\n/g, "").trim());
+    expect(quotes.length).toBeGreaterThan(20);
+    const h = hay();
+    expect(quotes.filter((q) => !h.includes(q))).toEqual([]);
+  });
+
+  it("the moa pair: two phones, every pair's rule tagged with its source card, the line that says the Japanese is ours", () => {
+    expect(main.match(/class="hg-phone"/g)).toHaveLength(2);
+    for (const p of APP_PAIRS) {
+      expect(main, p.rule).toContain(`data-rule="${p.rule}" data-tour-card=""`);
+      expect(main, p.rule).toContain(`href="#${p.rule.toLowerCase()}"`);
+    }
+    const t = locale === "ko" ? KANA_COPY : KANA_COPY_JA;
+    expect(main.split(decodeURIComponent(t.app.composed).replace(/&/g, "&amp;"))).toHaveLength(2);
+  });
+
+  it("the chapters say where the screens' Japanese comes from", () => {
+    const t = locale === "ko" ? KANA_COPY : KANA_COPY_JA;
+    for (const s of [t.register.intro, t.sheet.intro, t.type.intro]) expect(text(main).replace(/\n/g, "")).toContain(s);
+    expect(t.register.intro).toMatch(locale === "ko" ? /우리가 지은 예문/ : /当サイトの例文/);
+    expect(t.sheet.intro).toMatch(locale === "ko" ? /우리가 지은 예문/ : /当サイトの例文/);
+    expect(t.type.intro).toMatch(locale === "ko" ? /우리가 지은 예문/ : /当サイトの例文/);
+  });
+
+  it("the index lists all 51 rules once, each opening in place and linking its card on the rules page", () => {
+    const rows = [...main.matchAll(/<li id="(kw-\d+)" class="km-li">/g)].map((m) => m[1]);
+    expect(rows).toHaveLength(51);
+    expect(new Set(rows).size).toBe(51);
+    const rulesPath = locale === "ko" ? "/ko/kana/rules" : "/ja/kana/rules";
+    for (const id of rows) expect(main, id).toContain(`href="${rulesPath}#${id}"`);
+  });
+
+  it("no install command: the status band says what is not done yet", () => {
+    expect(html).not.toMatch(/npx |omd install|install-skills/);
+    const status = main.slice(main.indexOf('<section id="status"'));
+    expect(text(status)).toMatch(locale === "ko" ? /아직 배포하지 않았어요/ : /まだ公開していません/);
+  });
+
+  if (locale === "ja") {
+    it("the Japanese edition opens on the sources' own pairs, each stop exactly its pair's texts, and says who wrote its Japanese", () => {
+      const hero = main.slice(0, main.indexOf('<section id="app"'));
+      expect(hero).toContain(KANA_COPY_JA.hero.notice.text);
+      expect(hero).toContain("https://github.com/kwakseongjae/oh-my-design/issues/new");
+      type Ex = { key: string; sides: { role: string; texts: string[] }[] };
+      const shown = [...hero.matchAll(/<span class="kc-ja" lang="ja" data-stop="(\d+)" data-role="(wrong|right)">([^<]*)<\/span>/g)];
+      COMPARE_STOPS.forEach((s, i) => {
+        const e = (data.rules.find((r) => r.id === s.rule)!.examples as Ex[])[s.example];
+        for (const role of ["wrong", "right"] as const) {
+          const want = e.sides.filter((x) => x.role === role).flatMap((x) => x.texts);
+          expect(shown.filter((m) => m[1] === String(i) && m[2] === role).map((m) => decode(m[3])), `${s.rule} ${role}`).toEqual(want);
+        }
+      });
+      // the specimens are pictures of controls, not controls
+      for (const p of hero.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? []) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
+    });
+  }
+});
+
+describe.each(LOCALES)("/%s/kana/rules (the reference)", (locale) => {
+  const html = rules[locale];
+  const main = mainOf(html);
+
+  it("one h1, all 51 rule cards once, all 16 house choices, every quote shown", () => {
+    expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
+    const cards = [...html.matchAll(/<article id="(kw-\d+)"/g)].map((m) => m[1]);
+    expect(cards).toHaveLength(51);
+    expect(new Set(cards).size).toBe(51);
+    expect([...html.matchAll(/<article id="(uw-\d+)"/g)]).toHaveLength(16);
+    const total = data.rules.reduce((n, r) => n + r.quotes.length, 0) + data.houseChoices.reduce((n, c) => n + c.sides.reduce((m, s) => m + s.quotes.length, 0), 0);
+    // the Japanese edition sets the quote that leads a card as its heading (rule-lead.ts), not in a quote block
+    const leads = locale === "ja" ? data.rules.filter((r) => jaLead(r)).length : 0;
+    expect(main.match(/class="kn-qtext"/g)).toHaveLength(total - leads);
     for (const s of data.sources) expect(main).toContain(`href="${s.url}"`);
   });
 
-  it("the actions: the rules, then the sources list on the page; no install command", () => {
-    const hero = main.slice(0, main.indexOf('<section id="app"'));
-    expect(hero).toContain('href="#rules"');
-    expect(hero).toContain(`규칙 ${data.rules.length}개 보기`);
-    expect(hero).toContain('href="#sources"');
-    expect(html).not.toMatch(/npx |omd install|install-skills/);
-    expect(hero).toContain("초안");
-  });
-
-  it("every source key belongs to one organisation on the sources list", () => {
-    for (const k of [...data.sources.map((s) => s.key), ...data.keysWithoutUrl]) {
-      expect(SOURCE_ORGS.filter((o) => k === o.prefix || k.startsWith(`${o.prefix}-`)), k).toHaveLength(1);
-    }
+  it("every Japanese run is in the data, or (Japanese edition) in copy-ja.ts", () => {
+    const h = hay(locale === "ja" ? [...composedJa(), ...gluedJa()] : []);
+    const runs = [...new Set(text(main).match(JA_RUNS) ?? [])];
+    expect(runs.filter((r) => !h.includes(r))).toEqual([]);
   });
 
   it("the font bars add up to the services measured", () => {
@@ -156,182 +272,88 @@ describe("/ko/kana page", () => {
   });
 });
 
-describe("/ko/kana comparison (#compare)", () => {
-  type Ex = { key: string; via?: string; sides: { role: string; label: string | null; texts: string[] }[] };
-  const pair = (s: (typeof COMPARE_STOPS)[number]) => (data.rules.find((r) => r.id === s.rule)?.examples as Ex[] | undefined)?.[s.example];
-  const section = main.slice(main.indexOf('<section id="compare"'), main.indexOf('<section id="rules"'));
-  const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-
-  it("8 to 10 stops, each a rule's example the source gives as a wrong and a right side, none of them left out on purpose", () => {
-    expect(COMPARE_STOPS.length).toBeGreaterThanOrEqual(8);
-    expect(COMPARE_STOPS.length).toBeLessThanOrEqual(10);
-    expect(new Set(COMPARE_STOPS.map((s) => `${s.rule}/${s.example}`)).size).toBe(COMPARE_STOPS.length);
-    for (const s of COMPARE_STOPS) {
-      const e = pair(s);
-      expect(e, `${s.rule} #${s.example}`).toBeTruthy();
-      const roles = e!.sides.map((x) => x.role);
-      expect(roles, s.rule).toContain("wrong");
-      expect(roles, s.rule).toContain("right");
-      // KW-39 and KW-10 were not checked against the source's bytes; KW-25 and KW-55 are house choices
-      expect(["KW-39", "KW-10", "KW-25", "KW-55"], s.rule).not.toContain(s.rule);
-      expect(e!.via, s.rule).toBeUndefined();
-      for (const x of e!.sides.flatMap((y) => y.texts)) {
-        // the source's own notes (※ちょっと堅い), Markdown code marks and placeholder templates stay out of a component
-        expect(x, s.rule).not.toMatch(/[※`◯～]|xxx/);
-      }
-    }
-  });
-
-  it("each stop renders exactly its pair's texts, in the source's order, on the right side", () => {
-    const shown = [...section.matchAll(/<span class="kc-ja" lang="ja" data-stop="(\d+)" data-role="(wrong|right)">([^<]*)<\/span>/g)];
-    COMPARE_STOPS.forEach((s, i) => {
-      const e = pair(s)!;
-      for (const role of ["wrong", "right"] as const) {
-        const want = e.sides.filter((x) => x.role === role).flatMap((x) => x.texts);
-        const got = shown.filter((m) => m[1] === String(i) && m[2] === role).map((m) => decode(m[3]));
-        expect(got, `${s.rule} ${role}`).toEqual(want);
-      }
-    });
-    expect(shown).toHaveLength(COMPARE_STOPS.reduce((n, s) => n + pair(s)!.sides.flatMap((x) => x.texts).length, 0));
-  });
-
-  it("outside the pairs' texts, the only Japanese in the section is inside the stops' Korean readings", () => {
-    const rest = text(section.replace(/<span class="kc-ja"[^>]*>[^<]*<\/span>/g, "\n"));
-    const readings = COMPARE_STOPS.map((s) => RULE_KO[s.rule]).join("\n");
-    const runs = [...new Set(rest.match(JA_RUNS) ?? [])];
-    expect(runs.filter((r) => !readings.includes(r))).toEqual([]);
-  });
-
-  it("every stop names its rule, links its card and its source, and the section says what is real", () => {
-    for (const s of COMPARE_STOPS) {
-      expect(section).toContain(`href="#${s.rule.toLowerCase()}"`);
-      expect(section).toContain(`href="${data.sources.find((x) => x.key === pair(s)!.key)!.url}"`);
-    }
-    expect(section).toContain("한 글자도 바꾸지 않고");
-    expect(section).toContain("회색 막대와 컴포넌트 모양은 우리가 그렸습니다");
-    // the specimens are pictures of controls, not controls: no focusable element inside a panel
-    const panels = section.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? [];
-    expect(panels.length).toBeGreaterThan(0);
-    for (const p of panels) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
-  });
-});
-
-describe("/ko/kana app screen (#app): Japanese of our own, labelled and kept in its section", () => {
+describe("the moa screens' Japanese (app-copy.ts)", () => {
   const RULE_IDS = new Set(data.rules.map((r) => r.id));
   const HOUSE_IDS = new Set(data.houseChoices.map((c) => c.id));
-  const decode = (s: string) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-  /** a side's strings as the section renders them: data-k marks each string the tour stops on */
-  const phone = (side: "ai" | "fix") => {
-    const start = appSection.indexOf(`data-copy="${side}"`);
-    expect(start, side).toBeGreaterThan(-1);
-    return appSection.slice(start, appSection.indexOf('class="moa-focus"', start));
-  };
-  const sourceSides = (p: (typeof APP_PAIRS)[number]) => (p.source ? [p[p.source.side]] : []);
-  /** the composed strings: every app string that is not a source's own (those are checked against the data below) */
-  const composed = () => {
-    const src = new Set([...APP_PAIRS.flatMap(sourceSides), APP_CANCEL.text]);
-    return appStrings().filter((s) => !src.has(s));
-  };
 
-  it("sits between the first screen and #compare: two phones, one per side, each string with its side's text", () => {
-    expect(appSection.length).toBeGreaterThan(0);
-    expect(appSection.match(/class="hg-phone"/g)).toHaveLength(2);
-    for (const side of ["ai", "fix"] as const) {
-      const ph = phone(side);
-      for (const p of APP_PAIRS) {
-        // the first text after the marked element's opening tag (the toast and the banner mark their card, which opens with art)
-        const m = ph.match(new RegExp(`data-k="${p.key}"[^>]*>(?:<[^>]+>)*([^<]+)<`));
-        expect(m, `${side} ${p.key}`).toBeTruthy();
-        expect(decode(m![1]), `${side} ${p.key}`).toBe(p[side]);
-      }
-    }
-  });
-
-  it("the line that says the Japanese is ours renders in the section, above the phones, every time", () => {
-    const line = KANA_COPY.app.composed;
-    expect(line).toMatch(/우리가 지은/);
-    expect(line).toMatch(/인용한 것이 아닙니다/);
-    expect(line).toMatch(/원어민은 아직/);
-    expect(appSection.split(line)).toHaveLength(2);
-    expect(appSection.indexOf(line)).toBeLessThan(appSection.indexOf('class="hg-phone"'));
-  });
-
-  it("every pair names a real rule, not a house choice or an unchecked one, has a Korean reading, and differs", () => {
+  it("every pair names a real rule, not a house choice or an unchecked one, differs, and its example is a real one", () => {
     expect(APP_PAIRS.length).toBeGreaterThanOrEqual(6);
-    expect(new Set(APP_PAIRS.map((p) => p.key)).size).toBe(APP_PAIRS.length);
     for (const p of APP_PAIRS) {
       expect(RULE_IDS.has(p.rule), p.key).toBe(true);
       expect(HOUSE_IDS.has(p.rule), p.key).toBe(false);
       expect(["KW-39", "KW-10"], p.key).not.toContain(p.rule);
-      expect(RULE_KO[p.rule], p.key).toBeTruthy();
       expect(p.ai, p.key).not.toBe(p.fix);
-      expect(p.basis.length, p.key).toBeGreaterThan(0);
-      // the tour lights the pair's rule, and the rule's tag links its card
-      expect(appSection, p.key).toContain(`data-rule="${p.rule}"`);
-      expect(appSection, p.key).toContain(`href="#${p.rule.toLowerCase()}"`);
+      if (p.example !== undefined) expect(data.rules.find((r) => r.id === p.rule)!.examples[p.example], p.key).toBeTruthy();
     }
   });
 
   it("a side marked as a source's own string is one, character for character, from the generated data", () => {
-    const hay = dataStrings().join("\n");
-    for (const s of [...APP_PAIRS.flatMap(sourceSides), APP_CANCEL.text]) expect(hay, s).toContain(s);
-    expect(data.sources.some((s) => s.key === APP_CANCEL.key)).toBe(true);
-    for (const p of APP_PAIRS) if (p.source) expect(data.sources.some((s) => s.key === p.source!.key), p.key).toBe(true);
-  });
-
-  it("no composed string appears outside #app: not in a rule card, a quote, #compare or anywhere else", () => {
-    const lines = text(mainWithoutApp)
-      .split("\n")
-      .map((l) => l.trim())
-      .filter(Boolean);
-    const words = new Set<string>([...APP_SHARED.recent, ...APP_SHARED.tabs, APP_SHARED.deposit, APP_SHARED.transfer, APP_SHARED.amountLabel, APP_SHARED.deltaLead]);
-    for (const s of composed()) {
-      // a shared word (送金, ホーム …) may sit inside a quoted sentence; it must not stand alone as an element's text
-      if (words.has(s)) expect(lines, s).not.toContain(s);
-      else expect(lines.filter((l) => l.includes(s)), s).toEqual([]);
-    }
+    const h = dataStrings().join("\n");
+    for (const p of APP_PAIRS) if (p.source) expect(h, p.key).toContain(p[p.source.side]);
+    expect(h).toContain(APP_CANCEL.text);
   });
 
   const checker = path.join(ROOT, "scripts", "lang", "kana-copy-check.mjs");
-  it.skipIf(!fs.existsSync(checker))("kana-copy-check: nothing on the fixed screen, findings on the other one", () => {
+  const check = (dir: string, name: string, body: string) => {
+    const file = path.join(dir, `${name}.tsx`);
+    fs.writeFileSync(file, `export function S() {\n  return (\n    <div>\n${body}\n    </div>\n  );\n}\n`);
+    let out = "";
+    try {
+      out = execFileSync(process.execPath, [checker, "--json", file], { encoding: "utf8" });
+    } catch (e) {
+      out = String((e as { stdout?: string }).stdout ?? "");
+    }
+    const j = JSON.parse(out) as { summary: { WARN: number; FYI: number }; findings: { rule: string }[] };
+    return { ...j.summary, rules: [...new Set(j.findings.map((f) => f.rule))].sort() };
+  };
+
+  it.skipIf(!fs.existsSync(checker))("kana-copy-check: nothing on the fixed screen, the pairs' rules on the other one", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kana-app-"));
     const s = APP_SHARED;
-    const shared = [s.amount, `${s.deltaLead} ${s.delta}`, s.deposit, s.transfer, s.recentH, ...s.recent, s.amountLabel, s.amountValue, ...s.tabs];
-    // the send button in a <button> (KW-15 reads buttons only), every other string in a <p>
-    const check = (name: string, side: "ai" | "fix" | null) => {
-      const file = path.join(dir, `${name}.tsx`);
-      const ps = side ? APP_PAIRS.filter((p) => p.key !== "send").map((p) => p[side]) : shared;
-      const buttons = side ? [APP_CANCEL.text, APP_PAIRS.find((p) => p.key === "send")![side]] : [];
-      const body = [...ps.map((x) => `    <p>${x}</p>`), ...buttons.map((x) => `    <button>${x}</button>`)].join("\n");
-      fs.writeFileSync(file, `export function S() {\n  return (\n    <div>\n${body}\n    </div>\n  );\n}\n`);
-      let out = "";
-      try {
-        out = execFileSync(process.execPath, [checker, "--json", file], { encoding: "utf8" });
-      } catch (e) {
-        out = String((e as { stdout?: string }).stdout ?? "");
-      }
-      const j = JSON.parse(out) as { summary: { WARN: number; FYI: number }; findings: { rule: string }[] };
-      return { ...j.summary, rules: [...new Set(j.findings.map((f) => f.rule))].sort() };
-    };
     try {
-      expect(check("fix", "fix")).toMatchObject({ WARN: 0, FYI: 0 });
-      expect(check("shared", null)).toMatchObject({ WARN: 0, FYI: 0 });
-      const ai = check("ai", "ai");
+      const shared = [s.amount, `${s.deltaLead} ${s.delta}`, s.deposit, s.transfer, s.recentH, ...s.recent, s.amountLabel, s.amountValue, ...s.tabs];
+      const side = (k: "ai" | "fix") =>
+        [...APP_PAIRS.filter((p) => p.key !== "send").map((p) => `    <p>${p[k]}</p>`), `    <button>${APP_CANCEL.text}</button>`, `    <button>${APP_PAIRS.find((p) => p.key === "send")![k]}</button>`].join("\n");
+      expect(check(dir, "fix", side("fix"))).toMatchObject({ WARN: 0, FYI: 0 });
+      expect(check(dir, "shared", shared.map((x) => `    <p>${x}</p>`).join("\n"))).toMatchObject({ WARN: 0, FYI: 0 });
+      const ai = check(dir, "ai", side("ai"));
       expect(ai.WARN).toBe(2);
-      // the rules app-copy.ts's header records: every pair's rule but KW-38, which the checker leaves to a reader.
-      // KW-35 (a kanji ratio over the whole fixture, on its threshold here) is not a pair's rule and is not held.
       expect(ai.rules.filter((r) => r !== "KW-35")).toEqual(APP_PAIRS.map((p) => p.rule).filter((r) => r !== "KW-38").sort());
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it.skipIf(!fs.existsSync(checker))("kana-copy-check: no WARN on the Japanese edition's composed chrome (copy-ja.ts)", () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "kana-ja-"));
+    try {
+      const body = composedJa()
+        .map((x) => `    <p>${x.replace(/[{}<>]/g, "")}</p>`)
+        .join("\n");
+      const r = check(dir, "ja", body);
+      expect(r.WARN).toBe(0);
+      // FYI allowed: KW-35's kanji ratio over the whole fixture (headings and labels are nouns, KW-02), and KW-12 on
+      // the two labels that name 「あなたの」 as the form to leave out
+      expect(r.rules.filter((x) => !["KW-35", "KW-12"].includes(x))).toEqual([]);
     } finally {
       fs.rmSync(dir, { recursive: true, force: true });
     }
   });
 });
 
-describe("/ko/kana stays unreleased", () => {
-  it("noindex, canonical to itself, no twin", () => {
-    expect(metadata.robots).toMatchObject({ index: false });
-    expect(metadata.alternates?.canonical).toBe(KANA_PATH);
-    expect(metadata.alternates?.languages).toEqual({ ko: KANA_PATH });
+describe("the kana pages stay unreleased", () => {
+  const pages: [string, Metadata, string][] = [
+    ["/ko/kana", koShowcaseMeta, "ko"],
+    ["/ko/kana/rules", koRulesMeta, "ko"],
+    ["/ja/kana", jaShowcaseMeta, "ja"],
+    ["/ja/kana/rules", jaRulesMeta, "ja"],
+  ];
+
+  it.each(pages)("%s: noindex, canonical to itself, no twin", (p, meta, lang) => {
+    expect(meta.robots).toMatchObject({ index: false });
+    expect(meta.alternates?.canonical).toBe(p);
+    expect(meta.alternates?.languages).toEqual({ [lang]: p });
+    expect((meta.openGraph as { locale?: string })?.locale).toBe(lang === "ko" ? "ko_KR" : "ja_JP");
   });
 
   it("in no sitemap and linked from no shared header or footer", () => {
@@ -339,6 +361,6 @@ describe("/ko/kana stays unreleased", () => {
     const chrome = ["site-header.tsx", "site-footer.tsx", ...fs.readdirSync(path.join(WEB, "src/components/brand-a/copy")).map((f) => `copy/${f}`)];
     for (const f of chrome) expect(fs.readFileSync(path.join(WEB, "src/components/brand-a", f), "utf8"), f).not.toContain("/kana");
     expect(fs.existsSync(path.join(WEB, "src/app/(en)/kana"))).toBe(false);
-    expect(fs.existsSync(path.join(WEB, "src/app/(ja)/ja/kana"))).toBe(false);
+    expect(fs.existsSync(path.join(WEB, "src/app/(zh-tw)/zh-tw/kana"))).toBe(false);
   });
 });

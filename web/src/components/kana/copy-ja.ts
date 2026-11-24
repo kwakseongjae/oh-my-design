@@ -187,7 +187,7 @@ export const KANA_COPY_JA = {
   rulesPage: {
     h1: (n: number) => `日本語UIテキストの規則${n}件と出典`,
     lede: "/kanaスキルのもとになった調査です。規則ごとに出典の原文を引用し、出典によって分かれる点はどちらも載せています。",
-    back: "/kanaのトップ",
+    back: "トップ",
     toc: "このページの内容",
   },
   rules: {
