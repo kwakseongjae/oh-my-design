@@ -188,6 +188,37 @@ for cc_ in ('KR', 'JP', 'TW'):
     COUNTRY[cc_] = rs
 check(tuple(len(COUNTRY[c]) for c in ('KR', 'JP', 'TW')) == (153, 56, 29), 'S6 counted')
 
+# "What counted as blue": the examples ko.md names beside the hue rule (fact map, 어떤 색을 파랑으로 셌나).
+# Every value and family is the one rows.json records; the checks restate the W1 bucket rule.
+EDGES = [
+    ('blue', ['toss', 'wanted', 'shinhanbank', 'wooribank']),
+    ('dark', ['hyundai', 'bithumb', 'imweb']),
+    ('other', ['gaudiolab', 'genesis', 'kream']),
+]
+for grp, ids in EDGES:
+    for i in ids:
+        r = BY_ID[i]
+        h, l, s = hls(r['ruleW_primary'])
+        if grp in ('blue', 'dark'):
+            check(r['ruleW_family'] == 'blue' and 200 <= h * 360 < 250 and l >= 0.08 and s >= 0.10, 'edge blue ' + i)
+        if grp == 'dark':
+            check(l < 0.2, 'edge dark ' + i)
+check({i: BY_ID[i]['ruleW_family'] for i in EDGES[2][1]}
+      == {'gaudiolab': 'teal/cyan', 'genesis': 'achromatic: black-ish', 'kream': 'achromatic: grey'}, 'edge other')
+check(hls(BY_ID['gaudiolab']['ruleW_primary'])[0] * 360 < 200, 'gaudiolab hue below 200')
+
+# White text on every Rule W primary: a hypothetical, W4c.
+WHITE = sorted(W_ROWS, key=lambda r: (contrast(r['ruleW_primary'], '#ffffff'), r['id']))
+w4c = re.search(r'n = (\d+); median ([\d.]+); below 4\.5:1: (\d+) \(([\d.]+)%\); below 3:1: (\d+) \(([\d.]+)%\)', TABLES)
+check(w4c is not None, 'W4c line')
+WHITE_LT3 = [r for r in WHITE if contrast(r['ruleW_primary'], '#ffffff') < 3]
+WHITE_LT45 = [r for r in WHITE if contrast(r['ruleW_primary'], '#ffffff') < 4.5]
+check((len(WHITE), len(WHITE_LT45), len(WHITE_LT3)) == (int(w4c.group(1)), int(w4c.group(3)), int(w4c.group(5))), 'W4c counts')
+check('%.1f' % (100 * len(WHITE_LT45) / len(WHITE)) == w4c.group(4) and '%.1f' % (100 * len(WHITE_LT3) / len(WHITE)) == w4c.group(6),
+      'W4c shares')
+for r in WHITE:
+    check(abs(contrast(r['ruleW_primary'], '#ffffff') - r['ruleW_white_text_contrast_hypothetical']) < 1e-9, 'W4c row ' + r['id'])
+
 # ---------------------------------------------------------------- words
 
 KO_NAME_OVERRIDE = {'dealicious': '신상마켓', 'toss-securities': '토스증권', 'yeogiotte': '여기어때', 'classum': '클라썸'}
@@ -227,6 +258,13 @@ T = {
         'countries': ('한국·일본·대만의 주 색', '규칙 S · 띠마다 셈에 든 곳을 같은 너비로 나눠 한 곳씩'),
         'country': {'KR': '한국', 'JP': '일본', 'TW': '대만'},
         'method': ('검증 한국 레퍼런스 185곳에서 169곳으로', '칸 하나가 레퍼런스 한 곳'),
+        'edges': ('파랑으로 센 색, 세지 않은 색', '무채색 기준을 먼저 보고, 나머지는 색상각으로 나눴습니다'),
+        'edge_groups': {'blue': '색상각 200~250°: 파랑', 'dark': '어두워도 밝기 8% 이상, 채도 10% 이상이면 파랑',
+                        'other': '파랑으로 세지 않은 색'},
+        'white': ('주 색 169곳에 흰 글자를 올리면',
+                  '가정 계산이며 실제 버튼의 글자색이 아닙니다 · 4.5:1 미만 {lt45}곳, 그중 3:1 미만 {lt3}곳 · 칸 하나가 서비스 한 곳, 대비가 낮은 순'),
+        'white_zones': ['3:1 미만', '3:1 이상 4.5:1 미만', '4.5:1 이상'],
+        'white_glyph': '가',
         'groups': ['1·2단계(규칙 S)로 주 색을 정한 곳', '3단계: 파일을 읽어 더한 곳', '정할 수 없어 뺀 곳'],
         'axis_pct': '{}%',
     },
@@ -253,6 +291,13 @@ T = {
         'countries': ('Primary colors in Korea, Japan and Taiwan', 'Rule S · each strip split evenly among its counted services'),
         'country': {'KR': 'Korea', 'JP': 'Japan', 'TW': 'Taiwan'},
         'method': ('From 185 verified Korean references to 169', 'One tile per reference'),
+        'edges': ('Counted as blue, and not', 'The achromatic tests come first; everything else is split by hue angle'),
+        'edge_groups': {'blue': 'Hue 200–250°: blue', 'dark': 'Dark, but lightness 8%+ and saturation 10%+: still blue',
+                        'other': 'Not counted as blue'},
+        'white': ('White text on all 169 primary colors',
+                  'A hypothetical, not the text color on the actual buttons · {lt45} below 4.5:1, {lt3} of them below 3:1 · one tile per service, lowest contrast first'),
+        'white_zones': ['Below 3:1', '3:1 to below 4.5:1', '4.5:1 and above'],
+        'white_glyph': 'Aa',
         'groups': ['Steps 1–2 (Rule S): primary found', 'Step 3: added after reading the file', 'Left out: no single primary'],
         'axis_pct': '{}%',
     },
@@ -666,13 +711,62 @@ def fig_method(lang, g):
     return svg, y + g.pad - 16
 
 
+def fig_edges(lang, g):
+    t = T[lang]
+    svg = Svg(g.W)
+    y = header(svg, g, *t['edges'])
+    cols = 2 if g.narrow else 4
+    gap = 12 if g.narrow else 16
+    iw = (g.inner - gap * (cols - 1)) / cols
+    sh = 36 if g.narrow else 44
+    for grp, ids in EDGES:
+        for ln in wrap(t['edge_groups'][grp].split(' '), g.label, g.inner, weight=600):
+            svg.text(g.pad, y + g.label, ln, g.label, INK, 600)
+            y += g.label * 1.45
+        y += 8
+        for k, i in enumerate(ids):
+            r = BY_ID[i]
+            x = g.pad + (k % cols) * (iw + gap)
+            yy = y + (k // cols) * (sh + (52 if grp != 'other' else 52 + g.small * 1.5))
+            svg.swatch(x, yy, iw, sh, r['ruleW_primary'], 8)
+            svg.text(x, yy + sh + g.label + 6, name(i, lang), g.label, INK, 600, maxw=iw)
+            svg.text(x, yy + sh + g.label + 6 + g.small * 1.5, r['ruleW_primary'], g.small, MUTED, maxw=iw)
+            if grp == 'other':
+                svg.text(x, yy + sh + g.label + 6 + g.small * 3, '→ ' + t['fam'][r['ruleW_family']], g.small, INK, 400, maxw=iw)
+        rowh = sh + (52 if grp != 'other' else 52 + g.small * 1.5)
+        y += ((len(ids) + cols - 1) // cols) * rowh + (8 if g.narrow else 12)
+    return svg, y + g.pad - 18
+
+
+def fig_white(lang, g):
+    t = T[lang]
+    svg = Svg(g.W)
+    y = header(svg, g, t['white'][0], t['white'][1].format(lt45=len(WHITE_LT45), lt3=len(WHITE_LT3)))
+    tile = 24 if g.narrow else 28
+    gap = 3 if g.narrow else 4
+    cols = int((g.inner + gap) // (tile + gap))
+    gsize = 11 if g.narrow else 12.5
+    zones = [WHITE_LT3, WHITE_LT45[len(WHITE_LT3):], WHITE[len(WHITE_LT45):]]
+    for lab, rs in zip(t['white_zones'], zones):
+        svg.text(g.pad, y + g.label, lab, g.label, INK, 600, maxw=g.inner)
+        y += g.label + 10
+        for k, r in enumerate(rs):
+            x = g.pad + (k % cols) * (tile + gap)
+            yy = y + (k // cols) * (tile + gap)
+            svg.swatch(x, yy, tile, tile, r['ruleW_primary'], 3)
+            svg.text(x + tile / 2, yy + tile / 2 + gsize * 0.36, t['white_glyph'], gsize, '#ffffff', 600, 'middle')
+        y += ((len(rs) + cols - 1) // cols) * (tile + gap) + (12 if g.narrow else 16)
+    return svg, y + g.pad - 16
+
+
 FIGS = [('wall', fig_wall), ('hues', fig_hues), ('rules', fig_rules), ('sectors', fig_sectors),
-        ('shared', fig_shared), ('contrast', fig_contrast), ('countries', fig_countries), ('method', fig_method)]
+        ('shared', fig_shared), ('contrast', fig_contrast), ('countries', fig_countries), ('method', fig_method),
+        ('edges', fig_edges), ('white', fig_white)]
 
 
 def main():
     # brand names baked into the Korean figures must read as the article names them
-    used = {r['id'] for _, rs, _ in SHARED for r in rs} | {row['id'] for row in KEPT}
+    used = {r['id'] for _, rs, _ in SHARED for r in rs} | {row['id'] for row in KEPT} | {i for _, ids in EDGES for i in ids}
     for i in sorted(used):
         check(ARTICLE_NAMES.get(i) == name(i, 'ko'), 'name %s: figure "%s" vs ko.md "%s"' % (i, name(i, 'ko'), ARTICLE_NAMES.get(i)))
     os.makedirs(OUT, exist_ok=True)
