@@ -4,7 +4,13 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-24 15:00) — **도는 것: 에이전트 `ja-demand`(일본 DESIGN.md 수요·SEO 조사, 보고 `<scratchpad>/agent-reports/ja-demand.md`) · `film-v5`(영상 v5, 보고 `film-v5.md`) · 본 세션: kana 히어로 정지 시안** · 오너 대기 없음(시안 뒤 카드) · 머지 끝: #163 · 서버: kana 로컬 3210(본 세션이 띄움) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm
+## 지금 (2026-11-24 15:40) — **오너 대기: kana 히어로 A·B·C 고르기(`~/Downloads/kana-hero/`) · 일본 SEO 순서 · 리뷰 아티팩트를 어느 계정에 둘지** · 도는 것: 에이전트 `film-v5`(보고 `<scratchpad>/agent-reports/film-v5.md`) · 머지 끝: #163 · 서버 없음 · 옛 아티팩트 1TGcLCvG…는 이 세션 계정에서 열리지 않음(다른 조직): 새로 게시하지 않고 오너에게 물음
+
+**11/24 15:40 kana 히어로 시안 3안 + 일본 수요 조사**
+- 시안(정지 HTML, 일본어판 기준, 우리가 새로 지은 일본어 없음. 기존 copy-ja 문자열과 app-copy 예문, 출처 원문만 씀. 예외는 B의 「日本のサービスのトップページで実測」 한 줄): A 赤字(종이 바탕에 교정 기호로 예문을 고치고, 여백에 출처 원문) · B 組版(같은 DADS 문장을 잘못된 조판과 바른 조판으로 나란히 + 77곳 첫 글꼴 막대) · C 出典の地図(일본 DESIGN.md 타일 중 출처 회사가 켜짐: SmartHR 42 · Ubie 24 · DADS 16 · Spindle 1 · Pepabo 1개 인용). 그림 `~/Downloads/kana-hero/kana-hero-{a,b,c,now-ja}.png`(데스크톱 + 390px), 원본 `<scratchpad>/kana-hero/`. 추천 A를 히어로로, C를 두 번째 구역(카탈로그로 가는 길)으로. 구현 때 할 것: h1에 /kana와 한 줄을 함께(SEO), 390px에서 줄바꿈(B의 「規則」 한 줄), 색은 web/public/design.md 토큰으로, 下書き 칩과 AI 안내는 첫 화면 유지.
+- 조사 보고 `<scratchpad>/agent-reports/ja-demand.md`. 내가 다시 확인: awesome-design-md-jp ★1,024 · 하테나 162, yomiyasu 글 하테나 541. 요지: 일본 DESIGN.md 수요는 크고, 일본어 UI 맞춤 쪽은 awesome-design-md-jp가 선점. 회사별 일본어 페이지와 측정 출처는 아무도 없음. 우리 일본 노출은 거의 0(일본어 아이템 페이지 없음, 일본 검색어에 일본어 거의 없음). JP 93 = verified 76 · partial 12 · legacy 5(money-forward · kintone · sansan · layerx · uniqlo). tokyo와 tokyo-metropolitan 중복 의심.
+- SEO 추천 순서: ① `/ja/design-systems/[id]`(일본 verified 76부터, ko-detail.ts 같은 판정 하나, 제목 「{社名}のデザインシステム（DESIGN.md）」, 영어 원문 그대로 + 일본어 요약 한 문장) ② `/ja/design-systems` 일본 기업 목록 ③ /ja/kana 공개는 원어민 검수 뒤, 제목을 검색어 쪽으로 ④ 글 3편(note·Zenn): 일본 기업 76곳 조판 실측 · DADS/SmartHR/freee/메르카리로 AI 일본어 UI가 어디서 무너지나 · /kana 출시. 모두 원어민 검수 필요.
+
 
 **11/24 14:45 오너 답**
 - 원문 요지: kana 히어로가 너무 힘을 뺐다, /hangul 때는 잘했다, 한글 그 이상이어야 일본에서 이목을 끈다 · 일본 쪽 DESIGN.md 수요를 빨아들일 SEO·콘텐츠화를 고민 · 블로그 홈 괜찮다, 머지 · 영상은 아직 과하다, 선택과 전개의 템포가 부족, 효과는 앞부분 중심, 뒤쪽은 빠르게, 특히 교보 DESIGN.md 장면.
