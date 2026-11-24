@@ -24,17 +24,8 @@ export interface BlogChrome {
   ctaTitle: string;
   ctaLink: string;
   feedLabel: string;
-  /** Back link + footer link to the main oh-my-design site. */
-  mainSite: string;
-  /** aria-label on the theme toggle button. */
-  themeToggle: string;
   /** Short locale code shown next to the language icon on narrow screens. */
   switchLocaleShort: string;
-  footerTagline: string;
-  footerProduct: string;
-  footerResources: string;
-  footerReferences: string;
-  footerDocs: string;
 }
 
 export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
@@ -51,14 +42,7 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     ctaTitle: "직접 해보기",
     ctaLink: "CLI가 에이전트에게 무엇을 주는지 →",
     feedLabel: "RSS",
-    mainSite: "oh-my-design 홈",
-    themeToggle: "테마 전환",
     switchLocaleShort: "EN",
-    footerTagline: "AI 코딩 에이전트를 위한 DESIGN.md 하네스.",
-    footerProduct: "제품",
-    footerResources: "리소스",
-    footerReferences: "레퍼런스",
-    footerDocs: "문서",
   },
   en: {
     dateLocale: "en-US",
@@ -73,14 +57,7 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     ctaTitle: "Try it",
     ctaLink: "What the CLI gives your agent →",
     feedLabel: "RSS",
-    mainSite: "oh-my-design home",
-    themeToggle: "Toggle theme",
     switchLocaleShort: "KO",
-    footerTagline: "The DESIGN.md harness for AI coding agents.",
-    footerProduct: "Product",
-    footerResources: "Resources",
-    footerReferences: "References",
-    footerDocs: "Docs",
   },
 };
 
