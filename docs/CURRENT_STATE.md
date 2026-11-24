@@ -4,7 +4,21 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-25 00:42) — **오너 대기: kana 프리뷰 보고 머지 go(PR #164, https://oh-my-design-knkglguok-kwakseongjaes-projects.vercel.app/ja/kana · /ko/kana) · 일본어판 공개 시점 · 일본 SEO 순서 · 영상 v5 확인(`~/Downloads/omd-screens-launch/omd-screens-launch-v5.mp4`) · 옛 보고를 이 계정으로 옮길지** · 검토 아티팩트(kana만) https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH · 도는 에이전트 없음 · 서버 없음(3417 끔)
+## 지금 (2026-11-25 00:57) — **오너 대기: 다음 스프린트 계획에 go(아래 「11/25 00:57 계획」) · 영상 v5는 오너가 더 봄(건드리지 않음)** · 머지 끝: #164(2a44d244, 운영 확인) · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH · 도는 에이전트 없음 · 서버 없음
+
+**11/25 00:57 오너 답과 계획**
+- 원문: 「카나 해당형태로 머지하자. 일번어판은 조금 더 체크해보고 테스트해본다음에 바로 배포할 예정. 영상 빼곤 좋은 거 같네 ㄱㄱ 영상은 내가 쫌 더 볼게. 다음 작업 시작전에 뭐할지 구체화해줘 무슨 작업 계획해뒀어 ?」
+- 내 해석: #164 머지 go · 일본 SEO 순서와 아티팩트 주소는 추천대로 · 영상은 오너 검토 중이라 손대지 않음 · 다음 작업은 계획을 보여 준 뒤 go를 받고 시작.
+- **#164 머지:** 새 main을 가지에 합쳐(ad013c1a) 전체 1,667 통과 · tsc 통과 · CI 넷 통과 뒤 머지(2a44d244). 운영 확인: `/ko/kana` 새 화면(h1 「같은 화면, 다른 일본어」, 폰 두 대) · `/ja/kana` 200, noindex, 폰 두 대 · 규칙 페이지 둘 200 · 사이트맵에 kana 없음 · 한국어판에서 일본어판으로 가는 링크 없음. 워크트리 kana-redesign과 로컬 가지 정리(원격 가지는 이미 없음). kana-ja 워크트리(닫힌 #160)는 남아 있음.
+- 알아 둘 것: `/ko/kana`도 전부터 noindex · 사이트맵 밖 · 메뉴 링크 없음(랜딩은 /ko/hangul만 가리킴). kana 스킬 자체는 `docs/drafts/kana/`의 초안이고 `skills/`에 없다(미배포). `tokyo`와 `tokyo-metropolitan`은 이름과 홈페이지가 같은 중복(삭제는 오너 결정).
+- **계획(go 대기) — 목표: 일본에서 검색과 공유로 들어올 길을 연다. 주 트랙 둘 + 배경 하나.**
+  - A. kana 공개 준비(본 세션): ① 손질(일본어 h1 줄바꿈, 390px 첫 화면, 안 쓰는 스타일) ② 일본어 점검(지은 일본어 전부 = copy-ja.ts 291줄 + 폰 예문 21개를 다른 계열 모델로 한 번 더, 미대조 인용 JTF 3쌍 · MS 1문 다시 시도) ③ 실제 조건 시험(Safari · 아이폰 폭, 글꼴 로딩, 키보드, 동작 줄이기, 규칙 링크 102개, 공유 카드) ④ 검색용 제목 전후안 ⑤ 공개 스위치 PR(검색 허용 · 사이트맵 · 언어 메뉴와 hreflang · 랜딩 링크, 두 판 함께) → 점검표 카드 → 오너 go → 머지.
+  - B. 일본어 회사 페이지(ops-builder 하나, 워크트리): `ja-detail.ts` 판정(JP이고 verified, 76곳) 하나로 라우트 · hreflang · 사이트맵 · 링크. 제목 「{社名}のデザインシステム（DESIGN.md）」, 이름은 레지스트리 그대로(음역 없음), 본문은 영어 원문 + 값으로 조립한 일본어 한 문장. /ko 페이지의 일본어판이라 시안 없이 구현 → 1440 · 390 확인 → 프리뷰 → 오너 go. 그다음 `/ja/design-systems` 목록.
+  - C. 배경(ops-measure-analyst 하나): 일본 verified 76곳의 글꼴 · 행간 · 자간 표(글 1편과 Threads의 재료). 글과 게시는 이번 범위 밖.
+  - 틈새(본 세션): 이 파일 보관 정리 · tokyo 중복 비교표 · llms.txt와 /terms의 「커넥터 종료」 수정안(diff만) · 열린 PR #129 · #102 상태 확인 · 남은 워크트리 보고.
+  - 안 하는 것: 영상 · 화면 아카이브 공개(Blob 토큰 대기) · zhuyin/pinyin · 재측정(T1) · kana 스킬 배포(출시 GO, 따로).
+
+**(이전 「지금」 줄, 11/25 00:42)** **오너 대기: kana 프리뷰 보고 머지 go(PR #164, https://oh-my-design-knkglguok-kwakseongjaes-projects.vercel.app/ja/kana · /ko/kana) · 일본어판 공개 시점 · 일본 SEO 순서 · 영상 v5 확인(`~/Downloads/omd-screens-launch/omd-screens-launch-v5.mp4`) · 옛 보고를 이 계정으로 옮길지** · 검토 아티팩트(kana만) https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH · 도는 에이전트 없음 · 서버 없음(3417 끔)
 
 **11/25 00:29 오너: 「카나도 앱 화면을 만들어서 한글처럼 하라고 몇번을 말해.」 → 일본어판 첫 화면을 앱 화면으로(구현, 푸시)**
 - 히어로 시안 A·B·C(앱 화면 없음)는 접음. `/ja/kana`의 첫 화면 = 한글 · 한국어판과 같은 폰 두 대(`AppPair locale="ja" tone="night"`). AI 안내문은 버튼 아래(첫 화면), 「이 화면의 일본어는 우리 예문」 줄은 폰 아래. 새 일본어 없음: h1 = 원래 폰 구역 제목(`app.h2`), 설명 = `app.intro`, 옛 h1 · 설명은 둘째 구역 `#compare`(출처 예문 넘겨 보기)의 제목으로.
