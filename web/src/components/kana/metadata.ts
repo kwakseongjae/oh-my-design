@@ -2,26 +2,35 @@ import type { Metadata } from "next";
 import data from "@/data/kana-rules.generated.json";
 import { SITE_LOCALE_META } from "@/lib/i18n/site-locales";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
-import { KANA_COPY, KANA_PATH } from "./copy";
+import type { KanaLocale } from "./copy";
+import { KANA_KIT } from "./locale";
 
 /**
- * /ko/kana has no twin yet: the Japanese page waits for a native review and no English page is planned in this run,
- * so the only hreflang alternate is the page itself. noindex until the owner releases it, and in no sitemap.
+ * The four kana pages (/ko/kana, /ko/kana/rules, /ja/kana, /ja/kana/rules) are unreleased: noindex until the owner
+ * releases them, in no sitemap, and linked from no shared header or footer. They declare no hreflang alternates at all
+ * (an unreleased page names no twin). The Japanese edition's language switch links the Korean one; the Korean
+ * edition's does not link the Japanese one (showcase.tsx, rules-page.tsx).
+ *
+ * Release, when the owner says go (the agent report of 2026-11-24): robots index; the four paths in app/sitemap.ts;
+ * languages { ko, ja } on both editions of each page; the Korean pages' language switch to the Japanese ones; a link
+ * from the /ja and /ko landings.
  */
-export function kanaMetadata(): Metadata {
-  const title = KANA_COPY.meta.title;
-  const description = KANA_COPY.meta.description(data.rules.length, data.houseChoices.length);
+export function kanaMetadata(locale: KanaLocale, page: "showcase" | "rules" = "showcase"): Metadata {
+  const { t, path: showcase, rulesPath } = KANA_KIT[locale];
+  const path = page === "showcase" ? showcase : rulesPath;
+  const title = page === "showcase" ? t.meta.title : t.meta.rulesTitle;
+  const description = page === "showcase" ? t.meta.description : t.meta.rulesDescription(data.rules.length, data.houseChoices.length);
   return {
     title,
     description,
     robots: { index: false, follow: true },
-    alternates: { canonical: KANA_PATH, languages: { ko: KANA_PATH } },
+    alternates: { canonical: path },
     openGraph: {
       type: "website",
-      locale: SITE_LOCALE_META.ko.ogLocale,
+      locale: SITE_LOCALE_META[locale].ogLocale,
       title,
       description,
-      url: KANA_PATH,
+      url: path,
       siteName: "oh-my-design",
       images: [DEFAULT_OG_IMAGE],
     },

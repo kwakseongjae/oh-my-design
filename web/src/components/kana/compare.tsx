@@ -1,22 +1,23 @@
 import type { ReactNode } from "react";
 import data from "@/data/kana-rules.generated.json";
-import { COMPARE_STOPS, KANA_COPY, RULE_KO, type CompareKind } from "./copy";
+import { COMPARE_STOPS, type CompareKind } from "./copy";
 import { CompareTour } from "./compare-tour";
-import { Mixed, SourceLink } from "./parts";
+import { KANA_KIT } from "./locale";
+import { RuleLine, SourceLink } from "./parts";
 
 /**
- * #compare on /ko/kana (owner 2026-11-21: "kana도 hangul처럼 … 실제 비교하면서"). Each stop sets one of a source's
- * wrong/right pairs in the component its rule is about, the wrong side and the right side next to each other. The
- * Japanese is the pair's own text from the generated data, character for character; around it the component is a
- * skeleton: grey bars wherever the source gives no string. Every stop is rendered here, on the server; compare-tour.tsx
- * only picks which one shows.
+ * The Japanese edition's second section, #compare (its first screen until 2026-11-25, when the owner asked for the phones first, as on /hangul). Each stop sets one of a
+ * source's wrong/right pairs in the component its rule is about, the wrong side over the right side. The Japanese is
+ * the pair's own text from the generated data, character for character; around it the component is a skeleton: grey
+ * bars wherever the source gives no string. Every stop is rendered here, on the server; compare-tour.tsx only picks
+ * which one shows. Until 2026-11-24 this was #compare on /ko/kana, a section of its own.
  */
 
 type Side = { role: string; label: string | null; texts: string[] };
 type Example = { key: string; via?: string; sides: Side[] };
 export type Role = "wrong" | "right";
 
-const t = KANA_COPY;
+const t = KANA_KIT.ja.t;
 const RULE = new Map(data.rules.map((r) => [r.id, r]));
 
 /** The stop's example and its two sides, or throws: a stop that names no pair is a data error, not an empty panel. */
@@ -24,7 +25,7 @@ export function comparePair(stop: (typeof COMPARE_STOPS)[number]) {
   const e = (RULE.get(stop.rule)?.examples as Example[] | undefined)?.[stop.example];
   const wrong = e?.sides.find((s) => s.role === "wrong");
   const right = e?.sides.find((s) => s.role === "right");
-  if (!e || !wrong || !right) throw new Error(`#compare: ${stop.rule} example ${stop.example} is not a wrong/right pair`);
+  if (!e || !wrong || !right) throw new Error(`stage: ${stop.rule} example ${stop.example} is not a wrong/right pair`);
   return { example: e, wrong, right };
 }
 
@@ -164,7 +165,10 @@ function Panel({ side, role, kind, stop }: { side: Side; role: Role; kind: Compa
   );
 }
 
-export function KanaCompare() {
+/** The Japanese edition's first-screen stage: the sources' own pairs, one stop at a time, each with its rule's lead
+ *  quote (from the example's own source where it has one) and the source's link. */
+export function KanaStage() {
+  const c = t.compare!;
   const stops = COMPARE_STOPS.map((s, i) => {
     const { example, wrong, right } = comparePair(s);
     return {
@@ -172,16 +176,16 @@ export function KanaCompare() {
       caption: (
         <div key={i} className="kc-cap">
           <p className="kc-cap-top">
-            <a className="kc-cap-id" href={`#${s.rule.toLowerCase()}`} lang="en" aria-label={`${s.rule} (${t.compare.toCard})`}>
+            <a className="kc-cap-id" href={`#${s.rule.toLowerCase()}`} lang="en" aria-label={`${s.rule}${t.paren[0]}${c.toCard}${t.paren[1]}`}>
               {s.rule}
             </a>
-            <span className="kc-cap-kind">{t.compare.kind[s.kind]}</span>
+            <span className="kc-cap-kind">{c.kind[s.kind]}</span>
           </p>
           <p className="kc-cap-rule">
-            <Mixed text={RULE_KO[s.rule]} />
+            <RuleLine id={s.rule} locale="ja" prefer={example.key} />
           </p>
           <p className="kc-cap-src">
-            <SourceLink k={example.key} />
+            <SourceLink k={example.key} locale="ja" />
           </p>
         </div>
       ),
@@ -190,31 +194,25 @@ export function KanaCompare() {
     };
   });
   return (
-    <section id="compare" className="kn-sec kc-sec" aria-labelledby="kn-compare-h">
-      <div className="sq-wrap">
-        <h2 id="kn-compare-h" className="kn-h2">
-          {t.compare.h2}
-        </h2>
-        <p className="kn-intro">{t.compare.intro}</p>
-        <p className="kc-real">{t.compare.real}</p>
-        <CompareTour
-          labels={{
-            wrong: t.compare.wrong,
-            right: t.compare.right,
-            group: t.compare.switchGroup,
-            stops: t.compare.stopsLabel,
-            hintAuto: t.compare.hintAuto,
-            hintPaused: t.compare.hintPaused,
-            play: t.compare.play,
-            pause: t.compare.pause,
-          }}
-          ids={stops.map((s) => s.id)}
-          kinds={COMPARE_STOPS.map((s) => t.compare.kind[s.kind])}
-          captions={stops.map((s) => s.caption)}
-          wrong={stops.map((s) => s.wrong)}
-          right={stops.map((s) => s.right)}
-        />
-      </div>
-    </section>
+    <div className="kc-hero">
+      <CompareTour
+        labels={{
+          wrong: c.wrong,
+          right: c.right,
+          group: c.switchGroup,
+          stops: c.stopsLabel,
+          hintAuto: c.hintAuto,
+          hintPaused: c.hintPaused,
+          play: c.play,
+          pause: c.pause,
+        }}
+        ids={stops.map((s) => s.id)}
+        kinds={COMPARE_STOPS.map((s) => c.kind[s.kind])}
+        captions={stops.map((s) => s.caption)}
+        wrong={stops.map((s) => s.wrong)}
+        right={stops.map((s) => s.right)}
+      />
+      <p className="kc-real">{c.real}</p>
+    </div>
   );
 }

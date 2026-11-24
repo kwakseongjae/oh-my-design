@@ -1,4 +1,5 @@
 import { MoaArt, MoaTabs, MoaTop } from "@/components/hangul/moa-screen";
+import type { ReactNode } from "react";
 import { APP_CANCEL, APP_PAIR, APP_SHARED, type AppKey, type AppSide } from "./app-copy";
 
 /**
@@ -99,5 +100,99 @@ export function AppScreen({ side }: { side: AppSide }) {
       <MoaTabs tabs={s.tabs} />
       <span className="moa-focus" aria-hidden="true" />
     </div>
+  );
+}
+
+/** One string of a side, marked on the side that breaks the rule (the chapters set a wavy line under it). */
+function Str({ k, side }: { k: AppKey; side: AppSide }) {
+  const s = APP_PAIR.get(k)![side];
+  return side === "ai" ? <span className="moa-wavy">{s}</span> : <>{s}</>;
+}
+
+/** A rule's id beside the string it explains, on both sides (hangul's chips). */
+function Chip({ id, side }: { id: string; side: AppSide }) {
+  return (
+    <span className="moa-chip" data-tone={side === "ai" ? "before" : undefined} lang="en">
+      {id}
+    </span>
+  );
+}
+
+function Crop({ side, children }: { side: AppSide; children: ReactNode }) {
+  return (
+    <div className="moa ka-screen km-crop" data-typo="ja" data-copy={side} lang="ja">
+      {children}
+    </div>
+  );
+}
+
+/** One part of the screen, cut out for the chapters: the greeting, the balance card or the toast. */
+export function AppPart({ part, side }: { part: "greeting" | "total" | "toast"; side: AppSide }) {
+  const s = APP_SHARED;
+  return (
+    <Crop side={side}>
+      {part === "greeting" ? (
+        <div className="moa-hello">
+          <p className="moa-hello-t">
+            <Str k="greeting" side={side} />
+          </p>
+        </div>
+      ) : part === "total" ? (
+        <div className="moa-card moa-balance">
+          <p className="moa-label">
+            <Str k="total" side={side} />
+          </p>
+          <p className="moa-amount">{s.amount}</p>
+          <p className="moa-delta">
+            {s.deltaLead} <b>{s.delta}</b>
+          </p>
+        </div>
+      ) : (
+        <div className="moa-toast">
+          <MoaArt kind="sent" />
+          <div className="moa-toast-in">
+            <p className="moa-toast-t">
+              <Str k="toast" side={side} />
+            </p>
+          </div>
+        </div>
+      )}
+    </Crop>
+  );
+}
+
+/** The send sheet alone, for the 버튼과 오류 chapter: every string that differs carries its rule's chip. */
+export function AppSheet({ side }: { side: AppSide }) {
+  const s = APP_SHARED;
+  const id = (k: AppKey) => APP_PAIR.get(k)!.rule;
+  return (
+    <Crop side={side}>
+      <div className="moa-sheet">
+        <span className="moa-grab" aria-hidden="true" />
+        <p className="moa-sheet-t">
+          <Str k="sheetTitle" side={side} />
+        </p>
+        <Chip id={id("sheetTitle")} side={side} />
+        <div className="ka-field">
+          <p className="ka-field-l">{s.amountLabel}</p>
+          <p className="ka-input">{s.amountValue}</p>
+          <p className="ka-err">
+            <Str k="error" side={side} />
+          </p>
+          <Chip id={id("error")} side={side} />
+          <p className="ka-help">
+            <Str k="helper" side={side} />
+          </p>
+          <Chip id={id("helper")} side={side} />
+        </div>
+        <div className="moa-actions">
+          <span className="moa-btn moa-btn--soft">{APP_CANCEL.text}</span>
+          <span className="moa-btn moa-btn--blue">
+            <Str k="send" side={side} />
+          </span>
+        </div>
+        <Chip id={id("send")} side={side} />
+      </div>
+    </Crop>
   );
 }

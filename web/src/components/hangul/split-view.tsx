@@ -72,7 +72,8 @@ function playTour(
   caption: (label: string) => void,
 ) {
   const screens = [...root.querySelectorAll<HTMLElement>(".moa--fixed")];
-  const tags = [...root.querySelectorAll<HTMLElement>(".hg-tag")];
+  // the rule tags, and anything else in the pair that names a rule (the kana page opens a source card per rule)
+  const tags = [...root.querySelectorAll<HTMLElement>(".hg-tag, [data-tour-card]")];
   let timer = 0;
   const wait = (ms: number) => new Promise<void>((done) => (timer = window.setTimeout(done, ms)));
   const light = (rule: string | null) => {

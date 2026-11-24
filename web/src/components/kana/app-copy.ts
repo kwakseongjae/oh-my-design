@@ -43,6 +43,8 @@ export interface AppPair {
   readonly key: AppKey;
   /** the writing-rules.md rule whose sources call the "ai" form wrong */
   readonly rule: string;
+  /** the rule's example (its index in the generated data) that the lit tag opens; none: the tag opens the rule's lead quote */
+  readonly example?: number;
   readonly ai: string;
   readonly fix: string;
   /** a side that is a source's own string, verbatim: the source key and what it is */
@@ -55,6 +57,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "greeting",
     rule: "KW-32",
+    example: 1,
     ai: "こんにちは、ゆいさん！今日もお得に資産を増やしましょう！",
     fix: "こんにちは、ゆいさん",
     basis: "UB: 「煽り表現はNG。「!」「!?」などの感嘆符は使わない。」; Don't 「ありがとうございます！」 → Do 「ありがとうございます。」",
@@ -76,6 +79,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "toast",
     rule: "KW-09",
+    example: 2,
     ai: "母に5,000円を送金させていただきました。",
     fix: "母に5,000円を送金しました。",
     basis: "SH-ws NG 「◯◯させていただきました。」 → OK 「◯◯しました。」, with ◯◯ = 母に5,000円を送金",
@@ -83,6 +87,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "banner",
     rule: "KW-38",
+    example: 0,
     ai: "今月の特典をチェック",
     fix: "今月の特典を確認",
     basis: "MZ Bad 「…チェックして下さい。」 → Good 「…確認してください。」: the source's own word swap",
@@ -90,6 +95,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "sheetTitle",
     rule: "KW-62",
+    example: 0,
     ai: "母に送金してもよろしいですか？",
     fix: "母に送金しますか？",
     basis: "MS − 「このまま続けてもよろしいですか?」 → + 「このまま続けますか?」 (the mark's width is UW-42, the same on both sides)",
@@ -97,6 +103,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "error",
     rule: "KW-26",
+    example: 0,
     ai: "＊入力に誤りがあります。",
     fix: "＊500万円以下の金額を入力してください。",
     source: { side: "ai", key: "DADS-in", what: "DADS's bad example of field error text" },
@@ -105,6 +112,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "helper",
     rule: "KW-14",
+    example: 0,
     ai: "今日はあと500万円まで送金することができます。",
     fix: "今日はあと500万円まで送金できます。",
     basis: "SH-ws NG 「◯◯することができます。」 → OK 「◯◯できます。」; MZ 「「〜することができます」はなるべく「〜できます」と簡潔にする。」",
@@ -112,6 +120,7 @@ export const APP_PAIRS: readonly AppPair[] = [
   {
     key: "send",
     rule: "KW-15",
+    example: 0,
     ai: "OK",
     fix: "送金",
     source: { side: "ai", key: "UB-btn", what: "Ubie's Bad button label" },

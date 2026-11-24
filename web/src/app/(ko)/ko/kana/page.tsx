@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { KanaPage } from "@/components/kana/kana-page";
+import { KanaShowcase } from "@/components/kana/showcase";
 import { kanaMetadata } from "@/components/kana/metadata";
 
 /**
- * /ko/kana — the research behind the /kana skill (a draft), in Korean. Under the (ko) root layout, so the document is
- * <html lang="ko">; the quoted Japanese carries lang="ja". Korean only in this run: no English or Japanese twin.
+ * /ko/kana — the showcase for the draft /kana skill, Korean edition. Under the (ko) root
+ * layout, so the document is <html lang="ko">. Unreleased: noindex, in no sitemap, linked from no shared navigation.
  */
-export const metadata: Metadata = kanaMetadata();
+export const metadata: Metadata = kanaMetadata("ko");
 
-export default function KoreanKanaPage() {
-  return <KanaPage />;
+export default function Page() {
+  return <KanaShowcase locale="ko" />;
 }
