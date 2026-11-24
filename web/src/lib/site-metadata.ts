@@ -3,8 +3,8 @@ import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DEFAULT_OG_IMAGE, SITE_ORIGIN } from "@/lib/site";
 
 /**
- * Metadata shared by both root layouts — app/(en)/layout.tsx and
- * app/(ko)/layout.tsx. They exist separately only so each can render its own
+ * Metadata shared by every root layout — app/(en), (ko), (ja), (zh-tw) and
+ * (blog-ko). They exist separately only so each can render its own
  * <html lang>; everything else must stay identical, so it lives here.
  */
 

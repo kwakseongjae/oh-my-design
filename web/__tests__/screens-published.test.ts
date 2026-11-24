@@ -299,13 +299,13 @@ describe("published: the pages", () => {
     expect(urls).toContain("https://oh-my-design.kr/ko/screens");
   });
 
-  it("the header links the gallery between the archive and the skills, on English and Korean pages only", () => {
+  it("the header links the gallery between the archive and the skills, on English and Korean pages only (the blog stays last)", () => {
     const shut = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "ko" }));
     expect(shut).not.toMatch(/\/screens/);
     publish();
     const ko = renderToStaticMarkup(createElement(SiteHeaderA, { locale: "ko" }));
     const menu = ko.slice(ko.indexOf('class="sq-menu"'), ko.indexOf("</nav>"));
-    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "서비스 화면", "스킬", "문서"]);
+    expect(menu.match(/<a [^>]*>[^<]+<\/a>/g)!.map((a) => a.replace(/<[^>]+>/g, ""))).toEqual(["아카이브", "서비스 화면", "스킬", "문서", "블로그"]);
     expect(menu).toContain('href="/ko/screens">서비스 화면</a>');
     expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale: "en" }))).toContain('href="/screens">Screens</a>');
     for (const locale of ["ja", "zh-tw"] as const) expect(renderToStaticMarkup(createElement(SiteHeaderA, { locale }))).not.toMatch(/\/screens/);
