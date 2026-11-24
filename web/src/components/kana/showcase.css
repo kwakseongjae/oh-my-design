@@ -41,6 +41,9 @@
 .km-chip{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--sq-r-pill);border:1px solid #4a4c52;
   font-size:13px;line-height:1;font-weight:650;color:var(--hg-night-ink)}
 .km-composed{max-width:760px;margin:40px auto 0!important;font-size:14px;line-height:1.6;color:var(--hg-night-ink-2);text-align:center}
+/* the Japanese hero's line on who wrote the page's Japanese: on the first screen, under the buttons */
+.km-notice{max-width:46em;margin:4px auto 0!important;font-size:14px;line-height:1.75;color:var(--hg-night-ink-2);text-wrap:pretty}
+.km-notice a{color:var(--hg-night-ink);font-weight:650;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 
 /* ---- the source's own words, set the same way everywhere on the page ---- */
 .km-q{font-size:15px;line-height:1.75;color:var(--hg-ink)}
@@ -73,8 +76,6 @@
 .km-pair--night .km-pl--right .km-pl-l{color:var(--hg-night-after)}
 .km-pair--night .kn-src a{color:var(--hg-night-ink-2);text-decoration-color:#4a4c52}
 /* day: /ja/kana's second section, on the band */
-.km-app{padding:104px 0 112px;background:var(--hg-band)}
-.km-app .ka-composed{margin-top:16px!important}
 .km-pair--day .hg-split--hero .hg-side--before .hg-side-l{color:var(--hg-before)}
 .km-pair--day .hg-split--hero .hg-side--after .hg-side-l{color:var(--hg-after)}
 .km-pair--day .hg-tag{border-color:var(--hg-line);background:var(--hg-paper);color:var(--hg-ink-2)}
@@ -180,15 +181,10 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
 .km-status-list dd{margin:2px 0 0;font-size:17px;line-height:1.65;color:var(--hg-night-ink)}
 .km-status .hg-more{margin-top:0}
 
-/* ---- /ja/kana's first screen: the claim, and the sources' own pairs beside it (compare.tsx on ink) ---- */
-.kb-hero{padding:48px 0 72px;background:var(--hg-night);color:var(--hg-night-ink)}
-.kb-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:48px 72px;align-items:center}
-.kb-hero .hg-kicker{justify-content:flex-start}
-.kb-hero .hg-h1{margin-top:16px!important;text-wrap:balance}
-.kb-hero .hg-lede{margin-top:20px!important;text-wrap:pretty}
-.kb-notice{margin-top:16px!important;max-width:40em;padding:12px 16px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--hg-night-line);font-size:14px;line-height:1.75;color:var(--hg-night-ink-2)}
-.kb-notice a{color:var(--hg-night-ink);font-weight:650;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
-.kb-hero .hg-ctas{justify-content:flex-start;margin-top:28px}
+/* ---- /ja/kana's second section: what /kana is, and the sources' own pairs beside it (compare.tsx keeps its ink card) ---- */
+.km-src{padding:104px 0 112px;background:var(--hg-band)}
+.km-src-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:48px 72px;align-items:center}
+.km-src .hg-ch-head{margin-bottom:0}
 .kc-hero{display:flex;flex-direction:column;padding:20px;border-radius:var(--sq-r-panel,28px);background:var(--hg-night-2);box-shadow:inset 0 0 0 1px var(--hg-night-line)}
 .kc-hero .kc{margin-top:0}
 .kc-hero :is(.kc-cap-id,.kc-count){color:var(--hg-night-ink)}
@@ -236,7 +232,7 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
 }
 @media (max-width:1151px){.km-mid{max-width:760px;margin:0 auto}}
 @media (max-width:1023px){
-  .kb-hero-grid{grid-template-columns:minmax(0,1fr)}
+  .km-src-grid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:879px){
   .km-composed{text-align:left;margin-top:28px!important}
@@ -250,16 +246,11 @@ details[open] .km-li-x::after{transform:rotate(0deg)}
   .km-index{grid-template-columns:minmax(0,1fr);gap:28px}
   .km-li-open{padding-left:0}
   .km-more ul{grid-template-columns:minmax(0,1fr)}
-  .km-status,.km-app{padding:64px 0 72px}
+  .km-status,.km-src{padding:64px 0 72px}
   .km-status-grid{grid-template-columns:minmax(0,1fr)}
   .km-status-list dd{font-size:16px}
-  .kb-hero{padding:32px 0 56px}
-  .kb-hero-grid{gap:0}
-  .kb-hero-left{display:contents}
-  .kb-hero-grid>.kb-hero-left>*{order:1}
-  .kb-hero .hg-lede{font-size:16px;margin-top:14px!important}
-  .kc-hero{order:2;margin-top:24px;padding:14px;border-radius:var(--sq-r-card,20px)}
-  .kb-hero .hg-ctas{order:3;margin-top:24px}
+  .km-src-grid{gap:28px}
+  .kc-hero{padding:14px;border-radius:var(--sq-r-card,20px)}
   .kc-hero .kc-step,.kc-hero .kc-play{height:44px}
   .kc-hero .kc-step{width:44px}
 }

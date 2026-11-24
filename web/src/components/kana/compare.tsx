@@ -6,7 +6,7 @@ import { KANA_KIT } from "./locale";
 import { RuleLine, SourceLink } from "./parts";
 
 /**
- * The Japanese edition's first screen (owner 2026-11-24: the Japanese page opens source-first). Each stop sets one of a
+ * The Japanese edition's second section, #compare (its first screen until 2026-11-25, when the owner asked for the phones first, as on /hangul). Each stop sets one of a
  * source's wrong/right pairs in the component its rule is about, the wrong side over the right side. The Japanese is
  * the pair's own text from the generated data, character for character; around it the component is a skeleton: grey
  * bars wherever the source gives no string. Every stop is rendered here, on the server; compare-tour.tsx only picks

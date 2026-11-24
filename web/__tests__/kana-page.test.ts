@@ -172,7 +172,7 @@ describe.each(LOCALES)("/%s/kana (the showcase)", (locale) => {
   it("one h1, the sections in order, and the root in the page's language", () => {
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html.match(/<div class="sq-root[^"]*" lang="(\w+)"/)?.[1]).toBe(locale);
-    const order = ['id="km-h1"', ...(locale === "ja" ? ['<section id="app"'] : []), '<section id="register"', '<section id="sheet"', '<section id="type"', '<section id="rules"', '<section id="status"'].map((s) => html.indexOf(s));
+    const order = ['id="km-h1"', ...(locale === "ja" ? ['<section id="compare"'] : []), '<section id="register"', '<section id="sheet"', '<section id="type"', '<section id="rules"', '<section id="status"'].map((s) => html.indexOf(s));
     expect(order.every((i) => i > -1)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
   });
@@ -229,12 +229,16 @@ describe.each(LOCALES)("/%s/kana (the showcase)", (locale) => {
   });
 
   if (locale === "ja") {
-    it("the Japanese edition opens on the sources' own pairs, each stop exactly its pair's texts, and says who wrote its Japanese", () => {
-      const hero = main.slice(0, main.indexOf('<section id="app"'));
-      expect(hero).toContain(KANA_COPY_JA.hero.notice.text);
+    it("the Japanese edition opens on the phones and says who wrote its Japanese before them; its second section shows each stop exactly its pair's texts", () => {
+      const cut = main.indexOf('<section id="compare"');
+      const hero = main.slice(0, cut);
+      expect(hero.match(/class="hg-phone"/g)).toHaveLength(2);
+      expect(hero.indexOf(KANA_COPY_JA.hero.notice.text)).toBeGreaterThan(-1);
+      expect(hero.indexOf(KANA_COPY_JA.hero.notice.text)).toBeLessThan(hero.indexOf('class="hg-phone"'));
       expect(hero).toContain("https://github.com/kwakseongjae/oh-my-design/issues/new");
+      const pairs = main.slice(cut, main.indexOf('<section id="register"'));
       type Ex = { key: string; sides: { role: string; texts: string[] }[] };
-      const shown = [...hero.matchAll(/<span class="kc-ja" lang="ja" data-stop="(\d+)" data-role="(wrong|right)">([^<]*)<\/span>/g)];
+      const shown = [...pairs.matchAll(/<span class="kc-ja" lang="ja" data-stop="(\d+)" data-role="(wrong|right)">([^<]*)<\/span>/g)];
       COMPARE_STOPS.forEach((s, i) => {
         const e = (data.rules.find((r) => r.id === s.rule)!.examples as Ex[])[s.example];
         for (const role of ["wrong", "right"] as const) {
@@ -243,7 +247,7 @@ describe.each(LOCALES)("/%s/kana (the showcase)", (locale) => {
         }
       });
       // the specimens are pictures of controls, not controls
-      for (const p of hero.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? []) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
+      for (const p of pairs.match(/<div class="kc-panel">[\s\S]*?<\/figure>/g) ?? []) expect(p).not.toMatch(/<(button|input|a)[\s>]/);
     });
   }
 });
@@ -335,7 +339,7 @@ describe("the moa screens' Japanese (app-copy.ts)", () => {
     const n = { rules: 51, house: 16, sources: 29, services: 77, opened: "2026-11-21", measured: "2026-11-12" };
     // the page's headings (h1, h2, h3) and its buttons and link labels; the rest is running text
     const headings = [t.hero.h1, t.app.h2, t.register.h2, t.sheet.h2, t.type.h2, t.index.h2(51), t.status.h2, t.rulesPage.h1(51), t.rules.h2, t.house.h2, t.fonts.h2(77), t.sources.h2, ...Object.values(AREA_JA)];
-    const buttons = [t.hero.cta(51), t.hero.ctaSecond, t.hero.notice.report, t.index.open, ...t.index.more(n).map((x) => x.k), ...t.status.links.map((x) => x.k), t.compare.play, t.compare.pause, t.app.sides.before, t.app.sides.after, t.rulesPage.back];
+    const buttons = [t.hero.cta(), t.hero.ctaSecond, t.hero.notice.report, t.index.open, ...t.index.more(n).map((x) => x.k), ...t.status.links.map((x) => x.k), t.compare.play, t.compare.pause, t.app.sides.before, t.app.sides.after, t.rulesPage.back];
     const roles = new Set([...headings, ...buttons]);
     const clean = (x: string) => x.replace(/[{}<>]/g, "");
     try {

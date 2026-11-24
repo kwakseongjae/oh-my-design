@@ -19,9 +19,9 @@ import "./showcase.css";
  * the forms they recommend, then three chapters that each change one thing (말투, the send sheet, 組版), a compact
  * index of every rule, and the draft's status where an install box would be.
  *
- * The Korean edition opens on the phones (its readers cannot judge the Japanese, so the claim is the difference). The
- * Japanese edition opens on the sources' own wrong/right pairs (its readers can judge the right-hand screen, and what
- * the page owes them is where each rule comes from); the phones come second, labelled as our example text.
+ * Both editions open on the phones, as /hangul does (owner 2026-11-25: 「카나도 앱 화면을 만들어서 한글처럼」). The
+ * Japanese edition says who wrote its Japanese before the phones, and its second section sets the sources' own
+ * wrong/right pairs beside what /kana is (until 11-25 those pairs were its first screen and the phones came second).
  *
  * Japanese of our own appears in three places only: the moa screens (app-copy.ts), the specimen heading in the 組版
  * chapter (app-copy.ts), and the Japanese edition's chrome (copy-ja.ts). Everything else in Japanese is a quote.
@@ -114,57 +114,58 @@ function HeroKo() {
 function HeroJa() {
   const { t, issueUrl } = KANA_KIT.ja;
   return (
-    <section className="kb-hero" aria-labelledby="km-h1">
+    <section className="hg-hero km-hero" aria-labelledby="km-h1">
       <div className="sq-wrap">
-        <div className="kb-hero-grid">
-          <div className="kb-hero-left">
-            <Kicker locale="ja" />
-            <h1 id="km-h1" className="hg-h1">
-              {t.hero.h1}
-            </h1>
-            <p className="hg-lede">{t.hero.lede}</p>
-            <p className="kb-notice">
-              {t.hero.notice!.text}{" "}
-              <a href={issueUrl} target="_blank" rel="noopener noreferrer">
-                {t.hero.notice!.report}
-                <span aria-hidden="true"> ↗</span>
-                <span className="kn-visually-hidden">
-                  {t.paren[0]}
-                  {t.rules.newTab}
-                  {t.paren[1]}
-                </span>
-              </a>
-            </p>
-            <div className="hg-ctas">
-              <a className="hg-btn hg-btn--solid" href="#rules">
-                {t.hero.cta(data.rules.length)}
-              </a>
-              <a className="hg-btn hg-btn--line" href="#status">
-                {t.hero.ctaSecond}
-              </a>
-            </div>
+        <div className="hg-hero-head">
+          <Kicker locale="ja" />
+          <h1 id="km-h1" className="hg-h1">
+            {t.app.h2}
+          </h1>
+          <p className="hg-lede">{t.app.intro}</p>
+          <div className="hg-ctas">
+            <a className="hg-btn hg-btn--solid" href="#rules">
+              {t.hero.cta(data.rules.length)}
+            </a>
+            <a className="hg-btn hg-btn--line" href="#status">
+              {t.hero.ctaSecond}
+            </a>
           </div>
-          <KanaStage />
+          {/* who wrote the page's Japanese, before the phones: a Japanese reader is told on the first screen */}
+          <p className="km-notice">
+            {t.hero.notice!.text}{" "}
+            <a href={issueUrl} target="_blank" rel="noopener noreferrer">
+              {t.hero.notice!.report}
+              <span aria-hidden="true"> ↗</span>
+              <span className="kn-visually-hidden">
+                {t.paren[0]}
+                {t.rules.newTab}
+                {t.paren[1]}
+              </span>
+            </a>
+          </p>
         </div>
+        <AppPair locale="ja" tone="night" />
+        <p className="km-composed">{t.app.composed}</p>
       </div>
     </section>
   );
 }
 
-function AppSectionJa() {
+/** The Japanese edition's second section: what /kana is, beside the sources' own wrong/right pairs (compare.tsx). */
+function SourcePairsJa() {
   const { t } = KANA_KIT.ja;
   return (
-    <section id="app" className="km-app ka-sec" aria-labelledby="km-app-h">
+    <section id="compare" className="km-src" aria-labelledby="km-compare-h">
       <div className="sq-wrap">
-        <div className="hg-ch-head">
-          <p className="hg-eyebrow">{t.app.eyebrow}</p>
-          <h2 id="km-app-h" className="hg-h2">
-            {t.app.h2}
-          </h2>
-          <p className="hg-intro">{t.app.intro}</p>
-          <p className="ka-composed">{t.app.composed}</p>
+        <div className="km-src-grid">
+          <div className="hg-ch-head">
+            <h2 id="km-compare-h" className="hg-h2">
+              {t.hero.h1}
+            </h2>
+            <p className="hg-intro">{t.hero.lede}</p>
+          </div>
+          <KanaStage />
         </div>
-        <AppPair locale="ja" tone="day" />
       </div>
     </section>
   );
@@ -532,7 +533,7 @@ export function KanaShowcase({ locale }: { locale: KanaLocale }) {
       <SiteHeaderA locale={locale} current={locale} localeHrefs={locale === "ja" ? KANA_PATHS : { ko: KANA_PATHS.ko }} />
       <main id="main" className="hg-main kn-main km-main">
         {locale === "ko" ? <HeroKo /> : <HeroJa />}
-        {locale === "ja" ? <AppSectionJa /> : null}
+        {locale === "ja" ? <SourcePairsJa /> : null}
         <Register locale={locale} />
         <Sheet locale={locale} />
         <TypeChapter locale={locale} />
