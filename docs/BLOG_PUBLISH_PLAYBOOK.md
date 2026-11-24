@@ -125,6 +125,10 @@ tags: [release, design-systems]
 
 ---
 
+## 5.1 표지 만들기
+
+글마다 표지(1200×630 PNG)를 하나씩 만든다. 블로그 홈 카드의 그림과 그 글의 og:image·twitter:image가 이 한 장이다. 표지는 모두 같은 틀(왼쪽 위 짧은 제목, 왼쪽 아래 작은 블로그 이름, 오른쪽 그림 칸)을 쓰고, 그림 칸에는 그 글이 잰 값이나 보여 주는 것만 그린다. 다른 회사의 화면·시안·로고는 넣지 않고, 공식 배포 글꼴이 아니면 그 브랜드의 글자를 흉내 내지 않는다. 새 글은 `web/scripts/blog-covers/covers/<slug>.mjs`를 하나 만든다. 기존 세 편의 파일처럼 `slug`, 로케일별 `titles`(글 제목보다 짧게), `pictureCss`, `picture(locale)`를 내보내면 된다. 그다음 `cd web && node scripts/blog-covers/render.mjs <slug>`로 `public/blog-assets/<slug>/cover-<locale>.png`를 만들고 커밋한다. 파일이 있으면 홈 카드와 공유 이미지가 자동으로 그 표지를 쓰고, 없으면 `/og/blog`가 그린 카드로 대신한다. 390px 폭의 카드 크기(약 358px)에서 그림만 보고 무슨 글인지 알 수 있는지 먼저 확인한다.
+
 ## 6. 로컬 확인
 
 ```bash
@@ -141,7 +145,7 @@ curl -s -H 'Host: blog.localhost:3335' http://localhost:3335/feed.xml | head -20
 curl -s -H 'Host: blog.localhost:3335' http://localhost:3335/sitemap.xml | grep <slug>
 ```
 
-OG 카드도 눈으로 본다 (한글 제목은 폰트 서브셋을 원격에서 받아 그린다):
+표지(§5.1)를 눈으로 본다. 표지가 없는 글만 `/og/blog`가 대신 그린 카드를 쓴다 (한글 제목은 폰트 서브셋을 원격에서 받아 그린다):
 
 ```bash
 curl -s "http://localhost:3335/og/blog?slug=<slug>&locale=ko" -o og.png

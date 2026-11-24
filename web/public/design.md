@@ -138,6 +138,14 @@ A moving two-ink dither in Iris, the blog home's banner. Added 2026-11-24 with t
 - Poster: a CSS dot pattern in the same two inks shows while WebGL loads or where it is missing, and hides once the canvas draws, so its dots never show through the rounded corner.
 - Reduced motion: the field holds a still frame. The shader pauses itself off screen and in a hidden tab.
 
+### Asset: blog covers
+
+One 1200×630 PNG per post and locale (`web/public/blog-assets/<slug>/cover-<locale>.png`) and one for the blog home (`cover-home-<locale>.png`). Each is the post's card image on the blog home and its og:image, twitter:image and JSON-LD image. Made by `web/scripts/blog-covers/render.mjs`; how to make the next one is in `docs/BLOG_PUBLISH_PLAYBOOK.md` §5.1.
+
+- One frame for every cover: color.paper canvas; a short cover title top left at 64px, 52/760 color.ink, at most 456px wide; the blog name bottom left, 22/650 color.ink-2 after a 12px color.primary square; a picture panel on the right, 552×502 at 584px, color.band, radius.panel. Cover sizes are the image's own, not the page's type scale.
+- Inside the panel each post has its own picture, drawn from what the post measured or shows: its measured colours, its own example or its own diagram. Letters are Wanted Sans. No other company's screens, sheets or logos, and no brand typeface imitated.
+- Judged first at card size on a phone (about 358px wide): the picture alone should say what the post is about.
+
 <!-- design-md:section components-states -->
 ## 4. Components & States
 

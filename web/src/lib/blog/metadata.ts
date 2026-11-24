@@ -15,13 +15,27 @@ import {
   POST_LOCALES,
   type PostLocale,
 } from "./locales";
-import { getPost, getPostLocales, lastModified } from "./posts";
+import { existsSync } from "fs";
+import { join } from "path";
+import { getPost, getPostLocales, lastModified, type BlogPost } from "./posts";
 import { DEFAULT_OG_IMAGE, SITE_ORIGIN, blogFeedUrl, blogIndexUrl, blogPostUrl } from "@/lib/site";
 
 const SITE_NAME = "oh-my-design";
 
-function ogImageUrl(slug: string, locale: PostLocale): string {
-  return `${SITE_ORIGIN}/og/blog?slug=${encodeURIComponent(slug)}&locale=${locale}`;
+/**
+ * A post's share image: its cover (scripts/blog-covers) when one exists, otherwise the drawn card at
+ * /og/blog, which stays as the fallback for a post published before its cover is made.
+ */
+function ogImageUrl(post: BlogPost): string {
+  if (post.cover) return `${SITE_ORIGIN}${post.cover}`;
+  return `${SITE_ORIGIN}/og/blog?slug=${encodeURIComponent(post.slug)}&locale=${post.locale}`;
+}
+
+/** The blog home's own cover (scripts/blog-covers/covers/_home.mjs), or the site's default card. */
+function indexImage(locale: PostLocale) {
+  const path = `/blog-assets/cover-home-${locale}.png`;
+  if (!existsSync(join(process.cwd(), "public", path))) return DEFAULT_OG_IMAGE;
+  return { url: `${SITE_ORIGIN}${path}`, width: 1200, height: 630, alt: BLOG_CHROME[locale].indexTitle };
 }
 
 function languageMap(
@@ -43,14 +57,15 @@ function feedAlternate(locale: PostLocale): Record<string, string> {
 export function blogIndexMetadata(locale: PostLocale): Metadata {
   const chrome = BLOG_CHROME[locale];
   const url = blogIndexUrl(locale);
-  const shareTitle = `${SITE_NAME} — ${chrome.indexTitle}`;
+  // The index title already carries the site's name ("oh-my-design 블로그").
+  const shareTitle = chrome.indexTitle;
+  const image = indexImage(locale);
 
   // Both share blocks are set in full: a page's openGraph/twitter replaces the
   // root layout's, and anything left out would fall back to the main site's
-  // English defaults. /og/blog draws post cards only (it needs a slug), so the
-  // index shares the site's default card.
+  // English defaults.
   return {
-    title: `${chrome.indexTitle} — ${SITE_NAME}`,
+    title: { absolute: chrome.indexTitle },
     description: chrome.indexIntro,
     alternates: {
       canonical: url,
@@ -63,13 +78,13 @@ export function blogIndexMetadata(locale: PostLocale): Metadata {
       url,
       type: "website",
       locale: OG_LOCALE[locale],
-      images: [DEFAULT_OG_IMAGE],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: shareTitle,
       description: chrome.indexIntro,
-      images: [DEFAULT_OG_IMAGE.url],
+      images: [image.url],
     },
   };
 }
@@ -98,13 +113,13 @@ export function blogPostMetadata(slug: string, locale: PostLocale): Metadata {
       publishedTime: post.date,
       modifiedTime: lastModified(post),
       locale: OG_LOCALE[post.locale],
-      images: [{ url: ogImageUrl(slug, post.locale), width: 1200, height: 630 }],
+      images: [{ url: ogImageUrl(post), width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [ogImageUrl(slug, post.locale)],
+      images: [ogImageUrl(post)],
     },
   };
 }
@@ -125,6 +140,6 @@ export function blogPostJsonLd(slug: string, locale: PostLocale) {
     author: { "@type": "Organization", name: SITE_NAME },
     publisher: { "@type": "Organization", name: SITE_NAME },
     mainEntityOfPage: blogPostUrl(slug, post.locale),
-    image: ogImageUrl(slug, post.locale),
+    image: ogImageUrl(post),
   };
 }
