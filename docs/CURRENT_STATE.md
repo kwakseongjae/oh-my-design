@@ -4,7 +4,15 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-24 14:38) — **오너 대기: kana 프리뷰(카드 32, 초안 PR #164: 머지 + 일본어판 공개 시점) · 블로그 홈 프리뷰(카드 31, 초안 PR #163) · 영상 v4(카드 26)** · 도는 에이전트 없음 · 머지 끝: #159 · #161 · #162 · #160은 닫음(#164가 대체) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm · 서버 없음
+## 지금 (2026-11-24 15:00) — **도는 것: 에이전트 `ja-demand`(일본 DESIGN.md 수요·SEO 조사, 보고 `<scratchpad>/agent-reports/ja-demand.md`) · `film-v5`(영상 v5, 보고 `film-v5.md`) · 본 세션: kana 히어로 정지 시안** · 오너 대기 없음(시안 뒤 카드) · 머지 끝: #163 · 서버: kana 로컬 3210(본 세션이 띄움) · 아티팩트 https://claude.ai/artifact/1TGcLCvG9G6Du7niqUKqZm
+
+**11/24 14:45 오너 답**
+- 원문 요지: kana 히어로가 너무 힘을 뺐다, /hangul 때는 잘했다, 한글 그 이상이어야 일본에서 이목을 끈다 · 일본 쪽 DESIGN.md 수요를 빨아들일 SEO·콘텐츠화를 고민 · 블로그 홈 괜찮다, 머지 · 영상은 아직 과하다, 선택과 전개의 템포가 부족, 효과는 앞부분 중심, 뒤쪽은 빠르게, 특히 교보 DESIGN.md 장면.
+- 한 일: **#163 머지(872ab3fa), 운영 확인**(blog.oh-my-design.kr 제목 「oh-my-design 블로그」, 표지 3장, feed.xml 채널 이름). blog-b 워크트리와 가지 정리(원격 가지는 이미 지워져 있었음).
+- 진단: /ko/kana 히어로는 /hangul의 복제(「같은 화면, 다른 일본어」 + 폰 둘)라 「그 이상」이 아님. /ja/kana 첫 화면은 다섯 줄 h1 · 下書き 칩 · AI 작성 안내 · 회색 상자 → 방어적. 자산: JP 레퍼런스 93개(tokyo · tokyo-metropolitan 중복 같은 정부 항목이 섞여 있어 「社」 수로 쓰기 전에 셀 것), 규칙 51 · 출처 29(SmartHR · Ubie · Spindle · Pepabo · DADS는 카탈로그에도 있음), 서비스 77곳 글꼴 측정.
+- 원칙: 히어로에 우리가 지은 일본어를 새로 넣지 않는다(원어민 미검수). 출처 원문 · 측정값 · 조판 자체로 힘을 낸다. 下書き 칩과 AI 안내를 첫 화면에서 옮기는 것은 오너 카드로.
+- SEO 전제: /ja/kana는 noindex · 사이트맵 밖 · 메뉴 없음이라 공개 스위치(오너 결정) 전에는 검색 수요를 못 받는다. 일본어 항목 페이지(/ja/design-systems/[id])는 아직 없음 — 조사 보고 뒤 확인.
+
 
 **11/24 14:10 한 일**
 - **머지 3건, 하나씩, 운영 확인:** #159(a63edae3: 네 언어 첫 화면에 블로그 링크, #130도 같이 닫힘) → #161(903529f9: 새 main을 가지에 합쳐 CI 다시 본 뒤 머지, 운영 글 제목·그림 11·항목 링크 86) → #162(677edeea: 머지 전 로컬 운영 빌드에서 initialize · tools/list 10개 · 새 도구 4개 + 옛 도구 1개 호출, 머지 뒤 운영에서 같은 호출. kurly는 unknown_screen, get_screen_context 201KB). 워크트리 blog-renewal · blog-basics · blog-article · mcp-screens와 로컬 가지 정리함.
