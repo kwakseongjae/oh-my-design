@@ -6,7 +6,7 @@ import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.gene
 import { getR11Hero, HERO_KINDS, withName } from "@/components/brand-a/copy/r11-hero";
 import { heroPick, pickCompany, resetHeroPick } from "@/components/brand-a/hero-pick";
 import { PAGE_SCRIPT } from "@/components/brand-a/journey/face";
-import { detailHrefFor } from "@/lib/i18n/ko-detail";
+import { detailHrefFor, hasDetail } from "@/lib/i18n/detail-locales";
 import { getHeroCaps } from "@/lib/landing-a/data.server";
 import {
   CARD_SLOTS, CHAT_CANDIDATES, CHAT_COMPANY, KIND, cardCoverage, chatIds, getChatCard, getCliScreen, getCompanyCard, getHeroChats, pickCompany as pickChatCompany,
@@ -182,7 +182,8 @@ describe("example cards: claimed values only", () => {
       const { chats } = getHeroChats(l, getHeroCaps(l), PAGE_FACES[l]);
       for (const [id, c] of Object.entries(chats)) {
         expect("source" in c.card, `${l} ${id}`).toBe(false);
-        expect(c.href, `${l} ${id}`).toBe(detailHrefFor(l, id, true));
+        // every chat company is verified (chat-data.server.ts chatIds)
+        expect(c.href, `${l} ${id}`).toBe(detailHrefFor(l, id, hasDetail(l, REGISTRY_BY_ID[id]!.country, "verified_v2")));
         expect(c.prompt, `${l} ${id}`).toContain(c.name);
         expect(c.label, `${l} ${id}`).toContain(c.name);
       }

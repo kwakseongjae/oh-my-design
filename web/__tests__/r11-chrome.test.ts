@@ -9,6 +9,7 @@ import { SITE_LOCALES } from "@/lib/i18n/site-locales";
 import { getR10 } from "@/components/brand-a/copy/r10";
 import { SHOWCASE_PICKS, archiveCount, localeOfR10, opticalSize, showcaseFor } from "@/components/brand-a/catalog-showcase";
 import { catalogPathFor } from "@/lib/i18n/ko-detail";
+import { hasDetail } from "@/lib/i18n/detail-locales";
 
 /**
  * Round 11 chrome (docs/REDESIGN_R11_PLAN_2026-10-20.md W5, W9, item 29). The showcase renders
@@ -93,10 +94,12 @@ describe("catalog showcase: per locale", () => {
     }
   });
 
-  it("links open the item page; /ko opens the Korean page that exists for every verified reference", () => {
+  it("links open the item page; /ko opens the Korean page that exists for every verified reference, /ja the Japanese one for a Japanese reference", () => {
     for (const l of SITE_LOCALES) {
       for (const it of showcaseFor(l).flatMap((g) => g.items)) {
-        expect(it.href, `${l} ${it.id}`).toBe(l === "ko" ? `/ko/design-systems/${encodeURIComponent(it.id)}` : `/design-systems/${encodeURIComponent(it.id)}`);
+        // every showcase item is verified (catalog-showcase.tsx)
+        const own = hasDetail(l, REGISTRY_BY_ID[it.id]!.country, "verified_v2");
+        expect(it.href, `${l} ${it.id}`).toBe(own ? `/${l}/design-systems/${encodeURIComponent(it.id)}` : `/design-systems/${encodeURIComponent(it.id)}`);
         expect(it.src).toMatch(/^\/brand-svg\/[\w-]+\/(wordmark|combined|symbol)\.svg$/);
       }
     }
