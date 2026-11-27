@@ -33,6 +33,53 @@ export function Mixed({ text }: { text: string }) {
   );
 }
 
+/**
+ * Phrases a Japanese heading must not be broken inside. The browser's own phrase breaking (word-break: auto-phrase)
+ * exists only in Chrome and Edge, and its model splits some of these (トークンど / おり); measured on this page at
+ * seven widths, 2026-11-27 (scripts/lang/kana-heading-breaks.mjs). Each phrase is set as one inline block, so a line ends between phrases in every browser.
+ * A heading that is not listed keeps the browser's breaking.
+ */
+export const JA_KEEP = [
+  "同じ画面の、", "ガイドに沿った", "書き直し",
+  "出典の原文を", "添えた、", "日本語UIの規則",
+  "操作の結果が", "わかる", "ボタンとエラー",
+  "韓国語向けの組版と", "日本語向けの組版",
+  "keep-allではなくnormal、", "見出しはauto-phrase",
+  "字間は", "本文の行高は", "DADSの", "トークンどおり0〜0.02em", "トークンどおり1.7",
+  "サービスで", "最初に指定された", "日本語フォント",
+].sort((a, b) => b.length - a.length);
+
+/** A heading: its listed phrases kept whole (JA_KEEP), the rest set as Mixed sets it. */
+export function Phrased({ text }: { text: string }) {
+  const out: { keep: boolean; s: string }[] = [];
+  let rest = "";
+  for (let i = 0; i < text.length; ) {
+    const hit = JA_KEEP.find((p) => text.startsWith(p, i));
+    if (hit) {
+      if (rest) out.push({ keep: false, s: rest });
+      rest = "";
+      out.push({ keep: true, s: hit });
+      i += hit.length;
+    } else {
+      rest += text[i++];
+    }
+  }
+  if (rest) out.push({ keep: false, s: rest });
+  return (
+    <>
+      {out.map((part, i) =>
+        part.keep ? (
+          <span key={i} className="km-ph">
+            <Mixed text={part.s} />
+          </span>
+        ) : (
+          <Mixed key={i} text={part.s} />
+        ),
+      )}
+    </>
+  );
+}
+
 /** A quoted string as the file gives it, in the page's own corner brackets (an English quote, Microsoft's, in curly
  *  quotes); its `code` marks (writing-rules.md's Markdown) set as code. */
 export function Ja({ text, en = false }: { text: string; en?: boolean }) {

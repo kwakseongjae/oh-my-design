@@ -5,7 +5,8 @@
 
    Japanese on both editions (JT rules, docs/drafts/kana/references/rules.md): drawn by the Noto Sans JP this page
    loads (faces.ts, swap), never by a Korean face; normal breaking with line-break: strict (chrome.css), phrases kept
-   whole in headings where Chrome can (auto-phrase, else normal); letter-spacing 0 (no negative tracking, JT-05); body
+   whole in headings (the listed ones as inline blocks in every browser, parts.tsx Phrased; else auto-phrase where
+   Chrome can, normal elsewhere); letter-spacing 0 (no negative tracking, JT-05); body
    1.8 on the Japanese edition (chrome.css), at least 1.5 everywhere (JT-01). */
 
 /* ---- the page's Japanese face: the loaded Noto Sans JP first, then the faces Japanese devices carry; no Korean face
@@ -35,6 +36,9 @@
 /* Japanese headings: no negative tracking, a looser line, phrases kept whole where supported */
 .km-main:lang(ja) :is(.hg-h1,.hg-h2,.km-row-h,.km-note-t,.km-li-t){letter-spacing:0;word-break:auto-phrase}
 .km-main:lang(ja) .hg-h1{line-height:1.35}
+.km-ph{display:inline-block}
+/* the Japanese title's second line is 11 characters (ガイドに沿った書き直し): sized to fit one line beside the 16px gutters */
+@media (max-width:639px){.km-main:lang(ja) .km-hero .hg-h1{font-size:clamp(26px,calc((100vw - 32px) / 11.1),36px)}}
 .km-main:lang(ja) .hg-h2{line-height:1.4}
 .km-main:lang(ja) :is(.hg-intro,.hg-lede,.km-row-b,.km-note-mine,.km-status-list dd){line-height:1.8}
 

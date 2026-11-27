@@ -4,7 +4,7 @@ import { kanaMetadata } from "@/components/kana/metadata";
 
 /**
  * /ja/kana — the showcase for the draft /kana skill, Japanese edition. Under the (ja) root
- * layout, so the document is <html lang="ja">. Unreleased: noindex, in no sitemap, linked from no shared navigation.
+ * layout, so the document is <html lang="ja">. Released with its twin edition (components/kana/metadata.ts).
  */
 export const metadata: Metadata = kanaMetadata("ja");
 

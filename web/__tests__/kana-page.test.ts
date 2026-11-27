@@ -16,6 +16,7 @@ import { KanaShowcase } from "@/components/kana/showcase";
 import { KanaRulesPage } from "@/components/kana/rules-page";
 import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_COPY, RULE_KO, RULE_LABEL_KO, SOURCE_ORGS, type KanaLocale } from "@/components/kana/copy";
 import { AREA_JA, KANA_COPY_JA, SOURCE_ORGS_JA, composedJa } from "@/components/kana/copy-ja";
+import { JA_KEEP } from "@/components/kana/parts";
 import { APP_CANCEL, APP_PAIRS, APP_SHARED, appStrings } from "@/components/kana/app-copy";
 import { TYPE_MEASURED, TYPE_QUOTES } from "@/components/kana/type-quotes";
 import { jaLead } from "@/components/kana/rule-lead";
@@ -33,7 +34,8 @@ vi.mock("@/components/brand-a/journey/faces", () => ({
  *    screens (app-copy.ts), the typography quotes' file (type-quotes.ts, quotes only) and the Japanese edition's chrome
  *    (copy-ja.ts); the composed ones are labelled as ours where they render;
  *  - quotes are verbatim; the measured values match their files;
- *  - the pages stay unreleased (noindex, self-only hreflang, no sitemap, no shared navigation link) until the owner says go.
+ *  - the four pages are released together: indexable, each edition names the other, all four in the sitemap, a footer link
+ *    on Korean and Japanese pages only (there is no English or Chinese edition).
  */
 
 const WEB = path.resolve(__dirname, "..");
@@ -362,7 +364,28 @@ describe("the moa screens' Japanese (app-copy.ts)", () => {
   });
 });
 
-describe("the kana pages stay unreleased", () => {
+describe("Japanese headings keep their phrases whole", () => {
+  const text = (html: string) => html.replace(/<[^>]+>/g, "");
+
+  it("every listed phrase is still on the Japanese page (a reworded heading must bring its phrases along)", () => {
+    const page = text(showcase.ja);
+    for (const phrase of JA_KEEP) expect(page, phrase).toContain(phrase);
+    expect(showcase.ja.match(/class="km-ph"/g)?.length ?? 0).toBeGreaterThanOrEqual(JA_KEEP.length - 2);
+  });
+
+  it("the title is set as phrases, and its last line is the 11 characters showcase.css sizes the phone title for", () => {
+    const h1 = showcase.ja.match(/<h1[^>]*>(.*?)<\/h1>/)![1];
+    expect(text(h1)).toBe(KANA_COPY_JA.app.h2);
+    expect(h1.match(/class="km-ph"/g)).toHaveLength(3);
+    expect(KANA_COPY_JA.app.h2!.split("、")[1]).toHaveLength(11);
+  });
+
+  it("the Korean page has none of them", () => {
+    expect(showcase.ko).not.toContain('class="km-ph"');
+  });
+});
+
+describe("the kana pages are released as a Korean and Japanese pair", () => {
   const pages: [string, Metadata, string][] = [
     ["/ko/kana", koShowcaseMeta, "ko"],
     ["/ko/kana/rules", koRulesMeta, "ko"],
@@ -370,21 +393,34 @@ describe("the kana pages stay unreleased", () => {
     ["/ja/kana/rules", jaRulesMeta, "ja"],
   ];
 
-  it.each(pages)("%s: noindex, canonical to itself, no hreflang alternates", (p, meta, lang) => {
-    expect(meta.robots).toMatchObject({ index: false });
+  it.each(pages)("%s: indexable, canonical to itself, hreflang names both editions and no x-default", (p, meta, lang) => {
+    expect(meta.robots).toBeUndefined();
     expect(meta.alternates?.canonical).toBe(p);
-    expect(meta.alternates?.languages).toBeUndefined();
+    const rules = p.endsWith("/rules");
+    expect(meta.alternates?.languages).toEqual(rules ? { ko: "/ko/kana/rules", ja: "/ja/kana/rules" } : { ko: "/ko/kana", ja: "/ja/kana" });
+    expect((meta.alternates?.languages as Record<string, string>)[lang]).toBe(p);
     expect((meta.openGraph as { locale?: string })?.locale).toBe(lang === "ko" ? "ko_KR" : "ja_JP");
   });
 
-  it("the Korean pages link no Japanese kana page (the language switch included); the Japanese ones may link the Korean", () => {
-    for (const html of [showcase.ko, rules.ko]) expect(html).not.toMatch(/href="\/ja\/kana/);
+  it("each edition's language switch opens the same page in the other language", () => {
+    expect(showcase.ko).toContain('href="/ja/kana"');
     expect(showcase.ja).toContain('href="/ko/kana"');
+    expect(rules.ko).toContain('href="/ja/kana/rules"');
+    expect(rules.ja).toContain('href="/ko/kana/rules"');
   });
 
-  it("in no sitemap and linked from no shared header or footer", () => {
-    expect(sitemap().some((r) => r.url.includes("/kana"))).toBe(false);
-    const chrome = ["site-header.tsx", "site-footer.tsx", ...fs.readdirSync(path.join(WEB, "src/components/brand-a/copy")).map((f) => `copy/${f}`)];
+  it("all four in the sitemap with both editions as alternates; linked from the footer only where an edition exists", () => {
+    const entries = sitemap().filter((r) => r.url.includes("/kana"));
+    expect(entries.map((r) => r.url.replace("https://oh-my-design.kr", "")).sort()).toEqual(["/ja/kana", "/ja/kana/rules", "/ko/kana", "/ko/kana/rules"]);
+    for (const r of entries) {
+      const languages = r.alternates?.languages as Record<string, string>;
+      expect(Object.keys(languages).sort()).toEqual(["ja", "ko"]);
+      expect(Object.values(languages)).toContain(r.url);
+    }
+    for (const html of [showcase.ko, rules.ko]) expect(html).toMatch(/<footer[\s\S]*href="\/ko\/kana"/);
+    for (const html of [showcase.ja, rules.ja]) expect(html).toMatch(/<footer[\s\S]*href="\/ja\/kana"/);
+    // the header and the locale copy bundles carry no kana link: the footer is the one shared entry
+    const chrome = ["site-header.tsx", ...fs.readdirSync(path.join(WEB, "src/components/brand-a/copy")).map((f) => `copy/${f}`)];
     for (const f of chrome) expect(fs.readFileSync(path.join(WEB, "src/components/brand-a", f), "utf8"), f).not.toContain("/kana");
     expect(fs.existsSync(path.join(WEB, "src/app/(en)/kana"))).toBe(false);
     expect(fs.existsSync(path.join(WEB, "src/app/(zh-tw)/zh-tw/kana"))).toBe(false);
