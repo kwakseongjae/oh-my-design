@@ -4,7 +4,14 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-27 17:52) — **오너 대기: ① 일본어 재점검에 쓸 다른 계열 채널(Codex / Grok) ② 프리뷰 둘 확인(#165 kana 공개 준비, #166 일본어 회사 페이지) ③ tokyo 중복 ④ 조판 글감 방향** · 초안 PR: #165(`feat/kana-public`, f39850ab) · #166(`feat/ja-detail`, ea10b1ce) · 도는 에이전트 없음 · 서버 없음 · 영상 v5는 오너가 더 봄 · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH(이 세션에서는 아티팩트 도구가 죽어 고치지 못함 — Claude Code를 다시 시작한 뒤 전후 화면 카드를 올린다. 화면은 `~/Downloads/omd-sprint-1127/`)
+## 지금 (2026-11-27 18:16) — **다음 세션이 맨 먼저 할 일: 검토 페이지를 아티팩트에 올린다(아래 「18:16」)** · **오너 대기: ① 일본어 재점검에 쓸 다른 계열 채널(Codex / Grok) ② 프리뷰 둘 확인(#165 kana 공개 준비, #166 일본어 회사 페이지) ③ tokyo 중복 ④ 조판 글감 방향** · 초안 PR: #165(`feat/kana-public`, f39850ab) · #166(`feat/ja-detail`, ea10b1ce) · 도는 에이전트 없음 · 서버 없음 · 영상 v5는 오너가 더 봄 · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH(이 세션에서는 아티팩트 도구가 죽어 고치지 못함 — Claude Code를 다시 시작한 뒤 전후 화면 카드를 올린다. 화면은 `~/Downloads/omd-sprint-1127/`)
+
+**11/27 18:16 오너: 「네가지를 아티팩트로 물어보고 다음 작업은 뭐할지도 브리핑해줘.」**
+- 이 세션에서는 아티팩트 도구가 죽어 있다(「not available to this session」, 다시 시도해도 같음; 세션 도중 계정 메일이 바뀜). 올리지 못했다.
+- **올릴 페이지는 다 만들어 둠:** `~/.omd-workers/review/2026-11-27-sprint/index.html` + `img/` 6장(결정 카드 넷: 재점검 채널 · 프리뷰와 머지 순서 · 도쿄 중복 비교표 · 조판 글감, 그리고 다음 작업). 1280 · 390에서 넘침 없음 확인. 다음 세션: 그 폴더를 세션 scratchpad로 복사 → 아티팩트 guide를 읽고 → 살아 있는 검토 아티팩트(WXcTnPUE…)에 새 판으로 올린다. 그 아티팩트가 지금 계정에서 안 열리면 다른 곳에 올리지 말고 오너에게 묻는다.
+- 추천 정정: 머지 순서는 「재점검 → #166 → #165」(#166에도 지은 일본어가 있어 재점검을 맨 앞으로).
+- 도쿄 비교: `tokyo-metropolitan`(11/03, 근거 92 · 출처 11 · 간격 토큰 있음) 대 `tokyo`(11/12, 근거 84 · 출처 9). 추천은 `tokyo-metropolitan`을 남기는 것(삭제는 오너 결정).
+- 답 없이 다음에 하는 것: `/ja/design-systems` 목록 페이지 · 검색용 제목 전후안 · kana 공유 카드 2안 · #166에서 빠진 것(MCP `page_ja`, 조회수 합산) · 틈새 정리.
 
 **11/27 스프린트(오너 「작업 재개하자. ㄱㄱ」; 계획은 아래 「11/25 00:57 계획」)**
 - **A kana 공개 준비 → 초안 PR #165** (프리뷰 https://oh-my-design-git-feat-kana-public-kwakseongjaes-projects.vercel.app/ja/kana · /ko/kana, Vercel 로그인 필요). 커밋 셋(끝 `bc78224c`): `1991bc8d` 일본어 제목 줄바꿈(「同じ画面の、 / ガイドに沿った書き直し」; 320~1440px에서 어색하게 끊기던 제목 8개를 `parts.tsx`의 `Phrased`로 문절 고정 — auto-phrase는 Chrome·Edge에만 있고 「どお/り」를 틀리게 끊는다) + 390px 제목 크기 + 안 쓰는 스타일 삭제 · `f39850ab` 공개 스위치(noindex 제거, ko/ja hreflang, 사이트맵 4개, 양쪽 언어 메뉴, 한국어·일본어 푸터의 `/kana` 링크). **이 PR을 머지하면 공개다.** `bc78224c` 측정 스크립트를 저장소로(`scripts/lang/kana-heading-breaks.mjs`)와 문절 목록을 지키는 테스트 3개. 점검: 웹 테스트 통과 · tsc · CI 넷 통과(f39850ab 기준) · 앵커 152개 · 외부 링크 36개(200; npm과 w3.org는 스크립트에 403) · 동작 줄이기 · 키보드 포커스 45곳.
