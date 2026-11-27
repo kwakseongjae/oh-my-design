@@ -26,6 +26,7 @@ function MarkIcon({ mark }: { mark: Mark }) {
  * on the right three columns, Product, Open source and Language; one bottom line. Product also
  * links the /hangul launch page (owner, 2026-11-05): /ko/hangul on Korean pages, /hangul elsewhere,
  * the same contract as the docs skills list (cli-docs.ts). Its label is the command name in every locale.
+ * The /kana showcase follows it on Korean and Japanese pages only (/ko/kana, /ja/kana): it has no other edition.
  *
  * The bottom line keeps the trademark sentence and the Privacy, Terms and cookie-settings links
  * on purpose: the landing now shows official logos, and the cookie choice must stay as easy to
@@ -85,6 +86,9 @@ export function SiteFooterA({
               <li><Link href={o(catalogPathFor(locale))} prefetch={false}>{c.nav.archive}</Link></li>
               <li><Link href={o(skillsHrefFor(locale, docs))} prefetch={false}>{c.nav.skills}</Link></li>
               <li><Link href={o(locale === "ko" ? "/ko/hangul" : "/hangul")} prefetch={false} translate="no">/hangul</Link></li>
+              {locale === "ko" || locale === "ja" ? (
+                <li><Link href={o(`/${locale}/kana`)} prefetch={false} translate="no">/kana</Link></li>
+              ) : null}
               <li><Link href={o(docsHref(docs))} prefetch={false}>{c.nav.docs}</Link></li>
               <li><Link href={o("/changelog")} prefetch={false}>{t.changelog}</Link></li>
               <li><a href={blogHref}>{t.blog}</a></li>

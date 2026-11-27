@@ -10,6 +10,7 @@ import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
 import { KO_CATALOG_PATH, koDetailPath } from "@/lib/i18n/ko-detail";
 import { HANGUL_PATH } from "@/components/hangul/copy";
 import { HANGUL_LANGUAGES } from "@/components/hangul/metadata";
+import { kanaLanguages } from "@/components/kana/metadata";
 import { SCREENS_PATH, screensServicePath } from "@/components/screens/copy";
 import { screensPublished } from "@/lib/screens/source.server";
 import { screenServiceIds } from "@/lib/screens/gallery.server";
@@ -65,6 +66,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
       alternates: { languages: HANGUL_ALTERNATES },
     })),
+    // The /kana showcase and its rules page, each in Korean and Japanese (components/kana/metadata.ts).
+    ...(["showcase", "rules"] as const).flatMap((page) => {
+      const paths = kanaLanguages(page);
+      const languages = Object.fromEntries(Object.entries(paths).map(([lang, path]) => [lang, `${siteUrl}${path}`]));
+      return Object.values(paths).map((path) => ({
+        url: `${siteUrl}${path}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: page === "showcase" ? 0.85 : 0.7,
+        alternates: { languages },
+      }));
+    }),
     {
       url: `${siteUrl}/faq`,
       lastModified: now,

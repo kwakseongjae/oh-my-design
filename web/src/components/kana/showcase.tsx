@@ -530,9 +530,8 @@ function Status({ locale }: { locale: KanaLocale }) {
 export function KanaShowcase({ locale }: { locale: KanaLocale }) {
   return (
     <div className={`sq-root sq-root-page kn-root km-root ${notoSansJP.variable}`} lang={locale}>
-      {/* the Japanese edition's language switch points at the Korean one; the Korean edition's does not point at the
-          Japanese one until the owner releases it (the switch is navigation from a live page). Release list: metadata.ts */}
-      <SiteHeaderA locale={locale} current={locale} localeHrefs={locale === "ja" ? KANA_PATHS : { ko: KANA_PATHS.ko }} />
+      {/* the two editions point at each other in the header's language switch */}
+      <SiteHeaderA locale={locale} current={locale} localeHrefs={KANA_PATHS} />
       <main id="main" className="hg-main kn-main km-main">
         {locale === "ko" ? <HeroKo /> : <HeroJa />}
         {locale === "ja" ? <SourcePairsJa /> : null}

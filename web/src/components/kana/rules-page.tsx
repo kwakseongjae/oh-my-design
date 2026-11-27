@@ -308,7 +308,7 @@ export function KanaRulesPage({ locale }: { locale: KanaLocale }) {
   ];
   return (
     <div className={`sq-root sq-root-page kn-root ${notoSansJP.variable}`} lang={locale}>
-      <SiteHeaderA locale={locale} current={locale} localeHrefs={locale === "ja" ? KANA_RULES_PATHS : { ko: KANA_RULES_PATHS.ko }} />
+      <SiteHeaderA locale={locale} current={locale} localeHrefs={KANA_RULES_PATHS} />
       <main id="main" className="kn-main">
         <section className="kn-hero" aria-labelledby="kn-h1">
           <div className="sq-wrap">
