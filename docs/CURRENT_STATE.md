@@ -4,12 +4,18 @@
 새 일이 생기면 「지금」 블록을 고쳐 쓰고, 날짜 절은 최근 것만 아래에 둔다. 오래된 절은 `docs/archive/state/`로 옮긴다.
 방향과 트랙은 `docs/ROADMAP.md`, 오너에게 묻는 것과 묻지 않는 것은 `docs/AUTONOMY_LOOP.md` §1–2에 있다.
 
-## 지금 (2026-11-27 17:30) — **스프린트 진행 중(오너 11/27 「작업 재개하자. ㄱㄱ」)** · 도는 에이전트 둘: ja-detail-builder(일본어 회사 페이지, 워크트리 `.claude/worktrees/ja-detail`, 가지 `feat/ja-detail`) · jp-typography-analyst(일본 verified 76곳 조판 표, 출력 `~/.omd-workers/analysis/2026-11-27-jp-typography/`) · 본 세션: kana 공개 준비(워크트리 `.claude/worktrees/kana-public`, 가지 `feat/kana-public`, 개발 서버 3417) · 오너 대기: 일본어 재점검에 쓸 다른 계열 채널(Codex / Grok) · 영상 v5는 오너가 더 봄 · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH
+## 지금 (2026-11-27 17:52) — **오너 대기: ① 일본어 재점검에 쓸 다른 계열 채널(Codex / Grok) ② 프리뷰 둘 확인(#165 kana 공개 준비, #166 일본어 회사 페이지) ③ tokyo 중복 ④ 조판 글감 방향** · 초안 PR: #165(`feat/kana-public`, f39850ab) · #166(`feat/ja-detail`, ea10b1ce) · 도는 에이전트 없음 · 서버 없음 · 영상 v5는 오너가 더 봄 · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH
 
-**11/27 스프린트 시작(계획은 아래 「11/25 00:57 계획」 그대로)**
-- A(본 세션) ① 손질 끝, 커밋 `1991bc8d`(푸시 전): 일본어 제목이 「同じ画面の、 / ガイドに沿った書き直し」로 끊기고, 폭 320~1440px에서 어색하게 끊기던 제목 8개를 문절 단위로 고정(`parts.tsx`의 `Phrased` — auto-phrase는 Chrome·Edge에만 있고 「どお/り」를 틀리게 끊는다) · 390px에서 제목 크기를 폭에 맞춤 · 안 쓰는 스타일(`.ka-sec` 묶음 등) 삭제. 웹 테스트 1,667 통과 · tsc 통과. 남은 것: ② 일본어 재점검(채널 답 대기) ③ 실제 조건 시험(창 없는 것만; Safari 창 시험은 오너가 컴퓨터를 안 쓸 때) ④ 검색용 제목 전후안 ⑤ 공개 스위치 PR(B의 sitemap 변경 뒤에 rebase).
-- B 지시서 요점: JP이고 verified인 76곳 · 판정 하나로 라우트 · hreflang(영·한·일 상호) · 사이트맵 · 링크 · `/ja/design-systems` 목록은 아직 없으니 그쪽으로 링크하지 않음 · 지은 일본어 전부를 보고에 목록으로(같은 재점검에 넣는다) · tokyo와 tokyo-metropolitan은 둘 다 만든다(중복은 프리뷰 때 오너에게).
-- 받은 뒤 할 일: B는 diff 검토 → 1440·390 화면 확인 → 푸시 → PR → 프리뷰 → 오너 go. C는 표를 읽고 글감 정리.
+**11/27 스프린트(오너 「작업 재개하자. ㄱㄱ」; 계획은 아래 「11/25 00:57 계획」)**
+- **A kana 공개 준비 → 초안 PR #165** (프리뷰 https://oh-my-design-git-feat-kana-public-kwakseongjaes-projects.vercel.app/ja/kana · /ko/kana, Vercel 로그인 필요). 커밋 둘: `1991bc8d` 일본어 제목 줄바꿈(「同じ画面の、 / ガイドに沿った書き直し」; 320~1440px에서 어색하게 끊기던 제목 8개를 `parts.tsx`의 `Phrased`로 문절 고정 — auto-phrase는 Chrome·Edge에만 있고 「どお/り」를 틀리게 끊는다) + 390px 제목 크기 + 안 쓰는 스타일 삭제 · `f39850ab` 공개 스위치(noindex 제거, ko/ja hreflang, 사이트맵 4개, 양쪽 언어 메뉴, 한국어·일본어 푸터의 `/kana` 링크). **이 PR을 머지하면 공개다.** 점검: 웹 1,667 통과 · tsc · CI 넷 통과 · 앵커 152개 · 외부 링크 36개(200; npm과 w3.org는 스크립트에 403) · 동작 줄이기 · 키보드 포커스 45곳.
+  - 남은 것: ② 일본어 재점검(채널 답 대기; 대상 = copy-ja.ts + 폰 예문 + #166의 일본어 전부) · Safari/아이폰 창 시험(WebKit 없음; 오너가 컴퓨터를 안 쓸 때) · 검색용 제목 전후안과 kana 공유 카드(지금은 사이트 공용 OG 이미지) · #166 머지 뒤 sitemap.ts rebase.
+- **B 일본어 회사 페이지 → 초안 PR #166** (프리뷰 https://oh-my-design-git-feat-ja-detail-kwakseongjaes-projects.vercel.app/ja/design-systems/mynavi · /mercari). 76곳, 판정표 하나(`lib/i18n/detail-locales.ts`)가 라우트 · hreflang(영·한·일) · 사이트맵 · 링크를 정한다. 한국어 페이지와 한 컴포넌트(`edition-page.tsx`)를 쓴다. 웹 1,686 통과 · tsc. 본 세션이 diff와 1440·390 화면을 봄.
+  - 지시서와 다른 점: 일본어 페이지에 「서비스 화면」 탭 없음(일본 레퍼런스에 화면이 없고 권리 고지문이 영·한뿐). 요청에 없던 변경: 일본어 페이지 제목 글꼴(Noto Sans JP) · 폰에서 버튼 둘 세로로 · `getRelatedReferences`의 범위 인자.
+  - 손대지 않은 것: MCP 카탈로그(`page_ja` 없음) · `view-counts.server.ts`(영·한 경로만 합산) · AGENTS.md 제품 표면 문단 · `/ja/design-systems` 목록.
+  - 볼 것: 「Digital Agency Design System (DADS)のデザインシステム」처럼 이름이 이미 디자인 시스템인 곳의 제목 · syosetu의 반각 괄호 · tokyo와 tokyo-metropolitan(제목 같음).
+  - `ja-detail/web/.next`가 남아 있다(rm이 권한에서 거절됨).
+- **C 일본 조판 표 끝** → `~/.omd-workers/analysis/2026-11-27-jp-typography/tables.md`(다시 만들기: 같은 폴더의 ids.mjs · extract.mjs · build.mjs). **카탈로그에 적힌 값만으로는 글이 얇다:** 76곳 중 UI 글꼴 47곳(Noto Sans JP 20), 본문 행간 16곳(중앙값 1.5), 본문 자간 1곳, palt · line-break 기록 0곳. 본문 역할 40개 중 19개는 검색창 · 카드 같은 곳을 잰 값. 글감은 11/12의 홈페이지 77곳 실측(`docs/drafts/kana/references/measured-jp.md`)이 더 낫다.
+- Karabiner(저장소 밖): 17.0.0 업데이트 뒤 백그라운드 서비스가 꺼져 있던 것. 오너가 켠 뒤 키보드별 매핑으로 되돌림. 오너의 키 확인 대기.
 
 **(이전 「지금」 줄, 11/25 00:57)** **오너 대기: 다음 스프린트 계획에 go(아래 「11/25 00:57 계획」) · 영상 v5는 오너가 더 봄(건드리지 않음)** · 머지 끝: #164(2a44d244, 운영 확인) · 검토 아티팩트 https://claude.ai/artifact/WXcTnPUELw1ekBLACx37UH · 도는 에이전트 없음 · 서버 없음
 
