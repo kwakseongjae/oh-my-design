@@ -31,8 +31,9 @@ import iconCollection from "@/data/brand-icons.json";
 import { CJK_RE } from "@/lib/landing-a/resolve";
 import { loadDetail } from "@/lib/references/detail-loader.server";
 import { SEARCH_ALIASES } from "@/lib/search-aliases";
-import { hasKoDetailId, koName } from "@/lib/i18n/ko-detail.server";
-import { detailHrefFor } from "@/lib/i18n/ko-detail";
+import { hasDetailId } from "@/lib/i18n/detail-locales.server";
+import { koName } from "@/lib/i18n/ko-detail.server";
+import { detailHrefFor } from "@/lib/i18n/detail-locales";
 
 /* ─────────── logos ─────────── */
 
@@ -330,7 +331,7 @@ export function archiveRow(
     name,
     nameLang: nameLang(name, r.country),
     terms: [r.name, r.displayName, ...(SEARCH_ALIASES[r.id] ?? [])].filter((s, i, all) => !!s && s !== name && all.indexOf(s) === i),
-    href: detailHrefFor(locale, r.id, hasKoDetailId(r.id)),
+    href: detailHrefFor(locale, r.id, hasDetailId(locale, r.id)),
     summary,
     summaryLang: textLang(summary, r.country),
     domain: r.category,

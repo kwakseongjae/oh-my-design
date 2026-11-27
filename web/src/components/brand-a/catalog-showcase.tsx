@@ -5,7 +5,7 @@ import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { SITE_LOCALES, type SiteLocale } from "@/lib/i18n/site-locales";
-import { catalogPathFor, detailHrefFor, hasKoDetail } from "@/lib/i18n/ko-detail";
+import { catalogPathFor, detailHrefFor, hasDetail } from "@/lib/i18n/detail-locales";
 import { KO_DETAIL_IDS } from "@/lib/i18n/ko-detail.server";
 import { REGION_ORDER } from "@/lib/landing-a/picks";
 import { fmt } from "./copy";
@@ -161,7 +161,7 @@ export function showcaseFor(locale: SiteLocale): ShowcaseGroup[] {
       return [{
         id: p.id,
         label: fmt(t.item, { name }),
-        href: detailHrefFor(locale, p.id, hasKoDetail(ref.country, status)),
+        href: detailHrefFor(locale, p.id, hasDetail(locale, ref.country, status)),
         src: `/${v.ref}`,
         ...opticalSize(visible),
         crop: !!p.crop,

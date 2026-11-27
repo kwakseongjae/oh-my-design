@@ -1,10 +1,11 @@
 /**
- * Item-page chrome (/design-systems/<id> and /ko/design-systems/<id>). Client-safe.
+ * Item-page chrome (/design-systems/<id>, /ko/design-systems/<id>, /ja/design-systems/<id>). Client-safe.
  *
  * Only the frame around a reference is localised. The DESIGN.md body, token
  * values, font names and component names stay as written in the canonical file.
- * The Korean strings are written natively (해요체, as the /ko landing copy), not
- * converted from the English ones.
+ * The Korean strings are written natively (해요체, as the /ko landing copy), and the
+ * Japanese ones too (です・ます, the /ja landing's words), not converted from the
+ * English ones.
  *
  * Round 11 (W7): the h1 is "{Name} DESIGN.md"; the hero holds the two actions
  * (Copy DESIGN.md, Download) as the `#use` group; the "how to use" section, the
@@ -125,6 +126,12 @@ export interface ItemLabels {
   pv: PreviewLabels;
   screens: ScreensLabels;
 }
+
+/**
+ * A locale's item-page chrome. `screens` only where the locale has screens pages
+ * (en, ko: components/screens/copy.ts); without it the page shows no Screens tab.
+ */
+export type ItemChrome = Omit<ItemLabels, "screens"> & { screens?: ScreensLabels };
 
 export const ITEM_EN: ItemLabels = {
   crumb: "Archive",
@@ -340,3 +347,94 @@ export const ITEM_KO: ItemLabels = {
     inventory: "기록된 상태",
   },
 };
+
+/**
+ * Japanese chrome (/ja/design-systems/<id>): です・ます for sentences, nouns for labels,
+ * the /ja landing's words for the same things (アーカイブ, コピー, 書体, 角丸). No
+ * `screens`: there are no Japanese screens pages, and no Japanese reference has screens.
+ */
+export const ITEM_JA: ItemChrome = {
+  crumb: "アーカイブ",
+  crumbHref: "/design-systems",
+  h1: (name) => `${name} DESIGN.md`,
+  useLabel: "このDESIGN.mdを使う",
+  copyMd: "DESIGN.mdをコピー",
+  copied: "コピーしました",
+  download: "ダウンロード",
+  srCopied: "DESIGN.mdをコピーしました",
+  official: "公式サイト",
+  show: "表示",
+  preview: "プレビュー",
+  related: "関連するデザインシステム",
+  install: {
+    install: "スキルをインストール",
+    prompt: "エージェントに渡す最初のプロンプト",
+    copy: "コピー",
+    copied: "コピーしました",
+    failed: "コピーできませんでした",
+    ariaInstall: "インストールコマンドをコピー",
+    ariaPrompt: (b) => `${b}の最初のプロンプトをコピー`,
+    promptFor: (b) => `デザインシステムを${b}のスタイルで用意してください。`,
+  },
+  shareLabels: { share: "共有", copied: "コピーしました", aria: "共有リンクをコピー", ariaCopied: "共有リンクをコピーしました" },
+  pv: {
+    colors: "色",
+    type: "タイポグラフィ",
+    shape: "余白と形",
+    components: "コンポーネント",
+    groups: { brand: "ブランド", surface: "背景と文字", status: "状態", other: "その他の色" },
+    scales: "カラースケール",
+    copyColor: (name, hex) => `${name} ${hex}をコピー`,
+    copied: "コピーしました",
+    scale: "タイプスケール",
+    showAll: (n) => `${n}件すべて表示`,
+    showFewer: "折りたたむ",
+    metrics: (size, lh, w, tr) =>
+      [`${size}px`, lh ? `行間${lh}` : null, w ? `太さ${w}` : null, tr ? `字間${tr}` : null].filter(Boolean).join("、"),
+    spacing: "余白",
+    radius: "角丸",
+    elevation: "影",
+    roles: {
+      primary: "基本",
+      mono: "等幅",
+      display: "ディスプレイ",
+      serif: "セリフ",
+      fallback: "フォールバック",
+      icon: "アイコン",
+      declared: "宣言のみ",
+      sans: "サンセリフ",
+      ui: "UI",
+      brand: "ブランド",
+      body: "本文",
+      heading: "見出し",
+      code: "コード",
+      numerals: "数字",
+      editorial: "エディトリアル",
+    },
+    license: {
+      OFL: "オープンフォント · OFL",
+      "Apache 2.0": "オープンフォント · Apache 2.0",
+      Proprietary: "商用フォント",
+      "Brand-proprietary": "ブランド専用フォント（一般配布なし）",
+      System: "システムフォント",
+      Mixed: "ライセンス混在",
+    },
+    install: (w) => `${w}からインストール`,
+    source: (w) => `出典 · ${w}`,
+    spec: { fill: "塗り", text: "文字", border: "枠線", radius: "角丸", height: "高さ", padding: "内側の余白", type: "文字サイズ・太さ" },
+    states: {
+      hover: "ホバー",
+      pressed: "押下",
+      active: "アクティブ",
+      focus: "フォーカス",
+      disabled: "無効",
+      selected: "選択",
+      checked: "チェック",
+      error: "エラー",
+    },
+    inventory: "記録された状態",
+  },
+};
+
+/** Chrome by page locale. */
+export const ITEM_CHROME: Readonly<Record<"en" | "ko" | "ja", ItemChrome>> = { en: ITEM_EN, ko: ITEM_KO, ja: ITEM_JA };

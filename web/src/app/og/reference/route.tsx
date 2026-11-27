@@ -35,7 +35,8 @@ export async function GET(request: NextRequest) {
   const primary = loaded.ast?.tokens.colors.primary?.value
     ?? loaded.ast?.identity.brandColor.value
     ?? projection.detail.primary;
-  // Hangul display names only on the Korean page's card (?lang=ko); English everywhere else.
+  // Hangul display names only on the Korean page's card (?lang=ko). Everywhere else, the Japanese
+  // page's card (?lang=ja) included, the non-Hangul name: kana or kanji where the registry records it.
   const name = editorial?.name ?? siteName(loaded.entry, request.nextUrl.searchParams.get("lang") === "ko" ? "ko" : "en");
   const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt;
 
