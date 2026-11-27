@@ -8,7 +8,7 @@ import { AppPart, AppSheet } from "./app-screen";
 import { KanaStage } from "./compare";
 import { RULE_KO, RULE_LABEL_KO, type KanaLocale } from "./copy";
 import { KANA_KIT, KANA_PATHS } from "./locale";
-import { Mixed, PairLines, QuoteLine, RuleLine, SourceLink, leadIndex, tierText, type Example, type Quote } from "./parts";
+import { Mixed, PairLines, Phrased, QuoteLine, RuleLine, SourceLink, leadIndex, tierText, type Example, type Quote } from "./parts";
 import { TYPE_MEASURED, TYPE_QUOTE } from "./type-quotes";
 import "./kana.css";
 import "./showcase.css";
@@ -119,7 +119,7 @@ function HeroJa() {
         <div className="hg-hero-head">
           <Kicker locale="ja" />
           <h1 id="km-h1" className="hg-h1">
-            {t.app.h2}
+            <Phrased text={t.app.h2!} />
           </h1>
           <p className="hg-lede">{t.app.intro}</p>
           <div className="hg-ctas">
@@ -160,7 +160,7 @@ function SourcePairsJa() {
         <div className="km-src-grid">
           <div className="hg-ch-head">
             <h2 id="km-compare-h" className="hg-h2">
-              {t.hero.h1}
+              <Phrased text={t.hero.h1} />
             </h2>
             <p className="hg-intro">{t.hero.lede}</p>
           </div>
@@ -176,7 +176,7 @@ function ChapterHead({ id, eyebrow, h2, intro }: { id: string; eyebrow: string; 
     <div className="hg-ch-head">
       <p className="hg-eyebrow">{eyebrow}</p>
       <h2 id={`km-${id}-h`} className="hg-h2">
-        <Mixed text={h2} />
+        <Phrased text={h2} />
       </h2>
       <p className="hg-intro">
         <Mixed text={intro} />
@@ -330,7 +330,7 @@ function TypeNote({ id, title, mine, locale }: { id: "JT-01" | "JT-05" | "JT-13"
         {id === "JT-13" ? "JT-13 · JT-14" : id}
       </p>
       <p className="km-note-t">
-        <Mixed text={title} />
+        <Phrased text={title} />
       </p>
       <QuoteLine q={q} />
       <p className="km-note-mine">
@@ -378,7 +378,9 @@ function TypeChapter({ locale }: { locale: KanaLocale }) {
               <p className="hg-note-id" lang="en">
                 JT-22
               </p>
-              <p className="km-note-t">{c.fonts.t(data.fonts.services)}</p>
+              <p className="km-note-t">
+                <Phrased text={c.fonts.t(data.fonts.services)} />
+              </p>
               <FontBars locale={locale} />
               <p className="km-note-mine">{c.fonts.caption(data.fonts.measuredOn)}</p>
             </li>
