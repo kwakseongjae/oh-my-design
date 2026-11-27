@@ -6,8 +6,9 @@ import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts } from "@/lib/blog/posts";
 import { BLOG_ON_SUBDOMAIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
 import { LANDING_LANGUAGE_ALTERNATES, SITE_LOCALES, SITE_LOCALE_META } from "@/lib/i18n/site-locales";
-import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
-import { KO_CATALOG_PATH, koDetailPath } from "@/lib/i18n/ko-detail";
+import { detailAlternates, detailLocalesOf } from "@/lib/i18n/detail-locales.server";
+import { detailPath } from "@/lib/i18n/detail-locales";
+import { KO_CATALOG_PATH } from "@/lib/i18n/ko-detail";
 import { HANGUL_PATH } from "@/components/hangul/copy";
 import { HANGUL_LANGUAGES } from "@/components/hangul/metadata";
 import { SCREENS_PATH, screensServicePath } from "@/components/screens/copy";
@@ -134,9 +135,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Honest per-reference lastModified and priority from computed quality. A raw
   // frontmatter date cannot promote trust or crawl priority by itself.
-  // A reference with a Korean page (lib/i18n/ko-detail.ts) lists both URLs, each
-  // naming the pair (and x-default → English) as xhtml:link alternates, matching
-  // the hreflang in both pages' <head>. Others keep a single English entry.
+  // A reference with Korean or Japanese pages (lib/i18n/detail-locales.ts) lists every
+  // edition's URL, each naming the whole set (and x-default → English) as xhtml:link
+  // alternates, matching the hreflang in every edition's <head>. Others keep a single
+  // English entry.
   const referenceRoutes: MetadataRoute.Sitemap = REGISTRY.flatMap(
     ({ id }) => {
       const quality = REFERENCE_QUALITY_BY_ID[id];
@@ -148,13 +150,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: quality?.status === "legacy_snapshot" ? "yearly" as const : "monthly" as const,
         priority,
       };
-      if (!hasKoDetailId(id)) return [{ url: en, ...base }];
-      const ko = `${siteUrl}${koDetailPath(id)}`;
-      const alternates = { languages: { en, ko, "x-default": en } };
-      return [
-        { url: en, ...base, alternates },
-        { url: ko, ...base, alternates },
-      ];
+      const editions = detailLocalesOf(id);
+      if (editions.length === 0) return [{ url: en, ...base }];
+      const alternates = { languages: detailAlternates(id, siteUrl) };
+      return [en, ...editions.map((l) => `${siteUrl}${detailPath(l, id)}`)].map((url) => ({ url, ...base, alternates }));
     },
   );
 

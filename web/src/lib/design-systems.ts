@@ -75,13 +75,21 @@ function hexToRgb(hex: string): [number, number, number] | null {
  * coherent. Deterministic (id tie-break) so SSG output is stable. Powers
  * detail→detail internal links for session + crawl depth.
  */
-/** `locale` "ko" names brands in Hangul where the reference records it; every other page gets the English name. */
-export function getRelatedReferences(id: string, n = 6, locale: "en" | "ko" = "en"): RelatedRef[] {
+/**
+ * `locale` "ko" names brands in Hangul where the reference records it; every other page gets the English name.
+ * `within` limits the candidates before ranking (an edition that links only among its own pages).
+ */
+export function getRelatedReferences(
+  id: string,
+  n = 6,
+  locale: "en" | "ko" | "ja" = "en",
+  within?: (id: string) => boolean,
+): RelatedRef[] {
   const self = REGISTRY_BY_ID[id];
   if (!self) return [];
   const selfRgb = hexToRgb(self.primaryColor);
 
-  const scored = REGISTRY.filter((e) => e.id !== id).map((e) => {
+  const scored = REGISTRY.filter((e) => e.id !== id && (!within || within(e.id))).map((e) => {
     const sameCat = e.category === self.category ? 0 : 1;
     const rgb = hexToRgb(e.primaryColor);
     const dist =

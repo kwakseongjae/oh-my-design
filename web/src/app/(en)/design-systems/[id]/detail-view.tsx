@@ -42,7 +42,7 @@ import {
   trackExternalClick,
   trackMdViewToggle,
 } from "@/lib/design-systems/analytics";
-import { ITEM_EN, ITEM_KO } from "@/components/brand-a/copy/item";
+import { ITEM_CHROME } from "@/components/brand-a/copy/item";
 import type { ScreensModel } from "@/lib/screens/model";
 import { urlForView, viewForHash } from "@/components/item/screens-hash";
 import { screensServicePath } from "@/components/screens/copy";
@@ -66,12 +66,12 @@ export function DetailView({
   preview,
   official,
   logo,
-  screens = null,
+  screens: screensModel = null,
   locale = "en",
   sharePath,
 }: {
   /** Page chrome language. The DESIGN.md body and values are the same in every locale. */
-  locale?: "en" | "ko";
+  locale?: "en" | "ko" | "ja";
   /** Path the share button copies; defaults to the English page. */
   sharePath?: string;
   /** Brand name from the server page — the same string as the title and JSON-LD. */
@@ -89,7 +89,11 @@ export function DetailView({
    */
   screens?: ScreensModel | null;
 }) {
-  const t = locale === "ko" ? ITEM_KO : ITEM_EN;
+  const t = ITEM_CHROME[locale];
+  // The Screens tab, where the locale has screens pages (en, ko) and the service has screens.
+  const screensTab =
+    locale !== "ja" && t.screens && screensModel ? { model: screensModel, labels: t.screens, locale } : null;
+  const screens = screensTab?.model ?? null;
   const withPreview = hasPreviewContent(preview);
   const defaultView: View = withPreview ? "preview" : "markdown";
   // One view for both layouts. Desktop shows the two panes for "preview" and "markdown" alike and
@@ -202,12 +206,12 @@ export function DetailView({
       {/* Desktop: DESIGN.md (the two panes) or the service's screens. Only where screens exist. */}
       {screens ? (
         <div className="sq-root sq-wrap sq-tabs-d">
-          <div className="sq-tabs-g" role="tablist" aria-label={t.screens.tabsLabel}>
+          <div className="sq-tabs-g" role="tablist" aria-label={screensTab?.labels.tabsLabel}>
             <button type="button" role="tab" aria-selected={view !== "screens"} onClick={() => selectView(view === "screens" ? defaultView : view)}>
               DESIGN.md
             </button>
             <button type="button" role="tab" aria-selected={view === "screens"} onClick={() => selectView("screens")}>
-              {t.screens.tab}
+              {screensTab?.labels.tab}
             </button>
           </div>
         </div>
@@ -226,19 +230,19 @@ export function DetailView({
           </button>
           {screens ? (
             <button type="button" onClick={() => selectView("screens")} aria-pressed={view === "screens"}>
-              {t.screens.tab}
+              {screensTab?.labels.tab}
             </button>
           ) : null}
         </div>
       ) : null}
 
-      {screens && view === "screens" ? (
+      {screensTab && view === "screens" ? (
         <div className="sq-wrap">
           <ScreensTab
-            model={screens}
-            labels={t.screens}
+            model={screensTab.model}
+            labels={screensTab.labels}
             panelId="screens-panel"
-            pageHref={screens.cards.some((c) => !c.blocked && c.stills.length > 0) ? screensServicePath(locale, detail.id) : null}
+            pageHref={screensTab.model.cards.some((c) => !c.blocked && c.stills.length > 0) ? screensServicePath(screensTab.locale, detail.id) : null}
           />
         </div>
       ) : null}

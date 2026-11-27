@@ -5,7 +5,7 @@ import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
 import { getR11Hero, withName, type CardText, type HeroKind } from "@/components/brand-a/copy/r11-hero";
-import { detailHrefFor, hasKoDetail, type QualityStatus } from "@/lib/i18n/ko-detail";
+import { detailHrefFor, hasDetail, type QualityStatus } from "@/lib/i18n/detail-locales";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import { contrast } from "./contrast";
 import { capData } from "./data.server";
@@ -852,7 +852,7 @@ export function getHeroChats(
       think: withName(k.think, nm.n, locale),
       name: nm.n,
       nLang: nm.nLang,
-      href: detailHrefFor(locale, id, hasKoDetail(r.country, REFERENCE_QUALITY_BY_ID[id]?.status as QualityStatus | undefined)),
+      href: detailHrefFor(locale, id, hasDetail(locale, r.country, REFERENCE_QUALITY_BY_ID[id]?.status as QualityStatus | undefined)),
     };
   }
   return { initial: CHAT_COMPANY[locale], chats };

@@ -13,7 +13,7 @@ import { REGISTRY_BY_ID } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { markFor } from "@/app/(en)/design-systems/archive-rows.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
-import { detailHrefFor, hasKoDetail } from "@/lib/i18n/ko-detail";
+import { detailHrefFor, hasDetail } from "@/lib/i18n/detail-locales";
 import { screensServicePath } from "@/components/screens/copy";
 import { allScreens, screensOf } from "./source.server";
 import { byCount, orderServices, similarServices, type GalleryModel, type GalleryShot, type ServiceScreensModel } from "./gallery";
@@ -41,7 +41,7 @@ export function readGallery(locale: GalleryLocale, env: Env = process.env): Gall
     const ref = REGISTRY_BY_ID[m.slug];
     if (!ref) return [];
     const name = locale === "ko" ? ref.displayName || ref.name : ref.name;
-    const href = detailHrefFor(locale, m.slug, hasKoDetail(ref.country, REFERENCE_QUALITY_BY_ID[m.slug]?.status));
+    const href = detailHrefFor(locale, m.slug, hasDetail(locale, ref.country, REFERENCE_QUALITY_BY_ID[m.slug]?.status));
     const shots: GalleryShot[] = m.cards
       .filter((c) => !c.blocked && c.stills.length > 0)
       .map((c) => ({ slug: m.slug, key: c.key, type: c.type, title: c.title, state: c.state, stills: c.stills }));

@@ -34,6 +34,16 @@ describe("English canonical reference metadata", () => {
     });
   });
 
+  it("names the Japanese page too for a verified Japanese reference", async () => {
+    const metadata = await generateMetadata(params("mercari"));
+    expect(metadata.alternates?.languages).toEqual({
+      en: "/design-systems/mercari",
+      ko: "/ko/design-systems/mercari",
+      ja: "/ja/design-systems/mercari",
+      "x-default": "/design-systems/mercari",
+    });
+  });
+
   it("titles the page '{Name} DESIGN.md' with a short suffix (owner decision 3, 2026-10-20)", async () => {
     const metadata = await generateMetadata(params("toss"));
     expect(metadata.title).toBe("Toss DESIGN.md — Colors, Typography, Components");

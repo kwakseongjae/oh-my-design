@@ -3,6 +3,7 @@ import { REGISTRY } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import sitemap from "./sitemap";
 import { KO_DETAIL_IDS } from "@/lib/i18n/ko-detail.server";
+import { DETAIL_IDS } from "@/lib/i18n/detail-locales.server";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts, getPostLocales } from "@/lib/blog/posts";
 import { blogPostUrl } from "@/lib/site";
@@ -31,15 +32,32 @@ describe("reference sitemap", () => {
     for (const route of ko) {
       const id = route.url.split("/").pop()!;
       const en = `https://oh-my-design.kr/design-systems/${id}`;
-      expect(route.alternates?.languages).toEqual({ en, ko: route.url, "x-default": en });
+      // a verified Japanese reference also has its Japanese page in the set
+      const ja = DETAIL_IDS.ja.includes(id) ? { ja: `https://oh-my-design.kr/ja/design-systems/${id}` } : {};
+      expect(route.alternates?.languages).toEqual({ en, ko: route.url, ...ja, "x-default": en });
       // …and the English entry names the Korean one back.
       const enRoute = routes.find((r) => r.url === en);
-      expect(enRoute?.alternates?.languages).toEqual({ en, ko: route.url, "x-default": en });
+      expect(enRoute?.alternates?.languages).toEqual({ en, ko: route.url, ...ja, "x-default": en });
     }
     // A reference without a Korean page has no alternates on its English entry.
     const solo = REGISTRY.find((r) => !KO_DETAIL_IDS.includes(r.id))!;
     expect(routes.find((r) => r.url.endsWith(`/design-systems/${solo.id}`))?.alternates).toBeUndefined();
     expect(routes.some((r) => r.url === "https://oh-my-design.kr/ko/design-systems")).toBe(true);
+  });
+
+  it("lists a Japanese page for exactly the Japanese-page set, each naming en, ko and ja back", () => {
+    const routes = sitemap();
+    const ja = routes.filter((route) => /^https:\/\/oh-my-design\.kr\/ja\/design-systems\/[^/]+$/.test(route.url));
+    expect(ja.map((r) => r.url.split("/").pop())).toEqual([...DETAIL_IDS.ja]);
+    for (const route of ja) {
+      const id = route.url.split("/").pop()!;
+      const en = `https://oh-my-design.kr/design-systems/${id}`;
+      const set = { en, ko: `https://oh-my-design.kr/ko/design-systems/${id}`, ja: route.url, "x-default": en };
+      expect(route.alternates?.languages).toEqual(set);
+      for (const url of [en, set.ko]) expect(routes.find((r) => r.url === url)?.alternates?.languages, url).toEqual(set);
+    }
+    // no Japanese archive yet, so none is listed
+    expect(routes.some((r) => r.url === "https://oh-my-design.kr/ja/design-systems")).toBe(false);
   });
 
   it("lists merged pages once, at their single surviving URL", () => {

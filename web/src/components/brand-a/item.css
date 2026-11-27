@@ -237,3 +237,15 @@
 :lang(ko) .sq-ih h1{line-height:1.3;letter-spacing:-0.02em}
 :lang(ko) :is(.sq-md-h,.sq-pv-sec,.sq-rel) h2,:lang(ko) .sq-md-h{line-height:1.32}
 :lang(ko) .sq-pv-group h3,:lang(ko) .sq-pv-scale h3{line-height:1.45}
+/* Japanese item page (/ja/design-systems/<id>): Wanted Sans has no kana or kanji, so the brand
+   name and the section headings name the Japanese face next instead of the generic sans-serif
+   (kana JT-22); headings that wrap get heading leading and no negative tracking (kana JT-02,
+   JT-05: DADS 28px .01em). Same sizes as the English page. */
+:lang(ja) :is(.sq-ih h1,.sq-md-h,.sq-pv-sec h2,.sq-rel h2){font-family:var(--sq-f-latin),var(--sq-f-ja)}
+:lang(ja) .sq-ih h1{line-height:1.4;letter-spacing:.01em}
+:lang(ja) :is(.sq-md-h,.sq-pv-sec,.sq-rel) h2,:lang(ja) .sq-md-h{line-height:1.35;letter-spacing:.01em}
+/* 「DESIGN.mdをコピー」 set in Noto Sans JP is 143px of text at 15px, more than the half-width
+   phone button holds (measured: overflowing at 390px and below). On phones the Japanese buttons
+   keep their own width and wrap onto a second row when both do not fit, full width, the primary
+   on top (DADS: on mobile, primary above secondary; kana KW-19). */
+@media (max-width:767px){:lang(ja) .sq-ih-acts .sq-act{flex:1 0 auto}}

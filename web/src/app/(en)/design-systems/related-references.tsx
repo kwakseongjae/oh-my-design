@@ -2,7 +2,8 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logo";
 import { ARCHIVE_COPY, domainLabel } from "@/components/brand-a/copy/r11-archive";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
-import { logoFor, nameLang, paletteOf, summaryOf, textLang, type ArchiveLocale } from "./archive-rows.server";
+import type { SiteLocale } from "@/lib/i18n/site-locales";
+import { logoFor, nameLang, paletteOf, summaryOf, textLang } from "./archive-rows.server";
 
 export interface RelatedItem {
   id: string;
@@ -24,7 +25,7 @@ export function RelatedReferences({
 }: {
   items: readonly RelatedItem[];
   heading: string;
-  locale: ArchiveLocale;
+  locale: SiteLocale;
 }) {
   if (items.length === 0) return null;
   const copy = ARCHIVE_COPY[locale];

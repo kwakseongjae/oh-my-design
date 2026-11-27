@@ -19,8 +19,7 @@ import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 import { loadDetail, type LoadedDetail } from "@/lib/references/detail-loader.server";
-import { hasKoDetailId } from "@/lib/i18n/ko-detail.server";
-import { koDetailPath } from "@/lib/i18n/ko-detail";
+import { detailAlternates } from "@/lib/i18n/detail-locales.server";
 import { ARCHIVE_COPY } from "@/components/brand-a/copy/r11-archive";
 import { ITEM_EN } from "@/components/brand-a/copy/item";
 import { RelatedReferences } from "../related-references";
@@ -114,11 +113,9 @@ export async function generateMetadata({
     // agents/crawlers can discover /<id>/design.md (handler: /r/[id]).
     alternates: {
       canonical: path,
-      // The Korean twin is named only where it exists (lib/i18n/ko-detail.ts);
-      // the Korean page names this one back, with x-default here.
-      languages: hasKoDetailId(id)
-        ? { en: path, ko: koDetailPath(id), "x-default": path }
-        : { en: path, "x-default": path },
+      // Each other-language edition is named only where it exists
+      // (lib/i18n/detail-locales.ts); every edition names the same set, x-default here.
+      languages: detailAlternates(id),
       types: { "text/markdown": `/${id}/design.md` },
     },
     ...(editorial ? { keywords: [...editorial.keywords] } : {}),
