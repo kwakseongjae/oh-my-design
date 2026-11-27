@@ -244,3 +244,8 @@
 :lang(ja) :is(.sq-ih h1,.sq-md-h,.sq-pv-sec h2,.sq-rel h2){font-family:var(--sq-f-latin),var(--sq-f-ja)}
 :lang(ja) .sq-ih h1{line-height:1.4;letter-spacing:.01em}
 :lang(ja) :is(.sq-md-h,.sq-pv-sec,.sq-rel) h2,:lang(ja) .sq-md-h{line-height:1.35;letter-spacing:.01em}
+/* 「DESIGN.mdをコピー」 set in Noto Sans JP is 143px of text at 15px, more than the half-width
+   phone button holds (measured: overflowing at 390px and below). On phones the Japanese buttons
+   keep their own width and wrap onto a second row when both do not fit, full width, the primary
+   on top (DADS: on mobile, primary above secondary; kana KW-19). */
+@media (max-width:767px){:lang(ja) .sq-ih-acts .sq-act{flex:1 0 auto}}
