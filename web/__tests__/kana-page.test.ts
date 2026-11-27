@@ -16,6 +16,7 @@ import { KanaShowcase } from "@/components/kana/showcase";
 import { KanaRulesPage } from "@/components/kana/rules-page";
 import { AREA_KO, COMPARE_STOPS, HOUSE_KO, KANA_COPY, RULE_KO, RULE_LABEL_KO, SOURCE_ORGS, type KanaLocale } from "@/components/kana/copy";
 import { AREA_JA, KANA_COPY_JA, SOURCE_ORGS_JA, composedJa } from "@/components/kana/copy-ja";
+import { JA_KEEP } from "@/components/kana/parts";
 import { APP_CANCEL, APP_PAIRS, APP_SHARED, appStrings } from "@/components/kana/app-copy";
 import { TYPE_MEASURED, TYPE_QUOTES } from "@/components/kana/type-quotes";
 import { jaLead } from "@/components/kana/rule-lead";
@@ -360,6 +361,27 @@ describe("the moa screens' Japanese (app-copy.ts)", () => {
     } finally {
       fs.rmSync(dir, { recursive: true, force: true });
     }
+  });
+});
+
+describe("Japanese headings keep their phrases whole", () => {
+  const text = (html: string) => html.replace(/<[^>]+>/g, "");
+
+  it("every listed phrase is still on the Japanese page (a reworded heading must bring its phrases along)", () => {
+    const page = text(showcase.ja);
+    for (const phrase of JA_KEEP) expect(page, phrase).toContain(phrase);
+    expect(showcase.ja.match(/class="km-ph"/g)?.length ?? 0).toBeGreaterThanOrEqual(JA_KEEP.length - 2);
+  });
+
+  it("the title is set as phrases, and its last line is the 11 characters showcase.css sizes the phone title for", () => {
+    const h1 = showcase.ja.match(/<h1[^>]*>(.*?)<\/h1>/)![1];
+    expect(text(h1)).toBe(KANA_COPY_JA.app.h2);
+    expect(h1.match(/class="km-ph"/g)).toHaveLength(3);
+    expect(KANA_COPY_JA.app.h2!.split("、")[1]).toHaveLength(11);
+  });
+
+  it("the Korean page has none of them", () => {
+    expect(showcase.ko).not.toContain('class="km-ph"');
   });
 });
 

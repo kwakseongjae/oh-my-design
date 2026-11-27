@@ -36,10 +36,10 @@ export function Mixed({ text }: { text: string }) {
 /**
  * Phrases a Japanese heading must not be broken inside. The browser's own phrase breaking (word-break: auto-phrase)
  * exists only in Chrome and Edge, and its model splits some of these (トークンど / おり); measured on this page at
- * seven widths, 2026-11-27. Each phrase is set as one inline block, so a line ends between phrases in every browser.
+ * seven widths, 2026-11-27 (scripts/lang/kana-heading-breaks.mjs). Each phrase is set as one inline block, so a line ends between phrases in every browser.
  * A heading that is not listed keeps the browser's breaking.
  */
-const JA_KEEP = [
+export const JA_KEEP = [
   "同じ画面の、", "ガイドに沿った", "書き直し",
   "出典の原文を", "添えた、", "日本語UIの規則",
   "操作の結果が", "わかる", "ボタンとエラー",
